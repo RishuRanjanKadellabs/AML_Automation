@@ -1,6 +1,11 @@
 import { defineConfig, devices } from "@playwright/test";
 import * as dotenv from "dotenv";
+<<<<<<< HEAD
 dotenv.config();
+=======
+// MCP run-test-mcp-server uses stdout for JSON-RPC — keep dotenv off stdout.
+dotenv.config({ quiet: true });
+>>>>>>> master
 
 import { loadTestData, getEnv } from "./fixtures/env";
 
@@ -21,7 +26,11 @@ const milestoneWorkers = process.env.PW_MILESTONE1_WORKERS
 
 const skipHtmlReport = process.env.PW_SKIP_HTML_REPORT === "1";
 
+<<<<<<< HEAD
 console.log(
+=======
+console.error(
+>>>>>>> master
   `\n[playwright.config] ENV=${env} BASE_URL=${baseURL} milestone1Workers=${milestoneWorkers} milestoneHeadless=${milestoneHeadless}\n`,
 );
 
@@ -35,7 +44,10 @@ export default defineConfig({
     : process.env.CI
       ? 4
       : 6,
+<<<<<<< HEAD
   globalTimeout: 2 * 60 * 60 * 1000,
+=======
+>>>>>>> master
   reporter: [
     ["list"],
     ...(skipHtmlReport
@@ -71,10 +83,18 @@ export default defineConfig({
       name: "milestone1-chromium",
       testMatch: "**/milestone1/**/*.spec.ts",
       fullyParallel: true,
+<<<<<<< HEAD
+=======
+      retries: process.env.PW_RETRIES ? parseInt(process.env.PW_RETRIES, 10) : 0,
+>>>>>>> master
       workers: milestoneWorkers,
       use: {
         ...devices["Desktop Chrome"],
         headless: milestoneHeadless,
+<<<<<<< HEAD
+=======
+        trace: process.env.PW_TRACE === "on" ? "on" : "off",
+>>>>>>> master
       },
     },
   ],

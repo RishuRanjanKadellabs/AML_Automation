@@ -126,23 +126,33 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-016 - Tab Visibility → Individual Template", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Individual');
+<<<<<<< HEAD
     await mmPage.openTab('Individual CIP');
+=======
+>>>>>>> master
     await mmPage.expectTemplateModuleLoaded();
   });
 
   test("Case ID:MM-TC-017 - Tab Visibility → Corporate Template", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
+<<<<<<< HEAD
     await mmPage.expectDefaultTabForCorporate();
+=======
+>>>>>>> master
     await mmPage.expectTemplateModuleLoaded();
   });
 
   test("Case ID:MM-TC-018 - Tab Behavior → Default Tab Selection", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
     await mmPage.openTab('Individual CIP');
     await mmPage.selectTemplateByExactName('Standard KYC — Individual');
     await mmPage.expectTemplateModuleLoaded();
+=======
+    await mmPage.expectDefaultTabSelectionWorkflow();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-019 - Template Search", async ({ testData }) => {
@@ -239,8 +249,12 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-030 - Add Field → Invalid Section Mapping", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
+<<<<<<< HEAD
     await mmPage.openAddFieldDialog();
     await mmPage.saveChangesAndExpectSuccess();
+=======
+    await mmPage.attemptInvalidSectionMapping();
+>>>>>>> master
     await mmPage.expectAddFieldValidationError();
   });
 
@@ -261,13 +275,21 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-033 - Field Configuration → Requirement Type", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
+<<<<<<< HEAD
+=======
+    await mmPage.openAddFieldDialog();
+>>>>>>> master
     await mmPage.createValidCustomField('Requirement Type Field');
     await mmPage.modifyFirstEditableRequirement();
     await mmPage.saveChangesAndExpectSuccess();
     await mmPage.refreshPage();
     await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC');
+<<<<<<< HEAD
     await expect(mmPage.requirementDropdowns.first()).toBeVisible();
     await mmPage.expectSaveChangesSucceeded();
+=======
+    await mmPage.expectFirstEditableRequirementPersisted();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-034 - Field Configuration → Immediate UI Sync", async ({ testData }) => {
@@ -286,8 +308,11 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.refreshPage();
     await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC');
     await mmPage.expectFirstEditableRequirementPersisted();
+<<<<<<< HEAD
     await mmPage.expectSaveChangesSucceeded();
     await mmPage.expectTemplateListRefreshed();
+=======
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-036 - Locked Fields → Edit Restriction", async ({ testData }) => {
@@ -351,8 +376,13 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-043 - Field Configuration → Unsaved State Warning", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
+<<<<<<< HEAD
     await mmPage.updateFieldRequirementByTestDataFragment('Unsaved changes');
     await mmPage.expectTemplateModuleLoaded();
+=======
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.expectUnsavedNavigationWarning();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-044 - Field Configuration → Cancel Without Save", async ({ testData }) => {
@@ -366,12 +396,20 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   });
 
   test("Case ID:MM-TC-045 - Field Configuration → Audit Integrity", async ({ testData }) => {
+<<<<<<< HEAD
     await mmPage.mockSaveChangesFailure();
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.updateFieldRequirementByTestDataFragment('Field update action');
     await mmPage.saveChangesAndExpectSuccess();
     await mmPage.expectTemplateModuleLoaded();
+=======
+    await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+    await mmPage.selectTemplateByExactName('Simplified KYC');
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.saveChangesAndExpectSuccess();
+    await mmPage.expectSaveChangesSucceeded();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-046 - Individual Template → Default Load", async ({ testData }) => {
@@ -546,7 +584,10 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-066 - Technical IDs → Tab Visibility", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Individual');
+<<<<<<< HEAD
     await mmPage.openTab('Individual CIP');
+=======
+>>>>>>> master
     await expect(mmPage.tabButtons.first()).toBeVisible();
     await expect(mmPage.fieldRows.first()).toBeVisible();
   });
@@ -562,9 +603,13 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Individual');
     await mmPage.openTab('Technical IDs');
+<<<<<<< HEAD
     await expect(mmPage.tabButtons.first()).toBeVisible();
     await expect(mmPage.fieldRows.first()).toBeVisible();
     await expect(mmPage.requirementDropdowns.first()).toBeVisible();
+=======
+    await mmPage.expectTechnicalIdsNoRequirementDropdowns();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-069 - Technical IDs → System Badge Integrity", async ({ testData }) => {
@@ -591,7 +636,10 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-072 - Corporate CIP → Tab Visibility", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
+<<<<<<< HEAD
     await mmPage.expectDefaultTabForCorporate();
+=======
+>>>>>>> master
     await expect(mmPage.tabButtons.first()).toBeVisible();
     await expect(mmPage.fieldRows.first()).toBeVisible();
   });
@@ -609,8 +657,11 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
     await mmPage.openTab('Corporate CIP');
     await mmPage.expectLockedFieldEditRestriction();
+<<<<<<< HEAD
     await mmPage.expectFieldEditableByTestDataFragment('Certificate of Incorporation');
     await mmPage.expectFieldEditableByTestDataFragment('Tax Registration');
+=======
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-075 - Corporate CIP → Ownership & Control Group", async ({ testData }) => {
@@ -632,8 +683,11 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
     await mmPage.openTab('Corporate CIP');
+<<<<<<< HEAD
     await mmPage.openFieldByTestDataFragment('Ownership Structure Chart');
     await mmPage.openFieldByTestDataFragment('Audited Statements');
+=======
+>>>>>>> master
     await mmPage.updateFieldRequirementByTestDataFragment('Ownership Structure Chart');
     await mmPage.updateFieldRequirementByTestDataFragment('Audited Statements');
     await mmPage.saveChangesAndExpectSuccess();
@@ -641,9 +695,12 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.reopenTemplateContextAfterRefresh('Standard KYC — Corporate', 'Corporate CIP');
     await mmPage.expectFieldRequirementPersistedByTestDataFragment('Ownership Structure Chart');
     await mmPage.expectFieldRequirementPersistedByTestDataFragment('Audited Statements');
+<<<<<<< HEAD
     await mmPage.expectFieldEditableByTestDataFragment('Ownership Structure Chart');
     await mmPage.expectFieldEditableByTestDataFragment('Audited Statements');
     await mmPage.expectSaveChangesSucceeded();
+=======
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-078 - Corporate CIP → Conditional-to-Optional Normalization", async ({ testData }) => {
@@ -740,7 +797,10 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-089 - Corporate Technical IDs → Tab Visibility", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
+<<<<<<< HEAD
     await mmPage.expectDefaultTabForCorporate();
+=======
+>>>>>>> master
     await expect(mmPage.tabButtons.first()).toBeVisible();
     await expect(mmPage.fieldRows.first()).toBeVisible();
   });
@@ -749,18 +809,26 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
     await mmPage.openTab('Technical IDs');
+<<<<<<< HEAD
     await mmPage.expectLockedFieldEditRestriction();
     await mmPage.expectFieldEditableByTestDataFragment('CIF ID');
     await mmPage.expectFieldEditableByTestDataFragment('Risk Score');
     await mmPage.expectFieldEditableByTestDataFragment('KYC Status');
+=======
+    await mmPage.expectCorporateTechnicalIdsImmutable();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-091 - Corporate Technical IDs → System-Owned State", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
     await mmPage.openTab('Technical IDs');
+<<<<<<< HEAD
     await mmPage.expectFieldEditableByTestDataFragment('System fields');
     await mmPage.expectTemplateCountMatchesCards();
+=======
+    await mmPage.expectCorporateTechnicalIdsImmutable();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-092 - Corporate Technical IDs → Field Count Validation", async ({ testData }) => {
@@ -792,10 +860,15 @@ test.describe("Missing Mandatory Data Template - UI", () => {
 
   test("Case ID:MM-TC-096 - Create New Template → Launch Flow", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.openCreateTemplateView();
     await mmPage.expectAppShellVisible();
     await mmPage.expectOnTemplateRoute();
+=======
+    await mmPage.openCreateTemplateView();
+    await mmPage.expectCreateTemplateLaunchScreen();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-097 - Create New Template → Mandatory Input Validation", async ({ testData }) => {
@@ -847,8 +920,15 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-103 - Create New Template → Cancel Flow", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
+<<<<<<< HEAD
     await mmPage.cancelButton.click();
     await mmPage.expectSaveChangesSucceeded();
+=======
+    await mmPage.openCreateTemplateView();
+    await mmPage.fillField(mmPage.createTemplateNameInput, "Canceled Template", "Template name");
+    await mmPage.cancelCreateTemplateFlow();
+    await mmPage.expectCreateTemplateCanceled();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-104 - Create New Template → Refresh Persistence", async ({ testData }) => {
@@ -892,8 +972,14 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.clickCloneButton();
+<<<<<<< HEAD
     await mmPage.saveChangesAndExpectSuccess();
     await mmPage.expectTemplateModuleLoaded();
+=======
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.saveChangesAndExpectSuccess();
+    await mmPage.expectCloneOwnershipIndependence();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-110 - Clone Flow → Duplicate Clone Naming Restriction", async ({ testData }) => {
@@ -928,6 +1014,7 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-114 - Save Changes → Valid Persistence", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
+<<<<<<< HEAD
     await mmPage.updateFieldRequirementByTestDataFragment('Valid config update');
     await mmPage.saveChangesAndExpectSuccess();
     await mmPage.refreshPage();
@@ -935,6 +1022,14 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.expectFieldRequirementPersistedByTestDataFragment('Valid config update');
     await mmPage.expectSaveChangesSucceeded();
     await mmPage.expectTemplateListRefreshed();
+=======
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.saveChangesAndExpectSuccess();
+    await mmPage.refreshPage();
+    await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC');
+    await mmPage.expectFirstEditableRequirementPersisted();
+    await mmPage.expectSaveChangesSucceeded();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-115 - Save Changes → Validation Failure", async ({ testData }) => {
@@ -956,14 +1051,24 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-117 - Dirty State → Unsaved Navigation Warning", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
+<<<<<<< HEAD
     await mmPage.updateFieldRequirementByTestDataFragment('Unsaved changes');
     await mmPage.expectTemplateModuleLoaded();
+=======
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.expectUnsavedNavigationWarning();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-118 - Dirty State → Discard Unsaved Changes", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
+<<<<<<< HEAD
     await mmPage.expectSaveChangesSucceeded();
+=======
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.expectUnsavedNavigationWarning();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-119 - Concurrency → Parallel Edit Conflict", async ({ testData }) => {
@@ -982,9 +1087,14 @@ test.describe("Missing Mandatory Data Template - UI", () => {
 
   test("Case ID:MM-TC-121 - KYC Gap Score Configuration → Tab Availability", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Standard KYC — Corporate');
     await mmPage.openTab('KYC Gap Score');
     await mmPage.selectTemplateByExactName('Standard KYC — Individual');
+=======
+    await mmPage.selectTemplateByExactName('Standard KYC — Individual');
+    await mmPage.openTab('KYC Gap Score');
+>>>>>>> master
     await mmPage.expectScoreTabLoaded();
   });
 
@@ -1051,7 +1161,11 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.openTab('KYC Gap Score');
+<<<<<<< HEAD
     await mmPage.attemptDuplicateFieldCreation('Repeated score interval');
+=======
+    await mmPage.configureOverlappingScoreRangesFromTestData('Repeated score interval');
+>>>>>>> master
     await mmPage.expectScoreRangeSaveBlocked();
   });
 
@@ -1113,12 +1227,20 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.openTab('KYC Gap Score');
+<<<<<<< HEAD
     await mmPage.refreshPage();
     await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC', 'KYC Gap Score');
     await mmPage.expectFieldRequirementPersistedByTestDataFragment('Updated score config');
     await mmPage.expectSaveChangesSucceeded();
     await mmPage.expectTemplateListRefreshed();
     await mmPage.expectScoreTabLoaded();
+=======
+    await mmPage.saveChangesAndExpectSuccess();
+    await mmPage.captureScoreRangeSnapshot();
+    await mmPage.refreshPage();
+    await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC', 'KYC Gap Score');
+    await mmPage.expectScoreConfigPersistedAfterRefresh();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-140 - KYC Gap Score → Template Isolation", async ({ testData }) => {
@@ -1294,7 +1416,12 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-166 - KYC Gap Report → Missing Fields Breakdown", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.openKycGapReportDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.expectGapReportTableVisible();
+=======
+    await mmPage.openFirstGapReportDetail();
+    await mmPage.expectMissingFieldsBreakdownInModal();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-167 - KYC Gap Report → Score Breakdown", async ({ testData }) => {
@@ -1308,8 +1435,11 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.openKycGapReportDirect(testData.baseUrl);
     await mmPage.refreshPage();
+<<<<<<< HEAD
     await mmPage.expectTemplateListRefreshed();
     await mmPage.expectRefreshPreservesTemplateDetail('Simplified KYC');
+=======
+>>>>>>> master
     await mmPage.expectGapReportTableVisible();
   });
 
@@ -1327,16 +1457,29 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-170 - KYC Gap Report → Template-to-Report Sync", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.openKycGapReportDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.updateFieldRequirementByTestDataFragment('Updated AML template');
     await mmPage.saveChangesAndExpectSuccess();
     await mmPage.expectGapReportTableVisible();
+=======
+    await mmPage.selectTemplateByExactName('Simplified KYC');
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.saveChangesAndExpectSuccess();
+    await mmPage.expectGapReportSyncedWithTemplate();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-171 - Score Calculation Engine → Default Calculation Load", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.openKycGapReportDirect(testData.baseUrl);
     await mmPage.expectNullPartialDataScoreHandling();
+=======
+    await mmPage.openKycGapReportDirect(testData.baseUrl);
+    await mmPage.openFirstGapReportDetail();
+    await mmPage.expectScoreEngineDefaultLoad();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-172 - Missing Fields Logic → Mandatory Weight", async ({ testData }) => {
@@ -1418,22 +1561,40 @@ test.describe("Missing Mandatory Data Template - UI", () => {
 
   test("Case ID:MM-TC-184 - Missing Fields Breakdown → Accurate Field Mapping", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.openKycGapReportDirect(testData.baseUrl);
     await mmPage.expectTemplateModuleLoaded();
     await mmPage.expectTemplateListPopulated();
+=======
+    await mmPage.openKycGapReportDirect(testData.baseUrl);
+    await mmPage.openFirstGapReportDetail();
+    await mmPage.expectMissingFieldsBreakdownInModal();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-185 - Missing Fields Breakdown → No False Positive", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.expectTemplateModuleLoaded();
+=======
+    await mmPage.openKycGapReportDirect(testData.baseUrl);
+    await mmPage.openFirstGapReportDetail();
+    await mmPage.expectMissingFieldsBreakdownInModal();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-186 - Missing Fields Breakdown → No Duplicate Counting", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.expectAddFieldValidationError();
+=======
+    await mmPage.openKycGapReportDirect(testData.baseUrl);
+    await mmPage.openFirstGapReportDetail();
+    await mmPage.expectMissingFieldsBreakdownInModal();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-187 - Score Calculation → Shared CDD/EDD Field Handling", async ({ testData }) => {
@@ -1518,7 +1679,10 @@ test.describe("Missing Mandatory Data Template - UI", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.openCreateTemplateView();
     await mmPage.expectAccessDenied();
+<<<<<<< HEAD
     await mmPage.expectSaveChangesSucceeded();
+=======
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-199 - RBAC → Edit Template Permission", async ({ testData }) => {
@@ -1529,9 +1693,16 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   test("Case ID:MM-TC-200 - RBAC → Save Changes Permission", async ({ testData }) => {
     await mmPage.mockUnauthorized();
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.saveChangesAndExpectSuccess();
     await mmPage.expectAccessDenied();
     await mmPage.expectScoreRecalculationAfterTemplateUpdate(testData.baseUrl);
+=======
+    await mmPage.selectTemplateByExactName('Simplified KYC');
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save Changes as restricted user');
+    await mmPage.expectAccessDenied();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-201 - RBAC → Clone Permission", async ({ testData }) => {
@@ -1583,7 +1754,13 @@ test.describe("Missing Mandatory Data Template - UI", () => {
 
   test("Case ID:MM-TC-210 - Session → Unsaved State on Timeout", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.expectSaveChangesSucceeded();
+=======
+    await mmPage.selectTemplateByExactName('Simplified KYC');
+    await mmPage.modifyFirstEditableRequirement();
+    await mmPage.expectUnsavedNavigationWarning();
+>>>>>>> master
   });
 
   test("Case ID:MM-TC-211 - Security → Concurrent Session Token Validation", async ({ testData }) => {
@@ -1612,7 +1789,10 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   });
 
   test("Case ID:MM-TC-215 - Security → Audit-Safe Access Integrity", async ({ testData }) => {
+<<<<<<< HEAD
     await mmPage.mockSaveChangesFailure();
+=======
+>>>>>>> master
     await mmPage.mockUnauthorized();
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.expectAccessDenied();
@@ -1677,10 +1857,20 @@ test.describe("Missing Mandatory Data Template - UI", () => {
 
   test("Case ID:MM-TC-249 - End-to-End AML Workflow → Create Template to Report", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.openCreateTemplateView();
     await mmPage.openAddFieldDialog();
     await mmPage.configureOverlappingScoreRangesFromTestData('New AML template + customer');
+=======
+    await mmPage.openCreateTemplateView();
+    await mmPage.fillField(mmPage.createTemplateNameInput, "E2E AML Template", "Template name");
+    await mmPage.clickCreateSubmit();
+    await mmPage.openAddFieldDialog();
+    await mmPage.createValidCustomField('E2E AML Field');
+    await mmPage.openTab('KYC Gap Score');
+    await mmPage.saveChangesAndExpectSuccess();
+>>>>>>> master
     await mmPage.openKycGapReportDirect(testData.baseUrl);
     await mmPage.expectGapReportSyncedWithTemplate();
   });
@@ -1741,7 +1931,11 @@ test.describe("Missing Mandatory Data Template - UI", () => {
 
   test("Case ID:MM-TC-258 - Regression → KYC Gap Report Stability", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
+=======
+    await mmPage.openKycGapReportDirect(testData.baseUrl);
+>>>>>>> master
     await mmPage.expectGapReportTableVisible();
   });
 
@@ -1752,7 +1946,10 @@ test.describe("Missing Mandatory Data Template - UI", () => {
   });
 
   test("Case ID:MM-TC-260 - Business Integrity → AML Audit Traceability", async ({ testData }) => {
+<<<<<<< HEAD
     await mmPage.mockSaveChangesFailure();
+=======
+>>>>>>> master
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.expectTemplateModuleLoaded();
@@ -1877,9 +2074,15 @@ test.describe("Missing Mandatory Data Template - UI", () => {
 
   test("Case ID:MM-TC-278 - Add Custom Field → Cancel Flow", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
+<<<<<<< HEAD
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.openAddFieldDialog();
     await mmPage.cancelButton.click();
+=======
+    await mmPage.openCreateTemplateView();
+    await mmPage.fillField(mmPage.createTemplateNameInput, "Canceled Template", "Template name");
+    await mmPage.cancelCreateTemplateFlow();
+>>>>>>> master
     await expect(mmPage.addFieldButton).toBeVisible();
   });
 

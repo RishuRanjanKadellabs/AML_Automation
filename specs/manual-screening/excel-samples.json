@@ -1,0 +1,143 @@
+{
+  "count": 395,
+  "modules": {
+    "Top Bar": 21,
+    "Tab Navigation": 23,
+    "Entity Type Toggle": 25,
+    "Individual Form": 47,
+    "Non-Individual Form": 24,
+    "Vessel Form": 22,
+    "Watchlist Configuration": 24,
+    "Form Actions & Validation": 45,
+    "License Warning Banner": 13,
+    "Bulk Upload": 36,
+    "Screening Results": 40,
+    "AI Summary Panel": 22,
+    "Results Table": 49,
+    "Screening Results Page — Retry Behavior": 2,
+    "Bulk Upload Validation": 1,
+    "Bulk Screening Results": 1
+  },
+  "samples": [
+    {
+      "Test Case ID": "MS-002-01",
+      "Module": "Top Bar",
+      "Sub Module": "Layout",
+      "Test Discription": "Verify top bar is visible on Manual Screening page",
+      "Acceptance Criteria": "Top bar is displayed at the top of the main content area and remains visible immediately on page load.",
+      "Pre-condition": "User is logged in and navigated to Sanction Screening > Manual Screening",
+      "Test Steps": "1. Open the Manual Screening page.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The top bar is displayed at the top of the main content area and is visible immediately on page load."
+    },
+    {
+      "Test Case ID": "MS-003-21",
+      "Module": "Tab Navigation",
+      "Sub Module": "Responsive Behavior",
+      "Test Discription": "Verify tab switching works correctly after window resize",
+      "Acceptance Criteria": "Tabs continue functioning correctly after browser resize with proper active state and panel visibility.",
+      "Pre-condition": "User is on the module page",
+      "Test Steps": "1. Resize the browser window to a smaller desktop width.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "Tabs continue to switch correctly after resize, with proper active state and panel visibility."
+    },
+    {
+      "Test Case ID": "MS-005-17",
+      "Module": "Individual Form",
+      "Sub Module": "Joint Account Holder Section",
+      "Test Discription": "Verify Joint Account Holder sub-section is displayed below Basic Information",
+      "Acceptance Criteria": "Joint Account Holder (Optional) subsection is displayed below the Basic Information section.",
+      "Pre-condition": "User is on the Individual screening form",
+      "Test Steps": "1. Scroll below the Basic Information section.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The Joint Account Holder (Optional) sub-section is displayed below Basic Information."
+    },
+    {
+      "Test Case ID": "MS-007-10",
+      "Module": "Non-Individual Form",
+      "Sub Module": "Country Dropdown Validation",
+      "Test Discription": "Verify Country of Incorporation dropdown contains the specified options",
+      "Acceptance Criteria": "Country of Incorporation dropdown contains all configured country options correctly.",
+      "Pre-condition": "User is on Non-Individual form",
+      "Test Steps": "1. Open the Country of Incorporation dropdown.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The dropdown contains: Singapore, United States, United Kingdom, Cayman Islands, British Virgin Islands, Hong Kong."
+    },
+    {
+      "Test Case ID": "MS-009-04",
+      "Module": "Watchlist Configuration",
+      "Sub Module": "Card Content Display",
+      "Test Discription": "Verify each watchlist card shows title, category tag, description, and metadata pills",
+      "Acceptance Criteria": "Each watchlist card displays title, category tag, description, and metadata pills correctly.",
+      "Pre-condition": "User is on any entity form and the watchlist grid is visible",
+      "Test Steps": "1. Inspect one watchlist card.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "Every card displays a bold title, a colored category tag pill, description text, and metadata pills."
+    },
+    {
+      "Test Case ID": "MS-010-22",
+      "Module": "Form Actions & Validation",
+      "Sub Module": "Desktop Layout Stability",
+      "Test Discription": "Verify button row remains stable on standard desktop layout",
+      "Acceptance Criteria": "Form action button row remains stable, aligned, and visually intact on desktop layout.",
+      "Pre-condition": "User is on any entity form in a desktop browser",
+      "Test Steps": "1. Open the form at standard desktop width.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The bottom action row stays stable, readable, and correctly aligned without layout breakage."
+    },
+    {
+      "Test Case ID": "MS-013-06",
+      "Module": "Bulk Upload",
+      "Sub Module": "CSV File Status Display",
+      "Test Discription": "Verify uploaded CSV file shows filename, size, and readiness status",
+      "Acceptance Criteria": "Upload zone displays CSV filename, file size in KB, and “Ready to screen” confirmation after valid upload.",
+      "Pre-condition": "User is on the Bulk Upload tab and a valid CSV file is available",
+      "Test Steps": "1. Open the Bulk Upload tab.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The zone displays the filename, file size in KB, and the message “Ready to screen”."
+    },
+    {
+      "Test Case ID": "MS-015-12",
+      "Module": "Screening Results",
+      "Sub Module": "ID Number Placeholder Handling",
+      "Test Discription": "Verify metadata row displays placeholder when ID Number is blank",
+      "Acceptance Criteria": "Metadata row displays “— (not provided)” when ID Number value is unavailable.",
+      "Pre-condition": "Screening Results page is available and ID Number is unavailable",
+      "Test Steps": "1. Open the Screening Results page.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The ID Number field shows — (not provided) when the subject ID Number is blank."
+    },
+    {
+      "Test Case ID": "MS-017-14",
+      "Module": "AI Summary Panel",
+      "Sub Module": "ID-based Match Validation",
+      "Test Discription": "Verify summary does not incorrectly show the name-only caveat when ID is present",
+      "Acceptance Criteria": "AI summary does not show name-only caveat when valid ID information is available.",
+      "Pre-condition": "Screening Results page contains a subject record with a valid ID Number",
+      "Test Steps": "1. Open a result set where the subject has a valid ID Number.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The summary does not mention the name-only caveat when ID data is available."
+    },
+    {
+      "Test Case ID": "MS-019-14",
+      "Module": "Results Table",
+      "Sub Module": "Category Dropdown",
+      "Test Discription": "Verify All categories removes the category filter",
+      "Acceptance Criteria": "All rows become visible again when All categories is selected.",
+      "Pre-condition": "A category filter is already applied",
+      "Test Steps": "1. Open the Screening Results page.",
+      "Test Data": "",
+      "Priority": "",
+      "Expected Result": "The category filter is cleared and all rows become visible again."
+    }
+  ]
+}

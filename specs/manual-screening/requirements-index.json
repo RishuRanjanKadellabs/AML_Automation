@@ -1,0 +1,4002 @@
+[
+  {
+    "id": "TC-MS-001",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar Layout",
+    "taskDescription": "Verify fixed sidebar is displayed",
+    "priority": "",
+    "expectedResult": "The 'fixed sidebar is displayed' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-002",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar Dimensions",
+    "taskDescription": "Verify sidebar width is 232px",
+    "priority": "",
+    "expectedResult": "The 'sidebar width is 232px' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-003",
+    "module": "Layout & Navigation",
+    "subModule": "Brand Block",
+    "taskDescription": "Verify brand block content",
+    "priority": "",
+    "expectedResult": "The 'brand block content' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-004",
+    "module": "Layout & Navigation",
+    "subModule": "Brand Alignment",
+    "taskDescription": "Verify brand block top alignment",
+    "priority": "",
+    "expectedResult": "The 'brand block top alignment' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-005",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Search Box",
+    "taskDescription": "Verify search box is displayed",
+    "priority": "",
+    "expectedResult": "The 'search box is displayed' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-006",
+    "module": "Layout & Navigation",
+    "subModule": "Navigation Menu",
+    "taskDescription": "Verify all primary menu items are displayed",
+    "priority": "",
+    "expectedResult": "The 'all primary menu items are displayed' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-007",
+    "module": "Layout & Navigation",
+    "subModule": "Navigation Icons",
+    "taskDescription": "Verify menu icons are displayed",
+    "priority": "",
+    "expectedResult": "The 'menu icons are displayed' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-008",
+    "module": "Layout & Navigation",
+    "subModule": "Active Navigation State",
+    "taskDescription": "Verify default active menu state",
+    "priority": "",
+    "expectedResult": "The 'default active menu state' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-009",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Dashboard navigation",
+    "priority": "",
+    "expectedResult": "The 'Dashboard navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-010",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify KYC navigation",
+    "priority": "",
+    "expectedResult": "The 'KYC navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-011",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Sanction Screening navigation",
+    "priority": "",
+    "expectedResult": "The 'Sanction Screening navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-012",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Customer Risk View navigation",
+    "priority": "",
+    "expectedResult": "The 'Customer Risk View navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-013",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Real-time Monitoring navigation",
+    "priority": "",
+    "expectedResult": "The 'Real-time Monitoring navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-014",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Batch Monitoring navigation",
+    "priority": "",
+    "expectedResult": "The 'Batch Monitoring navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-015",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Payments Workflow navigation",
+    "priority": "",
+    "expectedResult": "The 'Payments Workflow navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-016",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify AI-Powered Investigation navigation",
+    "priority": "",
+    "expectedResult": "The 'AI-Powered Investigation navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-017",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify LEA / RFI Tracker navigation",
+    "priority": "",
+    "expectedResult": "The 'LEA / RFI Tracker navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-018",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify MIS Reports navigation",
+    "priority": "",
+    "expectedResult": "The 'MIS Reports navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-019",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Regulatory Reports navigation",
+    "priority": "",
+    "expectedResult": "The 'Regulatory Reports navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-020",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Simulation navigation",
+    "priority": "",
+    "expectedResult": "The 'Simulation navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-021",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Config navigation",
+    "priority": "",
+    "expectedResult": "The 'Config navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-022",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar → Route Navigation",
+    "taskDescription": "Verify Administration navigation",
+    "priority": "",
+    "expectedResult": "The 'Administration navigation' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-023",
+    "module": "Layout & Navigation",
+    "subModule": "Active State Management",
+    "taskDescription": "Verify single active state behavior",
+    "priority": "",
+    "expectedResult": "The 'single active state behavior' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-024",
+    "module": "Layout & Navigation",
+    "subModule": "Sidebar Scroll Behavior",
+    "taskDescription": "Verify sidebar scroll behavior",
+    "priority": "",
+    "expectedResult": "The 'sidebar scroll behavior' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "TC-MS-025",
+    "module": "Layout & Navigation",
+    "subModule": "User Identity Bar",
+    "taskDescription": "Verify user identity bar at bottom",
+    "priority": "",
+    "expectedResult": "The 'user identity bar at bottom' requirement is met and the sidebar behaves according to the specification."
+  },
+  {
+    "id": "MS-002-01",
+    "module": "Top Bar",
+    "subModule": "Layout",
+    "taskDescription": "Verify top bar is visible on Manual Screening page",
+    "priority": "",
+    "expectedResult": "The top bar is displayed at the top of the main content area and is visible immediately on page load."
+  },
+  {
+    "id": "MS-002-02",
+    "module": "Top Bar",
+    "subModule": "Sticky Behavior",
+    "taskDescription": "Verify sticky behavior of the top bar on scroll",
+    "priority": "",
+    "expectedResult": "The top bar stays fixed at the top of the screen and does not move out of view during scrolling."
+  },
+  {
+    "id": "MS-002-03",
+    "module": "Top Bar",
+    "subModule": "Layout Dimensions",
+    "taskDescription": "Verify top bar height matches the defined specification",
+    "priority": "",
+    "expectedResult": "The top bar height is 52px and matches the defined layout specification."
+  },
+  {
+    "id": "MS-002-04",
+    "module": "Top Bar",
+    "subModule": "Title Display",
+    "taskDescription": "Verify page title is displayed correctly",
+    "priority": "",
+    "expectedResult": "The page title appears as Manual Screening in 14px semi-bold style."
+  },
+  {
+    "id": "MS-002-05",
+    "module": "Top Bar",
+    "subModule": "Breadcrumb Navigation",
+    "taskDescription": "Verify breadcrumb text and order on Manual Screening page",
+    "priority": "",
+    "expectedResult": "Breadcrumb is displayed as Sanction Screening › Manual Screening in the correct order."
+  },
+  {
+    "id": "MS-002-06",
+    "module": "Top Bar",
+    "subModule": "Breadcrumb Styling",
+    "taskDescription": "Verify breadcrumb separator styling",
+    "priority": "",
+    "expectedResult": "The breadcrumb separator is clearly visible and styled differently from the breadcrumb labels."
+  },
+  {
+    "id": "MS-002-07",
+    "module": "Top Bar",
+    "subModule": "Title & Breadcrumb Alignment",
+    "taskDescription": "Verify page title and breadcrumb are aligned on the left side",
+    "priority": "",
+    "expectedResult": "The title and breadcrumb are aligned properly on the left side without overlap or misplacement."
+  },
+  {
+    "id": "MS-002-08",
+    "module": "Top Bar",
+    "subModule": "Action Button",
+    "taskDescription": "Verify “View Last Results” button is visible on the right side",
+    "priority": "",
+    "expectedResult": "The View Last Results button is visible on the right side of the top bar."
+  },
+  {
+    "id": "MS-002-09",
+    "module": "Top Bar",
+    "subModule": "Action Button Styling",
+    "taskDescription": "Verify “View Last Results” button styling as ghost/outlined button",
+    "priority": "",
+    "expectedResult": "The button appears as a ghost/outlined button and is visually consistent with the design."
+  },
+  {
+    "id": "MS-002-10",
+    "module": "Top Bar",
+    "subModule": "Results Navigation",
+    "taskDescription": "Verify click action on “View Last Results” button",
+    "priority": "",
+    "expectedResult": "The application opens the Screening Results page after the button is clicked."
+  },
+  {
+    "id": "MS-002-11",
+    "module": "Top Bar",
+    "subModule": "Results Page Load",
+    "taskDescription": "Verify last screening results page loads after navigation",
+    "priority": "",
+    "expectedResult": "The Screening Results page loads successfully and displays the last available screening results."
+  },
+  {
+    "id": "MS-002-12",
+    "module": "Top Bar",
+    "subModule": "Dynamic Header Update",
+    "taskDescription": "Verify top bar title updates dynamically after navigation to results page",
+    "priority": "",
+    "expectedResult": "The top bar updates dynamically, and the destination page shows the correct title and breadcrumb for the Results page."
+  },
+  {
+    "id": "MS-002-13",
+    "module": "Top Bar",
+    "subModule": "Breadcrumb Update",
+    "taskDescription": "Verify breadcrumb updates dynamically on results page",
+    "priority": "",
+    "expectedResult": "Breadcrumb updates to reflect the Results page path correctly."
+  },
+  {
+    "id": "MS-002-14",
+    "module": "Top Bar",
+    "subModule": "Responsive Visibility",
+    "taskDescription": "Verify top bar remains visible at 1280×720 resolution",
+    "priority": "",
+    "expectedResult": "The top bar is fully visible without scrolling at 1280×720 and above."
+  },
+  {
+    "id": "MS-002-15",
+    "module": "Top Bar",
+    "subModule": "Responsive Layout",
+    "taskDescription": "Verify top bar layout on higher desktop resolution",
+    "priority": "",
+    "expectedResult": "The top bar layout remains stable, with title/breadcrumb on the left and action button on the right."
+  },
+  {
+    "id": "MS-002-16",
+    "module": "Top Bar",
+    "subModule": "Content Spacing",
+    "taskDescription": "Verify top bar does not overlap with page content",
+    "priority": "",
+    "expectedResult": "The top bar does not overlap the content area and the page content starts below it correctly."
+  },
+  {
+    "id": "MS-002-17",
+    "module": "Top Bar",
+    "subModule": "Responsive Alignment",
+    "taskDescription": "Verify button remains aligned during window resize",
+    "priority": "",
+    "expectedResult": "The button stays aligned to the right and does not break or shift incorrectly during resize."
+  },
+  {
+    "id": "MS-002-18",
+    "module": "Top Bar",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify keyboard accessibility for “View Last Results” button",
+    "priority": "",
+    "expectedResult": "The button receives focus through keyboard navigation and activates successfully using keyboard input."
+  },
+  {
+    "id": "MS-002-19",
+    "module": "Top Bar",
+    "subModule": "Text Visibility",
+    "taskDescription": "Verify top bar text is readable and not truncated at standard desktop width",
+    "priority": "",
+    "expectedResult": "All top bar text remains readable and is not truncated or misaligned at standard desktop width."
+  },
+  {
+    "id": "MS-002-20",
+    "module": "Top Bar",
+    "subModule": "Empty Results Handling",
+    "taskDescription": "Verify top bar behavior when no last results are available",
+    "priority": "",
+    "expectedResult": "The application handles the empty state gracefully, showing an appropriate message or fallback view instead of failing."
+  },
+  {
+    "id": "MS-003-01",
+    "module": "Tab Navigation",
+    "subModule": "Tab Rendering",
+    "taskDescription": "Verify both top-level tabs are rendered on the page",
+    "priority": "",
+    "expectedResult": "Both Manual Screening and Bulk Upload tabs are displayed on the page."
+  },
+  {
+    "id": "MS-003-02",
+    "module": "Tab Navigation",
+    "subModule": "Default Active State",
+    "taskDescription": "Verify Manual Screening tab is active by default on page load",
+    "priority": "",
+    "expectedResult": "Manual Screening is selected by default and shown in the active visual state."
+  },
+  {
+    "id": "MS-003-03",
+    "module": "Tab Navigation",
+    "subModule": "Default Panel Visibility",
+    "taskDescription": "Verify Manual Screening content panel is displayed by default",
+    "priority": "",
+    "expectedResult": "The Manual Screening content panel is visible by default."
+  },
+  {
+    "id": "MS-003-04",
+    "module": "Tab Navigation",
+    "subModule": "Initial Hidden State",
+    "taskDescription": "Verify Bulk Upload panel remains hidden on initial load",
+    "priority": "",
+    "expectedResult": "The Bulk Upload panel is not visible when the page first loads."
+  },
+  {
+    "id": "MS-003-05",
+    "module": "Tab Navigation",
+    "subModule": "Tab Switching",
+    "taskDescription": "Verify clicking Bulk Upload switches to the Bulk Upload panel",
+    "priority": "",
+    "expectedResult": "Bulk Upload content is displayed and Manual Screening content is hidden."
+  },
+  {
+    "id": "MS-003-06",
+    "module": "Tab Navigation",
+    "subModule": "Tab Switching",
+    "taskDescription": "Verify clicking Manual Screening returns to the Manual Screening panel",
+    "priority": "",
+    "expectedResult": "Manual Screening content becomes visible again and Bulk Upload content is hidden."
+  },
+  {
+    "id": "MS-003-07",
+    "module": "Tab Navigation",
+    "subModule": "No Page Reload",
+    "taskDescription": "Verify tab switching happens without page reload",
+    "priority": "",
+    "expectedResult": "Tab switching happens on the same page without a browser reload."
+  },
+  {
+    "id": "MS-003-08",
+    "module": "Tab Navigation",
+    "subModule": "Active Tab Styling",
+    "taskDescription": "Verify active tab styling is visually distinct for Manual Screening",
+    "priority": "",
+    "expectedResult": "The active Manual Screening tab has a distinct visual treatment such as underline, highlight, or active background."
+  },
+  {
+    "id": "MS-003-09",
+    "module": "Tab Navigation",
+    "subModule": "Active Tab Styling",
+    "taskDescription": "Verify active tab styling is visually distinct for Bulk Upload",
+    "priority": "",
+    "expectedResult": "The Bulk Upload tab is shown in a clear active state while the other tab is inactive."
+  },
+  {
+    "id": "MS-003-10",
+    "module": "Tab Navigation",
+    "subModule": "Active State Management",
+    "taskDescription": "Verify only one tab is active at a time",
+    "priority": "",
+    "expectedResult": "Only one tab remains active at any time; the previously selected tab loses its active state."
+  },
+  {
+    "id": "MS-003-11",
+    "module": "Tab Navigation",
+    "subModule": "Panel Visibility Management",
+    "taskDescription": "Verify content panel visibility updates correctly on tab switch",
+    "priority": "",
+    "expectedResult": "The selected tab’s content panel is displayed and the other panel is hidden properly."
+  },
+  {
+    "id": "MS-003-12",
+    "module": "Tab Navigation",
+    "subModule": "Response Performance",
+    "taskDescription": "Verify tab switch response feels instantaneous",
+    "priority": "",
+    "expectedResult": "The UI feedback appears immediately and stays within the expected <100ms feel."
+  },
+  {
+    "id": "MS-003-13",
+    "module": "Tab Navigation",
+    "subModule": "Entity State Persistence",
+    "taskDescription": "Verify switching tabs does not reset entity type selection",
+    "priority": "",
+    "expectedResult": "The previously selected entity type remains unchanged after tab switching."
+  },
+  {
+    "id": "MS-003-14",
+    "module": "Tab Navigation",
+    "subModule": "Form State Persistence",
+    "taskDescription": "Verify switching tabs does not clear form data entered in Manual Screening",
+    "priority": "",
+    "expectedResult": "Entered Manual Screening form data remains intact after tab switching."
+  },
+  {
+    "id": "MS-003-15",
+    "module": "Tab Navigation",
+    "subModule": "Bulk Upload State Persistence",
+    "taskDescription": "Verify switching away from Bulk Upload does not clear its state",
+    "priority": "",
+    "expectedResult": "Bulk Upload state is preserved and does not reset after switching tabs."
+  },
+  {
+    "id": "MS-003-16",
+    "module": "Tab Navigation",
+    "subModule": "State Stability",
+    "taskDescription": "Verify repeated switching between tabs keeps state stable",
+    "priority": "",
+    "expectedResult": "Tab switching remains stable and previously entered data/state is preserved."
+  },
+  {
+    "id": "MS-003-17",
+    "module": "Tab Navigation",
+    "subModule": "Label Validation",
+    "taskDescription": "Verify tab labels are displayed exactly as specified",
+    "priority": "",
+    "expectedResult": "The tabs are labeled exactly Manual Screening and Bulk Upload."
+  },
+  {
+    "id": "MS-003-18",
+    "module": "Tab Navigation",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify keyboard navigation can move focus between tabs",
+    "priority": "",
+    "expectedResult": "Tabs can be focused and activated through keyboard navigation successfully."
+  },
+  {
+    "id": "MS-003-19",
+    "module": "Tab Navigation",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify active tab is announced clearly through focus and selection behavior",
+    "priority": "",
+    "expectedResult": "The currently selected tab is clear to the user through focus/selection behavior."
+  },
+  {
+    "id": "MS-003-20",
+    "module": "Tab Navigation",
+    "subModule": "Route Stability",
+    "taskDescription": "Verify tab switching does not move the user to a different page route",
+    "priority": "",
+    "expectedResult": "Tabs switch content within the same page section and do not trigger a separate page route."
+  },
+  {
+    "id": "MS-003-21",
+    "module": "Tab Navigation",
+    "subModule": "Responsive Behavior",
+    "taskDescription": "Verify tab switching works correctly after window resize",
+    "priority": "",
+    "expectedResult": "Tabs continue to switch correctly after resize, with proper active state and panel visibility."
+  },
+  {
+    "id": "MS-003-22",
+    "module": "Tab Navigation",
+    "subModule": "Rapid Interaction Stability",
+    "taskDescription": "Verify tab switching remains consistent under rapid user interaction",
+    "priority": "",
+    "expectedResult": "The UI responds consistently to rapid switching, and the final visible panel matches the last clicked tab."
+  },
+  {
+    "id": "MS-004-01",
+    "module": "Entity Type Toggle",
+    "subModule": "Toggle Rendering",
+    "taskDescription": "Verify all entity type toggle options are displayed",
+    "priority": "",
+    "expectedResult": "The segmented control displays Individual, Non-Individuals, and Vessel."
+  },
+  {
+    "id": "MS-004-02",
+    "module": "Entity Type Toggle",
+    "subModule": "Default Active State",
+    "taskDescription": "Verify Individual is selected by default",
+    "priority": "",
+    "expectedResult": "Individual is active by default."
+  },
+  {
+    "id": "MS-004-03",
+    "module": "Entity Type Toggle",
+    "subModule": "Default Form Visibility",
+    "taskDescription": "Verify Individual form is visible by default",
+    "priority": "",
+    "expectedResult": "The #form-individual form is visible by default."
+  },
+  {
+    "id": "MS-004-04",
+    "module": "Entity Type Toggle",
+    "subModule": "Initial Hidden State",
+    "taskDescription": "Verify Non-Individuals form is hidden on initial load",
+    "priority": "",
+    "expectedResult": "The #form-nonindividual form is not displayed on initial load."
+  },
+  {
+    "id": "MS-004-05",
+    "module": "Entity Type Toggle",
+    "subModule": "Initial Hidden State",
+    "taskDescription": "Verify Vessel form is hidden on initial load",
+    "priority": "",
+    "expectedResult": "The #form-vessel form is not displayed on initial load."
+  },
+  {
+    "id": "MS-004-06",
+    "module": "Entity Type Toggle",
+    "subModule": "Active State Switching",
+    "taskDescription": "Verify clicking Non-Individuals switches the active state correctly",
+    "priority": "",
+    "expectedResult": "Non-Individuals becomes active with the highlighted visual state."
+  },
+  {
+    "id": "MS-004-07",
+    "module": "Entity Type Toggle",
+    "subModule": "Active State Switching",
+    "taskDescription": "Verify clicking Vessel switches the active state correctly",
+    "priority": "",
+    "expectedResult": "Vessel becomes active with the highlighted visual state."
+  },
+  {
+    "id": "MS-004-08",
+    "module": "Entity Type Toggle",
+    "subModule": "Active State Switching",
+    "taskDescription": "Verify clicking Individual restores the active state correctly",
+    "priority": "",
+    "expectedResult": "Individual becomes active and is visually highlighted."
+  },
+  {
+    "id": "MS-004-09",
+    "module": "Entity Type Toggle",
+    "subModule": "Form Visibility Management",
+    "taskDescription": "Verify only the selected entity form is displayed after switching",
+    "priority": "",
+    "expectedResult": "Only the form for the selected entity type is displayed; all others are hidden."
+  },
+  {
+    "id": "MS-004-10",
+    "module": "Entity Type Toggle",
+    "subModule": "Form Mapping",
+    "taskDescription": "Verify Individual form displays when Individual is selected",
+    "priority": "",
+    "expectedResult": "The #form-individual form is displayed."
+  },
+  {
+    "id": "MS-004-11",
+    "module": "Entity Type Toggle",
+    "subModule": "Form Mapping",
+    "taskDescription": "Verify Non-Individuals form displays when selected",
+    "priority": "",
+    "expectedResult": "The #form-nonindividual form is displayed."
+  },
+  {
+    "id": "MS-004-12",
+    "module": "Entity Type Toggle",
+    "subModule": "Form Mapping",
+    "taskDescription": "Verify Vessel form displays when selected",
+    "priority": "",
+    "expectedResult": "The #form-vessel form is displayed."
+  },
+  {
+    "id": "MS-004-13",
+    "module": "Entity Type Toggle",
+    "subModule": "Inactive Button Styling",
+    "taskDescription": "Verify inactive buttons use neutral styling",
+    "priority": "",
+    "expectedResult": "Non-selected buttons remain in neutral styling and do not appear highlighted."
+  },
+  {
+    "id": "MS-004-14",
+    "module": "Entity Type Toggle",
+    "subModule": "Active Button Styling",
+    "taskDescription": "Verify active button uses blue/accent background with white text",
+    "priority": "",
+    "expectedResult": "The selected entity type shows blue/accent background with white text."
+  },
+  {
+    "id": "MS-004-15",
+    "module": "Entity Type Toggle",
+    "subModule": "Response Performance",
+    "taskDescription": "Verify switching entity type updates content immediately",
+    "priority": "",
+    "expectedResult": "The form changes immediately and the UI feedback feels instantaneous, within the expected <100ms."
+  },
+  {
+    "id": "MS-004-16",
+    "module": "Entity Type Toggle",
+    "subModule": "Form Visibility Management",
+    "taskDescription": "Verify switching from Individual to Non-Individuals hides the Individual form",
+    "priority": "",
+    "expectedResult": "The #form-individual form is hidden and #form-nonindividual becomes visible."
+  },
+  {
+    "id": "MS-004-17",
+    "module": "Entity Type Toggle",
+    "subModule": "Form Visibility Management",
+    "taskDescription": "Verify switching from Non-Individuals to Vessel hides the previous form",
+    "priority": "",
+    "expectedResult": "The #form-nonindividual form is hidden and #form-vessel is displayed."
+  },
+  {
+    "id": "MS-004-18",
+    "module": "Entity Type Toggle",
+    "subModule": "Watchlist State Persistence",
+    "taskDescription": "Verify switching entity type does not reset watchlist selection",
+    "priority": "",
+    "expectedResult": "The previously selected watchlist option remains unchanged after switching entity types."
+  },
+  {
+    "id": "MS-004-19",
+    "module": "Entity Type Toggle",
+    "subModule": "Watchlist State Persistence",
+    "taskDescription": "Verify repeated entity switching preserves selected watchlist value",
+    "priority": "",
+    "expectedResult": "The watchlist selection is preserved across entity type switches."
+  },
+  {
+    "id": "MS-004-20",
+    "module": "Entity Type Toggle",
+    "subModule": "Form State Persistence",
+    "taskDescription": "Verify entity type switch does not clear already entered form data within the selected form context",
+    "priority": "",
+    "expectedResult": "The previously entered data remains intact for the corresponding form context after switching back."
+  },
+  {
+    "id": "MS-004-21",
+    "module": "Entity Type Toggle",
+    "subModule": "Responsive Behavior",
+    "taskDescription": "Verify toggle control remains functional after browser resize",
+    "priority": "",
+    "expectedResult": "The segmented control continues to work correctly and displays the proper active form after resize."
+  },
+  {
+    "id": "MS-004-22",
+    "module": "Entity Type Toggle",
+    "subModule": "Rapid Interaction Stability",
+    "taskDescription": "Verify rapid switching between entity types keeps the final selected form in sync",
+    "priority": "",
+    "expectedResult": "The UI settles on the last selected entity type and shows the matching form correctly."
+  },
+  {
+    "id": "MS-005-01",
+    "module": "Individual Form",
+    "subModule": "Basic Information Section",
+    "taskDescription": "Verify Basic Information section is displayed for Individual entity type",
+    "priority": "",
+    "expectedResult": "The Basic Information section is visible for the Individual entity type."
+  },
+  {
+    "id": "MS-005-02",
+    "module": "Individual Form",
+    "subModule": "Section Title Styling",
+    "taskDescription": "Verify Basic Information section title styling and capitalization",
+    "priority": "",
+    "expectedResult": "The section title displays as BASIC INFORMATION in 11px, uppercase, and semi-bold/600 weight."
+  },
+  {
+    "id": "MS-005-03",
+    "module": "Individual Form",
+    "subModule": "Field Rendering",
+    "taskDescription": "Verify all mandatory and optional fields are rendered in the Basic Information section",
+    "priority": "",
+    "expectedResult": "All expected fields are displayed: ID Number, Name in English, Name in Non-English, Alias, Address, Date of Birth, Country of Birth, Country of Residence, and Nationality."
+  },
+  {
+    "id": "MS-005-04",
+    "module": "Individual Form",
+    "subModule": "Grid Layout",
+    "taskDescription": "Verify the Basic Information fields are arranged in a responsive 2-column grid",
+    "priority": "",
+    "expectedResult": "The fields are displayed in a responsive 2-column layout."
+  },
+  {
+    "id": "MS-005-05",
+    "module": "Individual Form",
+    "subModule": "Full-Width Field Layout",
+    "taskDescription": "Verify Address field spans full width across both grid columns",
+    "priority": "",
+    "expectedResult": "The Address field spans both columns and appears full-width across the grid."
+  },
+  {
+    "id": "MS-005-06",
+    "module": "Individual Form",
+    "subModule": "Mandatory Field Indicator",
+    "taskDescription": "Verify Name in English is marked as mandatory with a red asterisk",
+    "priority": "",
+    "expectedResult": "The Name in English label displays a red asterisk (*) to indicate it is mandatory."
+  },
+  {
+    "id": "MS-005-07",
+    "module": "Individual Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify ID Number field is available as a text input",
+    "priority": "",
+    "expectedResult": "ID Number is rendered as a text input and accepts alphanumeric text as applicable."
+  },
+  {
+    "id": "MS-005-08",
+    "module": "Individual Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify Name in English field is available as a text input",
+    "priority": "",
+    "expectedResult": "Name in English is available as a text input and accepts user entry."
+  },
+  {
+    "id": "MS-005-09",
+    "module": "Individual Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify Name in Non-English field is available as a text input",
+    "priority": "",
+    "expectedResult": "Name in Non-English is rendered as a text input and accepts the entered value."
+  },
+  {
+    "id": "MS-005-10",
+    "module": "Individual Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify Alias field is available as a text input",
+    "priority": "",
+    "expectedResult": "Alias is rendered as a text input and accepts the provided value."
+  },
+  {
+    "id": "MS-005-11",
+    "module": "Individual Form",
+    "subModule": "Date Picker Control",
+    "taskDescription": "Verify Date of Birth field uses a date picker control",
+    "priority": "",
+    "expectedResult": "Date of Birth opens as a date picker control instead of a plain text field."
+  },
+  {
+    "id": "MS-005-12",
+    "module": "Individual Form",
+    "subModule": "Date Format Validation",
+    "taskDescription": "Verify Date of Birth format is displayed as DD-MM-YYYY",
+    "priority": "",
+    "expectedResult": "The selected date is displayed in DD-MM-YYYY format."
+  },
+  {
+    "id": "MS-005-13",
+    "module": "Individual Form",
+    "subModule": "Country Dropdown Validation",
+    "taskDescription": "Verify Country of Birth dropdown contains the full configured country list",
+    "priority": "",
+    "expectedResult": "The dropdown contains: Singapore, United States, United Kingdom, India, China, UAE, Malaysia, and Indonesia."
+  },
+  {
+    "id": "MS-005-14",
+    "module": "Individual Form",
+    "subModule": "Country Dropdown Validation",
+    "taskDescription": "Verify Country of Residence dropdown contains the same configured country list",
+    "priority": "",
+    "expectedResult": "The Country of Residence dropdown contains the same 8 country options as specified."
+  },
+  {
+    "id": "MS-005-15",
+    "module": "Individual Form",
+    "subModule": "Country Dropdown Validation",
+    "taskDescription": "Verify Nationality dropdown contains the same configured country list",
+    "priority": "",
+    "expectedResult": "The Nationality dropdown contains the same 8 country options as specified."
+  },
+  {
+    "id": "MS-005-16",
+    "module": "Individual Form",
+    "subModule": "Dropdown Consistency",
+    "taskDescription": "Verify all country dropdowns use identical option sets",
+    "priority": "",
+    "expectedResult": "All three country dropdowns contain the same country list with consistent values."
+  },
+  {
+    "id": "MS-005-17",
+    "module": "Individual Form",
+    "subModule": "Joint Account Holder Section",
+    "taskDescription": "Verify Joint Account Holder sub-section is displayed below Basic Information",
+    "priority": "",
+    "expectedResult": "The Joint Account Holder (Optional) sub-section is displayed below Basic Information."
+  },
+  {
+    "id": "MS-005-18",
+    "module": "Individual Form",
+    "subModule": "Joint Account Holder Fields",
+    "taskDescription": "Verify Joint Account Holder section contains Name and Address fields",
+    "priority": "",
+    "expectedResult": "The sub-section contains Name and Address fields."
+  },
+  {
+    "id": "MS-005-19",
+    "module": "Individual Form",
+    "subModule": "Input Styling",
+    "taskDescription": "Verify all inputs use 13px base font and IBM Plex Sans",
+    "priority": "",
+    "expectedResult": "All inputs use IBM Plex Sans with a 13px base font size."
+  },
+  {
+    "id": "MS-005-20",
+    "module": "Individual Form",
+    "subModule": "Input Styling",
+    "taskDescription": "Verify input background color matches the design token",
+    "priority": "",
+    "expectedResult": "All inputs use the configured background color --bg3 (#F0F1F4)."
+  },
+  {
+    "id": "MS-005-21",
+    "module": "Individual Form",
+    "subModule": "Focus State Styling",
+    "taskDescription": "Verify input focus ring appears on field focus",
+    "priority": "",
+    "expectedResult": "The focused input shows a blue focus ring using --accent (#2563EB)."
+  },
+  {
+    "id": "MS-005-22",
+    "module": "Individual Form",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify each field has a visible and programmatic label",
+    "priority": "",
+    "expectedResult": "Every input has a visible label and a proper programmatic label association."
+  },
+  {
+    "id": "MS-005-23",
+    "module": "Individual Form",
+    "subModule": "Accessibility Compliance",
+    "taskDescription": "Verify the form meets WCAG 2.1 AA label accessibility expectation",
+    "priority": "",
+    "expectedResult": "The form supports accessible visible labels and is aligned with WCAG 2.1 Level AA expectations."
+  },
+  {
+    "id": "MS-005-24",
+    "module": "Individual Form",
+    "subModule": "Form State Persistence",
+    "taskDescription": "Verify user-entered data remains visible while navigating through the Basic Information section",
+    "priority": "",
+    "expectedResult": "Entered values remain visible and are not cleared during normal field navigation."
+  },
+  {
+    "id": "MS-005-25",
+    "module": "Individual Form",
+    "subModule": "Responsive Layout",
+    "taskDescription": "Verify the section behaves correctly at standard desktop width without layout breakage",
+    "priority": "",
+    "expectedResult": "The Basic Information and Joint Account Holder sections remain properly aligned without layout breakage."
+  },
+  {
+    "id": "MS-006-01",
+    "module": "Individual Form",
+    "subModule": "Screening Configuration Section",
+    "taskDescription": "Verify Screening Configuration section is displayed in the Individual form",
+    "priority": "",
+    "expectedResult": "The Screening Configuration section is rendered in the Individual form."
+  },
+  {
+    "id": "MS-006-02",
+    "module": "Individual Form",
+    "subModule": "Section Title Styling",
+    "taskDescription": "Verify Screening Configuration section title styling",
+    "priority": "",
+    "expectedResult": "The section title displays in 11px uppercase, 600 weight."
+  },
+  {
+    "id": "MS-006-03",
+    "module": "Individual Form",
+    "subModule": "Purpose Dropdown",
+    "taskDescription": "Verify Purpose field is present in Screening Configuration section",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown is visible in the section."
+  },
+  {
+    "id": "MS-006-04",
+    "module": "Individual Form",
+    "subModule": "Mandatory Field Indicator",
+    "taskDescription": "Verify Purpose label has a red asterisk indicating mandatory field",
+    "priority": "",
+    "expectedResult": "The Purpose label displays a red asterisk (*) to indicate that it is mandatory."
+  },
+  {
+    "id": "MS-006-05",
+    "module": "Individual Form",
+    "subModule": "Dropdown Options Validation",
+    "taskDescription": "Verify Purpose dropdown opens with all configured options",
+    "priority": "",
+    "expectedResult": "The dropdown shows all 4 options: Onboarding Screening, Transaction Screening, Periodic Review, Enhanced Due Diligence."
+  },
+  {
+    "id": "MS-006-06",
+    "module": "Individual Form",
+    "subModule": "Default State Validation",
+    "taskDescription": "Verify Purpose dropdown default state is empty / placeholder",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown is empty or shows the default placeholder state on load."
+  },
+  {
+    "id": "MS-006-07",
+    "module": "Individual Form",
+    "subModule": "Single-Select Behavior",
+    "taskDescription": "Verify Purpose dropdown behaves as a single-select control",
+    "priority": "",
+    "expectedResult": "Only one Purpose value can be selected at a time."
+  },
+  {
+    "id": "MS-006-08",
+    "module": "Individual Form",
+    "subModule": "Dropdown Selection Validation",
+    "taskDescription": "Verify Onboarding Screening option can be selected",
+    "priority": "",
+    "expectedResult": "The selected value updates to Onboarding Screening."
+  },
+  {
+    "id": "MS-006-09",
+    "module": "Individual Form",
+    "subModule": "Dropdown Selection Validation",
+    "taskDescription": "Verify Transaction Screening option can be selected",
+    "priority": "",
+    "expectedResult": "The selected value updates to Transaction Screening."
+  },
+  {
+    "id": "MS-006-10",
+    "module": "Individual Form",
+    "subModule": "Dropdown Selection Validation",
+    "taskDescription": "Verify Periodic Review option can be selected",
+    "priority": "",
+    "expectedResult": "The selected value updates to Periodic Review."
+  },
+  {
+    "id": "MS-006-11",
+    "module": "Individual Form",
+    "subModule": "Dropdown Selection Validation",
+    "taskDescription": "Verify Enhanced Due Diligence option can be selected",
+    "priority": "",
+    "expectedResult": "The selected value updates to Enhanced Due Diligence."
+  },
+  {
+    "id": "MS-006-12",
+    "module": "Individual Form",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify Purpose dropdown has an associated programmatic label",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown has a proper associated <label> element."
+  },
+  {
+    "id": "MS-006-13",
+    "module": "Individual Form",
+    "subModule": "Mandatory Validation",
+    "taskDescription": "Verify mandatory validation appears when Purpose is not selected and form is submitted",
+    "priority": "",
+    "expectedResult": "An inline mandatory field error is displayed for Purpose."
+  },
+  {
+    "id": "MS-006-14",
+    "module": "Individual Form",
+    "subModule": "Validation Recovery",
+    "taskDescription": "Verify the validation error disappears after selecting a valid Purpose value",
+    "priority": "",
+    "expectedResult": "The inline error clears after a valid Purpose value is selected."
+  },
+  {
+    "id": "MS-006-15",
+    "module": "Individual Form",
+    "subModule": "Watchlist Configuration",
+    "taskDescription": "Verify Watchlist Configuration grid renders below Purpose dropdown",
+    "priority": "",
+    "expectedResult": "The Watchlist Configuration grid is visible directly below the Purpose dropdown."
+  },
+  {
+    "id": "MS-006-16",
+    "module": "Individual Form",
+    "subModule": "Watchlist Configuration Loading",
+    "taskDescription": "Verify Watchlist Configuration grid appears only after the Screening Configuration content area loads",
+    "priority": "",
+    "expectedResult": "The Watchlist Configuration grid loads correctly as part of the section content."
+  },
+  {
+    "id": "MS-006-17",
+    "module": "Individual Form",
+    "subModule": "Watchlist Visibility Persistence",
+    "taskDescription": "Verify Purpose selection does not hide the Watchlist Configuration grid",
+    "priority": "",
+    "expectedResult": "Selecting a Purpose value does not remove or collapse the Watchlist Configuration grid."
+  },
+  {
+    "id": "MS-006-18",
+    "module": "Individual Form",
+    "subModule": "State Management",
+    "taskDescription": "Verify changing Purpose value updates only the dropdown state and not unrelated fields",
+    "priority": "",
+    "expectedResult": "Only the Purpose field changes; other form fields keep their current values."
+  },
+  {
+    "id": "MS-006-19",
+    "module": "Individual Form",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify Purpose dropdown is accessible through keyboard navigation",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown can be focused and operated using the keyboard."
+  },
+  {
+    "id": "MS-006-20",
+    "module": "Individual Form",
+    "subModule": "Dropdown Text Visibility",
+    "taskDescription": "Verify dropdown options are displayed clearly without truncation",
+    "priority": "",
+    "expectedResult": "All four options are displayed clearly and are fully readable."
+  },
+  {
+    "id": "MS-006-21",
+    "module": "Individual Form",
+    "subModule": "Selection Persistence",
+    "taskDescription": "Verify Purpose field remains in the selected state after moving focus away",
+    "priority": "",
+    "expectedResult": "The selected Purpose value remains visible after focus changes."
+  },
+  {
+    "id": "MS-006-22",
+    "module": "Individual Form",
+    "subModule": "Form Section Order",
+    "taskDescription": "Verify Screening Configuration section follows the Basic Information section in the page flow",
+    "priority": "",
+    "expectedResult": "The Screening Configuration section appears below Basic Information in the correct form order."
+  },
+  {
+    "id": "MS-007-01",
+    "module": "Non-Individual Form",
+    "subModule": "Form Visibility",
+    "taskDescription": "Verify Non-Individual form is hidden by default",
+    "priority": "",
+    "expectedResult": "The Non-Individual form is not visible until the Non-Individuals toggle is selected."
+  },
+  {
+    "id": "MS-007-02",
+    "module": "Non-Individual Form",
+    "subModule": "Entity Switching",
+    "taskDescription": "Verify Non-Individual form appears when entity type is switched",
+    "priority": "",
+    "expectedResult": "The corporate entity screening form is displayed only for Non-Individuals."
+  },
+  {
+    "id": "MS-007-03",
+    "module": "Non-Individual Form",
+    "subModule": "Basic Information Section",
+    "taskDescription": "Verify Basic Information section is rendered for Non-Individual form",
+    "priority": "",
+    "expectedResult": "The Basic Information section is displayed in the Non-Individual form."
+  },
+  {
+    "id": "MS-007-04",
+    "module": "Non-Individual Form",
+    "subModule": "Grid Layout",
+    "taskDescription": "Verify Basic Information fields are arranged in a 2-column grid",
+    "priority": "",
+    "expectedResult": "The Basic Information fields render in a responsive 2-column grid layout."
+  },
+  {
+    "id": "MS-007-05",
+    "module": "Non-Individual Form",
+    "subModule": "Mandatory Field Indicator",
+    "taskDescription": "Verify Registration Number label shows mandatory indicator",
+    "priority": "",
+    "expectedResult": "The Registration Number* label is shown with a red asterisk."
+  },
+  {
+    "id": "MS-007-06",
+    "module": "Non-Individual Form",
+    "subModule": "Mandatory Field Indicator",
+    "taskDescription": "Verify Registered Name (English) label shows mandatory indicator",
+    "priority": "",
+    "expectedResult": "The Registered Name (English)* label is shown with a red asterisk."
+  },
+  {
+    "id": "MS-007-07",
+    "module": "Non-Individual Form",
+    "subModule": "Field Rendering",
+    "taskDescription": "Verify all expected Basic Information fields are displayed",
+    "priority": "",
+    "expectedResult": "All required Non-Individual fields are present: Registration Number, Registered Name (English), Entity Name (Non-English), Tax ID, Country of Incorporation, Date of Incorporation, Registered Address, Operating Countries, Alias, Corporate Shareholders >10%, Directors / POAs, Trustees, and Address (Operational)."
+  },
+  {
+    "id": "MS-007-08",
+    "module": "Non-Individual Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify Registration Number input accepts text entry",
+    "priority": "",
+    "expectedResult": "Registration Number behaves as a text input and accepts the entered value."
+  },
+  {
+    "id": "MS-007-09",
+    "module": "Non-Individual Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify Registered Name (English) input accepts text entry",
+    "priority": "",
+    "expectedResult": "Registered Name (English) behaves as a text input and accepts user entry."
+  },
+  {
+    "id": "MS-007-10",
+    "module": "Non-Individual Form",
+    "subModule": "Country Dropdown Validation",
+    "taskDescription": "Verify Country of Incorporation dropdown contains the specified options",
+    "priority": "",
+    "expectedResult": "The dropdown contains: Singapore, United States, United Kingdom, Cayman Islands, British Virgin Islands, Hong Kong."
+  },
+  {
+    "id": "MS-007-11",
+    "module": "Non-Individual Form",
+    "subModule": "Date Picker Control",
+    "taskDescription": "Verify Date of Incorporation uses a date picker",
+    "priority": "",
+    "expectedResult": "Date of Incorporation opens as a date picker control."
+  },
+  {
+    "id": "MS-007-12",
+    "module": "Non-Individual Form",
+    "subModule": "Date Format Validation",
+    "taskDescription": "Verify Date of Incorporation displays in DD-MM-YYYY format",
+    "priority": "",
+    "expectedResult": "The selected date is displayed in DD-MM-YYYY format."
+  },
+  {
+    "id": "MS-007-13",
+    "module": "Non-Individual Form",
+    "subModule": "Full-Width Field Layout",
+    "taskDescription": "Verify Registered Address spans full width",
+    "priority": "",
+    "expectedResult": "Registered Address spans the full width of the grid."
+  },
+  {
+    "id": "MS-007-14",
+    "module": "Non-Individual Form",
+    "subModule": "Full-Width Field Layout",
+    "taskDescription": "Verify Address (Operational) spans full width",
+    "priority": "",
+    "expectedResult": "Address (Operational) spans the full width across both columns."
+  },
+  {
+    "id": "MS-007-15",
+    "module": "Non-Individual Form",
+    "subModule": "Purpose Dropdown",
+    "taskDescription": "Verify Purpose dropdown is present in the Non-Individual form",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown is displayed in the Non-Individual form."
+  },
+  {
+    "id": "MS-007-16",
+    "module": "Non-Individual Form",
+    "subModule": "Default State Validation",
+    "taskDescription": "Verify Purpose dropdown defaults to Transaction Screening",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown is preselected to Transaction Screening."
+  },
+  {
+    "id": "MS-007-17",
+    "module": "Non-Individual Form",
+    "subModule": "Watchlist Configuration",
+    "taskDescription": "Verify Watchlist Configuration grid renders below Purpose",
+    "priority": "",
+    "expectedResult": "The Watchlist Configuration grid is rendered below the Purpose dropdown."
+  },
+  {
+    "id": "MS-007-18",
+    "module": "Non-Individual Form",
+    "subModule": "Mandatory Validation",
+    "taskDescription": "Verify Registration Number validation message on empty submission",
+    "priority": "",
+    "expectedResult": "Inline error appears: Registration Number is required."
+  },
+  {
+    "id": "MS-007-19",
+    "module": "Non-Individual Form",
+    "subModule": "Mandatory Validation",
+    "taskDescription": "Verify Registered Name validation message on empty submission",
+    "priority": "",
+    "expectedResult": "Inline error appears: Registered Name is required."
+  },
+  {
+    "id": "MS-007-20",
+    "module": "Non-Individual Form",
+    "subModule": "Combined Validation Handling",
+    "taskDescription": "Verify both mandatory validation messages appear together when both fields are empty",
+    "priority": "",
+    "expectedResult": "Both required field errors are shown together and clearly associated with their respective fields."
+  },
+  {
+    "id": "MS-007-21",
+    "module": "Non-Individual Form",
+    "subModule": "Shared Form Styling",
+    "taskDescription": "Verify text and dropdown input styling matches the shared form design",
+    "priority": "",
+    "expectedResult": "Non-Individual form inputs follow the same grid and input styles as the Individual form."
+  },
+  {
+    "id": "MS-007-22",
+    "module": "Non-Individual Form",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify field labels have programmatic association for accessibility",
+    "priority": "",
+    "expectedResult": "Each input field has a visible label and a proper programmatic <label> association."
+  },
+  {
+    "id": "MS-007-23",
+    "module": "Non-Individual Form",
+    "subModule": "Entity Visibility Management",
+    "taskDescription": "Verify tab and entity switching does not incorrectly display Non-Individual form when another entity type is active",
+    "priority": "",
+    "expectedResult": "The Non-Individual form is shown only when Non-Individuals is active and stays hidden otherwise."
+  },
+  {
+    "id": "MS-007-24",
+    "module": "Non-Individual Form",
+    "subModule": "Responsive Layout",
+    "taskDescription": "Verify full form layout remains stable on standard desktop resolution",
+    "priority": "",
+    "expectedResult": "The form layout remains stable, aligned, and readable without grid breakage."
+  },
+  {
+    "id": "MS-008-01",
+    "module": "Vessel Form",
+    "subModule": "Form Visibility",
+    "taskDescription": "Verify Vessel form is hidden by default",
+    "priority": "",
+    "expectedResult": "The Vessel form is not visible until the Vessel entity type is selected."
+  },
+  {
+    "id": "MS-008-02",
+    "module": "Vessel Form",
+    "subModule": "Entity Switching",
+    "taskDescription": "Verify Vessel form is displayed when Vessel toggle is selected",
+    "priority": "",
+    "expectedResult": "The Vessel screening form is displayed only when the Vessel toggle is active."
+  },
+  {
+    "id": "MS-008-03",
+    "module": "Vessel Form",
+    "subModule": "Basic Information Section",
+    "taskDescription": "Verify Basic Information section is rendered in the Vessel form",
+    "priority": "",
+    "expectedResult": "The Basic Information section is visible in the Vessel form."
+  },
+  {
+    "id": "MS-008-04",
+    "module": "Vessel Form",
+    "subModule": "Mandatory Field Indicator",
+    "taskDescription": "Verify Vessel Name label shows mandatory indicator",
+    "priority": "",
+    "expectedResult": "The Vessel Name* label displays a red asterisk (*) to indicate it is mandatory."
+  },
+  {
+    "id": "MS-008-05",
+    "module": "Vessel Form",
+    "subModule": "Field Rendering",
+    "taskDescription": "Verify all Vessel Basic Information fields are displayed",
+    "priority": "",
+    "expectedResult": "The form shows Vessel Name, IMO Number, Call Sign, Vessel Type, Flag State, and Address (Owner/Operator)."
+  },
+  {
+    "id": "MS-008-06",
+    "module": "Vessel Form",
+    "subModule": "Shared Form Layout",
+    "taskDescription": "Verify Vessel Basic Information fields follow the shared layout style",
+    "priority": "",
+    "expectedResult": "The Vessel form follows the same layout and input styling pattern as the other entity forms."
+  },
+  {
+    "id": "MS-008-07",
+    "module": "Vessel Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify IMO Number field is available as a text input",
+    "priority": "",
+    "expectedResult": "IMO Number is rendered as a text input and accepts user entry."
+  },
+  {
+    "id": "MS-008-08",
+    "module": "Vessel Form",
+    "subModule": "Identifier Validation",
+    "taskDescription": "Verify IMO Number accepts a 7-digit identifier value",
+    "priority": "",
+    "expectedResult": "IMO Number accepts a 7-digit identifier as expected."
+  },
+  {
+    "id": "MS-008-09",
+    "module": "Vessel Form",
+    "subModule": "Text Input Validation",
+    "taskDescription": "Verify Call Sign field is available as a text input",
+    "priority": "",
+    "expectedResult": "Call Sign is rendered as a text input and accepts the input value."
+  },
+  {
+    "id": "MS-008-10",
+    "module": "Vessel Form",
+    "subModule": "Dropdown Options Validation",
+    "taskDescription": "Verify Vessel Type dropdown contains exactly the specified options",
+    "priority": "",
+    "expectedResult": "The dropdown contains exactly: Cargo Ship, Tanker, Bulk Carrier, Container Ship, Fishing Vessel, Passenger Ship, Yacht / Pleasure Craft."
+  },
+  {
+    "id": "MS-008-11",
+    "module": "Vessel Form",
+    "subModule": "Dropdown Options Validation",
+    "taskDescription": "Verify Flag State dropdown contains exactly the specified options",
+    "priority": "",
+    "expectedResult": "The dropdown contains exactly: Panama, Liberia, Marshall Islands, Singapore, Bahamas, Malta, Cyprus."
+  },
+  {
+    "id": "MS-008-12",
+    "module": "Vessel Form",
+    "subModule": "Single-Select Behavior",
+    "taskDescription": "Verify Vessel Type and Flag State dropdowns support single selection",
+    "priority": "",
+    "expectedResult": "Each dropdown allows only one selected value at a time."
+  },
+  {
+    "id": "MS-008-13",
+    "module": "Vessel Form",
+    "subModule": "Full-Width Field Layout",
+    "taskDescription": "Verify Address (Owner/Operator) spans full width",
+    "priority": "",
+    "expectedResult": "Address (Owner/Operator) spans the full width across the form grid."
+  },
+  {
+    "id": "MS-008-14",
+    "module": "Vessel Form",
+    "subModule": "Purpose Dropdown",
+    "taskDescription": "Verify Purpose dropdown is present in the Vessel form",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown is displayed in the Vessel form."
+  },
+  {
+    "id": "MS-008-15",
+    "module": "Vessel Form",
+    "subModule": "Default State Validation",
+    "taskDescription": "Verify Vessel Purpose default value is Transaction Screening",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown defaults to Transaction Screening."
+  },
+  {
+    "id": "MS-008-16",
+    "module": "Vessel Form",
+    "subModule": "Dropdown Options Validation",
+    "taskDescription": "Verify Vessel Purpose options include Port Clearance and exclude Periodic Review",
+    "priority": "",
+    "expectedResult": "The Purpose dropdown includes Port Clearance and does not include Periodic Review for Vessel."
+  },
+  {
+    "id": "MS-008-17",
+    "module": "Vessel Form",
+    "subModule": "Watchlist Configuration",
+    "taskDescription": "Verify Watchlist Configuration grid renders below Purpose dropdown",
+    "priority": "",
+    "expectedResult": "The Watchlist Configuration grid is visible below the Purpose dropdown."
+  },
+  {
+    "id": "MS-008-18",
+    "module": "Vessel Form",
+    "subModule": "Mandatory Validation",
+    "taskDescription": "Verify Vessel Name validation message on failed submission",
+    "priority": "",
+    "expectedResult": "Inline error appears: Vessel Name is required."
+  },
+  {
+    "id": "MS-008-19",
+    "module": "Vessel Form",
+    "subModule": "Validation Recovery",
+    "taskDescription": "Verify Vessel Name required error clears after valid input",
+    "priority": "",
+    "expectedResult": "The Vessel Name error clears after a valid value is entered."
+  },
+  {
+    "id": "MS-008-20",
+    "module": "Vessel Form",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify Vessel form labels have visible and programmatic associations",
+    "priority": "",
+    "expectedResult": "All Vessel form inputs have visible labels and proper programmatic label associations."
+  },
+  {
+    "id": "MS-008-21",
+    "module": "Vessel Form",
+    "subModule": "Shared Form Styling",
+    "taskDescription": "Verify Vessel form remains consistent with shared entity form styling",
+    "priority": "",
+    "expectedResult": "The Vessel form uses the same layout and input styles as the other entity forms."
+  },
+  {
+    "id": "MS-008-22",
+    "module": "Vessel Form",
+    "subModule": "Responsive Layout",
+    "taskDescription": "Verify full Vessel form renders correctly at standard desktop width",
+    "priority": "",
+    "expectedResult": "The Vessel form renders cleanly with correct spacing, alignment, and no layout breakage."
+  },
+  {
+    "id": "MS-009-01",
+    "module": "Watchlist Configuration",
+    "subModule": "Watchlist Grid Rendering",
+    "taskDescription": "Verify watchlist configuration card grid is rendered below Purpose dropdown",
+    "priority": "",
+    "expectedResult": "The watchlist configuration card grid is visible directly below the Purpose dropdown."
+  },
+  {
+    "id": "MS-009-02",
+    "module": "Watchlist Configuration",
+    "subModule": "Watchlist Card Count",
+    "taskDescription": "Verify exactly 6 watchlist cards are displayed in the grid",
+    "priority": "",
+    "expectedResult": "Exactly 6 watchlist cards are displayed."
+  },
+  {
+    "id": "MS-009-03",
+    "module": "Watchlist Configuration",
+    "subModule": "Grid Layout Structure",
+    "taskDescription": "Verify watchlist cards are arranged in a responsive 2-column layout",
+    "priority": "",
+    "expectedResult": "The cards render in a 2-column layout."
+  },
+  {
+    "id": "MS-009-04",
+    "module": "Watchlist Configuration",
+    "subModule": "Card Content Display",
+    "taskDescription": "Verify each watchlist card shows title, category tag, description, and metadata pills",
+    "priority": "",
+    "expectedResult": "Every card displays a bold title, a colored category tag pill, description text, and metadata pills."
+  },
+  {
+    "id": "MS-009-05",
+    "module": "Watchlist Configuration",
+    "subModule": "Onboarding Screening Card",
+    "taskDescription": "Verify Onboarding Screening card content and metadata",
+    "priority": "",
+    "expectedResult": "The card shows Onboarding / teal tag, 3 Lists, 75%, and Fuzzy Match Enabled."
+  },
+  {
+    "id": "MS-009-06",
+    "module": "Watchlist Configuration",
+    "subModule": "Continuous Monitoring Card",
+    "taskDescription": "Verify Continuous Monitoring card content and metadata",
+    "priority": "",
+    "expectedResult": "The card shows Monitoring / blue tag, 3 Lists, 80%, and Exact Match Priority."
+  },
+  {
+    "id": "MS-009-07",
+    "module": "Watchlist Configuration",
+    "subModule": "High-Risk Jurisdiction Screening Card",
+    "taskDescription": "Verify High-Risk Jurisdiction Screening card content and metadata",
+    "priority": "",
+    "expectedResult": "The card shows Enhanced Due-Diligence / purple tag, 5 Lists, 70%, and Phonetic Match."
+  },
+  {
+    "id": "MS-009-08",
+    "module": "Watchlist Configuration",
+    "subModule": "Singapore High-Risk Screening Card",
+    "taskDescription": "Verify Singapore High-Risk Screening card content and metadata",
+    "priority": "",
+    "expectedResult": "The card shows Regulatory / amber tag, 4 Lists, 75%, and Phonetic Match."
+  },
+  {
+    "id": "MS-009-09",
+    "module": "Watchlist Configuration",
+    "subModule": "MAS Regulatory Watchlist Card",
+    "taskDescription": "Verify MAS Regulatory Watchlist card content and metadata",
+    "priority": "",
+    "expectedResult": "The card shows MAS Regulatory / amber tag, 4 Lists, 70%, and Phonetic Match."
+  },
+  {
+    "id": "MS-009-10",
+    "module": "Watchlist Configuration",
+    "subModule": "UAE Compliance Watchlist Card",
+    "taskDescription": "Verify UAE Compliance Watchlist card content and metadata",
+    "priority": "",
+    "expectedResult": "The card shows Regulatory / amber tag, 1 List, 75%, and ID Override Active."
+  },
+  {
+    "id": "MS-009-11",
+    "module": "Watchlist Configuration",
+    "subModule": "Category Tag Styling",
+    "taskDescription": "Verify category tag colors match the specified design tokens",
+    "priority": "",
+    "expectedResult": "The tags use the correct colors: Onboarding teal, Monitoring blue, Enhanced Due-Diligence purple, and Regulatory/MAS Regulatory amber."
+  },
+  {
+    "id": "MS-009-12",
+    "module": "Watchlist Configuration",
+    "subModule": "Default Border Styling",
+    "taskDescription": "Verify unselected watchlist cards use neutral border styling",
+    "priority": "",
+    "expectedResult": "Unselected cards display a neutral grey border."
+  },
+  {
+    "id": "MS-009-13",
+    "module": "Watchlist Configuration",
+    "subModule": "Hover State Styling",
+    "taskDescription": "Verify hovered watchlist card changes to darker border style",
+    "priority": "",
+    "expectedResult": "The hovered card shows a slightly darker border than the neutral state."
+  },
+  {
+    "id": "MS-009-14",
+    "module": "Watchlist Configuration",
+    "subModule": "Selected Card State",
+    "taskDescription": "Verify selected watchlist card displays active selected styling",
+    "priority": "",
+    "expectedResult": "The selected card shows a blue border, blue-dim background, and a ✓ badge in the top-right corner."
+  },
+  {
+    "id": "MS-009-15",
+    "module": "Watchlist Configuration",
+    "subModule": "Single Selection Logic",
+    "taskDescription": "Verify only one watchlist card can be selected at a time per entity type",
+    "priority": "",
+    "expectedResult": "Only the last selected card remains active; the first selected card is deselected."
+  },
+  {
+    "id": "MS-009-16",
+    "module": "Watchlist Configuration",
+    "subModule": "Selection State Update",
+    "taskDescription": "Verify clicking a watchlist card updates the selection state correctly",
+    "priority": "",
+    "expectedResult": "Clicking a card selects it and re-renders the grid to reflect the new selection."
+  },
+  {
+    "id": "MS-009-17",
+    "module": "Watchlist Configuration",
+    "subModule": "Selection Persistence",
+    "taskDescription": "Verify watchlist selection persists within the same entity type after interaction",
+    "priority": "",
+    "expectedResult": "The selected watchlist card remains highlighted within the same entity type."
+  },
+  {
+    "id": "MS-009-18",
+    "module": "Watchlist Configuration",
+    "subModule": "Validation Message",
+    "taskDescription": "Verify no watchlist selection submission shows inline warning message",
+    "priority": "",
+    "expectedResult": "A red warning appears above the grid: Please select a Watchlist Configuration to proceed."
+  },
+  {
+    "id": "MS-009-19",
+    "module": "Watchlist Configuration",
+    "subModule": "Warning Clearance",
+    "taskDescription": "Verify warning message clears after a valid watchlist card is selected",
+    "priority": "",
+    "expectedResult": "The warning message disappears after a valid card is selected."
+  },
+  {
+    "id": "MS-009-20",
+    "module": "Watchlist Configuration",
+    "subModule": "Entity-wise Selection",
+    "taskDescription": "Verify watchlist selection state is independent for each entity type",
+    "priority": "",
+    "expectedResult": "Each entity type maintains its own independent watchlist selection state."
+  },
+  {
+    "id": "MS-009-21",
+    "module": "Watchlist Configuration",
+    "subModule": "Selection Restoration",
+    "taskDescription": "Verify previously selected card is restored when returning to the same entity type",
+    "priority": "",
+    "expectedResult": "The original entity type restores its own selected card when revisited."
+  },
+  {
+    "id": "MS-009-22",
+    "module": "Watchlist Configuration",
+    "subModule": "Grid Stability",
+    "taskDescription": "Verify watchlist grid remains stable across entity form switching",
+    "priority": "",
+    "expectedResult": "The shared watchlist grid renders correctly across all entity forms, and selection state is maintained per entity type."
+  },
+  {
+    "id": "MS-010-01",
+    "module": "Form Actions & Validation",
+    "subModule": "Form Action Button Row",
+    "taskDescription": "Verify both action buttons are rendered at the bottom of each entity form",
+    "priority": "",
+    "expectedResult": "Reset Form appears at the bottom-left and Start Screening → appears at the bottom-right of the form."
+  },
+  {
+    "id": "MS-010-02",
+    "module": "Form Actions & Validation",
+    "subModule": "Reset Form Button Styling",
+    "taskDescription": "Verify Reset Form button uses ghost/outlined styling",
+    "priority": "",
+    "expectedResult": "Reset Form is displayed as a ghost/outlined button."
+  },
+  {
+    "id": "MS-010-03",
+    "module": "Form Actions & Validation",
+    "subModule": "Start Screening Button Styling",
+    "taskDescription": "Verify Start Screening button uses primary navy styling",
+    "priority": "",
+    "expectedResult": "Start Screening → is shown as a primary navy button and is visually emphasized over Reset Form."
+  },
+  {
+    "id": "MS-010-04",
+    "module": "Form Actions & Validation",
+    "subModule": "Button Alignment Layout",
+    "taskDescription": "Verify action buttons remain aligned left and right respectively",
+    "priority": "",
+    "expectedResult": "Reset Form remains aligned to the left and Start Screening → remains aligned to the right."
+  },
+  {
+    "id": "MS-010-05",
+    "module": "Form Actions & Validation",
+    "subModule": "Reset Text Input Functionality",
+    "taskDescription": "Verify Reset Form clears text input values on the current entity form",
+    "priority": "",
+    "expectedResult": "All text input values on the current entity form are cleared."
+  },
+  {
+    "id": "MS-010-06",
+    "module": "Form Actions & Validation",
+    "subModule": "Dropdown Reset Functionality",
+    "taskDescription": "Verify Reset Form resets dropdown fields to their default empty state",
+    "priority": "",
+    "expectedResult": "All dropdowns are reset to their empty/default first state."
+  },
+  {
+    "id": "MS-010-07",
+    "module": "Form Actions & Validation",
+    "subModule": "Date Field Reset Functionality",
+    "taskDescription": "Verify Reset Form clears date picker values",
+    "priority": "",
+    "expectedResult": "The date picker value is cleared/reset to default after clicking Reset Form."
+  },
+  {
+    "id": "MS-010-08",
+    "module": "Form Actions & Validation",
+    "subModule": "Entity Type Preservation",
+    "taskDescription": "Verify Reset Form does not change the active entity type",
+    "priority": "",
+    "expectedResult": "The currently active entity type remains unchanged after reset."
+  },
+  {
+    "id": "MS-010-09",
+    "module": "Form Actions & Validation",
+    "subModule": "Active Tab Preservation",
+    "taskDescription": "Verify Reset Form does not change the active top-level tab",
+    "priority": "",
+    "expectedResult": "The active top-level tab remains unchanged after reset."
+  },
+  {
+    "id": "MS-010-10",
+    "module": "Form Actions & Validation",
+    "subModule": "Watchlist Selection Preservation",
+    "taskDescription": "Verify Reset Form does not change the selected watchlist card",
+    "priority": "",
+    "expectedResult": "The previously selected watchlist card remains selected after reset."
+  },
+  {
+    "id": "MS-010-11",
+    "module": "Form Actions & Validation",
+    "subModule": "UI State Preservation",
+    "taskDescription": "Verify Reset Form does not affect unrelated UI state outside the form values",
+    "priority": "",
+    "expectedResult": "Only field values are cleared; entity type, tab state, and watchlist selection remain unchanged."
+  },
+  {
+    "id": "MS-010-12",
+    "module": "Form Actions & Validation",
+    "subModule": "Individual Form Reset",
+    "taskDescription": "Verify Reset Form works independently on Individual form",
+    "priority": "",
+    "expectedResult": "Individual form values are cleared and the form remains on the Individual entity type."
+  },
+  {
+    "id": "MS-010-13",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Form Reset",
+    "taskDescription": "Verify Reset Form works independently on Non-Individual form",
+    "priority": "",
+    "expectedResult": "Non-Individual form values are cleared without changing entity type, tab, or watchlist selection."
+  },
+  {
+    "id": "MS-010-14",
+    "module": "Form Actions & Validation",
+    "subModule": "Vessel Form Reset",
+    "taskDescription": "Verify Reset Form works independently on Vessel form",
+    "priority": "",
+    "expectedResult": "Vessel form fields are cleared while the active entity type and watchlist selection state remain intact."
+  },
+  {
+    "id": "MS-010-15",
+    "module": "Form Actions & Validation",
+    "subModule": "Client-side Reset Action",
+    "taskDescription": "Verify Reset Form does not trigger any API request",
+    "priority": "",
+    "expectedResult": "No API call is triggered because reset is a client-side only action."
+  },
+  {
+    "id": "MS-010-16",
+    "module": "Form Actions & Validation",
+    "subModule": "Start Screening Validation",
+    "taskDescription": "Verify Start Screening triggers validation before navigation when required fields are empty",
+    "priority": "",
+    "expectedResult": "Validation is triggered first and the form does not proceed to results when required data is missing."
+  },
+  {
+    "id": "MS-010-17",
+    "module": "Form Actions & Validation",
+    "subModule": "Invalid Form Submission Blocking",
+    "taskDescription": "Verify Start Screening does not bypass invalid form state",
+    "priority": "",
+    "expectedResult": "Submission is blocked until validation is satisfied."
+  },
+  {
+    "id": "MS-010-18",
+    "module": "Form Actions & Validation",
+    "subModule": "Successful Form Navigation",
+    "taskDescription": "Verify Start Screening allows navigation after valid form submission",
+    "priority": "",
+    "expectedResult": "The form passes validation and navigates to the screening results flow."
+  },
+  {
+    "id": "MS-010-19",
+    "module": "Form Actions & Validation",
+    "subModule": "Watchlist Retention After Reset",
+    "taskDescription": "Verify Reset Form preserves selected watchlist and allows a fresh edit cycle",
+    "priority": "",
+    "expectedResult": "Inputs are cleared, but the selected watchlist card is preserved for the current entity type."
+  },
+  {
+    "id": "MS-010-20",
+    "module": "Form Actions & Validation",
+    "subModule": "Validation State Protection",
+    "taskDescription": "Verify Reset Form does not alter validation state outside the current form fields",
+    "priority": "",
+    "expectedResult": "Form field values reset cleanly, while entity type, active tab, and watchlist selection remain unchanged."
+  },
+  {
+    "id": "MS-010-21",
+    "module": "Form Actions & Validation",
+    "subModule": "Repeated Reset Stability",
+    "taskDescription": "Verify action buttons remain usable after repeated resets",
+    "priority": "",
+    "expectedResult": "Reset Form continues to work consistently across repeated use."
+  },
+  {
+    "id": "MS-010-22",
+    "module": "Form Actions & Validation",
+    "subModule": "Desktop Layout Stability",
+    "taskDescription": "Verify button row remains stable on standard desktop layout",
+    "priority": "",
+    "expectedResult": "The bottom action row stays stable, readable, and correctly aligned without layout breakage."
+  },
+  {
+    "id": "MS-011-01",
+    "module": "Form Actions & Validation",
+    "subModule": "Mandatory Field Indicator",
+    "taskDescription": "Verify mandatory fields are visually marked before user input",
+    "priority": "",
+    "expectedResult": "All mandatory fields display a red asterisk (*) consistently before any input is entered."
+  },
+  {
+    "id": "MS-011-02",
+    "module": "Form Actions & Validation",
+    "subModule": "Individual Name Validation",
+    "taskDescription": "Individual: submit with blank Name in English",
+    "priority": "",
+    "expectedResult": "Inline red error message appears below Name in English: “Name in English is required to proceed with screening.” Navigation is blocked and the page scrolls to the first invalid field."
+  },
+  {
+    "id": "MS-011-03",
+    "module": "Form Actions & Validation",
+    "subModule": "Individual Purpose Validation",
+    "taskDescription": "Individual: validate error when Purpose is not selected",
+    "priority": "",
+    "expectedResult": "Inline error appears for Purpose: “Please select the screening purpose.” Submission is blocked and the user remains on the same page."
+  },
+  {
+    "id": "MS-011-04",
+    "module": "Form Actions & Validation",
+    "subModule": "Individual Watchlist Validation",
+    "taskDescription": "Individual: validate error when Watchlist card is not selected",
+    "priority": "",
+    "expectedResult": "Red inline message appears above the watchlist grid: “Please select a Watchlist Configuration to proceed.” Navigation is blocked."
+  },
+  {
+    "id": "MS-011-05",
+    "module": "Form Actions & Validation",
+    "subModule": "Individual Date Format Validation",
+    "taskDescription": "Individual: validate invalid date format",
+    "priority": "",
+    "expectedResult": "Inline error appears for date format: “Please enter a valid date in DD-MM-YYYY format.” No navigation occurs."
+  },
+  {
+    "id": "MS-011-06",
+    "module": "Form Actions & Validation",
+    "subModule": "Individual Successful Submission",
+    "taskDescription": "Individual: successful screening submission",
+    "priority": "",
+    "expectedResult": "Validation passes with no error message, and the application navigates to the Screening Results page."
+  },
+  {
+    "id": "MS-011-07",
+    "module": "Form Actions & Validation",
+    "subModule": "Individual Multiple Field Validation",
+    "taskDescription": "Individual: multiple missing mandatory fields trigger first-error focus",
+    "priority": "",
+    "expectedResult": "Inline errors appear for all failed fields, and the page scrolls to the first errored field, which is Name in English. Navigation is blocked."
+  },
+  {
+    "id": "MS-011-08",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Registration Number Validation",
+    "taskDescription": "Non-Individual: submit with blank Registration Number",
+    "priority": "",
+    "expectedResult": "Inline red error appears below Registration Number: “Registration Number is required.” Submission does not proceed."
+  },
+  {
+    "id": "MS-011-09",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Registered Name Validation",
+    "taskDescription": "Non-Individual: submit with blank Registered Name (English)",
+    "priority": "",
+    "expectedResult": "Inline red error appears below Registered Name (English): “Registered Name is required.” Navigation is blocked."
+  },
+  {
+    "id": "MS-011-10",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Multiple Missing Fields",
+    "taskDescription": "Non-Individual: submit with both name fields missing",
+    "priority": "",
+    "expectedResult": "Both inline errors appear under their respective fields, and the page scrolls to the first missing field. Submission remains on the same page."
+  },
+  {
+    "id": "MS-011-11",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Purpose Validation",
+    "taskDescription": "Non-Individual: validate missing Purpose",
+    "priority": "",
+    "expectedResult": "Inline error appears for Purpose: “Please select the screening purpose.” Results page is not opened."
+  },
+  {
+    "id": "MS-011-12",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Watchlist Validation",
+    "taskDescription": "Non-Individual: validate missing Watchlist card",
+    "priority": "",
+    "expectedResult": "Red error message appears above the watchlist grid, and the form remains on the current screen without submission."
+  },
+  {
+    "id": "MS-011-13",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Date Validation",
+    "taskDescription": "Non-Individual: invalid date format validation",
+    "priority": "",
+    "expectedResult": "Inline error appears for date format validation, and the user is prevented from moving to results."
+  },
+  {
+    "id": "MS-011-14",
+    "module": "Form Actions & Validation",
+    "subModule": "Non-Individual Successful Submission",
+    "taskDescription": "Non-Individual: successful screening submission",
+    "priority": "",
+    "expectedResult": "No validation errors appear, and the system proceeds to the Screening Results page."
+  },
+  {
+    "id": "MS-011-15",
+    "module": "Form Actions & Validation",
+    "subModule": "Vessel Name Validation",
+    "taskDescription": "Vessel: submit with blank Vessel Name",
+    "priority": "",
+    "expectedResult": "Inline red error appears below Vessel Name: “Vessel Name is required.” Submission is blocked."
+  },
+  {
+    "id": "MS-011-16",
+    "module": "Form Actions & Validation",
+    "subModule": "Vessel Purpose Validation",
+    "taskDescription": "Vessel: validate missing Purpose",
+    "priority": "",
+    "expectedResult": "Inline error appears for Purpose: “Please select the screening purpose.” The form does not navigate away."
+  },
+  {
+    "id": "MS-011-17",
+    "module": "Form Actions & Validation",
+    "subModule": "Vessel Watchlist Validation",
+    "taskDescription": "Vessel: validate missing Watchlist selection",
+    "priority": "",
+    "expectedResult": "A red inline message appears above the watchlist grid, and the validation blocks submission."
+  },
+  {
+    "id": "MS-011-18",
+    "module": "Form Actions & Validation",
+    "subModule": "Vessel Date Format Validation",
+    "taskDescription": "Vessel: invalid date format validation",
+    "priority": "",
+    "expectedResult": "The date field shows the inline error “Please enter a valid date in DD-MM-YYYY format.” No navigation occurs."
+  },
+  {
+    "id": "MS-011-19",
+    "module": "Form Actions & Validation",
+    "subModule": "Vessel Multiple Validation Errors",
+    "taskDescription": "Vessel: multiple validation failures in one submission",
+    "priority": "",
+    "expectedResult": "All relevant inline errors are displayed at once, and the page scrolls to the first errored field, which is Vessel Name."
+  },
+  {
+    "id": "MS-011-20",
+    "module": "Form Actions & Validation",
+    "subModule": "Vessel Successful Submission",
+    "taskDescription": "Vessel: successful screening submission",
+    "priority": "",
+    "expectedResult": "Validation succeeds, no error messages are shown, and the application navigates to the Screening Results page."
+  },
+  {
+    "id": "MS-011-21",
+    "module": "Form Actions & Validation",
+    "subModule": "Inline Error Rendering",
+    "taskDescription": "Validate inline errors appear immediately without page reload",
+    "priority": "",
+    "expectedResult": "Inline validation messages appear instantly on the same page without refresh or reload, and submission is blocked."
+  },
+  {
+    "id": "MS-012-01",
+    "module": "License Warning Banner",
+    "subModule": "Individual Form Banner Visibility",
+    "taskDescription": "Verify banner is displayed in the Individual form section",
+    "priority": "",
+    "expectedResult": "The amber warning banner is visible at the bottom of the Individual form section."
+  },
+  {
+    "id": "MS-012-02",
+    "module": "License Warning Banner",
+    "subModule": "Non-Individual Form Banner Visibility",
+    "taskDescription": "Verify banner is displayed in the Non-Individual form section",
+    "priority": "",
+    "expectedResult": "The amber warning banner is rendered at the bottom of the Non-Individual form section."
+  },
+  {
+    "id": "MS-012-03",
+    "module": "License Warning Banner",
+    "subModule": "Vessel Form Banner Visibility",
+    "taskDescription": "Verify banner is displayed in the Vessel form section",
+    "priority": "",
+    "expectedResult": "The amber warning banner appears at the bottom of the Vessel form section."
+  },
+  {
+    "id": "MS-012-04",
+    "module": "License Warning Banner",
+    "subModule": "Bulk Upload Banner Visibility",
+    "taskDescription": "Verify banner is displayed in the Bulk Upload tab",
+    "priority": "",
+    "expectedResult": "The warning banner is visible at the bottom of the Bulk Upload form."
+  },
+  {
+    "id": "MS-012-05",
+    "module": "License Warning Banner",
+    "subModule": "Banner Text Validation",
+    "taskDescription": "Verify banner text is exact and unmodified",
+    "priority": "",
+    "expectedResult": "The text appears exactly as: “Your license will expire on June 12, 2026” with no extra or missing characters."
+  },
+  {
+    "id": "MS-012-06",
+    "module": "License Warning Banner",
+    "subModule": "Warning Icon Display",
+    "taskDescription": "Verify warning icon is displayed before the banner message",
+    "priority": "",
+    "expectedResult": "A warning icon ⚠ is displayed before the message text."
+  },
+  {
+    "id": "MS-012-07",
+    "module": "License Warning Banner",
+    "subModule": "Banner Styling Validation",
+    "taskDescription": "Verify banner background and text styling",
+    "priority": "",
+    "expectedResult": "The banner uses an amber-dim background close to #FEF3C7 and amber text close to #D97706 or the defined amber text token."
+  },
+  {
+    "id": "MS-012-08",
+    "module": "License Warning Banner",
+    "subModule": "Entity Switch Banner Persistence",
+    "taskDescription": "Verify banner remains visible when switching between entity types",
+    "priority": "",
+    "expectedResult": "The banner remains visible and unchanged across all entity selections."
+  },
+  {
+    "id": "MS-012-09",
+    "module": "License Warning Banner",
+    "subModule": "Tab Switch Banner Persistence",
+    "taskDescription": "Verify banner remains visible after switching between Manual Screening and Bulk Upload",
+    "priority": "",
+    "expectedResult": "The banner stays visible in both tabs and does not disappear during tab changes."
+  },
+  {
+    "id": "MS-012-10",
+    "module": "License Warning Banner",
+    "subModule": "Standard Resolution Visibility",
+    "taskDescription": "Verify banner is visible without scrolling at 1280×720 resolution",
+    "priority": "",
+    "expectedResult": "The banner is visible without requiring any scroll on a standard 1280×720 screen."
+  },
+  {
+    "id": "MS-012-11",
+    "module": "License Warning Banner",
+    "subModule": "Cross-section Banner Visibility",
+    "taskDescription": "Verify banner is visible across all supported sections at standard resolution",
+    "priority": "",
+    "expectedResult": "The banner remains visible on all form sections at standard resolution and is not hidden below the fold."
+  },
+  {
+    "id": "MS-012-12",
+    "module": "License Warning Banner",
+    "subModule": "Non-dismissible Banner Behavior",
+    "taskDescription": "Verify banner is non-dismissable",
+    "priority": "",
+    "expectedResult": "The banner cannot be dismissed by the user and remains permanently visible."
+  },
+  {
+    "id": "MS-012-13",
+    "module": "License Warning Banner",
+    "subModule": "Banner Stability During Interaction",
+    "taskDescription": "Verify banner does not move or disappear during normal form interaction",
+    "priority": "",
+    "expectedResult": "The banner remains fixed in its intended location and stays visible while the user works in the form."
+  },
+  {
+    "id": "MS-013-01",
+    "module": "Bulk Upload",
+    "subModule": "Upload Zone Rendering",
+    "taskDescription": "Verify the upload zone is rendered with the correct visual treatment",
+    "priority": "",
+    "expectedResult": "A dashed drag-and-drop upload zone is displayed with clear call-to-action text."
+  },
+  {
+    "id": "MS-013-02",
+    "module": "Bulk Upload",
+    "subModule": "Upload Zone File Picker",
+    "taskDescription": "Verify clicking inside the upload zone opens the file picker",
+    "priority": "",
+    "expectedResult": "The operating system file picker opens and allows selection of .csv, .xls, and .xlsx files."
+  },
+  {
+    "id": "MS-013-03",
+    "module": "Bulk Upload",
+    "subModule": "CSV Drag-and-Drop Upload",
+    "taskDescription": "Verify drag-and-drop selection works for a valid CSV file",
+    "priority": "",
+    "expectedResult": "The file is accepted, and the zone updates with the selected file details."
+  },
+  {
+    "id": "MS-013-04",
+    "module": "Bulk Upload",
+    "subModule": "XLS Drag-and-Drop Upload",
+    "taskDescription": "Verify drag-and-drop selection works for a valid XLS file",
+    "priority": "",
+    "expectedResult": "The file is accepted without error, and the upload zone shows the file as selected."
+  },
+  {
+    "id": "MS-013-05",
+    "module": "Bulk Upload",
+    "subModule": "XLSX Drag-and-Drop Upload",
+    "taskDescription": "Verify drag-and-drop selection works for a valid XLSX file",
+    "priority": "",
+    "expectedResult": "The file is accepted successfully, and the zone reflects the selected file state."
+  },
+  {
+    "id": "MS-013-06",
+    "module": "Bulk Upload",
+    "subModule": "CSV File Status Display",
+    "taskDescription": "Verify uploaded CSV file shows filename, size, and readiness status",
+    "priority": "",
+    "expectedResult": "The zone displays the filename, file size in KB, and the message “Ready to screen”."
+  },
+  {
+    "id": "MS-013-07",
+    "module": "Bulk Upload",
+    "subModule": "XLS File Status Display",
+    "taskDescription": "Verify uploaded XLS file shows filename, size, and readiness status",
+    "priority": "",
+    "expectedResult": "The upload zone shows the correct filename, file size in KB, and “Ready to screen” confirmation."
+  },
+  {
+    "id": "MS-013-08",
+    "module": "Bulk Upload",
+    "subModule": "XLSX File Status Display",
+    "taskDescription": "Verify uploaded XLSX file shows filename, size, and readiness status",
+    "priority": "",
+    "expectedResult": "The zone updates correctly with filename, file size in KB, and “Ready to screen”."
+  },
+  {
+    "id": "MS-013-09",
+    "module": "Bulk Upload",
+    "subModule": "Unsupported File Validation",
+    "taskDescription": "Verify unsupported file format is rejected",
+    "priority": "",
+    "expectedResult": "Inline error appears: “Only CSV, XLS, and XLSX files are accepted.”"
+  },
+  {
+    "id": "MS-013-10",
+    "module": "Bulk Upload",
+    "subModule": "File Size Limit Validation",
+    "taskDescription": "Verify a file exceeding 25 MB is rejected",
+    "priority": "",
+    "expectedResult": "Inline error appears: “File size exceeds the 25 MB limit. Please reduce file size and try again.”"
+  },
+  {
+    "id": "MS-013-11",
+    "module": "Bulk Upload",
+    "subModule": "Maximum Size Boundary Validation",
+    "taskDescription": "Verify a file exactly at the 25 MB limit is accepted",
+    "priority": "",
+    "expectedResult": "The file is accepted because it is within the maximum allowed size, and the zone shows the ready state."
+  },
+  {
+    "id": "MS-013-12",
+    "module": "Bulk Upload",
+    "subModule": "Empty File Validation",
+    "taskDescription": "Verify an empty file is rejected with the correct message",
+    "priority": "",
+    "expectedResult": "Inline error appears: “The uploaded file contains no data rows. Please use the template and try again.”"
+  },
+  {
+    "id": "MS-013-13",
+    "module": "Bulk Upload",
+    "subModule": "Client-side File Validation",
+    "taskDescription": "Verify the upload zone uses client-side validation before any upload action",
+    "priority": "",
+    "expectedResult": "Validation is handled on the client side, and the invalid file is blocked before any upload proceeds."
+  },
+  {
+    "id": "MS-013-14",
+    "module": "Bulk Upload",
+    "subModule": "MIME Type Validation",
+    "taskDescription": "Verify accepted MIME types are recognized correctly",
+    "priority": "",
+    "expectedResult": "Files with the approved MIME types are accepted successfully and move to the ready state."
+  },
+  {
+    "id": "MS-013-15",
+    "module": "Bulk Upload",
+    "subModule": "Download Template Button",
+    "taskDescription": "Verify the download template button is visible and usable",
+    "priority": "",
+    "expectedResult": "The template download is initiated successfully."
+  },
+  {
+    "id": "MS-013-16",
+    "module": "Bulk Upload",
+    "subModule": "Template File Download",
+    "taskDescription": "Verify the template download provides the pre-formatted screening file",
+    "priority": "",
+    "expectedResult": "A pre-formatted template file is downloaded for CSV/XLSX-based bulk screening use."
+  },
+  {
+    "id": "MS-013-17",
+    "module": "Bulk Upload",
+    "subModule": "File Replacement Functionality",
+    "taskDescription": "Verify file selection can be replaced by a new valid file",
+    "priority": "",
+    "expectedResult": "The previously selected file is replaced, and the zone shows the latest filename, size, and ready status."
+  },
+  {
+    "id": "MS-013-18",
+    "module": "Bulk Upload",
+    "subModule": "Inline Error Message Display",
+    "taskDescription": "Verify validation message is shown inside the upload zone area",
+    "priority": "",
+    "expectedResult": "The error message is displayed inline within the upload zone, not as a separate page-level alert."
+  },
+  {
+    "id": "MS-014-01",
+    "module": "Bulk Upload",
+    "subModule": "Bulk Upload Watchlist Grid",
+    "taskDescription": "Verify Watchlist Configuration card grid is displayed below the upload zone",
+    "priority": "",
+    "expectedResult": "The Watchlist Configuration card grid is displayed below the upload zone and matches the layout used in Manual Screening."
+  },
+  {
+    "id": "MS-014-02",
+    "module": "Bulk Upload",
+    "subModule": "Watchlist Card Selection",
+    "taskDescription": "Verify all watchlist cards are selectable",
+    "priority": "",
+    "expectedResult": "Only one watchlist card remains selected at a time, and the active card is visually highlighted."
+  },
+  {
+    "id": "MS-014-03",
+    "module": "Bulk Upload",
+    "subModule": "Start Bulk Screening Button",
+    "taskDescription": "Verify Start Bulk Screening button is displayed at the bottom of the page",
+    "priority": "",
+    "expectedResult": "A primary navy button labeled Start Bulk Screening → is displayed at the bottom of the page."
+  },
+  {
+    "id": "MS-014-04",
+    "module": "Bulk Upload",
+    "subModule": "File Upload Validation",
+    "taskDescription": "Verify clicking Start Bulk Screening without uploading a file shows validation",
+    "priority": "",
+    "expectedResult": "Inline validation message appears: “Please upload a valid file before starting bulk screening.”"
+  },
+  {
+    "id": "MS-014-05",
+    "module": "Bulk Upload",
+    "subModule": "Watchlist Selection Validation",
+    "taskDescription": "Verify clicking Start Bulk Screening without selecting a watchlist shows validation",
+    "priority": "",
+    "expectedResult": "Inline validation message appears: “Please select a Watchlist Configuration to proceed.”"
+  },
+  {
+    "id": "MS-014-06",
+    "module": "Bulk Upload",
+    "subModule": "Combined Validation Handling",
+    "taskDescription": "Verify both validations are triggered when file and watchlist are missing",
+    "priority": "",
+    "expectedResult": "Validation prevents submission, and the user is informed that both a valid file and a watchlist selection are required."
+  },
+  {
+    "id": "MS-014-07",
+    "module": "Bulk Upload",
+    "subModule": "Successful Bulk Screening Flow",
+    "taskDescription": "Verify successful bulk screening initiation with valid file and watchlist",
+    "priority": "",
+    "expectedResult": "Validation passes, and the application navigates to the Screening Results page."
+  },
+  {
+    "id": "MS-014-08",
+    "module": "Bulk Upload",
+    "subModule": "File Persistence After Watchlist Selection",
+    "taskDescription": "Verify previously uploaded valid file remains selected after watchlist selection",
+    "priority": "",
+    "expectedResult": "The selected file details remain intact, and the file status continues to show Ready to screen."
+  },
+  {
+    "id": "MS-014-09",
+    "module": "Bulk Upload",
+    "subModule": "Watchlist Persistence After File Upload",
+    "taskDescription": "Verify selected watchlist remains highlighted after file upload",
+    "priority": "",
+    "expectedResult": "The previously selected watchlist card remains highlighted and selected."
+  },
+  {
+    "id": "MS-014-10",
+    "module": "Bulk Upload",
+    "subModule": "License Banner Visibility",
+    "taskDescription": "Verify license warning banner is displayed below the Bulk Upload form",
+    "priority": "",
+    "expectedResult": "The amber license warning banner is visible below the form with the required expiry message."
+  },
+  {
+    "id": "MS-014-11",
+    "module": "Bulk Upload",
+    "subModule": "Watchlist Grid Consistency",
+    "taskDescription": "Verify watchlist grid layout matches Manual Screening implementation",
+    "priority": "",
+    "expectedResult": "The watchlist grid in Bulk Upload is functionally and visually identical to the one used in Manual Screening."
+  },
+  {
+    "id": "MS-014-12",
+    "module": "Bulk Upload",
+    "subModule": "Invalid File Blocking",
+    "taskDescription": "Verify uploaded file validation error blocks bulk screening",
+    "priority": "",
+    "expectedResult": "Bulk screening does not start until a valid file is successfully uploaded."
+  },
+  {
+    "id": "MS-014-13",
+    "module": "Bulk Upload",
+    "subModule": "CSV Bulk Screening Support",
+    "taskDescription": "Verify Start Bulk Screening works with CSV file format",
+    "priority": "",
+    "expectedResult": "The system accepts the CSV file and navigates to the Screening Results page."
+  },
+  {
+    "id": "MS-014-14",
+    "module": "Bulk Upload",
+    "subModule": "XLS Bulk Screening Support",
+    "taskDescription": "Verify Start Bulk Screening works with XLS file format",
+    "priority": "",
+    "expectedResult": "The XLS file is processed successfully, and the system opens the Screening Results page."
+  },
+  {
+    "id": "MS-014-15",
+    "module": "Bulk Upload",
+    "subModule": "XLSX Bulk Screening Support",
+    "taskDescription": "Verify Start Bulk Screening works with XLSX file format",
+    "priority": "",
+    "expectedResult": "The XLSX file is accepted, and the user is redirected to the Screening Results page."
+  },
+  {
+    "id": "MS-014-16",
+    "module": "Bulk Upload",
+    "subModule": "Screening Acknowledgement Timing",
+    "taskDescription": "Verify bulk screening initiation acknowledgement is received within 3 seconds",
+    "priority": "",
+    "expectedResult": "The system acknowledges the bulk screening initiation and proceeds within 3 seconds of the button click."
+  },
+  {
+    "id": "MS-015-01",
+    "module": "Screening Results",
+    "subModule": "Results Page Rendering",
+    "taskDescription": "Verify Screening Results page renders after successful screening",
+    "priority": "",
+    "expectedResult": "The Screening Results page opens successfully and displays the results shell."
+  },
+  {
+    "id": "MS-015-02",
+    "module": "Screening Results",
+    "subModule": "View Last Results Access",
+    "taskDescription": "Verify page is accessible from View Last Results",
+    "priority": "",
+    "expectedResult": "The last saved Screening Results page is displayed without requiring a new screening submission."
+  },
+  {
+    "id": "MS-015-03",
+    "module": "Screening Results",
+    "subModule": "Subject Summary Card Display",
+    "taskDescription": "Verify subject summary card is displayed at the top of the page",
+    "priority": "",
+    "expectedResult": "A subject identity summary card is shown at the top of the page."
+  },
+  {
+    "id": "MS-015-04",
+    "module": "Screening Results",
+    "subModule": "Avatar Display Styling",
+    "taskDescription": "Verify avatar appears with correct size and shape",
+    "priority": "",
+    "expectedResult": "A 44×44 px rounded-square avatar is displayed with a blue background and subject initials."
+  },
+  {
+    "id": "MS-015-05",
+    "module": "Screening Results",
+    "subModule": "Avatar Initials Validation",
+    "taskDescription": "Verify avatar initials match the subject identity",
+    "priority": "",
+    "expectedResult": "The avatar displays the correct initials derived from the subject name, such as SH for Sin Huat Alan."
+  },
+  {
+    "id": "MS-015-06",
+    "module": "Screening Results",
+    "subModule": "Subject Name Typography",
+    "taskDescription": "Verify subject name is displayed with required typography",
+    "priority": "",
+    "expectedResult": "The subject name renders at 16 px font size with 600 weight styling."
+  },
+  {
+    "id": "MS-015-07",
+    "module": "Screening Results",
+    "subModule": "Entity Type Badge Display",
+    "taskDescription": "Verify Entity Type badge is displayed with correct label and colour",
+    "priority": "",
+    "expectedResult": "The Entity Type badge appears with the label Individual and uses the expected grey styling."
+  },
+  {
+    "id": "MS-015-08",
+    "module": "Screening Results",
+    "subModule": "Watchlist Badge Display",
+    "taskDescription": "Verify Watchlist Profile badge is displayed with correct label and colour",
+    "priority": "",
+    "expectedResult": "The Watchlist Profile badge is displayed in amber styling with the correct watchlist name, such as Singapore High-Risk Screening."
+  },
+  {
+    "id": "MS-015-09",
+    "module": "Screening Results",
+    "subModule": "Purpose Badge Display",
+    "taskDescription": "Verify Purpose badge is displayed with correct label and colour",
+    "priority": "",
+    "expectedResult": "The Purpose badge appears in teal styling with the correct value, such as Transaction Screening."
+  },
+  {
+    "id": "MS-015-10",
+    "module": "Screening Results",
+    "subModule": "Badge Group Rendering",
+    "taskDescription": "Verify all three badge pills render together in the summary card",
+    "priority": "",
+    "expectedResult": "All three badges—Entity Type, Watchlist Profile, and Purpose—are displayed in the same card section with the correct colour treatment."
+  },
+  {
+    "id": "MS-015-11",
+    "module": "Screening Results",
+    "subModule": "ID Number Metadata Display",
+    "taskDescription": "Verify metadata row displays ID Number when value is available",
+    "priority": "",
+    "expectedResult": "The metadata row displays the actual ID Number value provided for the subject."
+  },
+  {
+    "id": "MS-015-12",
+    "module": "Screening Results",
+    "subModule": "ID Number Placeholder Handling",
+    "taskDescription": "Verify metadata row displays placeholder when ID Number is blank",
+    "priority": "",
+    "expectedResult": "The ID Number field shows — (not provided) when the subject ID Number is blank."
+  },
+  {
+    "id": "MS-015-13",
+    "module": "Screening Results",
+    "subModule": "Date of Birth Metadata Display",
+    "taskDescription": "Verify metadata row displays Date of Birth when value is available",
+    "priority": "",
+    "expectedResult": "The Date of Birth is displayed correctly in the metadata row."
+  },
+  {
+    "id": "MS-015-14",
+    "module": "Screening Results",
+    "subModule": "Date of Birth Placeholder Handling",
+    "taskDescription": "Verify metadata row displays placeholder when Date of Birth is blank",
+    "priority": "",
+    "expectedResult": "The Date of Birth field displays — when the value is missing."
+  },
+  {
+    "id": "MS-015-15",
+    "module": "Screening Results",
+    "subModule": "Nationality Metadata Display",
+    "taskDescription": "Verify metadata row displays Nationality when value is available",
+    "priority": "",
+    "expectedResult": "The Nationality field shows the correct nationality of the subject."
+  },
+  {
+    "id": "MS-015-16",
+    "module": "Screening Results",
+    "subModule": "Nationality Placeholder Handling",
+    "taskDescription": "Verify metadata row displays placeholder when Nationality is blank",
+    "priority": "",
+    "expectedResult": "The Nationality field displays — when the value is missing."
+  },
+  {
+    "id": "MS-015-17",
+    "module": "Screening Results",
+    "subModule": "New Screening Button Visibility",
+    "taskDescription": "Verify + New Screening button is displayed in the top-right area",
+    "priority": "",
+    "expectedResult": "A + New Screening button is visible in the top-right section of the page."
+  },
+  {
+    "id": "MS-015-18",
+    "module": "Screening Results",
+    "subModule": "Manual Screening Navigation",
+    "taskDescription": "Verify + New Screening returns user to Manual Screening tab",
+    "priority": "",
+    "expectedResult": "The application calls showManual() and returns the user to the Manual Screening tab."
+  },
+  {
+    "id": "MS-015-19",
+    "module": "Screening Results",
+    "subModule": "Results Page Performance",
+    "taskDescription": "Verify results page loads within the required performance threshold",
+    "priority": "",
+    "expectedResult": "The Screening Results page loads in less than 1.5 seconds from screening completion."
+  },
+  {
+    "id": "MS-015-20",
+    "module": "Screening Results",
+    "subModule": "Last Results Session Handling",
+    "taskDescription": "Verify last results are cleared after logout or session expiry",
+    "priority": "",
+    "expectedResult": "The previously stored last result is no longer available after logout or session expiry."
+  },
+  {
+    "id": "MS-016-01",
+    "module": "Screening Results",
+    "subModule": "Metric Card Row Rendering",
+    "taskDescription": "Verify the 5 metric cards render below the AI summary panel",
+    "priority": "",
+    "expectedResult": "Exactly five metric cards are displayed in a horizontal row between the AI summary panel and the results table."
+  },
+  {
+    "id": "MS-016-02",
+    "module": "Screening Results",
+    "subModule": "Metric Card Sequence",
+    "taskDescription": "Verify the metric cards appear in the required order",
+    "priority": "",
+    "expectedResult": "The cards appear in this order: Critical match, High severity, Medium risk, Lists hit, Total results."
+  },
+  {
+    "id": "MS-016-03",
+    "module": "Screening Results",
+    "subModule": "Critical Match Styling",
+    "taskDescription": "Verify Critical match label and value are styled in red",
+    "priority": "",
+    "expectedResult": "The Critical match label and value render in red as specified."
+  },
+  {
+    "id": "MS-016-04",
+    "module": "Screening Results",
+    "subModule": "High Severity Styling",
+    "taskDescription": "Verify High severity label and value are styled in amber",
+    "priority": "",
+    "expectedResult": "The High severity label and value render in amber as specified."
+  },
+  {
+    "id": "MS-016-05",
+    "module": "Screening Results",
+    "subModule": "Medium Risk Styling",
+    "taskDescription": "Verify Medium risk label and value are styled in blue",
+    "priority": "",
+    "expectedResult": "The Medium risk label and value render in blue as specified."
+  },
+  {
+    "id": "MS-016-06",
+    "module": "Screening Results",
+    "subModule": "Lists Hit Styling",
+    "taskDescription": "Verify Lists hit label and value are styled in purple",
+    "priority": "",
+    "expectedResult": "The Lists hit label and value render in purple as specified."
+  },
+  {
+    "id": "MS-016-07",
+    "module": "Screening Results",
+    "subModule": "Total Results Styling",
+    "taskDescription": "Verify Total results label and value use the default grey text style",
+    "priority": "",
+    "expectedResult": "The Total results label and value render in the default grey text style."
+  },
+  {
+    "id": "MS-016-08",
+    "module": "Screening Results",
+    "subModule": "Dynamic Metric Calculation",
+    "taskDescription": "Verify metric values are computed from data and not hardcoded",
+    "priority": "",
+    "expectedResult": "The values on the cards reflect the actual dataset and remain consistent with the underlying screening result records."
+  },
+  {
+    "id": "MS-016-09",
+    "module": "Screening Results",
+    "subModule": "Critical Match Count Validation",
+    "taskDescription": "Verify Critical match count is correct for score ≥ 90%",
+    "priority": "",
+    "expectedResult": "The Critical match value equals the number of records whose score is 90% or higher."
+  },
+  {
+    "id": "MS-016-10",
+    "module": "Screening Results",
+    "subModule": "High Severity Count Validation",
+    "taskDescription": "Verify High severity count is correct for scores 80–89%",
+    "priority": "",
+    "expectedResult": "The High severity value matches the number of records in the 80–89% score range."
+  },
+  {
+    "id": "MS-016-11",
+    "module": "Screening Results",
+    "subModule": "Medium Risk Count Validation",
+    "taskDescription": "Verify Medium risk count is correct for scores 68–79%",
+    "priority": "",
+    "expectedResult": "The Medium risk value matches the number of records in the 68–79% score range."
+  },
+  {
+    "id": "MS-016-12",
+    "module": "Screening Results",
+    "subModule": "Distinct Watchlist Count",
+    "taskDescription": "Verify Lists hit count reflects distinct matched watchlists",
+    "priority": "",
+    "expectedResult": "The Lists hit value equals the number of distinct watchlists matched in the results."
+  },
+  {
+    "id": "MS-016-13",
+    "module": "Screening Results",
+    "subModule": "Total Results Count Validation",
+    "taskDescription": "Verify Total results count equals total rows in the results table",
+    "priority": "",
+    "expectedResult": "The Total results value matches the total number of rows in the results table."
+  },
+  {
+    "id": "MS-016-14",
+    "module": "Screening Results",
+    "subModule": "Zero-value Metric Handling",
+    "taskDescription": "Verify zero-value cards display 0 with the correct color",
+    "priority": "",
+    "expectedResult": "The relevant card displays 0 and still uses the correct specified color for that metric."
+  },
+  {
+    "id": "MS-016-15",
+    "module": "Screening Results",
+    "subModule": "Empty Dataset Card Rendering",
+    "taskDescription": "Verify all metric cards render correctly when there are no results at all",
+    "priority": "",
+    "expectedResult": "All cards display 0 where applicable, and the page does not break or hide the metric row."
+  },
+  {
+    "id": "MS-016-16",
+    "module": "Screening Results",
+    "subModule": "Metric Card Readability",
+    "taskDescription": "Verify metric cards remain readable at 1280×720 without horizontal scrolling",
+    "priority": "",
+    "expectedResult": "The stat cards remain readable and fully visible without horizontal scrolling."
+  },
+  {
+    "id": "MS-016-17",
+    "module": "Screening Results",
+    "subModule": "Metric Card Placement",
+    "taskDescription": "Verify metric cards stay between the AI summary panel and the results table",
+    "priority": "",
+    "expectedResult": "The metric row appears directly below the AI summary panel and above the results table."
+  },
+  {
+    "id": "MS-016-18",
+    "module": "Screening Results",
+    "subModule": "Dataset Change Refresh",
+    "taskDescription": "Verify metric values update when the results dataset changes",
+    "priority": "",
+    "expectedResult": "The card values update according to the active dataset and do not remain stale from a previous screening."
+  },
+  {
+    "id": "MS-017-01",
+    "module": "AI Summary Panel",
+    "subModule": "AI Panel Rendering",
+    "taskDescription": "Verify AI summary panel renders below the subject summary card",
+    "priority": "",
+    "expectedResult": "The AI summary panel is displayed immediately below the subject summary card."
+  },
+  {
+    "id": "MS-017-02",
+    "module": "AI Summary Panel",
+    "subModule": "AI Panel Border Styling",
+    "taskDescription": "Verify AI summary panel uses the required border treatment",
+    "priority": "",
+    "expectedResult": "The AI summary panel uses a slightly darker border as specified by the design requirement."
+  },
+  {
+    "id": "MS-017-03",
+    "module": "AI Summary Panel",
+    "subModule": "GENAI Badge Display",
+    "taskDescription": "Verify GENAI badge appears with correct label and styling",
+    "priority": "",
+    "expectedResult": "The badge displays “GENAI · GPT-4O” with purple background and white text."
+  },
+  {
+    "id": "MS-017-04",
+    "module": "AI Summary Panel",
+    "subModule": "Pulse Dot Animation",
+    "taskDescription": "Verify animated pulse dot is visible on the GENAI badge",
+    "priority": "",
+    "expectedResult": "The pulse dot is visible and animates continuously with a 2-second opacity cycle from 1 to 0.4 and back."
+  },
+  {
+    "id": "MS-017-05",
+    "module": "AI Summary Panel",
+    "subModule": "AI Loading State",
+    "taskDescription": "Verify loading placeholder is shown while AI response is pending",
+    "priority": "",
+    "expectedResult": "A loading placeholder or spinner is shown in the AI panel while the AI summary is still generating."
+  },
+  {
+    "id": "MS-017-06",
+    "module": "AI Summary Panel",
+    "subModule": "AI Summary Response Timing",
+    "taskDescription": "Verify AI summary appears within 5 seconds after results become available",
+    "priority": "",
+    "expectedResult": "The AI summary content appears within 5 seconds of results availability."
+  },
+  {
+    "id": "MS-017-07",
+    "module": "AI Summary Panel",
+    "subModule": "Non-blocking Results Table",
+    "taskDescription": "Verify results table is visible while AI summary is still loading",
+    "priority": "",
+    "expectedResult": "The results table is displayed independently and is not blocked by the AI summary loading state."
+  },
+  {
+    "id": "MS-017-08",
+    "module": "AI Summary Panel",
+    "subModule": "AI Failure Handling",
+    "taskDescription": "Verify AI failure message appears when summary generation fails",
+    "priority": "",
+    "expectedResult": "The panel shows “AI summary unavailable. Please review results manually.”"
+  },
+  {
+    "id": "MS-017-09",
+    "module": "AI Summary Panel",
+    "subModule": "Results Table Persistence on Failure",
+    "taskDescription": "Verify AI failure does not block the results table",
+    "priority": "",
+    "expectedResult": "The failure message is shown in the AI panel, and the results table remains visible and usable."
+  },
+  {
+    "id": "MS-017-10",
+    "module": "AI Summary Panel",
+    "subModule": "Total Match Count Summary",
+    "taskDescription": "Verify summary includes total match count",
+    "priority": "",
+    "expectedResult": "The summary includes the total match count derived from the screening data."
+  },
+  {
+    "id": "MS-017-11",
+    "module": "AI Summary Panel",
+    "subModule": "Severity Breakdown Summary",
+    "taskDescription": "Verify summary includes severity breakdown",
+    "priority": "",
+    "expectedResult": "The summary includes a natural-language severity breakdown that reflects the underlying result data."
+  },
+  {
+    "id": "MS-017-12",
+    "module": "AI Summary Panel",
+    "subModule": "Lists Hit Summary",
+    "taskDescription": "Verify summary includes lists hit count or list-related mention",
+    "priority": "",
+    "expectedResult": "The summary mentions the lists hit information and reflects the matched watchlists in the dataset."
+  },
+  {
+    "id": "MS-017-13",
+    "module": "AI Summary Panel",
+    "subModule": "Name-only Match Caveat",
+    "taskDescription": "Verify summary includes the name-only caveat when no ID is provided",
+    "priority": "",
+    "expectedResult": "The summary includes a name-only match caveat when no ID Number is available."
+  },
+  {
+    "id": "MS-017-14",
+    "module": "AI Summary Panel",
+    "subModule": "ID-based Match Validation",
+    "taskDescription": "Verify summary does not incorrectly show the name-only caveat when ID is present",
+    "priority": "",
+    "expectedResult": "The summary does not mention the name-only caveat when ID data is available."
+  },
+  {
+    "id": "MS-017-15",
+    "module": "AI Summary Panel",
+    "subModule": "Review Recommendation Text",
+    "taskDescription": "Verify recommendation to review rows is included in the summary",
+    "priority": "",
+    "expectedResult": "The AI summary includes a recommendation to review the result rows."
+  },
+  {
+    "id": "MS-017-16",
+    "module": "AI Summary Panel",
+    "subModule": "Bold Key Figures Formatting",
+    "taskDescription": "Verify key figures in the AI summary are bolded",
+    "priority": "",
+    "expectedResult": "Key figures such as counts and totals are rendered in bold text."
+  },
+  {
+    "id": "MS-017-17",
+    "module": "AI Summary Panel",
+    "subModule": "Bold Entity Name Formatting",
+    "taskDescription": "Verify entity names in the AI summary are bolded",
+    "priority": "",
+    "expectedResult": "Entity names appear in bold within the AI-generated summary paragraph."
+  },
+  {
+    "id": "MS-017-18",
+    "module": "AI Summary Panel",
+    "subModule": "Dynamic Summary Refresh",
+    "taskDescription": "Verify summary content reflects current screening data and not stale information",
+    "priority": "",
+    "expectedResult": "The AI summary updates according to the active dataset and does not reuse stale content from a previous screening."
+  },
+  {
+    "id": "MS-017-19",
+    "module": "AI Summary Panel",
+    "subModule": "Non-blocking AI Rendering",
+    "taskDescription": "Verify AI summary panel remains non-blocking during rendering",
+    "priority": "",
+    "expectedResult": "The AI panel loading state does not block page rendering or table visibility."
+  },
+  {
+    "id": "MS-017-20",
+    "module": "AI Summary Panel",
+    "subModule": "Full Dataset Summary Handling",
+    "taskDescription": "Verify the AI summary panel handles a fully populated result set cleanly",
+    "priority": "",
+    "expectedResult": "The panel presents a coherent natural-language summary covering total matches, severity breakdown, lists hit, caveats, and review guidance."
+  },
+  {
+    "id": "MS-018-01",
+    "module": "Results Table",
+    "subModule": "Table Structure",
+    "taskDescription": "Verify the results table renders with all 10 columns in the correct order",
+    "priority": "",
+    "expectedResult": "The table renders with all 10 columns in this exact order: Name, Cust ID, Lists Matched, Highest Score, Top List, Category, Type, Match Date, Status, Actions."
+  },
+  {
+    "id": "MS-018-02",
+    "module": "Results Table",
+    "subModule": "Column Styling",
+    "taskDescription": "Verify the Name column uses uppercase, bold, IBM Plex Mono styling",
+    "priority": "",
+    "expectedResult": "The Name value is displayed in uppercase, bold, and IBM Plex Mono."
+  },
+  {
+    "id": "MS-018-03",
+    "module": "Results Table",
+    "subModule": "Column Styling",
+    "taskDescription": "Verify the Cust ID column uses grey IBM Plex Mono styling",
+    "priority": "",
+    "expectedResult": "Cust ID is shown in IBM Plex Mono with small grey text styling."
+  },
+  {
+    "id": "MS-018-04",
+    "module": "Results Table",
+    "subModule": "Column Styling",
+    "taskDescription": "Verify the Lists Matched column shows a monospace numeric value",
+    "priority": "",
+    "expectedResult": "The Lists Matched field displays a numeric count in monospace styling."
+  },
+  {
+    "id": "MS-018-05",
+    "module": "Results Table",
+    "subModule": "Score Presentation",
+    "taskDescription": "Verify Highest Score displays both progress bar and numeric percentage",
+    "priority": "",
+    "expectedResult": "The Highest Score column shows a progress bar and a numeric % label for each row."
+  },
+  {
+    "id": "MS-018-06",
+    "module": "Results Table",
+    "subModule": "Score Presentation",
+    "taskDescription": "Verify Highest Score bar colour is red for scores ≥ 90%",
+    "priority": "",
+    "expectedResult": "The progress bar renders in red for scores 90% and above."
+  },
+  {
+    "id": "MS-018-07",
+    "module": "Results Table",
+    "subModule": "Score Presentation",
+    "taskDescription": "Verify Highest Score bar colour is amber for scores 80–89%",
+    "priority": "",
+    "expectedResult": "The progress bar renders in amber for scores in the 80–89% range."
+  },
+  {
+    "id": "MS-018-08",
+    "module": "Results Table",
+    "subModule": "Score Presentation",
+    "taskDescription": "Verify Highest Score bar colour is blue for scores below 80%",
+    "priority": "",
+    "expectedResult": "The progress bar renders in blue for scores below 80%."
+  },
+  {
+    "id": "MS-018-09",
+    "module": "Results Table",
+    "subModule": "Text Overflow Handling",
+    "taskDescription": "Verify Top List column truncates long text with ellipsis",
+    "priority": "",
+    "expectedResult": "The Top List value is truncated to a maximum width of 160px and ends with an ellipsis."
+  },
+  {
+    "id": "MS-018-10",
+    "module": "Results Table",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Category badge styling for Sanctions",
+    "priority": "",
+    "expectedResult": "The Sanctions badge uses red background (#FEE2E2) with #B91C1C text."
+  },
+  {
+    "id": "MS-018-11",
+    "module": "Results Table",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Category badge styling for PEP",
+    "priority": "",
+    "expectedResult": "The PEP badge uses amber background (#FEF3C7) with #B45309 text."
+  },
+  {
+    "id": "MS-018-12",
+    "module": "Results Table",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Category badge styling for Embargo",
+    "priority": "",
+    "expectedResult": "The Embargo badge uses purple background (#F3E8FF) with #7E22CE text."
+  },
+  {
+    "id": "MS-018-13",
+    "module": "Results Table",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Status badge defaults to Under Review with purple styling",
+    "priority": "",
+    "expectedResult": "The Status badge defaults to Under Review with purple background (#F3E8FF) and #7E22CE text."
+  },
+  {
+    "id": "MS-018-14",
+    "module": "Results Table",
+    "subModule": "Row Actions",
+    "taskDescription": "Verify View Details button has the expected default and hover styles",
+    "priority": "",
+    "expectedResult": "The button appears outlined with blue text by default and fills blue on hover."
+  },
+  {
+    "id": "MS-018-15",
+    "module": "Results Table",
+    "subModule": "Row Interaction",
+    "taskDescription": "Verify row hover produces a clear background highlight",
+    "priority": "",
+    "expectedResult": "Each row shows a visible hover highlight, making the active row easy to scan."
+  },
+  {
+    "id": "MS-018-16",
+    "module": "Results Table",
+    "subModule": "Date Formatting",
+    "taskDescription": "Verify Match Date uses IBM Plex Mono, grey styling, and DD-MM-YYYY format",
+    "priority": "",
+    "expectedResult": "Match Date is shown in IBM Plex Mono, grey text, and DD-MM-YYYY format."
+  },
+  {
+    "id": "MS-018-17",
+    "module": "Results Table",
+    "subModule": "Footer Metadata",
+    "taskDescription": "Verify the Search Time label renders below the table in the correct alignment",
+    "priority": "",
+    "expectedResult": "The label “Search Time: X.XX seconds” appears in small grey text and is right-aligned below the table."
+  },
+  {
+    "id": "MS-018-18",
+    "module": "Results Table",
+    "subModule": "Font Consistency",
+    "taskDescription": "Verify IBM Plex Mono is used consistently for ID, score, and date related columns",
+    "priority": "",
+    "expectedResult": "IBM Plex Mono is used consistently for the specified monospace columns, including IDs, scores, and dates."
+  },
+  {
+    "id": "MS-018-19",
+    "module": "Results Table",
+    "subModule": "Layout Integrity",
+    "taskDescription": "Verify the table remains scannable with clear spacing and alignment across columns",
+    "priority": "",
+    "expectedResult": "Table content remains aligned, readable, and visually scannable without layout breakage."
+  },
+  {
+    "id": "MS-018-20",
+    "module": "Results Table",
+    "subModule": "Data Consistency",
+    "taskDescription": "Verify the row-level data presentation remains consistent across multiple result entries",
+    "priority": "",
+    "expectedResult": "Every row follows the same formatting rules for columns, badges, score display, hover behavior, and text styling."
+  },
+  {
+    "id": "MS-019-01",
+    "module": "Results Table",
+    "subModule": "Filter Bar Layout",
+    "taskDescription": "Verify the filter/control bar is displayed above the results table",
+    "priority": "",
+    "expectedResult": "A filter/control bar is displayed above the table with a text filter, category dropdown, and Export Report button."
+  },
+  {
+    "id": "MS-019-02",
+    "module": "Results Table",
+    "subModule": "Text Filter Input",
+    "taskDescription": "Verify the text filter input placeholder and width",
+    "priority": "",
+    "expectedResult": "The text input displays the placeholder “Filter results...” and respects the max-width of 180px."
+  },
+  {
+    "id": "MS-019-03",
+    "module": "Results Table",
+    "subModule": "Text Search Filtering",
+    "taskDescription": "Verify text filter matches rows by Name",
+    "priority": "",
+    "expectedResult": "Only rows containing the entered name remain visible."
+  },
+  {
+    "id": "MS-019-04",
+    "module": "Results Table",
+    "subModule": "Text Search Filtering",
+    "taskDescription": "Verify text filter matches rows by Cust ID",
+    "priority": "",
+    "expectedResult": "Only rows containing the entered Cust ID remain visible."
+  },
+  {
+    "id": "MS-019-05",
+    "module": "Results Table",
+    "subModule": "Text Search Filtering",
+    "taskDescription": "Verify text filter matches rows by list name",
+    "priority": "",
+    "expectedResult": "Only rows containing the entered list name remain visible."
+  },
+  {
+    "id": "MS-019-06",
+    "module": "Results Table",
+    "subModule": "Text Search Filtering",
+    "taskDescription": "Verify text filter is case-insensitive",
+    "priority": "",
+    "expectedResult": "Matching rows appear regardless of the letter case used in the search input."
+  },
+  {
+    "id": "MS-019-07",
+    "module": "Results Table",
+    "subModule": "Text Search Filtering",
+    "taskDescription": "Verify text filter trims the visible results correctly for partial matches",
+    "priority": "",
+    "expectedResult": "Rows matching the partial text in Name, Cust ID, or list name are shown."
+  },
+  {
+    "id": "MS-019-08",
+    "module": "Results Table",
+    "subModule": "Text Search Filtering",
+    "taskDescription": "Verify text filter hides non-matching rows",
+    "priority": "",
+    "expectedResult": "Only the matching row remains visible, and non-matching rows are hidden."
+  },
+  {
+    "id": "MS-019-09",
+    "module": "Results Table",
+    "subModule": "Text Search Filtering",
+    "taskDescription": "Verify text filter returns no rows for an unmatched search term",
+    "priority": "",
+    "expectedResult": "No rows are displayed when the search term does not match any row."
+  },
+  {
+    "id": "MS-019-10",
+    "module": "Results Table",
+    "subModule": "Category Dropdown",
+    "taskDescription": "Verify category dropdown displays all required options",
+    "priority": "",
+    "expectedResult": "The dropdown shows All categories, Sanctions, PEP, and Embargo."
+  },
+  {
+    "id": "MS-019-11",
+    "module": "Results Table",
+    "subModule": "Category Dropdown",
+    "taskDescription": "Verify selecting Sanctions filters the table correctly",
+    "priority": "",
+    "expectedResult": "Only rows with the Sanctions category are displayed."
+  },
+  {
+    "id": "MS-019-12",
+    "module": "Results Table",
+    "subModule": "Category Dropdown",
+    "taskDescription": "Verify selecting PEP filters the table correctly",
+    "priority": "",
+    "expectedResult": "Only rows with the PEP category are displayed."
+  },
+  {
+    "id": "MS-019-13",
+    "module": "Results Table",
+    "subModule": "Category Dropdown",
+    "taskDescription": "Verify selecting Embargo filters the table correctly",
+    "priority": "",
+    "expectedResult": "Only rows with the Embargo category are displayed."
+  },
+  {
+    "id": "MS-019-14",
+    "module": "Results Table",
+    "subModule": "Category Dropdown",
+    "taskDescription": "Verify All categories removes the category filter",
+    "priority": "",
+    "expectedResult": "The category filter is cleared and all rows become visible again."
+  },
+  {
+    "id": "MS-019-15",
+    "module": "Results Table",
+    "subModule": "Combined Filter Logic",
+    "taskDescription": "Verify text filter and category dropdown work together using AND logic",
+    "priority": "",
+    "expectedResult": "Only rows matching both the text filter and the selected category remain visible."
+  },
+  {
+    "id": "MS-019-16",
+    "module": "Results Table",
+    "subModule": "Combined Filter Logic",
+    "taskDescription": "Verify changing category while text filter is active updates the visible rows correctly",
+    "priority": "",
+    "expectedResult": "The table updates immediately and continues to apply both filters together."
+  },
+  {
+    "id": "MS-019-17",
+    "module": "Results Table",
+    "subModule": "Combined Filter Logic",
+    "taskDescription": "Verify clearing the text filter retains the selected category filter",
+    "priority": "",
+    "expectedResult": "The category filter remains active, and the table shows all rows for that category."
+  },
+  {
+    "id": "MS-019-18",
+    "module": "Results Table",
+    "subModule": "Performance",
+    "taskDescription": "Verify filter response time remains within the client-side performance target",
+    "priority": "",
+    "expectedResult": "The client-side filtering response completes within 300 ms."
+  },
+  {
+    "id": "MS-019-19",
+    "module": "Results Table",
+    "subModule": "Export Action",
+    "taskDescription": "Verify Export Report button is visible and right-aligned",
+    "priority": "",
+    "expectedResult": "The Export Report button is displayed on the right side of the control bar."
+  },
+  {
+    "id": "MS-019-20",
+    "module": "Results Table",
+    "subModule": "Export Action",
+    "taskDescription": "Verify Export Report downloads the current filtered result set",
+    "priority": "",
+    "expectedResult": "A downloadable report is generated for the current result set, including any active filters."
+  },
+  {
+    "id": "MS-019-21",
+    "module": "Results Table",
+    "subModule": "Export Action",
+    "taskDescription": "Verify Export Report respects current text and category filters",
+    "priority": "",
+    "expectedResult": "The exported report contains only the rows currently visible under the active filters."
+  },
+  {
+    "id": "MS-019-22",
+    "module": "Results Table",
+    "subModule": "Reset Filters",
+    "taskDescription": "Verify empty search plus All categories restores the full table",
+    "priority": "",
+    "expectedResult": "All available results are restored in the table with no filtering applied."
+  },
+  {
+    "id": "TC_MS020_001",
+    "module": "Screening Results Page – Timeout Handling",
+    "subModule": "Timeout Handling",
+    "taskDescription": "Verify timeout message is shown when the screening engine response exceeds the allowed threshold",
+    "priority": "",
+    "expectedResult": "The message “Screening is taking longer than expected. Please try again.” is displayed on the Screening Results page."
+  },
+  {
+    "id": "TC_MS020_002",
+    "module": "Screening Results Page – Timeout Handling",
+    "subModule": "Timeout Handling",
+    "taskDescription": "Verify the loading spinner is dismissed when a timeout occurs",
+    "priority": "",
+    "expectedResult": "The loading spinner stops/dismisses and the timeout error message is shown instead of an active loading state."
+  },
+  {
+    "id": "TC_MS020_003",
+    "module": "Screening Results Page – Timeout Handling",
+    "subModule": "Timeout Handling",
+    "taskDescription": "Verify a Retry button is available with the timeout error",
+    "priority": "",
+    "expectedResult": "A Retry button is visible and actionable along with the timeout message."
+  },
+  {
+    "id": "TC_MS020_004",
+    "module": "Screening Results Page – Retry Behavior",
+    "subModule": "Retry Behavior",
+    "taskDescription": "Verify Retry re-triggers screening without requiring the user to re-fill the form after a timeout",
+    "priority": "",
+    "expectedResult": "Screening is re-attempted using the existing form values, and the user is not asked to enter the data again."
+  },
+  {
+    "id": "TC_MS020_005",
+    "module": "Screening Results Page – Retry Behavior",
+    "subModule": "Retry Behavior",
+    "taskDescription": "Verify Retry preserves the selected watchlists and screening criteria after timeout",
+    "priority": "",
+    "expectedResult": "The same watchlists and screening criteria are reused for the retry request without any loss of entered data."
+  },
+  {
+    "id": "TC_MS020_006",
+    "module": "Screening Results Page – Watchlist Availability",
+    "subModule": "Watchlist Availability",
+    "taskDescription": "Verify the correct message appears when one or more selected watchlists are unavailable",
+    "priority": "",
+    "expectedResult": "The message “One or more selected watchlists are currently unavailable. Please contact your administrator.” is displayed."
+  },
+  {
+    "id": "TC_MS020_007",
+    "module": "Screening Results Page – Watchlist Availability",
+    "subModule": "Watchlist Availability",
+    "taskDescription": "Verify the screening form remains editable when watchlist unavailable occurs",
+    "priority": "",
+    "expectedResult": "The form remains fully editable, and the user can modify screening inputs without being blocked."
+  },
+  {
+    "id": "TC_MS020_008",
+    "module": "Screening Results Page – Watchlist Availability",
+    "subModule": "Watchlist Availability",
+    "taskDescription": "Verify the user can adjust the selected watchlists after receiving a watchlist unavailable error",
+    "priority": "",
+    "expectedResult": "The form accepts updates, and the screening request can be submitted again with the revised inputs."
+  },
+  {
+    "id": "TC_MS020_009",
+    "module": "Screening Results Page – Watchlist Availability",
+    "subModule": "Watchlist Availability",
+    "taskDescription": "Verify no screening result statistics are shown when watchlist unavailable occurs",
+    "priority": "",
+    "expectedResult": "No partial result data, summary metrics, or stale table rows are displayed."
+  },
+  {
+    "id": "TC_MS020_010",
+    "module": "Screening Results Page – Zero Results",
+    "subModule": "Zero Results",
+    "taskDescription": "Verify the no-results message is displayed when screening returns zero potential matches",
+    "priority": "",
+    "expectedResult": "The message “No matches found. Screening completed with 0 potential matches.” is displayed."
+  },
+  {
+    "id": "TC_MS020_011",
+    "module": "Screening Results Page – Zero Results",
+    "subModule": "Zero Results",
+    "taskDescription": "Verify all five stat cards display zero when no matches are found",
+    "priority": "",
+    "expectedResult": "All five stat cards show 0 and correctly reflect the zero-results state."
+  },
+  {
+    "id": "TC_MS020_012",
+    "module": "Screening Results Page – Zero Results",
+    "subModule": "Zero Results",
+    "taskDescription": "Verify the results table body remains empty when no matches are found",
+    "priority": "",
+    "expectedResult": "The table body is empty, and no match rows are listed."
+  },
+  {
+    "id": "TC_MS020_013",
+    "module": "Screening Results Page – Zero Results",
+    "subModule": "Zero Results",
+    "taskDescription": "Verify the full results page layout remains visible in the zero-results state",
+    "priority": "",
+    "expectedResult": "The results page remains visible with its standard layout, including the summary section and table shell, while showing zero values."
+  },
+  {
+    "id": "TC_MS020_014",
+    "module": "Screening Results Page – Zero Results",
+    "subModule": "Zero Results",
+    "taskDescription": "Verify no stale or partial match data is displayed when the response contains zero results",
+    "priority": "",
+    "expectedResult": "Previous data is cleared from the visible results area, and only the zero-results state is shown."
+  },
+  {
+    "id": "TC_MS020_015",
+    "module": "Screening Results Page – Network Error Handling",
+    "subModule": "Network Error Handling",
+    "taskDescription": "Verify the network error message is shown when the application cannot reach the screening service",
+    "priority": "",
+    "expectedResult": "The message “Unable to connect. Please check your connection and try again.” is shown."
+  },
+  {
+    "id": "TC_MS020_016",
+    "module": "Screening Results Page – Network Error Handling",
+    "subModule": "Network Error Handling",
+    "taskDescription": "Verify the Retry button is available for network error recovery",
+    "priority": "",
+    "expectedResult": "A Retry button is visible and enabled for the network error state."
+  },
+  {
+    "id": "TC_MS020_017",
+    "module": "Screening Results Page – Network Retry",
+    "subModule": "Network Retry",
+    "taskDescription": "Verify Retry re-attempts screening without clearing the form inputs after a network error",
+    "priority": "",
+    "expectedResult": "The screening request is re-attempted without requiring the user to re-enter the form values."
+  },
+  {
+    "id": "TC_MS020_018",
+    "module": "Screening Results Page – Network Retry",
+    "subModule": "Network Error Handling",
+    "taskDescription": "Verify the loading spinner is removed when a network error is returned",
+    "priority": "",
+    "expectedResult": "The loading spinner is dismissed and the network error message replaces the loading state."
+  },
+  {
+    "id": "TC_MS020_019",
+    "module": "Screening Results Page – Error Recovery",
+    "subModule": "Error Recovery",
+    "taskDescription": "Verify a retry after transient network recovery can complete successfully using the existing form data",
+    "priority": "",
+    "expectedResult": "The retry succeeds using the preserved input values, and the application proceeds to the next valid screening outcome."
+  },
+  {
+    "id": "TC_MS020_020",
+    "module": "Screening Results Page – Watchlist Availability",
+    "subModule": "Watchlist Availability",
+    "taskDescription": "Verify the unavailable-watchlist message is returned when any one of multiple selected watchlists is unavailable",
+    "priority": "",
+    "expectedResult": "The watchlist-unavailable message is displayed, and the screening does not produce partial or misleading result data."
+  },
+  {
+    "id": "TC_MS021_001",
+    "module": "Bulk Upload Validation",
+    "subModule": "File Format Validation",
+    "taskDescription": "Verify an unsupported file format is rejected when a PDF file is selected through the file picker",
+    "priority": "",
+    "expectedResult": "The upload is blocked and the inline message “Only CSV, XLS, and XLSX files are accepted.” is displayed inside the upload zone."
+  },
+  {
+    "id": "TC_MS021_002",
+    "module": "Bulk Upload Validation",
+    "subModule": "File Format Validation",
+    "taskDescription": "Verify an unsupported file format is rejected when a compressed file is dragged and dropped",
+    "priority": "",
+    "expectedResult": "The file is rejected inline and the upload zone shows “Only CSV, XLS, and XLSX files are accepted.” without leaving the page."
+  },
+  {
+    "id": "TC_MS021_003",
+    "module": "Bulk Upload Validation",
+    "subModule": "File Size Validation",
+    "taskDescription": "Verify a file that is exactly 25 MB is accepted and does not trigger the size error",
+    "priority": "",
+    "expectedResult": "The file is accepted for further processing and the file size exceeds limit message is not displayed."
+  },
+  {
+    "id": "TC_MS021_004",
+    "module": "Bulk Upload Validation",
+    "subModule": "File Size Validation",
+    "taskDescription": "Verify a file greater than 25 MB is rejected with the correct inline message",
+    "priority": "",
+    "expectedResult": "The upload is blocked and the message “File size exceeds the 25 MB limit. Please reduce file size and try again.” is displayed inline."
+  },
+  {
+    "id": "TC_MS021_005",
+    "module": "Bulk Upload Validation",
+    "subModule": "Empty File Validation",
+    "taskDescription": "Verify a zero-byte file is rejected as an empty file",
+    "priority": "",
+    "expectedResult": "The upload is blocked and the inline message “The uploaded file contains no data rows. Please use the template and try again.” is displayed."
+  },
+  {
+    "id": "TC_MS021_006",
+    "module": "Bulk Upload Validation",
+    "subModule": "Empty Data Validation",
+    "taskDescription": "Verify a file with template headers only and no data rows is rejected",
+    "priority": "",
+    "expectedResult": "The file is rejected and the message “The uploaded file contains no data rows. Please use the template and try again.” is shown inline."
+  },
+  {
+    "id": "TC_MS021_007",
+    "module": "Bulk Upload Validation",
+    "subModule": "Mandatory Column Validation",
+    "taskDescription": "Verify a file missing one mandatory template column is rejected with the correct column name in the message",
+    "priority": "",
+    "expectedResult": "The upload is blocked and the message “Required column [column_name] is missing. Please use the correct template.” appears with the missing column correctly identified."
+  },
+  {
+    "id": "TC_MS021_008",
+    "module": "Bulk Upload Validation",
+    "subModule": "Mandatory Column Validation",
+    "taskDescription": "Verify a different missing required column is reported correctly in the inline validation message",
+    "priority": "",
+    "expectedResult": "The system rejects the file and displays the missing column message with the correct column reference in place of [column_name]."
+  },
+  {
+    "id": "TC_MS021_009",
+    "module": "Bulk Upload Validation",
+    "subModule": "Multiple Column Validation",
+    "taskDescription": "Verify a file missing multiple required columns is blocked before any upload processing begins",
+    "priority": "",
+    "expectedResult": "The file is rejected inline, the user stays on the upload page, and the correct missing-column validation is shown without partial processing."
+  },
+  {
+    "id": "TC_MS021_010",
+    "module": "Bulk Upload Validation",
+    "subModule": "Upload Flow Blocking",
+    "taskDescription": "Verify all file validation errors remain within the upload zone and do not navigate the user away",
+    "priority": "",
+    "expectedResult": "The error is displayed only within the upload zone and the user is not redirected to another page or results view."
+  },
+  {
+    "id": "TC_MS021_011",
+    "module": "Bulk Upload Validation",
+    "subModule": "Client-Side Request Prevention",
+    "taskDescription": "Verify no network request is triggered when an unsupported file is selected",
+    "priority": "",
+    "expectedResult": "No network request is sent because validation is handled client-side before submission."
+  },
+  {
+    "id": "TC_MS021_012",
+    "module": "Bulk Upload Validation",
+    "subModule": "Client-Side Request Prevention",
+    "taskDescription": "Verify no network request is triggered when a file exceeds the 25 MB limit",
+    "priority": "",
+    "expectedResult": "The oversized file is rejected locally and no API call is initiated."
+  },
+  {
+    "id": "TC_MS021_013",
+    "module": "Bulk Upload Validation",
+    "subModule": "Client-Side Request Prevention",
+    "taskDescription": "Verify no network request is triggered when an empty file is uploaded",
+    "priority": "",
+    "expectedResult": "The validation fails on the client side and no request is sent to the backend."
+  },
+  {
+    "id": "TC_MS021_014",
+    "module": "Bulk Upload Validation",
+    "subModule": "Error Recovery",
+    "taskDescription": "Verify the upload-zone error is cleared when the user replaces an invalid file with a valid file",
+    "priority": "",
+    "expectedResult": "The prior validation message is removed and the valid file is accepted for processing."
+  },
+  {
+    "id": "TC_MS021_015",
+    "module": "Bulk Upload Validation",
+    "subModule": "Error Recovery",
+    "taskDescription": "Verify the validation message updates when a user replaces one invalid file with another invalid file",
+    "priority": "",
+    "expectedResult": "The upload zone displays the correct error for the newly selected file and does not retain the previous message incorrectly."
+  },
+  {
+    "id": "TC_MS021_016",
+    "module": "Bulk Screening Results",
+    "subModule": "Successful Bulk Processing",
+    "taskDescription": "Verify a valid bulk file with all rows processed successfully does not display any row error badge",
+    "priority": "",
+    "expectedResult": "No rows show “Row Error – Skipped” and the Status column reflects normal successful processing."
+  },
+  {
+    "id": "TC_MS021_017",
+    "module": "Bulk Screening Results",
+    "subModule": "Row-Level Error Handling",
+    "taskDescription": "Verify a single failed row shows the correct row-level error badge in the Status column",
+    "priority": "",
+    "expectedResult": "The failed row displays the badge “Row Error – Skipped” in the Status column."
+  },
+  {
+    "id": "TC_MS021_018",
+    "module": "Bulk Screening Results",
+    "subModule": "Row-Level Error Handling",
+    "taskDescription": "Verify multiple failed rows each display the row-level error badge independently",
+    "priority": "",
+    "expectedResult": "Each row that cannot be processed shows “Row Error – Skipped” independently in the Status column."
+  },
+  {
+    "id": "TC_MS021_019",
+    "module": "Bulk Screening Results",
+    "subModule": "Mixed Result Handling",
+    "taskDescription": "Verify mixed success and failed rows show the correct status per row without affecting other records",
+    "priority": "",
+    "expectedResult": "Only the failing rows show “Row Error – Skipped” while valid rows retain their normal result status."
+  },
+  {
+    "id": "TC_MS021_020",
+    "module": "Bulk Screening Results",
+    "subModule": "Re-upload Behavior",
+    "taskDescription": "Verify corrected re-upload replaces prior row error states with the latest uploaded file results",
+    "priority": "",
+    "expectedResult": "The previous row error badges are not retained incorrectly, and the screen reflects only the latest upload’s results."
+  },
+  {
+    "id": "TC_MS022_001",
+    "module": "Manual Screening – Accessibility",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify every visible form input has a corresponding visible <label> element",
+    "priority": "",
+    "expectedResult": "Every form input has a visible label, and no input appears unlabeled to sighted users."
+  },
+  {
+    "id": "TC_MS022_002",
+    "module": "Manual Screening – Accessibility",
+    "subModule": "Accessibility",
+    "taskDescription": "Verify every form input has a programmatic label association for assistive technologies",
+    "priority": "",
+    "expectedResult": "Each input exposes a correct programmatic label or equivalent accessible name, so assistive technologies identify the field correctly."
+  },
+  {
+    "id": "TC_MS022_003",
+    "module": "Manual Screening – Keyboard Navigation",
+    "subModule": "Keyboard Navigation",
+    "taskDescription": "Verify Tab key navigation follows the visual reading order from top to bottom",
+    "priority": "",
+    "expectedResult": "Focus moves in logical visual order without skipping unrelated elements or jumping to unexpected areas."
+  },
+  {
+    "id": "TC_MS022_004",
+    "module": "Manual Screening – Keyboard Navigation",
+    "subModule": "Keyboard Navigation",
+    "taskDescription": "Verify Shift+Tab returns focus in reverse logical order",
+    "priority": "",
+    "expectedResult": "Reverse keyboard navigation follows the expected visual order and remains consistent across the module."
+  },
+  {
+    "id": "TC_MS022_005",
+    "module": "Manual Screening – Keyboard Accessibility",
+    "subModule": "Keyboard Accessibility",
+    "taskDescription": "Verify the entity toggle is fully operable using only the keyboard",
+    "priority": "",
+    "expectedResult": "The entity toggle can be switched using the keyboard and the selected state updates correctly."
+  },
+  {
+    "id": "TC_MS022_006",
+    "module": "Manual Screening – Keyboard Accessibility",
+    "subModule": "Keyboard Accessibility",
+    "taskDescription": "Verify tab switches can be selected using keyboard input",
+    "priority": "",
+    "expectedResult": "Tabs are keyboard navigable and the active tab/panel changes correctly without using the mouse."
+  },
+  {
+    "id": "TC_MS022_007",
+    "module": "Manual Screening – Keyboard Accessibility",
+    "subModule": "Keyboard Accessibility",
+    "taskDescription": "Verify watchlist cards are reachable and selectable using the keyboard",
+    "priority": "",
+    "expectedResult": "Each watchlist card can be reached and selected through the keyboard without requiring pointer input."
+  },
+  {
+    "id": "TC_MS022_008",
+    "module": "Manual Screening – Visual Focus Indicator",
+    "subModule": "Visual Focus Indicator",
+    "taskDescription": "Verify a visible focus ring appears on text inputs when focused by keyboard",
+    "priority": "",
+    "expectedResult": "A visible focus ring appears on the active input, using the approved accent-blue style or equivalent visible focus indication."
+  },
+  {
+    "id": "TC_MS022_009",
+    "module": "Manual Screening – Visual Focus Indicator",
+    "subModule": "Visual Focus Indicator",
+    "taskDescription": "Verify a visible focus ring appears on interactive controls such as toggles, tabs, and cards",
+    "priority": "",
+    "expectedResult": "Every interactive element displays a visible focus indicator while focused, making keyboard position easy to track."
+  },
+  {
+    "id": "TC_MS022_010",
+    "module": "Manual Screening – Mandatory Field Indicators",
+    "subModule": "Mandatory Field Indicators",
+    "taskDescription": "Verify all mandatory fields display a visible red asterisk in the label",
+    "priority": "",
+    "expectedResult": "Each mandatory field shows a visible red asterisk (*) in the label, and optional fields do not incorrectly show the same indicator."
+  },
+  {
+    "id": "TC_MS022_011",
+    "module": "Manual Screening – Color and Text Accessibility",
+    "subModule": "Color and Text Accessibility",
+    "taskDescription": "Verify status badges communicate meaning using both text and colour",
+    "priority": "",
+    "expectedResult": "Every badge includes clear text labels such as Sanctions, PEP, or Under Review, so colour is not the only cue."
+  },
+  {
+    "id": "TC_MS022_012",
+    "module": "Manual Screening – Color and Text Accessibility",
+    "subModule": "Color and Text Accessibility",
+    "taskDescription": "Verify badge meaning remains understandable when viewed in grayscale or low-colour conditions",
+    "priority": "",
+    "expectedResult": "Badge meaning remains clear because the text label is present even when colour cues are not available."
+  },
+  {
+    "id": "TC_MS022_013",
+    "module": "Manual Screening – Screen Reader Support",
+    "subModule": "Screen Reader Support",
+    "taskDescription": "Verify badge text is announced correctly by assistive technology",
+    "priority": "",
+    "expectedResult": "Screen reader users hear the correct status text, confirming the badge is not colour-only information."
+  },
+  {
+    "id": "TC_MS022_014",
+    "module": "Manual Screening – Interaction Responsiveness",
+    "subModule": "Interaction Responsiveness",
+    "taskDescription": "Verify the entity toggle provides visible feedback within 100ms of user activation",
+    "priority": "",
+    "expectedResult": "The entity toggle shows visible feedback within 100ms and the state change is immediately clear to the user."
+  },
+  {
+    "id": "TC_MS022_015",
+    "module": "Manual Screening – Interaction Responsiveness",
+    "subModule": "Interaction Responsiveness",
+    "taskDescription": "Verify tab switching provides visible feedback within 100ms",
+    "priority": "",
+    "expectedResult": "The selected tab updates visually within 100ms and the associated content becomes active immediately."
+  },
+  {
+    "id": "TC_MS022_016",
+    "module": "Manual Screening – Interaction Responsiveness",
+    "subModule": "Interaction Responsiveness",
+    "taskDescription": "Verify watchlist card selection gives visual feedback within 100ms",
+    "priority": "",
+    "expectedResult": "The card selection state is shown within 100ms, with clear feedback indicating the chosen watchlist."
+  },
+  {
+    "id": "TC_MS022_017",
+    "module": "Manual Screening – Browser Compatibility",
+    "subModule": "Browser Compatibility",
+    "taskDescription": "Verify accessibility and keyboard navigation behavior in Chrome 120+",
+    "priority": "",
+    "expectedResult": "The module behaves consistently in Chrome 120+, meeting the expected accessibility and keyboard interaction requirements."
+  },
+  {
+    "id": "TC_MS022_018",
+    "module": "Manual Screening – Browser Compatibility",
+    "subModule": "Browser Compatibility",
+    "taskDescription": "Verify accessibility and keyboard navigation behavior in Edge 120+",
+    "priority": "",
+    "expectedResult": "The module remains accessible and keyboard-friendly in Edge 120+ with no browser-specific accessibility breakage."
+  },
+  {
+    "id": "TC_MS022_019",
+    "module": "Manual Screening – Browser Compatibility",
+    "subModule": "Browser Compatibility",
+    "taskDescription": "Verify accessibility and keyboard navigation behavior in Safari 16+ and Firefox 120+",
+    "priority": "",
+    "expectedResult": "The module remains usable and accessible in Safari 16+ and Firefox 120+ with consistent control behavior."
+  },
+  {
+    "id": "TC_MS022_020",
+    "module": "Manual Screening – Layout and Visibility",
+    "subModule": "Layout and Visibility",
+    "taskDescription": "Verify the license warning banner is visible without scrolling at 1280×720 resolution",
+    "priority": "",
+    "expectedResult": "The license warning banner is visible immediately at 1280×720 without requiring the user to scroll."
+  },
+  {
+    "id": "TC_MS023_001",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify IBM Plex Sans is applied to all standard UI text elements",
+    "priority": "",
+    "expectedResult": "All non-monospace UI text uses IBM Plex Sans consistently across the module."
+  },
+  {
+    "id": "TC_MS023_002",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify IBM Plex Mono is used for Customer IDs and code-like identifiers",
+    "priority": "",
+    "expectedResult": "Customer IDs and code-like values use IBM Plex Mono instead of IBM Plex Sans."
+  },
+  {
+    "id": "TC_MS023_003",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify IBM Plex Mono is applied to match scores and numeric scoring values",
+    "priority": "",
+    "expectedResult": "Match scores are displayed using IBM Plex Mono consistently throughout the module."
+  },
+  {
+    "id": "TC_MS023_004",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify IBM Plex Mono is applied to dates and timestamp values",
+    "priority": "",
+    "expectedResult": "Dates and timestamps use IBM Plex Mono styling consistently."
+  },
+  {
+    "id": "TC_MS023_005",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify the page title uses 14px font size with 600 font weight",
+    "priority": "",
+    "expectedResult": "The page title uses 14px font size with 600 font weight as defined in the design specification."
+  },
+  {
+    "id": "TC_MS023_006",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify section headings use uppercase styling with 11px size and 600 weight",
+    "priority": "",
+    "expectedResult": "Section headings are uppercase and use 11px font size with 600 font weight consistently."
+  },
+  {
+    "id": "TC_MS023_007",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify standard body text uses 13px base font size",
+    "priority": "",
+    "expectedResult": "Standard body content uses the defined 13px base font size throughout the module."
+  },
+  {
+    "id": "TC_MS023_008",
+    "module": "Manual Screening UI – Typography",
+    "subModule": "Typography",
+    "taskDescription": "Verify labels use font sizes between 11.5px and 12.5px",
+    "priority": "",
+    "expectedResult": "Form labels use font sizes between 11.5px and 12.5px consistently."
+  },
+  {
+    "id": "TC_MS023_009",
+    "module": "Manual Screening UI – Design Tokens",
+    "subModule": "Design Tokens",
+    "taskDescription": "Verify the module page background uses the '--bg design token",
+    "priority": "",
+    "expectedResult": "The main page background uses --bg (#F5F6F8) with no deviation."
+  },
+  {
+    "id": "TC_MS023_010",
+    "module": "Manual Screening UI – Design Tokens",
+    "subModule": "Design Tokens",
+    "taskDescription": "Verify cards and panels use the --bg2 design token",
+    "priority": "",
+    "expectedResult": "Cards and panels use --bg2 (#FFFFFF) consistently across the module."
+  },
+  {
+    "id": "TC_MS023_011",
+    "module": "Manual Screening UI – Design Tokens",
+    "subModule": "Design Tokens",
+    "taskDescription": "Verify all input fields use the --bg2 design token",
+    "priority": "",
+    "expectedResult": "All input backgrounds use --bg3 (#F0F1F4) consistently."
+  },
+  {
+    "id": "TC_MS023_012",
+    "module": "Manual Screening UI – CTA Styling",
+    "subModule": "CTA Styling",
+    "taskDescription": "Verify the primary “Start Screening →” CTA uses the '--accent token",
+    "priority": "",
+    "expectedResult": "The primary CTA background uses --accent (#2563EB) exactly as defined."
+  },
+  {
+    "id": "TC_MS023_013",
+    "module": "Manual Screening UI – Focus States",
+    "subModule": "Focus States",
+    "taskDescription": "Verify keyboard focus rings use the '--accent token colour",
+    "priority": "",
+    "expectedResult": "Focus indicators use the approved --accent (#2563EB) colour consistently."
+  },
+  {
+    "id": "TC_MS023_014",
+    "module": "Manual Screening UI – Badge Styling",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Critical and High severity badges use the approved badge colour definitions",
+    "priority": "",
+    "expectedResult": "Critical and High badges match the approved colour token mappings without inconsistencies."
+  },
+  {
+    "id": "TC_MS023_015",
+    "module": "Manual Screening UI – Badge Styling",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Medium and Under Review badges use the approved badge colour definitions",
+    "priority": "",
+    "expectedResult": "Medium and Under Review badges follow the approved colour token definitions consistently."
+  },
+  {
+    "id": "TC_MS023_016",
+    "module": "Manual Screening UI – Badge Styling",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Sanctions, PEP, and Embargo badges use approved token colours",
+    "priority": "",
+    "expectedResult": "Sanctions, PEP, and Embargo badges use the correct approved design token colours."
+  },
+  {
+    "id": "TC_MS023_017",
+    "module": "Manual Screening UI – Badge Styling",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Onboarding, Monitoring, and EDD badges use approved token colours",
+    "priority": "",
+    "expectedResult": "Operational workflow badges use the correct approved colour tokens consistently."
+  },
+  {
+    "id": "TC_MS023_018",
+    "module": "Manual Screening UI – Badge Styling",
+    "subModule": "Badge Styling",
+    "taskDescription": "Verify Regulatory badges use the approved design token mapping",
+    "priority": "",
+    "expectedResult": "Regulatory badges match the official badge definition table exactly."
+  },
+  {
+    "id": "TC_MS023_019",
+    "module": "Manual Screening UI – CSS Standards",
+    "subModule": "CSS Standards",
+    "taskDescription": "Verify no inline styles override approved design tokens without documented justification",
+    "priority": "",
+    "expectedResult": "No unauthorized inline styles override the approved design token system across the module."
+  },
+  {
+    "id": "TC_MS023_020",
+    "module": "Manual Screening UI – Cross-Module Consistency",
+    "subModule": "Cross-Module Consistency",
+    "taskDescription": "Verify typography and design token usage remain visually consistent across all module sections",
+    "priority": "",
+    "expectedResult": "Typography, colours, and token usage remain visually consistent across the entire module with no conflicting styles."
+  },
+  {
+    "id": "MS-020-01",
+    "module": "Entity Type Toggle",
+    "subModule": "Cross-Entity Data Isolation",
+    "taskDescription": "Verify data entered in Individual form does not appear in Non-Individual or Vessel form fields",
+    "priority": "",
+    "expectedResult": "No data leaks across entity forms. Each entity form retains its own state. Switching between entities never causes field values to appear in the wrong form."
+  },
+  {
+    "id": "MS-020-02",
+    "module": "Entity Type Toggle",
+    "subModule": "Cross-Entity Validation State Isolation",
+    "taskDescription": "Verify validation errors triggered in one entity form do not appear in another entity form",
+    "priority": "",
+    "expectedResult": "Validation errors remain scoped to the entity form where they were triggered. Switching entity type does not carry errors into another form."
+  },
+  {
+    "id": "MS-020-03",
+    "module": "Entity Type Toggle",
+    "subModule": "Cross-Entity Purpose Selection Isolation",
+    "taskDescription": "Verify Purpose dropdown selection is independent per entity type and does not sync across forms",
+    "priority": "",
+    "expectedResult": "Purpose selections are independent for each entity type. No cross-entity value propagation occurs."
+  },
+  {
+    "id": "MS-020-04",
+    "module": "Watchlist Configuration",
+    "subModule": "Independent Watchlist Selection Per Entity",
+    "taskDescription": "Verify different watchlist cards can be independently selected for different entity types simultaneously",
+    "priority": "",
+    "expectedResult": "Each entity type retains its own distinct watchlist card selection. No overwriting occurs across entity forms."
+  },
+  {
+    "id": "MS-020-05",
+    "module": "Watchlist Configuration",
+    "subModule": "Bulk Upload Watchlist Isolation from Manual Screening",
+    "taskDescription": "Verify watchlist card selected in Bulk Upload tab does not affect watchlist selections in Manual Screening entity forms",
+    "priority": "",
+    "expectedResult": "Watchlist selection in Bulk Upload is completely isolated from Manual Screening entity form selections. No cross-tab overwriting occurs."
+  },
+  {
+    "id": "MS-020-06",
+    "module": "Top Bar",
+    "subModule": "View Last Results - First Session Empty State",
+    "taskDescription": "Verify View Last Results shows appropriate empty-state message when user has not performed any screening in the current session",
+    "priority": "",
+    "expectedResult": "An appropriate empty-state message such as \"No screening results available. Please perform a screening first.\" is displayed. No crash, blank page, or unhandled error occurs."
+  },
+  {
+    "id": "MS-020-07",
+    "module": "Screening Results",
+    "subModule": "View Last Results - Session Expiry Handling",
+    "taskDescription": "Verify View Last Results handles session expiry gracefully without showing stale or broken results",
+    "priority": "",
+    "expectedResult": "Application detects the expired session and redirects to the login page or displays a clear session-expired message. No stale or partially broken results are rendered."
+  },
+  {
+    "id": "MS-020-08",
+    "module": "Screening Results",
+    "subModule": "View Last Results - In-Session Persistence Across Navigation",
+    "taskDescription": "Verify screening results accessed via View Last Results persist correctly after navigating away and returning within the same session",
+    "priority": "",
+    "expectedResult": "The same results from step 1 are displayed correctly without data loss, blank sections, or errors."
+  },
+  {
+    "id": "MS-020-09",
+    "module": "Screening Results Page — Retry Behavior",
+    "subModule": "Form Data Preserved on Network Retry",
+    "taskDescription": "Verify all submitted form field values are preserved when the user retries after a network timeout without re-entering the form",
+    "priority": "",
+    "expectedResult": "Retry resubmits the screening using the same original form values. User is not redirected back to the form and is not required to re-enter any field values."
+  },
+  {
+    "id": "MS-020-10",
+    "module": "Screening Results Page — Retry Behavior",
+    "subModule": "Retry Shows Loading Indicator",
+    "taskDescription": "Verify a loading indicator is shown while the retry screening request is in progress",
+    "priority": "",
+    "expectedResult": "A loading indicator (spinner, progress bar, or disabled Retry button) is visible during the retry request and disappears when the response is received."
+  },
+  {
+    "id": "MS-020-11",
+    "module": "AI Summary Panel",
+    "subModule": "AI Summary Generation Failure is Non-Blocking",
+    "taskDescription": "Verify that a failure in AI summary generation does not prevent the screening results table and metric cards from loading",
+    "priority": "",
+    "expectedResult": "The AI Summary panel displays a graceful error message (e.g. \"Summary unavailable\" or similar). The subject card, all 5 metric cards, and the full results table load and are fully functional. No blocking spinner or error overlay prevents access to the results."
+  },
+  {
+    "id": "MS-020-12",
+    "module": "AI Summary Panel",
+    "subModule": "AI Summary Error State UI",
+    "taskDescription": "Verify AI Summary panel displays a meaningful error message when GenAI generation fails",
+    "priority": "",
+    "expectedResult": "The AI Summary panel displays a clear, human-readable message such as \"AI summary could not be generated at this time.\" No raw error code, broken layout, or blank panel section is shown."
+  },
+  {
+    "id": "MS-020-13",
+    "module": "Bulk Upload",
+    "subModule": "MIME vs Extension Mismatch Rejection",
+    "taskDescription": "Verify a file with a .csv extension but non-CSV MIME type is rejected with an appropriate error message",
+    "priority": "",
+    "expectedResult": "The upload zone displays an appropriate validation error such as \"File content does not match the expected format. Please upload a valid CSV or spreadsheet file.\" The file is not accepted for screening."
+  },
+  {
+    "id": "MS-020-14",
+    "module": "Bulk Upload",
+    "subModule": "Duplicate Rows Handling in Uploaded File",
+    "taskDescription": "Verify that an uploaded file containing duplicate entity rows is handled without crashing and duplicate rows are flagged in the result",
+    "priority": "",
+    "expectedResult": "The batch does not fail entirely. Duplicate rows are flagged with a \"Skipped\" or \"Duplicate\" status. Non-duplicate rows are screened normally and their results are displayed."
+  },
+  {
+    "id": "MS-020-15",
+    "module": "Bulk Upload Validation",
+    "subModule": "Missing Mandatory Columns Rejection",
+    "taskDescription": "Verify a file missing mandatory template columns (e.g. Name column) is rejected with a clear column-level error message",
+    "priority": "",
+    "expectedResult": "The upload is rejected with a validation message such as \"Required column 'Name' is missing from the uploaded file. Please use the provided template.\" Screening does not start."
+  },
+  {
+    "id": "MS-020-16",
+    "module": "Bulk Screening Results",
+    "subModule": "Partial Row-Level Failure Handling",
+    "taskDescription": "Verify that when some rows in a bulk upload file fail individual screening due to invalid data, the remaining valid rows are still screened and results are shown",
+    "priority": "",
+    "expectedResult": "Rows 3 and 7 are marked with a \"Failed\" or \"Skipped\" status and an appropriate reason. The remaining 8 valid rows are screened normally and display results. The entire batch does not fail due to partial row errors."
+  },
+  {
+    "id": "MS-020-17",
+    "module": "Results Table",
+    "subModule": "Combined Text and Category Filter AND Logic",
+    "taskDescription": "Verify that applying both text filter and category filter simultaneously narrows results using AND logic (both conditions must match)",
+    "priority": "",
+    "expectedResult": "Results table shows only records that match BOTH the text filter \"Ahmed\" AND the \"Critical\" severity category. Records matching only one condition are not shown. AND logic is applied correctly."
+  },
+  {
+    "id": "MS-020-18",
+    "module": "Results Table",
+    "subModule": "Export Report Contains Only Filtered Results",
+    "taskDescription": "Verify that the Export Report function exports only the currently filtered subset of results, not all results",
+    "priority": "",
+    "expectedResult": "The exported file contains only the 3 filtered \"Critical\" rows, not all 15 records. The export accurately reflects the currently visible filtered subset."
+  },
+  {
+    "id": "MS-020-19",
+    "module": "Results Table",
+    "subModule": "Clearing Filters Restores Full Results and Export",
+    "taskDescription": "Verify that clearing all active filters restores the complete unfiltered results table and subsequent export includes all records",
+    "priority": "",
+    "expectedResult": "All records are restored after clearing filters. Export file includes the complete dataset without omissions."
+  },
+  {
+    "id": "MS-020-20",
+    "module": "Results Table",
+    "subModule": "Score Boundary 90% Classified as Critical",
+    "taskDescription": "Verify a screening match with an exact score of 90% is classified and displayed as Critical severity, not High",
+    "priority": "",
+    "expectedResult": "The row with 90% score displays a \"Critical\" severity badge (red). The Critical match metric card count includes this record. The record is NOT counted in High severity."
+  },
+  {
+    "id": "MS-020-21",
+    "module": "Results Table",
+    "subModule": "Score Boundary 89% Classified as High Severity",
+    "taskDescription": "Verify a screening match with an exact score of 89% is classified and displayed as High severity, not Critical",
+    "priority": "",
+    "expectedResult": "The row with 89% score displays a \"High\" severity badge (amber). The High severity metric card includes this record. The record is NOT counted in Critical match."
+  },
+  {
+    "id": "MS-020-22",
+    "module": "Results Table",
+    "subModule": "Score Boundary 80% Classified as High Severity",
+    "taskDescription": "Verify a screening match with an exact score of 80% is classified and displayed as High severity, not Medium",
+    "priority": "",
+    "expectedResult": "The row with 80% score displays a \"High\" severity badge (amber). The High severity metric card count includes this record. The record is NOT counted in Medium risk."
+  },
+  {
+    "id": "MS-020-23",
+    "module": "Results Table",
+    "subModule": "Score Boundary 79% Classified as Medium Risk",
+    "taskDescription": "Verify a screening match with an exact score of 79% is classified and displayed as Medium risk, not High severity",
+    "priority": "",
+    "expectedResult": "The row with 79% score displays a \"Medium risk\" badge (blue). The Medium risk metric card count includes this record. The record is NOT counted in High severity."
+  },
+  {
+    "id": "MS-020-24",
+    "module": "Form Actions & Validation",
+    "subModule": "Page Refresh Behavior on Manual Screening Form",
+    "taskDescription": "Verify the expected state of the Manual Screening form after a browser page refresh",
+    "priority": "",
+    "expectedResult": "The form either returns to a clean default state (all fields cleared, no entity pre-selected) OR retains the entered data if the application intentionally uses session storage. The page does not show a broken or partial state, error, or blank screen."
+  },
+  {
+    "id": "MS-020-25",
+    "module": "Tab Navigation",
+    "subModule": "Manual Screening and Bulk Upload Tab State Isolation",
+    "taskDescription": "Verify that resetting the Manual Screening form does not affect the file upload state or watchlist selection on the Bulk Upload tab",
+    "priority": "",
+    "expectedResult": "The Bulk Upload tab retains the uploaded file details and watchlist selection. Reset Form on the Manual Screening tab only affects the Manual Screening form fields."
+  },
+  {
+    "id": "MS-020-26",
+    "module": "Form Actions & Validation",
+    "subModule": "Logout Clears In-Progress Form Data",
+    "taskDescription": "Verify that logging out and back in clears any in-progress form data from the previous session",
+    "priority": "",
+    "expectedResult": "The Individual form is in the clean default state with no pre-filled values from the previous session. Entity type defaults to Individual, and all fields are empty."
+  }
+]

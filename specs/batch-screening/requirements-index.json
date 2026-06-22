@@ -1,0 +1,3402 @@
+[
+  {
+    "id": "BS-001",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Results landing page loads successfully",
+    "priority": "Critical",
+    "expectedResult": "Match Results landing page should load successfully with all configured UI components rendered correctly"
+  },
+  {
+    "id": "BS-002",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Results page header displays correctly",
+    "priority": "Medium",
+    "expectedResult": "Page header and configured module title should display correctly"
+  },
+  {
+    "id": "BS-003",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify total match count displays correctly",
+    "priority": "High",
+    "expectedResult": "Displayed match count should match actual available screening records"
+  },
+  {
+    "id": "BS-004",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify navigation tabs are displayed correctly",
+    "priority": "Medium",
+    "expectedResult": "All configured navigation tabs should display correctly"
+  },
+  {
+    "id": "BS-005",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Export Report button visibility for authorized users",
+    "priority": "High",
+    "expectedResult": "Export Report button should display correctly for authorized users"
+  },
+  {
+    "id": "BS-006",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Export Report button restriction for unauthorized users",
+    "priority": "Critical",
+    "expectedResult": "Export Report button should remain hidden or inaccessible for unauthorized users"
+  },
+  {
+    "id": "BS-007",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Date Range filter visibility",
+    "priority": "Medium",
+    "expectedResult": "Date Range filter should display correctly"
+  },
+  {
+    "id": "BS-008",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Branch filter visibility",
+    "priority": "Medium",
+    "expectedResult": "Branch filter should display correctly"
+  },
+  {
+    "id": "BS-009",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Customer ID filter visibility",
+    "priority": "Medium",
+    "expectedResult": "Customer ID filter should display correctly"
+  },
+  {
+    "id": "BS-010",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Account Number filter visibility",
+    "priority": "Medium",
+    "expectedResult": "Account Number filter should display correctly"
+  },
+  {
+    "id": "BS-011",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Screening Type filter visibility",
+    "priority": "Medium",
+    "expectedResult": "Screening Type filter should display correctly"
+  },
+  {
+    "id": "BS-012",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify List Name filter visibility",
+    "priority": "Medium",
+    "expectedResult": "List Name filter should display correctly"
+  },
+  {
+    "id": "BS-013",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Clear Filters option visibility",
+    "priority": "Medium",
+    "expectedResult": "Clear Filters option should display correctly"
+  },
+  {
+    "id": "BS-014",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify global search field visibility",
+    "priority": "High",
+    "expectedResult": "Global search field should display correctly with configured placeholder"
+  },
+  {
+    "id": "BS-015",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Results table headers display correctly",
+    "priority": "High",
+    "expectedResult": "All configured table headers should display correctly"
+  },
+  {
+    "id": "BS-016",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Name column displays correct customer names",
+    "priority": "High",
+    "expectedResult": "Correct customer names should display for corresponding records"
+  },
+  {
+    "id": "BS-017",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Customer ID column displays correct values",
+    "priority": "High",
+    "expectedResult": "Correct Customer IDs should display for corresponding records"
+  },
+  {
+    "id": "BS-018",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Highest Match Score column displays correct values",
+    "priority": "Critical",
+    "expectedResult": "Correct highest match score percentages should display"
+  },
+  {
+    "id": "BS-019",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Highest Match Score indicators display configured threshold colors",
+    "priority": "High",
+    "expectedResult": "Score indicators should display configured threshold colors correctly"
+  },
+  {
+    "id": "BS-020",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify List Name With Highest Match Score column displays correctly",
+    "priority": "High",
+    "expectedResult": "Correct watchlist/list names should display"
+  },
+  {
+    "id": "BS-021",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Category column displays correctly",
+    "priority": "High",
+    "expectedResult": "Correct match categories should display for corresponding records"
+  },
+  {
+    "id": "BS-022",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Type column displays correctly",
+    "priority": "High",
+    "expectedResult": "Correct match types should display"
+  },
+  {
+    "id": "BS-023",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Date column displays correct timestamp format",
+    "priority": "High",
+    "expectedResult": "Match Date values should display in configured timestamp format"
+  },
+  {
+    "id": "BS-024",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Actions dropdown visibility for screening rows",
+    "priority": "Critical",
+    "expectedResult": "Actions dropdown should display correctly for eligible rows"
+  },
+  {
+    "id": "BS-025",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify default disposition status displays correctly",
+    "priority": "Critical",
+    "expectedResult": "Default disposition status should display correctly"
+  },
+  {
+    "id": "BS-026",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Results table loads using default sorting",
+    "priority": "High",
+    "expectedResult": "Records should load using configured default sorting order"
+  },
+  {
+    "id": "BS-027",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify empty-state handling when no screening records exist",
+    "priority": "High",
+    "expectedResult": "System should display proper no-records-found empty-state message"
+  },
+  {
+    "id": "BS-028",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify long customer names do not break table layout",
+    "priority": "Medium",
+    "expectedResult": "Long customer names should not break table layout or alignment"
+  },
+  {
+    "id": "BS-029",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify long watchlist names render correctly",
+    "priority": "Medium",
+    "expectedResult": "Long watchlist names should render correctly without UI overlap"
+  },
+  {
+    "id": "BS-030",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-00",
+    "taskDescription": "Verify Match Results page remains responsive during initial data load",
+    "priority": "High",
+    "expectedResult": "Page should remain responsive during initial data loading without freeze or crash"
+  },
+  {
+    "id": "BS-031",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Date Range filter applies records correctly",
+    "priority": "High",
+    "expectedResult": "Only records matching selected date range should display"
+  },
+  {
+    "id": "BS-032",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Branch filter applies records correctly",
+    "priority": "High",
+    "expectedResult": "Only records from selected branch should display"
+  },
+  {
+    "id": "BS-033",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Customer ID filter applies exact matching correctly",
+    "priority": "High",
+    "expectedResult": "Only matching Customer ID record should display"
+  },
+  {
+    "id": "BS-034",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Account Number filter applies correctly",
+    "priority": "High",
+    "expectedResult": "Only matching account records should display"
+  },
+  {
+    "id": "BS-035",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Screening Type filter applies correctly",
+    "priority": "High",
+    "expectedResult": "Only selected screening type records should display"
+  },
+  {
+    "id": "BS-036",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify List Name filter applies correctly",
+    "priority": "High",
+    "expectedResult": "Only selected watchlist records should display"
+  },
+  {
+    "id": "BS-037",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify multiple filters work together correctly",
+    "priority": "Critical",
+    "expectedResult": "System should display records matching all applied filters"
+  },
+  {
+    "id": "BS-038",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify filter chips display after filter application",
+    "priority": "Medium",
+    "expectedResult": "Applied filters should display as active filter chips"
+  },
+  {
+    "id": "BS-039",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify filter chip removal updates results correctly",
+    "priority": "High",
+    "expectedResult": "Removed filter should no longer affect displayed records"
+  },
+  {
+    "id": "BS-040",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Clear Filters resets all applied filters",
+    "priority": "High",
+    "expectedResult": "All filters should reset and complete dataset should display"
+  },
+  {
+    "id": "BS-041",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify filter persistence during page navigation",
+    "priority": "Medium",
+    "expectedResult": "Previously applied filters should remain preserved"
+  },
+  {
+    "id": "BS-042",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify search field accepts valid keyword input",
+    "priority": "High",
+    "expectedResult": "Matching records should display successfully"
+  },
+  {
+    "id": "BS-043",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify search works using customer name",
+    "priority": "High",
+    "expectedResult": "Matching customer records should display"
+  },
+  {
+    "id": "BS-044",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify search works using Customer ID",
+    "priority": "High",
+    "expectedResult": "Matching Customer ID record should display"
+  },
+  {
+    "id": "BS-045",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify search works using account number",
+    "priority": "High",
+    "expectedResult": "Matching account record should display"
+  },
+  {
+    "id": "BS-046",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify search is case insensitive",
+    "priority": "Medium",
+    "expectedResult": "Search results should remain consistent irrespective of text case"
+  },
+  {
+    "id": "BS-047",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify search trims leading and trailing spaces",
+    "priority": "Medium",
+    "expectedResult": "System should return correct matching results"
+  },
+  {
+    "id": "BS-048",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify invalid search keyword handling",
+    "priority": "Medium",
+    "expectedResult": "System should display no-records-found message without errors"
+  },
+  {
+    "id": "BS-049",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify special characters handling in search",
+    "priority": "High",
+    "expectedResult": "System should safely handle special character input without UI/API failure"
+  },
+  {
+    "id": "BS-050",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify SQL injection attempt handling in search",
+    "priority": "Critical",
+    "expectedResult": "System should safely reject malicious input without data exposure or query manipulation"
+  },
+  {
+    "id": "BS-051",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify XSS payload handling in search field",
+    "priority": "Critical",
+    "expectedResult": "System should sanitize input and prevent script execution"
+  },
+  {
+    "id": "BS-052",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify pagination controls visibility",
+    "priority": "Medium",
+    "expectedResult": "Pagination controls should display correctly"
+  },
+  {
+    "id": "BS-053",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Next page navigation works correctly",
+    "priority": "High",
+    "expectedResult": "Next page records should load correctly"
+  },
+  {
+    "id": "BS-054",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify Previous page navigation works correctly",
+    "priority": "High",
+    "expectedResult": "Previous page records should load correctly"
+  },
+  {
+    "id": "BS-055",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify direct page number navigation works correctly",
+    "priority": "Medium",
+    "expectedResult": "Selected page should load successfully"
+  },
+  {
+    "id": "BS-056",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify pagination preserves applied filters",
+    "priority": "High",
+    "expectedResult": "Applied filters should remain active during pagination"
+  },
+  {
+    "id": "BS-057",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify pagination preserves search results",
+    "priority": "High",
+    "expectedResult": "Search results should remain preserved during pagination"
+  },
+  {
+    "id": "BS-058",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify records-per-page configuration works correctly",
+    "priority": "Medium",
+    "expectedResult": "System should display configured number of records"
+  },
+  {
+    "id": "BS-059",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify filter response time remains acceptable",
+    "priority": "High",
+    "expectedResult": "Filter results should load within acceptable response time"
+  },
+  {
+    "id": "BS-060",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Filters & Search",
+    "taskDescription": "Verify search response time remains acceptable",
+    "priority": "High",
+    "expectedResult": "Search results should load within acceptable response time"
+  },
+  {
+    "id": "BS-061",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify navigation from SCR-00 to SCR-01 works correctly",
+    "priority": "Critical",
+    "expectedResult": "Screening Results workspace should open successfully"
+  },
+  {
+    "id": "BS-062",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify mandatory Comment Modal appears before opening SCR-01",
+    "priority": "Critical",
+    "expectedResult": "Mandatory Comment Modal should appear before navigation"
+  },
+  {
+    "id": "BS-063",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify user can submit valid comment to proceed",
+    "priority": "Critical",
+    "expectedResult": "User should navigate to SCR-01 successfully after comment submission"
+  },
+  {
+    "id": "BS-064",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify blank comment submission is restricted",
+    "priority": "Critical",
+    "expectedResult": "System should prevent blank comment submission"
+  },
+  {
+    "id": "BS-065",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify comment character limit validation",
+    "priority": "High",
+    "expectedResult": "System should validate and restrict oversized comments"
+  },
+  {
+    "id": "BS-066",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify comment modal cancel action works correctly",
+    "priority": "Medium",
+    "expectedResult": "Comment Modal should close and user should remain on SCR-00"
+  },
+  {
+    "id": "BS-067",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify Screening Results page loads successfully",
+    "priority": "Critical",
+    "expectedResult": "SCR-01 workspace should load successfully"
+  },
+  {
+    "id": "BS-068",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify screening record details display correctly",
+    "priority": "High",
+    "expectedResult": "Correct screening record information should display"
+  },
+  {
+    "id": "BS-069",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify matched watchlist records display correctly",
+    "priority": "High",
+    "expectedResult": "All associated matched watchlist records should display correctly"
+  },
+  {
+    "id": "BS-070",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify Highest Match Score consistency between SCR-00 and SCR-01",
+    "priority": "Critical",
+    "expectedResult": "Highest Match Score should remain consistent across both screens"
+  },
+  {
+    "id": "BS-071",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify customer information consistency between SCR-00 and SCR-01",
+    "priority": "High",
+    "expectedResult": "Customer details should remain consistent across screens"
+  },
+  {
+    "id": "BS-072",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify match category values display correctly",
+    "priority": "High",
+    "expectedResult": "Correct Match Category values should display"
+  },
+  {
+    "id": "BS-073",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify screening match status display correctly",
+    "priority": "High",
+    "expectedResult": "Correct screening status values should display"
+  },
+  {
+    "id": "BS-074",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify watchlist source names display correctly",
+    "priority": "Medium",
+    "expectedResult": "Correct watchlist names should display"
+  },
+  {
+    "id": "BS-075",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify screening result table headers display correctly",
+    "priority": "Medium",
+    "expectedResult": "All configured table headers should display correctly"
+  },
+  {
+    "id": "BS-076",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify Actions dropdown visibility for matched entries",
+    "priority": "Critical",
+    "expectedResult": "Actions dropdown should display correctly for matched entries"
+  },
+  {
+    "id": "BS-077",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify Under Review action availability",
+    "priority": "High",
+    "expectedResult": "Under Review action should display correctly"
+  },
+  {
+    "id": "BS-078",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify Move to Case action availability",
+    "priority": "Critical",
+    "expectedResult": "Move to Case action should display correctly"
+  },
+  {
+    "id": "BS-079",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify Move to Whitelist action availability",
+    "priority": "High",
+    "expectedResult": "Move to Whitelist action should display correctly"
+  },
+  {
+    "id": "BS-080",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify Move to Exception List action availability",
+    "priority": "High",
+    "expectedResult": "Move to Exception List action should display correctly"
+  },
+  {
+    "id": "BS-081",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify False Positive action is removed from workflow",
+    "priority": "Critical",
+    "expectedResult": "False Positive action should not be visible"
+  },
+  {
+    "id": "BS-082",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify action dropdown options follow configured disposition rules",
+    "priority": "High",
+    "expectedResult": "Only configured disposition actions should display"
+  },
+  {
+    "id": "BS-083",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify long watchlist names render correctly in SCR-01",
+    "priority": "Medium",
+    "expectedResult": "Long watchlist names should render correctly without overlap"
+  },
+  {
+    "id": "BS-084",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify large number of matched entries load successfully",
+    "priority": "High",
+    "expectedResult": "All matched entries should load without UI/API failure"
+  },
+  {
+    "id": "BS-085",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify back navigation from SCR-01 to SCR-00 works correctly",
+    "priority": "Medium",
+    "expectedResult": "User should navigate back to SCR-00 successfully"
+  },
+  {
+    "id": "BS-086",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify applied filters remain preserved after returning from SCR-01",
+    "priority": "High",
+    "expectedResult": "Previously applied filters should remain preserved"
+  },
+  {
+    "id": "BS-087",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify search state remains preserved after returning from SCR-01",
+    "priority": "Medium",
+    "expectedResult": "Previously applied search state should remain preserved"
+  },
+  {
+    "id": "BS-088",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify disposition status synchronization between SCR-00 and SCR-01",
+    "priority": "Critical",
+    "expectedResult": "Updated disposition should reflect consistently on both screens"
+  },
+  {
+    "id": "BS-089",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify unauthorized users cannot access SCR-01 directly",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized SCR-01 access"
+  },
+  {
+    "id": "BS-090",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - SCR-01 Screening Results",
+    "taskDescription": "Verify SCR-01 workspace remains responsive during large dataset loading",
+    "priority": "High",
+    "expectedResult": "SCR-01 workspace should remain responsive without crash or freeze"
+  },
+  {
+    "id": "BS-091",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify mandatory Comment Modal appears for Under Review action",
+    "priority": "Critical",
+    "expectedResult": "Mandatory Comment Modal should appear before action execution"
+  },
+  {
+    "id": "BS-092",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify mandatory Comment Modal appears for Move to Case action",
+    "priority": "Critical",
+    "expectedResult": "Mandatory Comment Modal should appear before action execution"
+  },
+  {
+    "id": "BS-093",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify mandatory Comment Modal appears for Move to Whitelist action",
+    "priority": "Critical",
+    "expectedResult": "Mandatory Comment Modal should appear before action execution"
+  },
+  {
+    "id": "BS-094",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify mandatory Comment Modal appears for Move to Exception List action",
+    "priority": "Critical",
+    "expectedResult": "Mandatory Comment Modal should appear before action execution"
+  },
+  {
+    "id": "BS-095",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify Comment Modal UI components display correctly",
+    "priority": "Medium",
+    "expectedResult": "All modal components should display correctly"
+  },
+  {
+    "id": "BS-096",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify comment text area accepts valid input",
+    "priority": "High",
+    "expectedResult": "Comment text area should accept valid input successfully"
+  },
+  {
+    "id": "BS-097",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify mandatory validation for empty comments",
+    "priority": "Critical",
+    "expectedResult": "System should prevent action execution for blank comments"
+  },
+  {
+    "id": "BS-098",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify whitespace-only comments are restricted",
+    "priority": "High",
+    "expectedResult": "System should reject whitespace-only comments"
+  },
+  {
+    "id": "BS-099",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify comment maximum character limit validation",
+    "priority": "High",
+    "expectedResult": "System should restrict oversized comment submission"
+  },
+  {
+    "id": "BS-100",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify special characters handling in comments",
+    "priority": "Medium",
+    "expectedResult": "System should safely accept supported special characters"
+  },
+  {
+    "id": "BS-101",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify SQL injection payload handling in comments",
+    "priority": "Critical",
+    "expectedResult": "System should safely sanitize malicious input"
+  },
+  {
+    "id": "BS-102",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify XSS payload handling in comments",
+    "priority": "Critical",
+    "expectedResult": "System should sanitize input and prevent script execution"
+  },
+  {
+    "id": "BS-103",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify Cancel button closes Comment Modal correctly",
+    "priority": "Medium",
+    "expectedResult": "Comment Modal should close without changing disposition"
+  },
+  {
+    "id": "BS-104",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify Under Review action updates disposition correctly",
+    "priority": "Critical",
+    "expectedResult": "Disposition status should update to Under Review successfully"
+  },
+  {
+    "id": "BS-105",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify Move to Case action updates disposition correctly",
+    "priority": "Critical",
+    "expectedResult": "Record should move successfully into Case workflow"
+  },
+  {
+    "id": "BS-106",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify Move to Whitelist action updates disposition correctly",
+    "priority": "High",
+    "expectedResult": "Record should move successfully into Whitelist"
+  },
+  {
+    "id": "BS-107",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify Move to Exception List action updates disposition correctly",
+    "priority": "High",
+    "expectedResult": "Record should move successfully into Exception List"
+  },
+  {
+    "id": "BS-108",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify disposition update reflects immediately in SCR-01",
+    "priority": "High",
+    "expectedResult": "Updated disposition should reflect immediately in SCR-01"
+  },
+  {
+    "id": "BS-109",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify disposition update reflects immediately in SCR-00",
+    "priority": "Critical",
+    "expectedResult": "Updated disposition should reflect correctly in SCR-00"
+  },
+  {
+    "id": "BS-110",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify audit log entry creation after disposition update",
+    "priority": "Critical",
+    "expectedResult": "Audit log entry should generate successfully with correct details"
+  },
+  {
+    "id": "BS-111",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify audit logs capture submitted comments",
+    "priority": "Critical",
+    "expectedResult": "Submitted comment should persist correctly in audit logs"
+  },
+  {
+    "id": "BS-112",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify audit logs capture acting user details",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture correct user details"
+  },
+  {
+    "id": "BS-113",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify audit logs capture timestamp details",
+    "priority": "High",
+    "expectedResult": "Audit logs should store accurate timestamps"
+  },
+  {
+    "id": "BS-114",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify duplicate disposition execution is restricted",
+    "priority": "High",
+    "expectedResult": "System should prevent invalid duplicate disposition execution"
+  },
+  {
+    "id": "BS-115",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify mutually exclusive dispositions cannot coexist",
+    "priority": "Critical",
+    "expectedResult": "System should enforce mutually exclusive disposition logic"
+  },
+  {
+    "id": "BS-116",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify unauthorized users cannot execute disposition actions",
+    "priority": "Critical",
+    "expectedResult": "Unauthorized users should not execute disposition actions"
+  },
+  {
+    "id": "BS-117",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify disabled disposition actions are not selectable",
+    "priority": "High",
+    "expectedResult": "Invalid disposition actions should remain disabled or hidden"
+  },
+  {
+    "id": "BS-118",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify concurrent disposition update handling",
+    "priority": "Critical",
+    "expectedResult": "System should safely handle concurrent disposition conflicts"
+  },
+  {
+    "id": "BS-119",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify disposition update persists after page refresh",
+    "priority": "High",
+    "expectedResult": "Updated disposition should persist after page reload"
+  },
+  {
+    "id": "BS-120",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Disposition Actions & Comment Modal",
+    "taskDescription": "Verify disposition workflow remains responsive during repeated actions",
+    "priority": "High",
+    "expectedResult": "System should remain responsive without UI/API degradation"
+  },
+  {
+    "id": "BS-121",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify navigation to Match Details workspace works correctly",
+    "priority": "Critical",
+    "expectedResult": "Match Details workspace should open successfully"
+  },
+  {
+    "id": "BS-122",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify mandatory Comment Modal appears before opening Match Details",
+    "priority": "Critical",
+    "expectedResult": "Mandatory Comment Modal should appear before opening Match Details workspace"
+  },
+  {
+    "id": "BS-123",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify valid comment submission allows Match Details navigation",
+    "priority": "Critical",
+    "expectedResult": "User should navigate successfully to Match Details workspace"
+  },
+  {
+    "id": "BS-124",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify Match Details page loads successfully",
+    "priority": "Critical",
+    "expectedResult": "Match Details workspace should load successfully"
+  },
+  {
+    "id": "BS-125",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify customer profile information displays correctly",
+    "priority": "High",
+    "expectedResult": "Correct customer profile information should display"
+  },
+  {
+    "id": "BS-126",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify matched watchlist profile information displays correctly",
+    "priority": "High",
+    "expectedResult": "Correct watchlist profile information should display"
+  },
+  {
+    "id": "BS-127",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify match score consistency across SCR-00, SCR-01, and Match Details",
+    "priority": "Critical",
+    "expectedResult": "Match score values should remain consistent across all screens"
+  },
+  {
+    "id": "BS-128",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify customer attributes display correctly",
+    "priority": "High",
+    "expectedResult": "All configured customer attributes should display correctly"
+  },
+  {
+    "id": "BS-129",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify watchlist attributes display correctly",
+    "priority": "High",
+    "expectedResult": "All configured watchlist attributes should display correctly"
+  },
+  {
+    "id": "BS-130",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify matched attribute highlighting works correctly",
+    "priority": "High",
+    "expectedResult": "System should highlight corresponding matched attributes correctly"
+  },
+  {
+    "id": "BS-131",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify unmatched attributes display correctly",
+    "priority": "Medium",
+    "expectedResult": "Unmatched attributes should display distinctly without incorrect highlighting"
+  },
+  {
+    "id": "BS-132",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify missing attribute handling works correctly",
+    "priority": "High",
+    "expectedResult": "System should display missing attributes safely without UI/API failure"
+  },
+  {
+    "id": "BS-133",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI Summary section visibility",
+    "priority": "High",
+    "expectedResult": "AI Summary section should display correctly"
+  },
+  {
+    "id": "BS-134",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI-generated narrative displays correctly",
+    "priority": "High",
+    "expectedResult": "Generated AI narrative should display correctly"
+  },
+  {
+    "id": "BS-135",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI confidence indicator displays correctly",
+    "priority": "Medium",
+    "expectedResult": "AI confidence indicator should display correctly"
+  },
+  {
+    "id": "BS-136",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI narrative remains immutable after generation",
+    "priority": "Critical",
+    "expectedResult": "AI-generated narrative should remain immutable"
+  },
+  {
+    "id": "BS-137",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI Summary data matches screening record context",
+    "priority": "Critical",
+    "expectedResult": "AI Summary should align correctly with screening record context"
+  },
+  {
+    "id": "BS-138",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI Summary handles incomplete customer data safely",
+    "priority": "High",
+    "expectedResult": "System should safely generate AI Summary without crash or malformed narrative"
+  },
+  {
+    "id": "BS-139",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI Summary handles high-risk matches correctly",
+    "priority": "Critical",
+    "expectedResult": "AI Summary should correctly represent high-risk screening context"
+  },
+  {
+    "id": "BS-140",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify AI Summary handles low-confidence matches correctly",
+    "priority": "Medium",
+    "expectedResult": "AI Summary should correctly reflect low-confidence analysis"
+  },
+  {
+    "id": "BS-141",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify View Summary action availability",
+    "priority": "Medium",
+    "expectedResult": "View Summary action should display correctly"
+  },
+  {
+    "id": "BS-142",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify Match Details navigation preserves screening context",
+    "priority": "High",
+    "expectedResult": "Correct screening context should remain preserved"
+  },
+  {
+    "id": "BS-143",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify long AI narratives render correctly",
+    "priority": "Medium",
+    "expectedResult": "Long AI narratives should render correctly without UI breakage"
+  },
+  {
+    "id": "BS-144",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify special characters render correctly in AI Summary",
+    "priority": "Medium",
+    "expectedResult": "Special characters should render safely without corruption"
+  },
+  {
+    "id": "BS-145",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify unauthorized users cannot access Match Details workspace",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized Match Details access"
+  },
+  {
+    "id": "BS-146",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify audit logs capture Match Details access",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture Match Details access activity"
+  },
+  {
+    "id": "BS-147",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify audit logs capture AI Summary access",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture AI Summary access details"
+  },
+  {
+    "id": "BS-148",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify Match Details workspace remains responsive during large profile loading",
+    "priority": "High",
+    "expectedResult": "Match Details workspace should remain responsive without crash or freeze"
+  },
+  {
+    "id": "BS-149",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify back navigation from Match Details works correctly",
+    "priority": "Medium",
+    "expectedResult": "User should navigate back successfully without context loss"
+  },
+  {
+    "id": "BS-150",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Match Details & AI Summary",
+    "taskDescription": "Verify selected screening row remains preserved after returning from Match Details",
+    "priority": "Medium",
+    "expectedResult": "Previously selected screening row should remain preserved"
+  },
+  {
+    "id": "BS-151",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify navigation to View Summary workspace works correctly",
+    "priority": "Critical",
+    "expectedResult": "View Summary workspace should open successfully"
+  },
+  {
+    "id": "BS-152",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify mandatory Comment Modal appears before opening View Summary",
+    "priority": "Critical",
+    "expectedResult": "Mandatory Comment Modal should appear before opening View Summary workspace"
+  },
+  {
+    "id": "BS-153",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify valid comment submission allows View Summary access",
+    "priority": "Critical",
+    "expectedResult": "User should navigate successfully to View Summary workspace"
+  },
+  {
+    "id": "BS-154",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary workspace loads successfully",
+    "priority": "Critical",
+    "expectedResult": "View Summary workspace should load successfully"
+  },
+  {
+    "id": "BS-155",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify screening summary information displays correctly",
+    "priority": "High",
+    "expectedResult": "Correct screening summary information should display"
+  },
+  {
+    "id": "BS-156",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify customer details display correctly in summary view",
+    "priority": "High",
+    "expectedResult": "Correct customer details should display"
+  },
+  {
+    "id": "BS-157",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify watchlist summary information displays correctly",
+    "priority": "High",
+    "expectedResult": "Correct watchlist summary information should display"
+  },
+  {
+    "id": "BS-158",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify Highest Match Score displays consistently in summary view",
+    "priority": "Critical",
+    "expectedResult": "Highest Match Score should remain consistent across all workspaces"
+  },
+  {
+    "id": "BS-159",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify disposition status displays correctly in summary view",
+    "priority": "High",
+    "expectedResult": "Latest disposition status should display correctly"
+  },
+  {
+    "id": "BS-160",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify screening timeline/history displays correctly",
+    "priority": "High",
+    "expectedResult": "Complete screening timeline/history should display correctly"
+  },
+  {
+    "id": "BS-161",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify submitted comments display correctly",
+    "priority": "High",
+    "expectedResult": "Associated comments should display correctly"
+  },
+  {
+    "id": "BS-162",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify acting user details display correctly in summary history",
+    "priority": "Medium",
+    "expectedResult": "Correct acting user details should display"
+  },
+  {
+    "id": "BS-163",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify timestamp details display correctly in summary history",
+    "priority": "Medium",
+    "expectedResult": "Correct timestamps should display in configured format"
+  },
+  {
+    "id": "BS-164",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify AI Summary section visibility in View Summary workspace",
+    "priority": "High",
+    "expectedResult": "AI Summary section should display correctly"
+  },
+  {
+    "id": "BS-165",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify AI narrative displays correctly in summary view",
+    "priority": "High",
+    "expectedResult": "Generated AI narrative should display correctly"
+  },
+  {
+    "id": "BS-166",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify AI confidence indicators display correctly",
+    "priority": "Medium",
+    "expectedResult": "AI confidence indicators should display correctly"
+  },
+  {
+    "id": "BS-167",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary displays latest synchronized disposition status",
+    "priority": "Critical",
+    "expectedResult": "View Summary should display latest synchronized disposition status"
+  },
+  {
+    "id": "BS-168",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary reflects latest synchronized comments",
+    "priority": "High",
+    "expectedResult": "View Summary should display latest submitted comments"
+  },
+  {
+    "id": "BS-169",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary handles records with no audit history",
+    "priority": "Medium",
+    "expectedResult": "System should display proper empty-state handling for missing history"
+  },
+  {
+    "id": "BS-170",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify long comments render correctly in summary history",
+    "priority": "Medium",
+    "expectedResult": "Long comments should render correctly without UI distortion"
+  },
+  {
+    "id": "BS-171",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify special characters render correctly in comments/history",
+    "priority": "Medium",
+    "expectedResult": "Special characters should display correctly without corruption"
+  },
+  {
+    "id": "BS-172",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify unauthorized users cannot access View Summary workspace",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized access to View Summary workspace"
+  },
+  {
+    "id": "BS-173",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify audit logs capture View Summary access activity",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture View Summary access activity"
+  },
+  {
+    "id": "BS-174",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary workspace remains responsive during large audit history loading",
+    "priority": "High",
+    "expectedResult": "View Summary workspace should remain responsive without crash or freeze"
+  },
+  {
+    "id": "BS-175",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify back navigation from View Summary works correctly",
+    "priority": "Medium",
+    "expectedResult": "User should navigate back successfully without losing context"
+  },
+  {
+    "id": "BS-176",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify selected screening context remains preserved after returning from View Summary",
+    "priority": "Medium",
+    "expectedResult": "Previously selected screening context should remain preserved"
+  },
+  {
+    "id": "BS-177",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary data remains consistent after page refresh",
+    "priority": "High",
+    "expectedResult": "View Summary should retain latest synchronized data after refresh"
+  },
+  {
+    "id": "BS-178",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary handles incomplete customer/watchlist data safely",
+    "priority": "High",
+    "expectedResult": "System should safely render incomplete summary information without UI/API failure"
+  },
+  {
+    "id": "BS-179",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary displays correct workflow state after concurrent updates",
+    "priority": "Critical",
+    "expectedResult": "View Summary should display latest valid synchronized workflow state"
+  },
+  {
+    "id": "BS-180",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - View Summary Workspace",
+    "taskDescription": "Verify View Summary supports large AI narrative rendering",
+    "priority": "Medium",
+    "expectedResult": "Long AI narratives should render correctly without layout breakage"
+  },
+  {
+    "id": "BS-181",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify Export Report action is visible for authorized users",
+    "priority": "High",
+    "expectedResult": "Export Report action should display correctly"
+  },
+  {
+    "id": "BS-182",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify unauthorized users cannot access Export Report functionality",
+    "priority": "Critical",
+    "expectedResult": "Export functionality should remain inaccessible for unauthorized users"
+  },
+  {
+    "id": "BS-183",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify export generation works for complete screening dataset",
+    "priority": "Critical",
+    "expectedResult": "System should generate export successfully without failure"
+  },
+  {
+    "id": "BS-184",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report contains correct screening records",
+    "priority": "Critical",
+    "expectedResult": "Exported report should contain accurate screening records"
+  },
+  {
+    "id": "BS-185",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report preserves applied filters",
+    "priority": "High",
+    "expectedResult": "Exported report should contain only filtered records"
+  },
+  {
+    "id": "BS-186",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report preserves search results",
+    "priority": "High",
+    "expectedResult": "Exported report should contain only searched records"
+  },
+  {
+    "id": "BS-187",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report contains correct column headers",
+    "priority": "Medium",
+    "expectedResult": "Exported report should contain correct column headers"
+  },
+  {
+    "id": "BS-188",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report contains correct Highest Match Scores",
+    "priority": "Critical",
+    "expectedResult": "Exported Highest Match Scores should match system data"
+  },
+  {
+    "id": "BS-189",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report contains correct disposition statuses",
+    "priority": "High",
+    "expectedResult": "Exported report should contain latest disposition statuses"
+  },
+  {
+    "id": "BS-190",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report contains correct audit comments",
+    "priority": "High",
+    "expectedResult": "Exported report should contain associated comments correctly"
+  },
+  {
+    "id": "BS-191",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report timestamp generation",
+    "priority": "Medium",
+    "expectedResult": "Exported report should contain accurate timestamps"
+  },
+  {
+    "id": "BS-192",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported report filename format",
+    "priority": "Low",
+    "expectedResult": "Export filename should follow configured naming convention"
+  },
+  {
+    "id": "BS-193",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify export handling for large datasets",
+    "priority": "Critical",
+    "expectedResult": "System should generate export successfully without timeout or corruption"
+  },
+  {
+    "id": "BS-194",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify export generation performance remains acceptable",
+    "priority": "High",
+    "expectedResult": "Export generation should complete within acceptable response time"
+  },
+  {
+    "id": "BS-195",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify export generation audit logging",
+    "priority": "Critical",
+    "expectedResult": "System should generate audit log entry for export activity"
+  },
+  {
+    "id": "BS-196",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logs capture export user details",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture correct acting user details"
+  },
+  {
+    "id": "BS-197",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logs capture export timestamps",
+    "priority": "Medium",
+    "expectedResult": "Audit logs should contain accurate export timestamps"
+  },
+  {
+    "id": "BS-198",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logs capture disposition actions",
+    "priority": "Critical",
+    "expectedResult": "Audit logs should capture disposition activities successfully"
+  },
+  {
+    "id": "BS-199",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logs capture View Details access",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture View Details access activity"
+  },
+  {
+    "id": "BS-200",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logs capture View Summary access",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture View Summary access activity"
+  },
+  {
+    "id": "BS-201",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logs preserve submitted comments",
+    "priority": "Critical",
+    "expectedResult": "Submitted comments should persist correctly in audit history"
+  },
+  {
+    "id": "BS-202",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logs preserve historical disposition transitions",
+    "priority": "Critical",
+    "expectedResult": "Audit logs should preserve complete historical workflow transitions"
+  },
+  {
+    "id": "BS-203",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit records remain immutable",
+    "priority": "Critical",
+    "expectedResult": "Historical audit entries should remain immutable"
+  },
+  {
+    "id": "BS-204",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit history sorting displays latest activity first",
+    "priority": "Medium",
+    "expectedResult": "Latest audit activities should display first"
+  },
+  {
+    "id": "BS-205",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit history handles large activity volume",
+    "priority": "High",
+    "expectedResult": "System should load large audit history successfully"
+  },
+  {
+    "id": "BS-206",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify exported reports do not expose unauthorized fields",
+    "priority": "Critical",
+    "expectedResult": "Unauthorized/internal fields should not appear in exported reports"
+  },
+  {
+    "id": "BS-207",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify export operation does not impact active workflows",
+    "priority": "High",
+    "expectedResult": "Export generation should not impact ongoing workflows"
+  },
+  {
+    "id": "BS-208",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify concurrent export requests are handled safely",
+    "priority": "High",
+    "expectedResult": "System should safely handle concurrent export requests"
+  },
+  {
+    "id": "BS-209",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify export failure handling works correctly",
+    "priority": "High",
+    "expectedResult": "System should display proper error handling without application crash"
+  },
+  {
+    "id": "BS-210",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Export Reporting & Audit",
+    "taskDescription": "Verify audit logging remains functional during high-volume operations",
+    "priority": "Critical",
+    "expectedResult": "System should continue generating accurate audit logs during high-volume activity"
+  },
+  {
+    "id": "BS-211",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify authorized analyst can access Batch Screening module",
+    "priority": "Critical",
+    "expectedResult": "Authorized user should access Batch Screening module successfully"
+  },
+  {
+    "id": "BS-212",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized users cannot access Batch Screening module",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized module access"
+  },
+  {
+    "id": "BS-213",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify authorized users can access SCR-01 workspace",
+    "priority": "High",
+    "expectedResult": "Authorized users should access SCR-01 successfully"
+  },
+  {
+    "id": "BS-214",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized users cannot access SCR-01 workspace",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized SCR-01 access"
+  },
+  {
+    "id": "BS-215",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify authorized users can access Match Details workspace",
+    "priority": "High",
+    "expectedResult": "Authorized users should access Match Details workspace successfully"
+  },
+  {
+    "id": "BS-216",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized users cannot access Match Details workspace",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized Match Details access"
+  },
+  {
+    "id": "BS-217",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify authorized users can access View Summary workspace",
+    "priority": "Medium",
+    "expectedResult": "Authorized users should access View Summary workspace successfully"
+  },
+  {
+    "id": "BS-218",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized users cannot access View Summary workspace",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized View Summary access"
+  },
+  {
+    "id": "BS-219",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify authorized users can execute disposition actions",
+    "priority": "Critical",
+    "expectedResult": "Authorized users should execute disposition actions successfully"
+  },
+  {
+    "id": "BS-220",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized users cannot execute disposition actions",
+    "priority": "Critical",
+    "expectedResult": "System should prevent unauthorized disposition execution"
+  },
+  {
+    "id": "BS-221",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify authorized users can access Export Report functionality",
+    "priority": "High",
+    "expectedResult": "Authorized users should generate exports successfully"
+  },
+  {
+    "id": "BS-222",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized users cannot access Export Report functionality",
+    "priority": "Critical",
+    "expectedResult": "System should deny export functionality for unauthorized users"
+  },
+  {
+    "id": "BS-223",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify role-based action visibility works correctly",
+    "priority": "High",
+    "expectedResult": "System should display only authorized actions per role"
+  },
+  {
+    "id": "BS-224",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify restricted disposition actions remain hidden",
+    "priority": "High",
+    "expectedResult": "Restricted disposition actions should remain hidden"
+  },
+  {
+    "id": "BS-225",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify restricted disposition actions remain inaccessible through direct API manipulation",
+    "priority": "Critical",
+    "expectedResult": "System should reject unauthorized disposition execution requests"
+  },
+  {
+    "id": "BS-226",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify session timeout handling during Batch Screening activity",
+    "priority": "High",
+    "expectedResult": "System should redirect user to login after session expiration"
+  },
+  {
+    "id": "BS-227",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify expired sessions cannot execute disposition actions",
+    "priority": "Critical",
+    "expectedResult": "System should block disposition execution for expired sessions"
+  },
+  {
+    "id": "BS-228",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized direct URL access is restricted",
+    "priority": "Critical",
+    "expectedResult": "System should deny direct unauthorized URL access"
+  },
+  {
+    "id": "BS-229",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify browser back navigation does not bypass authorization",
+    "priority": "High",
+    "expectedResult": "System should continue enforcing authorization checks"
+  },
+  {
+    "id": "BS-230",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify sensitive data is not exposed to unauthorized users",
+    "priority": "Critical",
+    "expectedResult": "Restricted users should not view sensitive screening data"
+  },
+  {
+    "id": "BS-231",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify audit logs capture failed unauthorized access attempts",
+    "priority": "High",
+    "expectedResult": "System should generate audit entries for unauthorized access attempts"
+  },
+  {
+    "id": "BS-232",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify audit logs capture unauthorized disposition attempts",
+    "priority": "Critical",
+    "expectedResult": "System should generate audit entries for blocked disposition attempts"
+  },
+  {
+    "id": "BS-233",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify CSRF protection for disposition actions",
+    "priority": "Critical",
+    "expectedResult": "System should reject forged disposition requests"
+  },
+  {
+    "id": "BS-234",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify SQL injection protection across filter inputs",
+    "priority": "Critical",
+    "expectedResult": "System should safely sanitize malicious filter inputs"
+  },
+  {
+    "id": "BS-235",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify XSS protection across search and comment fields",
+    "priority": "Critical",
+    "expectedResult": "System should sanitize malicious script input"
+  },
+  {
+    "id": "BS-236",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify secure handling of special characters in input fields",
+    "priority": "Medium",
+    "expectedResult": "System should safely process special character input"
+  },
+  {
+    "id": "BS-237",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify unauthorized data modification attempts are blocked",
+    "priority": "Critical",
+    "expectedResult": "System should reject unauthorized data modification attempts"
+  },
+  {
+    "id": "BS-238",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify concurrent sessions maintain proper authorization enforcement",
+    "priority": "High",
+    "expectedResult": "System should consistently enforce authorization rules"
+  },
+  {
+    "id": "BS-239",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify logout invalidates active Batch Screening session",
+    "priority": "High",
+    "expectedResult": "System should invalidate active session successfully"
+  },
+  {
+    "id": "BS-240",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - RBAC & Security",
+    "taskDescription": "Verify authentication token reuse is restricted after logout",
+    "priority": "Critical",
+    "expectedResult": "System should reject invalidated authentication tokens"
+  },
+  {
+    "id": "BS-241",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify Highest Match Score calculation displays correctly",
+    "priority": "Critical",
+    "expectedResult": "Highest Match Score should display accurately as per configured scoring logic"
+  },
+  {
+    "id": "BS-242",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify score calculation consistency across SCR-00 and SCR-01",
+    "priority": "Critical",
+    "expectedResult": "Score values should remain consistent across screens"
+  },
+  {
+    "id": "BS-243",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify score calculation consistency in Match Details workspace",
+    "priority": "Critical",
+    "expectedResult": "Score values should remain consistent in Match Details workspace"
+  },
+  {
+    "id": "BS-244",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify threshold-based score color indicators",
+    "priority": "High",
+    "expectedResult": "System should display correct threshold-based score colors"
+  },
+  {
+    "id": "BS-245",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify low-risk matches display correct threshold behavior",
+    "priority": "Medium",
+    "expectedResult": "Low-risk matches should display correct threshold classification"
+  },
+  {
+    "id": "BS-246",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify medium-risk matches display correct threshold behavior",
+    "priority": "High",
+    "expectedResult": "Medium-risk matches should display correct threshold classification"
+  },
+  {
+    "id": "BS-247",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify high-risk matches display correct threshold behavior",
+    "priority": "Critical",
+    "expectedResult": "High-risk matches should display correct threshold classification"
+  },
+  {
+    "id": "BS-248",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify exact threshold boundary score handling",
+    "priority": "High",
+    "expectedResult": "System should classify threshold boundary values correctly"
+  },
+  {
+    "id": "BS-249",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify weighted scoring logic works correctly",
+    "priority": "Critical",
+    "expectedResult": "System should calculate weighted scores correctly"
+  },
+  {
+    "id": "BS-250",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify multiple matched attributes influence score correctly",
+    "priority": "High",
+    "expectedResult": "System should calculate scores correctly using all matched attributes"
+  },
+  {
+    "id": "BS-251",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify missing customer attributes reduce scoring appropriately",
+    "priority": "High",
+    "expectedResult": "System should reduce/adjust scores appropriately for incomplete data"
+  },
+  {
+    "id": "BS-252",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify missing watchlist attributes are handled correctly",
+    "priority": "Medium",
+    "expectedResult": "System should safely process incomplete watchlist attributes"
+  },
+  {
+    "id": "BS-253",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI-generated narrative aligns with calculated score",
+    "priority": "Critical",
+    "expectedResult": "AI narrative should align correctly with calculated match risk"
+  },
+  {
+    "id": "BS-254",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI confidence indicator aligns with scoring outcome",
+    "priority": "High",
+    "expectedResult": "AI confidence indicators should align with calculated scoring logic"
+  },
+  {
+    "id": "BS-255",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI Summary handles low-confidence matches correctly",
+    "priority": "Medium",
+    "expectedResult": "AI Summary should correctly represent low-confidence scenarios"
+  },
+  {
+    "id": "BS-256",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI Summary handles high-risk matches correctly",
+    "priority": "Critical",
+    "expectedResult": "AI Summary should correctly represent high-risk screening scenarios"
+  },
+  {
+    "id": "BS-257",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify duplicate matched attributes do not inflate scores",
+    "priority": "High",
+    "expectedResult": "System should avoid artificial score inflation due to duplicate matches"
+  },
+  {
+    "id": "BS-258",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify score recalculation after disposition update",
+    "priority": "Medium",
+    "expectedResult": "System should preserve accurate scoring after disposition changes"
+  },
+  {
+    "id": "BS-259",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify score consistency after page refresh",
+    "priority": "Medium",
+    "expectedResult": "Score values should remain consistent after refresh"
+  },
+  {
+    "id": "BS-260",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify concurrent updates do not corrupt scoring data",
+    "priority": "Critical",
+    "expectedResult": "System should preserve scoring integrity during concurrent updates"
+  },
+  {
+    "id": "BS-261",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI narrative remains immutable after generation",
+    "priority": "Critical",
+    "expectedResult": "AI-generated narrative should remain immutable"
+  },
+  {
+    "id": "BS-262",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI Summary generation handles incomplete data safely",
+    "priority": "High",
+    "expectedResult": "System should safely generate AI Summary without malformed output"
+  },
+  {
+    "id": "BS-263",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI Summary generation performance remains acceptable",
+    "priority": "High",
+    "expectedResult": "AI Summary generation should complete within acceptable response time"
+  },
+  {
+    "id": "BS-264",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify large AI narratives render correctly",
+    "priority": "Medium",
+    "expectedResult": "Long AI narratives should render correctly without layout issues"
+  },
+  {
+    "id": "BS-265",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify unsupported/special characters do not corrupt scoring or AI output",
+    "priority": "Medium",
+    "expectedResult": "System should safely process special characters without corruption"
+  },
+  {
+    "id": "BS-266",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify audit logs capture scoring-related workflow activity",
+    "priority": "High",
+    "expectedResult": "System should generate audit logs for scoring-related activities"
+  },
+  {
+    "id": "BS-267",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify audit logs capture AI Summary access",
+    "priority": "High",
+    "expectedResult": "System should capture AI Summary access activity in audit logs"
+  },
+  {
+    "id": "BS-268",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify threshold classification remains stable during bulk record loading",
+    "priority": "High",
+    "expectedResult": "System should maintain consistent threshold classifications during bulk loading"
+  },
+  {
+    "id": "BS-269",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify AI Summary generation does not impact screening workflow responsiveness",
+    "priority": "High",
+    "expectedResult": "System should remain responsive during AI Summary generation"
+  },
+  {
+    "id": "BS-270",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Threshold Scoring & AI Logic",
+    "taskDescription": "Verify scoring logic supports large-volume screening datasets",
+    "priority": "Critical",
+    "expectedResult": "System should maintain accurate scoring logic for large-volume datasets"
+  },
+  {
+    "id": "BS-271",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles empty screening dataset safely",
+    "priority": "High",
+    "expectedResult": "System should display proper no-records-found message without UI/API failure"
+  },
+  {
+    "id": "BS-272",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles extremely large screening datasets",
+    "priority": "Critical",
+    "expectedResult": "System should load large datasets successfully without crash or timeout"
+  },
+  {
+    "id": "BS-273",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles long customer names safely",
+    "priority": "Medium",
+    "expectedResult": "System should render long customer names without UI distortion"
+  },
+  {
+    "id": "BS-274",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles long watchlist names safely",
+    "priority": "Medium",
+    "expectedResult": "System should render long watchlist names correctly without overlap"
+  },
+  {
+    "id": "BS-275",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles special characters in customer data",
+    "priority": "Medium",
+    "expectedResult": "System should safely display special characters without corruption"
+  },
+  {
+    "id": "BS-276",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles unsupported characters safely",
+    "priority": "Medium",
+    "expectedResult": "System should safely process unsupported characters without crash"
+  },
+  {
+    "id": "BS-277",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles null values safely",
+    "priority": "High",
+    "expectedResult": "System should safely render null values without UI/API failure"
+  },
+  {
+    "id": "BS-278",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify system handles partially corrupted screening data",
+    "priority": "High",
+    "expectedResult": "System should safely handle corrupted records without application crash"
+  },
+  {
+    "id": "BS-279",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify repeated rapid filter actions do not break system state",
+    "priority": "Medium",
+    "expectedResult": "System should remain stable during repeated filter actions"
+  },
+  {
+    "id": "BS-280",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify repeated rapid search actions do not break system state",
+    "priority": "Medium",
+    "expectedResult": "System should remain stable during repeated search actions"
+  },
+  {
+    "id": "BS-281",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify repeated rapid disposition actions are handled safely",
+    "priority": "Critical",
+    "expectedResult": "System should safely process repeated disposition actions without workflow corruption"
+  },
+  {
+    "id": "BS-282",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify browser refresh during disposition action handling",
+    "priority": "High",
+    "expectedResult": "System should safely recover without duplicate or corrupted workflow state"
+  },
+  {
+    "id": "BS-283",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify browser refresh during export generation handling",
+    "priority": "Medium",
+    "expectedResult": "System should safely handle interrupted export processing"
+  },
+  {
+    "id": "BS-284",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify concurrent multi-user workflow handling",
+    "priority": "Critical",
+    "expectedResult": "System should safely manage concurrent multi-user workflows"
+  },
+  {
+    "id": "BS-285",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify same record concurrent disposition conflict handling",
+    "priority": "Critical",
+    "expectedResult": "System should safely resolve concurrent disposition conflicts"
+  },
+  {
+    "id": "BS-286",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify network interruption handling during workflow execution",
+    "priority": "High",
+    "expectedResult": "System should safely recover from temporary network interruption"
+  },
+  {
+    "id": "BS-287",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify duplicate request submission prevention",
+    "priority": "High",
+    "expectedResult": "System should prevent duplicate workflow submissions"
+  },
+  {
+    "id": "BS-288",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify session expiration handling during active workflow",
+    "priority": "High",
+    "expectedResult": "System should redirect expired sessions safely without workflow corruption"
+  },
+  {
+    "id": "BS-289",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify unauthorized API manipulation attempts are blocked",
+    "priority": "Critical",
+    "expectedResult": "System should reject unauthorized API manipulation attempts"
+  },
+  {
+    "id": "BS-290",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify invalid disposition state transitions are restricted",
+    "priority": "Critical",
+    "expectedResult": "System should reject invalid disposition state transitions"
+  },
+  {
+    "id": "BS-291",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify stale browser session data does not override latest workflow state",
+    "priority": "Critical",
+    "expectedResult": "System should preserve latest valid workflow state"
+  },
+  {
+    "id": "BS-292",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify application recovers safely after backend failure",
+    "priority": "High",
+    "expectedResult": "System should display proper controlled error handling without crash"
+  },
+  {
+    "id": "BS-293",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify application handles slow API response safely",
+    "priority": "Medium",
+    "expectedResult": "System should remain responsive during delayed backend responses"
+  },
+  {
+    "id": "BS-294",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify pagination remains functional after repeated navigation",
+    "priority": "Medium",
+    "expectedResult": "Pagination should remain functional after repeated navigation"
+  },
+  {
+    "id": "BS-295",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify browser compatibility across supported browsers",
+    "priority": "High",
+    "expectedResult": "System should function consistently across supported browsers"
+  },
+  {
+    "id": "BS-296",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify responsive layout behavior across supported resolutions",
+    "priority": "Medium",
+    "expectedResult": "System should maintain proper responsive layout across supported resolutions"
+  },
+  {
+    "id": "BS-297",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify keyboard accessibility for critical workflow actions",
+    "priority": "Medium",
+    "expectedResult": "System should support keyboard-based workflow navigation"
+  },
+  {
+    "id": "BS-298",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify screen-reader compatibility for critical workflow elements",
+    "priority": "Medium",
+    "expectedResult": "System should expose accessible workflow labels correctly"
+  },
+  {
+    "id": "BS-299",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify application memory stability during prolonged usage",
+    "priority": "High",
+    "expectedResult": "System should remain stable during prolonged usage without memory degradation"
+  },
+  {
+    "id": "BS-300",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Negative Edge Cases & NFR",
+    "taskDescription": "Verify overall Batch Screening workflow stability under stress conditions",
+    "priority": "Critical",
+    "expectedResult": "System should maintain stable Batch Screening workflow behavior under stress conditions"
+  },
+  {
+    "id": "BS-301",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify Match Results API returns successful response",
+    "priority": "Critical",
+    "expectedResult": "API should return successful response with correct screening data"
+  },
+  {
+    "id": "BS-302",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify Match Results API response schema validation",
+    "priority": "High",
+    "expectedResult": "API response should match configured response schema"
+  },
+  {
+    "id": "BS-303",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify Match Results API handles invalid request payload safely",
+    "priority": "Critical",
+    "expectedResult": "API should reject invalid request safely without server crash"
+  },
+  {
+    "id": "BS-304",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify Match Results API handles unauthorized requests",
+    "priority": "Critical",
+    "expectedResult": "API should reject unauthorized access requests"
+  },
+  {
+    "id": "BS-305",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify filter API returns correctly filtered results",
+    "priority": "High",
+    "expectedResult": "API should return correctly filtered records"
+  },
+  {
+    "id": "BS-306",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify search API returns correct matching records",
+    "priority": "High",
+    "expectedResult": "API should return accurate matching search results"
+  },
+  {
+    "id": "BS-307",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify pagination API returns correct page data",
+    "priority": "Medium",
+    "expectedResult": "API should return correct records for requested page"
+  },
+  {
+    "id": "BS-308",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify Match Details API returns correct screening profile",
+    "priority": "Critical",
+    "expectedResult": "API should return correct customer and watchlist profile data"
+  },
+  {
+    "id": "BS-309",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify View Summary API returns synchronized workflow data",
+    "priority": "Critical",
+    "expectedResult": "API should return latest synchronized workflow details"
+  },
+  {
+    "id": "BS-310",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify disposition update API updates workflow successfully",
+    "priority": "Critical",
+    "expectedResult": "API should update workflow state successfully"
+  },
+  {
+    "id": "BS-311",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify disposition update API enforces mandatory comments",
+    "priority": "Critical",
+    "expectedResult": "API should reject disposition requests missing mandatory comments"
+  },
+  {
+    "id": "BS-312",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify disposition API prevents invalid workflow transitions",
+    "priority": "Critical",
+    "expectedResult": "API should reject invalid workflow transitions"
+  },
+  {
+    "id": "BS-313",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify disposition API prevents duplicate workflow updates",
+    "priority": "High",
+    "expectedResult": "API should reject duplicate disposition execution"
+  },
+  {
+    "id": "BS-314",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify audit logging API captures disposition actions",
+    "priority": "Critical",
+    "expectedResult": "Audit APIs should capture disposition activities correctly"
+  },
+  {
+    "id": "BS-315",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify export API generates report successfully",
+    "priority": "High",
+    "expectedResult": "Export API should generate report successfully"
+  },
+  {
+    "id": "BS-316",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify export API preserves applied filters",
+    "priority": "High",
+    "expectedResult": "Export API should return correctly filtered report data"
+  },
+  {
+    "id": "BS-317",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify AI Summary API generates valid narrative",
+    "priority": "Critical",
+    "expectedResult": "AI Summary API should generate valid narrative successfully"
+  },
+  {
+    "id": "BS-318",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify AI Summary API handles incomplete records safely",
+    "priority": "High",
+    "expectedResult": "AI Summary API should safely process incomplete profile data"
+  },
+  {
+    "id": "BS-319",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify API responses do not expose sensitive internal fields",
+    "priority": "Critical",
+    "expectedResult": "API responses should not expose sensitive internal fields"
+  },
+  {
+    "id": "BS-320",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify SQL injection attempts are blocked at API layer",
+    "priority": "Critical",
+    "expectedResult": "API should reject/sanitize malicious SQL injection attempts"
+  },
+  {
+    "id": "BS-321",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify XSS payloads are sanitized at API layer",
+    "priority": "Critical",
+    "expectedResult": "API should sanitize malicious script payloads"
+  },
+  {
+    "id": "BS-322",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify API rate limiting works correctly",
+    "priority": "High",
+    "expectedResult": "API should enforce configured rate-limiting controls"
+  },
+  {
+    "id": "BS-323",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify expired authentication tokens are rejected",
+    "priority": "Critical",
+    "expectedResult": "API should reject expired authentication tokens"
+  },
+  {
+    "id": "BS-324",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify concurrent API disposition requests are handled safely",
+    "priority": "Critical",
+    "expectedResult": "API should safely manage concurrent workflow requests"
+  },
+  {
+    "id": "BS-325",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify backend synchronization between SCR-00 and SCR-01 APIs",
+    "priority": "Critical",
+    "expectedResult": "Backend APIs should remain synchronized across workflows"
+  },
+  {
+    "id": "BS-326",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify API response time remains acceptable under load",
+    "priority": "High",
+    "expectedResult": "API responses should complete within acceptable response thresholds"
+  },
+  {
+    "id": "BS-327",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify backend recovers safely after temporary service interruption",
+    "priority": "High",
+    "expectedResult": "Backend services should recover safely without workflow corruption"
+  },
+  {
+    "id": "BS-328",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify API audit logs capture failed requests",
+    "priority": "High",
+    "expectedResult": "API audit logs should capture failed request activities"
+  },
+  {
+    "id": "BS-329",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify API audit logs capture unauthorized access attempts",
+    "priority": "Critical",
+    "expectedResult": "API audit logs should capture unauthorized access attempts"
+  },
+  {
+    "id": "BS-330",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - API & Backend Validation",
+    "taskDescription": "Verify backend services remain stable during prolonged API activity",
+    "priority": "High",
+    "expectedResult": "Backend services should remain stable during prolonged operations"
+  },
+  {
+    "id": "BS-331",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify SCR-00 and SCR-01 remain synchronized after disposition update",
+    "priority": "Critical",
+    "expectedResult": "SCR-00 and SCR-01 should display synchronized disposition status"
+  },
+  {
+    "id": "BS-332",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify Match Details workspace displays latest synchronized workflow state",
+    "priority": "Critical",
+    "expectedResult": "Match Details workspace should display latest synchronized workflow information"
+  },
+  {
+    "id": "BS-333",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify View Summary workspace displays latest synchronized workflow state",
+    "priority": "Critical",
+    "expectedResult": "View Summary workspace should display latest synchronized workflow information"
+  },
+  {
+    "id": "BS-334",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify audit logs synchronize immediately after disposition updates",
+    "priority": "Critical",
+    "expectedResult": "Audit logs should reflect latest disposition activity immediately"
+  },
+  {
+    "id": "BS-335",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify comments remain synchronized across all workspaces",
+    "priority": "High",
+    "expectedResult": "Comments should remain synchronized across all workspaces"
+  },
+  {
+    "id": "BS-336",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify Highest Match Score remains synchronized across all workspaces",
+    "priority": "Critical",
+    "expectedResult": "Highest Match Score should remain synchronized across all workspaces"
+  },
+  {
+    "id": "BS-337",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify export reports reflect latest synchronized workflow updates",
+    "priority": "High",
+    "expectedResult": "Exported report should reflect latest synchronized workflow updates"
+  },
+  {
+    "id": "BS-338",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify AI Summary reflects latest synchronized screening data",
+    "priority": "Critical",
+    "expectedResult": "AI Summary should reflect latest synchronized workflow information"
+  },
+  {
+    "id": "BS-339",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronized workflow state persists after browser refresh",
+    "priority": "High",
+    "expectedResult": "System should preserve synchronized workflow state after refresh"
+  },
+  {
+    "id": "BS-340",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronized workflow state persists after re-login",
+    "priority": "High",
+    "expectedResult": "System should preserve synchronized workflow state after re-login"
+  },
+  {
+    "id": "BS-341",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify concurrent users receive latest synchronized workflow updates",
+    "priority": "Critical",
+    "expectedResult": "All active sessions should receive latest synchronized workflow state"
+  },
+  {
+    "id": "BS-342",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify disposition update synchronization during high-volume operations",
+    "priority": "High",
+    "expectedResult": "System should maintain synchronized workflow state during high-volume operations"
+  },
+  {
+    "id": "BS-343",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronization between UI and backend audit records",
+    "priority": "Critical",
+    "expectedResult": "UI workflow state and audit history should remain synchronized"
+  },
+  {
+    "id": "BS-344",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronization between export data and UI data",
+    "priority": "High",
+    "expectedResult": "Exported data should remain synchronized with displayed UI data"
+  },
+  {
+    "id": "BS-345",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronization after temporary network interruption",
+    "priority": "High",
+    "expectedResult": "System should restore latest synchronized workflow state after reconnection"
+  },
+  {
+    "id": "BS-346",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronization after backend service restart",
+    "priority": "High",
+    "expectedResult": "System should restore latest synchronized workflow state after backend recovery"
+  },
+  {
+    "id": "BS-347",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify stale browser sessions do not override synchronized workflow state",
+    "priority": "Critical",
+    "expectedResult": "Stale sessions should not override latest synchronized workflow state"
+  },
+  {
+    "id": "BS-348",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronization handling for simultaneous disposition updates",
+    "priority": "Critical",
+    "expectedResult": "System should safely resolve simultaneous disposition conflicts"
+  },
+  {
+    "id": "BS-349",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronization for large audit histories",
+    "priority": "Medium",
+    "expectedResult": "System should maintain synchronized audit history correctly"
+  },
+  {
+    "id": "BS-350",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Integration & Sync Validation",
+    "taskDescription": "Verify synchronized workflow state remains stable during prolonged usage",
+    "priority": "High",
+    "expectedResult": "System should maintain synchronized workflow state during prolonged usage"
+  },
+  {
+    "id": "BS-351",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify all disposition actions generate immutable audit records",
+    "priority": "Critical",
+    "expectedResult": "All disposition actions should generate immutable audit records"
+  },
+  {
+    "id": "BS-352",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit records preserve original submitted comments",
+    "priority": "Critical",
+    "expectedResult": "Original submitted comments should remain preserved without alteration"
+  },
+  {
+    "id": "BS-353",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit logs preserve complete workflow chronology",
+    "priority": "High",
+    "expectedResult": "Audit history should preserve accurate chronological workflow order"
+  },
+  {
+    "id": "BS-354",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit logs capture acting user identity accurately",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture correct acting user identities"
+  },
+  {
+    "id": "BS-355",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit logs capture accurate timestamps",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture accurate timestamps for all activities"
+  },
+  {
+    "id": "BS-356",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit records cannot be modified through UI",
+    "priority": "Critical",
+    "expectedResult": "System should prevent modification of historical audit entries"
+  },
+  {
+    "id": "BS-357",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit records cannot be modified through backend requests",
+    "priority": "Critical",
+    "expectedResult": "System should reject audit modification attempts"
+  },
+  {
+    "id": "BS-358",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify mandatory comments are enforced for all configured actions",
+    "priority": "Critical",
+    "expectedResult": "System should enforce mandatory comments for all configured actions"
+  },
+  {
+    "id": "BS-359",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify workflow actions are traceable end-to-end",
+    "priority": "Critical",
+    "expectedResult": "System should preserve complete end-to-end workflow traceability"
+  },
+  {
+    "id": "BS-360",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify screening records preserve historical workflow states",
+    "priority": "High",
+    "expectedResult": "System should preserve historical workflow state transitions"
+  },
+  {
+    "id": "BS-361",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify AI-generated narratives remain audit traceable",
+    "priority": "Critical",
+    "expectedResult": "AI-generated narratives should remain audit traceable"
+  },
+  {
+    "id": "BS-362",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify AI-generated narratives remain immutable",
+    "priority": "Critical",
+    "expectedResult": "AI-generated narratives should remain immutable"
+  },
+  {
+    "id": "BS-363",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit logs capture AI Summary access activity",
+    "priority": "High",
+    "expectedResult": "Audit logs should capture AI Summary access activity"
+  },
+  {
+    "id": "BS-364",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify unauthorized users cannot access audit records",
+    "priority": "Critical",
+    "expectedResult": "System should deny unauthorized audit access"
+  },
+  {
+    "id": "BS-365",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify export reports preserve compliance-required fields",
+    "priority": "High",
+    "expectedResult": "Export reports should contain all compliance-required fields"
+  },
+  {
+    "id": "BS-366",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify export reports do not expose restricted compliance fields",
+    "priority": "Critical",
+    "expectedResult": "Restricted/internal compliance fields should not appear in exports"
+  },
+  {
+    "id": "BS-367",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify workflow state synchronization remains audit consistent",
+    "priority": "Critical",
+    "expectedResult": "Workflow states and audit history should remain fully synchronized"
+  },
+  {
+    "id": "BS-368",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit generation remains functional during concurrent workflow activity",
+    "priority": "High",
+    "expectedResult": "System should generate accurate audit records during concurrent activity"
+  },
+  {
+    "id": "BS-369",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify audit retention handling for large historical datasets",
+    "priority": "Medium",
+    "expectedResult": "System should support large historical audit datasets successfully"
+  },
+  {
+    "id": "BS-370",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Audit & Compliance",
+    "taskDescription": "Verify compliance workflow integrity during prolonged usage",
+    "priority": "High",
+    "expectedResult": "System should preserve compliance workflow integrity during prolonged operations"
+  },
+  {
+    "id": "BS-371",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify Match Results page loads within acceptable response threshold",
+    "priority": "Critical",
+    "expectedResult": "Match Results page should load within acceptable response threshold"
+  },
+  {
+    "id": "BS-372",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify SCR-01 workspace loads within acceptable response threshold",
+    "priority": "High",
+    "expectedResult": "SCR-01 workspace should load within acceptable response threshold"
+  },
+  {
+    "id": "BS-373",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify Match Details workspace loads within acceptable response threshold",
+    "priority": "High",
+    "expectedResult": "Match Details workspace should load within acceptable response threshold"
+  },
+  {
+    "id": "BS-374",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify View Summary workspace loads within acceptable response threshold",
+    "priority": "Medium",
+    "expectedResult": "View Summary workspace should load within acceptable response threshold"
+  },
+  {
+    "id": "BS-375",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify filter execution performance under large datasets",
+    "priority": "High",
+    "expectedResult": "Filters should execute within acceptable response threshold"
+  },
+  {
+    "id": "BS-376",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify search execution performance under large datasets",
+    "priority": "High",
+    "expectedResult": "Search results should load within acceptable response threshold"
+  },
+  {
+    "id": "BS-377",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify disposition update performance under concurrent activity",
+    "priority": "Critical",
+    "expectedResult": "Disposition updates should complete within acceptable response threshold"
+  },
+  {
+    "id": "BS-378",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify export generation performance for large datasets",
+    "priority": "High",
+    "expectedResult": "Export generation should complete within acceptable response threshold"
+  },
+  {
+    "id": "BS-379",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify AI Summary generation performance under heavy usage",
+    "priority": "High",
+    "expectedResult": "AI Summary generation should complete within acceptable response threshold"
+  },
+  {
+    "id": "BS-380",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify application memory stability during prolonged Batch Screening activity",
+    "priority": "High",
+    "expectedResult": "Application should maintain stable memory utilization without degradation"
+  },
+  {
+    "id": "BS-381",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify application CPU utilization remains acceptable during high-volume workflows",
+    "priority": "Medium",
+    "expectedResult": "Application should maintain acceptable CPU utilization during high-volume workflows"
+  },
+  {
+    "id": "BS-382",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify system recovers safely after temporary backend interruption",
+    "priority": "Critical",
+    "expectedResult": "System should recover safely after temporary backend interruption"
+  },
+  {
+    "id": "BS-383",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify system recovers safely after database connectivity interruption",
+    "priority": "Critical",
+    "expectedResult": "System should restore workflow functionality after database recovery"
+  },
+  {
+    "id": "BS-384",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify workflow integrity remains preserved after unexpected browser closure",
+    "priority": "High",
+    "expectedResult": "System should preserve latest committed workflow state after recovery"
+  },
+  {
+    "id": "BS-385",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify system handles simultaneous large exports safely",
+    "priority": "High",
+    "expectedResult": "System should safely process simultaneous large export requests"
+  },
+  {
+    "id": "BS-386",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify system handles simultaneous AI Summary requests safely",
+    "priority": "High",
+    "expectedResult": "System should safely process concurrent AI Summary requests"
+  },
+  {
+    "id": "BS-387",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify audit logging performance remains stable during heavy workflow activity",
+    "priority": "Critical",
+    "expectedResult": "System should maintain stable audit generation during heavy workflow activity"
+  },
+  {
+    "id": "BS-388",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify workflow synchronization remains stable during stress conditions",
+    "priority": "Critical",
+    "expectedResult": "System should preserve synchronized workflow integrity under stress conditions"
+  },
+  {
+    "id": "BS-389",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify application stability during prolonged concurrent user sessions",
+    "priority": "High",
+    "expectedResult": "System should remain stable during prolonged concurrent usage"
+  },
+  {
+    "id": "BS-390",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening - Advanced Performance & Recovery",
+    "taskDescription": "Verify system gracefully handles service timeout scenarios",
+    "priority": "High",
+    "expectedResult": "System should display controlled timeout handling without workflow corruption"
+  },
+  {
+    "id": "BS-391",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify analyst can execute bulk Confirm Match action for multiple selected records",
+    "priority": "High",
+    "expectedResult": "System should successfully update all selected records to Confirm Match with proper audit logging"
+  },
+  {
+    "id": "BS-392",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify analyst can execute bulk False Positive action for multiple selected records",
+    "priority": "High",
+    "expectedResult": "System should successfully update all selected records to False Positive with proper audit trail generation"
+  },
+  {
+    "id": "BS-393",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify analyst can execute bulk Move to Case action for multiple selected records",
+    "priority": "High",
+    "expectedResult": "System should successfully move all selected records into case workflow with traceable audit history"
+  },
+  {
+    "id": "BS-394",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify analyst can execute bulk Move to Whitelist action for multiple selected records",
+    "priority": "High",
+    "expectedResult": "System should successfully whitelist all selected eligible records with proper workflow updates"
+  },
+  {
+    "id": "BS-395",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify analyst can execute bulk Exception List action for multiple selected records",
+    "priority": "High",
+    "expectedResult": "System should successfully process all selected records into Exception List workflow with audit generation"
+  },
+  {
+    "id": "BS-396",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify bulk workflow action requires mandatory disposition comments when configured",
+    "priority": "Medium",
+    "expectedResult": "System should block bulk submission until mandatory comments are provided"
+  },
+  {
+    "id": "BS-397",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify system handles partial success during bulk workflow execution",
+    "priority": "High",
+    "expectedResult": "System should process valid records successfully while displaying detailed failure information for rejected records"
+  },
+  {
+    "id": "BS-398",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify bulk workflow execution generates audit logs for all affected records",
+    "priority": "High",
+    "expectedResult": "System should generate accurate audit logs for every affected screening record with acting analyst details"
+  },
+  {
+    "id": "BS-399",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify bulk workflow execution preserves transactional consistency during backend failure",
+    "priority": "High",
+    "expectedResult": "System should preserve consistent workflow state without orphaned or partially corrupted records"
+  },
+  {
+    "id": "BS-400",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify bulk workflow execution prevents duplicate submission during repeated clicks",
+    "priority": "Medium",
+    "expectedResult": "System should process only one valid bulk workflow request without duplicate updates"
+  },
+  {
+    "id": "BS-401",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify bulk workflow processing supports concurrent analyst activity safely",
+    "priority": "High",
+    "expectedResult": "System should preserve synchronized workflow consistency without record corruption or conflicting updates"
+  },
+  {
+    "id": "BS-402",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify bulk export reflects latest workflow state after bulk disposition execution",
+    "priority": "Medium",
+    "expectedResult": "Exported report should accurately reflect latest synchronized workflow states after bulk processing"
+  },
+  {
+    "id": "BS-403",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify dashboard correctly renders Arabic customer and watchlist names",
+    "priority": "Medium",
+    "expectedResult": "Arabic names should render correctly without encoding corruption or broken characters"
+  },
+  {
+    "id": "BS-404",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify dashboard correctly renders Chinese customer and watchlist names",
+    "priority": "Medium",
+    "expectedResult": "Chinese names and aliases should display correctly across all workflow pages"
+  },
+  {
+    "id": "BS-405",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify dashboard correctly renders accented and special international characters",
+    "priority": "Low",
+    "expectedResult": "Accented characters should render correctly without character replacement or corruption"
+  },
+  {
+    "id": "BS-406",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify multilingual search functionality supports UTF-8 character matching",
+    "priority": "Medium",
+    "expectedResult": "System should correctly return matching multilingual screening records"
+  },
+  {
+    "id": "BS-407",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify multilingual workflow comments are preserved correctly in audit history",
+    "priority": "Medium",
+    "expectedResult": "Audit logs should correctly preserve multilingual comments without encoding corruption"
+  },
+  {
+    "id": "BS-408",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify multilingual export files preserve UTF-8 character encoding",
+    "priority": "High",
+    "expectedResult": "Exported reports should preserve multilingual characters correctly without encoding loss"
+  },
+  {
+    "id": "BS-409",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify AI Summary correctly renders multilingual customer information",
+    "priority": "Medium",
+    "expectedResult": "AI Summary should correctly render multilingual customer and watchlist details"
+  },
+  {
+    "id": "BS-410",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify dashboard correctly supports right-to-left rendering for Arabic text",
+    "priority": "Low",
+    "expectedResult": "RTL Arabic content should render properly without UI overlap or alignment corruption"
+  },
+  {
+    "id": "BS-411",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify audit logs consistently store timestamps in UTC format",
+    "priority": "Medium",
+    "expectedResult": "Audit timestamps should consistently follow configured UTC standard across all workflow records"
+  },
+  {
+    "id": "BS-412",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify exported reports preserve consistent timezone formatting",
+    "priority": "Medium",
+    "expectedResult": "All exported timestamps should follow configured timezone formatting consistently"
+  },
+  {
+    "id": "BS-413",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify workflow timestamps remain consistent for analysts accessing system from different regions",
+    "priority": "Medium",
+    "expectedResult": "System should display timestamps consistently according to configured timezone rules without mismatch"
+  },
+  {
+    "id": "BS-414",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify audit chronology remains accurate during cross-timezone workflow execution",
+    "priority": "High",
+    "expectedResult": "Audit history should preserve accurate chronological sequencing independent of analyst timezone location"
+  },
+  {
+    "id": "BS-415",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify workflow comment modal traps keyboard focus correctly",
+    "priority": "Medium",
+    "expectedResult": "Keyboard focus should remain trapped within active modal controls until modal closure"
+  },
+  {
+    "id": "BS-416",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify dashboard follows logical keyboard tab order across workflow controls",
+    "priority": "Medium",
+    "expectedResult": "Keyboard focus should move logically across filters, tables, actions, and modal controls"
+  },
+  {
+    "id": "BS-417",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify workflow action controls expose ARIA labels for assistive technologies",
+    "priority": "Low",
+    "expectedResult": "Screen reader should correctly announce workflow buttons, dropdowns, modals, and actionable controls"
+  },
+  {
+    "id": "BS-418",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify validation errors are announced correctly for assistive technologies",
+    "priority": "Medium",
+    "expectedResult": "Validation errors should be announced correctly through assistive technologies"
+  },
+  {
+    "id": "BS-419",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify workflow modals support keyboard escape functionality",
+    "priority": "Low",
+    "expectedResult": "System should close modal safely using keyboard escape action without UI corruption"
+  },
+  {
+    "id": "BS-420",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify dashboard remains accessible and usable at 200 percent browser zoom",
+    "priority": "Medium",
+    "expectedResult": "Dashboard layout, workflow controls, and tables should remain readable and usable without overlap or broken rendering"
+  },
+  {
+    "id": "BS-421",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify disposition APIs prevent duplicate workflow execution during retry submissions",
+    "priority": "High",
+    "expectedResult": "System should process only one valid workflow update without duplicate disposition execution"
+  },
+  {
+    "id": "BS-422",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify export generation remains retry-safe after temporary backend interruption",
+    "priority": "Medium",
+    "expectedResult": "System should generate one valid export successfully without duplicate or corrupted reports"
+  },
+  {
+    "id": "BS-423",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify audit logging prevents duplicate entries during workflow retry execution",
+    "priority": "High",
+    "expectedResult": "Audit history should contain only one valid workflow event entry despite retry attempts"
+  },
+  {
+    "id": "BS-424",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify stale retry requests are rejected after workflow state changes",
+    "priority": "High",
+    "expectedResult": "System should reject stale retry requests to prevent inconsistent workflow updates"
+  },
+  {
+    "id": "BS-425",
+    "module": "Sanction Screening",
+    "subModule": "Batch Screening",
+    "taskDescription": "Verify repeated API retry requests do not create duplicate exports or workflow records",
+    "priority": "Medium",
+    "expectedResult": "System should maintain single consistent workflow/export outcome without duplicate record generation"
+  }
+]
