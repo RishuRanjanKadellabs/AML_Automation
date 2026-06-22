@@ -32,7 +32,15 @@
     "whatsapp link": "a[href*='whatsapp']",
     "linkedin link": "a[href*='linkedin']",
     "contact form": ".wpcf7, form.wpcf7-form",
+<<<<<<< HEAD
     "service card": ".elementor-widget-icon-box, .service-card"
+=======
+    "service card": ".elementor-widget-icon-box, .service-card",
+    "sanctions screening configuration breadcrumb": "nav[aria-label='Sanctions screening configuration breadcrumb']",
+    "sanctions screening configuration title": "nav[aria-label='Sanctions screening configuration breadcrumb']",
+    "watchlist status tabs": "tablist[aria-label='Watchlist status filters']",
+    "sanctions screening watchlist table": "table[aria-label='Sanctions screening watchlist rules']"
+>>>>>>> master
   },
   "values": {
     "valid username": "validUsername",

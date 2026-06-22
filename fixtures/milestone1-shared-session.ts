@@ -15,11 +15,14 @@ import {
   logTestStart,
   logTestEnd,
 } from "../tests/helpers/action-logger";
+<<<<<<< HEAD
 import { flushHealSummaryForTest } from "../tests/helpers/heal-log";
 import { installCustomer360ApiMockOnContext } from "../tests/helpers/customer360-api-mock";
 import { installKeywordManagerHealOnContext } from "../tests/helpers/keyword-manager-ui-heal";
 import { installIgnoreWordsHealOnContext } from "../tests/helpers/ignore-words-ui-heal";
 import { installExceptionListHealOnContext } from "../tests/helpers/exception-list-ui-heal";
+=======
+>>>>>>> master
 
 type Milestone1WorkerFixtures = {
   browser: Browser;
@@ -57,10 +60,13 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
   workerContext: [
     async ({ browser }, use, workerInfo) => {
       const context = await browser.newContext();
+<<<<<<< HEAD
       await installCustomer360ApiMockOnContext(context);
       await installKeywordManagerHealOnContext(context);
       await installIgnoreWordsHealOnContext(context);
       await installExceptionListHealOnContext(context);
+=======
+>>>>>>> master
       console.log(`[milestone1][worker ${workerInfo.workerIndex}] context ready`);
       await use(context);
       await closeWorkerContextGracefully(context);
@@ -75,7 +81,11 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
       console.log(`[milestone1][worker ${workerInfo.workerIndex}] page ready`);
       await use(page);
     },
+<<<<<<< HEAD
     { scope: "worker" },
+=======
+    { scope: "worker", timeout: 180000 },
+>>>>>>> master
   ],
 
   _resetSharedPage: [
@@ -103,9 +113,12 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
           ? testInfo.errors.map((entry) => entry.message).join(" | ")
           : undefined);
       logTestEnd(testInfo.status ?? "unknown", testInfo.duration, errorMessage);
+<<<<<<< HEAD
       if (/Case ID:(ATL|EEM|ELM|ERR|EVAL|MCW|NFR|NTF|RBAC|RCE|KM-TC|IWC-TC)-/i.test(testInfo.title)) {
         flushHealSummaryForTest(extractTestId(testInfo.title));
       }
+=======
+>>>>>>> master
       clearActionContext();
 
       await dismissOpenUi(sharedPage);

@@ -1,0 +1,2522 @@
+[
+  {
+    "id": "SC-TC-001",
+    "module": "Screening Configuration",
+    "subModule": "Watchlist Configuration Listing",
+    "taskDescription": "Verify Sanctions Screening Configuration page loads successfully",
+    "priority": "High",
+    "expectedResult": "Page loads successfully displaying header, tabs, search, filters, grid, action buttons and pagination controls without UI issues"
+  },
+  {
+    "id": "SC-TC-002",
+    "module": "Configuration Management",
+    "subModule": "Page Layout",
+    "taskDescription": "Verify all mandatory page components are displayed",
+    "priority": "High",
+    "expectedResult": "All configured page components are displayed correctly and aligned properly"
+  },
+  {
+    "id": "SC-TC-003",
+    "module": "Configuration Management",
+    "subModule": "Grid Validation",
+    "taskDescription": "Verify watchlist records are displayed in grid",
+    "priority": "High",
+    "expectedResult": "Grid displays all available watchlist records successfully"
+  },
+  {
+    "id": "SC-TC-004",
+    "module": "Configuration Management",
+    "subModule": "Grid Columns",
+    "taskDescription": "Verify all expected grid columns are displayed",
+    "priority": "High",
+    "expectedResult": "All expected columns are displayed correctly with proper labels"
+  },
+  {
+    "id": "SC-TC-005",
+    "module": "Configuration Management",
+    "subModule": "Grid Data Integrity",
+    "taskDescription": "Verify displayed watchlist information matches stored data",
+    "priority": "High",
+    "expectedResult": "Grid values match actual saved configuration data"
+  },
+  {
+    "id": "SC-TC-006",
+    "module": "Configuration Management",
+    "subModule": "Empty State",
+    "taskDescription": "Verify system behavior when no watchlist records exist",
+    "priority": "Medium",
+    "expectedResult": "System displays informative no records available message"
+  },
+  {
+    "id": "SC-TC-007",
+    "module": "Configuration Management",
+    "subModule": "Grid Rendering",
+    "taskDescription": "Verify grid rendering with large number of records",
+    "priority": "Medium",
+    "expectedResult": "Grid renders all records correctly without formatting issues"
+  },
+  {
+    "id": "SC-TC-008",
+    "module": "Configuration Management",
+    "subModule": "Page Navigation",
+    "taskDescription": "Verify user can navigate to Watchlist Configuration page",
+    "priority": "High",
+    "expectedResult": "User successfully reaches Watchlist Configuration page"
+  },
+  {
+    "id": "SC-TC-009",
+    "module": "Configuration Management",
+    "subModule": "Session Persistence",
+    "taskDescription": "Verify page accessibility after browser refresh",
+    "priority": "Medium",
+    "expectedResult": "Page reloads successfully and data remains accessible"
+  },
+  {
+    "id": "SC-TC-010",
+    "module": "Configuration Management",
+    "subModule": "Error Handling",
+    "taskDescription": "Verify error handling when watchlist data retrieval fails",
+    "priority": "High",
+    "expectedResult": "System displays meaningful error message without exposing technical details"
+  },
+  {
+    "id": "SC-TC-011",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search by complete watchlist name",
+    "priority": "High",
+    "expectedResult": "Only matching watchlist record is displayed in search results"
+  },
+  {
+    "id": "SC-TC-012",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search by partial watchlist name",
+    "priority": "High",
+    "expectedResult": "All watchlists containing entered text are displayed"
+  },
+  {
+    "id": "SC-TC-013",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search is case insensitive",
+    "priority": "Medium",
+    "expectedResult": "Matching records are returned irrespective of text case"
+  },
+  {
+    "id": "SC-TC-014",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search with leading and trailing spaces",
+    "priority": "Medium",
+    "expectedResult": "System trims extra spaces and returns matching records"
+  },
+  {
+    "id": "SC-TC-015",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search with non-existing watchlist name",
+    "priority": "High",
+    "expectedResult": "System displays no matching records found message"
+  },
+  {
+    "id": "SC-TC-016",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search reset functionality",
+    "priority": "Medium",
+    "expectedResult": "Full watchlist listing is restored after clearing search criteria"
+  },
+  {
+    "id": "SC-TC-017",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search using special characters",
+    "priority": "Medium",
+    "expectedResult": "System handles input safely without application errors"
+  },
+  {
+    "id": "SC-TC-018",
+    "module": "Configuration Management",
+    "subModule": "Search",
+    "taskDescription": "Verify search response after browser refresh",
+    "priority": "Medium",
+    "expectedResult": "System behavior matches configured application design without data inconsistency"
+  },
+  {
+    "id": "SC-TC-019",
+    "module": "Configuration Management",
+    "subModule": "Sorting",
+    "taskDescription": "Verify ascending sort by Watchlist Name",
+    "priority": "High",
+    "expectedResult": "Records are sorted alphabetically from A to Z"
+  },
+  {
+    "id": "SC-TC-020",
+    "module": "Configuration Management",
+    "subModule": "Sorting",
+    "taskDescription": "Verify descending sort by Watchlist Name",
+    "priority": "High",
+    "expectedResult": "Records are sorted alphabetically from Z to A"
+  },
+  {
+    "id": "SC-TC-021",
+    "module": "Configuration Management",
+    "subModule": "Sorting",
+    "taskDescription": "Verify ascending sort by Created Date",
+    "priority": "High",
+    "expectedResult": "Records are sorted from oldest created date to newest created date"
+  },
+  {
+    "id": "SC-TC-022",
+    "module": "Configuration Management",
+    "subModule": "Sorting",
+    "taskDescription": "Verify descending sort by Created Date",
+    "priority": "High",
+    "expectedResult": "Records are sorted from newest created date to oldest created date"
+  },
+  {
+    "id": "SC-TC-023",
+    "module": "Configuration Management",
+    "subModule": "Sorting",
+    "taskDescription": "Verify sorting functionality with single available record",
+    "priority": "Medium",
+    "expectedResult": "System performs sorting without errors and record remains unchanged"
+  },
+  {
+    "id": "SC-TC-024",
+    "module": "Configuration Management",
+    "subModule": "Filters",
+    "taskDescription": "Verify Active tab displays only active watchlists",
+    "priority": "High",
+    "expectedResult": "Only active watchlists are displayed and inactive records are excluded"
+  },
+  {
+    "id": "SC-TC-025",
+    "module": "Configuration Management",
+    "subModule": "Filters",
+    "taskDescription": "Verify Inactive tab displays only inactive watchlists",
+    "priority": "High",
+    "expectedResult": "Only inactive watchlists are displayed and active records are excluded"
+  },
+  {
+    "id": "SC-TC-026",
+    "module": "Configuration Management",
+    "subModule": "Filters",
+    "taskDescription": "Verify All Rules tab displays all watchlists",
+    "priority": "High",
+    "expectedResult": "All watchlists are displayed irrespective of status"
+  },
+  {
+    "id": "SC-TC-027",
+    "module": "Configuration Management",
+    "subModule": "Filters",
+    "taskDescription": "Verify Active tab count matches displayed active records",
+    "priority": "High",
+    "expectedResult": "Active tab count exactly matches actual active records displayed"
+  },
+  {
+    "id": "SC-TC-028",
+    "module": "Configuration Management",
+    "subModule": "Filters",
+    "taskDescription": "Verify Inactive tab count matches displayed inactive records",
+    "priority": "High",
+    "expectedResult": "Inactive tab count exactly matches actual inactive records displayed"
+  },
+  {
+    "id": "SC-TC-029",
+    "module": "Configuration Management",
+    "subModule": "Filters",
+    "taskDescription": "Verify All Rules count equals Active plus Inactive count",
+    "priority": "High",
+    "expectedResult": "All Rules count equals Active count plus Inactive count"
+  },
+  {
+    "id": "SC-TC-030",
+    "module": "Configuration Management",
+    "subModule": "Search and Filter",
+    "taskDescription": "Verify search functionality within Active tab",
+    "priority": "High",
+    "expectedResult": "Search results are returned only from active watchlists matching search criteria"
+  },
+  {
+    "id": "SC-TC-031",
+    "module": "Configuration Management",
+    "subModule": "Pagination",
+    "taskDescription": "Verify pagination controls are displayed when record count exceeds page size",
+    "priority": "High",
+    "expectedResult": "Pagination controls are displayed with page numbers and navigation options"
+  },
+  {
+    "id": "SC-TC-032",
+    "module": "Configuration Management",
+    "subModule": "Pagination",
+    "taskDescription": "Verify user can navigate to next page",
+    "priority": "High",
+    "expectedResult": "Next set of watchlist records is displayed successfully"
+  },
+  {
+    "id": "SC-TC-033",
+    "module": "Configuration Management",
+    "subModule": "Pagination",
+    "taskDescription": "Verify user can navigate to previous page",
+    "priority": "High",
+    "expectedResult": "Previous page records are displayed successfully"
+  },
+  {
+    "id": "SC-TC-034",
+    "module": "Configuration Management",
+    "subModule": "Pagination",
+    "taskDescription": "Verify direct page navigation",
+    "priority": "Medium",
+    "expectedResult": "System navigates to selected page and displays corresponding records"
+  },
+  {
+    "id": "SC-TC-035",
+    "module": "Configuration Management",
+    "subModule": "Pagination",
+    "taskDescription": "Verify pagination remains functional after search and filter operations",
+    "priority": "High",
+    "expectedResult": "Pagination works correctly on filtered result set without displaying incorrect records"
+  },
+  {
+    "id": "SC-TC-036",
+    "module": "Configuration Management",
+    "subModule": "Page Refresh",
+    "taskDescription": "Verify watchlist data refreshes correctly after browser refresh",
+    "priority": "Medium",
+    "expectedResult": "Latest watchlist records are displayed and page remains accessible"
+  },
+  {
+    "id": "SC-TC-037",
+    "module": "Configuration Management",
+    "subModule": "View Watchlist",
+    "taskDescription": "Verify user can open watchlist details from listing page",
+    "priority": "High",
+    "expectedResult": "Watchlist details page/panel opens displaying complete configuration information"
+  },
+  {
+    "id": "SC-TC-038",
+    "module": "Configuration Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify user can navigate to Edit Watchlist screen",
+    "priority": "High",
+    "expectedResult": "Edit Watchlist wizard opens with existing configuration values pre-populated"
+  },
+  {
+    "id": "SC-TC-039",
+    "module": "Configuration Management",
+    "subModule": "Status Management",
+    "taskDescription": "Verify active watchlist can be disabled successfully",
+    "priority": "High",
+    "expectedResult": "Watchlist status changes from Active to Inactive, success message is displayed, and record moves to Inactive tab"
+  },
+  {
+    "id": "SC-TC-040",
+    "module": "Configuration Management",
+    "subModule": "Status Management",
+    "taskDescription": "Verify inactive watchlist can be enabled successfully",
+    "priority": "High",
+    "expectedResult": "Watchlist status changes from Inactive to Active, success message is displayed, and record moves to Active tab"
+  },
+  {
+    "id": "SC-TC-041",
+    "module": "Watchlist Creation",
+    "subModule": "Create Watchlist - Basic Information",
+    "taskDescription": "Verify Create Watchlist wizard opens successfully",
+    "priority": "High",
+    "expectedResult": "Create Watchlist wizard opens displaying Basic Information step with all configured fields"
+  },
+  {
+    "id": "SC-TC-042",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Watchlist Name field is displayed",
+    "priority": "High",
+    "expectedResult": "Watchlist Name field is visible and editable"
+  },
+  {
+    "id": "SC-TC-043",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Screening Type dropdown is displayed",
+    "priority": "High",
+    "expectedResult": "Screening Type dropdown is visible with configured options"
+  },
+  {
+    "id": "SC-TC-044",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Purpose dropdown is displayed",
+    "priority": "High",
+    "expectedResult": "Purpose dropdown is visible with configured options"
+  },
+  {
+    "id": "SC-TC-045",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Description field is displayed",
+    "priority": "Medium",
+    "expectedResult": "Description field is visible and editable"
+  },
+  {
+    "id": "SC-TC-046",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Created By field is displayed as read-only",
+    "priority": "High",
+    "expectedResult": "Created By field is populated automatically and cannot be modified"
+  },
+  {
+    "id": "SC-TC-047",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Watchlist Name is mandatory",
+    "priority": "High",
+    "expectedResult": "Validation message is displayed and user cannot proceed"
+  },
+  {
+    "id": "SC-TC-048",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Screening Type is mandatory",
+    "priority": "High",
+    "expectedResult": "Validation message is displayed and user cannot proceed"
+  },
+  {
+    "id": "SC-TC-049",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Purpose is mandatory",
+    "priority": "High",
+    "expectedResult": "Validation message is displayed and user cannot proceed"
+  },
+  {
+    "id": "SC-TC-050",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify user can proceed when all mandatory fields are populated",
+    "priority": "High",
+    "expectedResult": "User successfully navigates to List Selection step"
+  },
+  {
+    "id": "SC-TC-051",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify duplicate Watchlist Name validation",
+    "priority": "High",
+    "expectedResult": "System displays duplicate name validation and prevents continuation"
+  },
+  {
+    "id": "SC-TC-052",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Watchlist Name accepts valid alphanumeric characters",
+    "priority": "Medium",
+    "expectedResult": "Value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-053",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Watchlist Name trims leading and trailing spaces",
+    "priority": "Medium",
+    "expectedResult": "Extra spaces are trimmed before save/validation"
+  },
+  {
+    "id": "SC-TC-054",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Watchlist Name does not accept whitespace-only value",
+    "priority": "High",
+    "expectedResult": "System displays mandatory validation message"
+  },
+  {
+    "id": "SC-TC-055",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify maximum length validation for Watchlist Name",
+    "priority": "High",
+    "expectedResult": "System prevents excess characters or displays validation message"
+  },
+  {
+    "id": "SC-TC-056",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Watchlist Name supports special business characters",
+    "priority": "Medium",
+    "expectedResult": "Value is accepted successfully if supported by requirements"
+  },
+  {
+    "id": "SC-TC-057",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Description field accepts maximum allowed content",
+    "priority": "Medium",
+    "expectedResult": "Description is accepted within configured limit"
+  },
+  {
+    "id": "SC-TC-058",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify Description field rejects content beyond allowed limit",
+    "priority": "Medium",
+    "expectedResult": "System prevents excess characters or displays validation"
+  },
+  {
+    "id": "SC-TC-059",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify contextual help text changes based on Screening Type selection",
+    "priority": "Medium",
+    "expectedResult": "Contextual guidance updates correctly according to selected Screening Type"
+  },
+  {
+    "id": "SC-TC-060",
+    "module": "Watchlist Creation",
+    "subModule": "Basic Information",
+    "taskDescription": "Verify entered data persists when navigating back to Basic Information step",
+    "priority": "High",
+    "expectedResult": "Previously entered values remain populated without data loss"
+  },
+  {
+    "id": "SC-TC-061",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify List Selection step is displayed successfully",
+    "priority": "High",
+    "expectedResult": "List Selection screen loads successfully with all available watchlists"
+  },
+  {
+    "id": "SC-TC-062",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify at least one watchlist must be selected",
+    "priority": "High",
+    "expectedResult": "Validation message is displayed and user cannot proceed"
+  },
+  {
+    "id": "SC-TC-063",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify user can select a single regulatory watchlist",
+    "priority": "High",
+    "expectedResult": "Selected watchlist is accepted and user can proceed"
+  },
+  {
+    "id": "SC-TC-064",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify user can select multiple regulatory watchlists",
+    "priority": "High",
+    "expectedResult": "All selected watchlists are retained successfully"
+  },
+  {
+    "id": "SC-TC-065",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify user can select regulatory and custom watchlists together",
+    "priority": "High",
+    "expectedResult": "System accepts combined watchlist selection"
+  },
+  {
+    "id": "SC-TC-066",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify selected watchlists are visually highlighted",
+    "priority": "Medium",
+    "expectedResult": "Selected watchlists display selection indicator"
+  },
+  {
+    "id": "SC-TC-067",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify watchlist search functionality",
+    "priority": "Medium",
+    "expectedResult": "Matching watchlists are displayed"
+  },
+  {
+    "id": "SC-TC-068",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify partial search functionality",
+    "priority": "Medium",
+    "expectedResult": "Matching watchlists are returned"
+  },
+  {
+    "id": "SC-TC-069",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify search is case insensitive",
+    "priority": "Medium",
+    "expectedResult": "Matching watchlists are displayed regardless of case"
+  },
+  {
+    "id": "SC-TC-070",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify no result behavior for invalid search",
+    "priority": "Medium",
+    "expectedResult": "No matching watchlists message is displayed"
+  },
+  {
+    "id": "SC-TC-071",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify watchlist entry count is displayed",
+    "priority": "Medium",
+    "expectedResult": "Entry count is displayed for each available watchlist"
+  },
+  {
+    "id": "SC-TC-072",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify watchlist description is displayed",
+    "priority": "Low",
+    "expectedResult": "Description is displayed correctly for available watchlists"
+  },
+  {
+    "id": "SC-TC-073",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify selected watchlists persist after navigating back",
+    "priority": "High",
+    "expectedResult": "Previously selected watchlists remain selected"
+  },
+  {
+    "id": "SC-TC-074",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify selected watchlists persist after editing previous step",
+    "priority": "High",
+    "expectedResult": "Selected watchlists remain intact"
+  },
+  {
+    "id": "SC-TC-075",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify all selected watchlists appear in configuration summary",
+    "priority": "High",
+    "expectedResult": "Summary displays all selected watchlists correctly"
+  },
+  {
+    "id": "SC-TC-076",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify Internal PEP watchlist selection",
+    "priority": "High",
+    "expectedResult": "Watchlist is selected successfully"
+  },
+  {
+    "id": "SC-TC-077",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify Adverse Media watchlist selection",
+    "priority": "High",
+    "expectedResult": "Watchlist is selected successfully"
+  },
+  {
+    "id": "SC-TC-078",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify maximum supported watchlists can be selected",
+    "priority": "Medium",
+    "expectedResult": "System accepts all supported selections without error"
+  },
+  {
+    "id": "SC-TC-079",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify watchlist selections remain after browser refresh handling",
+    "priority": "Medium",
+    "expectedResult": "System behavior follows configured application design without data corruption"
+  },
+  {
+    "id": "SC-TC-080",
+    "module": "Watchlist Creation",
+    "subModule": "List Selection",
+    "taskDescription": "Verify Next button successfully navigates to Field Mapping step",
+    "priority": "High",
+    "expectedResult": "User successfully navigates to Field Mapping step"
+  },
+  {
+    "id": "SC-TC-081",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Field Mapping step loads successfully",
+    "priority": "High",
+    "expectedResult": "Field Mapping screen loads successfully displaying mapping grid and controls"
+  },
+  {
+    "id": "SC-TC-082",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Source Field dropdown is displayed",
+    "priority": "High",
+    "expectedResult": "Source Field dropdown is visible and contains configured source fields"
+  },
+  {
+    "id": "SC-TC-083",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Target Attribute dropdown is displayed",
+    "priority": "High",
+    "expectedResult": "Target Attribute dropdown is visible and contains configured target attributes"
+  },
+  {
+    "id": "SC-TC-084",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Add Field Mapping button functionality",
+    "priority": "High",
+    "expectedResult": "New mapping row is added successfully"
+  },
+  {
+    "id": "SC-TC-085",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Delete Mapping functionality",
+    "priority": "High",
+    "expectedResult": "Selected mapping row is removed successfully"
+  },
+  {
+    "id": "SC-TC-086",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Required checkbox is displayed",
+    "priority": "Medium",
+    "expectedResult": "Required checkbox is available for configurable mappings"
+  },
+  {
+    "id": "SC-TC-087",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify user can mark mapping as required",
+    "priority": "High",
+    "expectedResult": "Mapping is marked as required successfully"
+  },
+  {
+    "id": "SC-TC-088",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Primary Name can be mapped successfully",
+    "priority": "High",
+    "expectedResult": "Mapping is accepted successfully"
+  },
+  {
+    "id": "SC-TC-089",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Date of Birth can be mapped successfully",
+    "priority": "High",
+    "expectedResult": "Mapping is accepted successfully"
+  },
+  {
+    "id": "SC-TC-090",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify National ID can be mapped successfully",
+    "priority": "High",
+    "expectedResult": "Mapping is accepted successfully"
+  },
+  {
+    "id": "SC-TC-091",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Passport Number can be mapped successfully",
+    "priority": "Medium",
+    "expectedResult": "Mapping is accepted successfully"
+  },
+  {
+    "id": "SC-TC-092",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Nationality can be mapped successfully",
+    "priority": "Medium",
+    "expectedResult": "Mapping is accepted successfully"
+  },
+  {
+    "id": "SC-TC-093",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Citizenship can be mapped successfully",
+    "priority": "Medium",
+    "expectedResult": "Mapping is accepted successfully"
+  },
+  {
+    "id": "SC-TC-094",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify Alias can be mapped successfully",
+    "priority": "Medium",
+    "expectedResult": "Mapping is accepted successfully"
+  },
+  {
+    "id": "SC-TC-095",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify duplicate source field selection is restricted",
+    "priority": "High",
+    "expectedResult": "System prevents duplicate source field mapping and displays validation"
+  },
+  {
+    "id": "SC-TC-096",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify duplicate target attribute selection is restricted",
+    "priority": "High",
+    "expectedResult": "System prevents duplicate target attribute mapping and displays validation"
+  },
+  {
+    "id": "SC-TC-097",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify mandatory mapping validation before proceeding",
+    "priority": "High",
+    "expectedResult": "Validation message is displayed and user cannot proceed"
+  },
+  {
+    "id": "SC-TC-098",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify required mapping cannot be removed",
+    "priority": "High",
+    "expectedResult": "System prevents deletion and displays validation message"
+  },
+  {
+    "id": "SC-TC-099",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify mapping configuration persists during navigation",
+    "priority": "High",
+    "expectedResult": "Previously configured mappings remain unchanged"
+  },
+  {
+    "id": "SC-TC-100",
+    "module": "Watchlist Creation",
+    "subModule": "Field Mapping",
+    "taskDescription": "Verify successful navigation to Match Score Configuration step",
+    "priority": "High",
+    "expectedResult": "User successfully navigates to Match Score Configuration step"
+  },
+  {
+    "id": "SC-TC-101",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify Match Score Configuration step loads successfully",
+    "priority": "High",
+    "expectedResult": "Match Score Configuration screen loads successfully with all configured fields"
+  },
+  {
+    "id": "SC-TC-102",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify Threshold Score field is displayed for mapped attributes",
+    "priority": "High",
+    "expectedResult": "Threshold Score control is displayed for each mapped attribute"
+  },
+  {
+    "id": "SC-TC-103",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify Weight field is displayed for mapped attributes",
+    "priority": "High",
+    "expectedResult": "Weight field is displayed for each mapped attribute"
+  },
+  {
+    "id": "SC-TC-104",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify threshold slider can be adjusted",
+    "priority": "Medium",
+    "expectedResult": "Threshold value updates successfully within allowed range"
+  },
+  {
+    "id": "SC-TC-105",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify threshold value can be entered manually",
+    "priority": "Medium",
+    "expectedResult": "Threshold value is accepted and reflected correctly"
+  },
+  {
+    "id": "SC-TC-106",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify minimum threshold boundary value",
+    "priority": "High",
+    "expectedResult": "Minimum threshold value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-107",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify maximum threshold boundary value",
+    "priority": "High",
+    "expectedResult": "Maximum threshold value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-108",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify threshold value below minimum is rejected",
+    "priority": "High",
+    "expectedResult": "System displays validation and rejects invalid value"
+  },
+  {
+    "id": "SC-TC-109",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify threshold value above maximum is rejected",
+    "priority": "High",
+    "expectedResult": "System displays validation and rejects invalid value"
+  },
+  {
+    "id": "SC-TC-110",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify weight value accepts valid numeric input",
+    "priority": "High",
+    "expectedResult": "Weight value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-111",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify negative weight values are rejected",
+    "priority": "High",
+    "expectedResult": "System displays validation and rejects negative value"
+  },
+  {
+    "id": "SC-TC-112",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify non-numeric weight values are rejected",
+    "priority": "High",
+    "expectedResult": "System displays validation and rejects non-numeric input"
+  },
+  {
+    "id": "SC-TC-113",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify decimal weight values follow configured business rules",
+    "priority": "Medium",
+    "expectedResult": "System accepts or rejects value according to configured validation rules"
+  },
+  {
+    "id": "SC-TC-114",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify total weight calculation validation",
+    "priority": "High",
+    "expectedResult": "System displays validation indicating invalid total weight configuration"
+  },
+  {
+    "id": "SC-TC-115",
+    "module": "Watchlist Creation",
+    "subModule": "Match Score Configuration",
+    "taskDescription": "Verify user can proceed with valid threshold and weight configuration",
+    "priority": "High",
+    "expectedResult": "User successfully navigates to Result Configuration step"
+  },
+  {
+    "id": "SC-TC-116",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Result Configuration step loads successfully",
+    "priority": "High",
+    "expectedResult": "Result Configuration screen loads successfully displaying all configurable sections"
+  },
+  {
+    "id": "SC-TC-117",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Overall Alert Threshold field is displayed",
+    "priority": "High",
+    "expectedResult": "Overall Alert Threshold control is visible and editable"
+  },
+  {
+    "id": "SC-TC-118",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Overall Alert Threshold accepts valid value",
+    "priority": "High",
+    "expectedResult": "Threshold value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-119",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify minimum Overall Alert Threshold boundary",
+    "priority": "Medium",
+    "expectedResult": "Minimum threshold value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-120",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify maximum Overall Alert Threshold boundary",
+    "priority": "Medium",
+    "expectedResult": "Maximum threshold value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-121",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Overall Alert Threshold below minimum is rejected",
+    "priority": "High",
+    "expectedResult": "System displays validation and rejects invalid value"
+  },
+  {
+    "id": "SC-TC-122",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Overall Alert Threshold above maximum is rejected",
+    "priority": "High",
+    "expectedResult": "System displays validation and rejects invalid value"
+  },
+  {
+    "id": "SC-TC-123",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Show Top N Matches option can be selected",
+    "priority": "High",
+    "expectedResult": "Show Top N Matches option becomes active"
+  },
+  {
+    "id": "SC-TC-124",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Top N Matches field accepts valid value",
+    "priority": "High",
+    "expectedResult": "Value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-125",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Minimum Match Score option can be selected",
+    "priority": "High",
+    "expectedResult": "Minimum Match Score option becomes active"
+  },
+  {
+    "id": "SC-TC-126",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Minimum Match Score accepts valid value",
+    "priority": "High",
+    "expectedResult": "Value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-127",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Top N Matches and Minimum Match Score options are mutually exclusive",
+    "priority": "High",
+    "expectedResult": "Only one option remains active at a time"
+  },
+  {
+    "id": "SC-TC-128",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Low Risk category range configuration",
+    "priority": "High",
+    "expectedResult": "Low Risk range is accepted successfully"
+  },
+  {
+    "id": "SC-TC-129",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Medium Risk category range configuration",
+    "priority": "High",
+    "expectedResult": "Medium Risk range is accepted successfully"
+  },
+  {
+    "id": "SC-TC-130",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify High Risk category range configuration",
+    "priority": "High",
+    "expectedResult": "High Risk range is accepted successfully"
+  },
+  {
+    "id": "SC-TC-131",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Risk Category ranges do not allow overlap",
+    "priority": "High",
+    "expectedResult": "System displays validation and prevents saving overlapping risk ranges"
+  },
+  {
+    "id": "SC-TC-132",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Risk Category ranges do not allow gaps",
+    "priority": "High",
+    "expectedResult": "System displays validation indicating uncovered score range"
+  },
+  {
+    "id": "SC-TC-133",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify reverse risk range values are rejected",
+    "priority": "High",
+    "expectedResult": "System rejects invalid range configuration"
+  },
+  {
+    "id": "SC-TC-134",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify risk categories cover complete score range",
+    "priority": "High",
+    "expectedResult": "System accepts configuration only when full score coverage exists"
+  },
+  {
+    "id": "SC-TC-135",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify No Match Threshold field is displayed",
+    "priority": "Medium",
+    "expectedResult": "No Match Threshold field is visible and configurable"
+  },
+  {
+    "id": "SC-TC-136",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify valid No Match Threshold value can be configured",
+    "priority": "Medium",
+    "expectedResult": "No Match Threshold value is accepted successfully"
+  },
+  {
+    "id": "SC-TC-137",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify invalid No Match Threshold value is rejected",
+    "priority": "High",
+    "expectedResult": "System displays validation and rejects invalid value"
+  },
+  {
+    "id": "SC-TC-138",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Top N Matches does not accept zero",
+    "priority": "High",
+    "expectedResult": "System displays validation and prevents save"
+  },
+  {
+    "id": "SC-TC-139",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Top N Matches does not accept negative values",
+    "priority": "High",
+    "expectedResult": "System displays validation and prevents save"
+  },
+  {
+    "id": "SC-TC-140",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Top N Matches does not accept decimal values",
+    "priority": "Medium",
+    "expectedResult": "System displays validation and rejects decimal input"
+  },
+  {
+    "id": "SC-TC-141",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify Minimum Match Score accepts boundary values",
+    "priority": "Medium",
+    "expectedResult": "Boundary values are accepted successfully"
+  },
+  {
+    "id": "SC-TC-142",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify configuration summary displays accurate Basic Information",
+    "priority": "High",
+    "expectedResult": "Summary displays Watchlist Name, Purpose and Screening Type exactly as configured"
+  },
+  {
+    "id": "SC-TC-143",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify configuration summary displays accurate List Selection",
+    "priority": "High",
+    "expectedResult": "Summary displays all selected watchlists correctly"
+  },
+  {
+    "id": "SC-TC-144",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify configuration summary displays accurate Field Mapping and Match Score configuration",
+    "priority": "High",
+    "expectedResult": "Summary displays correct mappings, thresholds and weights without discrepancies"
+  },
+  {
+    "id": "SC-TC-145",
+    "module": "Watchlist Creation",
+    "subModule": "Result Configuration",
+    "taskDescription": "Verify successful watchlist creation with valid configuration",
+    "priority": "High",
+    "expectedResult": "Watchlist is created successfully, success message is displayed, record appears in listing page, configuration is persisted, and audit entry is generated"
+  },
+  {
+    "id": "SC-TC-146",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify user can open watchlist details successfully",
+    "priority": "High",
+    "expectedResult": "Watchlist details screen opens displaying complete configuration information"
+  },
+  {
+    "id": "SC-TC-147",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify Basic Information section is displayed correctly",
+    "priority": "High",
+    "expectedResult": "Watchlist Name, Screening Type, Purpose and Description are displayed correctly"
+  },
+  {
+    "id": "SC-TC-148",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify selected watchlists are displayed correctly",
+    "priority": "High",
+    "expectedResult": "All selected watchlists are displayed accurately"
+  },
+  {
+    "id": "SC-TC-149",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify field mappings are displayed correctly",
+    "priority": "High",
+    "expectedResult": "All source and target mappings are displayed correctly"
+  },
+  {
+    "id": "SC-TC-150",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify match score configuration is displayed correctly",
+    "priority": "High",
+    "expectedResult": "Threshold and weight values match saved configuration"
+  },
+  {
+    "id": "SC-TC-151",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify result configuration is displayed correctly",
+    "priority": "High",
+    "expectedResult": "Alert Threshold, Risk Categories and Result Settings are displayed accurately"
+  },
+  {
+    "id": "SC-TC-152",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify watchlist status is displayed correctly",
+    "priority": "Medium",
+    "expectedResult": "Current status is displayed accurately"
+  },
+  {
+    "id": "SC-TC-153",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify Created By information is displayed correctly",
+    "priority": "Medium",
+    "expectedResult": "Created By value matches stored data"
+  },
+  {
+    "id": "SC-TC-154",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify Created Date information is displayed correctly",
+    "priority": "Medium",
+    "expectedResult": "Created Date matches stored data"
+  },
+  {
+    "id": "SC-TC-155",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify watchlist details screen is read-only",
+    "priority": "High",
+    "expectedResult": "Configuration data cannot be modified in View mode"
+  },
+  {
+    "id": "SC-TC-156",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify all configured sections are displayed in correct sequence",
+    "priority": "Medium",
+    "expectedResult": "Basic Information, List Selection, Field Mapping, Match Score Configuration and Result Configuration sections are displayed in correct sequence without missing information"
+  },
+  {
+    "id": "SC-TC-157",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify data integrity between listing page and details page",
+    "priority": "High",
+    "expectedResult": "Watchlist Name, Status, Created By and Created Date values match exactly across screens"
+  },
+  {
+    "id": "SC-TC-158",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify details page reflects latest saved configuration",
+    "priority": "High",
+    "expectedResult": "Details page displays latest saved configuration without stale or cached information"
+  },
+  {
+    "id": "SC-TC-159",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify details page handles deleted or unavailable watchlist gracefully",
+    "priority": "Medium",
+    "expectedResult": "System displays appropriate error message and prevents invalid data display"
+  },
+  {
+    "id": "SC-TC-160",
+    "module": "Watchlist Data Management",
+    "subModule": "View Watchlist Details",
+    "taskDescription": "Verify navigation back to listing page from details view",
+    "priority": "Low",
+    "expectedResult": "User is redirected back to Watchlist Configuration listing page successfully"
+  },
+  {
+    "id": "SC-TC-161",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify user can open Edit Watchlist wizard",
+    "priority": "High",
+    "expectedResult": "Edit wizard opens successfully with existing values pre-populated"
+  },
+  {
+    "id": "SC-TC-162",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify all saved values are pre-populated in Edit mode",
+    "priority": "High",
+    "expectedResult": "All previously saved values are displayed correctly across all wizard steps"
+  },
+  {
+    "id": "SC-TC-163",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify Watchlist Name can be updated successfully",
+    "priority": "High",
+    "expectedResult": "Watchlist Name is updated successfully and reflected in listing and details screens"
+  },
+  {
+    "id": "SC-TC-164",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify Description can be updated successfully",
+    "priority": "Medium",
+    "expectedResult": "Description is updated and persisted successfully"
+  },
+  {
+    "id": "SC-TC-165",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify selected watchlists can be modified",
+    "priority": "High",
+    "expectedResult": "Updated watchlist selection is saved successfully"
+  },
+  {
+    "id": "SC-TC-166",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify field mappings can be modified",
+    "priority": "High",
+    "expectedResult": "Updated mappings are saved and reflected in details screen"
+  },
+  {
+    "id": "SC-TC-167",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify threshold score configuration can be modified",
+    "priority": "High",
+    "expectedResult": "Updated threshold values are saved successfully"
+  },
+  {
+    "id": "SC-TC-168",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify weight configuration can be modified",
+    "priority": "High",
+    "expectedResult": "Updated weight configuration is saved successfully"
+  },
+  {
+    "id": "SC-TC-169",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify Result Configuration can be modified",
+    "priority": "High",
+    "expectedResult": "Result configuration changes are saved successfully"
+  },
+  {
+    "id": "SC-TC-170",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify Cancel action discards unsaved changes",
+    "priority": "High",
+    "expectedResult": "Unsaved changes are discarded and original configuration remains unchanged"
+  },
+  {
+    "id": "SC-TC-171",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify unsaved changes warning is displayed",
+    "priority": "High",
+    "expectedResult": "System displays unsaved changes confirmation message"
+  },
+  {
+    "id": "SC-TC-172",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify duplicate Watchlist Name validation during edit",
+    "priority": "High",
+    "expectedResult": "System displays duplicate validation and prevents save"
+  },
+  {
+    "id": "SC-TC-173",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify edit operation creates audit trail entry",
+    "priority": "High",
+    "expectedResult": "Audit trail records modified fields, timestamp and user information"
+  },
+  {
+    "id": "SC-TC-174",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify updated configuration is reflected in View Details",
+    "priority": "High",
+    "expectedResult": "View Details displays latest saved configuration accurately"
+  },
+  {
+    "id": "SC-TC-175",
+    "module": "Watchlist Data Management",
+    "subModule": "Edit Watchlist",
+    "taskDescription": "Verify browser refresh during edit follows configured behavior",
+    "priority": "Medium",
+    "expectedResult": "System behavior follows design specification and no data corruption occurs"
+  },
+  {
+    "id": "SC-TC-176",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify user can open Lists Library",
+    "priority": "High",
+    "expectedResult": "Lists Library opens successfully displaying available regulatory and custom lists"
+  },
+  {
+    "id": "SC-TC-177",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify all available standard watchlists are displayed",
+    "priority": "High",
+    "expectedResult": "All configured standard watchlists are displayed successfully"
+  },
+  {
+    "id": "SC-TC-178",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify search functionality in Lists Library",
+    "priority": "Medium",
+    "expectedResult": "Matching lists are displayed successfully"
+  },
+  {
+    "id": "SC-TC-179",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify Region filter functionality",
+    "priority": "Medium",
+    "expectedResult": "Only matching lists are displayed"
+  },
+  {
+    "id": "SC-TC-180",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify watchlist metadata is displayed",
+    "priority": "Medium",
+    "expectedResult": "List Name, Description, Region, Entry Count and Last Updated details are displayed"
+  },
+  {
+    "id": "SC-TC-181",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify list entry count accuracy",
+    "priority": "High",
+    "expectedResult": "Displayed entry count matches actual list records"
+  },
+  {
+    "id": "SC-TC-182",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify Last Updated information accuracy",
+    "priority": "Medium",
+    "expectedResult": "Last Updated value matches source data"
+  },
+  {
+    "id": "SC-TC-183",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify no-result behavior during search",
+    "priority": "Low",
+    "expectedResult": "System displays no matching results message"
+  },
+  {
+    "id": "SC-TC-184",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify list selection indicator is displayed",
+    "priority": "Medium",
+    "expectedResult": "Previously selected lists are clearly identified"
+  },
+  {
+    "id": "SC-TC-185",
+    "module": "Watchlist Data Management",
+    "subModule": "Lists Library",
+    "taskDescription": "Verify Lists Library handles large list catalog",
+    "priority": "Medium",
+    "expectedResult": "Lists Library loads successfully without display issues"
+  },
+  {
+    "id": "SC-TC-186",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify Upload Custom List screen opens successfully",
+    "priority": "High",
+    "expectedResult": "Upload Custom List screen opens successfully displaying List Name, List Type, Description, Upload File, Effective Date, Reason and action buttons"
+  },
+  {
+    "id": "SC-TC-187",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify mandatory field validation during custom list upload",
+    "priority": "High",
+    "expectedResult": "System displays validation messages for all mandatory fields and upload is blocked"
+  },
+  {
+    "id": "SC-TC-188",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify CSV file upload with valid template",
+    "priority": "High",
+    "expectedResult": "File uploads successfully and upload confirmation is displayed"
+  },
+  {
+    "id": "SC-TC-189",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify XLSX file upload with valid template",
+    "priority": "High",
+    "expectedResult": "File uploads successfully and upload confirmation is displayed"
+  },
+  {
+    "id": "SC-TC-190",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify unsupported file format is rejected",
+    "priority": "High",
+    "expectedResult": "System rejects file and displays supported file format validation message"
+  },
+  {
+    "id": "SC-TC-191",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify corrupt file upload handling",
+    "priority": "High",
+    "expectedResult": "System rejects file and displays file integrity validation message"
+  },
+  {
+    "id": "SC-TC-192",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify empty file upload validation",
+    "priority": "High",
+    "expectedResult": "System displays validation message indicating file contains no data"
+  },
+  {
+    "id": "SC-TC-193",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify mandatory column validation",
+    "priority": "High",
+    "expectedResult": "System rejects file and displays missing mandatory column details"
+  },
+  {
+    "id": "SC-TC-194",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify file schema validation",
+    "priority": "High",
+    "expectedResult": "System rejects file and displays schema validation errors"
+  },
+  {
+    "id": "SC-TC-195",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify duplicate record detection during upload",
+    "priority": "High",
+    "expectedResult": "System identifies duplicate records and displays duplicate validation details"
+  },
+  {
+    "id": "SC-TC-196",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify file size limit validation",
+    "priority": "High",
+    "expectedResult": "System rejects upload and displays file size validation message"
+  },
+  {
+    "id": "SC-TC-197",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify Effective Date validation",
+    "priority": "Medium",
+    "expectedResult": "Effective Date is accepted and stored successfully"
+  },
+  {
+    "id": "SC-TC-198",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify Reason field validation",
+    "priority": "High",
+    "expectedResult": "System displays validation message and upload is blocked"
+  },
+  {
+    "id": "SC-TC-199",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify successful upload creates new custom list",
+    "priority": "High",
+    "expectedResult": "New custom watchlist is created successfully and becomes available in Lists Library"
+  },
+  {
+    "id": "SC-TC-200",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload operation generates audit history",
+    "priority": "High",
+    "expectedResult": "Audit history captures upload action including user, timestamp, file name and upload result"
+  },
+  {
+    "id": "SC-TC-201",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload processing when file contains both valid and invalid records",
+    "priority": "High",
+    "expectedResult": "System identifies invalid records, displays detailed validation results and processes records according to configured business rules"
+  },
+  {
+    "id": "SC-TC-202",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify partial upload failure handling",
+    "priority": "High",
+    "expectedResult": "System displays successful and failed record counts along with failure reasons"
+  },
+  {
+    "id": "SC-TC-203",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload rollback when critical processing failure occurs",
+    "priority": "High",
+    "expectedResult": "System rolls back transaction according to design and no incomplete list data is stored"
+  },
+  {
+    "id": "SC-TC-204",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload retry functionality after failed upload",
+    "priority": "Medium",
+    "expectedResult": "File is processed successfully on retry attempt"
+  },
+  {
+    "id": "SC-TC-205",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify duplicate custom list name validation",
+    "priority": "High",
+    "expectedResult": "System displays duplicate list name validation and prevents upload"
+  },
+  {
+    "id": "SC-TC-206",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify custom list description supports maximum allowed length",
+    "priority": "Medium",
+    "expectedResult": "Description is accepted successfully within configured limit"
+  },
+  {
+    "id": "SC-TC-207",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload status tracking during processing",
+    "priority": "Medium",
+    "expectedResult": "System displays upload status and processing progress correctly"
+  },
+  {
+    "id": "SC-TC-208",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify uploaded list is unavailable before Effective Date",
+    "priority": "High",
+    "expectedResult": "Custom list remains unavailable for screening until configured Effective Date"
+  },
+  {
+    "id": "SC-TC-209",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify uploaded list becomes active on Effective Date",
+    "priority": "High",
+    "expectedResult": "List becomes available for screening automatically on Effective Date"
+  },
+  {
+    "id": "SC-TC-210",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload of large dataset containing 10,000 records",
+    "priority": "Medium",
+    "expectedResult": "File processes successfully without data loss"
+  },
+  {
+    "id": "SC-TC-211",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload of large dataset containing 50,000 records",
+    "priority": "Medium",
+    "expectedResult": "File processes successfully within acceptable performance limits"
+  },
+  {
+    "id": "SC-TC-212",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload of large dataset containing 100,000 records",
+    "priority": "High",
+    "expectedResult": "File processes successfully without corruption and system remains stable"
+  },
+  {
+    "id": "SC-TC-213",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify upload processing time meets performance expectations",
+    "priority": "Medium",
+    "expectedResult": "Upload completes within approved performance threshold"
+  },
+  {
+    "id": "SC-TC-214",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify CSV formula injection protection",
+    "priority": "High",
+    "expectedResult": "System sanitizes or rejects malicious formula content and prevents execution"
+  },
+  {
+    "id": "SC-TC-215",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify XSS protection in List Name field",
+    "priority": "High",
+    "expectedResult": "System sanitizes input and prevents script execution"
+  },
+  {
+    "id": "SC-TC-216",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify SQL injection protection in upload fields",
+    "priority": "High",
+    "expectedResult": "System treats payload as plain text and prevents injection attacks"
+  },
+  {
+    "id": "SC-TC-217",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify custom list version creation after re-upload",
+    "priority": "High",
+    "expectedResult": "New version is created and previous version remains traceable"
+  },
+  {
+    "id": "SC-TC-218",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify version comparison functionality",
+    "priority": "Medium",
+    "expectedResult": "System displays version differences accurately"
+  },
+  {
+    "id": "SC-TC-219",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify audit history captures version updates",
+    "priority": "High",
+    "expectedResult": "Audit history records version update activity with user and timestamp information"
+  },
+  {
+    "id": "SC-TC-220",
+    "module": "Watchlist Data Management",
+    "subModule": "Upload Custom List",
+    "taskDescription": "Verify screening engine uses latest active version of custom list",
+    "priority": "High",
+    "expectedResult": "Screening engine references latest active version and ignores superseded versions"
+  },
+  {
+    "id": "SC-TC-221",
+    "module": "AML Screening Intelligence",
+    "subModule": "Name Matching",
+    "taskDescription": "Verify exact Primary Name match calculation",
+    "priority": "High",
+    "expectedResult": "System identifies exact name match and calculates score according to configured Name matching logic"
+  },
+  {
+    "id": "SC-TC-222",
+    "module": "AML Screening Intelligence",
+    "subModule": "Name Matching",
+    "taskDescription": "Verify partial Primary Name match calculation",
+    "priority": "High",
+    "expectedResult": "System calculates partial match score according to configured threshold and matching rules"
+  },
+  {
+    "id": "SC-TC-223",
+    "module": "AML Screening Intelligence",
+    "subModule": "Name Matching",
+    "taskDescription": "Verify name mismatch handling",
+    "priority": "High",
+    "expectedResult": "System does not generate match when configured threshold is not met"
+  },
+  {
+    "id": "SC-TC-224",
+    "module": "AML Screening Intelligence",
+    "subModule": "Alias Matching",
+    "taskDescription": "Verify Alias matching contributes to overall score",
+    "priority": "High",
+    "expectedResult": "Alias match score is included in final calculation"
+  },
+  {
+    "id": "SC-TC-225",
+    "module": "AML Screening Intelligence",
+    "subModule": "Date of Birth Matching",
+    "taskDescription": "Verify exact DOB match calculation",
+    "priority": "High",
+    "expectedResult": "System awards configured DOB score contribution"
+  },
+  {
+    "id": "SC-TC-226",
+    "module": "AML Screening Intelligence",
+    "subModule": "Date of Birth Matching",
+    "taskDescription": "Verify DOB mismatch handling",
+    "priority": "High",
+    "expectedResult": "DOB contribution is excluded or reduced according to matching rules"
+  },
+  {
+    "id": "SC-TC-227",
+    "module": "AML Screening Intelligence",
+    "subModule": "Nationality Matching",
+    "taskDescription": "Verify Nationality match calculation",
+    "priority": "Medium",
+    "expectedResult": "Nationality score is included in final match score"
+  },
+  {
+    "id": "SC-TC-228",
+    "module": "AML Screening Intelligence",
+    "subModule": "Country Matching",
+    "taskDescription": "Verify Country match calculation",
+    "priority": "Medium",
+    "expectedResult": "Country score is included in final score calculation"
+  },
+  {
+    "id": "SC-TC-229",
+    "module": "AML Screening Intelligence",
+    "subModule": "Passport Matching",
+    "taskDescription": "Verify Passport Number exact match calculation",
+    "priority": "High",
+    "expectedResult": "Passport match contributes configured score"
+  },
+  {
+    "id": "SC-TC-230",
+    "module": "AML Screening Intelligence",
+    "subModule": "National ID Matching",
+    "taskDescription": "Verify National ID exact match calculation",
+    "priority": "High",
+    "expectedResult": "National ID match contributes configured score"
+  },
+  {
+    "id": "SC-TC-231",
+    "module": "AML Screening Intelligence",
+    "subModule": "Citizenship Matching",
+    "taskDescription": "Verify Citizenship match calculation",
+    "priority": "Medium",
+    "expectedResult": "Citizenship score is included in final calculation"
+  },
+  {
+    "id": "SC-TC-232",
+    "module": "AML Screening Intelligence",
+    "subModule": "Threshold Logic",
+    "taskDescription": "Verify field threshold acceptance when score equals threshold",
+    "priority": "High",
+    "expectedResult": "Field is considered matched according to configured rules"
+  },
+  {
+    "id": "SC-TC-233",
+    "module": "AML Screening Intelligence",
+    "subModule": "Threshold Logic",
+    "taskDescription": "Verify field threshold rejection below threshold",
+    "priority": "High",
+    "expectedResult": "Field does not qualify as matched"
+  },
+  {
+    "id": "SC-TC-234",
+    "module": "AML Screening Intelligence",
+    "subModule": "Weight Logic",
+    "taskDescription": "Verify weight contribution for Name field",
+    "priority": "High",
+    "expectedResult": "Name contribution equals configured weight percentage"
+  },
+  {
+    "id": "SC-TC-235",
+    "module": "AML Screening Intelligence",
+    "subModule": "Weight Logic",
+    "taskDescription": "Verify weight contribution for DOB field",
+    "priority": "High",
+    "expectedResult": "DOB contribution equals configured weight percentage"
+  },
+  {
+    "id": "SC-TC-236",
+    "module": "AML Screening Intelligence",
+    "subModule": "Composite Score",
+    "taskDescription": "Verify composite score calculation using Name and DOB",
+    "priority": "High",
+    "expectedResult": "System calculates final weighted score accurately according to configuration"
+  },
+  {
+    "id": "SC-TC-237",
+    "module": "AML Screening Intelligence",
+    "subModule": "Composite Score",
+    "taskDescription": "Verify composite score calculation with partial Name match",
+    "priority": "High",
+    "expectedResult": "System calculates correct weighted score"
+  },
+  {
+    "id": "SC-TC-238",
+    "module": "AML Screening Intelligence",
+    "subModule": "Composite Score",
+    "taskDescription": "Verify composite score calculation with only Name match",
+    "priority": "High",
+    "expectedResult": "Final score reflects Name contribution only"
+  },
+  {
+    "id": "SC-TC-239",
+    "module": "AML Screening Intelligence",
+    "subModule": "Composite Score",
+    "taskDescription": "Verify composite score calculation with only DOB match",
+    "priority": "High",
+    "expectedResult": "Final score reflects DOB contribution only"
+  },
+  {
+    "id": "SC-TC-240",
+    "module": "AML Screening Intelligence",
+    "subModule": "Composite Score",
+    "taskDescription": "Verify composite score when no mapped fields match",
+    "priority": "High",
+    "expectedResult": "Final score remains below configured matching threshold"
+  },
+  {
+    "id": "SC-TC-241",
+    "module": "AML Screening Intelligence",
+    "subModule": "Required Fields",
+    "taskDescription": "Verify required field mismatch impacts final result",
+    "priority": "High",
+    "expectedResult": "Screening result follows configured required field rules"
+  },
+  {
+    "id": "SC-TC-242",
+    "module": "AML Screening Intelligence",
+    "subModule": "Required Fields",
+    "taskDescription": "Verify required field match contributes correctly",
+    "priority": "High",
+    "expectedResult": "Result satisfies required field condition"
+  },
+  {
+    "id": "SC-TC-243",
+    "module": "AML Screening Intelligence",
+    "subModule": "Field Mapping Impact",
+    "taskDescription": "Verify updated field mapping affects screening calculation",
+    "priority": "High",
+    "expectedResult": "Screening engine uses latest saved mapping configuration"
+  },
+  {
+    "id": "SC-TC-244",
+    "module": "AML Screening Intelligence",
+    "subModule": "Threshold Logic",
+    "taskDescription": "Verify threshold recalculation after configuration update",
+    "priority": "High",
+    "expectedResult": "Screening result reflects latest threshold configuration"
+  },
+  {
+    "id": "SC-TC-245",
+    "module": "AML Screening Intelligence",
+    "subModule": "Weight Logic",
+    "taskDescription": "Verify weight recalculation after configuration update",
+    "priority": "High",
+    "expectedResult": "Screening result reflects latest weight configuration"
+  },
+  {
+    "id": "SC-TC-246",
+    "module": "AML Screening Intelligence",
+    "subModule": "Alert Generation",
+    "taskDescription": "Verify alert is generated when final score equals Overall Alert Threshold",
+    "priority": "High",
+    "expectedResult": "System generates screening alert according to configured threshold rules"
+  },
+  {
+    "id": "SC-TC-247",
+    "module": "AML Screening Intelligence",
+    "subModule": "Alert Generation",
+    "taskDescription": "Verify alert is generated when final score exceeds Overall Alert Threshold",
+    "priority": "High",
+    "expectedResult": "System generates screening alert successfully"
+  },
+  {
+    "id": "SC-TC-248",
+    "module": "AML Screening Intelligence",
+    "subModule": "Alert Generation",
+    "taskDescription": "Verify alert is not generated when final score is below Overall Alert Threshold",
+    "priority": "High",
+    "expectedResult": "System does not generate screening alert"
+  },
+  {
+    "id": "SC-TC-249",
+    "module": "AML Screening Intelligence",
+    "subModule": "Risk Categorization",
+    "taskDescription": "Verify Low Risk classification assignment",
+    "priority": "High",
+    "expectedResult": "Result is categorized as Low Risk"
+  },
+  {
+    "id": "SC-TC-250",
+    "module": "AML Screening Intelligence",
+    "subModule": "Risk Categorization",
+    "taskDescription": "Verify Medium Risk classification assignment",
+    "priority": "High",
+    "expectedResult": "Result is categorized as Medium Risk"
+  },
+  {
+    "id": "SC-TC-251",
+    "module": "AML Screening Intelligence",
+    "subModule": "Risk Categorization",
+    "taskDescription": "Verify High Risk classification assignment",
+    "priority": "High",
+    "expectedResult": "Result is categorized as High Risk"
+  },
+  {
+    "id": "SC-TC-252",
+    "module": "AML Screening Intelligence",
+    "subModule": "Risk Categorization",
+    "taskDescription": "Verify risk category assignment at exact boundary values",
+    "priority": "High",
+    "expectedResult": "Results are assigned to correct risk categories according to configured ranges"
+  },
+  {
+    "id": "SC-TC-253",
+    "module": "AML Screening Intelligence",
+    "subModule": "No Match Logic",
+    "taskDescription": "Verify No Match classification when score is below No Match Threshold",
+    "priority": "High",
+    "expectedResult": "Result is classified as No Match"
+  },
+  {
+    "id": "SC-TC-254",
+    "module": "AML Screening Intelligence",
+    "subModule": "No Match Logic",
+    "taskDescription": "Verify score equal to No Match Threshold follows configured business rule",
+    "priority": "High",
+    "expectedResult": "Result follows configured No Match boundary logic"
+  },
+  {
+    "id": "SC-TC-255",
+    "module": "AML Screening Intelligence",
+    "subModule": "Minimum Match Score",
+    "taskDescription": "Verify Minimum Match Score filter excludes low scoring results",
+    "priority": "High",
+    "expectedResult": "Only results meeting configured minimum score are displayed"
+  },
+  {
+    "id": "SC-TC-256",
+    "module": "AML Screening Intelligence",
+    "subModule": "Minimum Match Score",
+    "taskDescription": "Verify Minimum Match Score filter includes qualifying results",
+    "priority": "High",
+    "expectedResult": "Matching result is displayed successfully"
+  },
+  {
+    "id": "SC-TC-257",
+    "module": "AML Screening Intelligence",
+    "subModule": "Top N Results",
+    "taskDescription": "Verify Top N result limitation",
+    "priority": "High",
+    "expectedResult": "System displays only top 10 ranked matches"
+  },
+  {
+    "id": "SC-TC-258",
+    "module": "AML Screening Intelligence",
+    "subModule": "Top N Results",
+    "taskDescription": "Verify Top N result ranking order",
+    "priority": "High",
+    "expectedResult": "Results are displayed in descending score order"
+  },
+  {
+    "id": "SC-TC-259",
+    "module": "AML Screening Intelligence",
+    "subModule": "Result Ranking",
+    "taskDescription": "Verify highest match score receives highest rank",
+    "priority": "High",
+    "expectedResult": "Result with highest score receives first rank"
+  },
+  {
+    "id": "SC-TC-260",
+    "module": "AML Screening Intelligence",
+    "subModule": "Result Ranking",
+    "taskDescription": "Verify ranking updates when score configuration changes",
+    "priority": "High",
+    "expectedResult": "Result ranking reflects latest configuration"
+  },
+  {
+    "id": "SC-TC-261",
+    "module": "AML Screening Intelligence",
+    "subModule": "False Positive Reduction",
+    "taskDescription": "Verify exact Name and DOB match receives higher confidence score",
+    "priority": "High",
+    "expectedResult": "Exact match receives higher score than partial match scenarios"
+  },
+  {
+    "id": "SC-TC-262",
+    "module": "AML Screening Intelligence",
+    "subModule": "False Positive Reduction",
+    "taskDescription": "Verify partial Name match with DOB mismatch receives reduced score",
+    "priority": "High",
+    "expectedResult": "Final score is reduced according to matching rules"
+  },
+  {
+    "id": "SC-TC-263",
+    "module": "AML Screening Intelligence",
+    "subModule": "False Positive Reduction",
+    "taskDescription": "Verify additional matching attributes improve confidence score",
+    "priority": "High",
+    "expectedResult": "Final score increases based on matching attributes"
+  },
+  {
+    "id": "SC-TC-264",
+    "module": "AML Screening Intelligence",
+    "subModule": "Alert Generation",
+    "taskDescription": "Verify alert contains correct watchlist details",
+    "priority": "High",
+    "expectedResult": "Alert contains correct watchlist name, score, risk category and matched attributes"
+  },
+  {
+    "id": "SC-TC-265",
+    "module": "AML Screening Intelligence",
+    "subModule": "Alert Generation",
+    "taskDescription": "Verify alert contains correct matched entity details",
+    "priority": "High",
+    "expectedResult": "Alert displays correct customer/entity information involved in screening"
+  },
+  {
+    "id": "SC-TC-266",
+    "module": "AML Screening Intelligence",
+    "subModule": "Alert Generation",
+    "taskDescription": "Verify alert reflects latest watchlist configuration",
+    "priority": "High",
+    "expectedResult": "Generated alert reflects latest thresholds, mappings and scoring rules"
+  },
+  {
+    "id": "SC-TC-267",
+    "module": "AML Screening Intelligence",
+    "subModule": "Composite Scoring",
+    "taskDescription": "Verify composite score recalculation after watchlist update",
+    "priority": "High",
+    "expectedResult": "Composite score is recalculated using latest watchlist configuration"
+  },
+  {
+    "id": "SC-TC-268",
+    "module": "AML Screening Intelligence",
+    "subModule": "Screening Engine",
+    "taskDescription": "Verify screening result consistency across repeated executions",
+    "priority": "Medium",
+    "expectedResult": "Results remain consistent across repeated executions"
+  },
+  {
+    "id": "SC-TC-269",
+    "module": "AML Screening Intelligence",
+    "subModule": "Screening Engine",
+    "taskDescription": "Verify screening result generation when multiple watchlists are configured",
+    "priority": "High",
+    "expectedResult": "Screening evaluates all configured watchlists and returns consolidated results"
+  },
+  {
+    "id": "SC-TC-270",
+    "module": "AML Screening Intelligence",
+    "subModule": "End-to-End AML Validation",
+    "taskDescription": "Verify complete AML screening workflow from matching to alert generation",
+    "priority": "Critical",
+    "expectedResult": "System performs matching, score calculation, risk categorization, ranking and alert generation according to configured AML rules"
+  },
+  {
+    "id": "SC-TC-271",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - XSS",
+    "taskDescription": "Verify XSS protection in Watchlist Name field",
+    "priority": "High",
+    "expectedResult": "System sanitizes input, stores safe value if allowed and no script executes"
+  },
+  {
+    "id": "SC-TC-272",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - XSS",
+    "taskDescription": "Verify XSS protection in Description field",
+    "priority": "High",
+    "expectedResult": "System sanitizes input and prevents script execution"
+  },
+  {
+    "id": "SC-TC-273",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - XSS",
+    "taskDescription": "Verify XSS protection in Search field",
+    "priority": "High",
+    "expectedResult": "Application safely handles input without executing script"
+  },
+  {
+    "id": "SC-TC-274",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - HTML Injection",
+    "taskDescription": "Verify HTML injection handling in Watchlist Name",
+    "priority": "Medium",
+    "expectedResult": "HTML tags are escaped or handled according to application design"
+  },
+  {
+    "id": "SC-TC-275",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - HTML Injection",
+    "taskDescription": "Verify HTML injection handling in Description",
+    "priority": "Medium",
+    "expectedResult": "Application prevents unauthorized HTML rendering"
+  },
+  {
+    "id": "SC-TC-276",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - SQL Injection",
+    "taskDescription": "Verify SQL injection protection in Search field",
+    "priority": "High",
+    "expectedResult": "System treats input as text and no unauthorized records are returned"
+  },
+  {
+    "id": "SC-TC-277",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - SQL Injection",
+    "taskDescription": "Verify SQL injection protection in Watchlist Name field",
+    "priority": "High",
+    "expectedResult": "Application safely handles payload without database manipulation"
+  },
+  {
+    "id": "SC-TC-278",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - CSV Injection",
+    "taskDescription": "Verify CSV formula injection protection during custom list upload",
+    "priority": "High",
+    "expectedResult": "System sanitizes or rejects malicious formula content"
+  },
+  {
+    "id": "SC-TC-279",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - Parameter Tampering",
+    "taskDescription": "Verify unauthorized modification of Watchlist ID is prevented",
+    "priority": "High",
+    "expectedResult": "System rejects unauthorized request and returns access error"
+  },
+  {
+    "id": "SC-TC-280",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - Parameter Tampering",
+    "taskDescription": "Verify unauthorized status modification is prevented",
+    "priority": "High",
+    "expectedResult": "System rejects unauthorized status change attempt"
+  },
+  {
+    "id": "SC-TC-281",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - Authorization",
+    "taskDescription": "Verify user cannot access restricted watchlist directly through URL",
+    "priority": "High",
+    "expectedResult": "Access is denied and user receives authorization error"
+  },
+  {
+    "id": "SC-TC-282",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - Session Management",
+    "taskDescription": "Verify session timeout handling",
+    "priority": "High",
+    "expectedResult": "User session expires and re-authentication is required"
+  },
+  {
+    "id": "SC-TC-283",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - Session Hijacking",
+    "taskDescription": "Verify expired session token cannot be reused",
+    "priority": "High",
+    "expectedResult": "System rejects expired token and prevents access"
+  },
+  {
+    "id": "SC-TC-284",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - Session Management",
+    "taskDescription": "Verify application redirects user after logout",
+    "priority": "High",
+    "expectedResult": "Protected pages are inaccessible after logout"
+  },
+  {
+    "id": "SC-TC-285",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Security - Security Audit",
+    "taskDescription": "Verify security-related failures are logged",
+    "priority": "Medium",
+    "expectedResult": "Security event is logged with timestamp, user and event details"
+  },
+  {
+    "id": "SC-TC-286",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Admin",
+    "taskDescription": "Verify Admin can create new watchlist configuration",
+    "priority": "Critical",
+    "expectedResult": "Watchlist is created successfully and audit record is generated"
+  },
+  {
+    "id": "SC-TC-287",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Admin",
+    "taskDescription": "Verify Admin can edit existing watchlist configuration",
+    "priority": "High",
+    "expectedResult": "Configuration is updated successfully and changes are persisted"
+  },
+  {
+    "id": "SC-TC-288",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Admin",
+    "taskDescription": "Verify Admin can enable and disable watchlists",
+    "priority": "High",
+    "expectedResult": "Status change is completed successfully and audit trail is generated"
+  },
+  {
+    "id": "SC-TC-289",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Compliance Officer",
+    "taskDescription": "Verify Compliance Officer can create watchlists according to assigned permissions",
+    "priority": "High",
+    "expectedResult": "User can perform permitted configuration activities according to role definition"
+  },
+  {
+    "id": "SC-TC-290",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Compliance Officer",
+    "taskDescription": "Verify Compliance Officer can review watchlist configurations",
+    "priority": "Medium",
+    "expectedResult": "User can access and review watchlist configuration successfully"
+  },
+  {
+    "id": "SC-TC-291",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Analyst",
+    "taskDescription": "Verify Analyst can view watchlist configurations",
+    "priority": "High",
+    "expectedResult": "User can view configurations according to assigned permissions"
+  },
+  {
+    "id": "SC-TC-292",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Analyst",
+    "taskDescription": "Verify Analyst cannot perform unauthorized configuration changes",
+    "priority": "High",
+    "expectedResult": "Edit actions are hidden or access is denied according to role permissions"
+  },
+  {
+    "id": "SC-TC-293",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Viewer",
+    "taskDescription": "Verify Viewer can access watchlist listing page",
+    "priority": "Medium",
+    "expectedResult": "User can access permitted screens successfully"
+  },
+  {
+    "id": "SC-TC-294",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Viewer",
+    "taskDescription": "Verify Viewer cannot create watchlists",
+    "priority": "High",
+    "expectedResult": "Create action is unavailable or access is denied"
+  },
+  {
+    "id": "SC-TC-295",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "RBAC - Viewer",
+    "taskDescription": "Verify Viewer cannot edit watchlists",
+    "priority": "High",
+    "expectedResult": "Edit functionality is unavailable or access is denied"
+  },
+  {
+    "id": "SC-TC-296",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Maker Checker Workflow",
+    "taskDescription": "Verify Maker can submit watchlist configuration for approval",
+    "priority": "High",
+    "expectedResult": "Request is submitted successfully and enters Pending Approval state"
+  },
+  {
+    "id": "SC-TC-297",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Maker Checker Workflow",
+    "taskDescription": "Verify Checker can approve submitted watchlist request",
+    "priority": "High",
+    "expectedResult": "Request status changes to Approved and configuration becomes active according to workflow"
+  },
+  {
+    "id": "SC-TC-298",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Maker Checker Workflow",
+    "taskDescription": "Verify Checker can reject submitted watchlist request",
+    "priority": "High",
+    "expectedResult": "Request status changes to Rejected and rejection reason is recorded"
+  },
+  {
+    "id": "SC-TC-299",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Maker Checker Workflow",
+    "taskDescription": "Verify Maker cannot approve own submitted request",
+    "priority": "High",
+    "expectedResult": "System prevents self-approval and displays authorization message"
+  },
+  {
+    "id": "SC-TC-300",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Audit and Version History",
+    "taskDescription": "Verify approval, rejection and configuration changes are captured in audit logs",
+    "priority": "High",
+    "expectedResult": "Audit log captures user, action, timestamp, previous value, updated value and workflow outcome for all activities"
+  },
+  {
+    "id": "SC-TC-301",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Accessibility - Keyboard Navigation",
+    "taskDescription": "Verify complete Watchlist Configuration workflow can be executed using keyboard only",
+    "priority": "High",
+    "expectedResult": "User can access menus, forms, buttons, grids and wizard steps using keyboard controls only"
+  },
+  {
+    "id": "SC-TC-302",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Accessibility - Tab Order",
+    "taskDescription": "Verify logical tab order across Watchlist Configuration screens",
+    "priority": "Medium",
+    "expectedResult": "Focus moves in logical left-to-right and top-to-bottom order without skipping interactive elements"
+  },
+  {
+    "id": "SC-TC-303",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Accessibility - Focus Management",
+    "taskDescription": "Verify visible focus indicator is displayed for interactive controls",
+    "priority": "Medium",
+    "expectedResult": "Focused element is visually distinguishable and clearly identifiable"
+  },
+  {
+    "id": "SC-TC-304",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Accessibility - Modal Focus Control",
+    "taskDescription": "Verify keyboard focus remains within active modal dialog",
+    "priority": "Medium",
+    "expectedResult": "Keyboard focus remains trapped inside modal until action is completed or cancelled"
+  },
+  {
+    "id": "SC-TC-305",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Accessibility - Screen Reader",
+    "taskDescription": "Verify form fields expose accessible labels",
+    "priority": "Medium",
+    "expectedResult": "All fields expose meaningful labels and descriptions to assistive technologies"
+  },
+  {
+    "id": "SC-TC-306",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Accessibility - Screen Reader",
+    "taskDescription": "Verify buttons and actions expose accessible names",
+    "priority": "Medium",
+    "expectedResult": "Interactive controls expose meaningful accessible names and actions"
+  },
+  {
+    "id": "SC-TC-307",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Accessibility - Error Handling",
+    "taskDescription": "Verify validation errors are accessible to assistive technologies",
+    "priority": "Medium",
+    "expectedResult": "Validation messages are announced and associated with corresponding fields"
+  },
+  {
+    "id": "SC-TC-308",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Performance - Page Load",
+    "taskDescription": "Verify Watchlist Configuration page load performance",
+    "priority": "High",
+    "expectedResult": "Page loads within approved performance threshold without errors"
+  },
+  {
+    "id": "SC-TC-309",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Performance - Search",
+    "taskDescription": "Verify search performance with large watchlist dataset",
+    "priority": "High",
+    "expectedResult": "Search results are returned within approved response time"
+  },
+  {
+    "id": "SC-TC-310",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Performance - Sorting",
+    "taskDescription": "Verify sorting performance with large watchlist dataset",
+    "priority": "Medium",
+    "expectedResult": "Sorting operation completes within approved response time"
+  },
+  {
+    "id": "SC-TC-311",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Performance - Upload",
+    "taskDescription": "Verify upload performance for large custom list files",
+    "priority": "High",
+    "expectedResult": "Upload processing completes within approved performance threshold"
+  },
+  {
+    "id": "SC-TC-312",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Performance - Configuration Save",
+    "taskDescription": "Verify watchlist configuration save performance",
+    "priority": "High",
+    "expectedResult": "Configuration is saved successfully within approved response time"
+  },
+  {
+    "id": "SC-TC-313",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Audit Logs",
+    "taskDescription": "Verify audit log search functionality",
+    "priority": "Medium",
+    "expectedResult": "Matching audit records are returned accurately according to search criteria"
+  },
+  {
+    "id": "SC-TC-314",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Version History",
+    "taskDescription": "Verify version history comparison functionality",
+    "priority": "Medium",
+    "expectedResult": "System accurately displays differences between selected versions"
+  },
+  {
+    "id": "SC-TC-315",
+    "module": "Enterprise Quality Coverage",
+    "subModule": "Audit and Compliance",
+    "taskDescription": "Verify complete audit trail exists across watchlist lifecycle",
+    "priority": "Critical",
+    "expectedResult": "Audit trail contains complete chronological history including user, timestamp, action, previous values, updated values and workflow outcome for all watchlist activities"
+  }
+]

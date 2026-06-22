@@ -1,0 +1,1472 @@
+[
+  {
+    "excelTestCaseId": "SMR-P1-TC-001",
+    "scenarioName": "Verify user can access Sanction MIS Reports module from Sanction Screening navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-002",
+    "scenarioName": "Verify landing page loads all primary components successfully",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-003",
+    "scenarioName": "Verify breadcrumb navigation is displayed correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-004",
+    "scenarioName": "Verify statistics section displays all configured report summary cards",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-005",
+    "scenarioName": "Verify statistics cards display report summary values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-006",
+    "scenarioName": "Verify report search functionality using report name",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-007",
+    "scenarioName": "Verify report search functionality using report ID",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-008",
+    "scenarioName": "Verify search supports partial keyword matching",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-009",
+    "scenarioName": "Verify system behavior when search criteria returns no matching records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-010",
+    "scenarioName": "Verify clearing search criteria restores complete report listing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-011",
+    "scenarioName": "Verify Frequency filter is available and accessible on landing page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-012",
+    "scenarioName": "Verify Frequency filter displays configured options",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-013",
+    "scenarioName": "Verify Frequency filter updates report listing based on selected frequency",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-014",
+    "scenarioName": "Verify Status filter is available and accessible on landing page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-015",
+    "scenarioName": "Verify Status filter displays configured options",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-016",
+    "scenarioName": "Verify Status filter updates report listing based on selected status",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-017",
+    "scenarioName": "Verify multiple filters can be applied together",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-018",
+    "scenarioName": "Verify report grid displays configured report information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-019",
+    "scenarioName": "Verify all configured Sanction MIS Reports are listed in report grid",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-020",
+    "scenarioName": "Verify report information is displayed correctly in each row",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-021",
+    "scenarioName": "Verify View action is available for report records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-022",
+    "scenarioName": "Verify View action opens selected report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-023",
+    "scenarioName": "Verify Generate action is available for report records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-024",
+    "scenarioName": "Verify Generate action processes selected report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P1-TC-025",
+    "scenarioName": "Verify pagination controls and record count information are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-001",
+    "scenarioName": "Verify report generation can be initiated from landing page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-002",
+    "scenarioName": "Verify Generate action is available for all configured reports",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-003",
+    "scenarioName": "Verify generated report can be opened using View action",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-004",
+    "scenarioName": "Verify correct report opens after selecting View",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-005",
+    "scenarioName": "Verify report page displays report title",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-006",
+    "scenarioName": "Verify report page displays report period information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-007",
+    "scenarioName": "Verify report page displays generated date information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-008",
+    "scenarioName": "Verify report page displays generated by information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-009",
+    "scenarioName": "Verify report page displays total records information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-010",
+    "scenarioName": "Verify report metadata section loads successfully",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-011",
+    "scenarioName": "Verify user can return to report listing after reviewing report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P2-TC-012",
+    "scenarioName": "Verify report page loads successfully after report generation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-001",
+    "scenarioName": "Verify report header section is displayed correctly for all MIS reports",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-002",
+    "scenarioName": "Verify report title is displayed correctly in report header",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-003",
+    "scenarioName": "Verify report description section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-004",
+    "scenarioName": "Verify report filters section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-005",
+    "scenarioName": "Verify report filters can be applied successfully",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-006",
+    "scenarioName": "Verify report filters can be reset or cleared",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-007",
+    "scenarioName": "Verify executive summary section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-008",
+    "scenarioName": "Verify KPI cards are displayed in executive summary",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-009",
+    "scenarioName": "Verify KPI cards display metric values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-010",
+    "scenarioName": "Verify distribution section is displayed when available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-011",
+    "scenarioName": "Verify distribution tables display summarized report information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-012",
+    "scenarioName": "Verify detailed records section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-013",
+    "scenarioName": "Verify detailed records table displays record information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-014",
+    "scenarioName": "Verify detailed records section reflects applied filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-015",
+    "scenarioName": "Verify PDF export option is available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-016",
+    "scenarioName": "Verify Excel export option is available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-017",
+    "scenarioName": "Verify PDF export process can be initiated",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P3-TC-018",
+    "scenarioName": "Verify Excel export process can be initiated",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-001",
+    "scenarioName": "Verify Comprehensive Sanctions Screening Intelligence Report opens successfully from report listing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-002",
+    "scenarioName": "Verify report header information is displayed correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-003",
+    "scenarioName": "Verify report period information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-004",
+    "scenarioName": "Verify executive summary section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-005",
+    "scenarioName": "Verify all screening summary KPI cards are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-006",
+    "scenarioName": "Verify KPI cards display values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-007",
+    "scenarioName": "Verify Watchlist Distribution section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-008",
+    "scenarioName": "Verify Watchlist Distribution displays summarized screening information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-009",
+    "scenarioName": "Verify Customer Type Distribution section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-010",
+    "scenarioName": "Verify Customer Type Distribution displays summarized customer information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-011",
+    "scenarioName": "Verify detailed screening records section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-012",
+    "scenarioName": "Verify detailed screening records display record information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-013",
+    "scenarioName": "Verify detailed records section remains consistent with applied report filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-014",
+    "scenarioName": "Verify PDF export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-015",
+    "scenarioName": "Verify Excel export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-016",
+    "scenarioName": "Verify PEP & Adverse Media Analytics Report opens successfully from report listing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-017",
+    "scenarioName": "Verify report header information is displayed correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-018",
+    "scenarioName": "Verify report period information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-019",
+    "scenarioName": "Verify executive summary section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-020",
+    "scenarioName": "Verify PEP-related KPI metrics are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-021",
+    "scenarioName": "Verify Adverse Media KPI metrics are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-022",
+    "scenarioName": "Verify KPI cards display values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-023",
+    "scenarioName": "Verify Nationality Distribution section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-024",
+    "scenarioName": "Verify Nationality Distribution displays summarized information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-025",
+    "scenarioName": "Verify detailed records section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-026",
+    "scenarioName": "Verify detailed records display record information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-027",
+    "scenarioName": "Verify detailed records remain consistent with applied filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-028",
+    "scenarioName": "Verify PDF export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-029",
+    "scenarioName": "Verify Excel export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P4-TC-030",
+    "scenarioName": "Verify report displays PEP and Adverse Media information within the same report structure",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-001",
+    "scenarioName": "Verify Screening Exception Authorization & Tracking Report opens successfully from report listing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-002",
+    "scenarioName": "Verify report header information is displayed correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-003",
+    "scenarioName": "Verify report period information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-004",
+    "scenarioName": "Verify exception summary section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-005",
+    "scenarioName": "Verify exception summary metrics display values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-006",
+    "scenarioName": "Verify exception records section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-007",
+    "scenarioName": "Verify exception records display exception information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-008",
+    "scenarioName": "Verify Maker information is displayed for exception records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-009",
+    "scenarioName": "Verify Checker information is displayed for exception records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-010",
+    "scenarioName": "Verify exception expiry information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-011",
+    "scenarioName": "Verify detailed records remain consistent with applied filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-012",
+    "scenarioName": "Verify PDF export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-013",
+    "scenarioName": "Verify Excel export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-014",
+    "scenarioName": "Verify Screening Logic Governance & Change Control Report opens successfully from report listing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-015",
+    "scenarioName": "Verify report header information is displayed correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-016",
+    "scenarioName": "Verify report period information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-017",
+    "scenarioName": "Verify governance summary section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-018",
+    "scenarioName": "Verify governance summary metrics display values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-019",
+    "scenarioName": "Verify configuration details section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-020",
+    "scenarioName": "Verify logic change records section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-021",
+    "scenarioName": "Verify logic change records display available change information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-022",
+    "scenarioName": "Verify parameter-related information is displayed in governance records where available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-023",
+    "scenarioName": "Verify threshold-related information is displayed in governance records where available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-024",
+    "scenarioName": "Verify detailed records remain consistent with applied filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-025",
+    "scenarioName": "Verify PDF export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-026",
+    "scenarioName": "Verify Excel export option is available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-027",
+    "scenarioName": "Verify Exception List Governance & Accountability Report opens successfully from report listing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-028",
+    "scenarioName": "Verify report header information is displayed correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-029",
+    "scenarioName": "Verify report period information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-030",
+    "scenarioName": "Verify exception governance summary section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-031",
+    "scenarioName": "Verify exception governance summary metrics display values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-032",
+    "scenarioName": "Verify Active and Expired exception information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-033",
+    "scenarioName": "Verify New and Removed exception information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-034",
+    "scenarioName": "Verify exception records section is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-035",
+    "scenarioName": "Verify exception records display accountability information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-036",
+    "scenarioName": "Verify Maker information is displayed for exception records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-037",
+    "scenarioName": "Verify Checker information is displayed for exception records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-038",
+    "scenarioName": "Verify Added Date and Expiry Date information is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-039",
+    "scenarioName": "Verify exception records remain consistent with applied filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P5-TC-040",
+    "scenarioName": "Verify PDF and Excel export options are available for report",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-001",
+    "scenarioName": "Verify Add Report screen opens successfully",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-002",
+    "scenarioName": "Verify all configured fields are displayed on Add Report screen",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-003",
+    "scenarioName": "Verify Report ID field is available on Add Report screen",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-004",
+    "scenarioName": "Verify Report ID is auto-generated",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-005",
+    "scenarioName": "Verify user can enter Rule Description",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-006",
+    "scenarioName": "Verify Category field is available for selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-007",
+    "scenarioName": "Verify Severity field is available for selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-008",
+    "scenarioName": "Verify Status field is available for selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-009",
+    "scenarioName": "Verify Frequency field is available for selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-010",
+    "scenarioName": "Verify Risk Score field is available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-011",
+    "scenarioName": "Verify From Date and To Date fields are available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-012",
+    "scenarioName": "Verify Save Changes button is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-013",
+    "scenarioName": "Verify Cancel button is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-014",
+    "scenarioName": "Verify Edit Report screen opens successfully",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-015",
+    "scenarioName": "Verify existing report information is populated on Edit screen",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-016",
+    "scenarioName": "Verify report configuration can be saved successfully",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-017",
+    "scenarioName": "Verify Cancel action closes Add/Edit Report screen without saving changes",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-018",
+    "scenarioName": "Verify Rule Description field is mandatory",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-019",
+    "scenarioName": "Verify configured validation message is displayed for blank Rule Description",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-020",
+    "scenarioName": "Verify Category value can be selected and retained during save",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-021",
+    "scenarioName": "Verify Severity value can be selected and retained during save",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-022",
+    "scenarioName": "Verify Status value can be selected and retained during save",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-023",
+    "scenarioName": "Verify Frequency value can be selected and retained during save",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-024",
+    "scenarioName": "Verify Daily frequency option is available for selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-025",
+    "scenarioName": "Verify Weekly frequency option is available for selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-026",
+    "scenarioName": "Verify Monthly frequency option is available for selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-027",
+    "scenarioName": "Verify Risk Score value can be entered and saved",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-028",
+    "scenarioName": "Verify From Date field accepts date selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-029",
+    "scenarioName": "Verify To Date field accepts date selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-030",
+    "scenarioName": "Verify saved report configuration is displayed correctly when reopened",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-031",
+    "scenarioName": "Verify Severity dropdown displays all configured values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-032",
+    "scenarioName": "Verify Status dropdown displays all configured values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-033",
+    "scenarioName": "Verify Risk Score field enforces configured value boundaries",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P6-TC-034",
+    "scenarioName": "Verify From Date cannot be greater than To Date",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-001",
+    "scenarioName": "Verify Date Range Picker is accessible from report filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-002",
+    "scenarioName": "Verify all configured preset options are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-003",
+    "scenarioName": "Verify user can select a preset date range",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-004",
+    "scenarioName": "Verify Apply action applies selected date range",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-005",
+    "scenarioName": "Verify Clear action removes applied date range",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-006",
+    "scenarioName": "Verify user can manually select From Date",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-007",
+    "scenarioName": "Verify user can manually select To Date",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-008",
+    "scenarioName": "Verify manually selected date range can be applied",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-009",
+    "scenarioName": "Verify selected date range remains visible after applying filter",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-010",
+    "scenarioName": "Verify report results refresh after date range filter is applied",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P7-TC-011",
+    "scenarioName": "Verify report results return to default view after date filter is cleared",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-001",
+    "scenarioName": "Verify system prevents saving report configuration when Rule Description is blank",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-002",
+    "scenarioName": "Verify system behavior when search criteria returns no matching records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-003",
+    "scenarioName": "Verify report behavior when applied filters return no records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-004",
+    "scenarioName": "Verify report behavior when date range returns no records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-005",
+    "scenarioName": "Verify exception records contain Maker information where available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-006",
+    "scenarioName": "Verify exception records contain Checker information where available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-007",
+    "scenarioName": "Verify exception records display exception validity information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-008",
+    "scenarioName": "Verify Active and Expired exception information is available for governance review",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-009",
+    "scenarioName": "Verify New and Removed exception information is available for governance review",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-010",
+    "scenarioName": "Verify governance records display logic change information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-011",
+    "scenarioName": "Verify governance records display configuration-related information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-012",
+    "scenarioName": "Verify report provides visibility into PEP monitoring information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-013",
+    "scenarioName": "Verify report provides visibility into Adverse Media monitoring information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-014",
+    "scenarioName": "Verify report provides visibility into watchlist-level screening information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-015",
+    "scenarioName": "Verify report provides visibility into customer-type screening information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-016",
+    "scenarioName": "Verify export options remain available after applying report filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-017",
+    "scenarioName": "Verify export options remain available after applying date range filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-P8-TC-018",
+    "scenarioName": "Verify report pages remain stable when no records are available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-001",
+    "scenarioName": "Verify Total Reports counter matches total records available in report grid",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-002",
+    "scenarioName": "Verify Generated counter matches reports having Generated status",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-003",
+    "scenarioName": "Verify Pending counter matches reports having Pending status",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-004",
+    "scenarioName": "Verify Daily/Weekly/Monthly counters match report frequency distribution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-005",
+    "scenarioName": "Verify Report ID ascending sorting",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-006",
+    "scenarioName": "Verify Report ID descending sorting",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-007",
+    "scenarioName": "Verify Report Name sorting (Asc/Desc)",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-008",
+    "scenarioName": "Verify Frequency and Status sorting functionality",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-009",
+    "scenarioName": "Verify Frequency filter persists after clearing search keyword",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-010",
+    "scenarioName": "Verify combined Status + Frequency filter accuracy",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-011",
+    "scenarioName": "Verify special characters in search field",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-012",
+    "scenarioName": "Verify SQL Injection protection in search field",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-013",
+    "scenarioName": "Verify XSS protection in Rule Description field",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-014",
+    "scenarioName": "Verify Report ID uniqueness during consecutive report creation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-015",
+    "scenarioName": "Verify Report ID sequence generation follows configured format",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-016",
+    "scenarioName": "Verify decimal values handling in Risk Score field",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-017",
+    "scenarioName": "Verify alphabetic values in Risk Score field",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-018",
+    "scenarioName": "Verify special characters in Risk Score field",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-019",
+    "scenarioName": "Verify same-day date range selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-020",
+    "scenarioName": "Verify leap year date acceptance",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-021",
+    "scenarioName": "Verify invalid manually entered date",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "SMR-GAP-022",
+    "scenarioName": "Verify audit logging for Create / Modify / Generate / Export actions including User and Timestamp attribution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/sanctionMisReportsTests/sanction-mis-reports.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  }
+]

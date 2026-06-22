@@ -1,0 +1,24 @@
+{
+  "defaultCustomerId": "CUST10001",
+  "invalidCustomerId": "INVALID999",
+  "matchParameters": [
+    "National ID / Aadhar Card / Emirates ID / SSN",
+    "Passport No",
+    "Tax ID / PAN",
+    "Email Address",
+    "Mobile Number",
+    "Contact Number",
+    "Driving License",
+    "Date of Birth",
+    "Corporate Registration Number",
+    "IP / Mac Address",
+    "IMEI Number / IMSI Number"
+  ],
+  "exportFormats": ["Excel", "CSV", "PDF"],
+  "searchKeywords": {
+    "nationalId": "National ID",
+    "passport": "Passport No",
+    "partialPassport": "Pass",
+    "noMatch": "XYZ123"
+  }
+}

@@ -1,0 +1,3502 @@
+[
+  {
+    "excelTestCaseId": "TC-MS-001",
+    "scenarioName": "Verify fixed sidebar is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-002",
+    "scenarioName": "Verify sidebar width is 232px",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-003",
+    "scenarioName": "Verify brand block content",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-004",
+    "scenarioName": "Verify brand block top alignment",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-005",
+    "scenarioName": "Verify search box is displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-006",
+    "scenarioName": "Verify all primary menu items are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-007",
+    "scenarioName": "Verify menu icons are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-008",
+    "scenarioName": "Verify default active menu state",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-009",
+    "scenarioName": "Verify Dashboard navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-010",
+    "scenarioName": "Verify KYC navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-011",
+    "scenarioName": "Verify Sanction Screening navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-012",
+    "scenarioName": "Verify Customer Risk View navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-013",
+    "scenarioName": "Verify Real-time Monitoring navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-014",
+    "scenarioName": "Verify Batch Monitoring navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-015",
+    "scenarioName": "Verify Payments Workflow navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-016",
+    "scenarioName": "Verify AI-Powered Investigation navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-017",
+    "scenarioName": "Verify LEA / RFI Tracker navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-018",
+    "scenarioName": "Verify MIS Reports navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-019",
+    "scenarioName": "Verify Regulatory Reports navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-020",
+    "scenarioName": "Verify Simulation navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-021",
+    "scenarioName": "Verify Config navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-022",
+    "scenarioName": "Verify Administration navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-023",
+    "scenarioName": "Verify single active state behavior",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-024",
+    "scenarioName": "Verify sidebar scroll behavior",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC-MS-025",
+    "scenarioName": "Verify user identity bar at bottom",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-01",
+    "scenarioName": "Verify top bar is visible on Manual Screening page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-02",
+    "scenarioName": "Verify sticky behavior of the top bar on scroll",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-03",
+    "scenarioName": "Verify top bar height matches the defined specification",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-04",
+    "scenarioName": "Verify page title is displayed correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-05",
+    "scenarioName": "Verify breadcrumb text and order on Manual Screening page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-06",
+    "scenarioName": "Verify breadcrumb separator styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-07",
+    "scenarioName": "Verify page title and breadcrumb are aligned on the left side",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-08",
+    "scenarioName": "Verify “View Last Results” button is visible on the right side",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-09",
+    "scenarioName": "Verify “View Last Results” button styling as ghost/outlined button",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-10",
+    "scenarioName": "Verify click action on “View Last Results” button",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-11",
+    "scenarioName": "Verify last screening results page loads after navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-12",
+    "scenarioName": "Verify top bar title updates dynamically after navigation to results page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-13",
+    "scenarioName": "Verify breadcrumb updates dynamically on results page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-14",
+    "scenarioName": "Verify top bar remains visible at 1280×720 resolution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-15",
+    "scenarioName": "Verify top bar layout on higher desktop resolution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-16",
+    "scenarioName": "Verify top bar does not overlap with page content",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-17",
+    "scenarioName": "Verify button remains aligned during window resize",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-18",
+    "scenarioName": "Verify keyboard accessibility for “View Last Results” button",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-19",
+    "scenarioName": "Verify top bar text is readable and not truncated at standard desktop width",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-002-20",
+    "scenarioName": "Verify top bar behavior when no last results are available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-01",
+    "scenarioName": "Verify both top-level tabs are rendered on the page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-02",
+    "scenarioName": "Verify Manual Screening tab is active by default on page load",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-03",
+    "scenarioName": "Verify Manual Screening content panel is displayed by default",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-04",
+    "scenarioName": "Verify Bulk Upload panel remains hidden on initial load",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-05",
+    "scenarioName": "Verify clicking Bulk Upload switches to the Bulk Upload panel",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-06",
+    "scenarioName": "Verify clicking Manual Screening returns to the Manual Screening panel",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-07",
+    "scenarioName": "Verify tab switching happens without page reload",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-08",
+    "scenarioName": "Verify active tab styling is visually distinct for Manual Screening",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-09",
+    "scenarioName": "Verify active tab styling is visually distinct for Bulk Upload",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-10",
+    "scenarioName": "Verify only one tab is active at a time",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-11",
+    "scenarioName": "Verify content panel visibility updates correctly on tab switch",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-12",
+    "scenarioName": "Verify tab switch response feels instantaneous",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-13",
+    "scenarioName": "Verify switching tabs does not reset entity type selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-14",
+    "scenarioName": "Verify switching tabs does not clear form data entered in Manual Screening",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-15",
+    "scenarioName": "Verify switching away from Bulk Upload does not clear its state",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-16",
+    "scenarioName": "Verify repeated switching between tabs keeps state stable",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-17",
+    "scenarioName": "Verify tab labels are displayed exactly as specified",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-18",
+    "scenarioName": "Verify keyboard navigation can move focus between tabs",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-19",
+    "scenarioName": "Verify active tab is announced clearly through focus and selection behavior",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-20",
+    "scenarioName": "Verify tab switching does not move the user to a different page route",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-21",
+    "scenarioName": "Verify tab switching works correctly after window resize",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-003-22",
+    "scenarioName": "Verify tab switching remains consistent under rapid user interaction",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-01",
+    "scenarioName": "Verify all entity type toggle options are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-02",
+    "scenarioName": "Verify Individual is selected by default",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-03",
+    "scenarioName": "Verify Individual form is visible by default",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-04",
+    "scenarioName": "Verify Non-Individuals form is hidden on initial load",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-05",
+    "scenarioName": "Verify Vessel form is hidden on initial load",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-06",
+    "scenarioName": "Verify clicking Non-Individuals switches the active state correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-07",
+    "scenarioName": "Verify clicking Vessel switches the active state correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-08",
+    "scenarioName": "Verify clicking Individual restores the active state correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-09",
+    "scenarioName": "Verify only the selected entity form is displayed after switching",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-10",
+    "scenarioName": "Verify Individual form displays when Individual is selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-11",
+    "scenarioName": "Verify Non-Individuals form displays when selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-12",
+    "scenarioName": "Verify Vessel form displays when selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-13",
+    "scenarioName": "Verify inactive buttons use neutral styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-14",
+    "scenarioName": "Verify active button uses blue/accent background with white text",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-15",
+    "scenarioName": "Verify switching entity type updates content immediately",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-16",
+    "scenarioName": "Verify switching from Individual to Non-Individuals hides the Individual form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-17",
+    "scenarioName": "Verify switching from Non-Individuals to Vessel hides the previous form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-18",
+    "scenarioName": "Verify switching entity type does not reset watchlist selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-19",
+    "scenarioName": "Verify repeated entity switching preserves selected watchlist value",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-20",
+    "scenarioName": "Verify entity type switch does not clear already entered form data within the selected form context",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-21",
+    "scenarioName": "Verify toggle control remains functional after browser resize",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-004-22",
+    "scenarioName": "Verify rapid switching between entity types keeps the final selected form in sync",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-01",
+    "scenarioName": "Verify Basic Information section is displayed for Individual entity type",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-02",
+    "scenarioName": "Verify Basic Information section title styling and capitalization",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-03",
+    "scenarioName": "Verify all mandatory and optional fields are rendered in the Basic Information section",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-04",
+    "scenarioName": "Verify the Basic Information fields are arranged in a responsive 2-column grid",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-05",
+    "scenarioName": "Verify Address field spans full width across both grid columns",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-06",
+    "scenarioName": "Verify Name in English is marked as mandatory with a red asterisk",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-07",
+    "scenarioName": "Verify ID Number field is available as a text input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-08",
+    "scenarioName": "Verify Name in English field is available as a text input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-09",
+    "scenarioName": "Verify Name in Non-English field is available as a text input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-10",
+    "scenarioName": "Verify Alias field is available as a text input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-11",
+    "scenarioName": "Verify Date of Birth field uses a date picker control",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-12",
+    "scenarioName": "Verify Date of Birth format is displayed as DD-MM-YYYY",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-13",
+    "scenarioName": "Verify Country of Birth dropdown contains the full configured country list",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-14",
+    "scenarioName": "Verify Country of Residence dropdown contains the same configured country list",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-15",
+    "scenarioName": "Verify Nationality dropdown contains the same configured country list",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-16",
+    "scenarioName": "Verify all country dropdowns use identical option sets",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-17",
+    "scenarioName": "Verify Joint Account Holder sub-section is displayed below Basic Information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-18",
+    "scenarioName": "Verify Joint Account Holder section contains Name and Address fields",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-19",
+    "scenarioName": "Verify all inputs use 13px base font and IBM Plex Sans",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-20",
+    "scenarioName": "Verify input background color matches the design token",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-21",
+    "scenarioName": "Verify input focus ring appears on field focus",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-22",
+    "scenarioName": "Verify each field has a visible and programmatic label",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-23",
+    "scenarioName": "Verify the form meets WCAG 2.1 AA label accessibility expectation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-24",
+    "scenarioName": "Verify user-entered data remains visible while navigating through the Basic Information section",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-005-25",
+    "scenarioName": "Verify the section behaves correctly at standard desktop width without layout breakage",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-01",
+    "scenarioName": "Verify Screening Configuration section is displayed in the Individual form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-02",
+    "scenarioName": "Verify Screening Configuration section title styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-03",
+    "scenarioName": "Verify Purpose field is present in Screening Configuration section",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-04",
+    "scenarioName": "Verify Purpose label has a red asterisk indicating mandatory field",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-05",
+    "scenarioName": "Verify Purpose dropdown opens with all configured options",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-06",
+    "scenarioName": "Verify Purpose dropdown default state is empty / placeholder",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-07",
+    "scenarioName": "Verify Purpose dropdown behaves as a single-select control",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-08",
+    "scenarioName": "Verify Onboarding Screening option can be selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-09",
+    "scenarioName": "Verify Transaction Screening option can be selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-10",
+    "scenarioName": "Verify Periodic Review option can be selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-11",
+    "scenarioName": "Verify Enhanced Due Diligence option can be selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-12",
+    "scenarioName": "Verify Purpose dropdown has an associated programmatic label",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-13",
+    "scenarioName": "Verify mandatory validation appears when Purpose is not selected and form is submitted",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-14",
+    "scenarioName": "Verify the validation error disappears after selecting a valid Purpose value",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-15",
+    "scenarioName": "Verify Watchlist Configuration grid renders below Purpose dropdown",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-16",
+    "scenarioName": "Verify Watchlist Configuration grid appears only after the Screening Configuration content area loads",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-17",
+    "scenarioName": "Verify Purpose selection does not hide the Watchlist Configuration grid",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-18",
+    "scenarioName": "Verify changing Purpose value updates only the dropdown state and not unrelated fields",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-19",
+    "scenarioName": "Verify Purpose dropdown is accessible through keyboard navigation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-20",
+    "scenarioName": "Verify dropdown options are displayed clearly without truncation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-21",
+    "scenarioName": "Verify Purpose field remains in the selected state after moving focus away",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-006-22",
+    "scenarioName": "Verify Screening Configuration section follows the Basic Information section in the page flow",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-01",
+    "scenarioName": "Verify Non-Individual form is hidden by default",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-02",
+    "scenarioName": "Verify Non-Individual form appears when entity type is switched",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-03",
+    "scenarioName": "Verify Basic Information section is rendered for Non-Individual form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-04",
+    "scenarioName": "Verify Basic Information fields are arranged in a 2-column grid",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-05",
+    "scenarioName": "Verify Registration Number label shows mandatory indicator",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-06",
+    "scenarioName": "Verify Registered Name (English) label shows mandatory indicator",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-07",
+    "scenarioName": "Verify all expected Basic Information fields are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-08",
+    "scenarioName": "Verify Registration Number input accepts text entry",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-09",
+    "scenarioName": "Verify Registered Name (English) input accepts text entry",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-10",
+    "scenarioName": "Verify Country of Incorporation dropdown contains the specified options",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-11",
+    "scenarioName": "Verify Date of Incorporation uses a date picker",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-12",
+    "scenarioName": "Verify Date of Incorporation displays in DD-MM-YYYY format",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-13",
+    "scenarioName": "Verify Registered Address spans full width",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-14",
+    "scenarioName": "Verify Address (Operational) spans full width",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-15",
+    "scenarioName": "Verify Purpose dropdown is present in the Non-Individual form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-16",
+    "scenarioName": "Verify Purpose dropdown defaults to Transaction Screening",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-17",
+    "scenarioName": "Verify Watchlist Configuration grid renders below Purpose",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-18",
+    "scenarioName": "Verify Registration Number validation message on empty submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-19",
+    "scenarioName": "Verify Registered Name validation message on empty submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-20",
+    "scenarioName": "Verify both mandatory validation messages appear together when both fields are empty",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-21",
+    "scenarioName": "Verify text and dropdown input styling matches the shared form design",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-22",
+    "scenarioName": "Verify field labels have programmatic association for accessibility",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-23",
+    "scenarioName": "Verify tab and entity switching does not incorrectly display Non-Individual form when another entity type is active",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-007-24",
+    "scenarioName": "Verify full form layout remains stable on standard desktop resolution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-01",
+    "scenarioName": "Verify Vessel form is hidden by default",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-02",
+    "scenarioName": "Verify Vessel form is displayed when Vessel toggle is selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-03",
+    "scenarioName": "Verify Basic Information section is rendered in the Vessel form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-04",
+    "scenarioName": "Verify Vessel Name label shows mandatory indicator",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-05",
+    "scenarioName": "Verify all Vessel Basic Information fields are displayed",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-06",
+    "scenarioName": "Verify Vessel Basic Information fields follow the shared layout style",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-07",
+    "scenarioName": "Verify IMO Number field is available as a text input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-08",
+    "scenarioName": "Verify IMO Number accepts a 7-digit identifier value",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-09",
+    "scenarioName": "Verify Call Sign field is available as a text input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-10",
+    "scenarioName": "Verify Vessel Type dropdown contains exactly the specified options",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-11",
+    "scenarioName": "Verify Flag State dropdown contains exactly the specified options",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-12",
+    "scenarioName": "Verify Vessel Type and Flag State dropdowns support single selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-13",
+    "scenarioName": "Verify Address (Owner/Operator) spans full width",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-14",
+    "scenarioName": "Verify Purpose dropdown is present in the Vessel form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-15",
+    "scenarioName": "Verify Vessel Purpose default value is Transaction Screening",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-16",
+    "scenarioName": "Verify Vessel Purpose options include Port Clearance and exclude Periodic Review",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-17",
+    "scenarioName": "Verify Watchlist Configuration grid renders below Purpose dropdown",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-18",
+    "scenarioName": "Verify Vessel Name validation message on failed submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-19",
+    "scenarioName": "Verify Vessel Name required error clears after valid input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-20",
+    "scenarioName": "Verify Vessel form labels have visible and programmatic associations",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-21",
+    "scenarioName": "Verify Vessel form remains consistent with shared entity form styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-008-22",
+    "scenarioName": "Verify full Vessel form renders correctly at standard desktop width",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-01",
+    "scenarioName": "Verify watchlist configuration card grid is rendered below Purpose dropdown",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-02",
+    "scenarioName": "Verify exactly 6 watchlist cards are displayed in the grid",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-03",
+    "scenarioName": "Verify watchlist cards are arranged in a responsive 2-column layout",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-04",
+    "scenarioName": "Verify each watchlist card shows title, category tag, description, and metadata pills",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-05",
+    "scenarioName": "Verify Onboarding Screening card content and metadata",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-06",
+    "scenarioName": "Verify Continuous Monitoring card content and metadata",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-07",
+    "scenarioName": "Verify High-Risk Jurisdiction Screening card content and metadata",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-08",
+    "scenarioName": "Verify Singapore High-Risk Screening card content and metadata",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-09",
+    "scenarioName": "Verify MAS Regulatory Watchlist card content and metadata",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-10",
+    "scenarioName": "Verify UAE Compliance Watchlist card content and metadata",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-11",
+    "scenarioName": "Verify category tag colors match the specified design tokens",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-12",
+    "scenarioName": "Verify unselected watchlist cards use neutral border styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-13",
+    "scenarioName": "Verify hovered watchlist card changes to darker border style",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-14",
+    "scenarioName": "Verify selected watchlist card displays active selected styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-15",
+    "scenarioName": "Verify only one watchlist card can be selected at a time per entity type",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-16",
+    "scenarioName": "Verify clicking a watchlist card updates the selection state correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-17",
+    "scenarioName": "Verify watchlist selection persists within the same entity type after interaction",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-18",
+    "scenarioName": "Verify no watchlist selection submission shows inline warning message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-19",
+    "scenarioName": "Verify warning message clears after a valid watchlist card is selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-20",
+    "scenarioName": "Verify watchlist selection state is independent for each entity type",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-21",
+    "scenarioName": "Verify previously selected card is restored when returning to the same entity type",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-009-22",
+    "scenarioName": "Verify watchlist grid remains stable across entity form switching",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-01",
+    "scenarioName": "Verify both action buttons are rendered at the bottom of each entity form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-02",
+    "scenarioName": "Verify Reset Form button uses ghost/outlined styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-03",
+    "scenarioName": "Verify Start Screening button uses primary navy styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-04",
+    "scenarioName": "Verify action buttons remain aligned left and right respectively",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-05",
+    "scenarioName": "Verify Reset Form clears text input values on the current entity form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-06",
+    "scenarioName": "Verify Reset Form resets dropdown fields to their default empty state",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-07",
+    "scenarioName": "Verify Reset Form clears date picker values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-08",
+    "scenarioName": "Verify Reset Form does not change the active entity type",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-09",
+    "scenarioName": "Verify Reset Form does not change the active top-level tab",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-10",
+    "scenarioName": "Verify Reset Form does not change the selected watchlist card",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-11",
+    "scenarioName": "Verify Reset Form does not affect unrelated UI state outside the form values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-12",
+    "scenarioName": "Verify Reset Form works independently on Individual form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-13",
+    "scenarioName": "Verify Reset Form works independently on Non-Individual form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-14",
+    "scenarioName": "Verify Reset Form works independently on Vessel form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-15",
+    "scenarioName": "Verify Reset Form does not trigger any API request",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-16",
+    "scenarioName": "Verify Start Screening triggers validation before navigation when required fields are empty",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-17",
+    "scenarioName": "Verify Start Screening does not bypass invalid form state",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-18",
+    "scenarioName": "Verify Start Screening allows navigation after valid form submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-19",
+    "scenarioName": "Verify Reset Form preserves selected watchlist and allows a fresh edit cycle",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-20",
+    "scenarioName": "Verify Reset Form does not alter validation state outside the current form fields",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-21",
+    "scenarioName": "Verify action buttons remain usable after repeated resets",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-010-22",
+    "scenarioName": "Verify button row remains stable on standard desktop layout",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-01",
+    "scenarioName": "Verify mandatory fields are visually marked before user input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-02",
+    "scenarioName": "Individual: submit with blank Name in English",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-03",
+    "scenarioName": "Individual: validate error when Purpose is not selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-04",
+    "scenarioName": "Individual: validate error when Watchlist card is not selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-05",
+    "scenarioName": "Individual: validate invalid date format",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-06",
+    "scenarioName": "Individual: successful screening submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-07",
+    "scenarioName": "Individual: multiple missing mandatory fields trigger first-error focus",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-08",
+    "scenarioName": "Non-Individual: submit with blank Registration Number",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-09",
+    "scenarioName": "Non-Individual: submit with blank Registered Name (English)",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-10",
+    "scenarioName": "Non-Individual: submit with both name fields missing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-11",
+    "scenarioName": "Non-Individual: validate missing Purpose",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-12",
+    "scenarioName": "Non-Individual: validate missing Watchlist card",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-13",
+    "scenarioName": "Non-Individual: invalid date format validation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-14",
+    "scenarioName": "Non-Individual: successful screening submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-15",
+    "scenarioName": "Vessel: submit with blank Vessel Name",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-16",
+    "scenarioName": "Vessel: validate missing Purpose",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-17",
+    "scenarioName": "Vessel: validate missing Watchlist selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-18",
+    "scenarioName": "Vessel: invalid date format validation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-19",
+    "scenarioName": "Vessel: multiple validation failures in one submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-20",
+    "scenarioName": "Vessel: successful screening submission",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-011-21",
+    "scenarioName": "Validate inline errors appear immediately without page reload",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-01",
+    "scenarioName": "Verify banner is displayed in the Individual form section",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-02",
+    "scenarioName": "Verify banner is displayed in the Non-Individual form section",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-03",
+    "scenarioName": "Verify banner is displayed in the Vessel form section",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-04",
+    "scenarioName": "Verify banner is displayed in the Bulk Upload tab",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-05",
+    "scenarioName": "Verify banner text is exact and unmodified",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-06",
+    "scenarioName": "Verify warning icon is displayed before the banner message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-07",
+    "scenarioName": "Verify banner background and text styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-08",
+    "scenarioName": "Verify banner remains visible when switching between entity types",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-09",
+    "scenarioName": "Verify banner remains visible after switching between Manual Screening and Bulk Upload",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-10",
+    "scenarioName": "Verify banner is visible without scrolling at 1280×720 resolution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-11",
+    "scenarioName": "Verify banner is visible across all supported sections at standard resolution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-12",
+    "scenarioName": "Verify banner is non-dismissable",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-012-13",
+    "scenarioName": "Verify banner does not move or disappear during normal form interaction",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-01",
+    "scenarioName": "Verify the upload zone is rendered with the correct visual treatment",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-02",
+    "scenarioName": "Verify clicking inside the upload zone opens the file picker",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-03",
+    "scenarioName": "Verify drag-and-drop selection works for a valid CSV file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-04",
+    "scenarioName": "Verify drag-and-drop selection works for a valid XLS file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-05",
+    "scenarioName": "Verify drag-and-drop selection works for a valid XLSX file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-06",
+    "scenarioName": "Verify uploaded CSV file shows filename, size, and readiness status",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-07",
+    "scenarioName": "Verify uploaded XLS file shows filename, size, and readiness status",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-08",
+    "scenarioName": "Verify uploaded XLSX file shows filename, size, and readiness status",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-09",
+    "scenarioName": "Verify unsupported file format is rejected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-10",
+    "scenarioName": "Verify a file exceeding 25 MB is rejected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-11",
+    "scenarioName": "Verify a file exactly at the 25 MB limit is accepted",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-12",
+    "scenarioName": "Verify an empty file is rejected with the correct message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-13",
+    "scenarioName": "Verify the upload zone uses client-side validation before any upload action",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-14",
+    "scenarioName": "Verify accepted MIME types are recognized correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-15",
+    "scenarioName": "Verify the download template button is visible and usable",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-16",
+    "scenarioName": "Verify the template download provides the pre-formatted screening file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-17",
+    "scenarioName": "Verify file selection can be replaced by a new valid file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-013-18",
+    "scenarioName": "Verify validation message is shown inside the upload zone area",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-01",
+    "scenarioName": "Verify Watchlist Configuration card grid is displayed below the upload zone",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-02",
+    "scenarioName": "Verify all watchlist cards are selectable",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-03",
+    "scenarioName": "Verify Start Bulk Screening button is displayed at the bottom of the page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-04",
+    "scenarioName": "Verify clicking Start Bulk Screening without uploading a file shows validation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-05",
+    "scenarioName": "Verify clicking Start Bulk Screening without selecting a watchlist shows validation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-06",
+    "scenarioName": "Verify both validations are triggered when file and watchlist are missing",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-07",
+    "scenarioName": "Verify successful bulk screening initiation with valid file and watchlist",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-08",
+    "scenarioName": "Verify previously uploaded valid file remains selected after watchlist selection",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-09",
+    "scenarioName": "Verify selected watchlist remains highlighted after file upload",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-10",
+    "scenarioName": "Verify license warning banner is displayed below the Bulk Upload form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-11",
+    "scenarioName": "Verify watchlist grid layout matches Manual Screening implementation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-12",
+    "scenarioName": "Verify uploaded file validation error blocks bulk screening",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-13",
+    "scenarioName": "Verify Start Bulk Screening works with CSV file format",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-14",
+    "scenarioName": "Verify Start Bulk Screening works with XLS file format",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-15",
+    "scenarioName": "Verify Start Bulk Screening works with XLSX file format",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-014-16",
+    "scenarioName": "Verify bulk screening initiation acknowledgement is received within 3 seconds",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-01",
+    "scenarioName": "Verify Screening Results page renders after successful screening",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-02",
+    "scenarioName": "Verify page is accessible from View Last Results",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-03",
+    "scenarioName": "Verify subject summary card is displayed at the top of the page",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-04",
+    "scenarioName": "Verify avatar appears with correct size and shape",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-05",
+    "scenarioName": "Verify avatar initials match the subject identity",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-06",
+    "scenarioName": "Verify subject name is displayed with required typography",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-07",
+    "scenarioName": "Verify Entity Type badge is displayed with correct label and colour",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-08",
+    "scenarioName": "Verify Watchlist Profile badge is displayed with correct label and colour",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-09",
+    "scenarioName": "Verify Purpose badge is displayed with correct label and colour",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-10",
+    "scenarioName": "Verify all three badge pills render together in the summary card",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-11",
+    "scenarioName": "Verify metadata row displays ID Number when value is available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-12",
+    "scenarioName": "Verify metadata row displays placeholder when ID Number is blank",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-13",
+    "scenarioName": "Verify metadata row displays Date of Birth when value is available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-14",
+    "scenarioName": "Verify metadata row displays placeholder when Date of Birth is blank",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-15",
+    "scenarioName": "Verify metadata row displays Nationality when value is available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-16",
+    "scenarioName": "Verify metadata row displays placeholder when Nationality is blank",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-17",
+    "scenarioName": "Verify + New Screening button is displayed in the top-right area",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-18",
+    "scenarioName": "Verify + New Screening returns user to Manual Screening tab",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-19",
+    "scenarioName": "Verify results page loads within the required performance threshold",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-015-20",
+    "scenarioName": "Verify last results are cleared after logout or session expiry",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-01",
+    "scenarioName": "Verify the 5 metric cards render below the AI summary panel",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-02",
+    "scenarioName": "Verify the metric cards appear in the required order",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-03",
+    "scenarioName": "Verify Critical match label and value are styled in red",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-04",
+    "scenarioName": "Verify High severity label and value are styled in amber",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-05",
+    "scenarioName": "Verify Medium risk label and value are styled in blue",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-06",
+    "scenarioName": "Verify Lists hit label and value are styled in purple",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-07",
+    "scenarioName": "Verify Total results label and value use the default grey text style",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-08",
+    "scenarioName": "Verify metric values are computed from data and not hardcoded",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-09",
+    "scenarioName": "Verify Critical match count is correct for score ≥ 90%",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-10",
+    "scenarioName": "Verify High severity count is correct for scores 80–89%",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-11",
+    "scenarioName": "Verify Medium risk count is correct for scores 68–79%",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-12",
+    "scenarioName": "Verify Lists hit count reflects distinct matched watchlists",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-13",
+    "scenarioName": "Verify Total results count equals total rows in the results table",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-14",
+    "scenarioName": "Verify zero-value cards display 0 with the correct color",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-15",
+    "scenarioName": "Verify all metric cards render correctly when there are no results at all",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-16",
+    "scenarioName": "Verify metric cards remain readable at 1280×720 without horizontal scrolling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-17",
+    "scenarioName": "Verify metric cards stay between the AI summary panel and the results table",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-016-18",
+    "scenarioName": "Verify metric values update when the results dataset changes",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-01",
+    "scenarioName": "Verify AI summary panel renders below the subject summary card",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-02",
+    "scenarioName": "Verify AI summary panel uses the required border treatment",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-03",
+    "scenarioName": "Verify GENAI badge appears with correct label and styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-04",
+    "scenarioName": "Verify animated pulse dot is visible on the GENAI badge",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-05",
+    "scenarioName": "Verify loading placeholder is shown while AI response is pending",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-06",
+    "scenarioName": "Verify AI summary appears within 5 seconds after results become available",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-07",
+    "scenarioName": "Verify results table is visible while AI summary is still loading",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-08",
+    "scenarioName": "Verify AI failure message appears when summary generation fails",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-09",
+    "scenarioName": "Verify AI failure does not block the results table",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-10",
+    "scenarioName": "Verify summary includes total match count",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-11",
+    "scenarioName": "Verify summary includes severity breakdown",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-12",
+    "scenarioName": "Verify summary includes lists hit count or list-related mention",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-13",
+    "scenarioName": "Verify summary includes the name-only caveat when no ID is provided",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-14",
+    "scenarioName": "Verify summary does not incorrectly show the name-only caveat when ID is present",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-15",
+    "scenarioName": "Verify recommendation to review rows is included in the summary",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-16",
+    "scenarioName": "Verify key figures in the AI summary are bolded",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-17",
+    "scenarioName": "Verify entity names in the AI summary are bolded",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-18",
+    "scenarioName": "Verify summary content reflects current screening data and not stale information",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-19",
+    "scenarioName": "Verify AI summary panel remains non-blocking during rendering",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-017-20",
+    "scenarioName": "Verify the AI summary panel handles a fully populated result set cleanly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-01",
+    "scenarioName": "Verify the results table renders with all 10 columns in the correct order",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-02",
+    "scenarioName": "Verify the Name column uses uppercase, bold, IBM Plex Mono styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-03",
+    "scenarioName": "Verify the Cust ID column uses grey IBM Plex Mono styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-04",
+    "scenarioName": "Verify the Lists Matched column shows a monospace numeric value",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-05",
+    "scenarioName": "Verify Highest Score displays both progress bar and numeric percentage",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-06",
+    "scenarioName": "Verify Highest Score bar colour is red for scores ≥ 90%",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-07",
+    "scenarioName": "Verify Highest Score bar colour is amber for scores 80–89%",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-08",
+    "scenarioName": "Verify Highest Score bar colour is blue for scores below 80%",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-09",
+    "scenarioName": "Verify Top List column truncates long text with ellipsis",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-10",
+    "scenarioName": "Verify Category badge styling for Sanctions",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-11",
+    "scenarioName": "Verify Category badge styling for PEP",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-12",
+    "scenarioName": "Verify Category badge styling for Embargo",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-13",
+    "scenarioName": "Verify Status badge defaults to Under Review with purple styling",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-14",
+    "scenarioName": "Verify View Details button has the expected default and hover styles",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-15",
+    "scenarioName": "Verify row hover produces a clear background highlight",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-16",
+    "scenarioName": "Verify Match Date uses IBM Plex Mono, grey styling, and DD-MM-YYYY format",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-17",
+    "scenarioName": "Verify the Search Time label renders below the table in the correct alignment",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-18",
+    "scenarioName": "Verify IBM Plex Mono is used consistently for ID, score, and date related columns",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-19",
+    "scenarioName": "Verify the table remains scannable with clear spacing and alignment across columns",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-018-20",
+    "scenarioName": "Verify the row-level data presentation remains consistent across multiple result entries",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-01",
+    "scenarioName": "Verify the filter/control bar is displayed above the results table",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-02",
+    "scenarioName": "Verify the text filter input placeholder and width",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-03",
+    "scenarioName": "Verify text filter matches rows by Name",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-04",
+    "scenarioName": "Verify text filter matches rows by Cust ID",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-05",
+    "scenarioName": "Verify text filter matches rows by list name",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-06",
+    "scenarioName": "Verify text filter is case-insensitive",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-07",
+    "scenarioName": "Verify text filter trims the visible results correctly for partial matches",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-08",
+    "scenarioName": "Verify text filter hides non-matching rows",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-09",
+    "scenarioName": "Verify text filter returns no rows for an unmatched search term",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-10",
+    "scenarioName": "Verify category dropdown displays all required options",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-11",
+    "scenarioName": "Verify selecting Sanctions filters the table correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-12",
+    "scenarioName": "Verify selecting PEP filters the table correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-13",
+    "scenarioName": "Verify selecting Embargo filters the table correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-14",
+    "scenarioName": "Verify All categories removes the category filter",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-15",
+    "scenarioName": "Verify text filter and category dropdown work together using AND logic",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-16",
+    "scenarioName": "Verify changing category while text filter is active updates the visible rows correctly",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-17",
+    "scenarioName": "Verify clearing the text filter retains the selected category filter",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-18",
+    "scenarioName": "Verify filter response time remains within the client-side performance target",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-19",
+    "scenarioName": "Verify Export Report button is visible and right-aligned",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-20",
+    "scenarioName": "Verify Export Report downloads the current filtered result set",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-21",
+    "scenarioName": "Verify Export Report respects current text and category filters",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-019-22",
+    "scenarioName": "Verify empty search plus All categories restores the full table",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_001",
+    "scenarioName": "Verify timeout message is shown when the screening engine response exceeds the allowed threshold",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_002",
+    "scenarioName": "Verify the loading spinner is dismissed when a timeout occurs",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_003",
+    "scenarioName": "Verify a Retry button is available with the timeout error",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_004",
+    "scenarioName": "Verify Retry re-triggers screening without requiring the user to re-fill the form after a timeout",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_005",
+    "scenarioName": "Verify Retry preserves the selected watchlists and screening criteria after timeout",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_006",
+    "scenarioName": "Verify the correct message appears when one or more selected watchlists are unavailable",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_007",
+    "scenarioName": "Verify the screening form remains editable when watchlist unavailable occurs",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_008",
+    "scenarioName": "Verify the user can adjust the selected watchlists after receiving a watchlist unavailable error",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_009",
+    "scenarioName": "Verify no screening result statistics are shown when watchlist unavailable occurs",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_010",
+    "scenarioName": "Verify the no-results message is displayed when screening returns zero potential matches",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_011",
+    "scenarioName": "Verify all five stat cards display zero when no matches are found",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_012",
+    "scenarioName": "Verify the results table body remains empty when no matches are found",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_013",
+    "scenarioName": "Verify the full results page layout remains visible in the zero-results state",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_014",
+    "scenarioName": "Verify no stale or partial match data is displayed when the response contains zero results",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_015",
+    "scenarioName": "Verify the network error message is shown when the application cannot reach the screening service",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_016",
+    "scenarioName": "Verify the Retry button is available for network error recovery",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_017",
+    "scenarioName": "Verify Retry re-attempts screening without clearing the form inputs after a network error",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_018",
+    "scenarioName": "Verify the loading spinner is removed when a network error is returned",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_019",
+    "scenarioName": "Verify a retry after transient network recovery can complete successfully using the existing form data",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS020_020",
+    "scenarioName": "Verify the unavailable-watchlist message is returned when any one of multiple selected watchlists is unavailable",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_001",
+    "scenarioName": "Verify an unsupported file format is rejected when a PDF file is selected through the file picker",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_002",
+    "scenarioName": "Verify an unsupported file format is rejected when a compressed file is dragged and dropped",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_003",
+    "scenarioName": "Verify a file that is exactly 25 MB is accepted and does not trigger the size error",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_004",
+    "scenarioName": "Verify a file greater than 25 MB is rejected with the correct inline message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_005",
+    "scenarioName": "Verify a zero-byte file is rejected as an empty file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_006",
+    "scenarioName": "Verify a file with template headers only and no data rows is rejected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_007",
+    "scenarioName": "Verify a file missing one mandatory template column is rejected with the correct column name in the message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_008",
+    "scenarioName": "Verify a different missing required column is reported correctly in the inline validation message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_009",
+    "scenarioName": "Verify a file missing multiple required columns is blocked before any upload processing begins",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_010",
+    "scenarioName": "Verify all file validation errors remain within the upload zone and do not navigate the user away",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_011",
+    "scenarioName": "Verify no network request is triggered when an unsupported file is selected",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_012",
+    "scenarioName": "Verify no network request is triggered when a file exceeds the 25 MB limit",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_013",
+    "scenarioName": "Verify no network request is triggered when an empty file is uploaded",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_014",
+    "scenarioName": "Verify the upload-zone error is cleared when the user replaces an invalid file with a valid file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_015",
+    "scenarioName": "Verify the validation message updates when a user replaces one invalid file with another invalid file",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_016",
+    "scenarioName": "Verify a valid bulk file with all rows processed successfully does not display any row error badge",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_017",
+    "scenarioName": "Verify a single failed row shows the correct row-level error badge in the Status column",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_018",
+    "scenarioName": "Verify multiple failed rows each display the row-level error badge independently",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_019",
+    "scenarioName": "Verify mixed success and failed rows show the correct status per row without affecting other records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS021_020",
+    "scenarioName": "Verify corrected re-upload replaces prior row error states with the latest uploaded file results",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_001",
+    "scenarioName": "Verify every visible form input has a corresponding visible <label> element",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_002",
+    "scenarioName": "Verify every form input has a programmatic label association for assistive technologies",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_003",
+    "scenarioName": "Verify Tab key navigation follows the visual reading order from top to bottom",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_004",
+    "scenarioName": "Verify Shift+Tab returns focus in reverse logical order",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_005",
+    "scenarioName": "Verify the entity toggle is fully operable using only the keyboard",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_006",
+    "scenarioName": "Verify tab switches can be selected using keyboard input",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_007",
+    "scenarioName": "Verify watchlist cards are reachable and selectable using the keyboard",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_008",
+    "scenarioName": "Verify a visible focus ring appears on text inputs when focused by keyboard",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_009",
+    "scenarioName": "Verify a visible focus ring appears on interactive controls such as toggles, tabs, and cards",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_010",
+    "scenarioName": "Verify all mandatory fields display a visible red asterisk in the label",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_011",
+    "scenarioName": "Verify status badges communicate meaning using both text and colour",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_012",
+    "scenarioName": "Verify badge meaning remains understandable when viewed in grayscale or low-colour conditions",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_013",
+    "scenarioName": "Verify badge text is announced correctly by assistive technology",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_014",
+    "scenarioName": "Verify the entity toggle provides visible feedback within 100ms of user activation",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_015",
+    "scenarioName": "Verify tab switching provides visible feedback within 100ms",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_016",
+    "scenarioName": "Verify watchlist card selection gives visual feedback within 100ms",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_017",
+    "scenarioName": "Verify accessibility and keyboard navigation behavior in Chrome 120+",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_018",
+    "scenarioName": "Verify accessibility and keyboard navigation behavior in Edge 120+",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_019",
+    "scenarioName": "Verify accessibility and keyboard navigation behavior in Safari 16+ and Firefox 120+",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS022_020",
+    "scenarioName": "Verify the license warning banner is visible without scrolling at 1280×720 resolution",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_001",
+    "scenarioName": "Verify IBM Plex Sans is applied to all standard UI text elements",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_002",
+    "scenarioName": "Verify IBM Plex Mono is used for Customer IDs and code-like identifiers",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_003",
+    "scenarioName": "Verify IBM Plex Mono is applied to match scores and numeric scoring values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_004",
+    "scenarioName": "Verify IBM Plex Mono is applied to dates and timestamp values",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_005",
+    "scenarioName": "Verify the page title uses 14px font size with 600 font weight",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_006",
+    "scenarioName": "Verify section headings use uppercase styling with 11px size and 600 weight",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_007",
+    "scenarioName": "Verify standard body text uses 13px base font size",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_008",
+    "scenarioName": "Verify labels use font sizes between 11.5px and 12.5px",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_009",
+    "scenarioName": "Verify the module page background uses the '--bg design token",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_010",
+    "scenarioName": "Verify cards and panels use the --bg2 design token",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_011",
+    "scenarioName": "Verify all input fields use the --bg2 design token",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_012",
+    "scenarioName": "Verify the primary “Start Screening →” CTA uses the '--accent token",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_013",
+    "scenarioName": "Verify keyboard focus rings use the '--accent token colour",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_014",
+    "scenarioName": "Verify Critical and High severity badges use the approved badge colour definitions",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_015",
+    "scenarioName": "Verify Medium and Under Review badges use the approved badge colour definitions",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_016",
+    "scenarioName": "Verify Sanctions, PEP, and Embargo badges use approved token colours",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_017",
+    "scenarioName": "Verify Onboarding, Monitoring, and EDD badges use approved token colours",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_018",
+    "scenarioName": "Verify Regulatory badges use the approved design token mapping",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_019",
+    "scenarioName": "Verify no inline styles override approved design tokens without documented justification",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "TC_MS023_020",
+    "scenarioName": "Verify typography and design token usage remain visually consistent across all module sections",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-01",
+    "scenarioName": "Verify data entered in Individual form does not appear in Non-Individual or Vessel form fields",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-02",
+    "scenarioName": "Verify validation errors triggered in one entity form do not appear in another entity form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-03",
+    "scenarioName": "Verify Purpose dropdown selection is independent per entity type and does not sync across forms",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-04",
+    "scenarioName": "Verify different watchlist cards can be independently selected for different entity types simultaneously",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-05",
+    "scenarioName": "Verify watchlist card selected in Bulk Upload tab does not affect watchlist selections in Manual Screening entity forms",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-06",
+    "scenarioName": "Verify View Last Results shows appropriate empty-state message when user has not performed any screening in the current session",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-07",
+    "scenarioName": "Verify View Last Results handles session expiry gracefully without showing stale or broken results",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-08",
+    "scenarioName": "Verify screening results accessed via View Last Results persist correctly after navigating away and returning within the same session",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-09",
+    "scenarioName": "Verify all submitted form field values are preserved when the user retries after a network timeout without re-entering the form",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-10",
+    "scenarioName": "Verify a loading indicator is shown while the retry screening request is in progress",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-11",
+    "scenarioName": "Verify that a failure in AI summary generation does not prevent the screening results table and metric cards from loading",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-12",
+    "scenarioName": "Verify AI Summary panel displays a meaningful error message when GenAI generation fails",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-13",
+    "scenarioName": "Verify a file with a .csv extension but non-CSV MIME type is rejected with an appropriate error message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-14",
+    "scenarioName": "Verify that an uploaded file containing duplicate entity rows is handled without crashing and duplicate rows are flagged in the result",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-15",
+    "scenarioName": "Verify a file missing mandatory template columns (e.g. Name column) is rejected with a clear column-level error message",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-16",
+    "scenarioName": "Verify that when some rows in a bulk upload file fail individual screening due to invalid data, the remaining valid rows are still screened and results are shown",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-17",
+    "scenarioName": "Verify that applying both text filter and category filter simultaneously narrows results using AND logic (both conditions must match)",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-18",
+    "scenarioName": "Verify that the Export Report function exports only the currently filtered subset of results, not all results",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-19",
+    "scenarioName": "Verify that clearing all active filters restores the complete unfiltered results table and subsequent export includes all records",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-20",
+    "scenarioName": "Verify a screening match with an exact score of 90% is classified and displayed as Critical severity, not High",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-21",
+    "scenarioName": "Verify a screening match with an exact score of 89% is classified and displayed as High severity, not Critical",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-22",
+    "scenarioName": "Verify a screening match with an exact score of 80% is classified and displayed as High severity, not Medium",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-23",
+    "scenarioName": "Verify a screening match with an exact score of 79% is classified and displayed as Medium risk, not High severity",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-24",
+    "scenarioName": "Verify the expected state of the Manual Screening form after a browser page refresh",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-25",
+    "scenarioName": "Verify that resetting the Manual Screening form does not affect the file upload state or watchlist selection on the Bulk Upload tab",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "MS-020-26",
+    "scenarioName": "Verify that logging out and back in clears any in-progress form data from the previous session",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/manualScreeningTests/manual-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  }
+]

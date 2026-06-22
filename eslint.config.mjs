@@ -70,7 +70,10 @@ export default [
       ],
 
       "playwright/expect-expect": "off",
+<<<<<<< HEAD
       "playwright/consistent-spacing-between-blocks": "off",
+=======
+>>>>>>> master
       "playwright/no-conditional-in-test": "warn",
       "playwright/no-wait-for-timeout": "warn",
     },

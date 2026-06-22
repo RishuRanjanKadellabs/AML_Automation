@@ -42,7 +42,27 @@ export async function dismissOpenUi(page: Page): Promise<void> {
 
   await page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
 
+<<<<<<< HEAD
   const modal = page.locator("[role='dialog'], .gap-detail-modal, .modal");
+=======
+  const panel = page.locator(".ssc-panel-overlay");
+  if (await panel.first().isVisible().catch(() => false)) {
+    const cancel = panel.getByRole("button", { name: /Cancel|Close/i }).first();
+    if (await cancel.isVisible().catch(() => false)) {
+      await cancel.click().catch(() => undefined);
+    } else {
+      await page.keyboard.press("Escape").catch(() => undefined);
+    }
+    await panel.first().waitFor({ state: "hidden", timeout: 3000 }).catch(() => undefined);
+  }
+
+  const search = page.getByRole("searchbox").or(page.getByPlaceholder(/Search profiles/i)).first();
+  if (await search.isVisible().catch(() => false)) {
+    await search.fill("").catch(() => undefined);
+  }
+
+  const modal = page.locator(".ssc-modal-overlay, [role='dialog'], .gap-detail-modal, .modal");
+>>>>>>> master
   if (await modal.first().isVisible().catch(() => false)) {
     await page.keyboard.press("Escape").catch(() => undefined);
     await modal.first().waitFor({ state: "hidden", timeout: 2000 }).catch(() => undefined);
@@ -79,9 +99,16 @@ export async function closeBrowserGracefully(browser: Browser): Promise<void> {
   });
 }
 
+<<<<<<< HEAD
 /** Reset worker page after a failed attempt so retries start from a clean state. */
 export async function resetPageAfterFailure(page: Page): Promise<void> {
   if (page.isClosed()) return;
   await dismissOpenUi(page);
   await page.goto("about:blank", { waitUntil: "commit", timeout: 5000 }).catch(() => undefined);
+=======
+/** Reset worker page after a failed attempt — dismiss UI only; next test navigates as needed. */
+export async function resetPageAfterFailure(page: Page): Promise<void> {
+  if (page.isClosed()) return;
+  await dismissOpenUi(page);
+>>>>>>> master
 }
