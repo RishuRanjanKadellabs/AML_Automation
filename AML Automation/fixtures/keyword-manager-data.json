@@ -1,0 +1,78 @@
+{
+  "defaults": {
+    "route": "/configuration/keyword-manager",
+    "routeNote": "Excel specifies sidebar navigation (Configuration menu → Screening – Keyword Configuration); direct URL is a placeholder for automation",
+    "sidebarLabel": "Screening – Keyword Configuration",
+    "sidebarLabelAlt": "Keyword Manager",
+    "parentMenu": "Configuration",
+    "defaultTab": "Active",
+    "defaultSearchPlaceholder": "Search keywords by phrase, category..."
+  },
+  "roles": {
+    "complianceOfficer": "Compliance Officer",
+    "maker": "Maker",
+    "checker": "Checker",
+    "viewer": "Viewer"
+  },
+  "categories": {
+    "financialCrime": "Financial Crime",
+    "narcotics": "Narcotics",
+    "pep": "PEP",
+    "sanctions": "Sanctions",
+    "terrorism": "Terrorism",
+    "adverseMedia": "Adverse Media"
+  },
+  "sampleKeywords": {
+    "terrorFinancing": "terror financing",
+    "moneyLaundering": "money laundering",
+    "sanctionsEvasion": "sanctions evasion",
+    "pepRelated": "politically exposed person",
+    "uatApprovalTest": "uat keyword approval test"
+  },
+  "tabs": [
+    "Active",
+    "Inactive",
+    "Drafted"
+  ],
+  "screeningFields": [
+    "Narrative",
+    "Counterparty",
+    "Reference",
+    "Originator",
+    "Beneficiary"
+  ],
+  "statuses": [
+    "Active",
+    "Drafted",
+    "Inactive",
+    "Pending Approval"
+  ],
+  "tableColumns": [
+    "Keyword",
+    "Category",
+    "Screening Fields",
+    "Date",
+    "Status",
+    "Actions"
+  ],
+  "export": {
+    "defaultFormat": "CSV",
+    "formats": ["CSV", "Excel"]
+  },
+  "api": {
+    "listEndpoint": "GET /api/v1/keywords",
+    "note": "Exact API base URL and auth headers to be confirmed from environment config"
+  },
+  "bulkImport": {
+    "sampleFile": "keywords-sample.csv",
+    "emptyFile": "empty.csv",
+    "templateFile": "keywords-template.csv"
+  },
+  "security": {
+    "injectionString": "<script>alert(1)</script>"
+  },
+  "viewports": {
+    "medium": { "width": 1024, "height": 768 },
+    "small": { "width": 768, "height": 720 }
+  }
+}

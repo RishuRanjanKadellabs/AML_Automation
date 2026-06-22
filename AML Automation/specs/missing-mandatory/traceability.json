@@ -1,0 +1,1763 @@
+{
+  "summary": {
+    "totalMm": 288,
+    "overlappedMm": 25,
+    "netNewMm": 263
+  },
+  "entries": [
+    {
+      "mmId": "MM-TC-001",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-002",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-003",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-004",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-005",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-006",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-007",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-008",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-009",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-010",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-011",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-012",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-013",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-014",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-015",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-016",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-017",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-018",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-019",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-020",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-021",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-022",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-023",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-024",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-025",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-026",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-027",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-028",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-029",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-030",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-031",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-032",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-033",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-034",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-035",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-036",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-037",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-038",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-039",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-040",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-041",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-042",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-043",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-044",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-045",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-046",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-047",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-048",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-049",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-050",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-051",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-052",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-053",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-054",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-055",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-056",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-057",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-058",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-059",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-060",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-061",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-062",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-063",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-064",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-065",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-066",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-067",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-068",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-069",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-070",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-071",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-072",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-073",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-074",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-075",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-076",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-077",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-078",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-079",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-080",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-081",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-082",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-083",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-084",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-085",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-086",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-087",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-088",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-089",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-090",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-091",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-092",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-093",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-094",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-095",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-096",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-097",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-098",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-099",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-100",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-101",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-102",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-103",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-104",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-105",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-106",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-107",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-108",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-109",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-110",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-111",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-112",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-113",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-114",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-115",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-116",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-117",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-118",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-119",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-120",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-121",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-122",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-124",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-125",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-126",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-127",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-128",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-129",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-130",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-131",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-132",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-133",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-134",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-135",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-136",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-137",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-138",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-139",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-140",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-141",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-142",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-143",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-144",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-145",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-146",
+      "kgrId": "KGR-001",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-001 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-147",
+      "kgrId": "KGR-021",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-021 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-148",
+      "kgrId": "KGR-029",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-029 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-149",
+      "kgrId": "KGR-071",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-071 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-150",
+      "kgrId": "KGR-190",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-190 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-151",
+      "kgrId": "KGR-042",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-042 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-152",
+      "kgrId": "KGR-043",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-043 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-153",
+      "kgrId": "KGR-050",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-050 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-154",
+      "kgrId": "KGR-056",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-056 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-155",
+      "kgrId": "KGR-059",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-059 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-156",
+      "kgrId": "KGR-061",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-061 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-157",
+      "kgrId": "KGR-065",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-065 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-158",
+      "kgrId": "KGR-069",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-069 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-159",
+      "kgrId": "KGR-068",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-068 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-160",
+      "kgrId": "KGR-160",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-160 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-161",
+      "kgrId": "KGR-085",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-085 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-162",
+      "kgrId": "KGR-099",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-099 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-163",
+      "kgrId": "KGR-170",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-170 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-164",
+      "kgrId": "KGR-164",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-164 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-165",
+      "kgrId": "KGR-131",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-131 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-166",
+      "kgrId": "KGR-137",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-137 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-167",
+      "kgrId": "KGR-148",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-148 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-168",
+      "kgrId": "KGR-168",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-168 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-169",
+      "kgrId": "KGR-169",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-169 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-170",
+      "kgrId": "KGR-170",
+      "overlapType": "partial",
+      "notes": "Overlaps KGR-170 KYC Gap Report scenario"
+    },
+    {
+      "mmId": "MM-TC-171",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-172",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-173",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-174",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-175",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-176",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-177",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-178",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-179",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-180",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-181",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-182",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-183",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-184",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-185",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-186",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-187",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-188",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-189",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-190",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-191",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-192",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-193",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-194",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-195",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-196",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-197",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-198",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-199",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-200",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-201",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-202",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-203",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-204",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-205",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-206",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-207",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-208",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-209",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-210",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-211",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-212",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-213",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-214",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-215",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-216",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-217",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-218",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-219",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-220",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-221",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-222",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-223",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-224",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-225",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-226",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-227",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-228",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-229",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-230",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-231",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-232",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-233",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-234",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-235",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-236",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-237",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-238",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-239",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-240",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-241",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-242",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-243",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-244",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-245",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-246",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-247",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-248",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-249",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-250",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-251",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-252",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-253",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-254",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-255",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-256",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-257",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-258",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-259",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-260",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-261",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-262",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-263",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-264",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-265",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-266",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-267",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-268",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-269",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-270",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-271",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-272",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-273",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-274",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-275",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-276",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-277",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-278",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-279",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-280",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-281",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-282",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-283",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-283",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-284",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-285",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-286",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-287",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    },
+    {
+      "mmId": "MM-TC-288",
+      "kgrId": null,
+      "overlapType": "none",
+      "notes": "Net-new Missing Mandatory requirement"
+    }
+  ],
+  "kgrToMm": {
+    "KGR-001": "MM-TC-146",
+    "KGR-021": "MM-TC-147",
+    "KGR-029": "MM-TC-148",
+    "KGR-071": "MM-TC-149",
+    "KGR-190": "MM-TC-150",
+    "KGR-042": "MM-TC-151",
+    "KGR-043": "MM-TC-152",
+    "KGR-050": "MM-TC-153",
+    "KGR-056": "MM-TC-154",
+    "KGR-059": "MM-TC-155",
+    "KGR-061": "MM-TC-156",
+    "KGR-065": "MM-TC-157",
+    "KGR-069": "MM-TC-158",
+    "KGR-068": "MM-TC-159",
+    "KGR-160": "MM-TC-160",
+    "KGR-085": "MM-TC-161",
+    "KGR-099": "MM-TC-162",
+    "KGR-170": "MM-TC-170",
+    "KGR-164": "MM-TC-164",
+    "KGR-131": "MM-TC-165",
+    "KGR-137": "MM-TC-166",
+    "KGR-148": "MM-TC-167",
+    "KGR-168": "MM-TC-168",
+    "KGR-169": "MM-TC-169"
+  }
+}

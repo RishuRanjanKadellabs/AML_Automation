@@ -1,0 +1,2963 @@
+{
+  "generatedAt": "2026-06-19T10:33:47.898Z",
+  "testCases": [
+    {
+      "id": "IWC-TC-001",
+      "subModule": "Page Framework",
+      "priority": "High",
+      "taskDescription": "Verify Ignore Words Configuration page loads successfully",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "high",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "IWC-TC-002",
+      "subModule": "Page Framework",
+      "priority": "High",
+      "taskDescription": "Verify navigation path via Configuration sidebar menu",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-003",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify active sidebar highlight for Ignore Words Configuration",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-004",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify full-viewport single-page layout without page-level scrolling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-005",
+      "subModule": "Page Framework",
+      "priority": "Low",
+      "taskDescription": "Verify sidebar fixed width and structure",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-006",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify main content area layout structure",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-007",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify top bar height and user information display",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-008",
+      "subModule": "Page Framework",
+      "priority": "Low",
+      "taskDescription": "Verify status bar content and height",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-009",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify breadcrumb parent link navigation",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-010",
+      "subModule": "Page Framework",
+      "priority": "Low",
+      "taskDescription": "Verify breadcrumb current page label",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-011",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify page responsiveness on medium screen resolution",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-012",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify page responsiveness on smaller screen resolution",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-013",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify loading indicator during slow network",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "performance"
+      ]
+    },
+    {
+      "id": "IWC-TC-014",
+      "subModule": "Page Framework",
+      "priority": "High",
+      "taskDescription": "Verify empty-state when no ignore words exist for tab",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-015",
+      "subModule": "Page Framework",
+      "priority": "Medium",
+      "taskDescription": "Verify frontend console stability during page load",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "page-framework",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-016",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify default Active tab selection on page load",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-017",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify Active tab dynamic count",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-018",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify Inactive tab dynamic count",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-019",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify Drafted Ignore Word tab dynamic count",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-020",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify absence of Pending Approval tab",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-021",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify Inactive tab filters table to inactive records",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-022",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify Drafted tab filters table to drafted records",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-023",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify tab switch resets search input",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-024",
+      "subModule": "Tab Bar",
+      "priority": "Low",
+      "taskDescription": "Verify inactive tab hover styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-025",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify tab count updates after disable action per FSD BR-007",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-026",
+      "subModule": "Tab Bar",
+      "priority": "High",
+      "taskDescription": "Verify tab count updates after new word submission",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-027",
+      "subModule": "Tab Bar",
+      "priority": "Medium",
+      "taskDescription": "Verify sorting resets on tab switch",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-bar",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-028",
+      "subModule": "Search & Filter",
+      "priority": "Medium",
+      "taskDescription": "Verify toolbar search input rendering",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-029",
+      "subModule": "Search & Filter",
+      "priority": "High",
+      "taskDescription": "Verify real-time search by ignore word phrase",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-030",
+      "subModule": "Search & Filter",
+      "priority": "High",
+      "taskDescription": "Verify real-time search by category",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-031",
+      "subModule": "Search & Filter",
+      "priority": "Medium",
+      "taskDescription": "Verify search excludes Risk Level",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-032",
+      "subModule": "Search & Filter",
+      "priority": "Medium",
+      "taskDescription": "Verify search excludes Match Type",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-033",
+      "subModule": "Search & Filter",
+      "priority": "Medium",
+      "taskDescription": "Verify search excludes Created Date",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-034",
+      "subModule": "Search & Filter",
+      "priority": "Medium",
+      "taskDescription": "Verify search excludes Status",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-035",
+      "subModule": "Search & Filter",
+      "priority": "High",
+      "taskDescription": "Verify search empty state message",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-036",
+      "subModule": "Search & Filter",
+      "priority": "Low",
+      "taskDescription": "Verify search focus state styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "low",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "IWC-TC-037",
+      "subModule": "Search & Filter",
+      "priority": "Medium",
+      "taskDescription": "Verify clearing search restores full dataset",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-038",
+      "subModule": "Search & Filter",
+      "priority": "High",
+      "taskDescription": "Verify search scoped to current tab only",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-filter",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-039",
+      "subModule": "Table & Sorting",
+      "priority": "High",
+      "taskDescription": "Verify all table column headers",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-040",
+      "subModule": "Table & Sorting",
+      "priority": "Medium",
+      "taskDescription": "Verify sticky table header on scroll",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-041",
+      "subModule": "Table & Sorting",
+      "priority": "Low",
+      "taskDescription": "Verify table row height and hover",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-042",
+      "subModule": "Table & Sorting",
+      "priority": "High",
+      "taskDescription": "Verify ascending sort on Ignore Word/Phrase",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-043",
+      "subModule": "Table & Sorting",
+      "priority": "Medium",
+      "taskDescription": "Verify sort cycle ascending descending default",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-044",
+      "subModule": "Table & Sorting",
+      "priority": "Low",
+      "taskDescription": "Verify sort icons on sortable columns",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-045",
+      "subModule": "Table & Sorting",
+      "priority": "Low",
+      "taskDescription": "Verify Actions column not sortable",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-046",
+      "subModule": "Table & Sorting",
+      "priority": "Medium",
+      "taskDescription": "Verify Created Date DD Mon YYYY format",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "table-sorting",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-047",
+      "subModule": "Category Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Entity Suffixes category badge colour styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-048",
+      "subModule": "Category Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Common Noise Words category badge colour styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-049",
+      "subModule": "Category Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Personal Titles (Politically Exposed Persons) category badge colour styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-050",
+      "subModule": "Category Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Business Descriptors category badge colour styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-051",
+      "subModule": "Risk Level Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Low risk level pill badge rendering",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "risk-level-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-052",
+      "subModule": "Risk Level Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Medium risk level pill badge rendering",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "risk-level-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-053",
+      "subModule": "Risk Level Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify High risk level pill badge rendering",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "risk-level-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-054",
+      "subModule": "Match Type Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Exact phrase match type badge",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "match-type-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-055",
+      "subModule": "Match Type Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Partial match match type badge",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "match-type-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-056",
+      "subModule": "Status Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Active status badge styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "status-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-057",
+      "subModule": "Status Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Inactive status badge styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "status-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-058",
+      "subModule": "Status Badges",
+      "priority": "Medium",
+      "taskDescription": "Verify Drafted status badge styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "status-badges",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-059",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify Disable (Off) button on active rows",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-060",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify Enable (On) button on inactive rows",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-061",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify Submit action on drafted rows",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-062",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify disable action triggers Checker Approval popup",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-063",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify enable action triggers Checker Approval popup",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-064",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify drafted Submit triggers Checker Approval popup",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-065",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify absence of Delete action per FSD BR-006",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-066",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify row action updates tab counts immediately",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-067",
+      "subModule": "Export Functionality",
+      "priority": "High",
+      "taskDescription": "Verify Export button visibility in toolbar (FSD Section 5.1.4)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export-functionality",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-068",
+      "subModule": "Export Functionality",
+      "priority": "High",
+      "taskDescription": "Verify CSV export downloads ignore_words_export.csv (FSD Section 5.1.4)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export-functionality",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-069",
+      "subModule": "Export Functionality",
+      "priority": "High",
+      "taskDescription": "Verify export scope limited to active tab per FSD 5.1.4",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export-functionality",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-071",
+      "subModule": "Export Functionality",
+      "priority": "Medium",
+      "taskDescription": "Verify export CSV column headers (FSD Section 5.1.4)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export-functionality",
+        "medium",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-073",
+      "subModule": "Add Category Modal",
+      "priority": "High",
+      "taskDescription": "Verify Add Category modal opens from toolbar (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-074",
+      "subModule": "Add Category Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify Add Category modal structure and header (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-075",
+      "subModule": "Add Category Modal",
+      "priority": "High",
+      "taskDescription": "Verify Category Name required field (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-077",
+      "subModule": "Add Category Modal",
+      "priority": "High",
+      "taskDescription": "Verify submit button disabled when name less than 2 chars (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-078",
+      "subModule": "Add Category Modal",
+      "priority": "High",
+      "taskDescription": "Verify submit button enabled when name 2 or more chars (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-080",
+      "subModule": "Add Category Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify Cancel closes modal and resets fields (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-081",
+      "subModule": "Add Category Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify overlay click closes Add Category modal (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-082",
+      "subModule": "Add Category Modal",
+      "priority": "Low",
+      "taskDescription": "Verify close X button closes modal (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-083",
+      "subModule": "Add Category Modal",
+      "priority": "High",
+      "taskDescription": "Verify new category appears in Add Ignore Word dropdown (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-084",
+      "subModule": "Add Category Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify new category appears in Bulk Upload dropdown (FSD Section 4.2)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-085",
+      "subModule": "Category Controls Modal",
+      "priority": "High",
+      "taskDescription": "Verify Category Controls modal opens",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-086",
+      "subModule": "Category Controls Modal",
+      "priority": "High",
+      "taskDescription": "Verify default categories listed with word counts",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-087",
+      "subModule": "Category Controls Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify category row layout",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-088",
+      "subModule": "Category Controls Modal",
+      "priority": "Low",
+      "taskDescription": "Verify toggle switch off state styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-089",
+      "subModule": "Category Controls Modal",
+      "priority": "Low",
+      "taskDescription": "Verify toggle switch on state styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-090",
+      "subModule": "Category Controls Modal",
+      "priority": "High",
+      "taskDescription": "Verify Save persists toggle states per FSD BR-005",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "high",
+        "notifications"
+      ]
+    },
+    {
+      "id": "IWC-TC-091",
+      "subModule": "Category Controls Modal",
+      "priority": "High",
+      "taskDescription": "Verify category disable does not change individual word status per FSD BR-005",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-092",
+      "subModule": "Category Controls Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify Cancel closes without saving",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-093",
+      "subModule": "Category Controls Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify overlay click closes Category Controls modal",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls-modal",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-094",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Add Ignore Word panel opens from primary CTA (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-095",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify panel dimensions and animation (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-096",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify panel overlay does not close on click (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-097",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify panel top bar back arrow closes panel (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-098",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify panel breadcrumb parent link closes panel (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-099",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Ignore Word/Phrase required field (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-100",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Category dropdown required with default options (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-101",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Risk Level dropdown required (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-102",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Match Type dropdown required (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-103",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify three-column grid layout for dropdowns (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-104",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "Low",
+      "taskDescription": "Verify dropdown focus state styling (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "low",
+        "accessibility"
+      ]
+    },
+    {
+      "id": "IWC-TC-105",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Cancel button closes panel without saving (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-106",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Submit validation for empty Ignore Word/Phrase (FSD Section 4.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-107",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify successful submit creates drafted record per FSD BR-003 / FSD 7.1",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-109",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify mandatory fields validation per FSD BR-002",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-110",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify Live Narrative Tester card rendering",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "screening-engine"
+      ]
+    },
+    {
+      "id": "IWC-TC-111",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify narrative textarea placeholder and behavior",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-112",
+      "subModule": "Live Narrative Tester",
+      "priority": "High",
+      "taskDescription": "Verify real-time preview update on narrative input",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-113",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify preview empty state when no narrative",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-114",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify preview shows narrative without highlight when word empty",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-115",
+      "subModule": "Live Narrative Tester",
+      "priority": "High",
+      "taskDescription": "Verify highlight against all active words",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-116",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify longest-first highlight sorting",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-117",
+      "subModule": "Live Narrative Tester",
+      "priority": "Low",
+      "taskDescription": "Verify highlight styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "low",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "IWC-TC-119",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify Bulk Upload modal opens (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-120",
+      "subModule": "Bulk Upload",
+      "priority": "Medium",
+      "taskDescription": "Verify Bulk Upload modal header content (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-122",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify All Categories not valid for upload",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-123",
+      "subModule": "Bulk Upload",
+      "priority": "Medium",
+      "taskDescription": "Verify file drop zone default state (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "medium",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-124",
+      "subModule": "Bulk Upload",
+      "priority": "Low",
+      "taskDescription": "Verify drop zone hover and drag-over styling (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "low",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-125",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify file selection via browse (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-126",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify file selection via drag and drop (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high"
+      ]
+    },
+    {
+      "id": "IWC-TC-127",
+      "subModule": "Bulk Upload",
+      "priority": "Low",
+      "taskDescription": "Verify file size display in KB one decimal (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-128",
+      "subModule": "Bulk Upload",
+      "priority": "Medium",
+      "taskDescription": "Verify remove file restores drop zone (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "medium",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-129",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify accepted file formats CSV and XLSX (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-130",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify wrong format toast error (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-131",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify file size exceeds 10 MB toast error (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "IWC-TC-132",
+      "subModule": "Bulk Upload",
+      "priority": "Medium",
+      "taskDescription": "Verify Download template file link (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "medium",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-133",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify successful bulk upload creates drafted records per FSD 5.1.3",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-134",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify bulk upload schema mismatch error (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-135",
+      "subModule": "Bulk Upload",
+      "priority": "Medium",
+      "taskDescription": "Verify Cancel closes bulk upload and clears file (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-136",
+      "subModule": "Bulk Upload",
+      "priority": "Medium",
+      "taskDescription": "Verify overlay click closes Bulk Upload modal (FSD Section 5.1.3)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-137",
+      "subModule": "Checker Approval Modal",
+      "priority": "High",
+      "taskDescription": "Verify Checker Approval popup structure after submit",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-138",
+      "subModule": "Checker Approval Modal",
+      "priority": "High",
+      "taskDescription": "Verify Checker popup message for new word submission",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-139",
+      "subModule": "Checker Approval Modal",
+      "priority": "High",
+      "taskDescription": "Verify Checker popup request details section",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-140",
+      "subModule": "Checker Approval Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify Checker popup timestamp format",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-141",
+      "subModule": "Checker Approval Modal",
+      "priority": "High",
+      "taskDescription": "Verify Checker popup for disable action",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-142",
+      "subModule": "Checker Approval Modal",
+      "priority": "High",
+      "taskDescription": "Verify Checker popup for enable action",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-143",
+      "subModule": "Checker Approval Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify OK button closes Checker popup",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-144",
+      "subModule": "Checker Approval Modal",
+      "priority": "Low",
+      "taskDescription": "Verify overlay click closes Checker popup",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "low",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-145",
+      "subModule": "Checker Approval Modal",
+      "priority": "High",
+      "taskDescription": "Verify drafted word requires Checker approval before Active per FSD BR-003 / FSD 7.1",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-146",
+      "subModule": "Word History Panel",
+      "priority": "High",
+      "taskDescription": "Verify Word History panel opens on word click per FSD audit / Word History",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "high",
+        "word-history"
+      ]
+    },
+    {
+      "id": "IWC-TC-147",
+      "subModule": "Word History Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify Word History panel title",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "medium",
+        "word-history"
+      ]
+    },
+    {
+      "id": "IWC-TC-148",
+      "subModule": "Word History Panel",
+      "priority": "High",
+      "taskDescription": "Verify history metadata card fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-149",
+      "subModule": "Word History Panel",
+      "priority": "High",
+      "taskDescription": "Verify activity timeline rendering",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-150",
+      "subModule": "Word History Panel",
+      "priority": "High",
+      "taskDescription": "Verify timeline event types",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-151",
+      "subModule": "Word History Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify timeline user avatar and role display",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-152",
+      "subModule": "Word History Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify timeline notes display",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-153",
+      "subModule": "Word History Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify back arrow closes Word History panel",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "medium",
+        "word-history"
+      ]
+    },
+    {
+      "id": "IWC-TC-154",
+      "subModule": "Word History Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify overlay click closes Word History panel",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "medium",
+        "word-history"
+      ]
+    },
+    {
+      "id": "IWC-TC-155",
+      "subModule": "Word History Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify default history for word without detailed history",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "medium",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-156",
+      "subModule": "Word History Panel",
+      "priority": "High",
+      "taskDescription": "Verify audit log generated for create update enable disable per FSD audit / Word History",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-160",
+      "subModule": "Permissions & RBAC",
+      "priority": "High",
+      "taskDescription": "Verify Viewer cannot Add Ignore Word",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-161",
+      "subModule": "Permissions & RBAC",
+      "priority": "High",
+      "taskDescription": "Verify Compliance Officer cannot Add Ignore Word",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-162",
+      "subModule": "Permissions & RBAC",
+      "priority": "High",
+      "taskDescription": "Verify Admin can Add Ignore Word",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-163",
+      "subModule": "Permissions & RBAC",
+      "priority": "High",
+      "taskDescription": "Verify Admin can toggle enable disable",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-164",
+      "subModule": "Permissions & RBAC",
+      "priority": "High",
+      "taskDescription": "Verify Admin can Add Category and Category Controls",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-165",
+      "subModule": "Permissions & RBAC",
+      "priority": "High",
+      "taskDescription": "Verify Admin can Bulk Upload",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-166",
+      "subModule": "Permissions & RBAC",
+      "priority": "High",
+      "taskDescription": "Verify Checker can approve requests",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-167",
+      "subModule": "Permissions & RBAC",
+      "priority": "Medium",
+      "taskDescription": "Verify Checker cannot Add Ignore Word",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-168",
+      "subModule": "Permissions & RBAC",
+      "priority": "Medium",
+      "taskDescription": "Verify Compliance Officer cannot view audit trail button",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "permissions-rbac",
+        "medium",
+        "word-history"
+      ]
+    },
+    {
+      "id": "IWC-TC-173",
+      "subModule": "API & Data Model",
+      "priority": "High",
+      "taskDescription": "Verify DELETE endpoint removed per FSD",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-data-model",
+        "high",
+        "api"
+      ]
+    },
+    {
+      "id": "IWC-TC-181",
+      "subModule": "Error Handling",
+      "priority": "High",
+      "taskDescription": "Verify API failure state on list load",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "error-handling",
+        "high",
+        "api"
+      ]
+    },
+    {
+      "id": "IWC-TC-182",
+      "subModule": "Error Handling",
+      "priority": "Medium",
+      "taskDescription": "Verify Retry after API failure",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "error-handling",
+        "medium",
+        "api"
+      ]
+    },
+    {
+      "id": "IWC-TC-183",
+      "subModule": "Error Handling",
+      "priority": "High",
+      "taskDescription": "Verify unauthorized access handling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "error-handling",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-185",
+      "subModule": "UI/UX Consistency",
+      "priority": "Low",
+      "taskDescription": "Verify Inter font usage across module",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-ux-consistency",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-188",
+      "subModule": "UI/UX Consistency",
+      "priority": "Medium",
+      "taskDescription": "Verify toast notification styling and auto-dismiss",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-ux-consistency",
+        "medium",
+        "notifications"
+      ]
+    },
+    {
+      "id": "IWC-TC-190",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify keyboard navigation across toolbar buttons",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium"
+      ]
+    },
+    {
+      "id": "IWC-TC-191",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify keyboard focus indicators visible",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium"
+      ]
+    },
+    {
+      "id": "IWC-TC-192",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify modal keyboard trap and Escape close",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium"
+      ]
+    },
+    {
+      "id": "IWC-TC-194",
+      "subModule": "Security Validation",
+      "priority": "High",
+      "taskDescription": "Verify Admin-only actions hidden from unauthorized roles",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "security-validation",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-197",
+      "subModule": "Regression Validation",
+      "priority": "High",
+      "taskDescription": "Verify complete end-to-end add word workflow",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-validation",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-198",
+      "subModule": "Regression Validation",
+      "priority": "High",
+      "taskDescription": "Verify complete disable enable workflow with Checker",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-validation",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-199",
+      "subModule": "Regression Validation",
+      "priority": "High",
+      "taskDescription": "Verify complete bulk upload and export workflow",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-validation",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-200",
+      "subModule": "Regression Validation",
+      "priority": "High",
+      "taskDescription": "Verify category add then use in ignore word form",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-validation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-201",
+      "subModule": "Regression Validation",
+      "priority": "Medium",
+      "taskDescription": "Verify frontend console stability during complete workflow",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-validation",
+        "medium",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "IWC-TC-202",
+      "subModule": "Regression Validation",
+      "priority": "Medium",
+      "taskDescription": "Verify data consistency after multiple tab switches and searches",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-validation",
+        "medium",
+        "api"
+      ]
+    },
+    {
+      "id": "IWC-TC-204",
+      "subModule": "Sidebar Navigation",
+      "priority": "Medium",
+      "taskDescription": "Verify Configuration parent menu expand collapse",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sidebar-navigation",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-205",
+      "subModule": "Sidebar Navigation",
+      "priority": "Low",
+      "taskDescription": "Verify sidebar menu search input",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sidebar-navigation",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-207",
+      "subModule": "Match Type Behavior",
+      "priority": "High",
+      "taskDescription": "Verify Exact phrase match highlights only exact phrase in live tester",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "match-type-behavior",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-208",
+      "subModule": "Match Type Behavior",
+      "priority": "High",
+      "taskDescription": "Verify Partial match highlights substring in live tester",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "match-type-behavior",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-209",
+      "subModule": "Data Validation",
+      "priority": "Medium",
+      "taskDescription": "Verify ignore word maximum length 200 characters",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "data-validation",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-210",
+      "subModule": "Data Validation",
+      "priority": "Medium",
+      "taskDescription": "Verify category name uniqueness on duplicate add",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "data-validation",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-214",
+      "subModule": "Browser Compatibility",
+      "priority": "High",
+      "taskDescription": "Verify module behavior on Google Chrome",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "browser-compatibility",
+        "high",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "IWC-TC-215",
+      "subModule": "Browser Compatibility",
+      "priority": "Medium",
+      "taskDescription": "Verify module behavior on Microsoft Edge",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "browser-compatibility",
+        "medium",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "IWC-TC-216",
+      "subModule": "Browser Compatibility",
+      "priority": "Medium",
+      "taskDescription": "Verify module behavior on Mozilla Firefox",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "browser-compatibility",
+        "medium",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "IWC-TC-219",
+      "subModule": "Navigation Flow",
+      "priority": "High",
+      "taskDescription": "Verify Main List View to Add Ignore Word Panel flow",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-flow",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-220",
+      "subModule": "Navigation Flow",
+      "priority": "High",
+      "taskDescription": "Verify Add Ignore Word Panel return to Main List View",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-flow",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-221",
+      "subModule": "Navigation Flow",
+      "priority": "High",
+      "taskDescription": "Verify Main List View to CSV Download via Export",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-flow",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "IWC-TC-222",
+      "subModule": "Navigation Flow",
+      "priority": "High",
+      "taskDescription": "Verify clicking ignore word opens Word History from list",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-flow",
+        "high",
+        "word-history"
+      ]
+    },
+    {
+      "id": "IWC-TC-224",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify FSD BR-002 all mandatory fields required on submit",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-226",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify FSD 5.1.3 bulk upload drafted status and Checker workflow",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-227",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify bulk upload validation category required and All Categories invalid for upload",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-228",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify narrative preview scope live tester highlights all active words plus draft",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-229",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify FSD audit / Word History word history and audit logging on all actions",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "word-history"
+      ]
+    },
+    {
+      "id": "IWC-TC-230",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify client-side search (phrase and category only) search limited to phrase and category only",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-231",
+      "subModule": "Business Rules",
+      "priority": "Medium",
+      "taskDescription": "Verify tab switch behaviour sort resets on tab switch",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-232",
+      "subModule": "Duplicate Validation",
+      "priority": "High",
+      "taskDescription": "Verify same ignore word allowed in different category per FSD BR-001",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "duplicate-validation",
+        "high",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "IWC-TC-233",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify Off action not displayed on inactive rows per FSD row actions column",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-234",
+      "subModule": "Row Actions",
+      "priority": "High",
+      "taskDescription": "Verify drafted rows do not show Off or On actions per HTML",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "row-actions",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-235",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify inactive and drafted words are not highlighted in preview",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-236",
+      "subModule": "Notifications",
+      "priority": "High",
+      "taskDescription": "Verify word submit shows Checker Approval popup not toast per FSD ÂSection 8.2 and HTML",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "notifications",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-237",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify FSD BR-003 / FSD 7.1 word remains Drafted until Checker approves",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-238",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify FSD BR-007 tab counts unchanged on failed submit",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-239",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify FSD BR-002 rejects whitespace-only ignore word phrase",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "IWC-TC-240",
+      "subModule": "Business Rules",
+      "priority": "Medium",
+      "taskDescription": "Verify FSD audit / Word History no audit entry on failed bulk upload",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-245",
+      "subModule": "Security Validation",
+      "priority": "High",
+      "taskDescription": "Verify XSS payload in search treated as literal text",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "security-validation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-246",
+      "subModule": "Negative Scenarios",
+      "priority": "High",
+      "taskDescription": "Verify empty bulk upload file rejected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-scenarios",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-247",
+      "subModule": "Negative Scenarios",
+      "priority": "High",
+      "taskDescription": "Verify double-click Submit on Add Ignore Word prevented",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-scenarios",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-248",
+      "subModule": "UAT Scenarios",
+      "priority": "High",
+      "taskDescription": "UAT verify Admin creates ignore word and Checker approves to Active",
+      "automationLayer": "UI + Manual",
+      "automationCandidate": "Yes",
+      "tags": [
+        "uat-scenarios",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-249",
+      "subModule": "UAT Scenarios",
+      "priority": "High",
+      "taskDescription": "UAT verify active disable enable lifecycle without delete per FSD BR-006",
+      "automationLayer": "UI + Manual",
+      "automationCandidate": "Yes",
+      "tags": [
+        "uat-scenarios",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-250",
+      "subModule": "Word History Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify timeline dot colors for add review approve disable events per HTML",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "word-history-panel",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-251",
+      "subModule": "Checker Approval Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify Checker modal title Request sent for Checker Approval per HTML",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "checker-approval-modal",
+        "medium",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-252",
+      "subModule": "Error Handling",
+      "priority": "Medium",
+      "taskDescription": "Verify duplicate word shows inline error not browser alert per FSD ÂSection 8.1",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "error-handling",
+        "medium",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "IWC-TC-254",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Save Draft saves entry as Drafted per FSD 4.3 Step 8a",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "screening-engine"
+      ]
+    },
+    {
+      "id": "IWC-TC-255",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify Save Draft validation for empty Ignore Word/Phrase",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-256",
+      "subModule": "Maker-Checker Governance",
+      "priority": "High",
+      "taskDescription": "Verify Checker rejection returns entry to Draft per FSD 7.1",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-257",
+      "subModule": "Maker-Checker Governance",
+      "priority": "High",
+      "taskDescription": "Verify Pending Approval entries locked from edits per FSD 7.2",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-258",
+      "subModule": "Maker-Checker Governance",
+      "priority": "High",
+      "taskDescription": "Verify Maker cannot approve own submission per FSD 7.2",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-259",
+      "subModule": "Maker-Checker Governance",
+      "priority": "High",
+      "taskDescription": "Verify emergency override not permitted per FSD 7.2",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-264",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify bulk import character encoding validation per FSD 5.1.3",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-265",
+      "subModule": "Bulk Upload",
+      "priority": "High",
+      "taskDescription": "Verify bulk import field completeness validation per FSD 5.1.3",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-upload",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-266",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "High",
+      "taskDescription": "Verify category must exist before adding ignore word per FSD 4.3 Step 4",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "IWC-TC-269",
+      "subModule": "Add Ignore Word Panel",
+      "priority": "Medium",
+      "taskDescription": "Verify Risk Level definitions per FSD 4.3 Step 5",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-ignore-word-panel",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-270",
+      "subModule": "Add Category Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify Category Name maximum 100 characters per FSD 4.2 Step 3",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "IWC-TC-271",
+      "subModule": "Add Category Modal",
+      "priority": "Medium",
+      "taskDescription": "Verify Category Description maximum 500 characters per FSD 4.2 Step 4",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category-modal",
+        "medium",
+        "error-handling"
+      ]
+    }
+  ]
+}
