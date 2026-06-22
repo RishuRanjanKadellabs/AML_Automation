@@ -1,0 +1,1469 @@
+import { featureGroup } from "./parser";
+import type { MmExcelRow } from "./types";
+
+const OPEN = "await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl)";
+
+export function escapeStr(value: string): string {
+  return value.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+}
+
+export function parseNumberedSteps(testSteps: string): string[] {
+  if (!testSteps.trim()) {
+    return [];
+  }
+  return testSteps
+    .split(/\s*(?=\d+\.\s)/)
+    .map((s) => s.replace(/^\d+\.\s*/, "").trim())
+    .filter(Boolean);
+}
+
+/** Split Excel Test Data into field/search fragments (e.g. "A / B" → ["A", "B"]). */
+function normalizeFieldFragment(fragment: string): string {
+  return fragment.replace(/\s*\([^)]*\)\s*/g, "").trim();
+}
+
+export function parseTestDataFragments(testData: string): string[] {
+  const td = testData.trim();
+  if (!td) {
+    return [];
+  }
+  const nonFieldPatterns =
+    /^(authorized|aml admin|aml user|restricted role|expired session|template rule update|db field weight|locked db field|valid user|admin user|admin role|db \+ ui same name|aml admin user|admin \/ editor|standard aml user|blank field|editable field|editable template config|editable template|new test template|template dataset|locked cip|field config|logged-out state|add field modal|configured weights)/i;
+  if (nonFieldPatterns.test(td)) {
+    return [];
+  }
+  if (/^\d+\s*\/\s*timeout/i.test(td) || /^500\b/i.test(td) || /custom field\s*=/i.test(td)) {
+    return [];
+  }
+  if (/:\s*\d/.test(td) && (/\//.test(td) || /low:|medium:|high:|critical:/i.test(td))) {
+    return [];
+  }
+  const parts = td.split(/\s*[/|;]\s*/).map((p) => normalizeFieldFragment(p.trim())).filter((p) => p.length > 1);
+  if (parts.length > 0) {
+    return parts.filter((p) => !/^(low|medium|high|critical):\s*\d/i.test(p));
+  }
+  if (/chart|statement|field|certificate|structure|passport|national id|fatca|duplicate/i.test(td)) {
+    return [normalizeFieldFragment(td)];
+  }
+  return [];
+}
+
+function isAppShellTopBarRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("app shell") && sm.includes("top bar");
+}
+
+function isCreateTemplateButtonRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("create template button");
+}
+
+function isSidebarRouteNavRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("route navigation");
+}
+
+function isTemplateDetailAddFieldRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("add field button");
+}
+
+function isTemplateDetailSaveRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("template detail header") && sm.includes("save changes");
+}
+
+function isCountBadgeRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("count badge");
+}
+
+function isSidebarStatePersistenceRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("state persistence");
+}
+
+function isSessionMidEditRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("mid-edit expiry") || (sm.includes("session control") && /let session expire|session expire/.test(row.testSteps.toLowerCase()));
+}
+
+function isLockedFieldRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("locked field");
+}
+
+function isCrossTemplateCompareRow(row: MmExcelRow): boolean {
+  return /compare with individual/i.test(row.testSteps);
+}
+
+function isGapReportViewLoadRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("gap report") && sm.includes("view load");
+}
+
+function isAddCustomFieldModalRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("add custom field") && /modal|control rendering/.test(sm);
+}
+
+function isValidCustomFieldCreationRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("valid field creation") || (/custom field\s*=/i.test(row.testData) && sm.includes("add field"));
+}
+
+function isAddCustomFieldWeightageRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("add custom field") && sm.includes("weightage");
+}
+
+function isAddCustomFieldCancelRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("add custom field") && /cancel|close icon/.test(sm);
+}
+
+function isFieldConfigRequirementTypeRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("requirement type");
+}
+
+function isSecurityLogoutRefreshRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("refresh after logout");
+}
+
+function isEmptyListApiRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("empty array") || sm.includes("null field metadata");
+}
+
+function isApiDetailFailureRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("template detail load failure");
+}
+
+function isApiPartialListRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("partial payload") && sm.includes("list");
+}
+
+function isApiPartialDetailRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("partial payload") && sm.includes("detail");
+}
+
+function parseCustomFieldName(testData: string): string {
+  const match = testData.match(/custom field\s*=\s*(.+)/i);
+  return match?.[1]?.trim() ?? "Auto Test Field";
+}
+
+function isTopBarRow(row: MmExcelRow): boolean {
+  return isAppShellTopBarRow(row);
+}
+
+function isScoreRangeRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  const td = row.testData.toLowerCase();
+  return /score range|save range/.test(sm) || /low:\s*\d|medium:\s*\d/.test(td);
+}
+
+function isDefaultTabSelectionRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("default tab");
+}
+
+function isInvalidSectionMappingRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("invalid section");
+}
+
+function isTechnicalIdsNoDropdownRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("technical id") && sm.includes("no requirement");
+}
+
+function isCorporateTechnicalImmutableRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("corporate technical") && /immutable|system-owned/.test(sm);
+}
+
+function isUnsavedWarningRow(row: MmExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("unsaved") || (sm.includes("dirty state") && /warn/.test(row.expectedResult.toLowerCase()));
+}
+
+function isCreateTemplateLaunchRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("launch flow");
+}
+
+function isCreateTemplateCancelRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("cancel flow");
+}
+
+function isGapReportRefreshSyncRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("refresh data sync");
+}
+
+function isMissingFieldsBreakdownRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("missing fields breakdown");
+}
+
+function isScoreEngineDefaultLoadRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("default calculation load");
+}
+
+function isRbacCreateTemplateRow(row: MmExcelRow): boolean {
+  return /create template permission/.test(row.subModule.toLowerCase());
+}
+
+function isRbacSaveChangesRow(row: MmExcelRow): boolean {
+  return /save changes permission/.test(row.subModule.toLowerCase());
+}
+
+function isDuplicatePayloadRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("duplicate payload");
+}
+
+function isConnectionLossRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("connection loss");
+}
+
+function isRefreshDuringPendingRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("refresh during pending");
+}
+
+function isCloneOwnershipRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("ownership independence");
+}
+
+function isEndToEndCreateToReportRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("create template to report");
+}
+
+function isRegressionGapReportRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("gap report stability");
+}
+
+function isScoreMappingCriticalRow(row: MmExcelRow): boolean {
+  return /critical validation|high missing weight/.test(row.subModule.toLowerCase());
+}
+
+function isTemplateToReportSyncRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("template-to-report sync");
+}
+
+function isAuditIntegrityRow(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("audit integrity");
+}
+
+function skipsAutoTemplateSetup(row: MmExcelRow): boolean {
+  return (
+    isDefaultTabSelectionRow(row) ||
+    isInvalidSectionMappingRow(row) ||
+    isCreateTemplateLaunchRow(row) ||
+    isGapReportRefreshSyncRow(row) ||
+    isMissingFieldsBreakdownRow(row) ||
+    isScoreEngineDefaultLoadRow(row) ||
+    isEndToEndCreateToReportRow(row) ||
+    isRegressionGapReportRow(row) ||
+    isValidCustomFieldCreationRow(row) ||
+    isAddCustomFieldWeightageRow(row) ||
+    isAddCustomFieldCancelRow(row) ||
+    isFieldConfigRequirementTypeRow(row) ||
+    isRbacCreateTemplateRow(row) ||
+    isRbacSaveChangesRow(row) ||
+    isDuplicatePayloadRow(row) ||
+    isConnectionLossRow(row) ||
+    isRefreshDuringPendingRow(row) ||
+    isCloneOwnershipRow(row) ||
+    isScoreMappingCriticalRow(row) ||
+    isTemplateToReportSyncRow(row) ||
+    isAuditIntegrityRow(row)
+  );
+}
+
+function isAuthDeniedScenario(row: MmExcelRow): boolean {
+  const blob = `${row.subModule} ${row.acceptanceCriteria} ${row.expectedResult} ${row.testSteps} ${row.testData}`.toLowerCase();
+  if (/save blocked if|validation displayed|required inputs enforced|no unauthorized|not unauthorized|without unauthorized/.test(blob)) {
+    return false;
+  }
+  return /unauthorized|access denied|expires|denial|restricted role|api denial|direct url access|session expire/.test(blob);
+}
+
+function isGapReportLoadFailure(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("gap report load failure");
+}
+
+function isApiListFailure(row: MmExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("template list load failure");
+}
+
+function fgUsesSidebarGapReport(row: MmExcelRow): boolean {
+  const fg = featureGroup(row.subModule);
+  return fg === "Sidebar" || row.subModule.toLowerCase().includes("sidebar");
+}
+
+function needsTemplateSelection(row: MmExcelRow): boolean {
+  const fg = featureGroup(row.subModule);
+  const sm = row.subModule.toLowerCase();
+
+  if (sm.includes("db-origin") && sm.includes("ui rendering")) {
+    return false;
+  }
+
+  const skipGroups = new Set([
+    "Missing Mandatory Data Template",
+    "App Shell",
+    "Sidebar",
+    "Top Bar",
+    "Template List Panel",
+    "Template Cards",
+    "Template Search",
+    "Initial Access Control (RBAC)",
+    "RBAC",
+    "Refresh",
+    "Session",
+    "Session Control",
+    "Security",
+  ]);
+
+  if (skipGroups.has(fg)) {
+    return false;
+  }
+  if (fg === "KYC Gap Report" && !sm.includes("sync") && !sm.includes("cross-module")) {
+    return false;
+  }
+  if (rowMatches(row, "template list load failure", "app shell", "aml shell")) {
+    return false;
+  }
+
+  return true;
+}
+
+export function inferTemplateName(row: MmExcelRow): string {
+  const sm = row.subModule.toLowerCase();
+  if (/corporate/.test(sm) && !/isolation|individual\/corporate/.test(sm)) {
+    return "Standard KYC — Corporate";
+  }
+  if (/individual/.test(sm) || /^cdd fields|^edd fields|^technical ids/.test(sm)) {
+    return "Standard KYC — Individual";
+  }
+  const blob = `${row.subModule} ${row.testSteps} ${row.testData} ${row.preconditions}`.toLowerCase();
+  if (/individual/.test(blob) && /corporate/.test(blob)) {
+    if (/corporate cip|corporate cdd|corporate edd|corporate technical/.test(sm)) {
+      return "Standard KYC — Corporate";
+    }
+    if (isDefaultTabSelectionRow(row) || /open individual template/.test(row.testSteps.toLowerCase())) {
+      return "Standard KYC — Individual";
+    }
+  }
+  if (/corporate/.test(blob) && !/compare with individual|cross-template|isolation/.test(blob)) {
+    return "Standard KYC — Corporate";
+  }
+  if (/individual/.test(blob) && !/compare with individual/.test(blob)) {
+    return "Standard KYC — Individual";
+  }
+  if (/simplified/.test(blob)) {
+    return "Simplified KYC";
+  }
+  const fg = featureGroup(row.subModule);
+  if (fg.includes("Corporate")) {
+    return "Standard KYC — Corporate";
+  }
+  if (fg.includes("Individual") || fg === "CDD Fields" || fg === "EDD Fields" || fg === "Technical IDs") {
+    return "Standard KYC — Individual";
+  }
+  return "Simplified KYC";
+}
+
+export function inferTabName(row: MmExcelRow): string | null {
+  const sm = row.subModule.toLowerCase();
+  if (sm.includes("corporate cip")) return "Corporate CIP";
+  if (sm.includes("corporate cdd")) return "CDD Fields";
+  if (sm.includes("corporate edd")) return "EDD Fields";
+  if (sm.includes("corporate technical")) return "Technical IDs";
+  if (sm.includes("individual cip") || (sm.includes("cip") && !sm.includes("corporate"))) return "Individual CIP";
+  if (sm.includes("cdd")) return "CDD Fields";
+  if (sm.includes("edd")) return "EDD Fields";
+  if (sm.includes("technical id")) return "Technical IDs";
+  if (sm.includes("cip")) return "Individual CIP";
+  if (/gap score|score range|score mapping|save range/.test(sm)) return "KYC Gap Score";
+  return null;
+}
+
+function pushUnique(steps: string[], step: string): void {
+  if (step && !steps.includes(step)) {
+    steps.push(step);
+  }
+}
+
+function stepMatches(step: string, ...patterns: string[]): boolean {
+  const s = step.toLowerCase();
+  return patterns.some((p) => s.includes(p.toLowerCase()));
+}
+
+function rowMatches(row: MmExcelRow, ...patterns: string[]): boolean {
+  const blob = `${row.subModule} ${row.taskDescription} ${row.testSteps} ${row.acceptanceCriteria} ${row.expectedResult}`.toLowerCase();
+  return patterns.some((p) => blob.includes(p.toLowerCase()));
+}
+
+function dbFieldLabel(row: MmExcelRow): string {
+  const fragments = parseTestDataFragments(row.testData);
+  if (fragments.length > 0) {
+    return fragments[0];
+  }
+  return row.testData.trim() || "National ID";
+}
+
+function searchKeyword(row: MmExcelRow): string {
+  const td = row.testData.trim();
+  if (/kyc|template|standard|simplified/i.test(td)) {
+    const m = td.match(/(standard|simplified|kyc|corporate|individual)/i);
+    if (m) return m[0];
+  }
+  if (td.length > 0 && td.length < 40) {
+    return td.split(/\s+/)[0];
+  }
+  return "KYC";
+}
+
+/** API mocks and auth preconditions from Excel sub-module / steps. */
+export function buildPreconditionActions(row: MmExcelRow): string[] {
+  const steps: string[] = [];
+  const sm = row.subModule.toLowerCase();
+  const numbered = parseNumberedSteps(row.testSteps).join(" ").toLowerCase();
+
+  if (rowMatches(row, "template list load failure", "slow api") || sm.includes("template list load failure")) {
+    pushUnique(steps, "await mmPage.mockTemplateListFailure()");
+  } else if (isConnectionLossRow(row)) {
+    pushUnique(steps, "await mmPage.mockSaveChangesFailure()");
+  } else if (rowMatches(row, "template detail load failure")) {
+    // Detail API mock is applied after an initial successful template selection — see buildExcelStepActions.
+  } else if (isApiPartialDetailRow(row)) {
+    pushUnique(steps, "await mmPage.mockPartialTemplateDetailPayload()");
+  } else if (rowMatches(row, "save changes failure", "false success", "user-safe", "concurrent", "conflict", "refresh during pending")) {
+    pushUnique(steps, "await mmPage.mockSaveChangesFailure()");
+  } else if (rowMatches(row, "create template failure")) {
+    pushUnique(steps, "await mmPage.mockCreateTemplateFailure()");
+  } else if (rowMatches(row, "clone template failure")) {
+    pushUnique(steps, "await mmPage.mockCloneTemplateFailure()");
+  } else if (rowMatches(row, "gap report load failure")) {
+    pushUnique(steps, "await mmPage.mockGapReportLoadFailure()");
+  } else if (rowMatches(row, "score config save failure")) {
+    pushUnique(steps, "await mmPage.mockScoreConfigSaveFailure()");
+  } else if (rowMatches(row, "partial payload") && sm.includes("list")) {
+    pushUnique(steps, "await mmPage.mockPartialTemplateListPayload()");
+  } else if (rowMatches(row, "null field", "empty array")) {
+    pushUnique(steps, "await mmPage.mockEmptyTemplateList()");
+  } else if (isDuplicatePayloadRow(row)) {
+    pushUnique(steps, "await mmPage.mockPartialTemplateListPayload()");
+  }
+
+  if (isAuthDeniedScenario(row) && !isSessionMidEditRow(row)) {
+    pushUnique(steps, "await mmPage.mockUnauthorized()");
+  } else if (rowMatches(row, "api-level", "mockunauthorizedapi")) {
+    pushUnique(steps, "await mmPage.mockUnauthorizedApi()");
+  }
+
+  return steps;
+}
+
+/** Navigation setup implied by sub-module before executing numbered steps. */
+export function buildExcelSetupActions(row: MmExcelRow, preconditions: string[] = []): string[] {
+  const steps: string[] = [];
+  const sm = row.subModule.toLowerCase();
+  const fg = featureGroup(row.subModule);
+
+  pushUnique(steps, OPEN);
+
+  if (isTopBarRow(row) || isCreateTemplateButtonRow(row) || isSidebarRouteNavRow(row) || isSidebarStatePersistenceRow(row)) {
+    return steps;
+  }
+
+  if (isScoreRangeRow(row)) {
+    pushUnique(steps, `await mmPage.selectTemplateByExactName('${escapeStr(inferTemplateName(row))}')`);
+    pushUnique(steps, "await mmPage.openTab('KYC Gap Score')");
+    return steps;
+  }
+
+  if (isLockedFieldRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
+    pushUnique(steps, "await mmPage.openTab('Individual CIP')");
+    return steps;
+  }
+
+  if (isSessionMidEditRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    return steps;
+  }
+
+  if ((fg === "Missing Mandatory Data Template" || fg === "App Shell") && /detail panel/i.test(row.acceptanceCriteria) && !isTopBarRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+  }
+
+  if (sm.includes("db-origin") && sm.includes("ui rendering")) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
+    pushUnique(steps, "await mmPage.openTab('Individual CIP')");
+    return steps;
+  }
+
+  if (fg === "KYC Gap Report" && !isGapReportLoadFailure(row)) {
+    const numbered = parseNumberedSteps(row.testSteps);
+    const usesSidebar = numbered.some((s) => stepMatches(s, "sidebar", "open aml shell", "locate missing mandatory", "expand node", "navigate to kyc gap report", "open sidebar"));
+    if (!usesSidebar && !isGapReportViewLoadRow(row)) {
+      pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    }
+    return steps;
+  }
+
+  if (isCrossTemplateCompareRow(row) || isApiPartialListRow(row) || isGapReportViewLoadRow(row) || isEmptyListApiRow(row)) {
+    return steps;
+  }
+
+  if (skipsAutoTemplateSetup(row)) {
+    return steps;
+  }
+
+  if (needsTemplateSelection(row) && !isGapReportLoadFailure(row) && !isApiDetailFailureRow(row) && !isApiPartialDetailRow(row) && !isEmptyListApiRow(row)) {
+    pushUnique(steps, `await mmPage.selectTemplateByExactName('${escapeStr(inferTemplateName(row))}')`);
+  }
+
+  const tab = inferTabName(row);
+  if (tab && needsTemplateSelection(row) && !sm.includes("tab visibility") && !sm.includes("default tab") && !isScoreRangeRow(row) && !isCrossTemplateCompareRow(row)) {
+    pushUnique(steps, `await mmPage.openTab('${escapeStr(tab)}')`);
+  }
+
+  return steps;
+}
+
+/** Map each Excel numbered step to concrete Playwright actions. */
+export function buildExcelStepActions(row: MmExcelRow): string[] {
+  const steps: string[] = [];
+  const fragments = parseTestDataFragments(row.testData);
+  const fieldFragment = fragments[0] ?? "";
+  const numbered = parseNumberedSteps(row.testSteps);
+  const sm = row.subModule.toLowerCase();
+
+  if (isSidebarRouteNavRow(row) || isCreateTemplateButtonRow(row) || isTemplateDetailAddFieldRow(row)) {
+    return steps;
+  }
+
+  if (featureGroup(row.subModule) === "Cross-Module Consistency" && /isolation/.test(row.expectedResult.toLowerCase())) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Corporate')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    return steps;
+  }
+
+  if (isDefaultTabSelectionRow(row)) {
+    pushUnique(steps, "await mmPage.expectDefaultTabSelectionWorkflow()");
+    return steps;
+  }
+
+  if (isInvalidSectionMappingRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.attemptInvalidSectionMapping()");
+    return steps;
+  }
+
+  if (isCreateTemplateLaunchRow(row)) {
+    pushUnique(steps, "await mmPage.openCreateTemplateView()");
+    return steps;
+  }
+
+  if (isCreateTemplateCancelRow(row)) {
+    pushUnique(steps, "await mmPage.openCreateTemplateView()");
+    pushUnique(steps, 'await mmPage.fillField(mmPage.createTemplateNameInput, "Canceled Template", "Template name")');
+    pushUnique(steps, "await mmPage.cancelCreateTemplateFlow()");
+    return steps;
+  }
+
+  if (isGapReportRefreshSyncRow(row)) {
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    return steps;
+  }
+
+  if (isMissingFieldsBreakdownRow(row)) {
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    pushUnique(steps, "await mmPage.openFirstGapReportDetail()");
+    return steps;
+  }
+
+  if (isScoreEngineDefaultLoadRow(row)) {
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    pushUnique(steps, "await mmPage.openFirstGapReportDetail()");
+    return steps;
+  }
+
+  if (isTemplateToReportSyncRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    return steps;
+  }
+
+  if (isRbacCreateTemplateRow(row)) {
+    pushUnique(steps, "await mmPage.openCreateTemplateView()");
+    return steps;
+  }
+
+  if (isRbacSaveChangesRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save Changes as restricted user')");
+    return steps;
+  }
+
+  if (isDuplicatePayloadRow(row)) {
+    return steps;
+  }
+
+  if (isConnectionLossRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save during connection loss')");
+    return steps;
+  }
+
+  if (isRefreshDuringPendingRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save during pending request')");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    return steps;
+  }
+
+  if (isCloneOwnershipRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.clickCloneButton()");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    return steps;
+  }
+
+  if (isEndToEndCreateToReportRow(row)) {
+    pushUnique(steps, "await mmPage.openCreateTemplateView()");
+    pushUnique(steps, 'await mmPage.fillField(mmPage.createTemplateNameInput, "E2E AML Template", "Template name")');
+    pushUnique(steps, "await mmPage.clickCreateSubmit()");
+    pushUnique(steps, "await mmPage.openAddFieldDialog()");
+    pushUnique(steps, "await mmPage.createValidCustomField('E2E AML Field')");
+    pushUnique(steps, "await mmPage.openTab('KYC Gap Score')");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    return steps;
+  }
+
+  if (isRegressionGapReportRow(row)) {
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    return steps;
+  }
+
+  if (isScoreMappingCriticalRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.openTab('KYC Gap Score')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    return steps;
+  }
+
+  if (isAuditIntegrityRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    return steps;
+  }
+
+  if (row.subModule.toLowerCase().includes("save changes") && row.subModule.toLowerCase().includes("valid persistence")) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    pushUnique(steps, "await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC')");
+    pushUnique(steps, "await mmPage.expectFirstEditableRequirementPersisted()");
+    return steps;
+  }
+
+  if (row.subModule.toLowerCase().includes("refresh persistence") && row.subModule.toLowerCase().includes("gap score")) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.openTab('KYC Gap Score')");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.captureScoreRangeSnapshot()");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    pushUnique(steps, "await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC', 'KYC Gap Score')");
+    return steps;
+  }
+
+  if (row.subModule.toLowerCase().includes("editable mandatory corporate")) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Corporate')");
+    pushUnique(steps, "await mmPage.openTab('Corporate CIP')");
+    const corporateFields = parseTestDataFragments(row.testData);
+    for (const fragment of corporateFields.length > 0 ? corporateFields : ["Ownership Structure Chart", "Audited Statements"]) {
+      pushUnique(steps, `await mmPage.updateFieldRequirementByTestDataFragment('${escapeStr(fragment)}')`);
+    }
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    pushUnique(steps, "await mmPage.reopenTemplateContextAfterRefresh('Standard KYC — Corporate', 'Corporate CIP')");
+    return steps;
+  }
+
+  if (row.subModule.toLowerCase().includes("field configuration") && row.subModule.toLowerCase().includes("persistence after save")) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    pushUnique(steps, "await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC')");
+    return steps;
+  }
+
+  if (isUnsavedWarningRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.expectUnsavedNavigationWarning()");
+    return steps;
+  }
+
+  if (isSidebarStatePersistenceRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
+    pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    pushUnique(steps, "await mmPage.searchGapReport('KYC')");
+    pushUnique(steps, "await mmPage.openMissingMandatoryDataTemplateFromSidebar()");
+    pushUnique(steps, "await mmPage.expectSelectedTemplatePersisted('Standard KYC — Individual')");
+    pushUnique(steps, "await mmPage.openKycGapReportFromSidebar()");
+    return steps;
+  }
+
+  if (isSessionMidEditRow(row)) {
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.mockUnauthorized()");
+    pushUnique(steps, "await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save Changes after session expiry')");
+    return steps;
+  }
+
+  if (isLockedFieldRow(row)) {
+    pushUnique(steps, "await mmPage.attemptLockedFieldEdit()");
+    return steps;
+  }
+
+  if (isCrossTemplateCompareRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Corporate')");
+    pushUnique(steps, "await mmPage.openTab('Corporate CDD')");
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
+    pushUnique(steps, "await mmPage.openTab('CDD')");
+    return steps;
+  }
+
+  if (isGapReportViewLoadRow(row)) {
+    pushUnique(steps, "await mmPage.openKycGapReportFromSidebar()");
+    return steps;
+  }
+
+  if (isAddCustomFieldModalRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.openAddFieldDialog()");
+    return steps;
+  }
+
+  if (isValidCustomFieldCreationRow(row)) {
+    const fieldName = parseCustomFieldName(row.testData);
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.openAddFieldDialog()");
+    pushUnique(steps, `await mmPage.createValidCustomField('${escapeStr(fieldName)}')`);
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    pushUnique(steps, "await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC')");
+    pushUnique(steps, `await mmPage.expectCustomFieldVisibleByName('${escapeStr(fieldName)}')`);
+    return steps;
+  }
+
+  if (isAddCustomFieldWeightageRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    if (row.subModule.toLowerCase().includes("persistence")) {
+      pushUnique(steps, "await mmPage.createCustomFieldWithWeightage('Weightage Test Field', '1')");
+      pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+      pushUnique(steps, "await mmPage.refreshPage()");
+      pushUnique(steps, "await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC')");
+      pushUnique(steps, "await mmPage.expectCustomFieldWeightagePersisted('Weightage Test Field', '1')");
+    } else {
+      pushUnique(steps, "await mmPage.openAddFieldDialog()");
+    }
+    return steps;
+  }
+
+  if (isAddCustomFieldCancelRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.openAddFieldDialog()");
+    pushUnique(steps, "await mmPage.cancelButton.click()");
+    if (row.subModule.toLowerCase().includes("close icon")) {
+      pushUnique(steps, "await mmPage.closeDialogButton.click()");
+    }
+    return steps;
+  }
+
+  if (isFieldConfigRequirementTypeRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.openAddFieldDialog()");
+    pushUnique(steps, "await mmPage.createValidCustomField('Requirement Type Field')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    pushUnique(steps, "await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC')");
+    pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    return steps;
+  }
+
+  if (isSecurityLogoutRefreshRow(row)) {
+    pushUnique(steps, "await mmPage.mockUnauthorized()");
+    pushUnique(steps, "await mmPage.refreshPage()");
+    return steps;
+  }
+
+  if (isEmptyListApiRow(row)) {
+    return steps;
+  }
+
+  if (isApiDetailFailureRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
+    pushUnique(steps, "await mmPage.mockTemplateDetailFailure()");
+    pushUnique(steps, "await mmPage.triggerTemplateDetailFailure('Standard KYC — Individual')");
+    return steps;
+  }
+
+  if (isApiPartialDetailRow(row)) {
+    pushUnique(steps, "await mmPage.selectTemplateExpectingDetailFailure('Simplified KYC')");
+    return steps;
+  }
+
+  for (const step of numbered) {
+    const s = step.toLowerCase();
+
+    if (stepMatches(s, "validate modal launch")) {
+      pushUnique(steps, "await mmPage.expectAddFieldDialogControlsVisible()");
+      continue;
+    }
+
+    if (stepMatches(s, "verify field input controls", "verify field input")) {
+      pushUnique(steps, "await mmPage.expectAddFieldDialogControlsVisible()");
+      continue;
+    }
+
+    if (stepMatches(s, "reopen modal")) {
+      pushUnique(steps, "await mmPage.reopenAddFieldDialog()");
+      continue;
+    }
+
+    if (isTopBarRow(row)) {
+      if (stepMatches(s, "refresh")) {
+        pushUnique(steps, "await mmPage.refreshPage()");
+      }
+      continue;
+    }
+
+    if (isCreateTemplateButtonRow(row)) {
+      if (stepMatches(s, "open create template", "create template screen")) {
+        pushUnique(steps, "await mmPage.openCreateTemplateView()");
+      } else if (stepMatches(s, "open gap report", "gap report")) {
+        pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+      } else if (stepMatches(s, "refresh")) {
+        pushUnique(steps, "await mmPage.refreshPage()");
+      }
+      continue;
+    }
+
+    if (isSidebarRouteNavRow(row)) {
+      if (stepMatches(s, "click data template", "data template")) {
+        pushUnique(steps, "await mmPage.openMissingMandatoryDataTemplateFromSidebar()");
+      } else if (stepMatches(s, "open kyc gap report", "gap report")) {
+        pushUnique(steps, "await mmPage.openKycGapReportFromSidebar()");
+      } else if (stepMatches(s, "switch repeatedly")) {
+        pushUnique(steps, "await mmPage.openKycGapReportFromSidebar()");
+        pushUnique(steps, "await mmPage.openMissingMandatoryDataTemplateFromSidebar()");
+      }
+      continue;
+    }
+
+    if (isCountBadgeRow(row)) {
+      if (stepMatches(s, "create new valid template", "create new template", "save template")) {
+        pushUnique(steps, "await mmPage.openCreateTemplateView()");
+        pushUnique(steps, 'await mmPage.fillField(mmPage.createTemplateNameInput, "Auto Count Badge Template", "Template name")');
+        pushUnique(steps, "await mmPage.clickCreateSubmit()");
+      } else if (stepMatches(s, "return to panel")) {
+        pushUnique(steps, "await mmPage.returnToTemplateListView()");
+      } else if (stepMatches(s, "refresh")) {
+        pushUnique(steps, "await mmPage.refreshPage()");
+      }
+      continue;
+    }
+
+    if (
+      stepMatches(s, "login", "navigate to kyc", "observe first-time", "validate aml shell", "check console", "open aml shell", "locate missing mandatory", "expand node", "open module", "open template module", "open template view", "open template panel", "open template list", "note current data", "note total count", "inspect multiple cards", "observe left panel", "observe detail panel", "stay idle", "rapidly switch", "inspect visible tabs", "inspect tabs", "validate individual group", "validate corporate group", "cross-check classification", "locate add field", "locate locked field", "open field config", "open template detail", "open editable template", "open template detail panel", "open template containing", "open db-created field", "open db-origin", "monitor api", "trigger backend", "verify api", "compare displayed", "cross-check metadata", "observe badge", "inspect options", "inspect legacy", "validate name", "validate kyc level", "validate customer type", "validate version", "validate top bar", "verify sidebar", "verify child routes", "verify remaining tabs", "verify hidden", "verify save success", "verify no unauthorized", "verify api denial", "validate route", "validate route integrity", "validate route persistence", "validate list", "validate detail", "validate header", "validate metadata", "validate label", "validate result", "validate filtered", "validate no-result", "validate latest list", "validate detail sync", "validate selection", "validate active tab", "validate active highlight", "validate first loaded tab", "validate tip", "observe validation", "observe detail panel", "observe badge", "note current data", "trigger action", "trigger save", "retry save", "reopen", "return to list", "return to panel", "return to template", "navigate tabs", "switch child", "switch template", "switch repeatedly", "collapse node", "expand again", "apply filters", "change pagination", "clear search", "select valid section", "select invalid", "enter special", "enter max", "retry with", "attempt edit", "attempt dropdown", "attempt requirement", "try checkbox", "try sidebar", "try updating", "view restriction", "hidden route", "validate top bar label", "validate updated label", "open template view", "open editable template", "open kyc gap score tab")
+    ) {
+      continue;
+    }
+
+    if (stepMatches(s, "configure overlapping", "create score gap", "configure score", "enter duplicate score range", "duplicate score range")) {
+      pushUnique(steps, `await mmPage.configureOverlappingScoreRangesFromTestData('${escapeStr(row.testData)}')`);
+      continue;
+    }
+
+    if (stepMatches(s, "click save ranges", "save ranges")) {
+      if (isScoreRangeRow(row)) {
+        pushUnique(steps, "await mmPage.expectScoreRangeSaveBlocked()");
+      } else {
+        pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+      }
+      continue;
+    }
+
+    if (stepMatches(s, "open sidebar", "navigate to kyc gap report") && fgUsesSidebarGapReport(row)) {
+      pushUnique(steps, "await mmPage.openKycGapReportFromSidebar()");
+      continue;
+    }
+
+    if (stepMatches(s, "refresh", "revalidate")) {
+      pushUnique(steps, "await mmPage.refreshPage()");
+      continue;
+    }
+
+    if (stepMatches(s, "open individual template", "open individual")) {
+      pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
+    } else if (stepMatches(s, "open corporate template", "open corporate")) {
+      pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Corporate')");
+    } else if (stepMatches(s, "select template", "select first card", "select second card", "select non-default", "click first template", "click another template", "open searched template", "reopen selected")) {
+      pushUnique(steps, `await mmPage.selectTemplateByExactName('${escapeStr(inferTemplateName(row))}')`);
+    } else if (stepMatches(s, "open editable mandatory field", "open editable corporate field", "open editable field", "open field", "open db-created field", "open db-origin", "open locked field", "open editable dropdown")) {
+      const targets = fragments.length > 0 ? fragments : fieldFragment ? [fieldFragment] : [];
+      for (const fragment of targets) {
+        pushUnique(steps, `await mmPage.openFieldByTestDataFragment('${escapeStr(fragment)}')`);
+      }
+    } else if (stepMatches(s, "update requirement", "change requirement", "modify valid field", "modify template", "modify field config", "modify requirement", "change to optional", "set as mandatory", "update field config", "update config")) {
+      const targets = fragments.length > 0 ? fragments : fieldFragment ? [fieldFragment] : [];
+      if (targets.length > 0) {
+        for (const fragment of targets) {
+          pushUnique(steps, `await mmPage.updateFieldRequirementByTestDataFragment('${escapeStr(fragment)}')`);
+        }
+      } else {
+        pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+      }
+    } else if (stepMatches(s, "click save", "save field", "save template", "save changes", "save.", "save config", "click save/create", "save/create")) {
+      if (row.subModule.toLowerCase().includes("mandatory input validation") || rowMatches(row, "leave required fields blank", "validation displayed")) {
+        pushUnique(steps, "await mmPage.clickDialogSubmit()");
+      } else {
+        pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+      }
+    } else if (stepMatches(s, "open gap report", "open report", "navigate to gap report", "open kyc gap report", "reopen gap report")) {
+      pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    } else if (stepMatches(s, "refresh", "reopen module", "reopen field", "reopen template", "refresh module", "refresh page", "refresh panel", "refresh and")) {
+      pushUnique(steps, "await mmPage.refreshPage()");
+    } else if (stepMatches(s, "click add field", "open add field", "add field")) {
+      pushUnique(steps, "await mmPage.openAddFieldDialog()");
+    } else if (stepMatches(s, "enter valid field", "create custom field", "save field")) {
+      pushUnique(steps, "await mmPage.createValidCustomField()");
+    } else if (stepMatches(s, "enter existing field", "same-name ui add", "attempt same-name") || (stepMatches(s, "duplicate") && !isScoreRangeRow(row) && !isDuplicatePayloadRow(row))) {
+      const dupName = fieldFragment || "National ID";
+      pushUnique(steps, `await mmPage.attemptDuplicateFieldCreation('${escapeStr(dupName)}')`);
+    } else if (stepMatches(s, "leave required fields blank", "leave required")) {
+      pushUnique(steps, "await mmPage.openAddFieldDialog()");
+      pushUnique(steps, "await mmPage.clickDialogSubmit()");
+    } else if (stepMatches(s, "search template", "enter exact template", "enter partial", "enter invalid", "search")) {
+      pushUnique(steps, `await mmPage.searchTemplates('${escapeStr(searchKeyword(row))}')`);
+    } else if (stepMatches(s, "search gap", "enter exact", "enter invalid keyword", "non-existing")) {
+      const kw = /invalid|non-existing|no-match/i.test(row.testData) ? "zzzz-no-match" : searchKeyword(row);
+      pushUnique(steps, `await mmPage.searchGapReport('${escapeStr(kw)}')`);
+    } else if (stepMatches(s, "open create template", "navigate to create", "create new valid template", "create template")) {
+      pushUnique(steps, "await mmPage.openCreateTemplateView()");
+    } else if (stepMatches(s, "clone")) {
+      pushUnique(steps, "await mmPage.clickCloneButton()");
+    } else if (stepMatches(s, "close modal", "cancel", "close icon")) {
+      pushUnique(steps, "await mmPage.cancelButton.click()");
+    } else if (stepMatches(s, "session expire", "idle", "expired", "logout", "re-auth", "authorization failure", "direct url")) {
+      pushUnique(steps, "await mmPage.mockUnauthorized()");
+      pushUnique(steps, OPEN);
+    } else if (stepMatches(s, "click save changes") && rowMatches(row, "mid-edit", "unsaved", "session expire")) {
+      pushUnique(steps, "await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save Changes')");
+    } else if (stepMatches(s, "open template containing db field")) {
+      pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
+    } else if (stepMatches(s, "attempt requirement change", "try updating field")) {
+      pushUnique(steps, "await mmPage.attemptLockedFieldEdit()");
+    } else if (stepMatches(s, "open first gap", "view detail", "open detail")) {
+      pushUnique(steps, "await mmPage.openFirstGapReportDetail()");
+    } else if (stepMatches(s, "trigger recalculation", "trigger score")) {
+      pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+      pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+      pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    } else if (stepMatches(s, "refresh report")) {
+      pushUnique(steps, "await mmPage.refreshPage()");
+    } else if (stepMatches(s, "valid template creation", "fill template name")) {
+      pushUnique(steps, "await mmPage.openCreateTemplateView()");
+      pushUnique(steps, 'await mmPage.fillField(mmPage.createTemplateNameInput, "Auto Test Template", "Template name")');
+      pushUnique(steps, "await mmPage.clickCreateSubmit()");
+    }
+  }
+
+  if (rowMatches(row, "valid field creation", "valid ui field creation") && !steps.some((s) => s.includes("createValidCustomField"))) {
+    pushUnique(steps, "await mmPage.createValidCustomField()");
+  }
+
+  if (rowMatches(row, "recalculation after template", "template update recalculation") || numbered.some((s) => stepMatches(s, "modify template") && numbered.some((s2) => stepMatches(s2, "open report")))) {
+    if (!steps.some((s) => s.includes("modifyFirstEditable") || s.includes("updateFieldRequirement"))) {
+      pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
+    }
+    if (!steps.some((s) => s.includes("saveChangesAndExpectSuccess"))) {
+      pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
+    }
+    if (numbered.some((s) => stepMatches(s, "open report"))) {
+      pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
+    }
+  }
+
+  const blob = `${row.acceptanceCriteria} ${row.expectedResult}`.toLowerCase();
+  const persistFragments = parseTestDataFragments(row.testData);
+  const hasSaveStep = numbered.some((s) => stepMatches(s, "save", "save changes", "save field", "save template"));
+  const expectsPostSavePersist =
+    /config persists|persistence after|retained after|preserved after|recheck after refresh/.test(blob) ||
+    numbered.some((s) => stepMatches(s, "refresh", "revalidate", "reopen template", "reopen field", "reopen module"));
+  const editableFieldPersist = /^editable field$/i.test(row.testData.trim());
+  if (hasSaveStep && expectsPostSavePersist && !isScoreRangeRow(row) && !isTemplateDetailSaveRow(row) && !isSessionMidEditRow(row) && !isLockedFieldRow(row) && !isValidCustomFieldCreationRow(row)) {
+    pushUnique(steps, "await mmPage.refreshPage()");
+    const template = inferTemplateName(row);
+    const tab = inferTabName(row);
+    if (tab) {
+      pushUnique(steps, `await mmPage.reopenTemplateContextAfterRefresh('${escapeStr(template)}', '${escapeStr(tab)}')`);
+    } else {
+      pushUnique(steps, `await mmPage.reopenTemplateContextAfterRefresh('${escapeStr(template)}')`);
+    }
+    if (editableFieldPersist) {
+      pushUnique(steps, "await mmPage.expectFirstEditableRequirementPersisted()");
+    } else if (persistFragments.length > 0) {
+      for (const fragment of persistFragments) {
+        pushUnique(steps, `await mmPage.expectFieldRequirementPersistedByTestDataFragment('${escapeStr(fragment)}')`);
+      }
+    }
+  }
+
+  return steps;
+}
+
+/** Assertions derived strictly from Acceptance Criteria + Expected Result + sub-module. */
+function buildSpecializedAssertions(row: MmExcelRow): string[] | null {
+  const steps: string[] = [];
+  const sm = row.subModule.toLowerCase();
+  const ac = row.acceptanceCriteria.toLowerCase();
+  const er = row.expectedResult.toLowerCase();
+  const blob = `${ac} ${er} ${sm} ${row.taskDescription.toLowerCase()}`;
+  const push = (s: string): void => pushUnique(steps, s);
+
+  if (isApiListFailure(row)) {
+    push("await mmPage.expectTemplateListApiFailureState()");
+    push("await mmPage.expectAppShellVisible()");
+    return steps;
+  }
+  if (sm.includes("template detail load failure") || isApiPartialDetailRow(row)) {
+    push("await mmPage.expectTemplateDetailApiFailureState()");
+    return steps;
+  }
+  if (isGapReportLoadFailure(row)) {
+    push("await mmPage.expectGapReportApiFailureState()");
+    return steps;
+  }
+  if (isTopBarRow(row)) {
+    push("await mmPage.expectTopBarPersistentAcrossViews(testData.baseUrl)");
+    return steps;
+  }
+  if (isCreateTemplateButtonRow(row)) {
+    push("await mmPage.expectCreateTemplateButtonVisibilityAcrossViews(testData.baseUrl)");
+    return steps;
+  }
+  if (isSidebarRouteNavRow(row)) {
+    push("await mmPage.expectSidebarRouteNavigationIntegrity(testData.baseUrl)");
+    return steps;
+  }
+  if (isSidebarStatePersistenceRow(row)) {
+    push("await mmPage.expectGapReportTableVisible()");
+    return steps;
+  }
+  if (isTemplateDetailAddFieldRow(row)) {
+    push("await mmPage.expectAddFieldButtonWorkflow()");
+    return steps;
+  }
+  if (isSessionMidEditRow(row)) {
+    push("await mmPage.expectAccessDenied()");
+    return steps;
+  }
+  if (isApiPartialListRow(row)) {
+    push("await mmPage.expectApiFailureHandledGracefully()");
+    return steps;
+  }
+  if (isGapReportViewLoadRow(row)) {
+    push("await mmPage.expectGapReportTableVisible()");
+    push("await mmPage.expectAppShellVisible()");
+    return steps;
+  }
+  if (isAddCustomFieldModalRow(row)) {
+    push("await mmPage.expectAddCustomFieldModalControlsVisible()");
+    return steps;
+  }
+  if (isEmptyListApiRow(row)) {
+    push("await mmPage.expectApiFailureHandledGracefully()");
+    return steps;
+  }
+  if (isAddCustomFieldWeightageRow(row)) {
+    if (row.subModule.toLowerCase().includes("persistence")) {
+      push("await mmPage.expectCustomFieldWeightagePersisted('Weightage Test Field', '1')");
+    } else {
+      push("await mmPage.expectAddFieldWeightageDropdown()");
+    }
+    return steps;
+  }
+  if (isAddCustomFieldCancelRow(row)) {
+    push("await expect(mmPage.addFieldButton).toBeVisible()");
+    return steps;
+  }
+  if (isFieldConfigRequirementTypeRow(row)) {
+    push("await mmPage.expectFirstEditableRequirementPersisted()");
+    return steps;
+  }
+  if (isDefaultTabSelectionRow(row)) {
+    push("await mmPage.expectDefaultTabSelectionWorkflow()");
+    return steps;
+  }
+  if (isInvalidSectionMappingRow(row)) {
+    push("await mmPage.expectAddFieldValidationError()");
+    return steps;
+  }
+  if (isTechnicalIdsNoDropdownRow(row)) {
+    push("await mmPage.expectTechnicalIdsNoRequirementDropdowns()");
+    return steps;
+  }
+  if (isCorporateTechnicalImmutableRow(row)) {
+    push("await mmPage.expectCorporateTechnicalIdsImmutable()");
+    return steps;
+  }
+  if (isUnsavedWarningRow(row)) {
+    push("await mmPage.expectUnsavedNavigationWarning()");
+    return steps;
+  }
+  if (isCreateTemplateLaunchRow(row)) {
+    push("await mmPage.expectCreateTemplateLaunchScreen()");
+    return steps;
+  }
+  if (isCreateTemplateCancelRow(row)) {
+    push("await mmPage.expectCreateTemplateCanceled()");
+    return steps;
+  }
+  if (isGapReportRefreshSyncRow(row)) {
+    push("await mmPage.expectGapReportTableVisible()");
+    return steps;
+  }
+  if (isMissingFieldsBreakdownRow(row)) {
+    push("await mmPage.expectMissingFieldsBreakdownInModal()");
+    return steps;
+  }
+  if (isScoreEngineDefaultLoadRow(row)) {
+    push("await mmPage.expectScoreEngineDefaultLoad()");
+    return steps;
+  }
+  if (isRbacCreateTemplateRow(row)) {
+    push("await mmPage.expectAccessDenied()");
+    return steps;
+  }
+  if (isRbacSaveChangesRow(row)) {
+    push("await mmPage.expectAccessDenied()");
+    return steps;
+  }
+  if (isDuplicatePayloadRow(row)) {
+    push("await mmPage.expectDuplicatePayloadHandled()");
+    return steps;
+  }
+  if (isConnectionLossRow(row) || isRefreshDuringPendingRow(row)) {
+    push("await mmPage.expectApiFailureHandledGracefully()");
+    return steps;
+  }
+  if (isCloneOwnershipRow(row)) {
+    push("await mmPage.expectCloneOwnershipIndependence()");
+    return steps;
+  }
+  if (isEndToEndCreateToReportRow(row)) {
+    push("await mmPage.expectGapReportSyncedWithTemplate()");
+    return steps;
+  }
+  if (isRegressionGapReportRow(row)) {
+    push("await mmPage.expectGapReportTableVisible()");
+    return steps;
+  }
+  if (isScoreMappingCriticalRow(row)) {
+    push("await mmPage.expectExactRiskLabelMapping()");
+    return steps;
+  }
+  if (isTemplateToReportSyncRow(row)) {
+    push("await mmPage.expectGapReportSyncedWithTemplate()");
+    return steps;
+  }
+  if (row.subModule.toLowerCase().includes("editable mandatory corporate")) {
+    const corporateFields = parseTestDataFragments(row.testData);
+    for (const fragment of corporateFields.length > 0 ? corporateFields : ["Ownership Structure Chart", "Audited Statements"]) {
+      push(`await mmPage.expectFieldRequirementPersistedByTestDataFragment('${escapeStr(fragment)}')`);
+    }
+    return steps;
+  }
+  if (row.subModule.toLowerCase().includes("field configuration") && row.subModule.toLowerCase().includes("persistence after save")) {
+    push("await mmPage.expectFirstEditableRequirementPersisted()");
+    return steps;
+  }
+  if (row.subModule.toLowerCase().includes("save changes") && row.subModule.toLowerCase().includes("valid persistence")) {
+    push("await mmPage.expectFirstEditableRequirementPersisted()");
+    push("await mmPage.expectSaveChangesSucceeded()");
+    return steps;
+  }
+  if (row.subModule.toLowerCase().includes("refresh persistence") && row.subModule.toLowerCase().includes("gap score")) {
+    push("await mmPage.expectScoreConfigPersistedAfterRefresh()");
+    return steps;
+  }
+  if (isAuditIntegrityRow(row)) {
+    push("await mmPage.expectSaveChangesSucceeded()");
+    return steps;
+  }
+  if (isApiPartialDetailRow(row)) {
+    push("await mmPage.expectPartialTemplateDetailHandled()");
+    return steps;
+  }
+  if (isSecurityLogoutRefreshRow(row)) {
+    push("await mmPage.expectAccessDenied()");
+    return steps;
+  }
+  if (isValidCustomFieldCreationRow(row)) {
+    push(`await mmPage.expectCustomFieldVisibleByName('${escapeStr(parseCustomFieldName(row.testData))}')`);
+    return steps;
+  }
+  if (isCrossTemplateCompareRow(row)) {
+    push("await expect(mmPage.fieldRows.first()).toBeVisible()");
+    return steps;
+  }
+  if (isLockedFieldRow(row)) {
+    push("await mmPage.expectLockedFieldEditRestriction()");
+    return steps;
+  }
+  if (isTemplateDetailSaveRow(row)) {
+    push("await mmPage.expectSaveChangesSucceeded()");
+    return steps;
+  }
+  if (isCountBadgeRow(row)) {
+    push("await mmPage.expectTemplateCountMatchesCards()");
+    return steps;
+  }
+  if (isScoreRangeRow(row)) {
+    if (/overlap|gap exists|blocked|reject/.test(blob)) {
+      push("await mmPage.expectScoreRangeSaveBlocked()");
+    } else {
+      push("await mmPage.expectScoreTabLoaded()");
+    }
+    return steps;
+  }
+
+  return null;
+}
+
+export function buildExcelAssertionActions(row: MmExcelRow): string[] {
+  const specialized = buildSpecializedAssertions(row);
+  if (specialized) {
+    return specialized;
+  }
+
+  const steps: string[] = [];
+  const ac = row.acceptanceCriteria.toLowerCase();
+  const er = row.expectedResult.toLowerCase();
+  const sm = row.subModule.toLowerCase();
+  const fg = featureGroup(row.subModule);
+  const blob = `${ac} ${er} ${sm} ${row.taskDescription.toLowerCase()}`;
+  const fragments = parseTestDataFragments(row.testData);
+  const numbered = parseNumberedSteps(row.testSteps);
+  const hasRefreshStep = numbered.some((s) => stepMatches(s, "refresh", "revalidate"));
+  const push = (s: string): void => pushUnique(steps, s);
+
+  if (isAuthDeniedScenario(row)) {
+    push("await mmPage.expectAccessDenied()");
+  }
+  if (/immutable|edit blocked/.test(blob) && !/save blocked/.test(blob)) {
+    push("await mmPage.expectLockedFieldEditRestriction()");
+  }
+
+  if (fg === "DB-Origin Field") {
+    if (sm.includes("locked")) {
+      push("await mmPage.expectLockedFieldEditRestriction()");
+    } else if (sm.includes("ui rendering")) {
+      push(`await mmPage.expectDbOriginFieldRendered('${escapeStr(dbFieldLabel(row))}')`);
+    } else if (sm.includes("weightage")) {
+      push("await mmPage.expectDbOriginFieldWeightage()");
+    } else if (sm.includes("duplicate")) {
+      push("await mmPage.expectAddFieldValidationError()");
+    }
+  }
+
+  if (/template list load failure/.test(sm)) push("await mmPage.expectTemplateListApiFailureState()");
+  else if (/template detail load failure/.test(sm)) push("await mmPage.expectTemplateDetailApiFailureState()");
+  else if (/gap report load failure/.test(sm)) push("await mmPage.expectGapReportApiFailureState()");
+  else if (
+    fg === "API Handling" ||
+    fg === "Retry Logic" ||
+    fg === "Backend Reliability" ||
+    fg === "Error Handling" ||
+    fg === "Recovery" ||
+    fg === "Backend Integrity" ||
+    fg === "Reliability"
+  ) {
+    push("await mmPage.expectApiFailureHandledGracefully()");
+  }
+
+  if (/persist|persistence|config persists|retained|preserved|recalculat/.test(blob) && !isScoreRangeRow(row)) {
+    if (sm.includes("refresh synchronization")) {
+      push("await mmPage.expectGapReportSyncedWithTemplate()");
+    } else if (/recalculat|score engine|template changes|template logic/.test(blob)) {
+      push("await mmPage.expectScoreRecalculationAfterTemplateUpdate(testData.baseUrl)");
+    } else if (/gap report|report/.test(blob) && !isTopBarRow(row)) {
+      push("await mmPage.expectGapReportSyncedWithTemplate()");
+    } else if (!/editable|mandatory|corporate/.test(blob)) {
+      push("await mmPage.expectSaveChangesSucceeded()");
+    }
+  }
+
+  if (/editable/.test(blob) && fragments.length > 0 && !/immutable|system-owned|system fields|no requirement/.test(blob)) {
+    for (const f of fragments) {
+      push(`await mmPage.expectFieldEditableByTestDataFragment('${escapeStr(f)}')`);
+    }
+  } else if (/editable/.test(blob) && !/immutable|system-owned|system fields/.test(blob)) {
+    push("await mmPage.expectEditableFieldCheckboxesEnabled()");
+  }
+
+  if (/save allowed|save success/.test(blob)) {
+    push("await mmPage.expectSaveChangesSucceeded()");
+  }
+
+  if (/duplicate/.test(blob)) {
+    push("await mmPage.expectAddFieldValidationError()");
+  }
+
+  if (/count increment|count badge|badge/.test(blob)) {
+    push("await mmPage.expectTemplateCountMatchesCards()");
+  }
+  if (/active state|active highlight|single.*card/.test(blob)) {
+    push("await mmPage.expectSingleActiveTemplateCard()");
+  }
+  if (/top bar|sidebar|app shell|layout remains stable|no broken/.test(blob) && !isTopBarRow(row) && fg !== "Add Field") {
+    push("await mmPage.expectAppShellVisible()");
+  }
+  if (fg === "Missing Mandatory Data Template" || (fg === "App Shell" && !isTopBarRow(row))) {
+    if (/template list/.test(blob)) {
+      push("await mmPage.expectTemplateListPopulated()");
+    }
+    if (/detail panel/.test(blob)) {
+      push("await expect(mmPage.fieldRows.first()).toBeVisible()");
+    }
+  }
+  if (/route/.test(blob) && !/api/.test(blob) && !isSidebarRouteNavRow(row)) {
+    push("await mmPage.expectOnTemplateRoute()");
+  }
+  if ((hasRefreshStep || fg === "Refresh") && !/session|logout|expired/.test(blob)) {
+    if (sm.includes("refresh synchronization") || (hasRefreshStep && sm.includes("score calculation"))) {
+      push("await mmPage.expectGapReportSyncedWithTemplate()");
+    } else {
+      push("await mmPage.expectTemplateListRefreshed()");
+      if (/detail|integrity|sync|selection|active tab/.test(blob)) {
+        push(`await mmPage.expectRefreshPreservesTemplateDetail('${escapeStr(inferTemplateName(row))}')`);
+      }
+    }
+  }
+
+  if ((fg === "KYC Gap Report" || sm.includes("gap report")) && !isGapReportLoadFailure(row) && !isGapReportViewLoadRow(row)) {
+    if (/empty/.test(blob)) push("await mmPage.expectGapReportEmptyState()");
+    else if (/pagination/.test(blob)) push("await mmPage.expectGapReportPaginationVisible()");
+    else push("await mmPage.expectGapReportTableVisible()");
+  }
+
+  if (/gap score|score range|score mapping|save range/.test(sm) && !sm.includes("calculation") && !isScoreRangeRow(row)) {
+    if (/risk label|score mapping|critical/.test(blob)) push("await mmPage.expectExactRiskLabelMapping()");
+    else if (/tip bar|guidance/.test(blob)) push("await expect(mmPage.tipBar).toBeVisible()");
+    else push("await mmPage.expectScoreTabLoaded()");
+  }
+
+  if (fg === "Score Calculation" || fg === "Score Calculation Engine" || fg === "Missing Fields Logic") {
+    if (/end-to-end|integrity|lifecycle/.test(blob)) push("await mmPage.expectEndToEndAmlScoreIntegrity(testData.baseUrl)");
+    else if (/sync|synchronized/.test(blob) && !sm.includes("refresh synchronization")) {
+      push("await mmPage.expectScoreSyncAcrossConsumers(testData.baseUrl)");
+    } else if (/persist/.test(blob) && sm.includes("refresh synchronization")) {
+      push("await mmPage.expectGapReportSyncedWithTemplate()");
+    }
+    else if (/null|partial/.test(blob)) push("await mmPage.expectNullPartialDataScoreHandling()");
+    else if (/isolation|leakage/.test(blob)) push("await mmPage.expectIndividualCorporateIsolation()");
+    else if (/shared/.test(blob)) push("await mmPage.expectSharedAmlFieldIntegrity()");
+    else if (/recalculat/.test(blob) && !sm.includes("refresh synchronization")) {
+      push("await mmPage.expectScoreRecalculationAfterTemplateUpdate(testData.baseUrl)");
+    }
+  }
+
+  if (fg === "Add Field" || fg === "Add Custom Field") {
+    if (/validation|reject|duplicate|invalid|boundary|max length|special character/.test(blob)) {
+      push("await mmPage.expectAddFieldValidationError()");
+    } else if (/weightage/.test(blob)) {
+      push("await mmPage.expectAddFieldWeightageDropdown()");
+    } else if (/modal launch|modal control|control rendering|required controls visible|close action works/.test(blob)) {
+      if (!numbered.some((s) => stepMatches(s, "reopen modal"))) {
+        push("await mmPage.expectAddFieldDialogControlsVisible()");
+      }
+    } else if (/cancel|close icon/.test(blob)) {
+      push("await expect(mmPage.addFieldButton).toBeVisible()");
+    } else if (/valid field|field created/.test(blob)) {
+      push("await expect(mmPage.fieldRows.first()).toBeVisible()");
+    }
+  }
+
+  if (fg === "Field Configuration" || fg === "Locked Fields" || fg === "Requirement Dropdown" || fg === "Save Changes") {
+    if (/locked|immutable|edit blocked/.test(blob)) push("await mmPage.expectLockedFieldEditRestriction()");
+    else if (/editable/.test(blob)) push("await mmPage.expectEditableFieldCheckboxesEnabled()");
+    if (/requirement/.test(blob)) push("await expect(mmPage.requirementDropdowns.first()).toBeVisible()");
+  }
+
+  if (/corporate cip|individual cip|cdd|edd|technical/.test(sm) && steps.length === 0 && !isTechnicalIdsNoDropdownRow(row) && !isCorporateTechnicalImmutableRow(row)) {
+    push("await expect(mmPage.tabButtons.first()).toBeVisible()");
+    push("await expect(mmPage.fieldRows.first()).toBeVisible()");
+    if (/requirement|dropdown|mandatory/.test(blob)) {
+      push("await expect(mmPage.requirementDropdowns.first()).toBeVisible()");
+    }
+  }
+
+  if (fg === "Cross-Module Consistency" || fg === "End-to-End AML Workflow" || fg === "Customer 360 Dependency") {
+    if (/customer 360|completed kyc/.test(blob)) push("await mmPage.expectCompletedKycSync(testData.baseUrl)");
+    else if (/gap report|report sync|create template to report/.test(blob)) push("await mmPage.expectGapReportSyncedWithTemplate()");
+    else if (/corporate entity/.test(blob)) push("await mmPage.expectCorporateEntityWorkflow(testData.baseUrl)");
+    else if (/individual customer/.test(blob)) push("await mmPage.expectIndividualCustomerWorkflow()");
+    else if (/isolation/.test(blob)) push("await mmPage.expectIndividualCorporateIsolation()");
+    else push("await mmPage.expectTemplateModuleLoaded()");
+  }
+
+  if (steps.length === 0) {
+    push("await mmPage.expectTemplateModuleLoaded()");
+    if (/list|template cards|populated/.test(blob)) {
+      push("await mmPage.expectTemplateListPopulated()");
+    }
+  }
+
+  return steps;
+}
+
+export function buildExcelAlignedLogic(row: MmExcelRow): string {
+  const preconditions = buildPreconditionActions(row);
+  const lines = [
+    ...preconditions,
+    ...buildExcelSetupActions(row, preconditions),
+    ...buildExcelStepActions(row),
+    ...buildExcelAssertionActions(row),
+  ]
+    .map((l) => l.trim().replace(/;+$/g, ""))
+    .filter(Boolean);
+
+  const deduped: string[] = [];
+  for (const line of lines) {
+    if (!deduped.includes(line)) {
+      deduped.push(line);
+    }
+  }
+
+  if (deduped.length === 0) {
+    return `${OPEN};\n    await mmPage.expectTemplateModuleLoaded()`;
+  }
+
+  return deduped.join(";\n    ");
+}

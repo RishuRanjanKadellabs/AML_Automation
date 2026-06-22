@@ -1,0 +1,17 @@
+{
+  "defaults": {
+    "validUsername": "",
+    "validPassword": ""
+  },
+  "environments": {
+    "dev": {
+      "baseUrl": "http://localhost:3000"
+    },
+    "uat": {
+      "baseUrl": "http://localhost:3000"
+    },
+    "production": {
+      "baseUrl": "http://localhost:3000"
+    }
+  }
+}

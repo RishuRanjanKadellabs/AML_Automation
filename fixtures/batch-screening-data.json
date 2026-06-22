@@ -1,0 +1,19 @@
+{
+  "searchKeywords": {
+    "validPartial": "HANIYA",
+    "validExact": "CUST-BATCH",
+    "invalid": "zzzz-no-match-99999",
+    "sqlInjection": "' OR '1'='1",
+    "xssInjection": "<script>alert('xss')</script>",
+    "specialChars": "Test@#$%^&*()"
+  },
+  "dispositionComments": {
+    "valid": "Automation disposition comment for batch screening validation.",
+    "specialChars": "Comment with special chars: @#$% & <test>"
+  },
+  "roles": {
+    "authorizedAnalyst": "Valid AML analyst account",
+    "exportRole": "Authorized export role",
+    "restrictedRole": "Restricted role without batch screening access"
+  }
+}
