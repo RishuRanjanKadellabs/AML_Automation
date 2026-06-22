@@ -28,14 +28,9 @@ const KycGapReportLocators = {
   gapReportScoreBreakdown: ".score-breakdown, [class*='score-breakdown']",
   gapTypeBadge: ".gap-type-badge, [class*='gap-type'], [class*='badge']",
   gapReportEmptyState: ".empty-state, [class*='empty-state']",
-<<<<<<< HEAD
   viewActionButton: "button.gap-view-btn, button[aria-label*='View gap details']",
+  gapPriorityCell: "table tbody tr td[class*='priority'], table tbody tr td:nth-child(6)",
   gapScoreCell: "table tbody tr td:nth-child(7)",
-=======
-  viewActionButton: "button.gap-view-btn, button[aria-label*='View gap details'], button[aria-label*='View'], td:last-child button, [class*='action'] button, a[href*='detail']",
-  gapPriorityCell: "td.gap-td-priority, td[class*='gap-td-priority'], td[class*='priority']",
-  gapScoreCell: "td.gap-td-score, td[class*='gap-td-score'], table tbody tr td:nth-child(8)",
->>>>>>> master
 };
 
 export default KycGapReportLocators;

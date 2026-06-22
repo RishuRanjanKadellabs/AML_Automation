@@ -158,8 +158,6 @@ function isScoreRangeRow(row: MmExcelRow): boolean {
   return /score range|save range/.test(sm) || /low:\s*\d|medium:\s*\d/.test(td);
 }
 
-<<<<<<< HEAD
-=======
 function isDefaultTabSelectionRow(row: MmExcelRow): boolean {
   return row.subModule.toLowerCase().includes("default tab");
 }
@@ -273,7 +271,6 @@ function skipsAutoTemplateSetup(row: MmExcelRow): boolean {
   );
 }
 
->>>>>>> master
 function isAuthDeniedScenario(row: MmExcelRow): boolean {
   const blob = `${row.subModule} ${row.acceptanceCriteria} ${row.expectedResult} ${row.testSteps} ${row.testData}`.toLowerCase();
   if (/save blocked if|validation displayed|required inputs enforced|no unauthorized|not unauthorized|without unauthorized/.test(blob)) {
@@ -341,8 +338,6 @@ export function inferTemplateName(row: MmExcelRow): string {
     return "Standard KYC — Individual";
   }
   const blob = `${row.subModule} ${row.testSteps} ${row.testData} ${row.preconditions}`.toLowerCase();
-<<<<<<< HEAD
-=======
   if (/individual/.test(blob) && /corporate/.test(blob)) {
     if (/corporate cip|corporate cdd|corporate edd|corporate technical/.test(sm)) {
       return "Standard KYC — Corporate";
@@ -351,7 +346,6 @@ export function inferTemplateName(row: MmExcelRow): string {
       return "Standard KYC — Individual";
     }
   }
->>>>>>> master
   if (/corporate/.test(blob) && !/compare with individual|cross-template|isolation/.test(blob)) {
     return "Standard KYC — Corporate";
   }
@@ -428,23 +422,11 @@ export function buildPreconditionActions(row: MmExcelRow): string[] {
   const sm = row.subModule.toLowerCase();
   const numbered = parseNumberedSteps(row.testSteps).join(" ").toLowerCase();
 
-<<<<<<< HEAD
   if (rowMatches(row, "template list load failure", "slow api", "connection loss") || sm.includes("template list load failure")) {
     pushUnique(steps, "await mmPage.mockTemplateListFailure()");
   } else if (rowMatches(row, "template detail load failure") || (sm.includes("partial payload") && sm.includes("detail"))) {
     pushUnique(steps, "await mmPage.mockTemplateDetailFailure()");
   } else if (rowMatches(row, "save changes failure", "false success", "user-safe", "audit-safe", "concurrent", "conflict", "refresh during pending")) {
-=======
-  if (rowMatches(row, "template list load failure", "slow api") || sm.includes("template list load failure")) {
-    pushUnique(steps, "await mmPage.mockTemplateListFailure()");
-  } else if (isConnectionLossRow(row)) {
-    pushUnique(steps, "await mmPage.mockSaveChangesFailure()");
-  } else if (rowMatches(row, "template detail load failure")) {
-    // Detail API mock is applied after an initial successful template selection — see buildExcelStepActions.
-  } else if (isApiPartialDetailRow(row)) {
-    pushUnique(steps, "await mmPage.mockPartialTemplateDetailPayload()");
-  } else if (rowMatches(row, "save changes failure", "false success", "user-safe", "concurrent", "conflict", "refresh during pending")) {
->>>>>>> master
     pushUnique(steps, "await mmPage.mockSaveChangesFailure()");
   } else if (rowMatches(row, "create template failure")) {
     pushUnique(steps, "await mmPage.mockCreateTemplateFailure()");
@@ -456,15 +438,8 @@ export function buildPreconditionActions(row: MmExcelRow): string[] {
     pushUnique(steps, "await mmPage.mockScoreConfigSaveFailure()");
   } else if (rowMatches(row, "partial payload") && sm.includes("list")) {
     pushUnique(steps, "await mmPage.mockPartialTemplateListPayload()");
-<<<<<<< HEAD
   } else if (rowMatches(row, "null field", "empty array", "duplicate payload")) {
     pushUnique(steps, sm.includes("duplicate") ? "await mmPage.mockPartialTemplateListPayload()" : "await mmPage.mockEmptyTemplateList()");
-=======
-  } else if (rowMatches(row, "null field", "empty array")) {
-    pushUnique(steps, "await mmPage.mockEmptyTemplateList()");
-  } else if (isDuplicatePayloadRow(row)) {
-    pushUnique(steps, "await mmPage.mockPartialTemplateListPayload()");
->>>>>>> master
   }
 
   if (isAuthDeniedScenario(row) && !isSessionMidEditRow(row)) {
@@ -511,10 +486,7 @@ export function buildExcelSetupActions(row: MmExcelRow, preconditions: string[] 
 
   if (sm.includes("db-origin") && sm.includes("ui rendering")) {
     pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
-<<<<<<< HEAD
-=======
     pushUnique(steps, "await mmPage.openTab('Individual CIP')");
->>>>>>> master
     return steps;
   }
 
@@ -531,11 +503,7 @@ export function buildExcelSetupActions(row: MmExcelRow, preconditions: string[] 
     return steps;
   }
 
-<<<<<<< HEAD
   if (isValidCustomFieldCreationRow(row) || isAddCustomFieldWeightageRow(row) || isAddCustomFieldCancelRow(row) || isFieldConfigRequirementTypeRow(row)) {
-=======
-  if (skipsAutoTemplateSetup(row)) {
->>>>>>> master
     return steps;
   }
 
@@ -548,7 +516,6 @@ export function buildExcelSetupActions(row: MmExcelRow, preconditions: string[] 
     pushUnique(steps, `await mmPage.openTab('${escapeStr(tab)}')`);
   }
 
-<<<<<<< HEAD
   if (sm.includes("tab visibility") || sm.includes("default tab")) {
     if (/corporate/.test(sm)) {
       pushUnique(steps, "await mmPage.expectDefaultTabForCorporate()");
@@ -557,8 +524,6 @@ export function buildExcelSetupActions(row: MmExcelRow, preconditions: string[] 
     }
   }
 
-=======
->>>>>>> master
   return steps;
 }
 
@@ -574,8 +539,6 @@ export function buildExcelStepActions(row: MmExcelRow): string[] {
     return steps;
   }
 
-<<<<<<< HEAD
-=======
   if (featureGroup(row.subModule) === "Cross-Module Consistency" && /isolation/.test(row.expectedResult.toLowerCase())) {
     pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
     pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
@@ -755,7 +718,6 @@ export function buildExcelStepActions(row: MmExcelRow): string[] {
     return steps;
   }
 
->>>>>>> master
   if (isSidebarStatePersistenceRow(row)) {
     pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
     pushUnique(steps, "await mmPage.openKycGapReportDirect(testData.baseUrl)");
@@ -835,10 +797,7 @@ export function buildExcelStepActions(row: MmExcelRow): string[] {
 
   if (isFieldConfigRequirementTypeRow(row)) {
     pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
-<<<<<<< HEAD
-=======
     pushUnique(steps, "await mmPage.openAddFieldDialog()");
->>>>>>> master
     pushUnique(steps, "await mmPage.createValidCustomField('Requirement Type Field')");
     pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
     pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
@@ -859,18 +818,7 @@ export function buildExcelStepActions(row: MmExcelRow): string[] {
     return steps;
   }
 
-<<<<<<< HEAD
   if (isApiDetailFailureRow(row) || isApiPartialDetailRow(row)) {
-=======
-  if (isApiDetailFailureRow(row)) {
-    pushUnique(steps, "await mmPage.selectTemplateByExactName('Simplified KYC')");
-    pushUnique(steps, "await mmPage.mockTemplateDetailFailure()");
-    pushUnique(steps, "await mmPage.triggerTemplateDetailFailure('Standard KYC — Individual')");
-    return steps;
-  }
-
-  if (isApiPartialDetailRow(row)) {
->>>>>>> master
     pushUnique(steps, "await mmPage.selectTemplateExpectingDetailFailure('Simplified KYC')");
     return steps;
   }
@@ -942,11 +890,7 @@ export function buildExcelStepActions(row: MmExcelRow): string[] {
       continue;
     }
 
-<<<<<<< HEAD
     if (stepMatches(s, "configure overlapping", "create score gap", "configure score")) {
-=======
-    if (stepMatches(s, "configure overlapping", "create score gap", "configure score", "enter duplicate score range", "duplicate score range")) {
->>>>>>> master
       pushUnique(steps, `await mmPage.configureOverlappingScoreRangesFromTestData('${escapeStr(row.testData)}')`);
       continue;
     }
@@ -1004,11 +948,7 @@ export function buildExcelStepActions(row: MmExcelRow): string[] {
       pushUnique(steps, "await mmPage.openAddFieldDialog()");
     } else if (stepMatches(s, "enter valid field", "create custom field", "save field")) {
       pushUnique(steps, "await mmPage.createValidCustomField()");
-<<<<<<< HEAD
     } else if (stepMatches(s, "enter existing field", "duplicate", "same-name ui add", "attempt same-name")) {
-=======
-    } else if (stepMatches(s, "enter existing field", "same-name ui add", "attempt same-name") || (stepMatches(s, "duplicate") && !isScoreRangeRow(row) && !isDuplicatePayloadRow(row))) {
->>>>>>> master
       const dupName = fieldFragment || "National ID";
       pushUnique(steps, `await mmPage.attemptDuplicateFieldCreation('${escapeStr(dupName)}')`);
     } else if (stepMatches(s, "leave required fields blank", "leave required")) {
@@ -1169,120 +1109,10 @@ function buildSpecializedAssertions(row: MmExcelRow): string[] | null {
     return steps;
   }
   if (isFieldConfigRequirementTypeRow(row)) {
-<<<<<<< HEAD
     push("await expect(mmPage.requirementDropdowns.first()).toBeVisible()");
     push("await mmPage.expectSaveChangesSucceeded()");
     return steps;
   }
-=======
-    push("await mmPage.expectFirstEditableRequirementPersisted()");
-    return steps;
-  }
-  if (isDefaultTabSelectionRow(row)) {
-    push("await mmPage.expectDefaultTabSelectionWorkflow()");
-    return steps;
-  }
-  if (isInvalidSectionMappingRow(row)) {
-    push("await mmPage.expectAddFieldValidationError()");
-    return steps;
-  }
-  if (isTechnicalIdsNoDropdownRow(row)) {
-    push("await mmPage.expectTechnicalIdsNoRequirementDropdowns()");
-    return steps;
-  }
-  if (isCorporateTechnicalImmutableRow(row)) {
-    push("await mmPage.expectCorporateTechnicalIdsImmutable()");
-    return steps;
-  }
-  if (isUnsavedWarningRow(row)) {
-    push("await mmPage.expectUnsavedNavigationWarning()");
-    return steps;
-  }
-  if (isCreateTemplateLaunchRow(row)) {
-    push("await mmPage.expectCreateTemplateLaunchScreen()");
-    return steps;
-  }
-  if (isCreateTemplateCancelRow(row)) {
-    push("await mmPage.expectCreateTemplateCanceled()");
-    return steps;
-  }
-  if (isGapReportRefreshSyncRow(row)) {
-    push("await mmPage.expectGapReportTableVisible()");
-    return steps;
-  }
-  if (isMissingFieldsBreakdownRow(row)) {
-    push("await mmPage.expectMissingFieldsBreakdownInModal()");
-    return steps;
-  }
-  if (isScoreEngineDefaultLoadRow(row)) {
-    push("await mmPage.expectScoreEngineDefaultLoad()");
-    return steps;
-  }
-  if (isRbacCreateTemplateRow(row)) {
-    push("await mmPage.expectAccessDenied()");
-    return steps;
-  }
-  if (isRbacSaveChangesRow(row)) {
-    push("await mmPage.expectAccessDenied()");
-    return steps;
-  }
-  if (isDuplicatePayloadRow(row)) {
-    push("await mmPage.expectDuplicatePayloadHandled()");
-    return steps;
-  }
-  if (isConnectionLossRow(row) || isRefreshDuringPendingRow(row)) {
-    push("await mmPage.expectApiFailureHandledGracefully()");
-    return steps;
-  }
-  if (isCloneOwnershipRow(row)) {
-    push("await mmPage.expectCloneOwnershipIndependence()");
-    return steps;
-  }
-  if (isEndToEndCreateToReportRow(row)) {
-    push("await mmPage.expectGapReportSyncedWithTemplate()");
-    return steps;
-  }
-  if (isRegressionGapReportRow(row)) {
-    push("await mmPage.expectGapReportTableVisible()");
-    return steps;
-  }
-  if (isScoreMappingCriticalRow(row)) {
-    push("await mmPage.expectExactRiskLabelMapping()");
-    return steps;
-  }
-  if (isTemplateToReportSyncRow(row)) {
-    push("await mmPage.expectGapReportSyncedWithTemplate()");
-    return steps;
-  }
-  if (row.subModule.toLowerCase().includes("editable mandatory corporate")) {
-    const corporateFields = parseTestDataFragments(row.testData);
-    for (const fragment of corporateFields.length > 0 ? corporateFields : ["Ownership Structure Chart", "Audited Statements"]) {
-      push(`await mmPage.expectFieldRequirementPersistedByTestDataFragment('${escapeStr(fragment)}')`);
-    }
-    return steps;
-  }
-  if (row.subModule.toLowerCase().includes("field configuration") && row.subModule.toLowerCase().includes("persistence after save")) {
-    push("await mmPage.expectFirstEditableRequirementPersisted()");
-    return steps;
-  }
-  if (row.subModule.toLowerCase().includes("save changes") && row.subModule.toLowerCase().includes("valid persistence")) {
-    push("await mmPage.expectFirstEditableRequirementPersisted()");
-    push("await mmPage.expectSaveChangesSucceeded()");
-    return steps;
-  }
-  if (row.subModule.toLowerCase().includes("refresh persistence") && row.subModule.toLowerCase().includes("gap score")) {
-    push("await mmPage.expectScoreConfigPersistedAfterRefresh()");
-    return steps;
-  }
-  if (isAuditIntegrityRow(row)) {
-    push("await mmPage.expectSaveChangesSucceeded()");
-    return steps;
-  }
-  if (isApiPartialDetailRow(row)) {
-    push("await mmPage.expectPartialTemplateDetailHandled()");
-    return steps;
-  }
->>>>>>> master
   if (isSecurityLogoutRefreshRow(row)) {
     push("await mmPage.expectAccessDenied()");
     return steps;
@@ -1367,13 +1197,9 @@ export function buildExcelAssertionActions(row: MmExcelRow): string[] {
     fg === "Backend Integrity" ||
     fg === "Reliability"
   ) {
-<<<<<<< HEAD
     if (fg !== "DB-Origin Field") {
       push("await mmPage.expectApiFailureHandledGracefully()");
     }
-=======
-    push("await mmPage.expectApiFailureHandledGracefully()");
->>>>>>> master
   }
 
   if (/persist|persistence|config persists|retained|preserved|recalculat/.test(blob) && !isScoreRangeRow(row)) {
@@ -1388,19 +1214,11 @@ export function buildExcelAssertionActions(row: MmExcelRow): string[] {
     }
   }
 
-<<<<<<< HEAD
   if (/editable/.test(blob) && fragments.length > 0) {
     for (const f of fragments) {
       push(`await mmPage.expectFieldEditableByTestDataFragment('${escapeStr(f)}')`);
     }
   } else if (/editable/.test(blob)) {
-=======
-  if (/editable/.test(blob) && fragments.length > 0 && !/immutable|system-owned|system fields|no requirement/.test(blob)) {
-    for (const f of fragments) {
-      push(`await mmPage.expectFieldEditableByTestDataFragment('${escapeStr(f)}')`);
-    }
-  } else if (/editable/.test(blob) && !/immutable|system-owned|system fields/.test(blob)) {
->>>>>>> master
     push("await mmPage.expectEditableFieldCheckboxesEnabled()");
   }
 
@@ -1492,11 +1310,7 @@ export function buildExcelAssertionActions(row: MmExcelRow): string[] {
     if (/requirement/.test(blob)) push("await expect(mmPage.requirementDropdowns.first()).toBeVisible()");
   }
 
-<<<<<<< HEAD
   if (/corporate cip|individual cip|cdd|edd|technical/.test(sm) && steps.length === 0) {
-=======
-  if (/corporate cip|individual cip|cdd|edd|technical/.test(sm) && steps.length === 0 && !isTechnicalIdsNoDropdownRow(row) && !isCorporateTechnicalImmutableRow(row)) {
->>>>>>> master
     push("await expect(mmPage.tabButtons.first()).toBeVisible()");
     push("await expect(mmPage.fieldRows.first()).toBeVisible()");
     if (/requirement|dropdown|mandatory/.test(blob)) {

@@ -519,22 +519,14 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-079 - Report Grid → Priority column displays risk classification", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await expect(gapPage.gapReportRows.first()).toBeVisible();
-=======
     await gapPage.expectPriorityColumnVisible();
->>>>>>> master
     await expect(gapPage.gapReportTable).toBeVisible();
   });
 
   test("Case ID:KGR-080 - Report Grid → Actions column displays View button", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await expect(gapPage.gapReportRows.first()).toBeVisible();
-=======
     await gapPage.expectViewButtonsOnRows();
->>>>>>> master
     await expect(gapPage.gapReportTable).toBeVisible();
   });
 
@@ -753,13 +745,9 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-111 - Gap Score Calculation → score displayed in report matches score in Gap Detail Modal", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await gapPage.expectModalScoreMatchesGrid();
-=======
     await expect(gapPage.gapReportRows.first()).toBeVisible();
     await expect(gapPage.gapReportDetailModal).toBeVisible();
     await expect(gapPage.gapReportTable).toBeVisible();
->>>>>>> master
   });
 
   test("Case ID:KGR-112 - Gap Score Calculation → score calculation includes all missing fields", async ({ testData }) => {
@@ -891,11 +879,7 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-130 - Gap Score Calculation → score displayed in exported report matches application data", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await expect(gapPage.gapReportRows.first()).toBeVisible();
-=======
     await gapPage.expectExportScoresMatchGrid();
->>>>>>> master
     await expect(gapPage.exportButton).toBeVisible();
     await expect(gapPage.gapReportTable).toBeVisible();
   });
@@ -913,10 +897,7 @@ test.describe("KYC Gap Report Module", () => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
     await gapPage.openFirstRowDetail();
-<<<<<<< HEAD
-=======
     await gapPage.expectModalCustomerNameMatchesGrid();
->>>>>>> master
     await expect(gapPage.gapReportDetailModal).toBeVisible();
   });
 
@@ -970,10 +951,7 @@ test.describe("KYC Gap Report Module", () => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
     await gapPage.openFirstRowDetail();
-<<<<<<< HEAD
-=======
     await gapPage.closeGapDetailModal();
->>>>>>> master
     await expect(gapPage.gapReportDetailModal).toBeVisible();
   });
 
@@ -1052,14 +1030,10 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-150 - Gap Detail Modal → modal score matches report grid score", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await gapPage.expectModalScoreMatchesGrid();
-=======
     await gapPage.openFirstRowDetail();
     await gapPage.expectModalScoreMatchesGrid();
     await expect(gapPage.gapReportDetailModal).toBeVisible();
     await expect(gapPage.gapReportTable).toBeVisible();
->>>>>>> master
   });
 
   test("Case ID:KGR-151 - Gap Detail Modal → risk label is displayed in score summary", async ({ testData }) => {
@@ -1111,10 +1085,7 @@ test.describe("KYC Gap Report Module", () => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
     await gapPage.openFirstRowDetail();
-<<<<<<< HEAD
-=======
     await gapPage.closeGapDetailModal();
->>>>>>> master
     await expect(gapPage.gapReportDetailModal).toBeVisible();
   });
 
@@ -1122,10 +1093,7 @@ test.describe("KYC Gap Report Module", () => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
     await gapPage.openFirstRowDetail();
-<<<<<<< HEAD
-=======
     await gapPage.closeGapDetailModal();
->>>>>>> master
     await expect(gapPage.gapReportDetailModal).toBeVisible();
   });
 
@@ -1133,10 +1101,7 @@ test.describe("KYC Gap Report Module", () => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
     await gapPage.openFirstRowDetail();
-<<<<<<< HEAD
-=======
     await gapPage.closeGapDetailModal();
->>>>>>> master
     await expect(gapPage.gapReportDetailModal).toBeVisible();
     await expect(gapPage.gapReportTable).toBeVisible();
   });
@@ -1329,10 +1294,7 @@ test.describe("KYC Gap Report Module", () => {
     await gapPage.expectGapReportViewLoaded();
     await gapPage.openFirstRowDetail();
     await gapPage.closeGapDetailModal();
-<<<<<<< HEAD
-=======
     await expect(gapPage.gapReportDetailModal).toBeVisible();
->>>>>>> master
     await expect(gapPage.gapReportPaginationNext).toBeVisible();
   });
 
@@ -1477,11 +1439,7 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-205 - Export → exported KYC Gap Score values match report data", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await expect(gapPage.exportButton).toBeEnabled();
-=======
     await gapPage.expectExportScoresMatchGrid();
->>>>>>> master
     await expect(gapPage.exportButton).toBeVisible();
     await expect(gapPage.gapReportTable).toBeVisible();
   });
@@ -1497,33 +1455,24 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-207 - Export → export respects active Search filter", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-=======
     await gapPage.search("Vikram Shah");
     await gapPage.expectExportRespectsActiveFilters();
->>>>>>> master
     await expect(gapPage.exportButton).toBeVisible();
   });
 
   test("Case ID:KGR-208 - Export → export respects active Branch filter", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-=======
     await gapPage.applyBranchFilter();
     await gapPage.expectExportRespectsActiveFilters();
->>>>>>> master
     await expect(gapPage.exportButton).toBeVisible();
   });
 
   test("Case ID:KGR-209 - Export → export respects active Customer Type filter", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-=======
     await gapPage.applyCustomerTypeFilter();
     await gapPage.expectExportRespectsActiveFilters();
->>>>>>> master
     await expect(gapPage.exportButton).toBeVisible();
   });
 
@@ -1653,14 +1602,7 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-230 - Security & Audit → View action does not allow data modification", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await gapPage.openFirstRowDetail();
     await expect(gapPage.gapReportDetailModal).toBeVisible();
-    await expect(gapPage.gapReportDetailModal.locator("input, textarea, select")).toHaveCount(0);
-    await gapPage.closeGapDetailModal();
-=======
-    await expect(gapPage.gapReportDetailModal).toBeVisible();
->>>>>>> master
     await expect(gapPage.exportButton).toBeVisible();
   });
 
@@ -1826,10 +1768,7 @@ test.describe("KYC Gap Report Module", () => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
     await gapPage.search("' OR '1'='1");
-<<<<<<< HEAD
-=======
     await gapPage.expectAccessDenied();
->>>>>>> master
     await gapPage.expectPageLoaded();
   });
 
@@ -2004,15 +1943,9 @@ test.describe("KYC Gap Report Module", () => {
   test("Case ID:KGR-279 - Boundary & Negative Testing → report behavior with extremely long customer names", async ({ testData }) => {
     await gapPage.openGapReportDirect(testData.baseUrl);
     await gapPage.expectGapReportViewLoaded();
-<<<<<<< HEAD
-    await expect(gapPage.gapReportRows.first()).toBeVisible();
-    await gapPage.openFirstRowDetail();
-    await expect(gapPage.gapReportDetailModal).toBeVisible();
-=======
     await gapPage.search("zzzz-no-match-99999");
     await expect(gapPage.gapReportDetailModal).toBeVisible();
     await expect(gapPage.gapReportTable).toBeVisible();
->>>>>>> master
   });
 
   test("Case ID:KGR-280 - Boundary & Negative Testing → report recovery after invalid filter input", async ({ testData }) => {

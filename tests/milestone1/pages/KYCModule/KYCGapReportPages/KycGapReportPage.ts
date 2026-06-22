@@ -129,54 +129,35 @@ class KycGapReportPage extends BasePage {
   }
 
   viewButtonForRow(row: Locator): Locator {
-<<<<<<< HEAD
     return row.locator(KycGapReportLocators.viewActionButton);
-=======
-    return row
-      .locator(KycGapReportLocators.viewActionButton)
-      .or(row.getByRole("button", { name: /view/i }))
-      .or(row.getByRole("link", { name: /view/i }))
-      .or(row.locator("td").last().getByRole("button"))
-      .first();
   }
 
   private async priorityCellByHeaderIndex(row: Locator): Promise<Locator | null> {
-    const headers = await this.page.locator("table thead th").allTextContents();
-    const priorityIdx = headers.findIndex((h) => /priority/i.test(h.trim()));
-    if (priorityIdx < 0) {
-      return null;
+    const headers = this.page.locator(KycGapReportLocators.gapReportColumnHeader);
+    const count = await headers.count();
+    for (let i = 0; i < count; i++) {
+      const text = (await headers.nth(i).innerText()).trim();
+      if (/priority/i.test(text)) {
+        return row.locator("td").nth(i);
+      }
     }
-    return row.locator("td").nth(priorityIdx);
+    return null;
   }
 
-  priorityCellForRow(row: Locator): Locator {
+  private priorityCellForRow(row: Locator): Locator {
     return row.locator(KycGapReportLocators.gapPriorityCell).first();
   }
 
-  private async cellByHeaderPattern(row: Locator, pattern: RegExp): Promise<Locator> {
-    const headers = await this.page.locator("table thead th").allTextContents();
-    const idx = headers.findIndex((h) => pattern.test(h.trim()));
-    if (idx >= 0) {
-      return row.locator("td").nth(idx);
+  private async scoreCellForRow(row: Locator): Promise<Locator> {
+    const headers = this.page.locator(KycGapReportLocators.gapReportColumnHeader);
+    const count = await headers.count();
+    for (let i = 0; i < count; i++) {
+      const text = (await headers.nth(i).innerText()).trim();
+      if (/score|gap score/i.test(text)) {
+        return row.locator("td").nth(i);
+      }
     }
-    return row.locator("td").first();
-  }
-
-  async scoreCellForRow(row: Locator): Promise<Locator> {
-    const byHeader = await this.cellByHeaderPattern(row, /gap score|kyc gap score/i);
-    const text = (await byHeader.innerText().catch(() => "")).trim();
-    if (/\d/.test(text)) {
-      return byHeader;
-    }
-    return row.locator(KycGapReportLocators.gapScoreCell).first()
-      .or(row.locator("td").filter({ hasText: /\d+/ }).first());
-  }
-
-  private async waitForGapReportReady(): Promise<void> {
-    const loading = this.page.getByText(/loading module/i);
-    await loading.waitFor({ state: "hidden", timeout: 45000 }).catch(() => undefined);
-    await this.gapReportTitle.or(this.gapReportTable).first().waitFor({ state: "visible", timeout: 45000 });
->>>>>>> master
+    return row.locator(KycGapReportLocators.gapScoreCell);
   }
 
   async openGapReportDirect(baseUrl: string): Promise<void> {
@@ -190,7 +171,6 @@ class KycGapReportPage extends BasePage {
       this.logStep("MOCK", "Cleared route mocks — successful");
     }
 
-<<<<<<< HEAD
     try {
       await this.page.goto(url, { waitUntil: "commit" });
       this.logStep("NAVIGATE", `${url} — successful`);
@@ -204,31 +184,6 @@ class KycGapReportPage extends BasePage {
       const message = error instanceof Error ? error.message : String(error);
       this.logStep("NAVIGATE", `${url} — failed (${message})`, "fail");
       throw error;
-=======
-    const maxAttempts = 3;
-    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-      try {
-        await this.page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
-        this.logStep("NAVIGATE", `${url} — successful`);
-        await this.waitForPageLoad();
-
-        if (!expectAuthFailure) {
-          await this.waitForGapReportReady();
-          this.logStep("VERIFY", "Gap report title visible — successful");
-        }
-        return;
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        this.logStep(
-          "NAVIGATE",
-          `${url} — attempt ${attempt}/${maxAttempts} failed (${message})`,
-          attempt === maxAttempts ? "fail" : "warn",
-        );
-        if (attempt === maxAttempts) {
-          throw error;
-        }
-      }
->>>>>>> master
     }
   }
 
@@ -265,36 +220,12 @@ class KycGapReportPage extends BasePage {
   }
 
   async applyBranchFilter(index = 1): Promise<void> {
-<<<<<<< HEAD
     if (await this.branchFilter.isVisible()) {
       await this.selectOptionByIndex(this.branchFilter, index, "Branch filter");
     }
     await this.assertVisible(this.gapReportTable, "Gap report table after branch filter");
   }
 
-=======
-    await this.selectFilterCombobox(this.branchFilter, index, "Branch filter");
-    await this.assertVisible(this.gapReportTable, "Gap report table after branch filter");
-  }
-
-  private async selectFilterCombobox(combobox: Locator, optionIndex: number, fieldName: string): Promise<void> {
-    if (!(await combobox.isVisible().catch(() => false))) {
-      this.logStep("SELECT", `${fieldName} not visible — skipped`);
-      return;
-    }
-    await combobox.scrollIntoViewIfNeeded();
-    await combobox.click();
-    const listboxOption = this.page.getByRole("listbox").getByRole("option").nth(optionIndex);
-    if (await listboxOption.isVisible().catch(() => false)) {
-      await listboxOption.click();
-    } else {
-      await this.page.getByRole("option").nth(optionIndex).click();
-    }
-    await this.page.keyboard.press("Escape").catch(() => undefined);
-    this.logStep("SELECT", `${fieldName} option index ${optionIndex} — successful`);
-  }
-
->>>>>>> master
   async applyTemplateFilter(index = 1): Promise<void> {
     if (await this.templateFilter.isVisible()) {
       await this.selectOptionByIndex(this.templateFilter, index, "Template filter");
@@ -307,13 +238,9 @@ class KycGapReportPage extends BasePage {
   }
 
   async applyCustomerTypeFilter(index = 1): Promise<void> {
-<<<<<<< HEAD
     if (await this.customerTypeFilter.isVisible()) {
       await this.selectOptionByIndex(this.customerTypeFilter, index, "Customer type filter");
     }
-=======
-    await this.selectFilterCombobox(this.customerTypeFilter, index, "Customer type filter");
->>>>>>> master
     await this.assertVisible(this.gapReportTable, "Gap report table after customer type filter");
   }
 
@@ -397,40 +324,11 @@ class KycGapReportPage extends BasePage {
   }
 
   async openFirstRowDetail(): Promise<void> {
-<<<<<<< HEAD
     const row = this.gapReportRows.first();
     await this.assertVisible(row, "First gap report row");
     const viewBtn = this.viewButtonForRow(row);
     await this.clickAndWait(viewBtn, "First row View button");
     await this.assertVisible(this.gapReportDetailModal, "Gap detail modal");
-=======
-    await expect.poll(async () => this.gapReportRows.count(), { timeout: 30000 }).toBeGreaterThan(0);
-    const row = this.gapReportRows.first();
-    await this.assertVisible(row, "First gap report row");
-    const candidates = [
-      this.viewButtonForRow(row),
-      row.locator("button.gap-view-btn, button[aria-label*='View' i]").first(),
-      row.getByRole("button", { name: /view/i }).first(),
-      row.locator("td").last().getByRole("button").first(),
-      row.locator("td").last().locator("button, a").first(),
-    ];
-    let opened = false;
-    for (const candidate of candidates) {
-      if (await candidate.isVisible().catch(() => false)) {
-        await this.clickAndWait(candidate, "Gap report row View action");
-        opened = true;
-        break;
-      }
-    }
-    if (!opened) {
-      await this.clickAndWait(row, "First gap report row");
-    }
-    const modal = this.gapReportDetailModal
-      .or(this.page.getByRole("dialog").filter({ hasText: /gap|customer|score|missing|detail/i }))
-      .or(this.page.locator("[class*='gap-detail'], [class*='detail-modal'], [role='dialog']"));
-    await expect.poll(async () => modal.first().isVisible().catch(() => false), { timeout: 15000 }).toBeTruthy();
-    await this.assertVisible(modal.first(), "Gap detail modal");
->>>>>>> master
   }
 
   async closeGapDetailModal(): Promise<void> {
@@ -451,12 +349,7 @@ class KycGapReportPage extends BasePage {
   }
 
   async expectModalScoreMatchesGrid(): Promise<void> {
-<<<<<<< HEAD
     const gridScoreText = (await this.gapReportRows.first().locator("td").nth(6).innerText()).trim();
-=======
-    const scoreCell = await this.scoreCellForRow(this.gapReportRows.first());
-    const gridScoreText = (await scoreCell.innerText()).trim();
->>>>>>> master
     const scoreNum = gridScoreText.match(/\d+/)?.[0] ?? gridScoreText;
     if (!(await this.gapReportDetailModal.isVisible())) {
       await this.openFirstRowDetail();
@@ -507,8 +400,6 @@ class KycGapReportPage extends BasePage {
   async expectUnauthorizedStateVisible(): Promise<void> {
     await this.expectAccessDenied();
   }
-<<<<<<< HEAD
-=======
 
   async expectPriorityColumnVisible(): Promise<void> {
     await this.assertVisible(this.gapReportColumnHeader("Priority"), "Priority column header");
@@ -522,7 +413,7 @@ class KycGapReportPage extends BasePage {
       if (await priorityCell.isVisible().catch(() => false)) {
         const cellText = (await priorityCell.innerText()).trim();
         const hasVisual = await priorityCell.locator("svg, span, [class*='badge'], [class*='dot'], [class*='priority'], circle").first().isVisible().catch(() => false);
-        const hasColorIndicator = await priorityCell.evaluate((el) => {
+        const hasColorIndicator = await priorityCell.evaluate((el: HTMLElement) => {
           const indicator = el.querySelector("span, svg, [class*='dot'], [class*='badge']");
           if (!indicator) {
             return false;
@@ -620,7 +511,6 @@ class KycGapReportPage extends BasePage {
     }
     await expect(this.gapReportDetailModal).toContainText(gridName);
   }
->>>>>>> master
 }
 
 export default KycGapReportPage;

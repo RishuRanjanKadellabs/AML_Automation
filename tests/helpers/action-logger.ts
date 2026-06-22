@@ -9,10 +9,7 @@ export const MAIN_LOG_FILE = path.join(RESULTS_DIR, "test-run.log");
 export type ActionStatus = "ok" | "fail" | "warn";
 
 let testTitle = "";
-<<<<<<< HEAD
 let currentTestId = "";
-=======
->>>>>>> master
 const actionBuffer: string[] = [];
 
 function appendLogLine(line: string): void {
@@ -26,22 +23,16 @@ export function setActionContext(options: {
   testTitle: string;
 }): void {
   testTitle = options.testTitle;
-<<<<<<< HEAD
   currentTestId = options.testId;
 }
 
 export function getCurrentTestId(): string {
   return currentTestId || extractTestId(testTitle);
-=======
->>>>>>> master
 }
 
 export function clearActionContext(): void {
   testTitle = "";
-<<<<<<< HEAD
   currentTestId = "";
-=======
->>>>>>> master
   actionBuffer.length = 0;
 }
 

@@ -13,7 +13,6 @@ playwright/.auth/
 .vscode/
 .env
 dist/
-<<<<<<< HEAD
 .env.*
 !.env.example
 *.log
@@ -22,5 +21,3 @@ yarn-debug.log*
 yarn-error.log*
 coverage/
 .DS_Store
-=======
->>>>>>> master
