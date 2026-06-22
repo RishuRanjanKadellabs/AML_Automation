@@ -1,0 +1,52 @@
+{
+  "fields": {
+    "name": "input[name='your-name'], input[placeholder*='Name']",
+    "name field": "input[name='your-name'], input[placeholder*='Name']",
+    "email": "input[name='your-email'], input[type='email']",
+    "email field": "input[name='your-email'], input[type='email']",
+    "phone": "input[name='your-phone'], input[type='tel']",
+    "phone field": "input[name='your-phone'], input[type='tel']",
+    "message": "textarea[name='your-message'], textarea",
+    "message field": "textarea[name='your-message'], textarea",
+    "subject": "input[name='your-subject'], input[placeholder*='Subject']",
+    "subject field": "input[name='your-subject'], input[placeholder*='Subject']",
+    "search": "input[type='search'], .search-field",
+    "search field": "input[type='search'], .search-field"
+  },
+  "buttons": {
+    "submit": "input[type='submit'], button[type='submit']",
+    "submit button": "input[type='submit'], button[type='submit']",
+    "send": "input[type='submit'], button:has-text('Send')",
+    "send button": "input[type='submit'], button:has-text('Send')",
+    "contact us": "a:has-text('Contact Us')",
+    "get in touch": "a:has-text('Get in Touch')",
+    "connect on whatsapp": "a:has-text('Connect on WhatsApp')",
+    "mail us": "a:has-text('Mail Us')"
+  },
+  "elements": {
+    "page title": "h1",
+    "hero heading": ".elementor-heading-title, h1",
+    "navigation menu": "nav, .elementor-nav-menu",
+    "footer": "footer, .elementor-location-footer",
+    "logo": ".custom-logo, .site-logo img, .elementor-widget-image img",
+    "whatsapp link": "a[href*='whatsapp']",
+    "linkedin link": "a[href*='linkedin']",
+    "contact form": ".wpcf7, form.wpcf7-form",
+    "service card": ".elementor-widget-icon-box, .service-card"
+  },
+  "values": {
+    "valid username": "validUsername",
+    "valid email": "validUsername",
+    "valid password": "validPassword",
+    "invalid username": "invalidUsername",
+    "invalid email": "invalidUsername",
+    "invalid password": "invalidPassword",
+    "login title": "loginTitle",
+    "dashboard title text": "dashboardTitle",
+    "error message": "loginError",
+    "login error": "loginError",
+    "logged username": "LoggedUsername",
+    "user name": "LoggedUsername",
+    "user group": "CurrentUserGroup"
+  }
+}

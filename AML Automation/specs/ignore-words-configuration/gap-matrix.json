@@ -1,0 +1,1563 @@
+[
+  {
+    "requirementId": "IWC-TC-001",
+    "requirementDescription": "Verify Ignore Words Configuration page loads successfully",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-002",
+    "requirementDescription": "Verify navigation path via Configuration sidebar menu",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-003",
+    "requirementDescription": "Verify active sidebar highlight for Ignore Words Configuration",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-004",
+    "requirementDescription": "Verify full-viewport single-page layout without page-level scrolling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-005",
+    "requirementDescription": "Verify sidebar fixed width and structure",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-006",
+    "requirementDescription": "Verify main content area layout structure",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-007",
+    "requirementDescription": "Verify top bar height and user information display",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-008",
+    "requirementDescription": "Verify status bar content and height",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-009",
+    "requirementDescription": "Verify breadcrumb parent link navigation",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-010",
+    "requirementDescription": "Verify breadcrumb current page label",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-011",
+    "requirementDescription": "Verify page responsiveness on medium screen resolution",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-012",
+    "requirementDescription": "Verify page responsiveness on smaller screen resolution",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-013",
+    "requirementDescription": "Verify loading indicator during slow network",
+    "testable": "Partial",
+    "missingInformation": "Network throttling profile not specified for Playwright",
+    "assumptions": "Use route mocking or viewport-only checks where applicable"
+  },
+  {
+    "requirementId": "IWC-TC-014",
+    "requirementDescription": "Verify empty-state when no ignore words exist for tab",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-015",
+    "requirementDescription": "Verify frontend console stability during page load",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-016",
+    "requirementDescription": "Verify default Active tab selection on page load",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-017",
+    "requirementDescription": "Verify Active tab dynamic count",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-018",
+    "requirementDescription": "Verify Inactive tab dynamic count",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-019",
+    "requirementDescription": "Verify Drafted Ignore Word tab dynamic count",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-020",
+    "requirementDescription": "Verify absence of Pending Approval tab",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-021",
+    "requirementDescription": "Verify Inactive tab filters table to inactive records",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-022",
+    "requirementDescription": "Verify Drafted tab filters table to drafted records",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-023",
+    "requirementDescription": "Verify tab switch resets search input",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-024",
+    "requirementDescription": "Verify inactive tab hover styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-025",
+    "requirementDescription": "Verify tab count updates after disable action per FSD BR-007",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-026",
+    "requirementDescription": "Verify tab count updates after new word submission",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-027",
+    "requirementDescription": "Verify sorting resets on tab switch",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-028",
+    "requirementDescription": "Verify toolbar search input rendering",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-029",
+    "requirementDescription": "Verify real-time search by ignore word phrase",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-030",
+    "requirementDescription": "Verify real-time search by category",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-031",
+    "requirementDescription": "Verify search excludes Risk Level",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-032",
+    "requirementDescription": "Verify search excludes Match Type",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-033",
+    "requirementDescription": "Verify search excludes Created Date",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-034",
+    "requirementDescription": "Verify search excludes Status",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-035",
+    "requirementDescription": "Verify search empty state message",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-036",
+    "requirementDescription": "Verify search focus state styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-037",
+    "requirementDescription": "Verify clearing search restores full dataset",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-038",
+    "requirementDescription": "Verify search scoped to current tab only",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-039",
+    "requirementDescription": "Verify all table column headers",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-040",
+    "requirementDescription": "Verify sticky table header on scroll",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-041",
+    "requirementDescription": "Verify table row height and hover",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-042",
+    "requirementDescription": "Verify ascending sort on Ignore Word/Phrase",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-043",
+    "requirementDescription": "Verify sort cycle ascending descending default",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-044",
+    "requirementDescription": "Verify sort icons on sortable columns",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-045",
+    "requirementDescription": "Verify Actions column not sortable",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-046",
+    "requirementDescription": "Verify Created Date DD Mon YYYY format",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-047",
+    "requirementDescription": "Verify Entity Suffixes category badge colour styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-048",
+    "requirementDescription": "Verify Common Noise Words category badge colour styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-049",
+    "requirementDescription": "Verify Personal Titles (Politically Exposed Persons) category badge colour styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-050",
+    "requirementDescription": "Verify Business Descriptors category badge colour styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-051",
+    "requirementDescription": "Verify Low risk level pill badge rendering",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-052",
+    "requirementDescription": "Verify Medium risk level pill badge rendering",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-053",
+    "requirementDescription": "Verify High risk level pill badge rendering",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-054",
+    "requirementDescription": "Verify Exact phrase match type badge",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-055",
+    "requirementDescription": "Verify Partial match match type badge",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-056",
+    "requirementDescription": "Verify Active status badge styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-057",
+    "requirementDescription": "Verify Inactive status badge styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-058",
+    "requirementDescription": "Verify Drafted status badge styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-059",
+    "requirementDescription": "Verify Disable (Off) button on active rows",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-060",
+    "requirementDescription": "Verify Enable (On) button on inactive rows",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-061",
+    "requirementDescription": "Verify Submit action on drafted rows",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-062",
+    "requirementDescription": "Verify disable action triggers Checker Approval popup",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-063",
+    "requirementDescription": "Verify enable action triggers Checker Approval popup",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-064",
+    "requirementDescription": "Verify drafted Submit triggers Checker Approval popup",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-065",
+    "requirementDescription": "Verify absence of Delete action per FSD BR-006",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-066",
+    "requirementDescription": "Verify row action updates tab counts immediately",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-067",
+    "requirementDescription": "Verify Export button visibility in toolbar (FSD Section 5.1.4)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-068",
+    "requirementDescription": "Verify CSV export downloads ignore_words_export.csv (FSD Section 5.1.4)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-069",
+    "requirementDescription": "Verify export scope limited to active tab per FSD 5.1.4",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-071",
+    "requirementDescription": "Verify export CSV column headers (FSD Section 5.1.4)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-073",
+    "requirementDescription": "Verify Add Category modal opens from toolbar (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-074",
+    "requirementDescription": "Verify Add Category modal structure and header (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-075",
+    "requirementDescription": "Verify Category Name required field (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-077",
+    "requirementDescription": "Verify submit button disabled when name less than 2 chars (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-078",
+    "requirementDescription": "Verify submit button enabled when name 2 or more chars (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-080",
+    "requirementDescription": "Verify Cancel closes modal and resets fields (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-081",
+    "requirementDescription": "Verify overlay click closes Add Category modal (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-082",
+    "requirementDescription": "Verify close X button closes modal (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-083",
+    "requirementDescription": "Verify new category appears in Add Ignore Word dropdown (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-084",
+    "requirementDescription": "Verify new category appears in Bulk Upload dropdown (FSD Section 4.2)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-085",
+    "requirementDescription": "Verify Category Controls modal opens",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-086",
+    "requirementDescription": "Verify default categories listed with word counts",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-087",
+    "requirementDescription": "Verify category row layout",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-088",
+    "requirementDescription": "Verify toggle switch off state styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-089",
+    "requirementDescription": "Verify toggle switch on state styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-090",
+    "requirementDescription": "Verify Save persists toggle states per FSD BR-005",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-091",
+    "requirementDescription": "Verify category disable does not change individual word status per FSD BR-005",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-092",
+    "requirementDescription": "Verify Cancel closes without saving",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-093",
+    "requirementDescription": "Verify overlay click closes Category Controls modal",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-094",
+    "requirementDescription": "Verify Add Ignore Word panel opens from primary CTA (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-095",
+    "requirementDescription": "Verify panel dimensions and animation (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-096",
+    "requirementDescription": "Verify panel overlay does not close on click (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-097",
+    "requirementDescription": "Verify panel top bar back arrow closes panel (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-098",
+    "requirementDescription": "Verify panel breadcrumb parent link closes panel (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-099",
+    "requirementDescription": "Verify Ignore Word/Phrase required field (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-100",
+    "requirementDescription": "Verify Category dropdown required with default options (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-101",
+    "requirementDescription": "Verify Risk Level dropdown required (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-102",
+    "requirementDescription": "Verify Match Type dropdown required (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-103",
+    "requirementDescription": "Verify three-column grid layout for dropdowns (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-104",
+    "requirementDescription": "Verify dropdown focus state styling (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-105",
+    "requirementDescription": "Verify Cancel button closes panel without saving (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-106",
+    "requirementDescription": "Verify Submit validation for empty Ignore Word/Phrase (FSD Section 4.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-107",
+    "requirementDescription": "Verify successful submit creates drafted record per FSD BR-003 / FSD 7.1",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-109",
+    "requirementDescription": "Verify mandatory fields validation per FSD BR-002",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-110",
+    "requirementDescription": "Verify Live Narrative Tester card rendering",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-111",
+    "requirementDescription": "Verify narrative textarea placeholder and behavior",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-112",
+    "requirementDescription": "Verify real-time preview update on narrative input",
+    "testable": "Partial",
+    "missingInformation": "Screening engine backend run requires live screening service or mock contract",
+    "assumptions": "UI-level narrative tester and mocked screening responses"
+  },
+  {
+    "requirementId": "IWC-TC-113",
+    "requirementDescription": "Verify preview empty state when no narrative",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-114",
+    "requirementDescription": "Verify preview shows narrative without highlight when word empty",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-115",
+    "requirementDescription": "Verify highlight against all active words",
+    "testable": "Partial",
+    "missingInformation": "Screening engine backend run requires live screening service or mock contract",
+    "assumptions": "UI-level narrative tester and mocked screening responses"
+  },
+  {
+    "requirementId": "IWC-TC-116",
+    "requirementDescription": "Verify longest-first highlight sorting",
+    "testable": "Partial",
+    "missingInformation": "Screening engine backend run requires live screening service or mock contract",
+    "assumptions": "UI-level narrative tester and mocked screening responses"
+  },
+  {
+    "requirementId": "IWC-TC-117",
+    "requirementDescription": "Verify highlight styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-119",
+    "requirementDescription": "Verify Bulk Upload modal opens (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-120",
+    "requirementDescription": "Verify Bulk Upload modal header content (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-122",
+    "requirementDescription": "Verify All Categories not valid for upload",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-123",
+    "requirementDescription": "Verify file drop zone default state (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-124",
+    "requirementDescription": "Verify drop zone hover and drag-over styling (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-125",
+    "requirementDescription": "Verify file selection via browse (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-126",
+    "requirementDescription": "Verify file selection via drag and drop (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-127",
+    "requirementDescription": "Verify file size display in KB one decimal (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-128",
+    "requirementDescription": "Verify remove file restores drop zone (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-129",
+    "requirementDescription": "Verify accepted file formats CSV and XLSX (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-130",
+    "requirementDescription": "Verify wrong format toast error (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-131",
+    "requirementDescription": "Verify file size exceeds 10 MB toast error (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-132",
+    "requirementDescription": "Verify Download template file link (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-133",
+    "requirementDescription": "Verify successful bulk upload creates drafted records per FSD 5.1.3",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-134",
+    "requirementDescription": "Verify bulk upload schema mismatch error (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-135",
+    "requirementDescription": "Verify Cancel closes bulk upload and clears file (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-136",
+    "requirementDescription": "Verify overlay click closes Bulk Upload modal (FSD Section 5.1.3)",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-137",
+    "requirementDescription": "Verify Checker Approval popup structure after submit",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-138",
+    "requirementDescription": "Verify Checker popup message for new word submission",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-139",
+    "requirementDescription": "Verify Checker popup request details section",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-140",
+    "requirementDescription": "Verify Checker popup timestamp format",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-141",
+    "requirementDescription": "Verify Checker popup for disable action",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-142",
+    "requirementDescription": "Verify Checker popup for enable action",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-143",
+    "requirementDescription": "Verify OK button closes Checker popup",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-144",
+    "requirementDescription": "Verify overlay click closes Checker popup",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-145",
+    "requirementDescription": "Verify drafted word requires Checker approval before Active per FSD BR-003 / FSD 7.1",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-146",
+    "requirementDescription": "Verify Word History panel opens on word click per FSD audit / Word History",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-147",
+    "requirementDescription": "Verify Word History panel title",
+    "testable": "Yes",
+    "missingInformation": "",
+    "assumptions": "Ignore Words Configuration via sidebar under Configuration menu → Screening – Ignore Words Configuration; route /configuration/screening-ignore-words"
+  },
+  {
+    "requirementId": "IWC-TC-148",
+    "requirementDescription": "Verify history metadata card fields",
+    "testable": "Yes",
+    "missingInformation": "",
+    "assumptions": "Ignore Words Configuration via sidebar under Configuration menu → Screening – Ignore Words Configuration; route /configuration/screening-ignore-words"
+  },
+  {
+    "requirementId": "IWC-TC-149",
+    "requirementDescription": "Verify activity timeline rendering",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-150",
+    "requirementDescription": "Verify timeline event types",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-151",
+    "requirementDescription": "Verify timeline user avatar and role display",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-152",
+    "requirementDescription": "Verify timeline notes display",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-153",
+    "requirementDescription": "Verify back arrow closes Word History panel",
+    "testable": "Yes",
+    "missingInformation": "",
+    "assumptions": "Ignore Words Configuration via sidebar under Configuration menu → Screening – Ignore Words Configuration; route /configuration/screening-ignore-words"
+  },
+  {
+    "requirementId": "IWC-TC-154",
+    "requirementDescription": "Verify overlay click closes Word History panel",
+    "testable": "Yes",
+    "missingInformation": "",
+    "assumptions": "Ignore Words Configuration via sidebar under Configuration menu → Screening – Ignore Words Configuration; route /configuration/screening-ignore-words"
+  },
+  {
+    "requirementId": "IWC-TC-155",
+    "requirementDescription": "Verify default history for word without detailed history",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-156",
+    "requirementDescription": "Verify audit log generated for create update enable disable per FSD audit / Word History",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-160",
+    "requirementDescription": "Verify Viewer cannot Add Ignore Word",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-161",
+    "requirementDescription": "Verify Compliance Officer cannot Add Ignore Word",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-162",
+    "requirementDescription": "Verify Admin can Add Ignore Word",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-163",
+    "requirementDescription": "Verify Admin can toggle enable disable",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-164",
+    "requirementDescription": "Verify Admin can Add Category and Category Controls",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-165",
+    "requirementDescription": "Verify Admin can Bulk Upload",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-166",
+    "requirementDescription": "Verify Checker can approve requests",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-167",
+    "requirementDescription": "Verify Checker cannot Add Ignore Word",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-168",
+    "requirementDescription": "Verify Compliance Officer cannot view audit trail button",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-173",
+    "requirementDescription": "Verify DELETE endpoint removed per FSD",
+    "testable": "Partial",
+    "missingInformation": "Exact API base URL and auth headers for contract tests",
+    "assumptions": "Mock API responses via Playwright route interception"
+  },
+  {
+    "requirementId": "IWC-TC-181",
+    "requirementDescription": "Verify API failure state on list load",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-182",
+    "requirementDescription": "Verify Retry after API failure",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-183",
+    "requirementDescription": "Verify unauthorized access handling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-185",
+    "requirementDescription": "Verify Inter font usage across module",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-188",
+    "requirementDescription": "Verify toast notification styling and auto-dismiss",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-190",
+    "requirementDescription": "Verify keyboard navigation across toolbar buttons",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-191",
+    "requirementDescription": "Verify keyboard focus indicators visible",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-192",
+    "requirementDescription": "Verify modal keyboard trap and Escape close",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-194",
+    "requirementDescription": "Verify Admin-only actions hidden from unauthorized roles",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-197",
+    "requirementDescription": "Verify complete end-to-end add word workflow",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-198",
+    "requirementDescription": "Verify complete disable enable workflow with Checker",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-199",
+    "requirementDescription": "Verify complete bulk upload and export workflow",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-200",
+    "requirementDescription": "Verify category add then use in ignore word form",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-201",
+    "requirementDescription": "Verify frontend console stability during complete workflow",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-202",
+    "requirementDescription": "Verify data consistency after multiple tab switches and searches",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-204",
+    "requirementDescription": "Verify Configuration parent menu expand collapse",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-205",
+    "requirementDescription": "Verify sidebar menu search input",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-207",
+    "requirementDescription": "Verify Exact phrase match highlights only exact phrase in live tester",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-208",
+    "requirementDescription": "Verify Partial match highlights substring in live tester",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-209",
+    "requirementDescription": "Verify ignore word maximum length 200 characters",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-210",
+    "requirementDescription": "Verify category name uniqueness on duplicate add",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-214",
+    "requirementDescription": "Verify module behavior on Google Chrome",
+    "testable": "Partial",
+    "missingInformation": "Cross-browser matrix execution environment",
+    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
+  },
+  {
+    "requirementId": "IWC-TC-215",
+    "requirementDescription": "Verify module behavior on Microsoft Edge",
+    "testable": "Partial",
+    "missingInformation": "Cross-browser matrix execution environment",
+    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
+  },
+  {
+    "requirementId": "IWC-TC-216",
+    "requirementDescription": "Verify module behavior on Mozilla Firefox",
+    "testable": "Partial",
+    "missingInformation": "Cross-browser matrix execution environment",
+    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
+  },
+  {
+    "requirementId": "IWC-TC-219",
+    "requirementDescription": "Verify Main List View to Add Ignore Word Panel flow",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-220",
+    "requirementDescription": "Verify Add Ignore Word Panel return to Main List View",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-221",
+    "requirementDescription": "Verify Main List View to CSV Download via Export",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-222",
+    "requirementDescription": "Verify clicking ignore word opens Word History from list",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-224",
+    "requirementDescription": "Verify FSD BR-002 all mandatory fields required on submit",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-226",
+    "requirementDescription": "Verify FSD 5.1.3 bulk upload drafted status and Checker workflow",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-227",
+    "requirementDescription": "Verify bulk upload validation category required and All Categories invalid for upload",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-228",
+    "requirementDescription": "Verify narrative preview scope live tester highlights all active words plus draft",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-229",
+    "requirementDescription": "Verify FSD audit / Word History word history and audit logging on all actions",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-230",
+    "requirementDescription": "Verify client-side search (phrase and category only) search limited to phrase and category only",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-231",
+    "requirementDescription": "Verify tab switch behaviour sort resets on tab switch",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-232",
+    "requirementDescription": "Verify same ignore word allowed in different category per FSD BR-001",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-233",
+    "requirementDescription": "Verify Off action not displayed on inactive rows per FSD row actions column",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-234",
+    "requirementDescription": "Verify drafted rows do not show Off or On actions per HTML",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-235",
+    "requirementDescription": "Verify inactive and drafted words are not highlighted in preview",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-236",
+    "requirementDescription": "Verify word submit shows Checker Approval popup not toast per FSD ÂSection 8.2 and HTML",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-237",
+    "requirementDescription": "Verify FSD BR-003 / FSD 7.1 word remains Drafted until Checker approves",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-238",
+    "requirementDescription": "Verify FSD BR-007 tab counts unchanged on failed submit",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-239",
+    "requirementDescription": "Verify FSD BR-002 rejects whitespace-only ignore word phrase",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-240",
+    "requirementDescription": "Verify FSD audit / Word History no audit entry on failed bulk upload",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-245",
+    "requirementDescription": "Verify XSS payload in search treated as literal text",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-246",
+    "requirementDescription": "Verify empty bulk upload file rejected",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-247",
+    "requirementDescription": "Verify double-click Submit on Add Ignore Word prevented",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-248",
+    "requirementDescription": "UAT verify Admin creates ignore word and Checker approves to Active",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-249",
+    "requirementDescription": "UAT verify active disable enable lifecycle without delete per FSD BR-006",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-250",
+    "requirementDescription": "Verify timeline dot colors for add review approve disable events per HTML",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-251",
+    "requirementDescription": "Verify Checker modal title Request sent for Checker Approval per HTML",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-252",
+    "requirementDescription": "Verify duplicate word shows inline error not browser alert per FSD ÂSection 8.1",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-254",
+    "requirementDescription": "Verify Save Draft saves entry as Drafted per FSD 4.3 Step 8a",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-255",
+    "requirementDescription": "Verify Save Draft validation for empty Ignore Word/Phrase",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-256",
+    "requirementDescription": "Verify Checker rejection returns entry to Draft per FSD 7.1",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-257",
+    "requirementDescription": "Verify Pending Approval entries locked from edits per FSD 7.2",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-258",
+    "requirementDescription": "Verify Maker cannot approve own submission per FSD 7.2",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-259",
+    "requirementDescription": "Verify emergency override not permitted per FSD 7.2",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-264",
+    "requirementDescription": "Verify bulk import character encoding validation per FSD 5.1.3",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-265",
+    "requirementDescription": "Verify bulk import field completeness validation per FSD 5.1.3",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-266",
+    "requirementDescription": "Verify category must exist before adding ignore word per FSD 4.3 Step 4",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-269",
+    "requirementDescription": "Verify Risk Level definitions per FSD 4.3 Step 5",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-270",
+    "requirementDescription": "Verify Category Name maximum 100 characters per FSD 4.2 Step 3",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "IWC-TC-271",
+    "requirementDescription": "Verify Category Description maximum 500 characters per FSD 4.2 Step 4",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  }
+]
