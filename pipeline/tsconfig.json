@@ -3,10 +3,7 @@
     "target": "ES2020",
     "module": "commonjs",
     "moduleResolution": "node",
-<<<<<<< HEAD
-=======
     "ignoreDeprecations": "6.0",
->>>>>>> master
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,

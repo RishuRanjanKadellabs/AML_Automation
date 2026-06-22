@@ -120,15 +120,8 @@ function resolveGrid(row: KgrExcelRow): string {
     steps.push('await gapPage.sortByColumn("Priority")');
   } else if (task.includes("sort") && task.includes("branch")) {
     steps.push('await gapPage.sortByColumn("Branch")');
-<<<<<<< HEAD
   } else if (task.includes("view button") || task.includes("actions")) {
     steps.push("await expect(gapPage.gapReportRows.first()).toBeVisible()");
-=======
-  } else if (task.includes("priority") && task.includes("column")) {
-    steps.push("await gapPage.expectPriorityColumnVisible()");
-  } else if (task.includes("view button") || task.includes("actions")) {
-    steps.push("await gapPage.expectViewButtonsOnRows()");
->>>>>>> master
   } else if (task.includes("refresh")) {
     steps.push("await gapPage.refreshData()");
   } else if (task.includes("duplicate")) {
@@ -141,21 +134,8 @@ function resolveGrid(row: KgrExcelRow): string {
 }
 
 function resolveScore(row: KgrExcelRow): string {
-<<<<<<< HEAD
   const steps = `${OPEN}\n    await gapPage.expectGapReportViewLoaded();\n    await expect(gapPage.gapReportRows.first()).toBeVisible()`;
   return finalizeLogic(steps, row);
-=======
-  const task = row.taskDescription.toLowerCase();
-  const steps: string[] = [OPEN, "await gapPage.expectGapReportViewLoaded()"];
-
-  if (task.includes("export")) {
-    steps.push("await gapPage.expectExportScoresMatchGrid()");
-  } else {
-    steps.push("await expect(gapPage.gapReportRows.first()).toBeVisible()");
-  }
-
-  return finalizeLogic(steps.join(";\n    "), row);
->>>>>>> master
 }
 
 function resolveModal(row: KgrExcelRow): string {
@@ -164,11 +144,8 @@ function resolveModal(row: KgrExcelRow): string {
 
   if (task.includes("close") || task.includes("esc")) {
     steps.push("await gapPage.closeGapDetailModal()");
-<<<<<<< HEAD
-=======
   } else if (task.includes("customer name")) {
     steps.push("await gapPage.expectModalCustomerNameMatchesGrid()");
->>>>>>> master
   } else if (task.includes("score") && task.includes("match")) {
     steps.push("await gapPage.expectModalScoreMatchesGrid()");
   }
@@ -206,25 +183,7 @@ function resolveExport(row: KgrExcelRow): string {
   const task = row.taskDescription.toLowerCase();
   const steps: string[] = [OPEN, "await gapPage.expectGapReportViewLoaded()"];
 
-<<<<<<< HEAD
   if (task.includes("download") || task.includes("exported")) {
-=======
-  if (task.includes("search filter") || (task.includes("search") && task.includes("filter"))) {
-    const keyword = row.testData.trim() && !/^n\/a$/i.test(row.testData.trim())
-      ? row.testData.trim()
-      : "KYC";
-    steps.push(`await gapPage.search("${keyword.replace(/"/g, '\\"')}")`);
-    steps.push("await gapPage.expectExportRespectsActiveFilters()");
-  } else if (task.includes("branch filter")) {
-    steps.push("await gapPage.applyBranchFilter()");
-    steps.push("await gapPage.expectExportRespectsActiveFilters()");
-  } else if (task.includes("customer type")) {
-    steps.push("await gapPage.applyCustomerTypeFilter()");
-    steps.push("await gapPage.expectExportRespectsActiveFilters()");
-  } else if (task.includes("score") && task.includes("match")) {
-    steps.push("await gapPage.expectExportScoresMatchGrid()");
-  } else if (task.includes("download") || task.includes("exported")) {
->>>>>>> master
     steps.push("await expect(gapPage.exportButton).toBeEnabled()");
   } else if (task.includes("filter") || task.includes("search") || task.includes("sort") || task.includes("page")) {
     steps.push("await expect(gapPage.exportButton).toBeVisible()");

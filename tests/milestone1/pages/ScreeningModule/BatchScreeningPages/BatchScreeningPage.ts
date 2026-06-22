@@ -599,7 +599,8 @@ class BatchScreeningPage extends BasePage {
     const emptyMessage = this.page.locator(BatchScreeningLocators.emptyState).first()
       .or(this.page.getByText(/no records|no results|not found|no screening records|0 Total|0 of 0|Showing 0/i).first());
     const emptyVisible = await emptyMessage.isVisible().catch(() => false);
-    const tableEmpty = rowCount === 0 || /loading match results|0 of 0|Showing 0-0/i.test(await this.resultsTable.textContent().catch(() => ""));
+    const tableText = (await this.resultsTable.textContent().catch(() => "")) ?? "";
+    const tableEmpty = rowCount === 0 || /loading match results|0 of 0|Showing 0-0/i.test(tableText);
     expect(emptyVisible || tableEmpty).toBeTruthy();
     this.logStep("ASSERT", "Empty state message displayed — successful");
   }
@@ -769,16 +770,6 @@ class BatchScreeningPage extends BasePage {
     const shellVisible = await this.matchResultsHeading.or(this.page.locator("body")).isVisible().catch(() => false);
     expect(hasError || shellVisible).toBeTruthy();
     this.logStep("ASSERT", "API failure handled gracefully — successful");
-  }
-
-  async expectEmptyStateVisible(): Promise<void> {
-    const rowCount = await this.resultsTableRows.count().catch(() => 0);
-    const emptyMessage = this.page.locator(BatchScreeningLocators.emptyState).first()
-      .or(this.page.getByText(/no records|no results|not found|no screening records|0 Total/i).first());
-    const emptyVisible = await emptyMessage.isVisible().catch(() => false);
-    const tableEmpty = await this.resultsTable.isVisible().catch(() => false) && rowCount === 0;
-    expect(emptyVisible || tableEmpty).toBeTruthy();
-    this.logStep("ASSERT", "Empty state message displayed — successful");
   }
 
   async expectPaginationVisible(): Promise<void> {

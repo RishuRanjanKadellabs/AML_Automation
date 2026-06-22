@@ -369,12 +369,7 @@ class MissingMandatoryPage extends BasePage {
       "corporate edd": "EDD Fields",
       "corporate technical ids": "Technical IDs",
       "technical ids": "Technical IDs",
-<<<<<<< HEAD
-=======
       "corporate cip": "Corporate CIP",
-      "corporate cdd": "CDD Fields",
-      "corporate edd": "EDD Fields",
->>>>>>> master
       "individual cip": "Individual CIP",
       "cdd fields": "CDD Fields",
       "edd fields": "EDD Fields",
@@ -480,7 +475,6 @@ class MissingMandatoryPage extends BasePage {
     this.logStep("MOCK", "Template list API failure (500) after initial load — configured");
   }
 
-<<<<<<< HEAD
   async mockTemplateDetailFailure(): Promise<void> {
     await this.routeFetchFailure(
       /template/i,
@@ -488,58 +482,6 @@ class MissingMandatoryPage extends BasePage {
       "Template detail load failed",
       "Template detail API failure (500)",
     );
-=======
-  async mockPartialTemplateDetailPayload(): Promise<void> {
-    await this.page.route("**/*", (route) => {
-      const request = route.request();
-      if (
-        request.method() === "GET" &&
-        (request.resourceType() === "fetch" || request.resourceType() === "xhr") &&
-        /template|missing-mandatory/i.test(request.url()) &&
-        /detail|fields|config/i.test(request.url())
-      ) {
-        void route.fulfill({
-          status: 200,
-          contentType: "application/json",
-          body: JSON.stringify({
-            id: "partial-template",
-            name: "Partial Template",
-            fields: [{ id: "f1", name: "Partial Field", requirement: "Mandatory" }],
-          }),
-        });
-        return;
-      }
-      void route.continue();
-    });
-    this.markRoutesPreservedOnNextNavigation();
-    this.logStep("MOCK", "Partial template detail payload — configured");
-  }
-
-  async mockTemplateDetailFailure(): Promise<void> {
-    await this.page.route("**/*", (route) => {
-      const request = route.request();
-      if (
-        request.method() === "GET" &&
-        (request.resourceType() === "fetch" || request.resourceType() === "xhr") &&
-        /template|missing-mandatory/i.test(request.url()) &&
-        /detail|fields|config|requirements|\/\d+/i.test(request.url())
-      ) {
-        void route.fulfill({
-          status: 500,
-          contentType: "application/json",
-          body: JSON.stringify({ error: "Template detail load failed" }),
-        });
-        return;
-      }
-      void route.continue();
-    });
-    this.markRoutesPreservedOnNextNavigation();
-    this.logStep("MOCK", "Template detail API failure (500) on detail endpoints — configured");
-  }
-
-  async triggerTemplateDetailFailure(templateName: string): Promise<void> {
-    await this.selectTemplateExpectingDetailFailure(templateName);
->>>>>>> master
   }
 
   async mockSaveChangesFailure(): Promise<void> {
@@ -610,6 +552,22 @@ class MissingMandatoryPage extends BasePage {
     this.logStep("MOCK", "Partial template list payload — configured");
   }
 
+  async mockPartialTemplateDetailPayload(): Promise<void> {
+    await this.page.route("**/api/**template**", (route) => {
+      if (route.request().method() === "GET" && /template/i.test(route.request().url())) {
+        void route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({ id: "1", name: "Partial Template", fields: [] }),
+        });
+        return;
+      }
+      void route.continue();
+    });
+    this.markRoutesPreservedOnNextNavigation();
+    this.logStep("MOCK", "Partial template detail payload — configured");
+  }
+
   async mockEmptyTemplateList(): Promise<void> {
     await this.page.route("**/api/**template**", (route) => {
       if (route.request().method() === "GET") {
@@ -667,46 +625,19 @@ class MissingMandatoryPage extends BasePage {
   }
 
   async createValidCustomField(name = "Auto Test Field"): Promise<void> {
-<<<<<<< HEAD
-=======
     if (!(await this.fieldNameInput.isVisible().catch(() => false))) {
       await this.openAddFieldDialog();
     }
->>>>>>> master
     await this.fillField(this.fieldNameInput, name, "Field name");
     if (await this.sectionSelect.isVisible()) {
       await this.selectOptionByIndex(this.sectionSelect, 1, "Section");
     }
-<<<<<<< HEAD
     const submitBtn = this.page
       .getByRole("button", { name: /^(save|add field|add|create)$/i })
       .or(this.dialog.getByRole("button", { name: /save|add|create/i }))
       .first();
     await this.clickAndWait(submitBtn, "Submit add field");
     await this.fieldRows.filter({ hasText: name }).first().waitFor({ state: "visible", timeout: 20000 }).catch(() => undefined);
-=======
-    const submitBtn = this.dialog
-      .getByRole("button", { name: /^(save|add field|add|create)$/i })
-      .or(this.page.getByRole("button", { name: /^(save|add field|add|create)$/i }))
-      .first();
-    await this.clickAndWait(submitBtn, "Submit add field");
-    await this.dialog.waitFor({ state: "hidden", timeout: 15000 }).catch(() => undefined);
-    let fieldRow = this.templateDetailPanel.getByText(name, { exact: false }).first();
-    if (!(await fieldRow.isVisible().catch(() => false))) {
-      const tabs = ["Individual CIP", "CDD Fields", "EDD Fields", "Corporate CIP", "KYC Gap Score"];
-      for (const tab of tabs) {
-        if (await this.tabByName(tab).isVisible().catch(() => false)) {
-          await this.openTab(tab);
-          fieldRow = this.templateDetailPanel.getByText(name, { exact: false }).first();
-          if (await fieldRow.isVisible().catch(() => false)) {
-            break;
-          }
-        }
-      }
-    }
-    await fieldRow.waitFor({ state: "visible", timeout: 20000 });
-    this.logStep("ASSERT", `Custom field "${name}" added to template — successful`);
->>>>>>> master
   }
 
   async submitAddFieldExceedingMaxLength(): Promise<void> {
@@ -840,13 +771,8 @@ class MissingMandatoryPage extends BasePage {
     const dropdown = this.requirementDropdowns.and(this.page.locator(":not([disabled])")).first();
     await this.assertVisible(dropdown, "Editable requirement dropdown after refresh");
     if (snapshot) {
-<<<<<<< HEAD
       const selectedText = await dropdown.locator("option:checked").innerText().catch(() => "");
       expect(selectedText.trim().toLowerCase()).toBe(snapshot.toLowerCase());
-=======
-      const selectedText = await this.readRequirementSelection(dropdown);
-      expect(selectedText.toLowerCase()).toContain(snapshot.toLowerCase().split(/\s+/)[0] ?? snapshot.toLowerCase());
->>>>>>> master
     }
     this.logStep("ASSERT", "First editable field requirement persisted — successful");
   }
@@ -930,22 +856,7 @@ class MissingMandatoryPage extends BasePage {
   private customFieldWeightSnapshots = new Map<string, string>();
 
   async expectCustomFieldVisibleByName(name: string): Promise<void> {
-<<<<<<< HEAD
     const row = this.page.getByText(name, { exact: false }).first();
-=======
-    const row = this.templateDetailPanel.getByText(name, { exact: false }).first();
-    if (!(await row.isVisible().catch(() => false))) {
-      const tabs = ["Individual CIP", "CDD Fields", "EDD Fields", "Corporate CIP", "CDD Fields"];
-      for (const tab of tabs) {
-        if (await this.tabByName(tab).isVisible().catch(() => false)) {
-          await this.openTab(tab);
-          if (await row.isVisible().catch(() => false)) {
-            break;
-          }
-        }
-      }
-    }
->>>>>>> master
     await this.scrollIntoView(row);
     await this.assertVisible(row, `Custom field row: ${name}`);
     this.logStep("ASSERT", `Custom field "${name}" visible after save — successful`);
@@ -1019,23 +930,11 @@ class MissingMandatoryPage extends BasePage {
   async modifyFirstEditableRequirement(): Promise<void> {
     const editableDropdown = this.requirementDropdowns.and(this.page.locator(":not([disabled])")).first();
     if (await editableDropdown.isVisible().catch(() => false)) {
-<<<<<<< HEAD
       const currentIndex = await editableDropdown.evaluate((el) => (el as HTMLSelectElement).selectedIndex).catch(() => 0);
       const nextIndex = currentIndex === 0 ? 1 : 0;
       await this.selectOptionByIndex(editableDropdown, nextIndex, "Requirement dropdown");
       const selectedText = await editableDropdown.locator("option:checked").innerText().catch(() => "");
       this.fieldRequirementSnapshots.set("__first_editable__", selectedText.trim());
-=======
-      const tagName = await editableDropdown.evaluate((el) => el.tagName.toLowerCase()).catch(() => "select");
-      let currentIndex = 0;
-      if (tagName === "select") {
-        currentIndex = await editableDropdown.evaluate((el) => (el as HTMLSelectElement).selectedIndex).catch(() => 0);
-      }
-      const nextIndex = currentIndex === 0 ? 1 : 0;
-      await this.selectOptionByIndex(editableDropdown, nextIndex, "Requirement dropdown");
-      const selectedText = await this.readRequirementSelection(editableDropdown);
-      this.fieldRequirementSnapshots.set("__first_editable__", selectedText);
->>>>>>> master
       return;
     }
     const editableCheckbox = this.templateDetailPanel.getByRole("checkbox").and(this.page.locator(":not([disabled])")).first();
@@ -1046,8 +945,6 @@ class MissingMandatoryPage extends BasePage {
   }
 
   private fieldRequirementSnapshots = new Map<string, string>();
-<<<<<<< HEAD
-=======
   private scoreRangeSnapshots: string[] = [];
 
   private async readRequirementSelection(dropdown: Locator): Promise<string> {
@@ -1057,7 +954,6 @@ class MissingMandatoryPage extends BasePage {
     }
     return (await dropdown.innerText().catch(() => "")).trim();
   }
->>>>>>> master
 
   private fragmentToNamePattern(fragment: string): RegExp {
     const normalized = fragment.replace(/\s*\([^)]*\)\s*/g, "").trim();
@@ -1077,30 +973,11 @@ class MissingMandatoryPage extends BasePage {
   }
 
   private requirementDropdownForFragment(fragment: string): Locator {
-<<<<<<< HEAD
     const checkbox = this.fieldCheckboxByTestDataFragment(fragment);
     return checkbox
       .locator("xpath=ancestor::*[contains(@class,'field-row') or contains(@class,'field-item')][1]//select[not(@disabled)]")
       .first()
       .or(checkbox.locator("xpath=following::select[not(@disabled)][1]"));
-=======
-    const pattern = this.fragmentToNamePattern(fragment);
-    const rowContainer = this.templateDetailPanel
-      .locator(MissingMandatoryLocators.fieldRow)
-      .filter({ hasText: pattern })
-      .first();
-    const rowDropdown = rowContainer.locator("select:not([disabled]), [role='combobox']:not([disabled])").first();
-    const checkbox = this.fieldCheckboxByTestDataFragment(fragment);
-    const checkboxRowDropdown = checkbox
-      .locator("xpath=ancestor::*[contains(@class,'field-row') or contains(@class,'field-item')][1]//select[not(@disabled)] | ancestor::*[contains(@class,'field-row') or contains(@class,'field-item')][1]//*[@role='combobox'][not(@disabled)]")
-      .first();
-    return rowDropdown.or(checkboxRowDropdown).or(
-      this.templateDetailPanel
-        .filter({ has: this.page.getByText(pattern) })
-        .locator("select:not([disabled]), [role='combobox']:not([disabled])")
-        .first(),
-    );
->>>>>>> master
   }
 
   async openFieldByTestDataFragment(fragment: string): Promise<void> {
@@ -1113,23 +990,11 @@ class MissingMandatoryPage extends BasePage {
     const dropdown = this.requirementDropdownForFragment(fragment);
     await this.assertVisible(dropdown, `Requirement dropdown for: ${fragment}`);
     await expect(dropdown).toBeEnabled();
-<<<<<<< HEAD
     const currentIndex = await dropdown.evaluate((el) => (el as HTMLSelectElement).selectedIndex).catch(() => 0);
     const nextIndex = currentIndex === 0 ? 1 : 0;
     await this.selectOptionByIndex(dropdown, nextIndex, `Requirement for ${fragment}`);
     const selectedText = await dropdown.locator("option:checked").innerText().catch(() => "");
     this.fieldRequirementSnapshots.set(fragment, selectedText.trim());
-=======
-    const tagName = await dropdown.evaluate((el) => el.tagName.toLowerCase()).catch(() => "select");
-    let currentIndex = 0;
-    if (tagName === "select") {
-      currentIndex = await dropdown.evaluate((el) => (el as HTMLSelectElement).selectedIndex).catch(() => 0);
-    }
-    const nextIndex = currentIndex === 0 ? 1 : 0;
-    await this.selectOptionByIndex(dropdown, nextIndex, `Requirement for ${fragment}`);
-    const selectedText = await this.readRequirementSelection(dropdown);
-    this.fieldRequirementSnapshots.set(fragment, selectedText);
->>>>>>> master
   }
 
   async saveChangesAndExpectSuccess(): Promise<void> {
@@ -1159,13 +1024,8 @@ class MissingMandatoryPage extends BasePage {
     await this.assertVisible(dropdown, `Persisted requirement for: ${fragment}`);
     const expected = this.fieldRequirementSnapshots.get(fragment);
     if (expected) {
-<<<<<<< HEAD
       const selectedText = await dropdown.locator("option:checked").innerText().catch(() => "");
       expect(selectedText.trim().toLowerCase()).toBe(expected.toLowerCase());
-=======
-      const selectedText = await this.readRequirementSelection(dropdown);
-      expect(selectedText.toLowerCase()).toContain(expected.toLowerCase().split(/\s+/)[0] ?? expected.toLowerCase());
->>>>>>> master
     }
     this.logStep("ASSERT", `Field requirement persisted for "${fragment}" — successful`);
   }
@@ -1443,41 +1303,16 @@ class MissingMandatoryPage extends BasePage {
     const fragments = fieldLabel.split(/\s*[/|;]\s*/).map((p) => p.trim()).filter(Boolean);
     const labelsToTry = fragments.length > 0 ? fragments : [fieldLabel];
 
-<<<<<<< HEAD
     let fieldCheckbox: Locator | null = null;
     for (const label of labelsToTry) {
       fieldCheckbox = this.templateDetailPanel
         .getByRole("checkbox", { name: new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i") })
         .first();
       if (await fieldCheckbox.isVisible().catch(() => false)) {
-=======
-    const tabsToSearch = ["Individual CIP", "Corporate CIP", "CDD Fields", "EDD Fields", "Technical IDs", "KYC Gap Score"];
-    let fieldLabelNode: Locator | null = null;
-
-    for (const tab of tabsToSearch) {
-      if (await this.tabByName(tab).isVisible().catch(() => false)) {
-        await this.openTab(tab);
-      }
-      for (const label of labelsToTry) {
-        const pattern = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
-        const textMatch = this.templateDetailPanel.getByText(pattern).first();
-        const checkboxMatch = this.templateDetailPanel.getByRole("checkbox", { name: pattern }).first();
-        if (await textMatch.isVisible().catch(() => false)) {
-          fieldLabelNode = textMatch;
-          break;
-        }
-        if (await checkboxMatch.isVisible().catch(() => false)) {
-          fieldLabelNode = checkboxMatch;
-          break;
-        }
-      }
-      if (fieldLabelNode && (await fieldLabelNode.isVisible().catch(() => false))) {
->>>>>>> master
         break;
       }
     }
 
-<<<<<<< HEAD
     if (!fieldCheckbox || !(await fieldCheckbox.isVisible().catch(() => false))) {
       const isCorporateTemplate = await this.templateDetailHeader
         .getByText(/corporate/i)
@@ -1505,30 +1340,16 @@ class MissingMandatoryPage extends BasePage {
     }
 
     if (!fieldCheckbox || !(await fieldCheckbox.isVisible().catch(() => false))) {
-=======
-    if (!fieldLabelNode || !(await fieldLabelNode.isVisible().catch(() => false))) {
-      const lockedField = this.templateDetailPanel.getByRole("checkbox").and(this.page.locator("[disabled]")).first();
-      if (await lockedField.isVisible().catch(() => false)) {
-        await this.assertVisible(lockedField, `DB-origin or locked field fallback for: ${fieldLabel}`);
-        this.logStep("ASSERT", `DB-origin field fallback rendered for "${fieldLabel}" — successful`);
-        return;
-      }
->>>>>>> master
       throw new Error(
         `DB-origin field "${fieldLabel}" from test data was not found as a template field row — application or seed data gap`,
       );
     }
-<<<<<<< HEAD
     await this.assertVisible(fieldCheckbox, `DB-origin field checkbox: ${fieldLabel}`);
     const fieldLabelNode = this.templateDetailPanel.getByText(new RegExp(labelsToTry[0].replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i")).first();
-=======
->>>>>>> master
     await this.assertVisible(fieldLabelNode, `DB-origin field label: ${fieldLabel}`);
     this.logStep("ASSERT", `DB-origin field "${fieldLabel}" rendered with metadata — successful`);
   }
 
-<<<<<<< HEAD
-=======
   async expectScoreConfigPersistedAfterRefresh(): Promise<void> {
     await this.expectScoreTabLoaded();
     const inputs = this.scoreRangeInputs;
@@ -1555,7 +1376,6 @@ class MissingMandatoryPage extends BasePage {
     }
   }
 
->>>>>>> master
   async expectDbOriginFieldWeightage(): Promise<void> {
     await this.assertVisible(this.fieldRows.first(), "DB-origin field rows");
     const mandatoryDropdown = this.requirementDropdowns
@@ -1672,8 +1492,6 @@ class MissingMandatoryPage extends BasePage {
     }
     await this.expectCreateOrListShellVisible();
   }
-<<<<<<< HEAD
-=======
 
   async expectDefaultTabForIndividual(): Promise<void> {
     const individualTab = this.tabByName("Individual CIP");
@@ -1785,7 +1603,6 @@ class MissingMandatoryPage extends BasePage {
     await this.assertVisible(this.fieldRows.first(), "Cloned template detail");
     this.logStep("ASSERT", "Clone ownership independence validated — successful");
   }
->>>>>>> master
 }
 
 export default MissingMandatoryPage;

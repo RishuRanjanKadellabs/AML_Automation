@@ -24,16 +24,10 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
   });
 
   test("Case ID:MM-TC-217 - API Handling → Template Detail Load Failure", async ({ testData }) => {
-<<<<<<< HEAD
-    await mmPage.mockTemplateDetailFailure();
-    await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
-    await mmPage.selectTemplateExpectingDetailFailure('Simplified KYC');
-=======
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.mockTemplateDetailFailure();
-    await mmPage.triggerTemplateDetailFailure('Standard KYC — Individual');
->>>>>>> master
+    await mmPage.selectTemplateExpectingDetailFailure("Standard KYC — Individual");
     await mmPage.expectTemplateDetailApiFailureState();
   });
 
@@ -98,11 +92,7 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
   });
 
   test("Case ID:MM-TC-226 - API Handling → Partial Payload (Template Detail)", async ({ testData }) => {
-<<<<<<< HEAD
-    await mmPage.mockTemplateDetailFailure();
-=======
     await mmPage.mockPartialTemplateDetailPayload();
->>>>>>> master
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateExpectingDetailFailure('Simplified KYC');
     await mmPage.expectTemplateDetailApiFailureState();
@@ -136,14 +126,7 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
   test("Case ID:MM-TC-231 - API Handling → Duplicate Payload Rows", async ({ testData }) => {
     await mmPage.mockPartialTemplateListPayload();
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
-<<<<<<< HEAD
-    await mmPage.selectTemplateByExactName('Simplified KYC');
-    await mmPage.attemptDuplicateFieldCreation('Duplicate JSON rows');
-    await mmPage.expectApiFailureHandledGracefully();
-    await mmPage.expectAddFieldValidationError();
-=======
     await mmPage.expectDuplicatePayloadHandled();
->>>>>>> master
   });
 
   test("Case ID:MM-TC-232 - Backend Reliability → Slow API Response", async ({ testData }) => {
@@ -154,17 +137,10 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
   });
 
   test("Case ID:MM-TC-233 - Backend Reliability → Connection Loss Mid-Request", async ({ testData }) => {
-<<<<<<< HEAD
-    await mmPage.mockTemplateListFailure();
-    await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
-    await mmPage.selectTemplateByExactName('Simplified KYC');
-    await mmPage.saveChangesAndExpectSuccess();
-=======
     await mmPage.mockSaveChangesFailure();
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save during connection loss');
->>>>>>> master
     await mmPage.expectApiFailureHandledGracefully();
   });
 
@@ -172,19 +148,10 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
     await mmPage.mockSaveChangesFailure();
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
-<<<<<<< HEAD
-    await mmPage.saveChangesAndExpectSuccess();
-    await mmPage.refreshPage();
-    await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC');
-    await mmPage.expectFieldRequirementPersistedByTestDataFragment('In-flight request');
-    await mmPage.expectApiFailureHandledGracefully();
-    await mmPage.expectTemplateListRefreshed();
-=======
     await mmPage.modifyFirstEditableRequirement();
     await mmPage.clickAndWait(mmPage.saveChangesButton, 'Save during pending request');
     await mmPage.refreshPage();
     await mmPage.expectApiFailureHandledGracefully();
->>>>>>> master
   });
 
   test("Case ID:MM-TC-235 - Backend Reliability → Concurrent API Update Conflict", async ({ testData }) => {
@@ -218,10 +185,7 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
   });
 
   test("Case ID:MM-TC-239 - Backend Integrity → Audit-Safe Persistence", async ({ testData }) => {
-<<<<<<< HEAD
     await mmPage.mockSaveChangesFailure();
-=======
->>>>>>> master
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.expectApiFailureHandledGracefully();
@@ -238,10 +202,7 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
   test("Case ID:MM-TC-280 - DB-Origin Field → UI Rendering", async ({ testData }) => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Standard KYC — Individual');
-<<<<<<< HEAD
-=======
     await mmPage.openTab('Individual CIP');
->>>>>>> master
     await mmPage.expectDbOriginFieldRendered('FATCA Declaration');
   });
 
@@ -255,10 +216,7 @@ test.describe("Missing Mandatory Data Template - Database & Backend", () => {
     await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl);
     await mmPage.selectTemplateByExactName('Simplified KYC');
     await mmPage.expectLockedFieldEditRestriction();
-<<<<<<< HEAD
     await mmPage.expectEditableFieldCheckboxesEnabled();
-=======
->>>>>>> master
   });
 
   test("Case ID:MM-TC-283 - DB-Origin Field → UI Duplicate Conflict", async ({ testData }) => {

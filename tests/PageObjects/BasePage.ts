@@ -5,8 +5,6 @@ import {
   type ActionStatus,
 } from "../helpers/action-logger";
 
-<<<<<<< HEAD
-=======
 function defaultAssertTimeout(): number {
   if (process.env.PW_EXPECT_TIMEOUT) {
     return parseInt(process.env.PW_EXPECT_TIMEOUT, 10);
@@ -14,7 +12,6 @@ function defaultAssertTimeout(): number {
   return 15000;
 }
 
->>>>>>> master
 class BasePage {
   constructor(protected readonly page: Page) {}
 
@@ -67,37 +64,12 @@ class BasePage {
 
   async selectOptionByIndex(locator: Locator, index: number, fieldName: string): Promise<void> {
     try {
-<<<<<<< HEAD
       await locator.selectOption({ index });
       this.logStep("SELECT", `${fieldName} option index ${index} — successful`);
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       this.logStep("SELECT", `${fieldName} option index ${index} — failed (${message})`, "fail");
       throw error;
-=======
-      const tagName = await locator.evaluate((el) => el.tagName.toLowerCase()).catch(() => "");
-      if (tagName === "select") {
-        await locator.selectOption({ index });
-      } else {
-        await locator.click();
-        const listboxOption = this.page.getByRole("listbox").getByRole("option").nth(index);
-        if (await listboxOption.isVisible().catch(() => false)) {
-          await listboxOption.click();
-        } else {
-          await this.page.getByRole("option").nth(index).click();
-        }
-      }
-      this.logStep("SELECT", `${fieldName} option index ${index} — successful`);
-    } catch (error) {
-      try {
-        await locator.selectOption({ index });
-        this.logStep("SELECT", `${fieldName} option index ${index} — successful (select fallback)`);
-      } catch (fallbackError) {
-        const message = fallbackError instanceof Error ? fallbackError.message : String(fallbackError);
-        this.logStep("SELECT", `${fieldName} option index ${index} — failed (${message})`, "fail");
-        throw fallbackError;
-      }
->>>>>>> master
     }
   }
 
@@ -124,11 +96,7 @@ class BasePage {
     }
   }
 
-<<<<<<< HEAD
   async assertVisible(locator: Locator, label: string, timeout = 15000): Promise<void> {
-=======
-  async assertVisible(locator: Locator, label: string, timeout = defaultAssertTimeout()): Promise<void> {
->>>>>>> master
     try {
       await expect(locator).toBeVisible({ timeout });
       this.logStep("ASSERT", `${label} visible — successful`);
@@ -139,11 +107,7 @@ class BasePage {
     }
   }
 
-<<<<<<< HEAD
   async assertHidden(locator: Locator, label: string, timeout = 15000): Promise<void> {
-=======
-  async assertHidden(locator: Locator, label: string, timeout = defaultAssertTimeout()): Promise<void> {
->>>>>>> master
     try {
       await expect(locator).toBeHidden({ timeout });
       this.logStep("ASSERT", `${label} hidden — successful`);
