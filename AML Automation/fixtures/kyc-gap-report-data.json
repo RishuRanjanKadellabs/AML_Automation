@@ -1,0 +1,73 @@
+{
+  "defaults": {
+    "subtitle": "Missing or expired KYC fields — CBS & DMS import vs. template requirements",
+    "scoreWeights": {
+      "mandatory": 3,
+      "optional": 1
+    },
+    "priorityBands": {
+      "low": { "min": 0, "max": 25 },
+      "medium": { "min": 26, "max": 50 },
+      "high": { "min": 51, "max": 75 },
+      "critical": { "min": 76, "max": 100 }
+    }
+  },
+  "customers": {
+    "oneMandatoryGap": {
+      "cif": "CIF-1001",
+      "expectedScore": 3,
+      "priority": "Low"
+    },
+    "oneOptionalGap": {
+      "cif": "CIF-1002",
+      "expectedScore": 1,
+      "priority": "Low"
+    },
+    "mixedGaps": {
+      "cif": "CIF-1003",
+      "mandatoryGaps": 2,
+      "optionalGaps": 1,
+      "expectedScore": 7
+    },
+    "noGaps": {
+      "cif": "CIF-1004",
+      "expectedScore": 0
+    },
+    "longName": {
+      "cif": "CIF-LONG-001",
+      "nameLength": 256
+    }
+  },
+  "search": {
+    "exactMatch": "Simplified KYC Customer",
+    "partialMatch": "KYC",
+    "noMatch": "zzzz-no-match-99999",
+    "sqlInjection": "' OR '1'='1",
+    "xssInjection": "<script>alert('xss')</script>"
+  },
+  "filters": {
+    "scoreBoundaries": [0, 25, 26, 50, 51, 75, 76, 100, 101],
+    "invalidRange": { "min": 50, "max": 25 }
+  },
+  "roles": {
+    "complianceOfficer": {
+      "envEmail": "COMPLIANCE_OFFICER_EMAIL",
+      "envPassword": "COMPLIANCE_OFFICER_PASSWORD",
+      "canAccessGapReport": true
+    },
+    "administrator": {
+      "envEmail": "ADMIN_EMAIL",
+      "envPassword": "ADMIN_PASSWORD",
+      "canAccessGapReport": true
+    },
+    "unauthorized": {
+      "envEmail": "UNAUTHORIZED_EMAIL",
+      "envPassword": "UNAUTHORIZED_PASSWORD",
+      "canAccessGapReport": false
+    }
+  },
+  "pagination": {
+    "pageSizes": [10, 20, 50],
+    "defaultPageSize": 10
+  }
+}

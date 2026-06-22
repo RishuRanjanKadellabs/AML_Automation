@@ -1,0 +1,1796 @@
+{
+  "summary": {
+    "totalKgr": 280,
+    "overlappedKgr": 51,
+    "netNewKgr": 229,
+    "mmTcCount": 25
+  },
+  "entries": [
+    {
+      "kgrId": "KGR-001",
+      "mmTcId": "MM-TC-146",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-146; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-002",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-003",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-004",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-005",
+      "mmTcId": "MM-TC-147",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-147; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-006",
+      "mmTcId": "MM-TC-146",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-146; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-007",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-008",
+      "mmTcId": "MM-TC-146",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-146; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-009",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-010",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-011",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-012",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-013",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-014",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-015",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-016",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-017",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-018",
+      "mmTcId": "MM-TC-146",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-146; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-019",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-020",
+      "mmTcId": "MM-TC-146",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-146; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-021",
+      "mmTcId": "MM-TC-147",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-147; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-022",
+      "mmTcId": "MM-TC-147",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-147; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-023",
+      "mmTcId": "MM-TC-147",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-147; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-024",
+      "mmTcId": "MM-TC-147",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-147; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-025",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-026",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-027",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-028",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-029",
+      "mmTcId": "MM-TC-148",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-148; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-030",
+      "mmTcId": "MM-TC-148",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-148; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-031",
+      "mmTcId": "MM-TC-168",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-168; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-032",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-033",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-034",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-035",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-036",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-037",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-038",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-039",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-040",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-041",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-042",
+      "mmTcId": "MM-TC-151",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-151; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-043",
+      "mmTcId": "MM-TC-152",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-152; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-044",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-045",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-046",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-047",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-048",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-049",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-050",
+      "mmTcId": "MM-TC-153",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-153; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-051",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-052",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-053",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-054",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-055",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-056",
+      "mmTcId": "MM-TC-154",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-154; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-057",
+      "mmTcId": "MM-TC-154",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-154; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-058",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-059",
+      "mmTcId": "MM-TC-155",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-155; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-060",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-061",
+      "mmTcId": "MM-TC-156",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-156; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-062",
+      "mmTcId": "MM-TC-156",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-156; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-063",
+      "mmTcId": "MM-TC-156",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-156; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-064",
+      "mmTcId": "MM-TC-156",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-156; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-065",
+      "mmTcId": "MM-TC-157",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-157; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-066",
+      "mmTcId": "MM-TC-157",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-157; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-067",
+      "mmTcId": "MM-TC-157",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-157; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-068",
+      "mmTcId": "MM-TC-159",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-159; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-069",
+      "mmTcId": "MM-TC-158",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-158; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-070",
+      "mmTcId": "MM-TC-158",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-158; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-071",
+      "mmTcId": "MM-TC-149",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-149; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-072",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-073",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-074",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-075",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-076",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-077",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-078",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-079",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-080",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-081",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-082",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-083",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-084",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-085",
+      "mmTcId": "MM-TC-161",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-161; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-086",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-087",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-088",
+      "mmTcId": "MM-TC-161",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-161; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-089",
+      "mmTcId": "MM-TC-161",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-161; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-090",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-091",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-092",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-093",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-094",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-095",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-096",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-097",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-098",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-099",
+      "mmTcId": "MM-TC-162",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-162; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-100",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-101",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-102",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-103",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-104",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-105",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-106",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-107",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-108",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-109",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-110",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-111",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-112",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-113",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-114",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-115",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-116",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-117",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-118",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-119",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-120",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-121",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-122",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-123",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-124",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-125",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-126",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-127",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-128",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-129",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-130",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-131",
+      "mmTcId": "MM-TC-165",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-165; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-132",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-133",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-134",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-135",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-136",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-137",
+      "mmTcId": "MM-TC-166",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-166; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-138",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-139",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-140",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-141",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-142",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-143",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-144",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-145",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-146",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-147",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-148",
+      "mmTcId": "MM-TC-167",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-167; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-149",
+      "mmTcId": "MM-TC-167",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-167; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-150",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-151",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-152",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-153",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-154",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-155",
+      "mmTcId": "MM-TC-166",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-166; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-156",
+      "mmTcId": "MM-TC-166",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-166; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-157",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-158",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-159",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-160",
+      "mmTcId": "MM-TC-160",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-160; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-161",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-162",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-163",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-164",
+      "mmTcId": "MM-TC-164",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-164; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-165",
+      "mmTcId": "MM-TC-164",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-164; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-166",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-167",
+      "mmTcId": "MM-TC-164",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-164; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-168",
+      "mmTcId": "MM-TC-168",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-168; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-169",
+      "mmTcId": "MM-TC-169",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-169; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-170",
+      "mmTcId": "MM-TC-163",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-163; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-171",
+      "mmTcId": "MM-TC-163",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-163; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-172",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-173",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-174",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-175",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-176",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-177",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-178",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-179",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-180",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-181",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-182",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-183",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-184",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-185",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-186",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-187",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-188",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-189",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-190",
+      "mmTcId": "MM-TC-150",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-150; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-191",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-192",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-193",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-194",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-195",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-196",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-197",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-198",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-199",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-200",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-201",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-202",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-203",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-204",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-205",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-206",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-207",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-208",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-209",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-210",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-211",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-212",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-213",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-214",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-215",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-216",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-217",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-218",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-219",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-220",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-221",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-222",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-223",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-224",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-225",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-226",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-227",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-228",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-229",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-230",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-231",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-232",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-233",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-234",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-235",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-236",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-237",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-238",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-239",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-240",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-241",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-242",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-243",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-244",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-245",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-246",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-247",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-248",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-249",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-250",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-251",
+      "mmTcId": "MM-TC-153",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-153; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-252",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-253",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-254",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-255",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-256",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-257",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-258",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-259",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-260",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-261",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-262",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-263",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-264",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-265",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-266",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-267",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-268",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-269",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-270",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-271",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-272",
+      "mmTcId": "MM-TC-150",
+      "overlapType": "partial",
+      "notes": "Overlaps existing automation MM-TC-150; KGR suite provides expanded atomic coverage"
+    },
+    {
+      "kgrId": "KGR-273",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-274",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-275",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-276",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-277",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-278",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-279",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-280",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    }
+  ],
+  "mmTcToKgr": {
+    "MM-TC-146": [
+      "KGR-001",
+      "KGR-006",
+      "KGR-008",
+      "KGR-018",
+      "KGR-020"
+    ],
+    "MM-TC-147": [
+      "KGR-005",
+      "KGR-021",
+      "KGR-022",
+      "KGR-023",
+      "KGR-024"
+    ],
+    "MM-TC-148": [
+      "KGR-029",
+      "KGR-030"
+    ],
+    "MM-TC-149": [
+      "KGR-071",
+      "KGR-008"
+    ],
+    "MM-TC-150": [
+      "KGR-190",
+      "KGR-272"
+    ],
+    "MM-TC-151": [
+      "KGR-042"
+    ],
+    "MM-TC-152": [
+      "KGR-043"
+    ],
+    "MM-TC-153": [
+      "KGR-050",
+      "KGR-251"
+    ],
+    "MM-TC-154": [
+      "KGR-056",
+      "KGR-057"
+    ],
+    "MM-TC-155": [
+      "KGR-059"
+    ],
+    "MM-TC-156": [
+      "KGR-061",
+      "KGR-062",
+      "KGR-063",
+      "KGR-064"
+    ],
+    "MM-TC-157": [
+      "KGR-065",
+      "KGR-066",
+      "KGR-067"
+    ],
+    "MM-TC-158": [
+      "KGR-069",
+      "KGR-070"
+    ],
+    "MM-TC-159": [
+      "KGR-068"
+    ],
+    "MM-TC-160": [
+      "KGR-160"
+    ],
+    "MM-TC-161": [
+      "KGR-085",
+      "KGR-088",
+      "KGR-089"
+    ],
+    "MM-TC-162": [
+      "KGR-099"
+    ],
+    "MM-TC-163": [
+      "KGR-170",
+      "KGR-171"
+    ],
+    "MM-TC-164": [
+      "KGR-164",
+      "KGR-165",
+      "KGR-167"
+    ],
+    "MM-TC-165": [
+      "KGR-131"
+    ],
+    "MM-TC-166": [
+      "KGR-137",
+      "KGR-155",
+      "KGR-156"
+    ],
+    "MM-TC-167": [
+      "KGR-148",
+      "KGR-149",
+      "KGR-167"
+    ],
+    "MM-TC-168": [
+      "KGR-168",
+      "KGR-031"
+    ],
+    "MM-TC-169": [
+      "KGR-169"
+    ],
+    "MM-TC-170": [
+      "KGR-170"
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "defaults": {
+    "route": "/configuration/screening-ignore-words",
+    "routeNote": "Ignore Words Configuration — Screening Ignore Words module",
+    "sidebarLabel": "Screening Ignore Words",
+    "parentMenu": "Configuration",
+    "defaultListName": "Sanctions Exception List",
+    "defaultCustomerId": "CUST-10001"
+  },
+  "roles": {
+    "complianceOfficer": "Compliance Officer",
+    "maker": "Maker",
+    "checker": "Checker",
+    "viewer": "Viewer",
+    "auditor": "Auditor",
+    "csel": "CSEL"
+  },
+  "categories": {
+    "sanctions": "Sanctions",
+    "pep": "PEP",
+    "adverseMedia": "Adverse Media"
+  },
+  "scopes": {
+    "global": "Global",
+    "local": "Local"
+  },
+  "reasonCodes": {
+    "default": "RC-001"
+  },
+  "evidence": {
+    "defaultReference": "EVD-2024-001"
+  },
+  "bulkUpload": {
+    "sampleFile": "exception-entries-sample.csv",
+    "emptyFile": "empty.csv",
+    "templateFile": "exception-entries-template.csv"
+  },
+  "api": {
+    "syncEndpoint": "POST /api/v1/exception-lists/sync",
+    "note": "Exact API base URL and auth headers to be confirmed from environment config"
+  },
+  "viewports": {
+    "medium": { "width": 1024, "height": 768 },
+    "small": { "width": 768, "height": 720 }
+  },
+  "modules": {
+    "pageFramework": { "prefix": "IWC", "subModule": "Page Framework", "count": 15 },
+    "sidebarNavigation": { "prefix": "IWC", "subModule": "Sidebar Navigation", "count": 2 },
+    "tabBar": { "prefix": "IWC", "subModule": "Tab Bar", "count": 12 },
+    "tableSorting": { "prefix": "IWC", "subModule": "Table & Sorting", "count": 8 },
+    "searchFilter": { "prefix": "IWC", "subModule": "Search & Filter", "count": 11 },
+    "addCategoryModal": { "prefix": "IWC", "subModule": "Add Category Modal", "count": 12 },
+    "categoryControlsModal": { "prefix": "IWC", "subModule": "Category Controls Modal", "count": 9 },
+    "addIgnoreWordPanel": { "prefix": "IWC", "subModule": "Add Ignore Word Panel", "count": 19 },
+    "bulkUpload": { "prefix": "IWC", "subModule": "Bulk Upload", "count": 19 },
+    "permissionsRbac": { "prefix": "IWC", "subModule": "Permissions & RBAC", "count": 9 },
+    "makerChecker": { "prefix": "IWC", "subModule": "Maker-Checker Governance", "count": 4 },
+    "liveNarrativeTester": { "prefix": "IWC", "subModule": "Live Narrative Tester", "count": 9 },
+    "exportFunctionality": { "prefix": "IWC", "subModule": "Export Functionality", "count": 4 },
+    "apiDataModel": { "prefix": "IWC", "subModule": "API & Data Model", "count": 1 },
+    "notifications": { "prefix": "IWC", "subModule": "Notifications", "count": 1 }
+  },
+  "excelSource": {
+    "file": "pipeline/test-data/Ignore Words Configuration.xlsx",
+    "sheet": "AML Test Cases - IWC",
+    "idPattern": "IWC-TC-*",
+    "totalCases": 223
+  }
+}

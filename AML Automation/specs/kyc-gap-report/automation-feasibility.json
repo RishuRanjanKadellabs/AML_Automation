@@ -1,0 +1,3169 @@
+[
+  {
+    "testCaseId": "KGR-001",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-002",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-003",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-004",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-005",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "critical",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-006",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-007",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-008",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-009",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-010",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-011",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-012",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-013",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-014",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-015",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-016",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "KGR-017",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "critical",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "KGR-018",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-019",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-020",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-021",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-022",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-023",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-024",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "medium",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-025",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-026",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-027",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-028",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "critical",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-029",
+    "automationLayer": "UI + Database",
+    "automationCandidate": "Yes",
+    "reason": "KPI/grid count must reconcile with queryable source data",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "critical",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-030",
+    "automationLayer": "UI + Database",
+    "automationCandidate": "Yes",
+    "reason": "KPI/grid count must reconcile with queryable source data",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "critical",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-031",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "medium",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-032",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "medium",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-033",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "low",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-034",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-035",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-036",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-037",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "low",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-038",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "low",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-039",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "high",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-040",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-kpi-cards",
+      "medium",
+      "kpi"
+    ]
+  },
+  {
+    "testCaseId": "KGR-041",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-042",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-043",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-044",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-045",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-046",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-047",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-048",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-049",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-050",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-051",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-052",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-053",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-054",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-055",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-056",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-057",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-058",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-059",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-060",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-061",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-062",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-063",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-064",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-065",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-066",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-067",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-068",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-069",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-070",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-search-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-071",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-072",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-073",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-074",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-075",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-076",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-077",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-078",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-079",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-080",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-081",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-082",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-083",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-084",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-085",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-086",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-087",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-088",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-089",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-090",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-091",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-092",
+    "automationLayer": "UI + Database",
+    "automationCandidate": "Yes",
+    "reason": "KPI/grid count must reconcile with queryable source data",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-093",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-094",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-095",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-096",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-097",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-098",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-099",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-100",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-101",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-102",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-103",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-104",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-105",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-106",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-107",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-108",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-109",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-110",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-111",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-112",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-113",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-114",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-115",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-116",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "medium",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-117",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-118",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-119",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-120",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-121",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-122",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-123",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-124",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-125",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-126",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "high",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-127",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "medium",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-128",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-129",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-130",
+    "automationLayer": "API + Database",
+    "automationCandidate": "Yes",
+    "reason": "Score weight rules verifiable via API/DB without full UI dependency",
+    "tags": [
+      "kyc-gap-report-gap-score-calculation",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-131",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-132",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-133",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-134",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "high",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-135",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "high",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-136",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-137",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-138",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-139",
+    "automationLayer": "UI + Security",
+    "automationCandidate": "Yes",
+    "reason": "Injection attempt via UI inputs; assert no execution",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-140",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-141",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-142",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-143",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-144",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-145",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-146",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-147",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-148",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-149",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-150",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-151",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-152",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-153",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "medium",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-154",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-155",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-156",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-157",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "high",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-158",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "medium",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-159",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "medium",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-160",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "high",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-161",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-162",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-163",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-164",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-165",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-166",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-167",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-168",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-169",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-170",
+    "automationLayer": "Service Layer",
+    "automationCandidate": "Yes",
+    "reason": "Template change → score recalc → report sync orchestration",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-171",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-172",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-173",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-174",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-175",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-176",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-177",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-178",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-179",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-180",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-181",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-182",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-183",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-184",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-185",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-186",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-187",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "critical",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-188",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-189",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "medium",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-190",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-pagination",
+      "high",
+      "pagination"
+    ]
+  },
+  {
+    "testCaseId": "KGR-191",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-192",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-193",
+    "automationLayer": "UI + API",
+    "automationCandidate": "Yes",
+    "reason": "Download event plus file parse/API export endpoint",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-194",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-195",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-196",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-197",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-198",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-199",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-200",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-201",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-202",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-203",
+    "automationLayer": "UI + API",
+    "automationCandidate": "Yes",
+    "reason": "Download event plus file parse/API export endpoint",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-204",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-205",
+    "automationLayer": "UI + API",
+    "automationCandidate": "Yes",
+    "reason": "Download event plus file parse/API export endpoint",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-206",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-207",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-208",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-209",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-210",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-211",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-212",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-213",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-214",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "medium",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-215",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-216",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-217",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "medium",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-218",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-219",
+    "automationLayer": "Manual",
+    "automationCandidate": "No",
+    "reason": "Performance, audit immutability, or compliance sign-off requires manual validation",
+    "tags": [
+      "kyc-gap-report-export",
+      "critical",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-220",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-export",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "KGR-221",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-222",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-223",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "KGR-224",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "KGR-225",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "KGR-226",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-227",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-228",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-229",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-230",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-231",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-232",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-233",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-234",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-235",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-236",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-237",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-238",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-239",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-240",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-241",
+    "automationLayer": "Manual",
+    "automationCandidate": "No",
+    "reason": "Performance, audit immutability, or compliance sign-off requires manual validation",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "high",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-242",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "medium",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-243",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "KGR-244",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "KGR-245",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-246",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-247",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-248",
+    "automationLayer": "Manual",
+    "automationCandidate": "No",
+    "reason": "Performance, audit immutability, or compliance sign-off requires manual validation",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-249",
+    "automationLayer": "Manual",
+    "automationCandidate": "No",
+    "reason": "Performance, audit immutability, or compliance sign-off requires manual validation",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "high",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-250",
+    "automationLayer": "Manual",
+    "automationCandidate": "No",
+    "reason": "Performance, audit immutability, or compliance sign-off requires manual validation",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "critical",
+      "audit",
+      "compliance"
+    ]
+  },
+  {
+    "testCaseId": "KGR-251",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-252",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "high",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-253",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-254",
+    "automationLayer": "UI + Security",
+    "automationCandidate": "Yes",
+    "reason": "Injection attempt via UI inputs; assert no execution",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-255",
+    "automationLayer": "UI + Security",
+    "automationCandidate": "Yes",
+    "reason": "Injection attempt via UI inputs; assert no execution",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-256",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-257",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-258",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-259",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-260",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-261",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-262",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-263",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-264",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-265",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-266",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-267",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-268",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-269",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-270",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-271",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-272",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-273",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "medium",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-274",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "high",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-275",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-276",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-277",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-278",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-279",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-280",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Filter/search boundary validation via visible UI controls",
+    "tags": [
+      "kyc-gap-report-boundary-negative-testing",
+      "critical",
+      "boundary",
+      "negative"
+    ]
+  }
+]

@@ -1,0 +1,4146 @@
+{
+  "generatedAt": "2026-06-17T03:30:37.515Z",
+  "testCases": [
+    {
+      "id": "MM-TC-001",
+      "subModule": "Missing Mandatory Data Template → App Shell",
+      "priority": "High",
+      "taskDescription": "Validate that Missing Mandatory Data Template module loads successfully within persistent AML application shell and renders all primary structural components without layout break, dependency failure, or route initialization issues.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-mandatory-data-template-app-shell",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-002",
+      "subModule": "App Shell → Top Bar",
+      "priority": "High",
+      "taskDescription": "Validate persistent top bar behavior and dynamic active view label updates across Template View, Create Template View, and KYC Gap Report.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "app-shell-top-bar",
+        "high",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-003",
+      "subModule": "Sidebar Navigation",
+      "priority": "High",
+      "taskDescription": "Validate sidebar hierarchy under Missing Mandatory module and child-level navigation rendering.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sidebar-navigation",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-004",
+      "subModule": "Sidebar → Route Navigation",
+      "priority": "High",
+      "taskDescription": "Validate navigation between Missing Mandatory Data Template and KYC Gap Report without route corruption or misrouting.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sidebar-route-navigation",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-005",
+      "subModule": "Sidebar → State Persistence",
+      "priority": "High",
+      "taskDescription": "Validate that switching between Template View and KYC Gap Report does not reset filters, pagination, or selected view context.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sidebar-state-persistence",
+        "high",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-006",
+      "subModule": "Top Bar → Create Template Button",
+      "priority": "High",
+      "taskDescription": "Validate conditional visibility of + Create Template button based on active view.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "top-bar-create-template-button",
+        "high",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-007",
+      "subModule": "Template List Panel",
+      "priority": "High",
+      "taskDescription": "Validate rendering of Template List Panel and customer-type grouping logic.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-list-panel",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-008",
+      "subModule": "Template List Panel → Count Badge",
+      "priority": "High",
+      "taskDescription": "Validate dynamic template count badge accuracy after template creation or addition.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-list-panel-count-badge",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-009",
+      "subModule": "Template Cards",
+      "priority": "High",
+      "taskDescription": "Validate template card metadata rendering including name, KYC level, customer type, and version.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-cards",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-010",
+      "subModule": "Initial Access Control (RBAC)",
+      "priority": "Critical",
+      "taskDescription": "Validate unauthorized access restriction for users without Missing Mandatory Data Template permission.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "initial-access-control-rbac",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-011",
+      "subModule": "Template Cards → Selection",
+      "priority": "High",
+      "taskDescription": "Validate that selecting a template card loads the correct template detail in the right panel without stale or mismatched data rendering.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-cards-selection",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-012",
+      "subModule": "Template Cards → Active State",
+      "priority": "Medium",
+      "taskDescription": "Validate active template card visual state and selection persistence during intra-module interaction.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-cards-active-state",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-013",
+      "subModule": "Template Detail Header",
+      "priority": "High",
+      "taskDescription": "Validate template detail header metadata sync with selected template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-detail-header",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-014",
+      "subModule": "Template Detail Header → Add Field Button",
+      "priority": "High",
+      "taskDescription": "Validate Add Field action availability and correct modal trigger behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-detail-header-add-field-button",
+        "high",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-015",
+      "subModule": "Template Detail Header → Save Changes",
+      "priority": "High",
+      "taskDescription": "Validate Save Changes action availability and correct persistence trigger initiation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-detail-header-save-changes",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-016",
+      "subModule": "Tab Visibility → Individual Template",
+      "priority": "Critical",
+      "taskDescription": "Validate tab visibility logic for Individual templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-visibility-individual-template",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-017",
+      "subModule": "Tab Visibility → Corporate Template",
+      "priority": "Critical",
+      "taskDescription": "Validate tab visibility logic for Corporate templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-visibility-corporate-template",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-018",
+      "subModule": "Tab Behavior → Default Tab Selection",
+      "priority": "High",
+      "taskDescription": "Validate default tab loading logic based on template type.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-behavior-default-tab-selection",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-019",
+      "subModule": "Template Search",
+      "priority": "High",
+      "taskDescription": "Validate global template search using exact and partial keyword matching.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-search",
+        "high",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-020",
+      "subModule": "Template Search → State Retention",
+      "priority": "Medium",
+      "taskDescription": "Validate search persistence while switching between template interactions.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "template-search-state-retention",
+        "medium",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-021",
+      "subModule": "Refresh → Template Data Sync",
+      "priority": "High",
+      "taskDescription": "Validate manual refresh updates template list and detail data without stale cache issues.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "refresh-template-data-sync",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-022",
+      "subModule": "Refresh → State Integrity",
+      "priority": "High",
+      "taskDescription": "Validate refresh does not corrupt selected template or navigation state.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "refresh-state-integrity",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-023",
+      "subModule": "Stale Data Handling",
+      "priority": "High",
+      "taskDescription": "Validate prevention of stale template detail rendering after switching templates quickly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "stale-data-handling",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-024",
+      "subModule": "Session Control → Session Expiry",
+      "priority": "Critical",
+      "taskDescription": "Validate module behavior when user session expires while working in Missing Mandatory Data Template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "session-control-session-expiry",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-025",
+      "subModule": "Session Control → Mid-Edit Expiry",
+      "priority": "Critical",
+      "taskDescription": "Validate secure behavior when session expires during unsaved template edit.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "session-control-mid-edit-expiry",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-026",
+      "subModule": "Add Field → Modal Launch",
+      "priority": "High",
+      "taskDescription": "Validate Add Field modal opens successfully from Template Detail Header and loads all required field creation controls.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-field-modal-launch",
+        "high",
+        "modal"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-027",
+      "subModule": "Add Field → Mandatory Input Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate mandatory input validation during new field creation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-field-mandatory-input-validation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-028",
+      "subModule": "Add Field → Valid Field Creation",
+      "priority": "High",
+      "taskDescription": "Validate successful creation of a new valid custom field within correct template section.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-field-valid-field-creation",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-029",
+      "subModule": "Add Field → Duplicate Field Prevention",
+      "priority": "Critical",
+      "taskDescription": "Validate duplicate field name restriction within same template scope.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-field-duplicate-field-prevention",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-030",
+      "subModule": "Add Field → Invalid Section Mapping",
+      "priority": "High",
+      "taskDescription": "Validate field creation rejection when mapped to unsupported/invalid section.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-field-invalid-section-mapping",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-031",
+      "subModule": "Add Field → Special Character Validation",
+      "priority": "Medium",
+      "taskDescription": "Validate field-name validation for restricted unsupported characters.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-field-special-character-validation",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-032",
+      "subModule": "Add Field → Max Length Boundary",
+      "priority": "Medium",
+      "taskDescription": "Validate field name length boundary handling.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-field-max-length-boundary",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-033",
+      "subModule": "Field Configuration → Requirement Type",
+      "priority": "High",
+      "taskDescription": "Validate custom field requirement assignment (Mandatory / Optional).",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-configuration-requirement-type",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-034",
+      "subModule": "Field Configuration → Immediate UI Sync",
+      "priority": "Medium",
+      "taskDescription": "Validate requirement badge updates immediately after requirement change before final save.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-configuration-immediate-ui-sync",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-035",
+      "subModule": "Field Configuration → Persistence After Save",
+      "priority": "High",
+      "taskDescription": "Validate modified field configuration persists after save and refresh.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-configuration-persistence-after-save",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-036",
+      "subModule": "Locked Fields → Edit Restriction",
+      "priority": "Critical",
+      "taskDescription": "Validate locked AML mandatory fields cannot be edited.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "locked-fields-edit-restriction",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-037",
+      "subModule": "Locked Fields → Checkbox Restriction",
+      "priority": "High",
+      "taskDescription": "Validate locked field inclusion checkbox is disabled and non-editable.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "locked-fields-checkbox-restriction",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-038",
+      "subModule": "Locked Fields → Dropdown Restriction",
+      "priority": "High",
+      "taskDescription": "Validate locked field requirement dropdown cannot be changed.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "locked-fields-dropdown-restriction",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-039",
+      "subModule": "Requirement Dropdown → Allowed Values",
+      "priority": "High",
+      "taskDescription": "Validate only supported requirement options are available.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "requirement-dropdown-allowed-values",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-040",
+      "subModule": "Requirement Dropdown → Conditional Normalization",
+      "priority": "Critical",
+      "taskDescription": "Validate legacy Conditional fields are normalized to Optional in UI configuration.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "requirement-dropdown-conditional-normalization",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-041",
+      "subModule": "Field Inclusion → Checkbox State",
+      "priority": "High",
+      "taskDescription": "Validate editable field inclusion checkbox toggle behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-inclusion-checkbox-state",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-042",
+      "subModule": "Field Inclusion → Disabled State Persistence",
+      "priority": "High",
+      "taskDescription": "Validate disabled/excluded field remains excluded after reload.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-inclusion-disabled-state-persistence",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-043",
+      "subModule": "Field Configuration → Unsaved State Warning",
+      "priority": "High",
+      "taskDescription": "Validate unsaved configuration changes trigger dirty-state warning before navigation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-configuration-unsaved-state-warning",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-044",
+      "subModule": "Field Configuration → Cancel Without Save",
+      "priority": "Medium",
+      "taskDescription": "Validate cancel/exit without save does not persist temporary field changes.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-configuration-cancel-without-save",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-045",
+      "subModule": "Field Configuration → Audit Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate field configuration update is traceable through save operation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "field-configuration-audit-integrity",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-046",
+      "subModule": "Individual Template → Default Load",
+      "priority": "Critical",
+      "taskDescription": "Validate Individual template loads correct Individual-specific AML field structure.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-template-default-load",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-047",
+      "subModule": "Individual CIP → Identity Documents Group",
+      "priority": "High",
+      "taskDescription": "Validate Identity Documents group renders correctly with mapped AML identity fields.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-identity-documents-group",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-048",
+      "subModule": "Individual CIP → Personal Details Group",
+      "priority": "High",
+      "taskDescription": "Validate Personal Details section mapping.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-personal-details-group",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-049",
+      "subModule": "Individual CIP → Address Proof Group",
+      "priority": "High",
+      "taskDescription": "Validate address proof AML validation field group.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-address-proof-group",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-050",
+      "subModule": "Individual CIP → Contact Information Group",
+      "priority": "Medium",
+      "taskDescription": "Validate contact-information field rendering and configuration.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-contact-information-group",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-051",
+      "subModule": "Individual CIP → Financial Profile Group",
+      "priority": "High",
+      "taskDescription": "Validate financial profile AML field group behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-financial-profile-group",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-052",
+      "subModule": "Individual CIP → Mandatory Locked Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate locked mandatory CIP fields remain immutable.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-mandatory-locked-fields",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-053",
+      "subModule": "Individual CIP → Editable Mandatory Fields",
+      "priority": "High",
+      "taskDescription": "Validate mandatory but editable fields can be updated.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-editable-mandatory-fields",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-054",
+      "subModule": "Individual CIP → Optional Field Handling",
+      "priority": "Optional fields must behave per AML template configuration.",
+      "taskDescription": "Validate optional CIP field behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-optional-field-handling",
+        "optional fields must behave per aml template configuration.",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-055",
+      "subModule": "Individual CIP → Field Count Integrity",
+      "priority": "High",
+      "taskDescription": "Validate displayed Individual CIP field count matches configured field records.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "individual-cip-field-count-integrity",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-056",
+      "subModule": "CDD Fields → Section Load",
+      "priority": "High",
+      "taskDescription": "Validate CDD section loads for Individual templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cdd-fields-section-load",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-057",
+      "subModule": "CDD Fields → Mandatory AML Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate mandatory CDD AML fields.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cdd-fields-mandatory-aml-fields",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-058",
+      "subModule": "CDD Fields → Conditional-to-Optional Normalization",
+      "priority": "Critical",
+      "taskDescription": "Validate legacy conditional CDD fields normalize to Optional.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cdd-fields-conditional-to-optional-normalization",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-059",
+      "subModule": "CDD Fields → Shared Applicability",
+      "priority": "High",
+      "taskDescription": "Validate fields applicable to Individual + Corporate remain consistently mapped.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cdd-fields-shared-applicability",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-060",
+      "subModule": "CDD Fields → Field Tag Integrity",
+      "priority": "Medium",
+      "taskDescription": "Validate AML metadata/tag display remains accurate.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cdd-fields-field-tag-integrity",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-061",
+      "subModule": "EDD Fields → Section Load",
+      "priority": "High",
+      "taskDescription": "Validate EDD section loads correctly for Individual template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "edd-fields-section-load",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-062",
+      "subModule": "EDD Fields → Mandatory EDD Controls",
+      "priority": "High",
+      "taskDescription": "Validate mandatory EDD fields.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "edd-fields-mandatory-edd-controls",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-063",
+      "subModule": "EDD Fields → Conditional Normalization",
+      "priority": "Critical",
+      "taskDescription": "Validate optionalized EDD conditional field logic.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "edd-fields-conditional-normalization",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-064",
+      "subModule": "EDD Fields → Template-Specific Extra Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate EDD field count increases for enhanced-risk Individual templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "edd-fields-template-specific-extra-fields",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-065",
+      "subModule": "EDD Fields → PEP Workflow Alignment",
+      "priority": "Critical",
+      "taskDescription": "Validate PEP-linked EDD controls remain correctly mapped.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "edd-fields-pep-workflow-alignment",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-066",
+      "subModule": "Technical IDs → Tab Visibility",
+      "priority": "High",
+      "taskDescription": "Validate Technical IDs tab availability in Individual templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "technical-ids-tab-visibility",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-067",
+      "subModule": "Technical IDs → Locked System Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate all Technical ID system fields are read-only.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "technical-ids-locked-system-fields",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-068",
+      "subModule": "Technical IDs → No Requirement Dropdown",
+      "priority": "High",
+      "taskDescription": "Validate system fields do not expose requirement configuration dropdown.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "technical-ids-no-requirement-dropdown",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-069",
+      "subModule": "Technical IDs → System Badge Integrity",
+      "priority": "Medium",
+      "taskDescription": "Validate system fields show correct system-only state.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "technical-ids-system-badge-integrity",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-070",
+      "subModule": "Technical IDs → Field Count Validation",
+      "priority": "High",
+      "taskDescription": "Validate Technical ID field count matches backend/system configuration.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "technical-ids-field-count-validation",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-071",
+      "subModule": "Corporate Template → Default Load",
+      "priority": "Critical",
+      "taskDescription": "Validate Corporate template loads correct corporate-specific AML structure.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-template-default-load",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-072",
+      "subModule": "Corporate CIP → Tab Visibility",
+      "priority": "Critical",
+      "taskDescription": "Validate Corporate CIP tab is visible only for Corporate templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-tab-visibility",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-073",
+      "subModule": "Corporate CIP → Entity Identification Group",
+      "priority": "High",
+      "taskDescription": "Validate Entity Identification section renders correct legal-entity AML fields.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-entity-identification-group",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-074",
+      "subModule": "Corporate CIP → Mandatory Locked Entity Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate locked legal-entity mandatory fields remain immutable.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-mandatory-locked-entity-fields",
+        "critical",
+        "audit",
+        "compliance"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-075",
+      "subModule": "Corporate CIP → Ownership & Control Group",
+      "priority": "High",
+      "taskDescription": "Validate Ownership and Control section mapping.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-ownership-control-group",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-076",
+      "subModule": "Corporate CIP → UBO Declaration Field",
+      "priority": "Critical",
+      "taskDescription": "Validate UBO declaration remains mandatory and immutable where business-locked.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-ubo-declaration-field",
+        "critical",
+        "audit",
+        "compliance"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-077",
+      "subModule": "Corporate CIP → Editable Mandatory Corporate Fields",
+      "priority": "High",
+      "taskDescription": "Validate editable mandatory corporate fields support valid updates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-editable-mandatory-corporate-fields",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-078",
+      "subModule": "Corporate CIP → Conditional-to-Optional Normalization",
+      "priority": "Critical",
+      "taskDescription": "Validate legacy conditional Corporate CIP fields normalize to Optional.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-conditional-to-optional-normalization",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-079",
+      "subModule": "Corporate CIP → Financial Standing Group",
+      "priority": "High",
+      "taskDescription": "Validate Financial Standing section mapping.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-financial-standing-group",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-080",
+      "subModule": "Corporate CIP → Field Count Integrity",
+      "priority": "High",
+      "taskDescription": "Validate Corporate CIP field count matches configured entity fields.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cip-field-count-integrity",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-081",
+      "subModule": "Corporate CDD → Shared AML Controls",
+      "priority": "High",
+      "taskDescription": "Validate shared CDD fields remain consistent between Corporate and Individual templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cdd-shared-aml-controls",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-082",
+      "subModule": "Corporate CDD → Entity Risk Data Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate corporate CDD fields support entity-level risk profiling.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cdd-entity-risk-data-validation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-083",
+      "subModule": "Corporate CDD → Tag Integrity",
+      "priority": "Medium",
+      "taskDescription": "Validate CDD metadata tags remain correct.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-cdd-tag-integrity",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-084",
+      "subModule": "Corporate EDD → Section Load",
+      "priority": "High",
+      "taskDescription": "Validate EDD section loads correctly for Corporate templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-edd-section-load",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-085",
+      "subModule": "Corporate EDD → Mandatory EDD Controls",
+      "priority": "High",
+      "taskDescription": "Validate mandatory corporate EDD controls.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-edd-mandatory-edd-controls",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-086",
+      "subModule": "Corporate EDD → Site/Premises Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate corporate site visit / premises review field behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-edd-site-premises-validation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-087",
+      "subModule": "Corporate EDD → Trust/Foundation High-Risk Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate additional EDD AML controls for Trust/Foundation high-risk templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-edd-trust-foundation-high-risk-fields",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-088",
+      "subModule": "Corporate EDD → PEP / High-Risk Alignment",
+      "priority": "Critical",
+      "taskDescription": "Validate PEP/high-risk linked EDD fields remain correctly mapped for entity templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-edd-pep-high-risk-alignment",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-089",
+      "subModule": "Corporate Technical IDs → Tab Visibility",
+      "priority": "High",
+      "taskDescription": "Validate Technical IDs tab remains visible in Corporate templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-technical-ids-tab-visibility",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-090",
+      "subModule": "Corporate Technical IDs → Immutable System Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate Technical ID fields remain non-editable in Corporate templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-technical-ids-immutable-system-fields",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-091",
+      "subModule": "Corporate Technical IDs → System-Owned State",
+      "priority": "Medium",
+      "taskDescription": "Validate Technical IDs visually reflect system-owned behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-technical-ids-system-owned-state",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-092",
+      "subModule": "Corporate Technical IDs → Field Count Validation",
+      "priority": "High",
+      "taskDescription": "Validate Technical ID count consistency for Corporate templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-technical-ids-field-count-validation",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-093",
+      "subModule": "Corporate Template → Cross-Template Isolation",
+      "priority": "Critical",
+      "taskDescription": "Validate Corporate template edits do not impact Individual template field configuration.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-template-cross-template-isolation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-094",
+      "subModule": "Corporate Template → Entity Metadata Sync",
+      "priority": "High",
+      "taskDescription": "Validate corporate template metadata (type, level, version) syncs correctly in header.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-template-entity-metadata-sync",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-095",
+      "subModule": "Corporate Template → Entity Workflow Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate end-to-end corporate field configuration remains aligned with AML entity onboarding workflow.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "corporate-template-entity-workflow-integrity",
+        "critical",
+        "e2e"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-096",
+      "subModule": "Create New Template → Launch Flow",
+      "priority": "High",
+      "taskDescription": "Validate Create New Template screen opens correctly from top-bar action.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-launch-flow",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-097",
+      "subModule": "Create New Template → Mandatory Input Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate required metadata validation during template creation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-mandatory-input-validation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-098",
+      "subModule": "Create New Template → Valid Template Creation",
+      "priority": "High",
+      "taskDescription": "Validate successful creation of new valid AML template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-valid-template-creation",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-099",
+      "subModule": "Create New Template → Duplicate Name Restriction",
+      "priority": "Critical",
+      "taskDescription": "Validate duplicate template name prevention.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-duplicate-name-restriction",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-100",
+      "subModule": "Create New Template → Customer Type Mapping",
+      "priority": "High",
+      "taskDescription": "Validate template is mapped to correct customer type (Individual/Corporate).",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-customer-type-mapping",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-101",
+      "subModule": "Create New Template → KYC Level Mapping",
+      "priority": "High",
+      "taskDescription": "Validate KYC level assignment (SDD/CDD/EDD) persists correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-kyc-level-mapping",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-102",
+      "subModule": "Create New Template → Invalid Metadata Handling",
+      "priority": "High",
+      "taskDescription": "Validate unsupported/invalid metadata values are rejected.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-invalid-metadata-handling",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-103",
+      "subModule": "Create New Template → Cancel Flow",
+      "priority": "Medium",
+      "taskDescription": "Validate canceling template creation does not persist draft data.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-cancel-flow",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-104",
+      "subModule": "Create New Template → Refresh Persistence",
+      "priority": "High",
+      "taskDescription": "Validate created template remains available after page refresh/reload.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "create-new-template-refresh-persistence",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-105",
+      "subModule": "Clone Flow → Launch Clone Action",
+      "priority": "High",
+      "taskDescription": "Validate clone workflow can be initiated from existing template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "clone-flow-launch-clone-action",
+        "high",
+        "modal"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-106",
+      "subModule": "Clone Flow → Exact Field Copy",
+      "priority": "Critical",
+      "taskDescription": "Validate cloned template copies source AML field structure.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "clone-flow-exact-field-copy",
+        "critical",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-107",
+      "subModule": "Clone Flow → Score Configuration Copy",
+      "priority": "Critical",
+      "taskDescription": "Validate KYC Gap Score configuration copies during clone.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "clone-flow-score-configuration-copy",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-108",
+      "subModule": "Clone Flow → Version Reset",
+      "priority": "High",
+      "taskDescription": "Validate cloned template starts with independent initial versioning.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "clone-flow-version-reset",
+        "high",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-109",
+      "subModule": "Clone Flow → Ownership Independence",
+      "priority": "Critical",
+      "taskDescription": "Validate source template edits do not affect cloned template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "clone-flow-ownership-independence",
+        "critical",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-110",
+      "subModule": "Clone Flow → Duplicate Clone Naming Restriction",
+      "priority": "High",
+      "taskDescription": "Validate invalid duplicate clone name handling.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "clone-flow-duplicate-clone-naming-restriction",
+        "high",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-111",
+      "subModule": "Versioning → Increment on Save",
+      "priority": "Critical",
+      "taskDescription": "Validate version increments after valid template configuration update.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "versioning-increment-on-save",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-112",
+      "subModule": "Versioning → Historical Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate prior saved version does not mutate after new version update.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "versioning-historical-integrity",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-113",
+      "subModule": "Versioning → Header/List Sync",
+      "priority": "High",
+      "taskDescription": "Validate updated version displays consistently in list and detail header.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "versioning-header-list-sync",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-114",
+      "subModule": "Save Changes → Valid Persistence",
+      "priority": "Critical",
+      "taskDescription": "Validate Save Changes persists valid AML template modifications.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "save-changes-valid-persistence",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-115",
+      "subModule": "Save Changes → Validation Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate invalid template configuration is rejected during save.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "save-changes-validation-failure",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-116",
+      "subModule": "Save Changes → Double Click Prevention",
+      "priority": "High",
+      "taskDescription": "Validate duplicate save requests are prevented on repeated user action.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "save-changes-double-click-prevention",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-117",
+      "subModule": "Dirty State → Unsaved Navigation Warning",
+      "priority": "Critical",
+      "taskDescription": "Validate dirty-state warning before leaving unsaved template changes.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "dirty-state-unsaved-navigation-warning",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-118",
+      "subModule": "Dirty State → Discard Unsaved Changes",
+      "priority": "High",
+      "taskDescription": "Validate discarded changes are not persisted.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "dirty-state-discard-unsaved-changes",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-119",
+      "subModule": "Concurrency → Parallel Edit Conflict",
+      "priority": "Critical",
+      "taskDescription": "Validate conflict handling when same template is updated by another session/user.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "concurrency-parallel-edit-conflict",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-120",
+      "subModule": "Concurrency → Stale Save Prevention",
+      "priority": "Critical",
+      "taskDescription": "Validate stale configuration save is blocked after source template update.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "concurrency-stale-save-prevention",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-121",
+      "subModule": "KYC Gap Score Configuration → Tab Availability",
+      "priority": "High",
+      "taskDescription": "Validate KYC Gap Score Configuration tab is available on every KYC template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-configuration-tab-availability",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-122",
+      "subModule": "KYC Gap Score Configuration → Category Box Rendering",
+      "priority": "Critical",
+      "taskDescription": "Validate four color-coded score category boxes render correctly with exact labels and descriptions.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-configuration-category-box-rendering",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-124",
+      "subModule": "Score Range → Low Range Default Validation",
+      "priority": "High",
+      "taskDescription": "Validate default Low risk score range is configured correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-low-range-default-validation",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-125",
+      "subModule": "Score Range → Medium Range Default Validation",
+      "priority": "High",
+      "taskDescription": "Validate default Medium risk score range is configured correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-medium-range-default-validation",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-126",
+      "subModule": "Score Range → High Range Default Validation",
+      "priority": "High",
+      "taskDescription": "Validate default High risk score range is configured correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-high-range-default-validation",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-127",
+      "subModule": "Score Range → Critical Range Default Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate default Critical risk score range is configured correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-critical-range-default-validation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-128",
+      "subModule": "Score Range → Overlap Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate score ranges cannot overlap between risk categories.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-overlap-validation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-129",
+      "subModule": "Score Range → Full Coverage Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate all score values from 0–100 are covered continuously without gaps.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-full-coverage-validation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-130",
+      "subModule": "Score Range → Min-Max Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate Min value must be less than or equal to Max for every category.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-min-max-validation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-131",
+      "subModule": "Score Range → Duplicate Range Validation",
+      "priority": "High",
+      "taskDescription": "Validate duplicate score-band assignment is rejected.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-duplicate-range-validation",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-132",
+      "subModule": "Score Range → Zero Boundary Handling",
+      "priority": "Medium",
+      "taskDescription": "Validate lower boundary score handling.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-zero-boundary-handling",
+        "medium",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-133",
+      "subModule": "Score Range → Maximum Boundary Handling",
+      "priority": "Medium",
+      "taskDescription": "Validate upper score limit handling.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-maximum-boundary-handling",
+        "medium",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-134",
+      "subModule": "Score Range → Out-of-Range Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate invalid score values outside supported range are rejected.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-out-of-range-validation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-135",
+      "subModule": "Score Range → Decimal/Non-Integer Handling",
+      "priority": "High",
+      "taskDescription": "Validate unsupported decimal/non-integer score handling.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-range-decimal-non-integer-handling",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-136",
+      "subModule": "KYC Gap Score → Save Ranges Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate Save Ranges triggers full validation before persisting score configuration.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-save-ranges-validation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-137",
+      "subModule": "KYC Gap Score → Invalid Save Handling",
+      "priority": "Critical",
+      "taskDescription": "Validate invalid score configuration is blocked during Save Ranges action.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-invalid-save-handling",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-138",
+      "subModule": "KYC Gap Score → Immediate UI Sync",
+      "priority": "Medium",
+      "taskDescription": "Validate score-card UI updates immediately after edit before final save.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-immediate-ui-sync",
+        "medium",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-139",
+      "subModule": "KYC Gap Score → Refresh Persistence",
+      "priority": "High",
+      "taskDescription": "Validate saved score bands persist after refresh/reload.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-refresh-persistence",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-140",
+      "subModule": "KYC Gap Score → Template Isolation",
+      "priority": "Critical",
+      "taskDescription": "Validate score updates remain isolated to selected template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-template-isolation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-141",
+      "subModule": "Score Calculation Trigger → Field Requirement Update",
+      "priority": "Critical",
+      "taskDescription": "Validate score recalculation trigger after field requirement changes.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-trigger-field-requirement-update",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-142",
+      "subModule": "Score Calculation Trigger → Field Inclusion Change",
+      "priority": "High",
+      "taskDescription": "Validate recalculation after field enable/disable.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-trigger-field-inclusion-change",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-143",
+      "subModule": "Score Calculation Trigger → Template Clone Consistency",
+      "priority": "Critical",
+      "taskDescription": "Validate cloned templates preserve scoring logic.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-trigger-template-clone-consistency",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-144",
+      "subModule": "Score Mapping → Exact Risk Label Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate computed KYC Gap Score maps to correct risk label based on configured ranges.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-mapping-exact-risk-label-mapping",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-145",
+      "subModule": "Score Mapping → Boundary Edge Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate exact boundary values map correctly without off-by-one errors.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-mapping-boundary-edge-validation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-146",
+      "subModule": "KYC Gap Report → View Load",
+      "priority": "High",
+      "taskDescription": "Validate KYC Gap Report screen loads successfully from Missing Mandatory navigation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-view-load",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-147",
+      "subModule": "KYC Gap Report → KPI Card Rendering",
+      "priority": "High",
+      "taskDescription": "Validate KPI summary cards render correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-kpi-card-rendering",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-148",
+      "subModule": "KYC Gap Report → Total Records Accuracy",
+      "priority": "Critical",
+      "taskDescription": "Validate total customer/report count matches backend data.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-total-records-accuracy",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-149",
+      "subModule": "KYC Gap Report → Table Load",
+      "priority": "High",
+      "taskDescription": "Validate gap report table loads all required AML columns.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-table-load",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-150",
+      "subModule": "KYC Gap Report → Empty State",
+      "priority": "High",
+      "taskDescription": "Validate empty-state behavior when no report records exist.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-empty-state",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-151",
+      "subModule": "KYC Gap Report → Search Exact Match",
+      "priority": "Critical",
+      "taskDescription": "Validate exact search behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-search-exact-match",
+        "critical",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-152",
+      "subModule": "KYC Gap Report → Partial Search",
+      "priority": "High",
+      "taskDescription": "Validate partial keyword matching.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-partial-search",
+        "high",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-153",
+      "subModule": "KYC Gap Report → Invalid Search",
+      "priority": "Medium",
+      "taskDescription": "Validate no-result search behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-invalid-search",
+        "medium",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-154",
+      "subModule": "KYC Gap Report → Customer Type Filter",
+      "priority": "Critical",
+      "taskDescription": "Validate filtering by Individual / Corporate customer type.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-customer-type-filter",
+        "critical",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-155",
+      "subModule": "KYC Gap Report → Template Filter",
+      "priority": "High",
+      "taskDescription": "Validate filtering by KYC template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-template-filter",
+        "high",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-156",
+      "subModule": "KYC Gap Report → Priority Filter",
+      "priority": "Critical",
+      "taskDescription": "Validate filtering by risk priority.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-priority-filter",
+        "critical",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-157",
+      "subModule": "KYC Gap Report → Score Range Filter",
+      "priority": "High",
+      "taskDescription": "Validate score-based filtering.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-score-range-filter",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-158",
+      "subModule": "KYC Gap Report → Combined Filters",
+      "priority": "Critical",
+      "taskDescription": "Validate multiple filter combinations.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-combined-filters",
+        "critical",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-159",
+      "subModule": "KYC Gap Report → Clear Filters",
+      "priority": "High",
+      "taskDescription": "Validate clearing filters resets full dataset.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-clear-filters",
+        "high",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-160",
+      "subModule": "KYC Gap Report → Filter Persistence",
+      "priority": "High",
+      "taskDescription": "Validate filter state retention during table interaction.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-filter-persistence",
+        "high",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-161",
+      "subModule": "KYC Gap Report → Sort by Score",
+      "priority": "Critical",
+      "taskDescription": "Validate score sorting behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-sort-by-score",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-162",
+      "subModule": "KYC Gap Report → Sort by Priority",
+      "priority": "High",
+      "taskDescription": "Validate risk-priority sorting.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-sort-by-priority",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-163",
+      "subModule": "KYC Gap Report → Pagination Next/Previous",
+      "priority": "High",
+      "taskDescription": "Validate page navigation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-pagination-next-previous",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-164",
+      "subModule": "KYC Gap Report → Page Size Handling",
+      "priority": "Medium",
+      "taskDescription": "Validate records-per-page behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-page-size-handling",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-165",
+      "subModule": "KYC Gap Report → Row Detail Modal",
+      "priority": "Critical",
+      "taskDescription": "Validate record detail modal opens from selected gap-report row.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-row-detail-modal",
+        "critical",
+        "modal"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-166",
+      "subModule": "KYC Gap Report → Missing Fields Breakdown",
+      "priority": "Critical",
+      "taskDescription": "Validate modal displays correct missing-field details.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-missing-fields-breakdown",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-167",
+      "subModule": "KYC Gap Report → Score Breakdown",
+      "priority": "Critical",
+      "taskDescription": "Validate modal score breakdown consistency.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-score-breakdown",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-168",
+      "subModule": "KYC Gap Report → Refresh Data Sync",
+      "priority": "High",
+      "taskDescription": "Validate manual refresh updates latest report data.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-refresh-data-sync",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-169",
+      "subModule": "KYC Gap Report → State Persistence",
+      "priority": "Critical",
+      "taskDescription": "Validate pagination/filter/search state retention during intra-report navigation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-state-persistence",
+        "critical",
+        "filter"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-170",
+      "subModule": "KYC Gap Report → Template-to-Report Sync",
+      "priority": "Critical",
+      "taskDescription": "Validate template configuration changes reflect correctly in KYC Gap Report.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-template-to-report-sync",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-171",
+      "subModule": "Score Calculation Engine → Default Calculation Load",
+      "priority": "Critical",
+      "taskDescription": "Validate KYC Gap Score calculation engine initializes correctly when template-linked customer records load.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-engine-default-calculation-load",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-172",
+      "subModule": "Missing Fields Logic → Mandatory Weight",
+      "priority": "Critical",
+      "taskDescription": "Validate missing Mandatory fields contribute +3 score weight.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-fields-logic-mandatory-weight",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-173",
+      "subModule": "Missing Fields Logic → Optional Weight",
+      "priority": "High",
+      "taskDescription": "Validate missing Optional fields contribute +1 score weight.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-fields-logic-optional-weight",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-174",
+      "subModule": "Score Calculation → Mixed Weight Aggregation",
+      "priority": "Critical",
+      "taskDescription": "Validate total score aggregation across Mandatory + Optional fields.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-mixed-weight-aggregation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-175",
+      "subModule": "Score Calculation → Zero Missing Fields",
+      "priority": "Critical",
+      "taskDescription": "Validate customer with no missing fields returns zero gap score.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-zero-missing-fields",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-176",
+      "subModule": "Score Calculation → Maximum Score Handling",
+      "priority": "Critical",
+      "taskDescription": "Validate score engine handles maximum missing-field combinations.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-maximum-score-handling",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-177",
+      "subModule": "Missing Fields Logic → Locked Field Inclusion",
+      "priority": "Critical",
+      "taskDescription": "Validate locked mandatory AML fields are included in scoring if missing.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-fields-logic-locked-field-inclusion",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-178",
+      "subModule": "Missing Fields Logic → Excluded Field Handling",
+      "priority": "High",
+      "taskDescription": "Validate disabled/excluded fields do not impact score calculation.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-fields-logic-excluded-field-handling",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-179",
+      "subModule": "Score Calculation → Field Requirement Change Impact",
+      "priority": "Critical",
+      "taskDescription": "Validate score recalculates after field requirement type changes.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-field-requirement-change-impact",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-180",
+      "subModule": "Score Calculation → Deleted/Removed Field Impact",
+      "priority": "Critical",
+      "taskDescription": "Validate score recalculates after field removal/exclusion.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-deleted-removed-field-impact",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-181",
+      "subModule": "Score Calculation → Template-Specific Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate score is calculated using assigned customer template only.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-template-specific-mapping",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-182",
+      "subModule": "Cross-template Isolation → No Score Leakage",
+      "priority": "Critical",
+      "taskDescription": "Validate score logic from one template does not affect unrelated templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cross-template-isolation-no-score-leakage",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-183",
+      "subModule": "Score Calculation → Individual vs Corporate Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate scoring logic respects customer type template separation.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-individual-vs-corporate-mapping",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-184",
+      "subModule": "Missing Fields Breakdown → Accurate Field Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate all missing fields displayed in report are true missing fields.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-fields-breakdown-accurate-field-mapping",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-185",
+      "subModule": "Missing Fields Breakdown → No False Positive",
+      "priority": "High",
+      "taskDescription": "Validate completed fields are not incorrectly counted as missing.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-fields-breakdown-no-false-positive",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-186",
+      "subModule": "Missing Fields Breakdown → No Duplicate Counting",
+      "priority": "Critical",
+      "taskDescription": "Validate same missing field is not scored multiple times.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "missing-fields-breakdown-no-duplicate-counting",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-187",
+      "subModule": "Score Calculation → Shared CDD/EDD Field Handling",
+      "priority": "Critical",
+      "taskDescription": "Validate shared AML fields across sections are counted correctly.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-shared-cdd-edd-field-handling",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-188",
+      "subModule": "Score Calculation → Risk Category Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate computed score maps to correct KYC risk band.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-risk-category-mapping",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-189",
+      "subModule": "Score Calculation → Boundary Score Precision",
+      "priority": "Critical",
+      "taskDescription": "Validate exact threshold scores map consistently.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-boundary-score-precision",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-190",
+      "subModule": "Score Calculation → Recalculation After Template Update",
+      "priority": "Critical",
+      "taskDescription": "Validate customer scores recalculate after template changes.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-recalculation-after-template-update",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-191",
+      "subModule": "Score Calculation → Refresh Synchronization",
+      "priority": "High",
+      "taskDescription": "Validate recalculated scores persist after refresh.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-refresh-synchronization",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-192",
+      "subModule": "Score Calculation → Null/Partial Data Handling",
+      "priority": "Critical",
+      "taskDescription": "Validate scoring engine safely handles null or partial customer data.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-null-partial-data-handling",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-193",
+      "subModule": "Score Calculation → Orphan Template Handling",
+      "priority": "Critical",
+      "taskDescription": "Validate safe handling when customer references deleted/inactive template.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-orphan-template-handling",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-194",
+      "subModule": "Score Calculation → Audit Consistency",
+      "priority": "Critical",
+      "taskDescription": "Validate visible score breakdown aligns with saved AML scoring logic.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-audit-consistency",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-195",
+      "subModule": "Score Calculation → End-to-End AML Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate complete KYC Gap Score lifecycle from field config → calculation → report → risk mapping.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-calculation-end-to-end-aml-integrity",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-196",
+      "subModule": "RBAC → View Access (Authorized Role)",
+      "priority": "High",
+      "taskDescription": "Validate authorized AML roles can access Missing Mandatory module.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-view-access-authorized-role",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-197",
+      "subModule": "RBAC → View Restriction (Unauthorized Role)",
+      "priority": "Critical",
+      "taskDescription": "Validate restricted roles cannot access Missing Mandatory module.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-view-restriction-unauthorized-role",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-198",
+      "subModule": "RBAC → Create Template Permission",
+      "priority": "Critical",
+      "taskDescription": "Validate only permitted roles can create templates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-create-template-permission",
+        "critical",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-199",
+      "subModule": "RBAC → Edit Template Permission",
+      "priority": "Critical",
+      "taskDescription": "Validate template edit actions are restricted by role.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-edit-template-permission",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-200",
+      "subModule": "RBAC → Save Changes Permission",
+      "priority": "Critical",
+      "taskDescription": "Validate unauthorized users cannot persist template changes.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-save-changes-permission",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-201",
+      "subModule": "RBAC → Clone Permission",
+      "priority": "Critical",
+      "taskDescription": "Validate template cloning is restricted by role.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-clone-permission",
+        "critical",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-202",
+      "subModule": "RBAC → KYC Gap Report Access",
+      "priority": "High",
+      "taskDescription": "Validate report access follows role permissions.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-kyc-gap-report-access",
+        "high",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-203",
+      "subModule": "RBAC → Hidden Action Controls",
+      "priority": "Critical",
+      "taskDescription": "Validate unauthorized controls remain hidden from UI.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-hidden-action-controls",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-204",
+      "subModule": "RBAC → Direct URL Restriction",
+      "priority": "Critical",
+      "taskDescription": "Validate direct URL access is blocked for restricted roles.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-direct-url-restriction",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-205",
+      "subModule": "RBAC → API-Level Enforcement",
+      "priority": "Critical",
+      "taskDescription": "Validate backend API blocks unauthorized config operations.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-api-level-enforcement",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-206",
+      "subModule": "RBAC → Cross-Module Isolation",
+      "priority": "Critical",
+      "taskDescription": "Validate permission in Customer 360 or other AML modules does not implicitly grant Missing Mandatory access.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-cross-module-isolation",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-207",
+      "subModule": "Session → Idle Timeout Handling",
+      "priority": "Critical",
+      "taskDescription": "Validate session timeout after inactivity while in module.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "session-idle-timeout-handling",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-208",
+      "subModule": "Session → Mid-Edit Save Restriction",
+      "priority": "Critical",
+      "taskDescription": "Validate save is blocked if session expires during template editing.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "session-mid-edit-save-restriction",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-209",
+      "subModule": "Session → Re-Authentication Recovery",
+      "priority": "High",
+      "taskDescription": "Validate user can recover securely after re-login.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "session-re-authentication-recovery",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-210",
+      "subModule": "Session → Unsaved State on Timeout",
+      "priority": "Critical",
+      "taskDescription": "Validate unsaved changes do not persist after timeout.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "session-unsaved-state-on-timeout",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-211",
+      "subModule": "Security → Concurrent Session Token Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate invalid/expired token cannot perform AML operations.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "security-concurrent-session-token-validation",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-212",
+      "subModule": "Security → Browser Back Access After Logout",
+      "priority": "Critical",
+      "taskDescription": "Validate browser back navigation does not reopen secured module after logout.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "security-browser-back-access-after-logout",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-213",
+      "subModule": "Security → Refresh After Logout",
+      "priority": "High",
+      "taskDescription": "Validate page refresh after logout does not restore secure data.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "security-refresh-after-logout",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-214",
+      "subModule": "Security → Multi-Role Permission Switch",
+      "priority": "Critical",
+      "taskDescription": "Validate role changes reflect updated access immediately.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "security-multi-role-permission-switch",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-215",
+      "subModule": "Security → Audit-Safe Access Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate security-sensitive actions remain traceable and permission-safe.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "security-audit-safe-access-integrity",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-216",
+      "subModule": "API Handling → Template List Load Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate system behavior when Template List API fails during module load.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-template-list-load-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-217",
+      "subModule": "API Handling → Template Detail Load Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate failure handling when selected template detail API fails.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-template-detail-load-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-218",
+      "subModule": "API Handling → Save Changes Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate save failure handling during template update.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-save-changes-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-219",
+      "subModule": "API Handling → Create Template Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate template creation failure behavior.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-create-template-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-220",
+      "subModule": "API Handling → Clone Template Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate clone-flow failure handling.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-clone-template-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-221",
+      "subModule": "API Handling → KYC Gap Report Load Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate report-level API failure handling.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-kyc-gap-report-load-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-222",
+      "subModule": "API Handling → Score Config Save Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate score configuration save failure handling.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-score-config-save-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-223",
+      "subModule": "Retry Logic → Manual Retry After Failure",
+      "priority": "High",
+      "taskDescription": "Validate Retry action fetches latest valid data after failure.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "retry-logic-manual-retry-after-failure",
+        "high",
+        "functional"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-224",
+      "subModule": "Retry Logic → Multiple Retry Stability",
+      "priority": "High",
+      "taskDescription": "Validate repeated retry attempts do not duplicate requests or corrupt state.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "retry-logic-multiple-retry-stability",
+        "high",
+        "functional"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-225",
+      "subModule": "API Handling → Partial Payload (Template List)",
+      "priority": "Critical",
+      "taskDescription": "Validate partial template-list payload handling.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-partial-payload-template-list",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-226",
+      "subModule": "API Handling → Partial Payload (Template Detail)",
+      "priority": "Critical",
+      "taskDescription": "Validate partial template-detail payload handling.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-partial-payload-template-detail",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-227",
+      "subModule": "API Handling → Null Field Metadata",
+      "priority": "Critical",
+      "taskDescription": "Validate handling of null field metadata in template configuration.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-null-field-metadata",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-228",
+      "subModule": "API Handling → Empty Array Handling",
+      "priority": "High",
+      "taskDescription": "Validate behavior for empty field arrays/sections.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-empty-array-handling",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-229",
+      "subModule": "API Handling → Unexpected Enum Value",
+      "priority": "Critical",
+      "taskDescription": "Validate unsupported backend enum values are safely handled.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-unexpected-enum-value",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-230",
+      "subModule": "API Handling → Stale Response Override",
+      "priority": "Critical",
+      "taskDescription": "Validate late stale API response does not overwrite latest selected template.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-stale-response-override",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-231",
+      "subModule": "API Handling → Duplicate Payload Rows",
+      "priority": "High",
+      "taskDescription": "Validate duplicate backend records do not create duplicate UI entries.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "api-handling-duplicate-payload-rows",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-232",
+      "subModule": "Backend Reliability → Slow API Response",
+      "priority": "High",
+      "taskDescription": "Validate UI stability during slow API response.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "backend-reliability-slow-api-response",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-233",
+      "subModule": "Backend Reliability → Connection Loss Mid-Request",
+      "priority": "Critical",
+      "taskDescription": "Validate graceful handling when network disconnects mid-request.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "backend-reliability-connection-loss-mid-request",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-234",
+      "subModule": "Backend Reliability → Refresh During Pending Request",
+      "priority": "High",
+      "taskDescription": "Validate refresh behavior during in-flight API request.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "backend-reliability-refresh-during-pending-request",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-235",
+      "subModule": "Backend Reliability → Concurrent API Update Conflict",
+      "priority": "Critical",
+      "taskDescription": "Validate safe handling when backend record changed before save completes.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "backend-reliability-concurrent-api-update-conflict",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-236",
+      "subModule": "Error Handling → User-Safe Error Messaging",
+      "priority": "Critical",
+      "taskDescription": "Validate errors shown to user are controlled and non-technical.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "error-handling-user-safe-error-messaging",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-237",
+      "subModule": "Error Handling → No False Success State",
+      "priority": "Critical",
+      "taskDescription": "Validate failed backend operations do not show success banners.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "error-handling-no-false-success-state",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-238",
+      "subModule": "Recovery → State Consistency After Failure",
+      "priority": "Critical",
+      "taskDescription": "Validate module recovers cleanly after API failure and retry/reload.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "recovery-state-consistency-after-failure",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-239",
+      "subModule": "Backend Integrity → Audit-Safe Persistence",
+      "priority": "Critical",
+      "taskDescription": "Validate backend failures do not create hidden partial persisted data.",
+      "automationLayer": "Manual",
+      "automationCandidate": "No",
+      "tags": [
+        "backend-integrity-audit-safe-persistence",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-240",
+      "subModule": "Reliability → End-to-End Failure Resilience",
+      "priority": "Critical",
+      "taskDescription": "Validate module stability across load, save, clone, scoring, and report failures.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "reliability-end-to-end-failure-resilience",
+        "critical",
+        "template-crud"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-241",
+      "subModule": "Cross-Module Consistency → Customer 360 Template Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate updated Missing Mandatory template logic reflects correctly in Customer 360 KYC views.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cross-module-consistency-customer-360-template-mapping",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-242",
+      "subModule": "Cross-Module Consistency → KYC Gap Report Sync",
+      "priority": "Critical",
+      "taskDescription": "Validate template updates propagate correctly to KYC Gap Report.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cross-module-consistency-kyc-gap-report-sync",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-243",
+      "subModule": "Cross-Module Consistency → Individual/Corporate Isolation",
+      "priority": "Critical",
+      "taskDescription": "Validate Individual template changes do not impact Corporate KYC workflows and vice versa.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cross-module-consistency-individual-corporate-isolation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-244",
+      "subModule": "Cross-Module Consistency → Shared AML Field Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate shared AML fields remain consistent across consuming modules.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cross-module-consistency-shared-aml-field-integrity",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-245",
+      "subModule": "Cross-Module Consistency → Score Sync Across Consumers",
+      "priority": "Critical",
+      "taskDescription": "Validate recalculated KYC Gap Score remains same across all dependent AML views.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "cross-module-consistency-score-sync-across-consumers",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-246",
+      "subModule": "Customer 360 Dependency → Missing Field Breakdown",
+      "priority": "Critical",
+      "taskDescription": "Validate Customer 360 displays correct missing-field breakdown based on Missing Mandatory configuration.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "customer-360-dependency-missing-field-breakdown",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-247",
+      "subModule": "Customer 360 Dependency → Completed KYC Sync",
+      "priority": "Critical",
+      "taskDescription": "Validate completed KYC updates remove gaps correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "customer-360-dependency-completed-kyc-sync",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-248",
+      "subModule": "Customer 360 Dependency → Risk Category Sync",
+      "priority": "Critical",
+      "taskDescription": "Validate updated risk category remains consistent after recalculation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "customer-360-dependency-risk-category-sync",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-249",
+      "subModule": "End-to-End AML Workflow → Create Template to Report",
+      "priority": "Critical",
+      "taskDescription": "Validate complete flow from Create Template → Configure Fields → Score Setup → Customer Mapping → Gap Report.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "end-to-end-aml-workflow-create-template-to-report",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-250",
+      "subModule": "End-to-End AML Workflow → Clone to Independent Reporting",
+      "priority": "Critical",
+      "taskDescription": "Validate cloned templates generate independent scoring/report behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "end-to-end-aml-workflow-clone-to-independent-reporting",
+        "critical",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-251",
+      "subModule": "End-to-End AML Workflow → Template Update Recalculation",
+      "priority": "Critical",
+      "taskDescription": "Validate template changes trigger downstream recalculation across workflow.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "end-to-end-aml-workflow-template-update-recalculation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-252",
+      "subModule": "End-to-End AML Workflow → Corporate Entity Flow",
+      "priority": "Critical",
+      "taskDescription": "Validate full Corporate entity AML workflow integrity.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "end-to-end-aml-workflow-corporate-entity-flow",
+        "critical",
+        "e2e"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-253",
+      "subModule": "End-to-End AML Workflow → Individual Customer Flow",
+      "priority": "Critical",
+      "taskDescription": "Validate full Individual AML workflow integrity.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "end-to-end-aml-workflow-individual-customer-flow",
+        "critical",
+        "e2e"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-254",
+      "subModule": "Regression → App Shell Stability",
+      "priority": "High",
+      "taskDescription": "Validate no regression in App Shell after Missing Mandatory updates.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-app-shell-stability",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-255",
+      "subModule": "Regression → Sidebar / Top Bar Integrity",
+      "priority": "High",
+      "taskDescription": "Validate global navigation components remain stable.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-sidebar-top-bar-integrity",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-256",
+      "subModule": "Regression → Template CRUD Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate Create/Edit/Clone/Save flows remain stable post-change.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-template-crud-integrity",
+        "critical",
+        "template-crud"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-257",
+      "subModule": "Regression → KYC Gap Score Stability",
+      "priority": "Critical",
+      "taskDescription": "Validate score configuration + calculation logic remains stable after changes.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-kyc-gap-score-stability",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-258",
+      "subModule": "Regression → KYC Gap Report Stability",
+      "priority": "Critical",
+      "taskDescription": "Validate report behavior remains stable after template/scoring changes.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-kyc-gap-report-stability",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-259",
+      "subModule": "Regression → RBAC & Security Integrity",
+      "priority": "Critical",
+      "taskDescription": "Validate no RBAC/session/security regression after release.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "regression-rbac-security-integrity",
+        "critical",
+        "rbac",
+        "security"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-260",
+      "subModule": "Business Integrity → AML Audit Traceability",
+      "priority": "Critical",
+      "taskDescription": "Validate template/scoring/report updates remain auditable and business-traceable.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-integrity-aml-audit-traceability",
+        "critical",
+        "audit",
+        "compliance"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-261",
+      "subModule": "Business Integrity → Data Consistency Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate no mismatch between UI, backend logic, score, report, and dependent modules.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-integrity-data-consistency-validation",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-262",
+      "subModule": "Business Integrity → Final End-to-End Enterprise Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate full Missing Mandatory Data Template workflow from configuration to AML consumer modules under regression-safe state.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-integrity-final-end-to-end-enterprise-validation",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-263",
+      "subModule": "Add Custom Field → Modal Launch",
+      "priority": "High",
+      "taskDescription": "Validate Add Custom Field modal opens from Template Detail Header.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-modal-launch",
+        "high",
+        "modal"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-264",
+      "subModule": "Add Custom Field → Modal Control Rendering",
+      "priority": "High",
+      "taskDescription": "Validate all modal controls render correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-modal-control-rendering",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-265",
+      "subModule": "Add Custom Field → Mandatory Field Name",
+      "priority": "Critical",
+      "taskDescription": "Validate Field Name is required.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-mandatory-field-name",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-266",
+      "subModule": "Add Custom Field → Mandatory Section Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate Add to Section is mandatory.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-mandatory-section-mapping",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-267",
+      "subModule": "Add Custom Field → Description Handling",
+      "priority": "Medium",
+      "taskDescription": "Validate Description field behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-description-handling",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-268",
+      "subModule": "Add Custom Field → Valid UI Field Creation",
+      "priority": "High",
+      "taskDescription": "Validate successful UI-based custom field creation.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-valid-ui-field-creation",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-269",
+      "subModule": "Add Custom Field → Duplicate Name Same Template",
+      "priority": "Critical",
+      "taskDescription": "Validate duplicate field name prevention within same template.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-duplicate-name-same-template",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-270",
+      "subModule": "Add Custom Field → Cross-Section Duplicate Validation",
+      "priority": "High",
+      "taskDescription": "Validate same field-name handling across different sections.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-cross-section-duplicate-validation",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-271",
+      "subModule": "Add Custom Field → Invalid Character Validation",
+      "priority": "Medium",
+      "taskDescription": "Validate unsupported characters in field name.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-invalid-character-validation",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-272",
+      "subModule": "Add Custom Field → Length Boundary Validation",
+      "priority": "Medium",
+      "taskDescription": "Validate min/max field-name length behavior.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-length-boundary-validation",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-273",
+      "subModule": "Add Custom Field → Section Placement Accuracy",
+      "priority": "High",
+      "taskDescription": "Validate created field appears only in selected section.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-section-placement-accuracy",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-274",
+      "subModule": "Add Custom Field → Individual Template Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate field creation in Individual KYC sections.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-individual-template-mapping",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-275",
+      "subModule": "Add Custom Field → Corporate Template Mapping",
+      "priority": "Critical",
+      "taskDescription": "Validate field creation in Corporate KYC sections.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-corporate-template-mapping",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-276",
+      "subModule": "Add Custom Field → Weightage Dropdown Rendering",
+      "priority": "High",
+      "taskDescription": "Validate supported weightage values render correctly.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-weightage-dropdown-rendering",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-277",
+      "subModule": "Add Custom Field → Weightage Persistence",
+      "priority": "High",
+      "taskDescription": "Validate selected field weightage persists after save.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-weightage-persistence",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-278",
+      "subModule": "Add Custom Field → Cancel Flow",
+      "priority": "High",
+      "taskDescription": "Validate Cancel action does not create field.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-cancel-flow",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-279",
+      "subModule": "Add Custom Field → Close Icon Flow",
+      "priority": "Medium",
+      "taskDescription": "Validate close(X) action discards unsaved draft.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-custom-field-close-icon-flow",
+        "medium",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-280",
+      "subModule": "DB-Origin Field → UI Rendering",
+      "priority": "High",
+      "taskDescription": "Validate DB-created field appears correctly in UI.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "db-origin-field-ui-rendering",
+        "high",
+        "functional"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-281",
+      "subModule": "DB-Origin Field → Weightage Sync",
+      "priority": "High",
+      "taskDescription": "Validate DB-origin field shows correct configured weightage.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "db-origin-field-weightage-sync",
+        "high",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-282",
+      "subModule": "DB-Origin Field → Locked Behavior",
+      "priority": "Critical",
+      "taskDescription": "Validate protected DB/system-created fields are non-editable if locked.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "db-origin-field-locked-behavior",
+        "critical",
+        "functional"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-283",
+      "subModule": "DB-Origin Field → UI Duplicate Conflict",
+      "priority": "Critical",
+      "taskDescription": "Validate UI user cannot create duplicate field if same DB-origin field already exists.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "db-origin-field-ui-duplicate-conflict",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-283",
+      "subModule": "DB-Origin Field → UI Duplicate Conflict",
+      "priority": "Critical",
+      "taskDescription": "Validate UI user cannot create duplicate field if same DB-origin field already exists.",
+      "automationLayer": "API + Database",
+      "automationCandidate": "Yes",
+      "tags": [
+        "db-origin-field-ui-duplicate-conflict",
+        "critical",
+        "api",
+        "backend"
+      ],
+      "specLayer": "database"
+    },
+    {
+      "id": "MM-TC-284",
+      "subModule": "KYC Gap Score → Score Direction Logic",
+      "priority": "Critical",
+      "taskDescription": "Validate higher KYC Gap Score indicates worse compliance due to increased missing field weights.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-score-direction-logic",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-285",
+      "subModule": "KYC Gap Score → Zero Score Compliance Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate score 0 maps to Low risk because no required fields are missing.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-score-zero-score-compliance-validation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-286",
+      "subModule": "Save Range Validation → Error Modal Explanation",
+      "priority": "Critical",
+      "taskDescription": "Validate error modal displays exact validation reason when score-range save fails.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "save-range-validation-error-modal-explanation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-287",
+      "subModule": "KYC Gap Score → Tip Bar Guidance Validation",
+      "priority": "High",
+      "taskDescription": "Validate instructional tip bar displays exact business guidance text.",
+      "automationLayer": "Manual",
+      "automationCandidate": "No",
+      "tags": [
+        "kyc-gap-score-tip-bar-guidance-validation",
+        "high",
+        "functional"
+      ],
+      "specLayer": "ui"
+    },
+    {
+      "id": "MM-TC-288",
+      "subModule": "Score Mapping → High Missing Weight to Critical Validation",
+      "priority": "Critical",
+      "taskDescription": "Validate multiple high-weight missing mandatory fields push customer score into Critical band.",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "score-mapping-high-missing-weight-to-critical-validation",
+        "critical",
+        "gap-score",
+        "business-rule"
+      ],
+      "specLayer": "ui"
+    }
+  ]
+}

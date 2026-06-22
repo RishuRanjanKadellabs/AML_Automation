@@ -1,0 +1,15 @@
+allure-report/
+allure-results/
+results/
+!results/allure-history/
+.playwright-mcp/
+node_modules/
+playwright-report/
+test-results/
+blob-report/
+playwright/.cache/
+playwright/.auth/
+.cursor/
+.vscode/
+.env
+dist/

@@ -1,0 +1,85 @@
+{
+  "defaults": {
+    "route": "/kyc/customer-360",
+    "sidebarLabel": "Customer 360° View",
+    "defaultCustomerId": "CUST1001",
+    "defaultRiskScore": "82",
+    "defaultKycLevel": "EDD",
+    "defaultKycGapScore": "28"
+  },
+  "customers": {
+    "standard": {
+      "id": "CUST1001",
+      "name": "John Anderson",
+      "cif": "CIF458712",
+      "type": "Individual",
+      "riskScore": 82,
+      "activeAlerts": 5,
+      "totalAccounts": 7,
+      "kycLevel": "EDD",
+      "kycGapScore": 28
+    },
+    "pep": {
+      "id": "PEP1001",
+      "name": "PEP Customer",
+      "type": "Individual",
+      "pepLinked": true
+    },
+    "adverseMedia": {
+      "id": "ADV1001",
+      "name": "Adverse Media Customer",
+      "type": "Individual",
+      "adverseMedia": true
+    },
+    "empty": {
+      "id": "EMPTY001",
+      "name": "Empty Profile",
+      "hasData": false
+    },
+    "emptyRelationships": {
+      "id": "EMPTYREL001",
+      "name": "No Relationships",
+      "hasRelationships": false
+    },
+    "individual": {
+      "id": "IND1001",
+      "name": "Individual Customer",
+      "type": "Individual"
+    },
+    "corporate": {
+      "id": "CORP2001",
+      "name": "Corporate Customer",
+      "type": "Corporate"
+    }
+  },
+  "tabs": [
+    "Overview",
+    "Relationships",
+    "Screening",
+    "Risk",
+    "KYC/CDD",
+    "Accounts",
+    "Transactions",
+    "Alerts",
+    "Regulatory Reports",
+    "KYC Gap Report",
+    "Audit"
+  ],
+  "viewports": {
+    "medium": { "width": 1024, "height": 768 },
+    "small": { "width": 768, "height": 720 }
+  },
+  "pii": {
+    "pan": "ABCDE1234F",
+    "aadhaar": "4587 1234 8899",
+    "maskedPattern": "***"
+  },
+  "export": {
+    "defaultFormat": "CSV",
+    "formats": ["CSV", "PDF", "Excel"]
+  },
+  "security": {
+    "injectionString": "<script>alert(1)</script>",
+    "invalidCustomerId": "INVALID999"
+  }
+}

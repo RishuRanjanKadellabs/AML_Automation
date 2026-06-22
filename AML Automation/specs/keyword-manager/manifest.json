@@ -1,0 +1,2618 @@
+{
+  "generatedAt": "2026-06-19T10:09:13.559Z",
+  "testCases": [
+    {
+      "id": "KM-TC-001",
+      "subModule": "Navigation & Page Load",
+      "priority": "High",
+      "taskDescription": "Verify user can navigate to Keyword Manager module from Configuration menu",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-002",
+      "subModule": "Navigation & Page Load",
+      "priority": "Medium",
+      "taskDescription": "Verify Keyword Manager page title and breadcrumb display correctly",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-003",
+      "subModule": "Navigation & Page Load",
+      "priority": "High",
+      "taskDescription": "Verify Active tab is selected by default on page load",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-004",
+      "subModule": "Navigation & Page Load",
+      "priority": "High",
+      "taskDescription": "Verify Active, Inactive, and Drafted tabs are all visible on listing page",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-005",
+      "subModule": "Navigation & Page Load",
+      "priority": "High",
+      "taskDescription": "Verify entry counts displayed in each tab are accurate",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-006",
+      "subModule": "Navigation & Page Load",
+      "priority": "High",
+      "taskDescription": "Verify page remains stable during initial data load for large keyword datasets",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-007",
+      "subModule": "Navigation & Page Load",
+      "priority": "Medium",
+      "taskDescription": "Verify empty state is displayed when no keyword entries exist",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-008",
+      "subModule": "Navigation & Page Load",
+      "priority": "High",
+      "taskDescription": "Verify action bar buttons are visible on Keyword Manager listing page",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "navigation-page-load",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "KM-TC-009",
+      "subModule": "Tab Navigation",
+      "priority": "High",
+      "taskDescription": "Verify clicking Inactive tab loads inactive keyword entries",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-navigation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-010",
+      "subModule": "Tab Navigation",
+      "priority": "High",
+      "taskDescription": "Verify clicking Drafted tab loads drafted keyword entries",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-navigation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-011",
+      "subModule": "Tab Navigation",
+      "priority": "Medium",
+      "taskDescription": "Verify switching between tabs does not lose data or cause errors",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-navigation",
+        "medium",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-012",
+      "subModule": "Tab Navigation",
+      "priority": "Medium",
+      "taskDescription": "Verify table headers are consistent across all tabs",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "tab-navigation",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-013",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify keyword listing table displays all configured columns",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-014",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify Keyword/Phrase column displays correct values",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-015",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify Category column displays correct category assignment per keyword",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-016",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify Risk Level column displays correct risk badge for each keyword",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-017",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify Match Type column correctly identifies Exact Match and Fuzzy Match entries",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-018",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score column is populated for Fuzzy Match entries",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-019",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score column is blank or N/A for Exact Match entries",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-020",
+      "subModule": "Keyword Listing Table",
+      "priority": "High",
+      "taskDescription": "Verify Status column displays correct status for each entry",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-021",
+      "subModule": "Keyword Listing Table",
+      "priority": "Medium",
+      "taskDescription": "Verify long keyword phrases do not break table layout",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-022",
+      "subModule": "Keyword Listing Table",
+      "priority": "Medium",
+      "taskDescription": "Verify table supports vertical scrolling for large datasets",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "keyword-listing-table",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-023",
+      "subModule": "Search Functionality",
+      "priority": "High",
+      "taskDescription": "Verify search field is visible in toolbar on keyword listing page",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-functionality",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-024",
+      "subModule": "Search Functionality",
+      "priority": "High",
+      "taskDescription": "Verify search returns matching records when valid keyword is entered",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-functionality",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-025",
+      "subModule": "Search Functionality",
+      "priority": "Medium",
+      "taskDescription": "Verify search is case-insensitive",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-functionality",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-026",
+      "subModule": "Search Functionality",
+      "priority": "Medium",
+      "taskDescription": "Verify search returns no results for unmatched text",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-functionality",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-027",
+      "subModule": "Search Functionality",
+      "priority": "High",
+      "taskDescription": "Verify clearing search field restores full keyword listing",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-functionality",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-028",
+      "subModule": "Search Functionality",
+      "priority": "High",
+      "taskDescription": "Verify special characters are handled safely in search field",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "search-functionality",
+        "high",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-029",
+      "subModule": "Add Category",
+      "priority": "High",
+      "taskDescription": "Verify Add Category modal opens when Add Category button is clicked",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-030",
+      "subModule": "Add Category",
+      "priority": "Critical",
+      "taskDescription": "Verify Category Name field is mandatory in Add Category modal",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-031",
+      "subModule": "Add Category",
+      "priority": "High",
+      "taskDescription": "Verify Category Name accepts valid input up to 100 characters",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-032",
+      "subModule": "Add Category",
+      "priority": "High",
+      "taskDescription": "Verify Category Name beyond 100 characters is rejected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "high",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "KM-TC-033",
+      "subModule": "Add Category",
+      "priority": "Critical",
+      "taskDescription": "Verify duplicate Category Name is rejected with inline error",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "critical",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-034",
+      "subModule": "Add Category",
+      "priority": "High",
+      "taskDescription": "Verify Category Description field is optional",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-035",
+      "subModule": "Add Category",
+      "priority": "Medium",
+      "taskDescription": "Verify Category Description accepts up to 500 characters",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "medium",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-036",
+      "subModule": "Add Category",
+      "priority": "Medium",
+      "taskDescription": "Verify Category Description beyond 500 characters is restricted",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "medium",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-037",
+      "subModule": "Add Category",
+      "priority": "Critical",
+      "taskDescription": "Verify successful Add Category submission sends entry for Checker approval",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-038",
+      "subModule": "Add Category",
+      "priority": "Medium",
+      "taskDescription": "Verify Cancel button on Add Category modal discards data without saving",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-039",
+      "subModule": "Add Category",
+      "priority": "Medium",
+      "taskDescription": "Verify confirmation prompt appears when cancelling Add Category with populated fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-040",
+      "subModule": "Add Category",
+      "priority": "Medium",
+      "taskDescription": "Verify Add Category modal close button works correctly",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-category",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-041",
+      "subModule": "Category Controls",
+      "priority": "High",
+      "taskDescription": "Verify Category Controls panel opens when Category Controls button is clicked",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-042",
+      "subModule": "Category Controls",
+      "priority": "High",
+      "taskDescription": "Verify all existing categories are listed in Category Controls panel",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-043",
+      "subModule": "Category Controls",
+      "priority": "High",
+      "taskDescription": "Verify enabled category toggle shows correct active state",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-044",
+      "subModule": "Category Controls",
+      "priority": "Critical",
+      "taskDescription": "Verify user can disable an active category using the toggle",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-045",
+      "subModule": "Category Controls",
+      "priority": "Critical",
+      "taskDescription": "Verify user can re-enable a disabled category using the toggle",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-046",
+      "subModule": "Category Controls",
+      "priority": "Critical",
+      "taskDescription": "Verify disabling a category removes all its keywords from active screening",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-047",
+      "subModule": "Category Controls",
+      "priority": "Medium",
+      "taskDescription": "Verify Cancel button on Category Controls panel discards unsaved changes",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-048",
+      "subModule": "Category Controls",
+      "priority": "Critical",
+      "taskDescription": "Verify category controls changes are subject to Maker-Checker approval",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "category-controls",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-049",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Add Keyword panel opens when Add Keyword button is clicked",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-050",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Keyword/Phrase field is mandatory",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-051",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Keyword/Phrase field accepts up to 500 characters",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-052",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Keyword/Phrase field beyond 500 characters is restricted",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-053",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Category dropdown is mandatory and lists only active categories",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-054",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Risk Level is mandatory and supports Low, Medium, and High options",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-055",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Match Type is mandatory and presents Exact Match and Fuzzy Match options",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-056",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Threshold Score field is hidden when Exact Match is selected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-057",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Threshold Score field appears when Fuzzy Match is selected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-058",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Threshold Score field is mandatory when Fuzzy Match is selected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-059",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score accepts values between 1 and 100 inclusive",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-060",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score value below 1 is clamped to 1",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-061",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score value above 100 is clamped to 100",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-062",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify live precision indicator shows 'Low precision' for Threshold Score below 50",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-063",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify live precision indicator shows 'Balanced' for Threshold Score between 50 and 79",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-064",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify live precision indicator shows 'High precision' for Threshold Score of 80 or above",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-065",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score boundary 50 displays 'Balanced' precision",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-066",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score boundary 80 displays 'High precision'",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-067",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score boundary 49 displays 'Low precision'",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-068",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Screening Fields selector is mandatory with at least one field required",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-069",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Screening Fields displays three groups: Name Screening, Adverse Media Screening, KYC/Onboarding Screening",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-070",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Name Screening group contains all 7 configured fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-071",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Adverse Media Screening group contains all 7 configured fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-072",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify KYC/Onboarding Screening group contains all 6 configured fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-073",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify user can select a single Screening Field",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-074",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify user can select multiple Screening Fields across different groups",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-075",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify selected Screening Fields appear as removable chips",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-076",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify removing a chip deselects that Screening Field",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-077",
+      "subModule": "Add Keyword",
+      "priority": "Medium",
+      "taskDescription": "Verify search box in Screening Fields selector filters available fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-078",
+      "subModule": "Add Keyword",
+      "priority": "High",
+      "taskDescription": "Verify Save Draft saves keyword entry in Draft state",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-079",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify Submit sends keyword for Checker approval when all mandatory fields are valid",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-080",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify duplicate keyword entry (same keyword, match type, and category) is rejected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "KM-TC-081",
+      "subModule": "Add Keyword",
+      "priority": "Medium",
+      "taskDescription": "Verify Cancel on Add Keyword panel shows confirmation prompt if fields are populated",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-082",
+      "subModule": "Add Keyword",
+      "priority": "Medium",
+      "taskDescription": "Verify Cancel on Add Keyword panel with empty fields closes without prompt",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-083",
+      "subModule": "Add Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify entry remains in Pending Approval state until Checker acts",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "add-keyword",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-084",
+      "subModule": "Live Narrative Tester",
+      "priority": "High",
+      "taskDescription": "Verify Live Narrative Tester panel is visible in Add Keyword panel",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-085",
+      "subModule": "Live Narrative Tester",
+      "priority": "High",
+      "taskDescription": "Verify Live Narrative Tester updates preview in real time as user types keyword",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-086",
+      "subModule": "Live Narrative Tester",
+      "priority": "High",
+      "taskDescription": "Verify Exact Match tester highlights only exact token matches",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-087",
+      "subModule": "Live Narrative Tester",
+      "priority": "High",
+      "taskDescription": "Verify Fuzzy Match tester highlights tokens meeting or exceeding the Threshold Score",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-088",
+      "subModule": "Live Narrative Tester",
+      "priority": "High",
+      "taskDescription": "Verify Tester preview does not affect live screening or create audit records",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-089",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify Tester updates when Match Type is changed",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-090",
+      "subModule": "Live Narrative Tester",
+      "priority": "Medium",
+      "taskDescription": "Verify Tester updates when Threshold Score changes",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "live-narrative-tester",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-091",
+      "subModule": "Maker-Checker Governance",
+      "priority": "Critical",
+      "taskDescription": "Verify Checker can view pending keyword entries submitted by Maker",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-092",
+      "subModule": "Maker-Checker Governance",
+      "priority": "Critical",
+      "taskDescription": "Verify Checker can approve a pending keyword entry",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-093",
+      "subModule": "Maker-Checker Governance",
+      "priority": "Critical",
+      "taskDescription": "Verify Checker can reject a pending keyword entry",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-094",
+      "subModule": "Maker-Checker Governance",
+      "priority": "Critical",
+      "taskDescription": "Verify Maker cannot approve their own submitted keyword entries",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-095",
+      "subModule": "Maker-Checker Governance",
+      "priority": "Critical",
+      "taskDescription": "Verify entries in Pending Approval state are locked from editing",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-096",
+      "subModule": "Maker-Checker Governance",
+      "priority": "High",
+      "taskDescription": "Verify rejected entries return to Draft state for Maker revision",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-097",
+      "subModule": "Maker-Checker Governance",
+      "priority": "Critical",
+      "taskDescription": "Verify audit log is created for every Maker-Checker action",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-098",
+      "subModule": "Maker-Checker Governance",
+      "priority": "Critical",
+      "taskDescription": "Verify Maker and Checker must be different users",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "maker-checker-governance",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-099",
+      "subModule": "Disable Keyword",
+      "priority": "High",
+      "taskDescription": "Verify user can disable an active keyword entry via action controls",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "disable-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-100",
+      "subModule": "Disable Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify disabled keyword is no longer evaluated at next screening run",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "disable-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-101",
+      "subModule": "Disable Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify hard deletion of keyword entries is not permitted",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "disable-keyword",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-102",
+      "subModule": "Disable Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify disable action requires Maker-Checker approval",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "disable-keyword",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-103",
+      "subModule": "Disable Keyword",
+      "priority": "High",
+      "taskDescription": "Verify audit log records disable action with timestamp, actor, and reason",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "disable-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-104",
+      "subModule": "Disable Keyword",
+      "priority": "High",
+      "taskDescription": "Verify disabled keyword entry moves to Inactive tab",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "disable-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-105",
+      "subModule": "Enable Keyword",
+      "priority": "High",
+      "taskDescription": "Verify user can re-enable an inactive keyword entry",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "enable-keyword",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-106",
+      "subModule": "Enable Keyword",
+      "priority": "Critical",
+      "taskDescription": "Verify re-enabled keyword enters Active state after Checker approval",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "enable-keyword",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-107",
+      "subModule": "Bulk Import",
+      "priority": "High",
+      "taskDescription": "Verify Bulk Import option is accessible from Keyword Manager toolbar",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-108",
+      "subModule": "Bulk Import",
+      "priority": "Critical",
+      "taskDescription": "Verify system accepts valid CSV file for bulk import",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "critical",
+        "export"
+      ]
+    },
+    {
+      "id": "KM-TC-109",
+      "subModule": "Bulk Import",
+      "priority": "Critical",
+      "taskDescription": "Verify system accepts valid XLSX file for bulk import",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "critical",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-110",
+      "subModule": "Bulk Import",
+      "priority": "High",
+      "taskDescription": "Verify import validates field completeness: missing Keyword/Phrase is rejected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "KM-TC-111",
+      "subModule": "Bulk Import",
+      "priority": "Critical",
+      "taskDescription": "Verify import validates that Fuzzy Match rows include Threshold Score",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-112",
+      "subModule": "Bulk Import",
+      "priority": "Critical",
+      "taskDescription": "Verify import validates that each row has at least one Screening Field",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "critical",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "KM-TC-113",
+      "subModule": "Bulk Import",
+      "priority": "High",
+      "taskDescription": "Verify duplicate rows in import file are flagged during validation",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-114",
+      "subModule": "Bulk Import",
+      "priority": "Critical",
+      "taskDescription": "Verify bulk import is treated as a single Maker action requiring Checker approval",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-115",
+      "subModule": "Bulk Import",
+      "priority": "Critical",
+      "taskDescription": "Verify no records from bulk import become active without Checker approval",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-116",
+      "subModule": "Bulk Import",
+      "priority": "High",
+      "taskDescription": "Verify unsupported file type is rejected during import",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "KM-TC-117",
+      "subModule": "Bulk Import",
+      "priority": "High",
+      "taskDescription": "Verify import validation error displays the specific field/column that failed",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "bulk-import",
+        "high",
+        "export"
+      ]
+    },
+    {
+      "id": "KM-TC-118",
+      "subModule": "Export",
+      "priority": "High",
+      "taskDescription": "Verify Export button is visible and accessible for authorised users",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-119",
+      "subModule": "Export",
+      "priority": "High",
+      "taskDescription": "Verify exported file includes all keyword fields: keyword, category, risk level, match type, threshold score, screening fields, status, version",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-120",
+      "subModule": "Export",
+      "priority": "High",
+      "taskDescription": "Verify Threshold Score is included for Fuzzy Match entries in export",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-121",
+      "subModule": "Export",
+      "priority": "Medium",
+      "taskDescription": "Verify Threshold Score column is blank for Exact Match entries in export",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export",
+        "medium"
+      ]
+    },
+    {
+      "id": "KM-TC-122",
+      "subModule": "Export",
+      "priority": "High",
+      "taskDescription": "Verify Screening Fields mapping is included in export",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-123",
+      "subModule": "Export",
+      "priority": "High",
+      "taskDescription": "Verify export generates audit log entry",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "export",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-124",
+      "subModule": "Screening Engine",
+      "priority": "Critical",
+      "taskDescription": "Verify active keyword with Exact Match is only evaluated against its mapped Screening Fields",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-engine",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-125",
+      "subModule": "Screening Engine",
+      "priority": "Critical",
+      "taskDescription": "Verify active keyword with Fuzzy Match generates match when similarity meets Threshold Score",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-engine",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-126",
+      "subModule": "Screening Engine",
+      "priority": "Critical",
+      "taskDescription": "Verify Fuzzy Match keyword does NOT fire when similarity falls below Threshold Score",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-engine",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-127",
+      "subModule": "Screening Engine",
+      "priority": "High",
+      "taskDescription": "Verify keyword matching is case-insensitive by default",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-engine",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-128",
+      "subModule": "Screening Engine",
+      "priority": "High",
+      "taskDescription": "Verify special characters are normalised before matching per BR-008",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-engine",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-129",
+      "subModule": "Screening Engine",
+      "priority": "Critical",
+      "taskDescription": "Verify keyword match contributes to alert generation on batch screening page",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-engine",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-130",
+      "subModule": "Screening Engine",
+      "priority": "High",
+      "taskDescription": "Verify keyword changes take effect at next screening run, not retroactively",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-engine",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-131",
+      "subModule": "Workflow States",
+      "priority": "High",
+      "taskDescription": "Verify Draft state entry is visible only in Drafted tab",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "workflow-states",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-132",
+      "subModule": "Workflow States",
+      "priority": "Critical",
+      "taskDescription": "Verify Pending Approval state entry is not shown in Active tab",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "workflow-states",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-133",
+      "subModule": "Workflow States",
+      "priority": "High",
+      "taskDescription": "Verify Approved/Active keyword appears in Active tab",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "workflow-states",
+        "high",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "KM-TC-134",
+      "subModule": "Workflow States",
+      "priority": "High",
+      "taskDescription": "Verify Inactive keyword does not appear in Active tab",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "workflow-states",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-135",
+      "subModule": "Workflow States",
+      "priority": "High",
+      "taskDescription": "Verify all five workflow states are supported: Draft, Pending Approval, Active, Rejected, Inactive",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "workflow-states",
+        "high",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "KM-TC-136",
+      "subModule": "RBAC & Security",
+      "priority": "High",
+      "taskDescription": "Verify authorised Maker can access Add Keyword functionality",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-137",
+      "subModule": "RBAC & Security",
+      "priority": "Critical",
+      "taskDescription": "Verify unauthorised users cannot access Keyword Manager module",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-138",
+      "subModule": "RBAC & Security",
+      "priority": "Critical",
+      "taskDescription": "Verify unauthorised users cannot execute Add Keyword action",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-139",
+      "subModule": "RBAC & Security",
+      "priority": "Critical",
+      "taskDescription": "Verify unauthorised users cannot execute Bulk Import",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-140",
+      "subModule": "RBAC & Security",
+      "priority": "High",
+      "taskDescription": "Verify unauthorised users cannot access Export functionality",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-141",
+      "subModule": "RBAC & Security",
+      "priority": "Critical",
+      "taskDescription": "Verify SQL injection in Keyword/Phrase field is handled safely",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-142",
+      "subModule": "RBAC & Security",
+      "priority": "Critical",
+      "taskDescription": "Verify XSS payload in keyword fields is sanitised",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-143",
+      "subModule": "RBAC & Security",
+      "priority": "High",
+      "taskDescription": "Verify session expiry during keyword workflow redirects user to login",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "high",
+        "session"
+      ]
+    },
+    {
+      "id": "KM-TC-144",
+      "subModule": "RBAC & Security",
+      "priority": "Critical",
+      "taskDescription": "Verify audit logs capture all keyword creation, modification, and deactivation actions",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "rbac-security",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-145",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify BR-001: Both Exact Match and Fuzzy Match modes are available and functional",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-146",
+      "subModule": "Business Rules",
+      "priority": "Critical",
+      "taskDescription": "Verify BR-003: Fuzzy Match without Threshold Score is blocked",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-147",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify BR-004: Threshold Score clamping – value 0 becomes 1",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-148",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify BR-004: Threshold Score clamping – value 101 becomes 100",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-149",
+      "subModule": "Business Rules",
+      "priority": "Critical",
+      "taskDescription": "Verify BR-005: Keyword is only evaluated against mapped Screening Fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-150",
+      "subModule": "Business Rules",
+      "priority": "Critical",
+      "taskDescription": "Verify BR-007: Submission blocked when no Screening Fields are selected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-151",
+      "subModule": "Business Rules",
+      "priority": "High",
+      "taskDescription": "Verify BR-009: No global field scanning occurs unless all relevant fields are explicitly selected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-152",
+      "subModule": "Business Rules",
+      "priority": "Critical",
+      "taskDescription": "Verify BR-010: Permanent deletion of keyword entries is not permitted",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-153",
+      "subModule": "Business Rules",
+      "priority": "Critical",
+      "taskDescription": "Verify BR-011: All operations (add, disable, import, export) require Maker-Checker governance",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "business-rules",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-154",
+      "subModule": "Screening Fields",
+      "priority": "High",
+      "taskDescription": "Verify keyword mapped to fields across multiple groups is evaluated on all mapped fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-fields",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-155",
+      "subModule": "Screening Fields",
+      "priority": "Critical",
+      "taskDescription": "Verify keyword mapped only to KYC/Onboarding fields does not fire on Name Screening fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-fields",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-156",
+      "subModule": "Screening Fields",
+      "priority": "High",
+      "taskDescription": "Verify all 20 Screening Fields across three groups are selectable in Add Keyword panel",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-fields",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-157",
+      "subModule": "Screening Fields",
+      "priority": "High",
+      "taskDescription": "Verify Screening Fields selection persists when re-opening keyword entry",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "screening-fields",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-158",
+      "subModule": "UI Components",
+      "priority": "Medium",
+      "taskDescription": "Verify risk level badges display correct colour coding (Low=green, Medium=amber, High=red)",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-159",
+      "subModule": "UI Components",
+      "priority": "Medium",
+      "taskDescription": "Verify status badges display correct colour coding per specification",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-160",
+      "subModule": "UI Components",
+      "priority": "Medium",
+      "taskDescription": "Verify match type badges display correct styling for Exact Match and Fuzzy Match",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-161",
+      "subModule": "UI Components",
+      "priority": "Low",
+      "taskDescription": "Verify modal overlay background dims main content correctly",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-162",
+      "subModule": "UI Components",
+      "priority": "Low",
+      "taskDescription": "Verify Add Category modal header uses correct styling",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-163",
+      "subModule": "UI Components",
+      "priority": "High",
+      "taskDescription": "Verify Add Keyword submit button is disabled until mandatory fields are complete",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-164",
+      "subModule": "UI Components",
+      "priority": "Low",
+      "taskDescription": "Verify action buttons (enable/disable) render correctly per design",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-165",
+      "subModule": "UI Components",
+      "priority": "Low",
+      "taskDescription": "Verify sidebar navigation highlights Keyword Manager as active when on this page",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "ui-components",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-166",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify all mandatory form fields have visible labels with red asterisk indicator",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-167",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify Tab key navigation follows logical order through keyword form fields",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium"
+      ]
+    },
+    {
+      "id": "KM-TC-168",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify keyboard focus indicators are visible on all interactive elements",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium"
+      ]
+    },
+    {
+      "id": "KM-TC-169",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify inline validation error messages are readable and positioned near the relevant field",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium",
+        "error-handling"
+      ]
+    },
+    {
+      "id": "KM-TC-170",
+      "subModule": "Accessibility",
+      "priority": "Medium",
+      "taskDescription": "Verify page layout is usable at 200% browser zoom",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "accessibility",
+        "medium",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "KM-TC-171",
+      "subModule": "Performance",
+      "priority": "High",
+      "taskDescription": "Verify Keyword Manager listing page loads within acceptable time threshold",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "performance",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-172",
+      "subModule": "Performance",
+      "priority": "High",
+      "taskDescription": "Verify Add Keyword submission completes within acceptable time",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "performance",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-173",
+      "subModule": "Performance",
+      "priority": "High",
+      "taskDescription": "Verify bulk import processing completes within acceptable time for large files",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "performance",
+        "high"
+      ]
+    },
+    {
+      "id": "KM-TC-174",
+      "subModule": "Performance",
+      "priority": "High",
+      "taskDescription": "Verify rapid repeated clicks on Submit do not create duplicate keyword entries",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "performance",
+        "high",
+        "api"
+      ]
+    },
+    {
+      "id": "KM-TC-175",
+      "subModule": "Performance",
+      "priority": "Medium",
+      "taskDescription": "Verify Keyword Manager remains stable during prolonged usage",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "performance",
+        "medium",
+        "session"
+      ]
+    },
+    {
+      "id": "KM-TC-176",
+      "subModule": "Browser Compatibility",
+      "priority": "High",
+      "taskDescription": "Verify Keyword Manager functions correctly in Chrome 120+",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "browser-compatibility",
+        "high",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "KM-TC-177",
+      "subModule": "Browser Compatibility",
+      "priority": "High",
+      "taskDescription": "Verify Keyword Manager functions correctly in Edge 120+",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "browser-compatibility",
+        "high",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "KM-TC-178",
+      "subModule": "Browser Compatibility",
+      "priority": "Medium",
+      "taskDescription": "Verify Keyword Manager functions correctly in Firefox 120+ and Safari 16+",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "browser-compatibility",
+        "medium",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "KM-TC-179",
+      "subModule": "Negative Edge Cases",
+      "priority": "Critical",
+      "taskDescription": "Verify system handles empty Keyword/Phrase field submission gracefully",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-180",
+      "subModule": "Negative Edge Cases",
+      "priority": "High",
+      "taskDescription": "Verify system handles whitespace-only Keyword/Phrase",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "high",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "KM-TC-181",
+      "subModule": "Negative Edge Cases",
+      "priority": "High",
+      "taskDescription": "Verify non-integer Threshold Score value is handled safely",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-182",
+      "subModule": "Negative Edge Cases",
+      "priority": "High",
+      "taskDescription": "Verify alphabetic characters in Threshold Score are rejected",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "high",
+        "maker-checker"
+      ]
+    },
+    {
+      "id": "KM-TC-183",
+      "subModule": "Negative Edge Cases",
+      "priority": "High",
+      "taskDescription": "Verify system handles concurrent keyword submissions from multiple Maker users",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-184",
+      "subModule": "Negative Edge Cases",
+      "priority": "High",
+      "taskDescription": "Verify system handles network interruption during keyword submission",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-185",
+      "subModule": "Negative Edge Cases",
+      "priority": "Medium",
+      "taskDescription": "Verify stale browser session data does not show outdated keyword statuses",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "medium",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "KM-TC-186",
+      "subModule": "Negative Edge Cases",
+      "priority": "High",
+      "taskDescription": "Verify system handles Screening Fields selector with all 20 fields selected simultaneously",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-187",
+      "subModule": "Negative Edge Cases",
+      "priority": "Medium",
+      "taskDescription": "Verify browser refresh during Add Keyword form completion shows expected behaviour",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "medium",
+        "browser-compat"
+      ]
+    },
+    {
+      "id": "KM-TC-188",
+      "subModule": "Negative Edge Cases",
+      "priority": "Medium",
+      "taskDescription": "Verify logout clears in-progress keyword form data",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "negative-edge-cases",
+        "medium",
+        "session"
+      ]
+    },
+    {
+      "id": "KM-TC-189",
+      "subModule": "Integration",
+      "priority": "Critical",
+      "taskDescription": "Verify keyword activation status reflects immediately in screening engine after Checker approval",
+      "automationLayer": "API + UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "integration",
+        "critical",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-190",
+      "subModule": "Integration",
+      "priority": "Critical",
+      "taskDescription": "Verify batch screening alert is generated when an active keyword match occurs",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "integration",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-191",
+      "subModule": "Integration",
+      "priority": "Critical",
+      "taskDescription": "Verify keyword deactivation is reflected in next screening run",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "integration",
+        "critical",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-192",
+      "subModule": "Integration",
+      "priority": "High",
+      "taskDescription": "Verify Screening Fields update for a keyword takes effect at next screening invocation",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "integration",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-193",
+      "subModule": "Sample Keyword Validation",
+      "priority": "High",
+      "taskDescription": "Verify 'offshore account' can be created as Exact Match, HIGH risk, mapped to Purpose of Account and Registered Address",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sample-keyword-validation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-194",
+      "subModule": "Sample Keyword Validation",
+      "priority": "High",
+      "taskDescription": "Verify 'hawala' can be created as Fuzzy Match (75), HIGH risk, mapped to Business Activity Description and Source of Funds Description",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sample-keyword-validation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-195",
+      "subModule": "Sample Keyword Validation",
+      "priority": "High",
+      "taskDescription": "Verify 'politically exposed' as Fuzzy Match (80), HIGH risk, mapped to Occupation, News Article Full Text, and Article Headline",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sample-keyword-validation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-196",
+      "subModule": "Sample Keyword Validation",
+      "priority": "High",
+      "taskDescription": "Verify 'Iran' as Exact Match, HIGH risk, mapped to Country/Jurisdiction Tags and Registered Address",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sample-keyword-validation",
+        "high",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-197",
+      "subModule": "Sample Keyword Validation",
+      "priority": "Medium",
+      "taskDescription": "Verify 'casino' as Exact Match, MEDIUM risk, mapped to Business Type/Industry Code and Business Activity Description",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "sample-keyword-validation",
+        "medium",
+        "functional"
+      ]
+    },
+    {
+      "id": "KM-TC-198",
+      "subModule": "Additional Coverage",
+      "priority": "Medium",
+      "taskDescription": "Verify keyword entry version is tracked and included in exported data",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "additional-coverage",
+        "medium",
+        "export"
+      ]
+    },
+    {
+      "id": "KM-TC-199",
+      "subModule": "Additional Coverage",
+      "priority": "High",
+      "taskDescription": "Verify keyword created by Maker retains Maker's identity in audit log",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "additional-coverage",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
+      "id": "KM-TC-200",
+      "subModule": "Additional Coverage",
+      "priority": "Medium",
+      "taskDescription": "Verify Keyword Manager module loads correctly after clearing browser cache",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "additional-coverage",
+        "medium",
+        "browser-compat"
+      ]
+    }
+  ]
+}
