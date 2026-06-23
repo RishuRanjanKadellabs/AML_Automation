@@ -1,0 +1,27 @@
+const ReferenceDataRegistryLocators = {
+  rdrLayout: ".rdr-layout",
+  rdrPageTitle: "h1.rdr-page-title",
+  masterTabButton: ".master-nav .mnav-btn",
+  tableCard: ".tcard",
+  dataTable: ".tcard table",
+  tableHeader: ".tcard thead th",
+  tableBodyRow: ".tcard tbody tr",
+  recordCountBadge: ".tcnt",
+  lastSyncInfo: ".last-sync",
+  noResultsRow: ".no-results",
+  customerIdCell: ".td-id, button.td-id-btn",
+  searchInput: 'input[placeholder*="Search" i], input[type="search"]',
+  clearButton: 'button:has-text("Clear"), button[title*="Clear" i]',
+  csvExportButton: 'button:has-text("CSV"), button[title*="CSV" i]',
+  excelExportButton: 'button:has-text("Excel"), button[title*="Excel" i]',
+  columnsPickerButton: 'button:has-text("Columns")',
+  columnsPickerApplyButton: 'button:has-text("Save & Apply"), button:has-text("Apply")',
+  viewActionButton: 'button:has-text("View"), button[title*="View" i], .tcard tbody tr button.view-btn',
+  detailModal: '[role="dialog"], .modal, .rdr-detail-modal, .record-detail-modal, .drawer-panel, [class*="detail-modal"]',
+  detailModalHeading: 'h2:has-text("Record Detail"), h3:has-text("Record Detail"), [class*="detail-title"]:has-text("Record Detail"), h2:has-text(/—/), h3:has-text(/—/)',
+  filterSelect: ".tcard select, .rdr-filters select, .filter-bar select",
+  paginationNext: 'button:has-text("Next"), .pagination button.next',
+  paginationIndicator: ".pagination, .page-indicator",
+};
+
+export default ReferenceDataRegistryLocators;

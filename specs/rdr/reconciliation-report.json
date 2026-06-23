@@ -1,0 +1,3397 @@
+{
+  "generatedAt": "2026-06-23T07:32:22.031Z",
+  "excelFile": "pipeline/test-data/Reference Data Registry.xlsx",
+  "sheet": "Sheet1",
+  "totalExcelTestCases": 376,
+  "totalAutomatedTestCases": 376,
+  "totalFullyAutomated": 376,
+  "totalBlocked": 0,
+  "blockedReasons": [],
+  "assumptionsIntroduced": false,
+  "coverageSummary": [
+    {
+      "id": "RDR_001",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID is displayed for every customer record loaded from source systems and remains unique across all records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_002",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID hyperlink functionality and navigation to customer profile details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_003",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Customer Type values are displayed correctly as received from source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_004",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Customer Type filter allows users to filter customer records based on selected type.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_005",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Full Legal Name is displayed correctly for customer records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_006",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify masking of Full Legal Name according to AML privacy and PII requirements.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_007",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Active customer status is displayed correctly in Customer Status column.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_008",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Inactive customer status is displayed correctly in Customer Status column.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_009",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Risk Rating values are displayed correctly for all customer records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_010",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify KYC Status is displayed correctly and reflects latest customer KYC review status.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_011",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify PEP Flag is displayed correctly for Politically Exposed Persons.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_012",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Sanctions Flag is displayed correctly for sanctions/watchlist matched customers.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_013",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Date Onboarded is displayed correctly in configured date format.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_014",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Last Review Date is displayed correctly and reflects latest customer review activity.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_015",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete customer profile information including customer, risk, KYC and AML details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_016",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Customer ID and ensure the system retrieves the exact matching customer record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_017",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Full Legal Name and ensure matching customer records are displayed.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_018",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Clear button functionality after applying filters and search criteria.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_019",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify CSV Export functionality and validate exported customer data.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_020",
+      "masterTab": "Customer Master",
+      "priority": "",
+      "taskDescription": "Verify Excel Export functionality and validate exported customer information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_021",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Address ID is generated and displayed uniquely for every customer address record loaded from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_022",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed against each address record matches the linked customer in Customer Master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_023",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Address Type values are displayed correctly based on configured address classifications.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_024",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Address Line 1 is displayed according to configured masking rules to protect customer PII information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_025",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify City and State values are displayed correctly for each address record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_026",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Postal Code is displayed according to configured masking rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_027",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Country Code is displayed correctly for address records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_028",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Primary Address indicator is displayed correctly for customer addresses.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_029",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Valid From date is displayed correctly and matches source onboarding information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_030",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete address details for the selected customer address record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_031",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Address ID.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_032",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Customer ID and retrieve all linked addresses.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_033",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify Address Verification Status (Is Verified) in address details screen.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_034",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify High Risk Location Flag and Human Trafficking Risk Flag values in address details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_035",
+      "masterTab": "Address Master",
+      "priority": "",
+      "taskDescription": "Verify CSV and Excel export functionality for Customer Address records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_036",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Document ID is displayed uniquely for each customer document record loaded from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_037",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed against each document record matches the linked customer profile.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_038",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Document Type values are displayed correctly based on configured document classifications.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_039",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Document Number is displayed according to masking rules to protect customer sensitive information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_040",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Issuing Country is displayed correctly for all customer documents.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_041",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Issue Date is displayed correctly and matches source document information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_042",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Expiry Date is displayed correctly for permanent and non-permanent documents.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_043",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Document Status is displayed correctly based on document validity.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_044",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify expired documents are highlighted appropriately for AML review.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_045",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Verified Date is displayed correctly and matches document verification records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_046",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify Verification Method is displayed correctly according to document verification process.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_047",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Document ID.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_048",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Customer ID and retrieve all linked customer documents.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_049",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete document details including AML-related information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_050",
+      "masterTab": "Document Master",
+      "priority": "",
+      "taskDescription": "Verify CSV and Excel export functionality for Customer Documents data.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_051",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Assessment ID is generated and displayed uniquely for each risk assessment record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_052",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed against each risk assessment record matches the linked customer profile.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_053",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Assessment Date is displayed correctly and matches the date on which risk assessment was performed.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_054",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Assessment Type values are displayed correctly based on configured assessment classifications.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_055",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Total Risk Score is calculated and displayed correctly for each customer assessment.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_056",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Risk Rating values are displayed correctly according to configured risk score ranges.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_057",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify high-risk customers are highlighted appropriately when Total Risk Score exceeds configured threshold.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_058",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Previous Risk Rating is displayed correctly and reflects prior assessment results.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_059",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Rating Changed indicator correctly identifies customers whose risk rating has changed since the last assessment.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_060",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Next Review Date is calculated and displayed correctly based on risk review schedule.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_061",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify Review Frequency values are displayed correctly based on risk assessment configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_062",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Assessment ID.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_063",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Customer ID and retrieve all associated risk assessments.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_064",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete risk assessment details including score components and review information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_065",
+      "masterTab": "Risk Assessment",
+      "priority": "",
+      "taskDescription": "Verify CSV and Excel export functionality for Risk Assessment records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_066",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Account ID is generated uniquely and displayed correctly for each account record loaded from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_067",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Account ID hyperlink functionality and ensure account details open correctly when selected.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_068",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Account Number is displayed according to masking requirements to protect sensitive banking information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_069",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed against each account matches the linked customer profile.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_070",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Account Type values are displayed correctly based on account classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_071",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Currency and Branch details are displayed correctly for each account.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_072",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Account Status values are displayed correctly based on account lifecycle status.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_073",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Frozen accounts are highlighted appropriately and displayed with Frozen status.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_074",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Current Balance is displayed correctly and matches account balance received from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_075",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Freeze Flag is displayed correctly for active and frozen accounts.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_076",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Last Transaction Date is displayed correctly and reflects the latest transaction posted to the account.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_077",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID filter functionality and ensure accounts are filtered correctly.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_078",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Account ID.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_079",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete account details including AML-related information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_080",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify CSV and Excel export functionality for Account Master records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_081",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Relationship ID (Rel ID) is displayed uniquely for every customer-account relationship record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_082",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed in relationship records matches the linked customer profile in Customer Master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_083",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Account ID displayed in relationship records matches the linked account in Account Master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_084",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Relationship Type is displayed correctly according to the account ownership relationship maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_085",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Signing Authority values are displayed correctly and reflect the account operation rights assigned to the customer.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_086",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Ownership Percentage is displayed correctly for the customer-account relationship.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_087",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify Effective Date is displayed correctly and represents the date from which the relationship became active.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_088",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify KYC Status values are displayed correctly and reflect the latest KYC review status.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_089",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Relationship ID and retrieve the exact matching relationship record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_090",
+      "masterTab": "Account Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete customer-account relationship details including customer, account and KYC information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_091",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Loan ID is displayed uniquely for every loan account record and correctly mapped to the loan account.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_092",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed against each loan account matches the linked customer profile.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_093",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Account ID displayed against each loan account matches the linked account in Account Master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_094",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Loan Type is displayed correctly based on the loan product assigned to the customer.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_095",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Sanctioned Amount is displayed correctly and matches the approved loan amount maintained in CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_096",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Outstanding Balance is displayed correctly and reflects the current unpaid loan balance.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_097",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Interest Rate is displayed correctly for each loan account as per the approved loan terms.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_098",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Disbursement Date and Maturity Date are displayed correctly according to loan lifecycle information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_099",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify Loan Status values are displayed correctly and reflect the current loan condition.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_100",
+      "masterTab": "Loan Account",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete loan account details including loan information, balances, repayment schedule and status.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_101",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Balance ID is generated uniquely and displayed correctly for every EOD balance record loaded from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_102",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Account ID displayed in EOD records matches the linked account in Account Master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_103",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed against each EOD balance record matches the linked customer profile.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_104",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Balance Date is displayed correctly and represents the business date for which EOD balance was calculated.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_105",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Opening Balance is displayed correctly and matches the opening balance received from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_106",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Total Credits and Total Debits are displayed correctly for the selected EOD date.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_107",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Closing Balance is calculated and displayed correctly based on Opening Balance, Credits and Debits.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_108",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Currency values are displayed correctly for all EOD balance records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_109",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify Credit Count and Debit Count values are displayed correctly based on transaction activity for the day.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_110",
+      "masterTab": "EOD Balance",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete EOD balance details including balance calculation and transaction summary information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_111",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify Card ID is generated uniquely and displayed correctly for every card record loaded from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_112",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify Customer ID and Account ID displayed for each card are correctly mapped to the associated customer and account records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_113",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify masked card number (Last 4 digits) is displayed according to PCI-DSS masking requirements.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_114",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify Card Type values are displayed correctly according to card classification maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_115",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify card Network values are displayed correctly for issued cards.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_116",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify Card Status values are displayed correctly and reflect the current card lifecycle status.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_117",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify hot-listed cards are highlighted appropriately and displayed with the correct status indicator.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_118",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify Issue Date and Expiry Date are displayed correctly for issued cards.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_119",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify International Usage and Contactless indicators are displayed correctly based on card configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_120",
+      "masterTab": "Card Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete card details including card status, limits, AML risk flags and usage configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_121",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify Mobile Banking ID (MB ID) is generated uniquely and displayed correctly for each mobile banking registration record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_122",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify Customer ID and Account ID displayed in mobile banking records are correctly mapped to the linked customer and account.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_123",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify registered mobile number is displayed according to masking rules to protect customer PII information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_124",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify Registration Date is displayed correctly and reflects the actual mobile banking enrollment date.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_125",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify Registration Channel values are displayed correctly according to the channel used during mobile banking registration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_126",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify UPI VPA is displayed correctly and mapped to the corresponding mobile banking customer.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_127",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify UPI Banks Linked count is displayed correctly and reflects the number of bank accounts linked to UPI.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_128",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify Login Failures (24H) count is displayed correctly and reflects failed login attempts within the last 24 hours.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_129",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify Status values are displayed correctly and reflect the current mobile banking registration status.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_130",
+      "masterTab": "Mobile Banking",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete mobile banking details including registration information, AML indicators and mobile banking activity details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_131",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify ATM ID is generated uniquely and displayed correctly for every ATM record loaded from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_132",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify ATM Code is displayed correctly and uniquely identifies each ATM machine.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_133",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify ATM Name is displayed correctly and matches the ATM location name maintained in CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_134",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify Branch information is displayed correctly for each ATM location.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_135",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify ATM Type values are displayed correctly according to ATM classification maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_136",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify City values are displayed correctly based on ATM location information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_137",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify Country Code is displayed correctly for ATM locations.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_138",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify ATM Status is displayed correctly and reflects the current operational state of the ATM.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_139",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using ATM ID.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_140",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using ATM Code.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_141",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify High Risk Location Flag in ATM details for ATMs located in high-risk geographic areas.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_142",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify Daily Cash Loaded value is displayed correctly in ATM details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_143",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete ATM details including AML and operational information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_144",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify CSV export functionality for ATM Master records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_145",
+      "masterTab": "ATM Master",
+      "priority": "",
+      "taskDescription": "Verify Excel export functionality for ATM Master records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_146",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify Instrument ID is generated uniquely and displayed correctly for each instrument record loaded from CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_147",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify Instrument Type values are displayed correctly according to instrument classification maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_148",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Instrument ID and ensure the correct instrument record is retrieved.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_149",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete instrument details including status and AML-related information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_150",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify Instrument Status is displayed correctly in instrument details and reflects the current instrument lifecycle state.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_151",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify dishonoured instruments display the correct Dishonour Reason in instrument details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_152",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify Stop Payment Flag is displayed correctly for instruments where stop-payment instructions have been placed.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_153",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify AML Alert Flag is displayed correctly for instruments flagged by AML monitoring rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_154",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify CSV export functionality for Instrument Master records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_155",
+      "masterTab": "Instruments",
+      "priority": "",
+      "taskDescription": "Verify Excel export functionality for Instrument Master records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_156",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Device ID is generated uniquely and displayed correctly for each transaction device record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_157",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Device Type is displayed correctly according to the registered device classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_158",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify OS information is displayed correctly for registered transaction devices.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_159",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Device Model is displayed correctly according to device registration information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_160",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify IMEI/Device Fingerprint information is displayed in masked format to protect sensitive device data.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_161",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Customer IDs displayed against each device are correctly mapped to registered customers.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_162",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify devices linked to multiple customer IDs are identified correctly according to AML rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_163",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Customer Count value in device details matches the number of linked customers.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_164",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify High Risk Device Flag is displayed correctly for devices identified as AML high-risk.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_165",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify High Risk Reason is displayed correctly for flagged devices.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_166",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Rooted Device Flag is displayed correctly when a device is identified as rooted or jailbroken.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_167",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Remote Access App Flag is displayed correctly when remote access applications are detected.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_168",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify Proxy/VPN Usage Flag is displayed correctly for devices using proxy or VPN connections.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_169",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete transaction device details including AML risk indicators and device fingerprint information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_170",
+      "masterTab": "TXN Device",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Device ID and retrieve the correct device record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_171",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify BO ID is generated uniquely and displayed correctly for every beneficial owner record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_172",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify Customer ID displayed against each beneficial owner record matches the linked customer/entity record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_173",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify Beneficial Owner Full Name is displayed in masked format according to PII masking requirements.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_174",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify Nationality is displayed correctly for each beneficial owner.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_175",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify Country of Residence is displayed correctly according to beneficial owner profile information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_176",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify ID Type values are displayed correctly according to the identification documents maintained for the beneficial owner.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_177",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify Ownership Percentage is displayed correctly for beneficial owners with direct ownership stake.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_178",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify beneficial owners meeting regulatory ownership thresholds are displayed correctly.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_179",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify Control Type values are displayed correctly according to beneficial ownership/control relationship.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_180",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify Watchlist Flag is displayed correctly for beneficial owners identified on internal or external watchlists.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_181",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify beneficial owners with Watchlist Flag = Yes are highlighted appropriately for AML review.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_182",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify search functionality using BO ID retrieves the correct beneficial owner record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_183",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Customer ID retrieves all associated beneficial owners.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_184",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete beneficial owner details including ownership, control and AML screening information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_185",
+      "masterTab": "Beneficial Owner",
+      "priority": "",
+      "taskDescription": "Verify PEP Flag, Sanctions Flag, Internal Watchlist Flag and Verification Method are displayed correctly in the Beneficial Owner detail screen.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_186",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Relationship ID is generated uniquely and displayed correctly for every relationship record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_187",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Entity1 Type is displayed correctly according to the source entity classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_188",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Entity1 ID is displayed correctly and mapped to the appropriate customer or beneficial owner record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_189",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Entity2 Type is displayed correctly according to the linked entity classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_190",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Entity2 ID is displayed correctly and linked to the appropriate target entity record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_191",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Relationship Type values are displayed correctly according to relationship classification maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_192",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Subtype values are displayed correctly according to the specific relationship category.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_193",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Ownership Percentage is displayed correctly for ownership-based relationships.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_194",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify ownership relationships above regulatory thresholds are displayed correctly.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_195",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Valid From date is displayed correctly and reflects the effective start date of the relationship.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_196",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify PEP Flag is displayed correctly in relationship details when the relationship involves a politically exposed person.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_197",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Risk Flag is displayed correctly for AML-risk relationships.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_198",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify Verified Flag is displayed correctly for validated relationship records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_199",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct relationship record using Relationship ID.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_200",
+      "masterTab": "Related Parties",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete relationship details including entity mapping, ownership information and AML indicators.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_201",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Non-Customer ID is generated uniquely and displayed correctly for every non-customer record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_202",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Full Name is displayed in masked format according to PII masking requirements.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_203",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Non-Customer Type is displayed correctly according to classification maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_204",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Nationality is displayed correctly for each non-customer record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_205",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Country of Residence is displayed correctly according to profile information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_206",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify ID Type values are displayed correctly according to identification documents maintained for non-customers.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_207",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify ID Number is displayed in masked format to protect sensitive identification information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_208",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify PEP Individual records are classified correctly and displayed with appropriate visual indicators.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_209",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify linked customer information is displayed correctly in detail view when a non-customer is associated with a bank customer.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_210",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Relationship to Customer is displayed correctly in detail view.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_211",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify PEP Flag is displayed correctly in the detail screen according to AML screening results.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_212",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Sanctions Flag is displayed correctly for sanctioned non-customer entities.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_213",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify Internal Watchlist Flag is displayed correctly for entities appearing on internal watchlists.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_214",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct non-customer record using Non-Customer ID.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_215",
+      "masterTab": "Non Customer",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete non-customer details including AML flags, relationship information and source details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_216",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Customer Type records are displayed successfully in the Customer Type Master grid after data load.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_217",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Customer Type Code is displayed correctly for each customer category maintained in the master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_218",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Customer Type Name is displayed correctly according to configured customer classifications.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_219",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Customer Type Code remains unique across all customer type records.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_220",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Segment ID is displayed uniquely for each customer type record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_221",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct customer type record using Customer Type Code.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_222",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct customer type record using Customer Type Name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_223",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete customer type details including risk and CDD configuration fields.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_224",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Customer Type Code displayed in UI matches the customer_type_code field defined in FSD.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_225",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Customer Type Name displayed in UI matches the customer_type_name field maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_226",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Risk Weight value is displayed correctly in customer type detail screen and matches source configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_227",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify CDD Level is displayed correctly according to configured due diligence rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_228",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Active Status is displayed correctly for customer types currently in use.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_229",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify CSV export functionality exports all customer type records successfully.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_230",
+      "masterTab": "Customer Type",
+      "priority": "",
+      "taskDescription": "Verify Excel export functionality exports all customer type records successfully.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_231",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Product Master records are displayed successfully after CBS synchronization and all configured products are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_232",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Product ID is displayed uniquely for every product maintained in the Product Master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_233",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Product Code is displayed correctly according to product configuration maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_234",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Product Name is displayed correctly and matches the configured product description.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_235",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Product Category is displayed correctly according to configured business classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_236",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Product Type is displayed correctly according to the product setup maintained in the source system.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_237",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Entity Types applicable to the product are displayed correctly for AML and customer onboarding purposes.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_238",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Cross Border indicator is displayed correctly for products involving international transactions.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_239",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Trade Finance products are marked as Cross Border where applicable.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_240",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Effective Date is displayed correctly and reflects the date from which the product became active.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_241",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify Risk Rating is displayed correctly in product detail view according to product risk configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_242",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify goAML Product Type mapping is displayed correctly in product detail view for regulatory reporting purposes.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_243",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct product record using Product Code or Product Name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_244",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete product details including Product ID, Category, Risk Rating and goAML mapping.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_245",
+      "masterTab": "Product",
+      "priority": "",
+      "taskDescription": "Verify CSV and Excel export functionality exports all Product Master records accurately.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_246",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify Branch Master records are displayed successfully after CBS synchronization and all configured branches are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_247",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify Branch ID is displayed uniquely for every branch maintained in the Branch Master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_248",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify Branch Code is displayed correctly according to the branch configuration maintained in CBS.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_249",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify Branch Name is displayed correctly and matches the official branch name configured in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_250",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify City information is displayed correctly according to branch location details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_251",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify State information is displayed correctly according to branch location details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_252",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify Branch Type is displayed correctly according to configured branch classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_253",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify High Risk Zone indicator is displayed correctly for branches located in AML high-risk areas.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_254",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify Border Branch indicator is displayed correctly for branches operating near international borders.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_255",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify Active Status is displayed correctly for operational branches.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_256",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify BSR Code is displayed correctly according to branch registration information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_257",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify IFSC Code is displayed correctly in branch detail view according to FSD configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_258",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify SWIFT/BIC Code is displayed correctly in branch detail view for cross-border identification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_259",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct branch record using Branch ID, Code or Name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_260",
+      "masterTab": "Branch",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete branch details including Branch ID, Type, Country Code, High Risk Area Flag, IFSC and SWIFT information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_261",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Channel Master records are displayed successfully after data synchronization and all configured channels are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_262",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Channel ID is displayed uniquely for every channel record maintained in the master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_263",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Channel Code is displayed correctly according to the configured channel identifier.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_264",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Channel Name is displayed correctly according to the configured business channel name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_265",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Channel Type is displayed correctly according to the channel classification maintained in source systems.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_266",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Status is displayed correctly and reflects the active/inactive state of the channel.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_267",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Description field is displayed correctly and provides channel-specific AML/business context.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_268",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Branch channel is classified as PHYSICAL and displayed correctly in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_269",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Mobile Banking channel is classified as DIGITAL and displayed correctly.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_270",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify UPI channel is classified as DIGITAL and displayed correctly for AML monitoring purposes.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_271",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Risk Score Weight is displayed correctly in the channel detail screen and matches configured AML scoring rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_272",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify Cross Border Indicator is displayed correctly in channel detail view according to channel capabilities.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_273",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify goAML Channel Type mapping is displayed correctly in the channel detail screen.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_274",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct channel record using Channel Code or Channel Name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_275",
+      "masterTab": "Channel",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete channel details including Channel Code, Type, Risk Weight, Cross Border Indicator and goAML mapping.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_276",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Transaction Type Master records are displayed successfully after data synchronization and all configured transaction types are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_277",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Transaction Type ID is displayed uniquely for every transaction type record maintained in the master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_278",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Transaction Type Code is displayed correctly according to configured transaction definitions.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_279",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Transaction Type Name is displayed correctly according to business transaction definitions.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_280",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Transaction Direction is displayed correctly and identifies whether the transaction is Credit, Debit or Both.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_281",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Cash Flag is displayed correctly for cash-based transaction types that are eligible for CTR reporting.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_282",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Cross Border indicator is displayed correctly for international transaction types.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_283",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify AML Risk classification is displayed correctly according to AML risk assessment rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_284",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify CTR Applicable indicator is displayed correctly for cash transactions subject to regulatory CTR thresholds.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_285",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Status is displayed correctly and reflects whether the transaction type is active for use.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_286",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Description field is displayed correctly and provides AML/business context for the transaction type.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_287",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify Risk Weight is displayed correctly in the transaction type detail screen and matches AML scoring configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_288",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify goAML Transaction Type mapping is displayed correctly in the detail screen for STR reporting requirements.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_289",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify search functionality retrieves the correct transaction type record using transaction code or name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_290",
+      "masterTab": "TXN Type",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete transaction type details including direction, risk weight, cash indicator, cross-border flag and goAML mapping.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_291",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Currency Master records are displayed successfully after synchronization and all configured currencies are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_292",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Currency Code (ISO 4217) is displayed correctly and uniquely for every currency record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_293",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Currency Name is displayed correctly according to the configured currency master data.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_294",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Currency Symbol is displayed correctly for each configured currency.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_295",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Country Code is displayed correctly against the corresponding currency.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_296",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Status is displayed correctly and reflects whether the currency is active in the system.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_297",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify INR currency record is displayed correctly with all associated details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_298",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify USD currency record is displayed correctly with all associated details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_299",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify AED currency record is displayed correctly with all associated details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_300",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Search functionality retrieves the correct currency record using Currency Code.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_301",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Search functionality retrieves the correct currency record using Currency Name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_302",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete currency details including Currency Code, Name, Reporting Currency flag and AML attributes.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_303",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Reporting Currency flag is displayed correctly in the currency detail view according to bank reporting configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_304",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify High Risk Currency flag is displayed correctly in detail view for AML monitoring and risk scoring purposes.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_305",
+      "masterTab": "Currency",
+      "priority": "",
+      "taskDescription": "Verify Currency Master data can be exported successfully through Excel and CSV options without data loss.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_306",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify FX Rate records are displayed successfully after synchronization and all configured exchange rates are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_307",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Rate ID is displayed uniquely for every FX rate record maintained in the master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_308",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Source Currency (From Currency) is displayed correctly according to configured exchange rate mapping.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_309",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Target Currency (To Currency) is displayed correctly according to exchange rate configuration.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_310",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Exchange Rate value is displayed correctly and matches the configured market exchange rate.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_311",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Rate Date is displayed correctly for each exchange rate record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_312",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Rate Type is displayed correctly according to the configured exchange rate category.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_313",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Effective From date and time are displayed correctly according to the validity period of the exchange rate.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_314",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Effective To date and time are displayed correctly according to the validity period of the exchange rate.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_315",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify USD to INR exchange rate record is displayed correctly with all associated details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_316",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify AED to INR exchange rate record is displayed correctly with all associated details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_317",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify EUR to INR exchange rate record is displayed correctly with all associated details.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_318",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify Search functionality retrieves the correct FX rate record using Rate ID or Currency Code.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_319",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete FX rate details including currencies, exchange rate, effective date and source information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_320",
+      "masterTab": "FX Rates",
+      "priority": "",
+      "taskDescription": "Verify CSV and Excel export functionality exports all displayed FX rate records correctly without data mismatch.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_321",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Industry Code Master records are displayed successfully after synchronization and all configured industry records are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_322",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Industry Master ID is displayed uniquely for every industry record maintained in the system.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_323",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Code Type is displayed correctly according to the configured classification standard used by the organization.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_324",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Industry Code is displayed correctly and matches the configured NIC/industry classification code.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_325",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Industry Name is displayed correctly according to the configured industry classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_326",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Industry Description is displayed correctly and provides business/AML context for the industry.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_327",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Banking and Financial Intermediation industry record is displayed correctly with its associated code and description.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_328",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Jewellery industry record is displayed correctly as a cash-intensive business sector used for AML monitoring.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_329",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Restaurant and Mobile Food Services industry record is displayed correctly as per configured industry classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_330",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Risk Rating field is displayed correctly in the industry detail screen according to AML risk scoring rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_331",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify High Risk Flag is displayed correctly for industries classified as high-risk sectors for AML purposes.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_332",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify FATF Sector classification is displayed correctly in the industry detail view according to regulatory mapping.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_333",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Search functionality retrieves the correct industry record using Industry Code.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_334",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify Search functionality retrieves the correct industry record using Industry Name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_335",
+      "masterTab": "Industry Code",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete industry details including Industry Code, Name, Risk Rating, High Risk Flag and FATF Sector classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_336",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Reference Master records are displayed successfully after synchronization and all configured reference values are visible in the grid.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_337",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Reference ID is displayed uniquely for every reference record maintained in the system.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_338",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Category value is displayed correctly according to the configured reference type classification.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_339",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Reference Code is displayed correctly according to the configured lookup code value.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_340",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Description field is displayed correctly and provides accurate business meaning of the reference value.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_341",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Text Value is displayed correctly according to configured business rules and thresholds.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_342",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Countries field is displayed correctly and reflects country-specific or global applicability of the reference value.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_343",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Status is displayed correctly and reflects whether the reference code is active and available for AML processing.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_344",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Modified Date is displayed correctly and reflects the latest update timestamp of the reference record.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_345",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify CTR Threshold reference record is displayed correctly with AML reporting threshold information.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_346",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Wildlife Keyword reference record is displayed correctly for AML wildlife trafficking monitoring scenarios.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_347",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Dormancy Threshold reference record is displayed correctly for dormant account monitoring rules.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_348",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Search functionality retrieves the correct reference record using Reference Code.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_349",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Search functionality retrieves the correct reference record using Category name.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_350",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify View action opens complete reference details including Reference Type, Code, Name, Active Flag and Sort Order information maintained in the master.",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_351",
+      "masterTab": "Reference Master",
+      "priority": "",
+      "taskDescription": "Verify Country Master page loads successfully",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_352",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify High Risk countries are displayed at top by default",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_353",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify search using Country Name",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_354",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify search using ISO Alpha-2 Code",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_355",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Region filter functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_356",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Risk Level filter functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_357",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify combined Search and Filter functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_358",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Country Name column sorting",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_359",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Region column sorting",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_360",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Risk Reason tags display correctly",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_361",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify View button functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_362",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Audit Trail information in View panel",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_363",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Maker submits country updates successfully",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_364",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify Checker approval workflow",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_365",
+      "masterTab": "Country Master",
+      "priority": "",
+      "taskDescription": "Verify CSV export functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_376",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify search functionality using Employee Name",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_377",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify masked employee name display for PII protection",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_378",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify employee status display",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_379",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify Joining Date is displayed correctly",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_380",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify Department information display",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_381",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify Branch assignment display",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_382",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify Supervisor ID mapping",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_383",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify View button functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_384",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify CSV export functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_385",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify Excel export functionality",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    },
+    {
+      "id": "RDR_386",
+      "masterTab": "Employee Master",
+      "priority": "",
+      "taskDescription": "Verify employee records are limited to maximum configured row count",
+      "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts",
+      "automationStatus": "Automated",
+      "missingInformation": ""
+    }
+  ]
+}
