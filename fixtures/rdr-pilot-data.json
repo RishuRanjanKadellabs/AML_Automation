@@ -33,6 +33,8 @@
     "expectedRowCount": 3,
     "columnName": "Customer ID",
     "ids": ["CIF001001", "CIF002045", "CIF003178"],
+    "inactiveCustomerId": "CIF003178",
+    "inactiveStatusValue": "Inactive",
     "inactiveSummaryPattern": "1 Inactive"
   },
   "defaults": {
