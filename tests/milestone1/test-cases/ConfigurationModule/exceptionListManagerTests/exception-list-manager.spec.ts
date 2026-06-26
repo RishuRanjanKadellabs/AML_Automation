@@ -3,7 +3,7 @@
 import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import ExceptionListManagerPage from "../../../pages/ConfigurationModule/ExceptionListManagerPages/ExceptionListManagerPage";
 
-test.describe("Exception List Manager Module", () => {
+test.describe("Exception List Manager Module", () => {Rishu}
   let elmPage: ExceptionListManagerPage;
 
   test.beforeEach(async ({ sharedPage }) => {
