@@ -354,9 +354,9 @@
 | C360-TC-350 | Verify performance during simultaneous widget rendering | §3.1 | customer-360-view.spec.ts | Partial | Performance SLA thresholds (ms) not specified in Excel |
 | C360-TC-351 | Verify prevention of unauthorized tab access | §3.1 | customer-360-view.spec.ts | Partial | Role credentials not defined in Excel test data |
 | C360-TC-352 | Verify prevention of direct URL manipulation | §3.1 | customer-360-view.spec.ts | Partial | Role credentials not defined in Excel test data |
-| C360-TC-353 | Verify masking persistence during export operations | §3.1 | customer-360-view.spec.ts | Automated | — |
-| C360-TC-354 | Verify prevention of sensitive data exposure in browser console | §3.1 | customer-360-view.spec.ts | Automated | — |
-| C360-TC-355 | Verify prevention of sensitive data exposure in page source | §3.1 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-353 | Verify masking persistence during export operations | §3.1 | customer-360-view.spec.ts | Partial | Role credentials not defined in Excel test data |
+| C360-TC-354 | Verify prevention of sensitive data exposure in browser console | §3.1 | customer-360-view.spec.ts | Partial | Role credentials not defined in Excel test data |
+| C360-TC-355 | Verify prevention of sensitive data exposure in page source | §3.1 | customer-360-view.spec.ts | Partial | Role credentials not defined in Excel test data |
 | C360-TC-356 | Verify readability of KPI cards within Customer 360 | §3.1 | customer-360-view.spec.ts | Automated | — |
 | C360-TC-357 | Verify readability of charts and graphs | §3.1 | customer-360-view.spec.ts | Automated | — |
 | C360-TC-358 | Verify consistency of action button placement | §3.1 | customer-360-view.spec.ts | Automated | — |
@@ -372,5 +372,17 @@
 | C360-TC-368 | Verify complete Customer 360 responsiveness across module | §3.1 | customer-360-view.spec.ts | Automated | — |
 | C360-TC-369 | Verify complete Customer 360 module under slow network conditions | §3.1 | customer-360-view.spec.ts | Automated | — |
 | C360-TC-370 | Verify enterprise-level end-to-end Customer 360 workflow stability | §3.1 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-371 | Verify Personal Details card field rendering for Corporate customer mode | §4.1 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-372 | Verify Onboarding and KYC dates display in Overview tab | §4.1 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-373 | Verify Contact Addresses card rendering and address formatting | §4.1 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-374 | Verify Recent Activity feed chronological ordering and icons | §4.1 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-375 | Verify Regulatory Status strip STR CTR and LEA indicators | §4.1 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-376 | Verify Filing Calendar empty state and View Calendar action | §4.9 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-377 | Verify MoA/AoA Update missing field row rendering and mandatory weight | §4.10 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-378 | Verify GSTIN Certificate missing field row rendering and description | §4.10 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-379 | Verify Board Resolution missing field row rendering and priority badge | §4.10 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-380 | Verify Watchlist Matches section rendering and match details | §4.3 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-381 | Verify CDD and EDD Triggers section visibility based on customer risk profile | §4.5 | customer-360-view.spec.ts | Automated | — |
+| C360-TC-382 | Verify cross-validation between Overview Regulatory Status and Reg Reports tab | §4.1 | customer-360-view.spec.ts | Automated | — |
 
-Total: 370 | Automated candidates: 359 | Blocked/partial: 11
+Total: 382 | Automated candidates: 368 | Blocked/partial: 14

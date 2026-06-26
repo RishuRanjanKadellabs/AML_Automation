@@ -1,0 +1,1123 @@
+{
+  "generatedAt": "2026-06-26T09:34:59.822Z",
+  "entries": [
+    {
+      "id": "3.1",
+      "title": "Layout Structure",
+      "module": "Customer 360 View",
+      "summary": "The Customer 360° View is a full-page application composed of the following layers from top to bottom: Layer Description Top Navigation Bar Application-level nav bar with Clari5 branding, breadcrumb, current customer name, and Export button. Customer Type Switcher Toggle between Individual and Non-Individual (Corporate) modes. Dynamically updates all panels. Customer Header Strip Key customer identifiers: avatar/initials, full name, UID, CIF, type tag, PEP/adverse media flags, risk score, CDD/ED",
+      "bullets": [
+        {
+          "text": "The Customer 360° View is a full-page application composed of the following layers from top to bottom: Layer Description Top Navigation Bar Application-level nav bar with Clari5 branding, breadcrumb, current customer name, and Export button",
+          "category": "navigation"
+        },
+        {
+          "text": "Customer Type Switcher Toggle between Individual and Non-Individual (Corporate) modes",
+          "category": "general"
+        },
+        {
+          "text": "Dynamically updates all panels",
+          "category": "general"
+        },
+        {
+          "text": "Customer Header Strip Key customer identifiers: avatar/initials, full name, UID, CIF, type tag, PEP/adverse media flags, risk score, CDD/EDD flag, dormant flag, high-risk country transactions, STR/CTR/LEA flags, active alert count, and identity document IDs",
+          "category": "field"
+        },
+        {
+          "text": "Tab Bar Horizontal tab strip with eleven tabs for navigating between data domains",
+          "category": "navigation"
+        },
+        {
+          "text": "Main Content Area Scrollable panel showing the active tab content",
+          "category": "navigation"
+        },
+        {
+          "text": "Bottom Hint Bar Displays module name and last updated timestamp",
+          "category": "audit"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "Customer Type",
+        "PEP",
+        "STR",
+        "CTR"
+      ]
+    },
+    {
+      "id": "3.2",
+      "title": "Customer Type Modes",
+      "module": "Customer 360 View",
+      "summary": "Individual mode Shows personal details, employment, address, family relationships, individual KYC fields, and individual transaction data. Non-Individual mode Shows company details, business segment, UBO/ownership structure, Power of Attorney, corporate KYC, and corporate transaction data. Mode switching Selecting a mode via the type switcher re-renders all dynamic content. The active tab remains unchanged; only the data changes. Default mode Individual mode is active on page load. 4.  Tab Defin",
+      "bullets": [
+        {
+          "text": "Individual mode Shows personal details, employment, address, family relationships, individual KYC fields, and individual transaction data",
+          "category": "field"
+        },
+        {
+          "text": "Non-Individual mode Shows company details, business segment, UBO/ownership structure, Power of Attorney, corporate KYC, and corporate transaction data",
+          "category": "field"
+        },
+        {
+          "text": "Mode switching Selecting a mode via the type switcher re-renders all dynamic content",
+          "category": "field"
+        },
+        {
+          "text": "The active tab remains unchanged",
+          "category": "navigation"
+        },
+        {
+          "text": "only the data changes",
+          "category": "general"
+        },
+        {
+          "text": "Default mode Individual mode is active on page load. 4",
+          "category": "general"
+        },
+        {
+          "text": "Tab Definitions The Customer 360° View contains eleven tabs accessible from the tab bar",
+          "category": "navigation"
+        },
+        {
+          "text": "Each tab is described below",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.1",
+      "title": "Overview Tab",
+      "module": "Customer 360 View",
+      "summary": "The Overview tab is the landing tab and provides a high-level summary of the customer's AML status. It contains the following sections:",
+      "bullets": [
+        {
+          "text": "The Overview tab is the landing tab and provides a high-level summary of the customer's AML status",
+          "category": "navigation"
+        },
+        {
+          "text": "It contains the following sections:",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.1.1",
+      "title": "KPI Tiles",
+      "module": "Customer 360 View",
+      "summary": "Six metric tiles are displayed in a grid at the top of the Overview tab: Tile Content Risk Profile Risk label (e.g., High Risk) and composite risk score out of 100. KYC Status Current KYC state (Verified / Pending / Expired) and next review date. Active Alerts Count of open alerts. Shows 'Action Required' if > 0. Total Accounts Count of active accounts held by the customer. Reg Reports Summary of regulatory filings (STR count, CTR flag). KYC Gap Score The customer's current KYC Gap Score (raw nu",
+      "bullets": [
+        {
+          "text": "Six metric tiles are displayed in a grid at the top of the Overview tab: Tile Content Risk Profile Risk label (e.g., High Risk) and composite risk score out of 100",
+          "category": "navigation"
+        },
+        {
+          "text": "KYC Status Current KYC state (Verified / Pending / Expired) and next review date",
+          "category": "rule"
+        },
+        {
+          "text": "Active Alerts Count of open alerts",
+          "category": "rule"
+        },
+        {
+          "text": "Shows 'Action Required' if > 0",
+          "category": "validation"
+        },
+        {
+          "text": "Total Accounts Count of active accounts held by the customer",
+          "category": "general"
+        },
+        {
+          "text": "Reg Reports Summary of regulatory filings (STR count, CTR flag)",
+          "category": "rule"
+        },
+        {
+          "text": "KYC Gap Score The customer's current KYC Gap Score (raw numeric sum of missing field weights), accompanied by a Priority badge (Low / Medium / High / Critical)",
+          "category": "field"
+        },
+        {
+          "text": "Clicking this tile navigates to the KYC Gap Report tab",
+          "category": "navigation"
+        },
+        {
+          "text": "The KYC Gap Score tile has a left colour border that matches the priority colour (green for Low, amber for Medium, red for High, dark red for Critical)",
+          "category": "rule"
+        },
+        {
+          "text": "It updates dynamically when the customer type is switched",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "KYC Status Current KYC state (Verified / Pending / Expired) and next review date",
+        "Active Alerts Count of open alerts",
+        "Shows 'Action Required' if > 0",
+        "Reg Reports Summary of regulatory filings (STR count, CTR flag)",
+        "The KYC Gap Score tile has a left colour border that matches the priority colour (green for Low, amber for Medium, red for High, dark red for Critical)"
+      ],
+      "fieldNames": [
+        "weights",
+        "KYC Status",
+        "STR",
+        "CTR"
+      ]
+    },
+    {
+      "id": "4.1.2",
+      "title": "Left Column — Customer Detail Cards",
+      "module": "Customer 360 View",
+      "summary": "Card Content Personal / Company Details For Individuals: name, alias, DoB, place of birth, mobile, email, gender, citizenship, resident status. For Corporate: company name, entity type, industry, incorporation date/country, registered address, phone, email. Employment & Segment For Individuals: occupation, employer, business segment, customer tags (HNI, PEP). For Corporate: business type, segment, annual turnover, employee count, customer tags (EDD, Listed). Onboarding & KYC Onboarding date, cha",
+      "bullets": [
+        {
+          "text": "Card Content Personal / Company Details For Individuals: name, alias, DoB, place of birth, mobile, email, gender, citizenship, resident status",
+          "category": "general"
+        },
+        {
+          "text": "For Corporate: company name, entity type, industry, incorporation date/country, registered address, phone, email",
+          "category": "rule"
+        },
+        {
+          "text": "Employment & Segment For Individuals: occupation, employer, business segment, customer tags (HNI, PEP)",
+          "category": "rule"
+        },
+        {
+          "text": "For Corporate: business type, segment, annual turnover, employee count, customer tags (EDD, Listed)",
+          "category": "general"
+        },
+        {
+          "text": "Onboarding & KYC Onboarding date, channel, FATCA status, FEMA status",
+          "category": "rule"
+        },
+        {
+          "text": "Contact Addresses For Individuals: primary and mailing address",
+          "category": "general"
+        },
+        {
+          "text": "For Corporate: registered office, operating office, correspondence address",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "For Corporate: company name, entity type, industry, incorporation date/country, registered address, phone, email",
+        "Employment & Segment For Individuals: occupation, employer, business segment, customer tags (HNI, PEP)",
+        "Onboarding & KYC Onboarding date, channel, FATCA status, FEMA status"
+      ],
+      "fieldNames": [
+        "PEP"
+      ]
+    },
+    {
+      "id": "4.1.3",
+      "title": "Right Column — Risk & Screening Cards",
+      "module": "Customer 360 View",
+      "summary": "Card Content Risk Profile A donut/ring chart showing category-wise risk contribution (Transactions, Depository, Account, KYC, Related Parties). Centre shows composite risk score and customer name. A colour-coded risk tag (e.g., High Risk) is shown in the card header. Key Relationships Table of related parties with their list match, sanction/screening context, and match percentage. Screening Matches Table of name matches against watchlists (OFAC SDN, UN Sanctions, etc.) with match scores.",
+      "bullets": [
+        {
+          "text": "Card Content Risk Profile A donut/ring chart showing category-wise risk contribution (Transactions, Depository, Account, KYC, Related Parties)",
+          "category": "field"
+        },
+        {
+          "text": "Centre shows composite risk score and customer name",
+          "category": "field"
+        },
+        {
+          "text": "A colour-coded risk tag (e.g., High Risk) is shown in the card header",
+          "category": "field"
+        },
+        {
+          "text": "Key Relationships Table of related parties with their list match, sanction/screening context, and match percentage",
+          "category": "navigation"
+        },
+        {
+          "text": "Screening Matches Table of name matches against watchlists (OFAC SDN, UN Sanctions, etc.) with match scores",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.1.4",
+      "title": "Transaction Metrics Card",
+      "module": "Customer 360 View",
+      "summary": "A full-width card displaying: Avg Daily, Avg Monthly, Total YTD transaction counts and values. Cash vs Non-Cash ratio with horizontal progress bar. Domestic vs Cross-Border ratio with horizontal progress bar. Top Activity: Top 5 transaction counterparties by volume. Unusual Patterns: List of triggered and non-triggered pattern flags with links to related alerts. High Risk Corridor: Identified geographic corridors of concern.",
+      "bullets": [
+        {
+          "text": "A full-width card displaying: Avg Daily, Avg Monthly, Total YTD transaction counts and values",
+          "category": "field"
+        },
+        {
+          "text": "Cash vs Non-Cash ratio with horizontal progress bar",
+          "category": "general"
+        },
+        {
+          "text": "Domestic vs Cross-Border ratio with horizontal progress bar",
+          "category": "general"
+        },
+        {
+          "text": "Top Activity: Top 5 transaction counterparties by volume",
+          "category": "general"
+        },
+        {
+          "text": "Unusual Patterns: List of triggered and non-triggered pattern flags with links to related alerts",
+          "category": "navigation"
+        },
+        {
+          "text": "High Risk Corridor: Identified geographic corridors of concern",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "High Risk Corridor: Identified geographic corridors of concern"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "4.1.5",
+      "title": "Bottom Row Cards",
+      "module": "Customer 360 View",
+      "summary": "Recent Activity Timeline of recent compliance-relevant events (risk downgrades, address updates, match dispositions). Shows event, description, date, and responsible user. Regulatory Status Table showing STR Filed, CTR Filed, Account Frozen, and LEA Requests with Yes/No status.",
+      "bullets": [
+        {
+          "text": "Recent Activity Timeline of recent compliance-relevant events (risk downgrades, address updates, match dispositions)",
+          "category": "rule"
+        },
+        {
+          "text": "Shows event, description, date, and responsible user",
+          "category": "field"
+        },
+        {
+          "text": "Regulatory Status Table showing STR Filed, CTR Filed, Account Frozen, and LEA Requests with Yes/No status",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [
+        "Recent Activity Timeline of recent compliance-relevant events (risk downgrades, address updates, match dispositions)"
+      ],
+      "fieldNames": [
+        "STR",
+        "CTR"
+      ]
+    },
+    {
+      "id": "4.2",
+      "title": "Relationships Tab",
+      "module": "Customer 360 View",
+      "summary": "Displays the customer's connected parties and associated risk indicators. Individual — Family Members Name, relation type, date of birth, KYC verification status. Individual — Joint Account Holders Name, account number (linked), relation, KYC status. Corporate — UBO Details Full table of ultimate beneficial owners: name, designation, nationality, DIN/ID, DoB, PAN, PEP flag, sanctions match, ownership percentage. Includes graphical link analysis shortcut. Corporate — Power of Attorney Account num",
+      "bullets": [
+        {
+          "text": "Displays the customer's connected parties and associated risk indicators",
+          "category": "field"
+        },
+        {
+          "text": "Individual — Family Members Name, relation type, date of birth, KYC verification status",
+          "category": "rule"
+        },
+        {
+          "text": "Individual — Joint Account Holders Name, account number (linked), relation, KYC status",
+          "category": "navigation"
+        },
+        {
+          "text": "Corporate — UBO Details Full table of ultimate beneficial owners: name, designation, nationality, DIN/ID, DoB, PAN, PEP flag, sanctions match, ownership percentage",
+          "category": "navigation"
+        },
+        {
+          "text": "Includes graphical link analysis shortcut",
+          "category": "navigation"
+        },
+        {
+          "text": "Corporate — Power of Attorney Account number, authorised person name, scope, and expiry date",
+          "category": "general"
+        },
+        {
+          "text": "PEP Match Banner Displayed for any customer with a PEP match in their relationship network",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "Individual — Family Members Name, relation type, date of birth, KYC verification status"
+      ],
+      "fieldNames": [
+        "PEP"
+      ]
+    },
+    {
+      "id": "4.3",
+      "title": "Screening Tab",
+      "module": "Customer 360 View",
+      "summary": "Displays the results of automated sanctions, PEP, and adverse media screening. Screening Header Overall screening status (Flagged / Clear), last screening date, auto-refresh toggle, and Re-screen button. Sanctions Screening Matches against OFAC, SDN, UN, and other watchlists. Each match shows name, list, match score, and expandable detail. PEP Screening PEP matches with list source, jurisdiction, political role, and relationship type (direct/indirect). Adverse Media Flagged news items with sourc",
+      "bullets": [
+        {
+          "text": "Displays the results of automated sanctions, PEP, and adverse media screening",
+          "category": "field"
+        },
+        {
+          "text": "Screening Header Overall screening status (Flagged / Clear), last screening date, auto-refresh toggle, and Re-screen button",
+          "category": "field"
+        },
+        {
+          "text": "Sanctions Screening Matches against OFAC, SDN, UN, and other watchlists",
+          "category": "rule"
+        },
+        {
+          "text": "Each match shows name, list, match score, and expandable detail",
+          "category": "field"
+        },
+        {
+          "text": "PEP Screening PEP matches with list source, jurisdiction, political role, and relationship type (direct/indirect)",
+          "category": "rule"
+        },
+        {
+          "text": "Adverse Media Flagged news items with source, headline snippet, date, and risk classification",
+          "category": "rule"
+        },
+        {
+          "text": "Screening History Chronological log of all screening runs with date, triggered by (auto/manual), result, and status",
+          "category": "audit"
+        }
+      ],
+      "businessRules": [
+        "Sanctions Screening Matches against OFAC, SDN, UN, and other watchlists",
+        "PEP Screening PEP matches with list source, jurisdiction, political role, and relationship type (direct/indirect)",
+        "Adverse Media Flagged news items with source, headline snippet, date, and risk classification"
+      ],
+      "fieldNames": [
+        "PEP"
+      ]
+    },
+    {
+      "id": "4.4",
+      "title": "Risk Tab",
+      "module": "Customer 360 View",
+      "summary": "Displays the detailed AML risk assessment for the customer. Risk Summary Overall risk score with a visual gauge. Composite score broken down by: Transaction Risk, Depository Risk, Account Risk, KYC Risk, Related Parties Risk. Risk Factor Table Each contributing risk factor listed with its individual score, weight, and High/Medium/Low classification badge. Override Banner Displayed when a manual risk score override is active. Shows override reason, overriding officer, and effective date. Risk Sco",
+      "bullets": [
+        {
+          "text": "Displays the detailed AML risk assessment for the customer",
+          "category": "field"
+        },
+        {
+          "text": "Risk Summary Overall risk score with a visual gauge",
+          "category": "rule"
+        },
+        {
+          "text": "Composite score broken down by: Transaction Risk, Depository Risk, Account Risk, KYC Risk, Related Parties Risk",
+          "category": "rule"
+        },
+        {
+          "text": "Risk Factor Table Each contributing risk factor listed with its individual score, weight, and High/Medium/Low classification badge",
+          "category": "navigation"
+        },
+        {
+          "text": "Override Banner Displayed when a manual risk score override is active",
+          "category": "field"
+        },
+        {
+          "text": "Shows override reason, overriding officer, and effective date",
+          "category": "field"
+        },
+        {
+          "text": "Risk Score History Line chart or timeline showing risk score changes over the past 12 months with event annotations",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "Risk Summary Overall risk score with a visual gauge",
+        "Composite score broken down by: Transaction Risk, Depository Risk, Account Risk, KYC Risk, Related Parties Risk"
+      ],
+      "fieldNames": [
+        "Risk Score"
+      ]
+    },
+    {
+      "id": "4.5",
+      "title": "KYC / CDD Tab",
+      "module": "Customer 360 View",
+      "summary": "Displays the full KYC file for the customer including submitted documents and CDD/EDD status. KYC Summary Bar KYC level (SDD/CDD/EDD), overall KYC status, last review date, and next review date. Identity Documents List of submitted identity documents with document type, reference number, expiry date, and verification status (Verified/Pending/Expired). Financial Profile Docs Source of Funds, Source of Wealth, bank statements, and tax return documents with submission date and status. EDD-specific ",
+      "bullets": [
+        {
+          "text": "Displays the full KYC file for the customer including submitted documents and CDD/EDD status",
+          "category": "field"
+        },
+        {
+          "text": "KYC Summary Bar KYC level (SDD/CDD/EDD), overall KYC status, last review date, and next review date",
+          "category": "rule"
+        },
+        {
+          "text": "Identity Documents List of submitted identity documents with document type, reference number, expiry date, and verification status (Verified/Pending/Expired)",
+          "category": "general"
+        },
+        {
+          "text": "Financial Profile Docs Source of Funds, Source of Wealth, bank statements, and tax return documents with submission date and status",
+          "category": "general"
+        },
+        {
+          "text": "EDD-specific fields Enhanced ID verification, adverse media report, site visit record, annual EDD review — shown only when customer is EDD-level",
+          "category": "field"
+        },
+        {
+          "text": "CDD Level Indicator Displays current CDD level",
+          "category": "field"
+        },
+        {
+          "text": "Highlighted in red for EDD customers",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "KYC Summary Bar KYC level (SDD/CDD/EDD), overall KYC status, last review date, and next review date"
+      ],
+      "fieldNames": [
+        "CDD Level"
+      ]
+    },
+    {
+      "id": "4.6",
+      "title": "Accounts Tab",
+      "module": "Customer 360 View",
+      "summary": "Lists all accounts held by the customer across all products. Product filter pills Filter accounts by product type (Savings, Current, Investment, Loan, etc.) Account table Account number (linked), product type, account status (Active/Dormant), opening date, currency, current balance, and last transaction date. Dormant accounts Highlighted with a distinct status pill; trigger for additional compliance review.",
+      "bullets": [
+        {
+          "text": "Lists all accounts held by the customer across all products",
+          "category": "general"
+        },
+        {
+          "text": "Product filter pills Filter accounts by product type (Savings, Current, Investment, Loan, etc.) Account table Account number (linked), product type, account status (Active/Dormant), opening date, currency, current balance, and last transaction date",
+          "category": "navigation"
+        },
+        {
+          "text": "Dormant accounts Highlighted with a distinct status pill",
+          "category": "general"
+        },
+        {
+          "text": "trigger for additional compliance review",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.7",
+      "title": "Transactions Tab",
+      "module": "Customer 360 View",
+      "summary": "Shows the customer's transaction history with AML-relevant filters and analytics. Date range filter Filter transactions by date range. Transaction type filter Credit / Debit / All. Transaction table Date, description, counterparty, amount, currency, channel (branch/online/ATM), and alert flag (if any). Alert-linked rows Transactions linked to open alerts are highlighted and include a link to the alert record. Export Transactions can be exported for further analysis.",
+      "bullets": [
+        {
+          "text": "Shows the customer's transaction history with AML-relevant filters and analytics",
+          "category": "field"
+        },
+        {
+          "text": "Date range filter Filter transactions by date range",
+          "category": "general"
+        },
+        {
+          "text": "Transaction type filter Credit / Debit / All",
+          "category": "general"
+        },
+        {
+          "text": "Transaction table Date, description, counterparty, amount, currency, channel (branch/online/ATM), and alert flag (if any)",
+          "category": "navigation"
+        },
+        {
+          "text": "Alert-linked rows Transactions linked to open alerts are highlighted and include a link to the alert record",
+          "category": "navigation"
+        },
+        {
+          "text": "Export Transactions can be exported for further analysis",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.8",
+      "title": "Alerts Tab",
+      "module": "Customer 360 View",
+      "summary": "Displays all AML alerts generated for the customer. Section Content Alert Summary Bar Total alerts, active alerts (awaiting action), escalated count, and pending response count. Alert Table Alert ID, type, scenario name, severity (Critical/High/Medium/Low), status (Open/In Progress/Closed), creation date, last updated, and assigned analyst. Alert Detail (expand) Detailed view of the alert: triggering transactions, match criteria, analyst notes, and disposition history. Active count badge The cou",
+      "bullets": [
+        {
+          "text": "Displays all AML alerts generated for the customer",
+          "category": "field"
+        },
+        {
+          "text": "Section Content Alert Summary Bar Total alerts, active alerts (awaiting action), escalated count, and pending response count",
+          "category": "rule"
+        },
+        {
+          "text": "Alert Table Alert ID, type, scenario name, severity (Critical/High/Medium/Low), status (Open/In Progress/Closed), creation date, last updated, and assigned analyst",
+          "category": "navigation"
+        },
+        {
+          "text": "Alert Detail (expand) Detailed view of the alert: triggering transactions, match criteria, analyst notes, and disposition history",
+          "category": "rule"
+        },
+        {
+          "text": "Active count badge The count displayed in the header strip is the count of Open alerts only",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "Section Content Alert Summary Bar Total alerts, active alerts (awaiting action), escalated count, and pending response count",
+        "Alert Detail (expand) Detailed view of the alert: triggering transactions, match criteria, analyst notes, and disposition history"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "4.9",
+      "title": "Regulatory Reports Tab",
+      "module": "Customer 360 View",
+      "summary": "Displays all regulatory filings associated with the customer. STR/SAR filings Report reference, filing date, jurisdiction, status, and link to full report. CTR filings Currency transaction report reference, transaction date, amount, and filing status. LEA requests Law enforcement request ID, requesting agency, date received, status, and response deadline. Filing status badges Filed, Pending, Draft, Rejected — colour-coded.",
+      "bullets": [
+        {
+          "text": "Displays all regulatory filings associated with the customer",
+          "category": "field"
+        },
+        {
+          "text": "STR/SAR filings Report reference, filing date, jurisdiction, status, and link to full report",
+          "category": "navigation"
+        },
+        {
+          "text": "CTR filings Currency transaction report reference, transaction date, amount, and filing status",
+          "category": "rule"
+        },
+        {
+          "text": "LEA requests Law enforcement request ID, requesting agency, date received, status, and response deadline",
+          "category": "general"
+        },
+        {
+          "text": "Filing status badges Filed, Pending, Draft, Rejected — colour-coded",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "CTR filings Currency transaction report reference, transaction date, amount, and filing status"
+      ],
+      "fieldNames": [
+        "STR",
+        "SAR",
+        "CTR"
+      ]
+    },
+    {
+      "id": "4.10",
+      "title": "KYC Gap Report Tab",
+      "module": "Customer 360 View",
+      "summary": "The KYC Gap Report tab is a customer-level view of the KYC Gap data sourced from the Missing Mandatory Data Template module. It shows all missing fields and the computed gap score for this specific customer.",
+      "bullets": [
+        {
+          "text": "The KYC Gap Report tab is a customer-level view of the KYC Gap data sourced from the Missing Mandatory Data Template module",
+          "category": "navigation"
+        },
+        {
+          "text": "It shows all missing fields and the computed gap score for this specific customer",
+          "category": "field"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.10.1",
+      "title": "Header Bar",
+      "module": "Customer 360 View",
+      "summary": "Title \"KYC Gap Report\" with subtitle: \"Missing or expired KYC fields — CBS & DMS import vs. template requirements\" Export button Exports this customer's gap data.",
+      "bullets": [
+        {
+          "text": "Title \"KYC Gap Report\" with subtitle: \"Missing or expired KYC fields — CBS & DMS import vs. template requirements\" Export button Exports this customer's gap data",
+          "category": "field"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.10.2",
+      "title": "KPI Summary Strip (3 cards)",
+      "module": "Customer 360 View",
+      "summary": "Card Content KYC Gap Score Raw numeric gap score with colour-coded risk label (Low/Medium/High/Critical). Missing Fields Count of missing fields with a note on which sections they span (CIP / CDD). Template Applied Name of the template assigned to this customer, plus Branch Name and Branch Code.",
+      "bullets": [
+        {
+          "text": "Card Content KYC Gap Score Raw numeric gap score with colour-coded risk label (Low/Medium/High/Critical)",
+          "category": "field"
+        },
+        {
+          "text": "Missing Fields Count of missing fields with a note on which sections they span (CIP / CDD)",
+          "category": "field"
+        },
+        {
+          "text": "Template Applied Name of the template assigned to this customer, plus Branch Name and Branch Code",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.10.3",
+      "title": "Missing Fields Detail Card",
+      "module": "Customer 360 View",
+      "summary": "Each missing field is displayed as a row with: Field name and description. Requirement type (Mandatory / Optional) with weight (3 or 1). A left border colour indicating severity (red = Mandatory, amber = Optional). At the bottom of the card a Score Summary row shows the Total KYC Gap Score = sum of all missing field weights, with the corresponding risk label. The Gap Type badge (CIP / CDD / EDD) is shown in the card header alongside the section title.",
+      "bullets": [
+        {
+          "text": "Each missing field is displayed as a row with: Field name and description",
+          "category": "field"
+        },
+        {
+          "text": "Requirement type (Mandatory / Optional) with weight (3 or 1)",
+          "category": "validation"
+        },
+        {
+          "text": "A left border colour indicating severity (red = Mandatory, amber = Optional)",
+          "category": "validation"
+        },
+        {
+          "text": "At the bottom of the card a Score Summary row shows the Total KYC Gap Score = sum of all missing field weights, with the corresponding risk label",
+          "category": "field"
+        },
+        {
+          "text": "The Gap Type badge (CIP / CDD / EDD) is shown in the card header alongside the section title",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "Requirement type (Mandatory / Optional) with weight (3 or 1)",
+        "A left border colour indicating severity (red = Mandatory, amber = Optional)"
+      ],
+      "fieldNames": [
+        "is displayed as a row with",
+        "name and description",
+        "weights"
+      ]
+    },
+    {
+      "id": "4.10.4",
+      "title": "Business Rules",
+      "module": "Customer 360 View",
+      "summary": "The KYC Gap Score is always a raw integer sum of missing field weights — never a percentage. This tab shows the gap data for the specific customer being viewed. It is not a report across all customers. If the customer has no KYC gaps, this tab displays an empty state with a 'No active gaps' message.",
+      "bullets": [
+        {
+          "text": "The KYC Gap Score is always a raw integer sum of missing field weights — never a percentage",
+          "category": "field"
+        },
+        {
+          "text": "This tab shows the gap data for the specific customer being viewed",
+          "category": "navigation"
+        },
+        {
+          "text": "It is not a report across all customers",
+          "category": "general"
+        },
+        {
+          "text": "If the customer has no KYC gaps, this tab displays an empty state with a 'No active gaps' message",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "weights"
+      ]
+    },
+    {
+      "id": "4.11",
+      "title": "Audit Tab",
+      "module": "Customer 360 View",
+      "summary": "Displays a full chronological audit trail of all compliance-relevant actions taken on or for this customer record. Log ID Category Action / Details User Timestamp LOG-001 Risk Risk Rating Downgrade — from High to Medium after clear screening. System (Auto) 05 Jan 2026 LOG-002 KYC Address Update — residential address updated via proof of residence. Sarah Jenkins 04 Jan 2026 LOG-003 Screening Match False Positive — John D. Doe marked as False Positive. Mike Ross 03 Jan 2026 LOG-004 Product Credit ",
+      "bullets": [
+        {
+          "text": "Displays a full chronological audit trail of all compliance-relevant actions taken on or for this customer record",
+          "category": "audit"
+        },
+        {
+          "text": "Log ID Category Action / Details User Timestamp LOG-001 Risk Risk Rating Downgrade — from High to Medium after clear screening",
+          "category": "audit"
+        },
+        {
+          "text": "System (Auto) 05 Jan 2026 LOG-002 KYC Address Update — residential address updated via proof of residence",
+          "category": "audit"
+        },
+        {
+          "text": "Sarah Jenkins 04 Jan 2026 LOG-003 Screening Match False Positive — John D",
+          "category": "audit"
+        },
+        {
+          "text": "Doe marked as False Positive",
+          "category": "general"
+        },
+        {
+          "text": "Mike Ross 03 Jan 2026 LOG-004 Product Credit Limit Increase — based on usage profile",
+          "category": "audit"
+        },
+        {
+          "text": "System 02 Jan 2026 LOG-005 KYC Document Verified — passport verification successful",
+          "category": "audit"
+        },
+        {
+          "text": "System 01 Jan 2026 LOG-006 Alert Alert Escalated — ALT-655 escalated to compliance team",
+          "category": "audit"
+        },
+        {
+          "text": "James Patel 28 Dec 2025 The audit log captures all actions across all tabs",
+          "category": "audit"
+        },
+        {
+          "text": "It cannot be edited or deleted",
+          "category": "general"
+        },
+        {
+          "text": "Actions are categorised as: Risk, KYC, Screening, Alert, Product, Regulatory. 5",
+          "category": "rule"
+        },
+        {
+          "text": "Customer Header Strip — Field Reference The customer header strip is persistent across all tabs and always shows the following fields:",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [
+        "Actions are categorised as: Risk, KYC, Screening, Alert, Product, Regulatory. 5"
+      ],
+      "fieldNames": [
+        "Reference The customer header strip is pe",
+        "STR"
+      ]
+    },
+    {
+      "id": "5.1",
+      "title": "Individual Customer Header",
+      "module": "Customer 360 View",
+      "summary": "Field Description Avatar / Initials Two-letter initials on a blue circular badge. Full Name Customer legal name. UID Unique universal customer ID. CIF Core Banking CIF number. Type tag Individual label tag. PEP Match YES or NO — links to screening results. Adverse Media YES or NO — links to screening results. Risk Score Colour-coded badge: red = high, amber = medium, green = low. CDD/EDD flag YES if the customer is subject to enhanced due diligence. Dormant flag YES if the customer has no recent",
+      "bullets": [
+        {
+          "text": "Field Description Avatar / Initials Two-letter initials on a blue circular badge",
+          "category": "field"
+        },
+        {
+          "text": "Full Name Customer legal name",
+          "category": "general"
+        },
+        {
+          "text": "UID Unique universal customer ID",
+          "category": "general"
+        },
+        {
+          "text": "CIF Core Banking CIF number",
+          "category": "general"
+        },
+        {
+          "text": "Type tag Individual label tag",
+          "category": "field"
+        },
+        {
+          "text": "PEP Match YES or NO — links to screening results",
+          "category": "navigation"
+        },
+        {
+          "text": "Adverse Media YES or NO — links to screening results",
+          "category": "navigation"
+        },
+        {
+          "text": "Risk Score Colour-coded badge: red = high, amber = medium, green = low",
+          "category": "field"
+        },
+        {
+          "text": "CDD/EDD flag YES if the customer is subject to enhanced due diligence",
+          "category": "general"
+        },
+        {
+          "text": "Dormant flag YES if the customer has no recent account activity",
+          "category": "general"
+        },
+        {
+          "text": "High-Risk Country Txns Tags for each high-risk country where transactions have occurred",
+          "category": "rule"
+        },
+        {
+          "text": "STR/SAR flag YES or NO",
+          "category": "rule"
+        },
+        {
+          "text": "CTR flag YES or NO",
+          "category": "rule"
+        },
+        {
+          "text": "LEA Requests flag YES or NO",
+          "category": "general"
+        },
+        {
+          "text": "Active Alerts count Count of open alerts — colour-coded badge",
+          "category": "field"
+        },
+        {
+          "text": "Identity IDs (row 2) Aadhaar, Passport, Date of Birth, PAN — shown as ID tag pills",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "High-Risk Country Txns Tags for each high-risk country where transactions have occurred",
+        "STR/SAR flag YES or NO",
+        "CTR flag YES or NO"
+      ],
+      "fieldNames": [
+        "Description Avatar / Initials Two-letter",
+        "tag",
+        "PEP",
+        "Risk Score",
+        "STR",
+        "SAR",
+        "CTR"
+      ]
+    },
+    {
+      "id": "5.2",
+      "title": "Non-Individual Customer Header",
+      "module": "Customer 360 View",
+      "summary": "Field Description Avatar / Initials Two-letter initials on a green square badge. Company Name Legal entity name. UID / CIF Same as Individual. Type tag Corporate label. PEP Match YES (director or UBO is PEP) — highlighted in orange if YES. Adverse Media YES/NO — orange if YES. Risk Score Same as Individual. CDD/EDD flag Orange tag if YES, indicating EDD is in effect. Dormant flag YES or NO. High-Risk Country Txns Country tags — orange if flagged. STR/SAR / CTR / LEA Orange tags if YES. Active Al",
+      "bullets": [
+        {
+          "text": "Field Description Avatar / Initials Two-letter initials on a green square badge",
+          "category": "field"
+        },
+        {
+          "text": "Company Name Legal entity name",
+          "category": "general"
+        },
+        {
+          "text": "UID / CIF Same as Individual",
+          "category": "general"
+        },
+        {
+          "text": "Type tag Corporate label",
+          "category": "field"
+        },
+        {
+          "text": "PEP Match YES (director or UBO is PEP) — highlighted in orange if YES",
+          "category": "rule"
+        },
+        {
+          "text": "Adverse Media YES/NO — orange if YES",
+          "category": "general"
+        },
+        {
+          "text": "Risk Score Same as Individual",
+          "category": "rule"
+        },
+        {
+          "text": "CDD/EDD flag Orange tag if YES, indicating EDD is in effect",
+          "category": "general"
+        },
+        {
+          "text": "Dormant flag YES or NO",
+          "category": "general"
+        },
+        {
+          "text": "High-Risk Country Txns Country tags — orange if flagged",
+          "category": "rule"
+        },
+        {
+          "text": "STR/SAR / CTR / LEA Orange tags if YES",
+          "category": "rule"
+        },
+        {
+          "text": "Active Alerts count Red badge if > 0",
+          "category": "field"
+        },
+        {
+          "text": "Identity IDs (row 2) CIN, GSTIN, Incorporation Date, PAN, LEI — ID tag pills. 6",
+          "category": "general"
+        },
+        {
+          "text": "Dynamic Customer Type Switching When a user switches between Individual and Non-Individual mode, the following elements update dynamically without a page reload: Customer header strip (avatar, name, UID, CIF, tags, IDs)",
+          "category": "field"
+        },
+        {
+          "text": "All KPI tile values (risk score, KYC status, alerts, accounts, reg reports, KYC Gap Score)",
+          "category": "rule"
+        },
+        {
+          "text": "Risk wheel score, colour, and label",
+          "category": "field"
+        },
+        {
+          "text": "All detail cards: Personal/Company Details, Employment/Business Segment, Onboarding, Address",
+          "category": "general"
+        },
+        {
+          "text": "KYC CDD level indicator",
+          "category": "rule"
+        },
+        {
+          "text": "Regulatory status row values (STR, CTR, LEA)",
+          "category": "rule"
+        },
+        {
+          "text": "Active alert count badge",
+          "category": "field"
+        },
+        {
+          "text": "Relationships tab content (Individual shows family",
+          "category": "navigation"
+        },
+        {
+          "text": "Corporate shows UBO/PoA)",
+          "category": "field"
+        },
+        {
+          "text": "KYC Gap Score tile: score, priority badge, and border colour",
+          "category": "field"
+        },
+        {
+          "text": "The active tab is preserved when switching customer type",
+          "category": "navigation"
+        },
+        {
+          "text": "Data is loaded from an in-memory data object (indData / niData) keyed to each mode. 7",
+          "category": "general"
+        },
+        {
+          "text": "Data Model Summary",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "PEP Match YES (director or UBO is PEP) — highlighted in orange if YES",
+        "Risk Score Same as Individual",
+        "High-Risk Country Txns Country tags — orange if flagged",
+        "STR/SAR / CTR / LEA Orange tags if YES",
+        "All KPI tile values (risk score, KYC status, alerts, accounts, reg reports, KYC Gap Score)",
+        "KYC CDD level indicator",
+        "Regulatory status row values (STR, CTR, LEA)"
+      ],
+      "fieldNames": [
+        "Description Avatar / Initials Two-letter",
+        "PEP",
+        "Risk Score",
+        "STR",
+        "SAR",
+        "CTR",
+        "Customer Type"
+      ]
+    },
+    {
+      "id": "7.1",
+      "title": "Individual Customer Data Object",
+      "module": "Customer 360 View",
+      "summary": "Field Type Description avatar String 2-char initials for avatar display. name String Customer full name. riskScore String/Integer Composite risk score (0–100). riskLabel String Risk category label (e.g., High Risk). riskColor Hex colour Display colour for risk score. kycVal String KYC status (Verified/Pending/Expired). kycColor Hex colour Colour for KYC status display. kycSub String Next KYC review date. alertsVal String/Integer Number of active alerts. accountsVal String/Integer Number of activ",
+      "bullets": [
+        {
+          "text": "Field Type Description avatar String 2-char initials for avatar display. name String Customer full name. riskScore String/Integer Composite risk score (0–100). riskLabel String Risk category label (e.g., High Risk). riskColor Hex colour Display colour for risk score. kycVal String KYC status (Verified/Pending/Expired). kycColor Hex colour Colour for KYC status display. kycSub String Next KYC review date. alertsVal String/Integer Number of active alerts. accountsVal String/Integer Number of active accounts. regVal String Summary of regulatory filings. gapScore Integer KYC Gap Score (sum of missing field weights). gapPriority Enum Low | Medium | High | Critical gapPriorityColor Hex colour Colour for gap priority display. gapPriorityBg Hex colour Background colour for gap priority badge. gapFields String Short description of missing fields count. kycCddLevel String KYC level label (Standard / Enhanced (EDD) / Simplified)",
+          "category": "field"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "Type Description avatar String 2-char ini",
+        "String Risk category label",
+        "colour for risk score",
+        "weights"
+      ]
+    },
+    {
+      "id": "7.2",
+      "title": "KYC Gap Record (Customer-level)",
+      "module": "Customer 360 View",
+      "summary": "gapScore Integer. Sum of all missing field weights. priority Enum: Low | Medium | High | Critical. Derived from template score bands. missing[] Array of missing field names. missingWeights[] Parallel array of weights (3 or 1) for each missing field. gapType Enum: CIP | CDD | EDD — the highest gap level. template Template name applied to this customer. branchCode Branch code (e.g., BLR06). 8.  Non-Functional Requirements Category Requirement Performance The Customer 360° view must load the initia",
+      "bullets": [
+        {
+          "text": "gapScore Integer",
+          "category": "rule"
+        },
+        {
+          "text": "Sum of all missing field weights. priority Enum: Low | Medium | High | Critical",
+          "category": "field"
+        },
+        {
+          "text": "Derived from template score bands. missing[] Array of missing field names. missingWeights[] Parallel array of weights (3 or 1) for each missing field. gapType Enum: CIP | CDD | EDD — the highest gap level. template Template name applied to this customer. branchCode Branch code (e.g., BLR06). 8",
+          "category": "field"
+        },
+        {
+          "text": "Non-Functional Requirements Category Requirement Performance The Customer 360° view must load the initial overview tab within 2 seconds",
+          "category": "navigation"
+        },
+        {
+          "text": "Subsequent tab switches must complete within 500ms",
+          "category": "navigation"
+        },
+        {
+          "text": "Responsiveness All tab content must be readable on screen widths of 1280px and above without horizontal scrolling",
+          "category": "navigation"
+        },
+        {
+          "text": "Security Only authenticated users with the Compliance Analyst or above role may access the Customer 360° view",
+          "category": "general"
+        },
+        {
+          "text": "Sensitive fields (PAN, Aadhaar, account numbers) are masked by default and require explicit reveal",
+          "category": "field"
+        },
+        {
+          "text": "Accessibility All interactive elements must be keyboard navigable",
+          "category": "validation"
+        },
+        {
+          "text": "Colour-coded badges must also convey meaning through text labels (not colour alone)",
+          "category": "validation"
+        },
+        {
+          "text": "Auditability Any action taken from within the Customer 360° view (e.g., marking a screening match as FP, uploading a document) must be recorded in the Audit tab",
+          "category": "audit"
+        },
+        {
+          "text": "Data freshness KYC Gap Score is computed on page load from the latest available data",
+          "category": "rule"
+        },
+        {
+          "text": "Print / Export The Export button in the top nav generates a PDF snapshot of the currently visible tab content, with the customer header strip included. 9",
+          "category": "navigation"
+        },
+        {
+          "text": "Open Items & Assumptions # Item Description Owner 1 Risk score components Confirm exact weights for each risk category (Transaction, Depository, Account, KYC, Related Parties) in the composite score. 2 Masking rules Define which fields are masked by default for each user role (Analyst vs",
+          "category": "field"
+        },
+        {
+          "text": "Supervisor vs",
+          "category": "general"
+        },
+        {
+          "text": "Auditor). 3 Real-time data Confirm which data domains are real-time vs. batched (e.g., screening results vs. transaction aggregates). 4 Multi-currency accounts Define how multi-currency account balances are displayed and whether conversion is applied. 5 Alert escalation rules Confirm whether escalation of alerts from this screen is in scope for v1.0. 10",
+          "category": "audit"
+        },
+        {
+          "text": "Revision History Version Date Author Changes v1.0 May 2026 Product Team Initial draft",
+          "category": "general"
+        },
+        {
+          "text": "Covers all eleven tabs including KYC Gap Report tab, KYC Gap Score tile in Overview, dynamic customer type switching, data model, and non-functional requirements. v1.1 May 2026 Product Team KYC Gap Report tab update: removed Gap Assessment Date from header, Days Open KPI card, Upload buttons from missing field rows, and Gap Activity Log card",
+          "category": "audit"
+        },
+        {
+          "text": "KPI strip reduced from 4 to 3 cards",
+          "category": "rule"
+        },
+        {
+          "text": "Data model and glossary updated accordingly",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "gapScore Integer",
+        "Accessibility All interactive elements must be keyboard navigable",
+        "Colour-coded badges must also convey meaning through text labels (not colour alone)",
+        "Data freshness KYC Gap Score is computed on page load from the latest available data",
+        "KPI strip reduced from 4 to 3 cards"
+      ],
+      "fieldNames": [
+        "weights",
+        "names",
+        "rows"
+      ]
+    }
+  ]
+}

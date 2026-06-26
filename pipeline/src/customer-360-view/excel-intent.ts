@@ -64,8 +64,20 @@ function rowContext(row: C360ExcelRow): string {
   return `${row.subModule} ${row.taskDescription} ${row.testSteps} ${row.acceptanceCriteria} ${row.expectedResult} ${row.preconditions} ${row.testData}`.toLowerCase();
 }
 
-function rowMatches(row: C360ExcelRow, ...patterns: string[]): boolean {
-  const ctx = rowContext(row);
+/**
+ * Scenario context deliberately EXCLUDES the verbose "expectedResult" /
+ * "acceptanceCriteria" validation boilerplate, which contains generic phrases
+ * (e.g. "no unauthorized data exposure occurs", "loading indicators appear")
+ * for every row. Using those for precondition/assertion selection would make
+ * every test simultaneously a happy-path, an unauthorized, and an error test.
+ * Selection must be driven by the actual scenario instead.
+ */
+function scenarioContext(row: C360ExcelRow): string {
+  return `${row.subModule} ${row.taskDescription} ${row.testSteps} ${row.preconditions} ${row.testData}`.toLowerCase();
+}
+
+function scenarioMatches(row: C360ExcelRow, ...patterns: string[]): boolean {
+  const ctx = scenarioContext(row);
   return patterns.some((p) => ctx.includes(p.toLowerCase()));
 }
 
@@ -112,10 +124,14 @@ function resolveTabFromStep(step: string): string | null {
 }
 
 function switchTypeFromRow(row: C360ExcelRow): "individual" | "corporate" {
-  const ids = extractAllCustomerIds(row.testData);
-  if (ids.some((id) => id.startsWith("CORP"))) return "corporate";
-  if (row.testData.toLowerCase().includes("corporate")) return "corporate";
+  const ctx = rowContext(row);
+  if (/corporate|non-individual|kumar global|traders/i.test(ctx)) return "corporate";
   return "individual";
+}
+
+function openProfileAction(row: C360ExcelRow): string {
+  const customerId = customerIdForRow(row);
+  return `await c360Page.openCustomerProfile('${escapeStr(customerId)}')`;
 }
 
 function normalizeStepOrder(steps: string[]): string[] {
@@ -127,12 +143,30 @@ function normalizeStepOrder(steps: string[]): string[] {
   return steps;
 }
 
+function isNegativeAccessScenario(row: C360ExcelRow): boolean {
+  return scenarioMatches(
+    row,
+    "unauthorized",
+    "unauthenticated",
+    "restricted role",
+    "restricted user",
+    "without login",
+    "access denied",
+    "forbidden",
+    "session expire",
+    "session timeout",
+    "expired session",
+    "without opening customer",
+    "without customer",
+  );
+}
+
 function needsCustomerProfile(row: C360ExcelRow): boolean {
-  if (rowMatches(row, "unauthorized", "unauthenticated", "without customer", "without opening customer")) {
+  if (isNegativeAccessScenario(row)) {
     return false;
   }
   const sm = row.subModule;
-  if (["Session Management", "Security Validation"].includes(sm) && rowMatches(row, "unauthorized", "restricted", "session")) {
+  if (["Session Management", "Security Validation"].includes(sm) && scenarioMatches(row, "unauthorized", "restricted", "session")) {
     return false;
   }
   return true;
@@ -148,21 +182,18 @@ export function buildGapTodoComment(row: C360ExcelRow): string | null {
 
 export function buildPreconditionActions(row: C360ExcelRow): string[] {
   const steps: string[] = [];
-  const pre = row.preconditions.toLowerCase();
 
-  if (
-    rowMatches(row, "unauthorized", "unauthenticated", "restricted role", "restricted user", "logout") ||
-    pre.includes("unauthorized") ||
-    pre.includes("restricted")
-  ) {
+  const sessionExpiry = scenarioMatches(row, "session expire", "session timeout", "expired session");
+  if (sessionExpiry) {
+    pushUnique(steps, "await c360Page.mockSessionExpired()");
+  } else if (scenarioMatches(row, "unauthorized", "unauthenticated", "restricted role", "restricted user", "logout", "access denied", "forbidden")) {
     pushUnique(steps, "await c360Page.mockUnauthorized()");
   }
 
-  if (rowMatches(row, "session expire", "session timeout", "expired session") || pre.includes("session expire")) {
-    pushUnique(steps, "await c360Page.mockSessionExpired()");
-  }
-
-  if (rowMatches(row, "api failure", "load failure", "server error") && !rowMatches(row, "timeout", "slow network")) {
+  if (
+    scenarioMatches(row, "api failure", "load failure", "server error", "unable to load") &&
+    !scenarioMatches(row, "timeout", "slow network")
+  ) {
     pushUnique(steps, "await c360Page.mockApiFailure()");
   }
 
@@ -193,20 +224,31 @@ function mapSingleStepToActions(step: string, row: C360ExcelRow): string[] {
   const customerId = customerIdForRow(row);
   const caseId = extractCaseId(row.testData);
 
-  if (stepMatches(s, "login", "authenticate", "launch", "dashboard", "observe", "note ", "inspect", "check console", "measure load", "compare rendered")) {
+  if (stepMatches(s, "login", "authenticate", "launch", "dashboard", "observe", "note ", "inspect", "check console", "measure load", "compare rendered", "login page", "credentials")) {
     return actions;
   }
 
-  if (stepMatches(s, "customer 360 module", "navigate to customer 360")) {
+  if (stepMatches(s, "kyc module", "navigate to the kyc")) {
+    actions.push("await c360Page.openCustomer360FromSidebar()");
+    return actions;
+  }
+
+  if (stepMatches(s, "customer 360 module", "navigate to customer 360", "open customer 360 view")) {
     actions.push("await c360Page.openCustomer360FromSidebar()");
     return actions;
   }
 
   if (
-    stepMatches(s, "search and open", "search for", "open customer profile", "select customer", "open a valid customer", "open first customer profile", "open customer 360 page", "open customer 360 for")
+    stepMatches(s, "open the customer 360 profile", "open customer profile", "open customer 360 profile", "open the customer profile")
   ) {
-    const id = stepMatches(s, "first customer") ? customerId : customerId;
-    actions.push(`await c360Page.searchAndOpenCustomer('${escapeStr(id)}')`);
+    actions.push(openProfileAction(row));
+    return actions;
+  }
+
+  if (
+    stepMatches(s, "search and open", "search for", "select customer", "open a valid customer", "open first customer profile", "open customer 360 page", "open customer 360 for")
+  ) {
+    actions.push(openProfileAction(row));
     return actions;
   }
 
@@ -325,9 +367,9 @@ export function buildExcelStepActions(row: C360ExcelRow): string[] {
     }
   }
 
-  const hasCustomer = steps.some((s) => s.includes("searchAndOpenCustomer"));
+  const hasCustomer = steps.some((s) => s.includes("openCustomerProfile") || s.includes("searchAndOpenCustomer"));
   if (needsCustomerProfile(row) && !hasCustomer) {
-    pushUnique(steps, `await c360Page.searchAndOpenCustomer('${escapeStr(customerIdForRow(row))}')`);
+    pushUnique(steps, openProfileAction(row));
   }
 
   const tab = tabNameFromSubModule(row.subModule);
@@ -348,27 +390,27 @@ function buildFallbackSteps(row: C360ExcelRow): string[] {
   const tab = tabNameFromSubModule(row.subModule);
   const sm = row.subModule;
 
-  if (rowMatches(row, "unauthorized", "unauthenticated", "session timeout") && !needsCustomerProfile(row)) {
+  if (isNegativeAccessScenario(row) && !needsCustomerProfile(row)) {
     return steps;
   }
 
   if (sm === "Page Framework" || sm === "Global Navigation") {
     pushUnique(steps, "await c360Page.openCustomer360FromSidebar()");
     if (needsCustomerProfile(row)) {
-      pushUnique(steps, `await c360Page.searchAndOpenCustomer('${escapeStr(customerId)}')`);
+      pushUnique(steps, openProfileAction(row));
     }
   } else if (tab) {
     if (needsCustomerProfile(row)) {
-      pushUnique(steps, `await c360Page.searchAndOpenCustomer('${escapeStr(customerId)}')`);
+      pushUnique(steps, openProfileAction(row));
     }
     pushUnique(steps, `await c360Page.clickTab('${escapeStr(tab)}')`);
   } else if (sm === "Export Functionality") {
-    pushUnique(steps, `await c360Page.searchAndOpenCustomer('${escapeStr(customerId)}')`);
+    pushUnique(steps, openProfileAction(row));
     pushUnique(steps, "await c360Page.exportCustomer360()");
   } else if (sm === "Error Handling") {
     pushUnique(steps, "await c360Page.mockApiFailure()");
   } else if (needsCustomerProfile(row)) {
-    pushUnique(steps, `await c360Page.searchAndOpenCustomer('${escapeStr(customerId)}')`);
+    pushUnique(steps, openProfileAction(row));
   }
 
   return normalizeStepOrder(steps);
@@ -467,37 +509,96 @@ function buildAssertionFromClause(c: string, row: C360ExcelRow): string[] {
   return out;
 }
 
-export function buildExcelAssertionActions(row: C360ExcelRow): string[] {
-  const steps: string[] = [];
-  const er = row.expectedResult.toLowerCase();
-  const task = row.taskDescription.toLowerCase();
-  const clauses = [
-    ...splitExpectedClauses(row.expectedResult),
+function isErrorScenario(row: C360ExcelRow): boolean {
+  if (row.subModule === "Error Handling") {
+    return true;
+  }
+  return (
+    scenarioMatches(row, "api failure", "load failure", "server error", "unable to load", "error state", "retry") &&
+    !scenarioMatches(row, "without error", "no error", "slow network")
+  );
+}
+
+function isEmptyScenario(row: C360ExcelRow): boolean {
+  return scenarioMatches(row, "empty state", "no data", "no record", "no alert", "no relationship", "zero results");
+}
+
+function isLandingScenario(row: C360ExcelRow): boolean {
+  if (needsCustomerProfile(row)) {
+    return false;
+  }
+  return scenarioMatches(row, "lookup", "search box", "search page", "landing", "customer search", "search for a customer");
+}
+
+/**
+ * Positive scenarios should assert only what the scenario exercises. We derive
+ * candidate assertions from the task description (the scenario), then drop
+ * negative-path and cross-tab assertions that would never be reachable in a
+ * happy-path test (those caused the contradictory all-fail behaviour).
+ */
+function buildPositiveAssertions(row: C360ExcelRow): string[] {
+  const ownTab = tabNameFromSubModule(row.subModule);
+  const profileOpened = needsCustomerProfile(row);
+  const out: string[] = [];
+
+  pushUnique(out, profileOpened ? "await c360Page.expectCustomer360ProfileLoaded()" : "await c360Page.expectCustomer360LandingLoaded()");
+
+  const candidates = [
+    ...splitExpectedClauses(row.taskDescription),
     ...splitExpectedClauses(row.acceptanceCriteria),
   ];
 
-  for (const clause of clauses) {
+  const negativeAssertions = new Set([
+    "await c360Page.expectAccessDenied()",
+    "await c360Page.expectErrorState()",
+    "await c360Page.expectEmptyState()",
+  ]);
+
+  for (const clause of candidates) {
     for (const assertion of buildAssertionFromClause(clause, row)) {
-      pushUnique(steps, assertion);
+      if (negativeAssertions.has(assertion)) {
+        continue;
+      }
+      // Only assert tab content for the tab this scenario actually opens.
+      const tabMatch = assertion.match(/expectTabContentVisible\('([^']+)'\)/);
+      if (tabMatch && ownTab && tabMatch[1] !== ownTab) {
+        continue;
+      }
+      pushUnique(out, assertion);
     }
   }
 
+  if (ownTab && !out.some((a) => a.includes(`expectTabContentVisible('${ownTab}'`))) {
+    pushUnique(out, `await c360Page.expectTabContentVisible('${escapeStr(ownTab)}')`);
+  }
+
+  return out;
+}
+
+export function buildExcelAssertionActions(row: C360ExcelRow): string[] {
+  if (isNegativeAccessScenario(row)) {
+    return ["await c360Page.expectAccessDenied()"];
+  }
+
+  if (isErrorScenario(row)) {
+    return ["await c360Page.expectErrorState()"];
+  }
+
+  if (isEmptyScenario(row)) {
+    const base = needsCustomerProfile(row)
+      ? "await c360Page.expectCustomer360ProfileLoaded()"
+      : "await c360Page.expectCustomer360LandingLoaded()";
+    return [base, "await c360Page.expectEmptyState()"];
+  }
+
+  if (isLandingScenario(row)) {
+    return ["await c360Page.expectCustomer360LandingLoaded()"];
+  }
+
+  const steps = buildPositiveAssertions(row);
   if (steps.length === 0) {
-    if (task.includes("unauthorized") || task.includes("unauthenticated")) {
-      pushUnique(steps, "await c360Page.expectAccessDenied()");
-    } else if (task.includes("error") || row.subModule === "Error Handling") {
-      pushUnique(steps, "await c360Page.expectErrorState()");
-    } else if (task.includes("export")) {
-      pushUnique(steps, "await expect(c360Page.exportButton).toBeVisible()");
-    } else if (er.includes("overview")) {
-      pushUnique(steps, "await c360Page.expectOverviewTabActive()");
-    } else if (tabNameFromSubModule(row.subModule)) {
-      pushUnique(steps, `await c360Page.expectTabContentVisible('${escapeStr(tabNameFromSubModule(row.subModule)!)}')`);
-    } else {
-      pushUnique(steps, "await c360Page.expectCustomer360ViewLoaded()");
-    }
+    pushUnique(steps, "await c360Page.expectCustomer360ViewLoaded()");
   }
-
   return steps;
 }
 

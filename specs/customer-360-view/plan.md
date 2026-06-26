@@ -1,6 +1,6 @@
 # Customer 360 View — Test Plan
 
-Generated from `pipeline/test-data/Customer 360 View.xlsx` — 370 requirements.
+Generated from `pipeline/test-data/Customer 360 View.xlsx` — 382 requirements.
 
 ## Sub-module coverage
 
@@ -9,17 +9,17 @@ Generated from `pipeline/test-data/Customer 360 View.xlsx` — 370 requirements.
 | Page Framework | 9 |
 | Header Strip | 9 |
 | Customer Type Switching | 7 |
-| Overview Tab | 30 |
+| Overview Tab | 36 |
 | Risk Visualization | 5 |
 | Relationships Tab | 18 |
-| Screening Tab | 30 |
+| Screening Tab | 31 |
 | Risk Tab | 17 |
-| KYC/CDD Tab | 27 |
+| KYC/CDD Tab | 28 |
 | Accounts Tab | 24 |
 | Transactions Tab | 24 |
 | Alerts Tab | 27 |
-| Regulatory Reports Tab | 22 |
-| KYC Gap Report Tab | 19 |
+| Regulatory Reports Tab | 23 |
+| KYC Gap Report Tab | 22 |
 | Audit Tab | 22 |
 | Global Navigation | 8 |
 | Export Functionality | 10 |

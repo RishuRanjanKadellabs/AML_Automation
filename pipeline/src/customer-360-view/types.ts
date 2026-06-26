@@ -42,3 +42,18 @@ export interface AutomationFeasibilityEntry {
   automationCandidate: "Yes" | "No" | "Partial";
   reason: string;
 }
+
+export interface EnhancedC360Row extends C360ExcelRow {
+  isNew?: boolean;
+  fsdSectionId?: string;
+  fsdSectionTitle?: string;
+}
+
+export interface GapTestCaseSpec {
+  subModule: string;
+  taskDescription: string;
+  priority: string;
+  testData: string;
+  htmlControlLabel: string;
+  fsdSectionId: string;
+}

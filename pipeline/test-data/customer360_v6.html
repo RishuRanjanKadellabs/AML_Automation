@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 – Customer 360° View</title>
+<style>
+/* ── RESET & BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 12px; color: #1f2937; background: #f3f4f6; line-height: 1.4; }
+a { color: #2563eb; text-decoration: none; cursor: pointer; }
+a:hover { text-decoration: underline; }
+button { cursor: pointer; font-family: inherit; }
+
+/* ── APP SHELL ── */
+#appShell { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+/* ── TOP NAV BAR ── */
+.top-nav { background: #1e3a5f; height: 42px; display: flex; align-items: center; padding: 0 14px; gap: 10px; flex-shrink: 0; }
+.top-nav .brand { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.5px; }
+.top-nav .brand span { color: #60a5fa; }
+.top-nav .page-title { font-size: 12px; font-weight: 500; color: #cbd5e1; margin-left: 8px; }
+.top-nav .nav-right { margin-left: auto; display: flex; align-items: center; gap: 8px; font-size: 11.5px; }
+.top-nav .nav-right .breadcrumb { color: #94a3b8; }
+.top-nav .nav-right .breadcrumb a { color: #93c5fd; font-weight: 500; }
+.top-nav .export-btn { border: 1px solid #334155; border-radius: 5px; background: #1e3a5f; padding: 4px 10px; font-size: 11.5px; color: #cbd5e1; display: flex; align-items: center; gap: 4px; }
+.top-nav .export-btn:hover { background: #2d4e6f; }
+
+/* ── CUSTOMER TYPE SWITCHER ── */
+.type-switcher { background: #f8fafc; border-bottom: 1px solid #e5e7eb; padding: 6px 14px; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.type-switcher .ts-label { font-size: 11px; color: #6b7280; font-weight: 500; }
+.type-btn { border: 1px solid #d1d5db; border-radius: 4px; background: #fff; padding: 4px 12px; font-size: 11.5px; color: #374151; transition: all 0.15s; }
+.type-btn.active { background: #1e3a5f; border-color: #1e3a5f; color: #fff; font-weight: 500; }
+.type-btn:hover:not(.active) { background: #f1f5f9; }
+
+/* ── CUSTOMER HEADER STRIP ── */
+.cust-header { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 8px 14px 6px; flex-shrink: 0; }
+.cust-row1 { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; font-size: 11.5px; color: #374151; }
+.cust-avatar { width: 28px; height: 28px; border-radius: 50%; background: #dbeafe; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #1d4ed8; flex-shrink: 0; }
+.cust-avatar.corp { background: #dcfce7; color: #15803d; border-radius: 5px; }
+.cust-name { font-weight: 700; font-size: 13px; color: #111827; }
+.cust-meta { color: #6b7280; font-size: 11px; }
+.cust-meta strong { color: #111827; }
+.tag-pill { border: 1px solid #d1d5db; border-radius: 3px; padding: 1px 6px; font-size: 10.5px; color: #374151; background: #fff; white-space: nowrap; }
+.tag-pill.orange { border-color: #f97316; color: #ea580c; background: #fff7ed; }
+.badge-risk { padding: 1px 6px; border-radius: 3px; font-size: 10.5px; font-weight: 600; }
+.badge-risk.high { background: #fee2e2; color: #dc2626; }
+.badge-risk.medium { background: #fef3c7; color: #d97706; }
+.badge-risk.low { background: #dcfce7; color: #16a34a; }
+.badge-risk.blue { background: #dbeafe; color: #1d4ed8; }
+.badge-risk.gray { background: #f3f4f6; color: #6b7280; }
+.cust-row2 { margin-top: 5px; display: flex; gap: 6px; flex-wrap: wrap; }
+.id-tab { border: 1px solid #e5e7eb; border-radius: 4px; padding: 2px 8px; font-size: 11px; color: #374151; background: #f9fafb; }
+.id-tab strong { font-weight: 600; color: #111827; }
+
+/* ── TAB BAR ── */
+.tab-bar { background: #fff; border-bottom: 2px solid #e5e7eb; display: flex; overflow-x: auto; flex-shrink: 0; scrollbar-width: none; }
+.tab-bar::-webkit-scrollbar { display: none; }
+.tab-item { padding: 9px 14px; white-space: nowrap; font-size: 11.5px; color: #6b7280; border-bottom: 2px solid transparent; margin-bottom: -2px; cursor: pointer; display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.tab-item:hover { color: #374151; background: #f9fafb; }
+.tab-item.active { color: #1e3a5f; border-bottom-color: #1e3a5f; font-weight: 600; }
+.tab-item .ti { font-size: 12px; }
+
+/* ── MAIN CONTENT ── */
+.main-content { flex: 1; overflow-y: auto; background: #f3f4f6; }
+.panel { display: none; padding: 12px 14px; }
+.panel.active { display: block; }
+
+/* ── CARDS ── */
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; margin-bottom: 10px; overflow: hidden; }
+.card-head { display: flex; align-items: center; gap: 6px; padding: 8px 12px; font-size: 12px; font-weight: 600; color: #111827; border-bottom: 1px solid #f3f4f6; background: #fafafa; }
+.card-head .ch-icon { color: #1e3a5f; font-size: 12px; }
+.card-head .ch-right { margin-left: auto; font-size: 11px; font-weight: 400; }
+.card-body { padding: 10px 12px; }
+
+/* ── KV ROWS ── */
+.kv-row { display: grid; grid-template-columns: 140px 1fr; gap: 4px 8px; margin-bottom: 4px; font-size: 11.5px; }
+.kv-label { color: #6b7280; }
+.kv-value { color: #111827; }
+
+/* ── TABLES ── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+.data-table th { background: #f9fafb; text-align: left; padding: 7px 10px; color: #6b7280; font-weight: 600; font-size: 11px; border-bottom: 1px solid #e5e7eb; white-space: nowrap; }
+.data-table td { padding: 6px 10px; border-bottom: 1px solid #f3f4f6; color: #374151; vertical-align: middle; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: #fafafa; }
+.sort-icon { color: #9ca3af; font-size: 9px; margin-left: 2px; cursor: pointer; }
+.no-records { color: #9ca3af; text-align: center; padding: 16px; font-style: italic; font-size: 11px; }
+
+/* ── STATUS PILLS ── */
+.sp { display: inline-block; padding: 2px 7px; border-radius: 10px; font-size: 10.5px; font-weight: 500; white-space: nowrap; }
+.sp-open { background: #eff6ff; color: #1d4ed8; }
+.sp-inprog { background: #fef3c7; color: #92400e; }
+.sp-closed { background: #f3f4f6; color: #6b7280; }
+.sp-active { background: #dcfce7; color: #15803d; }
+.sp-dormant { background: #f3f4f6; color: #6b7280; }
+.sp-escalated { background: #fee2e2; color: #dc2626; }
+.sp-fp { background: #f3f4f6; color: #6b7280; }
+.sp-filed { background: #dcfce7; color: #15803d; }
+.sp-verified { background: #dcfce7; color: #15803d; font-size: 10px; padding: 1px 5px; border-radius: 3px; }
+.sp-notverified { background: #fee2e2; color: #dc2626; font-size: 10px; padding: 1px 5px; border-radius: 3px; }
+.sp-flagged { background: #fee2e2; color: #dc2626; }
+.sp-preview { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-size: 10.5px; }
+
+/* ── GRIDS ── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+/* ── OVERVIEW TILES ── */
+.ov-tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 10px; }
+.ov-tile { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 10px 12px; position: relative; }
+.ov-tile .ot-label { font-size: 10.5px; color: #6b7280; margin-bottom: 2px; }
+.ov-tile .ot-value { font-size: 17px; font-weight: 700; color: #111827; }
+.ov-tile .ot-value.high { color: #dc2626; }
+.ov-tile .ot-value.green { color: #16a34a; }
+.ov-tile .ot-sub { font-size: 10.5px; color: #6b7280; margin-top: 1px; }
+.ov-tile .ot-icon { position: absolute; top: 10px; right: 12px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+.ot-icon.blue-ic { background: #eff6ff; color: #2563eb; }
+.ot-icon.teal-ic { background: #f0fdf4; color: #16a34a; }
+.ot-icon.amber-ic { background: #fffbeb; color: #d97706; }
+.ot-icon.gray-ic { background: #f3f4f6; color: #6b7280; }
+.ot-icon.navy-ic { background: #eff6ff; color: #1e3a5f; }
+
+/* ── RISK WHEEL ── */
+.risk-wheel-wrap { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 8px 0; }
+.risk-wheel { position: relative; width: 100px; height: 100px; }
+.risk-wheel svg { transform: rotate(-90deg); }
+.risk-wheel-center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; }
+.rw-score { font-size: 22px; font-weight: 800; color: #dc2626; line-height: 1; }
+.rw-name { font-size: 9px; color: #6b7280; max-width: 60px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.risk-legend { font-size: 10.5px; }
+.risk-legend .rl-item { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
+.rl-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.risk-high-tag { display: inline-flex; align-items: center; gap: 4px; background: #fee2e2; color: #dc2626; border-radius: 4px; padding: 3px 10px; font-size: 11px; font-weight: 600; margin-top: 8px; }
+
+/* ── SCREENING ── */
+.smatch-pct { padding: 1px 6px; border-radius: 3px; font-size: 10.5px; font-weight: 600; }
+.smatch-pct.high { background: #fee2e2; color: #dc2626; }
+.smatch-pct.medium { background: #fef3c7; color: #d97706; }
+
+/* ── TXN METRICS ── */
+.txn-metrics-row { display: grid; grid-template-columns: repeat(3, 1fr); }
+.txn-metric { padding: 8px 12px; border-right: 1px solid #f3f4f6; }
+.txn-metric:last-child { border-right: none; }
+.tm-label { font-size: 10.5px; color: #6b7280; }
+.tm-value { font-size: 13px; font-weight: 600; color: #111827; }
+.cash-bar { margin: 5px 0; }
+.cb-label { font-size: 10.5px; color: #6b7280; margin-bottom: 2px; }
+.cb-track { height: 5px; background: #e5e7eb; border-radius: 3px; overflow: hidden; }
+.cb-fill-blue { height: 5px; background: #1e3a5f; border-radius: 3px; }
+.cb-fill-green { height: 5px; background: #16a34a; border-radius: 3px; }
+.unusual-row { display: flex; align-items: center; gap: 6px; padding: 4px 0; font-size: 11.5px; }
+.ur-dot { width: 5px; height: 5px; border-radius: 50%; background: #f97316; flex-shrink: 0; }
+.triggered { background: #fee2e2; color: #dc2626; border-radius: 3px; padding: 1px 5px; font-size: 10px; font-weight: 600; }
+.view-alert-link { font-size: 11px; color: #2563eb; margin-left: auto; }
+
+/* ── RECENT ACTIVITY ── */
+.ra-item { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; border-bottom: 1px solid #f3f4f6; font-size: 11.5px; }
+.ra-item:last-child { border-bottom: none; }
+.ra-icon { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+.rai-down { background: #fef3c7; color: #d97706; }
+.rai-addr { background: #eff6ff; color: #2563eb; }
+.rai-match { background: #f0fdf4; color: #16a34a; }
+.ra-date { margin-left: auto; color: #9ca3af; font-size: 10.5px; white-space: nowrap; text-align: right; }
+
+/* ── REG STATUS ── */
+.reg-status-item { display: flex; justify-content: space-between; align-items: center; padding: 4px 0; font-size: 11.5px; border-bottom: 1px solid #f3f4f6; }
+.reg-status-item:last-child { border-bottom: none; }
+.reg-no { background: #f3f4f6; color: #6b7280; border-radius: 3px; padding: 1px 6px; font-size: 10px; font-weight: 600; }
+.reg-yes { background: #fee2e2; color: #dc2626; border-radius: 3px; padding: 1px 6px; font-size: 10px; font-weight: 600; }
+
+/* ── SHOW MORE ── */
+.show-more { text-align: center; padding: 6px; font-size: 11px; color: #2563eb; cursor: pointer; border-top: 1px solid #f3f4f6; }
+
+/* ── RISK FACTORS ── */
+.rf-badge { display: inline-block; padding: 1px 7px; border-radius: 3px; font-size: 10.5px; font-weight: 500; }
+.rf-high { background: #fee2e2; color: #dc2626; }
+.rf-medium { background: #fef3c7; color: #d97706; }
+.rf-low { background: #dcfce7; color: #15803d; }
+
+/* ── OVERRIDE BANNER ── */
+.override-banner { background: #fffbeb; border: 1px solid #fde68a; border-radius: 5px; padding: 6px 12px; font-size: 11px; color: #92400e; display: flex; align-items: flex-start; gap: 6px; }
+.ob-icon { color: #d97706; flex-shrink: 0; font-size: 13px; }
+
+/* ── RISK SCORE CIRCLE ── */
+.risk-score-circle { width: 48px; height: 48px; border-radius: 50%; border: 3px solid #dc2626; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; color: #dc2626; flex-shrink: 0; }
+
+/* ── PROG BARS ── */
+.prog-bar { height: 4px; background: #e5e7eb; border-radius: 2px; overflow: hidden; margin-top: 3px; }
+.prog-fill { height: 4px; border-radius: 2px; }
+
+/* ── KYC CHART ── */
+.kyc-chart { height: 65px; position: relative; margin-top: 4px; }
+.kyc-chart svg { width: 100%; height: 100%; }
+
+/* ── ALERT TOP BAR ── */
+.alert-top { display: grid; grid-template-columns: auto auto 1fr auto; gap: 16px; align-items: start; background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 10px 16px; margin-bottom: 10px; }
+.alt-label { font-size: 10.5px; color: #6b7280; }
+.alt-value { font-size: 18px; font-weight: 700; color: #dc2626; }
+.alt-mid { font-size: 14px; font-weight: 700; color: #111827; }
+.pending-resp { background: #fee2e2; color: #dc2626; border-radius: 3px; padding: 1px 6px; font-size: 10px; font-weight: 600; }
+
+/* ── PRODUCT PILLS ── */
+.prod-pills { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; }
+.prod-pill { border: 1px solid #d1d5db; border-radius: 12px; padding: 3px 10px; font-size: 11px; color: #374151; background: #fff; }
+.prod-pill.active { background: #eff6ff; border-color: #93c5fd; color: #1d4ed8; }
+
+/* ── SCREENING HEADER ── */
+.screening-header { display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; margin-bottom: 10px; font-size: 11.5px; }
+.toggle-switch { width: 32px; height: 18px; background: #1e3a5f; border-radius: 9px; position: relative; cursor: pointer; }
+.toggle-switch::after { content: ''; position: absolute; top: 3px; right: 3px; width: 12px; height: 12px; background: #fff; border-radius: 50%; }
+.rescreen-btn { border: 1px solid #d1d5db; border-radius: 4px; background: #fff; padding: 3px 10px; font-size: 11px; color: #374151; margin-left: 8px; }
+
+/* ── PEP BANNER ── */
+.pep-banner { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 12px; margin-bottom: 10px; }
+.pb-title { font-size: 11.5px; font-weight: 600; color: #dc2626; margin-bottom: 6px; display: flex; align-items: center; gap: 5px; }
+.pep-match-tag { background: #dc2626; color: #fff; border-radius: 3px; padding: 2px 8px; font-size: 10.5px; font-weight: 700; display: inline-block; margin-right: 6px; }
+
+/* ── SECTION DIVIDER ── */
+.section-divider { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #1e3a5f; margin: 12px 0 6px; padding-left: 2px; border-left: 3px solid #1e3a5f; padding-left: 6px; }
+
+/* ── FUNDING SOURCE ── */
+.fs-row { display: flex; justify-content: space-between; font-size: 11.5px; margin-bottom: 2px; }
+.fs-up { color: #16a34a; font-size: 10.5px; }
+.fs-down { color: #dc2626; font-size: 10.5px; }
+
+/* ── EMPTY STATE ── */
+.empty-state { text-align: center; padding: 40px 20px; }
+.es-icon { font-size: 28px; color: #9ca3af; margin-bottom: 8px; }
+.btn-outline { border: 1px solid #d1d5db; border-radius: 5px; background: #fff; padding: 6px 14px; font-size: 12px; color: #374151; }
+.btn-outline:hover { background: #f9fafb; }
+.btn-primary { background: #1e3a5f; color: #fff; border: none; border-radius: 5px; padding: 6px 14px; font-size: 12px; }
+
+/* ── BOTTOM HINT ── */
+.bottom-hint { background: #fff; border-top: 1px solid #e5e7eb; padding: 4px 14px; display: flex; justify-content: space-between; font-size: 11px; color: #6b7280; flex-shrink: 0; }
+
+/* ── HIDDEN SECTIONS ── */
+.individual-only { display: none; }
+.nonindividual-only { display: none; }
+body.show-individual .individual-only { display: contents; }
+body.show-nonindividual .nonindividual-only { display: contents; }
+body.show-individual .ni-only-block { display: none !important; }
+body.show-nonindividual .ind-only-block { display: none !important; }
+
+/* tab inside card */
+.inner-tab-bar { display: flex; gap: 0; border-bottom: 1px solid #f3f4f6; margin-bottom: 6px; }
+.inner-tab { padding: 4px 10px; font-size: 10.5px; color: #6b7280; border-bottom: 2px solid transparent; cursor: pointer; }
+.inner-tab.active { color: #1e3a5f; border-bottom-color: #1e3a5f; font-weight: 500; }
+</style>
+</head>
+<body class="show-individual">
+
+<!-- ════ APP SHELL ════ -->
+<div id="appShell">
+
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <span class="brand">Clari<span>5</span></span>
+    <span class="page-title">/ Customer 360° View</span>
+    <div class="nav-right">
+      <span class="breadcrumb">KYC <span style="color:#475569"> | </span> <a>Customer 360° View</a></span>
+      <span style="color:#475569"> | </span>
+      <span style="color:#cbd5e1">Arjun Mehta</span>
+      <button class="export-btn">⬇ Export</button>
+    </div>
+  </div>
+
+  <!-- CUSTOMER TYPE SWITCHER -->
+  <div class="type-switcher">
+    <span class="ts-label">Customer Type:</span>
+    <button class="type-btn active" id="btnIndividual" onclick="switchCustomerType('individual')">▲ Individual</button>
+    <button class="type-btn" id="btnNonIndividual" onclick="switchCustomerType('nonindividual')">🏢 Non-Individual</button>
+  </div>
+
+  <!-- ── INDIVIDUAL CUSTOMER HEADER ── -->
+  <div class="cust-header" id="headerIndividual">
+    <div class="cust-row1">
+      <div class="cust-avatar" id="custAvatarInd">AM</div>
+      <span class="cust-name" id="custNameInd">Arjun Mehta</span>
+      <span class="cust-meta">UID: <strong>UC0089874627</strong></span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">CIF: <strong>CUST-3159176</strong></span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill">▲ Individual</span>
+      <span class="tag-pill">PEP Match: NO</span>
+      <span class="tag-pill">Adverse Media: NO</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">Risk Score:</span>
+      <span class="badge-risk high">75</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill">CDD/EDD: NO</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill">Dormant: NO</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">Txns with High-risk Country:</span>
+      <span class="tag-pill orange">Kuwait</span>
+      <span class="tag-pill">STR/SAR: YES</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill">CTR: NO</span>
+      <span class="tag-pill">LEA Requests: NO</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">Active Alerts:</span>
+      <span class="badge-risk high">2</span>
+    </div>
+    <div class="cust-row2">
+      <span class="id-tab">Aadhaar: <strong>4782 X003 8002</strong></span>
+      <span class="id-tab">Passport: <strong>P1234567</strong></span>
+      <span class="id-tab">DoB: <strong>14-08-1985</strong></span>
+      <span class="id-tab">PAN: <strong>B4PM131K</strong></span>
+    </div>
+  </div>
+
+  <!-- ── NON-INDIVIDUAL CUSTOMER HEADER ── -->
+  <div class="cust-header" id="headerNonIndividual" style="display:none">
+    <div class="cust-row1">
+      <div class="cust-avatar corp">KG</div>
+      <span class="cust-name">Kumar Global Traders Pvt. Ltd.</span>
+      <span class="cust-meta">UID: <strong>UC0098712345</strong></span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">CIF: <strong>CORP-7823491</strong></span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill">🏢 Corporate</span>
+      <span class="tag-pill">PEP Match: YES</span>
+      <span class="tag-pill orange">Adverse Media: YES</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">Risk Score:</span>
+      <span class="badge-risk high">82</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill orange">CDD/EDD: YES</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill">Dormant: NO</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">Txns with High-risk Country:</span>
+      <span class="tag-pill orange">UAE</span>
+      <span class="tag-pill orange">STR/SAR: YES</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="tag-pill orange">CTR: YES</span>
+      <span class="tag-pill orange">LEA Requests: YES</span>
+      <span style="color:#d1d5db">|</span>
+      <span class="cust-meta">Active Alerts:</span>
+      <span class="badge-risk high">4</span>
+    </div>
+    <div class="cust-row2">
+      <span class="id-tab">CIN: <strong>U51909MH2010PTC123456</strong></span>
+      <span class="id-tab">GSTIN: <strong>27AABCK1234A1Z5</strong></span>
+      <span class="id-tab">Incorporation: <strong>15-03-2010</strong></span>
+      <span class="id-tab">PAN: <strong>AABCK1234A</strong></span>
+      <span class="id-tab">LEI: <strong>254900Q46BSLLGQ0W745</strong></span>
+    </div>
+  </div>
+
+  <!-- TAB BAR -->
+  <div class="tab-bar" id="tabBar">
+    <div class="tab-item active" onclick="switchTab('overview',this)"><span class="ti">⊞</span> Overview</div>
+    <div class="tab-item" onclick="switchTab('relationships',this)"><span class="ti">⇌</span> Relationships</div>
+    <div class="tab-item" onclick="switchTab('screening',this)"><span class="ti">⊙</span> Screening</div>
+    <div class="tab-item" onclick="switchTab('risk',this)"><span class="ti">◎</span> Risk</div>
+    <div class="tab-item" onclick="switchTab('kyccdd',this)"><span class="ti">◻</span> KYC / CDD</div>
+    <div class="tab-item" onclick="switchTab('accounts',this)"><span class="ti">⊟</span> Accounts</div>
+    <div class="tab-item" onclick="switchTab('transactions',this)"><span class="ti">↕</span> Transactions</div>
+    <div class="tab-item" onclick="switchTab('alerts',this)"><span class="ti">◬</span> Alerts</div>
+    <div class="tab-item" onclick="switchTab('regrep',this)"><span class="ti">⚖</span> Reg Reports</div>
+    <div class="tab-item" onclick="switchTab('kycgap',this)"><span class="ti">⬡</span> KYC Gap Report</div>
+    <div class="tab-item" onclick="switchTab('audit',this)"><span class="ti">≡</span> Audit</div>
+  </div>
+
+  <!-- ════ MAIN CONTENT ════ -->
+  <div class="main-content">
+
+    <!-- ══════════════════════════════════════════
+         OVERVIEW TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel active" id="panel-overview">
+
+      <!-- KPI TILES -->
+      <div class="ov-tiles">
+        <div class="ov-tile">
+          <div class="ot-icon blue-ic">⊙</div>
+          <div class="ot-label">Risk Profile</div>
+          <div class="ot-value high" id="ovRiskVal">High</div>
+          <div class="ot-sub" id="ovRiskSub">Score: 75 / 100</div>
+        </div>
+        <div class="ov-tile">
+          <div class="ot-icon teal-ic">◻</div>
+          <div class="ot-label">KYC Status</div>
+          <div class="ot-value green" id="ovKycVal">Verified</div>
+          <div class="ot-sub" id="ovKycSub">Review: 2026-11-15</div>
+        </div>
+        <div class="ov-tile">
+          <div class="ot-icon amber-ic">◬</div>
+          <div class="ot-label">Active Alerts</div>
+          <div class="ot-value high" id="ovAlertsVal">2</div>
+          <div class="ot-sub" style="color:#dc2626" id="ovAlertsSub">Action Required</div>
+        </div>
+        <div class="ov-tile">
+          <div class="ot-icon gray-ic">⊟</div>
+          <div class="ot-label">Total Accounts</div>
+          <div class="ot-value" id="ovAccountsVal">4</div>
+          <div class="ot-sub" id="ovAccountsSub">Active</div>
+        </div>
+        <div class="ov-tile">
+          <div class="ot-icon navy-ic">⚖</div>
+          <div class="ot-label">Reg Reports</div>
+          <div class="ot-value" id="ovRegVal" style="font-size:13px">STR: 1</div>
+          <div class="ot-sub" id="ovRegSub">CTR: No</div>
+        </div>
+        <!-- KYC Gap Score tile -->
+        <div class="ov-tile" id="kycGapTile" style="border-left:3px solid #c0392b;cursor:pointer;" onclick="switchTab('kycgap', document.querySelector('[onclick*=kycgap]'))" title="View KYC Gap Report">
+          <div class="ot-icon" style="background:#fff0f0;color:#c0392b;">⬡</div>
+          <div class="ot-label">KYC Gap Score</div>
+          <div class="ot-value" id="ovGapScore" style="color:#c0392b;font-size:20px;">7</div>
+          <div style="display:flex;align-items:center;gap:5px;margin-top:2px;">
+            <span id="ovGapPriorityBadge" style="display:inline-block;padding:2px 7px;border-radius:3px;font-size:10.5px;font-weight:600;background:#fee2e2;color:#c0392b;">Critical</span>
+            <span class="ot-sub" style="margin:0;" id="ovGapFieldsCount">3 missing fields</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="g2">
+        <!-- LEFT COLUMN -->
+        <div>
+          <!-- Personal / Company Details -->
+          <div class="card">
+            <div class="card-head" id="detailsCardHead"><span class="ch-icon">👤</span> <span id="detailsCardTitle">Personal Details</span></div>
+            <div class="card-body" id="personalDetails">
+              <!-- Individual -->
+              <div id="indPersonalDetails">
+                <div class="kv-row"><span class="kv-label">Full Name :</span><span class="kv-value">Arjun Mehta</span></div>
+                <div class="kv-row"><span class="kv-label">Alias Name :</span><span class="kv-value">Arjun Mehta</span></div>
+                <div class="kv-row"><span class="kv-label">Date of Birth :</span><span class="kv-value">14-08-1985</span></div>
+                <div class="kv-row"><span class="kv-label">Place of Birth :</span><span class="kv-value">Mumbai, Maharashtra, India</span></div>
+                <div class="kv-row"><span class="kv-label">Mobile :</span><span class="kv-value">+91-98204-67831</span></div>
+                <div class="kv-row"><span class="kv-label">Email :</span><span class="kv-value">arjun.mehta@gmail.com</span></div>
+                <div class="kv-row"><span class="kv-label">Gender :</span><span class="kv-value">Male</span></div>
+                <div class="kv-row"><span class="kv-label">Citizenship :</span><span class="kv-value">India</span></div>
+                <div class="kv-row"><span class="kv-label">Resident Status :</span><span class="kv-value">Resident</span></div>
+              </div>
+              <!-- Non-Individual -->
+              <div id="niPersonalDetails" style="display:none">
+                <div class="kv-row"><span class="kv-label">Company Name :</span><span class="kv-value">Kumar Global Traders Pvt. Ltd.</span></div>
+                <div class="kv-row"><span class="kv-label">Entity Type :</span><span class="kv-value">Private Limited Company</span></div>
+                <div class="kv-row"><span class="kv-label">Industry :</span><span class="kv-value">Import / Export – High Value Goods</span></div>
+                <div class="kv-row"><span class="kv-label">Incorporation Date :</span><span class="kv-value">15-03-2010</span></div>
+                <div class="kv-row"><span class="kv-label">Incorporation Country :</span><span class="kv-value">India</span></div>
+                <div class="kv-row"><span class="kv-label">Registered Address :</span><span class="kv-value">Unit 12, Trade World, Kamala Mills, Mumbai – 400013</span></div>
+                <div class="kv-row"><span class="kv-label">Phone :</span><span class="kv-value">+91-22-4321-7890</span></div>
+                <div class="kv-row"><span class="kv-label">Email :</span><span class="kv-value">compliance@kumarglobal.com</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Employment / Business Segment -->
+          <div class="card">
+            <div class="card-head" id="empCardHead"><span class="ch-icon">💼</span> <span id="empCardTitle">Employment &amp; Segment</span></div>
+            <div class="card-body">
+              <div id="indEmpDetails">
+                <div class="kv-row"><span class="kv-label">Occupation :</span><span class="kv-value">Software Engineer</span></div>
+                <div class="kv-row"><span class="kv-label">Employer :</span><span class="kv-value">Infosys Limited</span></div>
+                <div class="kv-row"><span class="kv-label">Business Segment :</span><span class="kv-value">Salaried</span></div>
+                <div class="kv-row"><span class="kv-label">Customer Tags :</span><span class="kv-value"><span class="badge-risk blue" style="margin-right:3px">HNI</span><span class="badge-risk gray">PEP</span></span></div>
+              </div>
+              <div id="niEmpDetails" style="display:none">
+                <div class="kv-row"><span class="kv-label">Business Type :</span><span class="kv-value">Trading &amp; Distribution</span></div>
+                <div class="kv-row"><span class="kv-label">Business Segment :</span><span class="kv-value">Corporate – SME</span></div>
+                <div class="kv-row"><span class="kv-label">Annual Turnover :</span><span class="kv-value">₹ 42 Crore</span></div>
+                <div class="kv-row"><span class="kv-label">No. of Employees :</span><span class="kv-value">85</span></div>
+                <div class="kv-row"><span class="kv-label">Customer Tags :</span><span class="kv-value"><span class="badge-risk high" style="margin-right:3px">EDD</span><span class="badge-risk gray">Listed</span></span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Onboarding & KYC -->
+          <div class="card">
+            <div class="card-head"><span class="ch-icon">🔄</span> Onboarding &amp; KYC</div>
+            <div class="card-body">
+              <div id="indOnboarding">
+                <div class="kv-row"><span class="kv-label">Onboarding Date :</span><span class="kv-value">15-10-2017</span></div>
+                <div class="kv-row"><span class="kv-label">Onboarding Channel :</span><span class="kv-value">Online</span></div>
+                <div class="kv-row"><span class="kv-label">FATCA Status :</span><span class="kv-value">Not Applicable</span></div>
+                <div class="kv-row"><span class="kv-label">FEMA Status :</span><span class="kv-value">Non-Reportable</span></div>
+              </div>
+              <div id="niOnboarding" style="display:none">
+                <div class="kv-row"><span class="kv-label">Onboarding Date :</span><span class="kv-value">08-06-2012</span></div>
+                <div class="kv-row"><span class="kv-label">Onboarding Channel :</span><span class="kv-value">Branch</span></div>
+                <div class="kv-row"><span class="kv-label">FATCA Status :</span><span class="kv-value">Applicable – Reported</span></div>
+                <div class="kv-row"><span class="kv-label">FEMA Status :</span><span class="kv-value">Reportable</span></div>
+                <div class="kv-row"><span class="kv-label">Relationship Manager :</span><span class="kv-value">Sarah Jenkins</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact / Registered Address -->
+          <div class="card">
+            <div class="card-head"><span class="ch-icon">📍</span> Contact Addresses</div>
+            <div class="card-body">
+              <div id="indAddress">
+                <div class="kv-row"><span class="kv-label">Primary Address :</span><span class="kv-value">Flat 4B, Saffron Heights, Linking Road, Bandra West, Mumbai – 400050</span></div>
+                <div class="kv-row"><span class="kv-label">Mailing Address :</span><span class="kv-value">Same as primary</span></div>
+              </div>
+              <div id="niAddress" style="display:none">
+                <div class="kv-row"><span class="kv-label">Registered Office :</span><span class="kv-value">Unit 12, Trade World, Kamala Mills, Mumbai – 400013</span></div>
+                <div class="kv-row"><span class="kv-label">Operating Office :</span><span class="kv-value">Plot 7, MIDC Andheri East, Mumbai – 400093</span></div>
+                <div class="kv-row"><span class="kv-label">Correspondence :</span><span class="kv-value">Same as Registered</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div>
+          <!-- Risk Profile Card -->
+          <div class="card">
+            <div class="card-head">
+              <span><span class="ch-icon">◎</span> Risk Profile</span>
+              <span style="font-size:10.5px;color:#6b7280;margin-left:4px">Category-wise risk distribution</span>
+              <span class="risk-high-tag" id="riskTag">⚠ High Risk</span>
+            </div>
+            <div class="card-body">
+              <div class="risk-wheel-wrap">
+                <div class="risk-wheel">
+                  <svg viewBox="0 0 100 100" width="100" height="100">
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#e5e7eb" stroke-width="14"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#1e3a5f" stroke-width="14" stroke-dasharray="71.6 167" stroke-dashoffset="0"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#06b6d4" stroke-width="14" stroke-dasharray="47.7 190.8" stroke-dashoffset="-71.6"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#8b5cf6" stroke-width="14" stroke-dasharray="47.7 190.8" stroke-dashoffset="-119.3"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#dc2626" stroke-width="14" stroke-dasharray="35.8 202.7" stroke-dashoffset="-167"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#16a34a" stroke-width="14" stroke-dasharray="35.8 202.7" stroke-dashoffset="-202.8"/>
+                  </svg>
+                  <div class="risk-wheel-center">
+                    <div class="rw-score" id="riskWheelScore">80</div>
+                    <div class="rw-name" id="riskWheelName">Arjun Mehta</div>
+                  </div>
+                </div>
+                <div class="risk-legend">
+                  <div class="rl-item"><div class="rl-dot" style="background:#1e3a5f"></div><span>Transactions</span></div>
+                  <div class="rl-item"><div class="rl-dot" style="background:#06b6d4"></div><span>Depository</span></div>
+                  <div class="rl-item"><div class="rl-dot" style="background:#8b5cf6"></div><span>Account</span></div>
+                  <div class="rl-item"><div class="rl-dot" style="background:#dc2626"></div><span>KYC</span></div>
+                  <div class="rl-item"><div class="rl-dot" style="background:#16a34a"></div><span>Related Parties</span></div>
+                </div>
+              </div>
+              <div style="font-size:10.5px;color:#6b7280;text-align:center;margin-top:4px">
+                <span style="margin-right:12px">CDD/EDD*</span>
+                <span>Risk Profile*</span>
+                <span style="margin-left:12px">*Sanctions</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Key Relationships -->
+          <div class="card">
+            <div class="card-head"><span class="ch-icon">⇌</span> Key Relationships</div>
+            <div class="card-body" style="padding:0">
+              <table class="data-table">
+                <thead><tr><th>Name</th><th>Relation</th><th>Risk</th></tr></thead>
+                <tbody>
+                  <tr><td>Rajesh Kumar</td><td style="font-size:11px;color:#6b7280">OFAC–Sanction Designated Nationals (13%)</td><td><span class="smatch-pct high">85%</span></td></tr>
+                  <tr><td>Raj V. Kumar</td><td style="font-size:11px;color:#6b7280">UN Sanction (28%)</td><td><span class="smatch-pct medium">88%</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Screening Matches -->
+          <div class="card">
+            <div class="card-head"><span class="ch-icon">⊙</span> Screening Matches</div>
+            <div class="card-body" style="padding:0">
+              <table class="data-table">
+                <thead><tr><th>Name</th><th>List</th><th>Score</th></tr></thead>
+                <tbody>
+                  <tr><td>Rajesh Kumar</td><td style="font-size:11px;color:#6b7280">OFAC SDN (13%)</td><td><span class="smatch-pct high">85%</span></td></tr>
+                  <tr><td>Raj V. Kumar</td><td style="font-size:11px;color:#6b7280">UN Sanctions (28%)</td><td><span class="smatch-pct medium">88%</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transaction Metrics -->
+      <div class="card">
+        <div class="card-head">
+          <span class="ch-icon">↕</span> Transaction Metrics
+          <span class="ch-right"><a>⊞ View Graph</a></span>
+          <span class="ch-right" style="margin-left:8px"><a>△ Unusual Patterns</a></span>
+          <span class="ch-right" style="margin-left:auto"><a>◎ View Alerts</a></span>
+        </div>
+        <div class="txn-metrics-row" style="border-bottom:1px solid #f3f4f6">
+          <div class="txn-metric"><div class="tm-label">Avg Daily</div><div class="tm-value" id="txnDaily">15 / ₹4.5L</div></div>
+          <div class="txn-metric"><div class="tm-label">Avg Monthly</div><div class="tm-value" id="txnMonthly">450 / ₹1.2Cr</div></div>
+          <div class="txn-metric"><div class="tm-label">Total YTD</div><div class="tm-value" id="txnYtd">5,200 / ₹14.5Cr</div></div>
+        </div>
+        <div class="card-body">
+          <div class="cash-bar">
+            <div class="cb-label">Cash vs Non-Cash <span style="float:right;font-weight:500">15% / 85%</span></div>
+            <div class="cb-track"><div class="cb-fill-blue" style="width:15%"></div></div>
+          </div>
+          <div class="cash-bar" style="margin-top:5px">
+            <div class="cb-label">Domestic vs Cross-Border <span style="float:right;font-weight:500">60% / 40%</span></div>
+            <div class="cb-track"><div class="cb-fill-green" style="width:60%"></div></div>
+          </div>
+        </div>
+
+        <!-- Top Activity -->
+        <div class="card-head" style="border-top:1px solid #f3f4f6;border-bottom:none">
+          <span class="ch-icon">⊞</span> Top Activity
+          <span class="ch-right"><span style="padding:2px 8px;border-radius:3px;background:#eff6ff;color:#1e3a5f;font-size:10.5px">Parties</span></span>
+          <span style="font-size:11px;color:#6b7280;margin-left:6px;cursor:pointer">Regions</span>
+          <span style="font-size:11px;color:#6b7280;margin-left:8px;cursor:pointer">Alerts</span>
+        </div>
+        <div class="card-body" style="padding-top:4px">
+          <table class="data-table">
+            <tbody>
+              <tr><td>Alpha Trade Corp</td><td style="text-align:right;font-weight:600">125 txns</td></tr>
+              <tr><td>Global Logistics</td><td style="text-align:right;font-weight:600">89 txns</td></tr>
+              <tr><td>Tech Solutions Inc</td><td style="text-align:right;font-weight:600">65 txns</td></tr>
+              <tr><td>Nexus Imports</td><td style="text-align:right;font-weight:600">42 txns</td></tr>
+              <tr><td>Solaris Energy</td><td style="text-align:right;font-weight:600">30 txns</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Unusual Patterns -->
+        <div class="card-head" style="border-top:1px solid #f3f4f6;border-bottom:none;font-size:11.5px">
+          <span class="ch-icon">△</span> Unusual Patterns
+        </div>
+        <div class="card-body" style="padding-top:4px">
+          <div class="unusual-row"><span class="ur-dot"></span><span>Out of Income Profile Transactions</span><span class="triggered">Triggered</span><a class="view-alert-link">View Alert ↗</a></div>
+          <div class="unusual-row"><span class="ur-dot"></span><span>Out of Peer Profile Transactions</span><span class="triggered">Triggered</span><a class="view-alert-link">View Alert ↗</a></div>
+          <div class="unusual-row"><span class="ur-dot"></span><span>Remittance destination not matching Nationality</span></div>
+          <div class="unusual-row"><span class="ur-dot"></span><span>Transaction surge from 6-month historical profile</span><span class="triggered" style="background:#fef3c7;color:#92400e">Triggered</span><a class="view-alert-link">View Alert ↗</a></div>
+          <div class="unusual-row"><span class="ur-dot"></span><span>One-to-Many or Many-to-One Funds Flow</span></div>
+          <div class="unusual-row"><span class="ur-dot"></span><span>Surge in Dormant Account Transactions</span></div>
+          <div style="margin-top:6px;padding:6px 0;border-top:1px solid #f3f4f6">
+            <div style="font-size:11.5px;font-weight:600;margin-bottom:3px">High Risk Corridor</div>
+            <div style="font-size:11px;color:#6b7280;margin-bottom:4px">Potential link to Mobile Trafficking (All Asia corridors)</div>
+            <div style="font-size:11px;display:flex;gap:6px">
+              <span style="background:#eff6ff;color:#1e3a5f;border-radius:3px;padding:1px 6px">Golden Triangle</span>
+              <span style="background:#eff6ff;color:#1e3a5f;border-radius:3px;padding:1px 6px">West Africa</span>
+            </div>
+          </div>
+        </div>
+        <div class="show-more">Show Less ∧</div>
+      </div>
+
+      <!-- Recent Activity + Regulatory Status -->
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">🕐</span> Recent Activity</div>
+          <div class="card-body" style="padding:4px 12px">
+            <div class="ra-item">
+              <div class="ra-icon rai-down">↓</div>
+              <div><div style="font-weight:500">Risk Rating Downgrade</div><div style="color:#6b7280;font-size:11px">Downgraded from High to Medium after clear screening.</div></div>
+              <div class="ra-date">01 Jan 2026<br><span style="font-size:10px">System</span></div>
+            </div>
+            <div class="ra-item">
+              <div class="ra-icon rai-addr">🏠</div>
+              <div><div style="font-weight:500">Address Update</div><div style="color:#6b7280;font-size:11px">Updated residential address via proof of residence.</div></div>
+              <div class="ra-date">04 Jan 2026<br><span style="font-size:10px">Sarah Jenkins</span></div>
+            </div>
+            <div class="ra-item">
+              <div class="ra-icon rai-match">✓</div>
+              <div><div style="font-weight:500">Match False Positive</div><div style="color:#6b7280;font-size:11px">Marked match John D. Doe as False Positive.</div></div>
+              <div class="ra-date">03 Jan 2026<br><span style="font-size:10px">Mike Ross</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">⚖</span> Regulatory Status</div>
+          <div class="card-body" style="padding:4px 12px">
+            <div class="reg-status-item"><span>STR Filed</span><span class="reg-yes" id="ovRegStr">YES</span></div>
+            <div class="reg-status-item"><span>CTR Filed</span><span class="reg-no" id="ovRegCtr">No</span></div>
+            <div class="reg-status-item"><span>Account Frozen</span><span class="reg-no">No</span></div>
+            <div class="reg-status-item"><span>LEA Requests</span><span class="reg-no" id="ovRegLea">No</span></div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-overview -->
+
+
+    <!-- ══════════════════════════════════════════
+         RELATIONSHIPS TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-relationships">
+
+      <!-- ── INDIVIDUAL: Family Members + Joint Account Holders ONLY ── -->
+      <div id="relIndividualSection">
+
+        <!-- Family Members (Individual Only) -->
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">👨‍👩‍👧</span> Family Members</div>
+          <table class="data-table">
+            <thead><tr><th>Name <span class="sort-icon">↕</span></th><th>Relation <span class="sort-icon">↕</span></th><th>DoB <span class="sort-icon">↕</span></th><th>KYC <span class="sort-icon">↕</span></th></tr></thead>
+            <tbody>
+              <tr><td>Priya Arjun Mehta</td><td>Spouse</td><td>20-03-1987</td><td><span class="sp-verified">Verified</span></td></tr>
+              <tr><td>Kunal Mehta</td><td>Son</td><td>11-09-2010</td><td><span class="sp-notverified">Not Verified</span></td></tr>
+              <tr><td>Ramesh Mehta</td><td>Father</td><td>05-06-1955</td><td><span class="sp-verified">Verified</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Joint Account Holders (Individual Only) -->
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">🏦</span> Joint Account Holders</div>
+          <table class="data-table">
+            <thead><tr><th>Name <span class="sort-icon">↕</span></th><th>Account <span class="sort-icon">↕</span></th><th>Relation <span class="sort-icon">↕</span></th><th>KYC <span class="sort-icon">↕</span></th></tr></thead>
+            <tbody>
+              <tr><td>Priya Arjun Mehta</td><td><a>ACC-1224</a></td><td>Spouse</td><td><span class="sp-verified">Verified</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- ── NON-INDIVIDUAL: UBO Details + Power of Attorney ── -->
+      <div id="relNonIndividualSection" style="display:none">
+
+        <!-- UBO Details (Non-Individual) -->
+        <div class="card">
+          <div class="card-head" style="justify-content:space-between">
+            <span><span class="ch-icon">⇌</span> UBO Details</span>
+            <a style="font-size:11px">⇌ Graphical Link Analysis</a>
+          </div>
+          <table class="data-table">
+            <thead><tr><th>Name <span class="sort-icon">↕</span></th><th>Designation <span class="sort-icon">↕</span></th><th>Nationality <span class="sort-icon">↕</span></th><th>DIN / ID <span class="sort-icon">↕</span></th><th>Date of Birth <span class="sort-icon">↕</span></th><th>PAN <span class="sort-icon">↕</span></th><th>PEP <span class="sort-icon">↕</span></th><th>Sanctions <span class="sort-icon">↕</span></th><th>Ownership % <span class="sort-icon">↕</span></th></tr></thead>
+            <tbody>
+              <tr>
+                <td>Arjun Mehta</td>
+                <td>Director &amp; Promoter</td>
+                <td>India</td>
+                <td>DIN-01234567</td>
+                <td>14-08-1985</td>
+                <td>B4PM131K</td>
+                <td><span class="rf-badge rf-medium">Yes</span></td>
+                <td><span class="rf-badge rf-high">Match</span></td>
+                <td style="font-weight:600">51%</td>
+              </tr>
+              <tr>
+                <td>Priya A. Mehta</td>
+                <td>Director</td>
+                <td>India</td>
+                <td>DIN-07654321</td>
+                <td>20-03-1987</td>
+                <td>CPMP5678B</td>
+                <td><span class="rf-badge rf-low">No</span></td>
+                <td><span class="rf-badge rf-low">Clear</span></td>
+                <td style="font-weight:600">25%</td>
+              </tr>
+              <tr>
+                <td>Global Ventures FZE</td>
+                <td>Shareholder – Foreign Entity</td>
+                <td>UAE</td>
+                <td>FZE-9981234</td>
+                <td>—</td>
+                <td>—</td>
+                <td><span class="rf-badge rf-low">No</span></td>
+                <td><span class="rf-badge rf-medium">Review</span></td>
+                <td style="font-weight:600">24%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Power of Attorney (Non-Individual) -->
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📜</span> Power of Attorney</div>
+          <table class="data-table">
+            <thead><tr><th>Account <span class="sort-icon">↕</span></th><th>Authorised Person <span class="sort-icon">↕</span></th><th>Scope <span class="sort-icon">↕</span></th><th>Expiry <span class="sort-icon">↕</span></th></tr></thead>
+            <tbody>
+              <tr><td><a>ACC-3341</a></td><td>Ramesh Nair</td><td>Banking Operations</td><td>31-12-2026</td></tr>
+              <tr><td><a>ACC-9931</a></td><td>Sunita Rao</td><td>Signing Authority</td><td>30-06-2026</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- PEP Match Banner -->
+      <div class="pep-banner">
+        <div class="pb-title">⚠ PEP Match for Related Parties</div>
+        <div><span class="pep-match-tag">PEP MATCH</span><strong>Potential Match Detected</strong></div>
+      </div>
+    </div><!-- /panel-relationships -->
+
+
+    <!-- ══════════════════════════════════════════
+         SCREENING TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-screening">
+      <div class="screening-header">
+        <span style="font-size:11px;color:#6b7280">Overall Status</span>
+        <span class="sp sp-flagged">Flagged</span>
+        <span style="color:#6b7280;margin-left:8px">Last Screening:</span>
+        <strong>2026-09-05</strong>
+        <div style="display:flex;align-items:center;gap:4px;margin-left:auto">
+          <span style="color:#6b7280;font-size:11px">Auto refresh</span>
+          <div class="toggle-switch"></div>
+        </div>
+        <button class="rescreen-btn">↺ Re-screen</button>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">🛡</span> Sanctions Screening <span class="ch-right" style="color:#6b7280">OFAC / SDN / UN</span></div>
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Watchlist</th><th>Score</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>Rajesh Kumar</td><td>OFAC SDN</td><td><span class="rf-badge rf-high">95%</span></td><td style="color:#9ca3af;cursor:pointer">∨</td></tr>
+              <tr><td>Raj V. Kumar</td><td>UN Sanctions</td><td><span class="rf-badge rf-high">88%</span></td><td style="color:#9ca3af;cursor:pointer">∨</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">👤</span> PEP Screening <span class="ch-right"><span class="sp sp-preview">Preview</span></span></div>
+          <table class="data-table">
+            <thead><tr><th>Name</th><th>Watchlist</th><th>Details</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>Rajesh Kumar</td><td>WorldCheck PEP</td><td style="font-size:11px">Close associate of regional politician</td><td style="color:#9ca3af;cursor:pointer">∨</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📰</span> Adverse Media Matches</div>
+          <table class="data-table">
+            <thead><tr><th>Date</th><th>Source</th><th>Snippet</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>2025-11-20</td><td>Economic Times</td><td style="font-size:11px;color:#6b7280">Named in trade violation investigation related to export controls</td><td style="color:#9ca3af;cursor:pointer">∨</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📋</span> Watchlist Matches</div>
+          <table class="data-table">
+            <thead><tr><th>Watchlist</th><th>Resolution</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>Internal Blacklist</td><td style="color:#dc2626;font-size:11px">Confirmed Match – Enhanced Due Diligence required</td><td style="color:#9ca3af;cursor:pointer">∨</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">🕐</span> Screening History</div>
+        <table class="data-table">
+          <thead><tr><th>DATE</th><th>LISTS SCREENED</th><th>RESULT</th><th>CASE ID</th><th>ACTION</th></tr></thead>
+          <tbody>
+            <tr><td>2026-01-06</td><td>OFAC, UN, EU</td><td><span class="sp-flagged sp">Flagged</span></td><td><a>CS-9921</a></td><td><a>View Certificate</a></td></tr>
+            <tr><td>2025-12-01</td><td>Global PEP, Adverse Media</td><td><span class="sp sp-active">Clear</span></td><td><a>CS-8812</a></td><td><a>View Certificate</a></td></tr>
+            <tr><td>2025-11-01</td><td>All Lists</td><td><span class="sp sp-active">Clear</span></td><td><a>CS-7734</a></td><td><a>View Certificate</a></td></tr>
+            <tr><td>2025-10-05</td><td>OFAC Only</td><td><span class="sp sp-active">Clear</span></td><td><a>CS-6621</a></td><td><a>View Certificate</a></td></tr>
+            <tr><td>2025-09-01</td><td>All Lists</td><td><span class="sp sp-active">Clear</span></td><td><a>CS-5518</a></td><td><a>View Certificate</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /panel-screening -->
+
+
+    <!-- ══════════════════════════════════════════
+         RISK TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-risk">
+      <div class="card" style="margin-bottom:10px">
+        <div class="card-body" style="display:flex;align-items:center;gap:12px;padding:10px 14px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div class="risk-score-circle" id="riskCircleScore">80</div>
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#dc2626">High Risk</div>
+              <div style="font-size:10.5px;color:#6b7280">KYC &amp; TM Consolidated</div>
+              <a style="font-size:10.5px">View Risk Breakdown</a>
+            </div>
+          </div>
+          <div class="override-banner" style="margin-bottom:0;margin-left:auto;max-width:430px">
+            <span class="ob-icon">⚠</span>
+            <span><strong>MANUAL OVERRIDE ACTIVE</strong> — Downgraded due to verified source of funds; override by Manager ID: M-4421 on 2026-01-20</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">🌍</span> Geographic Risk <span class="ch-right"><span class="rf-badge rf-medium">Medium</span></span></div>
+          <table class="data-table">
+            <thead><tr><th>SCOPE</th><th>COUNTRY</th><th>FLAGS</th></tr></thead>
+            <tbody>
+              <tr><td>Residence</td><td>India</td><td>—</td></tr>
+              <tr><td>Citizenship</td><td>USA</td><td>—</td></tr>
+            </tbody>
+          </table>
+          <div class="card-head" style="border-top:1px solid #f3f4f6;font-size:11.5px;border-bottom:none">→ High Risk Countries</div>
+          <table class="data-table">
+            <thead><tr><th>COUNTRY</th><th>DETAILS</th><th>FLAGS</th></tr></thead>
+            <tbody>
+              <tr><td>UAE</td><td>Frequent transfers</td><td><span class="rf-badge rf-high">High Risk</span></td></tr>
+              <tr><td>Kuwait</td><td>Remittance activity</td><td><span class="rf-badge rf-high">High Risk</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📊</span> Behavioral Risk <span class="ch-right"><span class="rf-badge rf-high">75 – High</span></span></div>
+          <div class="card-body">
+            <div style="margin-bottom:8px">
+              <div style="font-size:11.5px;font-weight:500;margin-bottom:2px">Out of peer profile transactions</div>
+              <div style="font-size:11px;color:#dc2626">Volume 45% higher than peer group avg</div>
+              <div class="prog-bar"><div class="prog-fill" style="width:75%;background:#dc2626"></div></div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:500;margin-bottom:2px">Transaction surge</div>
+              <div style="font-size:11px;color:#dc2626">120% surge from 6-month historical avg</div>
+              <div class="prog-bar"><div class="prog-fill" style="width:90%;background:#f97316"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">⚙</span> Risk Factors</div>
+          <table class="data-table">
+            <thead><tr><th>FACTOR</th><th>VALUE</th><th>RISK</th></tr></thead>
+            <tbody>
+              <tr><td>Customer Type</td><td style="font-weight:500">HNI Individual</td><td><span class="rf-badge rf-medium">Medium</span></td></tr>
+              <tr><td>Occupation</td><td style="font-weight:500">Business Owner – Retail</td><td><span class="rf-badge rf-low">Low</span></td></tr>
+              <tr><td>Industry / Segment</td><td style="font-weight:500">Import / Export</td><td><span class="rf-badge rf-high">High</span></td></tr>
+              <tr><td>Related Parties</td><td style="font-weight:500">Consolidated Score</td><td><span class="rf-badge rf-medium">Medium (45)</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📦</span> Product &amp; Channel Risk</div>
+          <table class="data-table">
+            <thead><tr><th>CATEGORY</th><th>NAME</th><th>RISK</th></tr></thead>
+            <tbody>
+              <tr><td>Product</td><td>Savings Max</td><td><span class="rf-badge rf-low">Low</span></td></tr>
+              <tr><td>Service</td><td>International Wire</td><td><span class="rf-badge rf-high">High</span></td></tr>
+              <tr><td>Channel</td><td>Mobile App</td><td><span class="rf-badge rf-medium">Medium</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">📈</span> Risk Rating History</div>
+        <table class="data-table">
+          <thead><tr><th>DATE</th><th>RISK LEVEL</th><th>SCORE</th><th>REASON</th></tr></thead>
+          <tbody>
+            <tr><td>2026-01-04</td><td><span class="rf-badge rf-high">High</span></td><td>81</td><td>Behavioral Alert Triggered</td></tr>
+            <tr><td>2025-06-15</td><td><span class="rf-badge rf-medium">Medium</span></td><td>44</td><td>Periodic Review</td></tr>
+            <tr><td>2019-03-12</td><td><span class="rf-badge rf-low">Low</span></td><td>19</td><td>Onboarding</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /panel-risk -->
+
+
+    <!-- ══════════════════════════════════════════
+         KYC / CDD TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-kyccdd">
+      <div style="display:flex;align-items:center;gap:20px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;margin-bottom:10px">
+        <div><div style="font-size:10.5px;color:#6b7280;font-weight:600;text-transform:uppercase">KYC STATUS</div><div style="font-size:14px;font-weight:700;color:#16a34a">Verified</div></div>
+        <div><div style="font-size:10.5px;color:#6b7280;font-weight:600;text-transform:uppercase">LAST REVIEW</div><div style="font-size:13px;font-weight:500">2025-12-15</div></div>
+        <div><div style="font-size:10.5px;color:#6b7280;font-weight:600;text-transform:uppercase">NEXT DUE</div><div style="font-size:13px;font-weight:500">2026-12-15</div></div>
+        <div><div style="font-size:10.5px;color:#6b7280;font-weight:600;text-transform:uppercase">CDD LEVEL</div><div style="font-size:13px;font-weight:500" id="kycCddLevel">Standard</div></div>
+        <div style="margin-left:auto"><button class="btn-outline" style="color:#1e3a5f;border-color:#1e3a5f">↺ Start New Review</button></div>
+      </div>
+
+      <div class="g3">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📄</span> Documents Submitted</div>
+          <table class="data-table">
+            <thead><tr><th>TYPE</th><th>ID NO.</th><th>EXPIRY</th></tr></thead>
+            <tbody>
+              <tr><td>Passport</td><td>Z3234547</td><td>2030-06-20</td></tr>
+              <tr><td>Utility Bill</td><td>UB-9988</td><td>2025-11-01</td></tr>
+              <tr><td>Tax Returns</td><td>ITR-3855</td><td>2025-10-15</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">⚡</span> CDD / EDD Triggers</div>
+          <div class="card-body">
+            <div style="margin-bottom:8px">
+              <div style="font-size:11.5px;font-weight:600;color:#dc2626">High Risk Country</div>
+              <div style="font-size:11px;color:#6b7280">Transaction with UAE</div>
+              <div style="font-size:10.5px;color:#9ca3af">Triggered: 2019-01-03</div>
+            </div>
+            <div>
+              <div style="font-size:11.5px;font-weight:600;color:#d97706">PEP Match</div>
+              <div style="font-size:11px;color:#6b7280">Potential Associate Match</div>
+              <div style="font-size:10.5px;color:#9ca3af">Triggered: 2022-12-10</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">🆕</span> New Products (6 months)</div>
+          <table class="data-table">
+            <thead><tr><th>PRODUCT</th><th>DATE</th></tr></thead>
+            <tbody>
+              <tr><td>Forex Card</td><td>2025-11-20</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">💰</span> Source of Funds &amp; Wealth</div>
+          <div class="card-body">
+            <div class="section-divider">SOURCE OF FUNDS</div>
+            <div style="font-size:11.5px;margin-bottom:10px">
+              <div style="margin-bottom:3px">• Business Profits (Kumar Global Traders)</div>
+              <div>• Rental Income</div>
+            </div>
+            <div class="section-divider">SOURCE OF WEALTH</div>
+            <div style="font-size:11.5px">
+              <div style="margin-bottom:3px">• Inheritance</div>
+              <div>• Business Accumulation</div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📈</span> KYC Risk Evolution</div>
+          <div class="card-body">
+            <div class="kyc-chart">
+              <svg viewBox="0 0 300 65" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="kyc-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#dc2626" stop-opacity="0.15"/>
+                    <stop offset="100%" stop-color="#dc2626" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,55 L50,50 L100,45 L150,35 L200,25 L250,15 L300,8" fill="none" stroke="#dc2626" stroke-width="2"/>
+                <path d="M0,55 L50,50 L100,45 L150,35 L200,25 L250,15 L300,8 L300,65 L0,65Z" fill="url(#kyc-grad)"/>
+                <text x="2" y="63" font-size="9" fill="#9ca3af">2021</text>
+                <text x="130" y="63" font-size="9" fill="#9ca3af">2023</text>
+                <text x="270" y="63" font-size="9" fill="#9ca3af">2025</text>
+                <text x="2" y="10" font-size="9" fill="#6b7280">100</text>
+                <text x="2" y="35" font-size="9" fill="#6b7280">50</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">🔄</span> KYC Change Log</div>
+        <table class="data-table">
+          <thead><tr><th>DATE</th><th>FIELD CHANGED</th><th>OLD VALUE</th><th>NEW VALUE</th><th>USER</th></tr></thead>
+          <tbody>
+            <tr><td>2026-01-04</td><td>Risk Score</td><td>Medium (55)</td><td>High (85)</td><td>System</td></tr>
+            <tr><td>2025-12-01</td><td>Residence Address</td><td>Mumbai, Bandra</td><td>Mumbai, Bandra West</td><td>Branch Ops</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /panel-kyccdd -->
+
+
+    <!-- ══════════════════════════════════════════
+         ACCOUNTS TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-accounts">
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">📊</span> Account Summary</div>
+        <table class="data-table">
+          <thead><tr><th>INSTITUTION</th><th>ACCOUNT NO</th><th>TYPE</th><th>CURRENCY</th><th>BALANCE</th><th>STATUS</th></tr></thead>
+          <tbody>
+            <tr><td>HDFC Bank</td><td><a>ACC-9931</a></td><td>Savings Max</td><td>INR</td><td style="font-weight:600">₹12,45,000</td><td><span class="sp sp-active">Active</span></td></tr>
+            <tr><td>HDFC Bank</td><td><a>ACC-3341</a></td><td>Current Business</td><td>INR</td><td style="font-weight:600">₹45,20,000</td><td><span class="sp sp-active">Active</span></td></tr>
+            <tr><td>HDFC Bank</td><td><a>ACC-8912</a></td><td>Term Deposit</td><td>INR</td><td style="font-weight:600">₹3,00,000</td><td><span class="sp sp-closed">Closed</span></td></tr>
+            <tr><td>Citi Bank</td><td><a>ACC-1321</a></td><td>Foreign Currency</td><td>USD</td><td style="font-weight:600">$12,000</td><td><span class="sp sp-active">Active</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">⚙</span> Limits &amp; Thresholds</div>
+          <div class="card-body">
+            <div class="kv-row"><span class="kv-label">Daily Txn Limit</span><span class="kv-value" style="font-weight:600">₹ 50,00,000 / day</span></div>
+            <div class="kv-row"><span class="kv-label">Daily Cash Limit</span><span class="kv-value" style="font-weight:600">₹ 2,00,000 / day</span></div>
+            <div class="kv-row"><span class="kv-label">Annual FX Limit</span><span class="kv-value" style="font-weight:600">$ 50,000 / year</span></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📦</span> Product Holding</div>
+          <div class="prod-pills">
+            <span class="prod-pill active">Savings Account</span>
+            <span class="prod-pill">Current Account</span>
+            <span class="prod-pill">Trade Finance</span>
+            <span class="prod-pill">Forex Card</span>
+            <span class="prod-pill">Online Banking</span>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-accounts -->
+
+
+    <!-- ══════════════════════════════════════════
+         TRANSACTIONS TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-transactions">
+      <div class="empty-state">
+        <div class="es-icon">↕</div>
+        <h3>Transaction Analysis</h3>
+        <p>Detailed transaction ledger and behavioral analysis view</p>
+        <button class="btn-outline">⬇ Download Full Statement</button>
+      </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════
+         ALERTS TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-alerts">
+      <div class="alert-top">
+        <div>
+          <div class="alt-label">Active Alerts</div>
+          <div style="display:flex;align-items:baseline;gap:6px"><span class="alt-value" id="alertActiveCount">2</span><span style="font-size:11px;color:#6b7280">/ 43 Closed</span></div>
+          <span class="rf-badge rf-high" style="font-size:10px">High Priority</span>
+        </div>
+        <div>
+          <div class="alt-label">False Positive Rate</div>
+          <div class="alt-mid" style="font-size:20px;font-weight:700;color:#111827">85%</div>
+          <span style="font-size:10.5px;color:#6b7280">Alert Quality</span>
+        </div>
+        <div>
+          <div class="alt-label">Active Alert Volume</div>
+          <div style="font-size:18px;font-weight:700;color:#dc2626">₹12,70,000</div>
+          <div style="font-size:10.5px;color:#6b7280">17% of Total</div>
+        </div>
+        <div>
+          <div class="alt-label">Internal Requests (RFI)</div>
+          <div style="font-size:20px;font-weight:700;color:#111827">3</div>
+          <span class="pending-resp">Pending Response</span>
+        </div>
+      </div>
+
+      <div class="g2">
+        <div>
+          <div class="card" style="margin-bottom:10px">
+            <div class="card-head"><span class="ch-icon">🔔</span> Recent Active Alerts <span class="ch-right"><a>View All Transactions →</a></span></div>
+            <table class="data-table">
+              <thead><tr><th>Alert ID</th><th>Date</th><th>Rule</th><th>Amount</th><th>Severity</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td><a>ALT-101</a></td><td>05 Jan 2026</td><td style="font-size:11px">High Value Txn – Single txn &gt; threshold</td><td>₹1,50,000</td><td><span class="rf-badge rf-high">High</span></td><td><span class="sp sp-open">Open</span></td></tr>
+                <tr><td><a>ALT-882</a></td><td>02 Jan 2026</td><td style="font-size:11px">Velocity Check – Multiple txns in 24h</td><td>₹1,20,000</td><td><span class="rf-badge rf-medium">Medium</span></td><td><span class="sp sp-inprog">In Progress</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="ch-icon">📊</span> Alert History &amp; Resolution <span class="ch-right"><a>↓ Export</a></span></div>
+            <table class="data-table">
+              <thead><tr><th>ID</th><th>Rule</th><th>Disposition</th><th>Rationale</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr><td>ALT-705</td><td>Structuring</td><td><span class="sp sp-fp">False Positive</span></td><td style="font-size:11px">Business expense verified</td><td><span class="sp sp-closed">Closed</span></td></tr>
+                <tr><td>ALT-655</td><td>Round Dollar</td><td><span class="sp sp-escalated">Escalated</span></td><td style="font-size:11px">Suspicious pattern</td><td><span class="sp sp-filed">Filed STR</span></td></tr>
+                <tr><td>ALT-628</td><td>Rapid Movement</td><td><span class="sp sp-fp">False Positive</span></td><td style="font-size:11px">Salary disbursement</td><td><span class="sp sp-closed">Closed</span></td></tr>
+                <tr><td>ALT-508</td><td>High Velocity</td><td><span class="sp sp-fp">False Positive</span></td><td style="font-size:11px">Holiday season spending</td><td><span class="sp sp-closed">Closed</span></td></tr>
+                <tr><td>ALT-508</td><td>Structuring</td><td><span class="sp sp-escalated">Escalated</span></td><td style="font-size:11px">Multiple deposits &lt;50k</td><td><span class="sp sp-inprog">Review</span></td></tr>
+                <tr><td>ALT-318</td><td>Crypto P2P</td><td><span class="sp sp-escalated">Escalated</span></td><td style="font-size:11px">High risk counterparty</td><td><span class="sp sp-filed">Filed STR</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom:10px">
+            <div class="card-head"><span class="ch-icon">💰</span> Funding Sources <span class="ch-right"><a>⊞ View Flow</a></span></div>
+            <div class="card-body">
+              <div class="fs-row"><span>Wires</span><span class="fs-up" style="color:#6b7280">Stable</span></div>
+              <div class="prog-bar" style="margin-bottom:6px"><div class="prog-fill" style="width:60%;background:#1e3a5f"></div></div>
+              <div style="font-size:10.5px;color:#9ca3af;margin-bottom:6px">60%</div>
+              <div class="fs-row"><span>Checks</span><span class="fs-down">Decreasing</span></div>
+              <div class="prog-bar" style="margin-bottom:6px"><div class="prog-fill" style="width:30%;background:#dc2626"></div></div>
+              <div style="font-size:10.5px;color:#9ca3af;margin-bottom:6px">30%</div>
+              <div class="fs-row"><span>Crypto</span><span class="fs-up">Increasing</span></div>
+              <div class="prog-bar" style="margin-bottom:4px"><div class="prog-fill" style="width:10%;background:#16a34a"></div></div>
+              <div style="font-size:10.5px;color:#9ca3af">10%</div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-head"><span class="ch-icon">📨</span> RFI Correspondence</div>
+            <div class="card-body">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+                <div>
+                  <div style="font-size:11.5px;font-weight:500">Source of Funds</div>
+                  <span style="background:#fef3c7;color:#92400e;border-radius:3px;padding:1px 5px;font-size:10px;font-weight:600">Pending</span>
+                </div>
+                <div style="text-align:right;font-size:11px;color:#6b7280">02 Jan 2026<br><a style="font-size:11px">View Email</a></div>
+              </div>
+              <div style="border-top:1px solid #f3f4f6;padding-top:8px;display:flex;justify-content:space-between;align-items:flex-start">
+                <div>
+                  <div style="font-size:11.5px;font-weight:500">Invoice Copy</div>
+                  <span style="background:#dcfce7;color:#15803d;border-radius:3px;padding:1px 5px;font-size:10px;font-weight:600">Received</span>
+                </div>
+                <div style="text-align:right;font-size:11px;color:#6b7280">11 Dec 2025<br><a style="font-size:11px">View Email</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /panel-alerts -->
+
+
+    <!-- ══════════════════════════════════════════
+         REG REPORTS TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-regrep">
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">⚖</span> Regulatory Report Summary</div>
+        <table class="data-table">
+          <thead><tr><th>REPORT TYPE</th><th>LAST FILED</th><th>CASE ID</th><th>STATUS</th><th>ACTION</th></tr></thead>
+          <tbody>
+            <tr><td>STR / SAR</td><td>2025-12-05</td><td><a>STR-1154</a></td><td><span class="sp sp-filed">Filed</span></td><td><a>View</a></td></tr>
+            <tr><td>CTR</td><td>—</td><td>—</td><td><span class="sp sp-closed">Not Filed</span></td><td>—</td></tr>
+            <tr><td>FATCA</td><td>2025-03-31</td><td><a>FAT-0023</a></td><td><span class="sp sp-filed">Filed</span></td><td><a>View</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="g2">
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">📅</span> Filing Calendar</div>
+          <div class="empty-state" style="padding:20px">
+            <div class="es-icon">📅</div>
+            <p>No upcoming filing deadlines</p>
+            <button class="btn-outline">View Calendar</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="ch-icon">🔍</span> LEA Requests</div>
+          <table class="data-table">
+            <thead><tr><th>REQUEST ID</th><th>DATE</th><th>AUTHORITY</th><th>STATUS</th></tr></thead>
+            <tbody><tr><td colspan="4" class="no-records">No LEA requests on record</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div><!-- /panel-regrep -->
+
+
+    <!-- ══════════════════════════════════════════
+         AUDIT TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-audit">
+      <div class="card">
+        <div class="card-head"><span class="ch-icon">📋</span> Full Audit Trail</div>
+        <table class="data-table">
+          <thead><tr><th>Log ID</th><th>Category</th><th>Action</th><th>Details</th><th>User</th><th>Timestamp</th></tr></thead>
+          <tbody>
+            <tr><td>LOG-001</td><td>Risk</td><td>Risk Rating Downgrade</td><td style="font-size:11px">Downgraded from High to Medium after clear screening.</td><td>System (Auto)</td><td style="white-space:nowrap;font-size:11px">05 Jan 2026 16:30</td></tr>
+            <tr><td>LOG-002</td><td>KYC</td><td>Address Update</td><td style="font-size:11px">Updated residential address via proof of residence.</td><td>Sarah Jenkins</td><td style="white-space:nowrap;font-size:11px">04 Jan 2026 09:11</td></tr>
+            <tr><td>LOG-003</td><td>Screening</td><td>Match False Positive</td><td style="font-size:11px">Marked potential match John D. Doe as False Positive.</td><td>Mike Ross</td><td style="white-space:nowrap;font-size:11px">03 Jan 2026 11:29</td></tr>
+            <tr><td>LOG-004</td><td>Product</td><td>Credit Limit Increase</td><td style="font-size:11px">Credit limit increased based on usage.</td><td>System</td><td style="white-space:nowrap;font-size:11px">02 Jan 2026 16:45</td></tr>
+            <tr><td>LOG-005</td><td>KYC</td><td>Document Verified</td><td style="font-size:11px">Passport verification successful.</td><td>System</td><td style="white-space:nowrap;font-size:11px">01 Jan 2026 16:00</td></tr>
+            <tr><td>LOG-006</td><td>Alert</td><td>Alert Escalated</td><td style="font-size:11px">ALT-655 escalated to compliance team; STR filed.</td><td>James Patel</td><td style="white-space:nowrap;font-size:11px">28 Dec 2025 10:05</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!-- /panel-audit -->
+
+    <!-- ══════════════════════════════════════════
+         KYC GAP REPORT TAB
+    ══════════════════════════════════════════ -->
+    <div class="panel" id="panel-kycgap">
+
+      <!-- Header -->
+      <div style="background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:10px 14px;margin-bottom:10px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#111827;font-family:inherit;">KYC Gap Report</div>
+          <div style="font-size:11px;color:#6b7280;margin-top:2px;">Missing or expired KYC fields — CBS &amp; DMS import vs. template requirements</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <button class="btn-outline" style="font-size:11px;padding:4px 10px;display:flex;align-items:center;gap:4px;">
+            <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M13 21 26.17 21 23.59 23.59 25 25 30 20 25 15 23.59 16.41 26.17 19 13 19 13 21z"/><path d="M22,14V10a1,1,0,0,0-.29-.71l-7-7A1,1,0,0,0,14,2H4A2,2,0,0,0,2,4V28a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V26H20v2H4V4h8v6a2,2,0,0,0,2,2h6v2Zm-8-4V4.41L19.59,10Z"/></svg>
+            Export
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI summary strip -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:10px;">
+        <div class="card" style="margin-bottom:0;">
+          <div class="card-body" style="padding:10px 14px;">
+            <div style="font-size:10.5px;color:#6b7280;margin-bottom:2px;">KYC Gap Score</div>
+            <div style="font-size:22px;font-weight:800;color:#c0392b;line-height:1.1;">7</div>
+            <div style="font-size:10.5px;color:#c0392b;font-weight:600;margin-top:2px;">Critical</div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:0;">
+          <div class="card-body" style="padding:10px 14px;">
+            <div style="font-size:10.5px;color:#6b7280;margin-bottom:2px;">Missing Fields</div>
+            <div style="font-size:22px;font-weight:800;color:#111827;line-height:1.1;">3</div>
+            <div style="font-size:10.5px;color:#6b7280;margin-top:2px;">Across CIP / CDD</div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:0;">
+          <div class="card-body" style="padding:10px 14px;">
+            <div style="font-size:10.5px;color:#6b7280;margin-bottom:2px;">Template Applied</div>
+            <div style="font-size:12px;font-weight:600;color:#111827;line-height:1.3;margin-top:2px;">Standard KYC — Corporate</div>
+            <div style="font-size:10.5px;color:#6b7280;margin-top:2px;">Branch: Bengaluru Tech (BLR06)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Missing fields detail -->
+      <div class="card">
+        <div class="card-head">
+          <span class="ch-icon">⬡</span> Missing Fields Detail
+          <span class="ch-right" style="display:flex;align-items:center;gap:6px;">
+            <span style="padding:2px 8px;border-radius:3px;font-size:10.5px;background:#fee2e2;color:#c0392b;font-weight:600;">Gap Type: CIP</span>
+          </span>
+        </div>
+        <div class="card-body" style="padding:8px 12px;display:flex;flex-direction:column;gap:8px;">
+
+          <!-- Field row: MoA/AoA Update -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fafafa;border:1px solid #e5e7eb;border-radius:5px;border-left:3px solid #c0392b;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="12" height="12" viewBox="0 0 32 32" fill="#dc2626"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M15 8h2v11h-2zm0 13h2v2h-2z"/></svg>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#111827;">MoA/AoA Update</div>
+                <div style="font-size:10.5px;color:#6b7280;margin-top:1px;">Memorandum & Articles of Association — latest version required</div>
+              </div>
+            </div>
+            <span style="font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;background:rgba(220,38,38,0.09);color:#dc2626;flex-shrink:0;">Mandatory · Weight: 3</span>
+          </div>
+
+          <!-- Field row: GSTIN Cert -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fafafa;border:1px solid #e5e7eb;border-radius:5px;border-left:3px solid #c0392b;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="12" height="12" viewBox="0 0 32 32" fill="#dc2626"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M15 8h2v11h-2zm0 13h2v2h-2z"/></svg>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#111827;">GSTIN Certificate</div>
+                <div style="font-size:10.5px;color:#6b7280;margin-top:1px;">Valid GSTIN registration certificate — must be current financial year</div>
+              </div>
+            </div>
+            <span style="font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;background:rgba(220,38,38,0.09);color:#dc2626;flex-shrink:0;">Mandatory · Weight: 3</span>
+          </div>
+
+          <!-- Field row: Board Resolution -->
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fafafa;border:1px solid #e5e7eb;border-radius:5px;border-left:3px solid #d97706;">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="12" height="12" viewBox="0 0 32 32" fill="#d97706"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M15 8h2v11h-2zm0 13h2v2h-2z"/></svg>
+              <div>
+                <div style="font-size:12px;font-weight:600;color:#111827;">Board Resolution</div>
+                <div style="font-size:10.5px;color:#6b7280;margin-top:1px;">Board resolution authorising account operation and signatory</div>
+              </div>
+            </div>
+            <span style="font-size:10.5px;font-weight:600;padding:2px 8px;border-radius:100px;background:rgba(217,119,6,0.09);color:#d97706;flex-shrink:0;">Optional · Weight: 1</span>
+          </div>
+
+          <!-- Score summary -->
+          <div style="margin-top:4px;padding:10px 14px;background:#eef2ff;border:1px solid #c7d2fe;border-radius:6px;display:flex;align-items:center;justify-content:space-between;">
+            <div>
+              <span style="font-size:11.5px;color:#1e3a5f;font-weight:600;">Total KYC Gap Score</span>
+              <span style="font-size:10.5px;color:#6b7280;margin-left:8px;">= sum of weights of all missing fields</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span style="font-size:18px;font-weight:800;color:#c0392b;">7</span>
+              <span style="padding:2px 10px;border-radius:4px;font-size:11px;font-weight:700;background:#fee2e2;color:#c0392b;">Critical</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-kycgap -->
+
+  </div><!-- /main-content -->
+
+  <div class="bottom-hint">
+    <span>Clari5 AML – Customer 360° View</span>
+    <span style="color:#9ca3af">Last updated: 23 Apr 2026 09:15</span>
+  </div>
+
+</div><!-- /appShell -->
+
+<script>
+/* ── TAB SWITCHING ── */
+function switchTab(id, el) {
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('panel-' + id).classList.add('active');
+}
+
+/* ── CUSTOMER TYPE SWITCHING ── */
+var currentType = 'individual';
+
+var indData = {
+  avatar: 'AM', name: 'Arjun Mehta',
+  riskScore: '80', riskLabel: 'High Risk', riskColor: '#dc2626',
+  kycVal: 'Verified', kycColor: '#16a34a', kycSub: 'Review: 2026-11-15',
+  alertsVal: '2', txnDaily: '15 / ₹4.5L', txnMonthly: '450 / ₹1.2Cr', txnYtd: '5,200 / ₹14.5Cr',
+  accountsVal: '4', accountsSub: 'Active',
+  regVal: 'STR: 1', regSub: 'CTR: No',
+  riskTagLabel: '⚠ High Risk',
+  detailsTitle: 'Personal Details', empTitle: 'Employment & Segment',
+  kycCddLevel: 'Standard',
+  gapScore: 4, gapPriority: 'Medium', gapPriorityColor: '#d97706', gapPriorityBg: '#fef3c7', gapFields: '2 missing fields'
+};
+
+var niData = {
+  avatar: 'KG', name: 'Kumar Global Traders',
+  riskScore: '82', riskLabel: 'High Risk', riskColor: '#dc2626',
+  kycVal: 'Verified', kycColor: '#16a34a', kycSub: 'Review: 2026-08-01',
+  alertsVal: '4', txnDaily: '38 / ₹22L', txnMonthly: '920 / ₹5.4Cr', txnYtd: '11,040 / ₹65Cr',
+  accountsVal: '6', accountsSub: 'Active',
+  regVal: 'STR: 2', regSub: 'CTR: Yes',
+  riskTagLabel: '⚠ High Risk',
+  detailsTitle: 'Company Details', empTitle: 'Business & Segment',
+  kycCddLevel: 'Enhanced (EDD)',
+  gapScore: 7, gapPriority: 'Critical', gapPriorityColor: '#c0392b', gapPriorityBg: '#fee2e2', gapFields: '3 missing fields'
+};
+
+function switchCustomerType(type) {
+  currentType = type;
+
+  document.getElementById('btnIndividual').classList.toggle('active', type === 'individual');
+  document.getElementById('btnNonIndividual').classList.toggle('active', type === 'nonindividual');
+
+  var isInd = type === 'individual';
+  var d = isInd ? indData : niData;
+
+  // Headers
+  document.getElementById('headerIndividual').style.display = isInd ? '' : 'none';
+  document.getElementById('headerNonIndividual').style.display = isInd ? 'none' : '';
+
+  // OV tiles
+  document.getElementById('ovRiskVal').textContent = d.riskLabel;
+  document.getElementById('ovRiskSub').textContent = 'Score: ' + d.riskScore + ' / 100';
+  document.getElementById('ovKycVal').textContent = d.kycVal;
+  document.getElementById('ovKycVal').style.color = d.kycColor;
+  document.getElementById('ovKycSub').textContent = d.kycSub;
+  document.getElementById('ovAlertsVal').textContent = d.alertsVal;
+  document.getElementById('ovAlertsSub').textContent = d.alertsVal > 0 ? 'Action Required' : 'No Action';
+  document.getElementById('ovAccountsVal').textContent = d.accountsVal;
+  document.getElementById('ovAccountsSub').textContent = d.accountsSub;
+  document.getElementById('ovRegVal').textContent = d.regVal;
+  document.getElementById('ovRegSub').textContent = d.regSub;
+
+  // Risk wheel
+  document.getElementById('riskWheelScore').textContent = d.riskScore;
+  document.getElementById('riskWheelScore').style.color = d.riskColor;
+  document.getElementById('riskWheelName').textContent = isInd ? 'Arjun Mehta' : 'Kumar Global';
+  document.getElementById('riskTag').textContent = d.riskTagLabel;
+  document.getElementById('riskCircleScore').textContent = d.riskScore;
+
+  // Txn
+  document.getElementById('txnDaily').textContent = d.txnDaily;
+  document.getElementById('txnMonthly').textContent = d.txnMonthly;
+  document.getElementById('txnYtd').textContent = d.txnYtd;
+
+  // Card headings
+  document.getElementById('detailsCardHead').querySelector('.ch-icon').textContent = isInd ? '👤' : '🏢';
+  document.getElementById('detailsCardTitle').textContent = d.detailsTitle;
+  document.getElementById('empCardTitle').textContent = d.empTitle;
+
+  // KYC
+  document.getElementById('kycCddLevel').textContent = d.kycCddLevel;
+  if (!isInd) {
+    document.getElementById('kycCddLevel').style.color = '#dc2626';
+  } else {
+    document.getElementById('kycCddLevel').style.color = '';
+  }
+
+  // Reg status
+  document.getElementById('ovRegStr').textContent = isInd ? 'YES' : 'YES x2';
+  document.getElementById('ovRegCtr').textContent = isInd ? 'No' : 'YES';
+  document.getElementById('ovRegLea').textContent = isInd ? 'No' : 'YES';
+  document.getElementById('ovRegCtr').className = isInd ? 'reg-no' : 'reg-yes';
+  document.getElementById('ovRegLea').className = isInd ? 'reg-no' : 'reg-yes';
+
+  // KYC Gap Score tile
+  document.getElementById('ovGapScore').textContent = d.gapScore;
+  document.getElementById('ovGapScore').style.color = d.gapPriorityColor;
+  document.getElementById('ovGapPriorityBadge').textContent = d.gapPriority;
+  document.getElementById('ovGapPriorityBadge').style.background = d.gapPriorityBg;
+  document.getElementById('ovGapPriorityBadge').style.color = d.gapPriorityColor;
+  document.getElementById('ovGapFieldsCount').textContent = d.gapFields;
+  document.getElementById('kycGapTile').style.borderLeftColor = d.gapPriorityColor;
+
+  // Alerts count
+  document.getElementById('alertActiveCount').textContent = d.alertsVal;
+
+  // Personal detail blocks
+  document.getElementById('indPersonalDetails').style.display = isInd ? '' : 'none';
+  document.getElementById('niPersonalDetails').style.display = isInd ? 'none' : '';
+  document.getElementById('indEmpDetails').style.display = isInd ? '' : 'none';
+  document.getElementById('niEmpDetails').style.display = isInd ? 'none' : '';
+  document.getElementById('indOnboarding').style.display = isInd ? '' : 'none';
+  document.getElementById('niOnboarding').style.display = isInd ? 'none' : '';
+  document.getElementById('indAddress').style.display = isInd ? '' : 'none';
+  document.getElementById('niAddress').style.display = isInd ? 'none' : '';
+
+  // Relationships sections
+  document.getElementById('relIndividualSection').style.display = isInd ? '' : 'none';
+  document.getElementById('relNonIndividualSection').style.display = isInd ? 'none' : '';
+}
+</script>
+</body>
+</html>

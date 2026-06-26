@@ -2,10 +2,10 @@
 
 | Metric | Value |
 | --- | --- |
-| Total Excel test cases | 370 |
-| Generated automation tests | 370 |
-| Fully automated (candidate Yes) | 359 |
-| Blocked / partial scenarios | 11 |
+| Total Excel test cases | 382 |
+| Generated automation tests | 382 |
+| Fully automated (candidate Yes) | 368 |
+| Blocked / partial scenarios | 14 |
 | FSD sections referenced | 15 |
 | Excel vs FSD partial mappings | 0 |
 

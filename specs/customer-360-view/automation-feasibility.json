@@ -1761,18 +1761,18 @@
   },
   {
     "testCaseId": "C360-TC-353",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object"
+    "automationCandidate": "Partial",
+    "reason": "Role credentials not defined in Excel test data"
   },
   {
     "testCaseId": "C360-TC-354",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object"
+    "automationCandidate": "Partial",
+    "reason": "Role credentials not defined in Excel test data"
   },
   {
     "testCaseId": "C360-TC-355",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object"
+    "automationCandidate": "Partial",
+    "reason": "Role credentials not defined in Excel test data"
   },
   {
     "testCaseId": "C360-TC-356",
@@ -1846,6 +1846,66 @@
   },
   {
     "testCaseId": "C360-TC-370",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-371",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-372",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-373",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-374",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-375",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-376",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-377",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-378",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-379",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-380",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-381",
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
+  },
+  {
+    "testCaseId": "C360-TC-382",
     "automationCandidate": "Yes",
     "reason": "Customer 360 UI automation via Playwright page object"
   }

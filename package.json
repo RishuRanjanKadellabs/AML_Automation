@@ -38,6 +38,7 @@
     "kyc-gap-report:generate": "tsx pipeline/src/kyc-gap-report/generate-milestone.ts --generate-specs",
     "customer-360-view:plan": "tsx pipeline/src/customer-360-view/generate-milestone.ts",
     "customer-360-view:generate": "tsx pipeline/src/customer-360-view/generate-milestone.ts --generate-specs",
+    "customer-360-view:enhance-excel": "tsx pipeline/src/customer-360-view/enhance-excel.ts",
     "milestone1:customer-360-view:run": "cross-env PW_SKIP_ALLURE_REPORT=1 PW_SKIP_HTML_REPORT=1 PW_HEADLESS=1 PW_WORKERS=3 PW_RETRIES=0 PW_TRACE=off playwright test tests/milestone1/test-cases/KYCModule/customer360ViewTests/ --project=milestone1-chromium",
     "ignore-words-configuration:plan": "tsx pipeline/src/ignore-words-configuration/generate-milestone.ts",
     "ignore-words-configuration:generate": "tsx pipeline/src/ignore-words-configuration/generate-milestone.ts --generate-specs",
