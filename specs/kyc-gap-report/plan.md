@@ -2,6 +2,14 @@
 
 Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 
+## Excel ↔ FSD Reconciliation
+
+| Metric | Value |
+| --- | --- |
+| FSD aligned | 280 |
+| FSD partial (Excel authoritative) | 0 |
+| FSD source | `pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx` |
+
 ## 1. Requirement Summary
 
 ### 1.1 Source Artifact
@@ -153,7 +161,7 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-048 | Verify search with trailing spaces | Yes | — | — |
 | KGR-049 | Verify search with special characters | Yes | — | — |
 | KGR-050 | Verify search with non-existing customer value | Yes | — | — |
-| KGR-051 | Verify real-time search behavior | Partial | Debounce delay (ms) not specified | Filter applies on input with ≤500ms debounce |
+| KGR-051 | Verify real-time search behavior | Partial | Debounce delay (ms) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-052 | Verify Branch filter dropdown values | Yes | — | — |
 | KGR-053 | Verify filtering by Branch | Yes | — | — |
 | KGR-054 | Verify Branch filter with no matching records | Yes | — | — |
@@ -194,8 +202,8 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-089 | Verify descending sorting for KYC Gap Score column | Yes | — | — |
 | KGR-090 | Verify sorting persists correctly with filtered data | Yes | — | — |
 | KGR-091 | Verify non-sortable columns do not display sort behavior | Yes | — | — |
-| KGR-092 | Verify grid data accuracy against source records | Partial | CBS/DMS seed data mapping not in Excel | Test DB fixture with known CIF records |
-| KGR-093 | Verify grid handles long customer names — Long names should display without UI b | Partial | Max customer name length not defined | Use 256-char boundary + 1000-char stress |
+| KGR-092 | Verify grid data accuracy against source records | Partial | CBS/DMS seed data mapping not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-093 | Verify grid handles long customer names — Long names should display without UI b | Partial | Max customer name length not defined | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-094 | Verify grid handles long template names | Yes | — | — |
 | KGR-095 | Verify grid displays no duplicate records | Yes | — | — |
 | KGR-096 | Verify grid displays records after page refresh | Yes | — | — |
@@ -219,10 +227,10 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-114 | Verify score updates after Mandatory field remediation | Yes | — | — |
 | KGR-115 | Verify score updates after Optional field remediation | Yes | — | — |
 | KGR-116 | Verify score remains unchanged when unrelated customer data changes | Yes | — | — |
-| KGR-117 | Verify Low priority classification based on template score bands | Partial | Per-template band config not listed | Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical |
-| KGR-118 | Verify Medium priority classification based on template score bands | Partial | Per-template band config not listed | Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical |
-| KGR-119 | Verify High priority classification based on template score bands | Partial | Per-template band config not listed | Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical |
-| KGR-120 | Verify Critical priority classification based on template score bands | Partial | Per-template band config not listed | Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical |
+| KGR-117 | Verify Low priority classification based on template score bands | Partial | Per-template band config not listed | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-118 | Verify Medium priority classification based on template score bands | Partial | Per-template band config not listed | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-119 | Verify High priority classification based on template score bands | Partial | Per-template band config not listed | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-120 | Verify Critical priority classification based on template score bands | Partial | Per-template band config not listed | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-121 | Verify priority is derived from assigned template score bands | Yes | — | — |
 | KGR-122 | Verify same score can result in different priorities under different templates | Yes | — | — |
 | KGR-123 | Verify priority recalculation after score band configuration change | Yes | — | — |
@@ -293,71 +301,71 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-188 | Verify pagination works correctly when total records equal page size | Yes | — | — |
 | KGR-189 | Verify pagination works correctly when total records are less than page size | Yes | — | — |
 | KGR-190 | Verify pagination works correctly when no records are available | Yes | — | — |
-| KGR-191 | Verify Export button is displayed on KYC Gap Report page | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-192 | Verify Export button is enabled when records exist | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-193 | Verify export downloads report successfully | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-194 | Verify exported file contains report records | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-195 | Verify exported file contains Customer column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-196 | Verify exported file contains Customer ID column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-197 | Verify exported file contains Type column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-198 | Verify exported file contains Branch column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-199 | Verify exported file contains Branch Code column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-200 | Verify exported file contains Template Applied column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-201 | Verify exported file contains KYC Gap Score column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-202 | Verify exported file contains Priority column | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-203 | Verify exported record count matches report record count | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-204 | Verify exported Customer values match report data | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-205 | Verify exported KYC Gap Score values match report data | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-206 | Verify exported Priority values match report data | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-207 | Verify export respects active Search filter | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-208 | Verify export respects active Branch filter | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-209 | Verify export respects active Customer Type filter | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-210 | Verify export respects active Template filter | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-211 | Verify export respects active Priority filter | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-212 | Verify export respects active Gap Score filter | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-213 | Verify export supports combined filters | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-214 | Verify export after sorting | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-215 | Verify export works from Page 1 | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-216 | Verify export works from non-first page | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-217 | Verify export works when page size is changed | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-218 | Verify export file opens successfully | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-219 | Verify export handles large datasets | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-220 | Verify export behavior when no records are available | Partial | File format (CSV/XLSX) not specified | CSV unless app specifies otherwise |
-| KGR-221 | Verify authenticated Compliance Officer can access KYC Gap Report | Partial | Role credentials not in Excel | Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL |
-| KGR-222 | Verify authenticated Administrator can access KYC Gap Report | Partial | Role credentials not in Excel | Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL |
-| KGR-223 | Verify unauthorized role cannot access KYC Gap Report | Partial | Role credentials not in Excel | Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL |
-| KGR-224 | Verify unauthenticated user cannot access KYC Gap Report URL | Partial | Role credentials not in Excel | Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL |
-| KGR-225 | Verify direct URL access respects RBAC permissions | Partial | Role credentials not in Excel | Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL |
+| KGR-191 | Verify Export button is displayed on KYC Gap Report page | Yes | — | — |
+| KGR-192 | Verify Export button is enabled when records exist | Yes | — | — |
+| KGR-193 | Verify export downloads report successfully | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-194 | Verify exported file contains report records | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-195 | Verify exported file contains Customer column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-196 | Verify exported file contains Customer ID column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-197 | Verify exported file contains Type column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-198 | Verify exported file contains Branch column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-199 | Verify exported file contains Branch Code column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-200 | Verify exported file contains Template Applied column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-201 | Verify exported file contains KYC Gap Score column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-202 | Verify exported file contains Priority column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-203 | Verify exported record count matches report record count | Yes | — | — |
+| KGR-204 | Verify exported Customer values match report data | Yes | — | — |
+| KGR-205 | Verify exported KYC Gap Score values match report data | Yes | — | — |
+| KGR-206 | Verify exported Priority values match report data | Yes | — | — |
+| KGR-207 | Verify export respects active Search filter | Yes | — | — |
+| KGR-208 | Verify export respects active Branch filter | Yes | — | — |
+| KGR-209 | Verify export respects active Customer Type filter | Yes | — | — |
+| KGR-210 | Verify export respects active Template filter | Yes | — | — |
+| KGR-211 | Verify export respects active Priority filter | Yes | — | — |
+| KGR-212 | Verify export respects active Gap Score filter | Yes | — | — |
+| KGR-213 | Verify export supports combined filters | Yes | — | — |
+| KGR-214 | Verify export after sorting | Yes | — | — |
+| KGR-215 | Verify export works from Page 1 | Yes | — | — |
+| KGR-216 | Verify export works from non-first page | Yes | — | — |
+| KGR-217 | Verify export works when page size is changed | Yes | — | — |
+| KGR-218 | Verify export file opens successfully | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-219 | Verify export handles large datasets | Partial | "Large" record count undefined | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-220 | Verify export behavior when no records are available | Yes | — | — |
+| KGR-221 | Verify authenticated Compliance Officer can access KYC Gap Report | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-222 | Verify authenticated Administrator can access KYC Gap Report | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-223 | Verify unauthorized role cannot access KYC Gap Report | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-224 | Verify unauthenticated user cannot access KYC Gap Report URL | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-225 | Verify direct URL access respects RBAC permissions | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-226 | Verify session timeout prevents report access | Yes | — | — |
 | KGR-227 | Verify report is read-only | Yes | — | — |
 | KGR-228 | Verify report does not provide Bulk Notify action | Yes | — | — |
 | KGR-229 | Verify report does not provide Edit action | Yes | — | — |
 | KGR-230 | Verify View action does not allow data modification | Yes | — | — |
-| KGR-231 | Verify audit log entry generated for template creation | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-232 | Verify audit log captures user ID during template creation | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-233 | Verify audit log captures timestamp during template creation | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-234 | Verify audit log entry generated for template cloning | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-235 | Verify audit log entry generated when field requirement changes | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-236 | Verify audit log records previous value for requirement change | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-237 | Verify audit log records new value for requirement change | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-238 | Verify audit log entry generated when custom field is added | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-239 | Verify audit log entry generated when score bands are modified | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-240 | Verify audit log captures before and after values for score band changes | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-241 | Verify audit log remains immutable | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-242 | Verify audit records are retained after page refresh | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-243 | Verify unauthorized user cannot modify template configuration | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-244 | Verify unauthorized user cannot access audit records | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-245 | Verify application prevents access after logout | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-246 | Verify report remains accessible after successful re-authentication | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-247 | Verify audit log captures template archival action | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-248 | Verify templates cannot be permanently deleted | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-249 | Verify archived templates remain traceable in audit history | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
-| KGR-250 | Verify audit trail completeness for template lifecycle | Partial | Audit UI/API endpoint not specified | Audit accessed via Admin module or API /audit |
+| KGR-231 | Verify audit log entry generated for template creation | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-232 | Verify audit log captures user ID during template creation | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-233 | Verify audit log captures timestamp during template creation | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-234 | Verify audit log entry generated for template cloning | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-235 | Verify audit log entry generated when field requirement changes | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-236 | Verify audit log records previous value for requirement change | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-237 | Verify audit log records new value for requirement change | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-238 | Verify audit log entry generated when custom field is added | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-239 | Verify audit log entry generated when score bands are modified | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-240 | Verify audit log captures before and after values for score band changes | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-241 | Verify audit log remains immutable | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-242 | Verify audit records are retained after page refresh | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-243 | Verify unauthorized user cannot modify template configuration | Yes | — | — |
+| KGR-244 | Verify unauthorized user cannot access audit records | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-245 | Verify application prevents access after logout | Yes | — | — |
+| KGR-246 | Verify report remains accessible after successful re-authentication | Yes | — | — |
+| KGR-247 | Verify audit log captures template archival action | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-248 | Verify templates cannot be permanently deleted | Yes | — | — |
+| KGR-249 | Verify archived templates remain traceable in audit history | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-250 | Verify audit trail completeness for template lifecycle | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-251 | Verify search with blank value | Yes | — | — |
 | KGR-252 | Verify search with whitespace-only value | Yes | — | — |
 | KGR-253 | Verify search with maximum supported characters | Yes | — | — |
-| KGR-254 | Verify search with SQL injection pattern | Partial | Expected system response detail (block/sanitize/log) | Input rejected or sanitized; no script execution |
-| KGR-255 | Verify search with script injection pattern | Partial | Expected system response detail (block/sanitize/log) | Input rejected or sanitized; no script execution |
+| KGR-254 | Verify search with SQL injection pattern | Partial | Expected system response detail (block/sanitize/log) | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-255 | Verify search with script injection pattern | Partial | Expected system response detail (block/sanitize/log) | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-256 | Verify Gap Score filter with Min value only | Yes | — | — |
 | KGR-257 | Verify Gap Score filter with Max value only | Yes | — | — |
 | KGR-258 | Verify Gap Score filter with Min greater than Max | Yes | — | — |

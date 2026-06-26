@@ -1,0 +1,3712 @@
+{
+  "generatedAt": "2026-06-25T11:40:52.436Z",
+  "excelSource": "pipeline/test-data/Customer 360 View.xlsx",
+  "fsdSource": "pipeline/test-data/FSD_Customer_360_View_v1.1.docx",
+  "summary": {
+    "aligned": 370,
+    "partial": 0,
+    "unmapped": 0
+  },
+  "entries": [
+    {
+      "testCaseId": "C360-TC-001",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify Customer 360 page loads successfully for a valid customer profile",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-002",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify default Overview tab selection on Customer 360 page",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-003",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify Customer 360 page layout alignment and spacing",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-004",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify sticky header behavior during vertical scrolling",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-005",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify page responsiveness on medium screen resolution",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-006",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify page responsiveness on smaller screen resolutions",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-007",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify page loading skeleton or loader visibility during slow network response",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-008",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify empty-state rendering when customer data is unavailable",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-009",
+      "excelSubModule": "Page Framework",
+      "excelTask": "Verify frontend console stability during page load",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-010",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify customer full name rendering in header strip",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-011",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify customer unique identifier rendering in header strip",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-012",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify PEP badge rendering for PEP-linked customer profiles",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-013",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify adverse media badge rendering in customer header",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-014",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify risk score badge rendering in customer header",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-015",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify active alert count rendering in header strip",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-016",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify STR/SAR indicator rendering in header strip",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-017",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify long customer name handling in header strip",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-018",
+      "excelSubModule": "Header Strip",
+      "excelTask": "Verify tooltip visibility for truncated customer values",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-019",
+      "excelSubModule": "Customer Type Switching",
+      "excelTask": "Verify switching from Individual customer to Corporate customer without page reload",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Customer Type Modes",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-020",
+      "excelSubModule": "Customer Type Switching",
+      "excelTask": "Verify switching from Corporate customer to Individual customer without page reload",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Customer Type Modes",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-021",
+      "excelSubModule": "Customer Type Switching",
+      "excelTask": "Verify active tab persistence after customer type switching",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Customer Type Modes",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-022",
+      "excelSubModule": "Customer Type Switching",
+      "excelTask": "Verify all widgets rerender successfully after customer type switching",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Customer Type Modes",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-023",
+      "excelSubModule": "Customer Type Switching",
+      "excelTask": "Verify stale data removal after customer type switching",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Customer Type Modes",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-024",
+      "excelSubModule": "Customer Type Switching",
+      "excelTask": "Verify rapid customer type switching stability",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Customer Type Modes",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-025",
+      "excelSubModule": "Customer Type Switching",
+      "excelTask": "Verify loading indicator during customer type rerender under slow network",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Customer Type Modes",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-026",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify successful loading of Overview tab widgets and KPI cards",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-027",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Risk Profile KPI card rendering in Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-028",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify KYC Status KPI card rendering in Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-029",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Active Alerts KPI card rendering in Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-030",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Total Accounts KPI card rendering in Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-031",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Regulatory Reports KPI card rendering in Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-032",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify KYC Gap Score KPI card rendering in Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-033",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Overview KPI card alignment and spacing",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-034",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify responsive rendering of KPI cards on medium screen resolution",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-035",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify handling of large KPI values within Overview widgets",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-036",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify empty-state behavior for missing KPI data",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-037",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify navigation from KYC Gap Score KPI card to KYC Gap Report tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-038",
+      "excelSubModule": "Risk Visualization",
+      "excelTask": "Verify successful rendering of Risk Donut Chart",
+      "fsdSectionId": "4.1.3",
+      "fsdSectionTitle": "Right Column — Risk & Screening Cards",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-039",
+      "excelSubModule": "Risk Visualization",
+      "excelTask": "Verify color coding of Risk Donut Chart segments",
+      "fsdSectionId": "4.1.3",
+      "fsdSectionTitle": "Right Column — Risk & Screening Cards",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-040",
+      "excelSubModule": "Risk Visualization",
+      "excelTask": "Verify tooltip behavior on Risk Donut Chart hover",
+      "fsdSectionId": "4.1.3",
+      "fsdSectionTitle": "Right Column — Risk & Screening Cards",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-041",
+      "excelSubModule": "Risk Visualization",
+      "excelTask": "Verify responsive rendering of Risk Donut Chart",
+      "fsdSectionId": "4.1.3",
+      "fsdSectionTitle": "Right Column — Risk & Screening Cards",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-042",
+      "excelSubModule": "Risk Visualization",
+      "excelTask": "Verify empty-state rendering when risk visualization data is unavailable",
+      "fsdSectionId": "4.1.3",
+      "fsdSectionTitle": "Right Column — Risk & Screening Cards",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-043",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Key Relationships widget rendering within Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-044",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify relationship labels and linked entity names within Key Relationships widget",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-045",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify handling of long relationship names within Overview widget",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-046",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify empty-state rendering for missing relationship data",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-047",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Screening Summary widget rendering within Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-048",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify sanctions match count rendering within Screening Summary widget",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-049",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify PEP indicator rendering within Screening Summary widget",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-050",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify adverse media indicator rendering within Screening Summary widget",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-051",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify transaction metrics rendering within Overview tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-052",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify Cash vs Non-Cash ratio visualization rendering",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-053",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify cross-border transaction indicator rendering",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-054",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify unusual transaction pattern indicator rendering",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-055",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify consistency of alert counts between Header Strip and Overview KPI widgets",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-056",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify consistency of risk score across Header Strip and Overview widgets",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-057",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify successful rerendering of Overview widgets after customer type switching",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-058",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify removal of stale Overview data after customer rerender",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-059",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify loading indicator visibility during Overview widget rendering under slow network",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-060",
+      "excelSubModule": "Overview Tab",
+      "excelTask": "Verify frontend console stability during Overview tab interactions",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-061",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify successful loading of Relationships tab",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-062",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify rendering of linked relationship entities",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-063",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify relationship type label rendering",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-064",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify relationship count rendering",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-065",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify handling of long linked entity names",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-066",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify rendering of PEP-linked relationship banner",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-067",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify styling of PEP relationship badges",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-068",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify expand functionality for relationship cards",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-069",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify collapse functionality for expanded relationship cards",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-070",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify multiple relationship card expansion handling",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-071",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify empty-state rendering when no relationships exist",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-072",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify responsive rendering of Relationships tab",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-073",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify rerendering of relationship data after customer type switching",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-074",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify removal of stale relationship data after rerender",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-075",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify relationship tooltip visibility for truncated values",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-076",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify Graphical Link Analysis shortcut visibility",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-077",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify navigation behavior of Graphical Link Analysis shortcut",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-078",
+      "excelSubModule": "Relationships Tab",
+      "excelTask": "Verify frontend console stability during relationship interactions",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Relationships Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-079",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify successful loading of Screening tab",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-080",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify sanctions screening section rendering",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-081",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify sanctions match score visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-082",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify sanctions list source visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-083",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify sanctions jurisdiction visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-084",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify PEP screening section rendering",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-085",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify political role visibility within PEP screening",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-086",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify relationship type visibility within PEP screening",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-087",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify adverse media section rendering",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-088",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify adverse media risk classification visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-089",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify adverse media match score visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-090",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify screening history section rendering",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-091",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify screening trigger type visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-092",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify screening status visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-093",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify screening Case ID visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-094",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify screened list name visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-095",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify Re-Screen button visibility within Screening tab",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-096",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify Re-Screen button click behavior",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-097",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify loading indicator visibility during Re-Screen process",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-098",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify disabled state of Re-Screen button during processing",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-099",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify Auto-Refresh toggle visibility",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-100",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify enabling Auto-Refresh toggle",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-101",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify disabling Auto-Refresh toggle",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-102",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify responsive rendering of Screening tab",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-103",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify empty-state rendering when no screening data exists",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-104",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify rerendering of Screening data after customer type switching",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-105",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify removal of stale screening data after rerender",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-106",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify loading indicator visibility during Screening tab rendering under slow network",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-107",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify tooltip visibility for truncated screening values",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-108",
+      "excelSubModule": "Screening Tab",
+      "excelTask": "Verify frontend console stability during screening interactions",
+      "fsdSectionId": "4.3",
+      "fsdSectionTitle": "Screening Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-109",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify successful loading of Risk tab",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-110",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify composite risk score rendering within Risk tab",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-111",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify risk score color coding within Risk tab",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-112",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify risk classification badge rendering",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-113",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify rendering of Risk Gauge visualization",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-114",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify rendering of Risk Factor table",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-115",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify visibility of risk factor names",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-116",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify visibility of individual risk factor scores",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-117",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify visibility of individual risk factor weights",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-118",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify rendering of Risk Breakdown categories",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-119",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify expand functionality of Risk Breakdown section",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-120",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify collapse functionality of expanded Risk Breakdown section",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-121",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify rendering of manual risk override banner",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-122",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify visibility of manual override reason",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-123",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify visibility of manual override timestamp",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-124",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify rendering of Risk History Timeline",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-125",
+      "excelSubModule": "Risk Tab",
+      "excelTask": "Verify chronological ordering of Risk History Timeline",
+      "fsdSectionId": "4.4",
+      "fsdSectionTitle": "Risk Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-126",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify successful loading of KYC/CDD tab",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-127",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of customer KYC level within KYC/CDD tab",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-128",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of Last Review Date within KYC/CDD tab",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-129",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of Next Review Date within KYC/CDD tab",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-130",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rendering of Submitted Documents section",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-131",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of document verification status",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords reference 3.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-132",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify styling of expired document indicators",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords reference 3.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-133",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rendering of Source of Funds section",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-134",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rendering of Source of Wealth section",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-135",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of Tax Return documents within financial profile section",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-136",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of Bank Statement documents within financial profile section",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-137",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of document submission dates",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-138",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rendering of EDD-specific sections for EDD customers",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-139",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify hiding of EDD-specific sections for non-EDD customers",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-140",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rendering of KYC Change Log section",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-141",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rendering of KYC Risk Evolution widget",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-142",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rendering of New Products section",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-143",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify visibility of Start New Review button",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-144",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify click behavior of Start New Review button",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-145",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify handling of long document names within document tables",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-146",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify tooltip visibility for truncated KYC values",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-147",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify empty-state rendering when no KYC data exists",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-148",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify responsive rendering of KYC/CDD tab",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-149",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify rerendering of KYC/CDD data after customer type switching",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-150",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify removal of stale KYC/CDD data after rerender",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-151",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify loading indicator visibility during KYC/CDD rendering under slow network",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-152",
+      "excelSubModule": "KYC/CDD Tab",
+      "excelTask": "Verify frontend console stability during KYC/CDD interactions",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "KYC / CDD Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-153",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify successful loading of Accounts tab",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-154",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify rendering of Account Summary section",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-155",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify visibility of account numbers within Accounts table",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-156",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify visibility of account type within Accounts table",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-157",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify visibility of account status within Accounts table",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-158",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify visibility of account opening date within Accounts table",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-159",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify visibility of Last Transaction Date within Accounts table",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-160",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify highlighting of dormant accounts",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-161",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify visibility of Product Filter pills within Accounts tab",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-162",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify Savings account filter behavior",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-163",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify Current account filter behavior",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-164",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify Investment account filter behavior",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-165",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify Loan account filter behavior",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-166",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify stability of rapid product filter switching",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-167",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify rendering of Product Holdings section",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-168",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify rendering of Limits and Thresholds section",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords reference 3.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-169",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify horizontal scrolling behavior within Accounts table",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-170",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify handling of long account values within Accounts table",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-171",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify empty-state rendering when no account records exist",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-172",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify responsive rendering of Accounts tab",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-173",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify rerendering of Accounts data after customer type switching",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-174",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify removal of stale Accounts data after rerender",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-175",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify loading indicator visibility during Accounts rendering under slow network",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-176",
+      "excelSubModule": "Accounts Tab",
+      "excelTask": "Verify frontend console stability during Accounts tab interactions",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "Accounts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-177",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify successful loading of Transactions tab",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-178",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify rendering of Transactions table",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-179",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of transaction dates within Transactions table",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-180",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of debit transaction amounts",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-181",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of credit transaction amounts",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-182",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of transaction channel information",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-183",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of Date Range filter within Transactions tab",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-184",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify transaction filtering using Date Range filter",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-185",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify highlighting of alert-linked transactions",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-186",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify styling consistency of highlighted transactions",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-187",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of unusual transaction indicators",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-188",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of cross-border transaction indicators",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-189",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify visibility of Download Statement button",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords reference 4.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-190",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify click behavior of Download Statement button",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords reference 4.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-191",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify disabled state of Download Statement button when statement is unavailable",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords reference 4.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-192",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify horizontal scrolling behavior within Transactions table",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-193",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify handling of long transaction descriptions within Transactions table",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-194",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify tooltip visibility for truncated transaction values",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-195",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify empty-state rendering when no transaction records exist",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-196",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify responsive rendering of Transactions tab",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-197",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify rerendering of Transactions data after customer type switching",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-198",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify removal of stale Transactions data after rerender",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-199",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify loading indicator visibility during Transactions rendering under slow network",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-200",
+      "excelSubModule": "Transactions Tab",
+      "excelTask": "Verify frontend console stability during Transactions interactions",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Transactions Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords reference 4.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-201",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify successful loading of Alerts tab",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-202",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify rendering of Alerts Summary section",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-203",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Total Alerts count within Alerts Summary",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-204",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Active/Open Alerts count within Alerts Summary",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-205",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Escalated Alerts count within Alerts Summary",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-206",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Pending Response count within Alerts Summary",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-207",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify rendering of Alerts table",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-208",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Alert Type within Alerts table",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-209",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Scenario Name within Alerts table",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-210",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Alert Creation Date within Alerts table",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-211",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Last Updated Date within Alerts table",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-212",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Assigned Analyst within Alerts table",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-213",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify rendering of Alert Status badges",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-214",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify color coding of Alert Status badges",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-215",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify expand functionality of alert rows",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-216",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of triggering transactions within expanded alert details",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-217",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of Match Criteria within expanded alert details",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-218",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify visibility of alert status within expanded alert details",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-219",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify stability of multiple expanded alert rows",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-220",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify consistency of Active Alert counts between Header Strip and Alerts Summary",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-221",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify tooltip visibility for truncated alert values",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-222",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify empty-state rendering when no alerts exist",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-223",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify responsive rendering of Alerts tab",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-224",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify rerendering of Alerts data after customer type switching",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-225",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify removal of stale Alerts data after rerender",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-226",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify loading indicator visibility during Alerts rendering under slow network",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-227",
+      "excelSubModule": "Alerts Tab",
+      "excelTask": "Verify frontend console stability during Alerts interactions",
+      "fsdSectionId": "4.8",
+      "fsdSectionTitle": "Alerts Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-228",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify successful loading of Regulatory Reports tab",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-229",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify rendering of STR/SAR Filings section",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-230",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of jurisdiction within STR/SAR filings",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-231",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of Full Report link within STR/SAR filings",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-232",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify click behavior of Full Report link",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.9; task keywords reference 4.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-233",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of Case ID within STR/SAR filings",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-234",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify rendering of CTR section",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-235",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of CTR Reference within CTR section",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-236",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of Transaction Date within CTR section",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-237",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of Transaction Amount within CTR section",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-238",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify rendering of LEA Requests section",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-239",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of Agency Name within LEA Requests",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-240",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify visibility of Response Deadline within LEA Requests",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-241",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify rendering of Filing Status badges within Regulatory Reports tab",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-242",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify color coding of Filing Status badges",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-243",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify tooltip visibility for truncated regulatory report values",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-244",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify empty-state rendering when no regulatory reports exist",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-245",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify responsive rendering of Regulatory Reports tab",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-246",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify rerendering of Regulatory Reports data after customer type switching",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-247",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify removal of stale Regulatory Reports data after rerender",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-248",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify loading indicator visibility during Regulatory Reports rendering under slow network",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-249",
+      "excelSubModule": "Regulatory Reports Tab",
+      "excelTask": "Verify frontend console stability during Regulatory Reports interactions",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Regulatory Reports Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-250",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify successful loading of KYC Gap Report tab",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-251",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify visibility of KYC Gap Score within KYC Gap Report tab",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-252",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify formatting consistency of KYC Gap Score",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-253",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify visibility of Missing Field Count within KYC Gap Report tab",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-254",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify visibility of applied Template Name within KYC Gap Report tab",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-255",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify visibility of Branch Code within KYC Gap Report tab",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-256",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify rendering of Missing Field table",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-257",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify visibility of Mandatory field indicators within Missing Field table",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-258",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify visibility of Optional field indicators within Missing Field table",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-259",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify visibility of field weights within Missing Field table",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-260",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify handling of long missing field names within Missing Field table",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-261",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify tooltip visibility for truncated KYC Gap values",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-262",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify empty-state rendering when no KYC gaps exist",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-263",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify responsive rendering of KYC Gap Report tab",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-264",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify rerendering of KYC Gap data after customer type switching",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-265",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify removal of stale KYC Gap data after rerender",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-266",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify loading indicator visibility during KYC Gap rendering under slow network",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-267",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify consistency of KYC Gap Score between Overview and KYC Gap Report tab",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-268",
+      "excelSubModule": "KYC Gap Report Tab",
+      "excelTask": "Verify frontend console stability during KYC Gap interactions",
+      "fsdSectionId": "4.10",
+      "fsdSectionTitle": "KYC Gap Report Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-269",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify successful loading of Audit tab",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-270",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify rendering of Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-271",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify visibility of audit timestamps within Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-272",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify visibility of Action Type within Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-273",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify visibility of Actor/User information within Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-274",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify visibility of Module/Source information within Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-275",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify visibility of Event Description within Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-276",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify chronological ordering of audit records",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-277",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify absence of Edit/Delete actions within Audit tab",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-278",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify visibility of Audit Search functionality",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-279",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify Audit Search functionality behavior",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-280",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify visibility of Audit Filter controls",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-281",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify Audit Filter functionality behavior",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-282",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify horizontal scrolling behavior within Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-283",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify handling of long event descriptions within Audit table",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-284",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify tooltip visibility for truncated audit values",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-285",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify empty-state rendering when no audit records exist",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-286",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify responsive rendering of Audit tab",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-287",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify rerendering of Audit data after customer type switching",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-288",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify removal of stale Audit data after rerender",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-289",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify loading indicator visibility during Audit rendering under slow network",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-290",
+      "excelSubModule": "Audit Tab",
+      "excelTask": "Verify frontend console stability during Audit interactions",
+      "fsdSectionId": "4.11",
+      "fsdSectionTitle": "Audit Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-291",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify tab navigation behavior across Customer 360 module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-292",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify active tab highlighting behavior",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-293",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify active tab persistence after customer type switching",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-294",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify browser back navigation behavior within Customer 360",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-295",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify browser refresh behavior within Customer 360",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-296",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify stability during rapid tab switching",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-297",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify scroll position behavior during tab navigation",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-298",
+      "excelSubModule": "Global Navigation",
+      "excelTask": "Verify handling of horizontal overflow across Customer 360 module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-299",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify visibility of Export action within Customer 360 module",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-300",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify Export action click behavior",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-301",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify visibility of PDF export option",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-302",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify visibility of CSV export option",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-303",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify loading indicator visibility during export processing",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-304",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify success notification after successful export",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-305",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify error notification during failed export",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-306",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify disabled state of Export action during processing",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-307",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify export data consistency with currently active tab",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-308",
+      "excelSubModule": "Export Functionality",
+      "excelTask": "Verify export workflow behavior under slow network",
+      "fsdSectionId": "4.1",
+      "fsdSectionTitle": "Overview Tab",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-309",
+      "excelSubModule": "PII Masking",
+      "excelTask": "Verify masking of PAN information within Customer 360",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-310",
+      "excelSubModule": "PII Masking",
+      "excelTask": "Verify masking of Aadhaar information within Customer 360",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-311",
+      "excelSubModule": "PII Masking",
+      "excelTask": "Verify masking of Account Numbers within Customer 360",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-312",
+      "excelSubModule": "PII Masking",
+      "excelTask": "Verify consistency of masking behavior across all tabs",
+      "fsdSectionId": "5.1",
+      "fsdSectionTitle": "Individual Customer Header",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-313",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify rendering of generic API failure state",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-314",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify visibility of Retry action after API failure",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-315",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify Retry functionality after API failure",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-316",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify handling of partial widget failures",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-317",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify timeout message visibility during delayed responses",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-318",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify unauthorized access handling within Customer 360",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-319",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify session expiry handling within Customer 360",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-320",
+      "excelSubModule": "Error Handling",
+      "excelTask": "Verify frontend recovery after API restoration",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-321",
+      "excelSubModule": "Accessibility",
+      "excelTask": "Verify keyboard navigation across Customer 360 tabs",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-322",
+      "excelSubModule": "Accessibility",
+      "excelTask": "Verify visibility of keyboard focus indicators",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-323",
+      "excelSubModule": "Accessibility",
+      "excelTask": "Verify Enter key interaction with actionable elements",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-324",
+      "excelSubModule": "Accessibility",
+      "excelTask": "Verify readability under increased browser zoom",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-325",
+      "excelSubModule": "Accessibility",
+      "excelTask": "Verify readability of color-coded badges",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-326",
+      "excelSubModule": "Accessibility",
+      "excelTask": "Verify table readability on smaller screen resolutions",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-327",
+      "excelSubModule": "Accessibility",
+      "excelTask": "Verify tooltip accessibility behavior",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-328",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify frontend state persistence during tab switching",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-329",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify synchronization of widget rerendering after customer switching",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-330",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify prevention of duplicate widget rendering",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-331",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify frontend stability during rapid user interactions",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-332",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify removal of broken placeholders after rerender",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-333",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify removal of stale tooltips after rerender",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-334",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify frontend memory stability during prolonged usage",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-335",
+      "excelSubModule": "State Management",
+      "excelTask": "Verify frontend console stability during prolonged usage",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-336",
+      "excelSubModule": "Global UI Consistency",
+      "excelTask": "Verify consistency of badge styling across Customer 360 module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-337",
+      "excelSubModule": "Global UI Consistency",
+      "excelTask": "Verify consistency of table styling across Customer 360 module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-338",
+      "excelSubModule": "Global UI Consistency",
+      "excelTask": "Verify consistency of font rendering across Customer 360 module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-339",
+      "excelSubModule": "Global UI Consistency",
+      "excelTask": "Verify consistency of spacing and padding across widgets",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-340",
+      "excelSubModule": "Browser Compatibility",
+      "excelTask": "Verify Customer 360 behavior on Google Chrome",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-341",
+      "excelSubModule": "Browser Compatibility",
+      "excelTask": "Verify Customer 360 behavior on Microsoft Edge",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-342",
+      "excelSubModule": "Browser Compatibility",
+      "excelTask": "Verify Customer 360 behavior on Mozilla Firefox",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-343",
+      "excelSubModule": "Session Management",
+      "excelTask": "Verify user session persistence during Customer 360 usage",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-344",
+      "excelSubModule": "Session Management",
+      "excelTask": "Verify automatic logout after session expiration",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-345",
+      "excelSubModule": "Session Management",
+      "excelTask": "Verify redirect behavior after session expiration",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-346",
+      "excelSubModule": "Performance Validation",
+      "excelTask": "Verify Customer 360 initial page load performance",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-347",
+      "excelSubModule": "Performance Validation",
+      "excelTask": "Verify performance during large transaction dataset rendering",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-348",
+      "excelSubModule": "Performance Validation",
+      "excelTask": "Verify performance during large audit dataset rendering",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-349",
+      "excelSubModule": "Performance Validation",
+      "excelTask": "Verify performance during repeated customer switching",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-350",
+      "excelSubModule": "Performance Validation",
+      "excelTask": "Verify performance during simultaneous widget rendering",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-351",
+      "excelSubModule": "Security Validation",
+      "excelTask": "Verify prevention of unauthorized tab access",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-352",
+      "excelSubModule": "Security Validation",
+      "excelTask": "Verify prevention of direct URL manipulation",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-353",
+      "excelSubModule": "Security Validation",
+      "excelTask": "Verify masking persistence during export operations",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 3.1; task keywords reference 4.1. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "C360-TC-354",
+      "excelSubModule": "Security Validation",
+      "excelTask": "Verify prevention of sensitive data exposure in browser console",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-355",
+      "excelSubModule": "Security Validation",
+      "excelTask": "Verify prevention of sensitive data exposure in page source",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-356",
+      "excelSubModule": "Usability Validation",
+      "excelTask": "Verify readability of KPI cards within Customer 360",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-357",
+      "excelSubModule": "Usability Validation",
+      "excelTask": "Verify readability of charts and graphs",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-358",
+      "excelSubModule": "Usability Validation",
+      "excelTask": "Verify consistency of action button placement",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-359",
+      "excelSubModule": "Usability Validation",
+      "excelTask": "Verify readability of status indicators",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-360",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify complete Customer 360 workflow navigation",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-361",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify consistency of customer identity across all tabs",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-362",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify synchronization of alert counts across module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-363",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify synchronization of risk scores across module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-364",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify synchronization of KYC Gap Scores across module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-365",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify overall UI stability during complete workflow execution",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-366",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify absence of stale data across complete workflow",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-367",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify overall frontend console stability across Customer 360 module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-368",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify complete Customer 360 responsiveness across module",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-369",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify complete Customer 360 module under slow network conditions",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "C360-TC-370",
+      "excelSubModule": "Regression Validation",
+      "excelTask": "Verify enterprise-level end-to-end Customer 360 workflow stability",
+      "fsdSectionId": "3.1",
+      "fsdSectionTitle": "Layout Structure",
+      "fsdModule": "Customer 360 View",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 3.1; task keywords reference 4.1. Sub-module is authoritative."
+    }
+  ]
+}

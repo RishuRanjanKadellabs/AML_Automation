@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 import type { MmExcelRow } from "./types";
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..", "..");
-export const MM_EXCEL_PATH = path.join(PROJECT_ROOT, "pipeline/test-data/Missing Mandatory Test cases.xlsx");
+export const MM_EXCEL_PATH = path.join(PROJECT_ROOT, "pipeline/test-data/Missing Mandatory Test Cases.xlsx");
 
 function cellString(value: unknown): string {
   if (value === null || value === undefined) return "";
@@ -18,10 +18,30 @@ export function normalizeTaskDescription(raw: string): string {
     .join(" — ");
 }
 
-/** Feature group = segment before first `→` in Sub Module. */
-export function featureGroup(subModule: string): string {
-  const parts = subModule.split("→").map((s) => s.trim());
-  return parts[0] || subModule;
+/** Primary feature group for describe blocks and intent routing. */
+export function featureGroup(subModuleOrRow: string | MmExcelRow): string {
+  if (typeof subModuleOrRow === "object") {
+    if (subModuleOrRow.feature) {
+      return subModuleOrRow.feature;
+    }
+    return featureGroup(subModuleOrRow.subModule);
+  }
+  const parts = subModuleOrRow.split("→").map((s) => s.trim());
+  return parts[0] || subModuleOrRow;
+}
+
+function isValidTestCaseId(id: string): boolean {
+  return /^TC_MMDT_\d+$/i.test(id) || /^MM-TC-\d+$/i.test(id);
+}
+
+function buildSubModule(feature: string, taskDescription: string, legacySubModule: string): string {
+  if (legacySubModule.includes("→")) {
+    return legacySubModule;
+  }
+  if (feature && taskDescription) {
+    return `${feature} → ${taskDescription}`;
+  }
+  return feature || legacySubModule || "Missing Mandatory Data Template";
 }
 
 export function loadMmRows(): MmExcelRow[] {
@@ -33,9 +53,12 @@ export function loadMmRows(): MmExcelRow[] {
   return raw
     .map((r, excelRowIndex) => {
       const id = cellString(r["Test Case ID"]);
-      const subModule = cellString(r["Sub Module"]);
-      if (!id.startsWith("MM-TC-")) return null;
-      if (!subModule || subModule === "undefined") return null;
+      const legacySubModule = cellString(r["Sub Module"]);
+      const feature = cellString(r.Feature);
+      const taskDescription = normalizeTaskDescription(cellString(r["Task Description"]));
+
+      if (!isValidTestCaseId(id)) return null;
+      if (!taskDescription && !legacySubModule) return null;
 
       const occurrence = (idOccurrence.get(id) ?? 0) + 1;
       idOccurrence.set(id, occurrence);
@@ -45,8 +68,9 @@ export function loadMmRows(): MmExcelRow[] {
         idOccurrence: occurrence,
         excelRowIndex,
         module: cellString(r.Module),
-        subModule,
-        taskDescription: normalizeTaskDescription(cellString(r["Task Description"])),
+        subModule: buildSubModule(feature, taskDescription, legacySubModule),
+        feature: feature || featureGroup(legacySubModule),
+        taskDescription,
         acceptanceCriteria: cellString(r["Acceptance Criteria"]),
         preconditions: cellString(r.Preconditions),
         testSteps: cellString(r["Test Steps"]),
@@ -66,32 +90,14 @@ export function subModuleSlug(subModule: string): string {
 }
 
 export function mmTestNumber(id: string): number {
-  return parseInt(id.replace("MM-TC-", ""), 10);
+  const mm = id.match(/MM-TC-(\d+)/i);
+  if (mm) return parseInt(mm[1], 10);
+  const mmdt = id.match(/TC_MMDT_(\d+)/i);
+  if (mmdt) return parseInt(mmdt[1], 10);
+  return 0;
 }
 
-/** Feature groups routed to missing-mandatory-database.spec.ts (API/backend layer). */
-const DATABASE_FEATURE_GROUPS = new Set([
-  "API Handling",
-  "Retry Logic",
-  "Backend Reliability",
-  "Error Handling",
-  "Recovery",
-  "Backend Integrity",
-  "Reliability",
-  "DB-Origin Field",
-]);
-
-export function isDatabaseRow(row: MmExcelRow): boolean {
-  const sm = row.subModule;
-  const fg = featureGroup(sm);
-
-  if (fg === "RBAC" && /API/i.test(sm)) {
-    return true;
-  }
-
-  if (DATABASE_FEATURE_GROUPS.has(fg)) {
-    return true;
-  }
-
+/** All cases live in a single spec file — no UI/database split. */
+export function isDatabaseRow(_row: MmExcelRow): boolean {
   return false;
 }

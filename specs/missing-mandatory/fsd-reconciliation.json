@@ -1,0 +1,2252 @@
+{
+  "generatedAt": "2026-06-25T07:43:53.439Z",
+  "fsdSource": "pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx",
+  "excelSource": "pipeline/test-data/Missing Mandatory Test Cases.xlsx",
+  "summary": {
+    "aligned": 190,
+    "partial": 34,
+    "unmapped": 0
+  },
+  "entries": [
+    {
+      "testCaseId": "TC_MMDT_001",
+      "excelFeature": "Navigation",
+      "excelTask": "Verify App Shell Initialization",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_002",
+      "excelFeature": "Layout",
+      "excelTask": "Verify Top Bar Persistence During Module Switching",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_003",
+      "excelFeature": "Navigation",
+      "excelTask": "Verify Sidebar Hierarchy Rendering",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_004",
+      "excelFeature": "Navigation",
+      "excelTask": "Verify Route Navigation Integrity",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_005",
+      "excelFeature": "Navigation",
+      "excelTask": "Verify Cross-View State Persistence",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_006",
+      "excelFeature": "Layout",
+      "excelTask": "Verify Browser Refresh Recovery",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_007",
+      "excelFeature": "Navigation",
+      "excelTask": "Verify Module Re-entry Stability",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_008",
+      "excelFeature": "Layout",
+      "excelTask": "Verify Active Route Highlighting",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_009",
+      "excelFeature": "Template List",
+      "excelTask": "Verify Group Header Rendering",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_010",
+      "excelFeature": "Template List",
+      "excelTask": "Verify Group Count Accuracy",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_011",
+      "excelFeature": "Template List",
+      "excelTask": "Verify Template Card Metadata Rendering",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_012",
+      "excelFeature": "Template List",
+      "excelTask": "Verify Active Template Selection State",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_013",
+      "excelFeature": "Template List",
+      "excelTask": "Verify Template Version Display Integrity",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_014",
+      "excelFeature": "Template List",
+      "excelTask": "Verify KYC Badge Rendering Based on KYC Level",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_015",
+      "excelFeature": "Template List",
+      "excelTask": "Verify Dynamic Template Count Update After Template Creation",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_016",
+      "excelFeature": "Template List",
+      "excelTask": "Verify Empty Group Handling",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_017",
+      "excelFeature": "Search",
+      "excelTask": "Verify Exact Match Search Functionality",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_018",
+      "excelFeature": "Search",
+      "excelTask": "Verify Partial Match Search Functionality",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_019",
+      "excelFeature": "Search",
+      "excelTask": "Verify Case Insensitive Search Behavior",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_020",
+      "excelFeature": "Search",
+      "excelTask": "Verify No Result Search Handling",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_021",
+      "excelFeature": "Search",
+      "excelTask": "Verify Search Recovery After Invalid Search",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_022",
+      "excelFeature": "Search",
+      "excelTask": "Verify Real-Time Filtering Performance",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_023",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Create Template Form Initialization",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_024",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Customer Type Driven Tab Structure",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_025",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify KYC Level Assignment Integrity",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Create Template\" maps to 3.9. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_026",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Product Type Association",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Create Template\" maps to 3.9. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_027",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Duplicate Template Prevention",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Create Template\" maps to 3.9. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_028",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Score Configuration Dependency",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_029",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Template Save Workflow",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Create Template\" maps to 3.9. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_030",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Creation Audit Logging",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_031",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Template Name Mandatory Validation",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_032",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Template Name with Only Spaces",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Create Template\" maps to 3.9. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_033",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Customer Type Mandatory Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Create Template\" maps to 3.9. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_034",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify KYC Level Mandatory Validation",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_035",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Create Button Behavior with Incomplete Form",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_036",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Clone From Dropdown Rendering",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_037",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Default Clone From Selection",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_038",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Simplified KYC Initialization",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_039",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Standard KYC Individual Initialization",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_040",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Standard KYC Corporate Initialization",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_041",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Enhanced KYC PEP/High Risk Initialization",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_042",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Clone From Option Compatibility with Customer Type",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_043",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Field Configuration Integrity After Clone From Selection",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_044",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Score Configuration Integrity After Clone From Selection",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Create Template\" maps to 3.9. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_045",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Audit Logging for Clone From Template Creation",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_046",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Gap Detection Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_047",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Overlap Detection Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_048",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Boundary Coverage Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_049",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Min Greater Than Max Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_050",
+      "excelFeature": "Create Template",
+      "excelTask": "Verify Unsaved Changes Handling",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_051",
+      "excelFeature": "Tab Management",
+      "excelTask": "Verify Individual CIP Tab Visibility for Individual Templates",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_052",
+      "excelFeature": "Tab Management",
+      "excelTask": "Verify Corporate CIP Tab Hidden for Individual Templates",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Tab Management\" maps to 3.4. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_053",
+      "excelFeature": "Tab Management",
+      "excelTask": "Verify Corporate CIP Tab Visibility for Corporate Templates",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_054",
+      "excelFeature": "Tab Management",
+      "excelTask": "Verify First Visible Tab Selected By Default",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_055",
+      "excelFeature": "Custom Fields",
+      "excelTask": "Verify Custom Field Creation Workflow",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_056",
+      "excelFeature": "Custom Fields",
+      "excelTask": "Verify Section Auto-Selection Based on Active Tab",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_057",
+      "excelFeature": "Custom Fields",
+      "excelTask": "Verify Requirement Assignment During Custom Field Creation",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_058",
+      "excelFeature": "Custom Fields",
+      "excelTask": "Verify Custom Field Persistence After Reload",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_059",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Score Configuration Persistence",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_060",
+      "excelFeature": "End-to-End Workflow",
+      "excelTask": "Verify End-to-End Template Creation Lifecycle",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"End-to-End Workflow\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_061",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Archive Action Availability",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Archive Template\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_062",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Archive Confirmation Dialog",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_063",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Successful Template Archive",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_064",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Archived Template Removal from Active List",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Archive Template\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_065",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Template Count Update After Archive",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Archive Template\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_066",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Archived Template Search Behavior",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_067",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Audit Logging for Archive Action",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_068",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Archive Cancellation Workflow",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_069",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Archive Persistence After Browser Refresh",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Archive Template\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_070",
+      "excelFeature": "Archive Template",
+      "excelTask": "Verify Archive Persistence After Re-login",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_071",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Field Icon Visibility",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_072",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Field Checkbox Protection",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_073",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Field Cannot Be Deselected",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_074",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Field Requirement Remains Mandatory",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_075",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Requirement Dropdown Disabled for Locked Fields",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_076",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Field Persistence After Refresh",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_077",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Field Persistence After Re-login",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_078",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Keyboard Restriction on Locked Fields",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_079",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Fields Are Excluded from Editable Change Tracking",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_080",
+      "excelFeature": "Locked Fields",
+      "excelTask": "Verify Locked Field Consistency Across Cloned Templates",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_081",
+      "excelFeature": "Requirement Dropdown",
+      "excelTask": "Verify Mandatory (3) Requirement Selection Workflow",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_082",
+      "excelFeature": "Requirement Dropdown",
+      "excelTask": "Verify Optional (1) Requirement Selection Workflow",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_083",
+      "excelFeature": "Requirement Dropdown",
+      "excelTask": "Verify Requirement Badge Synchronization",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_084",
+      "excelFeature": "Requirement Dropdown",
+      "excelTask": "Verify Weight Display Synchronization",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_085",
+      "excelFeature": "Requirement Dropdown",
+      "excelTask": "Verify Requirement Persistence After Save",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_086",
+      "excelFeature": "Scoring Logic",
+      "excelTask": "Verify Mandatory (3) Score Contribution Logic",
+      "fsdSectionId": "3.6",
+      "fsdSectionTitle": "Requirement Scoring Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_087",
+      "excelFeature": "Scoring Logic",
+      "excelTask": "Verify Optional (1) Score Contribution Logic",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Navigation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 4.2 (Navigation); feature \"Scoring Logic\" maps to 3.6. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_088",
+      "excelFeature": "Requirement Dropdown",
+      "excelTask": "Verify Conditional Normalization Migration",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_089",
+      "excelFeature": "Requirement Dropdown",
+      "excelTask": "Verify Multiple Requirement Updates Before Save",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_090",
+      "excelFeature": "Technical IDs",
+      "excelTask": "Verify Technical IDs Tab Accessibility",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_091",
+      "excelFeature": "Technical IDs",
+      "excelTask": "Verify Technical ID Field Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_092",
+      "excelFeature": "Technical IDs",
+      "excelTask": "Verify Technical ID Edit Restrictions",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_093",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Individual CIP Section Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_094",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Individual CIP Field Ordering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_095",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Mandatory Requirement Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_096",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Optional Requirement Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_097",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Field Description Display",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_098",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Checkbox State Management",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_099",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Field Metadata Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_100",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Field Group Expansion Behavior",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_101",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Individual CIP Tab Persistence",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_102",
+      "excelFeature": "Individual CIP",
+      "excelTask": "Verify Individual CIP Data Integrity After Template Clone",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_103",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Corporate CIP Section Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_104",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Corporate CIP Field Ordering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_105",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Beneficial Ownership Field Group Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_106",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Corporate Registration Information Fields",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_107",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Mandatory Corporate Field Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_108",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Optional Corporate Field Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_109",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Corporate Field Metadata Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_110",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Corporate Field Group Expand/Collapse Behavior",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_111",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Corporate CIP Tab Persistence During Navigation",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_112",
+      "excelFeature": "Corporate CIP",
+      "excelTask": "Verify Corporate CIP Configuration Integrity After Clone",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_113",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify CDD Section Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_114",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify CDD Field Ordering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_115",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify Risk Profile Field Group Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_116",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify Source of Funds Field Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_117",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify Occupation Information Field Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_118",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify Mandatory CDD Field Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_119",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify Optional CDD Field Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_120",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify CDD Metadata Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_121",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify CDD Tab Persistence During Navigation",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_122",
+      "excelFeature": "CDD Fields",
+      "excelTask": "Verify CDD Configuration Integrity After Clone",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_123",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify EDD Section Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_124",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify High-Risk Customer Field Group Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_125",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify Politically Exposed Person (PEP) Field Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_126",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify Adverse Media Field Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_127",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify Source of Wealth Field Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_128",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify Mandatory EDD Field Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_129",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify Optional EDD Field Badge Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_130",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify EDD Metadata Rendering",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_131",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify EDD Tab Persistence During Navigation",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_132",
+      "excelFeature": "EDD Fields",
+      "excelTask": "Verify EDD Configuration Integrity After Clone",
+      "fsdSectionId": "3.4",
+      "fsdSectionTitle": "Template Detail — Tab Sections",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_133",
+      "excelFeature": "Field Management",
+      "excelTask": "Verify Requirement Tag Rendering Consistency Across Sections",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_134",
+      "excelFeature": "Field Management",
+      "excelTask": "Verify Long Field Description Handling",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_135",
+      "excelFeature": "Field Management",
+      "excelTask": "Verify Long Field Name Rendering",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_136",
+      "excelFeature": "Field Management",
+      "excelTask": "Verify Special Character Handling in Custom Field Names",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Field Management\" maps to 3.5. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_137",
+      "excelFeature": "Custom Fields",
+      "excelTask": "Verify Custom Field Ordering After Multiple Additions",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_138",
+      "excelFeature": "Custom Fields",
+      "excelTask": "Verify Duplicate Custom Field Name Prevention",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_139",
+      "excelFeature": "Field Management",
+      "excelTask": "Verify Empty Section Rendering",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Field Management\" maps to 3.5. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_140",
+      "excelFeature": "Field Management",
+      "excelTask": "Verify Large Field Volume Rendering Performance",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Field Management\" maps to 3.5. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_141",
+      "excelFeature": "Field Management",
+      "excelTask": "Verify Cross-Tab Configuration Consistency",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_142",
+      "excelFeature": "Configuration Integrity",
+      "excelTask": "Verify End-to-End Template Configuration Integrity",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_143",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Template Configuration Persistence After Browser Refresh",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Data Persistence\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_144",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Template Configuration Persistence After Logout/Login",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_145",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Requirement Changes Persistence Across Sessions",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_146",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Custom Field Persistence Across Sessions",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Data Persistence\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_147",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Score Configuration Persistence Across Sessions",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Data Persistence\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_148",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Archive Status Persistence After Session Restart",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_149",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Clone Template Persistence After Session Restart",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Data Persistence\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_150",
+      "excelFeature": "Data Persistence",
+      "excelTask": "Verify Multi-Tab Browser Persistence",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_151",
+      "excelFeature": "Recovery",
+      "excelTask": "Verify Recovery After Unexpected Browser Closure",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_152",
+      "excelFeature": "Recovery",
+      "excelTask": "Verify Saved Configuration Integrity After Consecutive Updates",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_153",
+      "excelFeature": "Session Management",
+      "excelTask": "Verify Session Timeout During Template Edit",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Session Management\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_154",
+      "excelFeature": "Session Management",
+      "excelTask": "Verify Session Timeout During Template Creation",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_155",
+      "excelFeature": "Session Management",
+      "excelTask": "Verify Concurrent Login Session Handling",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Session Management\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_156",
+      "excelFeature": "Session Management",
+      "excelTask": "Verify Reauthentication Recovery Workflow",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_157",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Save Failure Handling During Template Update",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_158",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Clone Failure Handling",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_159",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Archive Failure Handling",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_160",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Network Interruption During Save",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Error Handling\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_161",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Network Interruption During Clone",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_162",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Network Interruption During Archive",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_163",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Unexpected Server Error Handling",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_164",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Validation Error Message Accuracy",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_165",
+      "excelFeature": "Recovery",
+      "excelTask": "Verify Recovery After Failed Save",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_166",
+      "excelFeature": "Error Handling",
+      "excelTask": "Verify Duplicate Submission Prevention",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_167",
+      "excelFeature": "Performance",
+      "excelTask": "Verify Template Opening Performance",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Performance\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_168",
+      "excelFeature": "Performance",
+      "excelTask": "Verify Archive Performance Under Large Dataset",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Performance\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_169",
+      "excelFeature": "Stability",
+      "excelTask": "Verify Large Field Volume Rendering Performance",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Stability\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_170",
+      "excelFeature": "Performance",
+      "excelTask": "Verify Score Configuration Rendering Performance",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_171",
+      "excelFeature": "Stability",
+      "excelTask": "Verify Concurrent User Activity Handling",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_172",
+      "excelFeature": "Stability",
+      "excelTask": "Verify Module Stability During Extended Usage",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_173",
+      "excelFeature": "Gap Score Engine",
+      "excelTask": "Verify Single Mandatory Field Score Contribution",
+      "fsdSectionId": "3.8",
+      "fsdSectionTitle": "Add Field (Custom Fields)",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.8 (Add Field (Custom Fields)); feature \"Gap Score Engine\" maps to 4.6. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_174",
+      "excelFeature": "Gap Score Engine",
+      "excelTask": "Verify Single Optional Field Score Contribution",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_175",
+      "excelFeature": "Gap Score Engine",
+      "excelTask": "Verify Multiple Mandatory Field Aggregation",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_176",
+      "excelFeature": "Gap Score Engine",
+      "excelTask": "Verify Mixed Mandatory and Optional Aggregation",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_177",
+      "excelFeature": "Risk Band",
+      "excelTask": "Verify Lowest Risk Band Boundary",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_178",
+      "excelFeature": "Risk Band",
+      "excelTask": "Verify Upper Boundary Risk Band Mapping",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_179",
+      "excelFeature": "Risk Band",
+      "excelTask": "Verify Lower Boundary Risk Band Mapping",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_180",
+      "excelFeature": "Risk Band",
+      "excelTask": "Verify Gap Score Band Gap Detection",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.7 (KYC Gap Score Configuration Tab); feature \"Risk Band\" maps to 4.6. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_181",
+      "excelFeature": "Risk Band",
+      "excelTask": "Verify Gap Score Band Overlap Detection",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_182",
+      "excelFeature": "Risk Band",
+      "excelTask": "Verify Dynamic Priority Calculation Based on Score Band",
+      "fsdSectionId": "4.6",
+      "fsdSectionTitle": "KYC Gap Score — Calculation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_183",
+      "excelFeature": "Customer Assignment",
+      "excelTask": "Verify Customer Assignment Using Matching Customer Type",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Gap Detail Modal",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_184",
+      "excelFeature": "Accessibility",
+      "excelTask": "Verify Visible Focus Indicators",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_185",
+      "excelFeature": "Accessibility",
+      "excelTask": "Verify Mandatory Field Indicator Visibility",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_186",
+      "excelFeature": "Accessibility",
+      "excelTask": "Verify Tooltip Accessibility Using Keyboard",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_187",
+      "excelFeature": "Chrome Compatibility",
+      "excelTask": "Verify Chrome Browser Rendering",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_188",
+      "excelFeature": "Chrome Compatibility",
+      "excelTask": "Verify Chrome Browser Zoom at 100%",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Chrome Compatibility\" maps to 3.2. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_189",
+      "excelFeature": "Chrome Compatibility",
+      "excelTask": "Verify Chrome Browser Zoom at 125%",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Chrome Compatibility\" maps to 3.2. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_190",
+      "excelFeature": "Desktop UI Validation",
+      "excelTask": "Verify Desktop Resolution Compatibility",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_191",
+      "excelFeature": "UI Compliance",
+      "excelTask": "Verify Layout Stability During Extended Navigation",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"UI Compliance\" maps to 3.2. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_192",
+      "excelFeature": "Regulatory Compliance",
+      "excelTask": "Verify Regulatory Data Completeness Evaluation",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"Regulatory Compliance\" maps to 3.10. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_193",
+      "excelFeature": "End-to-End AML Workflow",
+      "excelTask": "Verify End-to-End Missing Mandatory Data Lifecycle",
+      "fsdSectionId": "3.10",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_194",
+      "excelFeature": "Template Name Validation",
+      "excelTask": "Verify Blank Template Name Validation",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_195",
+      "excelFeature": "Template Name Validation",
+      "excelTask": "Verify Spaces-Only Template Name Validation",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_196",
+      "excelFeature": "Template Name Validation",
+      "excelTask": "Verify Minimum Length Boundary",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_197",
+      "excelFeature": "Template Name Validation",
+      "excelTask": "Verify Maximum Length Boundary",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_198",
+      "excelFeature": "Template Name Validation",
+      "excelTask": "Verify Maximum Length Exceeded Validation",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_199",
+      "excelFeature": "Template Name Validation",
+      "excelTask": "Verify Copy-Paste Validation",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_200",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Exact Match Search for Template Name",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_201",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Partial Match Search",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_202",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Case Insensitive Search",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_203",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Search with Leading Spaces",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_204",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Search with Trailing Spaces",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_205",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Search with Special Characters",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_206",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify No Result Search Scenario",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_207",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Search on Archived Template Records",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_208",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Search Performance with Large Dataset",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_209",
+      "excelFeature": "Search Validation",
+      "excelTask": "Verify Search Combined with Active Filters",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_210",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Blank Lower Boundary Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_211",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Blank Upper Boundary Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_212",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Negative Score Value Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_213",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Decimal Score Value Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_214",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Lower Boundary Greater Than Upper Boundary Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_215",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Duplicate Risk Band Name Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_216",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Single Risk Band Configuration Scenario",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_217",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Maximum Supported Score Boundary",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_218",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Risk Band Coverage Completeness Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_219",
+      "excelFeature": "Score Configuration",
+      "excelTask": "Verify Score Configuration Save Validation",
+      "fsdSectionId": "3.7",
+      "fsdSectionTitle": "KYC Gap Score Configuration Tab",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_220",
+      "excelFeature": "Save Button",
+      "excelTask": "Verify Save Button Functionality",
+      "fsdSectionId": "3.5",
+      "fsdSectionTitle": "Field Row Components",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_221",
+      "excelFeature": "Cancel Button",
+      "excelTask": "Verify Cancel Button Navigation Behavior",
+      "fsdSectionId": "3.9",
+      "fsdSectionTitle": "Create Template",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_222",
+      "excelFeature": "UI Interaction",
+      "excelTask": "Verify Button Hover State Rendering",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "TC_MMDT_223",
+      "excelFeature": "UI Interaction",
+      "excelTask": "Verify Double Click Prevention on Action Buttons",
+      "fsdSectionId": "3.3",
+      "fsdSectionTitle": "Template List Panel",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "partial",
+      "notes": "Task keywords map to FSD 3.3 (Template List Panel); feature \"UI Interaction\" maps to 3.2. Excel is authoritative."
+    },
+    {
+      "testCaseId": "TC_MMDT_224",
+      "excelFeature": "UI Interaction",
+      "excelTask": "Verify Loading Indicator During Long Running Operations",
+      "fsdSectionId": "3.2",
+      "fsdSectionTitle": "Navigation & Layout",
+      "fsdModule": "MM Template",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    }
+  ]
+}

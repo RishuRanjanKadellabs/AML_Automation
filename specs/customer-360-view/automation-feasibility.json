@@ -1,4086 +1,1852 @@
 [
   {
     "testCaseId": "C360-TC-001",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "high",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-002",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-003",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-004",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-005",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-006",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-007",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-008",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-009",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "page-framework",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-010",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-011",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-012",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-013",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-014",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-015",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-016",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-017",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-018",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "header-strip",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-019",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "customer-type-switching",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-020",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "customer-type-switching",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-021",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "customer-type-switching",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-022",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "customer-type-switching",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-023",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "customer-type-switching",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-024",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "customer-type-switching",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-025",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "customer-type-switching",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-026",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-027",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-028",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-029",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-030",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-031",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-032",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-033",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-034",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-035",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-036",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-037",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-038",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-visualization",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-039",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-visualization",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-040",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-visualization",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-041",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-visualization",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-042",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-visualization",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-043",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-044",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-045",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-046",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-047",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-048",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-049",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-050",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-051",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-052",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-053",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-054",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-055",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-056",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-057",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-058",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-059",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-060",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "overview-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-061",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-062",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-063",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-064",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-065",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-066",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-067",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-068",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-069",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-070",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-071",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-072",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-073",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-074",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-075",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-076",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-077",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-078",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "relationships-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-079",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-080",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-081",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-082",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-083",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-084",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-085",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-086",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-087",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-088",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-089",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-090",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-091",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-092",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-093",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-094",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-095",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-096",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-097",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-098",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-099",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-100",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-101",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-102",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-103",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-104",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-105",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-106",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-107",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-108",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "screening-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-109",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-110",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-111",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-112",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-113",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-114",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-115",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-116",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-117",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-118",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-119",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-120",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-121",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-122",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-123",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-124",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-125",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "risk-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-126",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-127",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-128",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-129",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-130",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-131",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-132",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-133",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-134",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-135",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-136",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-137",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-138",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-139",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-140",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-141",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-142",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-143",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-144",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "regression",
-      "e2e"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-145",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-146",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-147",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-148",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-149",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-150",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-151",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-152",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-cdd-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-153",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-154",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-155",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-156",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-157",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-158",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-159",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-160",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-161",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-162",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-163",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-164",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-165",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-166",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-167",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-168",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-169",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-170",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-171",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-172",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-173",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-174",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-175",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-176",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accounts-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-177",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-178",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-179",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-180",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-181",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-182",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-183",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-184",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-185",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-186",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-187",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-188",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-189",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-190",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-191",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "low",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-192",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-193",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-194",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-195",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-196",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-197",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-198",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-199",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-200",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "transactions-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-201",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-202",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-203",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-204",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-205",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-206",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-207",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-208",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-209",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-210",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-211",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-212",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-213",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-214",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-215",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-216",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-217",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-218",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-219",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-220",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-221",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-222",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-223",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-224",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-225",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-226",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-227",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "alerts-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-228",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-229",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-230",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-231",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-232",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-233",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-234",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-235",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-236",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-237",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-238",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-239",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-240",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-241",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-242",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-243",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-244",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-245",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-246",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-247",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-248",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-249",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regulatory-reports-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-250",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-251",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-252",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-253",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-254",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-255",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-256",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-257",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-258",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-259",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-260",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-261",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-262",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-263",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-264",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-265",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-266",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-267",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-268",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "kyc-gap-report-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-269",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-270",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-271",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-272",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-273",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-274",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-275",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-276",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-277",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-278",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-279",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-280",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-281",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-282",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-283",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-284",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-285",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-286",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-287",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-288",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-289",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-290",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "audit-tab",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-291",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-292",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-293",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-294",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "medium",
-      "browser-compat"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-295",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "medium",
-      "browser-compat"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-296",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-297",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-298",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-navigation",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-299",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "high",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-300",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "high",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-301",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "medium",
-      "export"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Export file format not specified in Excel"
   },
   {
     "testCaseId": "C360-TC-302",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "medium",
-      "export"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Export file format not specified in Excel"
   },
   {
     "testCaseId": "C360-TC-303",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "medium",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-304",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "medium",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-305",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "high",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-306",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "medium",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-307",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "high",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-308",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "export-functionality",
-      "medium",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-309",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "pii-masking",
-      "high",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-310",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "pii-masking",
-      "high",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-311",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "pii-masking",
-      "high",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-312",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "pii-masking",
-      "high",
-      "pii",
-      "compliance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-313",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "high"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-314",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "medium"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-315",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "medium"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-316",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "high"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-317",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "medium",
-      "session"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-318",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "high",
-      "rbac",
-      "security"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-319",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "high",
-      "session"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-320",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-321",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-322",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-323",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-324",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium",
-      "browser-compat"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-325",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-326",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-327",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "low"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-328",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-329",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-330",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-331",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-332",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-333",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-334",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-335",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "state-management",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-336",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-ui-consistency",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-337",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-ui-consistency",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-338",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-ui-consistency",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-339",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "global-ui-consistency",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-340",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "browser-compatibility",
-      "high",
-      "browser-compat"
-    ]
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-341",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "browser-compatibility",
-      "medium",
-      "browser-compat"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Target browser versions not listed in Excel"
   },
   {
     "testCaseId": "C360-TC-342",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "browser-compatibility",
-      "medium",
-      "browser-compat"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Target browser versions not listed in Excel"
   },
   {
     "testCaseId": "C360-TC-343",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "session-management",
-      "high",
-      "session"
-    ]
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-344",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "session-management",
-      "high",
-      "session"
-    ]
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-345",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "session-management",
-      "high",
-      "session"
-    ]
+    "automationCandidate": "Yes",
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-346",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "performance-validation",
-      "medium",
-      "performance"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Performance SLA thresholds (ms) not specified in Excel"
   },
   {
     "testCaseId": "C360-TC-347",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Browser compatibility, session timeout, or performance SLA requires manual or specialized tooling",
-    "tags": [
-      "performance-validation",
-      "high",
-      "performance"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Performance SLA thresholds (ms) not specified in Excel"
   },
   {
     "testCaseId": "C360-TC-348",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "performance-validation",
-      "medium",
-      "performance"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Performance SLA thresholds (ms) not specified in Excel"
   },
   {
     "testCaseId": "C360-TC-349",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "performance-validation",
-      "medium",
-      "performance"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Performance SLA thresholds (ms) not specified in Excel"
   },
   {
     "testCaseId": "C360-TC-350",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "performance-validation",
-      "medium",
-      "performance"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Performance SLA thresholds (ms) not specified in Excel"
   },
   {
     "testCaseId": "C360-TC-351",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "security-validation",
-      "high",
-      "rbac",
-      "security"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Role credentials not defined in Excel test data"
   },
   {
     "testCaseId": "C360-TC-352",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "security-validation",
-      "high",
-      "rbac",
-      "security"
-    ]
+    "automationCandidate": "Partial",
+    "reason": "Role credentials not defined in Excel test data"
   },
   {
     "testCaseId": "C360-TC-353",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "security-validation",
-      "high",
-      "export"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-354",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "security-validation",
-      "high",
-      "browser-compat"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-355",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "security-validation",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-356",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "usability-validation",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-357",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "usability-validation",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-358",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "usability-validation",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-359",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "usability-validation",
-      "low",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-360",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "regression",
-      "e2e"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-361",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-362",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-363",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-364",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-365",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "regression",
-      "e2e"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-366",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "regression",
-      "e2e"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-367",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "medium",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-368",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "medium",
-      "functional"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-369",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "medium",
-      "performance"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   },
   {
     "testCaseId": "C360-TC-370",
-    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Customer 360 UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "error-handling"
-    ]
+    "reason": "Customer 360 UI automation via Playwright page object"
   }
 ]

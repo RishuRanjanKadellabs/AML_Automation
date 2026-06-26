@@ -1,104 +1,72 @@
 /**
- * Reference Data Registry milestone generator
- * Specs: tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts
+ * Reference Data Registry milestone generator — specs under referenceDataRegistryTests/
  * Page object: tests/milestone1/pages/KYCModule/ReferenceDataRegistryPages/ReferenceDataRegistryPage.ts
  */
 import * as fs from "fs";
 import * as path from "path";
-import { loadRdrRows } from "./parser";
-import { formatTestTitle, formatTraceabilityComment } from "./assertions";
-import { mapRdrTestLogic } from "./test-logic";
-import { getTabGroups, writePlanArtifacts, writeReconciliationReport } from "./plan-builder";
-import type { RdrExcelRow, RdrTodoEntry } from "./types";
+import { loadRdrRows, subModuleOrder } from "./parser";
+import { writePlanArtifacts } from "./plan-builder";
+import type { RdrExcelRow, FsdMappingEntry } from "./types";
+import { formatTestTitle } from "./assertions";
+import { buildExcelAlignedPhases } from "./excel-phases";
+import { buildFsdMappings } from "./fsd-mapper";
+import { buildInstrumentedTestBody } from "./test-body-builder";
 
 const ROOT = path.resolve(__dirname, "../../..");
 const SPEC_DIR = path.join(ROOT, "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests");
 const SPEC_FILE = path.join(SPEC_DIR, "reference-data-registry.spec.ts");
-const PAGE_OBJECT = path.join(
-  ROOT,
-  "tests/milestone1/pages/KYCModule/ReferenceDataRegistryPages/ReferenceDataRegistryPage.ts",
-);
+const PAGE_OBJECT_DIR = path.join(ROOT, "tests/milestone1/pages/KYCModule/ReferenceDataRegistryPages");
+const REVIEW_FILE = path.join(ROOT, "specs/rdr/REVIEW.md");
 
 function escapeForTemplate(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
 }
 
-function escapeScenarioComment(s: string): string {
-  return s.replace(/\r?\n/g, " ").replace(/'/g, "\\'");
-}
-
-function splitLogicSteps(logic: string): { actions: string; assertions: string } {
-  const lines = logic
-    .split(/;\s*\n?\s*/)
-    .map((l) => l.trim())
-    .filter(Boolean);
-  const assertionPrefixes = [
-    "await rdrPage.expect",
-    "await expect(",
-  ];
-  const actionLines: string[] = [];
-  const assertionLines: string[] = [];
-  for (const line of lines) {
-    if (assertionPrefixes.some((p) => line.startsWith(p))) {
-      assertionLines.push(line);
-    } else {
-      actionLines.push(line);
-    }
+function buildSpecFile(rows: RdrExcelRow[], fsdById: Map<string, FsdMappingEntry>): string {
+  const bySub = new Map<string, RdrExcelRow[]>();
+  for (const row of rows) {
+    const list = bySub.get(row.subModule) ?? [];
+    list.push(row);
+    bySub.set(row.subModule, list);
   }
-  return {
-    actions: actionLines.join(";\n    "),
-    assertions: assertionLines.join(";\n    "),
-  };
-}
 
-function buildSpecFile(rows: RdrExcelRow[]): { content: string; todos: RdrTodoEntry[] } {
-  const byTab = getTabGroups(rows);
-  const todos: RdrTodoEntry[] = [];
   const describeBlocks: string[] = [];
+  for (const subModule of subModuleOrder(rows)) {
+    const subRows = bySub.get(subModule);
+    if (!subRows?.length) continue;
 
-  for (const [tab, tabRows] of byTab.entries()) {
-    if (!tabRows.length) continue;
-
-    const tests = tabRows
+    const tests = subRows
       .map((row) => {
         const title = escapeForTemplate(formatTestTitle(row));
-        const trace = formatTraceabilityComment(row);
-        const scenario = escapeForTemplate(escapeScenarioComment(row.taskDescription));
-        const expected = escapeForTemplate(escapeScenarioComment(row.expectedResult));
-        const stepsLog = escapeForTemplate(escapeScenarioComment(row.testSteps || row.taskDescription));
-        const { logic, todo } = mapRdrTestLogic(row);
-        if (todo) {
-          todos.push({
-            testCaseId: row.id,
-            missingInformation: todo.replace(/^\/\/ TODO \[[^\]]+\]: /, ""),
-            reason: "Column or action could not be mapped from Excel without assumptions",
-          });
-        }
-        const todoLine = todo ? `\n    ${todo}` : "";
-        const { actions, assertions } = splitLogicSteps(logic);
+        const fsd = fsdById.get(row.id) ?? {
+          testCaseId: row.id,
+          excelSubModule: row.subModule,
+          excelTask: row.taskDescription,
+          fsdSectionId: "",
+          fsdSectionTitle: "",
+          fsdModule: "",
+          alignmentStatus: "unmapped" as const,
+          notes: "",
+        };
+        const phases = buildExcelAlignedPhases(row);
+        const body = buildInstrumentedTestBody(row, phases, fsd);
         return `  test("${title}", async ({ testData }) => {
-    ${trace}${todoLine}
-    await test.step("[${row.id}] Navigate and execute documented test steps", async () => {
-      console.log("[${row.id}] Test execution started — ${scenario}");
-      console.log("[${row.id}] Executing Excel test steps: ${stepsLog}");
-      ${actions};
-    });
-    await test.step("[${row.id}] Validate expected results from Excel", async () => {
-      console.log("[${row.id}] Validating expected result: ${expected}");
-      ${assertions};
-      console.log("[${row.id}] Test completed successfully");
-    });
+    ${body}
   });`;
       })
       .join("\n\n");
 
-    describeBlocks.push(`  test.describe("${tab}", () => {
+    describeBlocks.push(`  test.describe("${escapeForTemplate(subModule)}", () => {
 ${tests}
   });`);
   }
 
-  const content = `// spec: specs/rdr/plan.md
-// source: pipeline/test-data/Reference Data Registry.xlsx — ${rows.length} cases (RDR_001–RDR_${String(rows[rows.length - 1]?.id.replace(/^RDR_/i, "") ?? rows.length).padStart(3, "0")})
+  const firstId = rows[0]?.id ?? "RDR_001";
+  const lastId = rows[rows.length - 1]?.id ?? firstId;
+
+  return `// spec: specs/rdr/plan.md
+// source: pipeline/test-data/Reference Data Registry.xlsx — ${rows.length} cases (${firstId}–${lastId})
+// fsd: pipeline/test-data/Reference Data Registry_FSD_v1.0.docx
 import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import ReferenceDataRegistryPage from "../../../pages/KYCModule/ReferenceDataRegistryPages/ReferenceDataRegistryPage";
 import pilotData from "../../../../../fixtures/rdr-pilot-data.json";
@@ -113,38 +81,44 @@ test.describe("Reference Data Registry Module", () => {
 ${describeBlocks.join("\n\n")}
 });
 `;
-
-  return { content, todos };
 }
 
-function generateSpecs(rows: RdrExcelRow[]): RdrTodoEntry[] {
+async function generateSpecs(allRows: RdrExcelRow[]): Promise<void> {
   fs.mkdirSync(SPEC_DIR, { recursive: true });
-  const { content, todos } = buildSpecFile(rows);
-  fs.writeFileSync(SPEC_FILE, content, "utf-8");
-  console.log(`Wrote ${SPEC_FILE} (${rows.length} tests, ${todos.length} TODOs)`);
-  return todos;
+  const fsdMappings = await buildFsdMappings(allRows);
+  const fsdById = new Map(fsdMappings.map((m) => [m.testCaseId, m]));
+  const content = buildSpecFile(allRows, fsdById);
+  fs.writeFileSync(SPEC_FILE, content, "utf8");
+  console.log(`Wrote ${SPEC_FILE} (${allRows.length} tests)`);
 }
 
-function main(): void {
+async function main(): Promise<void> {
   const generateSpecsFlag = process.argv.includes("--generate-specs");
   const rows = loadRdrRows();
-  writePlanArtifacts(rows);
+  const result = await writePlanArtifacts();
+  console.log(`Plan artifacts written to ${result.outputDir} (${result.rowCount} cases)`);
 
   if (!generateSpecsFlag) {
     console.log("Planning artifacts updated. Pass --generate-specs to write Playwright specs.");
-    console.log(`Cases: ${rows.length}`);
+    console.log(`Review gate: ${REVIEW_FILE}`);
     return;
   }
 
-  if (!fs.existsSync(PAGE_OBJECT)) {
-    console.error(`Page object not found at ${PAGE_OBJECT}`);
+  if (!fs.existsSync(path.join(PAGE_OBJECT_DIR, "ReferenceDataRegistryPage.ts"))) {
+    console.error(`Page object not found at ${PAGE_OBJECT_DIR}/ReferenceDataRegistryPage.ts`);
     process.exit(1);
   }
 
-  const todos = generateSpecs(rows);
-  writeReconciliationReport(rows, todos);
+  if (rows.length === 0) {
+    console.error("No test cases loaded from Excel.");
+    process.exit(1);
+  }
+
+  await generateSpecs(rows);
   console.log("Reference Data Registry milestone specs generated.");
-  console.log(`Automated: ${rows.length - todos.length}, Blocked/TODO: ${todos.length}`);
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

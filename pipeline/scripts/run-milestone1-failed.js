@@ -1,7 +1,7 @@
 /**
  * Run failed milestone1 tests by module using Case ID grep patterns.
  * Usage: node pipeline/scripts/run-milestone1-failed.js [module|all]
- * Modules: sc, kgr, mm, bs, ms, dds, smr
+ * Modules: sc, kgr, bs, ms, dds, smr
  */
 const { execSync } = require("child_process");
 const fs = require("fs");
@@ -36,12 +36,6 @@ const MODULES = {
     spec: "tests/milestone1/test-cases/KYCModule/kycGapReportTests/kyc-gap-report.spec.ts",
     prefix: /^KGR-/,
     workers: 1,
-  },
-  mm: {
-    label: "Missing Mandatory",
-    spec: "tests/milestone1/test-cases/KYCModule/missingMandatoryTests/",
-    prefix: /^MM-/,
-    workers: 3,
   },
   bs: {
     label: "Batch Screening",

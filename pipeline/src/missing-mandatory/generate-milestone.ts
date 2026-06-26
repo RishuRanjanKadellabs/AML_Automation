@@ -1,19 +1,22 @@
 /**
- * Missing Mandatory milestone generator — specs under tests/milestone1/test-cases/KYCModule/missingMandatoryTests/
+ * Missing Mandatory milestone generator — single spec under missingMandatoryTests/
  * Page object: tests/milestone1/pages/KYCModule/MissingMandatoryPages/MissingMandatoryPage.ts
  */
 import * as fs from "fs";
 import * as path from "path";
-import { loadMmRows, isDatabaseRow } from "./parser";
+import { loadMmRows, featureGroup } from "./parser";
 import { writePlanArtifacts } from "./plan-builder";
-import type { MmExcelRow } from "./types";
-import { mapMmTestLogic } from "./test-logic";
+import type { MmExcelRow, FsdMappingEntry } from "./types";
 import { formatTestTitle } from "./assertions";
+import { buildExcelAlignedPhases } from "./excel-intent";
+import { buildFsdMappings } from "./fsd-mapper";
+import { buildInstrumentedTestBody } from "./test-body-builder";
 
 const ROOT = path.resolve(__dirname, "../../..");
 const SPEC_DIR = path.join(ROOT, "tests/milestone1/test-cases/KYCModule/missingMandatoryTests");
-const UI_SPEC_FILE = path.join(SPEC_DIR, "missing-mandatory-ui.spec.ts");
-const DB_SPEC_FILE = path.join(SPEC_DIR, "missing-mandatory-database.spec.ts");
+const SPEC_FILE = path.join(SPEC_DIR, "missing-mandatory.spec.ts");
+const LEGACY_UI_SPEC = path.join(SPEC_DIR, "missing-mandatory-ui.spec.ts");
+const LEGACY_DB_SPEC = path.join(SPEC_DIR, "missing-mandatory-database.spec.ts");
 const PAGE_OBJECT_DIR = path.join(ROOT, "tests/milestone1/pages/KYCModule/MissingMandatoryPages");
 const REVIEW_FILE = path.join(ROOT, "specs/missing-mandatory/REVIEW.md");
 
@@ -21,61 +24,103 @@ function escapeForTemplate(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
 }
 
-function buildSpecFile(rows: MmExcelRow[], describeLabel: string, sourceNote: string): string {
-  const tests = rows
-    .map((row) => {
-      const title = escapeForTemplate(formatTestTitle(row));
-      const logic = mapMmTestLogic(row);
-      return `  test("${title}", async ({ testData }) => {
-    ${logic};
+function featureOrder(rows: MmExcelRow[]): string[] {
+  const seen = new Set<string>();
+  const order: string[] = [];
+  for (const row of rows) {
+    const feature = featureGroup(row);
+    if (!seen.has(feature)) {
+      seen.add(feature);
+      order.push(feature);
+    }
+  }
+  return order;
+}
+
+function buildSpecFile(rows: MmExcelRow[], fsdById: Map<string, FsdMappingEntry>): string {
+  const byFeature = new Map<string, MmExcelRow[]>();
+  for (const row of rows) {
+    const feature = featureGroup(row);
+    const list = byFeature.get(feature) ?? [];
+    list.push(row);
+    byFeature.set(feature, list);
+  }
+
+  const describeBlocks: string[] = [];
+  for (const feature of featureOrder(rows)) {
+    const featureRows = byFeature.get(feature);
+    if (!featureRows?.length) continue;
+
+    const tests = featureRows
+      .map((row) => {
+        const title = escapeForTemplate(formatTestTitle(row));
+        const fsd = fsdById.get(row.id) ?? {
+          testCaseId: row.id,
+          excelFeature: row.feature,
+          excelTask: row.taskDescription,
+          fsdSectionId: "",
+          fsdSectionTitle: "",
+          fsdModule: "",
+          alignmentStatus: "unmapped" as const,
+          notes: "",
+        };
+        const phases = buildExcelAlignedPhases(row);
+        const body = buildInstrumentedTestBody(row, phases, fsd);
+        return `  test("${title}", async ({ testData }) => {
+    ${body}
   });`;
-    })
-    .join("\n\n");
+      })
+      .join("\n\n");
+
+    describeBlocks.push(`  test.describe("${escapeForTemplate(feature)}", () => {
+${tests}
+  });`);
+  }
+
+  const firstId = rows[0]?.id ?? "TC_MMDT_001";
+  const lastId = rows[rows.length - 1]?.id ?? firstId;
 
   return `// spec: specs/missing-mandatory/plan.md
-// source: pipeline/test-data/Missing Mandatory Test cases.xlsx — ${sourceNote}
+// source: pipeline/test-data/Missing Mandatory Test Cases.xlsx — ${rows.length} cases (${firstId}–${lastId})
+// fsd: pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx
 import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import MissingMandatoryPage from "../../../pages/KYCModule/MissingMandatoryPages/MissingMandatoryPage";
 
-test.describe("${describeLabel}", () => {
+test.describe("Missing Mandatory Data Template", () => {
   let mmPage: MissingMandatoryPage;
 
   test.beforeEach(async ({ sharedPage }) => {
     mmPage = new MissingMandatoryPage(sharedPage);
   });
 
-${tests}
+${describeBlocks.join("\n\n")}
 });
 `;
 }
 
-function generateSpecs(allRows: MmExcelRow[]): void {
-  fs.mkdirSync(SPEC_DIR, { recursive: true });
-
-  const uiRows = allRows.filter((r) => !isDatabaseRow(r));
-  const dbRows = allRows.filter((r) => isDatabaseRow(r));
-
-  const uiContent = buildSpecFile(
-    uiRows,
-    "Missing Mandatory Data Template - UI",
-    `${uiRows.length} UI cases`,
-  );
-  const dbContent = buildSpecFile(
-    dbRows,
-    "Missing Mandatory Data Template - Database & Backend",
-    `${dbRows.length} database/API cases`,
-  );
-
-  fs.writeFileSync(UI_SPEC_FILE, uiContent, "utf8");
-  fs.writeFileSync(DB_SPEC_FILE, dbContent, "utf8");
-  console.log(`Wrote ${UI_SPEC_FILE} (${uiRows.length} tests)`);
-  console.log(`Wrote ${DB_SPEC_FILE} (${dbRows.length} tests)`);
+function removeLegacySpecs(): void {
+  for (const legacy of [LEGACY_UI_SPEC, LEGACY_DB_SPEC]) {
+    if (fs.existsSync(legacy)) {
+      fs.unlinkSync(legacy);
+      console.log(`Removed legacy spec ${legacy}`);
+    }
+  }
 }
 
-function main(): void {
+async function generateSpecs(allRows: MmExcelRow[]): Promise<void> {
+  fs.mkdirSync(SPEC_DIR, { recursive: true });
+  const fsdMappings = await buildFsdMappings(allRows);
+  const fsdById = new Map(fsdMappings.map((m) => [m.testCaseId, m]));
+  const content = buildSpecFile(allRows, fsdById);
+  fs.writeFileSync(SPEC_FILE, content, "utf8");
+  removeLegacySpecs();
+  console.log(`Wrote ${SPEC_FILE} (${allRows.length} tests)`);
+}
+
+async function main(): Promise<void> {
   const generateSpecsFlag = process.argv.includes("--generate-specs");
   const rows = loadMmRows();
-  const result = writePlanArtifacts();
+  const result = await writePlanArtifacts();
   console.log(`Plan artifacts written to ${result.outputDir} (${result.rowCount} cases)`);
 
   if (!generateSpecsFlag) {
@@ -89,8 +134,16 @@ function main(): void {
     process.exit(1);
   }
 
-  generateSpecs(rows);
+  if (rows.length === 0) {
+    console.error("No test cases loaded from Excel. Check pipeline/test-data/Missing Mandatory Test Cases.xlsx");
+    process.exit(1);
+  }
+
+  await generateSpecs(rows);
   console.log("Missing Mandatory milestone specs generated.");
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

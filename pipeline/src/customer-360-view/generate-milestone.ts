@@ -1,14 +1,16 @@
 /**
- * Customer 360 View milestone generator — specs under tests/milestone1/test-cases/KYCModule/customer360ViewTests/
+ * Customer 360 View milestone generator — specs under customer360ViewTests/
  * Page object: tests/milestone1/pages/KYCModule/Customer360Pages/Customer360Page.ts
  */
 import * as fs from "fs";
 import * as path from "path";
-import { loadC360Rows } from "./parser";
+import { loadC360Rows, subModuleOrder } from "./parser";
 import { writePlanArtifacts } from "./plan-builder";
-import type { C360ExcelRow } from "./types";
-import { mapC360TestLogic } from "./test-logic";
-import { escapeScenarioComment, formatTestTitle } from "./assertions";
+import type { C360ExcelRow, FsdMappingEntry } from "./types";
+import { formatTestTitle } from "./assertions";
+import { buildC360AlignedPhases } from "./excel-phases";
+import { buildFsdMappings } from "./fsd-mapper";
+import { buildInstrumentedTestBody } from "./test-body-builder";
 
 const ROOT = path.resolve(__dirname, "../../..");
 const SPEC_DIR = path.join(ROOT, "tests/milestone1/test-cases/KYCModule/customer360ViewTests");
@@ -16,42 +18,11 @@ const SPEC_FILE = path.join(SPEC_DIR, "customer-360-view.spec.ts");
 const PAGE_OBJECT_DIR = path.join(ROOT, "tests/milestone1/pages/KYCModule/Customer360Pages");
 const REVIEW_FILE = path.join(ROOT, "specs/customer-360-view/REVIEW.md");
 
-const SUB_MODULE_ORDER = [
-  "Page Framework",
-  "Header Strip",
-  "Customer Type Switching",
-  "Overview Tab",
-  "Risk Visualization",
-  "Relationships Tab",
-  "Screening Tab",
-  "Risk Tab",
-  "KYC/CDD Tab",
-  "Accounts Tab",
-  "Transactions Tab",
-  "Alerts Tab",
-  "Regulatory Reports Tab",
-  "KYC Gap Report Tab",
-  "Audit Tab",
-  "Global Navigation",
-  "Export Functionality",
-  "PII Masking",
-  "Error Handling",
-  "Accessibility",
-  "State Management",
-  "Global UI Consistency",
-  "Browser Compatibility",
-  "Session Management",
-  "Performance Validation",
-  "Security Validation",
-  "Usability Validation",
-  "Regression Validation",
-];
-
 function escapeForTemplate(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
 }
 
-function buildSpecFile(rows: C360ExcelRow[]): string {
+function buildSpecFile(rows: C360ExcelRow[], fsdById: Map<string, FsdMappingEntry>): string {
   const bySub = new Map<string, C360ExcelRow[]>();
   for (const row of rows) {
     const list = bySub.get(row.subModule) ?? [];
@@ -61,30 +32,42 @@ function buildSpecFile(rows: C360ExcelRow[]): string {
 
   const describeBlocks: string[] = [];
 
-  for (const subModule of SUB_MODULE_ORDER) {
+  for (const subModule of subModuleOrder()) {
     const subRows = bySub.get(subModule);
     if (!subRows?.length) continue;
 
     const tests = subRows
       .map((row) => {
         const title = escapeForTemplate(formatTestTitle(row));
-        const scenario = escapeForTemplate(escapeScenarioComment(row.taskDescription));
-        const logic = mapC360TestLogic(row);
-        return `  // Excel Test Case ID: ${row.id}
-  // Excel Scenario: ${scenario}
-  test("${title}", async ({ testData }) => {
-    ${logic};
+        const fsd = fsdById.get(row.id) ?? {
+          testCaseId: row.id,
+          excelSubModule: row.subModule,
+          excelTask: row.taskDescription,
+          fsdSectionId: "",
+          fsdSectionTitle: "",
+          fsdModule: "",
+          alignmentStatus: "unmapped" as const,
+          notes: "",
+        };
+        const phases = buildC360AlignedPhases(row);
+        const body = buildInstrumentedTestBody(row, phases, fsd);
+        return `  test("${title}", async ({ testData }) => {
+    ${body}
   });`;
       })
       .join("\n\n");
 
-    describeBlocks.push(`  test.describe("${subModule}", () => {
+    describeBlocks.push(`  test.describe("${escapeForTemplate(subModule)}", () => {
 ${tests}
   });`);
   }
 
+  const firstId = rows[0]?.id ?? "C360-TC-001";
+  const lastId = rows[rows.length - 1]?.id ?? firstId;
+
   return `// spec: specs/customer-360-view/plan.md
-// source: pipeline/test-data/Customer_360_View.xlsx — ${rows.length} cases (C360-TC-001–C360-TC-${String(rows.length).padStart(3, "0")})
+// source: pipeline/test-data/Customer 360 View.xlsx — ${rows.length} cases (${firstId}–${lastId})
+// fsd: pipeline/test-data/FSD_Customer_360_View_v1.1.docx
 import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import Customer360Page from "../../../pages/KYCModule/Customer360Pages/Customer360Page";
 
@@ -100,17 +83,20 @@ ${describeBlocks.join("\n\n")}
 `;
 }
 
-function generateSpecs(rows: C360ExcelRow[]): void {
+async function generateSpecs(allRows: C360ExcelRow[]): Promise<void> {
   fs.mkdirSync(SPEC_DIR, { recursive: true });
-  const content = buildSpecFile(rows);
+  const fsdMappings = await buildFsdMappings(allRows);
+  const fsdById = new Map(fsdMappings.map((m) => [m.testCaseId, m]));
+  const content = buildSpecFile(allRows, fsdById);
   fs.writeFileSync(SPEC_FILE, content, "utf8");
-  console.log(`Wrote ${SPEC_FILE} (${rows.length} tests)`);
+  console.log(`Wrote ${SPEC_FILE} (${allRows.length} tests)`);
 }
 
-function main(): void {
+async function main(): Promise<void> {
   const generateSpecsFlag = process.argv.includes("--generate-specs");
   const rows = loadC360Rows();
-  writePlanArtifacts();
+  const result = await writePlanArtifacts();
+  console.log(`Plan artifacts written to ${result.outputDir} (${result.rowCount} cases)`);
 
   if (!generateSpecsFlag) {
     console.log("Planning artifacts updated. Pass --generate-specs to write Playwright specs.");
@@ -123,8 +109,16 @@ function main(): void {
     process.exit(1);
   }
 
-  generateSpecs(rows);
+  if (rows.length === 0) {
+    console.error("No test cases loaded from Excel. Check pipeline/test-data/Customer 360 View.xlsx");
+    process.exit(1);
+  }
+
+  await generateSpecs(rows);
   console.log("Customer 360 View milestone specs generated.");
 }
 
-main();
+main().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

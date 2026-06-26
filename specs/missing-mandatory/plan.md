@@ -1,6 +1,6 @@
 # Missing Mandatory Data Template — Test Planning Deliverable
 
-Generated from `pipeline/test-data/Missing Mandatory Test cases.xlsx` — 288 test cases (all valid MM-TC rows, including duplicate MM-TC-283).
+Generated from `pipeline/test-data/Missing Mandatory Test Cases.xlsx` — 224 test cases.
 
 ## 1. Requirement Summary
 
@@ -8,83 +8,57 @@ Generated from `pipeline/test-data/Missing Mandatory Test cases.xlsx` — 288 te
 
 | Property | Value |
 | --- | --- |
-| File | `pipeline/test-data/Missing Mandatory Test cases.xlsx` |
-| Raw rows | 289 |
-| Valid MM-TC test cases | 288 |
-| Unique Test Case IDs | 287 (MM-TC-123 not in workbook; MM-TC-283 appears twice) |
-| ID range | MM-TC-001 → MM-TC-288 |
-| UI spec cases | 257 |
-| Database/API spec cases | 31 |
+| File | `pipeline/test-data/Missing Mandatory Test Cases.xlsx` |
+| Raw rows | 224 |
+| Valid test cases | 224 |
+| Unique Test Case IDs | 224 |
+| ID range | TC_MMDT_001 → TC_MMDT_224 |
+| Spec file | missing-mandatory.spec.ts (unified) |
 
 ### 1.2 Feature Groups
 
 | Feature Group | Count |
 | --- | --- |
-| KYC Gap Report | 25 |
-| Add Custom Field | 17 |
-| Score Calculation | 16 |
-| API Handling | 14 |
-| Score Range | 12 |
-| RBAC | 11 |
-| Individual CIP | 9 |
-| Corporate CIP | 9 |
-| Create New Template | 9 |
-| KYC Gap Score | 8 |
-| Add Field | 7 |
-| Field Configuration | 6 |
-| Clone Flow | 6 |
-| Regression | 6 |
-| CDD Fields | 5 |
-| EDD Fields | 5 |
-| Technical IDs | 5 |
-| Corporate EDD | 5 |
-| Security | 5 |
-| Cross-Module Consistency | 5 |
-| End-to-End AML Workflow | 5 |
-| DB-Origin Field | 5 |
-| Corporate Template | 4 |
-| Corporate Technical IDs | 4 |
-| Missing Fields Logic | 4 |
-| Session | 4 |
-| Backend Reliability | 4 |
-| Template Cards | 3 |
-| Template Detail Header | 3 |
-| Locked Fields | 3 |
-| Corporate CDD | 3 |
-| Versioning | 3 |
-| Save Changes | 3 |
-| Score Calculation Trigger | 3 |
-| Score Mapping | 3 |
-| Missing Fields Breakdown | 3 |
-| Customer 360 Dependency | 3 |
-| Business Integrity | 3 |
-| Sidebar | 2 |
-| Template List Panel | 2 |
-| Tab Visibility | 2 |
-| Template Search | 2 |
-| Refresh | 2 |
-| Session Control | 2 |
-| Requirement Dropdown | 2 |
-| Field Inclusion | 2 |
-| Dirty State | 2 |
-| Concurrency | 2 |
-| KYC Gap Score Configuration | 2 |
-| Retry Logic | 2 |
-| Error Handling | 2 |
-| Missing Mandatory Data Template | 1 |
-| App Shell | 1 |
-| Sidebar Navigation | 1 |
-| Top Bar | 1 |
-| Initial Access Control (RBAC) | 1 |
-| Tab Behavior | 1 |
-| Stale Data Handling | 1 |
-| Individual Template | 1 |
-| Score Calculation Engine | 1 |
-| Cross-template Isolation | 1 |
-| Recovery | 1 |
-| Backend Integrity | 1 |
-| Reliability | 1 |
-| Save Range Validation | 1 |
+| Create Template | 24 |
+| Score Configuration | 15 |
+| Archive Template | 10 |
+| Locked Fields | 10 |
+| Individual CIP | 10 |
+| Corporate CIP | 10 |
+| CDD Fields | 10 |
+| EDD Fields | 10 |
+| Search Validation | 10 |
+| Error Handling | 9 |
+| Template List | 8 |
+| Data Persistence | 8 |
+| Requirement Dropdown | 7 |
+| Field Management | 7 |
+| Search | 6 |
+| Custom Fields | 6 |
+| Risk Band | 6 |
+| Template Name Validation | 6 |
+| Navigation | 5 |
+| Tab Management | 4 |
+| Session Management | 4 |
+| Gap Score Engine | 4 |
+| Layout | 3 |
+| Technical IDs | 3 |
+| Recovery | 3 |
+| Performance | 3 |
+| Stability | 3 |
+| Accessibility | 3 |
+| Chrome Compatibility | 3 |
+| UI Interaction | 3 |
+| Scoring Logic | 2 |
+| End-to-End Workflow | 1 |
+| Configuration Integrity | 1 |
+| Customer Assignment | 1 |
+| Desktop UI Validation | 1 |
+| UI Compliance | 1 |
+| Regulatory Compliance | 1 |
+| End-to-End AML Workflow | 1 |
+| Save Button | 1 |
+| Cancel Button | 1 |
 
 ### 1.3 Route & UI Inventory
 
@@ -96,27 +70,36 @@ Generated from `pipeline/test-data/Missing Mandatory Test cases.xlsx` — 288 te
 
 ## 2. Traceability
 
-Overlapped with KGR: 25 | Net-new: 263
+Overlapped with KGR: 0 | Net-new: 224
 
-## 3. Automation Split
+## 2.1 Excel ↔ FSD Reconciliation
 
-| Spec File | Count | Criteria |
+| Metric | Value |
+| --- | --- |
+| FSD aligned | 190 |
+| FSD partial (Excel authoritative) | 34 |
+| FSD unmapped | 0 |
+| FSD source | `pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx` |
+
+Conflicts between Excel and FSD are documented in `fsd-reconciliation.json`. Excel test cases remain the source of truth for automation.
+
+## 3. Spec Output
+
+| Spec File | Count | Notes |
 | --- | --- | --- |
-| missing-mandatory-ui.spec.ts | 257 | MM-TC-001–204, no API/DB sub-modules |
-| missing-mandatory-database.spec.ts | 31 | MM-TC-205+, API/Database/DB-/RBAC→API |
+| missing-mandatory.spec.ts | 224 | All Excel cases in one unified spec |
 
 ## 4. Coverage
 
 | Metric | Value |
 | --- | --- |
-| Total test cases | 288 |
-| Automation candidates | 286 |
-| Manual-only | 2 |
-| Feature groups | 65 |
+| Total test cases | 224 |
+| Automation candidates | 224 |
+| Manual-only | 0 |
+| Feature groups | 40 |
 
 ## 5. Artifacts
 
 - Locators: `tests/objectrepositories/MissingMandatoryLocators.ts`
 - Page Object: `tests/milestone1/pages/KYCModule/MissingMandatoryPages/MissingMandatoryPage.ts`
-- UI Spec: `tests/milestone1/test-cases/KYCModule/missingMandatoryTests/missing-mandatory-ui.spec.ts`
-- DB Spec: `tests/milestone1/test-cases/KYCModule/missingMandatoryTests/missing-mandatory-database.spec.ts`
+- Spec: `tests/milestone1/test-cases/KYCModule/missingMandatoryTests/missing-mandatory.spec.ts`

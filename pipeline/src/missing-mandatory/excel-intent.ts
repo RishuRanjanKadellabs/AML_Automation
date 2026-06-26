@@ -1,7 +1,16 @@
 import { featureGroup } from "./parser";
-import type { MmExcelRow } from "./types";
+import type { MmExcelRow, ExcelAlignedPhases } from "./types";
 
 const OPEN = "await mmPage.openMissingMandatoryDataTemplateDirect(testData.baseUrl)";
+
+function rowContext(row: MmExcelRow): string {
+  return `${row.feature} ${row.taskDescription} ${row.subModule} ${row.testSteps} ${row.acceptanceCriteria} ${row.expectedResult}`.toLowerCase();
+}
+
+function ctxMatches(row: MmExcelRow, ...patterns: string[]): boolean {
+  const ctx = rowContext(row);
+  return patterns.some((p) => ctx.includes(p.toLowerCase()));
+}
 
 export function escapeStr(value: string): string {
   return value.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
@@ -48,17 +57,30 @@ export function parseTestDataFragments(testData: string): string[] {
   return [];
 }
 
+function isAppShellInitRow(row: MmExcelRow): boolean {
+  return row.feature === "Navigation" && /app shell initialization/i.test(row.taskDescription);
+}
+
+function isSidebarHierarchyRow(row: MmExcelRow): boolean {
+  return row.feature === "Navigation" && /sidebar hierarchy/i.test(row.taskDescription);
+}
+
 function isAppShellTopBarRow(row: MmExcelRow): boolean {
-  const sm = row.subModule.toLowerCase();
-  return sm.includes("app shell") && sm.includes("top bar");
+  return isTopBarRow(row);
 }
 
 function isCreateTemplateButtonRow(row: MmExcelRow): boolean {
-  return row.subModule.toLowerCase().includes("create template button");
+  return (
+    (row.feature === "Create Template" && /button|visibility/i.test(row.taskDescription)) ||
+    ctxMatches(row, "create template button")
+  );
 }
 
 function isSidebarRouteNavRow(row: MmExcelRow): boolean {
-  return row.subModule.toLowerCase().includes("route navigation");
+  return (
+    (row.feature === "Navigation" && /route navigation/i.test(row.taskDescription)) ||
+    ctxMatches(row, "route navigation", "sidebar route")
+  );
 }
 
 function isTemplateDetailAddFieldRow(row: MmExcelRow): boolean {
@@ -149,7 +171,10 @@ function parseCustomFieldName(testData: string): string {
 }
 
 function isTopBarRow(row: MmExcelRow): boolean {
-  return isAppShellTopBarRow(row);
+  return (
+    (row.feature === "Layout" && /top bar/i.test(row.taskDescription)) ||
+    ctxMatches(row, "top bar persistence", "top bar persists")
+  );
 }
 
 function isScoreRangeRow(row: MmExcelRow): boolean {
@@ -288,12 +313,12 @@ function isApiListFailure(row: MmExcelRow): boolean {
 }
 
 function fgUsesSidebarGapReport(row: MmExcelRow): boolean {
-  const fg = featureGroup(row.subModule);
+  const fg = featureGroup(row);
   return fg === "Sidebar" || row.subModule.toLowerCase().includes("sidebar");
 }
 
 function needsTemplateSelection(row: MmExcelRow): boolean {
-  const fg = featureGroup(row.subModule);
+  const fg = featureGroup(row);
   const sm = row.subModule.toLowerCase();
 
   if (sm.includes("db-origin") && sm.includes("ui rendering")) {
@@ -305,7 +330,10 @@ function needsTemplateSelection(row: MmExcelRow): boolean {
     "App Shell",
     "Sidebar",
     "Top Bar",
+    "Navigation",
+    "Layout",
     "Template List Panel",
+    "Template List",
     "Template Cards",
     "Template Search",
     "Initial Access Control (RBAC)",
@@ -355,7 +383,7 @@ export function inferTemplateName(row: MmExcelRow): string {
   if (/simplified/.test(blob)) {
     return "Simplified KYC";
   }
-  const fg = featureGroup(row.subModule);
+  const fg = featureGroup(row);
   if (fg.includes("Corporate")) {
     return "Standard KYC — Corporate";
   }
@@ -392,8 +420,7 @@ function stepMatches(step: string, ...patterns: string[]): boolean {
 }
 
 function rowMatches(row: MmExcelRow, ...patterns: string[]): boolean {
-  const blob = `${row.subModule} ${row.taskDescription} ${row.testSteps} ${row.acceptanceCriteria} ${row.expectedResult}`.toLowerCase();
-  return patterns.some((p) => blob.includes(p.toLowerCase()));
+  return ctxMatches(row, ...patterns);
 }
 
 function dbFieldLabel(row: MmExcelRow): string {
@@ -455,11 +482,11 @@ export function buildPreconditionActions(row: MmExcelRow): string[] {
 export function buildExcelSetupActions(row: MmExcelRow, preconditions: string[] = []): string[] {
   const steps: string[] = [];
   const sm = row.subModule.toLowerCase();
-  const fg = featureGroup(row.subModule);
+  const fg = featureGroup(row);
 
   pushUnique(steps, OPEN);
 
-  if (isTopBarRow(row) || isCreateTemplateButtonRow(row) || isSidebarRouteNavRow(row) || isSidebarStatePersistenceRow(row)) {
+  if (isTopBarRow(row) || isCreateTemplateButtonRow(row) || isSidebarRouteNavRow(row) || isSidebarStatePersistenceRow(row) || isAppShellInitRow(row) || isSidebarHierarchyRow(row)) {
     return steps;
   }
 
@@ -539,7 +566,11 @@ export function buildExcelStepActions(row: MmExcelRow): string[] {
     return steps;
   }
 
-  if (featureGroup(row.subModule) === "Cross-Module Consistency" && /isolation/.test(row.expectedResult.toLowerCase())) {
+  if (isAppShellInitRow(row) || isSidebarHierarchyRow(row) || isTopBarRow(row)) {
+    return steps;
+  }
+
+  if (featureGroup(row) === "Cross-Module Consistency" && /isolation/.test(row.expectedResult.toLowerCase())) {
     pushUnique(steps, "await mmPage.selectTemplateByExactName('Standard KYC — Individual')");
     pushUnique(steps, "await mmPage.modifyFirstEditableRequirement()");
     pushUnique(steps, "await mmPage.saveChangesAndExpectSuccess()");
@@ -1059,6 +1090,14 @@ function buildSpecializedAssertions(row: MmExcelRow): string[] | null {
     push("await mmPage.expectTopBarPersistentAcrossViews(testData.baseUrl)");
     return steps;
   }
+  if (isAppShellInitRow(row)) {
+    push("await mmPage.expectAppShellInitialization()");
+    return steps;
+  }
+  if (isSidebarHierarchyRow(row)) {
+    push("await mmPage.expectSidebarHierarchyIntegrity()");
+    return steps;
+  }
   if (isCreateTemplateButtonRow(row)) {
     push("await mmPage.expectCreateTemplateButtonVisibilityAcrossViews(testData.baseUrl)");
     return steps;
@@ -1159,7 +1198,7 @@ export function buildExcelAssertionActions(row: MmExcelRow): string[] {
   const ac = row.acceptanceCriteria.toLowerCase();
   const er = row.expectedResult.toLowerCase();
   const sm = row.subModule.toLowerCase();
-  const fg = featureGroup(row.subModule);
+  const fg = featureGroup(row);
   const blob = `${ac} ${er} ${sm} ${row.taskDescription.toLowerCase()}`;
   const fragments = parseTestDataFragments(row.testData);
   const numbered = parseNumberedSteps(row.testSteps);
@@ -1337,27 +1376,37 @@ export function buildExcelAssertionActions(row: MmExcelRow): string[] {
   return steps;
 }
 
-export function buildExcelAlignedLogic(row: MmExcelRow): string {
+export function buildExcelAlignedPhases(row: MmExcelRow): ExcelAlignedPhases {
   const preconditions = buildPreconditionActions(row);
-  const lines = [
-    ...preconditions,
-    ...buildExcelSetupActions(row, preconditions),
-    ...buildExcelStepActions(row),
-    ...buildExcelAssertionActions(row),
-  ]
-    .map((l) => l.trim().replace(/;+$/g, ""))
-    .filter(Boolean);
+  const setup = buildExcelSetupActions(row, preconditions);
+  const steps = buildExcelStepActions(row);
+  const assertions = buildExcelAssertionActions(row);
 
-  const deduped: string[] = [];
-  for (const line of lines) {
-    if (!deduped.includes(line)) {
-      deduped.push(line);
+  const dedupe = (lines: string[]): string[] => {
+    const out: string[] = [];
+    for (const line of lines.map((l) => l.trim().replace(/;+$/g, "")).filter(Boolean)) {
+      if (!out.includes(line)) {
+        out.push(line);
+      }
     }
-  }
+    return out;
+  };
 
-  if (deduped.length === 0) {
+  return {
+    preconditions: dedupe(preconditions),
+    setup: dedupe(setup),
+    steps: dedupe(steps),
+    assertions: dedupe(assertions),
+  };
+}
+
+export function buildExcelAlignedLogic(row: MmExcelRow): string {
+  const phases = buildExcelAlignedPhases(row);
+  const lines = [...phases.preconditions, ...phases.setup, ...phases.steps, ...phases.assertions];
+
+  if (lines.length === 0) {
     return `${OPEN};\n    await mmPage.expectTemplateModuleLoaded()`;
   }
 
-  return deduped.join(";\n    ");
+  return lines.join(";\n    ");
 }

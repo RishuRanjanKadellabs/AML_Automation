@@ -21,7 +21,11 @@ const PARTIAL_RULES: Array<{
     assumption: "Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical",
   },
   {
-    match: (r) => r.subModule.includes("Export"),
+    match: (r) =>
+      r.subModule.includes("Export") &&
+      /download|file format|csv|xlsx|exported file|export file|export.*format/i.test(
+        `${r.taskDescription} ${r.testSteps} ${r.expectedResult}`,
+      ),
     missing: "File format (CSV/XLSX) not specified",
     assumption: "CSV unless app specifies otherwise",
   },
@@ -37,7 +41,10 @@ const PARTIAL_RULES: Array<{
     assumption: "Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL",
   },
   {
-    match: (r) => r.subModule.includes("Security & Audit") && parseInt(r.id.replace("KGR-", ""), 10) >= 231,
+    match: (r) =>
+      r.subModule.includes("Security & Audit") &&
+      parseInt(r.id.replace("KGR-", ""), 10) >= 231 &&
+      /audit|security log|immutable|tamper/i.test(`${r.taskDescription} ${r.testSteps} ${r.expectedResult}`),
     missing: "Audit UI/API endpoint not specified",
     assumption: "Audit accessed via Admin module or API /audit",
   },
@@ -61,7 +68,7 @@ export function buildGapMatrixEntry(row: KgrExcelRow): GapMatrixEntry {
       requirementDescription: row.taskDescription,
       testable: "Partial",
       missingInformation: rule.missing,
-      assumptions: rule.assumption,
+      assumptions: "Blocked — see TODO comment in generated spec; no automation assumption applied",
     };
   }
 

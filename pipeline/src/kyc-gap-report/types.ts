@@ -44,3 +44,21 @@ export interface KgrManifestEntry {
   tags: string[];
   mmTcOverlap: string | null;
 }
+
+export interface ExcelAlignedPhases {
+  preconditions: string[];
+  setup: string[];
+  steps: string[];
+  assertions: string[];
+}
+
+export interface FsdMappingEntry {
+  testCaseId: string;
+  excelSubModule: string;
+  excelTask: string;
+  fsdSectionId: string;
+  fsdSectionTitle: string;
+  fsdModule: string;
+  alignmentStatus: "aligned" | "partial" | "unmapped";
+  notes: string;
+}

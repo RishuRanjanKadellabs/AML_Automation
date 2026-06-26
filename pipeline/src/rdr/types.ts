@@ -2,6 +2,8 @@ export interface RdrExcelRow {
   id: string;
   module: string;
   subModule: string;
+  shellGroup: string;
+  masterName: string;
   taskDescription: string;
   acceptanceCriteria: string;
   preconditions: string;
@@ -9,21 +11,38 @@ export interface RdrExcelRow {
   testData: string;
   priority: string;
   expectedResult: string;
-  masterTab: string;
 }
 
-export interface RdrManifestEntry {
-  id: string;
-  masterTab: string;
-  priority: string;
-  taskDescription: string;
-  specFile: string;
-  automationStatus: "Automated" | "Blocked";
+export interface GapMatrixEntry {
+  requirementId: string;
+  requirementDescription: string;
+  testable: "Yes" | "Partial" | "No";
   missingInformation: string;
+  assumptions: string;
 }
 
-export interface RdrTodoEntry {
+export interface AutomationFeasibilityEntry {
   testCaseId: string;
-  missingInformation: string;
+  automationLayer: string;
+  automationCandidate: "Yes" | "No";
   reason: string;
+  tags: string[];
+}
+
+export interface ExcelAlignedPhases {
+  preconditions: string[];
+  setup: string[];
+  steps: string[];
+  assertions: string[];
+}
+
+export interface FsdMappingEntry {
+  testCaseId: string;
+  excelSubModule: string;
+  excelTask: string;
+  fsdSectionId: string;
+  fsdSectionTitle: string;
+  fsdModule: string;
+  alignmentStatus: "aligned" | "partial" | "unmapped";
+  notes: string;
 }

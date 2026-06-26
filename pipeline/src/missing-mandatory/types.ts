@@ -6,6 +6,7 @@ export interface MmExcelRow {
   excelRowIndex: number;
   module: string;
   subModule: string;
+  feature: string;
   taskDescription: string;
   acceptanceCriteria: string;
   preconditions: string;
@@ -46,5 +47,23 @@ export interface MmManifestEntry {
   automationLayer: string;
   automationCandidate: "Yes" | "No";
   tags: string[];
-  specLayer: "ui" | "database";
+  specLayer: "unified";
+}
+
+export interface ExcelAlignedPhases {
+  preconditions: string[];
+  setup: string[];
+  steps: string[];
+  assertions: string[];
+}
+
+export interface FsdMappingEntry {
+  testCaseId: string;
+  excelFeature: string;
+  excelTask: string;
+  fsdSectionId: string;
+  fsdSectionTitle: string;
+  fsdModule: string;
+  alignmentStatus: "aligned" | "partial" | "unmapped";
+  notes: string;
 }
