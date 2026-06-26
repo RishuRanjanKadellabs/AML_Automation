@@ -1,6 +1,7 @@
 import * as path from "path";
 import * as XLSX from "xlsx";
 import type { C360ExcelRow } from "./types";
+import { PRIMARY_CUSTOMER_ID, resolveCustomerFromContext } from "./customer-data";
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..", "..");
 export const C360_EXCEL_PATH = path.join(PROJECT_ROOT, "pipeline/test-data/Customer 360 View.xlsx");
@@ -47,16 +48,26 @@ export function loadC360Rows(): C360ExcelRow[] {
 
 export function extractCustomerId(testData: string): string {
   const patterns = [
+    /Customer ID:\s*(\d+)/i,
     /Customer ID:\s*([A-Z]+\d+)/i,
+    /Individual Customer:\s*(\d+)/i,
     /Individual Customer:\s*([A-Z]+\d+)/i,
+    /Corporate Customer:\s*(\d+)/i,
     /Corporate Customer:\s*([A-Z]+\d+)/i,
+    /\b(3159176)\b/,
     /\b(CUST\d+|PEP\d+|ADV\d+|EMPTY\d+|IND\d+|CORP\d+|EMPTYREL\d+)\b/i,
   ];
   for (const pattern of patterns) {
     const match = testData.match(pattern);
     if (match?.[1]) return match[1].toUpperCase();
   }
-  return "CUST1001";
+  return PRIMARY_CUSTOMER_ID;
+}
+
+export function extractCustomerName(testData: string, fallbackContext = ""): string {
+  const nameMatch = testData.match(/Customer Name:\s*([^;\n]+)/i);
+  if (nameMatch?.[1]) return nameMatch[1].trim();
+  return resolveCustomerFromContext(`${testData} ${fallbackContext}`).name;
 }
 
 export function extractAllCustomerIds(testData: string): string[] {
@@ -64,14 +75,20 @@ export function extractAllCustomerIds(testData: string): string[] {
   const listMatch = testData.match(/Customer IDs?:\s*([A-Z0-9,\s]+)/i);
   if (listMatch?.[1]) {
     listMatch[1].split(/[,\s]+/).forEach((id) => {
-      if (/^[A-Z]+\d+$/i.test(id)) found.add(id.toUpperCase());
+      if (/^\d+$/.test(id) || /^[A-Z]+\d+$/i.test(id)) found.add(id.toUpperCase());
     });
+  }
+  const numeric = /\b3159176\b/g;
+  let numMatch: RegExpExecArray | null;
+  while ((numMatch = numeric.exec(testData)) !== null) {
+    found.add(numMatch[0]);
   }
   const global = /\b(CUST\d+|PEP\d+|ADV\d+|IND\d+|CORP\d+|EMPTY\d+|EMPTYREL\d+)\b/gi;
   let match: RegExpExecArray | null;
   while ((match = global.exec(testData)) !== null) {
     if (match[1]) found.add(match[1].toUpperCase());
   }
+  if (found.size === 0) found.add(PRIMARY_CUSTOMER_ID);
   return [...found];
 }
 

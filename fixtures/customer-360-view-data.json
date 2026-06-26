@@ -1,41 +1,39 @@
 {
   "route": "/kyc/customer-360",
-  "defaultCustomerId": "CUST1001",
+  "defaultCustomerId": "3159176",
   "customers": {
-    "CUST1001": {
-      "id": "CUST1001",
-      "name": "Vikram Sharma",
+    "3159176": {
+      "id": "3159176",
+      "name": "Arjun Mehta",
       "type": "individual",
-      "riskScore": 42,
+      "riskScore": 75,
       "pep": false,
       "branch": "Mumbai Main (001)",
       "screeningHistory": [
         { "caseId": "CASE2026011", "status": "Cleared", "date": "2026-01-15" }
       ]
     },
-    "IND1001": {
-      "id": "IND1001",
-      "name": "Individual Customer One",
-      "type": "individual",
-      "riskScore": 35,
-      "pep": false,
-      "branch": "Mumbai Main (001)"
-    },
-    "CORP2001": {
-      "id": "CORP2001",
-      "name": "Acme Holdings Ltd",
-      "type": "corporate",
-      "riskScore": 55,
-      "pep": false,
-      "branch": "Chennai South (003)"
-    },
-    "PEP1001": {
-      "id": "PEP1001",
-      "name": "Politically Exposed Person",
+    "3159176PEP": {
+      "id": "3159176",
+      "name": "Priya Sharma",
       "type": "individual",
       "riskScore": 88,
       "pep": true,
-      "branch": "Delhi Central (002)"
+      "branch": "Delhi Central (002)",
+      "screeningHistory": [
+        { "caseId": "CASE2026042", "status": "Review", "date": "2026-02-10" }
+      ]
+    },
+    "3159176CORP": {
+      "id": "3159176",
+      "name": "Kumar Global Traders Pvt. Ltd.",
+      "type": "corporate",
+      "riskScore": 55,
+      "pep": false,
+      "branch": "Chennai South (003)",
+      "screeningHistory": [
+        { "caseId": "CASE2026033", "status": "Cleared", "date": "2026-01-28" }
+      ]
     }
   },
   "tabs": [

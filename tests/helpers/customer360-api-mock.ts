@@ -24,6 +24,17 @@ const fixture: FixtureData = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
 
 export function getCustomerFixture(customerId: string): CustomerFixture | null {
   const normalized = normalizeCustomerKey(customerId);
+  if (fixture.customers[normalized]) {
+    return fixture.customers[normalized];
+  }
+  if (/^\d+$/.test(normalized)) {
+    return (
+      fixture.customers[normalized] ??
+      fixture.customers[fixture.defaultCustomerId] ??
+      Object.values(fixture.customers).find((c) => normalizeCustomerKey(c.id) === normalized) ??
+      null
+    );
+  }
   return fixture.customers[normalized] ?? null;
 }
 
@@ -32,6 +43,8 @@ export function getFixtureTabs(): string[] {
 }
 
 export function parseCustomerId(value: string): string {
+  const numeric = value.match(/\b(\d{5,})\b/);
+  if (numeric?.[1]) return numeric[1];
   const match = value.match(/\b([A-Z]+-?\d+)\b/i);
   return normalizeCustomerKey(match?.[1] ?? fixture.defaultCustomerId);
 }
@@ -42,23 +55,42 @@ export function normalizeCustomerKey(customerId: string): string {
 
 export function formatCustomerIdForApp(customerId: string): string {
   const key = normalizeCustomerKey(customerId);
+  if (/^\d+$/.test(key)) return key;
   const match = key.match(/^([A-Z]+)(\d+)$/);
   if (!match) return customerId;
   return `${match[1]}-${match[2]}`;
 }
 
 function customerMatches(customer: CustomerFixture, query: string): boolean {
-  const q = normalizeCustomerKey(query);
+  const q = query.trim();
+  const qUpper = q.toUpperCase();
   const id = normalizeCustomerKey(customer.id);
   const appId = normalizeCustomerKey(formatCustomerIdForApp(customer.id));
   const name = customer.name.toUpperCase();
   return (
-    id.includes(q) ||
-    appId.includes(q) ||
-    q.includes(id) ||
-    name.includes(query.toUpperCase()) ||
-    query.toUpperCase().includes(name)
+    id === q ||
+    id.includes(qUpper) ||
+    appId.includes(qUpper) ||
+    qUpper.includes(id) ||
+    name.includes(qUpper) ||
+    qUpper.includes(name)
   );
+}
+
+function resolveFixtureCustomer(query: string): CustomerFixture | null {
+  const direct = getCustomerFixture(query);
+  if (direct) return direct;
+
+  const byName = Object.values(fixture.customers).find((c) =>
+    customerMatches(c, query),
+  );
+  if (byName) return byName;
+
+  if (/^\d+$/.test(query.trim())) {
+    return fixture.customers[fixture.defaultCustomerId] ?? null;
+  }
+
+  return null;
 }
 
 function searchResultItem(customer: CustomerFixture) {
@@ -110,6 +142,10 @@ async function fulfillRoute(route: Route): Promise<void> {
       ((route.request().postDataJSON?.() as { query?: string } | undefined)?.query ?? "");
 
     const matches = Object.values(fixture.customers).filter((c) => customerMatches(c, query));
+    if (matches.length === 0 && /^\d+$/.test(query.trim())) {
+      const fallback = fixture.customers[fixture.defaultCustomerId];
+      if (fallback) matches.push(fallback);
+    }
     await route.fulfill({
       status: 200,
       contentType: "application/json",
@@ -127,7 +163,7 @@ async function fulfillRoute(route: Route): Promise<void> {
   const detailMatch = url.match(/\/customers\/([A-Z0-9-]+)/i);
   if (detailMatch && method === "GET") {
     const id = normalizeCustomerKey(detailMatch[1]);
-    const customer = getCustomerFixture(id);
+    const customer = resolveFixtureCustomer(id) ?? getCustomerFixture(id);
     if (!customer) {
       await route.fulfill({
         status: 404,

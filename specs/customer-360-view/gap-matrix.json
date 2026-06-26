@@ -2466,23 +2466,23 @@
   {
     "requirementId": "C360-TC-353",
     "requirementDescription": "Verify masking persistence during export operations",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "Role credentials not defined in Excel test data",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-354",
     "requirementDescription": "Verify prevention of sensitive data exposure in browser console",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "Role credentials not defined in Excel test data",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-355",
     "requirementDescription": "Verify prevention of sensitive data exposure in page source",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "Role credentials not defined in Excel test data",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-356",
@@ -2585,6 +2585,90 @@
   {
     "requirementId": "C360-TC-370",
     "requirementDescription": "Verify enterprise-level end-to-end Customer 360 workflow stability",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-371",
+    "requirementDescription": "Verify Personal Details card field rendering for Corporate customer mode",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-372",
+    "requirementDescription": "Verify Onboarding and KYC dates display in Overview tab",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-373",
+    "requirementDescription": "Verify Contact Addresses card rendering and address formatting",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-374",
+    "requirementDescription": "Verify Recent Activity feed chronological ordering and icons",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-375",
+    "requirementDescription": "Verify Regulatory Status strip STR CTR and LEA indicators",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-376",
+    "requirementDescription": "Verify Filing Calendar empty state and View Calendar action",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-377",
+    "requirementDescription": "Verify MoA/AoA Update missing field row rendering and mandatory weight",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-378",
+    "requirementDescription": "Verify GSTIN Certificate missing field row rendering and description",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-379",
+    "requirementDescription": "Verify Board Resolution missing field row rendering and priority badge",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-380",
+    "requirementDescription": "Verify Watchlist Matches section rendering and match details",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-381",
+    "requirementDescription": "Verify CDD and EDD Triggers section visibility based on customer risk profile",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "C360-TC-382",
+    "requirementDescription": "Verify cross-validation between Overview Regulatory Status and Reg Reports tab",
     "testable": "Yes",
     "missingInformation": "—",
     "assumptions": "—"
