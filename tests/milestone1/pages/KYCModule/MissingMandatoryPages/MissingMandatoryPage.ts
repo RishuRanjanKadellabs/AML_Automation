@@ -359,6 +359,33 @@ class MissingMandatoryPage extends BasePage {
     }
   }
 
+  async expectAppShellInitialization(): Promise<void> {
+    await this.expectAppShellVisible();
+    await this.expectTemplateListPopulated();
+    await this.assertVisible(this.tabButtons.first(), "Tab container");
+    await this.selectTemplateByExactName("Simplified KYC");
+    await this.assertVisible(this.fieldRows.first(), "Detail panel field rows");
+    this.logStep("ASSERT", "App shell initialization — all primary containers rendered");
+  }
+
+  async expectSidebarHierarchyIntegrity(): Promise<void> {
+    await this.assertVisible(this.sidebar.first(), "Sidebar");
+    await this.assertVisible(this.missingMandatoryLink, "Missing Mandatory Data Template link");
+    const parentToggle = this.page
+      .locator("nav, aside")
+      .getByText(/missing mandatory/i)
+      .first();
+    if (await parentToggle.isVisible().catch(() => false)) {
+      await parentToggle.click();
+      await this.assertVisible(this.missingMandatoryLink, "Data Template submenu after expand");
+      await parentToggle.click();
+      await parentToggle.click();
+    }
+    await this.refreshPage();
+    await this.assertVisible(this.missingMandatoryLink, "Sidebar hierarchy after refresh");
+    this.logStep("ASSERT", "Sidebar hierarchy integrity — successful");
+  }
+
   private resolveTabLabel(tabName: string): string {
     const key = tabName.trim().toLowerCase();
     const aliases: Record<string, string> = {

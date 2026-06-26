@@ -7,5 +7,8 @@ export function buildAssertionsForRow(row: MmExcelRow): string {
 
 export function formatTestTitle(row: MmExcelRow): string {
   const suffix = row.idOccurrence > 1 ? ` [${row.idOccurrence}]` : "";
-  return `Case ID:${row.id} - ${row.subModule}${suffix}`;
+  const label = row.taskDescription
+    ? `${row.feature} → ${row.taskDescription}`
+    : row.subModule;
+  return `Case ID:${row.id} - ${label}${suffix}`;
 }

@@ -3,2590 +3,2590 @@
     "requirementId": "C360-TC-001",
     "requirementDescription": "Verify Customer 360 page loads successfully for a valid customer profile",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-002",
     "requirementDescription": "Verify default Overview tab selection on Customer 360 page",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-003",
     "requirementDescription": "Verify Customer 360 page layout alignment and spacing",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-004",
     "requirementDescription": "Verify sticky header behavior during vertical scrolling",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-005",
     "requirementDescription": "Verify page responsiveness on medium screen resolution",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-006",
     "requirementDescription": "Verify page responsiveness on smaller screen resolutions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-007",
     "requirementDescription": "Verify page loading skeleton or loader visibility during slow network response",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-008",
     "requirementDescription": "Verify empty-state rendering when customer data is unavailable",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-009",
     "requirementDescription": "Verify frontend console stability during page load",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-010",
     "requirementDescription": "Verify customer full name rendering in header strip",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-011",
     "requirementDescription": "Verify customer unique identifier rendering in header strip",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-012",
     "requirementDescription": "Verify PEP badge rendering for PEP-linked customer profiles",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-013",
     "requirementDescription": "Verify adverse media badge rendering in customer header",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-014",
     "requirementDescription": "Verify risk score badge rendering in customer header",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-015",
     "requirementDescription": "Verify active alert count rendering in header strip",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-016",
     "requirementDescription": "Verify STR/SAR indicator rendering in header strip",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-017",
     "requirementDescription": "Verify long customer name handling in header strip",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-018",
     "requirementDescription": "Verify tooltip visibility for truncated customer values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-019",
     "requirementDescription": "Verify switching from Individual customer to Corporate customer without page reload",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-020",
     "requirementDescription": "Verify switching from Corporate customer to Individual customer without page reload",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-021",
     "requirementDescription": "Verify active tab persistence after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-022",
     "requirementDescription": "Verify all widgets rerender successfully after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-023",
     "requirementDescription": "Verify stale data removal after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-024",
     "requirementDescription": "Verify rapid customer type switching stability",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-025",
     "requirementDescription": "Verify loading indicator during customer type rerender under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-026",
     "requirementDescription": "Verify successful loading of Overview tab widgets and KPI cards",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-027",
     "requirementDescription": "Verify Risk Profile KPI card rendering in Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-028",
     "requirementDescription": "Verify KYC Status KPI card rendering in Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-029",
     "requirementDescription": "Verify Active Alerts KPI card rendering in Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-030",
     "requirementDescription": "Verify Total Accounts KPI card rendering in Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-031",
     "requirementDescription": "Verify Regulatory Reports KPI card rendering in Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-032",
     "requirementDescription": "Verify KYC Gap Score KPI card rendering in Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-033",
     "requirementDescription": "Verify Overview KPI card alignment and spacing",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-034",
     "requirementDescription": "Verify responsive rendering of KPI cards on medium screen resolution",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-035",
     "requirementDescription": "Verify handling of large KPI values within Overview widgets",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-036",
     "requirementDescription": "Verify empty-state behavior for missing KPI data",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-037",
     "requirementDescription": "Verify navigation from KYC Gap Score KPI card to KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-038",
     "requirementDescription": "Verify successful rendering of Risk Donut Chart",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-039",
     "requirementDescription": "Verify color coding of Risk Donut Chart segments",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-040",
     "requirementDescription": "Verify tooltip behavior on Risk Donut Chart hover",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-041",
     "requirementDescription": "Verify responsive rendering of Risk Donut Chart",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-042",
     "requirementDescription": "Verify empty-state rendering when risk visualization data is unavailable",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-043",
     "requirementDescription": "Verify Key Relationships widget rendering within Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-044",
     "requirementDescription": "Verify relationship labels and linked entity names within Key Relationships widget",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-045",
     "requirementDescription": "Verify handling of long relationship names within Overview widget",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-046",
     "requirementDescription": "Verify empty-state rendering for missing relationship data",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-047",
     "requirementDescription": "Verify Screening Summary widget rendering within Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-048",
     "requirementDescription": "Verify sanctions match count rendering within Screening Summary widget",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-049",
     "requirementDescription": "Verify PEP indicator rendering within Screening Summary widget",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-050",
     "requirementDescription": "Verify adverse media indicator rendering within Screening Summary widget",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-051",
     "requirementDescription": "Verify transaction metrics rendering within Overview tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-052",
     "requirementDescription": "Verify Cash vs Non-Cash ratio visualization rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-053",
     "requirementDescription": "Verify cross-border transaction indicator rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-054",
     "requirementDescription": "Verify unusual transaction pattern indicator rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-055",
     "requirementDescription": "Verify consistency of alert counts between Header Strip and Overview KPI widgets",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-056",
     "requirementDescription": "Verify consistency of risk score across Header Strip and Overview widgets",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-057",
     "requirementDescription": "Verify successful rerendering of Overview widgets after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-058",
     "requirementDescription": "Verify removal of stale Overview data after customer rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-059",
     "requirementDescription": "Verify loading indicator visibility during Overview widget rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-060",
     "requirementDescription": "Verify frontend console stability during Overview tab interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-061",
     "requirementDescription": "Verify successful loading of Relationships tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-062",
     "requirementDescription": "Verify rendering of linked relationship entities",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-063",
     "requirementDescription": "Verify relationship type label rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-064",
     "requirementDescription": "Verify relationship count rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-065",
     "requirementDescription": "Verify handling of long linked entity names",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-066",
     "requirementDescription": "Verify rendering of PEP-linked relationship banner",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-067",
     "requirementDescription": "Verify styling of PEP relationship badges",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-068",
     "requirementDescription": "Verify expand functionality for relationship cards",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-069",
     "requirementDescription": "Verify collapse functionality for expanded relationship cards",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-070",
     "requirementDescription": "Verify multiple relationship card expansion handling",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-071",
     "requirementDescription": "Verify empty-state rendering when no relationships exist",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-072",
     "requirementDescription": "Verify responsive rendering of Relationships tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-073",
     "requirementDescription": "Verify rerendering of relationship data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-074",
     "requirementDescription": "Verify removal of stale relationship data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-075",
     "requirementDescription": "Verify relationship tooltip visibility for truncated values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-076",
     "requirementDescription": "Verify Graphical Link Analysis shortcut visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-077",
     "requirementDescription": "Verify navigation behavior of Graphical Link Analysis shortcut",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-078",
     "requirementDescription": "Verify frontend console stability during relationship interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-079",
     "requirementDescription": "Verify successful loading of Screening tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-080",
     "requirementDescription": "Verify sanctions screening section rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-081",
     "requirementDescription": "Verify sanctions match score visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-082",
     "requirementDescription": "Verify sanctions list source visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-083",
     "requirementDescription": "Verify sanctions jurisdiction visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-084",
     "requirementDescription": "Verify PEP screening section rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-085",
     "requirementDescription": "Verify political role visibility within PEP screening",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-086",
     "requirementDescription": "Verify relationship type visibility within PEP screening",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-087",
     "requirementDescription": "Verify adverse media section rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-088",
     "requirementDescription": "Verify adverse media risk classification visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-089",
     "requirementDescription": "Verify adverse media match score visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-090",
     "requirementDescription": "Verify screening history section rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-091",
     "requirementDescription": "Verify screening trigger type visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-092",
     "requirementDescription": "Verify screening status visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-093",
     "requirementDescription": "Verify screening Case ID visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-094",
     "requirementDescription": "Verify screened list name visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-095",
     "requirementDescription": "Verify Re-Screen button visibility within Screening tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-096",
     "requirementDescription": "Verify Re-Screen button click behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-097",
     "requirementDescription": "Verify loading indicator visibility during Re-Screen process",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-098",
     "requirementDescription": "Verify disabled state of Re-Screen button during processing",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-099",
     "requirementDescription": "Verify Auto-Refresh toggle visibility",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-100",
     "requirementDescription": "Verify enabling Auto-Refresh toggle",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-101",
     "requirementDescription": "Verify disabling Auto-Refresh toggle",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-102",
     "requirementDescription": "Verify responsive rendering of Screening tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-103",
     "requirementDescription": "Verify empty-state rendering when no screening data exists",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-104",
     "requirementDescription": "Verify rerendering of Screening data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-105",
     "requirementDescription": "Verify removal of stale screening data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-106",
     "requirementDescription": "Verify loading indicator visibility during Screening tab rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-107",
     "requirementDescription": "Verify tooltip visibility for truncated screening values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-108",
     "requirementDescription": "Verify frontend console stability during screening interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-109",
     "requirementDescription": "Verify successful loading of Risk tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-110",
     "requirementDescription": "Verify composite risk score rendering within Risk tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-111",
     "requirementDescription": "Verify risk score color coding within Risk tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-112",
     "requirementDescription": "Verify risk classification badge rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-113",
     "requirementDescription": "Verify rendering of Risk Gauge visualization",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-114",
     "requirementDescription": "Verify rendering of Risk Factor table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-115",
     "requirementDescription": "Verify visibility of risk factor names",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-116",
     "requirementDescription": "Verify visibility of individual risk factor scores",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-117",
     "requirementDescription": "Verify visibility of individual risk factor weights",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-118",
     "requirementDescription": "Verify rendering of Risk Breakdown categories",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-119",
     "requirementDescription": "Verify expand functionality of Risk Breakdown section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-120",
     "requirementDescription": "Verify collapse functionality of expanded Risk Breakdown section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-121",
     "requirementDescription": "Verify rendering of manual risk override banner",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-122",
     "requirementDescription": "Verify visibility of manual override reason",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-123",
     "requirementDescription": "Verify visibility of manual override timestamp",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-124",
     "requirementDescription": "Verify rendering of Risk History Timeline",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-125",
     "requirementDescription": "Verify chronological ordering of Risk History Timeline",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-126",
     "requirementDescription": "Verify successful loading of KYC/CDD tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-127",
     "requirementDescription": "Verify visibility of customer KYC level within KYC/CDD tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-128",
     "requirementDescription": "Verify visibility of Last Review Date within KYC/CDD tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-129",
     "requirementDescription": "Verify visibility of Next Review Date within KYC/CDD tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-130",
     "requirementDescription": "Verify rendering of Submitted Documents section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-131",
     "requirementDescription": "Verify visibility of document verification status",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-132",
     "requirementDescription": "Verify styling of expired document indicators",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-133",
     "requirementDescription": "Verify rendering of Source of Funds section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-134",
     "requirementDescription": "Verify rendering of Source of Wealth section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-135",
     "requirementDescription": "Verify visibility of Tax Return documents within financial profile section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-136",
     "requirementDescription": "Verify visibility of Bank Statement documents within financial profile section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-137",
     "requirementDescription": "Verify visibility of document submission dates",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-138",
     "requirementDescription": "Verify rendering of EDD-specific sections for EDD customers",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-139",
     "requirementDescription": "Verify hiding of EDD-specific sections for non-EDD customers",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-140",
     "requirementDescription": "Verify rendering of KYC Change Log section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-141",
     "requirementDescription": "Verify rendering of KYC Risk Evolution widget",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-142",
     "requirementDescription": "Verify rendering of New Products section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-143",
     "requirementDescription": "Verify visibility of Start New Review button",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-144",
     "requirementDescription": "Verify click behavior of Start New Review button",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-145",
     "requirementDescription": "Verify handling of long document names within document tables",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-146",
     "requirementDescription": "Verify tooltip visibility for truncated KYC values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-147",
     "requirementDescription": "Verify empty-state rendering when no KYC data exists",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-148",
     "requirementDescription": "Verify responsive rendering of KYC/CDD tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-149",
     "requirementDescription": "Verify rerendering of KYC/CDD data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-150",
     "requirementDescription": "Verify removal of stale KYC/CDD data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-151",
     "requirementDescription": "Verify loading indicator visibility during KYC/CDD rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-152",
     "requirementDescription": "Verify frontend console stability during KYC/CDD interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-153",
     "requirementDescription": "Verify successful loading of Accounts tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-154",
     "requirementDescription": "Verify rendering of Account Summary section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-155",
     "requirementDescription": "Verify visibility of account numbers within Accounts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-156",
     "requirementDescription": "Verify visibility of account type within Accounts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-157",
     "requirementDescription": "Verify visibility of account status within Accounts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-158",
     "requirementDescription": "Verify visibility of account opening date within Accounts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-159",
     "requirementDescription": "Verify visibility of Last Transaction Date within Accounts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-160",
     "requirementDescription": "Verify highlighting of dormant accounts",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-161",
     "requirementDescription": "Verify visibility of Product Filter pills within Accounts tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-162",
     "requirementDescription": "Verify Savings account filter behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-163",
     "requirementDescription": "Verify Current account filter behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-164",
     "requirementDescription": "Verify Investment account filter behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-165",
     "requirementDescription": "Verify Loan account filter behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-166",
     "requirementDescription": "Verify stability of rapid product filter switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-167",
     "requirementDescription": "Verify rendering of Product Holdings section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-168",
     "requirementDescription": "Verify rendering of Limits and Thresholds section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-169",
     "requirementDescription": "Verify horizontal scrolling behavior within Accounts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-170",
     "requirementDescription": "Verify handling of long account values within Accounts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-171",
     "requirementDescription": "Verify empty-state rendering when no account records exist",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-172",
     "requirementDescription": "Verify responsive rendering of Accounts tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-173",
     "requirementDescription": "Verify rerendering of Accounts data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-174",
     "requirementDescription": "Verify removal of stale Accounts data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-175",
     "requirementDescription": "Verify loading indicator visibility during Accounts rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-176",
     "requirementDescription": "Verify frontend console stability during Accounts tab interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-177",
     "requirementDescription": "Verify successful loading of Transactions tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-178",
     "requirementDescription": "Verify rendering of Transactions table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-179",
     "requirementDescription": "Verify visibility of transaction dates within Transactions table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-180",
     "requirementDescription": "Verify visibility of debit transaction amounts",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-181",
     "requirementDescription": "Verify visibility of credit transaction amounts",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-182",
     "requirementDescription": "Verify visibility of transaction channel information",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-183",
     "requirementDescription": "Verify visibility of Date Range filter within Transactions tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-184",
     "requirementDescription": "Verify transaction filtering using Date Range filter",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-185",
     "requirementDescription": "Verify highlighting of alert-linked transactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-186",
     "requirementDescription": "Verify styling consistency of highlighted transactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-187",
     "requirementDescription": "Verify visibility of unusual transaction indicators",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-188",
     "requirementDescription": "Verify visibility of cross-border transaction indicators",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-189",
     "requirementDescription": "Verify visibility of Download Statement button",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-190",
     "requirementDescription": "Verify click behavior of Download Statement button",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-191",
     "requirementDescription": "Verify disabled state of Download Statement button when statement is unavailable",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-192",
     "requirementDescription": "Verify horizontal scrolling behavior within Transactions table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-193",
     "requirementDescription": "Verify handling of long transaction descriptions within Transactions table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-194",
     "requirementDescription": "Verify tooltip visibility for truncated transaction values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-195",
     "requirementDescription": "Verify empty-state rendering when no transaction records exist",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-196",
     "requirementDescription": "Verify responsive rendering of Transactions tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-197",
     "requirementDescription": "Verify rerendering of Transactions data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-198",
     "requirementDescription": "Verify removal of stale Transactions data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-199",
     "requirementDescription": "Verify loading indicator visibility during Transactions rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-200",
     "requirementDescription": "Verify frontend console stability during Transactions interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-201",
     "requirementDescription": "Verify successful loading of Alerts tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-202",
     "requirementDescription": "Verify rendering of Alerts Summary section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-203",
     "requirementDescription": "Verify visibility of Total Alerts count within Alerts Summary",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-204",
     "requirementDescription": "Verify visibility of Active/Open Alerts count within Alerts Summary",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-205",
     "requirementDescription": "Verify visibility of Escalated Alerts count within Alerts Summary",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-206",
     "requirementDescription": "Verify visibility of Pending Response count within Alerts Summary",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-207",
     "requirementDescription": "Verify rendering of Alerts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-208",
     "requirementDescription": "Verify visibility of Alert Type within Alerts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-209",
     "requirementDescription": "Verify visibility of Scenario Name within Alerts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-210",
     "requirementDescription": "Verify visibility of Alert Creation Date within Alerts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-211",
     "requirementDescription": "Verify visibility of Last Updated Date within Alerts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-212",
     "requirementDescription": "Verify visibility of Assigned Analyst within Alerts table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-213",
     "requirementDescription": "Verify rendering of Alert Status badges",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-214",
     "requirementDescription": "Verify color coding of Alert Status badges",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-215",
     "requirementDescription": "Verify expand functionality of alert rows",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-216",
     "requirementDescription": "Verify visibility of triggering transactions within expanded alert details",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-217",
     "requirementDescription": "Verify visibility of Match Criteria within expanded alert details",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-218",
     "requirementDescription": "Verify visibility of alert status within expanded alert details",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-219",
     "requirementDescription": "Verify stability of multiple expanded alert rows",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-220",
     "requirementDescription": "Verify consistency of Active Alert counts between Header Strip and Alerts Summary",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-221",
     "requirementDescription": "Verify tooltip visibility for truncated alert values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-222",
     "requirementDescription": "Verify empty-state rendering when no alerts exist",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-223",
     "requirementDescription": "Verify responsive rendering of Alerts tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-224",
     "requirementDescription": "Verify rerendering of Alerts data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-225",
     "requirementDescription": "Verify removal of stale Alerts data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-226",
     "requirementDescription": "Verify loading indicator visibility during Alerts rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-227",
     "requirementDescription": "Verify frontend console stability during Alerts interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-228",
     "requirementDescription": "Verify successful loading of Regulatory Reports tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-229",
     "requirementDescription": "Verify rendering of STR/SAR Filings section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-230",
     "requirementDescription": "Verify visibility of jurisdiction within STR/SAR filings",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-231",
     "requirementDescription": "Verify visibility of Full Report link within STR/SAR filings",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-232",
     "requirementDescription": "Verify click behavior of Full Report link",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-233",
     "requirementDescription": "Verify visibility of Case ID within STR/SAR filings",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-234",
     "requirementDescription": "Verify rendering of CTR section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-235",
     "requirementDescription": "Verify visibility of CTR Reference within CTR section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-236",
     "requirementDescription": "Verify visibility of Transaction Date within CTR section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-237",
     "requirementDescription": "Verify visibility of Transaction Amount within CTR section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-238",
     "requirementDescription": "Verify rendering of LEA Requests section",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-239",
     "requirementDescription": "Verify visibility of Agency Name within LEA Requests",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-240",
     "requirementDescription": "Verify visibility of Response Deadline within LEA Requests",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-241",
     "requirementDescription": "Verify rendering of Filing Status badges within Regulatory Reports tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-242",
     "requirementDescription": "Verify color coding of Filing Status badges",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-243",
     "requirementDescription": "Verify tooltip visibility for truncated regulatory report values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-244",
     "requirementDescription": "Verify empty-state rendering when no regulatory reports exist",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-245",
     "requirementDescription": "Verify responsive rendering of Regulatory Reports tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-246",
     "requirementDescription": "Verify rerendering of Regulatory Reports data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-247",
     "requirementDescription": "Verify removal of stale Regulatory Reports data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-248",
     "requirementDescription": "Verify loading indicator visibility during Regulatory Reports rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-249",
     "requirementDescription": "Verify frontend console stability during Regulatory Reports interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-250",
     "requirementDescription": "Verify successful loading of KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-251",
     "requirementDescription": "Verify visibility of KYC Gap Score within KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-252",
     "requirementDescription": "Verify formatting consistency of KYC Gap Score",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-253",
     "requirementDescription": "Verify visibility of Missing Field Count within KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-254",
     "requirementDescription": "Verify visibility of applied Template Name within KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-255",
     "requirementDescription": "Verify visibility of Branch Code within KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-256",
     "requirementDescription": "Verify rendering of Missing Field table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-257",
     "requirementDescription": "Verify visibility of Mandatory field indicators within Missing Field table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-258",
     "requirementDescription": "Verify visibility of Optional field indicators within Missing Field table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-259",
     "requirementDescription": "Verify visibility of field weights within Missing Field table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-260",
     "requirementDescription": "Verify handling of long missing field names within Missing Field table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-261",
     "requirementDescription": "Verify tooltip visibility for truncated KYC Gap values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-262",
     "requirementDescription": "Verify empty-state rendering when no KYC gaps exist",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-263",
     "requirementDescription": "Verify responsive rendering of KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-264",
     "requirementDescription": "Verify rerendering of KYC Gap data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-265",
     "requirementDescription": "Verify removal of stale KYC Gap data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-266",
     "requirementDescription": "Verify loading indicator visibility during KYC Gap rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-267",
     "requirementDescription": "Verify consistency of KYC Gap Score between Overview and KYC Gap Report tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-268",
     "requirementDescription": "Verify frontend console stability during KYC Gap interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-269",
     "requirementDescription": "Verify successful loading of Audit tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-270",
     "requirementDescription": "Verify rendering of Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-271",
     "requirementDescription": "Verify visibility of audit timestamps within Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-272",
     "requirementDescription": "Verify visibility of Action Type within Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-273",
     "requirementDescription": "Verify visibility of Actor/User information within Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-274",
     "requirementDescription": "Verify visibility of Module/Source information within Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-275",
     "requirementDescription": "Verify visibility of Event Description within Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-276",
     "requirementDescription": "Verify chronological ordering of audit records",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-277",
     "requirementDescription": "Verify absence of Edit/Delete actions within Audit tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-278",
     "requirementDescription": "Verify visibility of Audit Search functionality",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-279",
     "requirementDescription": "Verify Audit Search functionality behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-280",
     "requirementDescription": "Verify visibility of Audit Filter controls",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-281",
     "requirementDescription": "Verify Audit Filter functionality behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-282",
     "requirementDescription": "Verify horizontal scrolling behavior within Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-283",
     "requirementDescription": "Verify handling of long event descriptions within Audit table",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-284",
     "requirementDescription": "Verify tooltip visibility for truncated audit values",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-285",
     "requirementDescription": "Verify empty-state rendering when no audit records exist",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-286",
     "requirementDescription": "Verify responsive rendering of Audit tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-287",
     "requirementDescription": "Verify rerendering of Audit data after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-288",
     "requirementDescription": "Verify removal of stale Audit data after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-289",
     "requirementDescription": "Verify loading indicator visibility during Audit rendering under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-290",
     "requirementDescription": "Verify frontend console stability during Audit interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-291",
     "requirementDescription": "Verify tab navigation behavior across Customer 360 module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-292",
     "requirementDescription": "Verify active tab highlighting behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-293",
     "requirementDescription": "Verify active tab persistence after customer type switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-294",
     "requirementDescription": "Verify browser back navigation behavior within Customer 360",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-295",
     "requirementDescription": "Verify browser refresh behavior within Customer 360",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-296",
     "requirementDescription": "Verify stability during rapid tab switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-297",
     "requirementDescription": "Verify scroll position behavior during tab navigation",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-298",
     "requirementDescription": "Verify handling of horizontal overflow across Customer 360 module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-299",
     "requirementDescription": "Verify visibility of Export action within Customer 360 module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-300",
     "requirementDescription": "Verify Export action click behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-301",
     "requirementDescription": "Verify visibility of PDF export option",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "testable": "Partial",
+    "missingInformation": "Export file format not specified in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-302",
     "requirementDescription": "Verify visibility of CSV export option",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "testable": "Partial",
+    "missingInformation": "Export file format not specified in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-303",
     "requirementDescription": "Verify loading indicator visibility during export processing",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-304",
     "requirementDescription": "Verify success notification after successful export",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-305",
     "requirementDescription": "Verify error notification during failed export",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-306",
     "requirementDescription": "Verify disabled state of Export action during processing",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-307",
     "requirementDescription": "Verify export data consistency with currently active tab",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-308",
     "requirementDescription": "Verify export workflow behavior under slow network",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-309",
     "requirementDescription": "Verify masking of PAN information within Customer 360",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-310",
     "requirementDescription": "Verify masking of Aadhaar information within Customer 360",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-311",
     "requirementDescription": "Verify masking of Account Numbers within Customer 360",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-312",
     "requirementDescription": "Verify consistency of masking behavior across all tabs",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-313",
     "requirementDescription": "Verify rendering of generic API failure state",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-314",
     "requirementDescription": "Verify visibility of Retry action after API failure",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-315",
     "requirementDescription": "Verify Retry functionality after API failure",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-316",
     "requirementDescription": "Verify handling of partial widget failures",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-317",
     "requirementDescription": "Verify timeout message visibility during delayed responses",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-318",
     "requirementDescription": "Verify unauthorized access handling within Customer 360",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-319",
     "requirementDescription": "Verify session expiry handling within Customer 360",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-320",
     "requirementDescription": "Verify frontend recovery after API restoration",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-321",
     "requirementDescription": "Verify keyboard navigation across Customer 360 tabs",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-322",
     "requirementDescription": "Verify visibility of keyboard focus indicators",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-323",
     "requirementDescription": "Verify Enter key interaction with actionable elements",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-324",
     "requirementDescription": "Verify readability under increased browser zoom",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-325",
     "requirementDescription": "Verify readability of color-coded badges",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-326",
     "requirementDescription": "Verify table readability on smaller screen resolutions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-327",
     "requirementDescription": "Verify tooltip accessibility behavior",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-328",
     "requirementDescription": "Verify frontend state persistence during tab switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-329",
     "requirementDescription": "Verify synchronization of widget rerendering after customer switching",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-330",
     "requirementDescription": "Verify prevention of duplicate widget rendering",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-331",
     "requirementDescription": "Verify frontend stability during rapid user interactions",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-332",
     "requirementDescription": "Verify removal of broken placeholders after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-333",
     "requirementDescription": "Verify removal of stale tooltips after rerender",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-334",
     "requirementDescription": "Verify frontend memory stability during prolonged usage",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-335",
     "requirementDescription": "Verify frontend console stability during prolonged usage",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-336",
     "requirementDescription": "Verify consistency of badge styling across Customer 360 module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-337",
     "requirementDescription": "Verify consistency of table styling across Customer 360 module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-338",
     "requirementDescription": "Verify consistency of font rendering across Customer 360 module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-339",
     "requirementDescription": "Verify consistency of spacing and padding across widgets",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-340",
     "requirementDescription": "Verify Customer 360 behavior on Google Chrome",
-    "testable": "Partial",
-    "missingInformation": "Cross-browser matrix execution environment",
-    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-341",
     "requirementDescription": "Verify Customer 360 behavior on Microsoft Edge",
     "testable": "Partial",
-    "missingInformation": "Cross-browser matrix execution environment",
-    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
+    "missingInformation": "Target browser versions not listed in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-342",
     "requirementDescription": "Verify Customer 360 behavior on Mozilla Firefox",
     "testable": "Partial",
-    "missingInformation": "Cross-browser matrix execution environment",
-    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
+    "missingInformation": "Target browser versions not listed in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-343",
     "requirementDescription": "Verify user session persistence during Customer 360 usage",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-344",
     "requirementDescription": "Verify automatic logout after session expiration",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-345",
     "requirementDescription": "Verify redirect behavior after session expiration",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-346",
     "requirementDescription": "Verify Customer 360 initial page load performance",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and dataset seeding",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "Performance SLA thresholds (ms) not specified in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-347",
     "requirementDescription": "Verify performance during large transaction dataset rendering",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and dataset seeding",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "Performance SLA thresholds (ms) not specified in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-348",
     "requirementDescription": "Verify performance during large audit dataset rendering",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and dataset seeding",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "Performance SLA thresholds (ms) not specified in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-349",
     "requirementDescription": "Verify performance during repeated customer switching",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and dataset seeding",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "Performance SLA thresholds (ms) not specified in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-350",
     "requirementDescription": "Verify performance during simultaneous widget rendering",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and dataset seeding",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "Performance SLA thresholds (ms) not specified in Excel",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-351",
     "requirementDescription": "Verify prevention of unauthorized tab access",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "testable": "Partial",
+    "missingInformation": "Role credentials not defined in Excel test data",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-352",
     "requirementDescription": "Verify prevention of direct URL manipulation",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "testable": "Partial",
+    "missingInformation": "Role credentials not defined in Excel test data",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "C360-TC-353",
     "requirementDescription": "Verify masking persistence during export operations",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-354",
     "requirementDescription": "Verify prevention of sensitive data exposure in browser console",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-355",
     "requirementDescription": "Verify prevention of sensitive data exposure in page source",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-356",
     "requirementDescription": "Verify readability of KPI cards within Customer 360",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-357",
     "requirementDescription": "Verify readability of charts and graphs",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-358",
     "requirementDescription": "Verify consistency of action button placement",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-359",
     "requirementDescription": "Verify readability of status indicators",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-360",
     "requirementDescription": "Verify complete Customer 360 workflow navigation",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-361",
     "requirementDescription": "Verify consistency of customer identity across all tabs",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-362",
     "requirementDescription": "Verify synchronization of alert counts across module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-363",
     "requirementDescription": "Verify synchronization of risk scores across module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-364",
     "requirementDescription": "Verify synchronization of KYC Gap Scores across module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-365",
     "requirementDescription": "Verify overall UI stability during complete workflow execution",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-366",
     "requirementDescription": "Verify absence of stale data across complete workflow",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-367",
     "requirementDescription": "Verify overall frontend console stability across Customer 360 module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-368",
     "requirementDescription": "Verify complete Customer 360 responsiveness across module",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-369",
     "requirementDescription": "Verify complete Customer 360 module under slow network conditions",
-    "testable": "Partial",
-    "missingInformation": "Network throttling or session expiry simulation not fully specified",
-    "assumptions": "Use Playwright route mocking or viewport-only checks where applicable"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "C360-TC-370",
     "requirementDescription": "Verify enterprise-level end-to-end Customer 360 workflow stability",
     "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Customer 360 route /kyc/customer-360 with fixture customer IDs"
+    "missingInformation": "—",
+    "assumptions": "—"
   }
 ]

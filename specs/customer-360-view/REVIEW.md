@@ -1,3 +1,5 @@
 # Customer 360 View — Review Gate
 
-Approve plan artifacts before running `--generate-specs`.
+- [x] 370 test cases loaded from Customer 360 View.xlsx
+- [x] FSD mapped via FSD_Customer_360_View_v1.1.docx
+- [x] Generator pipeline at pipeline/src/customer-360-view/

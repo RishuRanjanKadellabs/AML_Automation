@@ -5,6 +5,7 @@ import { buildAutomationFeasibilityMatrix } from "./automation-feasibility";
 import { buildGapMatrix } from "./gap-analysis";
 import { loadKgrRows } from "./parser";
 import { buildTraceability, getMmTcToKgrMap, traceabilitySummary } from "./traceability";
+import { buildFsdMappings } from "./fsd-mapper";
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..", "..");
 const OUTPUT_DIR = path.join(PROJECT_ROOT, "specs/kyc-gap-report");
@@ -342,17 +343,36 @@ export function buildManifest(rows: KgrExcelRow[]): KgrManifestEntry[] {
   }));
 }
 
-export function writePlanArtifacts(): {
+export async function writePlanArtifacts(): Promise<{
   rowCount: number;
   outputDir: string;
-} {
+}> {
   const rows = loadKgrRows();
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
+
+  const feasibility = buildAutomationFeasibilityMatrix(rows);
+  const autoYes = feasibility.filter((f) => f.automationCandidate === "Yes").length;
+  const gapMatrix = buildGapMatrix(rows);
+  const fsdMappings = await buildFsdMappings(rows);
+  const fsdAligned = fsdMappings.filter((m) => m.alignmentStatus === "aligned").length;
+  const fsdPartial = fsdMappings.filter((m) => m.alignmentStatus === "partial").length;
+  const blocked = gapMatrix.filter((g) => g.testable === "Partial" || g.testable === "No");
 
   const planMd = [
     "# KYC Gap Report — Comprehensive Test Planning Deliverable",
     "",
     `Generated from \`pipeline/test-data/KYC Gap Report.xlsx\` — ${rows.length} requirements.`,
+    "",
+    "## Excel ↔ FSD Reconciliation",
+    "",
+    mdTable(
+      ["Metric", "Value"],
+      [
+        ["FSD aligned", String(fsdAligned)],
+        ["FSD partial (Excel authoritative)", String(fsdPartial)],
+        ["FSD source", "`pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx`"],
+      ],
+    ),
     "",
     buildRequirementSummary(rows),
     buildTraceabilitySection(),
@@ -394,6 +414,104 @@ export function writePlanArtifacts(): {
   fs.writeFileSync(
     path.join(OUTPUT_DIR, "requirements-index.json"),
     JSON.stringify(rows, null, 2),
+    "utf-8",
+  );
+
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, "fsd-reconciliation.json"),
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        excelSource: "pipeline/test-data/KYC Gap Report.xlsx",
+        fsdSource: "pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx",
+        summary: { aligned: fsdAligned, partial: fsdPartial, unmapped: fsdMappings.length - fsdAligned - fsdPartial },
+        entries: fsdMappings,
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
+
+  const coverageRows = rows.map((r, i) => {
+    const fsd = fsdMappings[i];
+    const gap = gapMatrix[i];
+    const feas = feasibility[i];
+    return [
+      r.id,
+      escapeMdCell(r.taskDescription),
+      fsd.fsdSectionId ? `§${fsd.fsdSectionId}` : "—",
+      "kyc-gap-report.spec.ts",
+      feas.automationCandidate === "Yes" ? "Automated" : "Manual-only",
+      gap.testable !== "Yes" ? escapeMdCell(gap.missingInformation) : "—",
+    ];
+  });
+
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, "COVERAGE.md"),
+    [
+      "# KYC Gap Report — Coverage Summary",
+      "",
+      mdTable(
+        ["Excel ID", "Scenario", "FSD Ref", "Spec File", "Status", "Missing Info"],
+        coverageRows,
+      ),
+      "",
+      `Total: ${rows.length} | Automated candidates: ${autoYes} | Blocked/partial: ${blocked.length}`,
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, "TODO.md"),
+    [
+      "# KYC Gap Report — Blocked / Partial Automation TODOs",
+      "",
+      ...blocked.map(
+        (g) =>
+          `- **${g.requirementId}**: ${g.missingInformation} — _Assumption documented, not implemented: ${g.assumptions}_`,
+      ),
+      "",
+      blocked.length === 0 ? "No blocked cases." : "",
+    ].join("\n"),
+    "utf-8",
+  );
+
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, "RECONCILIATION.md"),
+    [
+      "# KYC Gap Report — Reconciliation Report",
+      "",
+      mdTable(
+        ["Metric", "Value"],
+        [
+          ["Total Excel test cases", String(rows.length)],
+          ["Generated automation tests", String(rows.length)],
+          ["Fully automated (candidate Yes)", String(autoYes)],
+          ["Blocked / partial scenarios", String(blocked.length)],
+          ["FSD sections referenced", String(new Set(fsdMappings.map((m) => m.fsdSectionId).filter(Boolean)).size)],
+          ["Excel vs FSD partial mappings", String(fsdPartial)],
+        ],
+      ),
+      "",
+      "Excel is the primary source of truth. FSD conflicts are listed in `fsd-reconciliation.json`.",
+      "",
+    ].join("\n"),
+    "utf-8",
+  );
+
+  fs.writeFileSync(
+    path.join(OUTPUT_DIR, "REVIEW.md"),
+    [
+      "# KYC Gap Report — Review Gate",
+      "",
+      `- [x] ${rows.length} test cases loaded from KYC Gap Report.xlsx`,
+      `- [x] FSD reconciliation: ${fsdAligned} aligned, ${fsdPartial} partial`,
+      `- [x] Unified spec: kyc-gap-report.spec.ts`,
+      `- [ ] Run \`npm run milestone1:kyc-gap-report:run\` against live app`,
+      "",
+    ].join("\n"),
     "utf-8",
   );
 

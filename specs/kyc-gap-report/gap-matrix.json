@@ -354,7 +354,7 @@
     "requirementDescription": "Verify real-time search behavior",
     "testable": "Partial",
     "missingInformation": "Debounce delay (ms) not specified",
-    "assumptions": "Filter applies on input with ≤500ms debounce"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-052",
@@ -641,14 +641,14 @@
     "requirementDescription": "Verify grid data accuracy against source records",
     "testable": "Partial",
     "missingInformation": "CBS/DMS seed data mapping not in Excel",
-    "assumptions": "Test DB fixture with known CIF records"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-093",
     "requirementDescription": "Verify grid handles long customer names — Long names should display without UI breakage",
     "testable": "Partial",
     "missingInformation": "Max customer name length not defined",
-    "assumptions": "Use 256-char boundary + 1000-char stress"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-094",
@@ -816,28 +816,28 @@
     "requirementDescription": "Verify Low priority classification based on template score bands",
     "testable": "Partial",
     "missingInformation": "Per-template band config not listed",
-    "assumptions": "Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-118",
     "requirementDescription": "Verify Medium priority classification based on template score bands",
     "testable": "Partial",
     "missingInformation": "Per-template band config not listed",
-    "assumptions": "Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-119",
     "requirementDescription": "Verify High priority classification based on template score bands",
     "testable": "Partial",
     "missingInformation": "Per-template band config not listed",
-    "assumptions": "Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-120",
     "requirementDescription": "Verify Critical priority classification based on template score bands",
     "testable": "Partial",
     "missingInformation": "Per-template band config not listed",
-    "assumptions": "Default bands: 0–25 Low, 26–50 Medium, 51–75 High, 76+ Critical"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-121",
@@ -1332,247 +1332,247 @@
   {
     "requirementId": "KGR-191",
     "requirementDescription": "Verify Export button is displayed on KYC Gap Report page",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-192",
     "requirementDescription": "Verify Export button is enabled when records exist",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-193",
     "requirementDescription": "Verify export downloads report successfully",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-194",
     "requirementDescription": "Verify exported file contains report records",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-195",
     "requirementDescription": "Verify exported file contains Customer column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-196",
     "requirementDescription": "Verify exported file contains Customer ID column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-197",
     "requirementDescription": "Verify exported file contains Type column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-198",
     "requirementDescription": "Verify exported file contains Branch column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-199",
     "requirementDescription": "Verify exported file contains Branch Code column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-200",
     "requirementDescription": "Verify exported file contains Template Applied column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-201",
     "requirementDescription": "Verify exported file contains KYC Gap Score column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-202",
     "requirementDescription": "Verify exported file contains Priority column",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-203",
     "requirementDescription": "Verify exported record count matches report record count",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-204",
     "requirementDescription": "Verify exported Customer values match report data",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-205",
     "requirementDescription": "Verify exported KYC Gap Score values match report data",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-206",
     "requirementDescription": "Verify exported Priority values match report data",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-207",
     "requirementDescription": "Verify export respects active Search filter",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-208",
     "requirementDescription": "Verify export respects active Branch filter",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-209",
     "requirementDescription": "Verify export respects active Customer Type filter",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-210",
     "requirementDescription": "Verify export respects active Template filter",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-211",
     "requirementDescription": "Verify export respects active Priority filter",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-212",
     "requirementDescription": "Verify export respects active Gap Score filter",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-213",
     "requirementDescription": "Verify export supports combined filters",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-214",
     "requirementDescription": "Verify export after sorting",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-215",
     "requirementDescription": "Verify export works from Page 1",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-216",
     "requirementDescription": "Verify export works from non-first page",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-217",
     "requirementDescription": "Verify export works when page size is changed",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-218",
     "requirementDescription": "Verify export file opens successfully",
     "testable": "Partial",
     "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-219",
     "requirementDescription": "Verify export handles large datasets",
     "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "missingInformation": "\"Large\" record count undefined",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-220",
     "requirementDescription": "Verify export behavior when no records are available",
-    "testable": "Partial",
-    "missingInformation": "File format (CSV/XLSX) not specified",
-    "assumptions": "CSV unless app specifies otherwise"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-221",
     "requirementDescription": "Verify authenticated Compliance Officer can access KYC Gap Report",
     "testable": "Partial",
     "missingInformation": "Role credentials not in Excel",
-    "assumptions": "Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-222",
     "requirementDescription": "Verify authenticated Administrator can access KYC Gap Report",
     "testable": "Partial",
     "missingInformation": "Role credentials not in Excel",
-    "assumptions": "Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-223",
     "requirementDescription": "Verify unauthorized role cannot access KYC Gap Report",
     "testable": "Partial",
     "missingInformation": "Role credentials not in Excel",
-    "assumptions": "Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-224",
     "requirementDescription": "Verify unauthenticated user cannot access KYC Gap Report URL",
     "testable": "Partial",
     "missingInformation": "Role credentials not in Excel",
-    "assumptions": "Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-225",
     "requirementDescription": "Verify direct URL access respects RBAC permissions",
     "testable": "Partial",
     "missingInformation": "Role credentials not in Excel",
-    "assumptions": "Separate .env users: COMPLIANCE_OFFICER_EMAIL, ADMIN_EMAIL, UNAUTHORIZED_EMAIL"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-226",
@@ -1614,140 +1614,140 @@
     "requirementDescription": "Verify audit log entry generated for template creation",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-232",
     "requirementDescription": "Verify audit log captures user ID during template creation",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-233",
     "requirementDescription": "Verify audit log captures timestamp during template creation",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-234",
     "requirementDescription": "Verify audit log entry generated for template cloning",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-235",
     "requirementDescription": "Verify audit log entry generated when field requirement changes",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-236",
     "requirementDescription": "Verify audit log records previous value for requirement change",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-237",
     "requirementDescription": "Verify audit log records new value for requirement change",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-238",
     "requirementDescription": "Verify audit log entry generated when custom field is added",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-239",
     "requirementDescription": "Verify audit log entry generated when score bands are modified",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-240",
     "requirementDescription": "Verify audit log captures before and after values for score band changes",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-241",
     "requirementDescription": "Verify audit log remains immutable",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-242",
     "requirementDescription": "Verify audit records are retained after page refresh",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-243",
     "requirementDescription": "Verify unauthorized user cannot modify template configuration",
-    "testable": "Partial",
-    "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-244",
     "requirementDescription": "Verify unauthorized user cannot access audit records",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-245",
     "requirementDescription": "Verify application prevents access after logout",
-    "testable": "Partial",
-    "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-246",
     "requirementDescription": "Verify report remains accessible after successful re-authentication",
-    "testable": "Partial",
-    "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-247",
     "requirementDescription": "Verify audit log captures template archival action",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-248",
     "requirementDescription": "Verify templates cannot be permanently deleted",
-    "testable": "Partial",
-    "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
   },
   {
     "requirementId": "KGR-249",
     "requirementDescription": "Verify archived templates remain traceable in audit history",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-250",
     "requirementDescription": "Verify audit trail completeness for template lifecycle",
     "testable": "Partial",
     "missingInformation": "Audit UI/API endpoint not specified",
-    "assumptions": "Audit accessed via Admin module or API /audit"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-251",
@@ -1775,14 +1775,14 @@
     "requirementDescription": "Verify search with SQL injection pattern",
     "testable": "Partial",
     "missingInformation": "Expected system response detail (block/sanitize/log)",
-    "assumptions": "Input rejected or sanitized; no script execution"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-255",
     "requirementDescription": "Verify search with script injection pattern",
     "testable": "Partial",
     "missingInformation": "Expected system response detail (block/sanitize/log)",
-    "assumptions": "Input rejected or sanitized; no script execution"
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-256",

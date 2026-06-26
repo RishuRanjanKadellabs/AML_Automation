@@ -1,3279 +1,2492 @@
 [
   {
-    "testCaseId": "MM-TC-001",
+    "testCaseId": "TC_MMDT_001",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "missing-mandatory-data-template-app-shell",
+      "navigation-verify-app-shell-initialization",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-002",
+    "testCaseId": "TC_MMDT_002",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "app-shell-top-bar",
+      "layout-verify-top-bar-persistence-during-module-switching",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_003",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "navigation-verify-sidebar-hierarchy-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_004",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "navigation-verify-route-navigation-integrity",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_005",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "navigation-verify-cross-view-state-persistence",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_006",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "layout-verify-browser-refresh-recovery",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_007",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "navigation-verify-module-re-entry-stability",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_008",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "layout-verify-active-route-highlighting",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_009",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-group-header-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_010",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-group-count-accuracy",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_011",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-template-card-metadata-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_012",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-active-template-selection-state",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_013",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-template-version-display-integrity",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_014",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-kyc-badge-rendering-based-on-kyc-level",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_015",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-dynamic-template-count-update-after-template-creation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_016",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-list-verify-empty-group-handling",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_017",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-verify-exact-match-search-functionality",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_018",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-verify-partial-match-search-functionality",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_019",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-verify-case-insensitive-search-behavior",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_020",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-verify-no-result-search-handling",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_021",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-verify-search-recovery-after-invalid-search",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_022",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-verify-real-time-filtering-performance",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_023",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-create-template-form-initialization",
       "high",
       "template-crud"
     ]
   },
   {
-    "testCaseId": "MM-TC-003",
+    "testCaseId": "TC_MMDT_024",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "sidebar-navigation",
+      "create-template-verify-customer-type-driven-tab-structure",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-004",
+    "testCaseId": "TC_MMDT_025",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "sidebar-route-navigation",
+      "create-template-verify-kyc-level-assignment-integrity",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-005",
+    "testCaseId": "TC_MMDT_026",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "sidebar-state-persistence",
-      "high",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-006",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "top-bar-create-template-button",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-007",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "template-list-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-008",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "template-list-panel-count-badge",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-009",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "template-cards",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-010",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "initial-access-control-rbac",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-011",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "template-cards-selection",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-012",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "template-cards-active-state",
+      "create-template-verify-product-type-association",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-013",
+    "testCaseId": "TC_MMDT_027",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "template-detail-header",
+      "create-template-verify-duplicate-template-prevention",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-014",
+    "testCaseId": "TC_MMDT_028",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "template-detail-header-add-field-button",
+      "create-template-verify-score-configuration-dependency",
       "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-015",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "template-detail-header-save-changes",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-016",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "tab-visibility-individual-template",
-      "critical",
       "gap-score",
       "business-rule"
     ]
   },
   {
-    "testCaseId": "MM-TC-017",
+    "testCaseId": "TC_MMDT_029",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "tab-visibility-corporate-template",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-018",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "tab-behavior-default-tab-selection",
+      "create-template-verify-template-save-workflow",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-019",
+    "testCaseId": "TC_MMDT_030",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "template-search",
+      "create-template-verify-creation-audit-logging",
       "high",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-020",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "template-search-state-retention",
-      "medium",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-021",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "refresh-template-data-sync",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-022",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "refresh-state-integrity",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-023",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "stale-data-handling",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-024",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "session-control-session-expiry",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-025",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "session-control-mid-edit-expiry",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-026",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-field-modal-launch",
-      "high",
-      "modal"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-027",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-field-mandatory-input-validation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-028",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-field-valid-field-creation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-029",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-field-duplicate-field-prevention",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-030",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-field-invalid-section-mapping",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-031",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-field-special-character-validation",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-032",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-field-max-length-boundary",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-033",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-configuration-requirement-type",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-034",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-configuration-immediate-ui-sync",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-035",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-configuration-persistence-after-save",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-036",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "locked-fields-edit-restriction",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-037",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "locked-fields-checkbox-restriction",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-038",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "locked-fields-dropdown-restriction",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-039",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "requirement-dropdown-allowed-values",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-040",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "requirement-dropdown-conditional-normalization",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-041",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-inclusion-checkbox-state",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-042",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-inclusion-disabled-state-persistence",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-043",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-configuration-unsaved-state-warning",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-044",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-configuration-cancel-without-save",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-045",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "field-configuration-audit-integrity",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-046",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-template-default-load",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-047",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-identity-documents-group",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-048",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-personal-details-group",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-049",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-address-proof-group",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-050",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-contact-information-group",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-051",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-financial-profile-group",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-052",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-mandatory-locked-fields",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-053",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-editable-mandatory-fields",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-054",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-optional-field-handling",
-      "optional fields must behave per aml template configuration.",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-055",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "individual-cip-field-count-integrity",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-056",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cdd-fields-section-load",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-057",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cdd-fields-mandatory-aml-fields",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-058",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cdd-fields-conditional-to-optional-normalization",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-059",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cdd-fields-shared-applicability",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-060",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cdd-fields-field-tag-integrity",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-061",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "edd-fields-section-load",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-062",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "edd-fields-mandatory-edd-controls",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-063",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "edd-fields-conditional-normalization",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-064",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "edd-fields-template-specific-extra-fields",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-065",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "edd-fields-pep-workflow-alignment",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-066",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "technical-ids-tab-visibility",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-067",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "technical-ids-locked-system-fields",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-068",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "technical-ids-no-requirement-dropdown",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-069",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "technical-ids-system-badge-integrity",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-070",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "technical-ids-field-count-validation",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-071",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-template-default-load",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-072",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-cip-tab-visibility",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-073",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-cip-entity-identification-group",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-074",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-cip-mandatory-locked-entity-fields",
-      "critical",
       "audit",
       "compliance"
     ]
   },
   {
-    "testCaseId": "MM-TC-075",
+    "testCaseId": "TC_MMDT_031",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-cip-ownership-control-group",
+      "create-template-verify-template-name-mandatory-validation",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-076",
+    "testCaseId": "TC_MMDT_032",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-cip-ubo-declaration-field",
-      "critical",
+      "create-template-verify-template-name-with-only-spaces",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_033",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-customer-type-mandatory-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_034",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-kyc-level-mandatory-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_035",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-create-button-behavior-with-incomplete-form",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_036",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-clone-from-dropdown-rendering",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_037",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-default-clone-from-selection",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_038",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-simplified-kyc-initialization",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_039",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-standard-kyc-individual-initialization",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_040",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-standard-kyc-corporate-initialization",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_041",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-enhanced-kyc-pep-high-risk-initialization",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_042",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-clone-from-option-compatibility-with-customer-type",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_043",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-field-configuration-integrity-after-clone-from-selection",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_044",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-score-configuration-integrity-after-clone-from-selection",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_045",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "create-template-verify-audit-logging-for-clone-from-template-creation",
+      "high",
       "audit",
       "compliance"
     ]
   },
   {
-    "testCaseId": "MM-TC-077",
+    "testCaseId": "TC_MMDT_046",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-cip-editable-mandatory-corporate-fields",
+      "score-configuration-verify-gap-detection-validation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_047",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-overlap-detection-validation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_048",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-boundary-coverage-validation",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-078",
+    "testCaseId": "TC_MMDT_049",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-cip-conditional-to-optional-normalization",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-079",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-cip-financial-standing-group",
+      "score-configuration-verify-min-greater-than-max-validation",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-080",
+    "testCaseId": "TC_MMDT_050",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-cip-field-count-integrity",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-081",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-cdd-shared-aml-controls",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-082",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-cdd-entity-risk-data-validation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-083",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-cdd-tag-integrity",
+      "create-template-verify-unsaved-changes-handling",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-084",
+    "testCaseId": "TC_MMDT_051",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-edd-section-load",
+      "tab-management-verify-individual-cip-tab-visibility-for-individual-templates",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-085",
+    "testCaseId": "TC_MMDT_052",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-edd-mandatory-edd-controls",
+      "tab-management-verify-corporate-cip-tab-hidden-for-individual-templates",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-086",
+    "testCaseId": "TC_MMDT_053",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-edd-site-premises-validation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-087",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-edd-trust-foundation-high-risk-fields",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-088",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-edd-pep-high-risk-alignment",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-089",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-technical-ids-tab-visibility",
+      "tab-management-verify-corporate-cip-tab-visibility-for-corporate-templates",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-090",
+    "testCaseId": "TC_MMDT_054",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-technical-ids-immutable-system-fields",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-091",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-technical-ids-system-owned-state",
+      "tab-management-verify-first-visible-tab-selected-by-default",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-092",
+    "testCaseId": "TC_MMDT_055",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-technical-ids-field-count-validation",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-093",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-template-cross-template-isolation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-094",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "corporate-template-entity-metadata-sync",
+      "custom-fields-verify-custom-field-creation-workflow",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-095",
+    "testCaseId": "TC_MMDT_056",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "corporate-template-entity-workflow-integrity",
-      "critical",
+      "custom-fields-verify-section-auto-selection-based-on-active-tab",
+      "medium",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_057",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "custom-fields-verify-requirement-assignment-during-custom-field-creation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_058",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "custom-fields-verify-custom-field-persistence-after-reload",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_059",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-score-configuration-persistence",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_060",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "end-to-end-workflow-verify-end-to-end-template-creation-lifecycle",
+      "high",
       "e2e"
     ]
   },
   {
-    "testCaseId": "MM-TC-096",
+    "testCaseId": "TC_MMDT_061",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "create-new-template-launch-flow",
+      "archive-template-verify-archive-action-availability",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-097",
+    "testCaseId": "TC_MMDT_062",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "create-new-template-mandatory-input-validation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-098",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "create-new-template-valid-template-creation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-099",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "create-new-template-duplicate-name-restriction",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-100",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "create-new-template-customer-type-mapping",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-101",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "create-new-template-kyc-level-mapping",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-102",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "create-new-template-invalid-metadata-handling",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-103",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "create-new-template-cancel-flow",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-104",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "create-new-template-refresh-persistence",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-105",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "clone-flow-launch-clone-action",
+      "archive-template-verify-archive-confirmation-dialog",
       "high",
       "modal"
     ]
   },
   {
-    "testCaseId": "MM-TC-106",
+    "testCaseId": "TC_MMDT_063",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "clone-flow-exact-field-copy",
-      "critical",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-107",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "clone-flow-score-configuration-copy",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-108",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "clone-flow-version-reset",
-      "high",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-109",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "clone-flow-ownership-independence",
-      "critical",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-110",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "clone-flow-duplicate-clone-naming-restriction",
-      "high",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-111",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "versioning-increment-on-save",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-112",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "versioning-historical-integrity",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-113",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "versioning-header-list-sync",
+      "archive-template-verify-successful-template-archive",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-114",
+    "testCaseId": "TC_MMDT_064",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "save-changes-valid-persistence",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-115",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "save-changes-validation-failure",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-116",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "save-changes-double-click-prevention",
+      "archive-template-verify-archived-template-removal-from-active-list",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-117",
+    "testCaseId": "TC_MMDT_065",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "dirty-state-unsaved-navigation-warning",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-118",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "dirty-state-discard-unsaved-changes",
+      "archive-template-verify-template-count-update-after-archive",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-119",
+    "testCaseId": "TC_MMDT_066",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "concurrency-parallel-edit-conflict",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-120",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "concurrency-stale-save-prevention",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-121",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-configuration-tab-availability",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-122",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-configuration-category-box-rendering",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-124",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-low-range-default-validation",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-125",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-medium-range-default-validation",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-126",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-high-range-default-validation",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-127",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-critical-range-default-validation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-128",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-overlap-validation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-129",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-full-coverage-validation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-130",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-min-max-validation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-131",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-duplicate-range-validation",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-132",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-zero-boundary-handling",
-      "medium",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-133",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-maximum-boundary-handling",
-      "medium",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-134",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-out-of-range-validation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-135",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-range-decimal-non-integer-handling",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-136",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-save-ranges-validation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-137",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-invalid-save-handling",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-138",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-immediate-ui-sync",
-      "medium",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-139",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-refresh-persistence",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-140",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-template-isolation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-141",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-calculation-trigger-field-requirement-update",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-142",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-calculation-trigger-field-inclusion-change",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-143",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-calculation-trigger-template-clone-consistency",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-144",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-mapping-exact-risk-label-mapping",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-145",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-mapping-boundary-edge-validation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-146",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-view-load",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-147",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-kpi-card-rendering",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-148",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-total-records-accuracy",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-149",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-table-load",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-150",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-empty-state",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-151",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-search-exact-match",
-      "critical",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-152",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-partial-search",
-      "high",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-153",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-invalid-search",
+      "archive-template-verify-archived-template-search-behavior",
       "medium",
       "filter"
     ]
   },
   {
-    "testCaseId": "MM-TC-154",
+    "testCaseId": "TC_MMDT_067",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "kyc-gap-report-customer-type-filter",
-      "critical",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-155",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-template-filter",
+      "archive-template-verify-audit-logging-for-archive-action",
       "high",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-156",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-priority-filter",
-      "critical",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-157",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-score-range-filter",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-158",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-combined-filters",
-      "critical",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-159",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-clear-filters",
-      "high",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-160",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-filter-persistence",
-      "high",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-161",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-sort-by-score",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-162",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-sort-by-priority",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-163",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-pagination-next-previous",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-164",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-page-size-handling",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-165",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-row-detail-modal",
-      "critical",
-      "modal"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-166",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-missing-fields-breakdown",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-167",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-score-breakdown",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-168",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-refresh-data-sync",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-169",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-state-persistence",
-      "critical",
-      "filter"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-170",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-report-template-to-report-sync",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-171",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-calculation-engine-default-calculation-load",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-172",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "missing-fields-logic-mandatory-weight",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-173",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "missing-fields-logic-optional-weight",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-174",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-mixed-weight-aggregation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-175",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-zero-missing-fields",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-176",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-maximum-score-handling",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-177",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "missing-fields-logic-locked-field-inclusion",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-178",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "missing-fields-logic-excluded-field-handling",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-179",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-field-requirement-change-impact",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-180",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-deleted-removed-field-impact",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-181",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-template-specific-mapping",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-182",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cross-template-isolation-no-score-leakage",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-183",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-individual-vs-corporate-mapping",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-184",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "missing-fields-breakdown-accurate-field-mapping",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-185",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "missing-fields-breakdown-no-false-positive",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-186",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "missing-fields-breakdown-no-duplicate-counting",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-187",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-shared-cdd-edd-field-handling",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-188",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-risk-category-mapping",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-189",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-boundary-score-precision",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-190",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-recalculation-after-template-update",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-191",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-refresh-synchronization",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-192",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-null-partial-data-handling",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-193",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-orphan-template-handling",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-194",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-audit-consistency",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-195",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Score engine rules verifiable via API/DB fixtures",
-    "tags": [
-      "score-calculation-end-to-end-aml-integrity",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-196",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-view-access-authorized-role",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-197",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-view-restriction-unauthorized-role",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-198",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-create-template-permission",
-      "critical",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-199",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-edit-template-permission",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-200",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-save-changes-permission",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-201",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-clone-permission",
-      "critical",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-202",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-kyc-gap-report-access",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-203",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-hidden-action-controls",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-204",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-direct-url-restriction",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-205",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "rbac-api-level-enforcement",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-206",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "rbac-cross-module-isolation",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-207",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "session-idle-timeout-handling",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-208",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "session-mid-edit-save-restriction",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-209",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "session-re-authentication-recovery",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-210",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "session-unsaved-state-on-timeout",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-211",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "security-concurrent-session-token-validation",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-212",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "security-browser-back-access-after-logout",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-213",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "security-refresh-after-logout",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-214",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "security-multi-role-permission-switch",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-215",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "security-audit-safe-access-integrity",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-216",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-template-list-load-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-217",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-template-detail-load-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-218",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-save-changes-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-219",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-create-template-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-220",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-clone-template-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-221",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-kyc-gap-report-load-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-222",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-score-config-save-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-223",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "retry-logic-manual-retry-after-failure",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-224",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "retry-logic-multiple-retry-stability",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-225",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-partial-payload-template-list",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-226",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-partial-payload-template-detail",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-227",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-null-field-metadata",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-228",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-empty-array-handling",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-229",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-unexpected-enum-value",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-230",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-stale-response-override",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-231",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "api-handling-duplicate-payload-rows",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-232",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "backend-reliability-slow-api-response",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-233",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "backend-reliability-connection-loss-mid-request",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-234",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "backend-reliability-refresh-during-pending-request",
-      "high",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-235",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "backend-reliability-concurrent-api-update-conflict",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-236",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "error-handling-user-safe-error-messaging",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-237",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "error-handling-no-false-success-state",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-238",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "recovery-state-consistency-after-failure",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-239",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Enterprise validation or audit sign-off requires manual review",
-    "tags": [
-      "backend-integrity-audit-safe-persistence",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-240",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "reliability-end-to-end-failure-resilience",
-      "critical",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-241",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cross-module-consistency-customer-360-template-mapping",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-242",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cross-module-consistency-kyc-gap-report-sync",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-243",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cross-module-consistency-individual-corporate-isolation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-244",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cross-module-consistency-shared-aml-field-integrity",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-245",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "cross-module-consistency-score-sync-across-consumers",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-246",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "customer-360-dependency-missing-field-breakdown",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-247",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "customer-360-dependency-completed-kyc-sync",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-248",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "customer-360-dependency-risk-category-sync",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-249",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "end-to-end-aml-workflow-create-template-to-report",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-250",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "end-to-end-aml-workflow-clone-to-independent-reporting",
-      "critical",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-251",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "end-to-end-aml-workflow-template-update-recalculation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-252",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "end-to-end-aml-workflow-corporate-entity-flow",
-      "critical",
-      "e2e"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-253",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "end-to-end-aml-workflow-individual-customer-flow",
-      "critical",
-      "e2e"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-254",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "regression-app-shell-stability",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-255",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "regression-sidebar-top-bar-integrity",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-256",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "regression-template-crud-integrity",
-      "critical",
-      "template-crud"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-257",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "regression-kyc-gap-score-stability",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-258",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "regression-kyc-gap-report-stability",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-259",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "regression-rbac-security-integrity",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-260",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "business-integrity-aml-audit-traceability",
-      "critical",
       "audit",
       "compliance"
     ]
   },
   {
-    "testCaseId": "MM-TC-261",
+    "testCaseId": "TC_MMDT_068",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "business-integrity-data-consistency-validation",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-262",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "business-integrity-final-end-to-end-enterprise-validation",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-263",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-custom-field-modal-launch",
-      "high",
-      "modal"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-264",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-custom-field-modal-control-rendering",
-      "high",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-265",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-custom-field-mandatory-field-name",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-266",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-custom-field-mandatory-section-mapping",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-267",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-custom-field-description-handling",
+      "archive-template-verify-archive-cancellation-workflow",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-268",
+    "testCaseId": "TC_MMDT_069",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-valid-ui-field-creation",
+      "archive-template-verify-archive-persistence-after-browser-refresh",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-269",
+    "testCaseId": "TC_MMDT_070",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-duplicate-name-same-template",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-270",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-custom-field-cross-section-duplicate-validation",
+      "archive-template-verify-archive-persistence-after-re-login",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-271",
+    "testCaseId": "TC_MMDT_071",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-invalid-character-validation",
+      "locked-fields-verify-locked-field-icon-visibility",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_072",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "locked-fields-verify-locked-field-checkbox-protection",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_073",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "locked-fields-verify-locked-field-cannot-be-deselected",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_074",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "locked-fields-verify-locked-field-requirement-remains-mandatory",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_075",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "locked-fields-verify-requirement-dropdown-disabled-for-locked-fields",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_076",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "locked-fields-verify-locked-field-persistence-after-refresh",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-272",
+    "testCaseId": "TC_MMDT_077",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-length-boundary-validation",
+      "locked-fields-verify-locked-field-persistence-after-re-login",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-273",
+    "testCaseId": "TC_MMDT_078",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-section-placement-accuracy",
+      "locked-fields-verify-keyboard-restriction-on-locked-fields",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_079",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "locked-fields-verify-locked-fields-are-excluded-from-editable-change-tracking",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-274",
+    "testCaseId": "TC_MMDT_080",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-individual-template-mapping",
-      "critical",
+      "locked-fields-verify-locked-field-consistency-across-cloned-templates",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_081",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "requirement-dropdown-verify-mandatory-3-requirement-selection-workflow",
+      "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-275",
+    "testCaseId": "TC_MMDT_082",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-corporate-template-mapping",
-      "critical",
+      "requirement-dropdown-verify-optional-1-requirement-selection-workflow",
+      "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-276",
+    "testCaseId": "TC_MMDT_083",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-weightage-dropdown-rendering",
+      "requirement-dropdown-verify-requirement-badge-synchronization",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_084",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "requirement-dropdown-verify-weight-display-synchronization",
+      "medium",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_085",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "requirement-dropdown-verify-requirement-persistence-after-save",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_086",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "scoring-logic-verify-mandatory-3-score-contribution-logic",
       "high",
       "gap-score",
       "business-rule"
     ]
   },
   {
-    "testCaseId": "MM-TC-277",
+    "testCaseId": "TC_MMDT_087",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-weightage-persistence",
+      "scoring-logic-verify-optional-1-score-contribution-logic",
       "high",
       "gap-score",
       "business-rule"
     ]
   },
   {
-    "testCaseId": "MM-TC-278",
+    "testCaseId": "TC_MMDT_088",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "add-custom-field-cancel-flow",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-279",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "add-custom-field-close-icon-flow",
+      "requirement-dropdown-verify-conditional-normalization-migration",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-280",
-    "automationLayer": "API + Database",
+    "testCaseId": "TC_MMDT_089",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "db-origin-field-ui-rendering",
+      "requirement-dropdown-verify-multiple-requirement-updates-before-save",
       "high",
       "functional"
     ]
   },
   {
-    "testCaseId": "MM-TC-281",
-    "automationLayer": "API + Database",
+    "testCaseId": "TC_MMDT_090",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "db-origin-field-weightage-sync",
+      "technical-ids-verify-technical-ids-tab-accessibility",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_091",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "technical-ids-verify-technical-id-field-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_092",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "technical-ids-verify-technical-id-edit-restrictions",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_093",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-individual-cip-section-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_094",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-individual-cip-field-ordering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_095",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-mandatory-requirement-badge-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_096",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-optional-requirement-badge-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_097",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-field-description-display",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_098",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-checkbox-state-management",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_099",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-field-metadata-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_100",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-field-group-expansion-behavior",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_101",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-individual-cip-tab-persistence",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_102",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "individual-cip-verify-individual-cip-data-integrity-after-template-clone",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_103",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-corporate-cip-section-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_104",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-corporate-cip-field-ordering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_105",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-beneficial-ownership-field-group-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_106",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-corporate-registration-information-fields",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_107",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-mandatory-corporate-field-badge-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_108",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-optional-corporate-field-badge-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_109",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-corporate-field-metadata-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_110",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-corporate-field-group-expand-collapse-behavior",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_111",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-corporate-cip-tab-persistence-during-navigation",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_112",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "corporate-cip-verify-corporate-cip-configuration-integrity-after-clone",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_113",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-cdd-section-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_114",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-cdd-field-ordering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_115",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-risk-profile-field-group-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_116",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-source-of-funds-field-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_117",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-occupation-information-field-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_118",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-mandatory-cdd-field-badge-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_119",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-optional-cdd-field-badge-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_120",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-cdd-metadata-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_121",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-cdd-tab-persistence-during-navigation",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_122",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cdd-fields-verify-cdd-configuration-integrity-after-clone",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_123",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-edd-section-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_124",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-high-risk-customer-field-group-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_125",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-politically-exposed-person-pep-field-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_126",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-adverse-media-field-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_127",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-source-of-wealth-field-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_128",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-mandatory-edd-field-badge-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_129",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-optional-edd-field-badge-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_130",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-edd-metadata-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_131",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-edd-tab-persistence-during-navigation",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_132",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "edd-fields-verify-edd-configuration-integrity-after-clone",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_133",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "field-management-verify-requirement-tag-rendering-consistency-across-sections",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_134",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "field-management-verify-long-field-description-handling",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_135",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "field-management-verify-long-field-name-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_136",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "field-management-verify-special-character-handling-in-custom-field-names",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_137",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "custom-fields-verify-custom-field-ordering-after-multiple-additions",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_138",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "custom-fields-verify-duplicate-custom-field-name-prevention",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_139",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "field-management-verify-empty-section-rendering",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_140",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "field-management-verify-large-field-volume-rendering-performance",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_141",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "field-management-verify-cross-tab-configuration-consistency",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_142",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "configuration-integrity-verify-end-to-end-template-configuration-integrity",
+      "high",
+      "e2e"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_143",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-template-configuration-persistence-after-browser-refresh",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_144",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-template-configuration-persistence-after-logout-login",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_145",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-requirement-changes-persistence-across-sessions",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_146",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-custom-field-persistence-across-sessions",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_147",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-score-configuration-persistence-across-sessions",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_148",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-archive-status-persistence-after-session-restart",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_149",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-clone-template-persistence-after-session-restart",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_150",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "data-persistence-verify-multi-tab-browser-persistence",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_151",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "recovery-verify-recovery-after-unexpected-browser-closure",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_152",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "recovery-verify-saved-configuration-integrity-after-consecutive-updates",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_153",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "session-management-verify-session-timeout-during-template-edit",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_154",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "session-management-verify-session-timeout-during-template-creation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_155",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "session-management-verify-concurrent-login-session-handling",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_156",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "session-management-verify-reauthentication-recovery-workflow",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_157",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-save-failure-handling-during-template-update",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_158",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-clone-failure-handling",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_159",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-archive-failure-handling",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_160",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-network-interruption-during-save",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_161",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-network-interruption-during-clone",
+      "high",
+      "template-crud"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_162",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-network-interruption-during-archive",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_163",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-unexpected-server-error-handling",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_164",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-validation-error-message-accuracy",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_165",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "recovery-verify-recovery-after-failed-save",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_166",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "error-handling-verify-duplicate-submission-prevention",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_167",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "performance-verify-template-opening-performance",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_168",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "performance-verify-archive-performance-under-large-dataset",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_169",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "stability-verify-large-field-volume-rendering-performance",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_170",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "performance-verify-score-configuration-rendering-performance",
+      "medium",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_171",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "stability-verify-concurrent-user-activity-handling",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_172",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "stability-verify-module-stability-during-extended-usage",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_173",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "gap-score-engine-verify-single-mandatory-field-score-contribution",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_174",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "gap-score-engine-verify-single-optional-field-score-contribution",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_175",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "gap-score-engine-verify-multiple-mandatory-field-aggregation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_176",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "gap-score-engine-verify-mixed-mandatory-and-optional-aggregation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_177",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "risk-band-verify-lowest-risk-band-boundary",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_178",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "risk-band-verify-upper-boundary-risk-band-mapping",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_179",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "risk-band-verify-lower-boundary-risk-band-mapping",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_180",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "risk-band-verify-gap-score-band-gap-detection",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_181",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "risk-band-verify-gap-score-band-overlap-detection",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_182",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "risk-band-verify-dynamic-priority-calculation-based-on-score-band",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_183",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "customer-assignment-verify-customer-assignment-using-matching-customer-type",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_184",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "accessibility-verify-visible-focus-indicators",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_185",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "accessibility-verify-mandatory-field-indicator-visibility",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_186",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "accessibility-verify-tooltip-accessibility-using-keyboard",
+      "low",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_187",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "chrome-compatibility-verify-chrome-browser-rendering",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_188",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "chrome-compatibility-verify-chrome-browser-zoom-at-100",
+      "low",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_189",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "chrome-compatibility-verify-chrome-browser-zoom-at-125",
+      "low",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_190",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "desktop-ui-validation-verify-desktop-resolution-compatibility",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_191",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "ui-compliance-verify-layout-stability-during-extended-navigation",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_192",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "regulatory-compliance-verify-regulatory-data-completeness-evaluation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_193",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "end-to-end-aml-workflow-verify-end-to-end-missing-mandatory-data-lifecycle",
+      "critical",
+      "e2e"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_194",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-name-validation-verify-blank-template-name-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_195",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-name-validation-verify-spaces-only-template-name-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_196",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-name-validation-verify-minimum-length-boundary",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_197",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-name-validation-verify-maximum-length-boundary",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_198",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-name-validation-verify-maximum-length-exceeded-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_199",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "template-name-validation-verify-copy-paste-validation",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_200",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-exact-match-search-for-template-name",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_201",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-partial-match-search",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_202",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-case-insensitive-search",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_203",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-search-with-leading-spaces",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_204",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-search-with-trailing-spaces",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_205",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-search-with-special-characters",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_206",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-no-result-search-scenario",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_207",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-search-on-archived-template-records",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_208",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-search-performance-with-large-dataset",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_209",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "search-validation-verify-search-combined-with-active-filters",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_210",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-blank-lower-boundary-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_211",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-blank-upper-boundary-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_212",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-negative-score-value-validation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_213",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-decimal-score-value-validation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_214",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-lower-boundary-greater-than-upper-boundary-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_215",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-duplicate-risk-band-name-validation",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_216",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-single-risk-band-configuration-scenario",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_217",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-maximum-supported-score-boundary",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_218",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-risk-band-coverage-completeness-validation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_219",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "score-configuration-verify-score-configuration-save-validation",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_220",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "save-button-verify-save-button-functionality",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_221",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "cancel-button-verify-cancel-button-navigation-behavior",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_222",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "ui-interaction-verify-button-hover-state-rendering",
+      "low",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "TC_MMDT_223",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
+    "tags": [
+      "ui-interaction-verify-double-click-prevention-on-action-buttons",
       "high",
       "api",
       "backend"
     ]
   },
   {
-    "testCaseId": "MM-TC-282",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "db-origin-field-locked-behavior",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-283",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "db-origin-field-ui-duplicate-conflict",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-283",
-    "automationLayer": "API + Database",
-    "automationCandidate": "Yes",
-    "reason": "Backend/API validation via route mocking or service layer",
-    "tags": [
-      "db-origin-field-ui-duplicate-conflict",
-      "critical",
-      "api",
-      "backend"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-284",
+    "testCaseId": "TC_MMDT_224",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
     "tags": [
-      "kyc-gap-score-score-direction-logic",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-285",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "kyc-gap-score-zero-score-compliance-validation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-286",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "save-range-validation-error-modal-explanation",
-      "critical",
-      "gap-score",
-      "business-rule"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-287",
-    "automationLayer": "Manual",
-    "automationCandidate": "No",
-    "reason": "Enterprise validation or audit sign-off requires manual review",
-    "tags": [
-      "kyc-gap-score-tip-bar-guidance-validation",
+      "ui-interaction-verify-loading-indicator-during-long-running-operations",
       "high",
       "functional"
-    ]
-  },
-  {
-    "testCaseId": "MM-TC-288",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Visible DOM interaction on Missing Mandatory Data Template page",
-    "tags": [
-      "score-mapping-high-missing-weight-to-critical-validation",
-      "critical",
-      "gap-score",
-      "business-rule"
     ]
   }
 ]

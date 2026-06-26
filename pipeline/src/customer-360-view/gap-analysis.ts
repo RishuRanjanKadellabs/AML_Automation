@@ -1,34 +1,60 @@
 import type { C360ExcelRow, GapMatrixEntry } from "./types";
 
-export function buildGapMatrix(rows: C360ExcelRow[]): GapMatrixEntry[] {
-  return rows.map((row) => {
-    const text = `${row.taskDescription} ${row.testData} ${row.preconditions}`.toLowerCase();
-    let testable: GapMatrixEntry["testable"] = "Yes";
-    let missingInformation = "";
-    let assumptions = "Customer 360 route /kyc/customer-360 with fixture customer IDs";
+const PARTIAL_RULES: Array<{
+  match: (row: C360ExcelRow) => boolean;
+  missing: string;
+}> = [
+  {
+    match: (r) => r.subModule === "Performance Validation",
+    missing: "Performance SLA thresholds (ms) not specified in Excel",
+  },
+  {
+    match: (r) =>
+      r.subModule === "Security Validation" &&
+      /role|rbac|unauthorized|restricted/i.test(`${r.taskDescription} ${r.testSteps}`),
+    missing: "Role credentials not defined in Excel test data",
+  },
+  {
+    match: (r) =>
+      r.subModule === "Export Functionality" &&
+      /csv|xlsx|pdf|format/i.test(`${r.taskDescription} ${r.expectedResult}`),
+    missing: "Export file format not specified in Excel",
+  },
+  {
+    match: (r) =>
+      r.subModule === "Browser Compatibility" &&
+      /safari|firefox|edge|browser version/i.test(`${r.taskDescription} ${r.testData}`),
+    missing: "Target browser versions not listed in Excel",
+  },
+  {
+    match: (r) =>
+      r.subModule === "Accessibility" &&
+      /screen reader|wcag audit|automated aria audit/i.test(`${r.taskDescription} ${r.testSteps}`),
+    missing: "Accessibility tooling / WCAG level not specified in Excel",
+  },
+];
 
-    if (/slow 3g|network profile|session timeout|30 minutes/i.test(text)) {
-      testable = "Partial";
-      missingInformation = "Network throttling or session expiry simulation not fully specified";
-      assumptions = "Use Playwright route mocking or viewport-only checks where applicable";
-    } else if (/browser.*chrome|edge|firefox/i.test(text)) {
-      testable = "Partial";
-      missingInformation = "Cross-browser matrix execution environment";
-      assumptions = "Chromium milestone1 project validates core UI; other browsers manual";
-    } else if (/screen reader|wcag|color contrast/i.test(text)) {
-      testable = "Partial";
-      missingInformation = "Accessibility tooling and baseline thresholds";
-    } else if (/performance|load time|10000 transactions/i.test(text)) {
-      testable = "Partial";
-      missingInformation = "Performance SLA thresholds and dataset seeding";
-    }
-
+export function buildGapMatrixEntry(row: C360ExcelRow): GapMatrixEntry {
+  const rule = PARTIAL_RULES.find((r) => r.match(row));
+  if (rule) {
     return {
       requirementId: row.id,
       requirementDescription: row.taskDescription,
-      testable,
-      missingInformation,
-      assumptions,
+      testable: "Partial",
+      missingInformation: rule.missing,
+      assumptions: "Blocked — see TODO comment in generated spec; no automation assumption applied",
     };
-  });
+  }
+
+  return {
+    requirementId: row.id,
+    requirementDescription: row.taskDescription,
+    testable: "Yes",
+    missingInformation: "—",
+    assumptions: "—",
+  };
+}
+
+export function buildGapMatrix(rows: C360ExcelRow[]): GapMatrixEntry[] {
+  return rows.map(buildGapMatrixEntry);
 }

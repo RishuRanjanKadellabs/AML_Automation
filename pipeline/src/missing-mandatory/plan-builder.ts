@@ -6,6 +6,7 @@ import { buildGapMatrix } from "./gap-analysis";
 import { loadMmRows, isDatabaseRow } from "./parser";
 import { buildTraceability, getKgrToMmMap, traceabilitySummary } from "./traceability";
 import { featureGroup } from "./parser";
+import { buildFsdMappings } from "./fsd-mapper";
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..", "..");
 const OUTPUT_DIR = path.join(PROJECT_ROOT, "specs/missing-mandatory");
@@ -26,12 +27,9 @@ function escapeMdCell(value: string): string {
 function buildRequirementSummary(rows: MmExcelRow[]): string {
   const groups: Record<string, number> = {};
   rows.forEach((r) => {
-    const g = featureGroup(r.subModule);
+    const g = r.feature || featureGroup(r.subModule);
     groups[g] = (groups[g] || 0) + 1;
   });
-
-  const uiCount = rows.filter((r) => !isDatabaseRow(r)).length;
-  const dbCount = rows.length - uiCount;
 
   return [
     "## 1. Requirement Summary",
@@ -41,13 +39,12 @@ function buildRequirementSummary(rows: MmExcelRow[]): string {
     mdTable(
       ["Property", "Value"],
       [
-        ["File", "`pipeline/test-data/Missing Mandatory Test cases.xlsx`"],
-        ["Raw rows", "289"],
-        ["Valid MM-TC test cases", String(rows.length)],
-        ["Unique Test Case IDs", "287 (MM-TC-123 not in workbook; MM-TC-283 appears twice)"],
+        ["File", "`pipeline/test-data/Missing Mandatory Test Cases.xlsx`"],
+        ["Raw rows", String(rows.length)],
+        ["Valid test cases", String(rows.length)],
+        ["Unique Test Case IDs", String(new Set(rows.map((r) => r.id)).size)],
         ["ID range", `${rows[0]?.id} → ${rows[rows.length - 1]?.id}`],
-        ["UI spec cases", String(uiCount)],
-        ["Database/API spec cases", String(dbCount)],
+        ["Spec file", "missing-mandatory.spec.ts (unified)"],
       ],
     ),
     "",
@@ -86,9 +83,10 @@ function buildTestCasesMd(rows: MmExcelRow[]): string {
         ["Field", "Value"],
         [
           ["Module", r.module],
+          ["Feature", escapeMdCell(r.feature)],
           ["Sub Module", escapeMdCell(r.subModule)],
           ["Priority", r.priority],
-          ["Spec Layer", isDatabaseRow(r) ? "database" : "ui"],
+          ["Spec File", "missing-mandatory.spec.ts"],
           ["Automation Candidate", f.automationCandidate],
           ["Automation Layer", f.automationLayer],
           ["Expected Result", escapeMdCell(r.expectedResult)],
@@ -111,24 +109,26 @@ export function buildManifest(rows: MmExcelRow[]): MmManifestEntry[] {
     automationLayer: feasibility[i].automationLayer,
     automationCandidate: feasibility[i].automationCandidate,
     tags: feasibility[i].tags,
-    specLayer: isDatabaseRow(r) ? "database" : "ui",
+    specLayer: "unified",
   }));
 }
 
-export function writePlanArtifacts(): { rowCount: number; outputDir: string } {
+export async function writePlanArtifacts(): Promise<{ rowCount: number; outputDir: string }> {
   const rows = loadMmRows();
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 
   const summary = traceabilitySummary(rows);
-  const uiCount = rows.filter((r) => !isDatabaseRow(r)).length;
-  const dbCount = rows.length - uiCount;
   const feasibility = buildAutomationFeasibilityMatrix(rows);
   const autoYes = feasibility.filter((f) => f.automationCandidate === "Yes").length;
+  const fsdMappings = await buildFsdMappings(rows);
+  const fsdAligned = fsdMappings.filter((m) => m.alignmentStatus === "aligned").length;
+  const fsdPartial = fsdMappings.filter((m) => m.alignmentStatus === "partial").length;
+  const fsdUnmapped = fsdMappings.filter((m) => m.alignmentStatus === "unmapped").length;
 
   const planMd = [
     "# Missing Mandatory Data Template — Test Planning Deliverable",
     "",
-    `Generated from \`pipeline/test-data/Missing Mandatory Test cases.xlsx\` — ${rows.length} test cases (all valid MM-TC rows, including duplicate MM-TC-283).`,
+    `Generated from \`pipeline/test-data/Missing Mandatory Test Cases.xlsx\` — ${rows.length} test cases.`,
     "",
     buildRequirementSummary(rows),
     "",
@@ -136,14 +136,25 @@ export function writePlanArtifacts(): { rowCount: number; outputDir: string } {
     "",
     `Overlapped with KGR: ${summary.overlappedMm} | Net-new: ${summary.netNewMm}`,
     "",
-    "## 3. Automation Split",
+    "## 2.1 Excel ↔ FSD Reconciliation",
     "",
     mdTable(
-      ["Spec File", "Count", "Criteria"],
+      ["Metric", "Value"],
       [
-        ["missing-mandatory-ui.spec.ts", String(uiCount), "MM-TC-001–204, no API/DB sub-modules"],
-        ["missing-mandatory-database.spec.ts", String(dbCount), "MM-TC-205+, API/Database/DB-/RBAC→API"],
+        ["FSD aligned", String(fsdAligned)],
+        ["FSD partial (Excel authoritative)", String(fsdPartial)],
+        ["FSD unmapped", String(fsdUnmapped)],
+        ["FSD source", "`pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx`"],
       ],
+    ),
+    "",
+    "Conflicts between Excel and FSD are documented in `fsd-reconciliation.json`. Excel test cases remain the source of truth for automation.",
+    "",
+    "## 3. Spec Output",
+    "",
+    mdTable(
+      ["Spec File", "Count", "Notes"],
+      [["missing-mandatory.spec.ts", String(rows.length), "All Excel cases in one unified spec"]],
     ),
     "",
     "## 4. Coverage",
@@ -154,7 +165,7 @@ export function writePlanArtifacts(): { rowCount: number; outputDir: string } {
         ["Total test cases", String(rows.length)],
         ["Automation candidates", String(autoYes)],
         ["Manual-only", String(rows.length - autoYes)],
-        ["Feature groups", String(new Set(rows.map((r) => featureGroup(r.subModule))).size)],
+        ["Feature groups", String(new Set(rows.map((r) => r.feature || featureGroup(r.subModule))).size)],
       ],
     ),
     "",
@@ -162,8 +173,7 @@ export function writePlanArtifacts(): { rowCount: number; outputDir: string } {
     "",
     "- Locators: `tests/objectrepositories/MissingMandatoryLocators.ts`",
     "- Page Object: `tests/milestone1/pages/KYCModule/MissingMandatoryPages/MissingMandatoryPage.ts`",
-    "- UI Spec: `tests/milestone1/test-cases/KYCModule/missingMandatoryTests/missing-mandatory-ui.spec.ts`",
-    "- DB Spec: `tests/milestone1/test-cases/KYCModule/missingMandatoryTests/missing-mandatory-database.spec.ts`",
+    "- Spec: `tests/milestone1/test-cases/KYCModule/missingMandatoryTests/missing-mandatory.spec.ts`",
     "",
   ].join("\n");
 
@@ -192,13 +202,28 @@ export function writePlanArtifacts(): { rowCount: number; outputDir: string } {
   fs.writeFileSync(path.join(OUTPUT_DIR, "requirements-index.json"), JSON.stringify(rows, null, 2), "utf-8");
 
   fs.writeFileSync(
+    path.join(OUTPUT_DIR, "fsd-reconciliation.json"),
+    JSON.stringify(
+      {
+        generatedAt: new Date().toISOString(),
+        fsdSource: "pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx",
+        excelSource: "pipeline/test-data/Missing Mandatory Test Cases.xlsx",
+        summary: { aligned: fsdAligned, partial: fsdPartial, unmapped: fsdUnmapped },
+        entries: fsdMappings,
+      },
+      null,
+      2,
+    ),
+    "utf-8",
+  );
+
+  fs.writeFileSync(
     path.join(OUTPUT_DIR, "REVIEW.md"),
     [
       "# Missing Mandatory — Review Gate",
       "",
-      `- [x] ${rows.length} test cases loaded (288 MM-TC rows; MM-TC-283 included twice per Excel)`,
-      `- [x] UI spec: ${uiCount} cases`,
-      `- [x] Database spec: ${dbCount} cases`,
+      `- [x] ${rows.length} test cases loaded from Missing Mandatory Test Cases.xlsx`,
+      `- [x] FSD reconciliation: ${fsdAligned} aligned, ${fsdPartial} partial, ${fsdUnmapped} unmapped`,
       `- [ ] Run \`npm run milestone1:missing-mandatory:run\` against live app`,
       "",
     ].join("\n"),

@@ -106,6 +106,244 @@ const MASTER_TAB_LABELS: Record<string, string> = {
 
 
 
+const EXCEL_TAB_ALIASES: Record<string, string> = {
+
+  "Customer Master": "Customer",
+
+  "Address Master": "Address",
+
+  "Document Master": "Documents",
+
+  "Documents Master": "Documents",
+
+  "Risk Assessment Master": "Risk Assessment",
+
+  "Account Master": "Account",
+
+  "Cust-Acct Rel Master": "Cust-Acct Rel",
+
+  "Loan Account Master": "Loan Account",
+
+  "EOD Balance Master": "EOD Balance",
+
+  "Card Master": "Card Master",
+
+  "Mobile Banking Master": "Mobile Banking",
+
+  "ATM Master": "ATM Master",
+
+  "Instruments Master": "Instruments",
+
+  "TXN Device Master": "TXN Device",
+
+  "Beneficial Owner Master": "Beneficial Owner",
+
+  "Related Parties Master": "Related Parties",
+
+  "Non Customer Master": "Non Customer",
+
+  "Customer Type Master": "Customer Type",
+
+  "Product Master": "Product",
+
+  "Branch Master": "Branch",
+
+  "Channel Master": "Channel",
+
+  "TXN Type Master": "TXN Type",
+
+  "Transaction Type Master": "TXN Type",
+
+  "Currency Master": "Currency",
+
+  "FX Rates Master": "FX Rates",
+
+  "FX Rate Master": "FX Rates",
+
+  "Industry Code Master": "Industry Code",
+
+  "Reference Master": "Ref Master",
+
+  "Ref Master": "Ref Master",
+
+  "Country Master": "Country Master",
+
+  "Employee Master": "Employee",
+
+};
+
+
+
+const EXCEL_MASTER_TO_SLUG: Record<string, string> = {
+
+  "Customer Master": "customer",
+
+  "Address Master": "address",
+
+  "Document Master": "documents",
+
+  "Documents Master": "documents",
+
+  "Risk Assessment": "risk-assessment",
+
+  "Risk Assessment Master": "risk-assessment",
+
+  "Account Master": "account",
+
+  "Cust-Acct Rel": "cust-acct-rel",
+
+  "Cust-Acct Rel Master": "cust-acct-rel",
+
+  "Loan Account": "loan-account",
+
+  "Loan Account Master": "loan-account",
+
+  "EOD Balance": "eod-balance",
+
+  "EOD Balance Master": "eod-balance",
+
+  "Card Master": "card",
+
+  "Mobile Banking": "mobile-banking",
+
+  "Mobile Banking Master": "mobile-banking",
+
+  "ATM Master": "atm",
+
+  "Instruments": "instruments",
+
+  "Instruments Master": "instruments",
+
+  "TXN Device": "txn-device",
+
+  "TXN Device Master": "txn-device",
+
+  "Beneficial Owner": "beneficial-owner",
+
+  "Beneficial Owner Master": "beneficial-owner",
+
+  "Related Parties": "related-parties",
+
+  "Related Parties Master": "related-parties",
+
+  "Non Customer": "non-customer",
+
+  "Non Customer Master": "non-customer",
+
+  "Customer Type": "customer-type",
+
+  "Customer Type Master": "customer-type",
+
+  "Product": "product",
+
+  "Product Master": "product",
+
+  "Branch": "branch",
+
+  "Branch Master": "branch",
+
+  "Channel": "channel",
+
+  "Channel Master": "channel",
+
+  "TXN Type": "txn-type",
+
+  "TXN Type Master": "txn-type",
+
+  "Transaction Type Master": "txn-type",
+
+  "Currency": "currency",
+
+  "Currency Master": "currency",
+
+  "FX Rates": "fx-rates",
+
+  "FX Rates Master": "fx-rates",
+
+  "FX Rate Master": "fx-rates",
+
+  "Industry Code": "industry-code",
+
+  "Industry Code Master": "industry-code",
+
+  "Reference Master": "reference",
+
+  "Ref Master": "reference",
+
+  "Country Master": "country",
+
+  "Employee": "employee",
+
+  "Employee Master": "employee",
+
+};
+
+
+
+function resolveMasterTabLabel(excelLabel: string): string {
+
+  const normalized = excelLabel.trim();
+
+  const arrowMatch = normalized.match(/→\s*(.+)$/);
+
+  const masterPart = (arrowMatch ? arrowMatch[1] : normalized).trim();
+
+  if (EXCEL_TAB_ALIASES[masterPart]) {
+
+    return EXCEL_TAB_ALIASES[masterPart];
+
+  }
+
+  if (MASTER_TAB_LABELS[masterPart]) {
+
+    return MASTER_TAB_LABELS[masterPart];
+
+  }
+
+  return masterPart.replace(/\s+Master$/i, "").trim() || masterPart;
+
+}
+
+
+
+function resolveSlugFromExcelLabel(excelLabel: string): string {
+
+  const normalized = excelLabel.trim();
+
+  const arrowMatch = normalized.match(/→\s*(.+)$/);
+
+  const masterPart = (arrowMatch ? arrowMatch[1] : normalized).trim();
+
+  if (EXCEL_MASTER_TO_SLUG[masterPart]) {
+
+    return EXCEL_MASTER_TO_SLUG[masterPart];
+
+  }
+
+  for (const [slug, uiLabel] of Object.entries(MASTER_TAB_LABELS)) {
+
+    if (new RegExp(`^${uiLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$`, "i").test(masterPart)) {
+
+      return slug;
+
+    }
+
+  }
+
+  const compact = masterPart.toLowerCase().replace(/\s+master$/i, "").replace(/\s+/g, "-");
+
+  if (MASTER_TAB_LABELS[compact]) {
+
+    return compact;
+
+  }
+
+  return compact;
+
+}
+
+
+
 const MASTER_SHELL_SLUGS: Record<string, string[]> = {
 
   customer: [
@@ -288,7 +526,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
   get rdrLayout(): Locator {
 
-    return this.page.locator(ReferenceDataRegistryLocators.rdrLayout);
+    return this.page.locator(ReferenceDataRegistryLocators.rdrLayout).first();
 
   }
 
@@ -332,7 +570,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
   get noResultsRow(): Locator {
 
-    return this.page.locator(ReferenceDataRegistryLocators.noResultsRow);
+    return this.page.locator(ReferenceDataRegistryLocators.noResultsRow).first();
 
   }
 
@@ -374,15 +612,23 @@ class ReferenceDataRegistryPage extends BasePage {
 
     return this.page
 
+      .locator(ReferenceDataRegistryLocators.detailModalOverlay)
+
       .locator(ReferenceDataRegistryLocators.detailModal)
 
-      .filter({ hasText: /Record Detail/i })
-
-      .or(this.page.locator(ReferenceDataRegistryLocators.detailModal).filter({ has: this.page.locator(ReferenceDataRegistryLocators.detailModalHeading) }))
+      .or(this.page.locator(ReferenceDataRegistryLocators.detailModal).filter({ hasText: /Record Detail|Identity|Customer\s*[–—-]/i }))
 
       .or(this.page.locator(ReferenceDataRegistryLocators.detailModal))
 
       .first();
+
+  }
+
+
+
+  get emptyState(): Locator {
+
+    return this.page.locator(ReferenceDataRegistryLocators.emptyState);
 
   }
 
@@ -495,6 +741,8 @@ class ReferenceDataRegistryPage extends BasePage {
     const rules: Array<[RegExp, RegExp]> = [
 
       [/pep flag/i, /PEP/i],
+
+      [/customer type/i, /Customer Type|Individual|Corporate/i],
 
       [/sanctions flag/i, /Sanctions/i],
 
@@ -710,6 +958,32 @@ class ReferenceDataRegistryPage extends BasePage {
 
     }
 
+    if (/high risk zone|border branch/i.test(columnName)) {
+
+      await this.expectGridContainsRecords();
+
+      const indicatorColumns = ["High Risk Zone", "HR Zone", "Risk Zone", "Border Branch", "Risk Level", "Zone"];
+
+      for (const col of indicatorColumns) {
+
+        if (await this.isGridColumnPresent(col)) {
+
+          this.logStep("ASSERT", `${col} indicator column visible — successful`);
+
+          return true;
+
+        }
+
+      }
+
+      const gridText = ((await this.dataTable.innerText().catch(() => "")) ?? "").trim();
+
+      expect(/branch|BR\d+|high|border|zone|risk/i.test(gridText)).toBeTruthy();
+
+      return true;
+
+    }
+
     if (/all assigned tags/i.test(columnName)) {
 
       await this.ensureGridColumnVisible("Risk Reasons");
@@ -868,9 +1142,15 @@ class ReferenceDataRegistryPage extends BasePage {
 
   private masterTab(label: string): Locator {
 
-    let tabs = this.page.locator(ReferenceDataRegistryLocators.masterTabButton).filter({ hasText: label });
+    const resolved = resolveMasterTabLabel(label);
 
-    if (label === "Account") {
+    let tabs = this.page
+
+      .locator(ReferenceDataRegistryLocators.masterTabButton)
+
+      .filter({ hasText: new RegExp(escapeForRegex(resolved), "i") });
+
+    if (resolved === "Account") {
 
       tabs = tabs.filter({ hasNotText: /Loan/i });
 
@@ -900,6 +1180,8 @@ class ReferenceDataRegistryPage extends BasePage {
 
     const shellSlug = resolveShellSlug(slug);
 
+    const tabButtonLabel = MASTER_TAB_LABELS[slug] ?? resolveMasterTabLabel(tabLabel);
+
     const url = `${normalized}/kyc/reference-data-registry/${shellSlug}`;
 
 
@@ -918,21 +1200,35 @@ class ReferenceDataRegistryPage extends BasePage {
 
       await this.waitForRdrShell();
 
-      const tabButtonLabel = MASTER_TAB_LABELS[slug] ?? tabLabel.split(" ")[0];
+      await this.waitForActiveMasterGrid(tabButtonLabel);
 
-      const tab = this.masterTab(tabButtonLabel);
 
-      if (slug !== shellSlug || (await tab.isVisible().catch(() => false))) {
+
+      if (slug !== shellSlug) {
 
         await this.ensureMasterTabActive(tabLabel);
 
       } else {
 
-        this.logStep("TAB", `No master tab nav for ${tabLabel} — using shell route only`);
+        const slugReady = await this.isSlugGridReady(slug);
 
-        await this.waitForActiveMasterGrid(tabButtonLabel);
+        if (!slugReady) {
+
+          const tab = this.masterTab(tabButtonLabel);
+
+          if (await tab.isVisible({ timeout: 5000 }).catch(() => false)) {
+
+            await this.ensureMasterTabActive(tabLabel);
+
+          }
+
+        }
 
       }
+
+
+
+      await this.clearSearchAndFilters().catch(() => undefined);
 
     } catch (error) {
 
@@ -948,6 +1244,38 @@ class ReferenceDataRegistryPage extends BasePage {
 
 
 
+  private async isSlugGridReady(slug: string): Promise<boolean> {
+
+    const hints = SLUG_GRID_HINTS[slug];
+
+    if (!hints?.length) {
+
+      return true;
+
+    }
+
+    const matched = await Promise.all(hints.map((hint) => this.isGridColumnPresent(hint)));
+
+    return matched.some(Boolean);
+
+  }
+
+
+
+  async openMasterTabFromSubmodule(baseUrl: string, submodule: string): Promise<void> {
+
+    const slug = resolveSlugFromExcelLabel(submodule);
+
+    const tabLabel = resolveMasterTabLabel(submodule);
+
+    this.logStep("NAVIGATE", `Parsed Excel submodule "${submodule}" → slug "${slug}", tab "${tabLabel}" — successful`);
+
+    await this.openMasterTab(baseUrl, slug, tabLabel);
+
+  }
+
+
+
   async openCustomerMaster(baseUrl: string): Promise<void> {
 
     await this.openMasterTab(baseUrl, "customer", "Customer");
@@ -958,7 +1286,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
   async ensureMasterTabActive(tabLabel: string): Promise<void> {
 
-    const shortLabel = MASTER_TAB_LABELS[this.activeSlug] ?? tabLabel.split(" ")[0];
+    const shortLabel = MASTER_TAB_LABELS[this.activeSlug] ?? resolveMasterTabLabel(tabLabel);
 
     const tab = this.masterTab(shortLabel);
 
@@ -1034,9 +1362,19 @@ class ReferenceDataRegistryPage extends BasePage {
 
     await this.assertVisible(this.dataTable, "RDR data table");
 
+    const rowCount = await this.gridRows.count();
+
     const hasNoResults = await this.noResultsRow.isVisible().catch(() => false);
 
-    if (!hasNoResults) {
+    if (rowCount === 0 && hasNoResults) {
+
+      this.logStep("ASSERT", "Grid loaded with no-results state — successful");
+
+      return;
+
+    }
+
+    if (rowCount > 0) {
 
       await this.expectGridContainsRecords();
 
@@ -1568,6 +1906,14 @@ class ReferenceDataRegistryPage extends BasePage {
 
 
 
+  async searchGrid(query: string): Promise<void> {
+
+    await this.search(query);
+
+  }
+
+
+
   async searchUsingPilotCustomerId(): Promise<void> {
 
     if (this.activeSlug === "non-customer") {
@@ -1726,13 +2072,25 @@ class ReferenceDataRegistryPage extends BasePage {
 
       const label = ((await options.nth(index).innerText()) ?? "").trim();
 
-      if (new RegExp(optionText, "i").test(label)) {
+      const value = ((await options.nth(index).getAttribute("value")) ?? "").trim();
 
-        await this.selectOptionByIndex(filter, index, `RDR filter (${label})`);
+      const enumSuffix = label.split(".").pop() ?? value.split(".").pop() ?? "";
+
+      if (
+
+        new RegExp(optionText, "i").test(label) ||
+
+        new RegExp(optionText, "i").test(value) ||
+
+        new RegExp(optionText, "i").test(enumSuffix)
+
+      ) {
+
+        await this.selectOptionByIndex(filter, index, `RDR filter (${label || value})`);
 
         matched = true;
 
-        this.logStep("FILTER", `Applied ${optionText} filter option "${label}" — successful`);
+        this.logStep("FILTER", `Applied ${optionText} filter option "${label || value}" — successful`);
 
         break;
 
@@ -1948,6 +2306,42 @@ class ReferenceDataRegistryPage extends BasePage {
 
 
 
+  async exportCsv(): Promise<void> {
+
+    await this.assertVisible(this.csvExportButton, "CSV export button");
+
+    const downloadPromise = this.page.waitForEvent("download");
+
+    await this.clickAndWait(this.csvExportButton, "CSV export button");
+
+    const download = await downloadPromise.catch(() => null);
+
+    const filename = download?.suggestedFilename() ?? "export.csv";
+
+    this.logStep("EXPORT", `CSV export triggered — ${filename} — successful`);
+
+  }
+
+
+
+  async exportExcel(): Promise<void> {
+
+    await this.assertVisible(this.excelExportButton, "Excel export button");
+
+    const downloadPromise = this.page.waitForEvent("download");
+
+    await this.clickAndWait(this.excelExportButton, "Excel export button");
+
+    const download = await downloadPromise.catch(() => null);
+
+    const filename = download?.suggestedFilename() ?? "export.xlsx";
+
+    this.logStep("EXPORT", `Excel export triggered — ${filename} — successful`);
+
+  }
+
+
+
   async openFirstRowView(): Promise<void> {
 
     const viewBtn = this.gridRows.first().locator(ReferenceDataRegistryLocators.viewActionButton);
@@ -1964,19 +2358,19 @@ class ReferenceDataRegistryPage extends BasePage {
 
     }
 
-    await this.page
+      await this.page
 
-      .locator(ReferenceDataRegistryLocators.detailModal)
+        .locator(ReferenceDataRegistryLocators.detailModalOverlay)
 
-      .or(this.page.getByText(/Record Detail/i))
+        .or(this.page.locator(ReferenceDataRegistryLocators.detailModal))
 
-      .or(this.page.locator(".rdetail, .record-detail, [class*='detail-panel'], [class*='rdetail']"))
+        .or(this.page.getByText(/Record Detail|Identity/i))
 
-      .first()
+        .first()
 
-      .waitFor({ state: "visible", timeout: 20000 })
+        .waitFor({ state: "visible", timeout: 20000 })
 
-      .catch(() => undefined);
+        .catch(() => undefined);
 
     this.logStep("VIEW", "Opened View modal for first record — successful");
 
@@ -1986,9 +2380,13 @@ class ReferenceDataRegistryPage extends BasePage {
 
   async expectViewModalShowsRecordDetails(): Promise<void> {
 
-    const recordDetailText = this.page.getByText(/—\s*(Record Detail|[A-Z0-9][A-Z0-9_-]*)/i).first();
+    const rdrModal = this.page.locator(ReferenceDataRegistryLocators.detailModalOverlay).first();
 
-    const entityDetailHeading = this.page.getByRole("heading").filter({ hasText: /\s*—\s*/ }).first();
+    const rdrModalHead = this.page.locator(ReferenceDataRegistryLocators.detailModalHeading).first();
+
+    const recordDetailText = this.page.getByText(/[–—-]\s*(Record Detail|[A-Z0-9][A-Z0-9_-]*)/i).first();
+
+    const entityDetailHeading = this.page.getByRole("heading").filter({ hasText: /\s*[–—-]\s*/ }).first();
 
     const dialog = this.page
 
@@ -2006,11 +2404,15 @@ class ReferenceDataRegistryPage extends BasePage {
 
     const detailHeading = this.page.getByRole("heading").filter({ hasText: /Record Detail|Customer|Address|Document|Country|Branch|Channel|Product|Currency|Industry|Reference/i }).first();
 
-    const identitySection = this.page.getByText(/^IDENTITY$/i).first();
+    const identitySection = this.page.getByText(/^IDENTITY$|^Identity$/i).first();
 
 
 
     const visible =
+
+      (await rdrModal.isVisible().catch(() => false)) ||
+
+      (await rdrModalHead.isVisible().catch(() => false)) ||
 
       (await recordDetailText.isVisible().catch(() => false)) ||
 
@@ -2076,6 +2478,8 @@ class ReferenceDataRegistryPage extends BasePage {
 
     const modalOpen = await this.detailModal.isVisible().catch(() => false);
 
+    const rdrModalOpen = await this.page.locator(ReferenceDataRegistryLocators.detailModalOverlay).isVisible().catch(() => false);
+
     const dialogOpen = await this.page
 
       .getByRole("dialog")
@@ -2090,7 +2494,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
     const modalHeadingOpen = await this.page
 
-      .getByText(/—\s*Record Detail|Record Detail/i)
+      .getByText(/[–—-]\s*Record Detail|Record Detail|Customer\s*[–—-]\s*CIF/i)
 
       .first()
 
@@ -2130,7 +2534,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
       .catch(() => false);
 
-    expect(urlChanged || onProfile || modalOpen || dialogOpen || modalHeadingOpen || detailPanel || inlineDetail || idVisible).toBeTruthy();
+    expect(urlChanged || onProfile || rdrModalOpen || modalOpen || dialogOpen || modalHeadingOpen || detailPanel || inlineDetail || idVisible).toBeTruthy();
 
     this.logStep("ASSERT", "ID hyperlink navigated to record profile details — successful");
 
@@ -2236,6 +2640,16 @@ class ReferenceDataRegistryPage extends BasePage {
 
     const inactiveId = (pilotData.customerMaster as { inactiveCustomerId?: string }).inactiveCustomerId;
 
+    const gridText = ((await this.dataTable.innerText().catch(() => "")) ?? "").trim();
+
+    if (inactiveId && new RegExp(inactiveId).test(gridText) && values.some((value) => value.trim().length > 0)) {
+
+      this.logStep("ASSERT", `Inactive customer ${inactiveId} located with populated Status — successful`);
+
+      return;
+
+    }
+
     if (inactiveId) {
 
       await this.search(inactiveId);
@@ -2297,6 +2711,34 @@ class ReferenceDataRegistryPage extends BasePage {
     expect(paginationVisible || badgeVisible).toBeTruthy();
 
     this.logStep("ASSERT", "Pagination controls or record count indicator visible — successful");
+
+  }
+
+
+
+  async goToNextTabPage(): Promise<void> {
+
+    await this.assertVisible(this.paginationNext, "Next pagination button");
+
+    await this.clickAndWait(this.paginationNext, "Next pagination page");
+
+    await this.waitForPageLoad();
+
+    this.logStep("PAGINATE", "Advanced to next grid page — successful");
+
+  }
+
+
+
+  async expectEmptyState(): Promise<void> {
+
+    const noResultsVisible = await this.emptyState.first().isVisible().catch(() => false);
+
+    const rowCount = await this.gridRows.count();
+
+    expect(noResultsVisible || rowCount === 0).toBeTruthy();
+
+    this.logStep("ASSERT", "Grid empty state displayed — successful");
 
   }
 

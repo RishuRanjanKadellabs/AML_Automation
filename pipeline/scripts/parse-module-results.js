@@ -8,8 +8,6 @@ const log = rawLog.replace(/\x1b\[[0-9;]*m/g, "");
 const modules = {
   "screening-configuration.spec.ts": "Screening Configuration",
   "kyc-gap-report.spec.ts": "KYC Gap Report",
-  "missing-mandatory-ui.spec.ts": "Missing Mandatory (UI)",
-  "missing-mandatory-database.spec.ts": "Missing Mandatory (DB)",
   "batch-screening.spec.ts": "Batch Screening",
   "manual-screening.spec.ts": "Manual Screening",
   "dedup-screening.spec.ts": "De-Dup Screening",

@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 import type { C360ExcelRow } from "./types";
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..", "..");
-export const C360_EXCEL_PATH = path.join(PROJECT_ROOT, "pipeline/test-data/Customer_360_View.xlsx");
+export const C360_EXCEL_PATH = path.join(PROJECT_ROOT, "pipeline/test-data/Customer 360 View.xlsx");
 
 function cellString(value: unknown): string {
   if (value === null || value === undefined) return "";
@@ -45,40 +45,82 @@ export function loadC360Rows(): C360ExcelRow[] {
     });
 }
 
-export function subModuleSlug(subModule: string): string {
-  return subModule
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
-
-/** Extract customer ID from test data (CUST1001, PEP1001, etc.). */
-export function extractCustomerId(testData: string): string | null {
+export function extractCustomerId(testData: string): string {
   const patterns = [
     /Customer ID:\s*([A-Z]+\d+)/i,
     /Individual Customer:\s*([A-Z]+\d+)/i,
     /Corporate Customer:\s*([A-Z]+\d+)/i,
-    /Individual:\s*([A-Z]+\d+)/i,
-    /Corporate:\s*([A-Z]+\d+)/i,
     /\b(CUST\d+|PEP\d+|ADV\d+|EMPTY\d+|IND\d+|CORP\d+|EMPTYREL\d+)\b/i,
   ];
   for (const pattern of patterns) {
     const match = testData.match(pattern);
     if (match?.[1]) return match[1].toUpperCase();
   }
-  return null;
+  return "CUST1001";
 }
 
-/** Extract resolution from test data (1024x768). */
+export function extractAllCustomerIds(testData: string): string[] {
+  const found = new Set<string>();
+  const listMatch = testData.match(/Customer IDs?:\s*([A-Z0-9,\s]+)/i);
+  if (listMatch?.[1]) {
+    listMatch[1].split(/[,\s]+/).forEach((id) => {
+      if (/^[A-Z]+\d+$/i.test(id)) found.add(id.toUpperCase());
+    });
+  }
+  const global = /\b(CUST\d+|PEP\d+|ADV\d+|IND\d+|CORP\d+|EMPTY\d+|EMPTYREL\d+)\b/gi;
+  let match: RegExpExecArray | null;
+  while ((match = global.exec(testData)) !== null) {
+    if (match[1]) found.add(match[1].toUpperCase());
+  }
+  return [...found];
+}
+
+export function extractCaseId(testData: string): string | null {
+  const match = testData.match(/Case ID:\s*([A-Z0-9-]+)/i);
+  return match?.[1] ?? null;
+}
+
+export function extractKeyedValue(testData: string, key: string): string | null {
+  const re = new RegExp(`${key}:\\s*([^\\n;]+)`, "i");
+  const match = testData.match(re);
+  return match?.[1]?.trim() ?? null;
+}
+
 export function extractResolution(testData: string): { width: number; height: number } | null {
   const match = testData.match(/(\d{3,4})\s*[x×]\s*(\d{3,4})/i);
   if (!match) return null;
   return { width: parseInt(match[1], 10), height: parseInt(match[2], 10) };
 }
 
-/** Extract keyed value from test data (e.g. "Risk Score: 82"). */
-export function extractValue(testData: string, key: string): string | null {
-  const escaped = key.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const match = testData.match(new RegExp(`${escaped}:\\s*([^\\n]+)`, "i"));
-  return match?.[1]?.trim() ?? null;
+export function subModuleOrder(): string[] {
+  return [
+    "Page Framework",
+    "Header Strip",
+    "Customer Type Switching",
+    "Overview Tab",
+    "Risk Visualization",
+    "Relationships Tab",
+    "Screening Tab",
+    "Risk Tab",
+    "KYC/CDD Tab",
+    "Accounts Tab",
+    "Transactions Tab",
+    "Alerts Tab",
+    "Regulatory Reports Tab",
+    "KYC Gap Report Tab",
+    "Audit Tab",
+    "Global Navigation",
+    "Export Functionality",
+    "PII Masking",
+    "Error Handling",
+    "Accessibility",
+    "State Management",
+    "Global UI Consistency",
+    "Browser Compatibility",
+    "Session Management",
+    "Performance Validation",
+    "Security Validation",
+    "Usability Validation",
+    "Regression Validation",
+  ];
 }
