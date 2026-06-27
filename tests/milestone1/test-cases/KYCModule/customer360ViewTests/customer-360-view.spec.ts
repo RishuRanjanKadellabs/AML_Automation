@@ -8069,6 +8069,10 @@ test.describe("Customer 360 View Module", () => {
     // Steps (25): Navigate to the KYC module from the primary application navigation menu. → Open Customer 360 View from the KYC module menu or sidebar. → Open the Customer 360 profile for Arjun Mehta (Customer ID 3159176). …
     // Expected: UI Validation:
     console.log("[C360-TC-316] Error Handling → Verify handling of partial widget failures");
+    await test.step("Preconditions", async () => {
+      await c360Page.mockApiFailure();
+      });
+
     await test.step("Navigate / setup", async () => {
       await c360Page.openCustomer360Direct(testData.baseUrl);
       });
@@ -8091,6 +8095,10 @@ test.describe("Customer 360 View Module", () => {
     // Steps (25): Navigate to the KYC module from the primary application navigation menu. → Open Customer 360 View from the KYC module menu or sidebar. → Open the Customer 360 profile for Arjun Mehta (Customer ID 3159176). …
     // Expected: UI Validation:
     console.log("[C360-TC-317] Error Handling → Verify timeout message visibility during delayed responses");
+    await test.step("Preconditions", async () => {
+      await c360Page.mockApiFailure();
+      });
+
     await test.step("Navigate / setup", async () => {
       await c360Page.openCustomer360Direct(testData.baseUrl);
       });
@@ -8962,7 +8970,6 @@ test.describe("Customer 360 View Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await c360Page.exportCustomer360();
       await c360Page.openCustomer360FromSidebar();
       });
 
@@ -9013,7 +9020,6 @@ test.describe("Customer 360 View Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await c360Page.openCustomerProfile('3159176');
       await c360Page.openCustomer360FromSidebar();
       });
 
