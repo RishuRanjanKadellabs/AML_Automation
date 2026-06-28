@@ -1,12 +1,12 @@
 # KYC Gap Report — Comprehensive Test Planning Deliverable
 
-Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
+Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 291 requirements.
 
 ## Excel ↔ FSD Reconciliation
 
 | Metric | Value |
 | --- | --- |
-| FSD aligned | 280 |
+| FSD aligned | 291 |
 | FSD partial (Excel authoritative) | 0 |
 | FSD source | `pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx` |
 
@@ -17,22 +17,22 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | Property | Value |
 | --- | --- |
 | File | `pipeline/test-data/KYC Gap Report.xlsx` |
-| Total requirements | 280 |
-| ID range | KGR-001 → KGR-280 |
+| Total requirements | 291 |
+| ID range | KGR-001 → KGR-291 |
 
 ### 1.2 Functional Requirements by Sub Module
 
 | Sub Module | Count | ID Range |
 | --- | --- | --- |
-| KYC Gap Report | 20 | KGR-001–KGR-020 |
+| KYC Gap Report | 22 | KGR-001–KGR-282 |
 | KYC Gap Report - KPI Cards | 20 | KGR-021–KGR-040 |
 | KYC Gap Report - Search & Filters | 30 | KGR-041–KGR-070 |
-| KYC Gap Report - Report Grid | 30 | KGR-071–KGR-100 |
+| KYC Gap Report - Report Grid | 34 | KGR-071–KGR-286 |
 | KYC Gap Report - Gap Score Calculation | 30 | KGR-101–KGR-130 |
-| KYC Gap Report - Gap Detail Modal | 30 | KGR-131–KGR-160 |
+| KYC Gap Report - Gap Detail Modal | 31 | KGR-131–KGR-287 |
 | KYC Gap Report - Pagination | 30 | KGR-161–KGR-190 |
 | KYC Gap Report - Export | 30 | KGR-191–KGR-220 |
-| KYC Gap Report - Security & Audit | 30 | KGR-221–KGR-250 |
+| KYC Gap Report - Security & Audit | 34 | KGR-221–KGR-291 |
 | KYC Gap Report - Boundary & Negative Testing | 30 | KGR-251–KGR-280 |
 
 ### 1.3 Business Rules
@@ -111,7 +111,7 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 
 | Requirement ID | Requirement Description | Testable? | Missing Information | Assumptions |
 | --- | --- | --- | --- | --- |
-| KGR-001 | Verify user can access KYC Gap Report from Missing Mandatory menu | Yes | — | — |
+| KGR-001 | Verify user can access KYC Gap Report | Yes | — | — |
 | KGR-002 | Verify KYC Gap Report page title is displayed correctly | Yes | — | — |
 | KGR-003 | Verify page subtitle is displayed correctly | Yes | — | — |
 | KGR-004 | Verify Export button is displayed on page | Yes | — | — |
@@ -123,9 +123,9 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-010 | Verify page loads successfully after browser refresh | Yes | — | — |
 | KGR-011 | Verify direct URL access for authorized user | Yes | — | — |
 | KGR-012 | Verify application back navigation from KYC Gap Report | Yes | — | — |
-| KGR-013 | Verify navigation from KYC Gap Report to Missing Mandatory Template | Yes | — | — |
-| KGR-014 | Verify returning from Template screen preserves KYC Gap Report access | Yes | — | — |
-| KGR-015 | Verify filter and page state is retained when navigating between Template and Re | Yes | — | — |
+| KGR-013 | Verify KYC Gap Report is available in KYC module navigation | Yes | — | — |
+| KGR-014 | Verify user can return to KYC Gap Report after navigating away | Yes | — | — |
+| KGR-015 | Verify filters and page state persist when leaving and returning to KYC Gap Repo | Yes | — | — |
 | KGR-016 | Verify unauthorized user cannot access KYC Gap Report | Yes | — | — |
 | KGR-017 | Verify unauthenticated user cannot access KYC Gap Report URL | Yes | — | — |
 | KGR-018 | Verify page loads without UI rendering issues | Yes | — | — |
@@ -301,8 +301,8 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-188 | Verify pagination works correctly when total records equal page size | Yes | — | — |
 | KGR-189 | Verify pagination works correctly when total records are less than page size | Yes | — | — |
 | KGR-190 | Verify pagination works correctly when no records are available | Yes | — | — |
-| KGR-191 | Verify Export button is displayed on KYC Gap Report page | Yes | — | — |
-| KGR-192 | Verify Export button is enabled when records exist | Yes | — | — |
+| KGR-191 | Verify Export button is displayed on KYC Gap Report page | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-192 | Verify Export button is enabled when records exist | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-193 | Verify export downloads report successfully | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-194 | Verify exported file contains report records | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-195 | Verify exported file contains Customer column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
@@ -313,24 +313,24 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-200 | Verify exported file contains Template Applied column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-201 | Verify exported file contains KYC Gap Score column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-202 | Verify exported file contains Priority column | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
-| KGR-203 | Verify exported record count matches report record count | Yes | — | — |
-| KGR-204 | Verify exported Customer values match report data | Yes | — | — |
-| KGR-205 | Verify exported KYC Gap Score values match report data | Yes | — | — |
-| KGR-206 | Verify exported Priority values match report data | Yes | — | — |
-| KGR-207 | Verify export respects active Search filter | Yes | — | — |
-| KGR-208 | Verify export respects active Branch filter | Yes | — | — |
-| KGR-209 | Verify export respects active Customer Type filter | Yes | — | — |
-| KGR-210 | Verify export respects active Template filter | Yes | — | — |
-| KGR-211 | Verify export respects active Priority filter | Yes | — | — |
-| KGR-212 | Verify export respects active Gap Score filter | Yes | — | — |
-| KGR-213 | Verify export supports combined filters | Yes | — | — |
-| KGR-214 | Verify export after sorting | Yes | — | — |
-| KGR-215 | Verify export works from Page 1 | Yes | — | — |
-| KGR-216 | Verify export works from non-first page | Yes | — | — |
-| KGR-217 | Verify export works when page size is changed | Yes | — | — |
+| KGR-203 | Verify exported record count matches report record count | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-204 | Verify exported Customer values match report data | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-205 | Verify exported KYC Gap Score values match report data | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-206 | Verify exported Priority values match report data | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-207 | Verify export respects active Search filter | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-208 | Verify export respects active Branch filter | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-209 | Verify export respects active Customer Type filter | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-210 | Verify export respects active Template filter | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-211 | Verify export respects active Priority filter | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-212 | Verify export respects active Gap Score filter | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-213 | Verify export supports combined filters | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-214 | Verify export after sorting | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-215 | Verify export works from Page 1 | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-216 | Verify export works from non-first page | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-217 | Verify export works when page size is changed | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-218 | Verify export file opens successfully | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
-| KGR-219 | Verify export handles large datasets | Partial | "Large" record count undefined | Blocked — see TODO comment in generated spec; no automation assumption applied |
-| KGR-220 | Verify export behavior when no records are available | Yes | — | — |
+| KGR-219 | Verify export handles large datasets | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-220 | Verify export behavior when no records are available | Partial | File format (CSV/XLSX) not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-221 | Verify authenticated Compliance Officer can access KYC Gap Report | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-222 | Verify authenticated Administrator can access KYC Gap Report | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-223 | Verify unauthorized role cannot access KYC Gap Report | Partial | Role credentials not in Excel | Blocked — see TODO comment in generated spec; no automation assumption applied |
@@ -353,12 +353,12 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-240 | Verify audit log captures before and after values for score band changes | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-241 | Verify audit log remains immutable | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-242 | Verify audit records are retained after page refresh | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
-| KGR-243 | Verify unauthorized user cannot modify template configuration | Yes | — | — |
+| KGR-243 | Verify unauthorized user cannot modify template configuration | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-244 | Verify unauthorized user cannot access audit records | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
-| KGR-245 | Verify application prevents access after logout | Yes | — | — |
-| KGR-246 | Verify report remains accessible after successful re-authentication | Yes | — | — |
+| KGR-245 | Verify application prevents access after logout | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-246 | Verify report remains accessible after successful re-authentication | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-247 | Verify audit log captures template archival action | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
-| KGR-248 | Verify templates cannot be permanently deleted | Yes | — | — |
+| KGR-248 | Verify templates cannot be permanently deleted | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-249 | Verify archived templates remain traceable in audit history | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-250 | Verify audit trail completeness for template lifecycle | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 | KGR-251 | Verify search with blank value | Yes | — | — |
@@ -391,6 +391,17 @@ Generated from `pipeline/test-data/KYC Gap Report.xlsx` — 280 requirements.
 | KGR-278 | Verify report behavior with special characters in customer name | Yes | — | — |
 | KGR-279 | Verify report behavior with extremely long customer names | Yes | — | — |
 | KGR-280 | Verify report recovery after invalid filter input | Yes | — | — |
+| KGR-281 | Verify Refresh button is visible and reloads report data without losing applied  | Yes | — | — |
+| KGR-282 | Verify breadcrumb navigation displays correct KYC module path on landing page | Yes | — | — |
+| KGR-283 | Verify Individual and Corporate Type badges use distinct colour coding in grid | Yes | — | — |
+| KGR-284 | Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) | Yes | — | — |
+| KGR-285 | Verify Edit button is not present in report grid per read-only design | Yes | — | — |
+| KGR-286 | Verify Missing Fields column is not displayed in landing grid | Yes | — | — |
+| KGR-287 | Verify Gap Detail Modal displays CIF ID and branch code in customer metadata sec | Yes | — | — |
+| KGR-288 | Verify keyboard navigation reaches search, filters, grid, and pagination control | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-289 | Verify ARIA roles and labels are present on report table, filters, and Gap Detai | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-290 | Verify KYC Gap Report initial page load completes within acceptable performance  | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
+| KGR-291 | Verify KYC Gap Report layout and controls render consistently in Chrome and Edge | Partial | Audit UI/API endpoint not specified | Blocked — see TODO comment in generated spec; no automation assumption applied |
 
 ### 3.2 Highlighted Risks
 
@@ -561,7 +572,7 @@ See also: [test-cases.md](./test-cases.md) and [manifest.json](./manifest.json).
 | KGR-141 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, functional |
 | KGR-142 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, functional |
 | KGR-143 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, functional |
-| KGR-144 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, modal |
+| KGR-144 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, functional |
 | KGR-145 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, modal |
 | KGR-146 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, modal |
 | KGR-147 | KYC Module | KYC Gap Report - Gap Detail Modal | Critical | Yes | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -647,7 +658,7 @@ See also: [test-cases.md](./test-cases.md) and [manifest.json](./manifest.json).
 | KGR-227 | KYC Module | KYC Gap Report - Security & Audit | Critical | Yes | kyc-gap-report-security-audit, critical, functional |
 | KGR-228 | KYC Module | KYC Gap Report - Security & Audit | High | Yes | kyc-gap-report-security-audit, high, functional |
 | KGR-229 | KYC Module | KYC Gap Report - Security & Audit | Critical | Yes | kyc-gap-report-security-audit, critical, functional |
-| KGR-230 | KYC Module | KYC Gap Report - Security & Audit | Critical | Yes | kyc-gap-report-security-audit, critical, modal |
+| KGR-230 | KYC Module | KYC Gap Report - Security & Audit | Critical | Yes | kyc-gap-report-security-audit, critical, functional |
 | KGR-231 | KYC Module | KYC Gap Report - Security & Audit | Critical | Yes | kyc-gap-report-security-audit, critical, audit, compliance |
 | KGR-232 | KYC Module | KYC Gap Report - Security & Audit | Critical | Yes | kyc-gap-report-security-audit, critical, audit, compliance |
 | KGR-233 | KYC Module | KYC Gap Report - Security & Audit | Critical | Yes | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -675,11 +686,11 @@ See also: [test-cases.md](./test-cases.md) and [manifest.json](./manifest.json).
 | KGR-255 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
 | KGR-256 | KYC Module | KYC Gap Report - Boundary & Negative Testing | High | Yes | kyc-gap-report-boundary-negative-testing, high, gap-score, business-rule |
 | KGR-257 | KYC Module | KYC Gap Report - Boundary & Negative Testing | High | Yes | kyc-gap-report-boundary-negative-testing, high, gap-score, business-rule |
-| KGR-258 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
+| KGR-258 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, gap-score, business-rule |
 | KGR-259 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
 | KGR-260 | KYC Module | KYC Gap Report - Boundary & Negative Testing | High | Yes | kyc-gap-report-boundary-negative-testing, high, gap-score, business-rule |
 | KGR-261 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, gap-score, business-rule |
-| KGR-262 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
+| KGR-262 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, gap-score, business-rule |
 | KGR-263 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
 | KGR-264 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
 | KGR-265 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -698,10 +709,21 @@ See also: [test-cases.md](./test-cases.md) and [manifest.json](./manifest.json).
 | KGR-278 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Medium | Yes | kyc-gap-report-boundary-negative-testing, medium, functional |
 | KGR-279 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Medium | Yes | kyc-gap-report-boundary-negative-testing, medium, functional |
 | KGR-280 | KYC Module | KYC Gap Report - Boundary & Negative Testing | Critical | Yes | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
+| KGR-281 | KYC Module | KYC Gap Report | High | Yes | kyc-gap-report, high, filter |
+| KGR-282 | KYC Module | KYC Gap Report | Medium | Yes | kyc-gap-report, medium, functional |
+| KGR-283 | KYC Module | KYC Gap Report - Report Grid | High | Yes | kyc-gap-report-report-grid, high, functional |
+| KGR-284 | KYC Module | KYC Gap Report - Report Grid | High | Yes | kyc-gap-report-report-grid, high, gap-score, business-rule |
+| KGR-285 | KYC Module | KYC Gap Report - Report Grid | High | Yes | kyc-gap-report-report-grid, high, functional |
+| KGR-286 | KYC Module | KYC Gap Report - Report Grid | High | Yes | kyc-gap-report-report-grid, high, functional |
+| KGR-287 | KYC Module | KYC Gap Report - Gap Detail Modal | High | Yes | kyc-gap-report-gap-detail-modal, high, modal |
+| KGR-288 | KYC Module | KYC Gap Report - Security & Audit | Medium | Yes | kyc-gap-report-security-audit, medium, filter |
+| KGR-289 | KYC Module | KYC Gap Report - Security & Audit | Medium | Yes | kyc-gap-report-security-audit, medium, modal |
+| KGR-290 | KYC Module | KYC Gap Report - Security & Audit | Medium | Yes | kyc-gap-report-security-audit, medium, functional |
+| KGR-291 | KYC Module | KYC Gap Report - Security & Audit | Medium | Yes | kyc-gap-report-security-audit, medium, functional |
 
 ## 6. Automation Feasibility Matrix
 
-**Summary:** 275 automation candidates, 5 manual-only
+**Summary:** 286 automation candidates, 5 manual-only
 
 See [automation-feasibility.json](./automation-feasibility.json) for full machine-readable matrix.
 
@@ -987,6 +1009,17 @@ See [automation-feasibility.json](./automation-feasibility.json) for full machin
 | KGR-278 | UI | Yes | Filter/search boundary validation via visible UI controls |
 | KGR-279 | UI | Yes | Filter/search boundary validation via visible UI controls |
 | KGR-280 | UI | Yes | Filter/search boundary validation via visible UI controls |
+| KGR-281 | UI | Yes | Visible DOM interaction on KYC Gap Report page |
+| KGR-282 | UI | Yes | Visible DOM interaction on KYC Gap Report page |
+| KGR-283 | UI | Yes | Visible DOM interaction on KYC Gap Report page |
+| KGR-284 | UI | Yes | Visible DOM interaction on KYC Gap Report page |
+| KGR-285 | UI | Yes | Visible DOM interaction on KYC Gap Report page |
+| KGR-286 | UI | Yes | Visible DOM interaction on KYC Gap Report page |
+| KGR-287 | UI | Yes | Visible DOM interaction on KYC Gap Report page |
+| KGR-288 | Database + Manual | Yes | Audit trail validation requires backend query; immutability  |
+| KGR-289 | Database + Manual | Yes | Audit trail validation requires backend query; immutability  |
+| KGR-290 | Database + Manual | Yes | Audit trail validation requires backend query; immutability  |
+| KGR-291 | Database + Manual | Yes | Audit trail validation requires backend query; immutability  |
 
 ## 7. Playwright POM Planning
 
@@ -1015,15 +1048,15 @@ See [automation-feasibility.json](./automation-feasibility.json) for full machin
 
 | Metric | Value |
 | --- | --- |
-| Total requirements identified | 280 |
+| Total requirements identified | 291 |
 | Functional areas (sub-modules) | 10 |
 | Business rules extracted | 17 |
-| Total scenarios | 280 |
-| Total detailed test cases | 280 |
-| Automation candidates | 275 |
+| Total scenarios | 291 |
+| Total detailed test cases | 291 |
+| Automation candidates | 286 |
 | Manual-only scenarios | 5 |
 | MM-TC overlap (partial) | 51 |
-| Net-new KGR cases | 229 |
+| Net-new KGR cases | 240 |
 
 ### Risk Areas
 - Score band config drift

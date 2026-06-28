@@ -9,9 +9,9 @@
   {
     "requirementId": "RDR_002",
     "requirementDescription": "Verify Customer ID hyperlink functionality and navigation to customer profile details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_003",
@@ -23,9 +23,9 @@
   {
     "requirementId": "RDR_004",
     "requirementDescription": "Verify Customer Type filter allows users to filter customer records based on selected type.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_005",
@@ -37,9 +37,9 @@
   {
     "requirementId": "RDR_006",
     "requirementDescription": "Verify masking of Full Legal Name according to AML privacy and PII requirements.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_007",
@@ -100,44 +100,44 @@
   {
     "requirementId": "RDR_015",
     "requirementDescription": "Verify View action opens complete customer profile information including customer, risk, KYC and AML details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_016",
     "requirementDescription": "Verify search functionality using Customer ID and ensure the system retrieves the exact matching customer record.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_017",
     "requirementDescription": "Verify search functionality using Full Legal Name and ensure matching customer records are displayed.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_018",
     "requirementDescription": "Verify Clear button functionality after applying filters and search criteria.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_019",
     "requirementDescription": "Verify CSV Export functionality and validate exported customer data.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_020",
     "requirementDescription": "Verify Excel Export functionality and validate exported customer information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_021",
@@ -149,9 +149,9 @@
   {
     "requirementId": "RDR_022",
     "requirementDescription": "Verify Customer ID displayed against each address record matches the linked customer in Customer Master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_023",
@@ -177,9 +177,9 @@
   {
     "requirementId": "RDR_026",
     "requirementDescription": "Verify Postal Code is displayed according to configured masking rules.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_027",
@@ -205,23 +205,23 @@
   {
     "requirementId": "RDR_030",
     "requirementDescription": "Verify View action opens complete address details for the selected customer address record.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_031",
     "requirementDescription": "Verify search functionality using Address ID.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_032",
     "requirementDescription": "Verify search functionality using Customer ID and retrieve all linked addresses.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_033",
@@ -240,9 +240,9 @@
   {
     "requirementId": "RDR_035",
     "requirementDescription": "Verify CSV and Excel export functionality for Customer Address records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_036",
@@ -254,9 +254,9 @@
   {
     "requirementId": "RDR_037",
     "requirementDescription": "Verify Customer ID displayed against each document record matches the linked customer profile.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_038",
@@ -303,9 +303,9 @@
   {
     "requirementId": "RDR_044",
     "requirementDescription": "Verify expired documents are highlighted appropriately for AML review.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_045",
@@ -324,30 +324,30 @@
   {
     "requirementId": "RDR_047",
     "requirementDescription": "Verify search functionality using Document ID.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_048",
     "requirementDescription": "Verify search functionality using Customer ID and retrieve all linked customer documents.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_049",
     "requirementDescription": "Verify View action opens complete document details including AML-related information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_050",
     "requirementDescription": "Verify CSV and Excel export functionality for Customer Documents data.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_051",
@@ -359,9 +359,9 @@
   {
     "requirementId": "RDR_052",
     "requirementDescription": "Verify Customer ID displayed against each risk assessment record matches the linked customer profile.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_053",
@@ -387,37 +387,37 @@
   {
     "requirementId": "RDR_056",
     "requirementDescription": "Verify Risk Rating values are displayed correctly according to configured risk score ranges.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_057",
     "requirementDescription": "Verify high-risk customers are highlighted appropriately when Total Risk Score exceeds configured threshold.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_058",
     "requirementDescription": "Verify Previous Risk Rating is displayed correctly and reflects prior assessment results.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_059",
     "requirementDescription": "Verify Rating Changed indicator correctly identifies customers whose risk rating has changed since the last assessment.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_060",
     "requirementDescription": "Verify Next Review Date is calculated and displayed correctly based on risk review schedule.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_061",
@@ -429,30 +429,30 @@
   {
     "requirementId": "RDR_062",
     "requirementDescription": "Verify search functionality using Assessment ID.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_063",
     "requirementDescription": "Verify search functionality using Customer ID and retrieve all associated risk assessments.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_064",
     "requirementDescription": "Verify View action opens complete risk assessment details including score components and review information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_065",
     "requirementDescription": "Verify CSV and Excel export functionality for Risk Assessment records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_066",
@@ -464,9 +464,9 @@
   {
     "requirementId": "RDR_067",
     "requirementDescription": "Verify Account ID hyperlink functionality and ensure account details open correctly when selected.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_068",
@@ -478,9 +478,9 @@
   {
     "requirementId": "RDR_069",
     "requirementDescription": "Verify Customer ID displayed against each account matches the linked customer profile.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_070",
@@ -506,9 +506,9 @@
   {
     "requirementId": "RDR_073",
     "requirementDescription": "Verify Frozen accounts are highlighted appropriately and displayed with Frozen status.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_074",
@@ -534,51 +534,51 @@
   {
     "requirementId": "RDR_077",
     "requirementDescription": "Verify Customer ID filter functionality and ensure accounts are filtered correctly.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_078",
     "requirementDescription": "Verify search functionality using Account ID.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_079",
     "requirementDescription": "Verify View action opens complete account details including AML-related information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_080",
     "requirementDescription": "Verify CSV and Excel export functionality for Account Master records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_081",
     "requirementDescription": "Verify Relationship ID (Rel ID) is displayed uniquely for every customer-account relationship record.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_082",
     "requirementDescription": "Verify Customer ID displayed in relationship records matches the linked customer profile in Customer Master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_083",
     "requirementDescription": "Verify Account ID displayed in relationship records matches the linked account in Account Master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_084",
@@ -618,16 +618,16 @@
   {
     "requirementId": "RDR_089",
     "requirementDescription": "Verify search functionality using Relationship ID and retrieve the exact matching relationship record.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_090",
     "requirementDescription": "Verify View action opens complete customer-account relationship details including customer, account and KYC information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_091",
@@ -639,16 +639,16 @@
   {
     "requirementId": "RDR_092",
     "requirementDescription": "Verify Customer ID displayed against each loan account matches the linked customer profile.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_093",
     "requirementDescription": "Verify Account ID displayed against each loan account matches the linked account in Account Master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_094",
@@ -695,9 +695,9 @@
   {
     "requirementId": "RDR_100",
     "requirementDescription": "Verify View action opens complete loan account details including loan information, balances, repayment schedule and status.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_101",
@@ -709,16 +709,16 @@
   {
     "requirementId": "RDR_102",
     "requirementDescription": "Verify Account ID displayed in EOD records matches the linked account in Account Master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_103",
     "requirementDescription": "Verify Customer ID displayed against each EOD balance record matches the linked customer profile.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_104",
@@ -751,9 +751,9 @@
   {
     "requirementId": "RDR_108",
     "requirementDescription": "Verify Currency values are displayed correctly for all EOD balance records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_109",
@@ -765,9 +765,9 @@
   {
     "requirementId": "RDR_110",
     "requirementDescription": "Verify View action opens complete EOD balance details including balance calculation and transaction summary information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_111",
@@ -814,9 +814,9 @@
   {
     "requirementId": "RDR_117",
     "requirementDescription": "Verify hot-listed cards are highlighted appropriately and displayed with the correct status indicator.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_118",
@@ -835,9 +835,9 @@
   {
     "requirementId": "RDR_120",
     "requirementDescription": "Verify View action opens complete card details including card status, limits, AML risk flags and usage configuration.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_121",
@@ -905,9 +905,9 @@
   {
     "requirementId": "RDR_130",
     "requirementDescription": "Verify View action opens complete mobile banking details including registration information, AML indicators and mobile banking activity details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_131",
@@ -968,16 +968,16 @@
   {
     "requirementId": "RDR_139",
     "requirementDescription": "Verify search functionality using ATM ID.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_140",
     "requirementDescription": "Verify search functionality using ATM Code.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_141",
@@ -996,23 +996,23 @@
   {
     "requirementId": "RDR_143",
     "requirementDescription": "Verify View action opens complete ATM details including AML and operational information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_144",
     "requirementDescription": "Verify CSV export functionality for ATM Master records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_145",
     "requirementDescription": "Verify Excel export functionality for ATM Master records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_146",
@@ -1031,16 +1031,16 @@
   {
     "requirementId": "RDR_148",
     "requirementDescription": "Verify search functionality using Instrument ID and ensure the correct instrument record is retrieved.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_149",
     "requirementDescription": "Verify View action opens complete instrument details including status and AML-related information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_150",
@@ -1073,16 +1073,16 @@
   {
     "requirementId": "RDR_154",
     "requirementDescription": "Verify CSV export functionality for Instrument Master records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_155",
     "requirementDescription": "Verify Excel export functionality for Instrument Master records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_156",
@@ -1136,9 +1136,9 @@
   {
     "requirementId": "RDR_163",
     "requirementDescription": "Verify Customer Count value in device details matches the number of linked customers.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_164",
@@ -1150,9 +1150,9 @@
   {
     "requirementId": "RDR_165",
     "requirementDescription": "Verify High Risk Reason is displayed correctly for flagged devices.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_166",
@@ -1178,16 +1178,16 @@
   {
     "requirementId": "RDR_169",
     "requirementDescription": "Verify View action opens complete transaction device details including AML risk indicators and device fingerprint information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_170",
     "requirementDescription": "Verify search functionality using Device ID and retrieve the correct device record.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_171",
@@ -1241,9 +1241,9 @@
   {
     "requirementId": "RDR_178",
     "requirementDescription": "Verify beneficial owners meeting regulatory ownership thresholds are displayed correctly.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_179",
@@ -1255,37 +1255,37 @@
   {
     "requirementId": "RDR_180",
     "requirementDescription": "Verify Watchlist Flag is displayed correctly for beneficial owners identified on internal or external watchlists.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_181",
     "requirementDescription": "Verify beneficial owners with Watchlist Flag = Yes are highlighted appropriately for AML review.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_182",
     "requirementDescription": "Verify search functionality using BO ID retrieves the correct beneficial owner record.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_183",
     "requirementDescription": "Verify search functionality using Customer ID retrieves all associated beneficial owners.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_184",
     "requirementDescription": "Verify View action opens complete beneficial owner details including ownership, control and AML screening information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_185",
@@ -1353,9 +1353,9 @@
   {
     "requirementId": "RDR_194",
     "requirementDescription": "Verify ownership relationships above regulatory thresholds are displayed correctly.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_195",
@@ -1374,9 +1374,9 @@
   {
     "requirementId": "RDR_197",
     "requirementDescription": "Verify Risk Flag is displayed correctly for AML-risk relationships.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_198",
@@ -1388,16 +1388,16 @@
   {
     "requirementId": "RDR_199",
     "requirementDescription": "Verify search functionality retrieves the correct relationship record using Relationship ID.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_200",
     "requirementDescription": "Verify View action opens complete relationship details including entity mapping, ownership information and AML indicators.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_201",
@@ -1451,9 +1451,9 @@
   {
     "requirementId": "RDR_208",
     "requirementDescription": "Verify PEP Individual records are classified correctly and displayed with appropriate visual indicators.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_209",
@@ -1472,16 +1472,16 @@
   {
     "requirementId": "RDR_211",
     "requirementDescription": "Verify PEP Flag is displayed correctly in the detail screen according to AML screening results.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_212",
     "requirementDescription": "Verify Sanctions Flag is displayed correctly for sanctioned non-customer entities.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_213",
@@ -1493,23 +1493,23 @@
   {
     "requirementId": "RDR_214",
     "requirementDescription": "Verify search functionality retrieves the correct non-customer record using Non-Customer ID.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_215",
     "requirementDescription": "Verify View action opens complete non-customer details including AML flags, relationship information and source details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_216",
     "requirementDescription": "Verify Customer Type records are displayed successfully in the Customer Type Master grid after data load.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_217",
@@ -1528,37 +1528,37 @@
   {
     "requirementId": "RDR_219",
     "requirementDescription": "Verify Customer Type Code remains unique across all customer type records.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_220",
     "requirementDescription": "Verify Segment ID is displayed uniquely for each customer type record.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_221",
     "requirementDescription": "Verify search functionality retrieves the correct customer type record using Customer Type Code.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_222",
     "requirementDescription": "Verify search functionality retrieves the correct customer type record using Customer Type Name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_223",
     "requirementDescription": "Verify View action opens complete customer type details including risk and CDD configuration fields.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_224",
@@ -1570,9 +1570,9 @@
   {
     "requirementId": "RDR_225",
     "requirementDescription": "Verify Customer Type Name displayed in UI matches the customer_type_name field maintained in source systems.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_226",
@@ -1584,9 +1584,9 @@
   {
     "requirementId": "RDR_227",
     "requirementDescription": "Verify CDD Level is displayed correctly according to configured due diligence rules.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_228",
@@ -1598,16 +1598,16 @@
   {
     "requirementId": "RDR_229",
     "requirementDescription": "Verify CSV export functionality exports all customer type records successfully.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_230",
     "requirementDescription": "Verify Excel export functionality exports all customer type records successfully.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_231",
@@ -1619,9 +1619,9 @@
   {
     "requirementId": "RDR_232",
     "requirementDescription": "Verify Product ID is displayed uniquely for every product maintained in the Product Master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_233",
@@ -1668,9 +1668,9 @@
   {
     "requirementId": "RDR_239",
     "requirementDescription": "Verify Trade Finance products are marked as Cross Border where applicable.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_240",
@@ -1691,28 +1691,28 @@
     "requirementDescription": "Verify goAML Product Type mapping is displayed correctly in product detail view for regulatory reporting purposes.",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "goAML integration validated at UI level only per FSD §11.4"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_243",
     "requirementDescription": "Verify search functionality retrieves the correct product record using Product Code or Product Name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_244",
     "requirementDescription": "Verify View action opens complete product details including Product ID, Category, Risk Rating and goAML mapping.",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "goAML integration validated at UI level only per FSD §11.4"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_245",
     "requirementDescription": "Verify CSV and Excel export functionality exports all Product Master records accurately.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_246",
@@ -1724,9 +1724,9 @@
   {
     "requirementId": "RDR_247",
     "requirementDescription": "Verify Branch ID is displayed uniquely for every branch maintained in the Branch Master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_248",
@@ -1808,16 +1808,16 @@
   {
     "requirementId": "RDR_259",
     "requirementDescription": "Verify search functionality retrieves the correct branch record using Branch ID, Code or Name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_260",
     "requirementDescription": "Verify View action opens complete branch details including Branch ID, Type, Country Code, High Risk Area Flag, IFSC and SWIFT information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_261",
@@ -1829,9 +1829,9 @@
   {
     "requirementId": "RDR_262",
     "requirementDescription": "Verify Channel ID is displayed uniquely for every channel record maintained in the master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_263",
@@ -1871,30 +1871,30 @@
   {
     "requirementId": "RDR_268",
     "requirementDescription": "Verify Branch channel is classified as PHYSICAL and displayed correctly in the grid.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_269",
     "requirementDescription": "Verify Mobile Banking channel is classified as DIGITAL and displayed correctly.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_270",
     "requirementDescription": "Verify UPI channel is classified as DIGITAL and displayed correctly for AML monitoring purposes.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_271",
     "requirementDescription": "Verify Risk Score Weight is displayed correctly in the channel detail screen and matches configured AML scoring rules.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_272",
@@ -1908,21 +1908,21 @@
     "requirementDescription": "Verify goAML Channel Type mapping is displayed correctly in the channel detail screen.",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "goAML integration validated at UI level only per FSD §11.4"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_274",
     "requirementDescription": "Verify search functionality retrieves the correct channel record using Channel Code or Channel Name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_275",
     "requirementDescription": "Verify View action opens complete channel details including Channel Code, Type, Risk Weight, Cross Border Indicator and goAML mapping.",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "goAML integration validated at UI level only per FSD §11.4"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_276",
@@ -1934,9 +1934,9 @@
   {
     "requirementId": "RDR_277",
     "requirementDescription": "Verify Transaction Type ID is displayed uniquely for every transaction type record maintained in the master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_278",
@@ -2004,30 +2004,30 @@
   {
     "requirementId": "RDR_287",
     "requirementDescription": "Verify Risk Weight is displayed correctly in the transaction type detail screen and matches AML scoring configuration.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_288",
     "requirementDescription": "Verify goAML Transaction Type mapping is displayed correctly in the detail screen for STR reporting requirements.",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "goAML integration validated at UI level only per FSD §11.4"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_289",
     "requirementDescription": "Verify search functionality retrieves the correct transaction type record using transaction code or name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_290",
     "requirementDescription": "Verify View action opens complete transaction type details including direction, risk weight, cash indicator, cross-border flag and goAML mapping.",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "goAML integration validated at UI level only per FSD §11.4"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_291",
@@ -2053,9 +2053,9 @@
   {
     "requirementId": "RDR_294",
     "requirementDescription": "Verify Currency Symbol is displayed correctly for each configured currency.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_295",
@@ -2074,51 +2074,51 @@
   {
     "requirementId": "RDR_297",
     "requirementDescription": "Verify INR currency record is displayed correctly with all associated details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_298",
     "requirementDescription": "Verify USD currency record is displayed correctly with all associated details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_299",
     "requirementDescription": "Verify AED currency record is displayed correctly with all associated details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_300",
     "requirementDescription": "Verify Search functionality retrieves the correct currency record using Currency Code.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_301",
     "requirementDescription": "Verify Search functionality retrieves the correct currency record using Currency Name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_302",
     "requirementDescription": "Verify View action opens complete currency details including Currency Code, Name, Reporting Currency flag and AML attributes.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_303",
     "requirementDescription": "Verify Reporting Currency flag is displayed correctly in the currency detail view according to bank reporting configuration.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_304",
@@ -2130,9 +2130,9 @@
   {
     "requirementId": "RDR_305",
     "requirementDescription": "Verify Currency Master data can be exported successfully through Excel and CSV options without data loss.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_306",
@@ -2144,9 +2144,9 @@
   {
     "requirementId": "RDR_307",
     "requirementDescription": "Verify Rate ID is displayed uniquely for every FX rate record maintained in the master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_308",
@@ -2200,58 +2200,58 @@
   {
     "requirementId": "RDR_315",
     "requirementDescription": "Verify USD to INR exchange rate record is displayed correctly with all associated details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_316",
     "requirementDescription": "Verify AED to INR exchange rate record is displayed correctly with all associated details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_317",
     "requirementDescription": "Verify EUR to INR exchange rate record is displayed correctly with all associated details.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_318",
     "requirementDescription": "Verify Search functionality retrieves the correct FX rate record using Rate ID or Currency Code.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_319",
     "requirementDescription": "Verify View action opens complete FX rate details including currencies, exchange rate, effective date and source information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_320",
     "requirementDescription": "Verify CSV and Excel export functionality exports all displayed FX rate records correctly without data mismatch.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_321",
     "requirementDescription": "Verify Industry Code Master records are displayed successfully after synchronization and all configured industry records are visible in the grid.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_322",
     "requirementDescription": "Verify Industry Master ID is displayed uniquely for every industry record maintained in the system.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_323",
@@ -2284,37 +2284,37 @@
   {
     "requirementId": "RDR_327",
     "requirementDescription": "Verify Banking and Financial Intermediation industry record is displayed correctly with its associated code and description.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_328",
     "requirementDescription": "Verify Jewellery industry record is displayed correctly as a cash-intensive business sector used for AML monitoring.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_329",
     "requirementDescription": "Verify Restaurant and Mobile Food Services industry record is displayed correctly as per configured industry classification.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_330",
     "requirementDescription": "Verify Risk Rating field is displayed correctly in the industry detail screen according to AML risk scoring rules.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_331",
     "requirementDescription": "Verify High Risk Flag is displayed correctly for industries classified as high-risk sectors for AML purposes.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_332",
@@ -2326,37 +2326,37 @@
   {
     "requirementId": "RDR_333",
     "requirementDescription": "Verify Search functionality retrieves the correct industry record using Industry Code.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_334",
     "requirementDescription": "Verify Search functionality retrieves the correct industry record using Industry Name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_335",
     "requirementDescription": "Verify View action opens complete industry details including Industry Code, Name, Risk Rating, High Risk Flag and FATF Sector classification.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_336",
     "requirementDescription": "Verify Reference Master records are displayed successfully after synchronization and all configured reference values are visible in the grid.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_337",
     "requirementDescription": "Verify Reference ID is displayed uniquely for every reference record maintained in the system.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_338",
@@ -2410,128 +2410,128 @@
   {
     "requirementId": "RDR_345",
     "requirementDescription": "Verify CTR Threshold reference record is displayed correctly with AML reporting threshold information.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_346",
     "requirementDescription": "Verify Wildlife Keyword reference record is displayed correctly for AML wildlife trafficking monitoring scenarios.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_347",
     "requirementDescription": "Verify Dormancy Threshold reference record is displayed correctly for dormant account monitoring rules.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_348",
     "requirementDescription": "Verify Search functionality retrieves the correct reference record using Reference Code.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_349",
     "requirementDescription": "Verify Search functionality retrieves the correct reference record using Category name.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_350",
     "requirementDescription": "Verify View action opens complete reference details including Reference Type, Code, Name, Active Flag and Sort Order information maintained in the master.",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_351",
     "requirementDescription": "Verify Country Master page loads successfully",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_352",
     "requirementDescription": "Verify High Risk countries are displayed at top by default",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_353",
     "requirementDescription": "Verify search using Country Name",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_354",
     "requirementDescription": "Verify search using ISO Alpha-2 Code",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_355",
     "requirementDescription": "Verify Region filter functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_356",
     "requirementDescription": "Verify Risk Level filter functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_357",
     "requirementDescription": "Verify combined Search and Filter functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_358",
     "requirementDescription": "Verify Country Name column sorting",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Column sort order validated via column header visibility and grid population; full sort-order verification requires dedicated sort interaction per FSD §4.2"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_359",
     "requirementDescription": "Verify Region column sorting",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Column sort order validated via column header visibility and grid population; full sort-order verification requires dedicated sort interaction per FSD §4.2"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_360",
     "requirementDescription": "Verify Risk Reason tags display correctly",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_361",
     "requirementDescription": "Verify View button functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_362",
     "requirementDescription": "Verify Audit Trail information in View panel",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Audit Trail / Maker-Checker workflow validated via detail modal visibility; full workflow requires role credentials per FSD §10"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_363",
@@ -2543,92 +2543,141 @@
   {
     "requirementId": "RDR_364",
     "requirementDescription": "Verify Checker approval workflow",
-    "testable": "No",
-    "missingInformation": "Maker/Checker role credentials and write-access workflow not defined in Excel Test Data",
-    "assumptions": ""
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
     "requirementId": "RDR_365",
     "requirementDescription": "Verify CSV export functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_376",
+    "requirementId": "RDR_366",
     "requirementDescription": "Verify search functionality using Employee Name",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_377",
+    "requirementId": "RDR_367",
     "requirementDescription": "Verify masked employee name display for PII protection",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_378",
+    "requirementId": "RDR_368",
     "requirementDescription": "Verify employee status display",
     "testable": "Partial",
     "missingInformation": "",
     "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_379",
+    "requirementId": "RDR_369",
     "requirementDescription": "Verify Joining Date is displayed correctly",
     "testable": "Partial",
     "missingInformation": "",
     "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_380",
+    "requirementId": "RDR_370",
     "requirementDescription": "Verify Department information display",
     "testable": "Partial",
     "missingInformation": "",
     "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_381",
+    "requirementId": "RDR_371",
     "requirementDescription": "Verify Branch assignment display",
     "testable": "Partial",
     "missingInformation": "",
     "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_382",
+    "requirementId": "RDR_372",
     "requirementDescription": "Verify Supervisor ID mapping",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_383",
+    "requirementId": "RDR_373",
     "requirementDescription": "Verify View button functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_384",
+    "requirementId": "RDR_374",
     "requirementDescription": "Verify CSV export functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_385",
+    "requirementId": "RDR_375",
     "requirementDescription": "Verify Excel export functionality",
-    "testable": "Yes",
+    "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Automate via UI grid interactions per Excel steps and FSD §4.2 Data Grid"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   },
   {
-    "requirementId": "RDR_386",
+    "requirementId": "RDR_376",
     "requirementDescription": "Verify employee records are limited to maximum configured row count",
     "testable": "Partial",
     "missingInformation": "",
-    "assumptions": "Record-limit UI validated via grid row count; performance/load-time aspect requires NFR §12 load-testing infrastructure"
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
+  },
+  {
+    "requirementId": "RDR_377",
+    "requirementDescription": "Verify column selector shows and hides columns on Customer Master grid",
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
+  },
+  {
+    "requirementId": "RDR_378",
+    "requirementDescription": "Verify toast appears after refresh CBS action with latest sync status",
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
+  },
+  {
+    "requirementId": "RDR_379",
+    "requirementDescription": "Verify sticky header remains visible while scrolling through grid rows",
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
+  },
+  {
+    "requirementId": "RDR_380",
+    "requirementDescription": "Verify KPI cards display and match customer master dataset counts",
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
+  },
+  {
+    "requirementId": "RDR_381",
+    "requirementDescription": "Verify maximum 50k rows label is displayed for the customer dataset limit",
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
+  },
+  {
+    "requirementId": "RDR_382",
+    "requirementDescription": "Verify responsive behavior on smaller viewport without clipping filter and grid controls",
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
+  },
+  {
+    "requirementId": "RDR_383",
+    "requirementDescription": "Verify refresh CBS completes with success toast and updated sync timestamp",
+    "testable": "Partial",
+    "missingInformation": "",
+    "assumptions": "CBS/source parity validated via UI grid population and pilotData fixtures; full backend compare requires API/DB access per FSD §11.3"
   }
 ]

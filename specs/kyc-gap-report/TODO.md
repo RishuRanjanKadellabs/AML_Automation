@@ -7,6 +7,8 @@
 - **KGR-118**: Per-template band config not listed — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-119**: Per-template band config not listed — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-120**: Per-template band config not listed — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-191**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-192**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-193**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-194**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-195**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
@@ -17,8 +19,24 @@
 - **KGR-200**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-201**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-202**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-203**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-204**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-205**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-206**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-207**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-208**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-209**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-210**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-211**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-212**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-213**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-214**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-215**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-216**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-217**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-218**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
-- **KGR-219**: "Large" record count undefined — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-219**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-220**: File format (CSV/XLSX) not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-221**: Role credentials not in Excel — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-222**: Role credentials not in Excel — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-223**: Role credentials not in Excel — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
@@ -36,10 +54,18 @@
 - **KGR-240**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-241**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-242**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-243**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-244**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-245**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-246**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-247**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-248**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-249**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-250**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-254**: Expected system response detail (block/sanitize/log) — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 - **KGR-255**: Expected system response detail (block/sanitize/log) — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-288**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-289**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-290**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
+- **KGR-291**: Audit UI/API endpoint not specified — _Assumption documented, not implemented: Blocked — see TODO comment in generated spec; no automation assumption applied_
 

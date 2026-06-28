@@ -3,7 +3,7 @@ import { formatFsdReference } from "./fsd-mapper";
 import { buildGapTodoComment, parseNumberedSteps } from "./excel-intent";
 
 function escapeComment(value: string): string {
-  return value.replace(/\*\//g, "* /").replace(/\n/g, " ").trim();
+  return value.replace(/\*\//g, "* /").replace(/[\r\n]+/g, " ").trim();
 }
 
 export function buildTraceabilityComments(row: RdrExcelRow, fsd: FsdMappingEntry): string {

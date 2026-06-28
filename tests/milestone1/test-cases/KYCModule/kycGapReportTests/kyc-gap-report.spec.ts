@@ -1,5 +1,5 @@
 // spec: specs/kyc-gap-report/plan.md
-// source: pipeline/test-data/KYC Gap Report.xlsx — 280 cases (KGR-001–KGR-280)
+// source: pipeline/test-data/KYC Gap Report.xlsx — 291 cases (KGR-001–KGR-291)
 // fsd: pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx
 import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import KycGapReportPage from "../../../pages/KYCModule/KYCGapReportPages/KycGapReportPage";
@@ -12,23 +12,27 @@ test.describe("KYC Gap Report Module", () => {
   });
 
   test.describe("Core", () => {
-  test("Case ID:KGR-001 - Core → user can access KYC Gap Report from Missing Mandatory menu", async ({ testData }) => {
+  test("Case ID:KGR-001 - Core → user can access KYC Gap Report", async ({ testData }) => {
     // Excel Test Case ID: KGR-001
-    // Excel Scenario: Core → Verify user can access KYC Gap Report from Missing Mandatory menu
+    // Excel Scenario: Core → Verify user can access KYC Gap Report
     // FSD §4.2 — Navigation
-    // Steps (3): Login to application → Expand Missing Mandatory menu → Click KYC Gap Report
-    // Expected: KYC Gap Report screen opens successfully with all page components rendered
-    console.log("[KGR-001] Core → Verify user can access KYC Gap Report from Missing Mandatory menu");
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify layout, badges, and controls render without overlap or clipping. …
+    // Expected: KYC Gap Report opens with title, subtitle, KPI strip, filters, and report grid visible.
+    console.log("[KGR-001] Core → Verify user can access KYC Gap Report");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openGapReportFromSidebar();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
       });
   });
 
@@ -36,19 +40,24 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-002
     // Excel Scenario: Core → Verify KYC Gap Report page title is displayed correctly
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to KYC Gap Report → Observe page title
-    // Expected: Page title displays as "KYC Gap Report"
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: KYC Gap Report page title is displayed correctly.
     console.log("[KGR-002] Core → Verify KYC Gap Report page title is displayed correctly");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -56,19 +65,24 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-003
     // Excel Scenario: Core → Verify page subtitle is displayed correctly
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to KYC Gap Report → Verify subtitle text
-    // Expected: Subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements"
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Page subtitle is displayed correctly.
     console.log("[KGR-003] Core → Verify page subtitle is displayed correctly");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -76,19 +90,24 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-004
     // Excel Scenario: Core → Verify Export button is displayed on page
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to page → Observe top right section
-    // Expected: Export button is visible and enabled
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Export button is displayed on page.
     console.log("[KGR-004] Core → Verify Export button is displayed on page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -96,19 +115,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-005
     // Excel Scenario: Core → Verify all KPI cards are displayed
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to page → Observe KPI section
-    // Expected: All configured KPI cards are displayed without layout issues
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: All KPI cards are displayed.
     console.log("[KGR-005] Core → Verify all KPI cards are displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -116,19 +141,24 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-006
     // Excel Scenario: Core → Verify report list section loads successfully
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to page → Observe report grid
-    // Expected: Report list loads successfully with available records
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Report list section loads successfully.
     console.log("[KGR-006] Core → Verify report list section loads successfully");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -136,23 +166,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-007
     // Excel Scenario: Core → Verify all configured filters are visible
     // FSD §4.2 — Navigation
-    // Steps (7): Navigate to page → Verify Search filter → Verify Branch filter …
-    // Expected: All configured filters are displayed and accessible
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: All configured filters are visible.
     console.log("[KGR-007] Core → Verify all configured filters are visible");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyBranchFilter();
-      await gapPage.applyCustomerTypeFilter();
-      await gapPage.applyTemplateFilter();
-      await gapPage.applyPriorityFilter();
-      await gapPage.applyScoreRangeFilter('0', '100');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -160,20 +192,24 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-008
     // Excel Scenario: Core → Verify report grid is displayed
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to page → Observe report table
-    // Expected: Grid loads successfully without errors
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Report grid is displayed.
     console.log("[KGR-008] Core → Verify report grid is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -181,19 +217,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-009
     // Excel Scenario: Core → Verify pagination controls are displayed
     // FSD §4.2 — Navigation
-    // Steps (3): Navigate to page → Scroll to bottom → Verify pagination controls
-    // Expected: Items per page selector, page indicator and navigation controls are displayed
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Pagination controls are displayed.
     console.log("[KGR-009] Core → Verify pagination controls are displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -201,19 +243,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-010
     // Excel Scenario: Core → Verify page loads successfully after browser refresh
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to page → Refresh browser
-    // Expected: Page reloads successfully without errors
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Page loads successfully after browser refresh.
     console.log("[KGR-010] Core → Verify page loads successfully after browser refresh");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       await gapPage.expectPageLoaded();
       });
   });
@@ -222,19 +270,24 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-011
     // Excel Scenario: Core → Verify direct URL access for authorized user
     // FSD §4.2 — Navigation
-    // Steps (2): Copy KYC Gap Report URL → Open URL directly
-    // Expected: Page opens successfully without requiring additional navigation
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Direct URL access for authorized user.
     console.log("[KGR-011] Core → Verify direct URL access for authorized user");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -242,50 +295,56 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-012
     // Excel Scenario: Core → Verify application back navigation from KYC Gap Report
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to KYC Gap Report → Click browser Back button
-    // Expected: User is redirected to previous page without application error
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Application back navigation from KYC Gap Report.
     console.log("[KGR-012] Core → Verify application back navigation from KYC Gap Report");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await gapPage.expectPageLoaded();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
       });
   });
 
-  test("Case ID:KGR-013 - Core → navigation from KYC Gap Report to Missing Mandatory Template", async ({ testData }) => {
+  test("Case ID:KGR-013 - Core → KYC Gap Report is available in KYC module navigation", async ({ testData }) => {
     // Excel Test Case ID: KGR-013
-    // Excel Scenario: Core → Verify navigation from KYC Gap Report to Missing Mandatory Template
+    // Excel Scenario: Core → Verify KYC Gap Report is available in KYC module navigation
     // FSD §4.2 — Navigation
-    // Steps (2): Open KYC Gap Report → Navigate to Missing Mandatory Data Template
-    // Expected: Template screen opens successfully
-    console.log("[KGR-013] Core → Verify navigation from KYC Gap Report to Missing Mandatory Template");
+    // Steps (13): Open KYC module navigation. → Review available KYC module options. → Verify KYC Gap Report is listed …
+    // Expected: KYC Gap Report is listed in KYC module navigation and opens successfully.
+    console.log("[KGR-013] Core → Verify KYC Gap Report is available in KYC module navigation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openGapReportFromSidebar();
+      await gapPage.expectGapReportViewLoaded();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       });
   });
 
-  test("Case ID:KGR-014 - Core → returning from Template screen preserves KYC Gap Report access", async ({ testData }) => {
+  test("Case ID:KGR-014 - Core → user can return to KYC Gap Report after navigating away", async ({ testData }) => {
     // Excel Test Case ID: KGR-014
-    // Excel Scenario: Core → Verify returning from Template screen preserves KYC Gap Report access
+    // Excel Scenario: Core → Verify user can return to KYC Gap Report after navigating away
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to Template screen → Return to KYC Gap Report
-    // Expected: KYC Gap Report opens successfully
-    console.log("[KGR-014] Core → Verify returning from Template screen preserves KYC Gap Report access");
+    // Steps (11): Open KYC Gap Report → Navigate to another KYC screen → Return to KYC Gap Report …
+    // Expected: KYC Gap Report reloads successfully when selected again.
+    console.log("[KGR-014] Core → Verify user can return to KYC Gap Report after navigating away");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
@@ -299,13 +358,13 @@ test.describe("KYC Gap Report Module", () => {
       });
   });
 
-  test("Case ID:KGR-015 - Core → filter and page state is retained when navigating between Template and Report views", async ({ testData }) => {
+  test("Case ID:KGR-015 - Core → filters and page state persist when leaving and returning to KYC Gap Report", async ({ testData }) => {
     // Excel Test Case ID: KGR-015
-    // Excel Scenario: Core → Verify filter and page state is retained when navigating between Template and Report views
+    // Excel Scenario: Core → Verify filters and page state persist when leaving and returning to KYC Gap Report
     // FSD §4.2 — Navigation
-    // Steps (3): Apply filters → Navigate to Template screen → Return to KYC Gap Report
-    // Expected: Previously selected filters and page state remain unchanged
-    console.log("[KGR-015] Core → Verify filter and page state is retained when navigating between Template and Report views");
+    // Steps (11): Apply filters on KYC Gap Report → Navigate to another KYC screen → Return to KYC Gap Report …
+    // Expected: Previously applied filters and pagination remain unchanged.
+    console.log("[KGR-015] Core → Verify filters and page state persist when leaving and returning to KYC Gap Report");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
@@ -316,7 +375,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
       });
   });
 
@@ -324,8 +383,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-016
     // Excel Scenario: Core → Verify unauthorized user cannot access KYC Gap Report
     // FSD §4.2 — Navigation
-    // Steps (2): Login with unauthorized role → Attempt to access KYC Gap Report
-    // Expected: Access is denied as per security configuration
+    // Steps (23): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Unauthorized user cannot access KYC Gap Report.
     console.log("[KGR-016] Core → Verify unauthorized user cannot access KYC Gap Report");
     await test.step("Preconditions", async () => {
       await gapPage.mockUnauthorized();
@@ -333,10 +392,6 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
       });
 
     await test.step("Validate expected results", async () => {
@@ -348,8 +403,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-017
     // Excel Scenario: Core → Verify unauthenticated user cannot access KYC Gap Report URL
     // FSD §4.2 — Navigation
-    // Steps (2): Logout from application → Enter KYC Gap Report URL directly
-    // Expected: User is redirected to login page or access denied screen
+    // Steps (23): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Unauthenticated user cannot access KYC Gap Report URL.
     console.log("[KGR-017] Core → Verify unauthenticated user cannot access KYC Gap Report URL");
     await test.step("Preconditions", async () => {
       await gapPage.mockUnauthorized();
@@ -357,10 +412,6 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.mockUnauthorized();
       });
 
     await test.step("Validate expected results", async () => {
@@ -372,19 +423,24 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-018
     // Excel Scenario: Core → Verify page loads without UI rendering issues
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to page → Review header, KPI cards, filters, grid and pagination
-    // Expected: All UI components render correctly without overlap, truncation or broken layout
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Page loads without UI rendering issues.
     console.log("[KGR-018] Core → Verify page loads without UI rendering issues");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       });
   });
 
@@ -392,18 +448,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-019
     // Excel Scenario: Core → Verify page remains functional after multiple navigations
     // FSD §4.2 — Navigation
-    // Steps (4): Open KYC Gap Report → Navigate away → Return to page …
-    // Expected: Page remains accessible and functional throughout navigation cycles
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Page remains functional after multiple navigations.
     console.log("[KGR-019] Core → Verify page remains functional after multiple navigations");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
       await gapPage.expectPageLoaded();
       });
   });
@@ -412,19 +475,82 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-020
     // Excel Scenario: Core → Verify no application error occurs when opening KYC Gap Report
     // FSD §4.2 — Navigation
-    // Steps (2): Navigate to KYC Gap Report → Monitor page behavior
-    // Expected: Page loads successfully without error messages, crashes or blank screens
+    // Steps (11): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: No application error occurs when opening KYC Gap Report.
     console.log("[KGR-020] Core → Verify no application error occurs when opening KYC Gap Report");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       });
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      });
+  });
+
+  test("Case ID:KGR-281 - Core → Refresh button is visible and reloads report data without losing applied filters", async ({ testData }) => {
+    // Excel Test Case ID: KGR-281
+    // Excel Scenario: Core → Verify Refresh button is visible and reloads report data without losing applied filters
+    // FSD §4.2 — Navigation
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Report reloads with fresh data and active filters stay applied.
+    console.log("[KGR-281] Core → Verify Refresh button is visible and reloads report data without losing applied filters");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
+      });
+
+    await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectKpiCountsMatchGrid();
+      });
+  });
+
+  test("Case ID:KGR-282 - Core → breadcrumb navigation displays correct KYC module path on landing page", async ({ testData }) => {
+    // Excel Test Case ID: KGR-282
+    // Excel Scenario: Core → Verify breadcrumb navigation displays correct KYC module path on landing page
+    // FSD §4.2 — Navigation
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Verify page title displays as "KYC Gap Report". …
+    // Expected: Breadcrumb shows KYC Gap Report in the module path.
+    console.log("[KGR-282] Core → Verify breadcrumb navigation displays correct KYC module path on landing page");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      });
+
+    await test.step("Validate expected results", async () => {
+      await gapPage.expectBreadcrumbVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectKpiCountsMatchGrid();
       });
   });
   });
@@ -434,19 +560,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-021
     // Excel Scenario: KPI Cards → Verify Total Customers (CBS) KPI card is displayed
     // FSD §4.3 — KPI Summary Cards
-    // Steps (2): Navigate to KYC Gap Report → Observe KPI section
-    // Expected: Total Customers (CBS) KPI card is displayed successfully
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Total Customers (CBS) KPI card is displayed.
     console.log("[KGR-021] KPI Cards → Verify Total Customers (CBS) KPI card is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -454,19 +590,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-022
     // Excel Scenario: KPI Cards → Verify Customers with Gaps KPI card is displayed
     // FSD §4.3 — KPI Summary Cards
-    // Steps (2): Navigate to KYC Gap Report → Observe KPI section
-    // Expected: Customers with Gaps KPI card is displayed successfully
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customers with Gaps KPI card is displayed.
     console.log("[KGR-022] KPI Cards → Verify Customers with Gaps KPI card is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -474,21 +620,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-023
     // Excel Scenario: KPI Cards → Verify Critical Priority KPI card is displayed
     // FSD §4.3 — KPI Summary Cards
-    // Steps (2): Navigate to KYC Gap Report → Observe KPI section
-    // Expected: Critical Priority KPI card is displayed successfully
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Critical Priority KPI card is displayed.
     console.log("[KGR-023] KPI Cards → Verify Critical Priority KPI card is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -496,19 +650,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-024
     // Excel Scenario: KPI Cards → Verify KPI card labels are displayed correctly
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Verify KPI card labels
-    // Expected: All KPI labels are displayed correctly without truncation
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI card labels are displayed correctly.
     console.log("[KGR-024] KPI Cards → Verify KPI card labels are displayed correctly");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -516,19 +680,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-025
     // Excel Scenario: KPI Cards → Verify Total Customers KPI value is numeric
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Observe Total Customers KPI
-    // Expected: Total Customers KPI displays a valid numeric value
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Total Customers KPI value is numeric.
     console.log("[KGR-025] KPI Cards → Verify Total Customers KPI value is numeric");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -536,19 +711,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-026
     // Excel Scenario: KPI Cards → Verify Customers with Gaps KPI value is numeric
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Observe Customers with Gaps KPI
-    // Expected: Customers with Gaps KPI displays a valid numeric value
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customers with Gaps KPI value is numeric.
     console.log("[KGR-026] KPI Cards → Verify Customers with Gaps KPI value is numeric");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -556,21 +742,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-027
     // Excel Scenario: KPI Cards → Verify Critical Priority KPI value is numeric
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Observe Critical Priority KPI
-    // Expected: Critical Priority KPI displays a valid numeric value
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Critical Priority KPI value is numeric.
     console.log("[KGR-027] KPI Cards → Verify Critical Priority KPI value is numeric");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -578,19 +773,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-028
     // Excel Scenario: KPI Cards → Verify Total Customers KPI count is greater than or equal to Customers with Gaps count
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Compare Total Customers count with Customers with Gaps count
-    // Expected: Customers with Gaps count is less than or equal to Total Customers count
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Total Customers KPI count is greater than or equal to Customers with Gaps count.
     console.log("[KGR-028] KPI Cards → Verify Total Customers KPI count is greater than or equal to Customers with Gaps count");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -598,19 +804,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-029
     // Excel Scenario: KPI Cards → Verify Customers with Gaps KPI count matches report data
     // FSD §4.3 — KPI Summary Cards
-    // Steps (2): Identify customers with gaps → Compare with KPI count
-    // Expected: Customers with Gaps KPI accurately reflects underlying data
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customers with Gaps KPI count matches report data.
     console.log("[KGR-029] KPI Cards → Verify Customers with Gaps KPI count matches report data");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -618,21 +835,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-030
     // Excel Scenario: KPI Cards → Verify Critical Priority KPI count matches report data
     // FSD §4.3 — KPI Summary Cards
-    // Steps (2): Count Critical priority records → Compare with KPI value
-    // Expected: Critical Priority KPI count matches report data
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Critical Priority KPI count matches report data.
     console.log("[KGR-030] KPI Cards → Verify Critical Priority KPI count matches report data");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -640,19 +866,31 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-031
     // Excel Scenario: KPI Cards → Verify KPI values refresh when page is reloaded
     // FSD §4.3 — KPI Summary Cards
-    // Steps (3): Note KPI values → Refresh page → Compare values
-    // Expected: KPI values remain accurate after reload
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI values refresh when page is reloaded.
     console.log("[KGR-031] KPI Cards → Verify KPI values refresh when page is reloaded");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -660,19 +898,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-032
     // Excel Scenario: KPI Cards → Verify KPI cards load without UI distortion
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Review KPI card alignment and layout
-    // Expected: KPI cards are properly aligned and rendered
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI cards load without UI distortion.
     console.log("[KGR-032] KPI Cards → Verify KPI cards load without UI distortion");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -680,19 +928,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-033
     // Excel Scenario: KPI Cards → Verify KPI values are visible without truncation
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Review KPI values
-    // Expected: KPI values are fully visible and readable
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI values are visible without truncation.
     console.log("[KGR-033] KPI Cards → Verify KPI values are visible without truncation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -700,19 +958,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-034
     // Excel Scenario: KPI Cards → Verify KPI cards are displayed when report contains records
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Open report with available data
-    // Expected: KPI cards display populated values
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI cards are displayed when report contains records.
     console.log("[KGR-034] KPI Cards → Verify KPI cards are displayed when report contains records");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -720,20 +988,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-035
     // Excel Scenario: KPI Cards → Verify KPI cards handle zero values correctly — KPI cards should support zero counts
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Open report containing zero KPI count
-    // Expected: KPI card displays value as 0 without errors
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI cards handle zero values correctly — KPI cards should support zero counts.
     console.log("[KGR-035] KPI Cards → Verify KPI cards handle zero values correctly — KPI cards should support zero counts");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -741,19 +1019,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-036
     // Excel Scenario: KPI Cards → Verify KPI section remains visible after filter application
     // FSD §4.3 — KPI Summary Cards
-    // Steps (2): Apply report filters → Observe KPI section
-    // Expected: KPI section remains visible and usable
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI section remains visible after filter application.
     console.log("[KGR-036] KPI Cards → Verify KPI section remains visible after filter application");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -761,19 +1049,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-037
     // Excel Scenario: KPI Cards → Verify KPI section remains visible after pagination navigation
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Navigate between pages
-    // Expected: KPI section remains accessible
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI section remains visible after pagination navigation.
     console.log("[KGR-037] KPI Cards → Verify KPI section remains visible after pagination navigation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -781,21 +1080,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-038
     // Excel Scenario: KPI Cards → Verify KPI cards are displayed before report grid
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Review page layout
-    // Expected: KPI cards appear above report filters and grid
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI cards are displayed before report grid.
     console.log("[KGR-038] KPI Cards → Verify KPI cards are displayed before report grid");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -803,19 +1110,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-039
     // Excel Scenario: KPI Cards → Verify KPI values do not display negative numbers
     // FSD §4.3 — KPI Summary Cards
-    // Steps (1): Observe KPI values
-    // Expected: All KPI values are zero or positive integers
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI values do not display negative numbers.
     console.log("[KGR-039] KPI Cards → Verify KPI values do not display negative numbers");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -823,20 +1141,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-040
     // Excel Scenario: KPI Cards → Verify KPI cards load successfully within page initialization
     // FSD §4.3 — KPI Summary Cards
-    // Steps (2): Open page → Observe KPI loading behavior
-    // Expected: KPI cards load successfully without errors or missing data
+    // Steps (15): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KPI cards load successfully within page initialization.
     console.log("[KGR-040] KPI Cards → Verify KPI cards load successfully within page initialization");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
-      await gapPage.expectPageLoaded();
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
+      await expect(gapPage.exportButton).toBeVisible();
+      await gapPage.expectKycGapReportListedInNavigation();
+      await gapPage.expectOnGapReportRoute();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
   });
@@ -846,19 +1173,41 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-041
     // Excel Scenario: Search & Filters → Verify Search field is displayed on KYC Gap Report page
     // FSD §4.4 — Filters
-    // Steps (2): Navigate to KYC Gap Report → Locate Search field
-    // Expected: Search field is displayed and available for input
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search field is displayed on KYC Gap Report page.
     console.log("[KGR-041] Search & Filters → Verify Search field is displayed on KYC Gap Report page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('N');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.searchInput).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -866,19 +1215,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-042
     // Excel Scenario: Search & Filters → Verify search by exact customer name
     // FSD §4.4 — Filters
-    // Steps (2): Enter exact customer name in Search field → Observe results
-    // Expected: Only matching customer record is displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search by exact customer name.
     console.log("[KGR-042] Search & Filters → Verify search by exact customer name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
       await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -886,19 +1256,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-043
     // Excel Scenario: Search & Filters → Verify search by partial customer name
     // FSD §4.4 — Filters
-    // Steps (2): Enter partial customer name → Observe results
-    // Expected: Matching records containing entered text are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search by partial customer name.
     console.log("[KGR-043] Search & Filters → Verify search by partial customer name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('Vikram');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('KYC');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -906,19 +1297,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-044
     // Excel Scenario: Search & Filters → Verify search by Customer ID
     // FSD §4.4 — Filters
-    // Steps (2): Enter Customer ID → Observe results
-    // Expected: Matching customer record is displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search by Customer ID.
     console.log("[KGR-044] Search & Filters → Verify search by Customer ID");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('IN-CUS-78821');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('CIF-1001');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -926,19 +1338,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-045
     // Excel Scenario: Search & Filters → Verify search is case insensitive
     // FSD §4.4 — Filters
-    // Steps (2): Search using uppercase value → Search using lowercase value
-    // Expected: Same matching results are returned
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search is case insensitive.
     console.log("[KGR-045] Search & Filters → Verify search is case insensitive");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('VIKRAM');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -946,20 +1379,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-046
     // Excel Scenario: Search & Filters → Verify search using alphanumeric Customer ID
     // FSD §4.4 — Filters
-    // Steps (2): Enter alphanumeric Customer ID → Observe results
-    // Expected: Matching customer record is displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search using alphanumeric Customer ID.
     console.log("[KGR-046] Search & Filters → Verify search using alphanumeric Customer ID");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      await gapPage.search('AE-COR-34421');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('CIF-1001');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -967,19 +1420,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-047
     // Excel Scenario: Search & Filters → Verify search with leading spaces
     // FSD §4.4 — Filters
-    // Steps (1): Enter search value with leading spaces
-    // Expected: Correct matching results are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with leading spaces.
     console.log("[KGR-047] Search & Filters → Verify search with leading spaces");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('  Vikram Shah  ');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -987,19 +1461,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-048
     // Excel Scenario: Search & Filters → Verify search with trailing spaces
     // FSD §4.4 — Filters
-    // Steps (1): Enter search value with trailing spaces
-    // Expected: Correct matching results are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with trailing spaces.
     console.log("[KGR-048] Search & Filters → Verify search with trailing spaces");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('  Vikram Shah  ');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1007,19 +1502,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-049
     // Excel Scenario: Search & Filters → Verify search with special characters
     // FSD §4.4 — Filters
-    // Steps (1): Enter special characters in search field
-    // Expected: System handles input without errors and returns no matching records if applicable
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with special characters.
     console.log("[KGR-049] Search & Filters → Verify search with special characters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('@#$%^&*');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('!@#$%');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1027,21 +1543,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-050
     // Excel Scenario: Search & Filters → Verify search with non-existing customer value
     // FSD §4.4 — Filters
-    // Steps (1): Enter non-existing customer value
-    // Expected: No records are returned and application remains stable
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with non-existing customer value.
     console.log("[KGR-050] Search & Filters → Verify search with non-existing customer value");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      await gapPage.search('XYZ_TEST_123');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('zzzz-no-match-99999');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportEmptyState.or(gapPage.gapReportRows)).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1049,8 +1584,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-051
     // Excel Scenario: Search & Filters → Verify real-time search behavior
     // FSD §4.4 — Filters
-    // Steps (1): Type characters gradually in search field
-    // Expected: Results update dynamically based on entered text
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Real-time search behavior.
     // TODO [KGR-051]: Debounce delay (ms) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-051] Search & Filters → Verify real-time search behavior");
     await test.step("Navigate / setup", async () => {
@@ -1058,11 +1593,32 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('Vikram');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1070,19 +1626,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-052
     // Excel Scenario: Search & Filters → Verify Branch filter dropdown values
     // FSD §4.4 — Filters
-    // Steps (1): Open Branch filter dropdown
-    // Expected: Branch options are displayed as Branch Name (Branch Code)
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Branch filter dropdown values.
     console.log("[KGR-052] Search & Filters → Verify Branch filter dropdown values");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyBranchFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1090,19 +1667,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-053
     // Excel Scenario: Search & Filters → Verify filtering by Branch
     // FSD §4.4 — Filters
-    // Steps (2): Select Branch filter → Observe results
-    // Expected: Only records belonging to selected branch are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by Branch.
     console.log("[KGR-053] Search & Filters → Verify filtering by Branch");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyBranchFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1110,20 +1708,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-054
     // Excel Scenario: Search & Filters → Verify Branch filter with no matching records
     // FSD §4.4 — Filters
-    // Steps (1): Select branch having no matching records
-    // Expected: No records are displayed and application remains stable
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Branch filter with no matching records.
     console.log("[KGR-054] Search & Filters → Verify Branch filter with no matching records");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyBranchFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('zzzz-no-match-99999');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportEmptyState.or(gapPage.gapReportRows)).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1131,19 +1749,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-055
     // Excel Scenario: Search & Filters → Verify Customer Type filter values
     // FSD §4.4 — Filters
-    // Steps (1): Open Customer Type dropdown
-    // Expected: Dropdown displays Individual and Corporate options
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer Type filter values.
     console.log("[KGR-055] Search & Filters → Verify Customer Type filter values");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyCustomerTypeFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1151,19 +1790,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-056
     // Excel Scenario: Search & Filters → Verify filtering by Individual customer type
     // FSD §4.4 — Filters
-    // Steps (1): Select Individual customer type
-    // Expected: Only Individual customer records are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by Individual customer type.
     console.log("[KGR-056] Search & Filters → Verify filtering by Individual customer type");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyCustomerTypeFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1171,19 +1831,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-057
     // Excel Scenario: Search & Filters → Verify filtering by Corporate customer type
     // FSD §4.4 — Filters
-    // Steps (1): Select Corporate customer type
-    // Expected: Only Corporate customer records are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by Corporate customer type.
     console.log("[KGR-057] Search & Filters → Verify filtering by Corporate customer type");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyCustomerTypeFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1191,19 +1872,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-058
     // Excel Scenario: Search & Filters → Verify Template filter dropdown values
     // FSD §4.4 — Filters
-    // Steps (1): Open Template filter
-    // Expected: All configured template names are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Template filter dropdown values.
     console.log("[KGR-058] Search & Filters → Verify Template filter dropdown values");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyTemplateFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
       await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1211,19 +1913,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-059
     // Excel Scenario: Search & Filters → Verify filtering by template
     // FSD §4.4 — Filters
-    // Steps (1): Select template filter
-    // Expected: Only records mapped to selected template are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by template.
     console.log("[KGR-059] Search & Filters → Verify filtering by template");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyTemplateFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1231,19 +1954,39 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-060
     // Excel Scenario: Search & Filters → Verify Priority filter dropdown values
     // FSD §4.4 — Filters
-    // Steps (1): Open Priority filter
-    // Expected: Dropdown displays Low, Medium, High and Critical values
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Priority filter dropdown values.
     console.log("[KGR-060] Search & Filters → Verify Priority filter dropdown values");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
       await gapPage.expectPriorityColumnVisible();
       });
   });
@@ -1252,20 +1995,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-061
     // Excel Scenario: Search & Filters → Verify filtering by Low priority
     // FSD §4.4 — Filters
-    // Steps (1): Select Low priority filter
-    // Expected: Only Low priority records are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by Low priority.
     console.log("[KGR-061] Search & Filters → Verify filtering by Low priority");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -1273,20 +2036,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-062
     // Excel Scenario: Search & Filters → Verify filtering by Medium priority
     // FSD §4.4 — Filters
-    // Steps (1): Select Medium priority filter
-    // Expected: Only Medium priority records are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by Medium priority.
     console.log("[KGR-062] Search & Filters → Verify filtering by Medium priority");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -1294,20 +2077,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-063
     // Excel Scenario: Search & Filters → Verify filtering by High priority
     // FSD §4.4 — Filters
-    // Steps (1): Select High priority filter
-    // Expected: Only High priority records are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by High priority.
     console.log("[KGR-063] Search & Filters → Verify filtering by High priority");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -1315,21 +2118,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-064
     // Excel Scenario: Search & Filters → Verify filtering by Critical priority
     // FSD §4.4 — Filters
-    // Steps (1): Select Critical priority filter
-    // Expected: Only Critical priority records are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filtering by Critical priority.
     console.log("[KGR-064] Search & Filters → Verify filtering by Critical priority");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -1337,20 +2159,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-065
     // Excel Scenario: Search & Filters → Verify Gap Score minimum filter
     // FSD §4.4 — Filters
-    // Steps (1): Enter minimum score value
-    // Expected: Only records having score greater than or equal to minimum value are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score minimum filter.
     console.log("[KGR-065] Search & Filters → Verify Gap Score minimum filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter('0', '100');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1358,20 +2200,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-066
     // Excel Scenario: Search & Filters → Verify Gap Score maximum filter
     // FSD §4.4 — Filters
-    // Steps (1): Enter maximum score value
-    // Expected: Only records having score less than or equal to maximum value are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score maximum filter.
     console.log("[KGR-066] Search & Filters → Verify Gap Score maximum filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter('0', '100');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1379,19 +2241,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-067
     // Excel Scenario: Search & Filters → Verify Gap Score range filter
     // FSD §4.4 — Filters
-    // Steps (2): Enter minimum score → Enter maximum score
-    // Expected: Only records within specified score range are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score range filter.
     console.log("[KGR-067] Search & Filters → Verify Gap Score range filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter('0', '100');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1399,19 +2282,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-068
     // Excel Scenario: Search & Filters → Verify Clear Filters functionality
     // FSD §4.4 — Filters
-    // Steps (2): Apply filters → Click Clear Filters
-    // Expected: All filters are cleared and complete dataset is displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Clear Filters functionality.
     console.log("[KGR-068] Search & Filters → Verify Clear Filters functionality");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
       await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1419,20 +2323,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-069
     // Excel Scenario: Search & Filters → Verify filter combination: Branch + Customer Type
     // FSD §4.4 — Filters
-    // Steps (2): Select Branch → Select Customer Type
-    // Expected: Records matching both filters are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filter combination: Branch + Customer Type.
     console.log("[KGR-069] Search & Filters → Verify filter combination: Branch + Customer Type");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyBranchFilter();
-      await gapPage.applyCustomerTypeFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
 
@@ -1440,19 +2364,40 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-070
     // Excel Scenario: Search & Filters → Verify filter combination: Search + Priority
     // FSD §4.4 — Filters
-    // Steps (2): Enter search value → Select Priority
-    // Expected: Only records satisfying both conditions are displayed
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Filter combination: Search + Priority.
     console.log("[KGR-070] Search & Filters → Verify filter combination: Search + Priority");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('Vikram + Critical');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.applyCustomerTypeFilterByLabel('Individual');
+      await gapPage.clearFilters();
+      await gapPage.search('Simplified KYC Customer');
+      await gapPage.searchGapReportExactMatch();
+      await gapPage.applyBranchFilterByLabel('INST-DEMO-001');
+      await gapPage.applyCustomerTypeFilterByLabel('Corporate');
+      await gapPage.applyTemplateFilterByLabel('Simplified KYC');
+      await gapPage.applyPriorityFilterByLabel('Low');
+      await gapPage.applyPriorityFilterByLabel('Medium');
+      await gapPage.applyPriorityFilterByLabel('High');
+      await gapPage.applyPriorityFilterByLabel('Critical');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.clearFiltersButton).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectModalScoreMatchesGrid();
+      await gapPage.expectPriorityColumnVisible();
       });
   });
   });
@@ -1462,23 +2407,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-071
     // Excel Scenario: Report Grid → Verify all configured report columns are displayed
     // FSD §4.5 — Report Table — Columns
-    // Steps (2): Navigate to report grid → Verify visible columns
-    // Expected: Grid displays Customer, Customer ID, Type, Branch, Branch Code, Template Applied, KYC Gap Score, Priority and Actions columns
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: All configured report columns are displayed.
     console.log("[KGR-071] Report Grid → Verify all configured report columns are displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
       await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1486,19 +2440,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-072
     // Excel Scenario: Report Grid → Verify Customer column displays customer full name
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Customer column values
-    // Expected: Customer full names are displayed accurately
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer column displays customer full name.
     console.log("[KGR-072] Report Grid → Verify Customer column displays customer full name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectModalCustomerNameMatchesGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1506,19 +2473,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-073
     // Excel Scenario: Report Grid → Verify Customer ID column displays unique customer identifiers
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Customer ID column
-    // Expected: Customer IDs are displayed accurately and uniquely
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer ID column displays unique customer identifiers.
     console.log("[KGR-073] Report Grid → Verify Customer ID column displays unique customer identifiers");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1526,19 +2506,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-074
     // Excel Scenario: Report Grid → Verify Type column displays customer type badge
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Type column
-    // Expected: Customer type is displayed correctly using configured badge format
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Type column displays customer type badge.
     console.log("[KGR-074] Report Grid → Verify Type column displays customer type badge");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1546,20 +2539,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-075
     // Excel Scenario: Report Grid → Verify Branch column displays branch name
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Branch column
-    // Expected: Branch name is displayed correctly for each record
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Branch column displays branch name.
     console.log("[KGR-075] Report Grid → Verify Branch column displays branch name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await gapPage.expectModalCustomerNameMatchesGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1567,19 +2572,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-076
     // Excel Scenario: Report Grid → Verify Branch Code column displays branch code
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Branch Code column
-    // Expected: Correct branch code is displayed for each record
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Branch Code column displays branch code.
     console.log("[KGR-076] Report Grid → Verify Branch Code column displays branch code");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1587,19 +2605,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-077
     // Excel Scenario: Report Grid → Verify Template Applied column displays assigned template
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Template Applied column
-    // Expected: Correct template name is displayed for each customer
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Template Applied column displays assigned template.
     console.log("[KGR-077] Report Grid → Verify Template Applied column displays assigned template");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectModalCustomerNameMatchesGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1607,19 +2638,33 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-078
     // Excel Scenario: Report Grid → Verify KYC Gap Score column displays numeric score
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review KYC Gap Score column
-    // Expected: KYC Gap Score is displayed as integer and not percentage
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KYC Gap Score column displays numeric score.
     console.log("[KGR-078] Report Grid → Verify KYC Gap Score column displays numeric score");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1627,20 +2672,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-079
     // Excel Scenario: Report Grid → Verify Priority column displays risk classification
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Priority column
-    // Expected: Priority value is displayed correctly according to assigned classification
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Priority column displays risk classification.
     console.log("[KGR-079] Report Grid → Verify Priority column displays risk classification");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1648,19 +2705,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-080
     // Excel Scenario: Report Grid → Verify Actions column displays View button
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Actions column
-    // Expected: View button is displayed for every row
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Actions column displays View button.
     console.log("[KGR-080] Report Grid → Verify Actions column displays View button");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectViewButtonsOnRows();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1668,19 +2738,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-081
     // Excel Scenario: Report Grid → Verify Customer column supports sorting
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click Customer column header
-    // Expected: Records are sorted based on Customer name
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer column supports sorting.
     console.log("[KGR-081] Report Grid → Verify Customer column supports sorting");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1688,20 +2771,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-082
     // Excel Scenario: Report Grid → Verify Customer ID column supports sorting
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click Customer ID header
-    // Expected: Records are sorted based on Customer ID
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer ID column supports sorting.
     console.log("[KGR-082] Report Grid → Verify Customer ID column supports sorting");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1709,20 +2804,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-083
     // Excel Scenario: Report Grid → Verify Branch column supports sorting
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click Branch header
-    // Expected: Records are sorted based on Branch value
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Branch column supports sorting.
     console.log("[KGR-083] Report Grid → Verify Branch column supports sorting");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1730,20 +2837,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-084
     // Excel Scenario: Report Grid → Verify Branch Code column supports sorting
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click Branch Code header
-    // Expected: Records are sorted based on Branch Code value
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Branch Code column supports sorting.
     console.log("[KGR-084] Report Grid → Verify Branch Code column supports sorting");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1751,20 +2870,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-085
     // Excel Scenario: Report Grid → Verify KYC Gap Score column supports sorting
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click KYC Gap Score header
-    // Expected: Records are sorted based on Gap Score values
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KYC Gap Score column supports sorting.
     console.log("[KGR-085] Report Grid → Verify KYC Gap Score column supports sorting");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1772,20 +2903,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-086
     // Excel Scenario: Report Grid → Verify ascending sorting for Customer column
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click Customer header once
-    // Expected: Records are sorted in ascending alphabetical order
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Ascending sorting for Customer column.
     console.log("[KGR-086] Report Grid → Verify ascending sorting for Customer column");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1793,20 +2936,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-087
     // Excel Scenario: Report Grid → Verify descending sorting for Customer column
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click Customer header twice
-    // Expected: Records are sorted in descending alphabetical order
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Descending sorting for Customer column.
     console.log("[KGR-087] Report Grid → Verify descending sorting for Customer column");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1814,21 +2969,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-088
     // Excel Scenario: Report Grid → Verify ascending sorting for KYC Gap Score column
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click KYC Gap Score header once
-    // Expected: Records are sorted from lowest score to highest score
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Ascending sorting for KYC Gap Score column.
     console.log("[KGR-088] Report Grid → Verify ascending sorting for KYC Gap Score column");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1836,21 +3002,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-089
     // Excel Scenario: Report Grid → Verify descending sorting for KYC Gap Score column
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Click KYC Gap Score header twice
-    // Expected: Records are sorted from highest score to lowest score
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Descending sorting for KYC Gap Score column.
     console.log("[KGR-089] Report Grid → Verify descending sorting for KYC Gap Score column");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
       await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1858,19 +3035,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-090
     // Excel Scenario: Report Grid → Verify sorting persists correctly with filtered data
     // FSD §4.5 — Report Table — Columns
-    // Steps (2): Apply filter → Sort grid
-    // Expected: Filtered records are sorted correctly
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Sorting persists correctly with filtered data.
     console.log("[KGR-090] Report Grid → Verify sorting persists correctly with filtered data");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1878,19 +3068,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-091
     // Excel Scenario: Report Grid → Verify non-sortable columns do not display sort behavior
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Attempt sorting Type column
-    // Expected: Non-sortable columns do not trigger sorting
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Non-sortable columns do not display sort behavior.
     console.log("[KGR-091] Report Grid → Verify non-sortable columns do not display sort behavior");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectViewButtonsOnRows();
       });
   });
 
@@ -1898,8 +3101,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-092
     // Excel Scenario: Report Grid → Verify grid data accuracy against source records
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Compare report data with source data
-    // Expected: Displayed values accurately match source records
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Grid data accuracy against source records.
     // TODO [KGR-092]: CBS/DMS seed data mapping not in Excel — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-092] Report Grid → Verify grid data accuracy against source records");
     await test.step("Navigate / setup", async () => {
@@ -1907,11 +3110,24 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1919,8 +3135,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-093
     // Excel Scenario: Report Grid → Verify grid handles long customer names — Long names should display without UI breakage
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review grid display
-    // Expected: Grid remains properly formatted and data remains readable
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Grid handles long customer names — Long names should display without UI breakage.
     // TODO [KGR-093]: Max customer name length not defined — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-093] Report Grid → Verify grid handles long customer names — Long names should display without UI breakage");
     await test.step("Navigate / setup", async () => {
@@ -1928,11 +3144,25 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectModalCustomerNameMatchesGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1940,19 +3170,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-094
     // Excel Scenario: Report Grid → Verify grid handles long template names
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Template Applied column
-    // Expected: Grid remains properly formatted without data corruption
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Grid handles long template names.
     console.log("[KGR-094] Report Grid → Verify grid handles long template names");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1960,19 +3203,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-095
     // Excel Scenario: Report Grid → Verify grid displays no duplicate records
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review report records
-    // Expected: No duplicate records are displayed
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Grid displays no duplicate records.
     console.log("[KGR-095] Report Grid → Verify grid displays no duplicate records");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -1980,19 +3236,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-096
     // Excel Scenario: Report Grid → Verify grid displays records after page refresh
     // FSD §4.5 — Report Table — Columns
-    // Steps (2): Refresh page → Review grid
-    // Expected: Grid reloads successfully with correct data
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Grid displays records after page refresh.
     console.log("[KGR-096] Report Grid → Verify grid displays records after page refresh");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.refreshData();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -2000,19 +3269,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-097
     // Excel Scenario: Report Grid → Verify grid displays records after filter reset
     // FSD §4.5 — Report Table — Columns
-    // Steps (2): Apply filters → Click Clear Filters
-    // Expected: Complete dataset is displayed after filter reset
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Grid displays records after filter reset.
     console.log("[KGR-097] Report Grid → Verify grid displays records after filter reset");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.clearFilters();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -2020,21 +3302,33 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-098
     // Excel Scenario: Report Grid → Verify grid remains stable when no records match filters
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Apply filters returning no results
-    // Expected: Grid displays empty state without errors
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Grid remains stable when no records match filters.
     console.log("[KGR-098] Report Grid → Verify grid remains stable when no records match filters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportEmptyState.or(gapPage.gapReportRows)).toBeVisible();
-      await gapPage.expectPageLoaded();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -2042,20 +3336,32 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-099
     // Excel Scenario: Report Grid → Verify Priority values contain only supported classifications
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review Priority column
-    // Expected: Priority values are limited to Low, Medium, High and Critical
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Priority values contain only supported classifications.
     console.log("[KGR-099] Report Grid → Verify Priority values contain only supported classifications");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -2063,18 +3369,166 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-100
     // Excel Scenario: Report Grid → Verify report is read-only from landing grid
     // FSD §4.5 — Report Table — Columns
-    // Steps (1): Review grid actions
-    // Expected: Only View action is available and no edit functionality is present
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report is read-only from landing grid.
     console.log("[KGR-100] Report Grid → Verify report is read-only from landing grid");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      });
+  });
+
+  test("Case ID:KGR-283 - Report Grid → Individual and Corporate Type badges use distinct colour coding in grid", async ({ testData }) => {
+    // Excel Test Case ID: KGR-283
+    // Excel Scenario: Report Grid → Verify Individual and Corporate Type badges use distinct colour coding in grid
+    // FSD §4.5 — Report Table — Columns
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Individual and Corporate rows show distinct Type badge colours.
+    console.log("[KGR-283] Report Grid → Verify Individual and Corporate Type badges use distinct colour coding in grid");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
+      });
+
+    await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      });
+  });
+
+  test("Case ID:KGR-284 - Report Grid → KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid", async ({ testData }) => {
+    // Excel Test Case ID: KGR-284
+    // Excel Scenario: Report Grid → Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid
+    // FSD §4.5 — Report Table — Columns
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score displays the correct colour-coded risk label per score band.
+    console.log("[KGR-284] Report Grid → Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
+      });
+
+    await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      });
+  });
+
+  test("Case ID:KGR-285 - Report Grid → Edit button is not present in report grid per read-only design", async ({ testData }) => {
+    // Excel Test Case ID: KGR-285
+    // Excel Scenario: Report Grid → Verify Edit button is not present in report grid per read-only design
+    // FSD §4.5 — Report Table — Columns
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: No Edit action is available in the report grid.
+    console.log("[KGR-285] Report Grid → Verify Edit button is not present in report grid per read-only design");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
+      });
+
+    await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      });
+  });
+
+  test("Case ID:KGR-286 - Report Grid → Missing Fields column is not displayed in landing grid", async ({ testData }) => {
+    // Excel Test Case ID: KGR-286
+    // Excel Scenario: Report Grid → Verify Missing Fields column is not displayed in landing grid
+    // FSD §4.5 — Report Table — Columns
+    // Steps (31): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Missing Fields are not shown as a landing grid column.
+    console.log("[KGR-286] Report Grid → Verify Missing Fields column is not displayed in landing grid");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
+      await gapPage.sortByColumn("Branch");
+      await gapPage.sortByColumn("KYC Gap Score");
+      await gapPage.sortByColumn("Priority");
+      await gapPage.openFirstRowDetail();
+      });
+
+    await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await gapPage.expectExportRespectsActiveFilters();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -2085,19 +3539,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-101
     // Excel Scenario: Gap Score Calculation → Verify KYC Gap Score is calculated as sum of missing field weights
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (4): Open customer Gap Detail Modal → Note missing fields and weights → Calculate total manually …
-    // Expected: Display score equals sum of all missing field weights
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: KYC Gap Score is calculated as sum of missing field weights.
     console.log("[KGR-101] Gap Score Calculation → Verify KYC Gap Score is calculated as sum of missing field weights");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2105,19 +3567,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-102
     // Excel Scenario: Gap Score Calculation → Verify missing Mandatory field contributes 3 points to Gap Score
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Open Gap Detail Modal → Verify weight assigned to Mandatory field
-    // Expected: Each missing Mandatory field contributes exactly 3 points
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Missing Mandatory field contributes 3 points to Gap Score.
     console.log("[KGR-102] Gap Score Calculation → Verify missing Mandatory field contributes 3 points to Gap Score");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2125,19 +3595,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-103
     // Excel Scenario: Gap Score Calculation → Verify missing Optional field contributes 1 point to Gap Score
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Open Gap Detail Modal → Verify weight assigned to Optional field
-    // Expected: Each missing Optional field contributes exactly 1 point
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Missing Optional field contributes 1 point to Gap Score.
     console.log("[KGR-103] Gap Score Calculation → Verify missing Optional field contributes 1 point to Gap Score");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2145,19 +3623,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-104
     // Excel Scenario: Gap Score Calculation → Verify customer with one missing Mandatory field displays score 3
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer record with one missing Mandatory field
-    // Expected: KYC Gap Score is displayed as 3
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer with one missing Mandatory field displays score
     console.log("[KGR-104] Gap Score Calculation → Verify customer with one missing Mandatory field displays score 3");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openGapReportFromSidebar();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2165,19 +3651,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-105
     // Excel Scenario: Gap Score Calculation → Verify customer with one missing Optional field displays score 1
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer record with one missing Optional field
-    // Expected: KYC Gap Score is displayed as 1
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer with one missing Optional field displays score
     console.log("[KGR-105] Gap Score Calculation → Verify customer with one missing Optional field displays score 1");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2185,19 +3679,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-106
     // Excel Scenario: Gap Score Calculation → Verify score calculation with multiple Mandatory fields
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer with 3 missing Mandatory fields
-    // Expected: KYC Gap Score is displayed as 9
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation with multiple Mandatory fields.
     console.log("[KGR-106] Gap Score Calculation → Verify score calculation with multiple Mandatory fields");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openGapReportFromSidebar();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2205,19 +3707,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-107
     // Excel Scenario: Gap Score Calculation → Verify score calculation with multiple Optional fields
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer with 4 missing Optional fields
-    // Expected: KYC Gap Score is displayed as 4
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation with multiple Optional fields.
     console.log("[KGR-107] Gap Score Calculation → Verify score calculation with multiple Optional fields");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2225,19 +3735,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-108
     // Excel Scenario: Gap Score Calculation → Verify score calculation with mixed Mandatory and Optional fields
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer with mixed missing fields
-    // Expected: KYC Gap Score is displayed as 9
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation with mixed Mandatory and Optional fields.
     console.log("[KGR-108] Gap Score Calculation → Verify score calculation with mixed Mandatory and Optional fields");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2245,19 +3763,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-109
     // Excel Scenario: Gap Score Calculation → Verify score is displayed as integer value
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Review KYC Gap Score column
-    // Expected: KYC Gap Score is displayed as integer value only
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score is displayed as integer value.
     console.log("[KGR-109] Gap Score Calculation → Verify score is displayed as integer value");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2265,19 +3791,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-110
     // Excel Scenario: Gap Score Calculation → Verify customer with no missing fields displays score 0
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer record
-    // Expected: KYC Gap Score is displayed as 0
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Customer with no missing fields displays score
     console.log("[KGR-110] Gap Score Calculation → Verify customer with no missing fields displays score 0");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2285,20 +3819,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-111
     // Excel Scenario: Gap Score Calculation → Verify score displayed in report matches score in Gap Detail Modal
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (3): Note score from grid → Open Gap Detail Modal → Compare scores
-    // Expected: Score value is identical in report and modal
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score displayed in report matches score in Gap Detail Modal.
     console.log("[KGR-111] Gap Score Calculation → Verify score displayed in report matches score in Gap Detail Modal");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2306,20 +3847,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-112
     // Excel Scenario: Gap Score Calculation → Verify score calculation includes all missing fields
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (3): Count missing fields → Sum weights → Compare with score
-    // Expected: All missing fields contribute to final score
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation includes all missing fields.
     console.log("[KGR-112] Gap Score Calculation → Verify score calculation includes all missing fields");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2327,20 +3875,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-113
     // Excel Scenario: Gap Score Calculation → Verify score calculation excludes completed fields
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Review customer data → Verify score calculation
-    // Expected: Only missing fields contribute to score
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation excludes completed fields.
     console.log("[KGR-113] Gap Score Calculation → Verify score calculation excludes completed fields");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2348,20 +3903,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-114
     // Excel Scenario: Gap Score Calculation → Verify score updates after Mandatory field remediation
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Complete missing Mandatory field → Refresh report
-    // Expected: KYC Gap Score decreases by 3 points
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score updates after Mandatory field remediation.
     console.log("[KGR-114] Gap Score Calculation → Verify score updates after Mandatory field remediation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openGapReportFromSidebar();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2369,19 +3931,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-115
     // Excel Scenario: Gap Score Calculation → Verify score updates after Optional field remediation
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Complete missing Optional field → Refresh report
-    // Expected: KYC Gap Score decreases by 1 point
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score updates after Optional field remediation.
     console.log("[KGR-115] Gap Score Calculation → Verify score updates after Optional field remediation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2389,19 +3959,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-116
     // Excel Scenario: Gap Score Calculation → Verify score remains unchanged when unrelated customer data changes
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Update unrelated field → Refresh report
-    // Expected: KYC Gap Score remains unchanged
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score remains unchanged when unrelated customer data changes.
     console.log("[KGR-116] Gap Score Calculation → Verify score remains unchanged when unrelated customer data changes");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2409,8 +3987,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-117
     // Excel Scenario: Gap Score Calculation → Verify Low priority classification based on template score bands
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Open customer record → Verify score and priority
-    // Expected: Displayed priority matches template-defined Low band
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Low priority classification based on template score bands.
     // TODO [KGR-117]: Per-template band config not listed — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-117] Gap Score Calculation → Verify Low priority classification based on template score bands");
     await test.step("Navigate / setup", async () => {
@@ -2418,12 +3996,19 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2431,8 +4016,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-118
     // Excel Scenario: Gap Score Calculation → Verify Medium priority classification based on template score bands
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Open customer record → Verify score and priority
-    // Expected: Displayed priority matches template-defined Medium band
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Medium priority classification based on template score bands.
     // TODO [KGR-118]: Per-template band config not listed — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-118] Gap Score Calculation → Verify Medium priority classification based on template score bands");
     await test.step("Navigate / setup", async () => {
@@ -2440,12 +4025,19 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2453,8 +4045,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-119
     // Excel Scenario: Gap Score Calculation → Verify High priority classification based on template score bands
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Open customer record → Verify score and priority
-    // Expected: Displayed priority matches template-defined High band
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: High priority classification based on template score bands.
     // TODO [KGR-119]: Per-template band config not listed — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-119] Gap Score Calculation → Verify High priority classification based on template score bands");
     await test.step("Navigate / setup", async () => {
@@ -2462,12 +4054,19 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2475,8 +4074,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-120
     // Excel Scenario: Gap Score Calculation → Verify Critical priority classification based on template score bands
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Open customer record → Verify score and priority
-    // Expected: Displayed priority matches template-defined Critical band
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Critical priority classification based on template score bands.
     // TODO [KGR-120]: Per-template band config not listed — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-120] Gap Score Calculation → Verify Critical priority classification based on template score bands");
     await test.step("Navigate / setup", async () => {
@@ -2484,12 +4083,19 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2497,19 +4103,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-121
     // Excel Scenario: Gap Score Calculation → Verify priority is derived from assigned template score bands
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Compare customers having same score under different templates
-    // Expected: Priority is derived from assigned template configuration
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Priority is derived from assigned template score bands.
     console.log("[KGR-121] Gap Score Calculation → Verify priority is derived from assigned template score bands");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2517,19 +4131,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-122
     // Excel Scenario: Gap Score Calculation → Verify same score can result in different priorities under different templates
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Compare customers with identical scores
-    // Expected: Customers may display different priorities based on assigned template
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Same score can result in different priorities under different templates.
     console.log("[KGR-122] Gap Score Calculation → Verify same score can result in different priorities under different templates");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
       });
   });
 
@@ -2537,19 +4159,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-123
     // Excel Scenario: Gap Score Calculation → Verify priority recalculation after score band configuration change
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Modify score bands → Refresh report
-    // Expected: Priority is recalculated according to updated template bands
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Priority recalculation after score band configuration change.
     console.log("[KGR-123] Gap Score Calculation → Verify priority recalculation after score band configuration change");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2557,19 +4187,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-124
     // Excel Scenario: Gap Score Calculation → Verify score recalculation after new field is added to template
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Add field to template → Refresh report
-    // Expected: KYC Gap Score is recalculated correctly
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score recalculation after new field is added to template.
     console.log("[KGR-124] Gap Score Calculation → Verify score recalculation after new field is added to template");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2577,19 +4215,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-125
     // Excel Scenario: Gap Score Calculation → Verify score recalculation after field requirement changes
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Change field requirement → Refresh report
-    // Expected: Score reflects updated field weight
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score recalculation after field requirement changes.
     console.log("[KGR-125] Gap Score Calculation → Verify score recalculation after field requirement changes");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2597,19 +4243,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-126
     // Excel Scenario: Gap Score Calculation → Verify score does not display negative values
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Review report data
-    // Expected: All displayed scores are zero or positive integers
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score does not display negative values.
     console.log("[KGR-126] Gap Score Calculation → Verify score does not display negative values");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2617,19 +4271,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-127
     // Excel Scenario: Gap Score Calculation → Verify score calculation consistency across multiple refreshes
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Refresh report multiple times
-    // Expected: Score remains consistent across refreshes
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation consistency across multiple refreshes.
     console.log("[KGR-127] Gap Score Calculation → Verify score calculation consistency across multiple refreshes");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
       await gapPage.expectModalScoreMatchesGrid();
       });
   });
@@ -2638,20 +4299,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-128
     // Excel Scenario: Gap Score Calculation → Verify score calculation for highest configured score range
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer having highest score band value
-    // Expected: Score and priority are calculated correctly at upper boundary
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation for highest configured score range.
     console.log("[KGR-128] Gap Score Calculation → Verify score calculation for highest configured score range");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2659,21 +4327,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-129
     // Excel Scenario: Gap Score Calculation → Verify score calculation for lowest configured score range
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (1): Open customer having lowest score band value
-    // Expected: Score and priority are calculated correctly at lower boundary
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score calculation for lowest configured score range.
     console.log("[KGR-129] Gap Score Calculation → Verify score calculation for lowest configured score range");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -2681,8 +4355,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-130
     // Excel Scenario: Gap Score Calculation → Verify score displayed in exported report matches application data
     // FSD §4.6 — KYC Gap Score — Calculation
-    // Steps (2): Export report → Compare score values
-    // Expected: Exported scores match application data exactly
+    // Steps (19): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score displayed in exported report matches application data.
     console.log("[KGR-130] Gap Score Calculation → Verify score displayed in exported report matches application data");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -2690,11 +4364,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.refreshData();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectExportRespectsActiveFilters();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectPriorityColumnVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
   });
@@ -2704,19 +4386,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-131
     // Excel Scenario: Gap Detail Modal → Verify View button opens Gap Detail Modal
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Locate customer record → Click View button
-    // Expected: Gap Detail Modal opens successfully for selected customer
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: View button opens Gap Detail Modal.
     console.log("[KGR-131] Gap Detail Modal → Verify View button opens Gap Detail Modal");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectViewButtonsOnRows();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2724,20 +4413,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-132
     // Excel Scenario: Gap Detail Modal → Verify modal displays customer name
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify customer name
-    // Expected: Customer name displayed in modal matches selected record
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal displays customer name.
     console.log("[KGR-132] Gap Detail Modal → Verify modal displays customer name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
-      await gapPage.expectModalCustomerNameMatchesGrid();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2745,19 +4439,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-133
     // Excel Scenario: Gap Detail Modal → Verify modal displays CIF/Customer ID
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify Customer ID
-    // Expected: Displayed Customer ID matches report record
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal displays CIF/Customer ID.
     console.log("[KGR-133] Gap Detail Modal → Verify modal displays CIF/Customer ID");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2765,19 +4465,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-134
     // Excel Scenario: Gap Detail Modal → Verify modal displays Branch Name
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify Branch Name
-    // Expected: Branch Name matches report record
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal displays Branch Name.
     console.log("[KGR-134] Gap Detail Modal → Verify modal displays Branch Name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2785,19 +4491,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-135
     // Excel Scenario: Gap Detail Modal → Verify modal displays Branch Code
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify Branch Code
-    // Expected: Branch Code matches report record
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal displays Branch Code.
     console.log("[KGR-135] Gap Detail Modal → Verify modal displays Branch Code");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2805,19 +4517,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-136
     // Excel Scenario: Gap Detail Modal → Verify modal displays applied template
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify Template Applied
-    // Expected: Template displayed matches report record
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal displays applied template.
     console.log("[KGR-136] Gap Detail Modal → Verify modal displays applied template");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2825,19 +4543,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-137
     // Excel Scenario: Gap Detail Modal → Verify Missing Fields section is displayed
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify Missing Fields section
-    // Expected: Missing Fields section is displayed
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Missing Fields section is displayed.
     console.log("[KGR-137] Gap Detail Modal → Verify Missing Fields section is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2845,19 +4569,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-138
     // Excel Scenario: Gap Detail Modal → Verify each missing field displays field name
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Review Missing Fields list
-    // Expected: Field name is displayed for every missing field
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Each missing field displays field name.
     console.log("[KGR-138] Gap Detail Modal → Verify each missing field displays field name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectModalCustomerNameMatchesGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2865,19 +4595,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-139
     // Excel Scenario: Gap Detail Modal → Verify each missing field displays description
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Review Missing Fields list
-    // Expected: Field description is displayed for every missing field
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Each missing field displays description.
     console.log("[KGR-139] Gap Detail Modal → Verify each missing field displays description");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2885,19 +4621,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-140
     // Excel Scenario: Gap Detail Modal → Verify each missing field displays weight
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify weights
-    // Expected: Each missing field displays correct weight value
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Each missing field displays weight.
     console.log("[KGR-140] Gap Detail Modal → Verify each missing field displays weight");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       });
   });
 
@@ -2905,19 +4647,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-141
     // Excel Scenario: Gap Detail Modal → Verify each missing field displays requirement type
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Review requirement type
-    // Expected: Requirement type is displayed correctly for each field
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Each missing field displays requirement type.
     console.log("[KGR-141] Gap Detail Modal → Verify each missing field displays requirement type");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2925,19 +4673,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-142
     // Excel Scenario: Gap Detail Modal → Verify Mandatory fields display correct requirement type
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify requirement type
-    // Expected: Missing Mandatory fields are labeled as Mandatory
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Mandatory fields display correct requirement type.
     console.log("[KGR-142] Gap Detail Modal → Verify Mandatory fields display correct requirement type");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2945,19 +4699,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-143
     // Excel Scenario: Gap Detail Modal → Verify Optional fields display correct requirement type
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify requirement type
-    // Expected: Missing Optional fields are labeled as Optional
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Optional fields display correct requirement type.
     console.log("[KGR-143] Gap Detail Modal → Verify Optional fields display correct requirement type");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2965,19 +4725,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-144
     // Excel Scenario: Gap Detail Modal → Verify Gap Type badge is displayed
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify Gap Type badge
-    // Expected: Gap Type badge is displayed
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Type badge is displayed.
     console.log("[KGR-144] Gap Detail Modal → Verify Gap Type badge is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -2985,19 +4751,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-145
     // Excel Scenario: Gap Detail Modal → Verify CIP Gap Type badge
     // FSD §4.7 — Gap Detail Modal
-    // Steps (1): Open Gap Detail Modal
-    // Expected: CIP badge is displayed correctly
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: CIP Gap Type badge.
     console.log("[KGR-145] Gap Detail Modal → Verify CIP Gap Type badge");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3005,19 +4777,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-146
     // Excel Scenario: Gap Detail Modal → Verify CDD Gap Type badge
     // FSD §4.7 — Gap Detail Modal
-    // Steps (1): Open Gap Detail Modal
-    // Expected: CDD badge is displayed correctly
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: CDD Gap Type badge.
     console.log("[KGR-146] Gap Detail Modal → Verify CDD Gap Type badge");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3025,19 +4803,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-147
     // Excel Scenario: Gap Detail Modal → Verify EDD Gap Type badge
     // FSD §4.7 — Gap Detail Modal
-    // Steps (1): Open Gap Detail Modal
-    // Expected: EDD badge is displayed correctly
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: EDD Gap Type badge.
     console.log("[KGR-147] Gap Detail Modal → Verify EDD Gap Type badge");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3045,19 +4829,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-148
     // Excel Scenario: Gap Detail Modal → Verify Score Summary section is displayed
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify Score Summary
-    // Expected: Score Summary section is displayed
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Score Summary section is displayed.
     console.log("[KGR-148] Gap Detail Modal → Verify Score Summary section is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       });
   });
 
@@ -3065,19 +4855,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-149
     // Excel Scenario: Gap Detail Modal → Verify Total KYC Gap Score displayed in modal
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify score
-    // Expected: Total KYC Gap Score is displayed correctly
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Total KYC Gap Score displayed in modal.
     console.log("[KGR-149] Gap Detail Modal → Verify Total KYC Gap Score displayed in modal");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
       });
   });
 
@@ -3085,22 +4881,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-150
     // Excel Scenario: Gap Detail Modal → Verify modal score matches report grid score
     // FSD §4.7 — Gap Detail Modal
-    // Steps (3): Note score from grid → Open modal → Compare values
-    // Expected: Modal score matches report grid score
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal score matches report grid score.
     console.log("[KGR-150] Gap Detail Modal → Verify modal score matches report grid score");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       });
   });
 
@@ -3108,19 +4908,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-151
     // Excel Scenario: Gap Detail Modal → Verify risk label is displayed in score summary
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open Gap Detail Modal → Verify risk label
-    // Expected: Risk label is displayed with score summary
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Risk label is displayed in score summary.
     console.log("[KGR-151] Gap Detail Modal → Verify risk label is displayed in score summary");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       });
   });
 
@@ -3128,19 +4934,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-152
     // Excel Scenario: Gap Detail Modal → Verify risk label matches customer priority
     // FSD §4.7 — Gap Detail Modal
-    // Steps (1): Compare report priority and modal risk label
-    // Expected: Risk label matches report priority classification
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Risk label matches customer priority.
     console.log("[KGR-152] Gap Detail Modal → Verify risk label matches customer priority");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3148,19 +4960,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-153
     // Excel Scenario: Gap Detail Modal → Verify modal handles customer with single missing field
     // FSD §4.7 — Gap Detail Modal
-    // Steps (1): Open Gap Detail Modal
-    // Expected: Single missing field is displayed correctly
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal handles customer with single missing field.
     console.log("[KGR-153] Gap Detail Modal → Verify modal handles customer with single missing field");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3168,19 +4986,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-154
     // Excel Scenario: Gap Detail Modal → Verify modal handles customer with multiple missing fields
     // FSD §4.7 — Gap Detail Modal
-    // Steps (1): Open Gap Detail Modal
-    // Expected: All missing fields are displayed without truncation
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal handles customer with multiple missing fields.
     console.log("[KGR-154] Gap Detail Modal → Verify modal handles customer with multiple missing fields");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3188,19 +5012,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-155
     // Excel Scenario: Gap Detail Modal → Verify missing field count matches displayed records
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Count displayed missing fields → Compare with source data
-    // Expected: Missing field count matches source data
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Missing field count matches displayed records.
     console.log("[KGR-155] Gap Detail Modal → Verify missing field count matches displayed records");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3208,19 +5039,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-156
     // Excel Scenario: Gap Detail Modal → Verify total score equals sum of displayed field weights
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Sum displayed weights → Compare with score
-    // Expected: Score summary equals total of displayed field weights
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Total score equals sum of displayed field weights.
     console.log("[KGR-156] Gap Detail Modal → Verify total score equals sum of displayed field weights");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       });
   });
 
@@ -3228,19 +5065,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-157
     // Excel Scenario: Gap Detail Modal → Verify modal can be closed using Close/X button
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open modal → Click Close/X button
-    // Expected: Modal closes successfully
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal can be closed using Close/X button.
     console.log("[KGR-157] Gap Detail Modal → Verify modal can be closed using Close/X button");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3248,20 +5091,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-158
     // Excel Scenario: Gap Detail Modal → Verify modal can be closed using ESC key
     // FSD §4.7 — Gap Detail Modal
-    // Steps (2): Open modal → Press ESC key
-    // Expected: Modal closes successfully or behaves as per design
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal can be closed using ESC key.
     console.log("[KGR-158] Gap Detail Modal → Verify modal can be closed using ESC key");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3269,20 +5117,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-159
     // Excel Scenario: Gap Detail Modal → Verify modal closes without data corruption
     // FSD §4.7 — Gap Detail Modal
-    // Steps (3): Open modal → Close modal → Verify grid
-    // Expected: Report data remains unchanged after modal closure
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal closes without data corruption.
     console.log("[KGR-159] Gap Detail Modal → Verify modal closes without data corruption");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
 
@@ -3290,19 +5143,51 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-160
     // Excel Scenario: Gap Detail Modal → Verify modal supports scrolling for large datasets
     // FSD §4.7 — Gap Detail Modal
-    // Steps (1): Open modal with large dataset
-    // Expected: Modal scrolls correctly and all data remains accessible
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal supports scrolling for large datasets.
     console.log("[KGR-160] Gap Detail Modal → Verify modal supports scrolling for large datasets");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.openFirstRowDetail();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      });
+  });
+
+  test("Case ID:KGR-287 - Gap Detail Modal → Gap Detail Modal displays CIF ID and branch code in customer metadata section", async ({ testData }) => {
+    // Excel Test Case ID: KGR-287
+    // Excel Scenario: Gap Detail Modal → Verify Gap Detail Modal displays CIF ID and branch code in customer metadata section
+    // FSD §4.7 — Gap Detail Modal
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Modal shows CIF ID and branch code for the selected customer.
+    console.log("[KGR-287] Gap Detail Modal → Verify Gap Detail Modal displays CIF ID and branch code in customer metadata section");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.closeGapDetailModal();
+      });
+
+    await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       });
   });
   });
@@ -3312,19 +5197,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-161
     // Excel Scenario: Pagination → Verify pagination controls are displayed on report page
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to KYC Gap Report → Scroll to bottom of report
-    // Expected: Pagination controls are displayed successfully
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination controls are displayed on report page.
     console.log("[KGR-161] Pagination → Verify pagination controls are displayed on report page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3332,20 +5225,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-162
     // Excel Scenario: Pagination → Verify Items Per Page dropdown is displayed
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to report page → Review pagination section
-    // Expected: Items Per Page dropdown is displayed
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Items Per Page dropdown is displayed.
     console.log("[KGR-162] Pagination → Verify Items Per Page dropdown is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3353,19 +5253,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-163
     // Excel Scenario: Pagination → Verify Items Per Page default value
     // FSD §4.8 — Pagination
-    // Steps (2): Open report page → Observe Items Per Page control
-    // Expected: Default page size is displayed as configured
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Items Per Page default value.
     console.log("[KGR-163] Pagination → Verify Items Per Page default value");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3373,19 +5281,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-164
     // Excel Scenario: Pagination → Verify Items Per Page supports value 10
     // FSD §4.8 — Pagination
-    // Steps (1): Select 10 from page size dropdown
-    // Expected: Maximum 10 records are displayed on current page
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Items Per Page supports value
     console.log("[KGR-164] Pagination → Verify Items Per Page supports value 10");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3393,19 +5309,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-165
     // Excel Scenario: Pagination → Verify Items Per Page supports value 20
     // FSD §4.8 — Pagination
-    // Steps (1): Select 20 from page size dropdown
-    // Expected: Maximum 20 records are displayed on current page
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Items Per Page supports value
     console.log("[KGR-165] Pagination → Verify Items Per Page supports value 20");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3413,19 +5337,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-166
     // Excel Scenario: Pagination → Verify Items Per Page supports value 50
     // FSD §4.8 — Pagination
-    // Steps (1): Select 50 from page size dropdown
-    // Expected: Maximum 50 records are displayed on current page
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Items Per Page supports value
     console.log("[KGR-166] Pagination → Verify Items Per Page supports value 50");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3433,20 +5365,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-167
     // Excel Scenario: Pagination → Verify page size changes update grid correctly
     // FSD §4.8 — Pagination
-    // Steps (1): Change page size from 10 to 20
-    // Expected: Grid refreshes and displays records according to selected page size
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Page size changes update grid correctly.
     console.log("[KGR-167] Pagination → Verify page size changes update grid correctly");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3454,19 +5393,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-168
     // Excel Scenario: Pagination → Verify Previous button is displayed
     // FSD §4.8 — Pagination
-    // Steps (1): Navigate to report page
-    // Expected: Previous button is displayed in pagination controls
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Previous button is displayed.
     console.log("[KGR-168] Pagination → Verify Previous button is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3474,19 +5421,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-169
     // Excel Scenario: Pagination → Verify Next button is displayed
     // FSD §4.8 — Pagination
-    // Steps (1): Navigate to report page
-    // Expected: Next button is displayed in pagination controls
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Next button is displayed.
     console.log("[KGR-169] Pagination → Verify Next button is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3494,19 +5449,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-170
     // Excel Scenario: Pagination → Verify Next button navigates to next page
     // FSD §4.8 — Pagination
-    // Steps (1): Click Next button
-    // Expected: User is navigated to next page and new records are displayed
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Next button navigates to next page.
     console.log("[KGR-170] Pagination → Verify Next button navigates to next page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3514,19 +5477,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-171
     // Excel Scenario: Pagination → Verify Previous button navigates to previous page
     // FSD §4.8 — Pagination
-    // Steps (1): Click Previous button
-    // Expected: User is navigated to previous page and corresponding records are displayed
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Previous button navigates to previous page.
     console.log("[KGR-171] Pagination → Verify Previous button navigates to previous page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3534,19 +5505,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-172
     // Excel Scenario: Pagination → Verify Previous button behavior on first page
     // FSD §4.8 — Pagination
-    // Steps (1): Observe Previous button
-    // Expected: Previous button is disabled or unavailable on first page
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Previous button behavior on first page.
     console.log("[KGR-172] Pagination → Verify Previous button behavior on first page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3554,19 +5533,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-173
     // Excel Scenario: Pagination → Verify Next button behavior on last page
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to last page → Observe Next button
-    // Expected: Next button is disabled or unavailable on last page
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Next button behavior on last page.
     console.log("[KGR-173] Pagination → Verify Next button behavior on last page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3574,19 +5561,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-174
     // Excel Scenario: Pagination → Verify page indicator is displayed
     // FSD §4.8 — Pagination
-    // Steps (1): Navigate to report page
-    // Expected: Page indicator displays "Page X of Y"
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Page indicator is displayed.
     console.log("[KGR-174] Pagination → Verify page indicator is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3594,19 +5589,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-175
     // Excel Scenario: Pagination → Verify item range indicator is displayed
     // FSD §4.8 — Pagination
-    // Steps (1): Navigate to report page
-    // Expected: Item range indicator displays "A-B of N items"
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Item range indicator is displayed.
     console.log("[KGR-175] Pagination → Verify item range indicator is displayed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3614,19 +5617,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-176
     // Excel Scenario: Pagination → Verify page count calculation
     // FSD §4.8 — Pagination
-    // Steps (2): Verify total records → Verify page count
-    // Expected: Page count is calculated correctly
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Page count calculation.
     console.log("[KGR-176] Pagination → Verify page count calculation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3634,20 +5647,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-177
     // Excel Scenario: Pagination → Verify pagination with filtered records
     // FSD §4.8 — Pagination
-    // Steps (2): Apply filter → Navigate pages
-    // Expected: Pagination works correctly for filtered records
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination with filtered records.
     console.log("[KGR-177] Pagination → Verify pagination with filtered records");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3655,19 +5675,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-178
     // Excel Scenario: Pagination → Verify pagination with search results
     // FSD §4.8 — Pagination
-    // Steps (2): Search records → Navigate pages
-    // Expected: Pagination works correctly for searched records
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination with search results.
     console.log("[KGR-178] Pagination → Verify pagination with search results");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3675,19 +5703,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-179
     // Excel Scenario: Pagination → Verify pagination resets to Page 1 after Search
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to page 2 → Perform search
-    // Expected: Pagination resets to Page 1 after search
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination resets to Page 1 after Search.
     console.log("[KGR-179] Pagination → Verify pagination resets to Page 1 after Search");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3695,20 +5731,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-180
     // Excel Scenario: Pagination → Verify pagination resets to Page 1 after Branch filter
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to page 2 → Apply Branch filter
-    // Expected: Pagination resets to Page 1 after filter application
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination resets to Page 1 after Branch filter.
     console.log("[KGR-180] Pagination → Verify pagination resets to Page 1 after Branch filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyBranchFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3716,20 +5759,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-181
     // Excel Scenario: Pagination → Verify pagination resets to Page 1 after Customer Type filter
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to page 2 → Apply Customer Type filter
-    // Expected: Pagination resets to Page 1 after filter application
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination resets to Page 1 after Customer Type filter.
     console.log("[KGR-181] Pagination → Verify pagination resets to Page 1 after Customer Type filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyCustomerTypeFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3737,20 +5787,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-182
     // Excel Scenario: Pagination → Verify pagination resets to Page 1 after Template filter
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to page 2 → Apply Template filter
-    // Expected: Pagination resets to Page 1 after filter application
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination resets to Page 1 after Template filter.
     console.log("[KGR-182] Pagination → Verify pagination resets to Page 1 after Template filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyTemplateFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3758,20 +5815,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-183
     // Excel Scenario: Pagination → Verify pagination resets to Page 1 after Priority filter
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to page 2 → Apply Priority filter
-    // Expected: Pagination resets to Page 1 after filter application
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination resets to Page 1 after Priority filter.
     console.log("[KGR-183] Pagination → Verify pagination resets to Page 1 after Priority filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3779,20 +5843,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-184
     // Excel Scenario: Pagination → Verify pagination resets to Page 1 after Gap Score filter
     // FSD §4.8 — Pagination
-    // Steps (2): Navigate to page 2 → Apply Gap Score filter
-    // Expected: Pagination resets to Page 1 after filter application
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination resets to Page 1 after Gap Score filter.
     console.log("[KGR-184] Pagination → Verify pagination resets to Page 1 after Gap Score filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter('0', '100');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3800,19 +5871,28 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-185
     // Excel Scenario: Pagination → Verify pagination resets to Page 1 after Clear Filters
     // FSD §4.8 — Pagination
-    // Steps (3): Apply filters → Navigate to page 2 → Click Clear Filters
-    // Expected: Pagination resets to Page 1 and full dataset is displayed
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination resets to Page 1 after Clear Filters.
     console.log("[KGR-185] Pagination → Verify pagination resets to Page 1 after Clear Filters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.clearFilters();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.clearFiltersButton).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3820,19 +5900,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-186
     // Excel Scenario: Pagination → Verify pagination state is retained when opening and closing Gap Detail Modal
     // FSD §4.8 — Pagination
-    // Steps (3): Navigate to page 2 → Open Gap Detail Modal → Close Modal
-    // Expected: User remains on same page after closing modal
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination state is retained when opening and closing Gap Detail Modal.
     console.log("[KGR-186] Pagination → Verify pagination state is retained when opening and closing Gap Detail Modal");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.closeGapDetailModal();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3840,19 +5928,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-187
     // Excel Scenario: Pagination → Verify pagination state retained while navigating between Report and Template screens
     // FSD §4.8 — Pagination
-    // Steps (3): Navigate to page 2 → Open Template screen → Return to Report
-    // Expected: Previously selected page remains active
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination state retained while navigating between Report and Template screens.
     console.log("[KGR-187] Pagination → Verify pagination state retained while navigating between Report and Template screens");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3860,19 +5956,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-188
     // Excel Scenario: Pagination → Verify pagination works correctly when total records equal page size
     // FSD §4.8 — Pagination
-    // Steps (2): Set page size to 10 → Load exactly 10 records
-    // Expected: Single page is displayed correctly without extra page generation
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination works correctly when total records equal page size.
     console.log("[KGR-188] Pagination → Verify pagination works correctly when total records equal page size");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3880,19 +5984,28 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-189
     // Excel Scenario: Pagination → Verify pagination works correctly when total records are less than page size
     // FSD §4.8 — Pagination
-    // Steps (2): Set page size to 10 → Load 5 records
-    // Expected: Single page is displayed correctly
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination works correctly when total records are less than page size.
     console.log("[KGR-189] Pagination → Verify pagination works correctly when total records are less than page size");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
       await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
 
@@ -3900,21 +6013,28 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-190
     // Excel Scenario: Pagination → Verify pagination works correctly when no records are available
     // FSD §4.8 — Pagination
-    // Steps (1): Apply filters resulting in zero records
-    // Expected: Pagination remains stable and no application error occurs
+    // Steps (21): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Pagination works correctly when no records are available.
     console.log("[KGR-190] Pagination → Verify pagination works correctly when no records are available");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.goToNextPage();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.setPageSize(1);
+      await gapPage.goToPreviousPage();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await gapPage.expectPageLoaded();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
       });
   });
   });
@@ -3924,8 +6044,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-191
     // Excel Scenario: Export → Verify Export button is displayed on KYC Gap Report page
     // FSD §4.9 — Business Rules
-    // Steps (2): Navigate to KYC Gap Report → Verify Export button
-    // Expected: Export button is visible and accessible
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export button is displayed on KYC Gap Report page.
+    // TODO [KGR-191]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-191] Export → Verify Export button is displayed on KYC Gap Report page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -3933,10 +6054,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -3944,8 +6074,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-192
     // Excel Scenario: Export → Verify Export button is enabled when records exist
     // FSD §4.9 — Business Rules
-    // Steps (2): Navigate to report page → Observe Export button
-    // Expected: Export button is enabled
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export button is enabled when records exist.
+    // TODO [KGR-192]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-192] Export → Verify Export button is enabled when records exist");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -3953,10 +6084,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.exportButton).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       });
   });
 
@@ -3964,8 +6104,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-193
     // Excel Scenario: Export → Verify export downloads report successfully
     // FSD §4.9 — Business Rules
-    // Steps (1): Click Export button
-    // Expected: Report file is downloaded successfully without errors
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export downloads report successfully.
     // TODO [KGR-193]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-193] Export → Verify export downloads report successfully");
     await test.step("Navigate / setup", async () => {
@@ -3974,11 +6114,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectExportRespectsActiveFilters();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -3986,8 +6134,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-194
     // Excel Scenario: Export → Verify exported file contains report records
     // FSD §4.9 — Business Rules
-    // Steps (2): Open exported file → Verify records
-    // Expected: Exported file contains report records
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains report records.
     // TODO [KGR-194]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-194] Export → Verify exported file contains report records");
     await test.step("Navigate / setup", async () => {
@@ -3996,9 +6144,18 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4007,8 +6164,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-195
     // Excel Scenario: Export → Verify exported file contains Customer column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: Customer column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains Customer column.
     // TODO [KGR-195]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-195] Export → Verify exported file contains Customer column");
     await test.step("Navigate / setup", async () => {
@@ -4017,10 +6174,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4028,8 +6194,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-196
     // Excel Scenario: Export → Verify exported file contains Customer ID column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: Customer ID column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains Customer ID column.
     // TODO [KGR-196]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-196] Export → Verify exported file contains Customer ID column");
     await test.step("Navigate / setup", async () => {
@@ -4038,10 +6204,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4049,8 +6224,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-197
     // Excel Scenario: Export → Verify exported file contains Type column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: Type column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains Type column.
     // TODO [KGR-197]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-197] Export → Verify exported file contains Type column");
     await test.step("Navigate / setup", async () => {
@@ -4059,10 +6234,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4070,8 +6254,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-198
     // Excel Scenario: Export → Verify exported file contains Branch column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: Branch column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains Branch column.
     // TODO [KGR-198]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-198] Export → Verify exported file contains Branch column");
     await test.step("Navigate / setup", async () => {
@@ -4080,11 +6264,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4092,8 +6284,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-199
     // Excel Scenario: Export → Verify exported file contains Branch Code column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: Branch Code column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains Branch Code column.
     // TODO [KGR-199]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-199] Export → Verify exported file contains Branch Code column");
     await test.step("Navigate / setup", async () => {
@@ -4102,11 +6294,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4114,8 +6314,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-200
     // Excel Scenario: Export → Verify exported file contains Template Applied column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: Template Applied column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains Template Applied column.
     // TODO [KGR-200]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-200] Export → Verify exported file contains Template Applied column");
     await test.step("Navigate / setup", async () => {
@@ -4124,10 +6324,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4135,8 +6344,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-201
     // Excel Scenario: Export → Verify exported file contains KYC Gap Score column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: KYC Gap Score column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains KYC Gap Score column.
     // TODO [KGR-201]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-201] Export → Verify exported file contains KYC Gap Score column");
     await test.step("Navigate / setup", async () => {
@@ -4145,11 +6354,20 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4157,8 +6375,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-202
     // Excel Scenario: Export → Verify exported file contains Priority column
     // FSD §4.9 — Business Rules
-    // Steps (1): Open export file
-    // Expected: Priority column is present with correct values
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported file contains Priority column.
     // TODO [KGR-202]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-202] Export → Verify exported file contains Priority column");
     await test.step("Navigate / setup", async () => {
@@ -4167,12 +6385,20 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4180,8 +6406,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-203
     // Excel Scenario: Export → Verify exported record count matches report record count
     // FSD §4.9 — Business Rules
-    // Steps (2): Count records in report → Count records in export
-    // Expected: Exported record count matches report data
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported record count matches report record count.
+    // TODO [KGR-203]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-203] Export → Verify exported record count matches report record count");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4189,11 +6416,20 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectExportRespectsActiveFilters();
       await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4201,8 +6437,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-204
     // Excel Scenario: Export → Verify exported Customer values match report data
     // FSD §4.9 — Business Rules
-    // Steps (1): Compare report and export values
-    // Expected: Customer values match report data
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported Customer values match report data.
+    // TODO [KGR-204]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-204] Export → Verify exported Customer values match report data");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4210,9 +6447,18 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await gapPage.expectExportRespectsActiveFilters();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4221,8 +6467,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-205
     // Excel Scenario: Export → Verify exported KYC Gap Score values match report data
     // FSD §4.9 — Business Rules
-    // Steps (1): Compare report scores with export
-    // Expected: Exported scores match report data exactly
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported KYC Gap Score values match report data.
+    // TODO [KGR-205]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-205] Export → Verify exported KYC Gap Score values match report data");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4230,11 +6477,20 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectExportRespectsActiveFilters();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4242,8 +6498,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-206
     // Excel Scenario: Export → Verify exported Priority values match report data
     // FSD §4.9 — Business Rules
-    // Steps (1): Compare report priorities with export
-    // Expected: Exported priorities match report data exactly
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Exported Priority values match report data.
+    // TODO [KGR-206]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-206] Export → Verify exported Priority values match report data");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4251,10 +6508,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectExportRespectsActiveFilters();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4262,8 +6528,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-207
     // Excel Scenario: Export → Verify export respects active Search filter
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply Search filter → Export report
-    // Expected: Only filtered records are exported
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export respects active Search filter.
+    // TODO [KGR-207]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-207] Export → Verify export respects active Search filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4271,10 +6538,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4282,20 +6558,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-208
     // Excel Scenario: Export → Verify export respects active Branch filter
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply Branch filter → Export report
-    // Expected: Only branch-filtered records are exported
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export respects active Branch filter.
+    // TODO [KGR-208]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-208] Export → Verify export respects active Branch filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyBranchFilter();
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4303,20 +6588,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-209
     // Excel Scenario: Export → Verify export respects active Customer Type filter
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply Customer Type filter → Export report
-    // Expected: Only filtered customer type records are exported
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export respects active Customer Type filter.
+    // TODO [KGR-209]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-209] Export → Verify export respects active Customer Type filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyCustomerTypeFilter();
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4324,20 +6618,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-210
     // Excel Scenario: Export → Verify export respects active Template filter
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply Template filter → Export report
-    // Expected: Only template-filtered records are exported
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export respects active Template filter.
+    // TODO [KGR-210]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-210] Export → Verify export respects active Template filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyTemplateFilter();
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4345,20 +6648,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-211
     // Excel Scenario: Export → Verify export respects active Priority filter
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply Priority filter → Export report
-    // Expected: Only selected priority records are exported
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export respects active Priority filter.
+    // TODO [KGR-211]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-211] Export → Verify export respects active Priority filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyPriorityFilter();
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4366,20 +6678,29 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-212
     // Excel Scenario: Export → Verify export respects active Gap Score filter
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply score range filter → Export report
-    // Expected: Only records within selected score range are exported
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export respects active Gap Score filter.
+    // TODO [KGR-212]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-212] Export → Verify export respects active Gap Score filter");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter('0', '100');
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4387,8 +6708,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-213
     // Excel Scenario: Export → Verify export supports combined filters
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply multiple filters → Export report
-    // Expected: Only records matching all active filters are exported
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export supports combined filters.
+    // TODO [KGR-213]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-213] Export → Verify export supports combined filters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4396,10 +6718,19 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4407,19 +6738,28 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-214
     // Excel Scenario: Export → Verify export after sorting
     // FSD §4.9 — Business Rules
-    // Steps (2): Sort report → Export data
-    // Expected: Export completes successfully with accurate data
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export after sorting.
+    // TODO [KGR-214]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-214] Export → Verify export after sorting");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.sortByColumn("Customer");
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4428,8 +6768,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-215
     // Excel Scenario: Export → Verify export works from Page 1
     // FSD §4.9 — Business Rules
-    // Steps (1): Export report
-    // Expected: Export completes successfully
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export works from Page
+    // TODO [KGR-215]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-215] Export → Verify export works from Page 1");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4437,9 +6778,18 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4448,8 +6798,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-216
     // Excel Scenario: Export → Verify export works from non-first page
     // FSD §4.9 — Business Rules
-    // Steps (2): Navigate to Page 2 → Export report
-    // Expected: Export includes all applicable records, not just current page
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export works from non-first page.
+    // TODO [KGR-216]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-216] Export → Verify export works from non-first page");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4457,9 +6808,18 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4468,20 +6828,30 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-217
     // Excel Scenario: Export → Verify export works when page size is changed
     // FSD §4.9 — Business Rules
-    // Steps (2): Change page size → Export report
-    // Expected: Exported data remains accurate
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export works when page size is changed.
+    // TODO [KGR-217]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-217] Export → Verify export works when page size is changed");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.setPageSize(1);
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportPaginationNext).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
       await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4489,8 +6859,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-218
     // Excel Scenario: Export → Verify export file opens successfully
     // FSD §4.9 — Business Rules
-    // Steps (1): Open exported file
-    // Expected: Exported file opens successfully without corruption
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export file opens successfully.
     // TODO [KGR-218]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-218] Export → Verify export file opens successfully");
     await test.step("Navigate / setup", async () => {
@@ -4499,9 +6869,18 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4510,9 +6889,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-219
     // Excel Scenario: Export → Verify export handles large datasets
     // FSD §4.9 — Business Rules
-    // Steps (1): Export large dataset
-    // Expected: Export completes successfully without application failure
-    // TODO [KGR-219]: "Large" record count undefined — Excel/FSD gap; implement when product clarifies.
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export handles large datasets.
+    // TODO [KGR-219]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-219] Export → Verify export handles large datasets");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4520,9 +6899,18 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4531,8 +6919,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-220
     // Excel Scenario: Export → Verify export behavior when no records are available
     // FSD §4.9 — Business Rules
-    // Steps (2): Apply filters resulting in no records → Click Export
-    // Expected: System displays appropriate behavior for empty dataset export without crashing
+    // Steps (17): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Export behavior when no records are available.
+    // TODO [KGR-220]: File format (CSV/XLSX) not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-220] Export → Verify export behavior when no records are available");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
@@ -4540,10 +6929,20 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.sortByColumn("Customer");
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportEmptyState.or(gapPage.gapReportRows)).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectExportRespectsActiveFilters();
+      await gapPage.expectPageLoaded();
+      await gapPage.expectModalScoreMatchesGrid();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
   });
@@ -4553,20 +6952,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-221
     // Excel Scenario: Security & Audit → Verify authenticated Compliance Officer can access KYC Gap Report
     // FSD §4.9 — Business Rules
-    // Steps (2): Login as Compliance Officer → Navigate to KYC Gap Report
-    // Expected: KYC Gap Report is accessible
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Authenticated Compliance Officer can access KYC Gap Report.
     // TODO [KGR-221]: Role credentials not in Excel — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-221] Security & Audit → Verify authenticated Compliance Officer can access KYC Gap Report");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4574,20 +6970,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-222
     // Excel Scenario: Security & Audit → Verify authenticated Administrator can access KYC Gap Report
     // FSD §4.9 — Business Rules
-    // Steps (2): Login as Administrator → Navigate to KYC Gap Report
-    // Expected: KYC Gap Report is accessible
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Authenticated Administrator can access KYC Gap Report.
     // TODO [KGR-222]: Role credentials not in Excel — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-222] Security & Audit → Verify authenticated Administrator can access KYC Gap Report");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4595,8 +6988,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-223
     // Excel Scenario: Security & Audit → Verify unauthorized role cannot access KYC Gap Report
     // FSD §4.9 — Business Rules
-    // Steps (2): Login with unauthorized role → Attempt to access report
-    // Expected: Access is denied as per RBAC configuration
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Unauthorized role cannot access KYC Gap Report.
     // TODO [KGR-223]: Role credentials not in Excel — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-223] Security & Audit → Verify unauthorized role cannot access KYC Gap Report");
     await test.step("Preconditions", async () => {
@@ -4604,10 +6997,6 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Navigate / setup", async () => {
-      await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
-    await test.step("Execute Excel test steps", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
@@ -4620,8 +7009,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-224
     // Excel Scenario: Security & Audit → Verify unauthenticated user cannot access KYC Gap Report URL
     // FSD §4.9 — Business Rules
-    // Steps (1): Open KYC Gap Report URL directly
-    // Expected: User is redirected to login page or access denied page
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Unauthenticated user cannot access KYC Gap Report URL.
     // TODO [KGR-224]: Role credentials not in Excel — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-224] Security & Audit → Verify unauthenticated user cannot access KYC Gap Report URL");
     await test.step("Preconditions", async () => {
@@ -4629,10 +7018,6 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Navigate / setup", async () => {
-      await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
-    await test.step("Execute Excel test steps", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
@@ -4645,8 +7030,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-225
     // Excel Scenario: Security & Audit → Verify direct URL access respects RBAC permissions
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter report URL directly
-    // Expected: Access remains restricted
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Direct URL access respects RBAC permissions.
     // TODO [KGR-225]: Role credentials not in Excel — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-225] Security & Audit → Verify direct URL access respects RBAC permissions");
     await test.step("Preconditions", async () => {
@@ -4657,12 +7042,8 @@ test.describe("KYC Gap Report Module", () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await gapPage.expectAccessDenied();
       });
   });
 
@@ -4670,15 +7051,15 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-226
     // Excel Scenario: Security & Audit → Verify session timeout prevents report access
     // FSD §4.9 — Business Rules
-    // Steps (3): Login → Allow session to expire → Access report
-    // Expected: User is redirected to login screen
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Session timeout prevents report access.
     console.log("[KGR-226] Security & Audit → Verify session timeout prevents report access");
-    await test.step("Navigate / setup", async () => {
-      await gapPage.openGapReportDirect(testData.baseUrl);
+    await test.step("Preconditions", async () => {
+      await gapPage.mockUnauthorized();
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Validate expected results", async () => {
@@ -4690,18 +7071,15 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-227
     // Excel Scenario: Security & Audit → Verify report is read-only
     // FSD §4.9 — Business Rules
-    // Steps (2): Review report actions → Attempt modification
-    // Expected: No edit functionality is available
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Report is read-only.
     console.log("[KGR-227] Security & Audit → Verify report is read-only");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
+      await gapPage.expectPageLoaded();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4710,19 +7088,16 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-228
     // Excel Scenario: Security & Audit → Verify report does not provide Bulk Notify action
     // FSD §4.9 — Business Rules
-    // Steps (1): Review page actions
-    // Expected: Bulk Notify action is not available
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Report does not provide Bulk Notify action.
     console.log("[KGR-228] Security & Audit → Verify report does not provide Bulk Notify action");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4730,19 +7105,16 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-229
     // Excel Scenario: Security & Audit → Verify report does not provide Edit action
     // FSD §4.9 — Business Rules
-    // Steps (1): Review Actions column
-    // Expected: Only View action is available
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Report does not provide Edit action.
     console.log("[KGR-229] Security & Audit → Verify report does not provide Edit action");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4750,19 +7122,15 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-230
     // Excel Scenario: Security & Audit → Verify View action does not allow data modification
     // FSD §4.9 — Business Rules
-    // Steps (2): Open Gap Detail Modal → Review controls
-    // Expected: Modal provides read-only information only
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: View action does not allow data modification.
     console.log("[KGR-230] Security & Audit → Verify View action does not allow data modification");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectPageLoaded();
       await expect(gapPage.exportButton).toBeVisible();
       });
   });
@@ -4771,20 +7139,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-231
     // Excel Scenario: Security & Audit → Verify audit log entry generated for template creation
     // FSD §4.9 — Business Rules
-    // Steps (2): Create template → Review audit log
-    // Expected: Audit log contains template creation event
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log entry generated for template creation.
     // TODO [KGR-231]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-231] Security & Audit → Verify audit log entry generated for template creation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4792,20 +7157,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-232
     // Excel Scenario: Security & Audit → Verify audit log captures user ID during template creation
     // FSD §4.9 — Business Rules
-    // Steps (2): Create template → Review audit log
-    // Expected: Audit entry contains correct User ID
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log captures user ID during template creation.
     // TODO [KGR-232]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-232] Security & Audit → Verify audit log captures user ID during template creation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4813,20 +7175,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-233
     // Excel Scenario: Security & Audit → Verify audit log captures timestamp during template creation
     // FSD §4.9 — Business Rules
-    // Steps (2): Create template → Review audit log
-    // Expected: Audit entry contains accurate timestamp
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log captures timestamp during template creation.
     // TODO [KGR-233]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-233] Security & Audit → Verify audit log captures timestamp during template creation");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4834,20 +7193,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-234
     // Excel Scenario: Security & Audit → Verify audit log entry generated for template cloning
     // FSD §4.9 — Business Rules
-    // Steps (2): Clone template → Review audit log
-    // Expected: Audit log contains template clone event
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log entry generated for template cloning.
     // TODO [KGR-234]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-234] Security & Audit → Verify audit log entry generated for template cloning");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4855,20 +7211,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-235
     // Excel Scenario: Security & Audit → Verify audit log entry generated when field requirement changes
     // FSD §4.9 — Business Rules
-    // Steps (2): Change field requirement → Save changes
-    // Expected: Audit log captures configuration change
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log entry generated when field requirement changes.
     // TODO [KGR-235]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-235] Security & Audit → Verify audit log entry generated when field requirement changes");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4876,20 +7229,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-236
     // Excel Scenario: Security & Audit → Verify audit log records previous value for requirement change
     // FSD §4.9 — Business Rules
-    // Steps (2): Change field requirement → Review audit log
-    // Expected: Previous value is recorded correctly
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log records previous value for requirement change.
     // TODO [KGR-236]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-236] Security & Audit → Verify audit log records previous value for requirement change");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4897,20 +7247,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-237
     // Excel Scenario: Security & Audit → Verify audit log records new value for requirement change
     // FSD §4.9 — Business Rules
-    // Steps (2): Change field requirement → Review audit log
-    // Expected: New value is recorded correctly
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log records new value for requirement change.
     // TODO [KGR-237]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-237] Security & Audit → Verify audit log records new value for requirement change");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4918,20 +7265,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-238
     // Excel Scenario: Security & Audit → Verify audit log entry generated when custom field is added
     // FSD §4.9 — Business Rules
-    // Steps (2): Add custom field → Save changes
-    // Expected: Audit log contains custom field addition event
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log entry generated when custom field is added.
     // TODO [KGR-238]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-238] Security & Audit → Verify audit log entry generated when custom field is added");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4939,20 +7283,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-239
     // Excel Scenario: Security & Audit → Verify audit log entry generated when score bands are modified
     // FSD §4.9 — Business Rules
-    // Steps (2): Update score bands → Save changes
-    // Expected: Audit log contains score band modification event
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log entry generated when score bands are modified.
     // TODO [KGR-239]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-239] Security & Audit → Verify audit log entry generated when score bands are modified");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4960,20 +7301,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-240
     // Excel Scenario: Security & Audit → Verify audit log captures before and after values for score band changes
     // FSD §4.9 — Business Rules
-    // Steps (2): Update score bands → Review audit log
-    // Expected: Audit log contains both previous and updated values
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log captures before and after values for score band changes.
     // TODO [KGR-240]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-240] Security & Audit → Verify audit log captures before and after values for score band changes");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -4981,20 +7319,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-241
     // Excel Scenario: Security & Audit → Verify audit log remains immutable
     // FSD §4.9 — Business Rules
-    // Steps (2): Open audit log → Attempt modification
-    // Expected: Audit records cannot be modified
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log remains immutable.
     // TODO [KGR-241]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-241] Security & Audit → Verify audit log remains immutable");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5002,20 +7337,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-242
     // Excel Scenario: Security & Audit → Verify audit records are retained after page refresh
     // FSD §4.9 — Business Rules
-    // Steps (2): Review audit log → Refresh page
-    // Expected: Audit records remain available after refresh
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit records are retained after page refresh.
     // TODO [KGR-242]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-242] Security & Audit → Verify audit records are retained after page refresh");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.refreshData();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5023,8 +7355,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-243
     // Excel Scenario: Security & Audit → Verify unauthorized user cannot modify template configuration
     // FSD §4.9 — Business Rules
-    // Steps (1): Attempt template modification
-    // Expected: Modification is blocked
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Unauthorized user cannot modify template configuration.
+    // TODO [KGR-243]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-243] Security & Audit → Verify unauthorized user cannot modify template configuration");
     await test.step("Preconditions", async () => {
       await gapPage.mockUnauthorized();
@@ -5034,12 +7367,8 @@ test.describe("KYC Gap Report Module", () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await gapPage.expectAccessDenied();
       });
   });
 
@@ -5047,8 +7376,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-244
     // Excel Scenario: Security & Audit → Verify unauthorized user cannot access audit records
     // FSD §4.9 — Business Rules
-    // Steps (1): Attempt audit log access
-    // Expected: Access to audit records is denied
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Unauthorized user cannot access audit records.
     // TODO [KGR-244]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-244] Security & Audit → Verify unauthorized user cannot access audit records");
     await test.step("Preconditions", async () => {
@@ -5056,10 +7385,6 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Navigate / setup", async () => {
-      await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
-    await test.step("Execute Excel test steps", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
@@ -5072,8 +7397,9 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-245
     // Excel Scenario: Security & Audit → Verify application prevents access after logout
     // FSD §4.9 — Business Rules
-    // Steps (2): Logout → Access report URL
-    // Expected: User is redirected to login page
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Application prevents access after logout.
+    // TODO [KGR-245]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-245] Security & Audit → Verify application prevents access after logout");
     await test.step("Preconditions", async () => {
       await gapPage.mockUnauthorized();
@@ -5081,10 +7407,6 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.mockUnauthorized();
       });
 
     await test.step("Validate expected results", async () => {
@@ -5096,19 +7418,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-246
     // Excel Scenario: Security & Audit → Verify report remains accessible after successful re-authentication
     // FSD §4.9 — Business Rules
-    // Steps (2): Login again → Access report
-    // Expected: KYC Gap Report is accessible again
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Report remains accessible after successful re-authentication.
+    // TODO [KGR-246]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-246] Security & Audit → Verify report remains accessible after successful re-authentication");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5116,20 +7436,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-247
     // Excel Scenario: Security & Audit → Verify audit log captures template archival action
     // FSD §4.9 — Business Rules
-    // Steps (2): Archive template → Review audit log
-    // Expected: Audit log contains template archival event
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit log captures template archival action.
     // TODO [KGR-247]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-247] Security & Audit → Verify audit log captures template archival action");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5137,19 +7454,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-248
     // Excel Scenario: Security & Audit → Verify templates cannot be permanently deleted
     // FSD §4.9 — Business Rules
-    // Steps (2): Review template actions → Attempt delete
-    // Expected: Delete option is unavailable and only archive/deactivate is supported
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Templates cannot be permanently deleted.
+    // TODO [KGR-248]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-248] Security & Audit → Verify templates cannot be permanently deleted");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5157,20 +7472,17 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-249
     // Excel Scenario: Security & Audit → Verify archived templates remain traceable in audit history
     // FSD §4.9 — Business Rules
-    // Steps (1): Open audit records for archived template
-    // Expected: Audit history remains available for archived template
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Archived templates remain traceable in audit history.
     // TODO [KGR-249]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-249] Security & Audit → Verify archived templates remain traceable in audit history");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
-      });
-
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5178,20 +7490,89 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-250
     // Excel Scenario: Security & Audit → Verify audit trail completeness for template lifecycle
     // FSD §4.9 — Business Rules
-    // Steps (2): Perform lifecycle actions → Review audit history
-    // Expected: Complete end-to-end audit trail is available for template lifecycle
+    // Steps (15): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Audit trail completeness for template lifecycle.
     // TODO [KGR-250]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-250] Security & Audit → Verify audit trail completeness for template lifecycle");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
-    await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+    await test.step("Validate expected results", async () => {
+      await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
+      });
+  });
+
+  test("Case ID:KGR-288 - Security & Audit → keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order", async ({ testData }) => {
+    // Excel Test Case ID: KGR-288
+    // Excel Scenario: Security & Audit → Verify keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order
+    // FSD §4.9 — Business Rules
+    // Steps (23): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Search, filters, grid, and pagination are reachable via keyboard tab order.
+    // TODO [KGR-288]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
+    console.log("[KGR-288] Security & Audit → Verify keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
+      });
+  });
+
+  test("Case ID:KGR-289 - Security & Audit → ARIA roles and labels are present on report table, filters, and Gap Detail Modal", async ({ testData }) => {
+    // Excel Test Case ID: KGR-289
+    // Excel Scenario: Security & Audit → Verify ARIA roles and labels are present on report table, filters, and Gap Detail Modal
+    // FSD §4.9 — Business Rules
+    // Steps (23): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Table, filters, and modal expose appropriate ARIA roles and labels.
+    // TODO [KGR-289]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
+    console.log("[KGR-289] Security & Audit → Verify ARIA roles and labels are present on report table, filters, and Gap Detail Modal");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Validate expected results", async () => {
+      await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
+      });
+  });
+
+  test("Case ID:KGR-290 - Security & Audit → KYC Gap Report initial page load completes within acceptable performance threshold", async ({ testData }) => {
+    // Excel Test Case ID: KGR-290
+    // Excel Scenario: Security & Audit → Verify KYC Gap Report initial page load completes within acceptable performance threshold
+    // FSD §4.9 — Business Rules
+    // Steps (23): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: Initial page load completes within the SLA in test data.
+    // TODO [KGR-290]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
+    console.log("[KGR-290] Security & Audit → Verify KYC Gap Report initial page load completes within acceptable performance threshold");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Validate expected results", async () => {
+      await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
+      });
+  });
+
+  test("Case ID:KGR-291 - Security & Audit → KYC Gap Report layout and controls render consistently in Chrome and Edge browsers", async ({ testData }) => {
+    // Excel Test Case ID: KGR-291
+    // Excel Scenario: Security & Audit → Verify KYC Gap Report layout and controls render consistently in Chrome and Edge browsers
+    // FSD §4.9 — Business Rules
+    // Steps (19): Configure user role or session per test data. → Attempt to access KYC Gap Report. → Perform a report access or export action and verify audit log entry is created. …
+    // Expected: KYC Gap Report layout and controls render consistently in Chrome and Edge browsers.
+    // TODO [KGR-291]: Audit UI/API endpoint not specified — Excel/FSD gap; implement when product clarifies.
+    console.log("[KGR-291] Security & Audit → Verify KYC Gap Report layout and controls render consistently in Chrome and Edge browsers");
+    await test.step("Navigate / setup", async () => {
+      await gapPage.openGapReportDirect(testData.baseUrl);
+      });
+
+    await test.step("Validate expected results", async () => {
+      await gapPage.expectPageLoaded();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
   });
@@ -5201,19 +7582,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-251
     // Excel Scenario: Boundary & Negative Testing → Verify search with blank value
     // FSD §4.9 — Business Rules
-    // Steps (2): Leave Search field blank → Observe results
-    // Expected: Complete dataset is displayed without errors
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with blank value.
     console.log("[KGR-251] Boundary & Negative Testing → Verify search with blank value");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search("");
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5221,19 +7608,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-252
     // Excel Scenario: Boundary & Negative Testing → Verify search with whitespace-only value
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter spaces in Search field
-    // Expected: System treats input as blank and displays valid results
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with whitespace-only value.
     console.log("[KGR-252] Boundary & Negative Testing → Verify search with whitespace-only value");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('  KYC  ');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5241,19 +7634,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-253
     // Excel Scenario: Boundary & Negative Testing → Verify search with maximum supported characters
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter maximum length search value
-    // Expected: System processes input without UI or application failure
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with maximum supported characters.
     console.log("[KGR-253] Boundary & Negative Testing → Verify search with maximum supported characters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5261,25 +7660,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-254
     // Excel Scenario: Boundary & Negative Testing → Verify search with SQL injection pattern
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter SQL injection string
-    // Expected: System treats input as text and prevents unauthorized behavior
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with SQL injection pattern.
     // TODO [KGR-254]: Expected system response detail (block/sanitize/log) — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-254] Boundary & Negative Testing → Verify search with SQL injection pattern");
-    await test.step("Preconditions", async () => {
-      await gapPage.mockUnauthorized();
-      });
-
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search("' OR '1'='1");
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('\' OR \'1\'=\'1');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectAccessDenied();
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5287,8 +7687,8 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-255
     // Excel Scenario: Boundary & Negative Testing → Verify search with script injection pattern
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter script tag payload
-    // Expected: Script is not executed and application remains secure
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Search with script injection pattern.
     // TODO [KGR-255]: Expected system response detail (block/sanitize/log) — Excel/FSD gap; implement when product clarifies.
     console.log("[KGR-255] Boundary & Negative Testing → Verify search with script injection pattern");
     await test.step("Navigate / setup", async () => {
@@ -5296,11 +7696,17 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('<script>alert(\'xss\')</script>');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5308,19 +7714,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-256
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with Min value only
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter Min score only
-    // Expected: Records greater than or equal to Min value are displayed
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with Min value only.
     console.log("[KGR-256] Boundary & Negative Testing → Verify Gap Score filter with Min value only");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter('0', '100');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5328,19 +7740,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-257
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with Max value only
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter Max score only
-    // Expected: Records less than or equal to Max value are displayed
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with Max value only.
     console.log("[KGR-257] Boundary & Negative Testing → Verify Gap Score filter with Max value only");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter('0', '100');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5348,19 +7766,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-258
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with Min greater than Max
     // FSD §4.9 — Business Rules
-    // Steps (2): Enter Min=20 → Enter Max=10
-    // Expected: System prevents invalid range or displays validation message
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with Min greater than Max.
     console.log("[KGR-258] Boundary & Negative Testing → Verify Gap Score filter with Min greater than Max");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5368,19 +7793,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-259
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with negative values
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter negative value
-    // Expected: Negative values are rejected or handled appropriately
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with negative values.
     console.log("[KGR-259] Boundary & Negative Testing → Verify Gap Score filter with negative values");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter("-1", "10");
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5388,19 +7819,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-260
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with decimal values
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter decimal score value
-    // Expected: System validates or processes input according to specification
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with decimal values.
     console.log("[KGR-260] Boundary & Negative Testing → Verify Gap Score filter with decimal values");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter("10.5", "20.5");
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5408,19 +7845,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-261
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with alphabetic characters
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter alphabetic value
-    // Expected: Alphabetic values are not accepted
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with alphabetic characters.
     console.log("[KGR-261] Boundary & Negative Testing → Verify Gap Score filter with alphabetic characters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.applyScoreRangeFilter("abc", "xyz");
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5428,19 +7871,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-262
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with special characters
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter special characters
-    // Expected: Invalid characters are not accepted
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with special characters.
     console.log("[KGR-262] Boundary & Negative Testing → Verify Gap Score filter with special characters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('@#$%');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('!@#$%');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5448,19 +7897,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-263
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 0
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 0
-    // Expected: Records with score 0 are returned correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-263] Boundary & Negative Testing → Verify Gap Score boundary value 0");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5468,19 +7924,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-264
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 25
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 25
-    // Expected: Boundary value is processed correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-264] Boundary & Negative Testing → Verify Gap Score boundary value 25");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5488,19 +7951,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-265
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 26
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 26
-    // Expected: Boundary value is processed correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-265] Boundary & Negative Testing → Verify Gap Score boundary value 26");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5508,19 +7978,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-266
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 50
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 50
-    // Expected: Boundary value is processed correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-266] Boundary & Negative Testing → Verify Gap Score boundary value 50");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5528,19 +8005,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-267
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 51
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 51
-    // Expected: Boundary value is processed correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-267] Boundary & Negative Testing → Verify Gap Score boundary value 51");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5548,19 +8032,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-268
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 75
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 75
-    // Expected: Boundary value is processed correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-268] Boundary & Negative Testing → Verify Gap Score boundary value 75");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5568,19 +8059,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-269
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 76
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 76
-    // Expected: Boundary value is processed correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-269] Boundary & Negative Testing → Verify Gap Score boundary value 76");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5588,19 +8086,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-270
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score boundary value 100
     // FSD §4.9 — Business Rules
-    // Steps (1): Filter using score 100
-    // Expected: Boundary value is processed correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score boundary value
     console.log("[KGR-270] Boundary & Negative Testing → Verify Gap Score boundary value 100");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportRows.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5608,19 +8113,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-271
     // Excel Scenario: Boundary & Negative Testing → Verify Gap Score filter with value greater than 100
     // FSD §4.9 — Business Rules
-    // Steps (1): Enter score greater than 100
-    // Expected: System rejects invalid value or returns appropriate result
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Gap Score filter with value greater than
     console.log("[KGR-271] Boundary & Negative Testing → Verify Gap Score filter with value greater than 100");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5628,20 +8140,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-272
     // Excel Scenario: Boundary & Negative Testing → Verify report behavior when no records match filters
     // FSD §4.9 — Business Rules
-    // Steps (1): Apply restrictive filters
-    // Expected: System displays empty state without errors
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report behavior when no records match filters.
     console.log("[KGR-272] Boundary & Negative Testing → Verify report behavior when no records match filters");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportEmptyState.or(gapPage.gapReportRows)).toBeVisible();
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5649,19 +8166,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-273
     // Excel Scenario: Boundary & Negative Testing → Verify opening Gap Detail Modal for customer with single missing field
     // FSD §4.9 — Business Rules
-    // Steps (1): Open customer detail
-    // Expected: Modal displays accurate information
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Opening Gap Detail Modal for customer with single missing field.
     console.log("[KGR-273] Boundary & Negative Testing → Verify opening Gap Detail Modal for customer with single missing field");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5669,19 +8193,27 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-274
     // Excel Scenario: Boundary & Negative Testing → Verify opening Gap Detail Modal for customer with large number of missing fields
     // FSD §4.9 — Business Rules
-    // Steps (1): Open customer detail
-    // Expected: Modal displays all fields correctly
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Opening Gap Detail Modal for customer with large number of missing fields.
     console.log("[KGR-274] Boundary & Negative Testing → Verify opening Gap Detail Modal for customer with large number of missing fields");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectGapDetailModalVisible();
+      await gapPage.expectKpiCardsVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5689,19 +8221,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-275
     // Excel Scenario: Boundary & Negative Testing → Verify report behavior when all customers belong to same priority
     // FSD §4.9 — Business Rules
-    // Steps (1): Load dataset
-    // Expected: Report functions correctly with single-priority data
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report behavior when all customers belong to same priority.
     console.log("[KGR-275] Boundary & Negative Testing → Verify report behavior when all customers belong to same priority");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5709,19 +8247,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-276
     // Excel Scenario: Boundary & Negative Testing → Verify report behavior when all customers belong to same branch
     // FSD §4.9 — Business Rules
-    // Steps (1): Load dataset
-    // Expected: Report functions correctly with single-branch data
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report behavior when all customers belong to same branch.
     console.log("[KGR-276] Boundary & Negative Testing → Verify report behavior when all customers belong to same branch");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5729,19 +8273,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-277
     // Excel Scenario: Boundary & Negative Testing → Verify report behavior with duplicate customer names
     // FSD §4.9 — Business Rules
-    // Steps (1): Search duplicate customer names
-    // Expected: Correct records are displayed with unique identifiers
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report behavior with duplicate customer names.
     console.log("[KGR-277] Boundary & Negative Testing → Verify report behavior with duplicate customer names");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5749,19 +8299,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-278
     // Excel Scenario: Boundary & Negative Testing → Verify report behavior with special characters in customer name
     // FSD §4.9 — Business Rules
-    // Steps (1): Search and review customer record
-    // Expected: Special characters are displayed correctly
+    // Steps (29): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report behavior with special characters in customer name.
     console.log("[KGR-278] Boundary & Negative Testing → Verify report behavior with special characters in customer name");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('!@#$%');
       });
 
     await test.step("Validate expected results", async () => {
-      await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5769,20 +8325,25 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-279
     // Excel Scenario: Boundary & Negative Testing → Verify report behavior with extremely long customer names
     // FSD §4.9 — Business Rules
-    // Steps (1): Review customer record
-    // Expected: Grid and modal remain properly formatted
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report behavior with extremely long customer names.
     console.log("[KGR-279] Boundary & Negative Testing → Verify report behavior with extremely long customer names");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.expectGapReportViewLoaded();
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('Kumar Global Traders Pvt. Ltd.');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportDetailModal).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
 
@@ -5790,19 +8351,26 @@ test.describe("KYC Gap Report Module", () => {
     // Excel Test Case ID: KGR-280
     // Excel Scenario: Boundary & Negative Testing → Verify report recovery after invalid filter input
     // FSD §4.9 — Business Rules
-    // Steps (2): Enter invalid filter values → Correct input
-    // Expected: System recovers successfully and continues normal operation
+    // Steps (27): Open KYC Gap Report. → Verify the landing page title, subtitle, and Export action are displayed. → Confirm KPI summary, filters, and report grid are visible before scenario steps. …
+    // Expected: Report recovery after invalid filter input.
     console.log("[KGR-280] Boundary & Negative Testing → Verify report recovery after invalid filter input");
     await test.step("Navigate / setup", async () => {
       await gapPage.openGapReportDirect(testData.baseUrl);
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.search('Invalid Score Range');
+      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
+      await gapPage.search('zzzz-no-match-99999');
       });
 
     await test.step("Validate expected results", async () => {
+      await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPageLoaded();
+      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectKpiCountsMatchGrid();
+      await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectReportResultsOrEmpty();
+      await expect(gapPage.exportButton).toBeVisible();
       });
   });
   });

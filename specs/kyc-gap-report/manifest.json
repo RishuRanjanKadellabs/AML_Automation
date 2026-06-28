@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-06-25T10:38:45.125Z",
+  "generatedAt": "2026-06-28T11:55:10.622Z",
   "testCases": [
     {
       "id": "KGR-001",
       "subModule": "KYC Gap Report",
       "priority": "Critical",
-      "taskDescription": "Verify user can access KYC Gap Report from Missing Mandatory menu",
+      "taskDescription": "Verify user can access KYC Gap Report",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -173,7 +173,7 @@
       "id": "KGR-013",
       "subModule": "KYC Gap Report",
       "priority": "Medium",
-      "taskDescription": "Verify navigation from KYC Gap Report to Missing Mandatory Template",
+      "taskDescription": "Verify KYC Gap Report is available in KYC module navigation",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -187,7 +187,7 @@
       "id": "KGR-014",
       "subModule": "KYC Gap Report",
       "priority": "Medium",
-      "taskDescription": "Verify returning from Template screen preserves KYC Gap Report access",
+      "taskDescription": "Verify user can return to KYC Gap Report after navigating away",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -201,7 +201,7 @@
       "id": "KGR-015",
       "subModule": "KYC Gap Report",
       "priority": "Critical",
-      "taskDescription": "Verify filter and page state is retained when navigating between Template and Report views",
+      "taskDescription": "Verify filters and page state persist when leaving and returning to KYC Gap Report",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -2053,7 +2053,7 @@
       "tags": [
         "kyc-gap-report-gap-detail-modal",
         "critical",
-        "modal"
+        "functional"
       ],
       "mmTcOverlap": null
     },
@@ -3266,7 +3266,7 @@
       "tags": [
         "kyc-gap-report-security-audit",
         "critical",
-        "modal"
+        "functional"
       ],
       "mmTcOverlap": null
     },
@@ -3681,8 +3681,8 @@
       "tags": [
         "kyc-gap-report-boundary-negative-testing",
         "critical",
-        "boundary",
-        "negative"
+        "gap-score",
+        "business-rule"
       ],
       "mmTcOverlap": null
     },
@@ -3741,8 +3741,8 @@
       "tags": [
         "kyc-gap-report-boundary-negative-testing",
         "critical",
-        "boundary",
-        "negative"
+        "gap-score",
+        "business-rule"
       ],
       "mmTcOverlap": null
     },
@@ -4005,6 +4005,161 @@
         "critical",
         "boundary",
         "negative"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-281",
+      "subModule": "KYC Gap Report",
+      "priority": "High",
+      "taskDescription": "Verify Refresh button is visible and reloads report data without losing applied filters",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report",
+        "high",
+        "filter"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-282",
+      "subModule": "KYC Gap Report",
+      "priority": "Medium",
+      "taskDescription": "Verify breadcrumb navigation displays correct KYC module path on landing page",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report",
+        "medium",
+        "functional"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-283",
+      "subModule": "KYC Gap Report - Report Grid",
+      "priority": "High",
+      "taskDescription": "Verify Individual and Corporate Type badges use distinct colour coding in grid",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-report-grid",
+        "high",
+        "functional"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-284",
+      "subModule": "KYC Gap Report - Report Grid",
+      "priority": "High",
+      "taskDescription": "Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-report-grid",
+        "high",
+        "gap-score",
+        "business-rule"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-285",
+      "subModule": "KYC Gap Report - Report Grid",
+      "priority": "High",
+      "taskDescription": "Verify Edit button is not present in report grid per read-only design",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-report-grid",
+        "high",
+        "functional"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-286",
+      "subModule": "KYC Gap Report - Report Grid",
+      "priority": "High",
+      "taskDescription": "Verify Missing Fields column is not displayed in landing grid",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-report-grid",
+        "high",
+        "functional"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-287",
+      "subModule": "KYC Gap Report - Gap Detail Modal",
+      "priority": "High",
+      "taskDescription": "Verify Gap Detail Modal displays CIF ID and branch code in customer metadata section",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-gap-detail-modal",
+        "high",
+        "modal"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-288",
+      "subModule": "KYC Gap Report - Security & Audit",
+      "priority": "Medium",
+      "taskDescription": "Verify keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order",
+      "automationLayer": "Database + Manual",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-security-audit",
+        "medium",
+        "filter"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-289",
+      "subModule": "KYC Gap Report - Security & Audit",
+      "priority": "Medium",
+      "taskDescription": "Verify ARIA roles and labels are present on report table, filters, and Gap Detail Modal",
+      "automationLayer": "Database + Manual",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-security-audit",
+        "medium",
+        "modal"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-290",
+      "subModule": "KYC Gap Report - Security & Audit",
+      "priority": "Medium",
+      "taskDescription": "Verify KYC Gap Report initial page load completes within acceptable performance threshold",
+      "automationLayer": "Database + Manual",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-security-audit",
+        "medium",
+        "functional"
+      ],
+      "mmTcOverlap": null
+    },
+    {
+      "id": "KGR-291",
+      "subModule": "KYC Gap Report - Security & Audit",
+      "priority": "Medium",
+      "taskDescription": "Verify KYC Gap Report layout and controls render consistently in Chrome and Edge browsers",
+      "automationLayer": "Database + Manual",
+      "automationCandidate": "Yes",
+      "tags": [
+        "kyc-gap-report-security-audit",
+        "medium",
+        "functional"
       ],
       "mmTcOverlap": null
     }

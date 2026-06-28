@@ -2,7 +2,7 @@
 
 | Excel ID | Scenario | FSD Ref | Spec File | Status | Missing Info |
 | --- | --- | --- | --- | --- | --- |
-| KGR-001 | Verify user can access KYC Gap Report from Missing Mandatory menu | §4.2 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-001 | Verify user can access KYC Gap Report | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-002 | Verify KYC Gap Report page title is displayed correctly | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-003 | Verify page subtitle is displayed correctly | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-004 | Verify Export button is displayed on page | §4.2 | kyc-gap-report.spec.ts | Automated | — |
@@ -14,9 +14,9 @@
 | KGR-010 | Verify page loads successfully after browser refresh | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-011 | Verify direct URL access for authorized user | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-012 | Verify application back navigation from KYC Gap Report | §4.2 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-013 | Verify navigation from KYC Gap Report to Missing Mandatory Template | §4.2 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-014 | Verify returning from Template screen preserves KYC Gap Report access | §4.2 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-015 | Verify filter and page state is retained when navigating between Template and Report views | §4.2 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-013 | Verify KYC Gap Report is available in KYC module navigation | §4.2 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-014 | Verify user can return to KYC Gap Report after navigating away | §4.2 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-015 | Verify filters and page state persist when leaving and returning to KYC Gap Report | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-016 | Verify unauthorized user cannot access KYC Gap Report | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-017 | Verify unauthenticated user cannot access KYC Gap Report URL | §4.2 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-018 | Verify page loads without UI rendering issues | §4.2 | kyc-gap-report.spec.ts | Automated | — |
@@ -192,8 +192,8 @@
 | KGR-188 | Verify pagination works correctly when total records equal page size | §4.8 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-189 | Verify pagination works correctly when total records are less than page size | §4.8 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-190 | Verify pagination works correctly when no records are available | §4.8 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-191 | Verify Export button is displayed on KYC Gap Report page | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-192 | Verify Export button is enabled when records exist | §4.9 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-191 | Verify Export button is displayed on KYC Gap Report page | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-192 | Verify Export button is enabled when records exist | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
 | KGR-193 | Verify export downloads report successfully | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
 | KGR-194 | Verify exported file contains report records | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
 | KGR-195 | Verify exported file contains Customer column | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
@@ -204,24 +204,24 @@
 | KGR-200 | Verify exported file contains Template Applied column | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
 | KGR-201 | Verify exported file contains KYC Gap Score column | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
 | KGR-202 | Verify exported file contains Priority column | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
-| KGR-203 | Verify exported record count matches report record count | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-204 | Verify exported Customer values match report data | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-205 | Verify exported KYC Gap Score values match report data | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-206 | Verify exported Priority values match report data | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-207 | Verify export respects active Search filter | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-208 | Verify export respects active Branch filter | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-209 | Verify export respects active Customer Type filter | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-210 | Verify export respects active Template filter | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-211 | Verify export respects active Priority filter | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-212 | Verify export respects active Gap Score filter | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-213 | Verify export supports combined filters | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-214 | Verify export after sorting | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-215 | Verify export works from Page 1 | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-216 | Verify export works from non-first page | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-217 | Verify export works when page size is changed | §4.9 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-203 | Verify exported record count matches report record count | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-204 | Verify exported Customer values match report data | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-205 | Verify exported KYC Gap Score values match report data | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-206 | Verify exported Priority values match report data | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-207 | Verify export respects active Search filter | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-208 | Verify export respects active Branch filter | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-209 | Verify export respects active Customer Type filter | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-210 | Verify export respects active Template filter | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-211 | Verify export respects active Priority filter | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-212 | Verify export respects active Gap Score filter | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-213 | Verify export supports combined filters | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-214 | Verify export after sorting | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-215 | Verify export works from Page 1 | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-216 | Verify export works from non-first page | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
+| KGR-217 | Verify export works when page size is changed | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
 | KGR-218 | Verify export file opens successfully | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
-| KGR-219 | Verify export handles large datasets | §4.9 | kyc-gap-report.spec.ts | Manual-only | "Large" record count undefined |
-| KGR-220 | Verify export behavior when no records are available | §4.9 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-219 | Verify export handles large datasets | §4.9 | kyc-gap-report.spec.ts | Manual-only | File format (CSV/XLSX) not specified |
+| KGR-220 | Verify export behavior when no records are available | §4.9 | kyc-gap-report.spec.ts | Automated | File format (CSV/XLSX) not specified |
 | KGR-221 | Verify authenticated Compliance Officer can access KYC Gap Report | §4.9 | kyc-gap-report.spec.ts | Automated | Role credentials not in Excel |
 | KGR-222 | Verify authenticated Administrator can access KYC Gap Report | §4.9 | kyc-gap-report.spec.ts | Automated | Role credentials not in Excel |
 | KGR-223 | Verify unauthorized role cannot access KYC Gap Report | §4.9 | kyc-gap-report.spec.ts | Automated | Role credentials not in Excel |
@@ -244,12 +244,12 @@
 | KGR-240 | Verify audit log captures before and after values for score band changes | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
 | KGR-241 | Verify audit log remains immutable | §4.9 | kyc-gap-report.spec.ts | Manual-only | Audit UI/API endpoint not specified |
 | KGR-242 | Verify audit records are retained after page refresh | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
-| KGR-243 | Verify unauthorized user cannot modify template configuration | §4.9 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-243 | Verify unauthorized user cannot modify template configuration | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
 | KGR-244 | Verify unauthorized user cannot access audit records | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
-| KGR-245 | Verify application prevents access after logout | §4.9 | kyc-gap-report.spec.ts | Automated | — |
-| KGR-246 | Verify report remains accessible after successful re-authentication | §4.9 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-245 | Verify application prevents access after logout | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
+| KGR-246 | Verify report remains accessible after successful re-authentication | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
 | KGR-247 | Verify audit log captures template archival action | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
-| KGR-248 | Verify templates cannot be permanently deleted | §4.9 | kyc-gap-report.spec.ts | Manual-only | — |
+| KGR-248 | Verify templates cannot be permanently deleted | §4.9 | kyc-gap-report.spec.ts | Manual-only | Audit UI/API endpoint not specified |
 | KGR-249 | Verify archived templates remain traceable in audit history | §4.9 | kyc-gap-report.spec.ts | Manual-only | Audit UI/API endpoint not specified |
 | KGR-250 | Verify audit trail completeness for template lifecycle | §4.9 | kyc-gap-report.spec.ts | Manual-only | Audit UI/API endpoint not specified |
 | KGR-251 | Verify search with blank value | §4.9 | kyc-gap-report.spec.ts | Automated | — |
@@ -282,5 +282,16 @@
 | KGR-278 | Verify report behavior with special characters in customer name | §4.9 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-279 | Verify report behavior with extremely long customer names | §4.9 | kyc-gap-report.spec.ts | Automated | — |
 | KGR-280 | Verify report recovery after invalid filter input | §4.9 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-281 | Verify Refresh button is visible and reloads report data without losing applied filters | §4.2 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-282 | Verify breadcrumb navigation displays correct KYC module path on landing page | §4.2 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-283 | Verify Individual and Corporate Type badges use distinct colour coding in grid | §4.5 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-284 | Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid | §4.5 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-285 | Verify Edit button is not present in report grid per read-only design | §4.5 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-286 | Verify Missing Fields column is not displayed in landing grid | §4.5 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-287 | Verify Gap Detail Modal displays CIF ID and branch code in customer metadata section | §4.7 | kyc-gap-report.spec.ts | Automated | — |
+| KGR-288 | Verify keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
+| KGR-289 | Verify ARIA roles and labels are present on report table, filters, and Gap Detail Modal | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
+| KGR-290 | Verify KYC Gap Report initial page load completes within acceptable performance threshold | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
+| KGR-291 | Verify KYC Gap Report layout and controls render consistently in Chrome and Edge browsers | §4.9 | kyc-gap-report.spec.ts | Automated | Audit UI/API endpoint not specified |
 
-Total: 280 | Automated candidates: 275 | Blocked/partial: 42
+Total: 291 | Automated candidates: 286 | Blocked/partial: 68
