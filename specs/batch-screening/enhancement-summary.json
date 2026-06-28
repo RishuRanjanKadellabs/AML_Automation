@@ -1,0 +1,12 @@
+{
+  "generatedAt": "2026-06-26T16:06:58.609Z",
+  "excelSource": "C:\\Users\\RishuRanjan\\Documents\\AML Automation\\pipeline\\test-data\\Batch Screening Test Cases.xlsx",
+  "baselineCount": 432,
+  "enhancedCount": 432,
+  "newCount": 0,
+  "totalCount": 432,
+  "baselineAvgSteps": 22,
+  "enhancedAvgSteps": 4.93287037037037,
+  "newCaseIds": [],
+  "gapDescriptions": []
+}

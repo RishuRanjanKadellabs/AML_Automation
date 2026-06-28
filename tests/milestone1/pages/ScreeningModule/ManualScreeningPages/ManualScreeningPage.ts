@@ -4,6 +4,7 @@ import * as path from "path";
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
 import ManualScreeningLocators from "../../../../objectrepositories/ManualScreeningLocators";
+import { installManualScreeningApiMockOnPage } from "../../../../helpers/manual-screening-api-mock";
 
 const BULK_FIXTURE_DIR = path.resolve(__dirname, "../../../../../pipeline/test-data");
 
@@ -79,7 +80,11 @@ class ManualScreeningPage extends BasePage {
   }
 
   get screenButton(): Locator {
-    return this.page.getByRole("button", { name: /Start Screening|Screen/i }).first();
+    return this.page
+      .locator(".btn-row")
+      .getByRole("button", { name: /^Screen$/i })
+      .first()
+      .or(this.page.getByRole("button", { name: /^Start Screening/i }).first());
   }
 
   get newScreeningButton(): Locator {
@@ -111,8 +116,9 @@ class ManualScreeningPage extends BasePage {
   }
 
   get watchlistCards(): Locator {
-    const section = this.page.locator(ManualScreeningLocators.watchlistConfigurationSection).locator("xpath=ancestor::div[1]");
-    return section.locator("button").filter({ hasText: /Watchlist|Lists|Threshold|Phonetic Match/i });
+    return this.page
+      .locator(ManualScreeningLocators.watchlistGrid)
+      .locator(ManualScreeningLocators.watchlistCard);
   }
 
   get registeredNameInput(): Locator {
@@ -125,6 +131,52 @@ class ManualScreeningPage extends BasePage {
 
   get vesselNameInput(): Locator {
     return this.page.getByRole("textbox", { name: /Vessel Name/i }).first();
+  }
+
+  get imoNumberInput(): Locator {
+    return this.page.getByRole("textbox", { name: /IMO Number/i }).first();
+  }
+
+  get matchReviewLabel(): Locator {
+    return this.page.locator(ManualScreeningLocators.matchReviewHeading).first()
+      .or(this.page.getByRole("heading", { name: /Match Review/i }).first());
+  }
+
+  get aiSummaryTab(): Locator {
+    return this.page.getByRole("tab", { name: /AI Summary/i }).first();
+  }
+
+  get matchDetailsTab(): Locator {
+    return this.page.getByRole("tab", { name: /Match Details/i }).first();
+  }
+
+  get viewSummaryTab(): Locator {
+    return this.page.getByRole("tab", { name: /View Summary/i }).first();
+  }
+
+  get falsePositiveButton(): Locator {
+    return this.page.getByRole("button", { name: /False Positive/i }).first();
+  }
+
+  get confirmMatchButton(): Locator {
+    return this.page.getByRole("button", { name: /Confirm Match/i }).first();
+  }
+
+  get escalateCaseButton(): Locator {
+    return this.page.getByRole("button", { name: /Escalate Case/i }).first();
+  }
+
+  get commentDialog(): Locator {
+    return this.page.locator(ManualScreeningLocators.commentDialog).first();
+  }
+
+  get commentInput(): Locator {
+    return this.page.locator(ManualScreeningLocators.commentInput).first();
+  }
+
+  get matchReviewBackButton(): Locator {
+    return this.page.getByRole("button", { name: /back|return/i }).first()
+      .or(this.page.locator("button").filter({ has: this.page.locator("svg") }).first());
   }
 
   async openAppHome(baseUrl: string): Promise<void> {
@@ -142,7 +194,8 @@ class ManualScreeningPage extends BasePage {
 
     if (!expectAuthFailure) {
       await this.page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
-      this.logStep("MOCK", "Cleared route mocks — successful");
+      await installManualScreeningApiMockOnPage(this.page);
+      this.logStep("MOCK", "Manual Screening API mocks installed — successful");
     }
 
     try {
@@ -206,9 +259,37 @@ class ManualScreeningPage extends BasePage {
   }
 
   async navigateSidebarModule(moduleName: string): Promise<void> {
-    const link = this.page.getByRole("link", { name: new RegExp(moduleName, "i") }).first();
+    const linkPatterns: Record<string, RegExp> = {
+      Dashboard: /dashboard/i,
+      KYC: /^kyc$/i,
+      "Sanctions Screening": /sanctions screening/i,
+      "Customer Risk View": /customer risk/i,
+      "Real-time Monitoring": /real-time monitoring/i,
+      "Batch Monitoring": /batch monitoring/i,
+      "Payments Workflow": /payments workflow/i,
+      "AI-Powered Investigation": /ai-powered investigation|ai powered investigation/i,
+      "LEA / RFI Tracker": /lea \/ rfi|lea.*rfi tracker/i,
+      "MIS Reports": /mis reports/i,
+      "Regulatory Reports": /regulatory reports/i,
+      Simulation: /simulation/i,
+      Config: /configurations?|config/i,
+      Administration: /administration|admin/i,
+    };
+
+    const pattern = linkPatterns[moduleName] ?? new RegExp(moduleName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
+
+    if (moduleName === "Sanctions Screening") {
+      await this.scrollIntoView(this.sanctionsScreeningLink);
+      await this.clickAndWait(this.sanctionsScreeningLink, "Sanctions Screening sidebar section");
+      this.logStep("NAVIGATE", "Sanctions Screening sidebar section opened — successful");
+      return;
+    }
+
+    const link = this.page.getByRole("link", { name: pattern }).first()
+      .or(this.page.getByRole("button", { name: pattern }).first());
     await this.scrollIntoView(link);
     await this.clickAndWait(link, `Sidebar navigation link: ${moduleName}`);
+    await this.page.waitForLoadState("domcontentloaded");
     this.logStep("NAVIGATE", `${moduleName} module opened from sidebar — successful`);
   }
 
@@ -270,9 +351,20 @@ class ManualScreeningPage extends BasePage {
     this.logStep("ASSERT", "Joint Account Holder optional section visible — successful");
   }
 
-  async expectWatchlistGridVisible(): Promise<void> {
+  async waitForWatchlistCardsReady(): Promise<void> {
     await this.assertVisible(this.page.getByText(/Watchlist Configuration/i).first(), "Watchlist Configuration section");
+    const loading = this.page.getByText(/Loading active screening configurations/i);
+    await loading.waitFor({ state: "hidden", timeout: 45000 }).catch(() => undefined);
+    const errorBanner = this.page.getByText(/Could not open JPA|rules\.map is not a function/i);
+    if (await errorBanner.isVisible().catch(() => false)) {
+      throw new Error("Watchlist configuration failed to load from screening-rules API");
+    }
     await expect(this.watchlistCards.first()).toBeVisible({ timeout: 15000 });
+    this.logStep("WAIT", "Watchlist configuration cards ready — successful");
+  }
+
+  async expectWatchlistGridVisible(): Promise<void> {
+    await this.waitForWatchlistCardsReady();
     this.logStep("ASSERT", "Watchlist configuration grid visible — successful");
   }
 
@@ -289,10 +381,14 @@ class ManualScreeningPage extends BasePage {
     this.logStep("ASSERT", `Exactly ${expectedCount} watchlist cards displayed — successful`);
   }
 
-  async selectFirstWatchlistCard(): Promise<void> {
-    const card = this.watchlistCards.first();
+  async selectFirstWatchlistCard(ruleTitle?: string | RegExp): Promise<void> {
+    await this.waitForWatchlistCardsReady();
+    const card = ruleTitle
+      ? this.watchlistCards.filter({ hasText: ruleTitle }).first()
+      : this.watchlistCards.first();
     await this.scrollIntoView(card);
-    await this.clickAndWait(card, "First watchlist configuration card");
+    await this.clickAndWait(card, "Watchlist configuration card");
+    await expect(card).toHaveAttribute("aria-pressed", "true", { timeout: 5000 });
     this.logStep("CLICK", "Watchlist card selected — successful");
   }
 
@@ -323,8 +419,54 @@ class ManualScreeningPage extends BasePage {
     this.logStep("ASSERT", "Valid individual screening submitted — successful");
   }
 
-  async clickStartBulkScreening(): Promise<void> {
+  async submitValidNonIndividualScreening(
+    registeredName = "Automation Holdings Pte Ltd",
+    registrationNumber = "REG-MS-2026-001",
+  ): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    await this.selectEntityType("Non-Individuals");
+    await this.fillField(this.registeredNameInput, registeredName, "Registered Name");
+    await this.fillField(this.registrationNumberInput, registrationNumber, "Registration Number");
+    await this.selectPurpose("Onboarding Screening");
+    await this.selectFirstWatchlistCard();
     await this.clickScreenButton();
+    await this.expectResultsPageLoaded();
+    this.logStep("ASSERT", "Valid non-individual screening submitted — successful");
+  }
+
+  async submitValidVesselScreening(
+    vesselName = "MV Automation Trader",
+    imo = "IMO9876543",
+  ): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    await this.selectEntityType("Vessel");
+    await this.fillField(this.vesselNameInput, vesselName, "Vessel Name");
+    await this.fillField(this.imoNumberInput, imo, "IMO Number");
+    await this.selectPurpose("Transaction Screening");
+    await this.selectFirstWatchlistCard();
+    await this.clickScreenButton();
+    await this.expectResultsPageLoaded();
+    this.logStep("ASSERT", "Valid vessel screening submitted — successful");
+  }
+
+  async submitValidEntityScreening(entity: "Individual" | "Non-Individuals" | "Vessel", name = "HANIYA"): Promise<void> {
+    if (entity === "Non-Individuals") {
+      await this.submitValidNonIndividualScreening();
+      return;
+    }
+    if (entity === "Vessel") {
+      await this.submitValidVesselScreening();
+      return;
+    }
+    await this.submitValidIndividualScreening(name);
+  }
+
+  async clickStartBulkScreening(): Promise<void> {
+    const bulkButton = this.page
+      .locator(".btn-row")
+      .getByRole("button", { name: /Upload & Screen|Start Bulk Screening/i })
+      .first();
+    await this.clickAndWait(bulkButton, "Upload & Screen bulk button");
     this.logStep("CLICK", "Start Bulk Screening initiated — successful");
   }
 
@@ -426,14 +568,27 @@ class ManualScreeningPage extends BasePage {
   }
 
   async selectPurpose(purpose: string): Promise<void> {
-    await this.openCombobox("Purpose");
-    const option = this.page.getByRole("option", { name: new RegExp(purpose, "i") }).first();
-    if (await option.isVisible().catch(() => false)) {
-      await this.clickAndWait(option, `Purpose option: ${purpose}`);
+    const nativeSelect = this.page.locator("#ind-purpose, #ni-purpose, #v-purpose").first();
+    if (await nativeSelect.isVisible().catch(() => false)) {
+      await nativeSelect.selectOption({ label: purpose }).catch(async () => {
+        const options = await nativeSelect.locator("option").allTextContents();
+        const match = options.find((option) => new RegExp(purpose, "i").test(option));
+        if (match) {
+          await nativeSelect.selectOption({ label: match });
+        } else {
+          throw new Error(`Purpose option "${purpose}" not found`);
+        }
+      });
     } else {
-      await this.purposeCombobox.selectOption({ label: purpose }).catch(() => undefined);
-      this.logStep("SELECT", `Purpose set to ${purpose} — successful`);
+      await this.purposeCombobox.selectOption({ label: purpose }).catch(async () => {
+        await this.openCombobox("Purpose");
+        await this.clickAndWait(
+          this.page.getByRole("option", { name: new RegExp(purpose, "i") }).first(),
+          `Purpose option ${purpose}`,
+        );
+      });
     }
+    this.logStep("SELECT", `Purpose set to ${purpose} — successful`);
   }
 
   async fillNameInEnglish(name: string): Promise<void> {
@@ -441,6 +596,11 @@ class ManualScreeningPage extends BasePage {
   }
 
   async clickScreenButton(): Promise<void> {
+    const bulkSelected = await this.bulkUploadTab.getAttribute("aria-selected").catch(() => null);
+    if (bulkSelected === "true") {
+      await this.clickStartBulkScreening();
+      return;
+    }
     await this.clickAndWait(this.screenButton, "Screen button to initiate manual screening");
     this.logStep("CLICK", "Screen button clicked to initiate manual screening — successful");
   }
@@ -532,7 +692,13 @@ class ManualScreeningPage extends BasePage {
   }
 
   async expectBulkUploadValidationMessage(): Promise<void> {
-    const message = this.page.getByText(/please upload|valid file|unsupported|invalid file|column|mandatory|before starting bulk screening|file format|25 mb|too large|empty file|not supported|rejected/i).first()
+    const errorBanner = this.page.locator(".ms-error-banner").first();
+    if (await errorBanner.isVisible().catch(() => false)) {
+      await this.assertVisible(errorBanner, "Bulk upload validation error banner");
+      this.logStep("ASSERT", "Bulk upload validation message displayed — successful");
+      return;
+    }
+    const message = this.page.getByText(/please upload a valid file|unsupported file format|empty file uploaded|please select a file|please select a screening configuration|invalid file|not supported|rejected|25 mb|too large|empty file|mandatory|before starting bulk screening/i).first()
       .or(this.page.locator(ManualScreeningLocators.validationBanner).first())
       .or(this.page.getByRole("alert").first());
     await this.assertVisible(message, "Bulk upload validation message");
@@ -554,24 +720,39 @@ class ManualScreeningPage extends BasePage {
   }
 
   async openViewLastResults(): Promise<void> {
-    if (await this.viewLastResultsButton.isVisible().catch(() => false)) {
-      await this.clickAndWait(this.viewLastResultsButton, "View Last Results button");
-      await this.page.waitForLoadState("domcontentloaded");
+    const onResults = await this.page.locator(".results-subtitle, .ms-res-section-title").first()
+      .or(this.page.getByText(/Screening Results|\d+\s+Potential Matches Found/i).first())
+      .isVisible().catch(() => false);
+    if (!onResults) {
+      const bulkSelected = await this.bulkUploadTab.getAttribute("aria-selected").catch(() => null);
+      if (bulkSelected === "true") {
+        await this.uploadBulkFile("csv");
+        await this.selectFirstWatchlistCard();
+        await this.clickStartBulkScreening();
+        await this.expectResultsPageLoaded();
+      } else {
+        await this.runScreeningWithMatchName();
+      }
     }
+    if (await this.newScreeningButton.isVisible().catch(() => false)) {
+      await this.clickNewScreening();
+    }
+    await this.clickAndWait(this.viewLastResultsButton, "View Last Results button");
+    await this.page.waitForLoadState("domcontentloaded");
     await this.expectResultsPageLoaded();
     this.logStep("NAVIGATE", "View Last Results navigation completed — successful");
   }
 
   private async hasMatchResultsTable(): Promise<boolean> {
-    const tableVisible = await this.resultsTable.isVisible().catch(() => false);
-    if (!tableVisible) {
-      return false;
+    const row = this.page.locator(".ms-res-table-card table tbody tr").first();
+    if (await row.isVisible().catch(() => false)) {
+      return true;
     }
-    const rowCount = await this.resultsTableRows.count().catch(() => 0);
-    return rowCount > 0;
+    const listsChip = this.page.locator(".ms-res-matched-chip").first();
+    return listsChip.isVisible().catch(() => false);
   }
 
-  async runScreeningWithMatchName(name = "HANIYA"): Promise<void> {
+  async runScreeningWithMatchName(name = "WILLIAM"): Promise<void> {
     if (await this.newScreeningButton.isVisible().catch(() => false)) {
       await this.clickNewScreening();
     }
@@ -604,27 +785,17 @@ class ManualScreeningPage extends BasePage {
 
   async ensureMatchResultsAvailable(): Promise<void> {
     const onResultsPage = await this.page.getByText(/Screening Results|Potential Matches/i).first().isVisible().catch(() => false);
-    if (!onResultsPage) {
-      await this.expectManualScreeningPageLoaded();
-    }
-    if (await this.hasMatchResultsTable()) {
-      this.logStep("ASSERT", "Existing match results available — successful");
+    if (onResultsPage && await this.hasMatchResultsTable()) {
+      this.logStep("ASSERT", "Existing match results available on results page — successful");
       return;
-    }
-    if (await this.viewLastResultsButton.isVisible().catch(() => false)) {
-      await this.clickAndWait(this.viewLastResultsButton, "View Last Results button");
-      await this.page.waitForLoadState("domcontentloaded");
-      if (await this.hasMatchResultsTable()) {
-        this.logStep("ASSERT", "Match results loaded via View Last Results — successful");
-        return;
-      }
     }
     await this.runScreeningWithMatchName();
   }
 
   async expectResultsPageLoaded(): Promise<void> {
-    const resultsHeading = this.page.getByRole("heading", { name: /Screening Results|Match Results/i })
-      .or(this.page.getByText(/Screening Results|Subject Summary|Potential Matches/i))
+    const resultsHeading = this.page.locator(".results-subtitle, .ms-res-section-title").first()
+      .or(this.page.getByRole("heading", { name: /Screening Results|Match Results/i }))
+      .or(this.page.getByText(/Screening Results|Subject Summary|Potential Matches|\d+\s+Potential Matches Found/i))
       .first();
     await this.assertVisible(resultsHeading, "Screening Results workspace heading");
     this.logStep("ASSERT", "Screening Results page loaded — successful");
@@ -692,6 +863,12 @@ class ManualScreeningPage extends BasePage {
   }
 
   async expectResultsTableVisible(): Promise<void> {
+    const batchSummary = this.page.locator(".ms-batch-summary, .ms-res-table-card").first();
+    if (await batchSummary.isVisible().catch(() => false)) {
+      await this.assertVisible(batchSummary, "Bulk or manual screening results panel");
+      this.logStep("ASSERT", "Screening results panel visible — successful");
+      return;
+    }
     await this.assertVisible(this.resultsTable, "Screening results data table");
     await expect(this.resultsTableRows.first()).toBeVisible({ timeout: 15000 });
     this.logStep("ASSERT", "Screening results table visible — successful");
@@ -705,7 +882,7 @@ class ManualScreeningPage extends BasePage {
   }
 
   async expectZeroResultsState(): Promise<void> {
-    const emptyState = this.page.getByText(/no watchlist matches|no matches found|0 potential matches|0 of 0 results|screening completed with 0|no match rows/i).first();
+    const emptyState = this.page.getByText(/no watchlist matches|no matches found|0 potential matches|0 of 0 results|screening completed with 0|no match rows|no screening matches|returned 0 potential|zero potential matches/i).first();
     await this.assertVisible(emptyState, "Zero-results empty state message");
     this.logStep("ASSERT", "Zero-results state displayed — successful");
   }
@@ -819,6 +996,104 @@ class ManualScreeningPage extends BasePage {
     }
     await this.mockUnauthorized();
     this.logStep("MOCK", "Logout UI unavailable — session revoke simulated via 403 mock");
+  }
+
+  async openMatchReviewFromResultsRow(rowIndex = 0): Promise<void> {
+    await this.ensureMatchResultsAvailable();
+    const row = this.resultsTableRows.nth(rowIndex);
+    const viewDetails = row.getByRole("button", { name: /View Details|Lists|\d+\s*Lists/i }).first()
+      .or(row.getByRole("link", { name: /View Details|Lists/i }).first())
+      .or(row.getByText(/\d+\s*Lists/i).first());
+    if (await viewDetails.isVisible().catch(() => false)) {
+      await this.clickAndWait(viewDetails, "Result row View Details or Lists action");
+    } else {
+      const listsButton = this.page.getByRole("button", { name: /lists|\d+\s*lists/i }).first();
+      await this.clickAndWait(listsButton, "Lists button on Screening Results");
+    }
+    await this.matchReviewLabel.waitFor({ state: "visible", timeout: 30000 });
+    this.logStep("NAVIGATE", "Match Review workspace opened from Screening Results — successful");
+  }
+
+  async expectMatchReviewLoaded(): Promise<void> {
+    await this.assertVisible(this.matchReviewLabel, "Match Review page title");
+    await this.assertVisible(
+      this.aiSummaryTab.or(this.matchDetailsTab).or(this.viewSummaryTab).first(),
+      "Match Review review tabs",
+    );
+    this.logStep("ASSERT", "Match Review page loaded — successful");
+  }
+
+  async openMatchReviewTab(tabName: "AI Summary" | "Match Details" | "View Summary"): Promise<void> {
+    const tab = tabName === "AI Summary"
+      ? this.aiSummaryTab
+      : tabName === "Match Details"
+        ? this.matchDetailsTab
+        : this.viewSummaryTab;
+    await this.clickAndWait(tab, `${tabName} tab on Match Review`);
+    this.logStep("NAVIGATE", `${tabName} tab opened on Match Review — successful`);
+  }
+
+  async triggerMatchReviewDisposition(action: "False Positive" | "Confirm Match" | "Escalate Case"): Promise<void> {
+    const button = action === "False Positive"
+      ? this.falsePositiveButton
+      : action === "Confirm Match"
+        ? this.confirmMatchButton
+        : this.escalateCaseButton;
+    await this.clickAndWait(button, `${action} disposition button on Match Review`);
+    this.logStep("CLICK", `${action} disposition action triggered on Match Review — successful`);
+  }
+
+  async expectCommentModalVisible(): Promise<void> {
+    await this.commentDialog.waitFor({ state: "visible", timeout: 30000 });
+    await this.assertVisible(this.commentInput, "Comment modal input");
+    this.logStep("ASSERT", "Mandatory comment modal displayed — successful");
+  }
+
+  async fillCommentAndConfirm(comment: string): Promise<void> {
+    await this.commentDialog.waitFor({ state: "visible", timeout: 30000 });
+    await this.fillField(this.commentInput, comment, "Disposition comment");
+    const confirm = this.page.locator(ManualScreeningLocators.dialogConfirmButton).first()
+      .or(this.commentDialog.getByRole("button", { name: /Confirm Action|Confirm/i }).first());
+    await this.clickAndWait(confirm, "Comment modal Confirm button");
+    this.logStep("CLICK", "Comment modal confirmed — successful");
+  }
+
+  async expectMatchReviewSubjectDetails(expectedText: string | RegExp): Promise<void> {
+    await this.openMatchReviewTab("Match Details");
+    const subjectPanel = this.page.getByText(/Screened Subject|Full Name|Match Details/i).first();
+    await this.assertVisible(subjectPanel, "Screened Subject panel on Match Details");
+    const value = this.page.getByText(expectedText).first();
+    await this.assertVisible(value, "Screened subject value on Match Review");
+    this.logStep("ASSERT", "Match Review screened subject details visible — successful");
+  }
+
+  async expectSubjectSummaryVisible(expectedText?: string | RegExp): Promise<void> {
+    const summary = this.page
+      .getByText(/Subject Summary|Primary Name|Entity Type|Watchlist Profile|Purpose/i)
+      .or(this.page.getByText(/Screened Subject|Match Review|Watchlist Hits/i))
+      .first();
+    await this.assertVisible(summary, "Subject summary bar on Screening Results");
+    if (expectedText) {
+      await this.assertVisible(this.page.getByText(expectedText).first(), "Subject summary expected value");
+    }
+    this.logStep("ASSERT", "Subject summary bar visible on Screening Results — successful");
+  }
+
+  async navigateBackFromMatchReview(): Promise<void> {
+    if (await this.matchReviewBackButton.isVisible().catch(() => false)) {
+      await this.clickAndWait(this.matchReviewBackButton, "Match Review back control");
+    } else {
+      await this.page.goBack();
+    }
+    await this.expectResultsPageLoaded();
+    this.logStep("NAVIGATE", "Returned from Match Review to Screening Results — successful");
+  }
+
+  async expectResultsNavigationBlocked(): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    const onResults = await this.page.getByText(/Screening Results|Potential Matches/i).first().isVisible().catch(() => false);
+    expect(onResults).toBeFalsy();
+    this.logStep("ASSERT", "Screening Results did not open while validation errors remain — successful");
   }
 }
 

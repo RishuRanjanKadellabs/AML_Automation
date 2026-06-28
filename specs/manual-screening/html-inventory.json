@@ -1,0 +1,117 @@
+{
+  "screens": [
+    {
+      "id": "page-manual",
+      "label": "Manual Screening Form",
+      "controls": [
+        "Manual Screening tab",
+        "Bulk Upload tab",
+        "Individual",
+        "Non-Individuals",
+        "Vessel",
+        "Reset Form",
+        "Start Screening",
+        "View Last Results"
+      ]
+    },
+    {
+      "id": "page-bulk",
+      "label": "Bulk Upload",
+      "controls": [
+        "Upload zone",
+        "Download Template",
+        "Start Bulk Screening",
+        "Watchlist cards"
+      ]
+    },
+    {
+      "id": "page-results",
+      "label": "Screening Results",
+      "controls": [
+        "Back to Manual Screening",
+        "Export Report",
+        "New Screening",
+        "Subject summary bar",
+        "AI Screening Summary",
+        "Stats row",
+        "Filter Results",
+        "Results table",
+        "3 LISTS link",
+        "Row action menu"
+      ]
+    },
+    {
+      "id": "page-match-review",
+      "label": "Match Review",
+      "controls": [
+        "Back to Screening Results",
+        "Report",
+        "False Positive",
+        "Confirm Match",
+        "AI Summary tab",
+        "Match Details tab",
+        "View Summary tab",
+        "View Full Profile",
+        "Escalate Case",
+        "Comment modal"
+      ]
+    },
+    {
+      "id": "page-bulk-results",
+      "label": "Bulk Screening Results",
+      "controls": [
+        "Match Results tab",
+        "Watchlists tab",
+        "Bulk Upload tab",
+        "Bulk Match Review"
+      ]
+    }
+  ],
+  "entityTypes": [
+    "Individual",
+    "Non-Individuals",
+    "Vessel"
+  ],
+  "watchlists": [
+    "Onboarding Screening",
+    "Continuous Monitoring",
+    "High-Risk Jurisdiction Screening",
+    "Singapore High-Risk Screening",
+    "UAE Compliance Watchlist"
+  ],
+  "purposes": [
+    "Onboarding Screening",
+    "Transaction Screening",
+    "Periodic Review",
+    "Enhanced Due Diligence",
+    "Port Clearance"
+  ],
+  "resultsColumns": [
+    "Name",
+    "Cust ID",
+    "Number of Matched List",
+    "Highest Match Score",
+    "List Name With Highest Match Score",
+    "Category",
+    "Type",
+    "Match Date",
+    "Status"
+  ],
+  "tabs": [
+    "Manual Screening",
+    "Bulk Upload"
+  ],
+  "matchReviewTabs": [
+    "AI Summary",
+    "Match Details",
+    "View Summary"
+  ],
+  "flows": [
+    "Start Screening → Screening Results",
+    "Screening Results → Match Review",
+    "Match Review → Screening Results",
+    "New Screening → Manual Screening Form",
+    "View Last Results → Screening Results",
+    "Start Bulk Screening → Bulk Results"
+  ]
+}

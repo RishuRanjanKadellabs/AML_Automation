@@ -1,16 +1,32 @@
-# Manual Screening Automation — TODO / Missing Information
+# Manual Screening — Automation TODO
 
-Generated from Excel alignment review. Generator MCP explored `/screening/manual-screening` on 2026-06-17.
+Source workbook: `pipeline/test-data/Manual Screening Test Cases.xlsx` (445 cases, v2 HTML + FSD aligned).
 
-| Area | Excel IDs (examples) | Gap |
-|------|----------------------|-----|
-| Bulk upload file fixtures | MS-013-* | Excel references CSV/XLS/XLSX upload — need sample files in `pipeline/test-data/` for real upload assertions |
-| File size boundary | MS-013-* | Exact max MB value not in parsed Excel rows — `uploadBulkFilePlaceholder()` used |
-| Logout flow | MS-020-26 | Excel references logout clearing form — logout UI selector not documented |
-| Export download verification | MS-019-* | Export click automated; download MIME/filename not verified |
-| Pixel-perfect responsive | MS-003-* | Excel expects resize behavior — viewport set to 1024px; exact breakpoints not in Excel |
-| Browser compatibility matrix | Results Table | Excel lists browsers — not executed cross-browser in milestone1 project |
-| MIME vs extension mismatch | Bulk Upload Validation | Needs corrupt fixture files |
-| Score boundary exact UI class | MS-019-* | Score band CSS tokens not specified in Excel |
+## Status (post-regeneration)
 
-Regenerate specs after `excel-intent.ts` changes: `npm run manual-screening:generate`
+- **445 tests** generated from `Manual Screening Test Cases.xlsx`
+- **420 tests** navigate via `openManualScreeningDirect` (screening modules)
+- **25 tests** use `openAppHome` (Layout & Navigation only)
+- Remaining `TODO:` comments are non-blocking inspect/locate steps; core flows are mapped
+
+## Regenerate after Excel or intent changes
+
+```bash
+npm run manual-screening:generate
+npm run milestone1:manual-screening:run
+```
+
+## Excel maintenance
+
+```bash
+npm run manual-screening:enhance-excel -- --validate-only
+npm run manual-screening:enhance-excel
+```
+
+## Coverage aligned with v2 HTML
+
+- Manual Screening Form (Individual / Non-Individual / Vessel)
+- Start Screening → Screening Results
+- Screening Results → Match Review
+- Match Review tabs and disposition actions
+- Entity-specific E2E flows (MS-022 / MS-023 / MS-024)

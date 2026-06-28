@@ -1,3 +1,20 @@
+import { ACTION_COMMENTS, SEARCH_KEYWORDS } from "./batch-data";
+import { buildAssertionsForRow, hasAuditAssertion } from "./excel-assertions";
+import { getFsdEntryForRow } from "./excel-fsd-context";
+import {
+  actionNameFromTask,
+  filterChipNameFromTask,
+  isActionTask,
+  isAuditTask,
+  isCommentModalTask,
+  isExportTask,
+  isFilterOrSearchTask,
+  isLandingOrShellTask,
+  isPureExportTask,
+  isRbacUnauthorizedRow,
+  stepMatchesTask,
+  taskContext,
+} from "./task-step-scoper";
 import type { BsExcelRow } from "./types";
 
 function escapeStr(s: string): string {
@@ -31,181 +48,264 @@ function rowBlob(row: BsExcelRow): string {
 }
 
 function featureGroup(subModule: string): string {
-  return subModule.replace(/^Batch Screening\s*-?\s*/i, "").trim() || "Core";
+  return subModule
+    .replace(/^Batch Screening\s*[—-]\s*/i, "")
+    .replace(/^action\s+Actions/i, "Actions")
+    .trim() || "Core";
 }
 
-function isScr01Context(row: BsExcelRow): boolean {
+function gridRowIndex(row: BsExcelRow): number {
+  const range = row.testData.match(/Rows?:\s*(\d+)\s*(?:to|-)\s*(\d+)/i);
+  if (range) {
+    return Math.max(0, parseInt(range[1], 10) - 1);
+  }
+  const single = row.testData.match(/Row:\s*(\d+)/i);
+  if (single) {
+    return Math.max(0, parseInt(single[1], 10) - 1);
+  }
+  return 0;
+}
+
+function actionComment(row: BsExcelRow): string {
+  const match = row.testData.match(/Comment:\s*([^;]+)/i);
+  return match?.[1]?.trim() ?? ACTION_COMMENTS.valid;
+}
+
+function searchKeyword(row: BsExcelRow): string {
+  const match = row.testData.match(/Search:\s*([^;]+)/i);
+  if (match?.[1]) return match[1].trim();
+  const blob = rowBlob(row);
+  if (/sql/i.test(blob)) return SEARCH_KEYWORDS.sqlInjection;
+  if (/xss/i.test(blob)) return SEARCH_KEYWORDS.xssInjection;
+  if (/special char/i.test(blob)) return SEARCH_KEYWORDS.specialChars;
+  if (/invalid|no match/i.test(blob)) return SEARCH_KEYWORDS.invalid;
+  return SEARCH_KEYWORDS.validPartial;
+}
+
+function isScreeningResultsContext(row: BsExcelRow): boolean {
   const sm = row.subModule.toLowerCase();
   const blob = rowBlob(row);
-  return sm.includes("scr-01")
-    || sm.includes("disposition")
+  return sm.includes("screening results")
+    || sm.includes("actions")
+    || sm.includes("comment modal")
     || sm.includes("match details")
     || sm.includes("view summary")
     || sm.includes("threshold")
-    || blob.includes("scr-01")
-    || blob.includes("screening results");
+    || blob.includes("screening results")
+    || blob.includes("match review");
 }
 
-function numberedOpensScr01(row: BsExcelRow): boolean {
-  return parseNumberedSteps(row.testSteps).some((s) =>
-    stepMatches(s, "open matched record", "open screening results", "open scr-01", "click name"),
-  );
-}
-
-function requiresCommentModalBeforeScr01(row: BsExcelRow): boolean {
-  return /comment modal appears before|before opening scr-01|before navigation/.test(rowBlob(row));
+function isMatchResultsContext(row: BsExcelRow): boolean {
+  const sm = row.subModule.toLowerCase();
+  return sm.includes("match results") || sm.includes("filters") || sm.includes("export") || sm === "batch screening";
 }
 
 function isReviewContext(row: BsExcelRow): boolean {
   const sm = row.subModule.toLowerCase();
   return sm.includes("match details")
     || sm.includes("ai summary")
-    || sm.includes("view summary workspace")
-    || rowBlob(row).includes("match review")
-    || rowBlob(row).includes("match details")
-    || rowBlob(row).includes("ai summary")
-    || rowBlob(row).includes("view summary");
-}
-
-function isPositiveAuthorizedContext(row: BsExcelRow): boolean {
-  return /for authorized users|authorized user|authorized analyst|authorized export|should display correctly for authorized/.test(rowBlob(row));
-}
-
-function isUnauthorizedExportRestriction(row: BsExcelRow): boolean {
-  return /export report.*unauthorized|restriction for unauthorized|hidden or inaccessible for unauthorized/.test(rowBlob(row));
-}
-
-function needsUnauthorizedApiMock(row: BsExcelRow): boolean {
-  const blob = rowBlob(row);
-  if (isPositiveAuthorizedContext(row) || isUnauthorizedExportRestriction(row)) {
-    return false;
-  }
-  if (/logout|re-login|login again|browser back|browser refresh|session invalid|token reuse|preserve synchronized|concurrent users|update workflow/.test(blob)) {
-    return false;
-  }
-  return /deny direct unauthorized|restricted module url|direct url access|access denied|not authorized|without permission|restricted role|unauthenticated|sensitive data is not exposed|expired session|unauthorized disposition|unauthorized users should not/.test(blob);
-}
-
-function expectsAccessDeniedOutcome(row: BsExcelRow): boolean {
-  const blob = rowBlob(row);
-  if (isPositiveAuthorizedContext(row) || isUnauthorizedExportRestriction(row)) {
-    return false;
-  }
-  return /deny direct unauthorized|should deny|access denied|not authorized|login required|restricted users should not|block disposition|invalidate active session|prevent unauthorized|continue enforcing authorization|should not view sensitive/.test(blob);
-}
-
-function expectsSessionInvalidated(row: BsExcelRow): boolean {
-  return /invalidate active session|token reuse is restricted|session should be invalidated/.test(rowBlob(row));
+    || sm.includes("view summary")
+    || rowBlob(row).includes("match review");
 }
 
 function isApiFailureRow(row: BsExcelRow): boolean {
-  const sm = row.subModule.toLowerCase();
-  return sm.includes("api") && /failure|error|timeout|500|null|empty array|invalid payload|connection loss/.test(rowBlob(row));
+  const blob = rowBlob(row);
+  return row.subModule.toLowerCase().includes("api")
+    && /failure|error|timeout|500|null|empty array|invalid payload|connection loss|graceful|malicious/i.test(blob);
+}
+
+function isApiSuccessRow(row: BsExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("api") && !isApiFailureRow(row);
 }
 
 function isEmptyDatasetRow(row: BsExcelRow): boolean {
-  return /no screening records exist|when no screening records|zero records|empty-state handling when no/.test(rowBlob(row))
-    && !/blank comment|comment field blank|whitespace-only/.test(rowBlob(row));
+  return /row:\s*n\/a|no screening records|zero records|empty-state|returns no records/i.test(rowBlob(row));
 }
 
-function isExportReportContext(step: string, blob: string): boolean {
-  const sl = step.toLowerCase();
-  return /export report|observe export report|click export report action|generate export|exported report|export functionality/.test(sl)
-    || (/observe export|export report action/.test(sl) && /export report|export functionality|authorized users should generate exports/.test(blob));
+function isExportContext(row: BsExcelRow): boolean {
+  return row.subModule.toLowerCase().includes("export") || /export report|download/i.test(rowBlob(row));
 }
 
-function expectsCommentModalCloseOutcome(row: BsExcelRow): boolean {
-  return /comment modal should close|modal should close without|cancel button closes|should close and user should remain|without changing disposition/.test(rowBlob(row));
+function isUnauthorizedExportRestriction(row: BsExcelRow): boolean {
+  return /export report.*unauthorized|without permission to export|hidden or disabled for the unauthorized/i.test(rowBlob(row));
 }
 
-function hasCommentInputAction(steps: string[]): boolean {
-  return steps.some((s) => /fillCommentWith|submitWhitespaceComment|submitOversizedComment|submitBlankComment|submitDispositionWithComment|triggerBulkDispositionAction/.test(s));
+function hasWorkflowAction(steps: string[]): boolean {
+  return steps.some((s) =>
+    s.includes("fillCommentAndConfirm")
+    || s.includes("submitDispositionWithComment")
+    || s.includes("submitActionWithComment")
+    || s.includes("triggerDispositionAction")
+    || s.includes("selectUnderReviewWithComment"),
+  );
 }
 
-function isBulkActionRow(row: BsExcelRow): boolean {
-  return /bulk confirm|bulk false positive|bulk move to case|bulk move to whitelist|bulk exception|multiple selected records|select multiple screening/.test(rowBlob(row));
+function injectAuditPrerequisite(row: BsExcelRow, setup: string[], actions: string[]): void {
+  if (!isAuditTask(row)) {
+    return;
+  }
+  if (hasWorkflowAction([...setup, ...actions])) {
+    return;
+  }
+
+  const rowIdx = gridRowIndex(row);
+  const comment = escapeStr(actionComment(row));
+  const action = actionNameFromTask(row) || "Under Review";
+
+  if (!setup.some((s) => s.includes("openScreeningResultByGridRow"))) {
+    pushUnique(setup, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
+    pushUnique(setup, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+  }
+  pushUnique(actions, `await bsPage.openUnderReviewActionsMenu(${rowIdx})`);
+  pushUnique(actions, `await bsPage.clickDispositionMenuItem('${action}')`);
+  pushUnique(actions, `await bsPage.fillCommentAndConfirm('${comment}')`);
 }
 
-function needsPaginationDataset(row: BsExcelRow): boolean {
-  return /next page|previous page|navigate between pages|navigate pages|pagination controls display|large dataset/.test(rowBlob(row));
+function injectCommentModalActions(row: BsExcelRow, setup: string[], actions: string[]): void {
+  if (!isCommentModalTask(row)) {
+    return;
+  }
+
+  const rowIdx = gridRowIndex(row);
+  const comment = escapeStr(actionComment(row));
+  const action = actionNameFromTask(row) || "Under Review";
+  const ctx = taskContext(row);
+  const allSteps = [...setup, ...actions];
+
+  if (!allSteps.some((s) => s.includes("openScreeningResultByGridRow"))) {
+    pushUnique(setup, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
+    pushUnique(setup, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+  }
+  if (!allSteps.some((s) => s.includes("openUnderReviewActionsMenu"))) {
+    pushUnique(actions, `await bsPage.openUnderReviewActionsMenu(${rowIdx})`);
+  }
+  if (!allSteps.some((s) => s.includes("clickDispositionMenuItem"))) {
+    pushUnique(actions, `await bsPage.clickDispositionMenuItem('${action}')`);
+  }
+
+  const hasModalStep = [...setup, ...actions].some((s) =>
+    s.includes("expectCommentModalVisible")
+    || s.includes("fillCommentAndConfirm")
+    || s.includes("submitBlankComment")
+    || s.includes("cancelCommentModal")
+    || s.includes("fillCommentWithSpecialChars")
+    || s.includes("fillCommentWithSqlInjection"),
+  );
+  if (hasModalStep) {
+    return;
+  }
+
+  if (/keyboard focus|focus trap|modal opens|modal displayed/i.test(ctx)) {
+    for (let i = actions.length - 1; i >= 0; i -= 1) {
+      if (actions[i].includes("fillCommentAndConfirm") || actions[i].includes("expectCommentModalClosed")) {
+        actions.splice(i, 1);
+      }
+    }
+    pushUnique(actions, "await bsPage.expectCommentModalVisible()");
+  } else if (/blank|mandatory|whitespace|without entering/i.test(ctx)) {
+    pushUnique(actions, "await bsPage.submitBlankComment()");
+  } else if (/cancel/i.test(ctx)) {
+    pushUnique(actions, "await bsPage.cancelCommentModal()");
+  } else if (/sql injection/i.test(ctx)) {
+    pushUnique(actions, "await bsPage.fillCommentWithSqlInjection()");
+  } else if (/special char|xss/i.test(ctx)) {
+    pushUnique(actions, "await bsPage.fillCommentWithSpecialChars()");
+  } else if (!/mandatory|blank/i.test(ctx)) {
+    pushUnique(actions, `await bsPage.fillCommentAndConfirm('${comment}')`);
+  }
 }
 
-function shouldAutoOpenScr01InSetup(row: BsExcelRow): boolean {
+function normalizeExportSteps(actions: string[], assertions: string[]): { actions: string[]; assertions: string[] } {
+  const nextActions = [...actions];
+  let nextAssertions = [...assertions];
+
+  const expectsDownload = nextAssertions.some((s) => s.includes("expectExportDownloadStarted"))
+    || nextActions.some((s) => s.includes("expectExportDownloadStarted"));
+
+  if (expectsDownload) {
+    for (let i = nextActions.length - 1; i >= 0; i -= 1) {
+      if (nextActions[i].includes("clickExportReport")) {
+        nextActions.splice(i, 1);
+      }
+    }
+    nextAssertions = nextAssertions.filter((s) => !s.includes("expectExportDownloadStarted"));
+    pushUnique(nextActions, "await bsPage.expectExportDownloadStarted()");
+  }
+
+  return { actions: nextActions, assertions: nextAssertions };
+}
+
+function shouldAutoOpenScreeningResults(row: BsExcelRow): boolean {
+  if (isActionTask(row) || isReviewContext(row)) {
+    return true;
+  }
   const sm = row.subModule.toLowerCase();
-  if (requiresCommentModalBeforeScr01(row)) {
+  if (isMatchResultsContext(row) && !isScreeningResultsContext(row)) {
     return false;
   }
-  if (sm.includes("scr-00") || sm.includes("filters") || sm.includes("export")) {
+  if (numberedOpensScreeningResults(row)) {
     return false;
   }
-  if (numberedOpensScr01(row)) {
+  if (sm.includes("filters") || sm.includes("export") || sm.includes("rbac") || sm.includes("api")) {
     return false;
   }
-  if (/integration & sync|synchronized workflow state persists after browser refresh/.test(rowBlob(row)) && !/update disposition in scr-01|open scr-01/.test(rowBlob(row))) {
-    return false;
-  }
-  return isScr01Context(row) || sm.includes("disposition");
+  return isScreeningResultsContext(row);
 }
 
-const SYNC_COMMENT = "Automation disposition comment for batch screening validation.";
+function numberedOpensScreeningResults(row: BsExcelRow): boolean {
+  return parseNumberedSteps(row.testSteps).some((s) =>
+    stepMatches(s, "customer name", "matched list", "number of matched", "screening result", "view details"),
+  );
+}
+
 const OPEN = "await bsPage.openBatchScreeningDirect(testData.baseUrl)";
-
-function appendDispositionUpdate(steps: string[]): void {
-  pushUnique(steps, "await bsPage.openFirstScreeningResult()");
-  pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-  pushUnique(steps, `await bsPage.selectUnderReviewWithComment('${escapeStr(SYNC_COMMENT)}')`);
-}
 
 export function buildExcelSetupActions(row: BsExcelRow): string[] {
   const steps: string[] = [];
-  const sm = row.subModule.toLowerCase();
-  const blob = rowBlob(row);
+  const rowIdx = gridRowIndex(row);
+
+  if (isRbacUnauthorizedRow(row)) {
+    pushUnique(steps, "await bsPage.mockUnauthorized()");
+    pushUnique(steps, OPEN);
+    return steps;
+  }
 
   if (isApiFailureRow(row)) {
     pushUnique(steps, "await bsPage.mockMatchResultsApiFailure()");
   }
 
-  if (needsUnauthorizedApiMock(row)) {
-    pushUnique(steps, "await bsPage.mockUnauthorized()");
-  }
-
   if (isEmptyDatasetRow(row)) {
     pushUnique(steps, OPEN);
     pushUnique(steps, "await bsPage.mockEmptyMatchResults()");
-  } else if (stepMatches(blob, "sidebar", "sanction screening") && !blob.includes("direct url")) {
-    pushUnique(steps, OPEN);
-    pushUnique(steps, "await bsPage.openBatchScreeningFromSidebar()");
-  } else {
-    pushUnique(steps, OPEN);
+    return steps;
   }
 
   if (isUnauthorizedExportRestriction(row)) {
     pushUnique(steps, "await bsPage.mockExportReportRestricted()");
   }
 
-  if (sm.includes("scr-00") || sm.includes("filters") || sm.includes("export") || (sm === "batch screening" && !isScr01Context(row))) {
-    if (!isEmptyDatasetRow(row)) {
-      if (isUnauthorizedExportRestriction(row)) {
-        pushUnique(steps, "await bsPage.expectMatchResultsPageShellLoaded()");
-      } else {
-        pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-      }
+  pushUnique(steps, OPEN);
+
+  if (isMatchResultsContext(row) || row.subModule.toLowerCase() === "batch screening") {
+    if (isUnauthorizedExportRestriction(row) || isRbacUnauthorizedRow(row)) {
+      pushUnique(steps, "await bsPage.expectMatchResultsPageShellLoaded()");
+    } else {
+      pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
     }
   }
 
-  if (shouldAutoOpenScr01InSetup(row)) {
-    pushUnique(steps, "await bsPage.openFirstScreeningResult()");
-    pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+  if (isReviewContext(row) || isActionTask(row)) {
+    if (!steps.some((s) => s.includes("openScreeningResultByGridRow"))) {
+      pushUnique(steps, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
+      pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+    }
   }
 
   if (isReviewContext(row)) {
-    if (!steps.some((s) => s.includes("openFirstScreeningResult"))) {
-      pushUnique(steps, "await bsPage.openFirstScreeningResult()");
-    }
     pushUnique(steps, "await bsPage.openMatchReviewFromResultsDetail()");
   }
 
-  if (needsPaginationDataset(row)) {
+  if (/pagination/i.test(rowBlob(row)) && !isLandingOrShellTask(row)) {
     pushUnique(steps, "await bsPage.ensurePaginationEnabled()");
   }
 
@@ -214,217 +314,266 @@ export function buildExcelSetupActions(row: BsExcelRow): string[] {
 
 export function buildExcelStepActions(row: BsExcelRow): string[] {
   const steps: string[] = [];
-  const numbered = parseNumberedSteps(row.testSteps);
-  const blob = rowBlob(row);
+
+  if (isRbacUnauthorizedRow(row)) {
+    return steps;
+  }
+
+  if (isUnauthorizedExportRestriction(row)) {
+    return steps;
+  }
+
+  if (isLandingOrShellTask(row) && !isFilterOrSearchTask(row) && !isExportTask(row) && !isActionTask(row)) {
+    return steps;
+  }
+
+  const numbered = parseNumberedSteps(row.testSteps).filter((s) => stepMatchesTask(s, row));
+  const rowIdx = gridRowIndex(row);
+  const comment = escapeStr(actionComment(row));
 
   for (const s of numbered) {
     const sl = s.toLowerCase();
-    if (stepMatches(s, "login", "authorized analyst", "authorized user", "authorized export", "restricted role")) {
+
+    if (stepMatches(s, "login", "log in", "log out", "credential")) {
       continue;
     }
-    if (stepMatches(s, "navigate to sanction", "open batch screening", "open match results", "observe match results", "open match results table", "open match results page", "access module")) {
-      if (!steps.some((x) => x.includes("openBatchScreening"))) {
-        pushUnique(steps, OPEN);
-        if (!isEmptyDatasetRow(row)) {
-          if (isUnauthorizedExportRestriction(row)) {
-            pushUnique(steps, "await bsPage.expectMatchResultsPageShellLoaded()");
-          } else {
-            pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-          }
-        }
-      }
+    if (stepMatches(s, "open sanctions screening", "open the sanctions screening")) {
       continue;
     }
-    if (stepMatches(s, "apply filters", "apply filter")) {
-      pushUnique(steps, "await bsPage.applyFilterChip('Branch')");
-    } else if (stepMatches(s, "navigate inside module", "open scr-01", "open screening results")) {
-      pushUnique(steps, "await bsPage.openFirstScreeningResult()");
-      pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-    } else if (stepMatches(s, "return to match results", "navigate back", "return to scr-00")) {
-      pushUnique(steps, "await bsPage.returnToMatchResultsList()");
-    } else if (/enter only spaces|only spaces\/tabs|whitespace-only/.test(sl)) {
-      pushUnique(steps, "await bsPage.submitWhitespaceComment()");
-    } else if (/enter comment exceeding limit|comment exceeding limit|oversized comment/.test(sl)) {
-      pushUnique(steps, "await bsPage.submitOversizedComment()");
-    } else if (/enter special characters in comment|special characters in comment field/.test(sl)) {
-      pushUnique(steps, "await bsPage.fillCommentWithSpecialChars()");
-    } else if (/enter sql injection payload|sql injection payload/.test(sl)) {
-      pushUnique(steps, "await bsPage.fillCommentWithSqlInjection()");
-    } else if (stepMatches(s, "click cancel button", "click cancel") && /comment modal|comment field|submit comment/.test(blob)) {
-      pushUnique(steps, "await bsPage.openCommentModalForDisposition()");
-      pushUnique(steps, "await bsPage.cancelCommentModal()");
-    } else if (/trigger move to case action|trigger move to case/.test(sl)) {
-      pushUnique(steps, `await bsPage.submitDispositionWithComment('Move to Case', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (/trigger move to whitelist action|trigger move to whitelist/.test(sl)) {
-      pushUnique(steps, `await bsPage.submitDispositionWithComment('Move to Whitelist', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (/trigger move to exception list action|trigger move to exception/.test(sl)) {
-      pushUnique(steps, `await bsPage.submitDispositionWithComment('Move to Exception List', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (stepMatches(s, "navigate to page 2", "navigate to page two")) {
-      const pageTwo = "await bsPage.goToNextPage()";
-      if (!steps.includes(pageTwo)) {
-        pushUnique(steps, pageTwo);
-      }
-    } else if (stepMatches(s, "navigate between pages")) {
+    if (stepMatches(s, "go to the match results", "navigate to the match results", "match results page under")) {
+      continue;
+    }
+    if (/check that the filter bar|filter bar and results grid/i.test(sl)) {
+      pushUnique(steps, "await bsPage.expectFiltersVisible()");
+      continue;
+    }
+    if (/watchlists top navigation|click the watchlists/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickTopTab('Watchlists')");
+      continue;
+    }
+    if (/screening top navigation|click the screening tab/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickTopTab('Screening')");
+      continue;
+    }
+    if (/date range preset|date preset/i.test(sl)) {
+      pushUnique(steps, "await bsPage.applyDateRangePreset('Last Year')");
+      continue;
+    }
+    if (/clear filters/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clearFilters()");
+      continue;
+    }
+    if (/pagination next/i.test(sl)) {
       pushUnique(steps, "await bsPage.goToNextPage()");
-    } else if (stepMatches(s, "execute search") && !steps.some((x) => x.includes("searchMatchResults"))) {
-      pushUnique(steps, "await bsPage.searchMatchResults('HANIYA')");
-    } else if (stepMatches(s, "enter restricted module url", "restricted module url manually", "direct url")) {
+      continue;
+    }
+    if (/pagination previous/i.test(sl)) {
+      pushUnique(steps, "await bsPage.goToPreviousPage()");
+      continue;
+    }
+    if (/customer name link|first row of the match results grid|open a screening record/i.test(sl)) {
+      pushUnique(steps, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
+      pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+      continue;
+    }
+    if (/number of matched list/i.test(sl)) {
+      pushUnique(steps, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
+      pushUnique(steps, `await bsPage.openMatchReviewFromListRow(${rowIdx})`);
+      continue;
+    }
+    if (/click the actions dropdown/i.test(sl)) {
+      pushUnique(steps, `await bsPage.openUnderReviewActionsMenu(${rowIdx})`);
+      continue;
+    }
+    if (/select false positive from the actions menu/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickDispositionMenuItem('False Positive')");
+      continue;
+    }
+    if (/select confirm match from the actions menu/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Confirm Match')");
+      continue;
+    }
+    if (/select move to case from the actions menu/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Move to Case')");
+      continue;
+    }
+    if (/select move to whitelist from the actions menu/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Move to Whitelist')");
+      continue;
+    }
+    if (/select move to exception/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Move to Exception List')");
+      continue;
+    }
+    if (/select under review from the actions menu/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Under Review')");
+      continue;
+    }
+    if (/select view details from the actions menu/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickViewDetailsActionOnFirstRow()");
+      continue;
+    }
+    if (/comment modal opens|verify the comment modal/i.test(sl)) {
+      pushUnique(steps, "await bsPage.expectCommentModalVisible()");
+      continue;
+    }
+    if (/click confirm action without entering|without entering a comment/i.test(sl)) {
+      pushUnique(steps, "await bsPage.submitBlankComment()");
+      continue;
+    }
+    if (/click cancel on the comment modal/i.test(sl)) {
+      pushUnique(steps, "await bsPage.cancelCommentModal()");
+      continue;
+    }
+    if (/enter action comment/i.test(sl)) {
+      pushUnique(steps, `await bsPage.fillCommentAndConfirm('${comment}')`);
+      continue;
+    }
+    if (/click confirm action/i.test(sl)) {
+      pushUnique(steps, `await bsPage.fillCommentAndConfirm('${comment}')`);
+      continue;
+    }
+    if (/click the false positive button in the match review/i.test(sl)) {
+      pushUnique(steps, "await bsPage.triggerDispositionAction('False Positive')");
+      pushUnique(steps, `await bsPage.fillCommentAndConfirm('${comment}')`);
+      continue;
+    }
+    if (/click the confirm match button in the match review/i.test(sl)) {
+      pushUnique(steps, "await bsPage.triggerDispositionAction('Confirm Match')");
+      pushUnique(steps, `await bsPage.fillCommentAndConfirm('${comment}')`);
+      continue;
+    }
+    if (/click the report button in the match review/i.test(sl)) {
+      pushUnique(steps, "await bsPage.triggerDispositionAction('Report')");
+      continue;
+    }
+    if (/ai summary tab/i.test(sl)) {
+      pushUnique(steps, "await bsPage.openReviewTab('AI Summary')");
+      continue;
+    }
+    if (/match details tab/i.test(sl)) {
+      pushUnique(steps, "await bsPage.openReviewTab('Match Details')");
+      continue;
+    }
+    if (/view summary tab/i.test(sl)) {
+      pushUnique(steps, "await bsPage.openReviewTab('View Summary')");
+      continue;
+    }
+    if (/export report button|click export report/i.test(sl)) {
+      pushUnique(steps, "await bsPage.clickExportReport()");
+      continue;
+    }
+    if (/search keyword|search field|search input|enter the test search|enter the search keyword/i.test(sl)) {
+      pushUnique(steps, `await bsPage.searchMatchResults('${escapeStr(searchKeyword(row))}')`);
+      continue;
+    }
+    if (/filter chip/i.test(sl) && /branch/i.test(sl)) {
+      pushUnique(steps, "await bsPage.applyFilterChip('Branch')");
+      continue;
+    }
+    if (/filter chip/i.test(sl) && /customer id/i.test(sl)) {
+      pushUnique(steps, "await bsPage.applyFilterChip('Customer ID')");
+      continue;
+    }
+    if (/filter chip/i.test(sl) && /account/i.test(sl)) {
+      pushUnique(steps, "await bsPage.applyFilterChip('Account No.')");
+      continue;
+    }
+    if (/filter chip/i.test(sl) && /screening type/i.test(sl)) {
+      pushUnique(steps, "await bsPage.applyFilterChip('Screening Type')");
+      continue;
+    }
+    if (/filter chip/i.test(sl) && /list name/i.test(sl)) {
+      pushUnique(steps, "await bsPage.applyFilterChip('List Name')");
+      continue;
+    }
+    if (/filter chip/i.test(sl) && /date range/i.test(sl)) {
+      pushUnique(steps, "await bsPage.applyFilterChip('Date Range')");
+      continue;
+    }
+    if (/refresh the page|refresh the page and confirm/i.test(sl)) {
+      pushUnique(steps, "await bsPage.refreshPage()");
+      continue;
+    }
+    if (/back to match results|back control to return to the match results/i.test(sl)) {
+      pushUnique(steps, "await bsPage.returnToMatchResultsList()");
+      continue;
+    }
+    if (/back to return to the screening results/i.test(sl)) {
+      pushUnique(steps, "await bsPage.goBack()");
+      continue;
+    }
+    if (/new screening button/i.test(sl)) {
+      pushUnique(steps, "await bsPage.openStartBatchPanel()");
+      continue;
+    }
+    if (/filter results button/i.test(sl)) {
+      pushUnique(steps, "await bsPage.expectFiltersVisible()");
+      continue;
+    }
+    if (/sortable column header/i.test(sl)) {
+      pushUnique(steps, "await bsPage.sortFirstColumn()");
+      continue;
+    }
+    if (/start batch|run batch/i.test(sl)) {
+      pushUnique(steps, "await bsPage.runBatchWithFirstWatchlistRule()");
+      continue;
+    }
+    if (/schedule batch|save schedule/i.test(sl)) {
+      pushUnique(steps, "await bsPage.saveScheduleBatch()");
+      continue;
+    }
+    if (/select multiple|bulk row selection/i.test(sl)) {
+      pushUnique(steps, "await bsPage.selectBulkRecords(2)");
+      continue;
+    }
+    if (/direct url|batch screening url directly/i.test(sl)) {
       pushUnique(steps, "await bsPage.mockUnauthorized()");
       pushUnique(steps, OPEN);
-    } else if (stepMatches(s, "click view details action", "view details action")) {
-      pushUnique(steps, "await bsPage.clickViewDetailsActionOnFirstRow()");
-    } else if (stepMatches(s, "click view details", "open matched record", "open screening results", "open scr-01", "click name")) {
-      pushUnique(steps, "await bsPage.openFirstScreeningResult()");
-      pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-    } else if (/update disposition in scr-01|update disposition|execute disposition action|execute disposition/.test(sl)) {
-      appendDispositionUpdate(steps);
-    } else if (/update workflow/.test(sl)) {
-      appendDispositionUpdate(steps);
-    } else if (/return to scr-00|return to match results/.test(sl)) {
-      pushUnique(steps, "await bsPage.goBack()");
-      pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-    } else if (/open match details/.test(sl)) {
-      pushUnique(steps, "await bsPage.openMatchReviewFromResultsDetail()");
-      pushUnique(steps, "await bsPage.openReviewTab('Match Details')");
-    } else if (/open view summary/.test(sl)) {
-      pushUnique(steps, "await bsPage.openMatchReviewFromResultsDetail()");
-      pushUnique(steps, "await bsPage.openReviewTab('View Summary')");
-    } else if (/open all related workspaces|all related workspaces/.test(sl)) {
-      pushUnique(steps, "await bsPage.openFirstScreeningResult()");
-      pushUnique(steps, "await bsPage.openMatchReviewFromResultsDetail()");
-    } else if (/submit comment/.test(sl)) {
-      if (hasCommentInputAction(steps) || /whitespace-only|only spaces\/tabs|sql injection payload|special characters in comment/.test(blob)) {
-        continue;
-      }
-      appendDispositionUpdate(steps);
-    } else if (/leave comment field blank|leave comment blank|submit form/.test(sl) && /blank|empty comment/.test(blob)) {
-      if (!steps.some((x) => x.includes("openFirstScreeningResult"))) {
-        pushUnique(steps, "await bsPage.openFirstScreeningResult()");
-        pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-      }
-      pushUnique(steps, "await bsPage.openUnderReviewActionsMenu()");
-      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Under Review')");
-      pushUnique(steps, "await bsPage.submitBlankComment()");
-    } else if (stepMatches(s, "click submit") && /blank comment|empty comment/.test(blob)) {
-      pushUnique(steps, "await bsPage.submitBlankComment()");
-    } else if (/logout user|logout\/revoke|logout\/login|login again|re-login|revoke permission/.test(sl)) {
-      pushUnique(steps, "await bsPage.performLogoutAndReturn()");
-      if (/login again|re-login/.test(sl)) {
-        pushUnique(steps, OPEN);
-        pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-      }
-    } else if (/use browser back|browser back button/.test(sl)) {
-      pushUnique(steps, "await bsPage.goBack()");
-    } else if (/refresh all related pages|page refresh|attempt page refresh|refresh all/.test(sl)) {
-      pushUnique(steps, "await bsPage.refreshPage()");
-    } else if (stepMatches(s, "open actions dropdown", "actions dropdown")) {
-      pushUnique(steps, "await bsPage.openUnderReviewActionsMenu()");
-    } else if (stepMatches(s, "click under review")) {
-      if (/mandatory comment modal should appear|before action execution|before navigation/.test(row.expectedResult.toLowerCase())) {
-        pushUnique(steps, "await bsPage.clickDispositionMenuItem('Under Review')");
-      } else {
-        pushUnique(steps, `await bsPage.selectUnderReviewWithComment('${escapeStr(SYNC_COMMENT)}')`);
-      }
-    } else if (stepMatches(s, "click move to case", "move to case")) {
-      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Move to Case')");
-    } else if (stepMatches(s, "click move to whitelist", "move to whitelist")) {
-      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Move to Whitelist')");
-    } else if (stepMatches(s, "click move to exception", "move to exception")) {
-      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Move to Exception List')");
-    } else if (stepMatches(s, "trigger under review")) {
-      pushUnique(steps, "await bsPage.openUnderReviewActionsMenu()");
-      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Under Review')");
-    } else if (stepMatches(s, "trigger move to case")) {
-      pushUnique(steps, "await bsPage.openUnderReviewActionsMenu()");
-      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Move to Case')");
-    } else if (stepMatches(s, "trigger any disposition", "trigger disposition")) {
-      pushUnique(steps, "await bsPage.openUnderReviewActionsMenu()");
-      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Under Review')");
-    } else if (stepMatches(s, "click view summary", "view summary")) {
-      pushUnique(steps, "await bsPage.openMatchReviewFromResultsDetail()");
-      pushUnique(steps, "await bsPage.openReviewTab('View Summary')");
-    } else if (stepMatches(s, "click view full profile", "view full profile") || (/match details/.test(s) && !/open match details/.test(s))) {
-      pushUnique(steps, "await bsPage.openViewFullProfile()");
-      pushUnique(steps, "await bsPage.expectMatchDetailsContentVisible()");
-    } else if (stepMatches(s, "ai summary")) {
-      pushUnique(steps, "await bsPage.openReviewTab('AI Summary')");
-    } else if (/choose bulk confirm match|bulk confirm match/i.test(sl)) {
-      pushUnique(steps, `await bsPage.triggerBulkDispositionAction('Confirm Match', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (/choose bulk false positive|bulk false positive/i.test(sl)) {
-      pushUnique(steps, `await bsPage.triggerBulkDispositionAction('False Positive', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (/choose bulk move to case|bulk move to case/i.test(sl)) {
-      pushUnique(steps, `await bsPage.triggerBulkDispositionAction('Move to Case', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (/choose bulk move to whitelist|bulk move to whitelist/i.test(sl)) {
-      pushUnique(steps, `await bsPage.triggerBulkDispositionAction('Move to Whitelist', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (/choose bulk move to exception|bulk exception list|bulk move to exception/i.test(sl)) {
-      pushUnique(steps, `await bsPage.triggerBulkDispositionAction('Move to Exception List', '${escapeStr(SYNC_COMMENT)}')`);
-    } else if (/submit action/.test(sl) && isBulkActionRow(row)) {
       continue;
-    } else if (stepMatches(s, "false positive") && !isBulkActionRow(row)) {
-      pushUnique(steps, "await bsPage.triggerDispositionAction('False Positive')");
-    } else if (stepMatches(s, "confirm match") && !/bulk confirm match|choose bulk/.test(sl)) {
-      pushUnique(steps, "await bsPage.triggerDispositionAction('Confirm Match')");
-    } else if (isExportReportContext(s, blob) || stepMatches(s, "observe export report action")) {
-      pushUnique(steps, "await bsPage.expectExportReportVisible()");
-    } else if (stepMatches(s, "click export report")) {
-      pushUnique(steps, "await bsPage.clickExportReport()");
-    } else if (stepMatches(s, "report action", "click report")) {
-      pushUnique(steps, "await bsPage.triggerDispositionAction('Report')");
-    } else if (stepMatches(s, "enter comment", "fill comment") && !/blank|empty/.test(s)) {
-      pushUnique(steps, `await bsPage.fillCommentAndConfirm('${escapeStr(SYNC_COMMENT)}')`);
-    } else if (stepMatches(s, "cancel comment", "close modal")) {
-      pushUnique(steps, "await bsPage.cancelCommentModal()");
-    } else if (stepMatches(s, "select date range", "date range filter")) {
-      pushUnique(steps, "await bsPage.applyFilterChip('Date Range')");
-    } else if (stepMatches(s, "branch filter", "select branch")) {
-      pushUnique(steps, "await bsPage.applyFilterChip('Branch')");
-    } else if (stepMatches(s, "customer id", "account no", "screening type", "list name")) {
-      const label = s.toLowerCase().includes("branch") ? "Branch"
-        : s.toLowerCase().includes("customer") ? "Customer ID"
-          : s.toLowerCase().includes("account") ? "Account No."
-            : s.toLowerCase().includes("screening type") ? "Screening Type"
-              : "List Name";
-      pushUnique(steps, `await bsPage.applyFilterChip('${label}')`);
-    } else if (stepMatches(s, "clear filter")) {
-      pushUnique(steps, "await bsPage.clearFilters()");
-    } else if (stepMatches(s, "search", "enter keyword", "enter invalid") && !isScr01Context(row) && !isReviewContext(row)) {
-      const keyword = /invalid|non-existing|no-match/i.test(row.testData + row.testSteps)
-        ? "zzzz-no-match-99999"
-        : "HANIYA";
-      pushUnique(steps, `await bsPage.searchMatchResults('${escapeStr(keyword)}')`);
-    } else if (stepMatches(s, "export report", "observe export", "click export")) {
-      if (stepMatches(s, "observe export")) {
-        pushUnique(steps, "await bsPage.expectExportReportVisible()");
-      } else {
-        pushUnique(steps, "await bsPage.clickExportReport()");
-      }
-    } else if (stepMatches(s, "start batch", "run batch")) {
-      pushUnique(steps, "await bsPage.runBatchWithFirstWatchlistRule()");
-    } else if (stepMatches(s, "schedule batch", "save schedule")) {
-      pushUnique(steps, "await bsPage.saveScheduleBatch()");
-    } else if (stepMatches(s, "refresh", "reload")) {
-      pushUnique(steps, "await bsPage.refreshPage()");
-    } else if (stepMatches(s, "select multiple", "select multiple screening")) {
-      pushUnique(steps, "await bsPage.selectBulkRecords(2)");
-    } else if (stepMatches(s, "trigger match results api", "api request")) {
-      pushUnique(steps, "await bsPage.mockMatchResultsApiFailure()");
-      pushUnique(steps, OPEN);
-    } else if (stepMatches(s, "measure load", "observe load", "open scr-01 workspace")) {
-      if (/scr-01/.test(sl) || isScr01Context(row)) {
-        pushUnique(steps, "await bsPage.openFirstScreeningResult()");
+    }
+    if (/legacy|scr-01|disposition|open matched record|open screening results/i.test(sl)) {
+      if (/move to case/i.test(sl)) {
+        pushUnique(steps, `await bsPage.submitDispositionWithComment('Move to Case', '${comment}')`);
+      } else if (/false positive/i.test(sl)) {
+        pushUnique(steps, `await bsPage.submitDispositionWithComment('False Positive', '${comment}')`);
+      } else if (/confirm match/i.test(sl)) {
+        pushUnique(steps, `await bsPage.submitDispositionWithComment('Confirm Match', '${comment}')`);
+      } else if (/view details|open matched|screening result/i.test(sl)) {
+        pushUnique(steps, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
         pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-      } else {
-        pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
       }
-    } else if (stepMatches(s, "review audit", "audit history", "audit log", "open audit logs")) {
-      pushUnique(steps, "await bsPage.expectPageShellLoaded()");
-    } else if (stepMatches(s, "observe highest match score", "highest match score")) {
-      pushUnique(steps, "await bsPage.expectHighestMatchScoreColumnVisible()");
-    } else if (stepMatches(s, "pagination", "next page", "previous page")) {
-      if (stepMatches(s, "next")) {
-        pushUnique(steps, "await bsPage.goToNextPage()");
-      } else if (stepMatches(s, "previous")) {
-        pushUnique(steps, "await bsPage.goToPreviousPage()");
+    }
+  }
+
+  if (steps.length === 0) {
+    const chip = filterChipNameFromTask(row);
+    if (chip) {
+      pushUnique(steps, `await bsPage.applyFilterChip('${chip}')`);
+    } else if (isExportTask(row) && !/audit|history/i.test(taskContext(row))) {
+      pushUnique(steps, "await bsPage.clickExportReport()");
+    } else if (/search/i.test(taskContext(row))) {
+      pushUnique(steps, `await bsPage.searchMatchResults('${escapeStr(searchKeyword(row))}')`);
+    } else if (isCommentModalTask(row)) {
+      pushUnique(steps, `await bsPage.openUnderReviewActionsMenu(${rowIdx})`);
+      pushUnique(steps, "await bsPage.clickDispositionMenuItem('Under Review')");
+      if (/keyboard focus|focus trap/i.test(taskContext(row))) {
+        pushUnique(steps, "await bsPage.expectCommentModalVisible()");
+      } else if (/blank|mandatory|whitespace/i.test(taskContext(row))) {
+        pushUnique(steps, "await bsPage.submitBlankComment()");
+      } else if (/cancel/i.test(taskContext(row))) {
+        pushUnique(steps, "await bsPage.cancelCommentModal()");
+      } else {
+        pushUnique(steps, `await bsPage.fillCommentAndConfirm('${comment}')`);
+      }
+    } else if (isActionTask(row)) {
+      const action = actionNameFromTask(row);
+      if (action) {
+        pushUnique(steps, `await bsPage.openUnderReviewActionsMenu(${rowIdx})`);
+        pushUnique(steps, `await bsPage.clickDispositionMenuItem('${action}')`);
+        if (!/mandatory|blank/i.test(taskContext(row))) {
+          pushUnique(steps, `await bsPage.fillCommentAndConfirm('${comment}')`);
+        }
       }
     }
   }
@@ -433,123 +582,38 @@ export function buildExcelStepActions(row: BsExcelRow): string[] {
 }
 
 export function buildExcelAssertionActions(row: BsExcelRow): string[] {
-  const steps: string[] = [];
-  const er = row.expectedResult.toLowerCase();
-  const ac = row.acceptanceCriteria.toLowerCase();
-  const task = row.taskDescription.toLowerCase();
-  const sm = row.subModule.toLowerCase();
-  const blob = `${er} ${ac} ${task}`;
+  const steps = buildAssertionsForRow(row, getFsdEntryForRow(row));
+  const blob = rowBlob(row);
 
-  if (expectsSessionInvalidated(row)) {
-    pushUnique(steps, "await bsPage.expectSessionInvalidated()");
-  }
-  if (expectsAccessDeniedOutcome(row) && !expectsSessionInvalidated(row)) {
+  if (isRbacUnauthorizedRow(row)) {
     pushUnique(steps, "await bsPage.expectAccessDenied()");
   }
+
   if (isUnauthorizedExportRestriction(row)) {
+    const filtered = steps.filter((s) =>
+      !s.includes("expectExportReportVisible")
+      && !s.includes("expectExportDownloadStarted")
+      && !s.includes("expectAuditTrailVisible"),
+    );
+    steps.length = 0;
+    for (const s of filtered) {
+      pushUnique(steps, s);
+    }
     pushUnique(steps, "await bsPage.expectExportReportRestricted()");
   }
-  if (expectsCommentModalCloseOutcome(row)) {
-    pushUnique(steps, "await bsPage.expectCommentModalClosed()");
-    if (isScr01Context(row)) {
-      pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-    } else {
-      pushUnique(steps, "await bsPage.expectMatchResultsPageShellLoaded()");
-    }
-  } else if (/comment modal|mandatory comment|modal component|before navigation/.test(blob) && !/blank comment|empty comment|whitespace-only|modal should close|cancel button|without changing disposition/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectCommentModalVisible()");
+
+  if (isApiFailureRow(row)) {
+    pushUnique(steps, "await bsPage.expectApiFailureHandledGracefully()");
+  } else if (isApiSuccessRow(row)) {
+    pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
   }
-  if (/blank comment|empty comment|prevent action execution for blank|prevent blank comment|whitespace-only comments are restricted|reject whitespace-only/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectCommentValidationVisible()");
-  }
-  if (/validate and restrict oversized|oversized comments|comment exceeding limit|character limit/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectCommentValidationVisible()");
-  }
-  if (/match details workspace|match details content|latest synchronized workflow information/.test(blob) && isReviewContext(row) && !/mandatory comment modal should appear before opening match details/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectMatchDetailsContentVisible()");
-  } else if (/view summary workspace|view summary content/.test(blob) && isReviewContext(row)) {
-    pushUnique(steps, "await bsPage.expectViewSummaryContentVisible()");
-  } else if (/ai summary/.test(blob) && isReviewContext(row)) {
-    pushUnique(steps, "await bsPage.expectAiSummaryContentVisible()");
-  } else if (/screening results workspace|scr-01 workspace/.test(blob) && isScr01Context(row) && !/scr-00 and scr-01|synchronized workflow state persists after browser refresh|preserve synchronized workflow state after refresh/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-  }
-  if (/export report/.test(blob) && !isUnauthorizedExportRestriction(row)) {
-    pushUnique(steps, "await bsPage.expectExportReportVisible()");
-  }
-  if (/list name with highest match score/.test(blob) && !isReviewContext(row)) {
-    pushUnique(steps, "await bsPage.expectListNameWithHighestMatchScoreColumnVisible()");
-  } else if (/highest match score|scoring/.test(blob) && !isReviewContext(row)) {
-    pushUnique(steps, "await bsPage.expectHighestMatchScoreColumnVisible()");
-  }
+
   if (isEmptyDatasetRow(row)) {
     pushUnique(steps, "await bsPage.expectEmptyStateVisible()");
   }
-  if (/pagination/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectPaginationVisible()");
-  }
-  if (/filter/.test(blob) && !/clear/.test(blob)) {
+
+  if (/filter|search/i.test(blob) && steps.length === 0) {
     pushUnique(steps, "await bsPage.expectFiltersVisible()");
-  }
-  if (/api/.test(sm) && /successful|correct screening data/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-  }
-  if (/api/.test(sm) && /failure|error|graceful/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectApiFailureHandledGracefully()");
-  }
-  if (/batch screening module|match results landing|match results page|ui components|match results table/.test(blob) && !isScr01Context(row)) {
-    if (isUnauthorizedExportRestriction(row)) {
-      pushUnique(steps, "await bsPage.expectMatchResultsPageShellLoaded()");
-    } else {
-      pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-    }
-  }
-  if (/synchronized|synchronize|sync/.test(blob)) {
-    if (isReviewContext(row)) {
-      if (/match details/.test(blob)) {
-        pushUnique(steps, "await bsPage.expectMatchDetailsContentVisible()");
-      } else if (/view summary/.test(blob)) {
-        pushUnique(steps, "await bsPage.expectViewSummaryContentVisible()");
-      } else if (/comment/.test(blob)) {
-        pushUnique(steps, "await bsPage.expectCommentModalVisible()");
-      } else {
-        pushUnique(steps, "await bsPage.expectPageShellLoaded()");
-      }
-    } else if (/scr-00 and scr-01|disposition status/.test(blob)) {
-      pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-    } else if (/after browser refresh|after refresh|after re-login/.test(blob)) {
-      pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-    } else if (/highest match score remains synchronized/.test(blob)) {
-      pushUnique(steps, "await bsPage.expectHighestMatchScoreColumnVisible()");
-    } else if (isScr01Context(row)) {
-      pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-    } else {
-      pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-    }
-  }
-  if (/audit/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectPageShellLoaded()");
-  }
-  if (/load within|response threshold|sla|performance/.test(blob)) {
-    if (isReviewContext(row)) {
-      if (/match details/.test(blob)) {
-        pushUnique(steps, "await bsPage.expectMatchDetailsContentVisible()");
-      } else if (/view summary|ai summary/.test(blob)) {
-        pushUnique(steps, "await bsPage.expectViewSummaryContentVisible()");
-      } else {
-        pushUnique(steps, "await bsPage.expectPageShellLoaded()");
-      }
-    } else if (isScr01Context(row)) {
-      pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
-    } else {
-      pushUnique(steps, "await bsPage.expectMatchResultsPageLoaded()");
-    }
-  }
-  if (/bulk confirm|selected records/.test(blob)) {
-    pushUnique(steps, "await bsPage.expectPageShellLoaded()");
-  }
-  if (steps.length === 0) {
-    pushUnique(steps, "await bsPage.expectPageShellLoaded()");
   }
 
   return steps;
@@ -561,42 +625,95 @@ export function buildExcelAlignedLogic(row: BsExcelRow): string {
   let actions = buildExcelStepActions(row);
   let assertions = buildExcelAssertionActions(row);
 
-  const onScr01 = [
-    ...setup,
-    ...actions,
-    ...assertions,
-  ].some((s) => s.includes("expectScreeningResultsWorkspaceLoaded") || s.includes("openFirstScreeningResult"));
+  const onScreeningResults = [...setup, ...actions, ...assertions].some(
+    (s) => s.includes("expectScreeningResultsWorkspaceLoaded") || s.includes("openScreeningResultByGridRow"),
+  );
 
-  const onReview = isReviewContext(row) && [
-    ...setup,
-    ...actions,
-  ].some((s) => s.includes("openReviewTab") || s.includes("openMatchReviewFromResultsDetail"));
-
-  if (onScr01 || onReview) {
-    actions = actions.filter((s) => !s.includes("expectMatchResultsPageLoaded"));
+  if (onScreeningResults) {
     assertions = assertions.filter((s) => !s.includes("expectMatchResultsPageLoaded"));
+  }
+
+  if (isRbacUnauthorizedRow(row)) {
+    setup = setup.filter((s) => !s.includes("expectMatchResultsPageLoaded"));
+    actions = [];
+    assertions = assertions.filter((s) =>
+      s.includes("expectAccessDenied") || s.includes("expectExportReportRestricted"),
+    );
+    if (!assertions.some((s) => s.includes("expectAccessDenied"))) {
+      assertions.push("await bsPage.expectAccessDenied()");
+    }
+  } else {
+    if (isPureExportTask(row)) {
+      setup = setup.filter((s) =>
+        !s.includes("openScreeningResultByGridRow")
+        && !s.includes("expectScreeningResultsWorkspaceLoaded"),
+      );
+      actions = actions.filter((s) =>
+        !s.includes("openUnderReviewActionsMenu")
+        && !s.includes("clickDispositionMenuItem")
+        && !s.includes("fillCommentAndConfirm")
+        && !s.includes("expectAuditTrailVisible"),
+      );
+      assertions = assertions.filter((s) => !s.includes("expectAuditTrailVisible"));
+    } else {
+      injectAuditPrerequisite(row, setup, actions);
+    }
+    injectCommentModalActions(row, setup, actions);
+    if (isCommentModalTask(row) && /keyboard focus|focus trap/i.test(taskContext(row))) {
+      actions = actions.filter((s) =>
+        !s.includes("fillCommentAndConfirm") && !s.includes("expectCommentModalClosed"),
+      );
+      assertions = assertions.filter((s) => !s.includes("expectCommentModalClosed"));
+      const menuIdx = actions.findIndex((s) => s.includes("clickDispositionMenuItem"));
+      const modalIdx = actions.findIndex((s) => s.includes("expectCommentModalVisible"));
+      if (menuIdx >= 0 && modalIdx >= 0 && modalIdx < menuIdx) {
+        const modalStep = actions.splice(modalIdx, 1)[0];
+        actions.splice(menuIdx + 1, 0, modalStep);
+      }
+      if (!actions.some((s) => s.includes("expectCommentModalVisible"))) {
+        actions.push("await bsPage.expectCommentModalVisible()");
+      }
+    }
+    ({ actions, assertions } = normalizeExportSteps(actions, assertions));
   }
 
   if (isUnauthorizedExportRestriction(row)) {
     setup = setup.filter((s) => !s.includes("expectMatchResultsPageLoaded") && !s.includes("expectExportReportVisible"));
-    actions = actions.filter((s) => !s.includes("expectMatchResultsPageLoaded") && !s.includes("expectExportReportVisible"));
-    assertions = assertions.filter((s) => !s.includes("expectMatchResultsPageLoaded") && !s.includes("expectExportReportVisible"));
+    actions = actions.filter((s) =>
+      !s.includes("expectMatchResultsPageLoaded")
+      && !s.includes("expectExportReportVisible")
+      && !s.includes("clickExportReport")
+      && !s.includes("applyFilterChip")
+      && !s.includes("clickTopTab")
+      && !s.includes("goToNextPage")
+      && !s.includes("goToPreviousPage")
+      && !s.includes("openScreeningResult")
+      && !s.includes("openMatchReview")
+      && !s.includes("openUnderReviewActionsMenu"),
+    );
   }
 
+  const seen = new Set<string>();
   for (const block of [setup, actions, assertions]) {
     for (const step of block) {
-      pushUnique(lines, step);
+      const key = step.replace(/\s+/g, " ").trim();
+      if (seen.has(key)) {
+        continue;
+      }
+      seen.add(key);
+      lines.push(step);
     }
   }
+
   return lines.join(";\n    ");
 }
 
 export function formatTestTitle(row: BsExcelRow): string {
   const feature = featureGroup(row.subModule);
-  const action = row.taskDescription.replace(/^Verify\s+/i, "").trim();
+  const action = row.taskDescription.replace(/^(Verify|Check that)\s+/i, "").trim();
   return `Case ID:${row.id} - ${feature} → ${action}`;
 }
 
 export function formatExcelComment(row: BsExcelRow): string {
-  return `// Excel Test Case ID: ${row.id}\n  // Excel Scenario: ${row.taskDescription}`;
+  return `// Excel Test Case ID: ${row.id}\n  // Task: ${row.taskDescription}`;
 }

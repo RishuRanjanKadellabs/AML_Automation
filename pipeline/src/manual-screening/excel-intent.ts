@@ -1,4 +1,5 @@
 import type { MsExcelRow } from "./types";
+import { isMatchReviewCase } from "./workbook-reconciler";
 
 function escapeStr(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
@@ -30,22 +31,63 @@ function isFormSectionStep(step: string): boolean {
   return /screening configuration|watchlist configuration|basic information|joint account holder/.test(step.toLowerCase());
 }
 
+function inferSidebarModuleLabel(source: string): string | null {
+  const s = source.toLowerCase();
+  if (/dashboard navigation|navigate to dashboard|click dashboard/.test(s)) {
+    return "Dashboard";
+  }
+  if (/\bkyc navigation|verify kyc|navigate to kyc/.test(s)) {
+    return "KYC";
+  }
+  if (/sanction screening navigation|sanctions screening navigation/.test(s)) {
+    return "Sanctions Screening";
+  }
+  if (/customer risk view navigation|customer risk view/.test(s)) {
+    return "Customer Risk View";
+  }
+  if (/real-time monitoring navigation|real-time monitoring/.test(s)) {
+    return "Real-time Monitoring";
+  }
+  if (/batch monitoring navigation|batch monitoring/.test(s)) {
+    return "Batch Monitoring";
+  }
+  if (/payments workflow navigation|payments workflow/.test(s)) {
+    return "Payments Workflow";
+  }
+  if (/ai-powered investigation navigation|ai-powered investigation/.test(s)) {
+    return "AI-Powered Investigation";
+  }
+  if (/lea \/ rfi|lea tracker|rfi tracker/.test(s)) {
+    return "LEA / RFI Tracker";
+  }
+  if (/mis reports navigation|mis reports/.test(s)) {
+    return "MIS Reports";
+  }
+  if (/regulatory reports navigation|regulatory reports/.test(s)) {
+    return "Regulatory Reports";
+  }
+  if (/simulation module|simulation navigation|navigate to simulation/.test(s)) {
+    return "Simulation";
+  }
+  if (/configurations module|navigate to config|configuration navigation/.test(s)) {
+    return "Config";
+  }
+  if (/administration navigation|administration module|navigate to administration/.test(s)) {
+    return "Administration";
+  }
+  return null;
+}
+
+function layoutUsesManualScreeningPage(row: MsExcelRow): boolean {
+  const blob = rowBlob(row);
+  return /open the manual screening page|manual screening remains highlighted|default active menu state|dashboard navigation|kyc navigation|sanction screening navigation|customer risk view navigation|real-time monitoring navigation|batch monitoring navigation|payments workflow navigation|ai-powered investigation navigation|lea \/ rfi|MIS reports navigation|regulatory reports navigation|simulation module|configurations module|administration navigation/i.test(blob);
+}
+
 function isSidebarNavigationStep(step: string): boolean {
   if (isFormSectionStep(step)) {
     return false;
   }
-  const s = step.toLowerCase();
-  return /dashboard navigation|navigate to dashboard|click dashboard/.test(s)
-    || /kyc navigation|verify kyc/.test(s)
-    || /sanction screening navigation|sanctions screening navigation/.test(s)
-    || /customer risk/.test(s)
-    || /real-time monitoring|batch monitoring|payments workflow/.test(s)
-    || /ai-powered investigation/.test(s)
-    || /lea \/ rfi|lea tracker|rfi tracker/.test(s)
-    || /mis reports navigation|navigate to mis reports/.test(s)
-    || /regulatory reports navigation/.test(s)
-    || /simulation module|navigate to simulation/.test(s)
-    || /configurations module|navigate to config|open config module|administration module|navigate to administration/.test(s);
+  return inferSidebarModuleLabel(step) !== null;
 }
 
 function stepMatches(step: string, ...patterns: string[]): boolean {
@@ -61,29 +103,66 @@ function assertionBlob(row: MsExcelRow): string {
   return `${row.taskDescription} ${row.acceptanceCriteria} ${row.expectedResult} ${row.testSteps} ${row.testData}`.toLowerCase();
 }
 
+function isEntityScreeningFlowModule(row: MsExcelRow): boolean {
+  return /individual screening flow|non-individual screening flow|vessel screening flow/i.test(row.module);
+}
+
+function isMatchReviewContext(row: MsExcelRow): boolean {
+  return isMatchReviewCase(row) || /match review/i.test(row.subModule);
+}
+
+function inferScreeningSubjectName(row: MsExcelRow): string {
+  const blob = `${row.testData} ${row.testSteps}`.toLowerCase();
+  if (/william/.test(blob)) {
+    return "william";
+  }
+  if (/automation holdings|registered name/.test(blob)) {
+    return "Automation Holdings Pte Ltd";
+  }
+  if (/mv automation|vessel name/.test(blob)) {
+    return "MV Automation Trader";
+  }
+  return MATCH_NAME;
+}
+
 function inferEntityType(row: MsExcelRow): "Individual" | "Non-Individuals" | "Vessel" | null {
+  if (row.module === "Individual Screening Flow" || row.module === "Individual Form") {
+    return "Individual";
+  }
+  if (row.module === "Non-Individual Screening Flow" || row.module === "Non-Individual Form") {
+    return "Non-Individuals";
+  }
+  if (row.module === "Vessel Screening Flow" || row.module === "Vessel Form") {
+    return "Vessel";
+  }
+  if (row.module === "Match Review") {
+    return "Individual";
+  }
   const steps = parseNumberedSteps(row.testSteps).join(" ").toLowerCase();
   const task = `${row.taskDescription} ${row.subModule}`.toLowerCase();
   const scoped = `${steps} ${task}`;
-  if (/vessel form|switch to vessel|vessel section|vessel entity/.test(scoped)) {
+  if (/vessel form|switch to vessel|vessel section|vessel entity|select the vessel entity type|select vessel entity type/.test(scoped)) {
     return "Vessel";
   }
-  if (/non-individual form|non individual form|switch to non-individual|non-individual section|registered name/.test(scoped)) {
+  if (/non-individual form|non individual form|switch to non-individual|non-individual section|registered name|select the non-individual entity type|select non-individual entity type/.test(scoped)) {
     return "Non-Individuals";
   }
-  if (/individual form|switch to individual|individual section/.test(scoped)) {
-    return "Individual";
-  }
-  if (row.module === "Vessel Form") {
-    return "Vessel";
-  }
-  if (row.module === "Non-Individual Form") {
-    return "Non-Individuals";
-  }
-  if (row.module === "Individual Form") {
+  if (/individual form|switch to individual|individual section|select the individual entity type|select individual entity type/.test(scoped)) {
     return "Individual";
   }
   return null;
+}
+
+function inferEntitySubmitAction(row: MsExcelRow): string {
+  const entity = inferEntityType(row);
+  const name = inferScreeningSubjectName(row);
+  if (entity === "Non-Individuals") {
+    return "await msPage.submitValidNonIndividualScreening()";
+  }
+  if (entity === "Vessel") {
+    return "await msPage.submitValidVesselScreening()";
+  }
+  return `await msPage.submitValidIndividualScreening('${escapeStr(name)}')`;
 }
 
 function isBulkContext(row: MsExcelRow): boolean {
@@ -111,6 +190,9 @@ function isResultsContext(row: MsExcelRow): boolean {
     || row.module === "AI Summary Panel"
     || row.module === "Results Table"
     || row.module === "Bulk Screening Results"
+    || row.module === "Match Review"
+    || (isEntityScreeningFlowModule(row)
+      && /start screening to results|subject summary|results table|complete end-to-end|results to match review|match review screened subject/i.test(`${row.subModule} ${row.taskDescription}`))
     || row.module === "Screening Results Page — Retry Behavior"
     || row.module === "Screening Results Page – Timeout Handling"
     || row.module === "Screening Results Page – Watchlist Availability"
@@ -210,8 +292,36 @@ function expectsAccessDeniedOutcome(row: MsExcelRow): boolean {
   return /should deny|access denied|not authorized|login required|restricted users should not|prevent unauthorized|should not view sensitive/.test(blob);
 }
 
+function isBulkResultsModule(row: MsExcelRow): boolean {
+  return row.module === "Bulk Screening Results";
+}
+
 function isLayoutNavigationRow(row: MsExcelRow): boolean {
-  return row.module === "Layout & Navigation" || /^TC-MS-/i.test(row.id);
+  return row.module === "Layout & Navigation";
+}
+
+function normalizeGeneratedLines(lines: string[]): string[] {
+  const normalized: string[] = [];
+  let screeningSubmitted = false;
+  let resultsSeeded = false;
+
+  for (const line of lines) {
+    if (/submitValid(?:Individual|NonIndividual|Vessel)Screening|runScreeningWithMatchName|runZeroMatchScreening|clickStartBulkScreening/.test(line)) {
+      screeningSubmitted = true;
+    }
+    if (/ensureMatchResultsAvailable|openViewLastResults|runScreeningWithMatchName|runZeroMatchScreening|clickStartBulkScreening/.test(line)) {
+      resultsSeeded = true;
+    }
+    if ((screeningSubmitted || resultsSeeded) && line.includes("clickScreenButton()")) {
+      continue;
+    }
+    if (resultsSeeded && line.includes("expectWatchlistGridVisible()")) {
+      continue;
+    }
+    pushUnique(normalized, line);
+  }
+
+  return normalized;
 }
 
 function isFormActionsModule(row: MsExcelRow): boolean {
@@ -282,6 +392,13 @@ function appendInferredActions(row: MsExcelRow, steps: string[]): void {
     return;
   }
 
+  if (isLayoutNavigationRow(row)) {
+    const navLabel = inferSidebarModuleLabel(`${row.taskDescription} ${row.expectedResult}`);
+    if (navLabel && !steps.some((s) => s.includes("navigateSidebarModule"))) {
+      pushUnique(steps, `await msPage.navigateSidebarModule('${escapeStr(navLabel)}')`);
+    }
+  }
+
   if (/reset form/.test(task) && !steps.some((s) => s.includes("clickResetButton"))) {
     pushUnique(steps, "await msPage.clickResetButton()");
   }
@@ -299,7 +416,9 @@ function appendInferredActions(row: MsExcelRow, steps: string[]): void {
     }
   }
   if (/fill all required fields|valid form submission|navigates to the screening results flow|allows navigation after valid|validation passes with no error|validation succeeds/.test(blob) && !expectsResultsNavigationBlocked(row)) {
-    pushUnique(steps, "await msPage.submitValidIndividualScreening()");
+    if (!steps.some((s) => s.includes("submitValid") || s.includes("runScreeningWithMatchName"))) {
+      pushUnique(steps, inferEntitySubmitAction(row));
+    }
   }
   if (/fill only a few optional fields|submission is blocked until validation|without filling any mandatory|without filling required/.test(blob)) {
     if (!steps.some((s) => s.includes("clickScreenButton"))) {
@@ -334,7 +453,9 @@ function appendInferredActions(row: MsExcelRow, steps: string[]): void {
     pushUnique(steps, "await msPage.selectResultsCategoryFilter('Critical')");
   }
   if (/enter a search term|apply any text filter|apply a text filter|text filter and select a category/.test(blob)) {
-    pushUnique(steps, "await msPage.searchResultsTable('HANIYA')");
+    if (!isLayoutNavigationRow(row)) {
+      pushUnique(steps, "await msPage.searchResultsTable('HANIYA')");
+    }
   }
   if (/click any watchlist card|selected watchlist card displays|active selected styling/.test(blob) && !steps.some((s) => s.includes("selectFirstWatchlistCard"))) {
     pushUnique(steps, "await msPage.selectFirstWatchlistCard()");
@@ -344,6 +465,9 @@ function appendInferredActions(row: MsExcelRow, steps: string[]): void {
   }
   if (/session expiry|expired session|session-expired/.test(blob)) {
     pushUnique(steps, "await msPage.mockSessionExpired()");
+  }
+  if (expectsBulkUploadValidation(row) && steps.some((s) => s.includes("uploadBulkFile('invalid')") || s.includes("uploadBulkFile('empty')"))) {
+    pushUnique(steps, "await msPage.clickStartBulkScreening()");
   }
   if (/view the badges|badges shown in the interface|open results containing|open a result set with critical/.test(blob)) {
     pushUnique(steps, "await msPage.ensureMatchResultsAvailable()");
@@ -371,8 +495,17 @@ export function buildExcelSetupActions(row: MsExcelRow): string[] {
   const blob = rowBlob(row);
 
   if (isLayoutNavigationRow(row)) {
-    pushUnique(steps, "await msPage.openAppHome(testData.baseUrl)");
-    pushUnique(steps, "await msPage.expectSidebarNavigationVisible()");
+    if (layoutUsesManualScreeningPage(row)) {
+      pushUnique(steps, OPEN);
+      pushUnique(steps, "await msPage.expectManualScreeningPageLoaded()");
+    } else {
+      pushUnique(steps, "await msPage.openAppHome(testData.baseUrl)");
+      pushUnique(steps, "await msPage.expectSidebarNavigationVisible()");
+    }
+    const navLabel = inferSidebarModuleLabel(`${row.taskDescription} ${row.expectedResult} ${row.testSteps}`);
+    if (navLabel) {
+      pushUnique(steps, `await msPage.navigateSidebarModule('${escapeStr(navLabel)}')`);
+    }
     return steps;
   }
 
@@ -407,7 +540,16 @@ export function buildExcelSetupActions(row: MsExcelRow): string[] {
     pushUnique(steps, `await msPage.selectEntityType('${entity}')`);
   }
 
-  if (needsMatchResultsData(row)) {
+  if (isEntityScreeningFlowModule(row)) {
+    // Form-first entity flows: steps drive screening; do not preload results in setup.
+  } else if (isBulkResultsModule(row)) {
+    pushUnique(steps, "await msPage.uploadBulkFile('csv')");
+    pushUnique(steps, "await msPage.selectFirstWatchlistCard()");
+    pushUnique(steps, "await msPage.clickStartBulkScreening()");
+    pushUnique(steps, "await msPage.expectResultsPageLoaded()");
+  } else if (isMatchReviewContext(row)) {
+    pushUnique(steps, inferEntitySubmitAction(row));
+  } else if (needsMatchResultsData(row)) {
     pushUnique(steps, "await msPage.ensureMatchResultsAvailable()");
   } else if (isResultsContext(row) && !isZeroResultsRow(row) && !isNetworkFailureRow(row)) {
     pushUnique(steps, "await msPage.openViewLastResults()");
@@ -443,6 +585,101 @@ export function buildExcelStepActions(row: MsExcelRow): string[] {
     }
     if (stepMatches(s, "select individual entity", "select individual")) {
       pushUnique(steps, "await msPage.selectEntityType('Individual')");
+      continue;
+    }
+    if (/select the individual entity type|individual entity type in the toggle/i.test(s)) {
+      pushUnique(steps, "await msPage.selectEntityType('Individual')");
+      continue;
+    }
+    if (/select the non-individual entity type|non-individual entity type in the toggle/i.test(s)) {
+      pushUnique(steps, "await msPage.selectEntityType('Non-Individuals')");
+      continue;
+    }
+    if (/select the vessel entity type|vessel entity type in the toggle/i.test(s)) {
+      pushUnique(steps, "await msPage.selectEntityType('Vessel')");
+      continue;
+    }
+    if (/enter valid .* screening|complete a valid .* screening|valid .* screening using test data|enter .* from test data, purpose/i.test(s.toLowerCase())) {
+      pushUnique(steps, inferEntitySubmitAction(row));
+      continue;
+    }
+    if (/enter name in english as william|name in english as william/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.selectEntityType('Individual')");
+      pushUnique(steps, "await msPage.fillNameInEnglish('william')");
+      pushUnique(steps, "await msPage.selectPurpose('Onboarding Screening')");
+      pushUnique(steps, "await msPage.selectFirstWatchlistCard()");
+      continue;
+    }
+    if (/select a purpose and watchlist|purpose and watchlist profile card.*start screening|then click start screening/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.selectPurpose('Onboarding Screening')");
+      pushUnique(steps, "await msPage.selectFirstWatchlistCard()");
+      pushUnique(steps, "await msPage.clickScreenButton()");
+      continue;
+    }
+    if (/^locate the basic information|^locate basic information|^locate the screening configuration|^locate the watchlist configuration|^locate reset form|^locate start screening|^locate the reset form|^locate the start screening/i.test(s.trim())) {
+      if (/basic information|entity form|individual form|non-individual form|vessel form/i.test(s)) {
+        pushUnique(steps, "await msPage.expectActiveEntityFormVisible()");
+      } else if (/screening configuration|purpose dropdown/i.test(s)) {
+        pushUnique(steps, "await msPage.expectScreeningConfigurationSectionVisible()");
+      } else if (/watchlist/i.test(s)) {
+        pushUnique(steps, "await msPage.expectWatchlistGridVisible()");
+      } else if (/reset form/i.test(s)) {
+        pushUnique(steps, "await msPage.expectResetFormButtonVisible()");
+      } else if (/start screening/i.test(s)) {
+        pushUnique(steps, "await msPage.expectStartScreeningButtonVisible()");
+      }
+      continue;
+    }
+    if (/^review the left sidebar|^navigate to manual screening|^open manual screening from|^click manual screening in the sidebar/i.test(s.trim())) {
+      if (/manual screening/i.test(s)) {
+        pushUnique(steps, "await msPage.openManualScreeningFromSidebar()");
+      } else {
+        pushUnique(steps, "await msPage.expectSidebarNavigationVisible()");
+      }
+      continue;
+    }
+    if (/on screening results, open match review|open match review from|3 lists link|view details on the result row|view details action on the result row|lists link or view details/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.openMatchReviewFromResultsRow()");
+      continue;
+    }
+    if (/click the match details tab|match details tab on match review/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.openMatchReviewTab('Match Details')");
+      continue;
+    }
+    if (/click the ai summary tab|ai summary tab on match review/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.openMatchReviewTab('AI Summary')");
+      continue;
+    }
+    if (/click the view summary tab|view summary tab on match review/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.openMatchReviewTab('View Summary')");
+      continue;
+    }
+    if (/click false positive|false positive in the match review/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.triggerMatchReviewDisposition('False Positive')");
+      continue;
+    }
+    if (/click confirm match|confirm match in the match review/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.triggerMatchReviewDisposition('Confirm Match')");
+      continue;
+    }
+    if (/click escalate case|escalate case on match review/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.triggerMatchReviewDisposition('Escalate Case')");
+      continue;
+    }
+    if (/click the back arrow|back arrow button in the match review|back control on match review/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.navigateBackFromMatchReview()");
+      continue;
+    }
+    if (/review the subject summary bar|subject summary bar on screening results/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.expectSubjectSummaryVisible()");
+      continue;
+    }
+    if (/confirm the screening results page opens|screening results page opens/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.expectResultsPageLoaded()");
+      continue;
+    }
+    if (/confirm match review opens|match review opens/i.test(s.toLowerCase())) {
+      pushUnique(steps, "await msPage.expectMatchReviewLoaded()");
       continue;
     }
     if (stepMatches(s, "select non-individual entity", "select non individual entity")) {
@@ -563,18 +800,11 @@ export function buildExcelStepActions(row: MsExcelRow): string[] {
       continue;
     }
     if (isSidebarNavigationStep(s)) {
-      const label = stepMatches(s, "customer risk") ? "Customer Risk View"
-        : stepMatches(s, "real-time") ? "Real-time Monitoring"
-          : stepMatches(s, "batch monitoring") ? "Batch Monitoring"
-            : stepMatches(s, "payments") ? "Payments Workflow"
-              : stepMatches(s, "ai-powered") ? "AI-Powered Investigation"
-                : stepMatches(s, "lea") || stepMatches(s, "rfi") ? "LEA / RFI Tracker"
-                  : stepMatches(s, "mis reports") ? "MIS Reports"
-                    : stepMatches(s, "regulatory") ? "Regulatory Reports"
-                      : stepMatches(s, "simulation") ? "Simulation"
-                        : stepMatches(s, "config") ? "Config"
-                          : "Administration";
-      pushUnique(steps, `await msPage.navigateSidebarModule('${label}')`);
+      const label = inferSidebarModuleLabel(s) ?? inferSidebarModuleLabel(row.taskDescription);
+      if (label) {
+        pushUnique(steps, `await msPage.navigateSidebarModule('${escapeStr(label)}')`);
+      }
+      continue;
     } else if (stepMatches(s, "open the screening page", "screening results page", "screening page", "open the screening results")) {
       if (/results/.test(blob)) {
         if (needsMatchResultsData(row)) {
@@ -655,14 +885,30 @@ export function buildExcelStepActions(row: MsExcelRow): string[] {
     } else if (stepMatches(s, "clear filter", "reset filter", "all categories")) {
       pushUnique(steps, "await msPage.clearResultFilters()");
     } else if (stepMatches(s, "search", "enter text", "filter", "type in")) {
-      const keyword = /no-match|invalid|zzzz/i.test(row.testData + blob) ? "zzzz-no-match-99999" : MATCH_NAME;
-      pushUnique(steps, `await msPage.searchResultsTable('${escapeStr(keyword)}')`);
+      if (isLayoutNavigationRow(row) || /search box|sidebar search/i.test(`${row.taskDescription} ${s}`)) {
+        pushUnique(steps, "await msPage.expectSidebarSearchVisible()");
+      } else {
+        const keyword = /no-match|invalid|zzzz/i.test(row.testData + blob) ? "zzzz-no-match-99999" : MATCH_NAME;
+        pushUnique(steps, `await msPage.searchResultsTable('${escapeStr(keyword)}')`);
+      }
     } else if (stepMatches(s, "logout", "log out")) {
       pushUnique(steps, "await msPage.performLogoutAndReturn()");
     } else if (stepMatches(s, "refresh", "reload")) {
       pushUnique(steps, "await msPage.refreshPage()");
     } else if (stepMatches(s, "keyboard", "tab key", "focus")) {
       pushUnique(steps, "await msPage.expectKeyboardFocusableControls()");
+    } else if (/^confirm /i.test(s.trim()) || /^verify /i.test(s.trim())) {
+      continue;
+    } else if (/^locate the ai summary/i.test(s.trim())) {
+      pushUnique(steps, "await msPage.expectAiSummaryPanelVisible()");
+    } else if (/^review the results table|^review the subject summary|^review the screened subject|^review watchlist hit/i.test(s.trim())) {
+      if (/subject summary/i.test(s)) {
+        pushUnique(steps, "await msPage.expectSubjectSummaryVisible()");
+      } else if (/results table/i.test(s)) {
+        pushUnique(steps, "await msPage.expectResultsTableVisible()");
+      }
+    } else if (/^leave /i.test(s.trim()) && /empty|blank|unselected/i.test(s)) {
+      continue;
     } else if (stepMatches(s, "click new screening", "new screening")) {
       pushUnique(steps, "await msPage.clickNewScreening()");
     } else {
@@ -828,6 +1074,35 @@ export function buildExcelAssertionActions(row: MsExcelRow): string[] {
   } else if (/accessibility|keyboard|screen reader|focus/.test(ac)) {
     pushUnique(steps, "await msPage.expectAccessibilityBasics()");
   }
+  if (isMatchReviewContext(row)) {
+    pushUnique(steps, "await msPage.expectMatchReviewLoaded()");
+  }
+  if (/screened subject|match details tab shows|full name reflects|subject values from the form|watchlist hit cards|attribute comparison rows/i.test(ac) && isMatchReviewContext(row)) {
+    pushUnique(steps, `await msPage.expectMatchReviewSubjectDetails(/${escapeStr(inferScreeningSubjectName(row))}/i)`);
+  }
+  if (/subject summary|primary name reflects|entity type, watchlist, and purpose|summary reflects the entered/i.test(ac) && (isResultsContext(row) || isEntityScreeningFlowModule(row))) {
+    pushUnique(steps, `await msPage.expectSubjectSummaryVisible(/${escapeStr(inferScreeningSubjectName(row))}/i)`);
+  }
+  if (/comment modal|mandatory comment|requires a comment before confirmation/i.test(ac) && isMatchReviewContext(row)) {
+    pushUnique(steps, "await msPage.expectCommentModalVisible()");
+  }
+  if (/returns the analyst to the screening results|back.*screening results page/i.test(ac) && isMatchReviewContext(row)) {
+    pushUnique(steps, "await msPage.expectResultsPageLoaded()");
+  }
+  if (/validation messages appear for missing mandatory|screening does not proceed|validation messages identify missing mandatory|screening results does not open while validation/i.test(ac)) {
+    pushUnique(steps, "await msPage.expectValidationFeedbackVisible()");
+    if (expectsResultsNavigationBlocked(row) || isEntityScreeningFlowModule(row)) {
+      pushUnique(steps, "await msPage.expectResultsNavigationBlocked()");
+    }
+  }
+  if (isEntityScreeningFlowModule(row) && /form section is displayed|mandatory field markers|purpose dropdown and watchlist profile cards|reset form and start screening buttons are visible/i.test(ac)) {
+    pushUnique(steps, "await msPage.expectActiveEntityFormVisible()");
+    pushUnique(steps, "await msPage.expectScreeningConfigurationSectionVisible()");
+    pushUnique(steps, "await msPage.expectFormActionButtonsVisible()");
+  }
+  if (isEntityScreeningFlowModule(row) && /form fields return to empty|selected entity type remains unchanged|entity type remains unchanged/i.test(ac)) {
+    pushUnique(steps, "await msPage.expectManualScreeningPageLoaded()");
+  }
   if (/responsive|resize|layout|alignment|typography|styling|2-column layout|grid layout/.test(ac) && !isLayoutNavigationRow(row)) {
     if (/screening configuration|watchlist configuration|section title|purpose label/.test(ac)) {
       if (/watchlist/.test(ac)) {
@@ -852,7 +1127,7 @@ export function buildExcelAlignedLogic(row: MsExcelRow): string {
   let actions = buildExcelStepActions(row);
   let assertions = buildExcelAssertionActions(row);
 
-  if (isLayoutNavigationRow(row)) {
+  if (isLayoutNavigationRow(row) && !layoutUsesManualScreeningPage(row)) {
     actions = actions.filter((s) => !s.includes("openManualScreening") && !s.includes("expectManualScreeningPageLoaded"));
     assertions = assertions.filter((s) => !s.includes("expectManualScreeningPageLoaded") && !s.includes("expectTopBarVisible"));
   }
@@ -861,14 +1136,64 @@ export function buildExcelAlignedLogic(row: MsExcelRow): string {
     assertions = assertions.filter((s) => !s.includes("expectActiveEntityFormVisible()"));
   }
 
+  if (setup.some((s) => s.includes("submitValid") || s.includes("ensureMatchResultsAvailable")) || isMatchReviewContext(row)) {
+    actions = actions.filter(
+      (s) =>
+        !s.includes("fillNameInEnglish")
+        && !s.includes("selectPurpose")
+        && !s.includes("selectFirstWatchlistCard")
+        && !s.includes("submitValid")
+        && !s.includes("selectEntityType")
+        && !s.includes("expectManualScreeningPageLoaded"),
+    );
+  }
+
+  const filteredSetup = isEntityScreeningFlowModule(row)
+    ? setup.filter((s) => !s.includes("ensureMatchResultsAvailable") && !s.includes("openViewLastResults"))
+    : setup;
+
   const onResultsWithData = [
-    ...setup,
+    ...filteredSetup,
     ...actions,
     ...assertions,
   ].some((s) => s.includes("ensureMatchResultsAvailable") || s.includes("expectResultsTableVisible") || s.includes("expectHighestScoreColumnVisible"));
 
   if (onResultsWithData) {
     assertions = assertions.filter((s) => !s.includes("expectZeroResultsState()"));
+    actions = actions.filter((s) => !s.includes("expectWatchlistGridVisible()"));
+    assertions = assertions.filter((s) => !s.includes("expectWatchlistGridVisible()"));
+  }
+
+  if (isBulkResultsModule(row)) {
+    const stripBulkResultsConflict = (step: string): boolean =>
+      !step.includes("expectManualScreeningPageLoaded()")
+      && !step.includes("expectBulkUploadFileSelected()")
+      && !step.includes("openViewLastResults()");
+    actions = actions.filter(stripBulkResultsConflict);
+    assertions = assertions.filter(stripBulkResultsConflict);
+  }
+
+  if (isZeroResultsRow(row)) {
+    const stripZeroConflict = (step: string): boolean =>
+      !step.includes("submitValid")
+      && !step.includes("openViewLastResults")
+      && !step.includes("ensureMatchResultsAvailable")
+      && !step.includes("clickScreenButton()")
+      && !step.includes("selectPurpose")
+      && !step.includes("selectFirstWatchlistCard")
+      && !step.includes("fillNameInEnglish")
+      && !step.includes("expectResultsPageLoaded()")
+      && !step.includes("expectResultsTableVisible()")
+      && !step.includes("expectHighestScoreColumnVisible()")
+      && !step.includes("expectMetricCardsVisible()");
+    actions = actions.filter(stripZeroConflict);
+    assertions = assertions.filter(stripZeroConflict);
+    if (!actions.some((s) => s.includes("runZeroMatchScreening"))) {
+      pushUnique(actions, "await msPage.runZeroMatchScreening()");
+    }
+    if (!filteredSetup.some((s) => s.includes("expectManualScreeningPageLoaded"))) {
+      pushUnique(filteredSetup, "await msPage.expectManualScreeningPageLoaded()");
+    }
   }
 
   if (isNetworkFailureRow(row)) {
@@ -881,7 +1206,7 @@ export function buildExcelAlignedLogic(row: MsExcelRow): string {
 
   if (expectsValidationClearedOnEntitySwitch(row)) {
     actions = actions.filter((s) => !s.includes("selectEntityType('Non-Individuals')") && !s.includes("clickScreenButton()") && !s.includes("openManualScreeningDirect"));
-    for (const step of setup) {
+    for (const step of filteredSetup) {
       pushUnique(lines, step);
     }
     pushUnique(lines, "await msPage.clickScreenButton()");
@@ -893,15 +1218,15 @@ export function buildExcelAlignedLogic(row: MsExcelRow): string {
     for (const step of assertions) {
       pushUnique(lines, step);
     }
-    return lines.join(";\n    ");
+    return normalizeGeneratedLines(lines).join(";\n    ");
   }
 
-  for (const block of [setup, actions, assertions]) {
+  for (const block of [filteredSetup, actions, assertions]) {
     for (const step of block) {
       pushUnique(lines, step);
     }
   }
-  return lines.join(";\n    ");
+  return normalizeGeneratedLines(lines).join(";\n    ");
 }
 
 export function formatTestTitle(row: MsExcelRow): string {

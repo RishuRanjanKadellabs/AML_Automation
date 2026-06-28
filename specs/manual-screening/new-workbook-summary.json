@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-06-27T04:56:07.289Z",
+  "sourcePath": "C:\\Users\\RishuRanjan\\Documents\\AML Automation\\pipeline\\test-data\\Manual Screening Test Cases.xlsx",
+  "outputPath": "C:\\Users\\RishuRanjan\\Documents\\AML Automation\\pipeline\\test-data\\Manual Screening Test Cases - Complete.xlsx",
+  "sourceCaseCount": 418,
+  "entityFlowCasesAdded": 27,
+  "totalCaseCount": 445,
+  "averageSteps": 6.523595505617978,
+  "entityModules": [
+    "Individual Screening Flow",
+    "Non-Individual Screening Flow",
+    "Vessel Screening Flow"
+  ],
+  "htmlScreens": [
+    "Manual Screening Form",
+    "Bulk Upload",
+    "Screening Results",
+    "Match Review",
+    "Bulk Screening Results"
+  ],
+  "coreFlows": [
+    "Start Screening → Screening Results",
+    "Screening Results → Match Review",
+    "Match Review → Screening Results",
+    "New Screening → Manual Screening Form",
+    "View Last Results → Screening Results",
+    "Start Bulk Screening → Bulk Results"
+  ],
+  "newCaseIds": [
+    "MS-022-01",
+    "MS-022-02",
+    "MS-022-03",
+    "MS-022-04",
+    "MS-022-05",
+    "MS-022-06",
+    "MS-022-07",
+    "MS-022-08",
+    "MS-022-09",
+    "MS-023-01",
+    "MS-023-02",
+    "MS-023-03",
+    "MS-023-04",
+    "MS-023-05",
+    "MS-023-06",
+    "MS-023-07",
+    "MS-023-08",
+    "MS-023-09",
+    "MS-024-01",
+    "MS-024-02",
+    "MS-024-03",
+    "MS-024-04",
+    "MS-024-05",
+    "MS-024-06",
+    "MS-024-07",
+    "MS-024-08",
+    "MS-024-09"
+  ],
+  "validationWarningCount": 1
+}

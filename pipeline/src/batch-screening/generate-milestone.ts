@@ -9,6 +9,7 @@ import { writePlanArtifacts, subModuleDescribeOrder } from "./plan-builder";
 import type { BsExcelRow } from "./types";
 import { mapBsTestLogic, formatTestTitle } from "./test-logic";
 import { formatExcelComment } from "./excel-intent";
+import { initExcelFsdContext } from "./excel-fsd-context";
 
 const ROOT = path.resolve(__dirname, "../../..");
 const SPEC_DIR = path.join(ROOT, "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests");
@@ -93,6 +94,7 @@ function main(): void {
     process.exit(1);
   }
 
+  initExcelFsdContext();
   generateSpecs(rows);
   console.log("Batch Screening milestone specs generated.");
 }

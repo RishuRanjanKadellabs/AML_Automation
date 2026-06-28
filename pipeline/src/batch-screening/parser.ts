@@ -20,8 +20,8 @@ export function normalizeTaskDescription(raw: string): string {
     .join(" — ");
 }
 
-export function loadBsRows(): BsExcelRow[] {
-  const wb = XLSX.readFile(BS_EXCEL_PATH);
+export function loadBsRows(excelPath = BS_EXCEL_PATH): BsExcelRow[] {
+  const wb = XLSX.readFile(excelPath);
   const sheet = wb.Sheets[wb.SheetNames[0]];
   const raw = XLSX.utils.sheet_to_json<Record<string, string>>(sheet);
   const seen = new Set<string>();
@@ -58,7 +58,8 @@ export function subModuleSlug(subModule: string): string {
 
 export function describeLabel(subModule: string): string {
   return subModule
-    .replace(/^Batch Screening\s*-?\s*/i, "")
+    .replace(/^Batch Screening\s*[—-]\s*/i, "")
+    .replace(/^action\s+Actions/i, "Actions")
     .replace(/^SCR-\d+\s*/i, "")
     .trim() || "Core";
 }

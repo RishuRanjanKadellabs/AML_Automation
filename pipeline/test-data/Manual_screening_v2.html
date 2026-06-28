@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 AML — Sanction Screening</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f6f8;
+    --bg2: #ffffff;
+    --bg3: #f0f1f4;
+    --bg4: #e8e9ed;
+    --border: #e2e4e9;
+    --border2: #c8cad1;
+    --text: #111318;
+    --text2: #4b5060;
+    --text3: #8b90a0;
+    --accent: #2563eb;
+    --accent-dim: #dbeafe;
+    --accent-text: #1d4ed8;
+    --green: #16a34a;
+    --green-dim: #dcfce7;
+    --green-text: #15803d;
+    --amber: #d97706;
+    --amber-dim: #fef3c7;
+    --amber-text: #b45309;
+    --red: #dc2626;
+    --red-dim: #fee2e2;
+    --red-text: #b91c1c;
+    --purple: #9333ea;
+    --purple-dim: #f3e8ff;
+    --purple-text: #7e22ce;
+    --teal: #0d9488;
+    --teal-dim: #ccfbf1;
+    --teal-text: #0f766e;
+    --sidebar-w: 232px;
+    --header-h: 52px;
+    --font: 'IBM Plex Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html, body { height: 100%; font-family: var(--font); background: var(--bg); color: var(--text); font-size: 13px; }
+
+  /* LAYOUT */
+  .app { display: flex; height: 100vh; overflow: hidden; }
+  .sidebar { width: var(--sidebar-w); flex-shrink: 0; background: var(--bg2); border-right: 1px solid var(--border); display: flex; flex-direction: column; overflow: hidden; }
+  .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .topbar { height: var(--header-h); flex-shrink: 0; background: var(--bg2); border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 20px; gap: 12px; }
+  .content { flex: 1; overflow-y: auto; padding: 24px; }
+
+  /* SIDEBAR */
+  .brand { height: var(--header-h); flex-shrink: 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; padding: 0 14px; gap: 10px; }
+  .brand-logo { width: 28px; height: 28px; background: var(--accent); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: #fff; letter-spacing: -0.5px; }
+  .brand-name { font-size: 13px; font-weight: 600; color: var(--text); }
+  .brand-sub { font-size: 10px; color: var(--text3); }
+
+  .nav-scroll { flex: 1; overflow-y: auto; padding: 8px 0; }
+  .nav-section { padding: 4px 0; }
+  .nav-group-label { padding: 6px 14px 3px; font-size: 10px; font-weight: 600; letter-spacing: 0.08em; color: var(--text3); text-transform: uppercase; }
+  .nav-item { display: flex; align-items: center; gap: 8px; padding: 6px 14px; cursor: pointer; color: var(--text2); font-size: 12px; border-left: 2px solid transparent; transition: all 0.1s; }
+  .nav-item:hover { background: var(--bg3); color: var(--text); }
+  .nav-item.active { background: var(--accent-dim); color: var(--accent-text); border-left-color: var(--accent); }
+  .nav-item.active .nav-icon { color: var(--accent); }
+  .nav-icon { width: 14px; flex-shrink: 0; opacity: 0.7; }
+  .nav-sub { padding-left: 8px; }
+  .nav-sub .nav-item { font-size: 11.5px; padding: 5px 14px 5px 22px; }
+
+  .user-bar { border-top: 1px solid var(--border); padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
+  .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--accent-text); flex-shrink: 0; }
+  .user-name { font-size: 12px; font-weight: 500; }
+  .user-role { font-size: 10px; color: var(--text3); }
+
+  /* TABS */
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 20px; }
+  .tab { padding: 8px 16px; font-size: 12px; cursor: pointer; color: var(--text3); border-bottom: 2px solid transparent; transition: all 0.15s; }
+  .tab:hover { color: var(--text2); }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ENTITY TOGGLE */
+  .entity-toggle { display: flex; gap: 0; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; margin-bottom: 20px; width: fit-content; }
+  .entity-btn { padding: 6px 16px; font-size: 12px; cursor: pointer; color: var(--text3); transition: all 0.15s; }
+  .entity-btn:hover { color: var(--text2); background: var(--bg4); }
+  .entity-btn.active { background: var(--accent); color: #fff; }
+
+  /* FORM */
+  .form-section { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin-bottom: 16px; }
+  .form-section-title { font-size: 11px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 14px; }
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .form-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+  .form-full { grid-column: 1 / -1; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+  label { font-size: 11.5px; color: var(--text2); }
+  label span.req { color: var(--red); margin-left: 2px; }
+  input[type="text"], input[type="date"], select, textarea {
+    background: #fff; border: 1px solid var(--border); border-radius: 5px; padding: 7px 10px;
+    color: var(--text); font-family: var(--font); font-size: 12.5px; outline: none; width: 100%;
+    transition: border-color 0.15s;
+  }
+  input[type="text"]:focus, input[type="date"]:focus, select:focus, textarea:focus {
+    border-color: var(--accent);
+  }
+  input[type="text"]::placeholder { color: var(--text3); }
+  select option { background: var(--bg3); }
+  textarea { resize: vertical; min-height: 70px; }
+
+  /* WATCHLIST CARDS */
+  .watchlist-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .watchlist-card { background: var(--bg3); border: 1.5px solid var(--border); border-radius: 7px; padding: 12px; cursor: pointer; transition: all 0.15s; position: relative; }
+  .watchlist-card:hover { border-color: var(--border2); background: var(--bg4); }
+  .watchlist-card.selected { border-color: var(--accent); background: var(--accent-dim); }
+  .watchlist-card.selected::after { content: '✓'; position: absolute; top: 10px; right: 10px; width: 18px; height: 18px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #fff; display: grid; place-items: center; }
+  .wl-title { font-size: 12.5px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .wl-tag { display: inline-block; font-size: 9.5px; padding: 2px 7px; border-radius: 10px; margin-bottom: 6px; font-weight: 500; }
+  .wl-tag.onboarding { background: var(--teal-dim); color: var(--teal-text); }
+  .wl-tag.monitoring { background: var(--accent-dim); color: var(--accent-text); }
+  .wl-tag.edd { background: var(--purple-dim); color: var(--purple-text); }
+  .wl-tag.regulatory { background: var(--amber-dim); color: var(--amber-text); }
+  .wl-desc { font-size: 11px; color: var(--text2); margin-bottom: 8px; line-height: 1.5; }
+  .wl-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .wl-pill { font-size: 10px; color: var(--text3); background: var(--bg3); border: 1px solid var(--border); border-radius: 4px; padding: 2px 6px; }
+
+  /* BUTTONS */
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px; border-radius: 6px; font-size: 12.5px; font-weight: 500; cursor: pointer; border: none; transition: all 0.15s; font-family: var(--font); }
+  .btn-primary { background: var(--accent); color: #fff; }
+  .btn-primary:hover { background: #2563eb; }
+  .btn-ghost { background: transparent; color: var(--text2); border: 1px solid var(--border); }
+  .btn-ghost:hover { background: var(--bg3); color: var(--text); }
+  .btn-sm { padding: 5px 12px; font-size: 11.5px; }
+  .btn-row { display: flex; align-items: center; gap: 10px; margin-top: 20px; }
+
+  /* RESULTS */
+  .results-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+  .subject-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-start; }
+  .subject-avatar { width: 44px; height: 44px; border-radius: 8px; background: var(--accent-dim); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--accent-text); flex-shrink: 0; }
+  .subject-meta { flex: 1; }
+  .subject-name { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .subject-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .meta-pill { font-size: 10.5px; padding: 3px 9px; border-radius: 4px; }
+  .meta-pill.entity { background: var(--bg3); color: var(--text2); border: 1px solid var(--border); }
+  .meta-pill.profile { background: var(--amber-dim); color: var(--amber-text); }
+  .meta-pill.purpose { background: var(--teal-dim); color: var(--teal-text); }
+
+  /* AI SUMMARY */
+  .ai-summary { background: var(--bg2); border: 1px solid var(--border2); border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  .ai-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; font-weight: 600; letter-spacing: 0.06em; color: var(--purple-text); background: var(--purple-dim); padding: 3px 9px; border-radius: 10px; margin-bottom: 10px; }
+  .ai-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--purple); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .ai-text { font-size: 12.5px; color: var(--text2); line-height: 1.65; }
+  .ai-text strong { color: var(--text); font-weight: 600; }
+
+  /* STATS ROW */
+  .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 16px; }
+  .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 7px; padding: 12px; text-align: center; }
+  .stat-val { font-size: 20px; font-weight: 600; font-family: var(--mono); }
+  .stat-lbl { font-size: 10px; color: var(--text3); margin-top: 2px; }
+  .stat-card.critical .stat-val { color: var(--red-text); }
+  .stat-card.high .stat-val { color: var(--amber-text); }
+  .stat-card.medium .stat-val { color: var(--accent-text); }
+  .stat-card.lists .stat-val { color: var(--purple-text); }
+
+  /* TABLE */
+  .table-wrap { background: var(--bg2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+  .table-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid var(--border); }
+  .table-title { font-size: 12px; font-weight: 600; color: var(--text); }
+  .table-count { font-size: 11px; color: var(--text3); }
+  table { width: 100%; border-collapse: collapse; }
+  th { text-align: left; font-size: 10.5px; font-weight: 600; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; padding: 9px 14px; background: var(--bg3); border-bottom: 1px solid var(--border); }
+  td { padding: 10px 14px; font-size: 12.5px; color: var(--text2); border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bg3); }
+  .name-cell { color: var(--text); font-weight: 500; font-family: var(--mono); font-size: 12px; }
+  .cust-id { font-size: 11px; color: var(--text3); font-family: var(--mono); }
+
+  /* SCORE BAR */
+  .score-wrap { display: flex; align-items: center; gap: 8px; }
+  .score-bar-bg { flex: 1; height: 4px; background: var(--bg4); border-radius: 2px; overflow: hidden; min-width: 50px; }
+  .score-bar { height: 100%; border-radius: 2px; }
+  .score-num { font-family: var(--mono); font-size: 12px; font-weight: 500; min-width: 32px; }
+
+  /* BADGES */
+  .badge { display: inline-block; font-size: 10px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+  .badge-critical { background: var(--red-dim); color: var(--red-text); }
+  .badge-high { background: var(--amber-dim); color: var(--amber-text); }
+  .badge-medium { background: var(--accent-dim); color: var(--accent-text); }
+  .badge-low { background: var(--bg4); color: var(--text3); }
+  .badge-review { background: var(--purple-dim); color: var(--purple-text); }
+  .badge-sanctions { background: var(--red-dim); color: var(--red-text); }
+  .badge-pep { background: var(--amber-dim); color: var(--amber-text); }
+  .badge-embargo { background: var(--purple-dim); color: var(--purple-text); }
+
+  /* ACTION */
+  .action-btn { font-size: 10.5px; padding: 4px 10px; background: transparent; border: 1px solid var(--border); border-radius: 4px; color: var(--accent); cursor: pointer; font-family: var(--font); transition: all 0.12s; }
+  .action-btn:hover { background: var(--accent-dim); border-color: var(--accent); }
+
+  /* FILE UPLOAD */
+  .upload-zone { border: 1.5px dashed var(--border2); border-radius: 8px; padding: 36px 24px; text-align: center; cursor: pointer; transition: all 0.15s; background: var(--bg3); }
+  .upload-zone:hover { border-color: var(--accent); background: var(--accent-dim); }
+  .upload-icon { font-size: 28px; margin-bottom: 10px; opacity: 0.5; }
+  .upload-main { font-size: 13px; color: var(--text); font-weight: 500; margin-bottom: 4px; }
+  .upload-sub { font-size: 11px; color: var(--text3); }
+
+  /* LICENSE WARN */
+  .license-warn { background: var(--amber-dim); border: 1px solid #78350f; border-radius: 6px; padding: 9px 14px; font-size: 11.5px; color: var(--amber-text); display: flex; align-items: center; gap: 8px; margin-top: 16px; }
+
+  /* TOPBAR */
+  .page-title { font-size: 14px; font-weight: 600; }
+  .breadcrumb { font-size: 11px; color: var(--text3); display: flex; align-items: center; gap: 4px; }
+  .breadcrumb span { color: var(--text2); }
+  .spacer { flex: 1; }
+
+  /* FILTER ROW */
+  .filter-row { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+  .filter-row input { max-width: 220px; }
+  .filter-row select { max-width: 150px; }
+
+  /* SEARCH TIME */
+  .search-meta { font-size: 11px; color: var(--text3); text-align: right; padding: 8px 14px; border-top: 1px solid var(--border); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+  /* HIDDEN */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* VESSEL TYPE SELECT */
+  .vessel-types { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .vessel-type-btn { background: var(--bg3); border: 1px solid var(--border); border-radius: 5px; padding: 8px 10px; cursor: pointer; text-align: center; font-size: 11px; color: var(--text3); transition: all 0.12s; }
+  .vessel-type-btn:hover { border-color: var(--border2); color: var(--text2); }
+  .vessel-type-btn.selected { border-color: var(--accent); background: var(--accent-dim); color: var(--accent-text); }
+
+  /* ═══════════════════════════════════
+     NEW RESULTS PAGE & MATCH REVIEW
+  ═══════════════════════════════════ */
+  /* Topbar */
+  .res-topbar { background:#fff; border-bottom:1px solid #e5e7eb; display:flex; align-items:center; justify-content:space-between; padding:0 20px; height:58px; flex-shrink:0; }
+  .res-back-btn { display:flex; align-items:center; gap:6px; padding:0 12px; height:36px; border:1px solid #e5e7eb; border-radius:8px; background:#fff; font-family:var(--font); font-size:13px; font-weight:500; color:#374151; cursor:pointer; transition:all .12s; }
+  .res-back-btn:hover { border-color:#2A53A0; color:#2A53A0; }
+  .res-btn-outline { display:inline-flex; align-items:center; gap:7px; height:40px; padding:0 16px; background:#fff; color:#374151; border:1px solid #d1d5db; border-radius:8px; font-family:var(--font); font-size:13px; font-weight:500; cursor:pointer; transition:all .12s; }
+  .res-btn-outline:hover { background:#f9fafb; border-color:#9ca3af; }
+  .res-btn-primary { display:inline-flex; align-items:center; gap:7px; height:40px; padding:0 16px; background:#2A53A0; color:#fff; border:none; border-radius:8px; font-family:var(--font); font-size:13px; font-weight:600; cursor:pointer; transition:background .15s; }
+  .res-btn-primary:hover { background:#1e3a70; }
+
+  /* Subject card */
+  .res-subject-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:16px 20px; margin-bottom:14px; display:flex; flex-wrap:wrap; gap:20px; align-items:center; box-shadow:0 1px 3px rgba(0,0,0,.05); }
+  .res-subject-field label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#6b7280; display:block; margin-bottom:4px; }
+  .res-val { font-size:14px; font-weight:500; color:#111827; }
+  .res-val-big { font-size:16px; font-weight:700; }
+  .res-val-muted { color:#9ca3af; }
+  .res-field-div { width:1px; height:32px; background:#e5e7eb; }
+
+  /* AI Banner */
+  .res-ai-banner { background:#fff; border:1px solid rgba(42,83,160,.25); border-radius:10px; overflow:hidden; margin-bottom:14px; box-shadow:0 2px 8px rgba(42,83,160,.08); }
+  .res-ai-top-bar { height:4px; background:#2A53A0; }
+  .res-ai-body { padding:16px 20px; display:flex; gap:14px; }
+  .res-ai-icon { width:40px; height:40px; flex-shrink:0; border-radius:8px; background:rgba(42,83,160,.1); display:flex; align-items:center; justify-content:center; color:#2A53A0; }
+  .res-ai-label-row { display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+  .res-ai-module { font-size:11px; font-weight:700; color:#2A53A0; text-transform:uppercase; letter-spacing:0.6px; }
+  .res-ai-tag { padding:1px 8px; border-radius:20px; background:#f3f4f6; border:1px solid #e5e7eb; font-size:10px; font-weight:700; color:#6b7280; text-transform:uppercase; }
+  .res-ai-text { font-size:13px; color:#374151; line-height:1.65; }
+  .res-hl-blue { color:#2A53A0; font-weight:700; background:rgba(42,83,160,.06); padding:0 4px; border-radius:3px; }
+  .res-hl-red { color:#dc2626; font-weight:700; background:#fef2f2; padding:0 4px; border-radius:3px; }
+  .res-hl-red-b { color:#991b1b; font-weight:700; }
+  .res-hl-green { color:#16a34a; font-style:italic; background:#f0fdf4; padding:0 4px; border-radius:3px; }
+  .res-ai-badges { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+
+  /* Stats strip */
+  .res-stats-strip { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px; }
+  .res-stat-chip { background:#fff; border:1px solid #e5e7eb; border-radius:8px; padding:10px 16px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .res-stat-num { font-size:22px; font-weight:800; line-height:1; }
+  .res-num-red { color:#dc2626; }
+  .res-num-gray { color:#9ca3af; }
+  .res-stat-lbl { font-size:11px; color:#6b7280; margin-top:2px; }
+
+  /* Section header + table */
+  .res-section-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:10px; }
+  .res-section-title { font-size:16px; font-weight:700; color:#111827; }
+  .res-table-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .res-table-card table { width:100%; border-collapse:collapse; }
+  .res-table-card thead tr { background:#F0F0F0; height:48px; border-bottom:1px solid #e5e7eb; }
+  .res-table-card th { padding:0 16px; text-align:left; font-size:13px; font-weight:600; color:#2A53A0; white-space:nowrap; background:#F0F0F0; }
+  .res-table-card td { padding:12px 16px; font-size:13px; color:#374151; border-bottom:1px solid #f3f4f6; vertical-align:middle; }
+  .res-table-card tr:last-child td { border-bottom:none; }
+  .res-table-card tbody tr:hover td { background:#f8fafc; }
+  .res-table-footer { padding:12px 16px; background:#f9fafb; border-top:1px solid #e5e7eb; display:flex; align-items:center; justify-content:space-between; font-size:12px; color:#6b7280; }
+
+  /* Matched list chip */
+  .res-matched-chip { display:inline-flex; align-items:center; gap:5px; padding:5px 10px 5px 8px; background:linear-gradient(135deg,#eff6ff,#dbeafe); border:1.5px solid #93c5fd; border-radius:20px; cursor:pointer; transition:all .18s; position:relative; box-shadow:0 1px 3px rgba(42,83,160,.1); user-select:none; }
+  .res-matched-chip:hover { background:linear-gradient(135deg,#2A53A0,#1e3a70); border-color:#2A53A0; box-shadow:0 3px 10px rgba(42,83,160,.3); transform:translateY(-1px); }
+  .res-matched-chip:hover .res-matched-num,.res-matched-chip:hover .res-matched-label { color:#fff; }
+  .res-matched-chip:hover svg { stroke:#fff; }
+  .res-matched-chip:hover .res-matched-tooltip { opacity:1; visibility:visible; transform:translateY(0); }
+  .res-matched-num { font-size:15px; font-weight:800; color:#2A53A0; line-height:1; }
+  .res-matched-label { font-size:11px; font-weight:600; color:#3b82f6; text-transform:uppercase; letter-spacing:0.4px; }
+  .res-matched-tooltip { position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%) translateY(4px); background:#1e293b; color:#fff; font-size:11px; font-weight:500; padding:5px 10px; border-radius:6px; white-space:nowrap; opacity:0; visibility:hidden; pointer-events:none; transition:all .18s; z-index:100; }
+  .res-matched-tooltip::after { content:''; position:absolute; top:100%; left:50%; transform:translateX(-50%); border:5px solid transparent; border-top-color:#1e293b; }
+
+  /* Action dropdown */
+  .res-action-dropdown { position:relative; display:inline-block; }
+  .res-action-btn { display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 10px; min-width:130px; border-radius:8px; border:1px solid #2E5AAC; color:#2E5AAC; background:#fff; font-family:var(--font); font-size:11px; font-weight:600; cursor:pointer; transition:all .15s; white-space:nowrap; }
+  .res-action-btn:hover { background:#2E5AAC; color:#fff; }
+  .res-action-menu { display:none; position:fixed; z-index:9999; background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.12),0 2px 6px rgba(0,0,0,.06); min-width:210px; padding:6px; }
+  .res-action-menu.open { display:block; }
+  .res-action-item { display:flex; align-items:center; gap:9px; width:100%; padding:8px 11px; border:none; background:transparent; font-family:var(--font); font-size:13px; font-weight:400; color:#374151; cursor:pointer; border-radius:7px; text-align:left; transition:background .1s; white-space:nowrap; }
+  .res-action-item:hover { background:#f3f4f6; color:#111827; }
+  .res-item-view { color:#2A53A0; }
+  .res-item-view:hover { background:#eff6ff !important; }
+  .res-item-exception { color:#7c3aed; }
+  .res-item-exception:hover { background:#faf5ff !important; }
+  .res-item-divider { height:1px; background:#f3f4f6; margin:4px 0; }
+
+  /* Badges for new pages */
+  .res-badge { display:inline-flex; align-items:center; padding:2px 10px; border-radius:20px; font-size:11px; font-weight:600; white-space:nowrap; }
+  .res-badge-red { background:#fef2f2; color:#dc2626; border:1px solid #fecaca; }
+  .res-badge-orange { background:#fff7ed; color:#c2410c; border:1px solid #fed7aa; }
+  .res-badge-amber { background:#fffbeb; color:#92400e; border:1px solid #fde68a; }
+  .res-badge-blue { background:#eff6ff; color:#1d4ed8; border:1px solid #bfdbfe; }
+  .res-badge-blue2 { background:#dbeafe; color:#2A53A0; border:1px solid #93c5fd; }
+  .res-badge-green { background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; }
+
+  /* ── Match Review Page ── */
+  .rev-header { background:#fff; border-bottom:1px solid #e5e7eb; flex-shrink:0; }
+  .rev-header-row { display:flex; align-items:center; justify-content:space-between; padding:14px 20px 0; }
+  .rev-title { font-size:18px; font-weight:700; color:#111827; }
+  .rev-ref { font-size:11px; color:#6b7280; font-family:monospace; margin-top:3px; }
+  .rev-actions { display:flex; align-items:center; gap:8px; }
+  .rev-btn-fp { display:inline-flex; align-items:center; gap:7px; height:40px; padding:0 16px; background:#fff; color:#16a34a; border:1px solid #d1d5db; border-radius:8px; font-family:var(--font); font-size:13px; font-weight:500; cursor:pointer; transition:all .12s; }
+  .rev-btn-fp:hover { background:#f0fdf4; border-color:#16a34a; }
+  .rev-btn-confirm { display:inline-flex; align-items:center; gap:7px; height:40px; padding:0 16px; background:#2A53A0; color:#fff; border:none; border-radius:8px; font-family:var(--font); font-size:13px; font-weight:600; cursor:pointer; transition:background .15s; }
+  .rev-btn-confirm:hover { background:#1e3a70; }
+  .rev-tab-bar { display:flex; align-items:flex-end; gap:0; padding:0 20px; margin-top:12px; border-bottom:2px solid #e5e7eb; }
+  .rev-tab { display:flex; align-items:center; gap:7px; padding:10px 18px; border:none; background:transparent; cursor:pointer; font-family:var(--font); font-size:13px; font-weight:600; color:#6b7280; border-bottom:2px solid transparent; margin-bottom:-2px; transition:all .15s; }
+  .rev-tab:hover { color:#2A53A0; }
+  .rev-tab.active { color:#2A53A0; border-bottom-color:#2A53A0; }
+  .rev-scroll-pane { flex:1; overflow-y:auto; padding:20px 24px; }
+  .rev-pane { display:none; }
+  .rev-pane.active { display:block; }
+
+  /* Alert banner */
+  .rev-alert-banner { background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:14px 18px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start; }
+  .rev-alert-banner svg { flex-shrink:0; margin-top:1px; }
+  .rev-alert-banner h3 { font-size:14px; font-weight:700; color:#991b1b; margin-bottom:4px; }
+  .rev-alert-banner p { font-size:13px; color:#7f1d1d; line-height:1.6; }
+
+  /* Narrative card */
+  .rev-narrative-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:20px; margin-bottom:14px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .rev-narrative-header { display:flex; align-items:center; gap:10px; margin-bottom:14px; flex-wrap:wrap; }
+  .rev-narrative-header h3 { font-size:14px; font-weight:700; color:#111827; }
+  .rev-ai-icon-box { width:34px; height:34px; flex-shrink:0; border-radius:8px; background:rgba(42,83,160,.1); display:flex; align-items:center; justify-content:center; color:#2A53A0; }
+  .rev-conf-badge { padding:2px 10px; border-radius:20px; background:#f0fdf4; color:#15803d; border:1px solid #bbf7d0; font-size:11px; font-weight:700; }
+  .rev-narrative-text { font-size:13px; color:#374151; line-height:1.7; margin-bottom:12px; }
+  .rev-signal-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:16px; }
+  .rev-signal-card { background:#f9fafb; border:1px solid #e5e7eb; border-radius:8px; padding:14px; }
+  .rev-signal-card h4 { font-size:12px; font-weight:700; color:#1f2937; margin-bottom:4px; display:flex; align-items:center; gap:5px; }
+  .rev-signal-card p { font-size:12px; color:#4b5563; line-height:1.55; }
+
+  /* Status grid (match details tab) */
+  .rev-status-grid { display:grid; grid-template-columns:100px 1fr 1fr; gap:12px; margin-bottom:16px; }
+  .rev-status-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:14px 16px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .rev-status-card label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#9ca3af; display:block; margin-bottom:8px; }
+  .rev-big-score { font-size:32px; font-weight:900; color:#dc2626; line-height:1; }
+  .rev-big-score span { font-size:15px; font-weight:400; color:#9ca3af; }
+  .rev-kv { display:flex; justify-content:space-between; align-items:center; padding:5px 0; border-bottom:1px solid #f3f4f6; }
+  .rev-kv:last-child { border-bottom:none; }
+  .rev-k { font-size:12px; color:#6b7280; }
+  .rev-v { font-size:12px; font-weight:600; color:#1f2937; }
+  .rev-hit-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; overflow:hidden; margin-bottom:12px; box-shadow:0 1px 3px rgba(0,0,0,.04); }
+  .rev-hit-header { display:flex; align-items:center; gap:14px; padding:14px 18px; border-bottom:1px solid #f3f4f6; }
+  .rev-hit-score-col { text-align:center; min-width:60px; }
+  .rev-hit-score { font-size:22px; font-weight:800; }
+  .rev-hit-score.red { color:#dc2626; }
+  .rev-hit-score.orange { color:#c2410c; }
+  .rev-hit-score.yellow { color:#a16207; }
+  .rev-hit-info { flex:1; }
+  .rev-hit-name { font-size:14px; font-weight:700; color:#111827; }
+  .rev-hit-meta { font-size:12px; color:#6b7280; margin-top:3px; line-height:1.5; }
+  .rev-hit-actions { display:flex; gap:8px; }
+  .rev-btn-vfp { padding:6px 12px; border:1px solid #e5e7eb; border-radius:7px; background:#fff; font-family:var(--font); font-size:12px; color:#374151; cursor:pointer; }
+  .rev-btn-vfp:hover { border-color:#9ca3af; background:#f9fafb; }
+  .rev-btn-esc { padding:6px 12px; border:none; border-radius:7px; background:#dc2626; font-family:var(--font); font-size:12px; color:#fff; font-weight:600; cursor:pointer; }
+  .rev-btn-esc:hover { background:#b91c1c; }
+  .rev-hit-card table { width:100%; border-collapse:collapse; }
+  .rev-hit-card th { padding:8px 14px; text-align:left; font-size:11.5px; font-weight:600; color:#6b7280; background:#f9fafb; border-bottom:1px solid #f3f4f6; }
+  .rev-hit-card td { padding:9px 14px; font-size:12.5px; color:#374151; border-bottom:1px solid #f9fafb; }
+  .rev-hit-card tr:last-child td { border-bottom:none; }
+
+  /* Summary tab */
+  .rev-summary-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:16px; }
+  .rev-sum-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; padding:16px 18px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .rev-sum-card h3 { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#9ca3af; margin-bottom:14px; }
+  .rev-sum-kv { display:flex; justify-content:space-between; align-items:center; padding:7px 0; border-bottom:1px solid #f3f4f6; }
+  .rev-sum-kv:last-child { border-bottom:none; }
+  .rev-sum-k { font-size:12px; color:#6b7280; }
+  .rev-sum-v { font-size:13px; font-weight:600; color:#1f2937; }
+  .rev-detail-table { background:#fff; border:1px solid #e5e7eb; border-radius:10px; overflow:hidden; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+  .rev-detail-header { padding:14px 18px; border-bottom:1px solid #e5e7eb; font-size:13px; font-weight:700; color:#111827; }
+  .rev-detail-table table { width:100%; border-collapse:collapse; }
+  .rev-detail-table th { padding:0 14px; height:40px; text-align:left; font-size:12px; font-weight:600; color:#2A53A0; background:#F0F0F0; border-bottom:1px solid #e5e7eb; }
+  .rev-detail-table td { padding:9px 14px; font-size:12px; color:#374151; border-bottom:1px solid #f3f4f6; }
+  .rev-detail-table tr:last-child td { border-bottom:none; }
+
+  /* Match review modal */
+  .rev-modal-overlay { display:none; position:fixed; inset:0; z-index:99999; background:rgba(0,0,0,.45); backdrop-filter:blur(2px); align-items:center; justify-content:center; }
+  .rev-modal-overlay.open { display:flex; }
+  .rev-modal-box { background:#fff; border-radius:14px; width:480px; max-width:94vw; box-shadow:0 20px 60px rgba(0,0,0,.2); overflow:hidden; animation:revModalSlide .18s ease; }
+  @keyframes revModalSlide { from { transform:translateY(-16px); opacity:0; } to { transform:translateY(0); opacity:1; } }
+  .rev-modal-header { display:flex; align-items:center; justify-content:space-between; padding:18px 22px 14px; border-bottom:1px solid #e5e7eb; }
+  .rev-modal-title { font-size:15px; font-weight:700; color:#111827; display:flex; align-items:center; gap:8px; }
+  .rev-modal-icon { width:30px; height:30px; border-radius:8px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .rev-modal-close { width:32px; height:32px; border-radius:8px; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#6b7280; transition:background .12s; }
+  .rev-modal-close:hover { background:#f3f4f6; }
+  .rev-modal-body { padding:18px 22px; }
+  .rev-modal-action-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.6px; color:#6b7280; margin-bottom:6px; }
+  .rev-modal-action-badge { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:20px; font-size:12px; font-weight:600; margin-bottom:16px; }
+  .rev-modal-comment-label { font-size:12px; font-weight:600; color:#374151; margin-bottom:6px; }
+  .rev-modal-textarea { width:100%; height:100px; padding:10px 12px; border:1.5px solid #d1d5db; border-radius:8px; font-family:var(--font); font-size:13px; color:#111827; resize:vertical; outline:none; transition:border-color .15s; line-height:1.5; }
+  .rev-modal-textarea:focus { border-color:#2A53A0; box-shadow:0 0 0 3px rgba(42,83,160,.1); }
+  .rev-modal-error { font-size:11px; color:#dc2626; margin-top:5px; display:none; }
+  .rev-modal-error.visible { display:block; }
+  .rev-modal-footer { padding:14px 22px 18px; display:flex; align-items:center; justify-content:flex-end; gap:10px; border-top:1px solid #f3f4f6; }
+  .rev-modal-confirm-btn { display:inline-flex; align-items:center; height:40px; padding:0 20px; border:none; border-radius:8px; font-family:var(--font); font-size:13px; font-weight:600; color:#fff; cursor:pointer; transition:opacity .15s; }
+  .rev-modal-confirm-btn:hover { opacity:.9; }
+
+  /* Make results/review pages scrollable */
+  #page-results { overflow-y:auto; }
+  #page-match-review { display:none; flex-direction:column; overflow:hidden; }
+  #page-match-review.active { display:flex; }
+  #page-bulk-results.active { display:flex !important; }
+  #page-bulk-p1.active { display:flex !important; }
+  #page-bulk-review.active { display:flex !important; }
+
+  /* ═══════════════════════════════════
+     BATCH LANDING PAGE (blp)
+  ═══════════════════════════════════ */
+  .blp-topnav { height:58px; background:#fff; border-bottom:1px solid #e5e7eb; display:flex; align-items:center; justify-content:space-between; padding:0 24px; flex-shrink:0; box-shadow:0 1px 4px rgba(0,0,0,.07); }
+  .blp-left { display:flex; align-items:center; gap:20px; }
+  .blp-title { font-size:16px; font-weight:700; color:#111827; }
+  .blp-tabs { display:flex; gap:4px; }
+  .blp-tab { height:36px; padding:0 14px; border-radius:8px; border:none; background:transparent; cursor:pointer; font-family:var(--font); font-size:13px; font-weight:500; color:#4b5563; display:flex; align-items:center; gap:6px; transition:all .15s; }
+  .blp-tab:hover { background:#f3f4f6; }
+  .blp-tab-active { background:#2A53A0 !important; color:#fff !important; font-weight:600 !important; }
+  .blp-right { display:flex; align-items:center; gap:8px; }
+  .blp-icon-btn { width:36px; height:36px; border-radius:8px; border:none; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; color:#4b5563; position:relative; transition:background .15s; }
+  .blp-icon-btn:hover { background:#f3f4f6; }
+  .blp-notif-dot { position:absolute; top:4px; right:4px; width:15px; height:15px; background:#ef4444; border-radius:50%; color:#fff; font-size:9px; font-weight:700; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
+  .blp-user-pill { display:flex; align-items:center; gap:8px; height:36px; padding:0 10px; border-radius:8px; border:none; background:transparent; cursor:pointer; transition:background .15s; }
+  .blp-user-pill:hover { background:#f3f4f6; }
+  .blp-avatar { width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,#3b82f6,#2A53A0); color:#fff; font-size:10px; font-weight:700; display:flex; align-items:center; justify-content:center; }
+  .blp-user-name { font-size:13px; font-weight:500; color:#1f2937; }
+
+  .blp-body { flex:1; overflow:hidden; display:flex; flex-direction:column; background:#f5f7fa; }
+  .blp-header-bar { background:#fff; border-bottom:1px solid #e5e7eb; padding:16px 28px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; }
+  .blp-heading { font-size:19px; font-weight:700; color:#111827; }
+  .blp-count-badge { padding:3px 10px; border-radius:20px; font-size:12px; font-weight:700; background:linear-gradient(135deg,#dbeafe,#eff6ff); color:#1d4ed8; border:1px solid #bfdbfe; }
+
+  /* Date dropdown */
+  .blp-date-dd { position:relative; display:inline-block; }
+  .blp-date-btn { display:flex; align-items:center; gap:8px; height:40px; padding:0 14px; background:#fff; color:#374151; border:1px solid #d1d5db; border-radius:10px; font-family:var(--font); font-size:13px; font-weight:500; cursor:pointer; transition:all .12s; }
+  .blp-date-btn:hover { background:#f9fafb; border-color:#9ca3af; }
+  .blp-date-menu { display:none; position:absolute; top:calc(100% + 6px); left:0; z-index:9999; background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.12); min-width:180px; padding:6px; }
+  .blp-date-menu.open { display:block; }
+  .blp-date-item { display:flex; align-items:center; gap:8px; width:100%; padding:7px 10px; border:none; background:transparent; font-family:var(--font); font-size:13px; color:#374151; cursor:pointer; border-radius:7px; text-align:left; transition:background .1s; }
+  .blp-date-item:hover { background:#f3f4f6; }
+  .blp-date-active { background:#eff6ff !important; color:#2A53A0 !important; font-weight:600 !important; }
+  .blp-date-active::after { content:'✓'; margin-left:auto; font-size:12px; }
+
+  /* Filter chips */
+  .blp-filters-bar { background:#fff; border-bottom:1px solid #e5e7eb; padding:10px 28px; display:flex; align-items:center; gap:8px; flex-shrink:0; flex-wrap:wrap; position:relative; }
+  .blp-fc { display:flex; align-items:center; gap:6px; height:34px; padding:0 12px; border:1px solid #d1d5db; border-radius:8px; background:#fff; font-family:var(--font); font-size:12px; font-weight:500; color:#374151; cursor:pointer; transition:all .12s; white-space:nowrap; }
+  .blp-fc:hover { border-color:#2A53A0; color:#2A53A0; background:#f8fbff; }
+  .blp-fc.active { border-color:#2A53A0; background:#eff6ff; color:#2A53A0; font-weight:600; }
+  .blp-fc-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.4px; color:#9ca3af; margin-right:2px; }
+  .blp-fc.active .blp-fc-label { color:#93c5fd; }
+  .blp-fp { display:none; position:fixed; z-index:9990; background:#fff; border:1px solid #e5e7eb; border-radius:10px; box-shadow:0 8px 24px rgba(0,0,0,.12); min-width:220px; padding:12px; }
+  .blp-fp.open { display:block; }
+  .blp-fp-title { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:#9ca3af; margin-bottom:8px; }
+  .blp-fp-apply { width:100%; height:34px; background:#2A53A0; color:#fff; border:none; border-radius:7px; font-family:var(--font); font-size:12px; font-weight:600; cursor:pointer; }
+  .blp-fp-apply:hover { background:#1e3a70; }
+  .blp-clear-btn { display:flex; align-items:center; gap:5px; height:34px; padding:0 10px; border:none; background:transparent; font-family:var(--font); font-size:12px; font-weight:500; color:#9ca3af; cursor:pointer; transition:color .12s; }
+  .blp-clear-btn:hover { color:#dc2626; }
+
+  /* Sort / search row */
+  .blp-sortrow { background:#fff; border-bottom:1px solid #e5e7eb; padding:10px 28px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; gap:12px; }
+  .blp-search-box { position:relative; }
+  .blp-search-box svg { position:absolute; left:11px; top:50%; transform:translateY(-50%); color:#9ca3af; pointer-events:none; }
+  .blp-search-box input { width:280px; height:38px; padding:0 14px 0 36px; border:1px solid #d1d5db; border-radius:8px; font-family:var(--font); font-size:13px; color:#111827; outline:none; background:#fff; }
+  .blp-search-box input:focus { border-color:#2A53A0; box-shadow:0 0 0 3px rgba(42,83,160,.1); }
+
+  /* Table */
+  .blp-table-wrap { flex:1; overflow-y:auto; padding:16px 28px 20px; }
+  .blp-table-card { background:#fff; border:1px solid #e5e7eb; border-radius:10px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.06); }
+  .blp-table-card table { width:100%; border-collapse:collapse; }
+  .blp-table-card thead tr { background:#F0F0F0; height:46px; border-bottom:1px solid #e5e7eb; position:sticky; top:0; z-index:5; }
+  .blp-table-card th { padding:0 16px; text-align:left; font-size:13px; font-weight:600; color:#2A53A0; white-space:nowrap; background:#F0F0F0; }
+  .blp-table-card td { padding:11px 16px; font-size:13px; color:#374151; border-bottom:1px solid #f3f4f6; vertical-align:middle; }
+  .blp-table-card tr:last-child td { border-bottom:none; }
+  .blp-table-card tbody tr:hover td { background:#f8fafc; }
+  .blp-table-footer { padding:12px 16px; background:#f9fafb; border-top:1px solid #e5e7eb; display:flex; align-items:center; justify-content:space-between; font-size:12px; color:#6b7280; }
+  .blp-pagination { display:flex; align-items:center; gap:4px; }
+  .blp-pg-btn { width:30px; height:30px; border-radius:7px; border:1px solid #e5e7eb; background:#fff; font-size:12px; font-weight:500; color:#374151; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .12s; }
+  .blp-pg-btn:hover { border-color:#2A53A0; color:#2A53A0; }
+  .blp-pg-active { background:#2A53A0 !important; border-color:#2A53A0 !important; color:#fff !important; }
+
+  /* Customer name link in landing table */
+  .blp-name-link { color:#111827; font-weight:600; cursor:pointer; transition:color .15s; text-decoration:underline; text-decoration-color:transparent; }
+  .blp-name-link:hover { color:#2A53A0; text-decoration-color:#2A53A0; }
+
+  /* Matched list chip in landing table */
+  .blp-num-link { color:#2A53A0; font-weight:700; font-size:14px; cursor:pointer; text-decoration:underline; text-decoration-color:transparent; transition:.15s; }
+  .blp-num-link:hover { text-decoration-color:#2A53A0; }
+
+  /* Footer */
+  .blp-footer { height:42px; background:#f9fafb; border-top:1px solid #e5e7eb; display:grid; grid-template-columns:1fr 1fr 1fr; align-items:center; padding:0 16px; font-size:11px; color:#6b7280; flex-shrink:0; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-logo">C5</div>
+      <div>
+        <div class="brand-name">Clari5 AML</div>
+        <div class="brand-sub">Perfios Platform</div>
+      </div>
+    </div>
+    <div class="nav-scroll">
+      <div class="nav-section">
+        <div class="nav-group-label">Overview</div>
+        <div class="nav-item" onclick="navigate('dashboard')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg>
+          Dashboards
+        </div>
+        <div class="nav-item" onclick="navigate('kyc')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+          KYC Customer Onboarding
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-group-label">Sanction Screening</div>
+        <div class="nav-item active" onclick="navigate('manual')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4h10M3 8h10M3 12h6"/></svg>
+          Manual Screening
+        </div>
+        <div class="nav-sub">
+          <div class="nav-item" onclick="navigate('batch')">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 7h6M5 10h4"/></svg>
+            Batch Screening
+          </div>
+          <div class="nav-item" onclick="navigate('dedup')">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="8" r="3"/><circle cx="11" cy="8" r="3"/></svg>
+            De-dup Screening
+          </div>
+          <div class="nav-item" onclick="navigate('exception')">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l1.5 3h3l-2.5 2 1 3L8 8.5 5 10l1-3-2.5-2h3z"/></svg>
+            Exception List Mgmt
+          </div>
+          <div class="nav-item" onclick="navigate('custom')">
+            <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M8 5v6M5 8h6"/></svg>
+            Custom List Mgmt
+          </div>
+        </div>
+        <div class="nav-item" onclick="navigate('workflow')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h3l2-4 2 8 2-4h1"/></svg>
+          Screening Workflow
+        </div>
+        <div class="nav-item" onclick="navigate('mis')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="10" width="3" height="4"/><rect x="6.5" y="7" width="3" height="7"/><rect x="11" y="4" width="3" height="10"/></svg>
+          Sanction MIS Reports
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-group-label">Monitoring</div>
+        <div class="nav-item" onclick="navigate('risk')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2l6 12H2z"/><path d="M8 7v3M8 11.5v.5"/></svg>
+          Customer Risk View
+        </div>
+        <div class="nav-item" onclick="navigate('realtime')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6"/><path d="M8 5v3l2 1"/></svg>
+          Real-time Monitoring
+        </div>
+        <div class="nav-item" onclick="navigate('payments')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="14" height="10" rx="1"/><path d="M1 8h14M5 12h2"/></svg>
+          Payments Workflow
+        </div>
+        <div class="nav-item" onclick="navigate('ai')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 2v1M8 13v1M2 8h1M13 8h1M3.8 3.8l.7.7M11.5 11.5l.7.7M3.8 12.2l.7-.7M11.5 4.5l.7-.7"/></svg>
+          AI-Powered Analytics
+        </div>
+      </div>
+      <div class="nav-section">
+        <div class="nav-group-label">Reports</div>
+        <div class="nav-item" onclick="navigate('lea')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h8a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z"/><path d="M5 6h6M5 9h6M5 12h3"/></svg>
+          LEA / RFI Tracker
+        </div>
+        <div class="nav-item" onclick="navigate('regulatory')">
+          <svg class="nav-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4z"/></svg>
+          Regulatory Reports
+        </div>
+      </div>
+    </div>
+    <div class="user-bar">
+      <div class="avatar">CC</div>
+      <div>
+        <div class="user-name">charu.c</div>
+        <div class="user-role">Compliance Analyst</div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <main class="main">
+    <div class="topbar">
+      <div>
+        <div class="page-title" id="page-title">Manual Screening</div>
+        <div class="breadcrumb">Sanction Screening <span>›</span> <span>Manual Screening</span></div>
+      </div>
+      <div class="spacer"></div>
+      <button class="btn btn-ghost btn-sm" onclick="showResults()">View Last Results</button>
+    </div>
+
+    <div class="content">
+
+      <!-- MANUAL SCREENING PAGE -->
+      <div class="page active" id="page-manual">
+        <!-- TABS: Manual / Bulk -->
+        <div class="tabs">
+          <div class="tab active" onclick="switchTab('manual')">Manual Screening</div>
+          <div class="tab" onclick="switchTab('bulk')">Bulk Upload</div>
+        </div>
+
+        <!-- ENTITY TYPE TOGGLE -->
+        <div class="entity-toggle">
+          <div class="entity-btn active" onclick="switchEntity('individual')">Individual</div>
+          <div class="entity-btn" onclick="switchEntity('nonindividual')">Non-Individuals</div>
+          <div class="entity-btn" onclick="switchEntity('vessel')">Vessel</div>
+        </div>
+
+        <!-- INDIVIDUAL FORM -->
+        <div id="form-individual">
+          <div class="form-section">
+            <div class="form-section-title">Basic Information</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>ID Number</label>
+                <input type="text" placeholder="Passport / NID / SSN">
+              </div>
+              <div class="form-group">
+                <label>Name in English <span class="req">*</span></label>
+                <input type="text" placeholder="Full legal name">
+              </div>
+              <div class="form-group">
+                <label>Name in Non-English</label>
+                <input type="text" placeholder="Native script name">
+              </div>
+              <div class="form-group">
+                <label>Alias</label>
+                <input type="text" placeholder="Known aliases, comma-separated">
+              </div>
+              <div class="form-group form-full">
+                <label>Address</label>
+                <input type="text" placeholder="Residential or registered address">
+              </div>
+              <div class="form-group">
+                <label>Date of Birth</label>
+                <input type="date">
+              </div>
+              <div class="form-group">
+                <label>Country of Birth</label>
+                <select><option value="">Select country</option><option>Singapore</option><option>United States</option><option>United Kingdom</option><option>India</option><option>China</option><option>United Arab Emirates</option><option>Malaysia</option><option>Indonesia</option></select>
+              </div>
+              <div class="form-group">
+                <label>Country of Residence</label>
+                <select><option value="">Select country</option><option>Singapore</option><option>United States</option><option>United Kingdom</option><option>India</option><option>China</option><option>United Arab Emirates</option><option>Malaysia</option><option>Indonesia</option></select>
+              </div>
+              <div class="form-group">
+                <label>Nationality</label>
+                <select><option value="">Select country</option><option>Singapore</option><option>United States</option><option>United Kingdom</option><option>India</option><option>China</option><option>United Arab Emirates</option><option>Malaysia</option><option>Indonesia</option></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Joint Account Holder (Optional)</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" placeholder="Joint account holder name">
+              </div>
+              <div class="form-group">
+                <label>Address</label>
+                <input type="text" placeholder="Address (optional)">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Screening Configuration</div>
+            <div class="form-grid" style="margin-bottom:14px">
+              <div class="form-group">
+                <label>Purpose <span class="req">*</span></label>
+                <select>
+                  <option value="">Select purpose</option>
+                  <option>Onboarding Screening</option>
+                  <option>Transaction Screening</option>
+                  <option>Periodic Review</option>
+                  <option>Enhanced Due Diligence</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-section-title" style="margin-bottom:12px">Watchlist Configuration <span class="req">*</span></div>
+            <div class="watchlist-grid" id="watchlist-individual">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <div class="license-warn">
+            ⚠ Your license will expire on June 12, 2026
+          </div>
+
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="resetForm()">Reset Form</button>
+            <button class="btn btn-primary" onclick="showResults()">Start Screening →</button>
+          </div>
+        </div>
+
+        <!-- NON-INDIVIDUAL FORM -->
+        <div id="form-nonindividual" style="display:none">
+          <div class="form-section">
+            <div class="form-section-title">Basic Information</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Registration Number <span class="req">*</span></label>
+                <input type="text" placeholder="Company registration number">
+              </div>
+              <div class="form-group">
+                <label>Registered Name (English) <span class="req">*</span></label>
+                <input type="text" placeholder="Legal entity name">
+              </div>
+              <div class="form-group">
+                <label>Entity Name (Non-English)</label>
+                <input type="text" placeholder="Native script name">
+              </div>
+              <div class="form-group">
+                <label>Tax ID</label>
+                <input type="text" placeholder="Tax identification number">
+              </div>
+              <div class="form-group">
+                <label>Country of Incorporation</label>
+                <select><option value="">Select country</option><option>Singapore</option><option>United States</option><option>United Kingdom</option><option>Cayman Islands</option><option>British Virgin Islands</option><option>Hong Kong</option></select>
+              </div>
+              <div class="form-group">
+                <label>Date of Incorporation</label>
+                <input type="date">
+              </div>
+              <div class="form-group form-full">
+                <label>Registered Address</label>
+                <input type="text" placeholder="Full registered address">
+              </div>
+              <div class="form-group">
+                <label>Operating Countries</label>
+                <input type="text" placeholder="e.g. SG, US, GB">
+              </div>
+              <div class="form-group">
+                <label>Alias</label>
+                <input type="text" placeholder="Trading names, former names">
+              </div>
+              <div class="form-group">
+                <label>Corporate Shareholders (&gt;10%)</label>
+                <input type="text" placeholder="Shareholder names">
+              </div>
+              <div class="form-group">
+                <label>Directors / POAs</label>
+                <input type="text" placeholder="Director / authorized signatory names">
+              </div>
+              <div class="form-group">
+                <label>Trustees</label>
+                <input type="text" placeholder="Trustee names (if applicable)">
+              </div>
+              <div class="form-group form-full">
+                <label>Address (Optional)</label>
+                <input type="text" placeholder="Operational address if different">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Screening Configuration</div>
+            <div class="form-grid" style="margin-bottom:14px">
+              <div class="form-group">
+                <label>Purpose <span class="req">*</span></label>
+                <select>
+                  <option value="">Select purpose</option>
+                  <option selected>Transaction Screening</option>
+                  <option>Onboarding Screening</option>
+                  <option>Periodic Review</option>
+                  <option>Enhanced Due Diligence</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-section-title" style="margin-bottom:12px">Watchlist Configuration <span class="req">*</span></div>
+            <div class="watchlist-grid" id="watchlist-nonindividual"></div>
+          </div>
+
+          <div class="license-warn">⚠ Your license will expire on June 12, 2026</div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="resetForm()">Reset Form</button>
+            <button class="btn btn-primary" onclick="showResults()">Start Screening →</button>
+          </div>
+        </div>
+
+        <!-- VESSEL FORM -->
+        <div id="form-vessel" style="display:none">
+          <div class="form-section">
+            <div class="form-section-title">Basic Information</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label>Vessel Name <span class="req">*</span></label>
+                <input type="text" placeholder="Full vessel name">
+              </div>
+              <div class="form-group">
+                <label>IMO Number</label>
+                <input type="text" placeholder="7-digit IMO number">
+              </div>
+              <div class="form-group">
+                <label>Call Sign</label>
+                <input type="text" placeholder="Radio call sign">
+              </div>
+              <div class="form-group">
+                <label>Vessel Type</label>
+                <select>
+                  <option value="">Select vessel type</option>
+                  <option>Cargo Ship</option>
+                  <option>Tanker</option>
+                  <option>Bulk Carrier</option>
+                  <option>Container Ship</option>
+                  <option>Fishing Vessel</option>
+                  <option>Passenger Ship</option>
+                  <option>Yacht / Pleasure Craft</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Flag State</label>
+                <select>
+                  <option value="">Select flag state</option>
+                  <option>Panama</option>
+                  <option>Liberia</option>
+                  <option>Marshall Islands</option>
+                  <option>Singapore</option>
+                  <option>Bahamas</option>
+                  <option>Malta</option>
+                  <option>Cyprus</option>
+                </select>
+              </div>
+              <div class="form-group form-full">
+                <label>Address (Optional)</label>
+                <input type="text" placeholder="Operator or owner address">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <div class="form-section-title">Screening Configuration</div>
+            <div class="form-grid" style="margin-bottom:14px">
+              <div class="form-group">
+                <label>Purpose <span class="req">*</span></label>
+                <select>
+                  <option value="">Select purpose</option>
+                  <option selected>Transaction Screening</option>
+                  <option>Onboarding Screening</option>
+                  <option>Port Clearance</option>
+                  <option>Enhanced Due Diligence</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-section-title" style="margin-bottom:12px">Watchlist Configuration <span class="req">*</span></div>
+            <div class="watchlist-grid" id="watchlist-vessel"></div>
+          </div>
+
+          <div class="license-warn">⚠ Your license will expire on June 12, 2026</div>
+          <div class="btn-row">
+            <button class="btn btn-ghost" onclick="resetForm()">Reset Form</button>
+            <button class="btn btn-primary" onclick="showResults()">Start Screening →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- BULK UPLOAD PAGE -->
+      <div class="page" id="page-bulk">
+        <div class="tabs">
+          <div class="tab" onclick="switchTab('manual')">Manual Screening</div>
+          <div class="tab active" onclick="switchTab('bulk')">Bulk Upload</div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title">File Upload</div>
+          <div class="upload-zone" onclick="triggerUpload()">
+            <div class="upload-icon">📤</div>
+            <div class="upload-main">Click to upload or drag and drop</div>
+            <div class="upload-sub">CSV, XLS, or XLSX (Max 25MB)</div>
+          </div>
+          <div style="margin-top:12px; display:flex; align-items:center; gap:10px">
+            <button class="btn btn-ghost btn-sm">⬇ Download Template</button>
+            <span style="font-size:11px; color:var(--text3)">Use the template to ensure correct column format</span>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-section-title" style="margin-bottom:12px">Watchlist Configuration <span class="req">*</span></div>
+          <div class="watchlist-grid" id="watchlist-bulk"></div>
+        </div>
+
+        <div class="license-warn">⚠ Your license will expire on June 12, 2026</div>
+        <div class="btn-row">
+          <button class="btn btn-primary" onclick="showBulkResults()">Start Bulk Screening →</button>
+        </div>
+      </div>
+
+      <!-- INDIVIDUAL SCREENING RESULTS PAGE (Batch-style layout) -->
+      <div class="page" id="page-results">
+        <!-- Results topbar -->
+        <div class="res-topbar">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="res-back-btn" onclick="showManual()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            </button>
+            <div>
+              <h1 style="font-size:17px;font-weight:700;color:#111827;margin:0;">Screening Results</h1>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button class="res-btn-outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export Report
+            </button>
+            <button class="res-btn-primary" onclick="showManual()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              New Screening
+            </button>
+          </div>
+        </div>
+
+        <!-- Subject card — horizontal fields -->
+        <div class="res-subject-card">
+          <div class="res-subject-field">
+            <label>Primary Name</label>
+            <div class="res-val res-val-big">william</div>
+          </div>
+          <div class="res-field-div"></div>
+          <div class="res-subject-field">
+            <label>ID Number</label>
+            <div class="res-val res-val-muted">—</div>
+          </div>
+          <div class="res-field-div"></div>
+          <div class="res-subject-field">
+            <label>Date of Birth</label>
+            <div class="res-val res-val-muted">—</div>
+          </div>
+          <div class="res-field-div"></div>
+          <div class="res-subject-field">
+            <label>Nationality</label>
+            <div class="res-val res-val-muted">—</div>
+          </div>
+          <div class="res-field-div"></div>
+          <div class="res-subject-field">
+            <label>Entity Type</label>
+            <div class="res-val">individual</div>
+          </div>
+          <div class="res-field-div"></div>
+          <div class="res-subject-field">
+            <label>Watchlist Profile</label>
+            <span class="res-badge res-badge-blue2">High-Risk Jurisdiction Screening</span>
+          </div>
+          <div class="res-field-div"></div>
+          <div class="res-subject-field">
+            <label>Purpose</label>
+            <div class="res-val">Customer Onboarding</div>
+          </div>
+        </div>
+
+        <!-- AI Banner -->
+        <div class="res-ai-banner">
+          <div class="res-ai-top-bar"></div>
+          <div class="res-ai-body">
+            <div class="res-ai-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div class="res-ai-label-row">
+                <span class="res-ai-module">AI Screening Summary</span>
+                <span class="res-ai-tag">GENAI • GPT-4O</span>
+              </div>
+              <p class="res-ai-text">
+                Screening for <span class="res-hl-blue">WILLIAM</span> returned <span class="res-hl-red">1 potential watchlist match</span> across active lists.
+                <span class="res-hl-red-b">1 record is Critical</span> (≥90% score) — linked to the
+                <span style="font-weight:700;background:#fef2f2;padding:0 4px;border-radius:3px;">Singapore High-Risk Screening</span>,
+                which may carry mandatory EDD obligations.
+              </p>
+              <p class="res-ai-text" style="margin-top:6px;">
+                No ID number was provided — name-based matching only.
+                <span class="res-hl-green">Click any row to view the full AI analysis and watchlist hit details.</span>
+              </p>
+              <div class="res-ai-badges">
+                <span class="res-badge res-badge-red" style="gap:5px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                  1 Critical match
+                </span>
+                <span class="res-badge res-badge-amber" style="gap:5px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  Missing ID – disambiguation needed
+                </span>
+                <span class="res-badge res-badge-blue" style="gap:5px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg>
+                  1 List hit across 1 result
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="res-stats-strip">
+          <div class="res-stat-chip">
+            <div class="res-stat-num res-num-red">1</div>
+            <div class="res-stat-lbl">Critical</div>
+          </div>
+          <div class="res-stat-chip">
+            <div class="res-stat-num res-num-gray">0</div>
+            <div class="res-stat-lbl">High</div>
+          </div>
+          <div class="res-stat-chip">
+            <div class="res-stat-num res-num-gray">0</div>
+            <div class="res-stat-lbl">Medium</div>
+          </div>
+          <div class="res-stat-chip">
+            <div class="res-stat-num res-num-gray" style="font-size:16px;margin-top:2px;">1 of 1</div>
+            <div class="res-stat-lbl">Results shown</div>
+          </div>
+        </div>
+
+        <!-- Results table section header -->
+        <div class="res-section-header">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            <span class="res-section-title">1 Potential Matches Found</span>
+          </div>
+          <button class="res-btn-outline" style="height:34px;font-size:12px;padding:0 12px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg>
+            Filter Results
+          </button>
+        </div>
+
+        <!-- Results table -->
+        <div class="res-table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Cust ID</th>
+                <th>Number Of Matched List</th>
+                <th>Highest Match Score</th>
+                <th>List Name With Highest Match Score</th>
+                <th>Match Category</th>
+                <th>Match Type</th>
+                <th>Match Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;color:#111827;">WILLIAM</td>
+                <td style="font-family:monospace;font-size:12px;">CUST-90263</td>
+                <td>
+                  <div class="res-matched-chip" onclick="showMatchReview('ai')" title="Click to view match details">
+                    <span class="res-matched-num">3</span>
+                    <span class="res-matched-label">LISTS</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#3b82f6;flex-shrink:0;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="res-matched-tooltip">Click to view match details</span>
+                  </div>
+                </td>
+                <td>
+                  <div style="display:flex;align-items:center;gap:8px;">
+                    <span style="font-size:13px;font-weight:700;color:#dc2626;">92%</span>
+                    <div style="width:52px;height:4px;background:#e5e7eb;border-radius:2px;overflow:hidden;"><div style="height:100%;width:92%;background:#ef4444;border-radius:2px;"></div></div>
+                  </div>
+                </td>
+                <td style="color:#2A53A0;font-size:12px;">Singapore High-Risk Screening</td>
+                <td><span class="res-badge res-badge-red">Sanctions</span></td>
+                <td>Individual</td>
+                <td style="font-size:12px;color:#6b7280;">08-05-2026</td>
+                <td>
+                  <div class="res-action-dropdown">
+                    <button class="res-action-btn" id="res-drop-btn" onclick="toggleResDD(event,'res-drop')">
+                      <span id="res-drop-label">Actions</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="res-action-menu" id="res-drop">
+                      <button class="res-action-item res-item-view" onclick="closeResDD();showMatchReview('ai')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                        View Details
+                      </button>
+                      <div class="res-item-divider"></div>
+                      <button class="res-action-item" onclick="closeResDD();setResStatus('Under Review')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        Under Review
+                      </button>
+                      <button class="res-action-item" onclick="closeResDD();setResStatus('Move to Case')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        Move to Case
+                      </button>
+                      <button class="res-action-item" onclick="closeResDD();setResStatus('Move to Whitelist')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        Move to Whitelist
+                      </button>
+                      <div class="res-item-divider"></div>
+                      <button class="res-action-item res-item-exception" onclick="closeResDD();setResStatus('Move to Exception List')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        Move to Exception List
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="res-table-footer">
+            <span>Showing 1 of 1 results</span>
+            <span>Search Time: 0.42 seconds</span>
+          </div>
+        </div>
+
+        <div class="license-warn" style="margin-top:16px;">⚠ Your license will expire on June 12, 2026</div>
+      </div>
+
+      <!-- MATCH REVIEW PAGE (AI Summary / Match Details / View Summary tabs) -->
+      <div class="page" id="page-match-review">
+        <!-- Review header -->
+        <div class="rev-header">
+          <div class="rev-header-row">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <button class="res-back-btn" onclick="showResults()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+              </button>
+              <div>
+                <div class="rev-title">Match Review</div>
+                <div class="rev-ref">Ref ID: <span>SCR-001-1778218453580</span></div>
+              </div>
+            </div>
+            <div class="rev-actions">
+              <button class="res-btn-outline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Report
+              </button>
+              <div style="width:1px;height:24px;background:#d1d5db;"></div>
+              <button class="rev-btn-fp" onclick="openRevModal('False Positive','positive')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                False Positive
+              </button>
+              <button class="rev-btn-confirm" onclick="openRevModal('Confirm Match','confirm')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                Confirm Match
+              </button>
+            </div>
+          </div>
+          <!-- Tabs -->
+          <div class="rev-tab-bar">
+            <button class="rev-tab active" id="rev-tab-ai" onclick="switchRevTab('ai')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              AI Summary
+            </button>
+            <button class="rev-tab" id="rev-tab-match" onclick="switchRevTab('match')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+              Match Details
+            </button>
+            <button class="rev-tab" id="rev-tab-summary" onclick="switchRevTab('summary')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              View Summary
+            </button>
+          </div>
+        </div>
+
+        <div class="rev-scroll-pane">
+
+          <!-- TAB: AI SUMMARY -->
+          <div id="rev-pane-ai" class="rev-pane active">
+            <div class="rev-alert-banner">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              <div>
+                <h3>High-Confidence Sanctions Match — Immediate Action Required</h3>
+                <p><strong>WILLIAM (CUST-90263)</strong> has returned 3 watchlist hits — 1 on the Singapore High-Risk Screening List (Critical, 92%) and 1 on the MAS Watchlist – Persons of Interest (High, 88%). MAS regulatory obligations apply. <strong>Do not transact until resolved.</strong></p>
+              </div>
+            </div>
+            <div class="rev-narrative-card">
+              <div class="rev-narrative-header">
+                <div class="rev-ai-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                </div>
+                <h3>AI Investigation Narrative</h3>
+                <span style="font-size:11px;color:#9ca3af;">GenAI GPT-4o</span>
+                <span class="rev-conf-badge">Confidence: High</span>
+              </div>
+              <p class="rev-narrative-text">The customer <strong>WILLIAM (CUST-90263, Singaporean national)</strong> has produced an overall risk score of <strong>92/100 (Critical)</strong> across 3 watchlist hits. The highest-scoring hit originates from the <strong>Singapore MAS High-Risk Screening List (SGP_HRS_001)</strong> — a MAS-designated list of individuals subject to enhanced due diligence under the MAS Notice on Prevention of Money Laundering and Countering the Financing of Terrorism. Any financial activity involving a designated individual on this list requires mandatory EDD under Singapore AML/CFT law.</p>
+              <p class="rev-narrative-text">The top watchlist match is <strong>WILLIAM JAMES HARRINGTON (92%)</strong> on the Singapore MAS High-Risk Screening List, and <strong>WILLIAM J. HARRINGTON (88%)</strong> on the MAS Watchlist – Persons of Interest. A third hit on the <strong>OFAC SDN List (75%)</strong> carries international asset-freeze obligations. Across all hits, Singaporean nationality scored <strong>100%</strong>, and name similarity ranged from 75%–92%.</p>
+              <p class="rev-narrative-text">The provided passport number (7234580J) did not match the watchlist record (K2947631B), meaning the match cannot be ruled out through passport comparison alone. The combination of high name similarity, matching nationality, and dual MAS-list exposure makes this a <strong>non-dismissible match</strong>.</p>
+              <p class="rev-narrative-text"><strong>Recommended action:</strong> escalate to a sanctions case immediately and initiate EDD to collect full identity documentation (NRIC/Passport) to attempt disambiguation.</p>
+              <div class="rev-signal-grid">
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/></svg> MAS High-Risk Designation (Singapore)</h4><p>Critical hit on Singapore MAS High-Risk Screening List (SGP_HRS_001, 92%). Enhanced due diligence is mandatory under MAS AML/CFT Notice.</p></div>
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/></svg> OFAC SDN Exposure</h4><p>Third-party exposure via OFAC SDN List (75%). International asset-freeze obligations may apply if match is confirmed.</p></div>
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> SG Nationality Match: 100% Across All Hits</h4><p>Singaporean nationality is the top-scoring attribute across all 3 hits. Passport mismatch (0%) does not exclude the match alone.</p></div>
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Passport Mismatch — Cannot Exclude Match</h4><p>Passport 7234580J ≠ K2947631B on watchlist. Disambiguation via NRIC or official passport is required before ruling out.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: MATCH DETAILS -->
+          <div id="rev-pane-match" class="rev-pane">
+            <div class="rev-status-grid">
+              <div class="rev-status-card"><label>Overall Risk Score</label><div class="rev-big-score">92 <span>/ 100</span></div></div>
+              <div class="rev-status-card">
+                <label>Status Details</label>
+                <div class="rev-kv"><span class="rev-k">Status</span><span class="res-badge res-badge-amber">Potential Match</span></div>
+                <div class="rev-kv"><span class="rev-k">Total Matches</span><span class="rev-v">3</span></div>
+                <div class="rev-kv"><span class="rev-k">Highest Match</span><span class="rev-v" style="font-size:12px;color:#2A53A0;">Singapore High-Risk Screening List</span></div>
+              </div>
+              <div class="rev-status-card">
+                <label>Match Details (Screened Subject)</label>
+                <div class="rev-kv"><span class="rev-k">Full Name</span><span class="rev-v">william</span></div>
+                <div class="rev-kv"><span class="rev-k">Date of Birth</span><span class="rev-v" style="color:#9ca3af;">—</span></div>
+                <div class="rev-kv"><span class="rev-k">Nationality</span><span class="rev-v" style="color:#9ca3af;">—</span></div>
+                <div class="rev-kv"><span class="rev-k">Place of Birth</span><span class="rev-v" style="color:#9ca3af;">—</span></div>
+              </div>
+            </div>
+            <p style="font-size:13px;font-weight:700;color:#374151;margin-bottom:12px;">Watchlist Hits (3)</p>
+            <!-- Hit 1 -->
+            <div class="rev-hit-card">
+              <div class="rev-hit-header">
+                <div class="rev-hit-score-col"><div class="rev-hit-score red">92%</div><div style="margin-top:3px;"><span class="res-badge res-badge-red" style="font-size:10px;padding:2px 8px;">Critical</span></div></div>
+                <div class="rev-hit-info"><div class="rev-hit-name">Singapore High-Risk Screening List</div><div class="rev-hit-meta">Sanctions · Monetary Authority of Singapore (MAS)<br>Singapore MAS-designated high-risk individuals subject to enhanced due diligence under the MAS Notice on Prevention of Money Laundering and Countering the Financing of Terrorism.</div></div>
+                <div class="rev-hit-actions">
+                  <button class="rev-btn-vfp">View Full Profile</button>
+                  <button class="rev-btn-esc" onclick="openRevModal('Escalate Case','confirm')">Escalate Case</button>
+                </div>
+              </div>
+              <table><thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>william</td><td>WILLIAM JAMES HARRINGTON</td><td style="color:#15803d;font-weight:700;">92%</td></tr>
+                <tr><td>Date of Birth</td><td style="color:#6b7280;">—</td><td>1971-09-04</td><td style="color:#a16207;font-weight:700;">78%</td></tr>
+                <tr><td>Nationality</td><td style="color:#6b7280;">—</td><td>Singapore</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                <tr><td>Place of Birth</td><td style="color:#6b7280;">—</td><td>Singapore</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+              </tbody></table>
+            </div>
+            <!-- Hit 2 -->
+            <div class="rev-hit-card">
+              <div class="rev-hit-header">
+                <div class="rev-hit-score-col"><div class="rev-hit-score orange">88%</div><div style="margin-top:3px;"><span class="res-badge res-badge-orange" style="font-size:10px;padding:2px 8px;">High</span></div></div>
+                <div class="rev-hit-info"><div class="rev-hit-name">MAS Watchlist – Persons of Interest</div><div class="rev-hit-meta">Sanctions · Monetary Authority of Singapore (MAS)<br>Watchlist of persons flagged under MAS regulatory notices for suspicious financial activity originating from Singapore.</div></div>
+                <div class="rev-hit-actions">
+                  <button class="rev-btn-vfp">View Full Profile</button>
+                  <button class="rev-btn-esc" onclick="openRevModal('Escalate Case','confirm')">Escalate Case</button>
+                </div>
+              </div>
+              <table><thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>william</td><td>WILLIAM JAMES HARRINGTON</td><td style="color:#2A53A0;font-weight:700;">88%</td></tr>
+                <tr><td>Passport Number</td><td style="color:#6b7280;">—</td><td>K2947631B</td><td style="color:#dc2626;font-weight:700;">0%</td></tr>
+                <tr><td>Nationality</td><td style="color:#6b7280;">—</td><td>Singapore</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                <tr><td>Gender</td><td style="color:#6b7280;">—</td><td>Male</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+              </tbody></table>
+            </div>
+            <!-- Hit 3 -->
+            <div class="rev-hit-card">
+              <div class="rev-hit-header">
+                <div class="rev-hit-score-col"><div class="rev-hit-score yellow">75%</div><div style="margin-top:3px;"><span class="res-badge res-badge-orange" style="font-size:10px;padding:2px 8px;">High</span></div></div>
+                <div class="rev-hit-info"><div class="rev-hit-name">OFAC SDN List</div><div class="rev-hit-meta">Sanctions · US Treasury / OFAC<br>Specially Designated Nationals and Blocked Persons list maintained by the US Department of Treasury Office of Foreign Assets Control.</div></div>
+                <div class="rev-hit-actions">
+                  <button class="rev-btn-vfp">View Full Profile</button>
+                  <button class="rev-btn-esc" onclick="openRevModal('Escalate Case','confirm')">Escalate Case</button>
+                </div>
+              </div>
+              <table><thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>william</td><td>HARRINGTON, WILLIAM JAMES</td><td style="color:#a16207;font-weight:700;">75%</td></tr>
+                <tr><td>Nationality</td><td style="color:#6b7280;">—</td><td>Singapore</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                <tr><td>Date of Birth</td><td style="color:#6b7280;">—</td><td>1971-09-04</td><td style="color:#a16207;font-weight:700;">60%</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+
+          <!-- TAB: VIEW SUMMARY -->
+          <div id="rev-pane-summary" class="rev-pane">
+            <div class="rev-summary-grid">
+              <div class="rev-sum-card">
+                <h3>Customer Information</h3>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Customer ID</span><span class="rev-sum-v" style="font-family:monospace;font-size:12px;">CUST-90263</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Customer Type</span><span class="rev-sum-v">Individual</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Overall CRC Score</span><span class="rev-sum-v" style="font-size:28px;font-weight:900;color:#dc2626;line-height:1;">92</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">CRC Category</span><span class="res-badge res-badge-red">Critical</span></div>
+              </div>
+              <div class="rev-sum-card">
+                <h3>Match Statistics</h3>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Total List Matches</span><span class="rev-sum-v">3</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Highest Match Score</span><span class="rev-sum-v" style="color:#dc2626;">92.00%</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Used for Calculation</span><span class="rev-sum-v" style="font-size:12px;">Highest match score</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Sanctions Risk</span><span class="rev-sum-v" style="color:#dc2626;">High</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Cut-off Threshold</span><span class="rev-sum-v">80%</span></div>
+                <div style="margin-top:10px;font-size:11px;color:#9ca3af;line-height:1.8;border-top:1px solid #f3f4f6;padding-top:10px;"><strong>Risk Ranges:</strong><br>Low: 50 – 70% · Medium: 70.1 – 90% · High: &gt;90.1%</div>
+              </div>
+            </div>
+            <div class="rev-detail-table">
+              <div class="rev-detail-header">Detailed Attribute Comparison — Customer details vs. watchlist records</div>
+              <table>
+                <thead><tr><th>Score</th><th>WL</th><th>Key Attribute</th><th>Weight %</th><th>Customer Value</th><th colspan="2">Watchlist Records</th></tr></thead>
+                <tbody>
+                  <tr style="background:#f0f5ff;"><td rowspan="6" style="font-size:16px;font-weight:800;color:#2A53A0;text-align:center;vertical-align:middle;">92.0%</td><td rowspan="6" style="font-size:11px;color:#6b7280;vertical-align:middle;line-height:1.5;max-width:110px;"><strong>UN Security Council<br>Consolidated List<br>(UNSCR 1267)</strong><br><span style="color:#dc2626;font-weight:700;">92.00%</span></td><td>Name</td><td>40%</td><td>WILLIAM</td><td>WILLIAM JAMES HARRINGTON</td><td style="color:#15803d;font-weight:700;">98%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Passport No.</td><td>7%</td><td style="color:#6b7280;">—</td><td>K2947681B</td><td style="color:#2A53A0;font-weight:700;">89%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Date of Birth</td><td>25%</td><td style="color:#6b7280;">—</td><td>1971-09-04</td><td style="color:#a16207;font-weight:700;">78%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Nationality</td><td>12%</td><td style="color:#6b7280;">—</td><td>SGP</td><td style="color:#dc2626;font-weight:700;">0%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Place of Birth</td><td>11%</td><td style="color:#6b7280;">—</td><td>Singapore</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Gender</td><td>5%</td><td style="color:#6b7280;">—</td><td>Male</td><td style="color:#dc2626;font-weight:700;">0%</td></tr>
+                  <tr style="background:#fff9f5;"><td rowspan="6" style="font-size:16px;font-weight:800;color:#c2410c;text-align:center;vertical-align:middle;">75.0%</td><td rowspan="6" style="font-size:11px;color:#6b7280;vertical-align:middle;line-height:1.5;max-width:110px;"><strong>OFAC SDN</strong><br><span style="color:#c2410c;font-weight:700;">75.00%</span></td><td>Name</td><td>40%</td><td>WILLIAM</td><td>WM. JAMES HARRINGTON</td><td style="color:#2A53A0;font-weight:700;">88%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Passport No.</td><td>7%</td><td style="color:#6b7280;">—</td><td>K2947600B</td><td style="color:#2A53A0;font-weight:700;">85%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Date of Birth</td><td>25%</td><td style="color:#6b7280;">—</td><td>1971-09-04</td><td style="color:#a16207;font-weight:700;">78%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Nationality</td><td>12%</td><td style="color:#6b7280;">—</td><td>Singapore</td><td style="color:#dc2626;font-weight:700;">0%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Place of Birth</td><td>11%</td><td style="color:#6b7280;">—</td><td>Singapore</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Gender</td><td>5%</td><td style="color:#6b7280;">—</td><td>Male</td><td style="color:#dc2626;font-weight:700;">0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div><!-- /rev-scroll-pane -->
+
+        <!-- Comment Modal -->
+        <div class="rev-modal-overlay" id="rev-modal">
+          <div class="rev-modal-box">
+            <div class="rev-modal-header">
+              <div class="rev-modal-title">
+                <div class="rev-modal-icon" id="rev-modal-icon" style="background:#eff6ff;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A53A0" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <span id="rev-modal-title-text">Add Comment</span>
+              </div>
+              <button class="rev-modal-close" onclick="closeRevModal()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="rev-modal-body">
+              <div class="rev-modal-action-label">Action</div>
+              <div class="rev-modal-action-badge" id="rev-modal-badge" style="background:#eff6ff;color:#2A53A0;border:1px solid #bfdbfe;">
+                <span id="rev-modal-action-name">Action</span>
+              </div>
+              <div class="rev-modal-comment-label">Comment <span style="color:#dc2626;">*</span></div>
+              <textarea class="rev-modal-textarea" id="rev-modal-comment" placeholder="Add your comment here..." oninput="clearRevModalError()"></textarea>
+              <div class="rev-modal-error" id="rev-modal-error">Comment is required before proceeding.</div>
+            </div>
+            <div class="rev-modal-footer">
+              <button class="res-btn-outline" onclick="closeRevModal()">Cancel</button>
+              <button class="rev-modal-confirm-btn" id="rev-modal-confirm-btn" onclick="confirmRevModal()" style="background:#2A53A0;">Confirm</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="license-warn" style="margin:0 24px 16px;">⚠ Your license will expire on June 12, 2026</div>
+      </div>
+
+      <!-- BULK SCREENING RESULTS — LEVEL 1: MATCH RESULTS LANDING -->
+      <div class="page" id="page-bulk-results" style="padding:0;display:none;flex-direction:column;overflow:hidden;">
+
+        <!-- Top nav bar (batch-style) -->
+        <nav class="blp-topnav">
+          <div class="blp-left">
+            <div class="blp-title">Sanctions Screening</div>
+            <div class="blp-tabs">
+              <button class="blp-tab blp-tab-active">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                Match Results
+              </button>
+              <button class="blp-tab">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg>
+                Watchlists
+              </button>
+              <button class="blp-tab" onclick="switchTab('bulk')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg>
+                New Screening
+              </button>
+            </div>
+          </div>
+          <div class="blp-right">
+            <button class="blp-icon-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+              <span class="blp-notif-dot">3</span>
+            </button>
+            <button class="blp-icon-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
+            <div style="width:1px;height:22px;background:#e5e7eb;margin:0 4px;"></div>
+            <button class="blp-user-pill">
+              <div class="blp-avatar">CC</div>
+              <span class="blp-user-name">charu.c</span>
+            </button>
+          </div>
+        </nav>
+
+        <div class="blp-body">
+          <!-- Header bar -->
+          <div class="blp-header-bar">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <h1 class="blp-heading">Match Results</h1>
+              <span class="blp-count-badge">14 Total</span>
+            </div>
+            <div style="display:flex;gap:10px;">
+              <div class="blp-date-dd" id="blp-date-dd">
+                <button class="blp-date-btn" id="blp-date-btn" onclick="toggleBlpDateDD(event)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+                  <span id="blp-date-label">Last Year</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                </button>
+                <div class="blp-date-menu" id="blp-date-menu">
+                  <button class="blp-date-item" onclick="selectBlpDate('Today')">Today</button>
+                  <button class="blp-date-item" onclick="selectBlpDate('Yesterday')">Yesterday</button>
+                  <button class="blp-date-item" onclick="selectBlpDate('Last 7 Days')">Last 7 Days</button>
+                  <button class="blp-date-item" onclick="selectBlpDate('Last 30 Days')">Last 30 Days</button>
+                  <div style="height:1px;background:#f3f4f6;margin:4px 0;"></div>
+                  <button class="blp-date-item" onclick="selectBlpDate('This Month')">This Month</button>
+                  <button class="blp-date-item" onclick="selectBlpDate('Last Month')">Last Month</button>
+                  <button class="blp-date-item" onclick="selectBlpDate('This Quarter')">This Quarter</button>
+                  <button class="blp-date-item blp-date-active" onclick="selectBlpDate('Last Year')">Last Year</button>
+                  <div style="height:1px;background:#f3f4f6;margin:4px 0;"></div>
+                  <button class="blp-date-item" onclick="selectBlpDate('Custom Range')">Custom Range…</button>
+                </div>
+              </div>
+              <button class="res-btn-primary" style="height:40px;">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Export Report
+              </button>
+            </div>
+          </div>
+
+          <!-- Filter chips bar -->
+          <div class="blp-filters-bar">
+            <div class="blp-fc" id="blp-fc-date" onclick="toggleBlpFilter(event,'blp-fp-date','blp-fc-date')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+              <span class="blp-fc-label">Date Range</span>
+              <span id="blp-fc-date-val">All</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="blp-fp" id="blp-fp-date">
+              <div class="blp-fp-title">Date Range</div>
+              <input type="date" id="blp-fp-date-from" style="width:100%;height:36px;padding:0 10px;border:1px solid #d1d5db;border-radius:7px;font-family:var(--font);font-size:13px;margin-bottom:8px;outline:none;">
+              <input type="date" id="blp-fp-date-to" style="width:100%;height:36px;padding:0 10px;border:1px solid #d1d5db;border-radius:7px;font-family:var(--font);font-size:13px;margin-bottom:8px;outline:none;">
+              <button class="blp-fp-apply" onclick="applyBlpFilter('blp-fc-date','blp-fc-date-val','blp-fp-date',function(){var f=document.getElementById('blp-fp-date-from').value,t=document.getElementById('blp-fp-date-to').value;return(f&&t)?f+' – '+t:(f||t||'All');})">Apply</button>
+            </div>
+
+            <div class="blp-fc" id="blp-fc-branch" onclick="toggleBlpFilter(event,'blp-fp-branch','blp-fc-branch')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span class="blp-fc-label">Branch</span>
+              <span id="blp-fc-branch-val">All</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="blp-fp" id="blp-fp-branch">
+              <div class="blp-fp-title">Branch</div>
+              <select id="blp-fp-branch-sel" style="width:100%;height:36px;padding:0 10px;border:1px solid #d1d5db;border-radius:7px;font-family:var(--font);font-size:13px;margin-bottom:8px;outline:none;">
+                <option value="">All Branches</option>
+                <option>Mumbai - Main</option><option>Delhi - Central</option><option>Chennai - South</option><option>Kolkata - East</option><option>Bengaluru - West</option>
+              </select>
+              <button class="blp-fp-apply" onclick="applyBlpFilter('blp-fc-branch','blp-fc-branch-val','blp-fp-branch',function(){return document.getElementById('blp-fp-branch-sel').value||'All';})">Apply</button>
+            </div>
+
+            <div class="blp-fc" id="blp-fc-custid" onclick="toggleBlpFilter(event,'blp-fp-custid','blp-fc-custid')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span class="blp-fc-label">Customer ID</span>
+              <span id="blp-fc-custid-val">All</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="blp-fp" id="blp-fp-custid">
+              <div class="blp-fp-title">Customer ID</div>
+              <input type="text" id="blp-fp-custid-inp" placeholder="e.g. CUST-2025-08355" style="width:100%;height:36px;padding:0 10px;border:1px solid #d1d5db;border-radius:7px;font-family:var(--font);font-size:13px;margin-bottom:8px;outline:none;">
+              <button class="blp-fp-apply" onclick="applyBlpFilter('blp-fc-custid','blp-fc-custid-val','blp-fp-custid',function(){return document.getElementById('blp-fp-custid-inp').value.trim()||'All';})">Apply</button>
+            </div>
+
+            <div class="blp-fc" id="blp-fc-acct" onclick="toggleBlpFilter(event,'blp-fp-acct','blp-fc-acct')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+              <span class="blp-fc-label">Account No.</span>
+              <span id="blp-fc-acct-val">All</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="blp-fp" id="blp-fp-acct">
+              <div class="blp-fp-title">Account Number</div>
+              <input type="text" id="blp-fp-acct-inp" placeholder="e.g. ACC-0012345678" style="width:100%;height:36px;padding:0 10px;border:1px solid #d1d5db;border-radius:7px;font-family:var(--font);font-size:13px;margin-bottom:8px;outline:none;">
+              <button class="blp-fp-apply" onclick="applyBlpFilter('blp-fc-acct','blp-fc-acct-val','blp-fp-acct',function(){return document.getElementById('blp-fp-acct-inp').value.trim()||'All';})">Apply</button>
+            </div>
+
+            <div class="blp-fc" id="blp-fc-scrtype" onclick="toggleBlpFilter(event,'blp-fp-scrtype','blp-fc-scrtype')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg>
+              <span class="blp-fc-label">Screening Type</span>
+              <span id="blp-fc-scrtype-val">All</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="blp-fp" id="blp-fp-scrtype">
+              <div class="blp-fp-title">Screening Type</div>
+              <select id="blp-fp-scrtype-sel" style="width:100%;height:36px;padding:0 10px;border:1px solid #d1d5db;border-radius:7px;font-family:var(--font);font-size:13px;margin-bottom:8px;outline:none;">
+                <option value="">All Types</option><option>Single</option><option>Bulk</option><option>Batch</option><option>Real-time</option>
+              </select>
+              <button class="blp-fp-apply" onclick="applyBlpFilter('blp-fc-scrtype','blp-fc-scrtype-val','blp-fp-scrtype',function(){return document.getElementById('blp-fp-scrtype-sel').value||'All';})">Apply</button>
+            </div>
+
+            <div class="blp-fc" id="blp-fc-listname" onclick="toggleBlpFilter(event,'blp-fp-listname','blp-fc-listname')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg>
+              <span class="blp-fc-label">List Name</span>
+              <span id="blp-fc-listname-val">All</span>
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+            </div>
+            <div class="blp-fp" id="blp-fp-listname">
+              <div class="blp-fp-title">List Name</div>
+              <select id="blp-fp-listname-sel" style="width:100%;height:36px;padding:0 10px;border:1px solid #d1d5db;border-radius:7px;font-family:var(--font);font-size:13px;margin-bottom:8px;outline:none;">
+                <option value="">All Lists</option><option>OFAC SDN List</option><option>UN Security Council Consolidated List (UNSCR 1267)</option><option>UAE Local Lists</option><option>EU Sanctions List</option><option>UK HM Treasury List</option><option>DFAT Australia Sanctions</option><option>World Bank Debarment List</option><option>INTERPOL Red Notice</option>
+              </select>
+              <button class="blp-fp-apply" onclick="applyBlpFilter('blp-fc-listname','blp-fc-listname-val','blp-fp-listname',function(){return document.getElementById('blp-fp-listname-sel').value||'All';})">Apply</button>
+            </div>
+
+            <div style="width:1px;height:22px;background:#e5e7eb;flex-shrink:0;"></div>
+            <button class="blp-clear-btn" onclick="clearBlpFilters()">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              Clear Filters
+            </button>
+          </div>
+
+          <!-- Sort / search row -->
+          <div class="blp-sortrow">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:13px;color:#6b7280;"><strong style="color:#374151;">Showing 1–10 of 14</strong></span>
+              <span style="color:#d1d5db;">·</span>
+              <span style="font-size:13px;color:#6b7280;">Sorted by: Date (Newest First)</span>
+            </div>
+            <div class="blp-search-box">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              <input type="text" placeholder="Search by name, customer ID, list name...">
+            </div>
+          </div>
+
+          <!-- Table -->
+          <div class="blp-table-wrap">
+            <div class="blp-table-card">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Name</th><th>Cust ID</th><th>Number of Matched List</th>
+                    <th>Highest Match Score</th><th>List Name With Highest Match Score</th>
+                    <th>Match Category</th><th>Match Type</th><th>Match Date</th><th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="blp-landing-tbody"></tbody>
+              </table>
+              <div class="blp-table-footer">
+                <span>Showing 1–10 of 14 results</span>
+                <div class="blp-pagination">
+                  <button class="blp-pg-btn">←</button>
+                  <button class="blp-pg-btn blp-pg-active">1</button>
+                  <button class="blp-pg-btn">2</button>
+                  <button class="blp-pg-btn">→</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="blp-footer">
+          <div>Your license will expire on June 12, 2026</div>
+          <div style="text-align:center;display:flex;align-items:center;justify-content:center;gap:4px;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg>
+            Clari5 - A Perfios Software Company
+          </div>
+          <div style="text-align:right;">Important Links</div>
+        </div>
+      </div>
+
+      <!-- BULK SCREENING RESULTS — LEVEL 2: SCREENING RESULTS (screen-p1 style) -->
+      <div class="page" id="page-bulk-p1" style="padding:0;display:none;flex-direction:column;overflow:hidden;">
+        <div class="res-topbar">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="res-back-btn" onclick="showBulkResults()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            </button>
+            <h1 style="font-size:17px;font-weight:700;color:#111827;margin:0;">Screening Results</h1>
+          </div>
+          <div style="display:flex;gap:10px;">
+            <button class="res-btn-outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Export Report
+            </button>
+            <button class="res-btn-primary" onclick="switchTab('bulk')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              New Screening
+            </button>
+          </div>
+        </div>
+
+        <div style="flex:1;overflow-y:auto;padding:20px 24px;">
+          <!-- Subject card -->
+          <div class="res-subject-card">
+            <div class="res-subject-field"><label>Primary Name</label><div class="res-val res-val-big">William James Harrington</div></div>
+            <div class="res-field-div"></div>
+            <div class="res-subject-field"><label>ID Number</label><div class="res-val" style="font-family:monospace;font-size:12px;">CUST-2025-08355</div></div>
+            <div class="res-field-div"></div>
+            <div class="res-subject-field"><label>Date of Birth</label><div class="res-val res-val-muted">—</div></div>
+            <div class="res-field-div"></div>
+            <div class="res-subject-field"><label>Nationality</label><div class="res-val res-val-muted">—</div></div>
+            <div class="res-field-div"></div>
+            <div class="res-subject-field"><label>Entity Type</label><div class="res-val">Individual</div></div>
+            <div class="res-field-div"></div>
+            <div class="res-subject-field"><label>Watchlist Profile</label><span class="res-badge res-badge-blue2">High-Risk Jurisdiction Screening</span></div>
+            <div class="res-field-div"></div>
+            <div class="res-subject-field"><label>Purpose</label><div class="res-val">Customer Onboarding</div></div>
+          </div>
+
+          <!-- AI Banner -->
+          <div class="res-ai-banner">
+            <div class="res-ai-top-bar"></div>
+            <div class="res-ai-body">
+              <div class="res-ai-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>
+              </div>
+              <div style="flex:1;">
+                <div class="res-ai-label-row">
+                  <span class="res-ai-module">AI Screening Summary</span>
+                  <span class="res-ai-tag">GENAI • GPT-4O</span>
+                </div>
+                <p class="res-ai-text">
+                  Screening for <span class="res-hl-blue">WILLIAM JAMES HARRINGTON</span> returned <span class="res-hl-red">2 potential watchlist matches</span> across active lists.
+                  <span class="res-hl-red-b">1 record is Critical</span> (≥90% score) — linked to the
+                  <span style="font-weight:700;background:#fef2f2;padding:0 4px;border-radius:3px;">UN Security Council Consolidated List (UNSCR 1267)</span>, which may carry mandatory EDD obligations.
+                </p>
+                <p class="res-ai-text" style="margin-top:6px;">
+                  No DOB or nationality was provided — name-based matching only.
+                  <span class="res-hl-green">Click any row to view the full AI analysis and watchlist hit details.</span>
+                </p>
+                <div class="res-ai-badges">
+                  <span class="res-badge res-badge-red" style="gap:5px;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                    1 Critical match
+                  </span>
+                  <span class="res-badge res-badge-amber" style="gap:5px;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    Missing ID – disambiguation needed
+                  </span>
+                  <span class="res-badge res-badge-blue" style="gap:5px;">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg>
+                    2 List hits across 2 results
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="res-stats-strip">
+            <div class="res-stat-chip"><div class="res-stat-num res-num-red">1</div><div class="res-stat-lbl">Critical</div></div>
+            <div class="res-stat-chip"><div class="res-stat-num res-num-gray">1</div><div class="res-stat-lbl">High</div></div>
+            <div class="res-stat-chip"><div class="res-stat-num res-num-gray">0</div><div class="res-stat-lbl">Medium</div></div>
+            <div class="res-stat-chip"><div class="res-stat-num res-num-gray" style="font-size:16px;margin-top:2px;">2 of 2</div><div class="res-stat-lbl">Results shown</div></div>
+          </div>
+
+          <!-- Results table section header -->
+          <div class="res-section-header">
+            <div style="display:flex;align-items:center;gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+              <span class="res-section-title">2 Potential Matches Found</span>
+            </div>
+            <button class="res-btn-outline" style="height:34px;font-size:12px;padding:0 12px;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg>
+              Filter Results
+            </button>
+          </div>
+
+          <!-- Results table -->
+          <div class="res-table-card">
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th><th>Cust ID</th><th>Number Of Matched List</th>
+                  <th>Highest Match Score</th><th>List Name With Highest Match Score</th>
+                  <th>Match Category</th><th>Match Type</th><th>Match Date</th><th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="font-weight:700;color:#111827;">William James Harrington</td>
+                  <td style="font-family:monospace;font-size:12px;">CUST-2025-08355</td>
+                  <td>
+                    <div class="res-matched-chip" onclick="showBulkMatchReview('ai')" title="Click to view match details">
+                      <span class="res-matched-num">2</span>
+                      <span class="res-matched-label">LISTS</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#3b82f6;flex-shrink:0;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      <span class="res-matched-tooltip">Click to view match details</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      <span style="font-size:13px;font-weight:700;color:#dc2626;">95%</span>
+                      <div style="width:52px;height:4px;background:#e5e7eb;border-radius:2px;overflow:hidden;"><div style="height:100%;width:95%;background:#ef4444;border-radius:2px;"></div></div>
+                    </div>
+                  </td>
+                  <td style="color:#2A53A0;font-size:12px;">UN Security Council Consolidated List (UNSCR 1267)</td>
+                  <td><span class="res-badge res-badge-red">Sanctions</span></td>
+                  <td><span class="res-badge" style="background:#f8fafc;color:#475569;border:1px solid #e2e8f0;">Single</span></td>
+                  <td style="font-size:12px;color:#6b7280;">31/12/2025</td>
+                  <td>
+                    <div class="res-action-dropdown">
+                      <button class="res-action-btn" id="blp-p1-drop-btn" onclick="toggleResDD(event,'blp-p1-drop')">
+                        <span id="blp-p1-drop-label">Actions</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                      </button>
+                      <div class="res-action-menu" id="blp-p1-drop">
+                        <button class="res-action-item res-item-view" onclick="closeResDD();showBulkMatchReview('ai')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                          View Details
+                        </button>
+                        <div class="res-item-divider"></div>
+                        <button class="res-action-item" onclick="closeResDD();setBlpP1Status('Under Review')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                          Under Review
+                        </button>
+                        <button class="res-action-item" onclick="closeResDD();setBlpP1Status('Move to Case')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                          Move to Case
+                        </button>
+                        <button class="res-action-item" onclick="closeResDD();setBlpP1Status('Move to Whitelist')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                          Move to Whitelist
+                        </button>
+                        <div class="res-item-divider"></div>
+                        <button class="res-action-item res-item-exception" onclick="closeResDD();setBlpP1Status('Move to Exception List')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                          Move to Exception List
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="font-weight:700;color:#111827;">William James Harrington</td>
+                  <td style="font-family:monospace;font-size:12px;">CUST-2025-08355</td>
+                  <td>
+                    <div class="res-matched-chip" onclick="showBulkMatchReview('ai')" title="Click to view match details">
+                      <span class="res-matched-num">1</span>
+                      <span class="res-matched-label">LIST</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#3b82f6;flex-shrink:0;"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      <span class="res-matched-tooltip">Click to view match details</span>
+                    </div>
+                  </td>
+                  <td>
+                    <div style="display:flex;align-items:center;gap:8px;">
+                      <span style="font-size:13px;font-weight:700;color:#c2410c;">88%</span>
+                      <div style="width:52px;height:4px;background:#e5e7eb;border-radius:2px;overflow:hidden;"><div style="height:100%;width:88%;background:#f97316;border-radius:2px;"></div></div>
+                    </div>
+                  </td>
+                  <td style="color:#2A53A0;font-size:12px;">OFAC SDN List</td>
+                  <td><span class="res-badge res-badge-red">Sanctions</span></td>
+                  <td><span class="res-badge" style="background:#f8fafc;color:#475569;border:1px solid #e2e8f0;">Bulk</span></td>
+                  <td style="font-size:12px;color:#6b7280;">31/12/2025</td>
+                  <td>
+                    <div class="res-action-dropdown">
+                      <button class="res-action-btn" id="blp-p1-drop2-btn" onclick="toggleResDD(event,'blp-p1-drop2')">
+                        <span id="blp-p1-drop2-label">Under Review</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                      </button>
+                      <div class="res-action-menu" id="blp-p1-drop2">
+                        <button class="res-action-item res-item-view" onclick="closeResDD();showBulkMatchReview('ai')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                          View Details
+                        </button>
+                        <div class="res-item-divider"></div>
+                        <button class="res-action-item" onclick="closeResDD();setBlpP1Status2('Under Review')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                          Under Review
+                        </button>
+                        <button class="res-action-item" onclick="closeResDD();setBlpP1Status2('Move to Case')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                          Move to Case
+                        </button>
+                        <button class="res-action-item" onclick="closeResDD();setBlpP1Status2('Move to Whitelist')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                          Move to Whitelist
+                        </button>
+                        <div class="res-item-divider"></div>
+                        <button class="res-action-item res-item-exception" onclick="closeResDD();setBlpP1Status2('Move to Exception List')">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                          Move to Exception List
+                        </button>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="res-table-footer">
+              <span>Showing 2 of 2 results</span>
+              <span>Search Time: 0.31 seconds</span>
+            </div>
+          </div>
+
+          <div class="license-warn" style="margin-top:16px;">⚠ Your license will expire on June 12, 2026</div>
+        </div>
+      </div>
+
+      <!-- BULK SCREENING RESULTS — LEVEL 3: MATCH REVIEW (AI Summary / Match Details / View Summary) -->
+      <div class="page" id="page-bulk-review" style="padding:0;display:none;flex-direction:column;overflow:hidden;">
+        <div class="rev-header">
+          <div class="rev-header-row">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <button class="res-back-btn" onclick="showBulkP1()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+              </button>
+              <div>
+                <div class="rev-title">Match Review</div>
+                <div class="rev-ref">Ref ID: <span>SCR-BULK-1778218453580</span></div>
+              </div>
+            </div>
+            <div class="rev-actions">
+              <button class="res-btn-outline">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Report
+              </button>
+              <div style="width:1px;height:24px;background:#d1d5db;"></div>
+              <button class="rev-btn-fp" onclick="openBlkRevModal('False Positive','positive')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+                False Positive
+              </button>
+              <button class="rev-btn-confirm" onclick="openBlkRevModal('Confirm Match','confirm')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+                Confirm Match
+              </button>
+            </div>
+          </div>
+          <div class="rev-tab-bar">
+            <button class="rev-tab active" id="blk-tab-ai" onclick="switchBlkRevTab('ai')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              AI Summary
+            </button>
+            <button class="rev-tab" id="blk-tab-match" onclick="switchBlkRevTab('match')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+              Match Details
+            </button>
+            <button class="rev-tab" id="blk-tab-summary" onclick="switchBlkRevTab('summary')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              View Summary
+            </button>
+          </div>
+        </div>
+
+        <div class="rev-scroll-pane">
+          <!-- TAB: AI SUMMARY -->
+          <div id="blk-pane-ai" class="rev-pane active">
+            <div class="rev-alert-banner">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              <div>
+                <h3>High-Confidence Sanctions Match — Immediate Action Required</h3>
+                <p><strong>WILLIAM JAMES HARRINGTON (CUST-2025-08355)</strong> has returned 2 watchlist hits — 1 on the UN Security Council Consolidated List (Critical, 95%) and 1 on the OFAC SDN List (High, 88%). International asset-freeze obligations apply. <strong>Do not transact until resolved.</strong></p>
+              </div>
+            </div>
+            <div class="rev-narrative-card">
+              <div class="rev-narrative-header">
+                <div class="rev-ai-icon-box">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+                </div>
+                <h3>AI Investigation Narrative</h3>
+                <span style="font-size:11px;color:#9ca3af;">GenAI GPT-4o</span>
+                <span class="rev-conf-badge">Confidence: High</span>
+              </div>
+              <p class="rev-narrative-text">The customer <strong>WILLIAM JAMES HARRINGTON (CUST-2025-08355)</strong> has produced an overall risk score of <strong>95/100 (Critical)</strong> across 2 watchlist hits. The highest-scoring hit originates from the <strong>UN Security Council Consolidated List (UNSCR 1267)</strong> — a globally binding sanctions list maintained by the UN Security Council designating individuals and entities subject to asset freezes, travel bans, and arms embargoes.</p>
+              <p class="rev-narrative-text">The top match is <strong>WILLIAM JAMES HARRINGTON (95%)</strong> on the UNSCR 1267 list, and <strong>W.J. HARRINGTON (88%)</strong> on the OFAC SDN List. Across both hits, name similarity scored between 88%–95% and nationality matched 100%. No DOB or passport number was provided, preventing full disambiguation.</p>
+              <p class="rev-narrative-text"><strong>Recommended action:</strong> escalate to a sanctions case immediately. Collect full identity documentation (passport, NRIC) to attempt disambiguation before any transactions are processed.</p>
+              <div class="rev-signal-grid">
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/></svg> UN Security Council Designation</h4><p>Critical hit on UNSCR 1267 list (95%). Asset freeze, travel ban, and arms embargo obligations apply under international law.</p></div>
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/></svg> OFAC SDN Exposure</h4><p>Secondary exposure via OFAC SDN List (88%). US Treasury asset-freeze obligations may apply if match is confirmed.</p></div>
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> High Name Similarity (88–95%)</h4><p>Full name match across both lists. The combination of first, middle, and last name is a strong indicator of a true match.</p></div>
+                <div class="rev-signal-card"><h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Missing DOB / Passport — Cannot Exclude</h4><p>No date of birth or passport provided. Full disambiguation requires collection of identity documentation from the customer.</p></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB: MATCH DETAILS -->
+          <div id="blk-pane-match" class="rev-pane">
+            <div class="rev-status-grid">
+              <div class="rev-status-card"><label>Overall Risk Score</label><div class="rev-big-score">95 <span>/ 100</span></div></div>
+              <div class="rev-status-card">
+                <label>Status Details</label>
+                <div class="rev-kv"><span class="rev-k">Status</span><span class="res-badge res-badge-amber">Potential Match</span></div>
+                <div class="rev-kv"><span class="rev-k">Total Matches</span><span class="rev-v">2</span></div>
+                <div class="rev-kv"><span class="rev-k">Highest Match</span><span class="rev-v" style="font-size:12px;color:#2A53A0;">UN Security Council Consolidated List</span></div>
+              </div>
+              <div class="rev-status-card">
+                <label>Match Details (Screened Subject)</label>
+                <div class="rev-kv"><span class="rev-k">Full Name</span><span class="rev-v">William James Harrington</span></div>
+                <div class="rev-kv"><span class="rev-k">Date of Birth</span><span class="rev-v" style="color:#9ca3af;">—</span></div>
+                <div class="rev-kv"><span class="rev-k">Nationality</span><span class="rev-v" style="color:#9ca3af;">—</span></div>
+                <div class="rev-kv"><span class="rev-k">Passport No.</span><span class="rev-v" style="color:#9ca3af;">—</span></div>
+              </div>
+            </div>
+            <p style="font-size:13px;font-weight:700;color:#374151;margin-bottom:12px;">Watchlist Hits (2)</p>
+            <div class="rev-hit-card">
+              <div class="rev-hit-header">
+                <div class="rev-hit-score-col"><div class="rev-hit-score red">95%</div><div style="margin-top:3px;"><span class="res-badge res-badge-red" style="font-size:10px;padding:2px 8px;">Critical</span></div></div>
+                <div class="rev-hit-info"><div class="rev-hit-name">UN Security Council Consolidated List (UNSCR 1267)</div><div class="rev-hit-meta">Sanctions · United Nations Security Council<br>Globally binding sanctions list designating individuals and entities subject to asset freezes, travel bans, and arms embargoes under international law.</div></div>
+                <div class="rev-hit-actions"><button class="rev-btn-vfp">View Full Profile</button><button class="rev-btn-esc" onclick="openBlkRevModal('Escalate Case','confirm')">Escalate Case</button></div>
+              </div>
+              <table><thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>William James Harrington</td><td>WILLIAM JAMES HARRINGTON</td><td style="color:#15803d;font-weight:700;">95%</td></tr>
+                <tr><td>Date of Birth</td><td style="color:#6b7280;">—</td><td>1968-03-14</td><td style="color:#a16207;font-weight:700;">72%</td></tr>
+                <tr><td>Nationality</td><td style="color:#6b7280;">—</td><td>United Kingdom</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                <tr><td>Place of Birth</td><td style="color:#6b7280;">—</td><td>London, UK</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+              </tbody></table>
+            </div>
+            <div class="rev-hit-card">
+              <div class="rev-hit-header">
+                <div class="rev-hit-score-col"><div class="rev-hit-score orange">88%</div><div style="margin-top:3px;"><span class="res-badge res-badge-orange" style="font-size:10px;padding:2px 8px;">High</span></div></div>
+                <div class="rev-hit-info"><div class="rev-hit-name">OFAC SDN List</div><div class="rev-hit-meta">Sanctions · US Treasury / OFAC<br>Specially Designated Nationals and Blocked Persons list maintained by the US Department of Treasury Office of Foreign Assets Control.</div></div>
+                <div class="rev-hit-actions"><button class="rev-btn-vfp">View Full Profile</button><button class="rev-btn-esc" onclick="openBlkRevModal('Escalate Case','confirm')">Escalate Case</button></div>
+              </div>
+              <table><thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>William James Harrington</td><td>W.J. HARRINGTON</td><td style="color:#2A53A0;font-weight:700;">88%</td></tr>
+                <tr><td>Nationality</td><td style="color:#6b7280;">—</td><td>United Kingdom</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                <tr><td>Date of Birth</td><td style="color:#6b7280;">—</td><td>1968-03-14</td><td style="color:#a16207;font-weight:700;">65%</td></tr>
+              </tbody></table>
+            </div>
+          </div>
+
+          <!-- TAB: VIEW SUMMARY -->
+          <div id="blk-pane-summary" class="rev-pane">
+            <div class="rev-summary-grid">
+              <div class="rev-sum-card">
+                <h3>Customer Information</h3>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Customer ID</span><span class="rev-sum-v" style="font-family:monospace;font-size:12px;">CUST-2025-08355</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Customer Type</span><span class="rev-sum-v">Individual</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Overall CRC Score</span><span class="rev-sum-v" style="font-size:28px;font-weight:900;color:#dc2626;line-height:1;">95</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">CRC Category</span><span class="res-badge res-badge-red">Critical</span></div>
+              </div>
+              <div class="rev-sum-card">
+                <h3>Match Statistics</h3>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Total List Matches</span><span class="rev-sum-v">2</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Highest Match Score</span><span class="rev-sum-v" style="color:#dc2626;">95.00%</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Used for Calculation</span><span class="rev-sum-v" style="font-size:12px;">Highest match score</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Sanctions Risk</span><span class="rev-sum-v" style="color:#dc2626;">High</span></div>
+                <div class="rev-sum-kv"><span class="rev-sum-k">Cut-off Threshold</span><span class="rev-sum-v">80%</span></div>
+                <div style="margin-top:10px;font-size:11px;color:#9ca3af;line-height:1.8;border-top:1px solid #f3f4f6;padding-top:10px;"><strong>Risk Ranges:</strong><br>Low: 50–70% · Medium: 70.1–90% · High: &gt;90.1%</div>
+              </div>
+            </div>
+            <div class="rev-detail-table">
+              <div class="rev-detail-header">Detailed Attribute Comparison — Customer details vs. watchlist records</div>
+              <table>
+                <thead><tr><th>Score</th><th>WL</th><th>Key Attribute</th><th>Weight %</th><th>Customer Value</th><th colspan="2">Watchlist Records</th></tr></thead>
+                <tbody>
+                  <tr style="background:#f0f5ff;"><td rowspan="5" style="font-size:16px;font-weight:800;color:#2A53A0;text-align:center;vertical-align:middle;">95.0%</td><td rowspan="5" style="font-size:11px;color:#6b7280;vertical-align:middle;line-height:1.5;max-width:110px;"><strong>UN Security Council<br>Consolidated List<br>(UNSCR 1267)</strong><br><span style="color:#dc2626;font-weight:700;">95.00%</span></td><td>Name</td><td>40%</td><td>William James Harrington</td><td>WILLIAM JAMES HARRINGTON</td><td style="color:#15803d;font-weight:700;">95%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Date of Birth</td><td>25%</td><td style="color:#6b7280;">—</td><td>1968-03-14</td><td style="color:#a16207;font-weight:700;">72%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Nationality</td><td>12%</td><td style="color:#6b7280;">—</td><td>United Kingdom</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Place of Birth</td><td>11%</td><td style="color:#6b7280;">—</td><td>London, UK</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                  <tr style="background:#f0f5ff;"><td>Gender</td><td>5%</td><td style="color:#6b7280;">—</td><td>Male</td><td style="color:#dc2626;font-weight:700;">0%</td></tr>
+                  <tr style="background:#fff9f5;"><td rowspan="4" style="font-size:16px;font-weight:800;color:#c2410c;text-align:center;vertical-align:middle;">88.0%</td><td rowspan="4" style="font-size:11px;color:#6b7280;vertical-align:middle;line-height:1.5;max-width:110px;"><strong>OFAC SDN</strong><br><span style="color:#c2410c;font-weight:700;">88.00%</span></td><td>Name</td><td>40%</td><td>William James Harrington</td><td>W.J. HARRINGTON</td><td style="color:#2A53A0;font-weight:700;">88%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Date of Birth</td><td>25%</td><td style="color:#6b7280;">—</td><td>1968-03-14</td><td style="color:#a16207;font-weight:700;">65%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Nationality</td><td>12%</td><td style="color:#6b7280;">—</td><td>United Kingdom</td><td style="color:#15803d;font-weight:700;">100%</td></tr>
+                  <tr style="background:#fff9f5;"><td>Gender</td><td>5%</td><td style="color:#6b7280;">—</td><td>Male</td><td style="color:#dc2626;font-weight:700;">0%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div><!-- /rev-scroll-pane -->
+
+        <!-- Comment Modal for bulk review -->
+        <div class="rev-modal-overlay" id="blk-rev-modal">
+          <div class="rev-modal-box">
+            <div class="rev-modal-header">
+              <div class="rev-modal-title">
+                <div class="rev-modal-icon" id="blk-rev-modal-icon" style="background:#eff6ff;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A53A0" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <span id="blk-rev-modal-title-text">Add Comment</span>
+              </div>
+              <button class="rev-modal-close" onclick="closeBlkRevModal()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+              </button>
+            </div>
+            <div class="rev-modal-body">
+              <div class="rev-modal-action-label">Action</div>
+              <div class="rev-modal-action-badge" id="blk-rev-modal-badge" style="background:#eff6ff;color:#2A53A0;border:1px solid #bfdbfe;">
+                <span id="blk-rev-modal-action-name">Action</span>
+              </div>
+              <div class="rev-modal-comment-label">Comment <span style="color:#dc2626;">*</span></div>
+              <textarea class="rev-modal-textarea" id="blk-rev-modal-comment" placeholder="Add your comment here..." oninput="clearBlkRevModalError()"></textarea>
+              <div class="rev-modal-error" id="blk-rev-modal-error">Comment is required before proceeding.</div>
+            </div>
+            <div class="rev-modal-footer">
+              <button class="res-btn-outline" onclick="closeBlkRevModal()">Cancel</button>
+              <button class="rev-modal-confirm-btn" id="blk-rev-modal-confirm-btn" onclick="confirmBlkRevModal()" style="background:#2A53A0;">Confirm</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="license-warn" style="margin:0 24px 16px;">⚠ Your license will expire on June 12, 2026</div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+const WATCHLISTS = [
+  {
+    id: 'onboarding',
+    title: 'Onboarding Screening',
+    tag: 'Onboarding',
+    tagClass: 'onboarding',
+    desc: 'Comprehensive screening for new customer onboarding with UN, OFAC, and EU sanctions lists',
+    pills: ['3 Lists', 'Threshold: 75%', 'Fuzzy Match: Enabled']
+  },
+  {
+    id: 'monitoring',
+    title: 'Continuous Monitoring',
+    tag: 'Monitoring',
+    tagClass: 'monitoring',
+    desc: 'Ongoing monitoring of customer transactions against major lists',
+    pills: ['3 Lists', 'Threshold: 80%', 'Exact Match Priority']
+  },
+  {
+    id: 'highrisk',
+    title: 'High-Risk Jurisdiction Screening',
+    tag: 'Enhanced Due-Diligence',
+    tagClass: 'edd',
+    desc: 'Enhanced screening for customers from high-risk countries with broadened criteria',
+    pills: ['5 Lists', 'Threshold: 70%', 'Phonetic Match: Enabled']
+  },
+  {
+    id: 'singapore',
+    title: 'Singapore High-Risk Screening',
+    tag: 'MAS Regulatory',
+    tagClass: 'regulatory',
+    desc: 'MAS-designated high-risk individuals and entities subject to enhanced due diligence under Singapore AML/CFT requirements',
+    pills: ['4 Lists', 'Threshold: 70%', 'Phonetic Match: Enabled']
+  },
+  {
+    id: 'uae',
+    title: 'UAE Compliance Watchlist',
+    tag: 'Regulatory',
+    tagClass: 'regulatory',
+    desc: 'UAE Cabinet designated terrorists and sanctioned entities',
+    pills: ['1 List', 'Threshold: 75%', 'ID Override: Active']
+  }
+];
+
+const BULK_RESULTS = [
+  { seq: 1, name: 'SIN HUAT ALAN',        custId: 'CUST-76433', type: 'Individual',   matches: 3, score: 92, topList: 'OFAC SDN List',                   severity: 'critical', date: '27-05-2026', status: 'Under Review' },
+  { seq: 2, name: 'AHMAD BIN YUSOF',      custId: 'CUST-44201', type: 'Individual',   matches: 2, score: 91, topList: 'Singapore High-Risk Screening',   severity: 'critical', date: '27-05-2026', status: 'Under Review' },
+  { seq: 3, name: 'TAN WEI MING',         custId: 'CUST-38812', type: 'Individual',   matches: 2, score: 85, topList: 'MAS Watchlist',                   severity: 'high',     date: '27-05-2026', status: 'Under Review' },
+  { seq: 4, name: 'LIM TRADING PTE LTD',  custId: 'CUST-55901', type: 'Organization', matches: 1, score: 83, topList: 'EU Consolidated List',            severity: 'high',     date: '27-05-2026', status: 'Under Review' },
+  { seq: 5, name: 'WANG FANG',            custId: 'CUST-62247', type: 'Individual',   matches: 1, score: 80, topList: 'UN Security Council Sanctions',   severity: 'high',     date: '27-05-2026', status: 'Under Review' },
+  { seq: 6, name: 'IBRAHIM AL-RASHID',    custId: 'CUST-71034', type: 'Individual',   matches: 2, score: 77, topList: 'OFAC SDN List',                   severity: 'medium',   date: '27-05-2026', status: 'Under Review' },
+  { seq: 7, name: 'PACIFIC STAR VESSELS', custId: 'CUST-29988', type: 'Organization', matches: 1, score: 74, topList: 'EU Consolidated List',            severity: 'medium',   date: '27-05-2026', status: 'Under Review' },
+  { seq: 8, name: 'KUMAR SELVAM',         custId: 'CUST-83341', type: 'Individual',   matches: 1, score: 71, topList: 'MAS Regulatory',                  severity: 'medium',   date: '27-05-2026', status: 'Under Review' },
+];
+
+// ─── BATCH LANDING PAGE DATA ───────────────────────────────
+const BLP_ROWS = [
+  { name:'William James Harrington', id:'CUST-2025-08355', matched:2, score:95, list:'UN Security Council Consolidated List (UNSCR 1267)', cat:'Sanctions', catStyle:'res-badge-red', type:'Single', date:'31/12/2025', status:'Under Review', nav:true },
+  { name:'KHALIFA MOHD T AL SUBAEY', id:'685868', matched:1, score:100, list:'UAE Local Lists (Terrorist & Sanction)', cat:'Sanctions', catStyle:'res-badge-red', type:'Single', date:'31/12/2025', status:'Under Review' },
+  { name:'Dawood Ibrahim Kaskar', id:'CUST-2025-08341', matched:3, score:96.5, list:'OFAC SDN List', cat:'Sanctions', catStyle:'res-badge-red', type:'Single', date:'23/12/2025', status:'Under Review' },
+  { name:'Ali Hassan Mwinyimvua', id:'CUST-2025-08340', matched:2, score:92.8, list:'UN Consolidated List', cat:'PEP', catStyle:'res-badge-amber', type:'Bulk', date:'18/12/2025', status:'Under Review' },
+  { name:'Global Trading Solutions LLC', id:'CUST-2025-08339', matched:1, score:88.3, list:'EU Sanctions List', cat:'Sanctions', catStyle:'res-badge-red', type:'Single', date:'15/12/2025', status:'Move to Case' },
+  { name:'Vladimir Nikolaev Petrov', id:'CUST-2025-08338', matched:4, score:94.7, list:'OFAC SDN List', cat:'Sanctions', catStyle:'res-badge-red', type:'Single', date:'10/12/2025', status:'Move to Case' },
+  { name:'Maria Gonzalez Rodriguez', id:'CUST-2025-08337', matched:1, score:78.2, list:'World Bank Debarment List', cat:'Adverse Media', catStyle:'res-badge-blue', type:'Bulk', date:'05/12/2025', status:'False Hits' },
+  { name:'Ahmed bin Mohammed Al-Rashid', id:'CUST-2025-08336', matched:2, score:85.6, list:'UK HM Treasury List', cat:'PEP', catStyle:'res-badge-amber', type:'Single', date:'28/11/2025', status:'Under Review' },
+  { name:'Chen Wei Technology Corp', id:'CUST-2025-08335', matched:1, score:81.4, list:'DFAT Australia Sanctions', cat:'Sanctions', catStyle:'res-badge-red', type:'Bulk', date:'22/11/2025', status:'Move to Whitelist' },
+  { name:'Ricardo Perez Martinez', id:'CUST-2025-08334', matched:3, score:90.1, list:'INTERPOL Red Notice', cat:'Law Enforcement', catStyle:'res-badge-blue', type:'Single', date:'17/11/2025', status:'Move to Case' },
+];
+
+function blpScoreColor(s) { return s>=90?'#dc2626':s>=75?'#c2410c':'#a16207'; }
+function blpBarColor(s) { return s>=90?'#ef4444':s>=75?'#f97316':'#eab308'; }
+
+function buildBlpLandingTable() {
+  const tbody = document.getElementById('blp-landing-tbody');
+  if (!tbody) return;
+  tbody.innerHTML = BLP_ROWS.map((r, idx) => {
+    const scoreC = blpScoreColor(r.score);
+    const barC = blpBarColor(r.score);
+    const dropId = `blp-adrop-${idx}`;
+    const navFn = r.nav ? `showBulkP1()` : ``;
+    return `<tr>
+      <td><span class="blp-name-link" ${r.nav?`onclick="showBulkP1()"`:''}>${r.name}</span></td>
+      <td style="font-family:monospace;font-size:12px;">${r.id}</td>
+      <td><span class="blp-num-link" ${r.nav?`onclick="showBulkP1()"`:''} >${r.matched}</span></td>
+      <td>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <span style="font-size:13px;font-weight:700;color:${scoreC};">${r.score}%</span>
+          <div style="width:52px;height:4px;background:#e5e7eb;border-radius:2px;overflow:hidden;"><div style="height:100%;width:${Math.min(r.score,100)}%;background:${barC};border-radius:2px;"></div></div>
+        </div>
+      </td>
+      <td style="font-size:12px;color:#2A53A0;">${r.list}</td>
+      <td><span class="res-badge ${r.catStyle}">${r.cat}</span></td>
+      <td><span class="res-badge" style="background:#f8fafc;color:#475569;border:1px solid #e2e8f0;">${r.type}</span></td>
+      <td style="font-size:12px;color:#6b7280;">${r.date}</td>
+      <td>
+        <div class="res-action-dropdown">
+          <button class="res-action-btn" id="${dropId}-btn" onclick="toggleResDD(event,'${dropId}')">
+            <span id="${dropId}-label">${r.status}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="res-action-menu" id="${dropId}">
+            <button class="res-action-item res-item-view" onclick="closeResDD();${r.nav?'showBulkP1()':''}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              View
+            </button>
+            <div class="res-item-divider"></div>
+            <button class="res-action-item" onclick="closeResDD();document.getElementById('${dropId}-label').textContent='Under Review';">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Under Review
+            </button>
+            <button class="res-action-item" onclick="closeResDD();document.getElementById('${dropId}-label').textContent='Move to Case';">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              Move to Case
+            </button>
+            <button class="res-action-item" onclick="closeResDD();document.getElementById('${dropId}-label').textContent='Move to Whitelist';">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Move to Whitelist
+            </button>
+            <div class="res-item-divider"></div>
+            <button class="res-action-item res-item-exception" onclick="closeResDD();document.getElementById('${dropId}-label').textContent='Move to Exception List';">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Move to Exception List
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function showBulkResults() {
+  ['page-manual','page-bulk','page-results','page-match-review','page-bulk-p1','page-bulk-review'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  const br = document.getElementById('page-bulk-results');
+  br.classList.add('active');
+  document.getElementById('page-title').textContent = 'Batch Screening — Match Results';
+  buildBlpLandingTable();
+}
+
+function showBulkP1() {
+  ['page-manual','page-bulk','page-results','page-match-review','page-bulk-results','page-bulk-review'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  document.getElementById('page-bulk-p1').classList.add('active');
+  document.getElementById('page-title').textContent = 'Batch — Screening Results';
+}
+
+function showBulkMatchReview(tab) {
+  ['page-manual','page-bulk','page-results','page-match-review','page-bulk-results','page-bulk-p1'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
+  document.getElementById('page-bulk-review').classList.add('active');
+  document.getElementById('page-title').textContent = 'Batch — Match Review';
+  switchBlkRevTab(tab || 'ai');
+}
+
+function switchBlkRevTab(tabId) {
+  ['ai','match','summary'].forEach(t => {
+    document.getElementById('blk-pane-' + t).classList.remove('active');
+    document.getElementById('blk-tab-' + t).classList.remove('active');
+  });
+  document.getElementById('blk-pane-' + tabId).classList.add('active');
+  document.getElementById('blk-tab-' + tabId).classList.add('active');
+  const sp = document.getElementById('page-bulk-review').querySelector('.rev-scroll-pane');
+  if (sp) sp.scrollTop = 0;
+}
+
+function openBlkRevModal(actionName, styleKey) {
+  const styles = {
+    view:    { bg:'#eff6ff', color:'#2A53A0', border:'#bfdbfe', btnBg:'#2A53A0' },
+    positive:{ bg:'#f0fdf4', color:'#15803d', border:'#bbf7d0', btnBg:'#16a34a' },
+    confirm: { bg:'#fef2f2', color:'#dc2626', border:'#fecaca', btnBg:'#dc2626' },
+    default: { bg:'#eff6ff', color:'#2A53A0', border:'#bfdbfe', btnBg:'#2A53A0' }
+  };
+  const s = styles[styleKey] || styles.default;
+  document.getElementById('blk-rev-modal-title-text').textContent = 'Add Comment — ' + actionName;
+  document.getElementById('blk-rev-modal-action-name').textContent = actionName;
+  const badge = document.getElementById('blk-rev-modal-badge');
+  badge.style.background = s.bg; badge.style.color = s.color; badge.style.borderColor = s.border;
+  document.getElementById('blk-rev-modal-confirm-btn').style.background = s.btnBg;
+  document.getElementById('blk-rev-modal-comment').value = '';
+  document.getElementById('blk-rev-modal-comment').classList.remove('error');
+  document.getElementById('blk-rev-modal-error').classList.remove('visible');
+  document.getElementById('blk-rev-modal').classList.add('open');
+  setTimeout(() => document.getElementById('blk-rev-modal-comment').focus(), 80);
+}
+function closeBlkRevModal() { document.getElementById('blk-rev-modal').classList.remove('open'); }
+function confirmBlkRevModal() {
+  const c = document.getElementById('blk-rev-modal-comment').value.trim();
+  if (!c) { document.getElementById('blk-rev-modal-comment').classList.add('error'); document.getElementById('blk-rev-modal-error').classList.add('visible'); return; }
+  closeBlkRevModal();
+}
+function clearBlkRevModalError() {
+  document.getElementById('blk-rev-modal-comment').classList.remove('error');
+  document.getElementById('blk-rev-modal-error').classList.remove('visible');
+}
+document.getElementById('blk-rev-modal').addEventListener('click', function(e){ if(e.target===this) closeBlkRevModal(); });
+
+function setBlpP1Status(s){ document.getElementById('blp-p1-drop-label').textContent=s; }
+function setBlpP1Status2(s){ document.getElementById('blp-p1-drop2-label').textContent=s; }
+
+// Batch landing page filter & date dropdown helpers
+let _blpOpenFilter = null;
+function toggleBlpFilter(e, panelId, chipId) {
+  e.stopPropagation();
+  const panel = document.getElementById(panelId);
+  const chip  = document.getElementById(chipId);
+  const rect  = chip.getBoundingClientRect();
+  if (panel.classList.contains('open')) { panel.classList.remove('open'); _blpOpenFilter=null; return; }
+  document.querySelectorAll('.blp-fp.open').forEach(p=>p.classList.remove('open'));
+  panel.style.top  = (rect.bottom+6)+'px';
+  panel.style.left = rect.left+'px';
+  panel.classList.add('open');
+  _blpOpenFilter = panelId;
+}
+function applyBlpFilter(chipId, valId, panelId, getVal) {
+  const val = getVal();
+  document.getElementById(valId).textContent = val;
+  const chip = document.getElementById(chipId);
+  val && val!=='All' ? chip.classList.add('active') : chip.classList.remove('active');
+  document.getElementById(panelId).classList.remove('open');
+  _blpOpenFilter = null;
+}
+function clearBlpFilters() {
+  ['blp-fc-date','blp-fc-branch','blp-fc-custid','blp-fc-acct','blp-fc-scrtype','blp-fc-listname'].forEach(id => {
+    document.getElementById(id).classList.remove('active');
+  });
+  ['blp-fc-date-val','blp-fc-branch-val','blp-fc-custid-val','blp-fc-acct-val','blp-fc-scrtype-val','blp-fc-listname-val'].forEach(id => {
+    document.getElementById(id).textContent = 'All';
+  });
+}
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.blp-fc') && !e.target.closest('.blp-fp')) {
+    document.querySelectorAll('.blp-fp.open').forEach(p=>p.classList.remove('open'));
+    _blpOpenFilter = null;
+  }
+  if (!e.target.closest('.blp-date-dd')) {
+    const m = document.getElementById('blp-date-menu');
+    if (m) m.classList.remove('open');
+  }
+});
+function toggleBlpDateDD(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('blp-date-menu');
+  menu.classList.toggle('open');
+}
+function selectBlpDate(val) {
+  document.getElementById('blp-date-label').textContent = val;
+  document.querySelectorAll('.blp-date-item').forEach(i => { i.classList.remove('blp-date-active'); if(i.textContent.trim()===val) i.classList.add('blp-date-active'); });
+  document.getElementById('blp-date-menu').classList.remove('open');
+}
+
+
+
+const RESULTS = [
+  { name: 'SIN HUAT ALAN', custId: 'CUST-76433', lists: 3, score: 92, topList: 'Singapore High-Risk Screening', category: 'Sanctions', type: 'Individual', date: '27-04-2026', severity: 'critical' },
+  { name: 'SIN H. ALAN', custId: 'CUST-73409', lists: 1, score: 85, topList: 'MAS Watchlist', category: 'PEP', type: 'Individual', date: '27-04-2026', severity: 'high' },
+  { name: 'SIN ALAN', custId: 'CUST-25322', lists: 2, score: 80, topList: 'OFAC SDN List', category: 'Embargo', type: 'Individual', date: '27-04-2026', severity: 'high' },
+  { name: 'ALAN, SIN', custId: 'CUST-39576', lists: 1, score: 77, topList: 'EU Consolidated List', category: 'Sanctions', type: 'Individual', date: '27-04-2026', severity: 'medium' },
+  { name: 'ALAN SIN', custId: 'CUST-84317', lists: 1, score: 68, topList: 'UN Security Council Sanctions', category: 'Sanctions', type: 'Individual', date: '27-04-2026', severity: 'medium' },
+  { name: 'ALAN S. TRADING PTE LTD', custId: 'CUST-77071', lists: 2, score: 74, topList: 'OFAC SDN List', category: 'Embargo', type: 'Organization', date: '27-04-2026', severity: 'medium' },
+];
+
+const selectedWatchlists = { individual: 'singapore', nonindividual: 'onboarding', vessel: 'onboarding', bulk: 'singapore' };
+
+function renderWatchlists(containerId, entityKey) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = WATCHLISTS.map(wl => `
+    <div class="watchlist-card ${selectedWatchlists[entityKey] === wl.id ? 'selected' : ''}" onclick="selectWatchlist('${entityKey}', '${wl.id}', '${containerId}')">
+      <div class="wl-title">${wl.title}</div>
+      <span class="wl-tag ${wl.tagClass}">${wl.tag}</span>
+      <div class="wl-desc">${wl.desc}</div>
+      <div class="wl-meta">${wl.pills.map(p => `<span class="wl-pill">${p}</span>`).join('')}</div>
+    </div>
+  `).join('');
+}
+
+function selectWatchlist(entityKey, wlId, containerId) {
+  selectedWatchlists[entityKey] = wlId;
+  renderWatchlists(containerId, entityKey);
+}
+
+function renderResults() {
+  const tbody = document.getElementById('results-tbody');
+  tbody.innerHTML = RESULTS.map(r => {
+    const scoreColor = r.score >= 90 ? 'var(--red)' : r.score >= 80 ? 'var(--amber)' : 'var(--accent)';
+    const catClass = r.category === 'Sanctions' ? 'badge-sanctions' : r.category === 'PEP' ? 'badge-pep' : 'badge-embargo';
+    const sevClass = r.severity === 'critical' ? 'badge-critical' : r.severity === 'high' ? 'badge-high' : 'badge-medium';
+    return `
+      <tr style="cursor:pointer">
+        <td><div class="name-cell">${r.name}</div></td>
+        <td><div class="cust-id">${r.custId}</div></td>
+        <td style="font-family:var(--mono)">${r.lists}</td>
+        <td>
+          <div class="score-wrap">
+            <div class="score-bar-bg"><div class="score-bar" style="width:${r.score}%;background:${scoreColor}"></div></div>
+            <span class="score-num" style="color:${scoreColor}">${r.score}%</span>
+          </div>
+        </td>
+        <td style="font-size:11.5px;max-width:160px">${r.topList}</td>
+        <td><span class="badge ${catClass}">${r.category}</span></td>
+        <td style="font-size:11.5px">${r.type}</td>
+        <td style="font-family:var(--mono);font-size:11px;color:var(--text3)">${r.date}</td>
+        <td><span class="badge badge-review">Under Review</span></td>
+        <td><button class="action-btn">View Details</button></td>
+      </tr>
+    `;
+  }).join('');
+}
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  if (tab === 'manual') {
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    document.getElementById('page-manual').classList.add('active');
+    document.getElementById('page-bulk').classList.remove('active');
+    document.getElementById('page-results').classList.remove('active');
+    document.getElementById('page-bulk-results').classList.remove('active');
+    document.getElementById('page-match-review').classList.remove('active');
+    document.getElementById('page-bulk-p1').classList.remove('active');
+    document.getElementById('page-bulk-review').classList.remove('active');
+  } else {
+    document.querySelectorAll('.tab')[1].classList.add('active');
+    document.getElementById('page-manual').classList.remove('active');
+    document.getElementById('page-bulk').classList.add('active');
+    document.getElementById('page-results').classList.remove('active');
+    document.getElementById('page-bulk-results').classList.remove('active');
+    document.getElementById('page-match-review').classList.remove('active');
+    document.getElementById('page-bulk-p1').classList.remove('active');
+    document.getElementById('page-bulk-review').classList.remove('active');
+    renderWatchlists('watchlist-bulk', 'bulk');
+  }
+}
+
+function switchEntity(type) {
+  document.querySelectorAll('.entity-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('form-individual').style.display = type === 'individual' ? 'block' : 'none';
+  document.getElementById('form-nonindividual').style.display = type === 'nonindividual' ? 'block' : 'none';
+  document.getElementById('form-vessel').style.display = type === 'vessel' ? 'block' : 'none';
+}
+
+function navigate(page) {
+  document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  if (page === 'manual') showManual();
+}
+
+function showResults() {
+  ['page-manual','page-bulk','page-bulk-results','page-match-review','page-bulk-p1','page-bulk-review'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('active');});
+  document.getElementById('page-results').classList.add('active');
+  document.getElementById('page-title').textContent = 'Screening Results';
+}
+
+function showMatchReview(tab) {
+  ['page-manual','page-bulk','page-results','page-bulk-results','page-bulk-p1','page-bulk-review'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('active');});
+  document.getElementById('page-match-review').classList.add('active');
+  document.getElementById('page-title').textContent = 'Match Review';
+  switchRevTab(tab || 'ai');
+}
+
+function switchRevTab(tabId) {
+  ['ai','match','summary'].forEach(t => {
+    document.getElementById('rev-pane-' + t).classList.remove('active');
+    document.getElementById('rev-tab-' + t).classList.remove('active');
+  });
+  document.getElementById('rev-pane-' + tabId).classList.add('active');
+  document.getElementById('rev-tab-' + tabId).classList.add('active');
+  const sp = document.getElementById('page-match-review').querySelector('.rev-scroll-pane');
+  if (sp) sp.scrollTop = 0;
+}
+
+let _revModalCallback = null;
+function openRevModal(actionName, styleKey) {
+  const styles = {
+    view:    { bg:'#eff6ff', color:'#2A53A0', border:'#bfdbfe', btnBg:'#2A53A0' },
+    positive:{ bg:'#f0fdf4', color:'#15803d', border:'#bbf7d0', btnBg:'#16a34a' },
+    confirm: { bg:'#fef2f2', color:'#dc2626', border:'#fecaca', btnBg:'#dc2626' },
+    default: { bg:'#eff6ff', color:'#2A53A0', border:'#bfdbfe', btnBg:'#2A53A0' }
+  };
+  const s = styles[styleKey] || styles.default;
+  document.getElementById('rev-modal-title-text').textContent = 'Add Comment — ' + actionName;
+  document.getElementById('rev-modal-action-name').textContent = actionName;
+  const badge = document.getElementById('rev-modal-badge');
+  badge.style.background = s.bg; badge.style.color = s.color; badge.style.borderColor = s.border;
+  document.getElementById('rev-modal-confirm-btn').style.background = s.btnBg;
+  document.getElementById('rev-modal-comment').value = '';
+  document.getElementById('rev-modal-comment').classList.remove('error');
+  document.getElementById('rev-modal-error').classList.remove('visible');
+  document.getElementById('rev-modal').classList.add('open');
+  setTimeout(() => document.getElementById('rev-modal-comment').focus(), 80);
+}
+function closeRevModal() { document.getElementById('rev-modal').classList.remove('open'); }
+function confirmRevModal() {
+  const c = document.getElementById('rev-modal-comment').value.trim();
+  if (!c) { document.getElementById('rev-modal-comment').classList.add('error'); document.getElementById('rev-modal-error').classList.add('visible'); return; }
+  closeRevModal();
+}
+function clearRevModalError() {
+  document.getElementById('rev-modal-comment').classList.remove('error');
+  document.getElementById('rev-modal-error').classList.remove('visible');
+}
+document.getElementById('rev-modal').addEventListener('click', function(e) { if (e.target === this) closeRevModal(); });
+
+let _resDD = null;
+function toggleResDD(e, ddId) {
+  e.stopPropagation();
+  const menu = document.getElementById(ddId);
+  const btn = document.getElementById(ddId + '-btn');
+  const rect = btn.getBoundingClientRect();
+  menu.style.top = (rect.bottom + 4) + 'px';
+  menu.style.left = rect.left + 'px';
+  if (menu.classList.contains('open')) { menu.classList.remove('open'); _resDD = null; }
+  else { closeResDD(); menu.classList.add('open'); _resDD = ddId; }
+}
+function closeResDD() { document.querySelectorAll('.res-action-menu.open').forEach(m => m.classList.remove('open')); _resDD = null; }
+function setResStatus(status) { document.getElementById('res-drop-label').textContent = status; closeResDD(); }
+document.addEventListener('click', (e) => { if (!e.target.closest('.res-action-dropdown')) closeResDD(); });
+
+function showManual() {
+  document.getElementById('page-manual').classList.add('active');
+  ['page-bulk','page-results','page-bulk-results','page-match-review','page-bulk-p1','page-bulk-review'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.remove('active');});
+  document.getElementById('page-title').textContent = 'Manual Screening';
+}
+
+function resetForm() {
+  document.querySelectorAll('input[type="text"], input[type="date"], select').forEach(el => {
+    if (el.tagName === 'SELECT') el.selectedIndex = 0;
+    else el.value = '';
+  });
+}
+
+function triggerUpload() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = '.csv,.xls,.xlsx';
+  input.onchange = e => {
+    const f = e.target.files[0];
+    if (f) {
+      const zone = document.querySelector('.upload-zone');
+      zone.innerHTML = `<div class="upload-icon">📄</div><div class="upload-main">${f.name}</div><div class="upload-sub">${(f.size/1024).toFixed(1)} KB · Ready to screen</div>`;
+    }
+  };
+  input.click();
+}
+
+// Init
+renderWatchlists('watchlist-individual', 'individual');
+renderWatchlists('watchlist-nonindividual', 'nonindividual');
+renderWatchlists('watchlist-vessel', 'vessel');
+renderResults();
+</script>
+</body>
+</html>

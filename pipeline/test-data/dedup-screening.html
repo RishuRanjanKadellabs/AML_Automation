@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De-dup Screening — Clari5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --brand: #2A53A0;
+    --brand-dark: #1e3a70;
+    --brand-light: #EBF2FF;
+    --brand-border: #c5d6f7;
+    --surface: #ffffff;
+    --surface-2: #F4F7FB;
+    --surface-3: #F8F9FB;
+    --border: #DDE1E6;
+    --text-primary: #161616;
+    --text-secondary: #525252;
+    --text-muted: #A8ABB0;
+    --accent-orange: #FF8C00;
+    --accent-green: #24a148;
+    --accent-red: #da1e28;
+    --highlight: #fff3cd;
+    --highlight-border: #ffc107;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --radius: 4px;
+    --radius-lg: 8px;
+    --font: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: #f0f4f8;
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .app-header {
+    height: 54px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow-sm);
+  }
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--brand);
+    letter-spacing: -0.5px;
+  }
+  .logo-badge {
+    background: var(--brand);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-left: 12px;
+  }
+  .breadcrumb span { color: var(--brand); font-weight: 600; }
+  .header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+  .header-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+  }
+  .avatar {
+    width: 30px; height: 30px;
+    background: var(--brand);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: white;
+  }
+
+  /* ── LAYOUT ── */
+  .app-body { display: flex; flex: 1; overflow: hidden; }
+  .sidebar {
+    width: 240px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+  .sidebar-section { padding: 8px 0; }
+  .sidebar-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 16px 4px;
+  }
+  .sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    height: 40px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+    border-left: 3px solid transparent;
+    text-decoration: none;
+  }
+  .sidebar-item:hover { background: var(--surface-2); color: var(--brand); }
+  .sidebar-item.active {
+    background: var(--brand-light);
+    color: var(--brand);
+    font-weight: 600;
+    border-left-color: var(--brand);
+  }
+  .sidebar-item svg { flex-shrink: 0; opacity: 0.7; }
+  .sidebar-item.active svg { opacity: 1; }
+
+  /* ── MAIN ── */
+  .main-content { flex: 1; overflow-y: auto; padding: 24px; }
+
+  /* ── PAGE TITLE ── */
+  .page-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .page-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+  }
+  .page-subtitle { font-size: 13px; color: var(--text-secondary); margin-top: 2px; }
+  .page-icon {
+    width: 38px; height: 38px;
+    background: var(--brand-light);
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--brand);
+  }
+
+  /* ── FILTER CARD ── */
+  .filter-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .filter-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .filter-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
+    align-items: end;
+  }
+  .col-3 { grid-column: span 3; }
+  .col-4 { grid-column: span 4; }
+  .col-6 { grid-column: span 6; }
+  .col-2 { grid-column: span 2; }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+  }
+
+  /* ── CUSTOM MULTI-SELECT DROPDOWN ── */
+  .multiselect-wrapper { position: relative; }
+  .multiselect-trigger {
+    min-height: 40px;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-wrap: wrap;
+  }
+  .multiselect-trigger:hover, .multiselect-trigger.open {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(42,83,160,0.12);
+    background: var(--surface);
+  }
+  .multiselect-placeholder { font-size: 13px; color: var(--text-muted); flex: 1; }
+  .multiselect-chevron {
+    margin-left: auto;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    transition: transform 0.2s;
+  }
+  .multiselect-trigger.open .multiselect-chevron { transform: rotate(180deg); }
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 12px;
+    border: 1px solid var(--brand-border);
+    white-space: nowrap;
+  }
+  .tag-remove {
+    cursor: pointer;
+    opacity: 0.6;
+    font-size: 13px;
+    line-height: 1;
+    margin-left: 2px;
+  }
+  .tag-remove:hover { opacity: 1; }
+
+  .dropdown-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    z-index: 200;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+  .dropdown-panel.open { display: block; }
+  .dropdown-search {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .dropdown-search input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 5px 9px;
+    font-size: 12px;
+    font-family: var(--font);
+    outline: none;
+    background: var(--surface-3);
+  }
+  .dropdown-search input:focus { border-color: var(--brand); }
+  .dropdown-select-all {
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--brand);
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .dropdown-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.1s;
+    color: var(--text-primary);
+  }
+  .dropdown-option:hover { background: var(--surface-2); }
+  .dropdown-option input[type="checkbox"] { accent-color: var(--brand); width: 14px; height: 14px; cursor: pointer; }
+
+  /* ── INPUT / SELECT ── */
+  .form-input, .form-select {
+    height: 40px;
+    background: var(--surface-3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 0 10px;
+    font-size: 13px;
+    font-family: var(--font);
+    color: var(--text-primary);
+    width: 100%;
+    outline: none;
+    transition: all 0.15s;
+    -webkit-appearance: none;
+  }
+  .form-input:focus, .form-select:focus {
+    border-color: var(--brand);
+    box-shadow: 0 0 0 3px rgba(42,83,160,0.12);
+    background: var(--surface);
+  }
+  .form-input::placeholder { color: var(--text-muted); }
+  .select-wrapper { position: relative; }
+  .select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0; height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid var(--text-secondary);
+    pointer-events: none;
+  }
+
+  .date-range-group { display: flex; gap: 6px; align-items: center; }
+  .date-range-group .form-input { flex: 1; }
+  .date-sep { font-size: 11px; color: var(--text-muted); white-space: nowrap; }
+
+  /* ── SLIDER ── */
+  .slider-wrapper { position: relative; padding-top: 6px; }
+  .slider-labels { display: flex; justify-content: space-between; font-size: 10px; color: var(--text-muted); margin-bottom: 4px; }
+  input[type="range"] {
+    width: 100%; height: 4px;
+    -webkit-appearance: none;
+    background: linear-gradient(to right, var(--brand) 0%, var(--brand) var(--val, 60%), #DDE1E6 var(--val, 60%), #DDE1E6 100%);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px; height: 16px;
+    background: var(--brand);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 1px 4px rgba(42,83,160,0.4);
+  }
+  .slider-value {
+    display: inline-block;
+    background: var(--brand);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 10px;
+    margin-left: 8px;
+  }
+  .slider-row { display: flex; align-items: center; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 0 16px;
+    height: 40px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition: all 0.15s;
+    border: none;
+    outline: none;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--brand); color: white; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-secondary { background: white; color: var(--brand); border: 1px solid var(--brand-border); }
+  .btn-secondary:hover { background: var(--brand-light); }
+  .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+  .btn-ghost:hover { background: var(--surface-2); color: var(--text-primary); }
+  .btn-sm { height: 32px; padding: 0 12px; font-size: 12px; }
+  .btn-xs { height: 28px; padding: 0 10px; font-size: 11px; }
+
+  .filter-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    margin-top: 4px;
+  }
+
+  /* ── RESULTS SECTION ── */
+  .results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .results-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--brand-light);
+    color: var(--brand);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 9px;
+    border-radius: 12px;
+    border: 1px solid var(--brand-border);
+  }
+  .badge-green { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+  .badge-orange { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
+
+  /* ── EXPORT DROPDOWN ── */
+  .export-wrapper { position: relative; }
+  .export-panel {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    z-index: 200;
+    min-width: 180px;
+    overflow: hidden;
+  }
+  .export-panel.open { display: block; }
+  .export-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.1s;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+  .export-option:hover { background: var(--surface-2); }
+  .export-option-icon { width: 20px; text-align: center; }
+  .export-divider { height: 1px; background: var(--border); }
+
+  /* ── TABLE ── */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #F4F7FB; border-bottom: 1px solid var(--border); }
+  thead th {
+    padding: 11px 16px;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    text-align: left;
+    white-space: nowrap;
+    border-right: 1px solid var(--border);
+  }
+  thead th:last-child { border-right: none; }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(244,247,251,0.7); }
+  tbody td {
+    padding: 11px 16px;
+    font-size: 13px;
+    color: var(--text-primary);
+    vertical-align: middle;
+    border-right: 1px solid var(--border);
+  }
+  tbody td:last-child { border-right: none; }
+
+  .group-cell { vertical-align: top !important; padding-top: 14px !important; }
+  .group-badge {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .group-id {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    background: var(--brand-light);
+    color: var(--brand);
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid var(--brand-border);
+    white-space: nowrap;
+  }
+  .group-status {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-orange); }
+
+  .match-param-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #fff8e1;
+    color: #795548;
+    border: 1px solid #ffe082;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+
+  .view-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--brand-light);
+    color: var(--brand);
+    border: 1px solid var(--brand-border);
+    border-radius: var(--radius);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 11px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: var(--font);
+  }
+  .view-btn:hover { background: var(--brand); color: white; }
+
+  .score-bar-wrap { display: flex; align-items: center; gap: 8px; }
+  .score-bar {
+    flex: 1;
+    height: 6px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
+    min-width: 60px;
+  }
+  .score-fill { height: 100%; border-radius: 3px; background: linear-gradient(to right, #2A53A0, #4A7BD0); }
+  .score-text { font-size: 12px; font-weight: 700; color: var(--brand); white-space: nowrap; font-family: var(--font-mono); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 500;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 780px;
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    animation: modalIn 0.2s ease;
+  }
+  @keyframes modalIn { from { transform: scale(0.96) translateY(8px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .modal-header {
+    padding: 18px 22px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 14px;
+  }
+  .modal-title { font-size: 16px; font-weight: 700; color: var(--text-primary); }
+  .modal-subtitle { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+  .modal-close {
+    width: 30px; height: 30px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: var(--text-secondary);
+    background: transparent;
+    font-size: 16px;
+    transition: all 0.15s;
+  }
+  .modal-close:hover { background: var(--surface-2); color: var(--text-primary); }
+
+  /* ── TABS ── */
+  .tab-bar {
+    display: flex;
+    gap: 0;
+    padding: 0 22px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .tab-btn {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: all 0.15s;
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: var(--font);
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: var(--brand); }
+  .tab-btn.active { color: var(--brand); font-weight: 600; border-bottom-color: var(--brand); }
+  .tab-avatar {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+  }
+  .tab-avatar.c1 { background: var(--brand); }
+  .tab-avatar.c2 { background: #6d4c41; }
+
+  .tab-panel { display: none; padding: 18px 22px; overflow-y: auto; flex: 1; }
+  .tab-panel.active { display: block; }
+
+  /* ── KYC DETAILS ── */
+  .kyc-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .kyc-section-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .kyc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .kyc-field { background: var(--surface-3); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 12px; }
+  .kyc-field.highlighted {
+    background: #fff8e1;
+    border-color: #ffcc02;
+    box-shadow: 0 0 0 2px rgba(255,193,7,0.2);
+  }
+  .kyc-field-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .match-icon {
+    display: inline-flex;
+    align-items: center;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 10px;
+    padding: 1px 5px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #856404;
+    gap: 2px;
+  }
+  .kyc-field-value {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .kyc-field.highlighted .kyc-field-value { color: #5d4037; font-weight: 600; }
+
+  /* compare mode */
+  .compare-view { display: flex; gap: 16px; }
+  .compare-col { flex: 1; }
+  .compare-col-header {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .compare-col-header.c2 { color: #6d4c41; background: #efebe9; }
+  .compare-col-body {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+    padding: 12px;
+  }
+  .compare-field { margin-bottom: 8px; }
+  .compare-label { font-size: 10px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; }
+  .compare-value { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-top: 2px; }
+  .compare-field.highlighted .compare-value {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 3px;
+    padding: 2px 6px;
+    display: inline-block;
+    color: #5d4037;
+    font-weight: 700;
+  }
+
+  /* ── PAGINATION / FOOTER ── */
+  .table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--surface-2);
+    font-size: 12px;
+    color: var(--text-secondary);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  }
+  .pagination { display: flex; gap: 4px; }
+  .page-btn {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    background: white;
+    color: var(--text-secondary);
+    transition: all 0.1s;
+    font-family: var(--font);
+  }
+  .page-btn:hover { border-color: var(--brand); color: var(--brand); }
+  .page-btn.active { background: var(--brand); color: white; border-color: var(--brand); }
+
+  /* ── EMPTY / STATUS ── */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+    border-radius: var(--radius);
+    font-size: 12px;
+    color: #1b5e20;
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  /* bottom footer */
+  .app-footer {
+    height: 38px;
+    background: var(--surface-2);
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+
+  @media (max-width: 900px) {
+    .sidebar { display: none; }
+    .filter-grid { grid-template-columns: repeat(6, 1fr); }
+    .col-3 { grid-column: span 3; }
+    .col-6 { grid-column: span 6; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <div class="logo-area">
+    <svg width="26" height="26" viewBox="0 0 32 32" fill="none">
+      <rect width="32" height="32" rx="7" fill="#2A53A0"/>
+      <path d="M8 10h6M8 16h10M8 22h7M18 14l4 4-4 4" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    Clari5
+    <span class="logo-badge">AML</span>
+  </div>
+  <div class="breadcrumb">
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    Sanction Screening
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    <span>De-dup Screening</span>
+  </div>
+  <div class="header-right">
+    <div class="header-user">
+      <div class="avatar">AK</div>
+      Arun Kumar
+    </div>
+  </div>
+</header>
+
+<div class="app-body">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Sanction Screening</div>
+      <a class="sidebar-item">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M20,8H18A5,5,0,0,0,8,8H6A7,7,0,0,1,20,8Z"/><path d="M25,15a2.94,2.94,0,0,0-1.47.4A3,3,0,0,0,21,14a2.94,2.94,0,0,0-1.47.4A3,3,0,0,0,16,13.18V8h0a3,3,0,0,0-6,0V19.1L7.77,17.58h0A2.93,2.93,0,0,0,6,17a3,3,0,0,0-2.12,5.13l8,7.3A6.16,6.16,0,0,0,16,31h5a7,7,0,0,0,7-7V18A3,3,0,0,0,25,15Z"/></svg>
+        Manual Screening
+      </a>
+      <a class="sidebar-item">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M16,24a.9967.9967,0,0,1-.4741-.12l-13-7L3.4741,15.12,16,21.8643,28.5259,15.12l.9482,1.7607-13,7A.9967.9967,0,0,1,16,24Z"/><path d="M16,18a.9967.9967,0,0,1-.4741-.12l-13-7a1,1,0,0,1,0-1.7607l13-7a.9982.9982,0,0,1,.9482,0l13,7a1,1,0,0,1,0,1.7607l-13,7Z"/></svg>
+        Batch Screening
+      </a>
+      <a class="sidebar-item active">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"/><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"/></svg>
+        De-dup Screening
+      </a>
+      <a class="sidebar-item">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M10 6H28V8H10z"/><path d="M10 15H28V17H10z"/><path d="M10 24H28V26H10z"/><path d="M4 6H6V8H4z"/><path d="M4 15H6V17H4z"/><path d="M4 24H6V26H4z"/></svg>
+        Exception List Mgmt.
+      </a>
+      <a class="sidebar-item">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M4,2H2V28a2,2,0,0,0,2,2H30V28H4V25H26V17H4V13H18V5H4ZM24,19v4H4V19ZM16,7v4H4V7Z"/></svg>
+        Sanction MIS Reports
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-icon">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"/><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"/></svg>
+      </div>
+      <div>
+        <div class="page-title">De-Duplication Screening</div>
+        <div class="page-subtitle">Identify duplicate customer records based on matching KYC parameters</div>
+      </div>
+    </div>
+
+    <!-- FILTER CARD -->
+    <div class="filter-card">
+      <div class="filter-card-title">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M18,28H14a2,2,0,0,1-2-2V18.41L4.59,11A2,2,0,0,1,4,9.59V6A2,2,0,0,1,6,4H26a2,2,0,0,1,2,2V9.59A2,2,0,0,1,27.41,11L20,18.41V26A2,2,0,0,1,18,28Z"/></svg>
+        Search Filters
+      </div>
+
+      <div class="filter-grid">
+
+        <!-- Match Parameter List (multi-select) -->
+        <div class="field col-6">
+          <label>Match Parameter List</label>
+          <div class="multiselect-wrapper" id="mselect">
+            <div class="multiselect-trigger" id="msTrigger" onclick="toggleMultiSelect()">
+              <div id="msSelected" style="display:flex;flex-wrap:wrap;gap:4px;flex:1;">
+                <span class="multiselect-placeholder" id="msPlaceholder">Select parameters...</span>
+              </div>
+              <svg class="multiselect-chevron" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11 3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+            </div>
+            <div class="dropdown-panel" id="msPanel">
+              <div class="dropdown-search"><input type="text" placeholder="Search parameters..." oninput="filterOptions(this.value)" id="msSearch"></div>
+              <div class="dropdown-select-all" onclick="toggleSelectAll()">
+                <input type="checkbox" id="selectAllChk" onchange="toggleSelectAll()"> Select All
+              </div>
+              <div id="msOptions">
+                <label class="dropdown-option"><input type="checkbox" value="dob" onchange="updateSelected()"> Date of Birth</label>
+                <label class="dropdown-option"><input type="checkbox" value="national_id" onchange="updateSelected()"> National ID / Aadhar Card / Emirates ID / SSN</label>
+                <label class="dropdown-option"><input type="checkbox" value="passport" onchange="updateSelected()"> Passport No</label>
+                <label class="dropdown-option"><input type="checkbox" value="driving" onchange="updateSelected()"> Driving License</label>
+                <label class="dropdown-option"><input type="checkbox" value="mobile" onchange="updateSelected()"> Mobile Number</label>
+                <label class="dropdown-option"><input type="checkbox" value="email" onchange="updateSelected()"> Email Address</label>
+                <label class="dropdown-option"><input type="checkbox" value="contact" onchange="updateSelected()"> Contact Number</label>
+                <label class="dropdown-option"><input type="checkbox" value="crn" onchange="updateSelected()"> Corporate Registration Number</label>
+                <label class="dropdown-option"><input type="checkbox" value="taxid" onchange="updateSelected()"> Tax ID / PAN</label>
+                <label class="dropdown-option"><input type="checkbox" value="imei" onchange="updateSelected()"> IMEI Number / IMSI Number</label>
+                <label class="dropdown-option"><input type="checkbox" value="ipmac" onchange="updateSelected()"> IP / Mac Address</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Customer ID -->
+        <div class="field col-4">
+          <label>Customer ID</label>
+          <input class="form-input" type="text" placeholder="Enter Customer ID...">
+        </div>
+
+      </div>
+
+      <div class="filter-actions">
+        <button class="btn btn-primary" onclick="generateReport()">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z"/></svg>
+          Generate Report
+        </button>
+        <button class="btn btn-ghost" onclick="clearFilters()">
+          <svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M24 9.4L22.6 8 16 14.6 9.4 8 8 9.4l6.6 6.6L8 22.6 9.4 24l6.6-6.6 6.6 6.6 1.4-1.4-6.6-6.6L24 9.4z"/></svg>
+          Clear Filters
+        </button>
+      </div>
+    </div>
+
+    <!-- RESULTS (hidden until generated) -->
+    <div id="resultsSection" style="display:none;">
+
+      <div class="status-bar">
+        <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2ZM14,21.591l-5-5L10.591,15,14,18.409,21.41,11l1.596,1.586Z"/></svg>
+        Report generated successfully &mdash; showing results for the selected filters.
+      </div>
+
+      <div class="results-header">
+        <div class="results-title">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"/><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"/></svg>
+          De-Duplication Match Report
+          <span class="badge">4 Matching Groups</span>
+          <span class="badge badge-green">8 Records</span>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center;">
+          <!-- Export button -->
+          <div class="export-wrapper" id="exportWrapper">
+            <button class="btn btn-secondary btn-sm" onclick="toggleExport()">
+              <svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M26 24v4H6v-4H4v4a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-4zm0-10-1.41-1.41L17 20.17V2h-2v18.17l-7.59-7.58L6 14l10 10 10-10z"/></svg>
+              Export
+              <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11 3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+            </button>
+            <div class="export-panel" id="exportPanel">
+              <div class="export-option" onclick="doExport('excel')">
+                <span class="export-option-icon" style="color:#1e7e34;">📊</span> Export to Excel (.xlsx)
+              </div>
+              <div class="export-option" onclick="doExport('csv')">
+                <span class="export-option-icon" style="color:#0d47a1;">📄</span> Export to CSV
+              </div>
+              <div class="export-divider"></div>
+              <div class="export-option" onclick="doExport('pdf')">
+                <span class="export-option-icon" style="color:#c62828;">📑</span> Export to PDF
+              </div>
+              <div class="export-option" onclick="doExport('print')">
+                <span class="export-option-icon">🖨️</span> Print Report
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:130px;">Group ID</th>
+              <th>Customer ID</th>
+              <th>Customer Name</th>
+              <th>Match Parameters</th>
+              <th>ID Number</th>
+              <th style="text-align:center;">View</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- GROUP 1 -->
+            <tr>
+              <td class="group-cell" rowspan="2">
+                <div class="group-badge">
+                  <span class="group-id">GRP-0001</span>
+                  <div class="group-status"><span class="dot"></span> Active Group</div>
+                </div>
+              </td>
+              <td>8829103</td>
+              <td>Rajesh K</td>
+              <td rowspan="2">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <span class="match-param-tag">🔑 Passport No</span>
+                  <span class="match-param-tag">🔑 Date of Birth</span>
+                  <span class="match-param-tag">🔑 Tax ID / PAN</span>
+                </div>
+              </td>
+              <td style="font-family:var(--font-mono);font-size:12px;">Z1234567</td>
+              <td style="text-align:center;" rowspan="2">
+                <button class="view-btn" onclick="openModal('Rajesh K','Rajesh Kumar','passport')">
+                  <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M30 24h-2v-2a6 6 0 0 0-6-6h-2.18A7 7 0 1 0 9 16H9a6 6 0 0 0-6 6v2H1v2h2v2h2v-2a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v2h2v-2h2zm-16-10a5 5 0 1 1 5-5 5 5 0 0 1-5 5z"/></svg>
+                  Compare
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>8832890</td>
+              <td>Rajesh Kumar</td>
+              <td style="font-family:var(--font-mono);font-size:12px;">Z1234567</td>
+            </tr>
+
+            <!-- GROUP 2 -->
+            <tr>
+              <td class="group-cell" rowspan="2">
+                <div class="group-badge">
+                  <span class="group-id">GRP-0002</span>
+                  <div class="group-status"><span class="dot"></span> Active Group</div>
+                </div>
+              </td>
+              <td>1102931</td>
+              <td>Amit Sharma</td>
+              <td rowspan="2">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <span class="match-param-tag">🔑 National ID / Aadhar Card</span>
+                  <span class="match-param-tag">🔑 Date of Birth</span>
+                  <span class="match-param-tag">🔑 Tax ID / PAN</span>
+                </div>
+              </td>
+              <td style="font-family:var(--font-mono);font-size:12px;">9821-2234-1102</td>
+              <td style="text-align:center;" rowspan="2">
+                <button class="view-btn" onclick="openModal('Amit Sharma','Amit S','aadhar')">
+                  <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M30 24h-2v-2a6 6 0 0 0-6-6h-2.18A7 7 0 1 0 9 16H9a6 6 0 0 0-6 6v2H1v2h2v2h2v-2a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v2h2v-2h2zm-16-10a5 5 0 1 1 5-5 5 5 0 0 1-5 5z"/></svg>
+                  Compare
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>1102932</td>
+              <td>Amit S</td>
+              <td style="font-family:var(--font-mono);font-size:12px;">9821-2234-1102</td>
+            </tr>
+
+            <!-- GROUP 3 -->
+            <tr>
+              <td class="group-cell" rowspan="2">
+                <div class="group-badge">
+                  <span class="group-id">GRP-0003</span>
+                  <div class="group-status"><span class="dot" style="background:#888;"></span> Closed Group</div>
+                </div>
+              </td>
+              <td>2201456</td>
+              <td>Priya Mehta</td>
+              <td rowspan="2">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <span class="match-param-tag">🔑 Tax ID / PAN</span>
+                  <span class="match-param-tag">🔑 Date of Birth</span>
+                </div>
+              </td>
+              <td style="font-family:var(--font-mono);font-size:12px;">ABCDE1234F</td>
+              <td style="text-align:center;" rowspan="2">
+                <button class="view-btn" onclick="openModal('Priya Mehta','P. Mehta','pan')">
+                  <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M30 24h-2v-2a6 6 0 0 0-6-6h-2.18A7 7 0 1 0 9 16H9a6 6 0 0 0-6 6v2H1v2h2v2h2v-2a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v2h2v-2h2zm-16-10a5 5 0 1 1 5-5 5 5 0 0 1-5 5z"/></svg>
+                  Compare
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>2201457</td>
+              <td>P. Mehta</td>
+              <td style="font-family:var(--font-mono);font-size:12px;">ABCDE1234F</td>
+            </tr>
+
+            <!-- GROUP 4 -->
+            <tr>
+              <td class="group-cell" rowspan="2">
+                <div class="group-badge">
+                  <span class="group-id">GRP-0004</span>
+                  <div class="group-status"><span class="dot"></span> Active Group</div>
+                </div>
+              </td>
+              <td>3310882</td>
+              <td>Sunita Rao</td>
+              <td rowspan="2">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                  <span class="match-param-tag">🔑 Mobile Number</span>
+                  <span class="match-param-tag">🔑 Date of Birth</span>
+                  <span class="match-param-tag">🔑 Tax ID / PAN</span>
+                </div>
+              </td>
+              <td style="font-family:var(--font-mono);font-size:12px;">+91-9876543210</td>
+              <td style="text-align:center;" rowspan="2">
+                <button class="view-btn" onclick="openModal('Sunita Rao','S. Rao','mobile')">
+                  <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M30 24h-2v-2a6 6 0 0 0-6-6h-2.18A7 7 0 1 0 9 16H9a6 6 0 0 0-6 6v2H1v2h2v2h2v-2a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v2h2v-2h2zm-16-10a5 5 0 1 1 5-5 5 5 0 0 1-5 5z"/></svg>
+                  Compare
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>3310883</td>
+              <td>S. Rao</td>
+              <td style="font-family:var(--font-mono);font-size:12px;">+91-9876543210</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="table-footer">
+          <span>Showing <b>8</b> of <b>8</b> records &nbsp;|&nbsp; 4 duplicate groups found</span>
+          <div class="pagination">
+            <button class="page-btn">‹</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">›</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /resultsSection -->
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="app-footer">
+  <span>Your license will expire on <b>June 12, 2026</b></span>
+  <span>© Clari5 — A Perfios Software Company</span>
+</footer>
+
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- CUSTOMER KYC MODAL -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="kycModal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modalTitle">Customer KYC Comparison</div>
+        <div class="modal-subtitle" id="modalSubtitle">Matched via: Passport &nbsp;|&nbsp; Match Score: 94%</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <!-- Tab Bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tabCompare" onclick="switchTab('compare')">
+        <svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M28,10V28H10V10H28M28,8H10A2,2,0,0,0,8,10V28A2,2,0,0,0,10,30H28A2,2,0,0,0,30,28V10A2,2,0,0,0,28,8Z"/><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"/></svg>
+        Side-by-Side Compare
+      </button>
+    </div>
+
+    <!-- Tab: Compare -->
+    <div class="tab-panel active" id="panelCompare">
+      <div id="compareBody" style="padding:4px 0;"></div>
+    </div>
+
+    <!-- Hidden individual panels (kept for JS compatibility) -->
+    <div class="tab-panel" id="panelC1" style="display:none!important;">
+      <div id="c1Body"></div>
+    </div>
+    <div class="tab-panel" id="panelC2" style="display:none!important;">
+      <div id="c2Body"></div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+/* ── MULTI-SELECT ── */
+let msOpen = false;
+
+function toggleMultiSelect() {
+  msOpen = !msOpen;
+  document.getElementById('msTrigger').classList.toggle('open', msOpen);
+  document.getElementById('msPanel').classList.toggle('open', msOpen);
+  if (msOpen) document.getElementById('msSearch').focus();
+}
+
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('mselect').contains(e.target)) {
+    msOpen = false;
+    document.getElementById('msTrigger').classList.remove('open');
+    document.getElementById('msPanel').classList.remove('open');
+  }
+});
+
+const paramLabels = {
+  dob: 'Date of Birth',
+  national_id: 'National ID / Aadhar Card / Emirates ID / SSN',
+  passport: 'Passport No',
+  driving: 'Driving License',
+  mobile: 'Mobile Number',
+  email: 'Email Address',
+  contact: 'Contact Number',
+  crn: 'Corporate Registration Number',
+  taxid: 'Tax ID / PAN',
+  imei: 'IMEI Number / IMSI Number',
+  ipmac: 'IP / Mac Address'
+};
+
+function updateSelected() {
+  const checks = document.querySelectorAll('#msOptions input[type=checkbox]:checked');
+  const container = document.getElementById('msSelected');
+  const placeholder = document.getElementById('msPlaceholder');
+  container.innerHTML = '';
+  if (checks.length === 0) {
+    placeholder.style.display = '';
+    return;
+  }
+  placeholder.style.display = 'none';
+  checks.forEach(c => {
+    const tag = document.createElement('span');
+    tag.className = 'tag';
+    tag.innerHTML = paramLabels[c.value] + '<span class="tag-remove" onclick="removeTag(\'' + c.value + '\')">×</span>';
+    container.appendChild(tag);
+  });
+  // update select all state
+  const all = document.querySelectorAll('#msOptions input[type=checkbox]');
+  document.getElementById('selectAllChk').checked = checks.length === all.length;
+}
+
+function removeTag(val) {
+  const chk = document.querySelector('#msOptions input[value="' + val + '"]');
+  if (chk) { chk.checked = false; updateSelected(); }
+}
+
+function toggleSelectAll() {
+  const all = document.querySelectorAll('#msOptions input[type=checkbox]');
+  const allChecked = [...all].every(c => c.checked);
+  all.forEach(c => c.checked = !allChecked);
+  updateSelected();
+}
+
+function filterOptions(q) {
+  const opts = document.querySelectorAll('#msOptions .dropdown-option');
+  opts.forEach(opt => {
+    const label = opt.textContent.toLowerCase();
+    opt.style.display = label.includes(q.toLowerCase()) ? '' : 'none';
+  });
+}
+
+/* ── GENERATE REPORT ── */
+function generateReport() {
+  const btn = event.target.closest('button');
+  btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor" style="animation:spin 0.8s linear infinite;"><path d="M16 4C9.4 4 4 9.4 4 16s5.4 12 12 12 12-5.4 12-12h-2c0 5.5-4.5 10-10 10S6 21.5 6 16 10.5 6 16 6V4z"/></svg> Generating...';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z"/></svg> Generate Report';
+    btn.disabled = false;
+    document.getElementById('resultsSection').style.display = '';
+    document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 1100);
+}
+
+/* ── CLEAR ── */
+function clearFilters() {
+  document.querySelectorAll('#msOptions input[type=checkbox]').forEach(c => c.checked = false);
+  updateSelected();
+  document.querySelectorAll('.form-input').forEach(i => i.value = '');
+  document.querySelectorAll('.form-select').forEach(s => s.selectedIndex = 0);
+}
+
+/* ── EXPORT ── */
+function toggleExport() {
+  const panel = document.getElementById('exportPanel');
+  panel.classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  if (!document.getElementById('exportWrapper').contains(e.target)) {
+    document.getElementById('exportPanel').classList.remove('open');
+  }
+});
+function doExport(type) {
+  document.getElementById('exportPanel').classList.remove('open');
+  const messages = {
+    excel: 'Exporting to Excel (.xlsx)...',
+    csv: 'Exporting to CSV...',
+    pdf: 'Generating PDF report...',
+    print: 'Opening print dialog...'
+  };
+  // Show toast
+  const toast = document.createElement('div');
+  toast.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#161616;color:white;padding:10px 18px;border-radius:8px;font-size:13px;font-family:var(--font);z-index:9999;display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(0,0,0,0.25);animation:slideUp 0.3s ease;';
+  toast.innerHTML = '<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M26 24v4H6v-4H4v4a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2v-4zm0-10-1.41-1.41L17 20.17V2h-2v18.17l-7.59-7.58L6 14l10 10 10-10z"/></svg>' + messages[type];
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 2800);
+  if (type === 'print') setTimeout(() => window.print(), 400);
+}
+
+/* ── MODAL ── */
+const customerData = {
+  passport: {
+    c1: { name: 'Rajesh K', id: '8829103', dob: '15 Mar 1984', pan: 'BXJRK4823G', aadhar: '4532-1234-9087', passport: 'Z1234567', mobile: '+91-9811223344', email: 'rajeshk@email.com', address: '14, MG Road, Mumbai 400001', branch: 'Mumbai Central', type: 'Individual', status: 'Active' },
+    c2: { name: 'Rajesh Kumar', id: '8832890', dob: '15 Mar 1984', pan: 'BXJRK4823G', aadhar: 'N/A', passport: 'Z1234567', mobile: '+91-9811223345', email: 'rajesh.kumar@email.com', address: '14, MG Road, Mumbai 400001', branch: 'Head Office', type: 'Individual', status: 'Active' },
+    param: 'Passport', score: '94%'
+  },
+  aadhar: {
+    c1: { name: 'Amit Sharma', id: '1102931', dob: '22 Jun 1990', pan: 'CMPAS7612H', aadhar: '9821-2234-1102', passport: 'N/A', mobile: '+91-9988776655', email: 'amitsharma@email.com', address: '7, Lajpat Nagar, Delhi 110024', branch: 'Delhi NCR', type: 'Individual', status: 'Active' },
+    c2: { name: 'Amit S', id: '1102932', dob: '22 Jun 1990', pan: 'CMPAS7612H', aadhar: '9821-2234-1102', passport: 'N/A', mobile: '+91-9988776600', email: 'amit.s@email.com', address: '7A, Lajpat Nagar, Delhi 110024', branch: 'Delhi NCR', type: 'Individual', status: 'Pending' },
+    param: 'Aadhar Card', score: '88%'
+  },
+  pan: {
+    c1: { name: 'Priya Mehta', id: '2201456', dob: '08 Nov 1987', pan: 'ABCDE1234F', aadhar: '1122-3344-5566', passport: 'N/A', mobile: '+91-9012345678', email: 'priya.mehta@email.com', address: '22, Koregaon Park, Pune 411001', branch: 'Bengaluru South', type: 'Individual', status: 'Closed' },
+    c2: { name: 'P. Mehta', id: '2201457', dob: '08 Nov 1987', pan: 'ABCDE1234F', aadhar: 'N/A', passport: 'N/A', mobile: '+91-9012345679', email: 'pmehta@email.com', address: '22B, Koregaon Park, Pune 411001', branch: 'Head Office', type: 'Individual', status: 'Active' },
+    param: 'PAN Number', score: '76%'
+  },
+  mobile: {
+    c1: { name: 'Sunita Rao', id: '3310882', dob: '30 Jan 1979', pan: 'DXSRS9901K', aadhar: '7788-9900-1122', passport: 'N/A', mobile: '+91-9876543210', email: 'sunita.rao@email.com', address: '5, Jubilee Hills, Hyderabad 500033', branch: 'Hyderabad', type: 'Individual', status: 'Active' },
+    c2: { name: 'S. Rao', id: '3310883', dob: '30 Jan 1979', pan: 'DXSRS9901K', aadhar: 'N/A', passport: 'N/A', mobile: '+91-9876543210', email: 's.rao@email.com', address: '5A, Jubilee Hills, Hyderabad 500033', branch: 'Hyderabad', type: 'NRI', status: 'Active' },
+    param: 'Mobile Number', score: '82%'
+  }
+};
+
+const matchedFieldsMap = {
+  passport: ['name', 'dob', 'pan', 'passport'],
+  aadhar: ['name', 'dob', 'pan', 'aadhar'],
+  pan: ['name', 'dob', 'pan'],
+  mobile: ['name', 'dob', 'pan', 'mobile']
+};
+
+const fieldLabels = {
+  name: 'Full Name', id: 'Customer ID', dob: 'Date of Birth', pan: 'PAN Number',
+  aadhar: 'Aadhar Card', passport: 'Passport No.', mobile: 'Mobile Number',
+  email: 'Email Address', address: 'Address', branch: 'Branch', type: 'Customer Type', status: 'Account Status'
+};
+
+function openModal(name1, name2, paramKey) {
+  const d = customerData[paramKey];
+  const matched = matchedFieldsMap[paramKey];
+
+  document.getElementById('modalTitle').textContent = name1 + '  \u2194  ' + name2;
+  document.getElementById('modalSubtitle').textContent = 'Matched via: ' + d.param + '   |   Match Score: 100%';
+
+  // Compare view — pass names directly
+  document.getElementById('compareBody').innerHTML = buildCompare(d.c1, d.c2, matched, name1, name2);
+
+  document.getElementById('kycModal').classList.add('open');
+}
+
+function buildCompare(c1, c2, matched, name1, name2) {
+  const fields = Object.keys(fieldLabels);
+  const col1 = fields.map(f => `
+    <div class="compare-field ${matched.includes(f)?'highlighted':''}">
+      <div class="compare-label">${fieldLabels[f]}</div>
+      <div class="compare-value">${c1[f]||'—'}</div>
+    </div>`).join('');
+  const col2 = fields.map(f => `
+    <div class="compare-field ${matched.includes(f)?'highlighted':''}">
+      <div class="compare-label">${fieldLabels[f]}</div>
+      <div class="compare-value">${c2[f]||'—'}</div>
+    </div>`).join('');
+
+  return `
+    <div style="margin-bottom:10px;padding:6px 10px;background:#fff8e1;border:1px solid #ffc107;border-radius:4px;font-size:11px;color:#856404;font-weight:600;">
+      ⚠ Highlighted fields are the matched parameters used for de-duplication
+    </div>
+    <div class="compare-view">
+      <div class="compare-col">
+        <div class="compare-col-header c1">
+          <span style="width:22px;height:22px;background:var(--brand);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;">${name1.charAt(0)}</span>
+          ${name1}
+        </div>
+        <div class="compare-col-body">${col1}</div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-col-header c2">
+          <span style="width:22px;height:22px;background:#6d4c41;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;">${name2.charAt(0)}</span>
+          ${name2}
+        </div>
+        <div class="compare-col-body">${col2}</div>
+      </div>
+    </div>`;
+}
+
+function buildKYC(c, matched, which) {
+  const headerColor = which === 'c1' ? 'var(--brand)' : '#6d4c41';
+  const fields = Object.keys(fieldLabels);
+  const cards = fields.map(f => {
+    const isMatch = matched.includes(f);
+    return `<div class="kyc-field ${isMatch ? 'highlighted' : ''}">
+      <div class="kyc-field-label">
+        ${fieldLabels[f]}
+        ${isMatch ? '<span class="match-icon">⚡ Matched</span>' : ''}
+      </div>
+      <div class="kyc-field-value">${c[f] || '—'}</div>
+    </div>`;
+  }).join('');
+
+  return `
+    <div style="margin-bottom:12px;padding:8px 12px;background:#f8f9fb;border:1px solid var(--border);border-radius:4px;display:flex;align-items:center;gap:10px;">
+      <span style="width:32px;height:32px;background:${headerColor};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:white;">${c.name.charAt(0)}</span>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:var(--text-primary);">${c.name}</div>
+        <div style="font-size:11px;color:var(--text-muted);">ID: ${c.id} &nbsp;|&nbsp; ${c.type} &nbsp;|&nbsp; ${c.branch}</div>
+      </div>
+    </div>
+    <div style="margin-bottom:10px;padding:6px 10px;background:#fff8e1;border:1px solid #ffc107;border-radius:4px;font-size:11px;color:#856404;font-weight:600;">
+      ⚡ Highlighted fields are the matched parameters used for de-duplication
+    </div>
+    <div class="kyc-section-title">Basic KYC Information</div>
+    <div class="kyc-grid">${cards}</div>`;
+}
+
+function switchTab(tab) {
+  document.getElementById('tabCompare').classList.toggle('active', tab === 'compare');
+  document.getElementById('panelCompare').classList.toggle('active', tab === 'compare');
+}
+
+function closeModal() { document.getElementById('kycModal').classList.remove('open'); }
+function closeModalOutside(e) { if (e.target === document.getElementById('kycModal')) closeModal(); }
+
+/* ── KEYBOARD ── */
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+/* CSS spin animation */
+const style = document.createElement('style');
+style.textContent = `
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes slideUp { from { transform: translateY(10px); opacity:0; } to { transform:none; opacity:1; } }
+`;
+document.head.appendChild(style);
+</script>
+
+</body>
+</html>

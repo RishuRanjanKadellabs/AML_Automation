@@ -1,0 +1,411 @@
+{
+  "generatedAt": "2026-06-26T16:06:57.635Z",
+  "screens": [
+    {
+      "id": "screen-landing",
+      "title": "Match Results"
+    },
+    {
+      "id": "screen-p1",
+      "title": "Screening Results"
+    },
+    {
+      "id": "screen-review",
+      "title": "Match Review"
+    }
+  ],
+  "links": [
+    {
+      "id": "tab-Match Results",
+      "label": "Match Results",
+      "type": "tab",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "tab-Watchlists",
+      "label": "Watchlists",
+      "type": "tab",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "tab-Screening",
+      "label": "Screening",
+      "type": "tab",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-dd-btn",
+      "label": "Date Range Preset Dropdown",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Today",
+      "label": "Date Preset: Today",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Yesterday",
+      "label": "Date Preset: Yesterday",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Last 7 Days",
+      "label": "Date Preset: Last 7 Days",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Last 30 Days",
+      "label": "Date Preset: Last 30 Days",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-This Week",
+      "label": "Date Preset: This Week",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Last Week",
+      "label": "Date Preset: Last Week",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-This Month",
+      "label": "Date Preset: This Month",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Last Month",
+      "label": "Date Preset: Last Month",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-This Quarter",
+      "label": "Date Preset: This Quarter",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Last Quarter",
+      "label": "Date Preset: Last Quarter",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-This Year",
+      "label": "Date Preset: This Year",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Last Year",
+      "label": "Date Preset: Last Year",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "date-Custom Range",
+      "label": "Date Preset: Custom Range",
+      "type": "dropdown",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "export-landing",
+      "label": "Export Report",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "filter-Date Range",
+      "label": "Date Range Filter Chip",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "apply-Date Range",
+      "label": "Apply Date Range Filter",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "filter-Branch",
+      "label": "Branch Filter Chip",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "apply-Branch",
+      "label": "Apply Branch Filter",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "filter-Customer ID",
+      "label": "Customer ID Filter Chip",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "apply-Customer ID",
+      "label": "Apply Customer ID Filter",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "filter-Account No.",
+      "label": "Account No. Filter Chip",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "apply-Account No.",
+      "label": "Apply Account No. Filter",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "filter-Screening Type",
+      "label": "Screening Type Filter Chip",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "apply-Screening Type",
+      "label": "Apply Screening Type Filter",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "filter-List Name",
+      "label": "List Name Filter Chip",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "apply-List Name",
+      "label": "Apply List Name Filter",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "clear-filters",
+      "label": "Clear Filters",
+      "type": "button",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "customer-name-link",
+      "label": "Customer Name Link",
+      "type": "link",
+      "screen": "screen-landing",
+      "targetScreen": "screen-p1",
+      "actionMenu": false
+    },
+    {
+      "id": "number-of-matched-list-chip",
+      "label": "Number Of Matched List Chip",
+      "type": "link",
+      "screen": "screen-landing",
+      "targetScreen": "screen-p1",
+      "actionMenu": false
+    },
+    {
+      "id": "actions-dropdown",
+      "label": "Actions Dropdown",
+      "type": "link",
+      "screen": "screen-landing",
+      "actionMenu": true
+    },
+    {
+      "id": "pagination-prev",
+      "label": "Pagination Previous",
+      "type": "pagination",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "pagination-next",
+      "label": "Pagination Next",
+      "type": "pagination",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "back-to-landing",
+      "label": "Back to Match Results",
+      "type": "back",
+      "screen": "screen-p1",
+      "targetScreen": "screen-landing"
+    },
+    {
+      "id": "export-p1",
+      "label": "Export Report",
+      "type": "button",
+      "screen": "screen-p1"
+    },
+    {
+      "id": "new-screening",
+      "label": "New Screening",
+      "type": "button",
+      "screen": "screen-p1"
+    },
+    {
+      "id": "filter-results",
+      "label": "Filter Results",
+      "type": "button",
+      "screen": "screen-p1"
+    },
+    {
+      "id": "matched-list-link",
+      "label": "Number Of Matched List Chip",
+      "type": "link",
+      "screen": "screen-p1",
+      "targetScreen": "screen-review"
+    },
+    {
+      "id": "back-to-p1",
+      "label": "Back to Screening Results",
+      "type": "back",
+      "screen": "screen-review",
+      "targetScreen": "screen-p1"
+    },
+    {
+      "id": "report-btn",
+      "label": "Report",
+      "type": "button",
+      "screen": "screen-review"
+    },
+    {
+      "id": "false-positive",
+      "label": "False Positive",
+      "type": "button",
+      "screen": "screen-review"
+    },
+    {
+      "id": "confirm-match",
+      "label": "Confirm Match",
+      "type": "button",
+      "screen": "screen-review"
+    },
+    {
+      "id": "review-tab-AI Summary",
+      "label": "AI Summary",
+      "type": "tab",
+      "screen": "screen-review"
+    },
+    {
+      "id": "review-tab-Match Details",
+      "label": "Match Details",
+      "type": "tab",
+      "screen": "screen-review"
+    },
+    {
+      "id": "review-tab-View Summary",
+      "label": "View Summary",
+      "type": "tab",
+      "screen": "screen-review"
+    },
+    {
+      "id": "view-full-profile",
+      "label": "View Full Profile",
+      "type": "button",
+      "screen": "screen-review"
+    },
+    {
+      "id": "escalate-case",
+      "label": "Escalate Case",
+      "type": "button",
+      "screen": "screen-review"
+    },
+    {
+      "id": "modal-cancel",
+      "label": "Cancel",
+      "type": "modal",
+      "screen": "all"
+    },
+    {
+      "id": "modal-confirm",
+      "label": "Confirm Action",
+      "type": "modal",
+      "screen": "all"
+    },
+    {
+      "id": "action-view-details",
+      "label": "View Details",
+      "type": "button",
+      "screen": "screen-landing",
+      "actionMenu": true
+    },
+    {
+      "id": "action-under-review",
+      "label": "Under Review",
+      "type": "button",
+      "screen": "screen-landing",
+      "actionMenu": true
+    },
+    {
+      "id": "action-move-to-case",
+      "label": "Move to Case",
+      "type": "button",
+      "screen": "screen-landing",
+      "actionMenu": true
+    },
+    {
+      "id": "action-move-to-whitelist",
+      "label": "Move to Whitelist",
+      "type": "button",
+      "screen": "screen-landing",
+      "actionMenu": true
+    },
+    {
+      "id": "action-move-to-exception-list",
+      "label": "Move to Exception List",
+      "type": "button",
+      "screen": "screen-landing",
+      "actionMenu": true
+    },
+    {
+      "id": "action-view",
+      "label": "View",
+      "type": "button",
+      "screen": "screen-landing",
+      "actionMenu": true
+    }
+  ],
+  "actionMenuItems": [
+    "View Details",
+    "Under Review",
+    "Move to Case",
+    "Move to Whitelist",
+    "Move to Exception List",
+    "False Positive",
+    "Confirm Match",
+    "View Full Profile",
+    "Escalate Case",
+    "View"
+  ],
+  "filterChips": [
+    "Date Range",
+    "Branch",
+    "Customer ID",
+    "Account No.",
+    "Screening Type",
+    "List Name"
+  ],
+  "reviewTabs": [
+    "AI Summary",
+    "Match Details",
+    "View Summary"
+  ],
+  "landingGridLinks": [
+    "Customer Name Link",
+    "Number Of Matched List Chip",
+    "Actions Dropdown"
+  ]
+}

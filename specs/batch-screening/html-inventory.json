@@ -1,0 +1,237 @@
+{
+  "generatedAt": "2026-06-26T16:06:57.580Z",
+  "source": "C:\\Users\\RishuRanjan\\Documents\\AML Automation\\pipeline\\test-data\\clari5-Batch-screening_updated.html",
+  "screens": [
+    {
+      "id": "screen-landing",
+      "label": "Match Results Landing",
+      "type": "screen"
+    },
+    {
+      "id": "screen-p1",
+      "label": "Screening Results Page",
+      "type": "screen"
+    },
+    {
+      "id": "screen-review",
+      "label": "Match Review Workspace",
+      "type": "screen"
+    }
+  ],
+  "tabs": [
+    {
+      "id": "match-results",
+      "label": "Match Results",
+      "type": "tab",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "manual-screening",
+      "label": "Manual Screening",
+      "type": "tab",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "watchlists",
+      "label": "Watchlists",
+      "type": "tab",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "review-ai-summary",
+      "label": "AI Summary",
+      "type": "tab",
+      "screen": "screen-review"
+    },
+    {
+      "id": "review-match-details",
+      "label": "Match Details",
+      "type": "tab",
+      "screen": "screen-review"
+    },
+    {
+      "id": "review-view-summary",
+      "label": "View Summary",
+      "type": "tab",
+      "screen": "screen-review"
+    }
+  ],
+  "filters": [
+    {
+      "id": "fc-date",
+      "label": "Date Range",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "fc-branch",
+      "label": "Branch",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "fc-custid",
+      "label": "Customer ID",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "fc-acct",
+      "label": "Account No.",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "fc-scrtype",
+      "label": "Screening Type",
+      "type": "filter",
+      "screen": "screen-landing"
+    },
+    {
+      "id": "fc-listname",
+      "label": "List Name",
+      "type": "filter",
+      "screen": "screen-landing"
+    }
+  ],
+  "buttons": [
+    {
+      "id": "export-report",
+      "label": "Export Report",
+      "type": "button"
+    },
+    {
+      "id": "clear-filters",
+      "label": "Clear Filters",
+      "type": "button"
+    },
+    {
+      "id": "confirm-match",
+      "label": "Confirm Match",
+      "type": "button"
+    },
+    {
+      "id": "false-positive",
+      "label": "False Positive",
+      "type": "button"
+    },
+    {
+      "id": "move-to-case",
+      "label": "Move to Case",
+      "type": "button"
+    },
+    {
+      "id": "move-to-whitelist",
+      "label": "Move to Whitelist",
+      "type": "button"
+    },
+    {
+      "id": "move-to-exception-list",
+      "label": "Move to Exception List",
+      "type": "button"
+    },
+    {
+      "id": "view-details",
+      "label": "View Details",
+      "type": "button"
+    },
+    {
+      "id": "actions",
+      "label": "Actions",
+      "type": "button"
+    }
+  ],
+  "tables": [
+    {
+      "id": "table-0",
+      "label": "Attribute / Screened Subject / Watchlist Value / Score",
+      "type": "table",
+      "tableHeaders": [
+        "Attribute",
+        "Screened Subject",
+        "Watchlist Value",
+        "Score"
+      ]
+    },
+    {
+      "id": "table-1",
+      "label": "Attribute / Screened Subject / Watchlist Value / Score",
+      "type": "table",
+      "tableHeaders": [
+        "Attribute",
+        "Screened Subject",
+        "Watchlist Value",
+        "Score"
+      ]
+    },
+    {
+      "id": "table-2",
+      "label": "Attribute / Screened Subject / Watchlist Value / Score",
+      "type": "table",
+      "tableHeaders": [
+        "Attribute",
+        "Screened Subject",
+        "Watchlist Value",
+        "Score"
+      ]
+    }
+  ],
+  "modals": [
+    {
+      "id": "comment-modal",
+      "label": "Comment Modal",
+      "type": "modal"
+    },
+    {
+      "id": "pagination",
+      "label": "Pagination Controls",
+      "type": "pagination"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "bulk-row-selection",
+      "label": "Bulk Row Selection",
+      "type": "field"
+    },
+    {
+      "id": "export-file-download-validation",
+      "label": "Export File Download Validation",
+      "type": "field"
+    },
+    {
+      "id": "audit-history-panel",
+      "label": "Audit History Panel",
+      "type": "field",
+      "screen": "gap"
+    },
+    {
+      "id": "empty-results-state",
+      "label": "Empty Results State",
+      "type": "field",
+      "screen": "gap"
+    },
+    {
+      "id": "manual-stop-screening-tab",
+      "label": "Manual Stop Screening Tab",
+      "type": "field"
+    },
+    {
+      "id": "performance-load-indicator",
+      "label": "Performance Load Indicator",
+      "type": "field",
+      "screen": "gap"
+    },
+    {
+      "id": "network-error-banner",
+      "label": "Network Error Banner",
+      "type": "field",
+      "screen": "gap"
+    },
+    {
+      "id": "all-filters-combined",
+      "label": "Combined Filter Application",
+      "type": "filter"
+    }
+  ]
+}

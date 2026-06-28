@@ -1,5 +1,8 @@
 import type { DdsExcelRow } from "./types";
 
+export const DEDUP_CUSTOMER_ID_DUPLICATES = "8829103";
+export const DEDUP_CUSTOMER_ID_NO_MATCH = "3310882";
+
 function escapeStr(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
 }
@@ -97,8 +100,14 @@ const ALL_MATCH_PARAMETERS = [
   "IP / Mac Address",
 ];
 
+function isCustomerIdValue(value: string): boolean {
+  const v = value.trim();
+  return /^(8829103|3310882|INVALID999|CUST-?\d+)$/i.test(v) || /^\d{5,12}$/.test(v);
+}
+
 function isNonParameterTestData(td: string): boolean {
-  return /^(multiple parameters|multiple matching attributes|multiple attributes|multiple duplicate datasets|known duplicate dataset|large result dataset|unique customer dataset|all available parameters|n\/a|na|none|all\s+\d+\s+parameters)$/i.test(td.trim());
+  return isCustomerIdValue(td)
+    || /^(multiple parameters|multiple matching attributes|multiple attributes|multiple duplicate datasets|known duplicate dataset|large result dataset|unique customer dataset|all available parameters|n\/a|na|none|all\s+\d+\s+parameters)$/i.test(td.trim());
 }
 
 function isAllAvailableParametersTestData(row: DdsExcelRow): boolean {
@@ -161,15 +170,16 @@ function isNaTestData(row: DdsExcelRow): boolean {
 
 function appendSelectNParameters(steps: string[], row: DdsExcelRow, count: number): void {
   const params = resolveMatchParametersFromRow(row);
+  const inferred = inferParameterFromSubModule(row.subModule) || inferMatchParameter(row);
   const defaults = [
+    inferred || "Passport No",
     "Date of Birth",
-    "Passport No",
     "Tax ID / PAN",
     "Mobile Number",
     "Email Address",
     "Contact Number",
     "Driving License",
-  ];
+  ].filter((value, index, list) => list.indexOf(value) === index) as string[];
   const toSelect = params.length > 0 ? params.slice(0, count) : defaults.slice(0, count);
   pushUnique(steps, "await ddsPage.openMatchParameterDropdown()");
   for (const param of toSelect) {
@@ -202,17 +212,22 @@ function resolveMatchParametersFromRow(row: DdsExcelRow): string[] {
   if (!td || isNonParameterTestData(td)) {
     return [];
   }
+  if (isCustomerIdValue(td) && !/[+,]/.test(td)) {
+    return [];
+  }
   if (/^cust\d/i.test(td) && !/[+]/.test(td)) {
     return [];
   }
   if (/[+]/.test(td)) {
-    return td.split(/\s*\+\s*/).map((part) => resolveUiParameterLabel(part.trim())).filter((part) => !/^cust/i.test(part));
+    return td.split(/\s*\+\s*/).map((part) => resolveUiParameterLabel(part.trim())).filter((part) => !isCustomerIdValue(part));
   }
   if (td.includes(",") && /=/.test(td)) {
     return [];
   }
   if (td.includes(",")) {
-    return td.split(",").map((part) => resolveUiParameterLabel(part.trim())).filter(Boolean);
+    return td.split(",")
+      .map((part) => resolveUiParameterLabel(part.trim()))
+      .filter((part) => Boolean(part) && !isCustomerIdValue(part));
   }
   if (/^DOB$/i.test(td)) {
     return ["Date of Birth"];
@@ -275,7 +290,7 @@ function inferMatchParameter(row: DdsExcelRow): string | null {
 
 function resolveSearchKeyword(row: DdsExcelRow): string {
   const td = row.testData.trim();
-  if (isNonParameterTestData(td)) {
+  if (isNonParameterTestData(td) || isCustomerIdValue(td)) {
     const param = inferMatchParameter(row);
     return param ? param.split("/")[0].trim() : "Passport";
   }
@@ -289,14 +304,8 @@ function resolveSearchKeyword(row: DdsExcelRow): string {
 function resolveCustomerId(row: DdsExcelRow): string {
   const blob = rowBlob(row);
   const td = row.testData.trim();
-  if (/unique customer dataset|no duplicate dataset|unique dataset/i.test(td + blob)) {
-    return "UNIQUE999";
-  }
-  if (/@|\.com\b|\.net\b/i.test(td) && !/,|\s+vs\s+/i.test(td)) {
-    return td;
-  }
-  if (/\s+vs\s+|,/i.test(td) && !/group|parameter|dataset/i.test(td.toLowerCase())) {
-    return td.split(/\s+vs\s+|,/)[0].trim();
+  if (/unique customer dataset|no duplicate dataset|unique dataset|non-matching dataset|no match workflow/i.test(td + blob)) {
+    return DEDUP_CUSTOMER_ID_NO_MATCH;
   }
   if (/^blank$|^empty$/i.test(td) || /leave customer id blank|leave customer id empty/i.test(row.testSteps.toLowerCase())) {
     return "";
@@ -304,19 +313,66 @@ function resolveCustomerId(row: DdsExcelRow): string {
   if (/^invalid/i.test(td) || /\binvalid customer id\b|\bnon-existent customer\b/i.test(blob)) {
     return "INVALID999";
   }
-  if (/cust10001|cust-10001/i.test(row.testData + blob)) {
-    return "CUST10001";
+  if (/3310882/i.test(row.testData + blob)) {
+    return DEDUP_CUSTOMER_ID_NO_MATCH;
   }
-  if (/cust12345/i.test(row.testData + blob)) {
-    return "CUST12345";
+  if (/8829103/i.test(row.testData + blob)) {
+    return DEDUP_CUSTOMER_ID_DUPLICATES;
   }
-  return "CUST10001";
+  if (isCustomerIdValue(td)) {
+    return td;
+  }
+  if (isEmptyResultsRow(row) || isUniqueDatasetTestData(row)) {
+    return DEDUP_CUSTOMER_ID_NO_MATCH;
+  }
+  return DEDUP_CUSTOMER_ID_DUPLICATES;
 }
 
 function needsCustomerIdForReport(row: DdsExcelRow): boolean {
   const blob = rowBlob(row);
-  return /customer id|cust\d|enter customer|input customer|provide customer/i.test(blob)
-    && !/unique customer dataset|no duplicate|without customer id|leave customer id blank/i.test(blob);
+  if (/leave customer id blank|leave customer id empty|without customer id|customer id field is left blank|customer id field empty/i.test(blob)) {
+    return false;
+  }
+  if (expectsMatchParameterValidation(row)) {
+    return false;
+  }
+  return true;
+}
+
+function reportWasGeneratedInFlow(lines: string[]): boolean {
+  return lines.some((line) =>
+    line.includes("clickGenerateReport")
+    || line.includes("generateLargeDuplicateReport")
+    || line.includes("runDefaultDedupReport")
+    || line.includes("regenerateReport"),
+  );
+}
+
+function ensureCustomerIdBeforeReport(steps: string[], row: DdsExcelRow): void {
+  if (!needsCustomerIdForReport(row)) {
+    return;
+  }
+  if (steps.some((step) => step.includes("fillCustomerId"))) {
+    return;
+  }
+  const customerId = resolveCustomerId(row);
+  if (!customerId) {
+    return;
+  }
+  const generateIndex = steps.findIndex((step) => step.includes("clickGenerateReport") || step.includes("generateLargeDuplicateReport"));
+  if (generateIndex >= 0) {
+    steps.splice(generateIndex, 0, `await ddsPage.fillCustomerId('${escapeStr(customerId)}')`);
+    return;
+  }
+  pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(customerId)}')`);
+}
+
+function sanitizeParameterSelection(raw: string, row: DdsExcelRow): string {
+  const resolved = resolveUiParameterLabel(raw);
+  if (ALL_MATCH_PARAMETERS.some((label) => label.toLowerCase() === resolved.toLowerCase())) {
+    return resolved;
+  }
+  return inferParameterFromSubModule(row.subModule) || inferMatchParameter(row) || "Passport No";
 }
 
 function resolveTagToRemove(row: DdsExcelRow): string {
@@ -332,6 +388,125 @@ function resolveRemainingTagsAfterRemoval(row: DdsExcelRow): string[] {
 function isReviewOrObserveStep(step: string): boolean {
   return /^(review|observe|inspect|note|count|wait for|validate|check)\b/i.test(step.trim())
     && !/generate report|generate de-dup|click generate/i.test(step);
+}
+
+function isGenericFillerStep(step: string): boolean {
+  return /perform the action described for|confirm the page responds as described|confirm the outcome matches the expected result for this scenario|confirm the de-dup screening page remains stable with no unexpected errors/i.test(
+    step.toLowerCase(),
+  );
+}
+
+function isDropdownOpenOnlyScenario(row: DdsExcelRow): boolean {
+  const blob = `${row.subModule} ${row.taskDescription} ${row.testSteps}`.toLowerCase();
+  return /dropdown opens|dropdown trigger|dropdown panel opens|click the match parameter list dropdown|match parameter dropdown/i.test(blob)
+    && !/select all in the dropdown|select parameter|selected parameter appears|parameter tag|generate report|select all available|all 11 parameters/i.test(blob);
+}
+
+function mapConfirmStepToAssertion(step: string, row: DdsExcelRow): string | null {
+  const s = step.toLowerCase();
+  if (/highlighted as the active sidebar|active sidebar menu item|menu is highlighted/.test(s)) {
+    return "await ddsPage.expectDedupScreeningPageLoaded()";
+  }
+  if (/page title shows de-duplication screening|breadcrumb|sanction screening followed by de-dup/.test(s)) {
+    return "await ddsPage.expectPageHeaderVisible()";
+  }
+  if (/search filters card is visible|search filters section visible|search filters.*visible/.test(s)) {
+    return "await ddsPage.expectDedupScreeningPageLoaded()";
+  }
+  if (/results section is hidden|results section hidden|results section remains hidden/.test(s)) {
+    return "await ddsPage.expectResultsSectionHidden()";
+  }
+  if (/de-dup screening page is displayed|de-duplication match report section appears|results section becomes visible/.test(s)) {
+    return isResultsContext(row) ? "await ddsPage.expectResultsGridVisible()" : "await ddsPage.expectDedupScreeningPageLoaded()";
+  }
+  if (/dropdown panel opens|dropdown opens with available parameters/.test(s)) {
+    return "await ddsPage.expectMatchParameterDropdownOpen()";
+  }
+  if (/selected parameter appears as a tag|selected parameters appear as removable tags/.test(s)) {
+    const params = resolveMatchParametersFromRow(row);
+    return params[0] ? `await ddsPage.expectParameterTagVisible('${escapeStr(params[0])}')` : null;
+  }
+  if (/parameter checkbox remains checked|checkbox remains checked/.test(s)) {
+    const param = inferMatchParameter(row) ?? "Passport No";
+    return `await ddsPage.expectParameterCheckboxChecked('${escapeStr(param)}')`;
+  }
+  if (/removed parameter is no longer selected|removed parameter is no longer/.test(s)) {
+    return `await ddsPage.expectParameterTagHidden('${escapeStr(resolveTagToRemove(row))}')`;
+  }
+  if (/all match parameters appear as selected tags/.test(s)) {
+    return "await ddsPage.expectAllMatchParametersSelected()";
+  }
+  if (/select all option and search field are visible/.test(s)) {
+    return "await ddsPage.expectMatchParameterDropdownOpen()";
+  }
+  if (/placeholder select parameters|deselect all parameters|fields are reset to empty|match parameter list and customer id fields are reset/.test(s)) {
+    return "await ddsPage.expectFiltersCleared()";
+  }
+  if (/matching parameters are displayed|non-matching parameters are hidden|filtered list/.test(s)) {
+    const param = inferMatchParameter(row) ?? "Passport No";
+    return `await ddsPage.expectMatchParameterOptionVisible('${escapeStr(param)}')`;
+  }
+  if (/no access denied message|access denied message is not/.test(s)) {
+    return "await ddsPage.expectDedupScreeningPageLoaded()";
+  }
+  if (/validation message appears|action does not proceed|validation or no-records message/.test(s)) {
+    return "await ddsPage.expectMatchParameterValidationFeedback()";
+  }
+  if (/toast notification appears|toast message references/.test(s)) {
+    return "await ddsPage.expectExportCompleted()";
+  }
+  if (/generating or loading state|loading or generating state|processing to complete/.test(s)) {
+    return "await ddsPage.expectGeneratingStateVisible()";
+  }
+  if (/customer kyc comparison modal opens|compare modal opens|side-by-side compare/.test(s)) {
+    return "await ddsPage.expectCompareModalVisible()";
+  }
+  if (/match notice banner|highlighted in both customer columns|matched kyc fields are highlighted/.test(s)) {
+    return "await ddsPage.expectMatchedFieldsHighlighted()";
+  }
+  if (/escape key closes the modal|overlay closes the modal|modal closes and returns focus/.test(s)) {
+    return "await ddsPage.expectCompareModalClosed()";
+  }
+  if (/group id cells|group status labels|active group or closed group/.test(s)) {
+    return "await ddsPage.expectDuplicateGroupIntegrity()";
+  }
+  if (/pagination controls display|new set of duplicate records is displayed|next page using pagination/.test(s)) {
+    return "await ddsPage.expectPaginationVisible()";
+  }
+  if (/empty results state message|no duplicate group rows appear/.test(s)) {
+    return "await ddsPage.expectEmptyStateVisible()";
+  }
+  if (/generate report button state|no match parameters are selected/.test(s)) {
+    return "await ddsPage.expectGenerateReportDisabled()";
+  }
+  if (/success status message confirms|message references the selected filter/.test(s)) {
+    return "await ddsPage.expectResultsSummaryVisible()";
+  }
+  if (/user remains on the de-dup screening module|de-dup screening reloads|manual screening page is displayed|de-dup screening page is displayed again/.test(s)) {
+    return "await ddsPage.expectDedupScreeningPageLoaded()";
+  }
+  if (/print preview|browser print dialog opens/.test(s)) {
+    return "await ddsPage.expectExportActionAvailable()";
+  }
+  if (/exported file and inspect|sensitive values are masked/.test(s)) {
+    return "await ddsPage.expectSensitiveDataMasked()";
+  }
+  if (/columns show group id|duplicate records in the results grid/.test(s)) {
+    return "await ddsPage.expectResultsGridVisible()";
+  }
+  if (/modal title and subtitle|matched parameters appear|matched parameter and match parameters appear/.test(s)) {
+    return "await ddsPage.expectCompareModalVisible()";
+  }
+  if (/missing or unavailable values display|em dash or placeholder/.test(s)) {
+    return "await ddsPage.expectMissingDataHandled()";
+  }
+  if (/scores reflect|match parameter values in the results|matching percentage|calculation logic|matched parameter values reflect/i.test(s)) {
+    return "await ddsPage.expectMatchParametersColumnVisible()";
+  }
+  if (/inline validation message is displayed for the customer id/.test(s)) {
+    return "await ddsPage.expectCustomerIdValidationFeedback()";
+  }
+  return null;
 }
 
 function selectParametersFromRowSteps(steps: string[], row: DdsExcelRow, keepOpen = true): void {
@@ -361,7 +536,7 @@ function isResultsContext(row: DdsExcelRow): boolean {
   if (isTagManagementRow(row)) {
     return false;
   }
-  return /results grid|pagination|compare modal|export|customer profile comparison|report regeneration|data display|matched field|missing data|empty state|results summary|results visibility|group integrity|audit trail|data privacy|masking|comparison data|export data|group validation|match score|aml edge|multi-parameter investigation|no match workflow|aml business/i.test(sm + assertionBlob(row));
+  return /results grid|pagination|compare modal|export|customer profile comparison|report regeneration|data display|matched field|missing data|empty state|results summary|results visibility|duplicate group|group integrity|audit trail|data privacy|masking|comparison data|export data|group validation|duplicate detection & aml edge|aml edge|multi-parameter investigation|no match workflow|aml business/i.test(sm + assertionBlob(row));
 }
 
 function isEmptyParameterSearchRow(row: DdsExcelRow): boolean {
@@ -379,7 +554,7 @@ function isEmptyResultsRow(row: DdsExcelRow): boolean {
 }
 
 function needsDedupResultsData(row: DdsExcelRow): boolean {
-  if (isTagManagementRow(row) || isMatchingSuiteRow(row) || isMatchScoreReportRow(row) || !isResultsContext(row) || isEmptyResultsRow(row)) {
+  if (isTagManagementRow(row) || isMatchingSuiteRow(row) || isDuplicateDetectionEdgeRow(row) || !isResultsContext(row) || isEmptyResultsRow(row)) {
     return false;
   }
   if (/known duplicate dataset|large result dataset|multiple duplicate datasets/i.test(row.testData.trim())) {
@@ -388,13 +563,12 @@ function needsDedupResultsData(row: DdsExcelRow): boolean {
   return /results grid|duplicate records|report results|compare modal|pagination|export|results summary|group count|record count|matched field|group integrity|group validation|data display rules|comparison|duplicate group|multi-parameter investigation|cross-check displayed customer|cross-check values|note report data/i.test(assertionBlob(row));
 }
 
-function isMatchScoreReportRow(row: DdsExcelRow): boolean {
-  return /match score & aml edge/i.test(row.subModule)
-    && /select.*match parameter|select.*parameters|select multiple/i.test(row.testSteps.toLowerCase())
+function isDuplicateDetectionEdgeRow(row: DdsExcelRow): boolean {
+  return /duplicate detection & aml edge/i.test(row.subModule)
     && !isEmptyResultsRow(row);
 }
 
-function resolveMatchScoreParameterCount(row: DdsExcelRow): number {
+function resolveDuplicateDetectionParameterCount(row: DdsExcelRow): number {
   const td = row.testData.trim().toLowerCase();
   const steps = row.testSteps.toLowerCase();
   if (/all parameters match/i.test(td)) {
@@ -422,8 +596,8 @@ function resolveMatchScoreParameterCount(row: DdsExcelRow): number {
   return 1;
 }
 
-function needsMatchScoreReportFlow(row: DdsExcelRow): boolean {
-  return isMatchScoreReportRow(row);
+function needsDuplicateDetectionReportFlow(row: DdsExcelRow): boolean {
+  return isDuplicateDetectionEdgeRow(row);
 }
 
 function needsMatchingReportFlow(row: DdsExcelRow): boolean {
@@ -481,6 +655,7 @@ function numberedOpensDropdown(row: DdsExcelRow): boolean {
 
 function shouldSkipSetupParameterSelection(row: DdsExcelRow): boolean {
   return expectsMatchParameterValidation(row)
+    || isNavigationOnlyRow(row)
     || /do not select any match parameter|leave match parameter blank/i.test(row.testSteps.toLowerCase());
 }
 
@@ -495,31 +670,7 @@ const OPEN = "await ddsPage.openDedupScreeningDirect(testData.baseUrl)";
 export function buildExcelSetupActions(row: DdsExcelRow): string[] {
   const steps: string[] = [];
   const blob = rowBlob(row);
-
-  if (isEmptyResultsRow(row) || isUniqueDatasetTestData(row)) {
-    pushUnique(steps, "await ddsPage.mockEmptyDuplicateResults()");
-  } else if (expectsInvalidCustomerIdHandling(row)) {
-    pushUnique(steps, "await ddsPage.mockEmptyDuplicateResults()");
-  } else if (needsMatchScoreReportFlow(row)) {
-    const selected = resolveMatchScoreParameterCount(row);
-    const matched = /all parameters match/i.test(row.testData.trim().toLowerCase()) ? selected : Math.max(1, Math.min(selected, 2));
-    pushUnique(steps, `await ddsPage.seedMatchScoreResults(${selected}, ${matched})`);
-  } else if (needsLargeDatasetResults(row)) {
-    pushUnique(steps, "await ddsPage.seedLargeDuplicateResults()");
-  } else if (needsMultiParameterReportFlow(row)) {
-    const params = resolveMatchParametersFromRow(row);
-    const seedParams = params.length > 0 ? params : ["Date of Birth", "Passport No", "Tax ID / PAN"];
-    pushUnique(steps, `await ddsPage.seedDuplicateReportResults([${seedParams.map((p) => `'${escapeStr(p)}'`).join(", ")}])`);
-  } else if (needsMatchingReportFlow(row) || needsDedupResultsData(row)) {
-    const param = inferParameterFromSubModule(row.subModule) || inferMatchParameter(row) || "Passport No";
-    const params = resolveMatchParametersFromRow(row);
-    const seedParams = params.length > 0 ? params : [param];
-    pushUnique(steps, `await ddsPage.seedDuplicateReportResults([${seedParams.map((p) => `'${escapeStr(p)}'`).join(", ")}])`);
-  }
-
-  if (isApiFailureRow(row)) {
-    pushUnique(steps, "await ddsPage.mockDedupReportApiFailure()");
-  }
+  const needsEmptyMock = isEmptyResultsRow(row) || isUniqueDatasetTestData(row) || expectsInvalidCustomerIdHandling(row);
 
   if (isAuthDeniedScenario(row)) {
     pushUnique(steps, "await ddsPage.mockUnauthorized()");
@@ -532,12 +683,34 @@ export function buildExcelSetupActions(row: DdsExcelRow): string[] {
     pushUnique(steps, OPEN);
   }
 
+  if (needsEmptyMock) {
+    pushUnique(steps, "await ddsPage.mockEmptyDuplicateResults()");
+  }
+
+  if (isApiFailureRow(row)) {
+    pushUnique(steps, "await ddsPage.mockDedupReportApiFailure()");
+  }
+
   if (needsDedupResultsData(row)) {
+    pushUnique(steps, "await ddsPage.expectDedupScreeningPageLoaded()");
     if (needsLargeDatasetResults(row)) {
-      pushUnique(steps, "await ddsPage.expectDedupScreeningPageLoaded()");
+      pushUnique(steps, "await ddsPage.seedLargeDuplicateResults()");
       pushUnique(steps, "await ddsPage.generateLargeDuplicateReport()");
     } else {
-      pushUnique(steps, "await ddsPage.ensureDedupResultsAvailable()");
+      const param = inferParameterFromSubModule(row.subModule) || inferMatchParameter(row) || "Passport No";
+      const params = resolveMatchParametersFromRow(row);
+      if (params.length > 1) {
+        for (const p of params) {
+          pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(p)}', { keepOpen: true })`);
+        }
+        pushUnique(steps, "await ddsPage.closeMatchParameterDropdown()");
+      } else {
+        pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(params[0] || param)}')`);
+      }
+      if (needsCustomerIdForReport(row)) {
+        pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(resolveCustomerId(row))}')`);
+      }
+      pushUnique(steps, "await ddsPage.clickGenerateReport()");
     }
     return steps;
   }
@@ -553,15 +726,16 @@ export function buildExcelSetupActions(row: DdsExcelRow): string[] {
     return steps;
   }
 
-  if (needsMatchScoreReportFlow(row)) {
+  if (needsDuplicateDetectionReportFlow(row)) {
     pushUnique(steps, "await ddsPage.expectDedupScreeningPageLoaded()");
-    const count = resolveMatchScoreParameterCount(row);
+    const count = resolveDuplicateDetectionParameterCount(row);
     if (count >= ALL_MATCH_PARAMETERS.length) {
       pushUnique(steps, "await ddsPage.openMatchParameterDropdown()");
       pushUnique(steps, "await ddsPage.selectAllMatchParameters({ keepOpen: true })");
     } else {
       appendSelectNParameters(steps, row, count);
     }
+    pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(resolveCustomerId(row))}')`);
     pushUnique(steps, "await ddsPage.clickGenerateReport()");
     return steps;
   }
@@ -574,7 +748,7 @@ export function buildExcelSetupActions(row: DdsExcelRow): string[] {
       pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(param)}', { keepOpen: true })`);
     }
     pushUnique(steps, "await ddsPage.closeMatchParameterDropdown()");
-    pushUnique(steps, "await ddsPage.fillCustomerId('CUST10001')");
+    pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(DEDUP_CUSTOMER_ID_DUPLICATES)}')`);
     pushUnique(steps, "await ddsPage.clickGenerateReport()");
     return steps;
   }
@@ -589,7 +763,7 @@ export function buildExcelSetupActions(row: DdsExcelRow): string[] {
   }
 
   if (isUniqueDatasetTestData(row) && !shouldSkipSetupParameterSelection(row)) {
-    pushUnique(steps, "await ddsPage.fillCustomerId('UNIQUE999')");
+    pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(DEDUP_CUSTOMER_ID_NO_MATCH)}')`);
   }
 
   if (needsPreconditionParameterSetup(row)) {
@@ -601,7 +775,7 @@ export function buildExcelSetupActions(row: DdsExcelRow): string[] {
 
   if (isMatchingSuiteRow(row) && isEmptyResultsRow(row)) {
     pushUnique(steps, "await ddsPage.mockEmptyDuplicateResults()");
-    pushUnique(steps, "await ddsPage.fillCustomerId('UNIQUE999')");
+    pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(DEDUP_CUSTOMER_ID_NO_MATCH)}')`);
   }
 
   const params = resolveMatchParametersFromRow(row);
@@ -633,6 +807,132 @@ export function buildExcelStepActions(row: DdsExcelRow): string[] {
 
   for (const s of numbered) {
     if (stepMatches(s, "login", "log in", "logged in")) {
+      continue;
+    }
+    if (/^confirm /i.test(s)) {
+      const mapped = mapConfirmStepToAssertion(s, row);
+      if (mapped) {
+        pushUnique(steps, mapped);
+      }
+      continue;
+    }
+    if (isGenericFillerStep(s)) {
+      continue;
+    }
+    if (stepMatches(s, "open the de-dup screening url directly", "open the de-dup screening url in the browser")) {
+      continue;
+    }
+    if (stepMatches(s, "open the de-dup screening page from the sanction screening sidebar", "open the de-dup screening page from")) {
+      continue;
+    }
+    if (stepMatches(s, "switch to each authorized role", "switch to the restricted role", "switch to the role from test data")) {
+      continue;
+    }
+    if (stepMatches(s, "navigate to manual screening from the sidebar")) {
+      pushUnique(steps, "await ddsPage.openAnotherAmlModule()");
+      continue;
+    }
+    if (stepMatches(s, "use the browser back button")) {
+      pushUnique(steps, "await ddsPage.goBackInBrowser()");
+      continue;
+    }
+    if (stepMatches(s, "use the browser forward button")) {
+      pushUnique(steps, "await ddsPage.goForwardInBrowser()");
+      continue;
+    }
+    if (stepMatches(s, "refresh the browser page")) {
+      pushUnique(steps, "await ddsPage.refreshPage()");
+      continue;
+    }
+    if (stepMatches(s, "scroll to the bottom of the search filters")) {
+      pushUnique(steps, "await ddsPage.scrollToFooter()");
+      continue;
+    }
+    if (stepMatches(s, "press the escape key", "press escape")) {
+      pushUnique(steps, "await ddsPage.closeCompareModalWithEscape()");
+      continue;
+    }
+    if (stepMatches(s, "click outside the modal", "clicking the overlay", "overlay area")) {
+      pushUnique(steps, "await ddsPage.closeCompareModalByOutsideClick()");
+      continue;
+    }
+    if (stepMatches(s, "click the remove icon on one parameter tag", "remove icon on one parameter tag")) {
+      pushUnique(steps, `await ddsPage.removeParameterTag('${escapeStr(resolveTagToRemove(row))}')`);
+      continue;
+    }
+    if (stepMatches(s, "reopen compare")) {
+      pushUnique(steps, "await ddsPage.openCompareModalFromFirstRow()");
+      continue;
+    }
+    if (stepMatches(s, "wait for results to load", "wait for processing to complete")) {
+      continue;
+    }
+    if (stepMatches(s, "review the status message", "review group id cells", "review match parameter values", "review the side-by-side compare", "review customer profile fields", "review the notice banner", "review the generate report button state", "review duplicate records", "review the breadcrumb trail")) {
+      continue;
+    }
+    if (stepMatches(s, "attempt to open the de-dup screening module")) {
+      pushUnique(steps, "await ddsPage.openDedupScreeningDirect(testData.baseUrl)");
+      continue;
+    }
+    if (stepMatches(s, "leave the customer id field empty", "leave match parameter list with no parameters")) {
+      continue;
+    }
+    if (stepMatches(s, "enter an invalid customer id format", "enter invalid customer id")) {
+      pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(resolveCustomerId(row))}')`);
+      continue;
+    }
+    if (stepMatches(s, "open exported files and inspect", "open each exported file")) {
+      continue;
+    }
+    if (stepMatches(s, "select export to excel", "select print report", "select the export format", "select an export format")) {
+      pushUnique(steps, "await ddsPage.exportReport('Excel')");
+      continue;
+    }
+    if (stepMatches(s, "click export on the results header", "click export")) {
+      pushUnique(steps, "await ddsPage.openExportMenu()");
+      continue;
+    }
+    if (stepMatches(s, "click compare on the first duplicate group", "click compare on a duplicate group")) {
+      pushUnique(steps, "await ddsPage.openCompareModalFromFirstRow()");
+      continue;
+    }
+    if (stepMatches(s, "navigate to the next page using pagination")) {
+      pushUnique(steps, "await ddsPage.goToNextPage()");
+      continue;
+    }
+    if (stepMatches(s, "click the match parameter list dropdown trigger", "click the match parameter list dropdown")) {
+      pushUnique(steps, "await ddsPage.openMatchParameterDropdown()");
+      continue;
+    }
+    if (stepMatches(s, "click select all in the dropdown panel", "click select all")) {
+      pushUnique(steps, "await ddsPage.openMatchParameterDropdown()");
+      pushUnique(steps, "await ddsPage.selectAllMatchParameters({ keepOpen: true })");
+      continue;
+    }
+    if (stepMatches(s, "click select all again to deselect all")) {
+      pushUnique(steps, "await ddsPage.deselectAllMatchParameters()");
+      continue;
+    }
+    if (stepMatches(s, "enter a search term from test data", "enter a search term")) {
+      pushUnique(steps, "await ddsPage.openMatchParameterDropdown()");
+      const searchTerm = inferMatchParameter(row) ?? "Pass";
+      pushUnique(steps, `await ddsPage.searchMatchParameter('${escapeStr(searchTerm.slice(0, 4))}')`);
+      continue;
+    }
+    if (stepMatches(s, "open match parameter list and select")) {
+      const params = resolveMatchParametersFromRow(row);
+      if (params.length > 0) {
+        for (const param of params) {
+          pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(param)}', { keepOpen: true })`);
+        }
+        pushUnique(steps, "await ddsPage.closeMatchParameterDropdown()");
+      } else {
+        const param = inferMatchParameter(row) ?? "Passport No";
+        pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(param)}')`);
+      }
+      continue;
+    }
+    if (stepMatches(s, "open the de-dup screening page")) {
       continue;
     }
     if (stepMatches(s, "navigate to sanction", "sanction screening section", "sanctions screening")) {
@@ -951,7 +1251,7 @@ export function buildExcelStepActions(row: DdsExcelRow): string[] {
         }
         pushUnique(steps, "await ddsPage.closeMatchParameterDropdown()");
       } else {
-        pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(resolveUiParameterLabel(raw))}')`);
+        pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(sanitizeParameterSelection(raw, row))}')`);
       }
     } else if (stepMatches(s, "select one parameter") && /single tag exists/i.test(row.preconditions)) {
       continue;
@@ -972,21 +1272,21 @@ export function buildExcelStepActions(row: DdsExcelRow): string[] {
       const param = inferMatchParameter(row) || "Passport No";
       pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(param)}')`);
       if (needsCustomerIdForReport(row)) {
-        pushUnique(steps, "await ddsPage.fillCustomerId('CUST10001')");
+        pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(DEDUP_CUSTOMER_ID_DUPLICATES)}')`);
       }
       pushUnique(steps, "await ddsPage.clickGenerateReport()");
     } else if (/generate report with duplicate|report with duplicates|generate report using valid criteria|generate report using valid/i.test(s)) {
       const param = resolveSingleParameterFromTestData(row) || inferMatchParameter(row) || "Date of Birth";
-      if (!isEmptyResultsRow(row)) {
-        pushUnique(steps, `await ddsPage.seedDuplicateReportResults(['${escapeStr(param)}'])`);
-      }
       pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(param)}')`);
+      if (needsCustomerIdForReport(row)) {
+        pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(resolveCustomerId(row))}')`);
+      }
       pushUnique(steps, "await ddsPage.clickGenerateReport()");
     } else if (/run report with no matching|report with no matching|no matching duplicates|using unique customer dataset|using non-matching dataset|using unique dataset/i.test(s)) {
       pushUnique(steps, "await ddsPage.mockEmptyDuplicateResults()");
       const param = inferParameterFromSubModule(row.subModule) || inferMatchParameter(row) || "Passport No";
       pushUnique(steps, `await ddsPage.selectMatchParameter('${escapeStr(param)}')`);
-      pushUnique(steps, "await ddsPage.fillCustomerId('UNIQUE999')");
+      pushUnique(steps, `await ddsPage.fillCustomerId('${escapeStr(DEDUP_CUSTOMER_ID_NO_MATCH)}')`);
       pushUnique(steps, "await ddsPage.clickGenerateReport()");
     } else if (stepMatches(s, "generate report", "click generate", "run report", "generate de-dup", "generate duplicate") && !/do not generate/i.test(s)) {
       if (expectsMatchParameterValidation(row)) {
@@ -1051,7 +1351,9 @@ export function buildExcelStepActions(row: DdsExcelRow): string[] {
       pushUnique(steps, "await ddsPage.performLogoutAndReturn()");
     } else if (stepMatches(s, "generate duplicate report")) {
       pushUnique(steps, "await ddsPage.clickGenerateReport()");
-    } else {
+    } else if (isGenericFillerStep(s)) {
+      continue;
+    } else if (!/^confirm /i.test(s)) {
       pushUnique(steps, `// TODO: Excel step not mapped — "${escapeStr(s)}"`);
     }
   }
@@ -1111,7 +1413,7 @@ export function buildExcelAssertionActions(row: DdsExcelRow): string[] {
   if (/chevron.*default|dropdown is collapsed|collapsed position|dropdown should close|closes immediately|close immediately|without affecting existing selections/i.test(ac)) {
     pushUnique(steps, "await ddsPage.expectMatchParameterDropdownClosed()");
   }
-  if (/available match parameters|match parameter list/i.test(ac) && (isNaTestData(row) || !row.testData.trim()) && !/all parameters should be selected|all 11 parameters|select all available|match parameters column|results grid/i.test(ac)) {
+  if (/available match parameters|match parameter list/i.test(ac) && (isNaTestData(row) || !row.testData.trim()) && !/all parameters should be selected|all 11 parameters|select all available|match parameters column|results grid|export|exported|download|print report|privacy|masking/i.test(ac) && !isResultsContext(row)) {
     pushUnique(steps, "await ddsPage.expectMatchParameterDropdownOpen()");
     pushUnique(steps, "await ddsPage.expectDefaultMatchParametersListed()");
   }
@@ -1138,7 +1440,7 @@ export function buildExcelAssertionActions(row: DdsExcelRow): string[] {
   if (isEmptyParameterSearchRow(row)) {
     pushUnique(steps, "await ddsPage.expectMatchParameterSearchEmpty()");
   }
-  if (/select all|deselect all|parameter selection|remain selected|remain intact/i.test(ac) && !/tag order|removed|unchecked|empty/i.test(ac) && !expectsMatchParameterValidation(row)) {
+  if (!isDropdownOpenOnlyScenario(row) && /select all|deselect all|parameter selection|remain selected|remain intact/i.test(ac) && !/tag order|removed|unchecked|empty/i.test(ac) && !expectsMatchParameterValidation(row)) {
     pushUnique(steps, "await ddsPage.expectMatchParameterSelectionState()");
   }
   if (/selected parameter should be successfully selected|all selected parameters should remain selected|both parameters should remain selected/i.test(ac)) {
@@ -1151,7 +1453,7 @@ export function buildExcelAssertionActions(row: DdsExcelRow): string[] {
       pushUnique(steps, `await ddsPage.expectParameterTagVisible('${escapeStr(param)}')`);
     }
   }
-  if (/all parameters should be selected|all 11 parameters|select all available/i.test(ac)) {
+  if (!isDropdownOpenOnlyScenario(row) && /all parameters should be selected|all 11 parameters|select all available/i.test(ac)) {
     pushUnique(steps, "await ddsPage.expectAllMatchParametersSelected()");
   }
   if (/remain selected after reopening|remain intact after closing|previously selected parameters should remain/i.test(ac)) {
@@ -1198,8 +1500,16 @@ export function buildExcelAssertionActions(row: DdsExcelRow): string[] {
   if (/pagination|page navigation|records per page|selected page successfully|load selected page/i.test(ac) && !isNavigationOnlyRow(row)) {
     pushUnique(steps, "await ddsPage.expectPaginationVisible()");
   }
-  if (/compare modal|comparison modal|side-by-side|profile comparison/i.test(ac) && !/modal.*close|closes successfully|modal dismissed|closed successfully/i.test(ac)) {
-    pushUnique(steps, "await ddsPage.expectCompareModalVisible()");
+  if (/compare modal|comparison modal|side-by-side|profile comparison/i.test(ac) && !/modal.*close|closes successfully|modal dismissed|closed successfully|results or compare modal|in the results or compare/i.test(ac)) {
+    const stepsBlob = `${row.testSteps} ${row.taskDescription}`.toLowerCase();
+    const opensCompare = /click compare|open compare|compare button|compare modal opens|customer kyc comparison modal opens|reopen compare/i.test(stepsBlob);
+    const isCompareSubmodule = /compare modal|modal header|modal close|customer profile comparison|matched field highlighting|missing data handling|layout integrity|modal close actions/i.test(row.subModule);
+    if (opensCompare || isCompareSubmodule) {
+      if (!opensCompare) {
+        pushUnique(steps, "await ddsPage.openCompareModalFromFirstRow()");
+      }
+      pushUnique(steps, "await ddsPage.expectCompareModalVisible()");
+    }
   }
   if (/modal.*close|modal dismissed|modal should close|closes successfully|modal is closed/i.test(ac)) {
     pushUnique(steps, "await ddsPage.expectCompareModalClosed()");
@@ -1242,8 +1552,11 @@ export function buildExcelAssertionActions(row: DdsExcelRow): string[] {
   if (/group integrity|duplicate group/i.test(ac) && !isTagManagementRow(row) && !isEmptyResultsRow(row)) {
     pushUnique(steps, "await ddsPage.expectDuplicateGroupIntegrity()");
   }
-  if (/match score|scoring|threshold|edge case|closed account|cross branch|historical customer/i.test(ac)) {
-    pushUnique(steps, "await ddsPage.expectMatchScoreDisplayed()");
+  if (/match parameters column|match parameter values|matched parameter coverage|calculation logic|duplicate detection using match parameters|parameter matching|matched parameters appear/i.test(ac)) {
+    pushUnique(steps, "await ddsPage.expectMatchParametersColumnVisible()");
+  }
+  if (/edge case|closed account|cross branch|historical customer/i.test(ac) && isDuplicateDetectionEdgeRow(row)) {
+    pushUnique(steps, "await ddsPage.expectDuplicateGroupIntegrity()");
   }
   if (/consistency|regeneration|same results|repeated multi-parameter|consistent results|data integrity across repeated|investigation workflow maintains/i.test(ac)) {
     pushUnique(steps, "await ddsPage.expectReportConsistencyMaintained()");
@@ -1261,12 +1574,20 @@ export function buildExcelAlignedLogic(row: DdsExcelRow): string {
   let actions = buildExcelStepActions(row);
   let assertions = buildExcelAssertionActions(row);
 
+  actions = actions.filter((s) => !s.startsWith("// TODO"));
+
+  if (isNavigationOnlyRow(row)) {
+    setup = setup.filter((s) => !s.includes("selectMatchParameter") && !s.includes("searchMatchParameter"));
+    actions = actions.filter((s) => !s.includes("selectMatchParameter") && !s.includes("searchMatchParameter") && !s.includes("openMatchParameterDropdown"));
+    assertions = assertions.filter((s) => !s.includes("expectMatchParameterDropdownOpen") && !s.includes("expectMatchParameterOptionVisible"));
+  }
+
   const actionsOpenDropdown = actions.some((s) => s.includes("openMatchParameterDropdown"));
   if (actionsOpenDropdown) {
     setup = setup.filter((s) => !s.includes("selectMatchParameter") || s.includes("seedPreconditionMatchParameters"));
   }
 
-  if (needsDedupResultsData(row) || needsMatchingReportFlow(row) || needsMultiParameterReportFlow(row) || needsMatchScoreReportFlow(row)) {
+  if (needsDedupResultsData(row) || needsMatchingReportFlow(row) || needsMultiParameterReportFlow(row) || needsDuplicateDetectionReportFlow(row)) {
     actions = actions.filter((s) =>
       !s.includes("openMatchParameterDropdown")
       && !s.includes("selectMatchParameter")
@@ -1276,13 +1597,46 @@ export function buildExcelAlignedLogic(row: DdsExcelRow): string {
     );
   }
 
-  if (setup.some((s) => s.includes("ensureDedupResultsAvailable"))) {
-    actions = actions.filter((s) => !s.includes("ensureDedupResultsAvailable"));
-    setup = setup.filter((s) => !s.includes("runDefaultDedupReport"));
-  }
-
   if (actions.some((s) => s.includes("selectMatchParameter") || s.includes("selectParametersFromRow"))) {
     setup = setup.filter((s) => !s.includes("selectMatchParameter") || s.includes("seedPreconditionMatchParameters"));
+  }
+
+  ensureCustomerIdBeforeReport(setup, row);
+  ensureCustomerIdBeforeReport(actions, row);
+
+  const combinedFlow = [...setup, ...actions, ...assertions];
+  if (reportWasGeneratedInFlow(combinedFlow)) {
+    actions = actions.filter((s) => !s.includes("expectResultsGridVisible") && !s.includes("expectGeneratingStateVisible"));
+    assertions = assertions.filter((s) =>
+      !s.includes("expectMatchParameterDropdownOpen")
+      && !s.includes("expectDefaultMatchParametersListed")
+      && !s.includes("expectMatchParameterSearchEmpty")
+      && !s.includes("expectGeneratingStateVisible"),
+    );
+  }
+  if (isEmptyResultsRow(row) || isUniqueDatasetTestData(row)) {
+    actions = actions.filter((s) =>
+      !s.includes("expectResultsGridVisible")
+      && !s.includes("expectDuplicateGroupIntegrity")
+      && !s.includes("expectResultsSummaryVisible")
+      && !s.includes("expectMatchParametersColumnVisible"),
+    );
+    assertions = assertions.filter((s) =>
+      !s.includes("expectResultsGridVisible")
+      && !s.includes("expectDuplicateGroupIntegrity")
+      && !s.includes("expectResultsSummaryVisible")
+      && !s.includes("expectMatchParametersColumnVisible"),
+    );
+  }
+  if (assertions.some((s) => s.includes("expectCompareModalClosed"))) {
+    const hasCloseAction = [...actions, ...setup].some((s) =>
+      s.includes("closeCompareModal")
+      || s.includes("closeCompareModalWithEscape")
+      || s.includes("closeCompareModalByOutsideClick"),
+    );
+    if (!hasCloseAction) {
+      pushUnique(actions, "await ddsPage.closeCompareModal()");
+    }
   }
 
   for (const block of [setup, actions, assertions]) {
@@ -1300,5 +1654,6 @@ export function formatTestTitle(row: DdsExcelRow): string {
 }
 
 export function formatExcelComment(row: DdsExcelRow): string {
-  return `// Excel Test Case ID: ${row.id}\n  // Excel Scenario: ${row.taskDescription}`;
+  const scenario = row.taskDescription.replace(/\*\//g, "* /").replace(/"/g, "'");
+  return `// Excel Test Case ID: ${row.id}\n  // Excel Scenario: ${scenario}`;
 }

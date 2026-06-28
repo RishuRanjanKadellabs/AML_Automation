@@ -1,0 +1,1836 @@
+{
+  "generatedAt": "2026-06-26T16:06:57.462Z",
+  "entries": [
+    {
+      "id": "1.1",
+      "title": "Purpose",
+      "module": "Batch Screening",
+      "summary": "This Functional Specification Document (FSD) describes the functional requirements, user interface behaviour, data flows, and business rules for the Batch Screening module within the Clari5 Anti-Money Laundering (AML) platform developed by Perfios Software Solutions Pvt. Ltd. (formerly CustomerXPs). The document is intended for product owners, UX designers, developers, QA engineers, and client implementation teams who build, test, or deploy the Clari5 Batch Screening solution.",
+      "bullets": [
+        {
+          "text": "This Functional Specification Document (FSD) describes the functional requirements, user interface behaviour, data flows, and business rules for the Batch Screening module within the Clari5 Anti-Money Laundering (AML) platform developed by Perfios Software Solutions Pvt",
+          "category": "rule"
+        },
+        {
+          "text": "Ltd. (formerly CustomerXPs)",
+          "category": "general"
+        },
+        {
+          "text": "The document is intended for product owners, UX designers, developers, QA engineers, and client implementation teams who build, test, or deploy the Clari5 Batch Screening solution",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "This Functional Specification Document (FSD) describes the functional requirements, user interface behaviour, data flows, and business rules for the Batch Screening module within the Clari5 Anti-Money Laundering (AML) platform developed by Perfios Software Solutions Pvt",
+        "The document is intended for product owners, UX designers, developers, QA engineers, and client implementation teams who build, test, or deploy the Clari5 Batch Screening solution"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "1.2",
+      "title": "Product Overview",
+      "module": "Batch Screening",
+      "summary": "Clari5 is a real-time, AI-augmented AML and fraud-management platform used by banks and financial institutions globally. The Sanctions Screening module enables compliance teams to screen individuals, entities, and payment parties against one or more international and domestic watchlists, review match results, and take structured disposition actions — all within a single workflow.",
+      "bullets": [
+        {
+          "text": "Clari5 is a real-time, AI-augmented AML and fraud-management platform used by banks and financial institutions globally",
+          "category": "general"
+        },
+        {
+          "text": "The Sanctions Screening module enables compliance teams to screen individuals, entities, and payment parties against one or more international and domestic watchlists, review match results, and take structured disposition actions — all within a single workflow",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "The Sanctions Screening module enables compliance teams to screen individuals, entities, and payment parties against one or more international and domestic watchlists, review match results, and take structured disposition actions — all within a single workflow"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "1.3",
+      "title": "Scope",
+      "module": "Batch Screening",
+      "summary": "This document covers the following capabilities of the Sanctions Screening module: Landing page — Match Results dashboard Manual Screening (Single / File-based) — initiating a new screening request Screening Results page — displaying matches returned for a given screening query Match Review — three-tab review workspace: AI Summary tab (GenAI-powered narrative and risk signal cards) Match Details tab (per-hit attribute comparison tables) View Summary tab (aggregate scorecard and weighted attribut",
+      "bullets": [
+        {
+          "text": "This document covers the following capabilities of the Sanctions Screening module: Landing page — Match Results dashboard Manual Screening (Single / File-based) — initiating a new screening request Screening Results page — displaying matches returned for a given screening query Match Review — three-tab review workspace: AI Summary tab (GenAI-powered narrative and risk signal cards) Match Details tab (per-hit attribute comparison tables) View Summary tab (aggregate scorecard and weighted attribute table) Disposition actions: Confirm Match, False Positive, Move to Case, Move to Whitelist, Move to Exception List Sidebar navigation across all Sanctions Screening sub-modules The following are out of scope for this FSD: Batch Screening, De-dup Screening, Real-time Monitoring, Payments Workflow, watchlist administration, and system-administration settings",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "Disposition",
+        "Confirm Match",
+        "False Positive"
+      ]
+    },
+    {
+      "id": "1.4",
+      "title": "Definitions & Abbreviations",
+      "module": "Batch Screening",
+      "summary": "Term / Acronym Definition AML Anti-Money Laundering CFT Countering the Financing of Terrorism CRC Customer Risk Category — composite risk score in Clari5 EDD Enhanced Due Diligence FSD Functional Specification Document GenAI Generative Artificial Intelligence (GPT-4o model used for AI narratives) MAS Monetary Authority of Singapore OFAC SDN Office of Foreign Assets Control — Specially Designated Nationals list PEP Politically Exposed Person UNSCR 1267 UN Security Council Resolution 1267 — Al-Qai",
+      "bullets": [
+        {
+          "text": "Term / Acronym Definition AML Anti-Money Laundering CFT Countering the Financing of Terrorism CRC Customer Risk Category — composite risk score in Clari5 EDD Enhanced Due Diligence FSD Functional Specification Document GenAI Generative Artificial Intelligence (GPT-4o model used for AI narratives) MAS Monetary Authority of Singapore OFAC SDN Office of Foreign Assets Control — Specially Designated Nationals list PEP Politically Exposed Person UNSCR 1267 UN Security Council Resolution 1267 — Al-Qaida sanctions regime Watchlist A reference list of sanctioned individuals/entities used for screening Whitelist A list of known legitimate entities excluded from future alerts 2",
+          "category": "rule"
+        },
+        {
+          "text": "User Roles & Permissions The Sanctions Screening module is accessed through role-based access control (RBAC)",
+          "category": "rule"
+        },
+        {
+          "text": "The following roles interact with the module: Role Description Key Permissions Compliance Analyst Primary reviewer of screening results View, Review, False Positive, Move to Case Compliance Manager Supervisor who approves dispositions All Analyst rights + Confirm Match, Escalate Operations Analyst Initiates manual / bulk screenings Initiate Screening, View Results, Export Report System Administrator Manages users, watchlists, thresholds All rights + Administration module access Read-Only Auditor Views results and reports without action View screens and reports only 3",
+          "category": "audit"
+        },
+        {
+          "text": "Module Architecture & Navigation",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "Term / Acronym Definition AML Anti-Money Laundering CFT Countering the Financing of Terrorism CRC Customer Risk Category — composite risk score in Clari5 EDD Enhanced Due Diligence FSD Functional Specification Document GenAI Generative Artificial Intelligence (GPT-4o model used for AI narratives) MAS Monetary Authority of Singapore OFAC SDN Office of Foreign Assets Control — Specially Designated Nationals list PEP Politically Exposed Person UNSCR 1267 UN Security Council Resolution 1267 — Al-Qaida sanctions regime Watchlist A reference list of sanctioned individuals/entities used for screening Whitelist A list of known legitimate entities excluded from future alerts 2",
+        "User Roles & Permissions The Sanctions Screening module is accessed through role-based access control (RBAC)"
+      ],
+      "fieldNames": [
+        "Watchlist",
+        "False Positive",
+        "Confirm Match"
+      ]
+    },
+    {
+      "id": "3.1",
+      "title": "Application Shell",
+      "module": "Batch Screening",
+      "summary": "The Sanctions Screening module is embedded within the Clari5 application shell, which consists of: Global top navigation bar — displays the Clari5 logo, user avatar, notification bell (with unread count badge), and settings icon. Left sidebar (240 px wide) — provides grouped navigation links to all Clari5 sub-modules. Within the Sanctions Screening group, the following child items are available: Manual Screening (Single / File-based) — active state highlighted with a left blue border and blue ba",
+      "bullets": [
+        {
+          "text": "The Sanctions Screening module is embedded within the Clari5 application shell, which consists of: Global top navigation bar — displays the Clari5 logo, user avatar, notification bell (with unread count badge), and settings icon",
+          "category": "audit"
+        },
+        {
+          "text": "Left sidebar (240 px wide) — provides grouped navigation links to all Clari5 sub-modules",
+          "category": "navigation"
+        },
+        {
+          "text": "Within the Sanctions Screening group, the following child items are available: Manual Screening (Single / File-based) — active state highlighted with a left blue border and blue background",
+          "category": "rule"
+        },
+        {
+          "text": "Batch Screening (Forward / Reverse Screening) De-dup Screening Exception List Management Custom List Management Sanction Screening Workflow (disabled — future release) Sanction MIS Reports Main content area — variable per screen",
+          "category": "rule"
+        },
+        {
+          "text": "see individual screen specifications below",
+          "category": "rule"
+        },
+        {
+          "text": "Application footer bar — displays licence expiry notice, product branding, and an \"Important Links\" anchor",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [
+        "Within the Sanctions Screening group, the following child items are available: Manual Screening (Single / File-based) — active state highlighted with a left blue border and blue background",
+        "Batch Screening (Forward / Reverse Screening) De-dup Screening Exception List Management Custom List Management Sanction Screening Workflow (disabled — future release) Sanction MIS Reports Main content area — variable per screen",
+        "see individual screen specifications below"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "3.2",
+      "title": "Screen Inventory",
+      "module": "Batch Screening",
+      "summary": "Screen ID Screen Name Entry Point SCR-00 Match Results Landing Page Default view after login / Sanctions Screening menu click SCR-01 Screening Results Clicking customer name or \"View\" action on SCR-00 or after running New Screening SCR-02 Match Review — AI Summary Clicking \"Number of Matched List\" chip or \"View\" button on SCR-01 SCR-03 Match Review — Match Details Clicking \"Match Details\" tab on SCR-02/04 SCR-04 Match Review — View Summary Clicking \"View Summary\" tab on SCR-02/03 4. SCR-00 — Mat",
+      "bullets": [
+        {
+          "text": "Screen ID Screen Name Entry Point SCR-00 Match Results Landing Page Default view after login / Sanctions Screening menu click SCR-01 Screening Results Clicking customer name or \"View\" action on SCR-00 or after running New Screening SCR-02 Match Review — AI Summary Clicking \"Number of Matched List\" chip or \"View\" button on SCR-01 SCR-03 Match Review — Match Details Clicking \"Match Details\" tab on SCR-02/04 SCR-04 Match Review — View Summary Clicking \"View Summary\" tab on SCR-02/03 4",
+          "category": "audit"
+        },
+        {
+          "text": "SCR-00 — Match Results Landing Page",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.1",
+      "title": "Purpose",
+      "module": "Batch Screening",
+      "summary": "The Match Results landing page provides compliance staff with a consolidated, filterable list of all screening events that produced watchlist hits. It is the primary entry point into individual case reviews.",
+      "bullets": [
+        {
+          "text": "The Match Results landing page provides compliance staff with a consolidated, filterable list of all screening events that produced watchlist hits",
+          "category": "field"
+        },
+        {
+          "text": "It is the primary entry point into individual case reviews",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.2",
+      "title": "Layout",
+      "module": "Batch Screening",
+      "summary": "Top navigation bar with three tabs: Match Results (active), Watchlists, Screening. Page header row: title \"Match Results\" with a total-count badge, a date-range filter dropdown, and an Export Report button. Filters bar: a row of contextual filter chips directly below the header bar. Available filters: Date Range (from/to date inputs), Branch (dropdown), Customer ID (free-text input), Account Number (free-text input), Screening Type (Single / Bulk / Batch / Real-time dropdown), and List Name (wat",
+      "bullets": [
+        {
+          "text": "Top navigation bar with three tabs: Match Results (active), Watchlists, Screening",
+          "category": "navigation"
+        },
+        {
+          "text": "Page header row: title \"Match Results\" with a total-count badge, a date-range filter dropdown, and an Export Report button",
+          "category": "field"
+        },
+        {
+          "text": "Filters bar: a row of contextual filter chips directly below the header bar",
+          "category": "field"
+        },
+        {
+          "text": "Available filters: Date Range (from/to date inputs), Branch (dropdown), Customer ID (free-text input), Account Number (free-text input), Screening Type (Single / Bulk / Batch / Real-time dropdown), and List Name (watchlist selection dropdown)",
+          "category": "field"
+        },
+        {
+          "text": "Active filters are highlighted in blue",
+          "category": "field"
+        },
+        {
+          "text": "A “Clear Filters” button resets all active filters",
+          "category": "field"
+        },
+        {
+          "text": "Filter row: record range and sort label on the left",
+          "category": "field"
+        },
+        {
+          "text": "a search input field (300 px) on the right",
+          "category": "field"
+        },
+        {
+          "text": "Results table with pagination",
+          "category": "navigation"
+        },
+        {
+          "text": "Application footer",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "Date Range",
+        "Branch",
+        "Customer ID",
+        "Account Number",
+        "Screening Type",
+        "List Name"
+      ]
+    },
+    {
+      "id": "4.3",
+      "title": "Date Range Filter",
+      "module": "Batch Screening",
+      "summary": "A dropdown button labelled with the currently selected period (default: \"Last Year\") opens a flyout menu. Available options: Today, Yesterday, Last 7 Days, Last 30 Days This Week, Last Week, This Month, Last Month This Quarter, Last Quarter, This Year, Last Year Custom Range… (opens a date-picker modal — detailed in a separate UI spec) On selection the dropdown label updates, the active item is checked (✓), and the table reloads with data filtered to the selected period. 4.3a  Filters Bar A hori",
+      "bullets": [
+        {
+          "text": "A dropdown button labelled with the currently selected period (default: \"Last Year\") opens a flyout menu",
+          "category": "field"
+        },
+        {
+          "text": "Available options: Today, Yesterday, Last 7 Days, Last 30 Days This Week, Last Week, This Month, Last Month This Quarter, Last Quarter, This Year, Last Year Custom Range… (opens a date-picker modal — detailed in a separate UI spec) On selection the dropdown label updates, the active item is checked (✓), and the table reloads with data filtered to the selected period. 4.3a  Filters Bar A horizontal filters bar sits between the page header row and the filter row",
+          "category": "navigation"
+        },
+        {
+          "text": "It contains six filter chip buttons",
+          "category": "field"
+        },
+        {
+          "text": "Each chip displays a label and the current active value (default: “All”)",
+          "category": "field"
+        },
+        {
+          "text": "Clicking a chip opens a contextual filter panel below it",
+          "category": "navigation"
+        },
+        {
+          "text": "selecting a value and clicking Apply activates the filter, highlights the chip in blue, and updates the table in real time",
+          "category": "navigation"
+        },
+        {
+          "text": "The available filter chips are: Date Range — from/to date inputs",
+          "category": "field"
+        },
+        {
+          "text": "Filters records whose Match Date falls within the selected range",
+          "category": "field"
+        },
+        {
+          "text": "Branch — dropdown with all configured branch names",
+          "category": "general"
+        },
+        {
+          "text": "Filters records associated with the selected branch",
+          "category": "field"
+        },
+        {
+          "text": "Customer ID — free-text input",
+          "category": "general"
+        },
+        {
+          "text": "Filters records matching the entered Customer ID (exact or prefix match)",
+          "category": "field"
+        },
+        {
+          "text": "Account Number — free-text input",
+          "category": "general"
+        },
+        {
+          "text": "Filters records matching the entered account number",
+          "category": "field"
+        },
+        {
+          "text": "Screening Type — dropdown (Single / Bulk / Batch / Real-time)",
+          "category": "rule"
+        },
+        {
+          "text": "Filters by the match type of the screening event",
+          "category": "field"
+        },
+        {
+          "text": "List Name — dropdown of all active watchlists (e.g",
+          "category": "general"
+        },
+        {
+          "text": "OFAC SDN, UN Security Council Consolidated List, EU Sanctions List)",
+          "category": "rule"
+        },
+        {
+          "text": "Filters records whose highest-match list matches the selection",
+          "category": "field"
+        },
+        {
+          "text": "Multiple filters may be active simultaneously",
+          "category": "field"
+        },
+        {
+          "text": "the table reflects all active filter criteria combined",
+          "category": "navigation"
+        },
+        {
+          "text": "A “Clear Filters” button at the right of the bar resets all chips to their default (“All”) state",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "Screening Type — dropdown (Single / Bulk / Batch / Real-time)",
+        "OFAC SDN, UN Security Council Consolidated List, EU Sanctions List)"
+      ],
+      "fieldNames": [
+        "Date Range",
+        "Branch",
+        "Customer ID",
+        "Account Number",
+        "Screening Type",
+        "List Name"
+      ]
+    },
+    {
+      "id": "4.4",
+      "title": "Search",
+      "module": "Batch Screening",
+      "summary": "A text input accepts free-text search. Placeholder: \"Search by name, customer ID, list name…\". Search executes as the user types (debounced 300 ms) against Name, Customer ID, and List Name columns.",
+      "bullets": [
+        {
+          "text": "A text input accepts free-text search",
+          "category": "general"
+        },
+        {
+          "text": "Placeholder: \"Search by name, customer ID, list name…\"",
+          "category": "general"
+        },
+        {
+          "text": "Search executes as the user types (debounced 300 ms) against Name, Customer ID, and List Name columns",
+          "category": "field"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "Customer ID",
+        "List Name"
+      ]
+    },
+    {
+      "id": "4.5",
+      "title": "Results Table Columns",
+      "module": "Batch Screening",
+      "summary": "Column Data Type Notes Name String (link) Clickable — navigates to SCR-01. Styled as a dark bold link with blue underline on hover. Cust ID String (monospace) Customer identifier from the bank's core system. Number of Matched List Integer (chip) Shown as a styled pill chip with an arrow icon. Click navigates to SCR-01. (Reduce the size of the arrow to be smaller) Highest Match Score Percentage + bar Score value with a colour-coded progress bar. ≥90%: red; ≥75%: orange; else: yellow. List Name Wi",
+      "bullets": [
+        {
+          "text": "Column Data Type Notes Name String (link) Clickable — navigates to SCR-01",
+          "category": "navigation"
+        },
+        {
+          "text": "Styled as a dark bold link with blue underline on hover",
+          "category": "navigation"
+        },
+        {
+          "text": "Cust ID String (monospace) Customer identifier from the bank's core system",
+          "category": "general"
+        },
+        {
+          "text": "Number of Matched List Integer (chip) Shown as a styled pill chip with an arrow icon",
+          "category": "field"
+        },
+        {
+          "text": "Click navigates to SCR-01. (Reduce the size of the arrow to be smaller) Highest Match Score Percentage + bar Score value with a colour-coded progress bar. ≥90%: red",
+          "category": "navigation"
+        },
+        {
+          "text": "List Name With Highest Match Score String Name of the watchlist that returned the highest score for this entity",
+          "category": "rule"
+        },
+        {
+          "text": "Match Category Badge Colour-coded badge: Sanctions (red), PEP (grey), Adverse Media (purple), Law Enforcement (slate), Custom List etc",
+          "category": "field"
+        },
+        {
+          "text": "Match Type Badge (slate) Single or Bulk",
+          "category": "field"
+        },
+        {
+          "text": "Match Date Date (DD/MM/YYYY) Date the screening was run",
+          "category": "rule"
+        },
+        {
+          "text": "Actions Dropdown Contextual action dropdown — see §4.6",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "List Name With Highest Match Score String Name of the watchlist that returned the highest score for this entity",
+        "Match Date Date (DD/MM/YYYY) Date the screening was run"
+      ],
+      "fieldNames": [
+        "Match Score",
+        "List Name"
+      ]
+    },
+    {
+      "id": "4.6",
+      "title": "Actions Dropdown",
+      "module": "Batch Screening",
+      "summary": "Each row has a dropdown button whose label shows the current disposition status. Clicking opens a flyout menu with the following options. Selecting any action opens a mandatory Comment pop-up modal before the action is executed; the user must enter a comment before confirming. The dropdown closes on selection or on click-outside. View — navigates to SCR-01 for that record. Under Review — sets status to \"Under Review\" (amber badge). Move to case — sets status to \"Move to case\" (orange badge). Mov",
+      "bullets": [
+        {
+          "text": "Each row has a dropdown button whose label shows the current disposition status",
+          "category": "field"
+        },
+        {
+          "text": "Clicking opens a flyout menu with the following options",
+          "category": "navigation"
+        },
+        {
+          "text": "Selecting any action opens a mandatory Comment pop-up modal before the action is executed",
+          "category": "validation"
+        },
+        {
+          "text": "the user must enter a comment before confirming",
+          "category": "validation"
+        },
+        {
+          "text": "The dropdown closes on selection or on click-outside",
+          "category": "navigation"
+        },
+        {
+          "text": "View — navigates to SCR-01 for that record",
+          "category": "navigation"
+        },
+        {
+          "text": "Under Review — sets status to \"Under Review\" (amber badge)",
+          "category": "field"
+        },
+        {
+          "text": "Move to case — sets status to \"Move to case\" (orange badge)",
+          "category": "field"
+        },
+        {
+          "text": "Move to Whitelist — sets status to \"Move to Whitelist\" (green badge)",
+          "category": "field"
+        },
+        {
+          "text": "Move to Exception List — sets status to “Move to Exception List” (purple accent)",
+          "category": "rule"
+        },
+        {
+          "text": "Status changes are persisted after the mandatory comment is submitted and confirmed",
+          "category": "validation"
+        }
+      ],
+      "businessRules": [
+        "Selecting any action opens a mandatory Comment pop-up modal before the action is executed",
+        "the user must enter a comment before confirming",
+        "Move to Exception List — sets status to “Move to Exception List” (purple accent)",
+        "Status changes are persisted after the mandatory comment is submitted and confirmed"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "4.7",
+      "title": "Pagination",
+      "module": "Batch Screening",
+      "summary": "The footer bar shows \"Showing X–Y of Z results\". Navigation controls: Previous (←), numbered page buttons, Next (→). Active page is shown with a filled blue background. Default page size: 10 rows.",
+      "bullets": [
+        {
+          "text": "The footer bar shows \"Showing X–Y of Z results\"",
+          "category": "field"
+        },
+        {
+          "text": "Navigation controls: Previous (←), numbered page buttons, Next (→)",
+          "category": "general"
+        },
+        {
+          "text": "Active page is shown with a filled blue background",
+          "category": "field"
+        },
+        {
+          "text": "Default page size: 10 rows",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "4.8",
+      "title": "Business Rules",
+      "module": "Batch Screening",
+      "summary": "Records are sorted by Match Date descending by default. Only records with at least one confirmed watchlist hit are shown. The count badge in the page header reflects the total number of distinct screening events, not individual hits. The filters bar (§4.3a) provides contextual filtering across six dimensions: Date Range, Branch, Customer ID, Account Number, Screening Type, and List Name. Multiple filters may be active simultaneously; the table reflects all active filter criteria in real time. 5.",
+      "bullets": [
+        {
+          "text": "Records are sorted by Match Date descending by default",
+          "category": "general"
+        },
+        {
+          "text": "Only records with at least one confirmed watchlist hit are shown",
+          "category": "field"
+        },
+        {
+          "text": "The count badge in the page header reflects the total number of distinct screening events, not individual hits",
+          "category": "field"
+        },
+        {
+          "text": "The filters bar (§4.3a) provides contextual filtering across six dimensions: Date Range, Branch, Customer ID, Account Number, Screening Type, and List Name",
+          "category": "field"
+        },
+        {
+          "text": "Multiple filters may be active simultaneously",
+          "category": "field"
+        },
+        {
+          "text": "the table reflects all active filter criteria in real time. 5",
+          "category": "navigation"
+        },
+        {
+          "text": "SCR-01 — Screening Results Page",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "SCR-01 — Screening Results Page"
+      ],
+      "fieldNames": [
+        "Date Range",
+        "Branch",
+        "Customer ID",
+        "Account Number",
+        "Screening Type",
+        "List Name"
+      ]
+    },
+    {
+      "id": "5.1",
+      "title": "Purpose",
+      "module": "Batch Screening",
+      "summary": "The Screening Results page displays the output of a single screening execution — subject entity details, a GenAI AI summary banner, match statistics, and a results table listing each entity returned by the screening engine.",
+      "bullets": [
+        {
+          "text": "The Screening Results page displays the output of a single screening execution — subject entity details, a GenAI AI summary banner, match statistics, and a results table listing each entity returned by the screening engine",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "5.2",
+      "title": "Layout",
+      "module": "Batch Screening",
+      "summary": "Page top bar: back button (←), title \"Screening Results\", Export Report and New Screening buttons. Subject card. AI Screening Summary banner. Statistics strip (match severity counters). Section header + results table. Application footer.",
+      "bullets": [
+        {
+          "text": "Page top bar: back button (←), title \"Screening Results\", Export Report and New Screening buttons",
+          "category": "rule"
+        },
+        {
+          "text": "AI Screening Summary banner",
+          "category": "rule"
+        },
+        {
+          "text": "Statistics strip (match severity counters)",
+          "category": "general"
+        },
+        {
+          "text": "Section header + results table",
+          "category": "navigation"
+        },
+        {
+          "text": "Application footer",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "Page top bar: back button (←), title \"Screening Results\", Export Report and New Screening buttons",
+        "AI Screening Summary banner"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "5.3",
+      "title": "Subject Card",
+      "module": "Batch Screening",
+      "summary": "A horizontal card displays the screened entity's attributes with labelled fields separated by vertical dividers: Field Notes Primary Name The name submitted for screening. Displayed in large bold text. ID Number Optional — shown as \"—\" (muted) if not provided. Date of Birth Optional — shown as \"—\" if not provided. Nationality Optional — shown as \"—\" if not provided. Entity Type \"Individual\" or \"Entity\". Watchlist Profile The watchlist profile applied. Shown as a blue badge. Purpose Screening pur",
+      "bullets": [
+        {
+          "text": "A horizontal card displays the screened entity's attributes with labelled fields separated by vertical dividers: Field Notes Primary Name The name submitted for screening",
+          "category": "field"
+        },
+        {
+          "text": "Displayed in large bold text",
+          "category": "field"
+        },
+        {
+          "text": "ID Number Optional — shown as \"—\" (muted) if not provided",
+          "category": "field"
+        },
+        {
+          "text": "Date of Birth Optional — shown as \"—\" if not provided",
+          "category": "field"
+        },
+        {
+          "text": "Nationality Optional — shown as \"—\" if not provided",
+          "category": "field"
+        },
+        {
+          "text": "Entity Type \"Individual\" or \"Entity\"",
+          "category": "general"
+        },
+        {
+          "text": "Watchlist Profile The watchlist profile applied",
+          "category": "general"
+        },
+        {
+          "text": "Shown as a blue badge",
+          "category": "field"
+        },
+        {
+          "text": "Purpose Screening purpose (e.g. \"Customer Onboarding\")",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "Purpose Screening purpose (e.g. \"Customer Onboarding\")"
+      ],
+      "fieldNames": [
+        "Watchlist"
+      ]
+    },
+    {
+      "id": "5.4",
+      "title": "AI Screening Summary Banner",
+      "module": "Batch Screening",
+      "summary": "A visually differentiated card with a 4 px blue top bar, AI icon, and GenAI label (model: GPT-4o). The banner contains: A natural-language summary sentence highlighting the number of potential matches and the highest-risk list name. A note on missing data fields that may affect match quality (e.g. \"No ID number was provided — name-based matching only\"). A call-to-action hint: \"Click any row to view the full AI analysis and watchlist hit details.\" An AI badge strip showing severity counters (e.g.",
+      "bullets": [
+        {
+          "text": "A visually differentiated card with a 4 px blue top bar, AI icon, and GenAI label (model: GPT-4o)",
+          "category": "field"
+        },
+        {
+          "text": "The banner contains: A natural-language summary sentence highlighting the number of potential matches and the highest-risk list name",
+          "category": "rule"
+        },
+        {
+          "text": "A note on missing data fields that may affect match quality (e.g. \"No ID number was provided — name-based matching only\")",
+          "category": "field"
+        },
+        {
+          "text": "A call-to-action hint: \"Click any row to view the full AI analysis and watchlist hit details.\" An AI badge strip showing severity counters (e.g. \"1 Critical match\", \"Missing ID – disambiguation needed\", \"1 List hit across 1 result\")",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [
+        "The banner contains: A natural-language summary sentence highlighting the number of potential matches and the highest-risk list name"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "5.5",
+      "title": "Statistics Strip",
+      "module": "Batch Screening",
+      "summary": "Four chip-style counters displayed horizontally: Critical — count of results with score ≥90%. Shown in red. High — count of results with score 75%–89.9%. Shown in grey (0 if none). Medium — count of results with score 60%–74.9%. Shown in grey (0 if none). Results shown — \"X of Y\" indicating pagination status.",
+      "bullets": [
+        {
+          "text": "Four chip-style counters displayed horizontally: Critical — count of results with score ≥90%",
+          "category": "field"
+        },
+        {
+          "text": "High — count of results with score 75%–89.9%",
+          "category": "rule"
+        },
+        {
+          "text": "Shown in grey (0 if none)",
+          "category": "field"
+        },
+        {
+          "text": "Medium — count of results with score 60%–74.9%",
+          "category": "rule"
+        },
+        {
+          "text": "Results shown — \"X of Y\" indicating pagination status",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "High — count of results with score 75%–89.9%",
+        "Medium — count of results with score 60%–74.9%"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "5.6",
+      "title": "Results Table",
+      "module": "Batch Screening",
+      "summary": "The results table mirrors the column structure of the landing page (§4.5) but is filtered to results from the current screening run. Additional behaviour: The \"Number Of Matched List\" column renders a clickable chip with the count and an arrow icon. Clicking navigates to the Match Review screen (SCR-02) and opens the AI Summary tab by default. Each row’s “Actions” cell shows a contextual action dropdown button (matching the landing page pattern in §4.6). Clicking the dropdown opens the same flyo",
+      "bullets": [
+        {
+          "text": "The results table mirrors the column structure of the landing page (§4.5) but is filtered to results from the current screening run",
+          "category": "navigation"
+        },
+        {
+          "text": "Additional behaviour: The \"Number Of Matched List\" column renders a clickable chip with the count and an arrow icon",
+          "category": "navigation"
+        },
+        {
+          "text": "Clicking navigates to the Match Review screen (SCR-02) and opens the AI Summary tab by default",
+          "category": "navigation"
+        },
+        {
+          "text": "Each row’s “Actions” cell shows a contextual action dropdown button (matching the landing page pattern in §4.6)",
+          "category": "field"
+        },
+        {
+          "text": "Clicking the dropdown opens the same flyout menu: View Details, Under Review, Move to Case, Move to Whitelist, Move to Exception List",
+          "category": "navigation"
+        },
+        {
+          "text": "Selecting any action opens the mandatory Comment pop-up modal before the action is executed",
+          "category": "validation"
+        },
+        {
+          "text": "Selecting “View Details” from the dropdown navigates to SCR-02 AI Summary tab after the mandatory comment is confirmed",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [
+        "Selecting any action opens the mandatory Comment pop-up modal before the action is executed"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "5.7",
+      "title": "Business Rules",
+      "module": "Batch Screening",
+      "summary": "The page header title is always \"Screening Results\" regardless of the number of matches. Screening time is shown in the table footer (e.g. \"Search Time: 0.42 seconds\"). If zero results are returned, the table shows an empty state with a \"No matches found\" message. The \"New Screening\" button opens the Manual Screening entry form (separate spec). 6. SCR-02/03/04 — Match Review Workspace",
+      "bullets": [
+        {
+          "text": "The page header title is always \"Screening Results\" regardless of the number of matches",
+          "category": "field"
+        },
+        {
+          "text": "Screening time is shown in the table footer (e.g. \"Search Time: 0.42 seconds\")",
+          "category": "navigation"
+        },
+        {
+          "text": "If zero results are returned, the table shows an empty state with a \"No matches found\" message",
+          "category": "navigation"
+        },
+        {
+          "text": "The \"New Screening\" button opens the Manual Screening entry form (separate spec). 6",
+          "category": "rule"
+        },
+        {
+          "text": "SCR-02/03/04 — Match Review Workspace",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "The \"New Screening\" button opens the Manual Screening entry form (separate spec). 6"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "6.1",
+      "title": "Purpose",
+      "module": "Batch Screening",
+      "summary": "The Match Review workspace enables compliance analysts to conduct a detailed investigation of all watchlist hits for a single screened entity. It is structured as a tabbed interface with three views: AI Summary, Match Details, and View Summary.",
+      "bullets": [
+        {
+          "text": "The Match Review workspace enables compliance analysts to conduct a detailed investigation of all watchlist hits for a single screened entity",
+          "category": "rule"
+        },
+        {
+          "text": "It is structured as a tabbed interface with three views: AI Summary, Match Details, and View Summary",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [
+        "The Match Review workspace enables compliance analysts to conduct a detailed investigation of all watchlist hits for a single screened entity"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "6.2",
+      "title": "Review Header",
+      "module": "Batch Screening",
+      "summary": "A persistent header appears above the tab bar on all three tabs: Back button (←) — returns to SCR-01. Title \"Match Review\" with a reference ID in monospace format (e.g. \"Ref ID: SCR-001-1778218453580\"). Action buttons on the right: Report — downloads an audit-ready PDF report for this screening event. False Positive — marks the overall match as a false positive and removes it from the active queue. Confirm Match — confirms a true match and initiates the case creation / escalation workflow. Tab b",
+      "bullets": [
+        {
+          "text": "A persistent header appears above the tab bar on all three tabs: Back button (←) — returns to SCR-01",
+          "category": "navigation"
+        },
+        {
+          "text": "Title \"Match Review\" with a reference ID in monospace format (e.g. \"Ref ID: SCR-001-1778218453580\")",
+          "category": "general"
+        },
+        {
+          "text": "Action buttons on the right: Report — downloads an audit-ready PDF report for this screening event",
+          "category": "audit"
+        },
+        {
+          "text": "False Positive — marks the overall match as a false positive and removes it from the active queue",
+          "category": "general"
+        },
+        {
+          "text": "Confirm Match — confirms a true match and initiates the case creation / escalation workflow",
+          "category": "general"
+        },
+        {
+          "text": "Tab bar — three tabs: AI Summary, Match Details, View Summary",
+          "category": "navigation"
+        },
+        {
+          "text": "Active tab is underlined in blue",
+          "category": "navigation"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "False Positive",
+        "Confirm Match"
+      ]
+    },
+    {
+      "id": "6.3",
+      "title": "Tab: AI Summary (SCR-02)",
+      "module": "Batch Screening",
+      "summary": "",
+      "bullets": [],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "6.3.1",
+      "title": "Alert Banner",
+      "module": "Batch Screening",
+      "summary": "A red alert panel at the top of the tab. Contains a warning icon, a headline (e.g. \"High-Confidence Sanctions Match — Immediate Action Required\"), and a brief paragraph summarising the total hits, the highest-scoring list, applicable regulatory regime, and a call to action (e.g. \"Do not transact until resolved.\").",
+      "bullets": [
+        {
+          "text": "A red alert panel at the top of the tab",
+          "category": "navigation"
+        },
+        {
+          "text": "Contains a warning icon, a headline (e.g. \"High-Confidence Sanctions Match — Immediate Action Required\"), and a brief paragraph summarising the total hits, the highest-scoring list, applicable regulatory regime, and a call to action (e.g. \"Do not transact until resolved.\")",
+          "category": "validation"
+        }
+      ],
+      "businessRules": [
+        "Contains a warning icon, a headline (e.g. \"High-Confidence Sanctions Match — Immediate Action Required\"), and a brief paragraph summarising the total hits, the highest-scoring list, applicable regulatory regime, and a call to action (e.g. \"Do not transact until resolved.\")"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "6.3.2",
+      "title": "AI Investigation Narrative Card",
+      "module": "Batch Screening",
+      "summary": "A white card with: Header row: AI icon, title \"AI Investigation Narrative\", model label \"GenAI GPT-4o\", and a confidence badge (e.g. \"Confidence: High\" in green). Narrative paragraphs (up to 4) providing a structured investigation summary covering: overall risk score, top watchlist hit, regulatory obligations, ID comparison result, and recommended action. Signal Grid — a 2×2 grid of signal cards, each with a coloured icon, a short title, and 1–2 sentence elaboration. Examples: \"MAS High-Risk Des",
+      "bullets": [
+        {
+          "text": "A white card with: Header row: AI icon, title \"AI Investigation Narrative\", model label \"GenAI GPT-4o\", and a confidence badge (e.g. \"Confidence: High\" in green)",
+          "category": "field"
+        },
+        {
+          "text": "Narrative paragraphs (up to 4) providing a structured investigation summary covering: overall risk score, top watchlist hit, regulatory obligations, ID comparison result, and recommended action",
+          "category": "rule"
+        },
+        {
+          "text": "Signal Grid — a 2×2 grid of signal cards, each with a coloured icon, a short title, and 1–2 sentence elaboration",
+          "category": "general"
+        },
+        {
+          "text": "Examples: \"MAS High-Risk Designation\", \"OFAC SDN Exposure\", \"SG Nationality Match: 100%\", \"Passport Mismatch — Cannot Exclude Match\"",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "Narrative paragraphs (up to 4) providing a structured investigation summary covering: overall risk score, top watchlist hit, regulatory obligations, ID comparison result, and recommended action",
+        "Examples: \"MAS High-Risk Designation\", \"OFAC SDN Exposure\", \"SG Nationality Match: 100%\", \"Passport Mismatch — Cannot Exclude Match\""
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "6.4",
+      "title": "Tab: Match Details (SCR-03)",
+      "module": "Batch Screening",
+      "summary": "",
+      "bullets": [],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "6.4.1",
+      "title": "Status Grid",
+      "module": "Batch Screening",
+      "summary": "Three cards displayed in a 3-column grid: Overall Risk Score card — shows the aggregate score in large bold red text (e.g. \"92 / 100\"). Status Details card — key-value rows: Status (badge), Total Matches (integer), Highest Match (list name). Match Details card — key-value rows showing the screened subject's attributes: Full Name, Date of Birth, Nationality, Place of Birth.",
+      "bullets": [
+        {
+          "text": "Three cards displayed in a 3-column grid: Overall Risk Score card — shows the aggregate score in large bold red text (e.g. \"92 / 100\")",
+          "category": "field"
+        },
+        {
+          "text": "Status Details card — key-value rows: Status (badge), Total Matches (integer), Highest Match (list name)",
+          "category": "field"
+        },
+        {
+          "text": "Match Details card — key-value rows showing the screened subject's attributes: Full Name, Date of Birth, Nationality, Place of Birth",
+          "category": "field"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "6.4.2",
+      "title": "Watchlist Hit Cards",
+      "module": "Batch Screening",
+      "summary": "One card per watchlist hit, sorted by match score descending. Each hit card contains: Hit header row: Score column — match score in large bold text, colour-coded (red ≥90%, orange ≥75%, yellow <75%). Below the score: a severity badge (Critical / High / Medium / Low). Info column — watchlist name (bold), list category and issuing authority (small grey text), list description. Action buttons — \"View Full Profile\" (outlined) and \"Escalate Case\" (red filled). Attribute comparison table: Columns: Att",
+      "bullets": [
+        {
+          "text": "One card per watchlist hit, sorted by match score descending",
+          "category": "rule"
+        },
+        {
+          "text": "Each hit card contains: Hit header row: Score column — match score in large bold text, colour-coded (red ≥90%, orange ≥75%, yellow <75%)",
+          "category": "field"
+        },
+        {
+          "text": "Below the score: a severity badge (Critical / High / Medium / Low)",
+          "category": "field"
+        },
+        {
+          "text": "Info column — watchlist name (bold), list category and issuing authority (small grey text), list description",
+          "category": "field"
+        },
+        {
+          "text": "Action buttons — \"View Full Profile\" (outlined) and \"Escalate Case\" (red filled)",
+          "category": "general"
+        },
+        {
+          "text": "Attribute comparison table: Columns: Attribute | Screened Subject | Watchlist Value | Score",
+          "category": "navigation"
+        },
+        {
+          "text": "Score cells are colour-coded: green (≥80%), blue (60–79%), yellow (40–59%), red (<40%), grey (attribute not provided by subject)",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "One card per watchlist hit, sorted by match score descending",
+        "Score cells are colour-coded: green (≥80%), blue (60–79%), yellow (40–59%), red (<40%), grey (attribute not provided by subject)"
+      ],
+      "fieldNames": [
+        "Watchlist"
+      ]
+    },
+    {
+      "id": "6.5",
+      "title": "Tab: View Summary (SCR-04)",
+      "module": "Batch Screening",
+      "summary": "",
+      "bullets": [],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "6.5.1",
+      "title": "Summary Grid",
+      "module": "Batch Screening",
+      "summary": "A 2-column grid of summary cards: Customer Information card — Customer ID, Customer Type, Overall CRC Score (large bold red number), CRC Category (badge). Match Statistics card — Total List Matches, Highest Match Score, Score calculation method, Sanctions Risk level, Cut-off Threshold, and a risk range legend (Low 50–70%, Medium 70.1–90%, High >90.1%).",
+      "bullets": [
+        {
+          "text": "A 2-column grid of summary cards: Customer Information card — Customer ID, Customer Type, Overall CRC Score (large bold red number), CRC Category (badge)",
+          "category": "field"
+        },
+        {
+          "text": "Match Statistics card — Total List Matches, Highest Match Score, Score calculation method, Sanctions Risk level, Cut-off Threshold, and a risk range legend (Low 50–70%, Medium 70.1–90%, High >90.1%)",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "Match Statistics card — Total List Matches, Highest Match Score, Score calculation method, Sanctions Risk level, Cut-off Threshold, and a risk range legend (Low 50–70%, Medium 70.1–90%, High >90.1%)"
+      ],
+      "fieldNames": [
+        "Customer ID",
+        "Match Score"
+      ]
+    },
+    {
+      "id": "6.5.2",
+      "title": "Detailed Attribute Comparison Table",
+      "module": "Batch Screening",
+      "summary": "A single consolidated table showing all watchlist hits side by side with their weighted attribute scores. Columns: Score | WL (watchlist name & score) | Key Attribute | Weight % | Customer Value | Watchlist Record value | Individual attribute score. Each watchlist block uses a distinct row-background colour (alternating blue-tinted and warm-tinted) to group attributes belonging to the same watchlist hit. Attribute weights must sum to 100% per watchlist block. 7. Disposition Actions & Workflow",
+      "bullets": [
+        {
+          "text": "A single consolidated table showing all watchlist hits side by side with their weighted attribute scores",
+          "category": "navigation"
+        },
+        {
+          "text": "Columns: Score | WL (watchlist name & score) | Key Attribute | Weight % | Customer Value | Watchlist Record value | Individual attribute score",
+          "category": "field"
+        },
+        {
+          "text": "Each watchlist block uses a distinct row-background colour (alternating blue-tinted and warm-tinted) to group attributes belonging to the same watchlist hit",
+          "category": "general"
+        },
+        {
+          "text": "Attribute weights must sum to 100% per watchlist block. 7",
+          "category": "validation"
+        },
+        {
+          "text": "Disposition Actions & Workflow",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "Attribute weights must sum to 100% per watchlist block. 7",
+        "Disposition Actions & Workflow"
+      ],
+      "fieldNames": [
+        "Watchlist",
+        "Disposition"
+      ]
+    },
+    {
+      "id": "7.1",
+      "title": "Action Definitions",
+      "module": "Batch Screening",
+      "summary": "Action Trigger Location Outcome Confirm Match Match Review header Marks the record as a true match. Initiates case creation workflow. Triggers regulatory notification if required. False Positive Match Review header Marks the result as a false positive. Record is moved out of the active queue and logged. Move to Case Landing page dropdown / Match Review Sends the record to the case management module for further investigation. Move to Whitelist Landing page dropdown Adds the entity to the whitelis",
+      "bullets": [
+        {
+          "text": "Action Trigger Location Outcome Confirm Match Match Review header Marks the record as a true match",
+          "category": "field"
+        },
+        {
+          "text": "Initiates case creation workflow",
+          "category": "general"
+        },
+        {
+          "text": "Triggers regulatory notification if required",
+          "category": "validation"
+        },
+        {
+          "text": "False Positive Match Review header Marks the result as a false positive",
+          "category": "field"
+        },
+        {
+          "text": "Record is moved out of the active queue and logged",
+          "category": "audit"
+        },
+        {
+          "text": "Move to Case Landing page dropdown / Match Review Sends the record to the case management module for further investigation",
+          "category": "general"
+        },
+        {
+          "text": "Move to Whitelist Landing page dropdown Adds the entity to the whitelist so future screenings against this entity are suppressed",
+          "category": "rule"
+        },
+        {
+          "text": "Move to Exception List Landing page dropdown / SCR-01 Actions Adds the entity to the exception list",
+          "category": "rule"
+        },
+        {
+          "text": "Future screenings will flag the entity but suppress alert generation",
+          "category": "rule"
+        },
+        {
+          "text": "Escalate Case Match Details — per-hit Escalates a specific watchlist hit to a sanctions case for senior review",
+          "category": "rule"
+        },
+        {
+          "text": "View Full Profile Match Details — per-hit Opens the full watchlist entry profile in a side panel or new screen",
+          "category": "rule"
+        },
+        {
+          "text": "Export Report SCR-01 and Match Review Downloads a PDF audit report for the screening event",
+          "category": "audit"
+        }
+      ],
+      "businessRules": [
+        "Triggers regulatory notification if required",
+        "Move to Whitelist Landing page dropdown Adds the entity to the whitelist so future screenings against this entity are suppressed",
+        "Move to Exception List Landing page dropdown / SCR-01 Actions Adds the entity to the exception list",
+        "Future screenings will flag the entity but suppress alert generation",
+        "Escalate Case Match Details — per-hit Escalates a specific watchlist hit to a sanctions case for senior review",
+        "View Full Profile Match Details — per-hit Opens the full watchlist entry profile in a side panel or new screen"
+      ],
+      "fieldNames": [
+        "Confirm Match",
+        "False Positive"
+      ]
+    },
+    {
+      "id": "7.2",
+      "title": "Business Rules for Dispositions",
+      "module": "Batch Screening",
+      "summary": "Only one primary disposition (Confirm Match, False Positive, Move to Case) can be active per screening event at a time. “Confirm Match” requires a mandatory justification comment before submission. All disposition actions — including View Details, Under Review, Move to Case, Move to Whitelist, Move to Exception List, False Positive, Escalate Case, and View Full Profile — require the user to enter a mandatory comment in a pop-up modal before the action is executed. The modal displays the action n",
+      "bullets": [
+        {
+          "text": "Only one primary disposition (Confirm Match, False Positive, Move to Case) can be active per screening event at a time. “Confirm Match” requires a mandatory justification comment before submission",
+          "category": "validation"
+        },
+        {
+          "text": "All disposition actions — including View Details, Under Review, Move to Case, Move to Whitelist, Move to Exception List, False Positive, Escalate Case, and View Full Profile — require the user to enter a mandatory comment in a pop-up modal before the action is executed",
+          "category": "validation"
+        },
+        {
+          "text": "The modal displays the action name and a required comment field",
+          "category": "validation"
+        },
+        {
+          "text": "submission is blocked until a comment is provided. \"False Positive\" is reversible within 24 hours by a Compliance Manager. \"Move to Whitelist\" records must be reviewed and approved by a Compliance Manager",
+          "category": "validation"
+        },
+        {
+          "text": "All disposition changes are immutably logged with user ID, timestamp, and previous and new status values",
+          "category": "audit"
+        },
+        {
+          "text": "A disposition action on a record updates its status badge on both the landing page and the screening results page. 8",
+          "category": "field"
+        },
+        {
+          "text": "Scoring & Matching Engine",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "Only one primary disposition (Confirm Match, False Positive, Move to Case) can be active per screening event at a time. “Confirm Match” requires a mandatory justification comment before submission",
+        "All disposition actions — including View Details, Under Review, Move to Case, Move to Whitelist, Move to Exception List, False Positive, Escalate Case, and View Full Profile — require the user to enter a mandatory comment in a pop-up modal before the action is executed",
+        "The modal displays the action name and a required comment field",
+        "submission is blocked until a comment is provided. \"False Positive\" is reversible within 24 hours by a Compliance Manager. \"Move to Whitelist\" records must be reviewed and approved by a Compliance Manager"
+      ],
+      "fieldNames": [
+        "Confirm Match",
+        "False Positive"
+      ]
+    },
+    {
+      "id": "8.1",
+      "title": "Match Score Calculation",
+      "module": "Batch Screening",
+      "summary": "The overall match score for a screening result is a weighted composite of individual attribute scores compared between the screened subject and the watchlist record. Attributes and their default weights are: Attribute Default Weight Matching Method Full Name 40% Fuzzy / phonetic matching (e.g. Jaro-Winkler). Alias names are also evaluated. Date of Birth 25% Exact or partial date match. Partial match (year only) receives reduced score. Nationality 12% ISO 3166-1 alpha-3 country code comparison. E",
+      "bullets": [
+        {
+          "text": "The overall match score for a screening result is a weighted composite of individual attribute scores compared between the screened subject and the watchlist record",
+          "category": "rule"
+        },
+        {
+          "text": "Attributes and their default weights are: Attribute Default Weight Matching Method Full Name 40% Fuzzy / phonetic matching (e.g",
+          "category": "general"
+        },
+        {
+          "text": "Jaro-Winkler)",
+          "category": "general"
+        },
+        {
+          "text": "Alias names are also evaluated",
+          "category": "general"
+        },
+        {
+          "text": "Date of Birth 25% Exact or partial date match",
+          "category": "general"
+        },
+        {
+          "text": "Partial match (year only) receives reduced score",
+          "category": "rule"
+        },
+        {
+          "text": "Nationality 12% ISO 3166-1 alpha-3 country code comparison",
+          "category": "general"
+        },
+        {
+          "text": "Exact match = 100%",
+          "category": "general"
+        },
+        {
+          "text": "Place of Birth 11% String comparison of city/country",
+          "category": "general"
+        },
+        {
+          "text": "Passport / ID Number 7% Exact string match",
+          "category": "general"
+        },
+        {
+          "text": "Mismatch = 0%",
+          "category": "general"
+        },
+        {
+          "text": "Gender 5% Exact match (Male/Female/Unknown)",
+          "category": "general"
+        },
+        {
+          "text": "Weights may be reconfigured per watchlist profile by an administrator",
+          "category": "general"
+        },
+        {
+          "text": "Weights must sum to 100%",
+          "category": "validation"
+        }
+      ],
+      "businessRules": [
+        "The overall match score for a screening result is a weighted composite of individual attribute scores compared between the screened subject and the watchlist record",
+        "Partial match (year only) receives reduced score",
+        "Weights must sum to 100%"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "8.2",
+      "title": "Risk Categories",
+      "module": "Batch Screening",
+      "summary": "These will be configured in the Sanction Screening Configuration Page. Example: Category Score Range Badge Colour Critical 90.1%-100% Red High 75.1% – 90% Orange Medium 60.1% – 75% Yellow/Amber Low 40.1% – 60% Grey (informational; no alert generated by default)",
+      "bullets": [
+        {
+          "text": "These will be configured in the Sanction Screening Configuration Page",
+          "category": "rule"
+        },
+        {
+          "text": "Example: Category Score Range Badge Colour Critical 90.1%-100% Red High 75.1% – 90% Orange Medium 60.1% – 75% Yellow/Amber Low 40.1% – 60% Grey (informational",
+          "category": "field"
+        },
+        {
+          "text": "no alert generated by default)",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "These will be configured in the Sanction Screening Configuration Page"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "8.3",
+      "title": "Cut-off Threshold",
+      "module": "Batch Screening",
+      "summary": "Screening results with an overall score below the configured cut-off threshold are suppressed and not shown in the UI. The default cut-off is 80%. Administrators may configure this per watchlist profile.",
+      "bullets": [
+        {
+          "text": "Screening results with an overall score below the configured cut-off threshold are suppressed and not shown in the UI",
+          "category": "field"
+        },
+        {
+          "text": "The default cut-off is 80%",
+          "category": "general"
+        },
+        {
+          "text": "Administrators may configure this per watchlist profile",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "8.4",
+      "title": "Missing Attributes",
+      "module": "Batch Screening",
+      "summary": "If the screened subject does not provide a value for an attribute, the attribute comparison score is replaced by a probability-adjusted estimate based on the matching entity's known population. A missing ID number does not result in an automatic 0% for that attribute; instead, the match cannot be excluded based on that attribute alone. This is flagged in the AI Summary banner. 9. AI & GenAI Features",
+      "bullets": [
+        {
+          "text": "If the screened subject does not provide a value for an attribute, the attribute comparison score is replaced by a probability-adjusted estimate based on the matching entity's known population",
+          "category": "rule"
+        },
+        {
+          "text": "A missing ID number does not result in an automatic 0% for that attribute",
+          "category": "general"
+        },
+        {
+          "text": "instead, the match cannot be excluded based on that attribute alone",
+          "category": "general"
+        },
+        {
+          "text": "This is flagged in the AI Summary banner. 9",
+          "category": "general"
+        },
+        {
+          "text": "AI & GenAI Features",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "If the screened subject does not provide a value for an attribute, the attribute comparison score is replaced by a probability-adjusted estimate based on the matching entity's known population"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "9.1",
+      "title": "AI Screening Summary Banner (SCR-01)",
+      "module": "Batch Screening",
+      "summary": "The AI Screening Summary banner on the Screening Results page is generated by Clari5's GenAI module (GPT-4o). It produces: A one- to two-sentence executive summary of the screening outcome. A note on data quality issues that may affect match disambiguation. An AI badge strip with severity and data-gap indicators.",
+      "bullets": [
+        {
+          "text": "The AI Screening Summary banner on the Screening Results page is generated by Clari5's GenAI module (GPT-4o)",
+          "category": "rule"
+        },
+        {
+          "text": "It produces: A one- to two-sentence executive summary of the screening outcome",
+          "category": "rule"
+        },
+        {
+          "text": "A note on data quality issues that may affect match disambiguation",
+          "category": "general"
+        },
+        {
+          "text": "An AI badge strip with severity and data-gap indicators",
+          "category": "field"
+        }
+      ],
+      "businessRules": [
+        "The AI Screening Summary banner on the Screening Results page is generated by Clari5's GenAI module (GPT-4o)",
+        "It produces: A one- to two-sentence executive summary of the screening outcome"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "9.2",
+      "title": "AI Investigation Narrative (SCR-02)",
+      "module": "Batch Screening",
+      "summary": "The AI Investigation Narrative is a multi-paragraph analytical report generated for each screening event when the user opens the Match Review screen. It covers: Overall risk score and primary contributing list. Top-scoring watchlist hit with regulatory context (e.g. MAS EDD obligations). Secondary hits and their exposure implications (e.g. OFAC asset-freeze). ID / attribute comparison analysis and disambiguation guidance. Recommended compliance action.",
+      "bullets": [
+        {
+          "text": "The AI Investigation Narrative is a multi-paragraph analytical report generated for each screening event when the user opens the Match Review screen",
+          "category": "rule"
+        },
+        {
+          "text": "It covers: Overall risk score and primary contributing list",
+          "category": "rule"
+        },
+        {
+          "text": "Top-scoring watchlist hit with regulatory context (e.g",
+          "category": "general"
+        },
+        {
+          "text": "MAS EDD obligations)",
+          "category": "general"
+        },
+        {
+          "text": "Secondary hits and their exposure implications (e.g",
+          "category": "general"
+        },
+        {
+          "text": "OFAC asset-freeze)",
+          "category": "general"
+        },
+        {
+          "text": "ID / attribute comparison analysis and disambiguation guidance",
+          "category": "general"
+        },
+        {
+          "text": "Recommended compliance action",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "The AI Investigation Narrative is a multi-paragraph analytical report generated for each screening event when the user opens the Match Review screen",
+        "It covers: Overall risk score and primary contributing list"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "9.3",
+      "title": "Signal Grid",
+      "module": "Batch Screening",
+      "summary": "Four signal cards provide structured, actionable summaries of the most important risk signals identified by the AI. Each card has a colour-coded icon (red = critical, orange = high, amber = warning) and a short prose description.",
+      "bullets": [
+        {
+          "text": "Four signal cards provide structured, actionable summaries of the most important risk signals identified by the AI",
+          "category": "rule"
+        },
+        {
+          "text": "Each card has a colour-coded icon (red = critical, orange = high, amber = warning) and a short prose description",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "Four signal cards provide structured, actionable summaries of the most important risk signals identified by the AI"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "9.4",
+      "title": "Confidence Score",
+      "module": "Batch Screening",
+      "summary": "The AI narrative card displays a confidence badge (High / Medium / Low) indicating the AI's confidence in its assessment, based on the quantity and quality of attributes matched.",
+      "bullets": [
+        {
+          "text": "The AI narrative card displays a confidence badge (High / Medium / Low) indicating the AI's confidence in its assessment, based on the quantity and quality of attributes matched",
+          "category": "field"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": []
+    },
+    {
+      "id": "9.5",
+      "title": "Audit & Transparency",
+      "module": "Batch Screening",
+      "summary": "All AI-generated content is clearly labelled with \"GenAI GPT-4o\" to distinguish it from deterministic system output. AI narratives are stored alongside the screening record for audit purposes and cannot be modified by users. 10. Watchlist Management",
+      "bullets": [
+        {
+          "text": "All AI-generated content is clearly labelled with \"GenAI GPT-4o\" to distinguish it from deterministic system output",
+          "category": "field"
+        },
+        {
+          "text": "AI narratives are stored alongside the screening record for audit purposes and cannot be modified by users. 10",
+          "category": "audit"
+        },
+        {
+          "text": "Watchlist Management",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "Watchlist"
+      ]
+    },
+    {
+      "id": "10.1",
+      "title": "Supported List Types",
+      "module": "Batch Screening",
+      "summary": "The Clari5 Sanctions Screening module supports screening against the following categories of watchlists: Sanctions Lists — OFAC SDN, UN Security Council Consolidated List (UNSCR 1267/1373), EU Consolidated Sanctions List, UK HM Treasury, DFAT Australia, MAS Singapore High-Risk Screening List, UAE Local Lists. PEP Lists — Politically Exposed Persons databases. Law Enforcement — INTERPOL Red Notices and regional law-enforcement lists. Adverse Media — Negative news databases. Custom Lists — Bank-de",
+      "bullets": [
+        {
+          "text": "The Clari5 Sanctions Screening module supports screening against the following categories of watchlists: Sanctions Lists — OFAC SDN, UN Security Council Consolidated List (UNSCR 1267/1373), EU Consolidated Sanctions List, UK HM Treasury, DFAT Australia, MAS Singapore High-Risk Screening List, UAE Local Lists",
+          "category": "rule"
+        },
+        {
+          "text": "PEP Lists — Politically Exposed Persons databases",
+          "category": "navigation"
+        },
+        {
+          "text": "Law Enforcement — INTERPOL Red Notices and regional law-enforcement lists",
+          "category": "general"
+        },
+        {
+          "text": "Adverse Media — Negative news databases",
+          "category": "navigation"
+        },
+        {
+          "text": "Custom Lists — Bank-defined internal lists (e.g. internal blacklists, Correspondent Bank PEP lists)",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "The Clari5 Sanctions Screening module supports screening against the following categories of watchlists: Sanctions Lists — OFAC SDN, UN Security Council Consolidated List (UNSCR 1267/1373), EU Consolidated Sanctions List, UK HM Treasury, DFAT Australia, MAS Singapore High-Risk Screening List, UAE Local Lists",
+        "Custom Lists — Bank-defined internal lists (e.g. internal blacklists, Correspondent Bank PEP lists)"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "10.2",
+      "title": "Watchlist Profiles",
+      "module": "Batch Screening",
+      "summary": "A Watchlist Profile is a named configuration that bundles one or more watchlists with a specific set of attribute weights, thresholds, and EDD trigger rules. Examples visible in the prototype: High-Risk Jurisdiction Screening — applied to the illustrated \"WILLIAM\" screening, combines MAS, OFAC, and UN lists.",
+      "bullets": [
+        {
+          "text": "A Watchlist Profile is a named configuration that bundles one or more watchlists with a specific set of attribute weights, thresholds, and EDD trigger rules",
+          "category": "rule"
+        },
+        {
+          "text": "Examples visible in the prototype: High-Risk Jurisdiction Screening — applied to the illustrated \"WILLIAM\" screening, combines MAS, OFAC, and UN lists",
+          "category": "rule"
+        }
+      ],
+      "businessRules": [
+        "A Watchlist Profile is a named configuration that bundles one or more watchlists with a specific set of attribute weights, thresholds, and EDD trigger rules",
+        "Examples visible in the prototype: High-Risk Jurisdiction Screening — applied to the illustrated \"WILLIAM\" screening, combines MAS, OFAC, and UN lists"
+      ],
+      "fieldNames": [
+        "Watchlist"
+      ]
+    },
+    {
+      "id": "10.3",
+      "title": "List Updates",
+      "module": "Batch Screening",
+      "summary": "Watchlists are updated on a schedule defined by the list provider (daily for OFAC SDN, weekly for UN consolidated list). The system automatically re-screens flagged entities against the updated list if the \"Reverse Screening\" feature is enabled. 11. Notifications The notification bell icon in the top navigation bar displays a count badge (e.g. \"3\") indicating unread system notifications. Notifications include: New screening results requiring review. Escalated cases assigned to the current user. ",
+      "bullets": [
+        {
+          "text": "Watchlists are updated on a schedule defined by the list provider (daily for OFAC SDN, weekly for UN consolidated list)",
+          "category": "general"
+        },
+        {
+          "text": "The system automatically re-screens flagged entities against the updated list if the \"Reverse Screening\" feature is enabled. 11",
+          "category": "rule"
+        },
+        {
+          "text": "Notifications The notification bell icon in the top navigation bar displays a count badge (e.g. \"3\") indicating unread system notifications",
+          "category": "field"
+        },
+        {
+          "text": "Notifications include: New screening results requiring review",
+          "category": "rule"
+        },
+        {
+          "text": "Escalated cases assigned to the current user",
+          "category": "general"
+        },
+        {
+          "text": "Watchlist update alerts (new entries affecting previously cleared entities)",
+          "category": "general"
+        },
+        {
+          "text": "Disposition approval requests (e.g. \"Move to Whitelist\" awaiting manager sign-off)",
+          "category": "rule"
+        },
+        {
+          "text": "Clicking the bell opens a notification panel (separate UI spec)",
+          "category": "navigation"
+        },
+        {
+          "text": "Notifications are marked as read when the user opens the linked record. 12",
+          "category": "navigation"
+        },
+        {
+          "text": "Audit & Compliance Logging",
+          "category": "audit"
+        }
+      ],
+      "businessRules": [
+        "The system automatically re-screens flagged entities against the updated list if the \"Reverse Screening\" feature is enabled. 11",
+        "Notifications include: New screening results requiring review",
+        "Disposition approval requests (e.g. \"Move to Whitelist\" awaiting manager sign-off)"
+      ],
+      "fieldNames": [
+        "Watchlist",
+        "Disposition"
+      ]
+    },
+    {
+      "id": "12.1",
+      "title": "Audit Trail Requirements",
+      "module": "Batch Screening",
+      "summary": "Every user interaction with a screening record that changes its state must be logged. The audit trail must capture: Event timestamp (UTC). User ID and display name. Action performed (e.g. \"Disposition Changed: Under Review → Move to Case\"). Previous and new values. Screening reference ID (e.g. SCR-001-1778218453580). IP address and browser/device fingerprint.",
+      "bullets": [
+        {
+          "text": "Every user interaction with a screening record that changes its state must be logged",
+          "category": "audit"
+        },
+        {
+          "text": "The audit trail must capture: Event timestamp (UTC)",
+          "category": "audit"
+        },
+        {
+          "text": "User ID and display name",
+          "category": "audit"
+        },
+        {
+          "text": "Action performed (e.g. \"Disposition Changed: Under Review → Move to Case\")",
+          "category": "rule"
+        },
+        {
+          "text": "Previous and new values",
+          "category": "general"
+        },
+        {
+          "text": "Screening reference ID (e.g",
+          "category": "rule"
+        },
+        {
+          "text": "SCR-001-1778218453580)",
+          "category": "general"
+        },
+        {
+          "text": "IP address and browser/device fingerprint",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "Action performed (e.g. \"Disposition Changed: Under Review → Move to Case\")",
+        "Screening reference ID (e.g"
+      ],
+      "fieldNames": [
+        "Disposition"
+      ]
+    },
+    {
+      "id": "12.2",
+      "title": "Report Generation",
+      "module": "Batch Screening",
+      "summary": "The \"Export Report\" function generates a PDF audit report containing: Screened entity details. Full list of watchlist hits with individual attribute scores. AI Investigation Narrative (verbatim). Disposition history. Analyst name, timestamp, and digital signature hash.",
+      "bullets": [
+        {
+          "text": "The \"Export Report\" function generates a PDF audit report containing: Screened entity details",
+          "category": "audit"
+        },
+        {
+          "text": "Full list of watchlist hits with individual attribute scores",
+          "category": "rule"
+        },
+        {
+          "text": "AI Investigation Narrative (verbatim)",
+          "category": "general"
+        },
+        {
+          "text": "Disposition history",
+          "category": "rule"
+        },
+        {
+          "text": "Analyst name, timestamp, and digital signature hash",
+          "category": "audit"
+        }
+      ],
+      "businessRules": [
+        "Full list of watchlist hits with individual attribute scores",
+        "Disposition history"
+      ],
+      "fieldNames": [
+        "Disposition"
+      ]
+    },
+    {
+      "id": "12.3",
+      "title": "Data Retention",
+      "module": "Batch Screening",
+      "summary": "Screening records and audit logs are retained for a minimum of seven years in accordance with FATF and local regulatory requirements. Retention periods are configurable per jurisdiction by the system administrator. 13. Non-Functional Requirements Category Requirement Performance Single entity screening must return results within 2 seconds (p95). Table page load must complete within 1 second. Availability 99.9% uptime during business hours. Planned maintenance windows notified 48 hours in advance",
+      "bullets": [
+        {
+          "text": "Screening records and audit logs are retained for a minimum of seven years in accordance with FATF and local regulatory requirements",
+          "category": "audit"
+        },
+        {
+          "text": "Retention periods are configurable per jurisdiction by the system administrator. 13",
+          "category": "general"
+        },
+        {
+          "text": "Non-Functional Requirements Category Requirement Performance Single entity screening must return results within 2 seconds (p95)",
+          "category": "validation"
+        },
+        {
+          "text": "Table page load must complete within 1 second",
+          "category": "navigation"
+        },
+        {
+          "text": "Availability 99.9% uptime during business hours",
+          "category": "general"
+        },
+        {
+          "text": "Planned maintenance windows notified 48 hours in advance",
+          "category": "general"
+        },
+        {
+          "text": "Scalability Support concurrent screening of up to 10,000 entities per hour in batch mode without degradation",
+          "category": "rule"
+        },
+        {
+          "text": "Security All data in transit encrypted via TLS 1.3",
+          "category": "general"
+        },
+        {
+          "text": "At-rest encryption using AES-256",
+          "category": "general"
+        },
+        {
+          "text": "Role-based access enforced at API level",
+          "category": "general"
+        },
+        {
+          "text": "Accessibility UI must meet WCAG 2.1 Level AA",
+          "category": "validation"
+        },
+        {
+          "text": "All interactive elements keyboard-navigable and screen-reader compatible",
+          "category": "rule"
+        },
+        {
+          "text": "Browser Support Latest two versions of Chrome, Firefox, Edge, and Safari",
+          "category": "general"
+        },
+        {
+          "text": "Internationalisation UI supports UTF-8 character encoding",
+          "category": "general"
+        },
+        {
+          "text": "Date formats configurable per locale",
+          "category": "general"
+        },
+        {
+          "text": "Audit All state-changing API calls must produce an immutable audit log entry within 100 ms. 14",
+          "category": "audit"
+        },
+        {
+          "text": "Open Issues & Assumptions",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "Non-Functional Requirements Category Requirement Performance Single entity screening must return results within 2 seconds (p95)",
+        "Scalability Support concurrent screening of up to 10,000 entities per hour in batch mode without degradation",
+        "Accessibility UI must meet WCAG 2.1 Level AA",
+        "All interactive elements keyboard-navigable and screen-reader compatible"
+      ],
+      "fieldNames": []
+    },
+    {
+      "id": "14.1",
+      "title": "Assumptions",
+      "module": "Batch Screening",
+      "summary": "The bank's core banking system provides Customer ID values that are unique and stable. Watchlist data is licensed and ingested via a pre-configured ETL pipeline; this FSD does not cover the ingestion process. The GPT-4o model is accessed via a private, data-processing agreement-compliant API endpoint; no customer PII is sent to a public model endpoint. The \"Sanction Screening Workflow\" sidebar item (currently disabled) will be specified in a future FSD revision. The \"Custom Range\" date picker op",
+      "bullets": [
+        {
+          "text": "The bank's core banking system provides Customer ID values that are unique and stable",
+          "category": "navigation"
+        },
+        {
+          "text": "Watchlist data is licensed and ingested via a pre-configured ETL pipeline",
+          "category": "general"
+        },
+        {
+          "text": "this FSD does not cover the ingestion process",
+          "category": "general"
+        },
+        {
+          "text": "The GPT-4o model is accessed via a private, data-processing agreement-compliant API endpoint",
+          "category": "general"
+        },
+        {
+          "text": "no customer PII is sent to a public model endpoint",
+          "category": "general"
+        },
+        {
+          "text": "The \"Sanction Screening Workflow\" sidebar item (currently disabled) will be specified in a future FSD revision",
+          "category": "navigation"
+        },
+        {
+          "text": "The \"Custom Range\" date picker opens a modal whose detailed spec is maintained separately",
+          "category": "general"
+        }
+      ],
+      "businessRules": [],
+      "fieldNames": [
+        "Customer ID",
+        "Watchlist"
+      ]
+    },
+    {
+      "id": "14.2",
+      "title": "Open Issues",
+      "module": "Batch Screening",
+      "summary": "Issue # Description Owner Status OI-001 Maximum number of attributes per watchlist profile not defined. Product Owner Open OI-002 Confirm Match justification comment — minimum character limit to be determined. Compliance SME Open OI-003 \"View Full Profile\" side panel layout not yet designed. UX Team In Progress OI-004 Notification panel detailed spec pending. Business Analyst Open OI-005 False Positive reversal window (currently 24 hrs) to be validated with compliance leads. Compliance SME Open ",
+      "bullets": [
+        {
+          "text": "Issue # Description Owner Status OI-001 Maximum number of attributes per watchlist profile not defined",
+          "category": "general"
+        },
+        {
+          "text": "Product Owner Open OI-002 Confirm Match justification comment — minimum character limit to be determined",
+          "category": "general"
+        },
+        {
+          "text": "Compliance SME Open OI-003 \"View Full Profile\" side panel layout not yet designed",
+          "category": "general"
+        },
+        {
+          "text": "UX Team In Progress OI-004 Notification panel detailed spec pending",
+          "category": "general"
+        },
+        {
+          "text": "Business Analyst Open OI-005 False Positive reversal window (currently 24 hrs) to be validated with compliance leads",
+          "category": "validation"
+        },
+        {
+          "text": "Compliance SME Open 15",
+          "category": "general"
+        },
+        {
+          "text": "Document Revision History Version Date Author Description v1.0 May 2026 Business Analyst Team Initial draft — based on Clari5 Sanctions Screening UI prototype. v1.1 May 2026 Business Analyst Team Updated per UI prototype revision: added Filters Bar (§4.3a) with Date Range, Branch, Customer ID, Account Number, Screening Type, and List Name filters",
+          "category": "field"
+        },
+        {
+          "text": "removed Add Numeric Filter",
+          "category": "field"
+        },
+        {
+          "text": "removed False Hits action from landing page dropdown",
+          "category": "general"
+        },
+        {
+          "text": "updated SCR-01 Actions cell to use dropdown with mandatory comment modal",
+          "category": "validation"
+        },
+        {
+          "text": "extended mandatory comment requirement to all disposition actions",
+          "category": "validation"
+        },
+        {
+          "text": "Document End This document is classified CONFIDENTIAL and intended solely for use by authorised Clari5 project stakeholders",
+          "category": "general"
+        },
+        {
+          "text": "Unauthorised distribution, reproduction, or modification is strictly prohibited. © 2026 Perfios Software Solutions Pvt",
+          "category": "general"
+        },
+        {
+          "text": "All rights reserved",
+          "category": "general"
+        }
+      ],
+      "businessRules": [
+        "Business Analyst Open OI-005 False Positive reversal window (currently 24 hrs) to be validated with compliance leads",
+        "updated SCR-01 Actions cell to use dropdown with mandatory comment modal",
+        "extended mandatory comment requirement to all disposition actions"
+      ],
+      "fieldNames": [
+        "Confirm Match",
+        "False Positive",
+        "Date Range",
+        "Branch",
+        "Customer ID",
+        "Account Number",
+        "Screening Type",
+        "List Name"
+      ]
+    }
+  ]
+}
