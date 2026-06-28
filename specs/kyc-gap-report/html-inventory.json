@@ -1,0 +1,333 @@
+{
+  "generatedAt": "2026-06-27T19:47:20.227Z",
+  "source": "KYC Gap Report live UI + KycGapReportLocators + FSD §4",
+  "pageTitle": "KYC Gap Report",
+  "pageSubtitle": "Missing or expired KYC fields — CBS & DMS import vs. template requirements",
+  "route": "/kyc/kyc-gap-report",
+  "buttons": [
+    {
+      "id": "export",
+      "label": "Export",
+      "type": "button",
+      "section": "landing"
+    },
+    {
+      "id": "refresh",
+      "label": "Refresh",
+      "type": "button",
+      "section": "landing"
+    },
+    {
+      "id": "view",
+      "label": "View",
+      "type": "button",
+      "section": "landing"
+    }
+  ],
+  "filters": [
+    {
+      "id": "search",
+      "label": "Search",
+      "type": "filter",
+      "section": "landing"
+    },
+    {
+      "id": "branch",
+      "label": "Branch",
+      "type": "filter",
+      "section": "landing"
+    },
+    {
+      "id": "customer-type",
+      "label": "Customer Type",
+      "type": "filter",
+      "section": "landing"
+    },
+    {
+      "id": "template",
+      "label": "Template",
+      "type": "filter",
+      "section": "landing"
+    },
+    {
+      "id": "priority",
+      "label": "Priority",
+      "type": "filter",
+      "section": "landing"
+    },
+    {
+      "id": "gap-score-min",
+      "label": "Gap Score Min",
+      "type": "filter",
+      "section": "landing"
+    },
+    {
+      "id": "gap-score-max",
+      "label": "Gap Score Max",
+      "type": "filter",
+      "section": "landing"
+    },
+    {
+      "id": "clear-filters",
+      "label": "Clear Filters",
+      "type": "filter",
+      "section": "landing"
+    }
+  ],
+  "kpiCards": [
+    {
+      "id": "total-customers-cbs-",
+      "label": "Total Customers (CBS)",
+      "type": "kpi",
+      "section": "landing"
+    },
+    {
+      "id": "customers-with-gaps",
+      "label": "Customers with Gaps",
+      "type": "kpi",
+      "section": "landing"
+    },
+    {
+      "id": "critical-priority",
+      "label": "Critical Priority",
+      "type": "kpi",
+      "section": "landing"
+    },
+    {
+      "id": "high-priority",
+      "label": "High Priority",
+      "type": "kpi",
+      "section": "landing"
+    },
+    {
+      "id": "medium-priority",
+      "label": "Medium Priority",
+      "type": "kpi",
+      "section": "landing"
+    },
+    {
+      "id": "low-priority",
+      "label": "Low Priority",
+      "type": "kpi",
+      "section": "landing"
+    }
+  ],
+  "gridColumns": [
+    {
+      "id": "customer",
+      "label": "Customer",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "customer-id",
+      "label": "Customer ID",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "type",
+      "label": "Type",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "branch",
+      "label": "Branch",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "branch-code",
+      "label": "Branch Code",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "template-applied",
+      "label": "Template Applied",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "kyc-gap-score",
+      "label": "KYC Gap Score",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "priority",
+      "label": "Priority",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "actions",
+      "label": "Actions",
+      "type": "column",
+      "section": "grid"
+    }
+  ],
+  "modalFields": [
+    {
+      "id": "customer-name",
+      "label": "Customer Name",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "cif-id",
+      "label": "CIF ID",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "branch-name",
+      "label": "Branch Name",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "branch-code",
+      "label": "Branch Code",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "template-applied",
+      "label": "Template Applied",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "missing-fields-list",
+      "label": "Missing Fields List",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "gap-type-badge",
+      "label": "Gap Type Badge",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "score-summary",
+      "label": "Score Summary",
+      "type": "field",
+      "section": "modal"
+    },
+    {
+      "id": "missing-fields-detail",
+      "label": "Missing Fields Detail (C360 tab)",
+      "type": "field",
+      "section": "c360-tab"
+    }
+  ],
+  "paginationControls": [
+    {
+      "id": "items-per-page",
+      "label": "Items per page",
+      "type": "pagination",
+      "section": "landing"
+    },
+    {
+      "id": "previous",
+      "label": "Previous",
+      "type": "pagination",
+      "section": "landing"
+    },
+    {
+      "id": "next",
+      "label": "Next",
+      "type": "pagination",
+      "section": "landing"
+    },
+    {
+      "id": "page-indicator",
+      "label": "Page indicator",
+      "type": "pagination",
+      "section": "landing"
+    },
+    {
+      "id": "item-range",
+      "label": "Item range",
+      "type": "pagination",
+      "section": "landing"
+    }
+  ],
+  "gaps": [
+    {
+      "id": "refresh-btn",
+      "label": "Refresh button",
+      "type": "button",
+      "section": "landing"
+    },
+    {
+      "id": "breadcrumb",
+      "label": "Breadcrumb navigation",
+      "type": "panel",
+      "section": "landing"
+    },
+    {
+      "id": "type-badge-color",
+      "label": "Type colour-coded badge",
+      "type": "badge",
+      "section": "grid"
+    },
+    {
+      "id": "score-color-label",
+      "label": "Score colour-coded risk label",
+      "type": "badge",
+      "section": "grid"
+    },
+    {
+      "id": "no-edit-btn",
+      "label": "Edit button absence",
+      "type": "button",
+      "section": "grid"
+    },
+    {
+      "id": "no-bulk-notify",
+      "label": "Bulk Notify absence",
+      "type": "button",
+      "section": "landing"
+    },
+    {
+      "id": "no-missing-fields-col",
+      "label": "Missing Fields column absence",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "no-gap-type-col",
+      "label": "Gap Type column absence",
+      "type": "column",
+      "section": "grid"
+    },
+    {
+      "id": "item-range",
+      "label": "Item range A-B of N",
+      "type": "pagination",
+      "section": "landing"
+    },
+    {
+      "id": "keyboard-nav",
+      "label": "Keyboard navigation",
+      "type": "panel",
+      "section": "accessibility"
+    },
+    {
+      "id": "aria-roles",
+      "label": "ARIA roles",
+      "type": "panel",
+      "section": "accessibility"
+    },
+    {
+      "id": "load-performance",
+      "label": "Page load performance",
+      "type": "panel",
+      "section": "performance"
+    }
+  ]
+}

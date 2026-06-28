@@ -22,6 +22,38 @@ function escapeMdCell(value: string): string {
   return value.replace(/\|/g, "\\|").replace(/\n/g, " ");
 }
 
+function buildTestCasesMd(rows: RdrExcelRow[]): string {
+  const feasibility = buildAutomationFeasibilityMatrix(rows, buildGapMatrix(rows));
+  const feasMap = new Map(feasibility.map((f) => [f.testCaseId, f]));
+
+  const blocks = rows.map((r) => {
+    const f = feasMap.get(r.id)!;
+    return [
+      `### ${r.id} — ${r.taskDescription}`,
+      "",
+      mdTable(
+        ["Field", "Value"],
+        [
+          ["Module", r.module],
+          ["Submodule", escapeMdCell(r.subModule)],
+          ["Priority", r.priority || "—"],
+          ["Preconditions", escapeMdCell(r.preconditions)],
+          ["Test Data", escapeMdCell(r.testData)],
+          ["Steps", escapeMdCell(r.testSteps)],
+          ["Expected Result", escapeMdCell(r.expectedResult)],
+          ["Acceptance Criteria", escapeMdCell(r.acceptanceCriteria)],
+          ["Automation Candidate", f.automationCandidate],
+          ["Automation Layer", f.automationLayer],
+          ["Tags", f.tags.join(", ")],
+        ],
+      ),
+      "",
+    ].join("\n");
+  });
+
+  return [`# Reference Data Registry — Detailed Test Cases (${rows.length})`, "", ...blocks].join("\n");
+}
+
 export async function writePlanArtifacts(): Promise<{ outputDir: string; rowCount: number }> {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   const rows = loadRdrRows();
@@ -57,8 +89,11 @@ export async function writePlanArtifacts(): Promise<{ outputDir: string; rowCoun
       "- Locators: `tests/objectrepositories/ReferenceDataRegistryLocators.ts`",
       "- Page Object: `tests/milestone1/pages/KYCModule/ReferenceDataRegistryPages/ReferenceDataRegistryPage.ts`",
       "- Spec file: `tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts`",
-      "- Fixtures: `fixtures/rdr-pilot-data.json`",
+      "- Fixtures: `fixtures/rdr-test-data.json`, `fixtures/rdr-pilot-data.json`",
       "- Generator: `pipeline/src/rdr/generate-milestone.ts`",
+      "- Validator: `pipeline/src/rdr/validate-alignment.ts`",
+      "- Requirements index: `specs/rdr/requirements-index.json`",
+      "- Test cases detail: `specs/rdr/test-cases.md`",
       "",
     ].join("\n"),
     "utf-8",
@@ -83,6 +118,8 @@ export async function writePlanArtifacts(): Promise<{ outputDir: string; rowCoun
   );
 
   fs.writeFileSync(path.join(OUTPUT_DIR, "gap-matrix.json"), JSON.stringify(gapMatrix, null, 2), "utf-8");
+  fs.writeFileSync(path.join(OUTPUT_DIR, "test-cases.md"), buildTestCasesMd(rows), "utf-8");
+  fs.writeFileSync(path.join(OUTPUT_DIR, "requirements-index.json"), JSON.stringify(rows, null, 2), "utf-8");
   fs.writeFileSync(
     path.join(OUTPUT_DIR, "automation-feasibility.json"),
     JSON.stringify(feasibility, null, 2),

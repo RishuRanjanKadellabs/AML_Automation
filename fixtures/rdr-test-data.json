@@ -1,0 +1,63 @@
+{
+  "roles": {
+    "analyst": "AML Analyst",
+    "officer": "Compliance Officer",
+    "admin": "Administrator",
+    "unauthorized": "Unauthorized User"
+  },
+  "customer": {
+    "id": "CIF001001",
+    "name": "Rajesh Kumar",
+    "maskedName": "Rajesh K***r Sha***a",
+    "type": "INDIVIDUAL",
+    "status": "ACTIVE",
+    "risk": "LOW",
+    "kycStatus": "COMPLETE",
+    "nationality": "IN"
+  },
+  "corporate": {
+    "id": "CIF002045",
+    "name": "Rajesh Kumar",
+    "type": "CORPORATE",
+    "status": "ACTIVE"
+  },
+  "employee": {
+    "id": "EMP-001",
+    "code": "BR-HO-0045",
+    "maskedName": "Priya Na***",
+    "title": "AML Officer",
+    "department": "Compliance",
+    "branch": "BRN-H0001",
+    "status": "ACTIVE"
+  },
+  "card": {
+    "id": "CARD-001",
+    "customerId": "CIF002045",
+    "last4": "4521",
+    "type": "DEBIT",
+    "network": "VISA",
+    "status": "ACTIVE"
+  },
+  "beneficialOwner": {
+    "id": "BO-001",
+    "customerId": "CIF002045",
+    "maskedName": "Anil Me***a",
+    "ownership": "35%",
+    "controlType": "DIRECT_SHAREHOLDER"
+  },
+  "branch": "BRN-H0001",
+  "syncLabel": "Synced: 05 May 2026 02:15 AM - CBS (Finacle)",
+  "search": {
+    "partial": "Rajesh",
+    "exact": "CIF001001",
+    "noMatch": "zzzz-no-match-99999"
+  },
+  "pagination": {
+    "pageSizes": [
+      10,
+      25,
+      50
+    ],
+    "defaultPageSize": 25
+  }
+}

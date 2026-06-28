@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-26T02:58:22.250Z",
+  "generatedAt": "2026-06-28T09:30:58.281Z",
   "excelSource": "pipeline/test-data/Reference Data Registry.xlsx",
   "fsdSource": "pipeline/test-data/Reference Data Registry_FSD_v1.0.docx",
-  "totalCases": 376,
-  "idRange": "RDR_001–RDR_386",
+  "totalCases": 383,
+  "idRange": "RDR_001–RDR_383",
   "specFile": "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts"
 }

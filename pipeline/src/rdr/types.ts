@@ -46,3 +46,20 @@ export interface FsdMappingEntry {
   alignmentStatus: "aligned" | "partial" | "unmapped";
   notes: string;
 }
+
+export interface EnhancedRdrRow extends RdrExcelRow {
+  fsdSectionId: string;
+  fsdSectionTitle: string;
+  isNew: boolean;
+}
+
+export interface GapTestCaseSpec {
+  id?: string;
+  subModule: string;
+  masterName: string;
+  taskDescription: string;
+  priority: string;
+  testData: string;
+  uiControlLabel: string;
+  fsdSectionId: string;
+}

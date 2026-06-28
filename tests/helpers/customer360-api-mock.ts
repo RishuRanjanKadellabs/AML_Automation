@@ -19,8 +19,29 @@ type FixtureData = {
   tabs: string[];
 };
 
+type Customer360ViewMode = "individual" | "corporate" | "pep";
+
 const fixturePath = path.resolve(__dirname, "../../fixtures/customer-360-view-data.json");
 const fixture: FixtureData = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
+const viewModeByContext = new WeakMap<BrowserContext, Customer360ViewMode>();
+
+export function setCustomer360ViewMode(context: BrowserContext, mode: Customer360ViewMode): void {
+  viewModeByContext.set(context, mode);
+}
+
+export function getCustomer360ViewMode(context: BrowserContext): Customer360ViewMode {
+  return viewModeByContext.get(context) ?? "individual";
+}
+
+function fixtureForViewMode(mode: Customer360ViewMode): CustomerFixture {
+  if (mode === "corporate") {
+    return fixture.customers["3159176CORP"] ?? fixture.customers[fixture.defaultCustomerId];
+  }
+  if (mode === "pep") {
+    return fixture.customers["3159176PEP"] ?? fixture.customers[fixture.defaultCustomerId];
+  }
+  return fixture.customers[fixture.defaultCustomerId] ?? Object.values(fixture.customers)[0];
+}
 
 export function getCustomerFixture(customerId: string): CustomerFixture | null {
   const normalized = normalizeCustomerKey(customerId);
@@ -77,17 +98,27 @@ function customerMatches(customer: CustomerFixture, query: string): boolean {
   );
 }
 
-function resolveFixtureCustomer(query: string): CustomerFixture | null {
+function resolveFixtureCustomer(query: string, context?: BrowserContext): CustomerFixture | null {
   const direct = getCustomerFixture(query);
-  if (direct) return direct;
+  if (direct && !context) {
+    return direct;
+  }
 
-  const byName = Object.values(fixture.customers).find((c) =>
-    customerMatches(c, query),
-  );
+  const mode = context ? getCustomer360ViewMode(context) : "individual";
+  const modeFixture = fixtureForViewMode(mode);
+
+  if (direct) {
+    if (/^\d+$/.test(normalizeCustomerKey(query)) || normalizeCustomerKey(query) === normalizeCustomerKey(modeFixture.id)) {
+      return modeFixture;
+    }
+    return direct;
+  }
+
+  const byName = Object.values(fixture.customers).find((c) => customerMatches(c, query));
   if (byName) return byName;
 
   if (/^\d+$/.test(query.trim())) {
-    return fixture.customers[fixture.defaultCustomerId] ?? null;
+    return modeFixture;
   }
 
   return null;
@@ -130,7 +161,7 @@ function profilePayload(customer: CustomerFixture) {
   };
 }
 
-async function fulfillRoute(route: Route): Promise<void> {
+async function fulfillRoute(route: Route, context?: BrowserContext): Promise<void> {
   const url = route.request().url();
   const method = route.request().method();
 
@@ -163,7 +194,7 @@ async function fulfillRoute(route: Route): Promise<void> {
   const detailMatch = url.match(/\/customers\/([A-Z0-9-]+)/i);
   if (detailMatch && method === "GET") {
     const id = normalizeCustomerKey(detailMatch[1]);
-    const customer = resolveFixtureCustomer(id) ?? getCustomerFixture(id);
+    const customer = resolveFixtureCustomer(id, context) ?? getCustomerFixture(id);
     if (!customer) {
       await route.fulfill({
         status: 404,
@@ -189,7 +220,7 @@ async function fulfillRoute(route: Route): Promise<void> {
 
 export async function installCustomer360ApiMockOnContext(context: BrowserContext): Promise<void> {
   await context.unroute("**/api/v1/customer-360/**").catch(() => undefined);
-  await context.route("**/api/v1/customer-360/**", fulfillRoute);
+  await context.route("**/api/v1/customer-360/**", (route) => fulfillRoute(route, context));
 }
 
 export async function installCustomer360ApiMock(page: Page): Promise<void> {

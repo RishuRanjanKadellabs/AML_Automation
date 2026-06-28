@@ -1,5 +1,6 @@
 import { buildGapMatrixEntry } from "./gap-analysis";
 import { extractColumnName, extractSearchTermFromStep, resolveColumnFromText } from "./column-resolver";
+import { isCustomerMasterRow, shouldAssertCustomerIds, shouldAssertWatchlist } from "./master-columns";
 import type { RdrExcelRow, ExcelAlignedPhases } from "./types";
 
 export { extractColumnName } from "./column-resolver";
@@ -86,6 +87,13 @@ function mapSearchExecuteStep(step: string, row: RdrExcelRow): string[] {
   if (/active customer/i.test(step)) {
     return ["await rdrPage.search(pilotData.customerMaster.ids[0])"];
   }
+  // Canonical expanded steps describe an outcome, not a literal value.
+  if (/non-?matching|empty state|no matching|no record|no result/i.test(step)) {
+    return ["await rdrPage.searchNoMatchValue()"];
+  }
+  if (/valid search value|matching records?\s+(?:are|is)\s+displayed|enter a valid/i.test(step)) {
+    return ["await rdrPage.searchUsingPilotCustomerId()"];
+  }
   const term = extractSearchTermFromStep(step);
   if (term) return [`await rdrPage.search('${escapeStr(term)}')`];
   return ["await rdrPage.searchUsingPilotCustomerId()"];
@@ -120,7 +128,7 @@ function mapCompareStep(step: string, row: RdrExcelRow): string[] {
     if (column) {
       pushUnique(out, `await rdrPage.expectAllCellsNonEmpty('${escapeStr(column)}')`);
     }
-    if (/customer id/i.test(blob)) {
+    if (/customer id/i.test(blob) && shouldAssertCustomerIds(row)) {
       if (!isActiveStatusTask(row) && !isInactiveStatusTask(row)) {
         pushUnique(out, "await rdrPage.expectCustomerIdsMatch(pilotData.customerMaster.ids)");
       }
@@ -193,7 +201,7 @@ function mapVerifyStep(step: string, row: RdrExcelRow): string[] {
     return out;
   }
 
-  if (/watchlist|highlight|indicator|aml review/i.test(step)) {
+  if (/watchlist|highlight|indicator|aml review/i.test(step) && shouldAssertWatchlist(row)) {
     pushUnique(out, "await rdrPage.expectColumnVisible('Watchlist')");
     pushUnique(out, "await rdrPage.expectColumnIncludesValue('Watchlist', 'Yes')");
     return out;
@@ -313,6 +321,9 @@ function mapSingleStepToExecuteActions(step: string, row: RdrExcelRow): string[]
   }
 
   if (stepMatches(step, "select", "choose", "apply filter", "filter by")) {
+    if (/master tab|shell group|sidebar|navigation|primary navigation/i.test(step)) {
+      return [];
+    }
     return [`await rdrPage.applyFilterByOptionText('${escapeStr(filterValueFromStep(step))}')`];
   }
 
@@ -321,6 +332,9 @@ function mapSingleStepToExecuteActions(step: string, row: RdrExcelRow): string[]
   }
 
   if (/^enter\b/i.test(step) && /search/i.test(step)) {
+    if (/non-?matching|empty state|no matching|no record|no result/i.test(step)) {
+      return ["await rdrPage.searchNoMatchValue()"];
+    }
     if (/full legal name|legal name|name/i.test(step)) {
       return ["await rdrPage.searchFromFirstRowCell()"];
     }
@@ -407,6 +421,28 @@ export function buildExcelSetupActions(row: RdrExcelRow): string[] {
   return [`await rdrPage.openMasterTabFromSubmodule(testData.baseUrl, '${escapeStr(row.subModule)}')`];
 }
 
+function sanitizeExecuteSteps(steps: string[], row: RdrExcelRow): string[] {
+  const hasLinkClick = steps.some((s) => s.includes("clickFirstRowIdLink"));
+  const hasViewOpen = steps.some((s) => s.includes("openFirstRowView"));
+  if (!hasLinkClick || !hasViewOpen) return steps;
+
+  if (isHyperlinkTask(row)) {
+    return steps.filter((s) => !s.includes("openFirstRowView"));
+  }
+  if (isViewModalTask(row)) {
+    return steps.filter((s) => !s.includes("clickFirstRowIdLink"));
+  }
+  return steps.filter((s) => !s.includes("openFirstRowView"));
+}
+
+function sanitizeAssertionSteps(steps: string[], row: RdrExcelRow): string[] {
+  return steps.filter((s) => {
+    if (s.includes("expectCustomerIdsMatch") && !shouldAssertCustomerIds(row)) return false;
+    if (s.includes("expectColumnIncludesValue('Watchlist'") && !shouldAssertWatchlist(row)) return false;
+    return true;
+  });
+}
+
 export function buildExcelStepActions(row: RdrExcelRow): string[] {
   const numbered = parseNumberedSteps(row.testSteps);
   const steps: string[] = [];
@@ -442,7 +478,7 @@ export function buildExcelStepActions(row: RdrExcelRow): string[] {
     pushUnique(steps, "await rdrPage.expectGridTabLoaded()");
   }
 
-  return steps;
+  return sanitizeExecuteSteps(steps, row);
 }
 
 function buildAssertionFromClause(c: string, row: RdrExcelRow): string[] {
@@ -499,7 +535,7 @@ function buildAssertionFromClause(c: string, row: RdrExcelRow): string[] {
     push("await rdrPage.expectClearResetsGrid()");
   }
   if (/customer id.*match|CIF\d+|source system/i.test(c) || (/customer id/i.test(rowBlob(row)) && /source|cbs/i.test(c))) {
-    if (!isActiveStatusTask(row) && !isInactiveStatusTask(row)) {
+    if (shouldAssertCustomerIds(row) && !isActiveStatusTask(row) && !isInactiveStatusTask(row)) {
       push("await rdrPage.expectCustomerIdsMatch(pilotData.customerMaster.ids)");
     }
   }
@@ -546,7 +582,7 @@ export function buildExcelAssertionActions(row: RdrExcelRow): string[] {
     pushUnique(steps, "await rdrPage.expectGridContainsRecords()");
   }
 
-  if (row.id === "RDR_001" && column) {
+  if (row.id === "RDR_001" && column && isCustomerMasterRow(row)) {
     pushUnique(steps, `await rdrPage.expectUniqueColumnValues('${escapeStr(column)}')`);
     pushUnique(steps, "await expect(rdrPage.gridRows).toHaveCount(pilotData.customerMaster.expectedRowCount)");
   }
@@ -572,7 +608,7 @@ export function buildExcelAssertionActions(row: RdrExcelRow): string[] {
     pushUnique(steps, "await rdrPage.expectInactiveStatusInGrid()");
   }
 
-  return steps;
+  return sanitizeAssertionSteps(steps, row);
 }
 
 export function buildExcelAlignedPhases(row: RdrExcelRow): ExcelAlignedPhases {

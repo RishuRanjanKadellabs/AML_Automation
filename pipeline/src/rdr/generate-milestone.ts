@@ -11,6 +11,9 @@ import { formatTestTitle } from "./assertions";
 import { buildExcelAlignedPhases } from "./excel-phases";
 import { buildFsdMappings } from "./fsd-mapper";
 import { buildInstrumentedTestBody } from "./test-body-builder";
+import { writeFsdCatalog } from "./fsd-catalog";
+import { writeHtmlInventory } from "./html-inventory";
+import { writeRdrFixturesFromExcel } from "./fixture-writer";
 
 const ROOT = path.resolve(__dirname, "../../..");
 const SPEC_DIR = path.join(ROOT, "tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests");
@@ -95,6 +98,21 @@ async function generateSpecs(allRows: RdrExcelRow[]): Promise<void> {
 async function main(): Promise<void> {
   const generateSpecsFlag = process.argv.includes("--generate-specs");
   const rows = loadRdrRows();
+
+  if (rows.length === 0) {
+    console.error("No test cases loaded from Excel.");
+    process.exit(1);
+  }
+
+  const inventory = writeHtmlInventory();
+  console.log(`HTML inventory: ${inventory.shellGroups.length} shell groups, ${inventory.masterTabs.length} master tabs`);
+
+  const catalog = await writeFsdCatalog();
+  console.log(`FSD catalog: ${catalog.length} entries`);
+
+  const fixtures = writeRdrFixturesFromExcel();
+  console.log(`Fixtures written: ${fixtures.testDataPath}, ${fixtures.pilotDataPath}`);
+
   const result = await writePlanArtifacts();
   console.log(`Plan artifacts written to ${result.outputDir} (${result.rowCount} cases)`);
 
@@ -106,11 +124,6 @@ async function main(): Promise<void> {
 
   if (!fs.existsSync(path.join(PAGE_OBJECT_DIR, "ReferenceDataRegistryPage.ts"))) {
     console.error(`Page object not found at ${PAGE_OBJECT_DIR}/ReferenceDataRegistryPage.ts`);
-    process.exit(1);
-  }
-
-  if (rows.length === 0) {
-    console.error("No test cases loaded from Excel.");
     process.exit(1);
   }
 
