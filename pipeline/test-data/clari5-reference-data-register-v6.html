@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 | Reference Data Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700;6..12,800&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#f0f3f9;--white:#fff;
+  --primary:#1a3d7c;--primary-h:#15336a;
+  --accent:#2563eb;--teal:#0ea5e9;
+  --green:#10b981;--green-d:#059669;
+  --amber:#f59e0b;--red:#ef4444;
+  --purple:#7c3aed;--indigo:#4f46e5;
+  --td:#0f172a;--tm:#475569;--tl:#94a3b8;
+  --border:#e2e8f0;--bl:#f1f5f9;
+  --font:'Nunito Sans',sans-serif;--disp:'Nunito',sans-serif;
+  --tbh:56px;--sbw:216px;
+}
+html,body{height:100%;background:var(--bg);font-family:var(--font);font-size:13px;color:var(--td);}
+
+/* ── TOPBAR ── */
+.topbar{position:fixed;top:0;left:0;right:0;height:var(--tbh);background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;z-index:300;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+.tb-brand{width:var(--sbw);height:100%;display:flex;align-items:center;gap:9px;padding:0 16px;border-right:1px solid var(--border);flex-shrink:0;}
+.tb-logo{width:32px;height:32px;border-radius:8px;background:var(--primary);display:flex;align-items:center;justify-content:center;}
+.tb-logo svg{width:18px;height:18px;}
+.tb-n{font-family:var(--disp);font-size:16px;font-weight:800;color:var(--primary);}
+.tb-s{font-size:9px;color:var(--tl);display:block;}
+.tb-bank{height:100%;display:flex;align-items:center;gap:6px;padding:0 14px;border-right:1px solid var(--border);font-size:12px;font-weight:700;color:var(--tm);flex-shrink:0;}
+.tb-sp{flex:1;}
+.tb-icons{display:flex;gap:2px;margin-right:8px;}
+.tbi{width:32px;height:32px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--tm);font-size:14px;position:relative;}
+.tbi:hover{background:var(--bg);}
+.tbi-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--red);border:1.5px solid var(--white);}
+.tb-user{display:flex;align-items:center;gap:8px;padding:5px 10px;border-radius:8px;cursor:pointer;margin-right:8px;}
+.tb-user:hover{background:var(--bg);}
+.tb-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;position:relative;}
+.tb-online{position:absolute;bottom:0;right:0;width:8px;height:8px;border-radius:50%;background:var(--green);border:1.5px solid var(--white);}
+.tb-un{font-size:12px;font-weight:700;color:var(--td);}
+.tb-ur{font-size:10px;color:var(--tl);}
+
+/* ── LAYOUT ── */
+.layout{display:flex;padding-top:var(--tbh);min-height:100vh;}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sbw);flex-shrink:0;background:var(--white);border-right:1px solid var(--border);position:fixed;top:var(--tbh);left:0;bottom:0;display:flex;flex-direction:column;overflow:hidden;}
+.sb-nav{flex:1;overflow-y:auto;padding-bottom:12px;}
+.sb-sec{font-size:9.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--tl);padding:14px 14px 5px;}
+.nav-p{display:flex;align-items:center;gap:8px;padding:9px 12px 9px 14px;cursor:pointer;color:var(--tm);font-size:12.5px;font-weight:700;border-left:3px solid transparent;user-select:none;transition:background .12s;}
+.nav-p:hover{background:#f8fafc;color:var(--td);}
+.nav-p.open{color:var(--primary);background:#eff6ff;border-left-color:var(--accent);}
+.np-ic{font-size:14px;flex-shrink:0;}
+.np-lbl{flex:1;}
+.np-ch{font-size:10px;color:var(--tl);transition:transform .2s;}
+.nav-ch{background:#fafbff;}
+.nav-c{display:flex;align-items:center;gap:7px;padding:7px 12px 7px 34px;cursor:pointer;font-size:12px;font-weight:600;color:var(--tm);border-left:3px solid transparent;transition:background .12s;}
+.nav-c:hover{background:#eff6ff;}
+.nav-c.active{color:var(--accent);background:#eff6ff;border-left-color:var(--accent);font-weight:700;}
+.nc-d{width:5px;height:5px;border-radius:50%;background:var(--border);flex-shrink:0;}
+.nav-c.active .nc-d{background:var(--accent);}
+.sb-foot{border-top:1px solid var(--border);padding:10px 12px;display:flex;align-items:center;gap:8px;}
+.sb-fav{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;flex-shrink:0;}
+.sbfn{font-size:11.5px;font-weight:700;color:var(--td);}
+.sbfb{font-size:10px;color:var(--tl);}
+.sbfg{margin-left:auto;color:var(--tl);cursor:pointer;}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sbw);flex:1;display:flex;flex-direction:column;}
+.main-body{flex:1;padding:18px 22px;}
+
+/* ── PAGE HEADER ── */
+.pg-hdr{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:12px;}
+.pg-crumb{font-size:11px;color:var(--tl);margin-bottom:3px;}
+.pg-crumb a{color:var(--accent);font-weight:600;text-decoration:none;}
+.pg-title{font-size:18px;font-weight:800;font-family:var(--disp);color:var(--td);}
+.pg-desc{font-size:12px;color:var(--tm);margin-top:2px;}
+
+/* ── MASTER NAV TABS (horizontal group) ── */
+.master-nav{display:flex;gap:2px;margin-bottom:14px;background:var(--white);border:1px solid var(--border);border-radius:9px;padding:4px;overflow-x:auto;flex-shrink:0;}
+.master-nav::-webkit-scrollbar{height:3px;}
+.master-nav::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
+.mnav-grp{display:none;gap:3px;flex-wrap:wrap;}
+.mnav-grp.visible{display:flex;}
+.mnav-btn{padding:5px 11px;border-radius:6px;cursor:pointer;font-size:11.5px;font-weight:700;color:var(--tm);background:transparent;border:none;font-family:var(--font);transition:all .13s;white-space:nowrap;}
+.mnav-btn:hover{background:var(--bg);}
+.mnav-btn.active{background:var(--primary);color:#fff;}
+
+/* ── TOOLBAR (search + actions) ── */
+.toolbar{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap;}
+.tb-search-box{display:flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--border);border-radius:7px;padding:5px 10px;flex:1;min-width:200px;max-width:340px;transition:border-color .15s;}
+.tb-search-box:focus-within{border-color:var(--accent);}
+.tb-search-box input{border:none;background:transparent;font-size:12px;color:var(--td);font-family:var(--font);outline:none;flex:1;}
+.tb-search-box input::placeholder{color:var(--tl);}
+.tb-search-hint{font-size:10.5px;color:var(--tl);white-space:nowrap;}
+.tb-sep{width:1px;height:22px;background:var(--border);flex-shrink:0;}
+.btn{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:7px;font-size:12px;font-weight:700;font-family:var(--font);cursor:pointer;border:none;transition:all .13s;white-space:nowrap;}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{background:var(--primary-h);}
+.btn-accent{background:var(--accent);color:#fff;}
+.btn-accent:hover{background:#1d4ed8;}
+.btn-outline{background:var(--white);color:var(--tm);border:1px solid var(--border);}
+.btn-outline:hover{background:var(--bg);}
+.btn-outline.disabled{opacity:.45;cursor:not-allowed;pointer-events:none;}
+.btn-sm{padding:5px 10px;font-size:11.5px;}
+.btn-green{background:var(--green-d);color:#fff;}
+.btn-green:hover{background:#047857;}
+
+/* ── COLUMN SELECTOR ── */
+.col-sel-wrap{position:relative;}
+.col-sel-dropdown{position:absolute;top:calc(100% + 4px);right:0;background:var(--white);border:1px solid var(--border);border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:200;min-width:240px;max-height:380px;display:none;flex-direction:column;}
+.col-sel-dropdown.open{display:flex;}
+.col-sel-hdr{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--border);}
+.col-sel-title{font-size:11.5px;font-weight:800;color:var(--td);}
+.col-sel-acts{display:flex;gap:6px;}
+.col-sel-act{font-size:11px;font-weight:700;color:var(--accent);cursor:pointer;padding:2px 6px;border-radius:4px;}
+.col-sel-act:hover{background:#eff6ff;}
+.col-sel-list{overflow-y:auto;padding:8px 0;flex:1;}
+.col-sel-item{display:flex;align-items:center;gap:8px;padding:6px 14px;cursor:pointer;transition:background .1s;}
+.col-sel-item:hover{background:var(--bg);}
+.col-sel-item input[type=checkbox]{width:13px;height:13px;cursor:pointer;accent-color:var(--accent);}
+.col-sel-item label{font-size:12px;color:var(--tm);cursor:pointer;flex:1;}
+.col-sel-foot{padding:10px 14px;border-top:1px solid var(--border);display:flex;gap:6px;justify-content:flex-end;}
+
+/* ── FILTER BAR ── */
+.filter-bar{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 14px;margin-bottom:12px;}
+.fb-label{font-size:10px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--tl);margin-bottom:8px;}
+.frow{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;}
+.ff{display:flex;flex-direction:column;gap:3px;}
+.ff.grow{flex:1;min-width:140px;}
+.fl{font-size:10px;font-weight:700;color:var(--tl);text-transform:uppercase;letter-spacing:.4px;}
+.fi,.fs{padding:6px 9px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-size:12px;color:var(--td);font-family:var(--font);outline:none;transition:border-color .15s;}
+.fi:focus,.fs:focus{border-color:var(--accent);background:var(--white);}
+
+/* ── TABLE CARD ── */
+.tcard{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;}
+.tcard-h{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--border);gap:10px;}
+.tcard-t{font-size:13px;font-weight:800;font-family:var(--disp);color:var(--td);display:flex;align-items:center;gap:7px;white-space:nowrap;}
+.tcnt{font-size:10.5px;font-weight:700;background:#eff6ff;color:var(--accent);padding:2px 8px;border-radius:20px;}
+.last-sync{font-size:10.5px;color:var(--tl);display:flex;align-items:center;gap:4px;background:var(--bg);padding:3px 9px;border-radius:5px;border:1px solid var(--border);white-space:nowrap;}
+.sync-dot{width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;}
+
+/* ── TABLE ── */
+.tbl-wrap{overflow-x:auto;max-height:430px;overflow-y:auto;}
+.tbl-wrap::-webkit-scrollbar{width:5px;height:5px;}
+.tbl-wrap::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px;}
+.tbl-wrap::-webkit-scrollbar-track{background:transparent;}
+table{width:100%;border-collapse:collapse;}
+thead{position:sticky;top:0;z-index:5;}
+thead tr{background:var(--bg);}
+th{padding:8px 11px;text-align:left;font-size:10px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:var(--tl);border-bottom:1px solid var(--border);white-space:nowrap;}
+td{padding:9px 11px;font-size:12px;color:var(--tm);border-bottom:1px solid var(--bl);vertical-align:middle;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:#fafbff;}
+.td-id{color:var(--accent);font-weight:700;font-family:monospace;font-size:11.5px;cursor:pointer;}
+.td-id:hover{text-decoration:underline;}
+.td-name{color:var(--td);font-weight:700;}
+.td-code{font-family:monospace;font-size:11px;background:var(--bg);padding:1.5px 6px;border-radius:4px;color:var(--tm);}
+.pii{font-family:monospace;font-size:11px;color:#92400e;background:#fef9c3;padding:1.5px 6px;border-radius:4px;letter-spacing:.5px;}
+.td-num{font-weight:700;color:var(--td);text-align:right;font-family:monospace;}
+.no-results{padding:32px;text-align:center;color:var(--tl);font-size:13px;}
+
+/* ── BADGES ── */
+.badge{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:20px;font-size:10.5px;font-weight:700;white-space:nowrap;}
+.bd{width:4px;height:4px;border-radius:50%;background:currentColor;}
+.b-active{background:#f0fdf4;color:#15803d;}
+.b-inactive{background:var(--bg);color:var(--tm);}
+.b-low{background:#f0fdf4;color:#15803d;}
+.b-medium{background:#fffbeb;color:#92400e;}
+.b-high{background:#fef2f2;color:#b91c1c;}
+.b-critical{background:#faf5ff;color:#6b21a8;}
+.b-blue{background:#eff6ff;color:#1d4ed8;}
+.b-purple{background:#faf5ff;color:#6b21a8;}
+.b-amber{background:#fffbeb;color:#92400e;}
+.b-red{background:#fef2f2;color:#b91c1c;}
+.b-gray{background:var(--bg);color:var(--tm);}
+.bool-y{color:var(--green-d);font-weight:700;font-size:11.5px;}
+.bool-n{color:var(--tl);font-size:11.5px;}
+.bool-w{color:#b91c1c;font-weight:700;font-size:11.5px;}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);backdrop-filter:blur(3px);z-index:400;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--white);border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.18);width:900px;max-width:98vw;max-height:90vh;display:flex;flex-direction:column;}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;padding:15px 20px 12px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:12px 12px 0 0;flex-shrink:0;}
+.modal-title{font-size:15px;font-weight:800;font-family:var(--disp);color:#fff;}
+.modal-sub{font-size:11px;color:rgba(255,255,255,.75);margin-top:2px;}
+.modal-close{width:28px;height:28px;border-radius:6px;border:1px solid rgba(255,255,255,.3);background:transparent;cursor:pointer;font-size:16px;color:#fff;display:flex;align-items:center;justify-content:center;line-height:1;}
+.modal-body{overflow-y:auto;flex:1;padding:16px 20px;}
+.modal-footer{display:flex;gap:8px;justify-content:flex-end;padding:11px 20px;border-top:1px solid var(--border);background:var(--bg);border-radius:0 0 12px 12px;flex-shrink:0;}
+.mfield-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+.mfield{padding:7px 0;border-bottom:1px solid var(--bl);padding-right:18px;}
+.mfield:nth-child(even){padding-right:0;padding-left:18px;border-left:1px solid var(--bl);}
+.mfield.full{grid-column:1/-1;padding-right:0;}
+.mfield.full:nth-child(even){padding-left:0;border-left:none;}
+.mf-label{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--tl);margin-bottom:2px;}
+.mf-val{font-size:12.5px;font-weight:700;color:var(--td);}
+.msec-hdr{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--tl);margin:14px 0 8px;display:flex;align-items:center;gap:6px;}
+.msec-hdr::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* ── KPI STRIP ── */
+.kpi-strip{display:flex;gap:10px;margin-bottom:14px;overflow-x:auto;}
+.kpi-strip::-webkit-scrollbar{height:3px;}
+.ks{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:11px 14px;min-width:130px;flex-shrink:0;position:relative;overflow:hidden;}
+.ks::before{content:'';position:absolute;top:0;left:0;right:0;height:2.5px;}
+.ks.blue::before{background:linear-gradient(90deg,var(--accent),var(--teal));}
+.ks.green::before{background:linear-gradient(90deg,var(--green),var(--teal));}
+.ks.amber::before{background:linear-gradient(90deg,var(--amber),#fb923c);}
+.ks.red::before{background:linear-gradient(90deg,var(--red),#f97316);}
+.ks.purple::before{background:linear-gradient(90deg,var(--purple),var(--indigo));}
+.ks-v{font-size:20px;font-weight:800;font-family:var(--disp);color:var(--td);}
+.ks-l{font-size:11px;font-weight:700;color:var(--tm);margin-top:2px;}
+.ks-s{font-size:10px;color:var(--tl);}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:22px;right:22px;background:#0f172a;color:#fff;padding:10px 16px;border-radius:8px;font-size:12px;font-weight:600;z-index:999;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s;pointer-events:none;display:flex;align-items:center;gap:6px;}
+.toast.show{opacity:1;transform:translateY(0);}
+
+footer{border-top:1px solid var(--border);background:var(--white);padding:7px 20px;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--tl);}
+footer a{color:var(--accent);font-weight:700;text-decoration:none;}
+
+/* master sections */
+.master-section{display:none;}
+.master-section.active{display:block;}
+.master-tab{display:none;}
+.master-tab.active-tab{display:block;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.tcard{animation:fadeUp .2s ease .08s both;}
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="tb-brand">
+    <div class="tb-logo"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="white"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+    <div><div class="tb-n">Clari5</div><span class="tb-s">A Perfios Company</span></div>
+  </div>
+  <div class="tb-bank"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Bank Name</div>
+  <div class="tb-sp"></div>
+  <div class="tb-icons">
+    <div class="tbi">ⓘ</div><div class="tbi">🌙</div>
+    <div class="tbi">🔔<span class="tbi-dot"></span></div>
+  </div>
+  <div class="tb-user">
+    <div class="tb-av">A<span class="tb-online"></span></div>
+    <div><div class="tb-un">amluser1</div><div class="tb-ur">AML Officer</div></div>
+  </div>
+</header>
+
+<div class="layout">
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sb-nav">
+    <div class="sb-sec">Navigation</div>
+    <div class="nav-p open" id="sbp-rdr" onclick="toggleSb('sbc-rdr','sbp-rdr')">
+      <span class="np-ic">🗂️</span><span class="np-lbl">Reference Data Register</span><span class="np-ch" id="sba-rdr" style="transform:rotate(90deg)">›</span>
+    </div>
+    <div class="nav-ch" id="sbc-rdr">
+      <div class="nav-c active" id="snc-customer" onclick="showMaster('customer')"><span class="nc-d"></span>Customer &amp; Accounts</div>
+      <div class="nav-c" id="snc-instruments" onclick="showMaster('instruments')"><span class="nc-d"></span>Cards &amp; Instruments</div>
+      <div class="nav-c" id="snc-network" onclick="showMaster('network')"><span class="nc-d"></span>Relationships &amp; Parties</div>
+      <div class="nav-c" id="snc-reference" onclick="showMaster('reference')"><span class="nc-d"></span>Reference Masters</div>
+      <div class="nav-c" id="snc-employee" onclick="showMaster('employee')"><span class="nc-d"></span>Employee</div>
+    </div>
+  </div>
+  <div class="sb-foot">
+    <div class="sb-fav">A</div>
+    <div><div class="sbfn">amluser1</div><div class="sbfb">HO001 · Head Office</div></div>
+    <div class="sbfg">⚙</div>
+  </div>
+</nav>
+
+<div class="main">
+<div class="main-body">
+
+<!-- PAGE HEADER -->
+<div class="pg-hdr">
+  <div>
+    <div class="pg-crumb">Reference Data Register / <span id="pgBreadcrumb">Customer &amp; Accounts</span></div>
+    <div class="pg-title" id="pgTitle">Customer &amp; Account Data</div>
+    <div class="pg-desc" id="pgDesc">Core customer, account, loan and balance data sourced from CBS</div>
+  </div>
+</div>
+
+<!-- MASTER NAV TABS -->
+<div class="master-nav" id="masterNav">
+  <div class="mnav-grp visible" id="mnav-customer">
+    <button class="mnav-btn active" id="mb-cust" onclick="showTab('cust')">👤 Customer</button>
+    <button class="mnav-btn" id="mb-address" onclick="showTab('address')">📍 Address</button>
+    <button class="mnav-btn" id="mb-document" onclick="showTab('document')">📄 Documents</button>
+    <button class="mnav-btn" id="mb-risk" onclick="showTab('risk')">🎯 Risk Assessment</button>
+    <button class="mnav-btn" id="mb-account" onclick="showTab('account')">🏦 Account</button>
+    <button class="mnav-btn" id="mb-car" onclick="showTab('car')">🔗 Cust-Acct Rel</button>
+    <button class="mnav-btn" id="mb-loan" onclick="showTab('loan')">💳 Loan Account</button>
+    <button class="mnav-btn" id="mb-eod" onclick="showTab('eod')">📊 EOD Balance</button>
+  </div>
+  <div class="mnav-grp" id="mnav-instruments">
+    <button class="mnav-btn active" id="mb-card" onclick="showTab('card')">💳 Card Master</button>
+    <button class="mnav-btn" id="mb-mobile" onclick="showTab('mobile')">📱 Mobile Banking</button>
+    <button class="mnav-btn" id="mb-atm" onclick="showTab('atm')">🏧 ATM Master</button>
+    <button class="mnav-btn" id="mb-instr" onclick="showTab('instr')">📜 Instruments</button>
+    <button class="mnav-btn" id="mb-txndev" onclick="showTab('txndev')">📡 TXN Device</button>
+  </div>
+  <div class="mnav-grp" id="mnav-network">
+    <button class="mnav-btn active" id="mb-bo" onclick="showTab('bo')">👥 Beneficial Owner</button>
+    <button class="mnav-btn" id="mb-relnet" onclick="showTab('relnet')">🕸️ Related Parties</button>
+    <button class="mnav-btn" id="mb-noncust" onclick="showTab('noncust')">👤 Non Customer</button>
+  </div>
+  <div class="mnav-grp" id="mnav-reference">
+    <button class="mnav-btn active" id="mb-custtype" onclick="showTab('custtype')">🏷️ Customer Type</button>
+    <button class="mnav-btn" id="mb-product" onclick="showTab('product')">📦 Product</button>
+    <button class="mnav-btn" id="mb-branch" onclick="showTab('branch')">🏢 Branch</button>
+    <button class="mnav-btn" id="mb-channel" onclick="showTab('channel')">📡 Channel</button>
+    <button class="mnav-btn" id="mb-txntype" onclick="showTab('txntype')">💱 TXN Type</button>
+    <button class="mnav-btn" id="mb-currency" onclick="showTab('currency')">💰 Currency</button>
+    <button class="mnav-btn" id="mb-fxrate" onclick="showTab('fxrate')">📈 FX Rates</button>
+    <button class="mnav-btn" id="mb-industry" onclick="showTab('industry')">🏭 Industry Code</button>
+    <button class="mnav-btn" id="mb-refmaster" onclick="showTab('refmaster')">📋 Ref Master</button>
+    <button class="mnav-btn" id="mb-country" onclick="showTab('country')">🌍 Country Master</button>
+  </div>
+  <div class="mnav-grp" id="mnav-employee">
+    <button class="mnav-btn active" id="mb-employee" onclick="showTab('employee')">👔 Employee</button>
+  </div>
+</div>
+
+<!-- ═══════════ SECTIONS ═══════════ -->
+<div id="ms-customer" class="master-section active">
+  <div id="tab-cust" class="master-tab active-tab"></div>
+  <div id="tab-address" class="master-tab"></div>
+  <div id="tab-document" class="master-tab"></div>
+  <div id="tab-risk" class="master-tab"></div>
+  <div id="tab-account" class="master-tab"></div>
+  <div id="tab-car" class="master-tab"></div>
+  <div id="tab-loan" class="master-tab"></div>
+  <div id="tab-eod" class="master-tab"></div>
+</div>
+<div id="ms-instruments" class="master-section">
+  <div id="tab-card" class="master-tab active-tab"></div>
+  <div id="tab-mobile" class="master-tab"></div>
+  <div id="tab-atm" class="master-tab"></div>
+  <div id="tab-instr" class="master-tab"></div>
+  <div id="tab-txndev" class="master-tab"></div>
+</div>
+<div id="ms-network" class="master-section">
+  <div id="tab-bo" class="master-tab active-tab"></div>
+  <div id="tab-relnet" class="master-tab"></div>
+  <div id="tab-noncust" class="master-tab"></div>
+</div>
+<div id="ms-reference" class="master-section">
+  <div id="tab-custtype" class="master-tab active-tab"></div>
+  <div id="tab-product" class="master-tab"></div>
+  <div id="tab-branch" class="master-tab"></div>
+  <div id="tab-channel" class="master-tab"></div>
+  <div id="tab-txntype" class="master-tab"></div>
+  <div id="tab-currency" class="master-tab"></div>
+  <div id="tab-fxrate" class="master-tab"></div>
+  <div id="tab-industry" class="master-tab"></div>
+  <div id="tab-refmaster" class="master-tab"></div>
+  <div id="tab-country" class="master-tab"></div>
+</div>
+<div id="ms-employee" class="master-section">
+  <div id="tab-employee" class="master-tab active-tab"></div>
+</div>
+
+</div><!-- /main-body -->
+<footer>
+  <span>Clari5 AML Platform · Reference Data Register v6.2 · Data sourced from CBS (Finacle / Temenos)</span>
+  <span>© 2026 Clari5, A Perfios Company · <a href="#">Privacy Policy</a></span>
+</footer>
+</div><!-- /main -->
+</div><!-- /layout -->
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal-box">
+    <div class="modal-head">
+      <div><div class="modal-title" id="modalTitle">Record Detail</div><div class="modal-sub" id="modalSub"></div></div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-footer"><button class="btn btn-outline btn-sm" onclick="closeModal()">Close</button></div>
+  </div>
+</div>
+
+<!-- COLUMN SELECTOR DROPDOWN (shared) -->
+<div class="col-sel-dropdown" id="colSelDropdown">
+  <div class="col-sel-hdr">
+    <span class="col-sel-title" id="colSelTitle">Select Columns</span>
+    <div class="col-sel-acts">
+      <span class="col-sel-act" onclick="colSelAll(true)">All</span>
+      <span class="col-sel-act" onclick="colSelAll(false)">None</span>
+    </div>
+  </div>
+  <div class="col-sel-list" id="colSelList"></div>
+  <div class="col-sel-foot">
+    <button class="btn btn-outline btn-sm" onclick="closeColSel()">Cancel</button>
+    <button class="btn btn-accent btn-sm" onclick="applyColSel()">Save &amp; Apply</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toast-msg"></span></div>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════
+// DATA DEFINITIONS
+// Each table definition: { id, label, syncInfo, kpis[], cols[], rows[], allFields[] }
+// cols = default visible columns (array of {key, label})
+// allFields = all columns available
+// rows = data array (each row is object keyed by col key)
+// ═══════════════════════════════════════════════════════════════════
+
+const pii = v => `<span class="pii">${v}</span>`;
+const badge = (txt, cls) => `<span class="badge ${cls}">${txt}</span>`;
+const bactive = t => badge(`<span class="bd"></span>${t}`,'b-active');
+const bblue = t => badge(t,'b-blue');
+const bhigh = t => badge(t,'b-high');
+const bmed = t => badge(t,'b-medium');
+const blow = t => badge(t,'b-low');
+const bred = t => badge(`<span class="bd"></span>${t}`,'b-red');
+const bamb = t => badge(t,'b-amber');
+const bpurp = t => badge(t,'b-purple');
+const yn = v => v ? '<span class="bool-y">✓ Yes</span>' : '<span class="bool-n">✗ No</span>';
+const yw = v => v ? '<span class="bool-w">⚠ Yes</span>' : '<span class="bool-n">✗ No</span>';
+const code = v => `<span class="td-code">${v}</span>`;
+
+const TABLES = {
+
+cust: {
+  label:'CUSTOMER Master', syncInfo:'Synced: 05 May 2026 02:15 AM · CBS (Finacle)',
+  kpis:[{v:2,l:'Active Customers',cls:'green'},{v:1,l:'Inactive',cls:'amber'}],
+  filterCustType: true,
+  defaultCols:['customer_id','customer_type','customer_status','full_legal_name','nationality','risk_rating','kyc_status','pep_flag','sanctions_flag','onboarding_date'],
+  allCols:[
+    {k:'customer_id',l:'Customer ID'},{k:'customer_type',l:'Customer Type'},{k:'customer_status',l:'Status'},
+    {k:'entity_type',l:'Entity Type'},{k:'salutation',l:'Salutation'},{k:'full_legal_name',l:'Full Legal Name'},
+    {k:'date_of_birth',l:'Date of Birth'},{k:'gender',l:'Gender'},{k:'nationality',l:'Nationality'},
+    {k:'country_of_residence',l:'Country of Residence'},{k:'tax_id_number',l:'Tax ID'},{k:'national_id_type',l:'ID Type'},
+    {k:'national_id_number',l:'ID Number'},{k:'pep_flag',l:'PEP Flag'},{k:'pep_type',l:'PEP Type'},
+    {k:'sanctions_flag',l:'Sanctions Flag'},{k:'adverse_media_flag',l:'Adverse Media'},{k:'risk_rating',l:'Risk Rating'},
+    {k:'risk_score',l:'Risk Score'},{k:'kyc_status',l:'KYC Status'},{k:'cdd_level',l:'CDD Level'},
+    {k:'edd_flag',l:'EDD Flag'},{k:'occupation',l:'Occupation'},{k:'employer_name',l:'Employer'},
+    {k:'annual_income',l:'Annual Income'},{k:'mobile_number',l:'Mobile'},{k:'email_address',l:'Email'},
+    {k:'onboarding_date',l:'Onboarding Date'},{k:'customer_segment',l:'Segment'},{k:'record_status',l:'Record Status'}
+  ],
+  rows:[
+    {_custType:'INDIVIDUAL',customer_id:`<span class="td-id" onclick="openDetailModal('cust',0)">CIF001001</span>`,customer_type:bblue('INDIVIDUAL'),customer_status:bactive('ACTIVE'),entity_type:'BANK_CUSTOMER',salutation:pii('Mr'),full_legal_name:pii('Rajesh K***r Sha***a'),date_of_birth:pii('15/**/1978'),gender:pii('M***'),nationality:pii('IN'),country_of_residence:pii('IN'),tax_id_number:pii('AAXX****XXPK'),national_id_type:'PAN',national_id_number:pii('ABCXX***XZ'),pep_flag:yn(false),pep_type:'—',sanctions_flag:yn(false),adverse_media_flag:yn(false),risk_rating:blow('LOW'),risk_score:'28',kyc_status:bactive('COMPLETE'),cdd_level:'STANDARD',edd_flag:yn(false),occupation:'Salaried',employer_name:'TechCorp Ltd',annual_income:pii('₹ XX,XX,000'),mobile_number:pii('+91-98**1234'),email_address:pii('r.sh***@email.com'),onboarding_date:'22 Feb 2015',customer_segment:'RETAIL',record_status:'ACTIVE'},
+    {_custType:'CORPORATE',customer_id:`<span class="td-id" onclick="openDetailModal('cust',1)">CIF002045</span>`,customer_type:bpurp('CORPORATE'),customer_status:bactive('ACTIVE'),entity_type:'BANK_CUSTOMER',salutation:'—',full_legal_name:'Priya Investments Pvt. Ltd.',date_of_birth:'—',gender:'—',nationality:pii('IN'),country_of_residence:pii('IN'),tax_id_number:pii('GSTIN-27XXXX'),national_id_type:'CIN',national_id_number:pii('U749XX2008***PTC'),pep_flag:yn(false),pep_type:'—',sanctions_flag:yn(false),adverse_media_flag:yn(false),risk_rating:bmed('MEDIUM'),risk_score:'52',kyc_status:bactive('COMPLETE'),cdd_level:'ENHANCED',edd_flag:yn(true),occupation:'—',employer_name:'—',annual_income:pii('₹ X.X Cr'),mobile_number:pii('+91-22-XX**5678'),email_address:pii('info@priy***.com'),onboarding_date:'12 Mar 2008',customer_segment:'CORPORATE',record_status:'ACTIVE'},
+    {_custType:'NGO',customer_id:`<span class="td-id" onclick="openDetailModal('cust',2)">CIF003178</span>`,customer_type:bamb('NGO'),customer_status:bred('PEP_FLAGGED'),entity_type:'BANK_CUSTOMER',salutation:'—',full_legal_name:'Global Relief Foundation',date_of_birth:'—',gender:'—',nationality:pii('IN'),country_of_residence:pii('IN'),tax_id_number:pii('GSTIN-29XXXX'),national_id_type:'TRUST_DEED',national_id_number:pii('FCRA-XXX***891'),pep_flag:yw(true),pep_type:'ASSOCIATE',sanctions_flag:yw(true),adverse_media_flag:yw(true),risk_rating:bhigh('HIGH'),risk_score:'87',kyc_status:bamb('REVIEW_DUE'),cdd_level:'ENHANCED',edd_flag:yn(true),occupation:'—',employer_name:'—',annual_income:'—',mobile_number:pii('+91-XX-XXXXXXXX'),email_address:pii('info@glob***.org'),onboarding_date:'07 Jan 2015',customer_segment:'NGO',record_status:'UNDER_REVIEW'}
+  ]
+},
+
+address:{
+  label:'CUST_ADDRESS', syncInfo:'Synced: 05 May 2026 02:15 AM',
+  defaultCols:['address_id','customer_id','address_type','address_line1','city','state_province','postal_code','country_code','is_primary','valid_from'],
+  allCols:[
+    {k:'address_id',l:'Address ID'},{k:'customer_id',l:'Customer ID'},{k:'address_type',l:'Type'},
+    {k:'address_line1',l:'Address Line 1'},{k:'address_line2',l:'Address Line 2'},{k:'city',l:'City'},
+    {k:'state_province',l:'State'},{k:'postal_code',l:'Postal Code'},{k:'country_code',l:'Country'},
+    {k:'is_primary',l:'Primary'},{k:'is_verified',l:'Verified'},{k:'verified_date',l:'Verified Date'},
+    {k:'verified_method',l:'Verify Method'},{k:'high_risk_location_flag',l:'High Risk Location'},
+    {k:'human_trafficking_risk_flag',l:'HT Risk Flag'},{k:'valid_from',l:'Valid From'},
+    {k:'goaml_contact_type',l:'goAML Contact Type'},{k:'geo_latitude',l:'Latitude'},{k:'geo_longitude',l:'Longitude'}
+  ],
+  rows:[
+    {address_id:code('ADDR-001'),customer_id:'<span class="td-id">CIF001001</span>',address_type:'PERMANENT',address_line1:pii('Flat XX, ***Tower'),address_line2:pii('Andheri **st'),city:pii('Mu***ai'),state_province:pii('Maha***rashtra'),postal_code:pii('400***'),country_code:'IN',is_primary:yn(true),is_verified:yn(true),verified_date:'12 Mar 2020',verified_method:'OTP_VERIFIED',high_risk_location_flag:yn(false),human_trafficking_risk_flag:yn(false),valid_from:'22 Feb 2015',goaml_contact_type:'RESIDENTIAL',geo_latitude:'19.1197',geo_longitude:'72.8468'},
+    {address_id:code('ADDR-002'),customer_id:'<span class="td-id">CIF001001</span>',address_type:'COMMUNICATION',address_line1:pii('Office XX, **Floor'),address_line2:pii('BKC, Ban**ra'),city:pii('Mu***ai'),state_province:pii('Maha***rashtra'),postal_code:pii('400***'),country_code:'IN',is_primary:yn(false),is_verified:yn(true),verified_date:'01 Jan 2023',verified_method:'DOCUMENT',high_risk_location_flag:yn(false),human_trafficking_risk_flag:yn(false),valid_from:'01 Jan 2023',goaml_contact_type:'BUSINESS',geo_latitude:'19.0631',geo_longitude:'72.8656'},
+    {address_id:code('ADDR-003'),customer_id:'<span class="td-id">CIF002045</span>',address_type:'REGISTERED',address_line1:pii('XX, Nehru Place'),address_line2:pii('South **lhi'),city:pii('New **lhi'),state_province:pii('Delhi'),postal_code:pii('110***'),country_code:'IN',is_primary:yn(true),is_verified:yn(true),verified_date:'05 Apr 2022',verified_method:'DOCUMENT',high_risk_location_flag:yn(false),human_trafficking_risk_flag:yn(false),valid_from:'12 Mar 2008',goaml_contact_type:'REGISTERED_OFFICE',geo_latitude:'28.5477',geo_longitude:'77.2519'},
+    {address_id:code('ADDR-004'),customer_id:'<span class="td-id">CIF003178</span>',address_type:'REGISTERED',address_line1:pii('XX, Relief Road'),address_line2:pii('Col**ba'),city:pii('Mu***ai'),state_province:pii('Maha***rashtra'),postal_code:pii('400***'),country_code:'IN',is_primary:yn(true),is_verified:'<span class="bool-w">⚠ Pending</span>',verified_date:'—',verified_method:'FIELD_VISIT',high_risk_location_flag:yw(true),human_trafficking_risk_flag:yw(true),valid_from:'07 Jan 2015',goaml_contact_type:'REGISTERED_OFFICE',geo_latitude:'18.9220',geo_longitude:'72.8347'}
+  ]
+},
+
+document:{
+  label:'CUST_DOCUMENT', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['document_id','customer_id','document_type','document_number','issuing_country','issue_date','expiry_date','document_status','verified_date','verification_method'],
+  allCols:[
+    {k:'document_id',l:'Document ID'},{k:'customer_id',l:'Customer ID'},{k:'document_type',l:'Doc Type'},
+    {k:'document_number',l:'Doc Number'},{k:'issuing_authority',l:'Issuing Authority'},{k:'issuing_country',l:'Issuing Country'},
+    {k:'issue_date',l:'Issue Date'},{k:'expiry_date',l:'Expiry Date'},{k:'document_status',l:'Status'},
+    {k:'verified_date',l:'Verified Date'},{k:'verified_by',l:'Verified By'},{k:'verification_method',l:'Verify Method'},
+    {k:'goaml_identifier_type',l:'goAML ID Type'},{k:'goaml_v42_id_verified',l:'goAML Verified'},{k:'created_date',l:'Created Date'}
+  ],
+  rows:[
+    {document_id:code('DOC-001'),customer_id:'<span class="td-id">CIF001001</span>',document_type:'PAN',document_number:pii('ABCXX***XZ'),issuing_authority:'Income Tax Dept',issuing_country:'IN',issue_date:'01 Jan 2005',expiry_date:'Lifetime',document_status:bactive('VALID'),verified_date:'22 Feb 2015',verified_by:'BR-OFF-001',verification_method:'ORIGINAL_SEEN',goaml_identifier_type:'PAN',goaml_v42_id_verified:yn(true),created_date:'22 Feb 2015'},
+    {document_id:code('DOC-002'),customer_id:'<span class="td-id">CIF001001</span>',document_type:'AADHAAR',document_number:pii('XXXX-XXXX-5***'),issuing_authority:'UIDAI',issuing_country:'IN',issue_date:'15 Jun 2014',expiry_date:'Lifetime',document_status:bactive('VALID'),verified_date:'12 Mar 2020',verified_by:'BR-OFF-002',verification_method:'E_KYC',goaml_identifier_type:'NATIONAL_ID',goaml_v42_id_verified:yn(true),created_date:'12 Mar 2020'},
+    {document_id:code('DOC-003'),customer_id:'<span class="td-id">CIF002045</span>',document_type:'CIN',document_number:pii('U74999XX****XP'),issuing_authority:'MCA',issuing_country:'IN',issue_date:'12 Mar 2008',expiry_date:'N/A',document_status:bactive('VALID'),verified_date:'05 Apr 2022',verified_by:'KYC-TEAM-01',verification_method:'DOCUMENT',goaml_identifier_type:'REGISTRATION_NUMBER',goaml_v42_id_verified:yn(true),created_date:'12 Mar 2008'},
+    {document_id:code('DOC-004'),customer_id:'<span class="td-id">CIF002045</span>',document_type:'GSTIN',document_number:pii('27XXXXX****Z'),issuing_authority:'GST Dept',issuing_country:'IN',issue_date:'01 Jul 2017',expiry_date:'N/A',document_status:bactive('VALID'),verified_date:'05 Apr 2022',verified_by:'KYC-TEAM-01',verification_method:'DOCUMENT',goaml_identifier_type:'TAX_ID',goaml_v42_id_verified:yn(true),created_date:'01 Jul 2017'},
+    {document_id:code('DOC-005'),customer_id:'<span class="td-id">CIF003178</span>',document_type:'TRUST_DEED',document_number:pii('FCRA/***891'),issuing_authority:'MHA-FCRA',issuing_country:'IN',issue_date:'07 Jan 2015',expiry_date:'06 Jan 2025',document_status:bred('EXPIRED'),verified_date:'07 Jan 2015',verified_by:'KYC-TEAM-03',verification_method:'DOCUMENT',goaml_identifier_type:'REGISTRATION_NUMBER',goaml_v42_id_verified:'<span class="bool-w">⚠ Pending</span>',created_date:'07 Jan 2015'}
+  ]
+},
+
+risk:{
+  label:'RISK_ASSESSMENT', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['assessment_id','customer_id','assessment_date','assessment_type','total_risk_score','risk_rating','previous_risk_rating','risk_rating_changed','next_review_date','review_frequency'],
+  allCols:[
+    {k:'assessment_id',l:'Assessment ID'},{k:'customer_id',l:'Customer ID'},{k:'assessment_date',l:'Date'},
+    {k:'assessment_type',l:'Type'},{k:'assessed_by',l:'Assessed By'},{k:'approved_by',l:'Approved By'},
+    {k:'country_risk_score',l:'Country Risk'},{k:'product_risk_score',l:'Product Risk'},{k:'channel_risk_score',l:'Channel Risk'},
+    {k:'customer_type_risk_score',l:'Cust Type Risk'},{k:'pep_risk_score',l:'PEP Risk'},
+    {k:'sanctions_risk_score',l:'Sanctions Risk'},{k:'transaction_risk_score',l:'TXN Risk'},
+    {k:'adverse_media_risk_score',l:'Adv Media Risk'},{k:'total_risk_score',l:'Total Score'},
+    {k:'risk_rating',l:'Risk Rating'},{k:'previous_risk_rating',l:'Prev Rating'},
+    {k:'risk_rating_changed',l:'Rating Changed'},{k:'risk_change_reason',l:'Change Reason'},
+    {k:'next_review_date',l:'Next Review'},{k:'review_frequency',l:'Review Frequency'},{k:'created_date',l:'Created'}
+  ],
+  rows:[
+    {assessment_id:code('RA-2026-001'),customer_id:'<span class="td-id">CIF001001</span>',assessment_date:'15 Jan 2026',assessment_type:'PERIODIC',assessed_by:'amluser2',approved_by:'amlmgr1',country_risk_score:'10',product_risk_score:'5',channel_risk_score:'8',customer_type_risk_score:'5',pep_risk_score:'0',sanctions_risk_score:'0',transaction_risk_score:'8',adverse_media_risk_score:'0',total_risk_score:'<span class="td-num">28</span>',risk_rating:blow('LOW'),previous_risk_rating:blow('LOW'),risk_rating_changed:yn(false),risk_change_reason:'—',next_review_date:'15 Jan 2027',review_frequency:'ANNUAL',created_date:'15 Jan 2026'},
+    {assessment_id:code('RA-2026-002'),customer_id:'<span class="td-id">CIF002045</span>',assessment_date:'02 Feb 2026',assessment_type:'ENHANCED_DD',assessed_by:'amluser3',approved_by:'amlmgr1',country_risk_score:'15',product_risk_score:'12',channel_risk_score:'10',customer_type_risk_score:'10',pep_risk_score:'0',sanctions_risk_score:'0',transaction_risk_score:'12',adverse_media_risk_score:'3',total_risk_score:'<span class="td-num">52</span>',risk_rating:bmed('MEDIUM'),previous_risk_rating:blow('LOW'),risk_rating_changed:yn(true),risk_change_reason:'Cross-border pattern',next_review_date:'02 Aug 2026',review_frequency:'SEMI_ANNUAL',created_date:'02 Feb 2026'},
+    {assessment_id:code('RA-2026-003'),customer_id:'<span class="td-id">CIF003178</span>',assessment_date:'28 Apr 2026',assessment_type:'TRIGGER',assessed_by:'amluser1',approved_by:'amlmgr2',country_risk_score:'25',product_risk_score:'15',channel_risk_score:'15',customer_type_risk_score:'15',pep_risk_score:'10',sanctions_risk_score:'7',transaction_risk_score:'15',adverse_media_risk_score:'5',total_risk_score:'<span class="td-num td-num-w" style="color:#b91c1c">87</span>',risk_rating:bhigh('HIGH'),previous_risk_rating:bmed('MEDIUM'),risk_rating_changed:yn(true),risk_change_reason:'PEP + watchlist match',next_review_date:'28 Jul 2026',review_frequency:'QUARTERLY',created_date:'28 Apr 2026'}
+  ]
+},
+
+account:{
+  label:'ACCOUNT Master', syncInfo:'Synced: 05 May 2026 02:00 AM · CBS (Temenos)',
+  filterCIF: true,
+  defaultCols:['account_id','account_number','customer_id','account_type','currency_code','branch_id','account_status','current_balance','freeze_flag','last_transaction_date'],
+  allCols:[
+    {k:'account_id',l:'Account ID'},{k:'account_number',l:'Account No'},{k:'customer_id',l:'Customer ID'},
+    {k:'account_type',l:'Type'},{k:'product_id',l:'Product'},{k:'currency_code',l:'Currency'},
+    {k:'branch_id',l:'Branch'},{k:'account_status',l:'Status'},{k:'opening_date',l:'Opening Date'},
+    {k:'current_balance',l:'Current Balance'},{k:'available_balance',l:'Available Balance'},
+    {k:'freeze_flag',l:'Freeze Flag'},{k:'freeze_reason',l:'Freeze Reason'},{k:'freeze_date',l:'Freeze Date'},
+    {k:'freeze_authority',l:'Freeze Authority'},{k:'lien_marked_flag',l:'Lien Flag'},
+    {k:'lien_amount',l:'Lien Amount'},{k:'npa_flag',l:'NPA Flag'},{k:'pep_linked',l:'PEP Linked'},
+    {k:'sanctions_linked',l:'Sanctions Linked'},{k:'is_joint_account',l:'Joint Account'},
+    {k:'expected_monthly_credit_vol',l:'Exp Monthly Credit'},{k:'expected_monthly_debit_vol',l:'Exp Monthly Debit'},
+    {k:'last_transaction_date',l:'Last TXN Date'},{k:'mode_of_operation',l:'Mode of Op'},
+    {k:'source_of_funds',l:'Source of Funds'},{k:'purpose_of_account',l:'Purpose'},{k:'aml_risk_flag',l:'AML Risk Flag'}
+  ],
+  rows:[
+    {_cif:'CIF001001',account_id:`<span class="td-id" onclick="openDetailModal('account',0)">ACCT-100001</span>`,account_number:pii('****7823'),customer_id:'<span class="td-id" onclick="filterAccountByCIF(\'CIF001001\')">CIF001001</span>',account_type:bblue('SAVINGS'),product_id:'PRD-001',currency_code:'INR',branch_id:'MUM001',account_status:bactive('ACTIVE'),opening_date:'22 Feb 2015',current_balance:'<span class="td-num">₹ 2,45,800</span>',available_balance:'<span class="td-num">₹ 2,45,800</span>',freeze_flag:yn(false),freeze_reason:'—',freeze_date:'—',freeze_authority:'—',lien_marked_flag:yn(false),lien_amount:'—',npa_flag:yn(false),pep_linked:yn(false),sanctions_linked:yn(false),is_joint_account:yn(false),expected_monthly_credit_vol:'₹ 50,000',expected_monthly_debit_vol:'₹ 40,000',last_transaction_date:'02 May 2026',mode_of_operation:'SELF',source_of_funds:'SALARY',purpose_of_account:'PERSONAL_SAVINGS',aml_risk_flag:yn(false)},
+    {_cif:'CIF002045',account_id:`<span class="td-id" onclick="openDetailModal('account',1)">ACCT-100044</span>`,account_number:pii('****3391'),customer_id:'<span class="td-id" onclick="filterAccountByCIF(\'CIF002045\')">CIF002045</span>',account_type:bblue('CURRENT'),product_id:'PRD-007',currency_code:'INR',branch_id:'DEL002',account_status:bactive('ACTIVE'),opening_date:'12 Mar 2008',current_balance:'<span class="td-num">₹ 18,90,250</span>',available_balance:'<span class="td-num">₹ 18,90,250</span>',freeze_flag:yn(false),freeze_reason:'—',freeze_date:'—',freeze_authority:'—',lien_marked_flag:yn(false),lien_amount:'—',npa_flag:yn(false),pep_linked:yn(false),sanctions_linked:yn(false),is_joint_account:yn(true),expected_monthly_credit_vol:'₹ 25,00,000',expected_monthly_debit_vol:'₹ 20,00,000',last_transaction_date:'04 May 2026',mode_of_operation:'JOINTLY',source_of_funds:'BUSINESS',purpose_of_account:'BUSINESS_OPERATIONS',aml_risk_flag:yn(false)},
+    {_cif:'CIF003178',account_id:`<span class="td-id" onclick="openDetailModal('account',2)">ACCT-100098</span>`,account_number:pii('****6670'),customer_id:'<span class="td-id" onclick="filterAccountByCIF(\'CIF003178\')">CIF003178</span>',account_type:bblue('CURRENT'),product_id:'PRD-007',currency_code:'USD',branch_id:'MUM001',account_status:bred('FROZEN'),opening_date:'15 May 2018',current_balance:'<span class="td-num" style="color:#b91c1c">$ 4,12,000</span>',available_balance:'<span class="td-num" style="color:#b91c1c">$ 0</span>',freeze_flag:yw(true),freeze_reason:'AML_INVESTIGATION',freeze_date:'28 Apr 2026',freeze_authority:'INTERNAL_COMPLIANCE',lien_marked_flag:yn(false),lien_amount:'—',npa_flag:yn(false),pep_linked:yw(true),sanctions_linked:yw(true),is_joint_account:yn(false),expected_monthly_credit_vol:'$ 50,000',expected_monthly_debit_vol:'$ 40,000',last_transaction_date:'27 Apr 2026',mode_of_operation:'ANY_TWO',source_of_funds:'DONATIONS',purpose_of_account:'NGO_OPERATIONS',aml_risk_flag:yw(true)}
+  ]
+},
+
+car:{
+  label:'CUST_ACCT_REL', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['rel_id','customer_id','account_id','relationship_type','signing_authority','ownership_percentage','kyc_status','effective_date'],
+  allCols:[
+    {k:'rel_id',l:'Rel ID'},{k:'customer_id',l:'Customer ID'},{k:'account_id',l:'Account ID'},
+    {k:'relationship_type',l:'Relationship Type'},{k:'signing_authority',l:'Signing Authority'},
+    {k:'ownership_percentage',l:'Ownership %'},{k:'effective_date',l:'Effective Date'},
+    {k:'end_date',l:'End Date'},{k:'kyc_status',l:'KYC Status'},{k:'pep_flag',l:'PEP Flag'},
+    {k:'sanctions_flag',l:'Sanctions Flag'},{k:'adverse_media_flag',l:'Adverse Media'},
+    {k:'full_name',l:'Full Name'},{k:'nationality',l:'Nationality'},{k:'id_type',l:'ID Type'},
+    {k:'id_number',l:'ID Number'},{k:'mobile_number',l:'Mobile'},{k:'email_address',l:'Email'},
+    {k:'nominee_is_minor',l:'Nominee Minor'},{k:'kyc_completion_date',l:'KYC Completion'},{k:'kyc_expiry_date',l:'KYC Expiry'}
+  ],
+  rows:[
+    {rel_id:code('CAR-001'),customer_id:'<span class="td-id">CIF001001</span>',account_id:'<span class="td-id">ACCT-100001</span>',relationship_type:'PRIMARY_HOLDER',signing_authority:'SOLE',ownership_percentage:'100%',effective_date:'22 Feb 2015',end_date:'—',kyc_status:bactive('COMPLETE'),pep_flag:yn(false),sanctions_flag:yn(false),adverse_media_flag:yn(false),full_name:pii('Rajesh K*** Sha***'),nationality:'IN',id_type:'PAN',id_number:pii('ABC***XZ'),mobile_number:pii('+91-98**1234'),email_address:pii('r.s***@email.com'),nominee_is_minor:yn(false),kyc_completion_date:'22 Feb 2015',kyc_expiry_date:'22 Feb 2027'},
+    {rel_id:code('CAR-002'),customer_id:'<span class="td-id">CIF002045</span>',account_id:'<span class="td-id">ACCT-100044</span>',relationship_type:'PRIMARY_HOLDER',signing_authority:'JOINTLY_SEVERALLY',ownership_percentage:'100%',effective_date:'12 Mar 2008',end_date:'—',kyc_status:bactive('COMPLETE'),pep_flag:yn(false),sanctions_flag:yn(false),adverse_media_flag:yn(false),full_name:'Priya Investments Pvt. Ltd.',nationality:'IN',id_type:'CIN',id_number:pii('U749***XP'),mobile_number:pii('+91-22-XX**5678'),email_address:pii('info@priy***.com'),nominee_is_minor:yn(false),kyc_completion_date:'12 Mar 2008',kyc_expiry_date:'12 Mar 2026'},
+    {rel_id:code('CAR-003'),customer_id:'<span class="td-id">CIF003178</span>',account_id:'<span class="td-id">ACCT-100098</span>',relationship_type:'PRIMARY_HOLDER',signing_authority:'ANY_TWO',ownership_percentage:'100%',effective_date:'15 May 2018',end_date:'—',kyc_status:bamb('REVIEW_DUE'),pep_flag:yw(true),sanctions_flag:yw(true),adverse_media_flag:yw(true),full_name:'Global Relief Foundation',nationality:'IN',id_type:'TRUST_DEED',id_number:pii('FCRA/***891'),mobile_number:pii('+91-XX-XXXXXXXX'),email_address:pii('info@glob***.org'),nominee_is_minor:yn(false),kyc_completion_date:'15 May 2018',kyc_expiry_date:'<span class="bool-w">15 May 2024 (EXPIRED)</span>'}
+  ]
+},
+
+loan:{
+  label:'LOAN_ACCOUNT', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['loan_detail_id','customer_id','account_id','loan_type','sanctioned_amount','outstanding_balance','interest_rate','loan_account_status','disbursement_date','maturity_date'],
+  allCols:[
+    {k:'loan_detail_id',l:'Loan ID'},{k:'customer_id',l:'Customer ID'},{k:'account_id',l:'Account ID'},
+    {k:'loan_type',l:'Loan Type'},{k:'loan_purpose',l:'Purpose'},{k:'sanctioned_amount',l:'Sanctioned Amt'},
+    {k:'disbursed_amount',l:'Disbursed Amt'},{k:'outstanding_balance',l:'Outstanding Bal'},
+    {k:'loan_currency',l:'Currency'},{k:'interest_rate',l:'Interest Rate'},{k:'rate_type',l:'Rate Type'},
+    {k:'tenure_months',l:'Tenure (M)'},{k:'disbursement_date',l:'Disbursement Date'},{k:'maturity_date',l:'Maturity Date'},
+    {k:'repayment_frequency',l:'Repayment Freq'},{k:'collateral_type',l:'Collateral Type'},
+    {k:'collateral_value',l:'Collateral Value'},{k:'guarantor_customer_id',l:'Guarantor CIF'},
+    {k:'loan_account_status',l:'Status'},{k:'restructured_flag',l:'Restructured'},
+    {k:'early_repayment_flag',l:'Early Repayment'},{k:'early_repayment_source',l:'Early Repay Source'},
+    {k:'loan_origination_channel',l:'Origination Channel'},{k:'created_date',l:'Created Date'}
+  ],
+  rows:[
+    {loan_detail_id:code('LN-2022-001'),customer_id:'<span class="td-id">CIF001001</span>',account_id:'<span class="td-id">ACCT-100055</span>',loan_type:'HOME_LOAN',loan_purpose:'PROPERTY_PURCHASE',sanctioned_amount:'<span class="td-num">₹ 45,00,000</span>',disbursed_amount:'<span class="td-num">₹ 45,00,000</span>',outstanding_balance:'<span class="td-num">₹ 38,20,400</span>',loan_currency:'INR',interest_rate:'8.55%',rate_type:'FLOATING',tenure_months:'240',disbursement_date:'01 Mar 2022',maturity_date:'01 Mar 2042',repayment_frequency:'MONTHLY_EMI',collateral_type:'IMMOVABLE_PROPERTY',collateral_value:'<span class="td-num">₹ 62,00,000</span>',guarantor_customer_id:'—',loan_account_status:bactive('ACTIVE'),restructured_flag:yn(false),early_repayment_flag:yn(false),early_repayment_source:'—',loan_origination_channel:'BRANCH',created_date:'01 Mar 2022'},
+    {loan_detail_id:code('LN-2019-045'),customer_id:'<span class="td-id">CIF002045</span>',account_id:'<span class="td-id">ACCT-100066</span>',loan_type:'SME_LOAN',loan_purpose:'WORKING_CAPITAL',sanctioned_amount:'<span class="td-num">₹ 1,50,00,000</span>',disbursed_amount:'<span class="td-num">₹ 1,50,00,000</span>',outstanding_balance:'<span class="td-num">₹ 78,45,000</span>',loan_currency:'INR',interest_rate:'10.25%',rate_type:'FIXED',tenure_months:'60',disbursement_date:'15 Apr 2019',maturity_date:'15 Apr 2024',repayment_frequency:'QUARTERLY',collateral_type:'COLLATERAL_FREE',collateral_value:'—',guarantor_customer_id:'—',loan_account_status:bamb('RESTRUCTURED'),restructured_flag:yn(true),early_repayment_flag:yn(false),early_repayment_source:'—',loan_origination_channel:'INTERNET_BANKING',created_date:'15 Apr 2019'}
+  ]
+},
+
+eod:{
+  label:'ACCOUNT_EOD_BAL', syncInfo:'EOD: 04 May 2026',
+  defaultCols:['balance_id','account_id','customer_id','balance_date','opening_balance','total_credits','total_debits','closing_balance','currency_code','credit_count','debit_count','cash_credit_amount'],
+  allCols:[
+    {k:'balance_id',l:'Balance ID'},{k:'account_id',l:'Account ID'},{k:'customer_id',l:'Customer ID'},
+    {k:'balance_date',l:'Balance Date'},{k:'opening_balance',l:'Opening Bal'},{k:'total_credits',l:'Total Credits'},
+    {k:'total_debits',l:'Total Debits'},{k:'closing_balance',l:'Closing Bal'},{k:'available_balance',l:'Available Bal'},
+    {k:'currency_code',l:'Currency'},{k:'base_currency_closing_balance',l:'Base CCY Closing'},
+    {k:'credit_count',l:'Credit Count'},{k:'debit_count',l:'Debit Count'},
+    {k:'cash_credit_amount',l:'Cash Credit Amt'},{k:'cash_debit_amount',l:'Cash Debit Amt'},
+    {k:'cross_border_credit_amount',l:'CB Credit Amt'},{k:'cross_border_debit_amount',l:'CB Debit Amt'},
+    {k:'freeze_amount_at_eod',l:'Freeze Amt EOD'},{k:'lien_amount_at_eod',l:'Lien Amt EOD'},{k:'source',l:'Source'}
+  ],
+  rows:[
+    {balance_id:code('EOD-001-20260504'),account_id:'<span class="td-id">ACCT-100001</span>',customer_id:'<span class="td-id">CIF001001</span>',balance_date:'04 May 2026',opening_balance:'<span class="td-num">₹ 2,10,000</span>',total_credits:'<span class="td-num">₹ 85,800</span>',total_debits:'<span class="td-num">₹ 50,000</span>',closing_balance:'<span class="td-num">₹ 2,45,800</span>',available_balance:'<span class="td-num">₹ 2,45,800</span>',currency_code:'INR',base_currency_closing_balance:'<span class="td-num">₹ 2,45,800</span>',credit_count:'3',debit_count:'2',cash_credit_amount:'<span class="td-num">₹ 0</span>',cash_debit_amount:'<span class="td-num">₹ 20,000</span>',cross_border_credit_amount:'<span class="td-num">₹ 0</span>',cross_border_debit_amount:'<span class="td-num">₹ 0</span>',freeze_amount_at_eod:'<span class="td-num">₹ 0</span>',lien_amount_at_eod:'<span class="td-num">₹ 0</span>',source:'CBS_FINACLE'},
+    {balance_id:code('EOD-044-20260504'),account_id:'<span class="td-id">ACCT-100044</span>',customer_id:'<span class="td-id">CIF002045</span>',balance_date:'04 May 2026',opening_balance:'<span class="td-num">₹ 22,50,000</span>',total_credits:'<span class="td-num">₹ 4,15,250</span>',total_debits:'<span class="td-num">₹ 7,75,000</span>',closing_balance:'<span class="td-num">₹ 18,90,250</span>',available_balance:'<span class="td-num">₹ 18,90,250</span>',currency_code:'INR',base_currency_closing_balance:'<span class="td-num">₹ 18,90,250</span>',credit_count:'8',debit_count:'5',cash_credit_amount:'<span class="td-num">₹ 0</span>',cash_debit_amount:'<span class="td-num">₹ 0</span>',cross_border_credit_amount:'<span class="td-num">₹ 4,15,250</span>',cross_border_debit_amount:'<span class="td-num">₹ 2,25,000</span>',freeze_amount_at_eod:'<span class="td-num">₹ 0</span>',lien_amount_at_eod:'<span class="td-num">₹ 0</span>',source:'CBS_FINACLE'},
+    {balance_id:code('EOD-098-20260504'),account_id:'<span class="td-id">ACCT-100098</span>',customer_id:'<span class="td-id">CIF003178</span>',balance_date:'04 May 2026',opening_balance:'<span class="td-num" style="color:#b91c1c">$ 4,12,000</span>',total_credits:'<span class="td-num">$ 0</span>',total_debits:'<span class="td-num">$ 0</span>',closing_balance:'<span class="td-num" style="color:#b91c1c">$ 4,12,000</span>',available_balance:'<span class="td-num" style="color:#b91c1c">$ 0</span>',currency_code:'USD',base_currency_closing_balance:'<span class="td-num">₹ 3,43,60,000</span>',credit_count:'0',debit_count:'0',cash_credit_amount:'<span class="td-num">$ 0</span>',cash_debit_amount:'<span class="td-num">$ 0</span>',cross_border_credit_amount:'<span class="td-num">$ 0</span>',cross_border_debit_amount:'<span class="td-num">$ 0</span>',freeze_amount_at_eod:'<span class="td-num" style="color:#b91c1c">$ 4,12,000</span>',lien_amount_at_eod:'<span class="td-num">$ 0</span>',source:'CBS_TEMENOS'}
+  ]
+},
+
+card:{
+  label:'CARD_MASTER', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['card_id','customer_id','account_id','card_last4','card_type','card_network','card_status','card_issue_date','card_expiry_date','international_usage_enabled','contactless_enabled'],
+  allCols:[
+    {k:'card_id',l:'Card ID'},{k:'customer_id',l:'Customer ID'},{k:'account_id',l:'Account ID'},
+    {k:'card_number_token',l:'Card Token'},{k:'card_last4',l:'Last 4'},{k:'card_type',l:'Card Type'},
+    {k:'card_network',l:'Network'},{k:'card_status',l:'Status'},{k:'card_issue_date',l:'Issue Date'},
+    {k:'card_expiry_date',l:'Expiry Date'},{k:'daily_atm_limit',l:'ATM Daily Limit'},
+    {k:'daily_pos_limit',l:'POS Daily Limit'},{k:'international_usage_enabled',l:'Intl Usage'},
+    {k:'contactless_enabled',l:'Contactless'},{k:'declined_count_30d',l:'Declined (30d)'},
+    {k:'last_declined_date',l:'Last Declined'},{k:'last_declined_reason',l:'Decline Reason'},
+    {k:'hot_listed_flag',l:'Hot Listed'},{k:'hot_listed_date',l:'Hot Listed Date'},
+    {k:'hot_listed_reason',l:'Hot List Reason'},{k:'alert_flag',l:'Alert Flag'},{k:'modified_date',l:'Modified'}
+  ],
+  rows:[
+    {card_id:code('CARD-001'),customer_id:'<span class="td-id">CIF001001</span>',account_id:'<span class="td-id">ACCT-100001</span>',card_number_token:code('TKN-4X9Y2Z'),card_last4:'7823',card_type:'DEBIT',card_network:'VISA',card_status:bactive('ACTIVE'),card_issue_date:'Jan 2023',card_expiry_date:'Jan 2028',daily_atm_limit:'₹ 25,000',daily_pos_limit:'₹ 1,00,000',international_usage_enabled:yn(false),contactless_enabled:yn(true),declined_count_30d:'0',last_declined_date:'—',last_declined_reason:'—',hot_listed_flag:yn(false),hot_listed_date:'—',hot_listed_reason:'—',alert_flag:yn(false),modified_date:'Jan 2023'},
+    {card_id:code('CARD-002'),customer_id:'<span class="td-id">CIF002045</span>',account_id:'<span class="td-id">ACCT-100044</span>',card_number_token:code('TKN-8A3B5C'),card_last4:'3391',card_type:'CREDIT',card_network:'MASTERCARD',card_status:bactive('ACTIVE'),card_issue_date:'Jun 2022',card_expiry_date:'Jun 2027',daily_atm_limit:'₹ 1,00,000',daily_pos_limit:'₹ 5,00,000',international_usage_enabled:yn(true),contactless_enabled:yn(true),declined_count_30d:'2',last_declined_date:'30 Apr 2026',last_declined_reason:'INSUFFICIENT_FUNDS',hot_listed_flag:yn(false),hot_listed_date:'—',hot_listed_reason:'—',alert_flag:yw(true),modified_date:'30 Apr 2026'},
+    {card_id:code('CARD-003'),customer_id:'<span class="td-id">CIF003178</span>',account_id:'<span class="td-id">ACCT-100098</span>',card_number_token:code('TKN-2F7G9H'),card_last4:'6670',card_type:'DEBIT',card_network:'RUPAY',card_status:bred('HOT_LISTED'),card_issue_date:'May 2020',card_expiry_date:'May 2025',daily_atm_limit:'$ 5,000',daily_pos_limit:'$ 10,000',international_usage_enabled:yn(true),contactless_enabled:yn(false),declined_count_30d:'7',last_declined_date:'26 Apr 2026',last_declined_reason:'FRAUD_SUSPECTED',hot_listed_flag:yw(true),hot_listed_date:'28 Apr 2026',hot_listed_reason:'AML_FREEZE',alert_flag:yw(true),modified_date:'28 Apr 2026'}
+  ]
+},
+
+mobile:{
+  label:'MOBILE_BANKING', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['mobile_banking_id','customer_id','account_id','registered_mobile_number','registration_date','registration_channel','upi_vpa','upi_linked_bank_count','login_failure_count_24h','mobile_banking_status'],
+  allCols:[
+    {k:'mobile_banking_id',l:'MB ID'},{k:'customer_id',l:'Customer ID'},{k:'account_id',l:'Account ID'},
+    {k:'registered_mobile_number',l:'Mobile Number'},{k:'mobile_number_country',l:'Country'},
+    {k:'registration_date',l:'Registration Date'},{k:'registration_channel',l:'Reg Channel'},
+    {k:'app_version',l:'App Version'},{k:'device_id',l:'Device ID'},
+    {k:'mpin_change_count_30d',l:'MPIN Changes (30d)'},{k:'beneficiary_add_count_30d',l:'Bene Added (30d)'},
+    {k:'daily_transfer_limit',l:'Daily Transfer Limit'},{k:'upi_vpa',l:'UPI VPA'},
+    {k:'upi_daily_limit',l:'UPI Daily Limit'},{k:'upi_linked_bank_count',l:'UPI Banks Linked'},
+    {k:'mnrl_check_flag',l:'MNRL Check'},{k:'mnrl_match_flag',l:'MNRL Match'},
+    {k:'login_failure_count_24h',l:'Login Failures (24h)'},{k:'mobile_banking_status',l:'Status'},{k:'modified_date',l:'Modified'}
+  ],
+  rows:[
+    {mobile_banking_id:code('MB-001'),customer_id:'<span class="td-id">CIF001001</span>',account_id:'<span class="td-id">ACCT-100001</span>',registered_mobile_number:pii('+91-98**1234'),mobile_number_country:'IN',registration_date:'22 Feb 2015',registration_channel:'BRANCH',app_version:'v5.2.1',device_id:'DEV-A1B2C3',mpin_change_count_30d:'0',beneficiary_add_count_30d:'1',daily_transfer_limit:'₹ 50,000',upi_vpa:'rajesh@ybl',upi_daily_limit:'₹ 1,00,000',upi_linked_bank_count:'2',mnrl_check_flag:yn(true),mnrl_match_flag:yn(false),login_failure_count_24h:'0',mobile_banking_status:bactive('ACTIVE'),modified_date:'01 Apr 2026'},
+    {mobile_banking_id:code('MB-002'),customer_id:'<span class="td-id">CIF002045</span>',account_id:'<span class="td-id">ACCT-100044</span>',registered_mobile_number:pii('+91-22-XX**5678'),mobile_number_country:'IN',registration_date:'15 Mar 2010',registration_channel:'INTERNET_BANKING',app_version:'v5.2.1',device_id:'DEV-X7Y8Z9',mpin_change_count_30d:'3',beneficiary_add_count_30d:'5',daily_transfer_limit:'₹ 5,00,000',upi_vpa:'priya.inv@ibl',upi_daily_limit:'₹ 2,00,000',upi_linked_bank_count:'4',mnrl_check_flag:yn(true),mnrl_match_flag:yn(false),login_failure_count_24h:'2',mobile_banking_status:bactive('ACTIVE'),modified_date:'02 May 2026'}
+  ]
+},
+
+atm:{
+  label:'ATM_MASTER', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['atm_id','atm_code','atm_name','branch_id','atm_type','city','country_code','atm_status'],
+  allCols:[
+    {k:'atm_id',l:'ATM ID'},{k:'atm_code',l:'ATM Code'},{k:'atm_name',l:'ATM Name'},
+    {k:'institution_id',l:'Institution'},{k:'branch_id',l:'Branch'},{k:'atm_type',l:'ATM Type'},
+    {k:'address_line1',l:'Address'},{k:'city',l:'City'},{k:'country_code',l:'Country'},
+    {k:'latitude',l:'Latitude'},{k:'longitude',l:'Longitude'},
+    {k:'high_risk_location_flag',l:'High Risk Location'},{k:'daily_cash_loaded',l:'Daily Cash Loaded'},{k:'atm_status',l:'Status'},{k:'created_date',l:'Created'}
+  ],
+  rows:[
+    {atm_id:code('ATM-001'),atm_code:code('MUM-ATM-01'),atm_name:'Fort Branch ATM',institution_id:'INST-001',branch_id:'BRN-HO001',atm_type:'ON_SITE',address_line1:'Fort, Mumbai CST Area',city:'Mumbai',country_code:'IN',latitude:'18.9344',longitude:'72.8353',high_risk_location_flag:yn(false),daily_cash_loaded:'₹ 20,00,000',atm_status:bactive('ACTIVE'),created_date:'15 Mar 2010'},
+    {atm_id:code('ATM-002'),atm_code:code('DEL-ATM-07'),atm_name:'Connaught Place ATM',institution_id:'INST-001',branch_id:'BRN-DEL002',atm_type:'OFF_SITE',address_line1:'Block A, Connaught Place',city:'New Delhi',country_code:'IN',latitude:'28.6315',longitude:'77.2167',high_risk_location_flag:yn(false),daily_cash_loaded:'₹ 15,00,000',atm_status:bactive('ACTIVE'),created_date:'01 Jun 2012'},
+    {atm_id:code('ATM-003'),atm_code:code('WB-ATM-22'),atm_name:'Petrapole Border ATM',institution_id:'INST-001',branch_id:'BRN-WB045',atm_type:'ON_SITE',address_line1:'Near Land Port, Petrapole',city:'Bongaon',country_code:'IN',latitude:'23.0184',longitude:'88.9366',high_risk_location_flag:yw(true),daily_cash_loaded:'₹ 5,00,000',atm_status:bactive('ACTIVE'),created_date:'01 Aug 2018'}
+  ]
+},
+
+instr:{
+  label:'INSTRUMENT_MASTER', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['instrument_id','instrument_type'],
+  allCols:[
+    {k:'instrument_id',l:'Instrument ID'},{k:'instrument_type',l:'Type'},{k:'instrument_number',l:'Number'},
+    {k:'instrument_status',l:'Status'},{k:'issuing_account_id',l:'Issuing Account'},{k:'issuing_customer_id',l:'Issuing Customer'},
+    {k:'payee_name',l:'Payee Name'},{k:'amount',l:'Amount'},{k:'currency_code',l:'Currency'},
+    {k:'issue_date',l:'Issue Date'},{k:'presentation_date',l:'Presentation Date'},{k:'clearance_date',l:'Clearance Date'},
+    {k:'dishonour_reason',l:'Dishonour Reason'},{k:'stop_payment_flag',l:'Stop Payment'},
+    {k:'stop_payment_date',l:'Stop Payment Date'},{k:'branch_id',l:'Branch'},{k:'alert_flag',l:'Alert Flag'}
+  ],
+  rows:[
+    {instrument_id:code('INST-001'),instrument_type:'CHEQUE',instrument_number:code('005782'),instrument_status:bactive('CLEARED'),issuing_account_id:'<span class="td-id">ACCT-100001</span>',issuing_customer_id:'<span class="td-id">CIF001001</span>',payee_name:pii('TechCo** Ltd'),amount:'<span class="td-num">₹ 15,000</span>',currency_code:'INR',issue_date:'01 May 2026',presentation_date:'03 May 2026',clearance_date:'03 May 2026',dishonour_reason:'—',stop_payment_flag:yn(false),stop_payment_date:'—',branch_id:'MUM001',alert_flag:yn(false)},
+    {instrument_id:code('INST-002'),instrument_type:'DEMAND_DRAFT',instrument_number:code('DD-441892'),instrument_status:bactive('CLEARED'),issuing_account_id:'<span class="td-id">ACCT-100044</span>',issuing_customer_id:'<span class="td-id">CIF002045</span>',payee_name:pii('Vendor ** Corp'),amount:'<span class="td-num">₹ 4,50,000</span>',currency_code:'INR',issue_date:'28 Apr 2026',presentation_date:'30 Apr 2026',clearance_date:'30 Apr 2026',dishonour_reason:'—',stop_payment_flag:yn(false),stop_payment_date:'—',branch_id:'DEL002',alert_flag:yn(false)},
+    {instrument_id:code('INST-003'),instrument_type:'CHEQUE',instrument_number:code('009901'),instrument_status:bred('DISHONOURED'),issuing_account_id:'<span class="td-id">ACCT-100098</span>',issuing_customer_id:'<span class="td-id">CIF003178</span>',payee_name:pii('Okafo* D***'),amount:'<span class="td-num">$ 25,000</span>',currency_code:'USD',issue_date:'22 Apr 2026',presentation_date:'25 Apr 2026',clearance_date:'—',dishonour_reason:'FROZEN_ACCOUNT',stop_payment_flag:yw(true),stop_payment_date:'26 Apr 2026',branch_id:'MUM001',alert_flag:yw(true)}
+  ]
+},
+
+txndev:{
+  label:'TXN_DEVICE', syncInfo:'Synced: 05 May 2026',
+  defaultCols:['device_id','device_type','device_os','device_model','device_imei','associated_customer_ids'],
+  allCols:[
+    {k:'device_id',l:'Device ID'},{k:'device_fingerprint',l:'Fingerprint'},{k:'device_type',l:'Type'},
+    {k:'device_os',l:'OS'},{k:'device_model',l:'Model'},{k:'device_imei',l:'IMEI'},
+    {k:'app_version',l:'App Version'},{k:'first_seen_date',l:'First Seen'},{k:'last_seen_date',l:'Last Seen'},
+    {k:'associated_customer_ids',l:'Customer IDs'},{k:'customer_count',l:'Cust Count'},
+    {k:'high_risk_device_flag',l:'High Risk'},{k:'high_risk_reason',l:'Risk Reason'},
+    {k:'rooted_flag',l:'Rooted'},{k:'remote_access_app_flag',l:'Remote Access App'},
+    {k:'alert_flag',l:'Alert Flag'},{k:'service_provider',l:'ISP'},
+    {k:'ip_address_v4',l:'IP v4'},{k:'using_proxy_flag',l:'Proxy'},{k:'ip_city',l:'IP City'},{k:'ip_country',l:'IP Country'}
+  ],
+  rows:[
+    {device_id:code('DEV-A1B2C3'),device_fingerprint:pii('FP:a1b***c3d4'),device_type:'SMARTPHONE',device_os:'Android 14',device_model:'Samsung S23',device_imei:pii('35**6789****1234'),app_version:'v5.2.1',first_seen_date:'22 Feb 2015',last_seen_date:'04 May 2026',associated_customer_ids:'CIF001001',customer_count:'1',high_risk_device_flag:yn(false),high_risk_reason:'—',rooted_flag:yn(false),remote_access_app_flag:yn(false),alert_flag:yn(false),service_provider:'Jio',ip_address_v4:'103.XX.XX.45',using_proxy_flag:yn(false),ip_city:'Mumbai',ip_country:'IN'},
+    {device_id:code('DEV-X7Y8Z9'),device_fingerprint:pii('FP:x7y***z9a1'),device_type:'TABLET',device_os:'iOS 17',device_model:'iPad Pro 12',device_imei:pii('35**9012****5678'),app_version:'v5.2.1',first_seen_date:'15 Mar 2010',last_seen_date:'02 May 2026',associated_customer_ids:'CIF002045',customer_count:'1',high_risk_device_flag:yn(false),high_risk_reason:'—',rooted_flag:yn(false),remote_access_app_flag:yn(false),alert_flag:yw(true),service_provider:'Airtel',ip_address_v4:'49.XX.XX.12',using_proxy_flag:yn(false),ip_city:'New Delhi',ip_country:'IN'},
+    {device_id:code('DEV-M3N4P5'),device_fingerprint:pii('FP:m3n***p5q6'),device_type:'SMARTPHONE',device_os:'Android 13',device_model:'OnePlus 11',device_imei:pii('35**3456****9012'),app_version:'v5.1.8',first_seen_date:'15 Jan 2024',last_seen_date:'26 Apr 2026',associated_customer_ids:'CIF003178, CIF009001',customer_count:'2',high_risk_device_flag:yw(true),high_risk_reason:'MULTI_CUSTOMER_DEVICE',rooted_flag:yw(true),remote_access_app_flag:yw(true),alert_flag:yw(true),service_provider:'BSNL',ip_address_v4:'115.XX.XX.88',using_proxy_flag:yw(true),ip_city:'Mumbai',ip_country:'IN'}
+  ]
+},
+
+bo:{
+  label:'BENEFICIAL_OWNER', syncInfo:'Synced: 03 May 2026',
+  defaultCols:['bo_id','customer_id','full_name','nationality','country_of_residence','id_type','ownership_percentage','control_type','internal_watchlist_flag'],
+  allCols:[
+    {k:'bo_id',l:'BO ID'},{k:'customer_id',l:'Customer ID'},{k:'bo_customer_id',l:'BO CIF'},
+    {k:'full_name',l:'Full Name'},{k:'date_of_birth',l:'DOB'},{k:'nationality',l:'Nationality'},
+    {k:'country_of_residence',l:'Country of Residence'},{k:'id_type',l:'ID Type'},{k:'id_number',l:'ID Number'},
+    {k:'id_expiry_date',l:'ID Expiry'},{k:'ownership_percentage',l:'Ownership %'},
+    {k:'indirect_ownership_pct',l:'Indirect Ownership %'},{k:'control_type',l:'Control Type'},
+    {k:'pep_flag',l:'PEP Flag'},{k:'sanctions_flag',l:'Sanctions Flag'},
+    {k:'adverse_media_flag',l:'Adverse Media'},{k:'internal_watchlist_flag',l:'Watchlist Flag'},
+    {k:'verification_date',l:'Verified Date'},{k:'verification_method',l:'Verify Method'},{k:'created_date',l:'Created'}
+  ],
+  rows:[
+    {bo_id:code('BO-001'),customer_id:'<span class="td-id">CIF002045</span>',bo_customer_id:'—',full_name:pii('Anil Me***a'),date_of_birth:pii('14/**/1972'),nationality:pii('IN'),country_of_residence:pii('IN'),id_type:'PAN+Passport',id_number:pii('ABCXX***XM'),id_expiry_date:'Dec 2030',ownership_percentage:'35%',indirect_ownership_pct:'—',control_type:'DIRECT_SHAREHOLDER',pep_flag:yn(false),sanctions_flag:yn(false),adverse_media_flag:yn(false),internal_watchlist_flag:yn(false),verification_date:'05 Apr 2022',verification_method:'DOCUMENT_VERIFICATION',created_date:'12 Mar 2008'},
+    {bo_id:code('BO-002'),customer_id:'<span class="td-id">CIF002045</span>',bo_customer_id:'—',full_name:pii('Sunita Me***a'),date_of_birth:pii('22/**/1975'),nationality:pii('IN'),country_of_residence:pii('IN'),id_type:'Aadhaar+PAN',id_number:pii('XYZXX***XF'),id_expiry_date:'Lifetime',ownership_percentage:'25%',indirect_ownership_pct:'10%',control_type:'DIRECT_SHAREHOLDER',pep_flag:yn(false),sanctions_flag:yn(false),adverse_media_flag:yn(false),internal_watchlist_flag:yn(false),verification_date:'05 Apr 2022',verification_method:'E_KYC',created_date:'12 Mar 2008'},
+    {bo_id:code('BO-003'),customer_id:'<span class="td-id">CIF003178</span>',bo_customer_id:'—',full_name:pii('David Oka***r'),date_of_birth:pii('03/**/1965'),nationality:pii('NG'),country_of_residence:pii('AE'),id_type:'Passport',id_number:pii('A0****123'),id_expiry_date:'Jun 2028',ownership_percentage:'—',indirect_ownership_pct:'—',control_type:'SIGNATORY_CONTROL',pep_flag:yw(true),sanctions_flag:yw(true),adverse_media_flag:yw(true),internal_watchlist_flag:yw(true),verification_date:'PENDING',verification_method:'PENDING',created_date:'07 Jan 2015'}
+  ]
+},
+
+relnet:{
+  label:'Related Parties', syncInfo:'Synced: 03 May 2026',
+  defaultCols:['relationship_id','entity1_type','entity1_id','entity2_type','entity2_id','relationship_type','relationship_subtype','ownership_percentage','valid_from'],
+  allCols:[
+    {k:'relationship_id',l:'Rel ID'},{k:'entity1_type',l:'Entity1 Type'},{k:'entity1_id',l:'Entity1 ID'},
+    {k:'entity2_type',l:'Entity2 Type'},{k:'entity2_id',l:'Entity2 ID'},
+    {k:'relationship_type',l:'Relationship Type'},{k:'relationship_subtype',l:'Subtype'},
+    {k:'ownership_percentage',l:'Ownership %'},{k:'control_flag',l:'Control Flag'},
+    {k:'pep_flag',l:'PEP Flag'},{k:'sanctions_flag',l:'Sanctions Flag'},
+    {k:'adverse_media_flag',l:'Adverse Media'},{k:'source',l:'Source'},
+    {k:'verified_flag',l:'Verified'},{k:'valid_from',l:'Valid From'},{k:'valid_to',l:'Valid To'},{k:'risk_flag',l:'Risk Flag'}
+  ],
+  rows:[
+    {relationship_id:code('REL-001'),entity1_type:'CUSTOMER',entity1_id:'<span class="td-id">CIF002045</span>',entity2_type:'BENEFICIAL_OWNER',entity2_id:code('BO-001'),relationship_type:'OWNERSHIP',relationship_subtype:'DIRECT_SHAREHOLDER',ownership_percentage:'35%',control_flag:yn(true),pep_flag:yn(false),sanctions_flag:yn(false),adverse_media_flag:yn(false),source:'KYC_DOCUMENT',verified_flag:yn(true),valid_from:'12 Mar 2008',valid_to:'—',risk_flag:yn(false)},
+    {relationship_id:code('REL-002'),entity1_type:'CUSTOMER',entity1_id:'<span class="td-id">CIF002045</span>',entity2_type:'BENEFICIAL_OWNER',entity2_id:code('BO-002'),relationship_type:'OWNERSHIP',relationship_subtype:'DIRECT_SHAREHOLDER',ownership_percentage:'25%',control_flag:yn(true),pep_flag:yn(false),sanctions_flag:yn(false),adverse_media_flag:yn(false),source:'KYC_DOCUMENT',verified_flag:yn(true),valid_from:'12 Mar 2008',valid_to:'—',risk_flag:yn(false)},
+    {relationship_id:code('REL-003'),entity1_type:'CUSTOMER',entity1_id:'<span class="td-id">CIF003178</span>',entity2_type:'NON_CUSTOMER',entity2_id:code('BO-003'),relationship_type:'CONTROL',relationship_subtype:'SIGNATORY_CONTROL',ownership_percentage:'—',control_flag:yn(true),pep_flag:yw(true),sanctions_flag:yw(true),adverse_media_flag:yw(true),source:'FIELD_INVESTIGATION',verified_flag:'<span class="bool-w">⚠ Pending</span>',valid_from:'07 Jan 2015',valid_to:'—',risk_flag:yw(true)}
+  ]
+},
+
+custtype:{
+  label:'Customer Type', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['segment_id','segment_code','segment_name'],
+  allCols:[
+    {k:'segment_id',l:'Segment ID'},{k:'segment_code',l:'Code'},{k:'segment_name',l:'Name'},
+    {k:'segment_description',l:'Description'},{k:'aml_risk_rating',l:'AML Risk'},
+    {k:'cdd_level_required',l:'CDD Level'},{k:'edd_required',l:'EDD Required'},
+    {k:'applicable_entity_types',l:'Entity Types'},{k:'segment_status',l:'Status'},{k:'is_individual_flag',l:'Is Individual'}
+  ],
+  rows:[
+    {segment_id:code('SEG-001'),segment_code:code('INDV'),segment_name:'Individual',segment_description:'Natural persons – retail banking. Standard KYC.',aml_risk_rating:blow('LOW'),cdd_level_required:'STANDARD',edd_required:yn(false),applicable_entity_types:'BANK | NBFC',segment_status:bactive('ACTIVE'),is_individual_flag:yn(true)},
+    {segment_id:code('SEG-002'),segment_code:code('CORP'),segment_name:'Corporate',segment_description:'Incorporated entities. UBO identification mandatory.',aml_risk_rating:bmed('MEDIUM'),cdd_level_required:'ENHANCED',edd_required:yn(true),applicable_entity_types:'BANK | NBFC | MFI',segment_status:bactive('ACTIVE'),is_individual_flag:yn(false)},
+    {segment_id:code('SEG-003'),segment_code:code('NGO'),segment_name:'NGO / NPO',segment_description:'FATF high risk. Enhanced monitoring mandatory.',aml_risk_rating:bhigh('HIGH'),cdd_level_required:'ENHANCED',edd_required:yn(true),applicable_entity_types:'ALL',segment_status:bactive('ACTIVE'),is_individual_flag:yn(false)},
+    {segment_id:code('SEG-004'),segment_code:code('GOVT'),segment_name:'Government Entity',segment_description:'Central/state bodies. Simplified CDD applies.',aml_risk_rating:blow('LOW'),cdd_level_required:'SIMPLIFIED',edd_required:yn(false),applicable_entity_types:'BANK',segment_status:bactive('ACTIVE'),is_individual_flag:yn(false)},
+    {segment_id:code('SEG-005'),segment_code:code('HUF'),segment_name:'Hindu Undivided Family',segment_description:'India-specific family entity. Karta authority.',aml_risk_rating:bmed('MEDIUM'),cdd_level_required:'STANDARD',edd_required:yn(false),applicable_entity_types:'BANK | NBFC',segment_status:bactive('ACTIVE'),is_individual_flag:yn(false)}
+  ]
+},
+
+product:{
+  label:'PRODUCT Master', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['product_id','product_code','product_name','product_category','product_type','applicable_entity_types','cross_border_flag','effective_date'],
+  allCols:[
+    {k:'product_id',l:'Product ID'},{k:'product_code',l:'Code'},{k:'product_name',l:'Name'},
+    {k:'product_category',l:'Category'},{k:'product_type',l:'Type'},{k:'applicable_entity_types',l:'Entity Types'},
+    {k:'aml_risk_rating',l:'AML Risk'},{k:'cash_intensive_flag',l:'Cash Intensive'},
+    {k:'cross_border_flag',l:'Cross Border'},{k:'anonymous_flag',l:'Anonymous'},
+    {k:'swift_enabled',l:'SWIFT Enabled'},{k:'applicable_segments',l:'Applicable Segments'},
+    {k:'product_status',l:'Status'},{k:'effective_date',l:'Effective Date'},{k:'end_date',l:'End Date'},
+    {k:'product_group_code',l:'Group Code'},{k:'min_balance',l:'Min Balance'},{k:'is_gl_flag',l:'Is GL Flag'}
+  ],
+  rows:[
+    {product_id:code('PRD-001'),product_code:code('SAV-BASIC'),product_name:'Basic Savings Account',product_category:'DEPOSIT',product_type:'SAVINGS',applicable_entity_types:'BANK | NBFC',aml_risk_rating:blow('LOW'),cash_intensive_flag:yn(false),cross_border_flag:yn(false),anonymous_flag:yn(false),swift_enabled:yn(false),applicable_segments:'INDIVIDUAL | HUF',product_status:bactive('ACTIVE'),effective_date:'01 Apr 2010',end_date:'—',product_group_code:'DEPOSIT_GROUP',min_balance:'₹ 1,000',is_gl_flag:yn(false)},
+    {product_id:code('PRD-007'),product_code:code('CUR-CORP'),product_name:'Corporate Current Account',product_category:'DEPOSIT',product_type:'CURRENT_ACCOUNT',applicable_entity_types:'BANK',aml_risk_rating:bmed('MEDIUM'),cash_intensive_flag:yn(true),cross_border_flag:yn(false),anonymous_flag:yn(false),swift_enabled:yn(false),applicable_segments:'CORPORATE | TRUST',product_status:bactive('ACTIVE'),effective_date:'01 Jan 2005',end_date:'—',product_group_code:'DEPOSIT_GROUP',min_balance:'₹ 10,000',is_gl_flag:yn(false)},
+    {product_id:code('PRD-022'),product_code:code('TF-LC-INT'),product_name:'International Letter of Credit',product_category:'TRADE_FINANCE',product_type:'TRADE_LC',applicable_entity_types:'BANK',aml_risk_rating:bhigh('HIGH'),cash_intensive_flag:yn(false),cross_border_flag:yn(true),anonymous_flag:yn(false),swift_enabled:yn(true),applicable_segments:'CORPORATE',product_status:bactive('ACTIVE'),effective_date:'01 Jan 2012',end_date:'—',product_group_code:'TRADE_FINANCE_GROUP',min_balance:'—',is_gl_flag:yn(false)}
+  ]
+},
+
+branch:{
+  label:'BRANCH Master', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['branch_id','branch_code','branch_name','city','state_province','branch_type','high_risk_flag','border_branch_flag','bsr_code','branch_status'],
+  allCols:[
+    {k:'branch_id',l:'Branch ID'},{k:'branch_code',l:'Code'},{k:'branch_name',l:'Name'},
+    {k:'institution_id',l:'Institution'},{k:'country_code',l:'Country'},{k:'city',l:'City'},
+    {k:'state_province',l:'State'},{k:'address',l:'Address'},{k:'branch_type',l:'Type'},
+    {k:'aml_risk_rating',l:'AML Risk'},{k:'high_risk_flag',l:'High Risk Zone'},
+    {k:'border_branch_flag',l:'Border Branch'},{k:'swift_bic',l:'SWIFT BIC'},
+    {k:'compliance_officer_id',l:'Compliance Officer'},{k:'branch_status',l:'Status'},{k:'opening_date',l:'Opening Date'},
+    {k:'bsr_code',l:'BSR Code'},{k:'circle_code',l:'Circle Code'},{k:'region_code',l:'Region Code'},
+    {k:'postal_code',l:'Postal Code'},{k:'branch_area',l:'Branch Area'}
+  ],
+  rows:[
+    {branch_id:code('BRN-HO001'),branch_code:code('HO001'),branch_name:'Head Office – Mumbai Fort',institution_id:'INST-001',country_code:'IN',city:'Mumbai',state_province:'Maharashtra',address:'Fort, Mumbai 400001',branch_type:'HEAD_OFFICE',aml_risk_rating:blow('LOW'),high_risk_flag:yn(false),border_branch_flag:yn(false),swift_bic:'BNKNINBB001',compliance_officer_id:'CO-HO-001',branch_status:bactive('ACTIVE'),opening_date:'15 Aug 1947',bsr_code:'0008001',circle_code:'MUMBAI',region_code:'WEST-ZONE',postal_code:'400001',branch_area:'URBAN'},
+    {branch_id:code('BRN-DEL002'),branch_code:code('DEL002'),branch_name:'Connaught Place Branch',institution_id:'INST-001',country_code:'IN',city:'New Delhi',state_province:'Delhi',address:'Block A, CP, New Delhi',branch_type:'FULL_SERVICE',aml_risk_rating:bmed('MEDIUM'),high_risk_flag:yn(false),border_branch_flag:yn(false),swift_bic:'—',compliance_officer_id:'CO-DEL-001',branch_status:bactive('ACTIVE'),opening_date:'01 Jan 1965',bsr_code:'0007201',circle_code:'DELHI',region_code:'NORTH-ZONE',postal_code:'110001',branch_area:'URBAN'},
+    {branch_id:code('BRN-WB045'),branch_code:code('WB045'),branch_name:'Petrapole Border Branch',institution_id:'INST-001',country_code:'IN',city:'Bongaon',state_province:'West Bengal',address:'Near Land Port, Petrapole',branch_type:'FULL_SERVICE',aml_risk_rating:bhigh('HIGH'),high_risk_flag:yw(true),border_branch_flag:yw(true),swift_bic:'—',compliance_officer_id:'CO-WB-001',branch_status:bactive('ACTIVE'),opening_date:'15 Aug 1998',bsr_code:'0004512',circle_code:'KOLKATA-EAST',region_code:'EAST-ZONE',postal_code:'743456',branch_area:'RURAL'}
+  ]
+},
+
+channel:{
+  label:'CHANNEL Master', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['channel_id','channel_code','channel_name','channel_type','channel_status','channel_description'],
+  allCols:[
+    {k:'channel_id',l:'Channel ID'},{k:'channel_code',l:'Code'},{k:'channel_name',l:'Name'},
+    {k:'channel_type',l:'Type'},{k:'aml_risk_rating',l:'AML Risk'},{k:'cash_flag',l:'Cash Flag'},
+    {k:'anonymous_flag',l:'Anonymous'},{k:'cross_border_flag',l:'Cross Border'},
+    {k:'applicable_entity_types',l:'Entity Types'},{k:'channel_status',l:'Status'},
+    {k:'channel_description',l:'Description'},{k:'is_transfer_flag',l:'Transfer Flag'}
+  ],
+  rows:[
+    {channel_id:code('CHN-001'),channel_code:code('BRANCH'),channel_name:'Branch (Teller)',channel_type:'PHYSICAL',aml_risk_rating:bmed('MEDIUM'),cash_flag:yn(true),anonymous_flag:yn(false),cross_border_flag:yn(false),applicable_entity_types:'BANK | NBFC',channel_status:bactive('ACTIVE'),channel_description:'Physical teller. Handles cash – placement risk.',is_transfer_flag:yn(true)},
+    {channel_id:code('CHN-004'),channel_code:code('MBKG'),channel_name:'Mobile Banking',channel_type:'DIGITAL',aml_risk_rating:bmed('MEDIUM'),cash_flag:yn(false),anonymous_flag:yn(false),cross_border_flag:yn(true),applicable_entity_types:'ALL',channel_status:bactive('ACTIVE'),channel_description:'Mobile app-based banking – cross-border UPI support.',is_transfer_flag:yn(true)},
+    {channel_id:code('CHN-009'),channel_code:code('UPI'),channel_name:'UPI (Unified Payments)',channel_type:'DIGITAL',aml_risk_rating:bhigh('HIGH'),cash_flag:yn(false),anonymous_flag:yw(true),cross_border_flag:yn(false),applicable_entity_types:'BANK | PAYMENT_CO',channel_status:bactive('ACTIVE'),channel_description:'UPI payments – anonymous sender risk, velocity patterns.',is_transfer_flag:yn(true)}
+  ]
+},
+
+txntype:{
+  label:'TXN_TYPE Master', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['txn_type_id','txn_type_code','txn_type_name','direction','cash_flag','cross_border_flag','aml_risk_rating','ctr_applicable','txn_type_status','txn_type_description'],
+  allCols:[
+    {k:'txn_type_id',l:'TXN Type ID'},{k:'txn_type_code',l:'Code'},{k:'txn_type_name',l:'Name'},
+    {k:'direction',l:'Direction'},{k:'cash_flag',l:'Cash Flag'},{k:'cross_border_flag',l:'Cross Border'},
+    {k:'aml_risk_rating',l:'AML Risk'},{k:'ctr_applicable',l:'CTR Applicable'},
+    {k:'applicable_entity_types',l:'Entity Types'},{k:'txn_type_status',l:'Status'},
+    {k:'is_transfer_flag',l:'Transfer Flag'},{k:'is_clearing_flag',l:'Clearing Flag'},{k:'txn_type_description',l:'Description'}
+  ],
+  rows:[
+    {txn_type_id:code('TXN-001'),txn_type_code:code('CASH_DEP'),txn_type_name:'Cash Deposit',direction:bactive('CREDIT'),cash_flag:yn(true),cross_border_flag:yn(false),aml_risk_rating:bhigh('HIGH'),ctr_applicable:'✓ Yes (≥₹10L)',applicable_entity_types:'ALL',txn_type_status:bactive('ACTIVE'),is_transfer_flag:yn(false),is_clearing_flag:yn(false),txn_type_description:'Cash deposit at teller/CDM. Primary placement indicator.'},
+    {txn_type_id:code('TXN-008'),txn_type_code:code('SWIFT_OUT'),txn_type_name:'SWIFT Outward Remittance',direction:bred('DEBIT'),cash_flag:yn(false),cross_border_flag:yn(true),aml_risk_rating:bhigh('HIGH'),ctr_applicable:'✗ No',applicable_entity_types:'BANK',txn_type_status:bactive('ACTIVE'),is_transfer_flag:yn(true),is_clearing_flag:yn(false),txn_type_description:'Cross-border outward SWIFT. High risk – terrorism financing, layering.'},
+    {txn_type_id:code('TXN-015'),txn_type_code:code('UPI_CRDT'),txn_type_name:'UPI Credit',direction:bactive('CREDIT'),cash_flag:yn(false),cross_border_flag:yn(false),aml_risk_rating:bmed('MEDIUM'),ctr_applicable:'✗ No',applicable_entity_types:'BANK | PAYMENT_CO',txn_type_status:bactive('ACTIVE'),is_transfer_flag:yn(true),is_clearing_flag:yn(false),txn_type_description:'Inward UPI credit. Monitor velocity – structuring and mule account risk.'}
+  ]
+},
+
+currency:{
+  label:'CURRENCY Master', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['currency_code','currency_name','symbol','country_code','currency_status'],
+  allCols:[
+    {k:'currency_code',l:'ISO Code'},{k:'currency_name',l:'Name'},{k:'symbol',l:'Symbol'},
+    {k:'country_code',l:'Country'},{k:'high_risk_flag',l:'High Risk Flag'},{k:'currency_status',l:'Status'}
+  ],
+  rows:[
+    {currency_code:'<span style="font-weight:800;color:var(--td)">INR</span>',currency_name:'Indian Rupee',symbol:'<span style="font-size:15px;font-weight:800">₹</span>',country_code:'IN',high_risk_flag:yn(false),currency_status:bactive('ACTIVE')},
+    {currency_code:'<span style="font-weight:800;color:var(--td)">USD</span>',currency_name:'US Dollar',symbol:'<span style="font-size:15px;font-weight:800">$</span>',country_code:'US',high_risk_flag:yn(false),currency_status:bactive('ACTIVE')},
+    {currency_code:'<span style="font-weight:800;color:var(--td)">AED</span>',currency_name:'UAE Dirham',symbol:'<span style="font-size:15px;font-weight:800">د.إ</span>',country_code:'AE',high_risk_flag:yw(true),currency_status:bactive('ACTIVE')}
+  ]
+},
+
+fxrate:{
+  label:'CURRENCY_EXCH_RATE', syncInfo:'Updated: 05 May 2026 09:00 AM',
+  defaultCols:['rate_id','from_currency','to_currency','rate_date','rate_type','exchange_rate','effective_from','effective_to'],
+  allCols:[
+    {k:'rate_id',l:'Rate ID'},{k:'from_currency',l:'From CCY'},{k:'to_currency',l:'To CCY'},
+    {k:'rate_date',l:'Rate Date'},{k:'rate_type',l:'Rate Type'},{k:'exchange_rate',l:'Exchange Rate'},
+    {k:'source',l:'Source'},{k:'effective_from',l:'Effective From'},{k:'effective_to',l:'Effective To'},{k:'created_date',l:'Created'}
+  ],
+  rows:[
+    {rate_id:code('FX-001'),from_currency:'USD',to_currency:'INR',rate_date:'05 May 2026',rate_type:'TT_SELLING',exchange_rate:'<span class="td-num" style="font-size:13px;font-weight:800;color:var(--td)">83.42</span>',source:'RBI',effective_from:'05 May 2026 09:00',effective_to:'05 May 2026 17:00',created_date:'05 May 2026'},
+    {rate_id:code('FX-002'),from_currency:'AED',to_currency:'INR',rate_date:'05 May 2026',rate_type:'TT_SELLING',exchange_rate:'<span class="td-num" style="font-size:13px;font-weight:800;color:var(--td)">22.71</span>',source:'RBI',effective_from:'05 May 2026 09:00',effective_to:'05 May 2026 17:00',created_date:'05 May 2026'},
+    {rate_id:code('FX-003'),from_currency:'EUR',to_currency:'INR',rate_date:'05 May 2026',rate_type:'TT_SELLING',exchange_rate:'<span class="td-num" style="font-size:13px;font-weight:800;color:var(--td)">89.18</span>',source:'RBI',effective_from:'05 May 2026 09:00',effective_to:'05 May 2026 17:00',created_date:'05 May 2026'}
+  ]
+},
+
+industry:{
+  label:'INDUSTRY_CODE', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['id','code_type','industry_code','industry_name','industry_description'],
+  allCols:[
+    {k:'id',l:'ID'},{k:'code_type',l:'Code Type'},{k:'industry_code',l:'Industry Code'},
+    {k:'industry_name',l:'Name'},{k:'industry_description',l:'Description'},{k:'aml_risk_rating',l:'AML Risk'},
+    {k:'cash_intensive_flag',l:'Cash Intensive'},{k:'high_risk_flag',l:'High Risk'},
+    {k:'nbfc_applicable_flag',l:'NBFC Applicable'},{k:'high_risk_reason',l:'Risk Reason'}
+  ],
+  rows:[
+    {id:code('IND-001'),code_type:'NIC',industry_code:code('64190'),industry_name:'Other Monetary Intermediation',industry_description:'Banking and financial intermediation activities not elsewhere classified',aml_risk_rating:bmed('MEDIUM'),cash_intensive_flag:yn(false),high_risk_flag:yn(false),nbfc_applicable_flag:yn(true),high_risk_reason:'—'},
+    {id:code('IND-002'),code_type:'NIC',industry_code:code('47110'),industry_name:'Retail Sale of Jewellery',industry_description:'Precious metals, gems, jewellery – cash intensive sector',aml_risk_rating:bhigh('HIGH'),cash_intensive_flag:yw(true),high_risk_flag:yw(true),nbfc_applicable_flag:yn(false),high_risk_reason:'Cash intensive; precious metals; tax evasion risk'},
+    {id:code('IND-003'),code_type:'NIC',industry_code:code('56101'),industry_name:'Restaurants and Mobile Food Services',industry_description:'F&B establishments – common cash-intensive smurfing vehicle',aml_risk_rating:bmed('MEDIUM'),cash_intensive_flag:yw(true),high_risk_flag:yn(false),nbfc_applicable_flag:yn(false),high_risk_reason:'Cash front for money laundering'}
+  ]
+},
+
+refmaster:{
+  label:'REFERENCE_MASTER', syncInfo:'Synced: 01 Apr 2026',
+  defaultCols:['ref_id','ref_category','ref_code','ref_description','ref_value_text','applicable_countries','ref_status','modified_date'],
+  allCols:[
+    {k:'ref_id',l:'Ref ID'},{k:'ref_category',l:'Category'},{k:'ref_code',l:'Code'},
+    {k:'ref_description',l:'Description'},{k:'ref_value_numeric',l:'Numeric Value'},{k:'ref_value_text',l:'Text Value'},
+    {k:'applicable_countries',l:'Countries'},{k:'source',l:'Source'},{k:'risk_level',l:'Risk Level'},
+    {k:'effective_date',l:'Effective Date'},{k:'expiry_date',l:'Expiry Date'},
+    {k:'ref_status',l:'Status'},{k:'created_date',l:'Created'},{k:'modified_date',l:'Modified'}
+  ],
+  rows:[
+    {ref_id:code('REF-001'),ref_category:bblue('CTR_THRESHOLD'),ref_code:code('CTR_INR_LIMIT'),ref_description:'Cash TXN Report threshold – INR 10 lakh single/aggregated per day',ref_value_numeric:'<span class="td-num">10,00,000</span>',ref_value_text:'INR 10 lakh',applicable_countries:'IN',source:'FIU-IND',risk_level:bhigh('HIGH'),effective_date:'01 Apr 2023',expiry_date:'—',ref_status:bactive('ACTIVE'),created_date:'01 Apr 2023',modified_date:'01 Apr 2026'},
+    {ref_id:code('REF-002'),ref_category:badge('WILDLIFE_KEYWORD','b-purple'),ref_code:code('RHINO_HORN'),ref_description:'Rhino horn – CITES Appendix I – wildlife trafficking indicator keyword',ref_value_numeric:'—',ref_value_text:'rhino horn, rhinoceros horn',applicable_countries:'NULL (Global)',source:'CITES',risk_level:badge('CRITICAL','b-critical'),effective_date:'01 Jan 2020',expiry_date:'—',ref_status:bactive('ACTIVE'),created_date:'01 Jan 2020',modified_date:'01 Jan 2025'},
+    {ref_id:code('REF-003'),ref_category:bamb('DORMANCY_THRESHOLD'),ref_code:code('DORMANT_DAYS_SAV'),ref_description:'Savings account dormancy – no customer-initiated tx for 24 months',ref_value_numeric:'<span class="td-num">730</span>',ref_value_text:'24 months',applicable_countries:'IN',source:'RBI',risk_level:bmed('MEDIUM'),effective_date:'01 Jul 2014',expiry_date:'—',ref_status:bactive('ACTIVE'),created_date:'01 Jul 2014',modified_date:'01 Apr 2026'}
+  ]
+},
+
+employee:{
+  label:'EMPLOYEE Master', syncInfo:'Synced: 01 May 2026',
+  defaultCols:['employee_id','employee_code','full_name','job_title','department','branch_id','supervisor_id','employment_status','joining_date'],
+  allCols:[
+    {k:'employee_id',l:'Employee ID'},{k:'institution_id',l:'Institution'},{k:'full_name',l:'Full Name'},
+    {k:'employee_code',l:'Employee Code'},{k:'job_title',l:'Job Title'},{k:'department',l:'Department'},
+    {k:'branch_id',l:'Branch'},{k:'supervisor_id',l:'Supervisor ID'},{k:'employment_status',l:'Status'},
+    {k:'joining_date',l:'Joining Date'},{k:'leaving_date',l:'Leaving Date'},
+    {k:'pep_flag',l:'PEP Flag'},{k:'criminal_check_done',l:'Criminal Check'},{k:'created_date',l:'Created'}
+  ],
+  rows:[
+    {employee_id:code('EMP-001'),institution_id:'INST-001',full_name:pii('Priya Na***'),employee_code:code('BR-HO-0045'),job_title:'AML Officer',department:'Compliance',branch_id:'BRN-HO001',supervisor_id:'EMP-010',employment_status:bactive('ACTIVE'),joining_date:'15 Jun 2018',leaving_date:'—',pep_flag:yn(false),criminal_check_done:yn(true),created_date:'15 Jun 2018'},
+    {employee_id:code('EMP-002'),institution_id:'INST-001',full_name:pii('Rajat Gu***a'),employee_code:code('BR-HO-0052'),job_title:'Senior AML Analyst',department:'Compliance',branch_id:'BRN-HO001',supervisor_id:'EMP-010',employment_status:bactive('ACTIVE'),joining_date:'01 Mar 2020',leaving_date:'—',pep_flag:yn(false),criminal_check_done:yn(true),created_date:'01 Mar 2020'},
+    {employee_id:code('EMP-010'),institution_id:'INST-001',full_name:pii('Suresh Iv***'),employee_code:code('BR-HO-0010'),job_title:'Chief Compliance Officer',department:'Compliance',branch_id:'BRN-HO001',supervisor_id:'—',employment_status:bactive('ACTIVE'),joining_date:'05 Jan 2015',leaving_date:'—',pep_flag:yn(false),criminal_check_done:yn(true),created_date:'05 Jan 2015'}
+  ]
+},
+
+// ── COUNTRY MASTER: handled by dedicated renderer (see renderCountryTab) ──
+country:{ _customRender: true, label:'Country Master', syncInfo:'Source: FATF / Basel AML Index · Last Updated: 01 Apr 2026' },
+
+// ── NEW: NON-CUSTOMER MASTER ──
+noncust:{
+  label:'Non Customer Master', syncInfo:'Synced: 03 May 2026',
+  defaultCols:['non_customer_id','full_name','non_customer_type','nationality','country_of_residence','id_type','id_number'],
+  allCols:[
+    {k:'non_customer_id',l:'Non Cust ID'},{k:'full_name',l:'Full Name'},{k:'non_customer_type',l:'Type'},
+    {k:'nationality',l:'Nationality'},{k:'country_of_residence',l:'Country of Residence'},
+    {k:'date_of_birth',l:'Date of Birth'},{k:'gender',l:'Gender'},
+    {k:'id_type',l:'ID Type'},{k:'id_number',l:'ID Number'},{k:'id_expiry_date',l:'ID Expiry'},
+    {k:'pep_flag',l:'PEP Flag'},{k:'pep_type',l:'PEP Type'},
+    {k:'sanctions_flag',l:'Sanctions Flag'},{k:'adverse_media_flag',l:'Adverse Media'},
+    {k:'internal_watchlist_flag',l:'Watchlist Flag'},{k:'linked_customer_id',l:'Linked Customer ID'},
+    {k:'linked_account_id',l:'Linked Account ID'},{k:'relationship_to_customer',l:'Relationship'},
+    {k:'source',l:'Source'},{k:'created_date',l:'Created Date'},{k:'modified_date',l:'Modified Date'}
+  ],
+  rows:[
+    {non_customer_id:code('NC-001'),full_name:pii('Vikram Bo***e'),non_customer_type:bblue('COUNTERPARTY'),nationality:pii('IN'),country_of_residence:pii('IN'),date_of_birth:pii('10/**/1980'),gender:pii('M***'),id_type:'PAN',id_number:pii('ABCXX***XQ'),id_expiry_date:'Lifetime',pep_flag:yn(false),pep_type:'—',sanctions_flag:yn(false),adverse_media_flag:yn(false),internal_watchlist_flag:yn(false),linked_customer_id:'<span class="td-id">CIF001001</span>',linked_account_id:'ACCT-100001',relationship_to_customer:'FUND_RECIPIENT',source:'TRANSACTION_MONITORING',created_date:'02 Feb 2026',modified_date:'02 Feb 2026'},
+    {non_customer_id:code('NC-002'),full_name:pii('Shell Co** Ltd'),non_customer_type:bpurp('ENTITY'),nationality:pii('MU'),country_of_residence:pii('MU'),date_of_birth:'—',gender:'—',id_type:'COMPANY_REG',id_number:pii('MU-REG-***7891'),id_expiry_date:'—',pep_flag:yn(false),pep_type:'—',sanctions_flag:yw(true),adverse_media_flag:yw(true),internal_watchlist_flag:yw(true),linked_customer_id:'<span class="td-id">CIF002045</span>',linked_account_id:'ACCT-100044',relationship_to_customer:'FUND_RECIPIENT',source:'ALERT_INVESTIGATION',created_date:'15 Mar 2026',modified_date:'28 Apr 2026'},
+    {non_customer_id:code('NC-003'),full_name:pii('David Oka***r'),non_customer_type:bred('PEP_INDIVIDUAL'),nationality:pii('NG'),country_of_residence:pii('AE'),date_of_birth:pii('03/**/1965'),gender:pii('M***'),id_type:'PASSPORT',id_number:pii('A0****123'),id_expiry_date:'Jun 2028',pep_flag:yw(true),pep_type:'FOREIGN_PEP',sanctions_flag:yw(true),adverse_media_flag:yw(true),internal_watchlist_flag:yw(true),linked_customer_id:'<span class="td-id">CIF003178</span>',linked_account_id:'ACCT-100098',relationship_to_customer:'SIGNATORY',source:'EDD_REVIEW',created_date:'07 Jan 2015',modified_date:'28 Apr 2026'}
+  ]
+}
+
+}; // end TABLES
+
+// ══════════════════════════════════════════════════
+// DETAIL MODAL DATA
+// ══════════════════════════════════════════════════
+const DETAIL = {
+  cust:[
+    {title:'Customer – CIF001001',sub:'Rajesh Kumar Sharma · Individual · LOW Risk',secs:[
+      {h:'Identity',f:[['Customer ID','CIF001001'],['Customer Type','INDIVIDUAL'],['Status','ACTIVE'],['Entity Type','BANK_CUSTOMER'],['Salutation',pii('Mr')],['First Name',pii('Ra***sh')],['Last Name',pii('Sha***a')],['Full Legal Name',pii('Rajesh K***r Sha***a')],['Date of Birth',pii('15/**/1978')],['Gender',pii('M***')]]},
+      {h:'Nationality & Tax',f:[['Nationality',pii('IN')],['Country of Residence',pii('IN')],['Country of Birth',pii('IN')],['Tax ID',pii('AAXX****XXPK')],['TIN Type',pii('PAN')],['National ID Type','PAN'],['National ID No',pii('ABCXX***XZ')],['ID Issuing Country',pii('IN')],['ID Expiry Date','Lifetime']]},
+      {h:'AML Flags',f:[['PEP Flag','✗ No'],['Sanctions Flag','✗ No'],['Adverse Media','✗ No'],['Internal Watchlist','✗ No'],['Risk Rating','LOW'],['Risk Score','28'],['Risk Rating Date','15 Jan 2026']]},
+      {h:'KYC & CDD',f:[['KYC Status','COMPLETE'],['KYC Completion','22 Feb 2015'],['KYC Expiry','22 Feb 2027'],['CDD Level','STANDARD'],['EDD Flag','No'],['Customer Segment','RETAIL']]},
+      {h:'Contact & Employment',f:[['Mobile',pii('+91-98**1234')],['Email',pii('r.sh***@email.com')],['Occupation','Salaried Employee'],['Employer','TechCorp Ltd'],['Annual Income',pii('₹ XX,XX,000')],['Income Source','SALARY']]},
+      {h:'Onboarding',f:[['Onboarding Date','22 Feb 2015'],['Onboarding Branch','MUM001'],['Onboarding Channel','BRANCH'],['Relationship Manager','RM-001'],['Record Status','ACTIVE'],['Created Date','22 Feb 2015'],['Modified Date','04 May 2026']]}
+    ]},
+    {title:'Customer – CIF002045',sub:'Priya Investments Pvt. Ltd. · Corporate · MEDIUM Risk',secs:[
+      {h:'Identity',f:[['Customer ID','CIF002045'],['Customer Type','CORPORATE'],['Status','ACTIVE'],['Full Legal Name','Priya Investments Pvt. Ltd.'],['Corporate Legal Form','PRIVATE_LIMITED']]},
+      {h:'Corporate Details',f:[['Registration Number',pii('U749XX2008***PTC')],['Registration Country','IN'],['Registration Date','12 Mar 2008'],['GSTIN',pii('27XXXXX****Z')],['LEI','3358*****00GBN'],['Annual Turnover',pii('₹ X.X Cr')],['Countries of Operation','IN, AE, SG']]},
+      {h:'AML Flags',f:[['PEP Flag','✗ No'],['Sanctions Flag','✗ No'],['Risk Rating','MEDIUM'],['Risk Score','52'],['EDD Flag','Yes'],['KYC Status','COMPLETE']]},
+      {h:'Contact',f:[['Mobile',pii('+91-22-XX**5678')],['Email',pii('info@priy***.com')],['Onboarding Date','12 Mar 2008'],['Segment','CORPORATE']]}
+    ]},
+    {title:'Customer – CIF003178 ⚠ PEP Flagged',sub:'Global Relief Foundation · NGO · HIGH Risk',secs:[
+      {h:'Identity',f:[['Customer ID','CIF003178'],['Customer Type','NGO'],['Status','PEP_FLAGGED'],['Full Legal Name','Global Relief Foundation'],['Corporate Legal Form','TRUST/NGO']]},
+      {h:'⚠ AML Flags',f:[['PEP Flag','⚠ YES – Associate PEP (David Okafor)'],['PEP Type','ASSOCIATE'],['Sanctions Flag','⚠ WATCHLIST MATCH'],['Adverse Media','⚠ Yes'],['Internal Watchlist','⚠ Yes'],['MNRL Flag','⚠ Flagged'],['I4C Flagged','⚠ Yes'],['Risk Rating','HIGH'],['Risk Score','87']]},
+      {h:'KYC & CDD',f:[['KYC Status','REVIEW_DUE'],['CDD Level','ENHANCED'],['EDD Flag','Yes'],['Close Monitoring Flag','Yes'],['Close Monitoring Date','28 Apr 2026'],['KYC Review Due','28 Apr 2026 (OVERDUE)']]},
+      {h:'Corporate',f:[['Registration No',pii('NGO/REG/2015/***45')],['FCRA Reg No',pii('FCRA/***891')],['Countries of Operation','IN, NG, KE, AE'],['Income Source','DONATIONS'],['Onboarding Date','07 Jan 2015']]}
+    ]}
+  ],
+  account:[
+    {title:'Account – ACCT-100001',sub:'Savings Account · CIF001001 · INR · ACTIVE',secs:[
+      {h:'Account Identity',f:[['Account ID','ACCT-100001'],['Account Number',pii('****7823')],['Account Name','Rajesh K Sharma'],['Customer ID','CIF001001'],['Institution','INST-001'],['Type','SAVINGS'],['Product','PRD-001 (Basic Savings)'],['Currency','INR'],['Branch','MUM001']]},
+      {h:'Status & Dates',f:[['Status','ACTIVE'],['Opening Date','22 Feb 2015'],['Last TXN Date','02 May 2026'],['Account Review Date','22 Feb 2027'],['Dormancy Date','—']]},
+      {h:'Balances',f:[['Current Balance','₹ 2,45,800'],['Available Balance','₹ 2,45,800'],['OD Limit','₹ 0'],['Exp Monthly Credit','₹ 50,000'],['Exp Monthly Debit','₹ 40,000']]},
+      {h:'Freeze & Lien',f:[['Freeze Flag','✗ No'],['Lien Marked','✗ No'],['NPA Flag','✗ No']]},
+      {h:'AML & Operations',f:[['PEP Linked','✗ No'],['Sanctions Linked','✗ No'],['AML Risk Flag','✗ No'],['Mode of Operation','SELF'],['Source of Funds','SALARY'],['Purpose','PERSONAL_SAVINGS']]}
+    ]},
+    {title:'Account – ACCT-100044',sub:'Current Account · CIF002045 · INR · ACTIVE',secs:[
+      {h:'Account Identity',f:[['Account ID','ACCT-100044'],['Account Number',pii('****3391')],['Customer ID','CIF002045'],['Type','CURRENT'],['Currency','INR'],['Branch','DEL002']]},
+      {h:'Status & Balances',f:[['Status','ACTIVE'],['Opening Date','12 Mar 2008'],['Current Balance','₹ 18,90,250'],['Available Balance','₹ 18,90,250'],['Mode of Operation','JOINTLY_SEVERALLY'],['Source of Funds','BUSINESS']]},
+      {h:'AML Flags',f:[['Freeze Flag','✗ No'],['PEP Linked','✗ No'],['Sanctions Linked','✗ No'],['AML Risk Flag','✗ No'],['Is Joint Account','Yes']]}
+    ]},
+    {title:'Account – ACCT-100098 ⚠ FROZEN',sub:'Current Account (USD) · CIF003178 · AML Investigation',secs:[
+      {h:'Account Identity',f:[['Account ID','ACCT-100098'],['Account Number',pii('****6670')],['Customer ID','CIF003178'],['Type','CURRENT'],['Currency','USD'],['Branch','MUM001']]},
+      {h:'⚠ Freeze Details',f:[['Status','FROZEN'],['Freeze Flag','⚠ YES – Full Freeze'],['Freeze Reason','AML_INVESTIGATION'],['Freeze Date','28 Apr 2026'],['Freeze Authority','INTERNAL_COMPLIANCE'],['Freeze Amount','Full Account – $4,12,000']]},
+      {h:'Balances',f:[['Current Balance','$ 4,12,000'],['Available Balance','$ 0 (Frozen)'],['Exp Monthly Credit','$ 50,000']]},
+      {h:'AML Flags',f:[['PEP Linked','⚠ Yes'],['Sanctions Linked','⚠ Yes'],['AML Risk Flag','⚠ Yes'],['FCRA Flag','⚠ Yes'],['Source of Funds','DONATIONS']]}
+    ]}
+  ]
+};
+
+// ══════════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════════
+let currentTab = 'cust';
+let currentMaster = 'customer';
+// colSettings: { tabId: [array of active col keys] }
+const colSettings = {};
+function getColSettings(tabId){
+  if(!colSettings[tabId]) colSettings[tabId] = [...(TABLES[tabId]?.defaultCols||[])];
+  return colSettings[tabId];
+}
+
+// For account CIF filter
+let accountCIFFilter = '';
+
+// For customer type filter
+let custTypeFilter = '';
+
+// Current col selector state
+let pendingTabId = null;
+let pendingCols = [];
+
+// ══════════════════════════════════════════════════
+// RENDER ENGINE
+// ══════════════════════════════════════════════════
+function renderTab(tabId){
+  // Country tab uses a fully custom renderer
+  if(tabId === 'country'){ renderCountryTab(); return; }
+
+  const def = TABLES[tabId];
+  if(!def) return;
+  const el = document.getElementById('tab-'+tabId);
+  if(!el) return;
+
+  const activeCols = getColSettings(tabId);
+  const cols = def.allCols.filter(c => activeCols.includes(c.k));
+
+  let rows = def.rows;
+  // Apply CIF filter on account tab
+  if(tabId === 'account' && accountCIFFilter){
+    rows = rows.filter(r => (r._cif||'').toUpperCase() === accountCIFFilter.toUpperCase());
+  }
+  // Apply customer type filter on cust tab
+  if(tabId === 'cust' && custTypeFilter){
+    rows = rows.filter(r => r._custType === custTypeFilter);
+  }
+  // Apply search filter
+  const searchVal = (el.querySelector('.tab-search-input')||{}).value || currentSearchVals[tabId] || '';
+
+  let html = '';
+
+  // KPIs
+  if(def.kpis){
+    html += '<div class="kpi-strip">';
+    def.kpis.forEach(k => {
+      html += `<div class="ks ${k.cls}"><div class="ks-v">${k.v}</div><div class="ks-l">${k.l}</div>${k.s?`<div class="ks-s">${k.s}</div>`:''}</div>`;
+    });
+    html += '</div>';
+  }
+
+  // Account CIF filter bar
+  if(def.filterCIF){
+    html += `<div class="filter-bar">
+      <div class="fb-label">🔍 Filter by Customer ID</div>
+      <div class="frow">
+        <div class="ff grow"><div class="fl">Customer ID</div><input class="fi" id="acctCIFInput" placeholder="e.g. CIF001001, CIF002045 ..." value="${accountCIFFilter}" onkeydown="if(event.key==='Enter')applyAcctFilter()"></div>
+        <div class="ff" style="justify-content:flex-end;"><button class="btn btn-accent btn-sm" onclick="applyAcctFilter()">Apply</button> <button class="btn btn-outline btn-sm" style="margin-left:4px" onclick="clearAcctFilter()">Clear</button></div>
+      </div>
+    </div>`;
+  }
+
+  // Customer Type filter bar
+  if(def.filterCustType){
+    const types = ['','INDIVIDUAL','CORPORATE','NGO','GOVERNMENT','SOLE_PROPRIETOR','PARTNERSHIP','TRUST','HUF'];
+    html += `<div class="filter-bar">
+      <div class="fb-label">🔍 Filter by Customer Type</div>
+      <div class="frow">
+        <div class="ff"><div class="fl">Customer Type</div>
+          <select class="fs" id="custTypeSelect" onchange="applyCustTypeFilter(this.value)">
+            ${types.map(t => `<option value="${t}" ${custTypeFilter===t?'selected':''}>${t||'— All Types —'}</option>`).join('')}
+          </select>
+        </div>
+        <div class="ff" style="justify-content:flex-end;align-self:flex-end;">
+          <button class="btn btn-outline btn-sm" onclick="applyCustTypeFilter('')">Clear</button>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  // Toolbar: search + export + columns
+  const custTabs = ['cust','address','document','risk','account','car','loan','eod'];
+  const showColSel = custTabs.includes(tabId);
+  html += `<div class="toolbar">
+    <div class="tb-search-box">
+      <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="tab-search-input" placeholder="Search in ${def.label}..." value="${searchVal||''}" oninput="onTabSearch('${tabId}',this.value)">
+    </div>
+    <span class="tb-search-hint" id="search-count-${tabId}"></span>
+    <div class="tb-sep"></div>
+    ${showColSel ? `<div class="col-sel-wrap" id="colWrap-${tabId}">
+      <button class="btn btn-outline btn-sm" onclick="openColSel('${tabId}',event)">☰ Columns <span style="margin-left:3px;opacity:.6">(${activeCols.length}/${def.allCols.length})</span></button>
+    </div>` : ''}
+    <span style="font-size:10.5px;color:var(--tl);white-space:nowrap;" title="Export is capped at 50,000 rows per file. For full data extracts contact your system administrator.">⚠ Max 50K rows</span>
+    <button class="btn btn-outline btn-sm" onclick="exportTab('${tabId}','csv')">⬇ CSV</button>
+    <button class="btn btn-outline btn-sm" onclick="exportTab('${tabId}','xls')">⬇ Excel</button>
+    <button class="btn btn-outline btn-sm disabled" title="Refresh from CBS is available only for banks with real-time CBS API integration">🔄 Refresh CBS</button>
+  </div>`;
+
+  // Table card
+  html += `<div class="tcard">
+    <div class="tcard-h">
+      <div class="tcard-t">${def.label} <span class="tcnt" id="cnt-${tabId}">${rows.length} Records</span></div>
+      <div style="display:flex;align-items:center;gap:8px;"><div class="last-sync"><span class="sync-dot"></span>${def.syncInfo}</div></div>
+    </div>
+    <div class="tbl-wrap">
+      <table id="tbl-${tabId}">
+        <thead><tr>${cols.map(c=>`<th>${c.l}</th>`).join('')}<th>Action</th></tr></thead>
+        <tbody id="tbody-${tabId}">`;
+
+  rows.forEach((row, ri) => {
+    const rowText = cols.map(c => stripHtml(row[c.k]||'')).join(' ').toLowerCase();
+    const hidden = searchVal && !rowText.includes(searchVal.toLowerCase()) ? ' style="display:none"' : '';
+    html += `<tr${hidden}>${cols.map(c=>`<td>${row[c.k]!==undefined?row[c.k]:'—'}</td>`).join('')}
+      <td><button class="btn btn-outline btn-sm" style="font-size:11px" onclick="openDetailModal('${tabId}',${ri})">View</button></td></tr>`;
+  });
+
+  html += `</tbody></table></div></div>`;
+
+  el.innerHTML = html;
+  updateSearchCount(tabId);
+}
+
+// search values cache
+const currentSearchVals = {};
+
+function onTabSearch(tabId, val){
+  currentSearchVals[tabId] = val;
+  const tbody = document.getElementById('tbody-'+tabId);
+  const def = TABLES[tabId];
+  const activeCols = getColSettings(tabId);
+  const cols = def.allCols.filter(c => activeCols.includes(c.k));
+  let rows = def.rows;
+  if(tabId === 'account' && accountCIFFilter) rows = rows.filter(r => (r._cif||'').toUpperCase() === accountCIFFilter.toUpperCase());
+  let visible = 0;
+  Array.from(tbody.rows).forEach((tr, i) => {
+    const rowText = cols.map(c => stripHtml(rows[i]?.[c.k]||'')).join(' ').toLowerCase();
+    const show = !val || rowText.includes(val.toLowerCase());
+    tr.style.display = show ? '' : 'none';
+    if(show) visible++;
+  });
+  const cntEl = document.getElementById('cnt-'+tabId);
+  if(cntEl) cntEl.textContent = `${visible} Record${visible!==1?'s':''}`;
+  updateSearchCount(tabId, visible, val, rows.length);
+}
+
+function updateSearchCount(tabId, visible, val, total){
+  const el = document.getElementById('search-count-'+tabId);
+  if(!el) return;
+  const def = TABLES[tabId];
+  const rows = def.rows;
+  if(val && visible !== undefined) el.textContent = `${visible} of ${rows.length} shown`;
+  else el.textContent = '';
+}
+
+function stripHtml(s){ return String(s).replace(/<[^>]+>/g,''); }
+
+// ══════════════════════════════════════════════════
+// COLUMN SELECTOR
+// ══════════════════════════════════════════════════
+function openColSel(tabId, event){
+  event.stopPropagation();
+  const def = TABLES[tabId];
+  pendingTabId = tabId;
+  pendingCols = [...getColSettings(tabId)];
+
+  const dropdown = document.getElementById('colSelDropdown');
+  document.getElementById('colSelTitle').textContent = `Columns – ${def.label}`;
+
+  let listHtml = '';
+  def.allCols.forEach(c => {
+    const checked = pendingCols.includes(c.k) ? 'checked' : '';
+    listHtml += `<div class="col-sel-item">
+      <input type="checkbox" id="csc-${c.k}" ${checked} onchange="togglePendingCol('${c.k}',this.checked)">
+      <label for="csc-${c.k}">${c.l}</label>
+    </div>`;
+  });
+  document.getElementById('colSelList').innerHTML = listHtml;
+
+  // Position near the button
+  const wrap = document.getElementById('colWrap-'+tabId);
+  const rect = wrap.getBoundingClientRect();
+  dropdown.style.top = (rect.bottom + window.scrollY + 4) + 'px';
+  dropdown.style.left = Math.max(4, rect.right - 240 + window.scrollX) + 'px';
+  dropdown.style.position = 'absolute';
+  dropdown.classList.add('open');
+}
+
+function togglePendingCol(k, checked){
+  if(checked){ if(!pendingCols.includes(k)) pendingCols.push(k); }
+  else { pendingCols = pendingCols.filter(c=>c!==k); }
+}
+
+function colSelAll(select){
+  const def = TABLES[pendingTabId];
+  pendingCols = select ? def.allCols.map(c=>c.k) : [];
+  document.querySelectorAll('#colSelList input[type=checkbox]').forEach(cb => cb.checked = select);
+}
+
+function applyColSel(){
+  if(pendingCols.length === 0){ toast('⚠ Select at least one column'); return; }
+  colSettings[pendingTabId] = [...pendingCols];
+  closeColSel();
+  renderTab(pendingTabId);
+  toast('✅ Column settings saved');
+}
+
+function closeColSel(){
+  document.getElementById('colSelDropdown').classList.remove('open');
+}
+
+document.addEventListener('click', e => {
+  if(!e.target.closest('.col-sel-wrap') && !e.target.closest('#colSelDropdown')) closeColSel();
+});
+
+// ══════════════════════════════════════════════════
+// ACCOUNT CIF FILTER
+// ══════════════════════════════════════════════════
+function applyAcctFilter(){
+  accountCIFFilter = (document.getElementById('acctCIFInput')?.value||'').trim().toUpperCase();
+  renderTab('account');
+  if(accountCIFFilter) toast(`Showing accounts for: ${accountCIFFilter}`);
+}
+function clearAcctFilter(){
+  accountCIFFilter = '';
+  renderTab('account');
+}
+function filterAccountByCIF(cif){
+  showTab('account');
+  accountCIFFilter = cif;
+  renderTab('account');
+  toast(`Filtered accounts for: ${cif}`);
+}
+
+function applyCustTypeFilter(val){
+  custTypeFilter = val;
+  renderTab('cust');
+  if(val) toast(`Showing customer type: ${val}`);
+}
+
+// ══════════════════════════════════════════════════
+// EXPORT
+// ══════════════════════════════════════════════════
+function exportTab(tabId, format){
+  const EXPORT_MAX = 50000;
+  const def = TABLES[tabId];
+  const activeCols = getColSettings(tabId);
+  const cols = def.allCols.filter(c => activeCols.includes(c.k));
+
+  let rows = def.rows;
+  if(tabId === 'account' && accountCIFFilter) rows = rows.filter(r => (r._cif||'').toUpperCase() === accountCIFFilter.toUpperCase());
+  if(tabId === 'cust' && custTypeFilter) rows = rows.filter(r => r._custType === custTypeFilter);
+  const searchVal = currentSearchVals[tabId] || '';
+  if(searchVal) rows = rows.filter(r => cols.map(c=>stripHtml(r[c.k]||'')).join(' ').toLowerCase().includes(searchVal.toLowerCase()));
+
+  if(rows.length > EXPORT_MAX){
+    rows = rows.slice(0, EXPORT_MAX);
+    toast(`⚠ Export capped at 50,000 rows. Use batch export for full data.`);
+  }
+
+  const header = cols.map(c=>c.l).join(',');
+  const dataRows = rows.map(r => cols.map(c => `"${stripHtml(r[c.k]||'').replace(/"/g,'""')}"`).join(','));
+  const csv = [header, ...dataRows].join('\n');
+
+  const blob = new Blob([csv], {type: format==='xls' ? 'application/vnd.ms-excel' : 'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${tabId}_${new Date().toISOString().slice(0,10)}.${format==='xls'?'xls':'csv'}`;
+  a.click();
+  URL.revokeObjectURL(url);
+  toast(`✅ Exported ${rows.length} rows as ${format.toUpperCase()}`);
+}
+
+// ══════════════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════════════
+const MASTER_CONFIG = {
+  customer:    { section:'ms-customer',    navGroup:'mnav-customer',    firstTab:'cust',     title:'Customer & Account Data',        desc:'Core customer, account, loan and balance data sourced from CBS' },
+  instruments: { section:'ms-instruments', navGroup:'mnav-instruments', firstTab:'card',     title:'Cards & Instruments',            desc:'Card master, mobile banking, ATM, instruments and device data' },
+  network:     { section:'ms-network',     navGroup:'mnav-network',     firstTab:'bo',       title:'Relationships & Related Parties', desc:'Beneficial ownership, related parties and non-customer entity data' },
+  reference:   { section:'ms-reference',   navGroup:'mnav-reference',   firstTab:'custtype', title:'Reference Masters',              desc:'Product, branch, channel, transaction type, currency, country and lookup masters' },
+  employee:    { section:'ms-employee',    navGroup:'mnav-employee',    firstTab:'employee', title:'Employee Master',                desc:'Employee records – compliance officer assignment and bank-staff AML flags' }
+};
+
+function showMaster(masterKey){
+  const cfg = MASTER_CONFIG[masterKey];
+  if(!cfg) return;
+  document.querySelectorAll('.master-section').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.mnav-grp').forEach(el => el.classList.remove('visible'));
+  document.querySelectorAll('.nav-c').forEach(el => el.classList.remove('active'));
+  document.getElementById(cfg.section).classList.add('active');
+  document.getElementById(cfg.navGroup).classList.add('visible');
+  document.getElementById('snc-'+masterKey)?.classList.add('active');
+  document.getElementById('pgTitle').textContent = cfg.title;
+  document.getElementById('pgDesc').textContent = cfg.desc;
+  document.getElementById('pgBreadcrumb').textContent = cfg.title;
+  currentMaster = masterKey;
+  showTab(cfg.firstTab);
+}
+
+function showTab(tabId){
+  document.querySelectorAll('.master-tab').forEach(el => el.classList.remove('active-tab'));
+  document.querySelectorAll('.mnav-btn').forEach(el => el.classList.remove('active'));
+  const tabEl = document.getElementById('tab-'+tabId);
+  if(tabEl){ tabEl.classList.add('active-tab'); }
+  const btnEl = document.getElementById('mb-'+tabId);
+  if(btnEl) btnEl.classList.add('active');
+  if(tabId !== 'cust') custTypeFilter = '';
+  currentTab = tabId;
+  renderTab(tabId);
+}
+
+function toggleSb(chId, pId){
+  const ch = document.getElementById(chId);
+  const p = document.getElementById(pId);
+  const arrow = p?.querySelector('.np-ch');
+  if(!ch) return;
+  const open = ch.style.display !== 'none';
+  ch.style.display = open ? 'none' : 'block';
+  if(p) p.classList.toggle('open', !open);
+  if(arrow) arrow.style.transform = open ? '' : 'rotate(90deg)';
+}
+
+// ══════════════════════════════════════════════════
+// DETAIL MODAL
+// ══════════════════════════════════════════════════
+function openDetailModal(tabId, rowIdx){
+  // Use DETAIL data for cust/account, otherwise generate from row data
+  if(DETAIL[tabId]?.[rowIdx]){
+    const d = DETAIL[tabId][rowIdx];
+    document.getElementById('modalTitle').textContent = d.title;
+    document.getElementById('modalSub').textContent = d.sub;
+    let html = '';
+    d.secs.forEach(sec => {
+      html += `<div class="msec-hdr">${sec.h}</div><div class="mfield-grid">`;
+      sec.f.forEach((f,i) => {
+        const even = i%2===1;
+        html += `<div class="mfield${even?' ':''}" style="${even?'padding-left:18px;border-left:1px solid var(--bl)':'padding-right:18px'}">
+          <div class="mf-label">${f[0]}</div><div class="mf-val">${f[1]}</div></div>`;
+      });
+      html += '</div>';
+    });
+    document.getElementById('modalBody').innerHTML = html;
+  } else {
+    // Generic detail from row data – show ALL fields
+    const def = TABLES[tabId];
+    if(!def) return;
+    const row = def.rows[rowIdx];
+    if(!row) return;
+    document.getElementById('modalTitle').textContent = `${def.label} – Record Detail`;
+    document.getElementById('modalSub').textContent = `All fields · Row ${rowIdx+1} of ${def.rows.length}`;
+    let html = '<div class="mfield-grid">';
+    def.allCols.forEach((c,i) => {
+      const val = row[c.k] !== undefined ? row[c.k] : '—';
+      const even = i%2===1;
+      html += `<div class="mfield${even?' ':''}" style="${even?'padding-left:18px;border-left:1px solid var(--bl)':'padding-right:18px'}">
+        <div class="mf-label">${c.l}</div><div class="mf-val">${val}</div></div>`;
+    });
+    html += '</div>';
+    document.getElementById('modalBody').innerHTML = html;
+  }
+  document.getElementById('detailModal').classList.add('open');
+}
+
+function closeModal(){ document.getElementById('detailModal').classList.remove('open'); }
+document.getElementById('detailModal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
+
+function toast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toast-msg').textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+
+// ════════════════════════════════════════════════════════════════════════
+// COUNTRY MASTER — CUSTOM RENDERER (adapted from country_master_10.html)
+// ════════════════════════════════════════════════════════════════════════
+
+(function injectCountryStyles(){
+  if(document.getElementById('cm-style')) return;
+  const s = document.createElement('style');
+  s.id = 'cm-style';
+  s.textContent = `
+.cm-wrap{display:flex;flex-direction:column;gap:0;font-family:var(--font)}
+.cm-toolbar{display:flex;align-items:center;justify-content:space-between;padding:10px 0 12px;gap:10px;flex-wrap:wrap}
+.cm-filters{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cm-fi{height:34px;border:1px solid var(--border);border-radius:7px;padding:0 10px 0 28px;font-size:12px;outline:none;font-family:var(--font);background:var(--white);min-width:160px;color:var(--td)}
+.cm-fi:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(37,99,235,.1)}
+.cm-fi-wrap{position:relative}
+.cm-si{position:absolute;left:8px;top:50%;transform:translateY(-50%);color:var(--tl);pointer-events:none}
+.cm-fi-no-icon{padding-left:10px}
+.cm-tcard{background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.cm-tcard-h{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border-bottom:1px solid var(--border)}
+.cm-tcard-t{font-size:13px;font-weight:800;font-family:var(--disp);color:var(--td);display:flex;align-items:center;gap:7px}
+.cm-tbl-wrap{overflow-x:auto;max-height:430px;overflow-y:auto}
+.cm-tbl-wrap::-webkit-scrollbar{width:5px;height:5px}
+.cm-tbl-wrap::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
+.cm-tbl-wrap table{width:100%;border-collapse:collapse}
+.cm-tbl-wrap thead{position:sticky;top:0;z-index:5}
+.cm-tbl-wrap thead tr{background:var(--bg)}
+.cm-tbl-wrap th{padding:8px 11px;text-align:left;font-size:10.5px;font-weight:800;letter-spacing:.4px;color:var(--tl);border-bottom:1px solid var(--border);white-space:nowrap}
+.cm-sort-btn{display:inline-flex;align-items:center;gap:3px;background:none;border:none;cursor:pointer;font-size:10.5px;font-weight:800;color:var(--tl);padding:2px 0;font-family:var(--font);letter-spacing:.4px}
+.cm-sort-btn:hover{color:var(--accent)}
+.cm-tbl-wrap td{padding:9px 11px;font-size:12px;color:var(--tm);border-bottom:1px solid var(--bl);vertical-align:middle;white-space:nowrap}
+.cm-tbl-wrap tbody tr:last-child td{border-bottom:none}
+.cm-tbl-wrap tbody tr:hover td{background:#fafbff}
+.cm-risk-low{background:#f0fdf4;color:#166534;font-size:11px;font-weight:700;padding:2px 9px;border-radius:9999px;border:1px solid #bbf7d0;white-space:nowrap}
+.cm-risk-medium{background:#fef3c7;color:#92400e;font-size:11px;font-weight:700;padding:2px 9px;border-radius:9999px;border:1px solid #fde68a;white-space:nowrap}
+.cm-risk-high{background:#fef2f2;color:#991b1b;font-size:11px;font-weight:700;padding:2px 9px;border-radius:9999px;border:1px solid #fecaca;white-space:nowrap}
+.cm-risk-unclassified{background:var(--bg);color:var(--tm);font-size:11px;font-weight:600;padding:2px 9px;border-radius:9999px;border:1px solid var(--border);white-space:nowrap}
+.cm-status-active{background:#dcfce7;color:#166534;font-size:11px;font-weight:600;padding:2px 9px;border-radius:9999px}
+.cm-status-pending{background:#eff6ff;color:#1d4ed8;font-size:11px;font-weight:600;padding:2px 9px;border-radius:9999px}
+.cm-region-badge{background:var(--bg);color:#374151;font-size:11px;font-weight:500;padding:2px 7px;border-radius:5px}
+.cm-iso{font-family:monospace;font-size:11.5px;font-weight:700}
+.cm-iso-2{background:#eff6ff;color:var(--accent);padding:2px 7px;border-radius:5px}
+.cm-iso-3{background:var(--bg);color:var(--tm);padding:2px 7px;border-radius:5px}
+.cm-reason-tag{background:#f0f5ff;color:#1d4ed8;border:1px solid #bfdbfe;font-size:10.5px;padding:1px 6px;border-radius:5px;white-space:nowrap;display:inline-block;margin:1px 2px}
+.cm-action-btn{height:26px;padding:0 10px;border-radius:5px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:3px;font-size:11px;font-weight:700;font-family:var(--font);transition:all .13s}
+.cm-action-view{background:#eff6ff;color:#1d4ed8}
+.cm-action-view:hover{background:#dbeafe}
+.cm-action-edit{background:#f0fdf4;color:#166534}
+.cm-action-edit:hover{background:#dcfce7}
+.cm-status-bar{font-size:11px;color:var(--tl);padding:8px 0 0;display:flex;justify-content:space-between}
+.cm-panel-overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:500;display:flex;justify-content:flex-end;backdrop-filter:blur(2px)}
+.cm-panel-overlay.cm-hidden{display:none}
+.cm-panel-box{width:min(680px,100vw);background:#fff;display:flex;flex-direction:column;height:100vh;box-shadow:-8px 0 40px rgba(0,0,0,.15);animation:cmSlide .2s}
+@keyframes cmSlide{from{transform:translateX(28px);opacity:0}to{transform:translateX(0);opacity:1}}
+.cm-panel-head{height:52px;background:linear-gradient(135deg,var(--primary),var(--accent));padding:0 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.cm-panel-title{font-size:14px;font-weight:800;color:#fff;font-family:var(--disp)}
+.cm-panel-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:30px;height:30px;border-radius:6px;cursor:pointer;font-size:17px;display:flex;align-items:center;justify-content:center}
+.cm-panel-close:hover{background:rgba(255,255,255,.25)}
+.cm-panel-tabs{display:flex;border-bottom:1px solid var(--border);background:#fff;flex-shrink:0}
+.cm-panel-tab{height:44px;padding:0 18px;border:none;background:none;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--tl);border-bottom:2px solid transparent;transition:all .14s;font-family:var(--font)}
+.cm-panel-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.cm-panel-body{flex:1;overflow-y:auto;padding:18px 22px;display:flex;flex-direction:column;gap:14px}
+.cm-panel-body::-webkit-scrollbar{width:5px}
+.cm-panel-body::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
+.cm-panel-foot{border-top:1px solid var(--border);background:var(--bg);display:flex;align-items:center;justify-content:flex-end;gap:8px;padding:10px 20px;flex-shrink:0}
+.cm-section-title{font-size:10px;font-weight:800;color:var(--tl);letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--bl)}
+.cm-field-label{font-size:11px;font-weight:700;color:#374151;display:block;margin-bottom:4px}
+.cm-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cm-form-input{width:100%;height:38px;border:1px solid var(--border);border-radius:7px;padding:0 10px;font-size:12.5px;color:var(--td);outline:none;font-family:var(--font);background:#fff;transition:border-color .14s}
+.cm-form-input:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(37,99,235,.1)}
+.cm-form-input:disabled{background:var(--bg);color:var(--tm);cursor:not-allowed}
+.cm-form-input::placeholder{color:var(--tl)}
+.cm-form-select{width:100%;height:38px;border:1px solid var(--border);border-radius:7px;padding:0 28px 0 10px;font-size:12.5px;color:var(--td);outline:none;font-family:var(--font);background:#fff;appearance:none;cursor:pointer;transition:border-color .14s}
+.cm-form-select:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(37,99,235,.1)}
+.cm-sel-wrap{position:relative}
+.cm-sel-wrap::after{content:'';position:absolute;right:10px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--tl);pointer-events:none}
+.cm-ms-wrap{position:relative}
+.cm-ms-trigger{width:100%;min-height:38px;border:1px solid var(--border);border-radius:7px;padding:5px 28px 5px 10px;font-size:12.5px;color:var(--td);outline:none;font-family:var(--font);background:#fff;cursor:pointer;display:flex;flex-wrap:wrap;gap:4px;align-items:center;position:relative;transition:border-color .14s}
+.cm-ms-trigger.open{border-color:var(--accent);box-shadow:0 0 0 2px rgba(37,99,235,.1)}
+.cm-ms-trigger::after{content:'';position:absolute;right:10px;top:15px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid var(--tl);pointer-events:none}
+.cm-ms-tag{background:#eff6ff;color:var(--accent);font-size:10.5px;font-weight:600;padding:2px 6px;border-radius:4px;display:inline-flex;align-items:center;gap:3px}
+.cm-ms-tag-x{cursor:pointer;font-size:12px;line-height:1}
+.cm-ms-tag-x:hover{color:#991b1b}
+.cm-ms-placeholder{color:var(--tl);font-size:12.5px}
+.cm-ms-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1px solid var(--border);border-radius:7px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:600;display:none;max-height:200px;overflow-y:auto}
+.cm-ms-dropdown.open{display:block}
+.cm-ms-option{display:flex;align-items:center;gap:8px;padding:8px 12px;cursor:pointer;font-size:12px;color:var(--td);transition:background .1s}
+.cm-ms-option:hover{background:var(--bg)}
+.cm-ms-option input{width:13px;height:13px;accent-color:var(--accent);flex-shrink:0}
+.cm-ms-option.selected{background:#f0f5ff}
+.cm-timeline{display:flex;flex-direction:column;gap:0}
+.cm-tl-item{display:flex;gap:10px;position:relative}
+.cm-tl-item:not(:last-child)::before{content:'';position:absolute;left:14px;top:30px;bottom:-4px;width:2px;background:var(--border);z-index:0}
+.cm-tl-dot{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;z-index:1}
+.cm-tl-dot.maker{background:#eff6ff;color:#1d4ed8;border:2px solid #bfdbfe}
+.cm-tl-dot.checker{background:#f0fdf4;color:#166534;border:2px solid #bbf7d0}
+.cm-tl-dot.pending{background:#fffbeb;color:#92400e;border:2px solid #fde68a}
+.cm-tl-content{flex:1;padding-bottom:18px}
+.cm-tl-role{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--tl);margin-bottom:2px}
+.cm-tl-name{font-size:12.5px;font-weight:700;color:var(--td)}
+.cm-tl-meta{font-size:11px;color:var(--tl);margin-top:2px}
+.cm-tl-comment{margin-top:5px;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:6px 9px;font-size:11.5px;color:#374151}
+.cm-tl-badge{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:9999px;margin-top:3px}
+.cm-tl-badge.approved{background:#dcfce7;color:#166534}
+.cm-tl-badge.pending{background:#fef3c7;color:#92400e}
+.cm-tl-badge.rejected{background:#fef2f2;color:#991b1b}
+.cm-review-overlay{position:fixed;inset:0;background:rgba(15,23,42,.5);display:flex;align-items:center;justify-content:center;z-index:700}
+.cm-review-overlay.cm-hidden{display:none}
+`;
+  document.head.appendChild(s);
+})();
+
+(function injectCountryPanels(){
+  if(document.getElementById('cm-view-panel')) return;
+  document.body.insertAdjacentHTML('beforeend', `
+<div class="cm-panel-overlay cm-hidden" id="cm-view-panel">
+  <div class="cm-panel-box">
+    <div class="cm-panel-head">
+      <span class="cm-panel-title" id="cm-view-title">Country Details</span>
+      <button class="cm-panel-close" onclick="cmCloseView()">✕</button>
+    </div>
+    <div class="cm-panel-tabs">
+      <button class="cm-panel-tab active" id="cm-vtab1" onclick="cmSwitchViewTab('details')">Country Details</button>
+      <button class="cm-panel-tab" id="cm-vtab2" onclick="cmSwitchViewTab('audit')">Maker / Checker</button>
+    </div>
+    <div class="cm-panel-body" id="cm-view-details"></div>
+    <div class="cm-panel-body" id="cm-view-audit" style="display:none"></div>
+    <div class="cm-panel-foot">
+      <button class="btn btn-outline btn-sm" onclick="cmCloseView()">Close</button>
+    </div>
+  </div>
+</div>
+<div class="cm-panel-overlay cm-hidden" id="cm-edit-panel">
+  <div class="cm-panel-box">
+    <div class="cm-panel-head">
+      <span class="cm-panel-title" id="cm-edit-title">Edit Country</span>
+      <button class="cm-panel-close" onclick="cmCloseEdit()">✕</button>
+    </div>
+    <div class="cm-panel-body" id="cm-edit-body">
+      <div>
+        <div class="cm-section-title">Country Information <span style="font-size:10px;color:var(--tl);font-weight:400;text-transform:none;letter-spacing:0">(read-only)</span></div>
+        <div class="cm-grid-2">
+          <div><label class="cm-field-label">Country Name</label><input class="cm-form-input" id="cm-eName" disabled></div>
+          <div><label class="cm-field-label">Country Code</label><input class="cm-form-input" id="cm-eCode" disabled></div>
+          <div><label class="cm-field-label">Region</label><input class="cm-form-input" id="cm-eRegion" disabled></div>
+          <div><label class="cm-field-label">Numeric Code</label><input class="cm-form-input" id="cm-eNumCode" disabled></div>
+        </div>
+      </div>
+      <div>
+        <div class="cm-section-title">ISO Standards</div>
+        <div class="cm-grid-2">
+          <div><label class="cm-field-label">Alpha-2 Code</label><input class="cm-form-input" id="cm-eAlpha2" disabled></div>
+          <div><label class="cm-field-label">Alpha-3 Code</label><input class="cm-form-input" id="cm-eAlpha3" disabled></div>
+        </div>
+      </div>
+      <div>
+        <div class="cm-section-title">AML Risk Classification</div>
+        <div class="cm-grid-2">
+          <div><label class="cm-field-label">Risk Level <span style="color:var(--red)">*</span></label>
+            <div class="cm-sel-wrap"><select class="cm-form-select" id="cm-eRisk">
+              <option value="">Select risk level...</option>
+              <option>Low</option><option>Medium</option><option>High</option>
+            </select></div>
+          </div>
+          <div><label class="cm-field-label">Effective Date</label><input type="date" class="cm-form-input" id="cm-eDate"></div>
+        </div>
+        <div style="margin-top:10px">
+          <label class="cm-field-label">Risk Reasons <span style="color:var(--red)">*</span></label>
+          <div class="cm-ms-wrap" id="cm-msWrap">
+            <div class="cm-ms-trigger" id="cm-msTrigger" onclick="cmToggleMS()" tabindex="0"><span class="cm-ms-placeholder" id="cm-msPlaceholder">Select risk reasons...</span></div>
+            <div class="cm-ms-dropdown" id="cm-msDropdown">
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'FATF Black-Listed')"><input type="checkbox"><span>FATF Black-Listed</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'FATF Grey-Listed')"><input type="checkbox"><span>FATF Grey-Listed</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'NCCT Listed')"><input type="checkbox"><span>NCCT Listed</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Sanctions – OFAC (Comprehensive)')"><input type="checkbox"><span>Sanctions – OFAC (Comprehensive)</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Sanctions – OFAC (Partial)')"><input type="checkbox"><span>Sanctions – OFAC (Partial)</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Sanctions – UN')"><input type="checkbox"><span>Sanctions – UN</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'EU High-Risk Third Country')"><input type="checkbox"><span>EU High-Risk Third Country</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'UK HMT High-Risk')"><input type="checkbox"><span>UK HMT High-Risk</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Proliferation Financing Risk')"><input type="checkbox"><span>Proliferation Financing Risk</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Tax Haven / Secrecy Jurisdiction')"><input type="checkbox"><span>Tax Haven / Secrecy Jurisdiction</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Human Trafficking Risk')"><input type="checkbox"><span>Human Trafficking Risk</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Wildlife Trafficking Risk')"><input type="checkbox"><span>Wildlife Trafficking Risk</span></div>
+              <div class="cm-ms-option" onclick="cmToggleMSOpt(this,'Correspondent Banking Risk')"><input type="checkbox"><span>Correspondent Banking Risk</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="cm-section-title">Remarks</div>
+        <div><label class="cm-field-label">Notes / Compliance Remarks</label>
+          <textarea class="cm-form-input" id="cm-eRemarks" style="height:75px;padding:8px 10px;resize:none" placeholder="Add compliance notes or remarks for this country..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="cm-panel-foot">
+      <button class="btn btn-outline btn-sm" onclick="cmCloseEdit()">Cancel</button>
+      <button class="btn btn-primary btn-sm" onclick="cmSaveCountry()">✓ Submit for Verification</button>
+    </div>
+  </div>
+</div>
+<div class="cm-review-overlay cm-hidden" id="cm-review-popup">
+  <div style="background:#fff;border-radius:12px;width:360px;max-width:95vw;box-shadow:0 20px 60px rgba(0,0,0,.25);overflow:hidden">
+    <div style="background:linear-gradient(135deg,var(--primary),var(--accent));padding:28px 22px 20px;text-align:center">
+      <div style="width:48px;height:48px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:4px">Request Sent for Review</div>
+      <div style="font-size:11.5px;color:rgba(255,255,255,.8)">Changes submitted — pending checker approval.</div>
+    </div>
+    <div style="padding:18px 22px">
+      <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:7px;padding:9px 12px;font-size:12px;color:#166534;margin-bottom:14px"><strong>What happens next?</strong><br>An authorised checker will review and approve or reject the request.</div>
+      <button onclick="cmCloseReview()" style="background:linear-gradient(135deg,var(--primary),var(--accent));border:none;color:#fff;font-size:13px;font-weight:700;padding:0 24px;height:38px;border-radius:8px;cursor:pointer;font-family:var(--font);width:100%">Done</button>
+    </div>
+  </div>
+</div>`);
+})();
+
+const CM_WORLD=[{n:'Afghanistan',c:'AF',r:'South Asia',nc:'004',a2:'AF',a3:'AFG'},{n:'Albania',c:'AL',r:'Europe',nc:'008',a2:'AL',a3:'ALB'},{n:'Algeria',c:'DZ',r:'Africa',nc:'012',a2:'DZ',a3:'DZA'},{n:'Andorra',c:'AD',r:'Europe',nc:'020',a2:'AD',a3:'AND'},{n:'Angola',c:'AO',r:'Africa',nc:'024',a2:'AO',a3:'AGO'},{n:'Antigua and Barbuda',c:'AG',r:'Americas',nc:'028',a2:'AG',a3:'ATG'},{n:'Argentina',c:'AR',r:'Americas',nc:'032',a2:'AR',a3:'ARG'},{n:'Armenia',c:'AM',r:'Europe',nc:'051',a2:'AM',a3:'ARM'},{n:'Australia',c:'AU',r:'APAC',nc:'036',a2:'AU',a3:'AUS'},{n:'Austria',c:'AT',r:'Europe',nc:'040',a2:'AT',a3:'AUT'},{n:'Azerbaijan',c:'AZ',r:'Europe',nc:'031',a2:'AZ',a3:'AZE'},{n:'Bahamas',c:'BS',r:'Americas',nc:'044',a2:'BS',a3:'BHS'},{n:'Bahrain',c:'BH',r:'Middle East',nc:'048',a2:'BH',a3:'BHR'},{n:'Bangladesh',c:'BD',r:'South Asia',nc:'050',a2:'BD',a3:'BGD'},{n:'Barbados',c:'BB',r:'Americas',nc:'052',a2:'BB',a3:'BRB'},{n:'Belarus',c:'BY',r:'Europe',nc:'112',a2:'BY',a3:'BLR'},{n:'Belgium',c:'BE',r:'Europe',nc:'056',a2:'BE',a3:'BEL'},{n:'Belize',c:'BZ',r:'Americas',nc:'084',a2:'BZ',a3:'BLZ'},{n:'Benin',c:'BJ',r:'Africa',nc:'204',a2:'BJ',a3:'BEN'},{n:'Bhutan',c:'BT',r:'South Asia',nc:'064',a2:'BT',a3:'BTN'},{n:'Bolivia',c:'BO',r:'Americas',nc:'068',a2:'BO',a3:'BOL'},{n:'Bosnia and Herzegovina',c:'BA',r:'Europe',nc:'070',a2:'BA',a3:'BIH'},{n:'Botswana',c:'BW',r:'Africa',nc:'072',a2:'BW',a3:'BWA'},{n:'Brazil',c:'BR',r:'Americas',nc:'076',a2:'BR',a3:'BRA'},{n:'Brunei',c:'BN',r:'APAC',nc:'096',a2:'BN',a3:'BRN'},{n:'Bulgaria',c:'BG',r:'Europe',nc:'100',a2:'BG',a3:'BGR'},{n:'Burkina Faso',c:'BF',r:'Africa',nc:'854',a2:'BF',a3:'BFA'},{n:'Burundi',c:'BI',r:'Africa',nc:'108',a2:'BI',a3:'BDI'},{n:'Cabo Verde',c:'CV',r:'Africa',nc:'132',a2:'CV',a3:'CPV'},{n:'Cambodia',c:'KH',r:'APAC',nc:'116',a2:'KH',a3:'KHM'},{n:'Cameroon',c:'CM',r:'Africa',nc:'120',a2:'CM',a3:'CMR'},{n:'Canada',c:'CA',r:'Americas',nc:'124',a2:'CA',a3:'CAN'},{n:'Central African Republic',c:'CF',r:'Africa',nc:'140',a2:'CF',a3:'CAF'},{n:'Chad',c:'TD',r:'Africa',nc:'148',a2:'TD',a3:'TCD'},{n:'Chile',c:'CL',r:'Americas',nc:'152',a2:'CL',a3:'CHL'},{n:'China',c:'CN',r:'APAC',nc:'156',a2:'CN',a3:'CHN'},{n:'Colombia',c:'CO',r:'Americas',nc:'170',a2:'CO',a3:'COL'},{n:'Comoros',c:'KM',r:'Africa',nc:'174',a2:'KM',a3:'COM'},{n:'Congo (Dem. Rep.)',c:'CD',r:'Africa',nc:'180',a2:'CD',a3:'COD'},{n:'Congo (Republic)',c:'CG',r:'Africa',nc:'178',a2:'CG',a3:'COG'},{n:'Costa Rica',c:'CR',r:'Americas',nc:'188',a2:'CR',a3:'CRI'},{n:"Côte d'Ivoire",c:'CI',r:'Africa',nc:'384',a2:'CI',a3:'CIV'},{n:'Croatia',c:'HR',r:'Europe',nc:'191',a2:'HR',a3:'HRV'},{n:'Cuba',c:'CU',r:'Americas',nc:'192',a2:'CU',a3:'CUB'},{n:'Cyprus',c:'CY',r:'Europe',nc:'196',a2:'CY',a3:'CYP'},{n:'Czech Republic',c:'CZ',r:'Europe',nc:'203',a2:'CZ',a3:'CZE'},{n:'Denmark',c:'DK',r:'Europe',nc:'208',a2:'DK',a3:'DNK'},{n:'Djibouti',c:'DJ',r:'Africa',nc:'262',a2:'DJ',a3:'DJI'},{n:'Dominica',c:'DM',r:'Americas',nc:'212',a2:'DM',a3:'DMA'},{n:'Dominican Republic',c:'DO',r:'Americas',nc:'214',a2:'DO',a3:'DOM'},{n:'Ecuador',c:'EC',r:'Americas',nc:'218',a2:'EC',a3:'ECU'},{n:'Egypt',c:'EG',r:'Africa',nc:'818',a2:'EG',a3:'EGY'},{n:'El Salvador',c:'SV',r:'Americas',nc:'222',a2:'SV',a3:'SLV'},{n:'Equatorial Guinea',c:'GQ',r:'Africa',nc:'226',a2:'GQ',a3:'GNQ'},{n:'Eritrea',c:'ER',r:'Africa',nc:'232',a2:'ER',a3:'ERI'},{n:'Estonia',c:'EE',r:'Europe',nc:'233',a2:'EE',a3:'EST'},{n:'Eswatini',c:'SZ',r:'Africa',nc:'748',a2:'SZ',a3:'SWZ'},{n:'Ethiopia',c:'ET',r:'Africa',nc:'231',a2:'ET',a3:'ETH'},{n:'Fiji',c:'FJ',r:'APAC',nc:'242',a2:'FJ',a3:'FJI'},{n:'Finland',c:'FI',r:'Europe',nc:'246',a2:'FI',a3:'FIN'},{n:'France',c:'FR',r:'Europe',nc:'250',a2:'FR',a3:'FRA'},{n:'Gabon',c:'GA',r:'Africa',nc:'266',a2:'GA',a3:'GAB'},{n:'Gambia',c:'GM',r:'Africa',nc:'270',a2:'GM',a3:'GMB'},{n:'Georgia',c:'GE',r:'Europe',nc:'268',a2:'GE',a3:'GEO'},{n:'Germany',c:'DE',r:'Europe',nc:'276',a2:'DE',a3:'DEU'},{n:'Ghana',c:'GH',r:'Africa',nc:'288',a2:'GH',a3:'GHA'},{n:'Greece',c:'GR',r:'Europe',nc:'300',a2:'GR',a3:'GRC'},{n:'Grenada',c:'GD',r:'Americas',nc:'308',a2:'GD',a3:'GRD'},{n:'Guatemala',c:'GT',r:'Americas',nc:'320',a2:'GT',a3:'GTM'},{n:'Guinea',c:'GN',r:'Africa',nc:'324',a2:'GN',a3:'GIN'},{n:'Guinea-Bissau',c:'GW',r:'Africa',nc:'624',a2:'GW',a3:'GNB'},{n:'Guyana',c:'GY',r:'Americas',nc:'328',a2:'GY',a3:'GUY'},{n:'Haiti',c:'HT',r:'Americas',nc:'332',a2:'HT',a3:'HTI'},{n:'Honduras',c:'HN',r:'Americas',nc:'340',a2:'HN',a3:'HND'},{n:'Hungary',c:'HU',r:'Europe',nc:'348',a2:'HU',a3:'HUN'},{n:'Iceland',c:'IS',r:'Europe',nc:'352',a2:'IS',a3:'ISL'},{n:'India',c:'IN',r:'South Asia',nc:'356',a2:'IN',a3:'IND'},{n:'Indonesia',c:'ID',r:'APAC',nc:'360',a2:'ID',a3:'IDN'},{n:'Iran',c:'IR',r:'Middle East',nc:'364',a2:'IR',a3:'IRN'},{n:'Iraq',c:'IQ',r:'Middle East',nc:'368',a2:'IQ',a3:'IRQ'},{n:'Ireland',c:'IE',r:'Europe',nc:'372',a2:'IE',a3:'IRL'},{n:'Israel',c:'IL',r:'Middle East',nc:'376',a2:'IL',a3:'ISR'},{n:'Italy',c:'IT',r:'Europe',nc:'380',a2:'IT',a3:'ITA'},{n:'Jamaica',c:'JM',r:'Americas',nc:'388',a2:'JM',a3:'JAM'},{n:'Japan',c:'JP',r:'APAC',nc:'392',a2:'JP',a3:'JPN'},{n:'Jordan',c:'JO',r:'Middle East',nc:'400',a2:'JO',a3:'JOR'},{n:'Kazakhstan',c:'KZ',r:'Europe',nc:'398',a2:'KZ',a3:'KAZ'},{n:'Kenya',c:'KE',r:'Africa',nc:'404',a2:'KE',a3:'KEN'},{n:'Kuwait',c:'KW',r:'Middle East',nc:'414',a2:'KW',a3:'KWT'},{n:'Kyrgyzstan',c:'KG',r:'APAC',nc:'417',a2:'KG',a3:'KGZ'},{n:'Laos',c:'LA',r:'APAC',nc:'418',a2:'LA',a3:'LAO'},{n:'Latvia',c:'LV',r:'Europe',nc:'428',a2:'LV',a3:'LVA'},{n:'Lebanon',c:'LB',r:'Middle East',nc:'422',a2:'LB',a3:'LBN'},{n:'Lesotho',c:'LS',r:'Africa',nc:'426',a2:'LS',a3:'LSO'},{n:'Liberia',c:'LR',r:'Africa',nc:'430',a2:'LR',a3:'LBR'},{n:'Libya',c:'LY',r:'Africa',nc:'434',a2:'LY',a3:'LBY'},{n:'Liechtenstein',c:'LI',r:'Europe',nc:'438',a2:'LI',a3:'LIE'},{n:'Lithuania',c:'LT',r:'Europe',nc:'440',a2:'LT',a3:'LTU'},{n:'Luxembourg',c:'LU',r:'Europe',nc:'442',a2:'LU',a3:'LUX'},{n:'Madagascar',c:'MG',r:'Africa',nc:'450',a2:'MG',a3:'MDG'},{n:'Malawi',c:'MW',r:'Africa',nc:'454',a2:'MW',a3:'MWI'},{n:'Malaysia',c:'MY',r:'APAC',nc:'458',a2:'MY',a3:'MYS'},{n:'Maldives',c:'MV',r:'South Asia',nc:'462',a2:'MV',a3:'MDV'},{n:'Mali',c:'ML',r:'Africa',nc:'466',a2:'ML',a3:'MLI'},{n:'Malta',c:'MT',r:'Europe',nc:'470',a2:'MT',a3:'MLT'},{n:'Marshall Islands',c:'MH',r:'APAC',nc:'584',a2:'MH',a3:'MHL'},{n:'Mauritania',c:'MR',r:'Africa',nc:'478',a2:'MR',a3:'MRT'},{n:'Mauritius',c:'MU',r:'Africa',nc:'480',a2:'MU',a3:'MUS'},{n:'Mexico',c:'MX',r:'Americas',nc:'484',a2:'MX',a3:'MEX'},{n:'Micronesia',c:'FM',r:'APAC',nc:'583',a2:'FM',a3:'FSM'},{n:'Moldova',c:'MD',r:'Europe',nc:'498',a2:'MD',a3:'MDA'},{n:'Monaco',c:'MC',r:'Europe',nc:'492',a2:'MC',a3:'MCO'},{n:'Mongolia',c:'MN',r:'APAC',nc:'496',a2:'MN',a3:'MNG'},{n:'Montenegro',c:'ME',r:'Europe',nc:'499',a2:'ME',a3:'MNE'},{n:'Morocco',c:'MA',r:'Africa',nc:'504',a2:'MA',a3:'MAR'},{n:'Mozambique',c:'MZ',r:'Africa',nc:'508',a2:'MZ',a3:'MOZ'},{n:'Myanmar',c:'MM',r:'APAC',nc:'104',a2:'MM',a3:'MMR'},{n:'Namibia',c:'NA',r:'Africa',nc:'516',a2:'NA',a3:'NAM'},{n:'Nepal',c:'NP',r:'South Asia',nc:'524',a2:'NP',a3:'NPL'},{n:'Netherlands',c:'NL',r:'Europe',nc:'528',a2:'NL',a3:'NLD'},{n:'New Zealand',c:'NZ',r:'APAC',nc:'554',a2:'NZ',a3:'NZL'},{n:'Nicaragua',c:'NI',r:'Americas',nc:'558',a2:'NI',a3:'NIC'},{n:'Niger',c:'NE',r:'Africa',nc:'562',a2:'NE',a3:'NER'},{n:'Nigeria',c:'NG',r:'Africa',nc:'566',a2:'NG',a3:'NGA'},{n:'North Korea',c:'KP',r:'APAC',nc:'408',a2:'KP',a3:'PRK'},{n:'North Macedonia',c:'MK',r:'Europe',nc:'807',a2:'MK',a3:'MKD'},{n:'Norway',c:'NO',r:'Europe',nc:'578',a2:'NO',a3:'NOR'},{n:'Oman',c:'OM',r:'Middle East',nc:'512',a2:'OM',a3:'OMN'},{n:'Pakistan',c:'PK',r:'South Asia',nc:'586',a2:'PK',a3:'PAK'},{n:'Palau',c:'PW',r:'APAC',nc:'585',a2:'PW',a3:'PLW'},{n:'Palestine',c:'PS',r:'Middle East',nc:'275',a2:'PS',a3:'PSE'},{n:'Panama',c:'PA',r:'Americas',nc:'591',a2:'PA',a3:'PAN'},{n:'Papua New Guinea',c:'PG',r:'APAC',nc:'598',a2:'PG',a3:'PNG'},{n:'Paraguay',c:'PY',r:'Americas',nc:'600',a2:'PY',a3:'PRY'},{n:'Peru',c:'PE',r:'Americas',nc:'604',a2:'PE',a3:'PER'},{n:'Philippines',c:'PH',r:'APAC',nc:'608',a2:'PH',a3:'PHL'},{n:'Poland',c:'PL',r:'Europe',nc:'616',a2:'PL',a3:'POL'},{n:'Portugal',c:'PT',r:'Europe',nc:'620',a2:'PT',a3:'PRT'},{n:'Qatar',c:'QA',r:'Middle East',nc:'634',a2:'QA',a3:'QAT'},{n:'Romania',c:'RO',r:'Europe',nc:'642',a2:'RO',a3:'ROU'},{n:'Russia',c:'RU',r:'Europe',nc:'643',a2:'RU',a3:'RUS'},{n:'Rwanda',c:'RW',r:'Africa',nc:'646',a2:'RW',a3:'RWA'},{n:'Saint Kitts and Nevis',c:'KN',r:'Americas',nc:'659',a2:'KN',a3:'KNA'},{n:'Saint Lucia',c:'LC',r:'Americas',nc:'662',a2:'LC',a3:'LCA'},{n:'Saint Vincent and the Grenadines',c:'VC',r:'Americas',nc:'670',a2:'VC',a3:'VCT'},{n:'Samoa',c:'WS',r:'APAC',nc:'882',a2:'WS',a3:'WSM'},{n:'San Marino',c:'SM',r:'Europe',nc:'674',a2:'SM',a3:'SMR'},{n:'São Tomé and Príncipe',c:'ST',r:'Africa',nc:'678',a2:'ST',a3:'STP'},{n:'Saudi Arabia',c:'SA',r:'Middle East',nc:'682',a2:'SA',a3:'SAU'},{n:'Senegal',c:'SN',r:'Africa',nc:'686',a2:'SN',a3:'SEN'},{n:'Serbia',c:'RS',r:'Europe',nc:'688',a2:'RS',a3:'SRB'},{n:'Seychelles',c:'SC',r:'Africa',nc:'690',a2:'SC',a3:'SYC'},{n:'Sierra Leone',c:'SL',r:'Africa',nc:'694',a2:'SL',a3:'SLE'},{n:'Singapore',c:'SG',r:'APAC',nc:'702',a2:'SG',a3:'SGP'},{n:'Slovakia',c:'SK',r:'Europe',nc:'703',a2:'SK',a3:'SVK'},{n:'Slovenia',c:'SI',r:'Europe',nc:'705',a2:'SI',a3:'SVN'},{n:'Solomon Islands',c:'SB',r:'APAC',nc:'090',a2:'SB',a3:'SLB'},{n:'Somalia',c:'SO',r:'Africa',nc:'706',a2:'SO',a3:'SOM'},{n:'South Africa',c:'ZA',r:'Africa',nc:'710',a2:'ZA',a3:'ZAF'},{n:'South Korea',c:'KR',r:'APAC',nc:'410',a2:'KR',a3:'KOR'},{n:'South Sudan',c:'SS',r:'Africa',nc:'728',a2:'SS',a3:'SSD'},{n:'Spain',c:'ES',r:'Europe',nc:'724',a2:'ES',a3:'ESP'},{n:'Sri Lanka',c:'LK',r:'South Asia',nc:'144',a2:'LK',a3:'LKA'},{n:'Sudan',c:'SD',r:'Africa',nc:'729',a2:'SD',a3:'SDN'},{n:'Suriname',c:'SR',r:'Americas',nc:'740',a2:'SR',a3:'SUR'},{n:'Sweden',c:'SE',r:'Europe',nc:'752',a2:'SE',a3:'SWE'},{n:'Switzerland',c:'CH',r:'Europe',nc:'756',a2:'CH',a3:'CHE'},{n:'Syria',c:'SY',r:'Middle East',nc:'760',a2:'SY',a3:'SYR'},{n:'Taiwan',c:'TW',r:'APAC',nc:'158',a2:'TW',a3:'TWN'},{n:'Tajikistan',c:'TJ',r:'APAC',nc:'762',a2:'TJ',a3:'TJK'},{n:'Tanzania',c:'TZ',r:'Africa',nc:'834',a2:'TZ',a3:'TZA'},{n:'Thailand',c:'TH',r:'APAC',nc:'764',a2:'TH',a3:'THA'},{n:'Timor-Leste',c:'TL',r:'APAC',nc:'626',a2:'TL',a3:'TLS'},{n:'Togo',c:'TG',r:'Africa',nc:'768',a2:'TG',a3:'TGO'},{n:'Tonga',c:'TO',r:'APAC',nc:'776',a2:'TO',a3:'TON'},{n:'Trinidad and Tobago',c:'TT',r:'Americas',nc:'780',a2:'TT',a3:'TTO'},{n:'Tunisia',c:'TN',r:'Africa',nc:'788',a2:'TN',a3:'TUN'},{n:'Turkey',c:'TR',r:'Europe',nc:'792',a2:'TR',a3:'TUR'},{n:'Turkmenistan',c:'TM',r:'APAC',nc:'795',a2:'TM',a3:'TKM'},{n:'Uganda',c:'UG',r:'Africa',nc:'800',a2:'UG',a3:'UGA'},{n:'Ukraine',c:'UA',r:'Europe',nc:'804',a2:'UA',a3:'UKR'},{n:'United Arab Emirates',c:'AE',r:'Middle East',nc:'784',a2:'AE',a3:'ARE'},{n:'United Kingdom',c:'GB',r:'Europe',nc:'826',a2:'GB',a3:'GBR'},{n:'United States',c:'US',r:'Americas',nc:'840',a2:'US',a3:'USA'},{n:'Uruguay',c:'UY',r:'Americas',nc:'858',a2:'UY',a3:'URY'},{n:'Uzbekistan',c:'UZ',r:'APAC',nc:'860',a2:'UZ',a3:'UZB'},{n:'Vanuatu',c:'VU',r:'APAC',nc:'548',a2:'VU',a3:'VUT'},{n:'Vatican City',c:'VA',r:'Europe',nc:'336',a2:'VA',a3:'VAT'},{n:'Venezuela',c:'VE',r:'Americas',nc:'862',a2:'VE',a3:'VEN'},{n:'Vietnam',c:'VN',r:'APAC',nc:'704',a2:'VN',a3:'VNM'},{n:'Yemen',c:'YE',r:'Middle East',nc:'887',a2:'YE',a3:'YEM'},{n:'Zambia',c:'ZM',r:'Africa',nc:'894',a2:'ZM',a3:'ZMB'},{n:'Zimbabwe',c:'ZW',r:'Africa',nc:'716',a2:'ZW',a3:'ZWE'}];
+const CM_SEED={AF:{k:'High',rs:['FATF Black-Listed','NCCT Listed','Sanctions – OFAC (Comprehensive)','Sanctions – UN','Proliferation Financing Risk','Human Trafficking Risk']},MM:{k:'High',rs:['FATF Grey-Listed','EU High-Risk Third Country','UK HMT High-Risk','Correspondent Banking Risk','Human Trafficking Risk']},IR:{k:'High',rs:['FATF Black-Listed','NCCT Listed','Sanctions – OFAC (Comprehensive)','Sanctions – UN','EU High-Risk Third Country','UK HMT High-Risk','Proliferation Financing Risk']},KP:{k:'High',rs:['FATF Black-Listed','NCCT Listed','Sanctions – OFAC (Comprehensive)','Sanctions – UN','Proliferation Financing Risk']},SY:{k:'High',rs:['FATF Black-Listed','Sanctions – OFAC (Comprehensive)','Sanctions – UN','EU High-Risk Third Country','UK HMT High-Risk','Proliferation Financing Risk','Human Trafficking Risk']},SD:{k:'High',rs:['FATF Grey-Listed','Sanctions – OFAC (Comprehensive)','Sanctions – UN','EU High-Risk Third Country','UK HMT High-Risk','Human Trafficking Risk']},LY:{k:'High',rs:['FATF Grey-Listed','Sanctions – UN','EU High-Risk Third Country','UK HMT High-Risk','Correspondent Banking Risk']},SO:{k:'High',rs:['FATF Grey-Listed','Sanctions – UN','EU High-Risk Third Country','UK HMT High-Risk','Human Trafficking Risk','Correspondent Banking Risk']},PK:{k:'High',rs:['FATF Grey-Listed','EU High-Risk Third Country','UK HMT High-Risk','Proliferation Financing Risk','Human Trafficking Risk','Correspondent Banking Risk']},NG:{k:'High',rs:['FATF Grey-Listed','EU High-Risk Third Country','UK HMT High-Risk','Human Trafficking Risk','Wildlife Trafficking Risk','Correspondent Banking Risk']},YE:{k:'High',rs:['FATF Grey-Listed','Sanctions – OFAC (Partial)','Sanctions – UN','EU High-Risk Third Country','Human Trafficking Risk','Correspondent Banking Risk']},VE:{k:'High',rs:['FATF Grey-Listed','Sanctions – OFAC (Partial)','EU High-Risk Third Country','Human Trafficking Risk','Wildlife Trafficking Risk']},CU:{k:'High',rs:['Sanctions – OFAC (Comprehensive)','Sanctions – OFAC (Partial)','EU High-Risk Third Country']},IQ:{k:'High',rs:['FATF Grey-Listed','Sanctions – OFAC (Partial)','EU High-Risk Third Country','UK HMT High-Risk','Proliferation Financing Risk','Human Trafficking Risk']},HT:{k:'High',rs:['FATF Grey-Listed','EU High-Risk Third Country','UK HMT High-Risk','Human Trafficking Risk','Correspondent Banking Risk']},ML:{k:'High',rs:['FATF Grey-Listed','EU High-Risk Third Country','UK HMT High-Risk','Human Trafficking Risk','Wildlife Trafficking Risk']},NI:{k:'High',rs:['FATF Grey-Listed','EU High-Risk Third Country','Correspondent Banking Risk']},BF:{k:'High',rs:['FATF Grey-Listed','EU High-Risk Third Country','UK HMT High-Risk','Human Trafficking Risk','Wildlife Trafficking Risk']},TZ:{k:'High',rs:['FATF Grey-Listed','Human Trafficking Risk','Wildlife Trafficking Risk','Correspondent Banking Risk']},TJ:{k:'High',rs:['FATF Grey-Listed','Human Trafficking Risk','Correspondent Banking Risk']},BY:{k:'High',rs:['Sanctions – OFAC (Partial)','Sanctions – UN','EU High-Risk Third Country','UK HMT High-Risk']},RU:{k:'High',rs:['Sanctions – OFAC (Partial)','Sanctions – UN','EU High-Risk Third Country','UK HMT High-Risk','Correspondent Banking Risk']},LB:{k:'High',rs:['FATF Grey-Listed','Sanctions – OFAC (Partial)','EU High-Risk Third Country','Correspondent Banking Risk']},UA:{k:'Medium',rs:['Correspondent Banking Risk']},TR:{k:'Medium',rs:['FATF Grey-Listed','Correspondent Banking Risk']},AE:{k:'Medium',rs:['Tax Haven / Secrecy Jurisdiction','Correspondent Banking Risk']},SA:{k:'Medium',rs:['Proliferation Financing Risk','Correspondent Banking Risk']},CN:{k:'Medium',rs:['Proliferation Financing Risk','Wildlife Trafficking Risk']},MX:{k:'Medium',rs:['Human Trafficking Risk','Correspondent Banking Risk']},CO:{k:'Medium',rs:['Human Trafficking Risk','Wildlife Trafficking Risk']},KE:{k:'Medium',rs:['Human Trafficking Risk','Wildlife Trafficking Risk','Correspondent Banking Risk']},ZA:{k:'Medium',rs:['FATF Grey-Listed','Correspondent Banking Risk','Wildlife Trafficking Risk']},GH:{k:'Medium',rs:['FATF Grey-Listed','Correspondent Banking Risk']},TN:{k:'Medium',rs:['FATF Grey-Listed']},PA:{k:'Medium',rs:['Tax Haven / Secrecy Jurisdiction','Correspondent Banking Risk']},VU:{k:'Medium',rs:['Tax Haven / Secrecy Jurisdiction']},MU:{k:'Medium',rs:['Tax Haven / Secrecy Jurisdiction']},CH:{k:'Medium',rs:['Tax Haven / Secrecy Jurisdiction']},SG:{k:'Low',rs:[]},AU:{k:'Low',rs:[]},CA:{k:'Low',rs:[]},US:{k:'Low',rs:[]},GB:{k:'Low',rs:[]},IN:{k:'Low',rs:[]},JP:{k:'Low',rs:[]},DE:{k:'Low',rs:[]},FR:{k:'Low',rs:[]},NL:{k:'Low',rs:[]}};
+
+let cmAllCountries=CM_WORLD.map((w,i)=>{const s=CM_SEED[w.c]||{};return{id:'cm_'+i,name:w.n,code:w.c,region:w.r,numCode:w.nc,alpha2:w.a2,alpha3:w.a3,risk:s.k||'Unclassified',reasons:s.rs||[],remarks:'',status:'active',history:[{role:'Maker',user:'System Import',branch:'Head Office',branchCode:'HO-001',date:'01 Apr 2026',comment:'Initial seed from FATF / Basel AML Index',result:'Approved'},{role:'Checker',user:'Aml Manager',branch:'Head Office',branchCode:'HO-001',date:'01 Apr 2026',comment:'Verified against latest FATF list',result:'Approved'}]};});
+let cmViewingId=null,cmEditingId=null,cmSelectedReasons=[],cmSortCol='name',cmSortDir=1,cmSearchVal='',cmRegionFilter='',cmRiskFilter='';
+function cmRiskBadge(r){const m={Low:'cm-risk-low',Medium:'cm-risk-medium',High:'cm-risk-high',Unclassified:'cm-risk-unclassified'};return`<span class="${m[r]||'cm-risk-unclassified'}">${r}</span>`;}
+function cmStatusBadge(s){return s==='active'?`<span class="cm-status-active">Active</span>`:`<span class="cm-status-pending">Pending Review</span>`;}
+function renderCountryTab(){
+  const el=document.getElementById('tab-country');if(!el)return;
+  let filtered=cmAllCountries.filter(c=>{
+    const q=cmSearchVal.toLowerCase();
+    const mQ=!q||c.name.toLowerCase().includes(q)||c.alpha2.toLowerCase().includes(q)||c.alpha3.toLowerCase().includes(q)||c.region.toLowerCase().includes(q)||c.risk.toLowerCase().includes(q)||(c.reasons||[]).join(' ').toLowerCase().includes(q);
+    const mR=!cmRegionFilter||c.region===cmRegionFilter;
+    const mK=!cmRiskFilter||c.risk===cmRiskFilter;
+    return mQ&&mR&&mK;
+  });
+  filtered.sort((a,b)=>((a[cmSortCol]||'').localeCompare(b[cmSortCol]||''))*cmSortDir);
+  const si=`<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4M17 20V4M3 8l4-4 4 4M7 4v16"/></svg>`;
+  el.innerHTML=`<div class="cm-wrap">
+  <div class="cm-toolbar">
+    <div class="cm-filters">
+      <div class="cm-fi-wrap">
+        <span class="cm-si"><svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg></span>
+        <input class="cm-fi" id="cm-search" placeholder="Search country, code, region..." value="${cmSearchVal}" oninput="cmOnSearch(this.value)">
+      </div>
+      <select class="cm-fi cm-fi-no-icon" onchange="cmOnRegion(this.value)" style="min-width:138px;padding-left:10px">
+        <option value="">All Regions</option>
+        ${['APAC','Africa','Americas','Europe','Middle East','South Asia'].map(r=>`<option ${cmRegionFilter===r?'selected':''}>${r}</option>`).join('')}
+      </select>
+      <select class="cm-fi cm-fi-no-icon" onchange="cmOnRisk(this.value)" style="min-width:148px;padding-left:10px">
+        <option value="">All Risk Levels</option>
+        ${['Low','Medium','High','Unclassified'].map(r=>`<option ${cmRiskFilter===r?'selected':''}>${r}</option>`).join('')}
+      </select>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <span style="font-size:10.5px;color:var(--tl)" title="Export capped at 50,000 rows.">⚠ Max 50K rows</span>
+      <button class="btn btn-outline btn-sm" onclick="cmExportCSV()">⬇ CSV</button>
+      <button class="btn btn-outline btn-sm disabled" title="Refresh from CBS available only for banks with real-time CBS API integration">🔄 Refresh CBS</button>
+    </div>
+  </div>
+  <div class="cm-tcard">
+    <div class="cm-tcard-h">
+      <div class="cm-tcard-t">Country Master <span class="tcnt">${filtered.length} Records</span></div>
+      <div class="last-sync"><span class="sync-dot"></span>Source: FATF / Basel AML Index · Last Updated: 01 Apr 2026</div>
+    </div>
+    <div class="cm-tbl-wrap"><table>
+      <thead><tr>
+        <th><button class="cm-sort-btn" onclick="cmSort('name')">Country Name ${si}</button></th>
+        <th><button class="cm-sort-btn" onclick="cmSort('alpha2')">ISO Alpha-2 ${si}</button></th>
+        <th><button class="cm-sort-btn" onclick="cmSort('alpha3')">ISO Alpha-3 ${si}</button></th>
+        <th><button class="cm-sort-btn" onclick="cmSort('region')">Region ${si}</button></th>
+        <th><button class="cm-sort-btn" onclick="cmSort('risk')">Risk Level ${si}</button></th>
+        <th>Risk Reasons</th>
+        <th style="text-align:center">Status</th>
+        <th>Actions</th>
+      </tr></thead>
+      <tbody>${filtered.map(c=>`<tr>
+        <td style="font-weight:700;color:var(--td)">${c.name}</td>
+        <td><span class="cm-iso cm-iso-2">${c.alpha2||'—'}</span></td>
+        <td><span class="cm-iso cm-iso-3">${c.alpha3||'—'}</span></td>
+        <td><span class="cm-region-badge">${c.region}</span></td>
+        <td>${cmRiskBadge(c.risk)}</td>
+        <td>${c.reasons&&c.reasons.length?c.reasons.slice(0,3).map(r=>`<span class="cm-reason-tag">${r}</span>`).join('')+(c.reasons.length>3?` <span style="font-size:10.5px;color:var(--tl)">+${c.reasons.length-3} more</span>`:''): '<span style="color:var(--tl);font-size:11.5px">None</span>'}</td>
+        <td style="text-align:center">${cmStatusBadge(c.status)}</td>
+        <td><div style="display:flex;gap:5px"><button class="cm-action-btn cm-action-view" onclick="cmOpenView('${c.id}')">View</button><button class="cm-action-btn cm-action-edit" onclick="cmOpenEdit('${c.id}')">Edit</button></div></td>
+      </tr>`).join('')}</tbody>
+    </table></div>
+  </div>
+  <div class="cm-status-bar"><span>${filtered.length} of ${cmAllCountries.length} countries shown</span><span>© Clari5 — Reference Data Register</span></div>
+</div>`;
+}
+function cmOnSearch(v){cmSearchVal=v;renderCountryTab();}
+function cmOnRegion(v){cmRegionFilter=v;renderCountryTab();}
+function cmOnRisk(v){cmRiskFilter=v;renderCountryTab();}
+function cmSort(col){if(cmSortCol===col)cmSortDir*=-1;else{cmSortCol=col;cmSortDir=1;}renderCountryTab();}
+function cmOpenView(id){
+  cmViewingId=id;const c=cmAllCountries.find(x=>x.id===id);if(!c)return;
+  document.getElementById('cm-view-title').textContent=c.name;
+  cmSwitchViewTab('details');
+  document.getElementById('cm-view-details').innerHTML=`
+    <div class="cm-section-title">Country Information</div>
+    <div class="cm-grid-2" style="margin-bottom:14px">
+      <div><label class="cm-field-label">Country Name</label><div style="font-size:13px;font-weight:700">${c.name}</div></div>
+      <div><label class="cm-field-label">Country Code</label><span class="cm-iso cm-iso-2">${c.code}</span></div>
+      <div><label class="cm-field-label">Region</label><span class="cm-region-badge">${c.region}</span></div>
+      <div><label class="cm-field-label">Numeric Code</label><div style="font-size:13px">${c.numCode||'—'}</div></div>
+    </div>
+    <div class="cm-section-title">ISO Standards</div>
+    <div class="cm-grid-2" style="margin-bottom:14px">
+      <div><label class="cm-field-label">ISO Alpha-2</label><span class="cm-iso cm-iso-2">${c.alpha2||'—'}</span></div>
+      <div><label class="cm-field-label">ISO Alpha-3</label><span class="cm-iso cm-iso-3">${c.alpha3||'—'}</span></div>
+    </div>
+    <div class="cm-section-title">AML Risk Classification</div>
+    <div style="margin-bottom:10px"><label class="cm-field-label">Risk Level</label>${cmRiskBadge(c.risk)}</div>
+    <div style="margin-bottom:10px"><label class="cm-field-label">Risk Reasons</label><div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:4px">${c.reasons&&c.reasons.length?c.reasons.map(r=>`<span class="badge b-blue">${r}</span>`).join(''):'<span style="color:var(--tl);font-size:12px">None assigned</span>'}</div></div>
+    ${c.remarks?`<div><label class="cm-field-label">Remarks</label><div style="font-size:12.5px;background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:7px 10px">${c.remarks}</div></div>`:''}
+    <div style="margin-top:12px"><label class="cm-field-label">Status</label>${cmStatusBadge(c.status)}</div>`;
+  document.getElementById('cm-view-audit').innerHTML=`<div class="cm-section-title">Verification History</div><div class="cm-timeline">${cmBuildTimeline(c.history)}</div>`;
+  document.getElementById('cm-view-panel').classList.remove('cm-hidden');
+}
+function cmCloseView(){document.getElementById('cm-view-panel').classList.add('cm-hidden');cmViewingId=null;}
+function cmSwitchViewTab(t){
+  document.getElementById('cm-vtab1').classList.toggle('active',t==='details');
+  document.getElementById('cm-vtab2').classList.toggle('active',t==='audit');
+  document.getElementById('cm-view-details').style.display=t==='details'?'flex':'none';
+  document.getElementById('cm-view-audit').style.display=t==='audit'?'flex':'none';
+}
+function cmOpenEdit(id){
+  cmEditingId=id;const c=cmAllCountries.find(x=>x.id===id);if(!c)return;
+  document.getElementById('cm-edit-title').textContent='Edit — '+c.name;
+  document.getElementById('cm-eName').value=c.name;
+  document.getElementById('cm-eCode').value=c.code;
+  document.getElementById('cm-eRegion').value=c.region;
+  document.getElementById('cm-eNumCode').value=c.numCode||'';
+  document.getElementById('cm-eAlpha2').value=c.alpha2||'';
+  document.getElementById('cm-eAlpha3').value=c.alpha3||'';
+  document.getElementById('cm-eRisk').value=c.risk==='Unclassified'?'':c.risk;
+  document.getElementById('cm-eDate').value='';
+  document.getElementById('cm-eRemarks').value=c.remarks||'';
+  cmSetMSValues(c.reasons||[]);
+  document.getElementById('cm-edit-panel').classList.remove('cm-hidden');
+}
+function cmCloseEdit(){document.getElementById('cm-edit-panel').classList.add('cm-hidden');cmEditingId=null;}
+function cmToggleMS(){const d=document.getElementById('cm-msDropdown');const t=document.getElementById('cm-msTrigger');d.classList.toggle('open');t.classList.toggle('open');}
+function cmToggleMSOpt(el,val){const cb=el.querySelector('input');cb.checked=!cb.checked;el.classList.toggle('selected',cb.checked);if(cb.checked){if(!cmSelectedReasons.includes(val))cmSelectedReasons.push(val);}else{cmSelectedReasons=cmSelectedReasons.filter(v=>v!==val);}cmRenderMSTags();}
+function cmRenderMSTags(){const t=document.getElementById('cm-msTrigger');const ph=document.getElementById('cm-msPlaceholder');[...t.querySelectorAll('.cm-ms-tag')].forEach(x=>x.remove());if(cmSelectedReasons.length===0){ph.style.display='';return;}ph.style.display='none';cmSelectedReasons.forEach(v=>{const tag=document.createElement('span');tag.className='cm-ms-tag';tag.innerHTML=`${v}<span class="cm-ms-tag-x" onclick="cmRemoveMS('${v}');event.stopPropagation()">×</span>`;t.insertBefore(tag,ph);});}
+function cmRemoveMS(val){cmSelectedReasons=cmSelectedReasons.filter(v=>v!==val);document.querySelectorAll('#cm-msDropdown .cm-ms-option').forEach(o=>{if(o.querySelector('span').textContent.trim()===val){o.querySelector('input').checked=false;o.classList.remove('selected');}});cmRenderMSTags();}
+function cmSetMSValues(vals){cmSelectedReasons=[...vals];document.querySelectorAll('#cm-msDropdown .cm-ms-option').forEach(o=>{const v=o.querySelector('span').textContent.trim();const ch=vals.includes(v);o.querySelector('input').checked=ch;o.classList.toggle('selected',ch);});cmRenderMSTags();}
+document.addEventListener('click',function(e){if(!e.target.closest('#cm-msWrap')){const d=document.getElementById('cm-msDropdown');const t=document.getElementById('cm-msTrigger');if(d)d.classList.remove('open');if(t)t.classList.remove('open');}});
+function cmSaveCountry(){
+  const risk=document.getElementById('cm-eRisk').value;
+  if(!risk){toast('⚠ Please select a Risk Level.');return;}
+  const c=cmAllCountries.find(x=>x.id===cmEditingId);
+  c.risk=risk;c.reasons=[...cmSelectedReasons];c.remarks=document.getElementById('cm-eRemarks').value.trim();c.status='pending';
+  c.history.push({role:'Maker',user:'amluser1',branch:'Head Office',branchCode:'HO-001',date:new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}),comment:'Changes submitted for review',result:'Pending'});
+  c.history.push({role:'Checker',user:'—',branch:'—',branchCode:'—',date:'Pending',comment:'Awaiting review',result:'Pending'});
+  cmCloseEdit();renderCountryTab();
+  document.getElementById('cm-review-popup').classList.remove('cm-hidden');
+}
+function cmCloseReview(){document.getElementById('cm-review-popup').classList.add('cm-hidden');}
+function cmBuildTimeline(h){if(!h||!h.length)return'<p style="color:var(--tl);font-size:12.5px;padding:10px 0">No history yet.</p>';return h.map(x=>{const dc=x.role==='Maker'?'maker':(x.result==='Pending'?'pending':'checker');const ini=x.user==='—'?'?':x.user.split(' ').map(n=>n[0]).join('').slice(0,2);const bc={Approved:'approved',Pending:'pending',Rejected:'rejected'}[x.result]||'pending';return`<div class="cm-tl-item"><div class="cm-tl-dot ${dc}">${ini}</div><div class="cm-tl-content"><div class="cm-tl-role">${x.role}</div><div class="cm-tl-name">${x.user}</div><div class="cm-tl-meta">${x.branch} · ${x.branchCode} · ${x.date}</div>${x.comment?`<div class="cm-tl-comment">${x.comment}</div>`:''}<span class="cm-tl-badge ${bc}">${x.result}</span></div></div>`;}).join('');}
+function cmExportCSV(){const h='Country Name,Code,Region,Numeric Code,Alpha-2,Alpha-3,Risk Level,Risk Reasons,Remarks,Status\n';const r=cmAllCountries.map(c=>`"${c.name}","${c.code}","${c.region}","${c.numCode}","${c.alpha2}","${c.alpha3}","${c.risk}","${(c.reasons||[]).join('; ')}","${c.remarks||''}","${c.status}"`).join('\n');const b=new Blob([h+r],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='country_master.csv';a.click();toast('✅ Exported country master as CSV');}
+// ════════════════════════════════════════════════════════════════════════
+// END COUNTRY MASTER
+// ════════════════════════════════════════════════════════════════════════
+
+// ══════════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════════
+window.addEventListener('DOMContentLoaded', () => {
+  showMaster('customer');
+});
+</script>
+</body>
+</html>

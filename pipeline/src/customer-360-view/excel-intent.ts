@@ -197,6 +197,17 @@ export function buildPreconditionActions(row: C360ExcelRow): string[] {
     pushUnique(steps, "await c360Page.mockApiFailure()");
   }
 
+  // Error-handling scenarios assert an error/retry state. If no failure-inducing
+  // mock has been configured from the step text, inject a generic API failure so
+  // the asserted error state is actually reproducible (and not a guaranteed miss).
+  if (
+    isErrorScenario(row) &&
+    !isNegativeAccessScenario(row) &&
+    steps.length === 0
+  ) {
+    pushUnique(steps, "await c360Page.mockApiFailure()");
+  }
+
   return steps;
 }
 
@@ -345,6 +356,15 @@ function mapSingleStepToActions(step: string, row: C360ExcelRow): string[] {
     return actions;
   }
 
+  if (
+    stepMatches(s, "navigate across", "across all tabs", "each tab", "all tabs", "rapid tab", "tab navigation", "switch between tabs")
+  ) {
+    actions.push("await c360Page.clickTab('Overview')");
+    actions.push("await c360Page.clickTab('Screening')");
+    actions.push("await c360Page.clickTab('Risk')");
+    return actions;
+  }
+
   if (stepMatches(s, "kpi card", "gap score kpi")) {
     actions.push("await c360Page.clickKpiCard()");
     return actions;
@@ -353,18 +373,48 @@ function mapSingleStepToActions(step: string, row: C360ExcelRow): string[] {
   return actions;
 }
 
+/**
+ * In a negative-access scenario (session expired / unauthorized / restricted),
+ * the Customer 360 page renders an "Access Denied" shell. Any content action
+ * (open profile, click tab, export, switch type) would target controls that do
+ * not exist and time out. Only access-attempt and mock actions are meaningful.
+ */
+function filterNegativeAccessSteps(steps: string[]): string[] {
+  const allowed = [
+    "openCustomer360FromSidebar",
+    "openCustomer360Direct",
+    "attemptDirectRestrictedAccess",
+    "mockSessionExpired",
+    "mockUnauthorized",
+    "mockApiFailure",
+    "clickRetry",
+    "clickBrowserBack",
+  ];
+  const filtered = steps.filter((s) => allowed.some((a) => s.includes(a)));
+  if (!filtered.some((s) => s.includes("openCustomer360FromSidebar") || s.includes("attemptDirectRestrictedAccess"))) {
+    filtered.push("await c360Page.openCustomer360FromSidebar()");
+  }
+  return filtered;
+}
+
 export function buildExcelStepActions(row: C360ExcelRow): string[] {
   const numbered = parseNumberedSteps(row.testSteps);
   const steps: string[] = [];
 
   if (numbered.length === 0) {
-    return buildFallbackSteps(row);
+    return isNegativeAccessScenario(row)
+      ? filterNegativeAccessSteps(buildFallbackSteps(row))
+      : buildFallbackSteps(row);
   }
 
   for (const step of numbered) {
     for (const action of mapSingleStepToActions(step, row)) {
       pushUnique(steps, action);
     }
+  }
+
+  if (isNegativeAccessScenario(row)) {
+    return filterNegativeAccessSteps(steps);
   }
 
   const hasCustomer = steps.some((s) => s.includes("openCustomerProfile") || s.includes("searchAndOpenCustomer"));
@@ -375,6 +425,12 @@ export function buildExcelStepActions(row: C360ExcelRow): string[] {
   const tab = tabNameFromSubModule(row.subModule);
   if (tab && !steps.some((l) => l.includes("clickTab"))) {
     pushUnique(steps, `await c360Page.clickTab('${escapeStr(tab)}')`);
+  }
+
+  if (row.subModule === "Global Navigation" && !steps.some((l) => l.includes("clickTab"))) {
+    pushUnique(steps, "await c360Page.clickTab('Overview')");
+    pushUnique(steps, "await c360Page.clickTab('Screening')");
+    pushUnique(steps, "await c360Page.clickTab('Risk')");
   }
 
   if (steps.length === 0) {
@@ -394,11 +450,17 @@ function buildFallbackSteps(row: C360ExcelRow): string[] {
     return steps;
   }
 
-  if (sm === "Page Framework" || sm === "Global Navigation") {
+  if (sm === "Page Framework") {
     pushUnique(steps, "await c360Page.openCustomer360FromSidebar()");
     if (needsCustomerProfile(row)) {
       pushUnique(steps, openProfileAction(row));
     }
+  } else if (sm === "Global Navigation") {
+    pushUnique(steps, "await c360Page.openCustomer360FromSidebar()");
+    pushUnique(steps, openProfileAction(row));
+    pushUnique(steps, "await c360Page.clickTab('Overview')");
+    pushUnique(steps, "await c360Page.clickTab('Screening')");
+    pushUnique(steps, "await c360Page.clickTab('Risk')");
   } else if (tab) {
     if (needsCustomerProfile(row)) {
       pushUnique(steps, openProfileAction(row));
@@ -541,7 +603,14 @@ function buildPositiveAssertions(row: C360ExcelRow): string[] {
   const profileOpened = needsCustomerProfile(row);
   const out: string[] = [];
 
-  pushUnique(out, profileOpened ? "await c360Page.expectCustomer360ProfileLoaded()" : "await c360Page.expectCustomer360LandingLoaded()");
+  // Global Navigation scenarios often end on landing or profile after back/refresh;
+  // assert whichever valid Customer 360 shell is present rather than forcing profile.
+  if (row.subModule === "Global Navigation") {
+    pushUnique(out, "await c360Page.expectCustomer360ViewAfterNavigation()");
+    pushUnique(out, "await c360Page.expectOnCustomer360Route()");
+  } else {
+    pushUnique(out, profileOpened ? "await c360Page.expectCustomer360ProfileLoaded()" : "await c360Page.expectCustomer360LandingLoaded()");
+  }
 
   const candidates = [
     ...splitExpectedClauses(row.taskDescription),

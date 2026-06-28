@@ -62,3 +62,18 @@ export interface FsdMappingEntry {
   alignmentStatus: "aligned" | "partial" | "unmapped";
   notes: string;
 }
+
+export interface EnhancedKgrRow extends KgrExcelRow {
+  isNew?: boolean;
+  fsdSectionId?: string;
+  fsdSectionTitle?: string;
+}
+
+export interface GapTestCaseSpec {
+  subModule: string;
+  taskDescription: string;
+  priority: string;
+  testData: string;
+  uiControlLabel: string;
+  fsdSectionId: string;
+}

@@ -1,6 +1,6 @@
 # Reference Data Registry — Test Plan
 
-Generated from `pipeline/test-data/Reference Data Registry.xlsx` — 376 requirements.
+Generated from `pipeline/test-data/Reference Data Registry.xlsx` — 383 requirements.
 
 ## Submodule coverage
 
@@ -33,11 +33,15 @@ Generated from `pipeline/test-data/Reference Data Registry.xlsx` — 376 require
 | Reference Masters → Reference Master | 15 |
 | Reference Masters → Country Master | 15 |
 | Employee Master | 11 |
+| Customer → Customer Master | 7 |
 
 ## Artifacts
 
 - Locators: `tests/objectrepositories/ReferenceDataRegistryLocators.ts`
 - Page Object: `tests/milestone1/pages/KYCModule/ReferenceDataRegistryPages/ReferenceDataRegistryPage.ts`
 - Spec file: `tests/milestone1/test-cases/KYCModule/referenceDataRegistryTests/reference-data-registry.spec.ts`
-- Fixtures: `fixtures/rdr-pilot-data.json`
+- Fixtures: `fixtures/rdr-test-data.json`, `fixtures/rdr-pilot-data.json`
 - Generator: `pipeline/src/rdr/generate-milestone.ts`
+- Validator: `pipeline/src/rdr/validate-alignment.ts`
+- Requirements index: `specs/rdr/requirements-index.json`
+- Test cases detail: `specs/rdr/test-cases.md`

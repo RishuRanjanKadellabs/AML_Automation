@@ -1,0 +1,13 @@
+{
+  "generatedAt": "2026-06-27T19:47:20.972Z",
+  "excelSource": "C:\\Users\\ArtiKunde\\Downloads\\AML Automation\\pipeline\\test-data\\KYC Gap Report.xlsx",
+  "scope": "KYC Gap Report only — Missing Mandatory Data Template excluded",
+  "baselineCount": 291,
+  "enhancedCount": 291,
+  "newCount": 0,
+  "totalCount": 291,
+  "baselineAvgSteps": 15.281786941580757,
+  "enhancedAvgSteps": 15.281786941580757,
+  "newCaseIds": [],
+  "gapDescriptions": []
+}

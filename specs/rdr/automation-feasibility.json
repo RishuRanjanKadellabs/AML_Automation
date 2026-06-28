@@ -3632,8 +3632,8 @@
   {
     "testCaseId": "RDR_364",
     "automationLayer": "ui",
-    "automationCandidate": "No",
-    "reason": "Maker/Checker role credentials and write-access workflow not defined in Excel Test Data",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
     "tags": [
       "Reference Masters",
       "Country Master"
@@ -3647,6 +3647,106 @@
     "tags": [
       "Reference Masters",
       "Country Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_366",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_367",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_368",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_369",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_370",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_371",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_372",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_373",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_374",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
+    ]
+  },
+  {
+    "testCaseId": "RDR_375",
+    "automationLayer": "ui",
+    "automationCandidate": "Yes",
+    "reason": "UI grid automation",
+    "tags": [
+      "Employee Master",
+      "Employee Master"
     ]
   },
   {
@@ -3665,8 +3765,8 @@
     "automationCandidate": "Yes",
     "reason": "UI grid automation",
     "tags": [
-      "Employee Master",
-      "Employee Master"
+      "Customer",
+      "Customer Master"
     ]
   },
   {
@@ -3675,8 +3775,8 @@
     "automationCandidate": "Yes",
     "reason": "UI grid automation",
     "tags": [
-      "Employee Master",
-      "Employee Master"
+      "Customer",
+      "Customer Master"
     ]
   },
   {
@@ -3685,8 +3785,8 @@
     "automationCandidate": "Yes",
     "reason": "UI grid automation",
     "tags": [
-      "Employee Master",
-      "Employee Master"
+      "Customer",
+      "Customer Master"
     ]
   },
   {
@@ -3695,8 +3795,8 @@
     "automationCandidate": "Yes",
     "reason": "UI grid automation",
     "tags": [
-      "Employee Master",
-      "Employee Master"
+      "Customer",
+      "Customer Master"
     ]
   },
   {
@@ -3705,8 +3805,8 @@
     "automationCandidate": "Yes",
     "reason": "UI grid automation",
     "tags": [
-      "Employee Master",
-      "Employee Master"
+      "Customer",
+      "Customer Master"
     ]
   },
   {
@@ -3715,8 +3815,8 @@
     "automationCandidate": "Yes",
     "reason": "UI grid automation",
     "tags": [
-      "Employee Master",
-      "Employee Master"
+      "Customer",
+      "Customer Master"
     ]
   },
   {
@@ -3725,38 +3825,8 @@
     "automationCandidate": "Yes",
     "reason": "UI grid automation",
     "tags": [
-      "Employee Master",
-      "Employee Master"
-    ]
-  },
-  {
-    "testCaseId": "RDR_384",
-    "automationLayer": "ui",
-    "automationCandidate": "Yes",
-    "reason": "UI grid automation",
-    "tags": [
-      "Employee Master",
-      "Employee Master"
-    ]
-  },
-  {
-    "testCaseId": "RDR_385",
-    "automationLayer": "ui",
-    "automationCandidate": "Yes",
-    "reason": "UI grid automation",
-    "tags": [
-      "Employee Master",
-      "Employee Master"
-    ]
-  },
-  {
-    "testCaseId": "RDR_386",
-    "automationLayer": "ui",
-    "automationCandidate": "Yes",
-    "reason": "UI grid automation",
-    "tags": [
-      "Employee Master",
-      "Employee Master"
+      "Customer",
+      "Customer Master"
     ]
   }
 ]

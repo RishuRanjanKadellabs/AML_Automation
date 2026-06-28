@@ -1620,7 +1620,7 @@
     "tags": [
       "kyc-gap-report-gap-detail-modal",
       "critical",
-      "modal"
+      "functional"
     ]
   },
   {
@@ -2575,7 +2575,7 @@
     "tags": [
       "kyc-gap-report-security-audit",
       "critical",
-      "modal"
+      "functional"
     ]
   },
   {
@@ -2906,8 +2906,8 @@
     "tags": [
       "kyc-gap-report-boundary-negative-testing",
       "critical",
-      "boundary",
-      "negative"
+      "gap-score",
+      "business-rule"
     ]
   },
   {
@@ -2954,8 +2954,8 @@
     "tags": [
       "kyc-gap-report-boundary-negative-testing",
       "critical",
-      "boundary",
-      "negative"
+      "gap-score",
+      "business-rule"
     ]
   },
   {
@@ -3164,6 +3164,128 @@
       "critical",
       "boundary",
       "negative"
+    ]
+  },
+  {
+    "testCaseId": "KGR-281",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "high",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-282",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-283",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-284",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "gap-score",
+      "business-rule"
+    ]
+  },
+  {
+    "testCaseId": "KGR-285",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-286",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-report-grid",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-287",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Visible DOM interaction on KYC Gap Report page",
+    "tags": [
+      "kyc-gap-report-gap-detail-modal",
+      "high",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-288",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "medium",
+      "filter"
+    ]
+  },
+  {
+    "testCaseId": "KGR-289",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "medium",
+      "modal"
+    ]
+  },
+  {
+    "testCaseId": "KGR-290",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "KGR-291",
+    "automationLayer": "Database + Manual",
+    "automationCandidate": "Yes",
+    "reason": "Audit trail validation requires backend query; immutability may need DBA review",
+    "tags": [
+      "kyc-gap-report-security-audit",
+      "medium",
+      "functional"
     ]
   }
 ]

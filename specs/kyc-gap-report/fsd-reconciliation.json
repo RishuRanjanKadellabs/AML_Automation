@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-25T10:38:45.136Z",
+  "generatedAt": "2026-06-28T11:55:10.663Z",
   "excelSource": "pipeline/test-data/KYC Gap Report.xlsx",
   "fsdSource": "pipeline/test-data/FSD_Missing_Mandatory_KYC_Gap_Report_v1.2.docx",
   "summary": {
-    "aligned": 280,
+    "aligned": 291,
     "partial": 0,
     "unmapped": 0
   },
@@ -11,12 +11,12 @@
     {
       "testCaseId": "KGR-001",
       "excelSubModule": "KYC Gap Report",
-      "excelTask": "Verify user can access KYC Gap Report from Missing Mandatory menu",
+      "excelTask": "Verify user can access KYC Gap Report",
       "fsdSectionId": "4.2",
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.6. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-002",
@@ -26,7 +26,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-003",
@@ -36,7 +36,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-004",
@@ -56,7 +56,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.3. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-006",
@@ -66,7 +66,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.5. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-007",
@@ -76,7 +76,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-008",
@@ -86,7 +86,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.5. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-009",
@@ -96,7 +96,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.8. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-010",
@@ -106,7 +106,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-011",
@@ -116,7 +116,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-012",
@@ -126,12 +126,12 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-013",
       "excelSubModule": "KYC Gap Report",
-      "excelTask": "Verify navigation from KYC Gap Report to Missing Mandatory Template",
+      "excelTask": "Verify KYC Gap Report is available in KYC module navigation",
       "fsdSectionId": "4.2",
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
@@ -141,22 +141,22 @@
     {
       "testCaseId": "KGR-014",
       "excelSubModule": "KYC Gap Report",
-      "excelTask": "Verify returning from Template screen preserves KYC Gap Report access",
+      "excelTask": "Verify user can return to KYC Gap Report after navigating away",
       "fsdSectionId": "4.2",
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.5. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-015",
       "excelSubModule": "KYC Gap Report",
-      "excelTask": "Verify filter and page state is retained when navigating between Template and Report views",
+      "excelTask": "Verify filters and page state persist when leaving and returning to KYC Gap Report",
       "fsdSectionId": "4.2",
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.8. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-016",
@@ -176,7 +176,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-018",
@@ -186,7 +186,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.8. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-019",
@@ -196,7 +196,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-020",
@@ -206,7 +206,7 @@
       "fsdSectionTitle": "Navigation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-021",
@@ -216,7 +216,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-022",
@@ -226,7 +226,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-023",
@@ -236,7 +236,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-024",
@@ -246,7 +246,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-025",
@@ -256,7 +256,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-026",
@@ -266,7 +266,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-027",
@@ -276,7 +276,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-028",
@@ -286,7 +286,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-029",
@@ -296,7 +296,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-030",
@@ -306,7 +306,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-031",
@@ -316,7 +316,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-032",
@@ -326,7 +326,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-033",
@@ -336,7 +336,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-034",
@@ -346,7 +346,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-035",
@@ -356,7 +356,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-036",
@@ -366,7 +366,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-037",
@@ -376,7 +376,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.8. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-038",
@@ -386,7 +386,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-039",
@@ -396,7 +396,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-040",
@@ -406,7 +406,7 @@
       "fsdSectionTitle": "KPI Summary Cards",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.3; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-041",
@@ -416,7 +416,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-042",
@@ -426,7 +426,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-043",
@@ -436,7 +436,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-044",
@@ -446,7 +446,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-045",
@@ -456,7 +456,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-046",
@@ -466,7 +466,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-047",
@@ -476,7 +476,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-048",
@@ -486,7 +486,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-049",
@@ -496,7 +496,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-050",
@@ -506,7 +506,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-051",
@@ -516,7 +516,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-052",
@@ -526,7 +526,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-053",
@@ -536,7 +536,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-054",
@@ -546,7 +546,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-055",
@@ -556,7 +556,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-056",
@@ -566,7 +566,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-057",
@@ -576,7 +576,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-058",
@@ -586,7 +586,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-059",
@@ -596,7 +596,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-060",
@@ -606,7 +606,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-061",
@@ -616,7 +616,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-062",
@@ -626,7 +626,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-063",
@@ -636,7 +636,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-064",
@@ -646,7 +646,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-065",
@@ -656,7 +656,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-066",
@@ -666,7 +666,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-067",
@@ -676,7 +676,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-068",
@@ -686,7 +686,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-069",
@@ -696,7 +696,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-070",
@@ -706,7 +706,7 @@
       "fsdSectionTitle": "Filters",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.4; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-071",
@@ -716,7 +716,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-072",
@@ -726,7 +726,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-073",
@@ -736,7 +736,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-074",
@@ -746,7 +746,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-075",
@@ -756,7 +756,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-076",
@@ -766,7 +766,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-077",
@@ -776,7 +776,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-078",
@@ -786,7 +786,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-079",
@@ -796,7 +796,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-080",
@@ -806,7 +806,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-081",
@@ -816,7 +816,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-082",
@@ -826,7 +826,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-083",
@@ -836,7 +836,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-084",
@@ -846,7 +846,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-085",
@@ -856,7 +856,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-086",
@@ -866,7 +866,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-087",
@@ -876,7 +876,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-088",
@@ -886,7 +886,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-089",
@@ -896,7 +896,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-090",
@@ -906,7 +906,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-091",
@@ -916,7 +916,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-092",
@@ -926,7 +926,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-093",
@@ -936,7 +936,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-094",
@@ -946,7 +946,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-095",
@@ -956,7 +956,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-096",
@@ -966,7 +966,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-097",
@@ -976,7 +976,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-098",
@@ -986,7 +986,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-099",
@@ -996,7 +996,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-100",
@@ -1006,7 +1006,7 @@
       "fsdSectionTitle": "Report Table — Columns",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-101",
@@ -1016,7 +1016,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-102",
@@ -1026,7 +1026,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-103",
@@ -1036,7 +1036,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-104",
@@ -1046,7 +1046,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-105",
@@ -1056,7 +1056,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-106",
@@ -1066,7 +1066,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-107",
@@ -1076,7 +1076,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-108",
@@ -1086,7 +1086,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-109",
@@ -1096,7 +1096,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.5. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-110",
@@ -1106,7 +1106,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-111",
@@ -1116,7 +1116,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-112",
@@ -1126,7 +1126,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-113",
@@ -1136,7 +1136,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-114",
@@ -1146,7 +1146,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-115",
@@ -1156,7 +1156,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-116",
@@ -1166,7 +1166,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-117",
@@ -1176,7 +1176,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-118",
@@ -1186,7 +1186,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-119",
@@ -1196,7 +1196,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-120",
@@ -1206,7 +1206,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-121",
@@ -1216,7 +1216,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-122",
@@ -1226,7 +1226,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-123",
@@ -1236,7 +1236,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-124",
@@ -1246,7 +1246,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-125",
@@ -1256,7 +1256,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-126",
@@ -1266,7 +1266,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-127",
@@ -1276,7 +1276,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-128",
@@ -1286,7 +1286,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-129",
@@ -1296,7 +1296,7 @@
       "fsdSectionTitle": "KYC Gap Score — Calculation",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.6; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-130",
@@ -1316,7 +1316,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-132",
@@ -1326,7 +1326,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-133",
@@ -1336,7 +1336,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-134",
@@ -1346,7 +1346,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-135",
@@ -1356,7 +1356,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-136",
@@ -1366,7 +1366,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-137",
@@ -1376,7 +1376,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-138",
@@ -1386,7 +1386,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-139",
@@ -1396,7 +1396,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-140",
@@ -1406,7 +1406,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-141",
@@ -1416,7 +1416,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-142",
@@ -1426,7 +1426,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-143",
@@ -1436,7 +1436,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-144",
@@ -1446,7 +1446,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-145",
@@ -1456,7 +1456,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-146",
@@ -1466,7 +1466,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-147",
@@ -1476,7 +1476,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-148",
@@ -1486,7 +1486,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-149",
@@ -1496,7 +1496,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-150",
@@ -1506,7 +1506,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-151",
@@ -1516,7 +1516,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-152",
@@ -1526,7 +1526,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-153",
@@ -1536,7 +1536,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-154",
@@ -1546,7 +1546,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-155",
@@ -1556,7 +1556,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-156",
@@ -1566,7 +1566,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.6. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-157",
@@ -1576,7 +1576,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-158",
@@ -1586,7 +1586,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-159",
@@ -1596,7 +1596,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-160",
@@ -1606,7 +1606,7 @@
       "fsdSectionTitle": "Gap Detail Modal",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-161",
@@ -1616,7 +1616,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-162",
@@ -1626,7 +1626,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-163",
@@ -1636,7 +1636,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-164",
@@ -1646,7 +1646,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-165",
@@ -1656,7 +1656,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-166",
@@ -1666,7 +1666,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-167",
@@ -1676,7 +1676,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-168",
@@ -1686,7 +1686,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-169",
@@ -1696,7 +1696,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-170",
@@ -1706,7 +1706,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-171",
@@ -1716,7 +1716,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-172",
@@ -1726,7 +1726,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-173",
@@ -1736,7 +1736,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-174",
@@ -1746,7 +1746,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-175",
@@ -1756,7 +1756,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-176",
@@ -1766,7 +1766,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.6. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-177",
@@ -1776,7 +1776,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-178",
@@ -1786,7 +1786,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-179",
@@ -1796,7 +1796,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-180",
@@ -1806,7 +1806,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-181",
@@ -1816,7 +1816,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-182",
@@ -1826,7 +1826,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-183",
@@ -1836,7 +1836,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-184",
@@ -1846,7 +1846,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-185",
@@ -1856,7 +1856,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-186",
@@ -1866,7 +1866,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-187",
@@ -1876,7 +1876,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-188",
@@ -1886,7 +1886,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-189",
@@ -1896,7 +1896,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-190",
@@ -1906,7 +1906,7 @@
       "fsdSectionTitle": "Pagination",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": ""
+      "notes": "Excel sub-module maps to FSD 4.8; task keywords also reference 4.9. Sub-module is authoritative."
     },
     {
       "testCaseId": "KGR-191",
@@ -2296,7 +2296,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.5. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-230",
@@ -2306,7 +2306,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-231",
@@ -2486,7 +2486,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-249",
@@ -2516,7 +2516,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-252",
@@ -2526,7 +2526,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-253",
@@ -2536,7 +2536,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-254",
@@ -2556,7 +2556,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-256",
@@ -2566,7 +2566,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-257",
@@ -2576,7 +2576,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-258",
@@ -2586,7 +2586,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-259",
@@ -2596,7 +2596,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-260",
@@ -2606,7 +2606,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-261",
@@ -2616,7 +2616,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-262",
@@ -2626,7 +2626,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-263",
@@ -2636,7 +2636,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-264",
@@ -2646,7 +2646,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-265",
@@ -2656,7 +2656,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-266",
@@ -2666,7 +2666,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-267",
@@ -2676,7 +2676,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-268",
@@ -2686,7 +2686,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-269",
@@ -2696,7 +2696,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-270",
@@ -2706,7 +2706,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-271",
@@ -2716,7 +2716,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-272",
@@ -2726,7 +2726,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-273",
@@ -2736,7 +2736,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-274",
@@ -2746,7 +2746,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-275",
@@ -2756,7 +2756,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-276",
@@ -2766,7 +2766,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-277",
@@ -2776,7 +2776,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-278",
@@ -2786,7 +2786,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-279",
@@ -2796,7 +2796,7 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.7. Sub-module is authoritative."
+      "notes": ""
     },
     {
       "testCaseId": "KGR-280",
@@ -2806,7 +2806,117 @@
       "fsdSectionTitle": "Business Rules",
       "fsdModule": "KYC Gap Report",
       "alignmentStatus": "aligned",
-      "notes": "Excel sub-module maps to FSD 4.9; task keywords also reference 4.4. Sub-module is authoritative."
+      "notes": ""
+    },
+    {
+      "testCaseId": "KGR-281",
+      "excelSubModule": "KYC Gap Report",
+      "excelTask": "Verify Refresh button is visible and reloads report data without losing applied filters",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Navigation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "KGR-282",
+      "excelSubModule": "KYC Gap Report",
+      "excelTask": "Verify breadcrumb navigation displays correct KYC module path on landing page",
+      "fsdSectionId": "4.2",
+      "fsdSectionTitle": "Navigation",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.2; task keywords also reference 4.9. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "KGR-283",
+      "excelSubModule": "KYC Gap Report - Report Grid",
+      "excelTask": "Verify Individual and Corporate Type badges use distinct colour coding in grid",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "Report Table — Columns",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "KGR-284",
+      "excelSubModule": "KYC Gap Report - Report Grid",
+      "excelTask": "Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "Report Table — Columns",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "KGR-285",
+      "excelSubModule": "KYC Gap Report - Report Grid",
+      "excelTask": "Verify Edit button is not present in report grid per read-only design",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "Report Table — Columns",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "KGR-286",
+      "excelSubModule": "KYC Gap Report - Report Grid",
+      "excelTask": "Verify Missing Fields column is not displayed in landing grid",
+      "fsdSectionId": "4.5",
+      "fsdSectionTitle": "Report Table — Columns",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.5; task keywords also reference 4.9. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "KGR-287",
+      "excelSubModule": "KYC Gap Report - Gap Detail Modal",
+      "excelTask": "Verify Gap Detail Modal displays CIF ID and branch code in customer metadata section",
+      "fsdSectionId": "4.7",
+      "fsdSectionTitle": "Gap Detail Modal",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": "Excel sub-module maps to FSD 4.7; task keywords also reference 4.9. Sub-module is authoritative."
+    },
+    {
+      "testCaseId": "KGR-288",
+      "excelSubModule": "KYC Gap Report - Security & Audit",
+      "excelTask": "Verify keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "KGR-289",
+      "excelSubModule": "KYC Gap Report - Security & Audit",
+      "excelTask": "Verify ARIA roles and labels are present on report table, filters, and Gap Detail Modal",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "KGR-290",
+      "excelSubModule": "KYC Gap Report - Security & Audit",
+      "excelTask": "Verify KYC Gap Report initial page load completes within acceptable performance threshold",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
+    },
+    {
+      "testCaseId": "KGR-291",
+      "excelSubModule": "KYC Gap Report - Security & Audit",
+      "excelTask": "Verify KYC Gap Report layout and controls render consistently in Chrome and Edge browsers",
+      "fsdSectionId": "4.9",
+      "fsdSectionTitle": "Business Rules",
+      "fsdModule": "KYC Gap Report",
+      "alignmentStatus": "aligned",
+      "notes": ""
     }
   ]
 }

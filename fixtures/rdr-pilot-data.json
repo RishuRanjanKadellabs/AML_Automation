@@ -32,7 +32,11 @@
     "expectedPageTitle": "Customer & Account Data",
     "expectedRowCount": 3,
     "columnName": "Customer ID",
-    "ids": ["CIF001001", "CIF002045", "CIF003178"],
+    "ids": [
+      "CIF001001",
+      "CIF002045",
+      "CIF003178"
+    ],
     "inactiveCustomerId": "CIF003178",
     "inactiveStatusValue": "Inactive",
     "inactiveSummaryPattern": "1 Inactive"
@@ -41,5 +45,14 @@
     "maxRowCount": 1000,
     "maskPattern": "[*Xx•]",
     "searchNoMatchTerm": "zzzz-no-match-99999"
+  },
+  "generatedFromExcel": {
+    "at": "2026-06-28T09:30:58.077Z",
+    "source": "pipeline/test-data/Reference Data Registry.xlsx",
+    "customerIds": [
+      "CIF001001",
+      "CIF002045",
+      "CIF003178"
+    ]
   }
 }
