@@ -1,7 +1,7 @@
 [
   {
     "requirementId": "KGR-001",
-    "requirementDescription": "Verify user can access KYC Gap Report from Missing Mandatory menu",
+    "requirementDescription": "Verify user can access KYC Gap Report",
     "testable": "Yes",
     "missingInformation": "—",
     "assumptions": "—"
@@ -85,21 +85,21 @@
   },
   {
     "requirementId": "KGR-013",
-    "requirementDescription": "Verify navigation from KYC Gap Report to Missing Mandatory Template",
+    "requirementDescription": "Verify KYC Gap Report is available in KYC module navigation",
     "testable": "Yes",
     "missingInformation": "—",
     "assumptions": "—"
   },
   {
     "requirementId": "KGR-014",
-    "requirementDescription": "Verify returning from Template screen preserves KYC Gap Report access",
+    "requirementDescription": "Verify user can return to KYC Gap Report after navigating away",
     "testable": "Yes",
     "missingInformation": "—",
     "assumptions": "—"
   },
   {
     "requirementId": "KGR-015",
-    "requirementDescription": "Verify filter and page state is retained when navigating between Template and Report views",
+    "requirementDescription": "Verify filters and page state persist when leaving and returning to KYC Gap Report",
     "testable": "Yes",
     "missingInformation": "—",
     "assumptions": "—"
@@ -1332,16 +1332,16 @@
   {
     "requirementId": "KGR-191",
     "requirementDescription": "Verify Export button is displayed on KYC Gap Report page",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-192",
     "requirementDescription": "Verify Export button is enabled when records exist",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-193",
@@ -1416,107 +1416,107 @@
   {
     "requirementId": "KGR-203",
     "requirementDescription": "Verify exported record count matches report record count",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-204",
     "requirementDescription": "Verify exported Customer values match report data",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-205",
     "requirementDescription": "Verify exported KYC Gap Score values match report data",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-206",
     "requirementDescription": "Verify exported Priority values match report data",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-207",
     "requirementDescription": "Verify export respects active Search filter",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-208",
     "requirementDescription": "Verify export respects active Branch filter",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-209",
     "requirementDescription": "Verify export respects active Customer Type filter",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-210",
     "requirementDescription": "Verify export respects active Template filter",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-211",
     "requirementDescription": "Verify export respects active Priority filter",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-212",
     "requirementDescription": "Verify export respects active Gap Score filter",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-213",
     "requirementDescription": "Verify export supports combined filters",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-214",
     "requirementDescription": "Verify export after sorting",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-215",
     "requirementDescription": "Verify export works from Page 1",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-216",
     "requirementDescription": "Verify export works from non-first page",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-217",
     "requirementDescription": "Verify export works when page size is changed",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-218",
@@ -1529,15 +1529,15 @@
     "requirementId": "KGR-219",
     "requirementDescription": "Verify export handles large datasets",
     "testable": "Partial",
-    "missingInformation": "\"Large\" record count undefined",
+    "missingInformation": "File format (CSV/XLSX) not specified",
     "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-220",
     "requirementDescription": "Verify export behavior when no records are available",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "File format (CSV/XLSX) not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-221",
@@ -1696,9 +1696,9 @@
   {
     "requirementId": "KGR-243",
     "requirementDescription": "Verify unauthorized user cannot modify template configuration",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-244",
@@ -1710,16 +1710,16 @@
   {
     "requirementId": "KGR-245",
     "requirementDescription": "Verify application prevents access after logout",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-246",
     "requirementDescription": "Verify report remains accessible after successful re-authentication",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-247",
@@ -1731,9 +1731,9 @@
   {
     "requirementId": "KGR-248",
     "requirementDescription": "Verify templates cannot be permanently deleted",
-    "testable": "Yes",
-    "missingInformation": "—",
-    "assumptions": "—"
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   },
   {
     "requirementId": "KGR-249",
@@ -1958,5 +1958,82 @@
     "testable": "Yes",
     "missingInformation": "—",
     "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-281",
+    "requirementDescription": "Verify Refresh button is visible and reloads report data without losing applied filters",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-282",
+    "requirementDescription": "Verify breadcrumb navigation displays correct KYC module path on landing page",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-283",
+    "requirementDescription": "Verify Individual and Corporate Type badges use distinct colour coding in grid",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-284",
+    "requirementDescription": "Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-285",
+    "requirementDescription": "Verify Edit button is not present in report grid per read-only design",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-286",
+    "requirementDescription": "Verify Missing Fields column is not displayed in landing grid",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-287",
+    "requirementDescription": "Verify Gap Detail Modal displays CIF ID and branch code in customer metadata section",
+    "testable": "Yes",
+    "missingInformation": "—",
+    "assumptions": "—"
+  },
+  {
+    "requirementId": "KGR-288",
+    "requirementDescription": "Verify keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order",
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
+  },
+  {
+    "requirementId": "KGR-289",
+    "requirementDescription": "Verify ARIA roles and labels are present on report table, filters, and Gap Detail Modal",
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
+  },
+  {
+    "requirementId": "KGR-290",
+    "requirementDescription": "Verify KYC Gap Report initial page load completes within acceptable performance threshold",
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
+  },
+  {
+    "requirementId": "KGR-291",
+    "requirementDescription": "Verify KYC Gap Report layout and controls render consistently in Chrome and Edge browsers",
+    "testable": "Partial",
+    "missingInformation": "Audit UI/API endpoint not specified",
+    "assumptions": "Blocked — see TODO comment in generated spec; no automation assumption applied"
   }
 ]

@@ -1,8 +1,8 @@
 {
   "summary": {
-    "totalKgr": 280,
+    "totalKgr": 291,
     "overlappedKgr": 51,
-    "netNewKgr": 229,
+    "netNewKgr": 240,
     "mmTcCount": 25
   },
   "entries": [
@@ -1682,6 +1682,72 @@
     },
     {
       "kgrId": "KGR-280",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-281",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-282",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-283",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-284",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-285",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-286",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-287",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-288",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-289",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-290",
+      "mmTcId": null,
+      "overlapType": "none",
+      "notes": "Net-new KGR test case — not covered by MM-TC-146–170"
+    },
+    {
+      "kgrId": "KGR-291",
       "mmTcId": null,
       "overlapType": "none",
       "notes": "Net-new KGR test case — not covered by MM-TC-146–170"

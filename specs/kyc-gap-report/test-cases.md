@@ -1,16 +1,16 @@
-# KYC Gap Report — Detailed Test Cases (280)
+# KYC Gap Report — Detailed Test Cases (291)
 
-### KGR-001 — Verify user can access KYC Gap Report from Missing Mandatory menu
+### KGR-001 — Verify user can access KYC Gap Report
 
 | Field | Value |
 | --- | --- |
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Critical |
-| Preconditions | User logged into AML Platform with authorized access |
-| Test Data | Authorized user |
-| Steps | 1. Login to application 2. Expand Missing Mandatory menu 3. Click KYC Gap Report |
-| Expected Result | KYC Gap Report screen opens successfully with all page components rendered |
+| Preconditions | 1. User logged in with KYC Gap Report access |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify layout, badges, and controls render without overlap or clipping. 4. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 5. Verify no unhandled errors occur during test execution. 6. Verify active filters and grid state remain consistent after interactions. 7. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 8. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 9. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 10. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. |
+| Expected Result | 1. KYC Gap Report opens with title, subtitle, KPI strip, filters, and report grid visible. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, critical, functional |
@@ -22,10 +22,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Observe page title |
-| Expected Result | Page title displays as "KYC Gap Report" |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KYC Gap Report page title is displayed correctly. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, high, functional |
@@ -37,10 +37,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Verify subtitle text |
-| Expected Result | Subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements" |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Page subtitle is displayed correctly. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, medium, functional |
@@ -52,10 +52,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2. Observe top right section |
-| Expected Result | Export button is visible and enabled |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export button is displayed on page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, high, export |
@@ -67,10 +67,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2. Observe KPI section |
-| Expected Result | All configured KPI cards are displayed without layout issues |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. All KPI cards are displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, critical, kpi |
@@ -82,10 +82,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2. Observe report grid |
-| Expected Result | Report list loads successfully with available records |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report list section loads successfully. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, critical, functional |
@@ -97,10 +97,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2. Verify Search filter 3. Verify Branch filter 4. Verify Customer Type filter 5. Verify Template filter 6. Verify Priority filter 7. Verify Gap Score filter |
-| Expected Result | All configured filters are displayed and accessible |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. All configured filters are visible. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, high, filter |
@@ -112,10 +112,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2. Observe report table |
-| Expected Result | Grid loads successfully without errors |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report grid is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, critical, functional |
@@ -127,10 +127,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page with records available |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2. Scroll to bottom 3. Verify pagination controls |
-| Expected Result | Items per page selector, page indicator and navigation controls are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination controls are displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, medium, pagination |
@@ -142,10 +142,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | F5 Refresh |
-| Steps | 1. Navigate to page 2. Refresh browser |
-| Expected Result | Page reloads successfully without errors |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Note current KPI values, filter selections, and visible grid rows. 8. Refresh the browser or click Refresh control and wait for data reload to complete. 9. Verify page components reload successfully without JavaScript errors or broken layout. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Page loads successfully after browser refresh. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. 8. Refresh the browser or click Refresh control and wait for data reload to complete. 9. Page components reload successfully without JavaScript errors or broken layout. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, high, functional |
@@ -157,10 +157,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | High |
-| Preconditions | User has valid authenticated session |
-| Test Data | KYC Gap Report URL |
-| Steps | 1. Copy KYC Gap Report URL 2. Open URL directly |
-| Expected Result | Page opens successfully without requiring additional navigation |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Direct URL access for authorized user. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, high, functional |
@@ -172,55 +172,55 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Click browser Back button |
-| Expected Result | User is redirected to previous page without application error |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Application back navigation from KYC Gap Report. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, medium, functional |
 
-### KGR-013 — Verify navigation from KYC Gap Report to Missing Mandatory Template
+### KGR-013 — Verify KYC Gap Report is available in KYC module navigation
 
 | Field | Value |
 | --- | --- |
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Open KYC Gap Report 2. Navigate to Missing Mandatory Data Template |
-| Expected Result | Template screen opens successfully |
+| Preconditions | 1. User is logged in with KYC module access |
+| Test Data | Role: Compliance Officer; Action: Verify module entry |
+| Steps | 1. Open KYC module navigation. 2. Review available KYC module options. 3. Verify KYC Gap Report is listed 4. Open KYC Gap Report 5. Verify KYC Gap Report is listed in KYC module navigation. 6. Open KYC Gap Report and verify the report screen loads. 7. Verify page title displays as "KYC Gap Report". 8. Verify layout, badges, and controls render without overlap or clipping. 9. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 10. Verify no unhandled errors occur during test execution. 11. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KYC Gap Report is listed in KYC module navigation and opens successfully. 2. KYC module navigation opens successfully. 3. Listed KYC module options include KYC Gap Report. 4. KYC Gap Report is listed. 5. KYC Gap Report opens successfully. 6. KYC Gap Report is listed in KYC module navigation. 7. The report screen loads. 8. Page title displays as "KYC Gap Report". |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, medium, functional |
 
-### KGR-014 — Verify returning from Template screen preserves KYC Gap Report access
+### KGR-014 — Verify user can return to KYC Gap Report after navigating away
 
 | Field | Value |
 | --- | --- |
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Medium |
-| Preconditions | User is on Missing Mandatory Template screen |
-| Test Data | N/A |
-| Steps | 1. Navigate to Template screen 2. Return to KYC Gap Report |
-| Expected Result | KYC Gap Report opens successfully |
+| Preconditions | 1. User is on KYC Gap Report |
+| Test Data | Role: Compliance Officer; Action: Return to report |
+| Steps | 1. Open KYC Gap Report 2. Navigate to another KYC screen 3. Return to KYC Gap Report 4. Verify layout, badges, and controls render without overlap or clipping. 5. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 6. Verify no unhandled errors occur during test execution. 7. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 8. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 9. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 10. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. |
+| Expected Result | 1. KYC Gap Report reloads successfully when selected again. 2. KYC Gap Report opens successfully. 3. to another KYC screen completes successfully. 4. Return to KYC Gap Report completes with expected report state. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, medium, functional |
 
-### KGR-015 — Verify filter and page state is retained when navigating between Template and Report views
+### KGR-015 — Verify filters and page state persist when leaving and returning to KYC Gap Report
 
 | Field | Value |
 | --- | --- |
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Critical |
-| Preconditions | User has applied filters and navigated beyond page 1 |
-| Test Data | Filtered dataset |
-| Steps | 1. Apply filters 2. Navigate to Template screen 3. Return to KYC Gap Report |
-| Expected Result | Previously selected filters and page state remain unchanged |
+| Preconditions | 1. Filters and pagination applied on KYC Gap Report |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Priority: High; Page: 2 |
+| Steps | 1. Apply filters on KYC Gap Report 2. Navigate to another KYC screen 3. Return to KYC Gap Report 4. Verify layout, badges, and controls render without overlap or clipping. 5. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 6. Verify no unhandled errors occur during test execution. 7. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 8. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 9. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. 10. Verify all displayed values remain stable after interaction with no stale or duplicated records visible. |
+| Expected Result | 1. Previously applied filters and pagination remain unchanged. 2. Applied filters on KYC Gap Report and the report updates accordingly. 3. to another KYC screen completes successfully. 4. Return to KYC Gap Report completes with expected report state. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, critical, filter |
@@ -232,10 +232,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | High |
-| Preconditions | User logged in with unauthorized role |
-| Test Data | Unauthorized user |
-| Steps | 1. Login with unauthorized role 2. Attempt to access KYC Gap Report |
-| Expected Result | Access is denied as per security configuration |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Navigate to another KYC screen. 8. Return to KYC Gap Report and verify the report reloads successfully. 9. Verify access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 10. Verify no KPI data, customer records, or export controls are exposed to unauthorized users. 11. Note current KPI values, filter selections, and visible grid rows. 12. Refresh the browser or click Refresh control and wait for data reload to complete. 13. Verify page components reload successfully without JavaScript errors or broken layout. 14. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 15. Verify no unhandled errors occur during test execution. 16. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Unauthorized user cannot access KYC Gap Report. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. 8. to another KYC screen completes successfully. 9. Return to KYC Gap Report completes with expected report state. 10. Access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 11. No KPI data, customer records, or export controls are exposed to unauthorized users. 12. Refresh the browser or click Refresh control and wait for data reload to complete. 13. Page components reload successfully without JavaScript errors or broken layout. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, high, rbac, security |
@@ -247,10 +247,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Critical |
-| Preconditions | User is not logged in |
-| Test Data | KYC Gap Report URL |
-| Steps | 1. Logout from application 2. Enter KYC Gap Report URL directly |
-| Expected Result | User is redirected to login page or access denied screen |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Navigate to another KYC screen. 8. Return to KYC Gap Report and verify the report reloads successfully. 9. Verify access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 10. Verify no KPI data, customer records, or export controls are exposed to unauthorized users. 11. Note current KPI values, filter selections, and visible grid rows. 12. Refresh the browser or click Refresh control and wait for data reload to complete. 13. Verify page components reload successfully without JavaScript errors or broken layout. 14. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 15. Verify no unhandled errors occur during test execution. 16. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Unauthenticated user cannot access KYC Gap Report URL. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. 8. to another KYC screen completes successfully. 9. Return to KYC Gap Report completes with expected report state. 10. Access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 11. No KPI data, customer records, or export controls are exposed to unauthorized users. 12. Refresh the browser or click Refresh control and wait for data reload to complete. 13. Page components reload successfully without JavaScript errors or broken layout. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, critical, rbac, security |
@@ -262,10 +262,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2. Review header, KPI cards, filters, grid and pagination |
-| Expected Result | All UI components render correctly without overlap, truncation or broken layout |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Page loads without UI rendering issues. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, medium, functional |
@@ -277,10 +277,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Medium |
-| Preconditions | User logged into application |
-| Test Data | N/A |
-| Steps | 1. Open KYC Gap Report 2. Navigate away 3. Return to page 4. Repeat multiple times |
-| Expected Result | Page remains accessible and functional throughout navigation cycles |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Navigate to another KYC screen. 8. Return to KYC Gap Report and verify the report reloads successfully. 9. Note current KPI values, filter selections, and visible grid rows. 10. Refresh the browser or click Refresh control and wait for data reload to complete. 11. Verify page components reload successfully without JavaScript errors or broken layout. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Page remains functional after multiple navigations. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. 8. to another KYC screen completes successfully. 9. Return to KYC Gap Report completes with expected report state. 10. Refresh the browser or click Refresh control and wait for data reload to complete. 11. Page components reload successfully without JavaScript errors or broken layout. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, medium, functional |
@@ -292,10 +292,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report |
 | Priority | Critical |
-| Preconditions | User logged into application |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Monitor page behavior |
-| Expected Result | Page loads successfully without error messages, crashes or blank screens |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Action: Open KYC Gap Report |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify layout, badges, and controls render without overlap or clipping. 8. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 9. Verify no unhandled errors occur during test execution. 10. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. No application error occurs when opening KYC Gap Report. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report, critical, functional |
@@ -307,10 +307,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Observe KPI section |
-| Expected Result | Total Customers (CBS) KPI card is displayed successfully |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Total Customers (CBS) KPI card is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -322,10 +322,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Observe KPI section |
-| Expected Result | Customers with Gaps KPI card is displayed successfully |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customers with Gaps KPI card is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -337,10 +337,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Observe KPI section |
-| Expected Result | Critical Priority KPI card is displayed successfully |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Critical Priority KPI card is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -352,10 +352,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Verify KPI card labels |
-| Expected Result | All KPI labels are displayed correctly without truncation |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI card labels are displayed correctly. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, medium, kpi |
@@ -367,10 +367,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Observe Total Customers KPI |
-| Expected Result | Total Customers KPI displays a valid numeric value |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Total Customers KPI value is numeric. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -382,10 +382,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Observe Customers with Gaps KPI |
-| Expected Result | Customers with Gaps KPI displays a valid numeric value |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customers with Gaps KPI value is numeric. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -397,10 +397,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Observe Critical Priority KPI |
-| Expected Result | Critical Priority KPI displays a valid numeric value |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Critical Priority KPI value is numeric. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -412,10 +412,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Critical |
-| Preconditions | Report contains customer data |
-| Test Data | N/A |
-| Steps | 1. Compare Total Customers count with Customers with Gaps count |
-| Expected Result | Customers with Gaps count is less than or equal to Total Customers count |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Total Customers KPI count is greater than or equal to Customers with Gaps count. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, critical, kpi |
@@ -427,10 +427,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Critical |
-| Preconditions | Report data available |
-| Test Data | Test dataset |
-| Steps | 1. Identify customers with gaps 2. Compare with KPI count |
-| Expected Result | Customers with Gaps KPI accurately reflects underlying data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customers with Gaps KPI count matches report data. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + Database |
 | Tags | kyc-gap-report-kpi-cards, critical, kpi |
@@ -442,10 +442,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Critical |
-| Preconditions | Report contains Critical priority records |
-| Test Data | Test dataset |
-| Steps | 1. Count Critical priority records 2. Compare with KPI value |
-| Expected Result | Critical Priority KPI count matches report data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Critical Priority KPI count matches report data. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + Database |
 | Tags | kyc-gap-report-kpi-cards, critical, kpi |
@@ -457,10 +457,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Note KPI values 2. Refresh page 3. Compare values |
-| Expected Result | KPI values remain accurate after reload |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Note current KPI values, filter selections, and visible grid rows. 9. Refresh the browser or click Refresh control and wait for data reload to complete. 10. Verify page components reload successfully without JavaScript errors or broken layout. 11. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI values refresh when page is reloaded. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Refresh the browser or click Refresh control and wait for data reload to complete. 10. Page components reload successfully without JavaScript errors or broken layout. 11. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, medium, kpi |
@@ -472,10 +472,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Review KPI card alignment and layout |
-| Expected Result | KPI cards are properly aligned and rendered |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI cards load without UI distortion. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, medium, kpi |
@@ -487,10 +487,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Low |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Review KPI values |
-| Expected Result | KPI values are fully visible and readable |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI values are visible without truncation. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, low, kpi |
@@ -502,10 +502,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | Report contains records |
-| Test Data | Test dataset |
-| Steps | 1. Open report with available data |
-| Expected Result | KPI cards display populated values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI cards are displayed when report contains records. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -517,10 +517,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | Test dataset with zero KPI value |
-| Test Data | Zero-value dataset |
-| Steps | 1. Open report containing zero KPI count |
-| Expected Result | KPI card displays value as 0 without errors |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI cards handle zero values correctly — KPI cards should support zero counts. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, kpi |
@@ -532,10 +532,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Medium |
-| Preconditions | User is on report page |
-| Test Data | Filtered dataset |
-| Steps | 1. Apply report filters 2. Observe KPI section |
-| Expected Result | KPI section remains visible and usable |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI section remains visible after filter application. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, medium, filter |
@@ -547,10 +547,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Low |
-| Preconditions | Multiple pages of records exist |
-| Test Data | N/A |
-| Steps | 1. Navigate between pages |
-| Expected Result | KPI section remains accessible |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI section remains visible after pagination navigation. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, low, pagination |
@@ -562,10 +562,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Low |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Review page layout |
-| Expected Result | KPI cards appear above report filters and grid |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI cards are displayed before report grid. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, low, kpi |
@@ -577,10 +577,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Observe KPI values |
-| Expected Result | All KPI values are zero or positive integers |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI values do not display negative numbers. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, high, boundary, negative |
@@ -592,10 +592,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - KPI Cards |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Open page 2. Observe KPI loading behavior |
-| Expected Result | KPI cards load successfully without errors or missing data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify page title displays as "KYC Gap Report". 5. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Verify Export button is visible, enabled, and positioned in the page header. 7. Verify KYC Gap Report is listed in KYC module navigation. 8. Verify Critical Priority Customers classified as Critical priority based on their KYC Gap Score. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KPI cards load successfully within page initialization. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Page title displays as "KYC Gap Report". 6. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 7. Export button is visible, enabled, and positioned in the page header. 8. KYC Gap Report is listed in KYC module navigation. 9. Critical Priority Customers classified as Critical priority based on their KYC Gap Score. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-kpi-cards, medium, kpi |
@@ -607,10 +607,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Locate Search field |
-| Expected Result | Search field is displayed and available for input |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search field is displayed on KYC Gap Report page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -622,10 +622,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page with available data |
-| Test Data | Vikram Shah |
-| Steps | 1. Enter exact customer name in Search field 2. Observe results |
-| Expected Result | Only matching customer record is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search by exact customer name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -637,10 +637,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Vikram |
-| Steps | 1. Enter partial customer name 2. Observe results |
-| Expected Result | Matching records containing entered text are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search by partial customer name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -652,10 +652,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | IN-CUS-78821 |
-| Steps | 1. Enter Customer ID 2. Observe results |
-| Expected Result | Matching customer record is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search by Customer ID. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -667,10 +667,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | VIKRAM / vikram |
-| Steps | 1. Search using uppercase value 2. Search using lowercase value |
-| Expected Result | Same matching results are returned |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search is case insensitive. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -682,10 +682,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | AE-COR-34421 |
-| Steps | 1. Enter alphanumeric Customer ID 2. Observe results |
-| Expected Result | Matching customer record is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search using alphanumeric Customer ID. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -697,10 +697,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Vikram Shah |
-| Steps | 1. Enter search value with leading spaces |
-| Expected Result | Correct matching results are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search with leading spaces. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, medium, filter |
@@ -712,10 +712,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Vikram Shah |
-| Steps | 1. Enter search value with trailing spaces |
-| Expected Result | Correct matching results are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search with trailing spaces. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, medium, filter |
@@ -727,10 +727,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | @#$%^&* |
-| Steps | 1. Enter special characters in search field |
-| Expected Result | System handles input without errors and returns no matching records if applicable |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search with special characters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, medium, filter |
@@ -742,10 +742,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | XYZ_TEST_123 |
-| Steps | 1. Enter non-existing customer value |
-| Expected Result | No records are returned and application remains stable |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Search with non-existing customer value. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -757,10 +757,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Vikram |
-| Steps | 1. Type characters gradually in search field |
-| Expected Result | Results update dynamically based on entered text |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Real-time search behavior. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -772,10 +772,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Open Branch filter dropdown |
-| Expected Result | Branch options are displayed as Branch Name (Branch Code) |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Branch filter dropdown values. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -787,10 +787,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Mumbai Main (MUM01) |
-| Steps | 1. Select Branch filter 2. Observe results |
-| Expected Result | Only records belonging to selected branch are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by Branch. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -802,10 +802,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Test branch |
-| Steps | 1. Select branch having no matching records |
-| Expected Result | No records are displayed and application remains stable |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; No-match value: zzzz-no-match-99999; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Branch filter with no matching records. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, medium, filter |
@@ -817,10 +817,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Open Customer Type dropdown |
-| Expected Result | Dropdown displays Individual and Corporate options |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Customer Type filter values. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -832,10 +832,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Individual |
-| Steps | 1. Select Individual customer type |
-| Expected Result | Only Individual customer records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by Individual customer type. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -847,10 +847,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Corporate |
-| Steps | 1. Select Corporate customer type |
-| Expected Result | Only Corporate customer records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by Corporate customer type. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -862,10 +862,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Open Template filter |
-| Expected Result | All configured template names are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Template filter dropdown values. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -877,10 +877,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Standard KYC — Individual |
-| Steps | 1. Select template filter |
-| Expected Result | Only records mapped to selected template are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by template. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -892,10 +892,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Open Priority filter |
-| Expected Result | Dropdown displays Low, Medium, High and Critical values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Priority filter dropdown values. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -907,10 +907,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Low |
-| Steps | 1. Select Low priority filter |
-| Expected Result | Only Low priority records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by Low priority. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -922,10 +922,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Medium |
-| Steps | 1. Select Medium priority filter |
-| Expected Result | Only Medium priority records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by Medium priority. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -937,10 +937,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | High |
-| Steps | 1. Select High priority filter |
-| Expected Result | Only High priority records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Ravi Patel (CUST-1000005) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: High; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by High priority. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -952,10 +952,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Critical |
-| Steps | 1. Select Critical priority filter |
-| Expected Result | Only Critical priority records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filtering by Critical priority. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -967,10 +967,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Min = 5 |
-| Steps | 1. Enter minimum score value |
-| Expected Result | Only records having score greater than or equal to minimum value are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Gap Score minimum filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, gap-score, business-rule |
@@ -982,10 +982,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Max = 10 |
-| Steps | 1. Enter maximum score value |
-| Expected Result | Only records having score less than or equal to maximum value are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Gap Score maximum filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, gap-score, business-rule |
@@ -997,10 +997,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Min = 5, Max = 10 |
-| Steps | 1. Enter minimum score 2. Enter maximum score |
-| Expected Result | Only records within specified score range are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Gap Score range filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, gap-score, business-rule |
@@ -1012,10 +1012,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | Critical |
-| Preconditions | User has applied multiple filters |
-| Test Data | N/A |
-| Steps | 1. Apply filters 2. Click Clear Filters |
-| Expected Result | All filters are cleared and complete dataset is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Clear Filters functionality. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, critical, filter |
@@ -1027,10 +1027,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | MUM01 + Individual |
-| Steps | 1. Select Branch 2. Select Customer Type |
-| Expected Result | Records matching both filters are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filter combination: Branch + Customer Type. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -1042,10 +1042,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Search & Filters |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Vikram + Critical |
-| Steps | 1. Enter search value 2. Select Priority |
-| Expected Result | Only records satisfying both conditions are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Search keyword: KYC; Exact match: Simplified KYC Customer; Branch: INST-DEMO-001 (INST-DEMO-001); Priority filter: Low; Gap Score range: 10–50 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Locate the global search input and verify placeholder text indicates customer name or ID search. 5. Verify Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 6. Verify Row 2 Gap Score Min and Max range inputs accept numeric values only. 7. Verify Clear Filters control resets all search and filter inputs to default state. 8. Enter search keyword "KYC" and verify grid filters in real time. 9. Enter exact customer name "Simplified KYC Customer" and verify precise match behavior. 10. Enter non-matching value "zzzz-no-match-99999" and verify empty or no-records state. 11. Open Branch filter dropdown and verify branch names display with branch codes in parentheses. 12. Select a branch filter value and verify only matching branch records appear in the grid. 13. Apply Individual customer type filter and verify only Individual badge rows are displayed. 14. Apply Corporate customer type filter and verify only Corporate badge rows are displayed. 15. Open Template filter and verify available template names match assigned templates in grid data. 16. Select a template filter and verify grid shows only customers with that template applied. 17. Apply Low priority filter and verify grid rows display matching Low priority classification. 18. Apply Medium priority filter and verify grid rows display matching Medium priority classification. 19. Apply High priority filter and verify grid rows display matching High priority classification. 20. Apply Critical priority filter and verify grid rows display matching Critical priority classification. |
+| Expected Result | 1. Filter combination: Search + Priority. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Placeholder text indicates customer name or ID search. 6. Row 1 dropdown filters: Branch, Customer Type, Template, and Priority are visible and enabled. 7. Row 2 Gap Score Min and Max range inputs accept numeric values only. 8. Clear Filters control resets all search and filter inputs to default state. 9. Search or filter input returns the expected matching or empty result set. 10. Branch names display with branch codes in parentheses. 11. Selected filter value is applied and grid data updates correctly. 12. Only Individual badge rows are displayed. 13. Only Corporate badge rows are displayed. 14. Available template names match assigned templates in grid data. 15. Grid rows display matching Low priority classification. 16. Grid rows display matching Medium priority classification. 17. Grid rows display matching High priority classification. 18. Grid rows display matching Critical priority classification. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-search-filters, high, filter |
@@ -1057,10 +1057,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to report grid 2. Verify visible columns |
-| Expected Result | Grid displays Customer, Customer ID, Type, Branch, Branch Code, Template Applied, KYC Gap Score, Priority and Actions columns |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. All configured report columns are displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1072,10 +1072,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | Customer records available |
-| Test Data | Test dataset |
-| Steps | 1. Review Customer column values |
-| Expected Result | Customer full names are displayed accurately |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customer column displays customer full name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1087,10 +1087,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | Customer records available |
-| Test Data | Test dataset |
-| Steps | 1. Review Customer ID column |
-| Expected Result | Customer IDs are displayed accurately and uniquely |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customer ID column displays unique customer identifiers. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1102,10 +1102,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review Type column |
-| Expected Result | Customer type is displayed correctly using configured badge format |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Type column displays customer type badge. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1117,10 +1117,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review Branch column |
-| Expected Result | Branch name is displayed correctly for each record |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Branch column displays branch name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1132,10 +1132,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review Branch Code column |
-| Expected Result | Correct branch code is displayed for each record |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Branch Code column displays branch code. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1147,10 +1147,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review Template Applied column |
-| Expected Result | Correct template name is displayed for each customer |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Template Applied column displays assigned template. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1162,10 +1162,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review KYC Gap Score column |
-| Expected Result | KYC Gap Score is displayed as integer and not percentage |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KYC Gap Score column displays numeric score. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, gap-score, business-rule |
@@ -1177,10 +1177,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review Priority column |
-| Expected Result | Priority value is displayed correctly according to assigned classification |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Priority column displays risk classification. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1192,10 +1192,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Review Actions column |
-| Expected Result | View button is displayed for every row |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Actions column displays View button. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, modal |
@@ -1207,10 +1207,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click Customer column header |
-| Expected Result | Records are sorted based on Customer name |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Customer column supports sorting. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1222,10 +1222,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click Customer ID header |
-| Expected Result | Records are sorted based on Customer ID |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Customer ID column supports sorting. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1237,10 +1237,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click Branch header |
-| Expected Result | Records are sorted based on Branch value |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Branch column supports sorting. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1252,10 +1252,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click Branch Code header |
-| Expected Result | Records are sorted based on Branch Code value |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Branch Code column supports sorting. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1267,10 +1267,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click KYC Gap Score header |
-| Expected Result | Records are sorted based on Gap Score values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. KYC Gap Score column supports sorting. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, gap-score, business-rule |
@@ -1282,10 +1282,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click Customer header once |
-| Expected Result | Records are sorted in ascending alphabetical order |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Ascending sorting for Customer column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1297,10 +1297,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click Customer header twice |
-| Expected Result | Records are sorted in descending alphabetical order |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Descending sorting for Customer column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1312,10 +1312,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click KYC Gap Score header once |
-| Expected Result | Records are sorted from lowest score to highest score |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Ascending sorting for KYC Gap Score column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, gap-score, business-rule |
@@ -1327,10 +1327,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Click KYC Gap Score header twice |
-| Expected Result | Records are sorted from highest score to lowest score |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Descending sorting for KYC Gap Score column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, gap-score, business-rule |
@@ -1342,10 +1342,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User has applied filters |
-| Test Data | Filtered dataset |
-| Steps | 1. Apply filter 2. Sort grid |
-| Expected Result | Filtered records are sorted correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Sorting persists correctly with filtered data. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, filter |
@@ -1357,10 +1357,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Medium |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Attempt sorting Type column |
-| Expected Result | Non-sortable columns do not trigger sorting |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate; Sort column: KYC Gap Score |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Click sortable column headers (Customer, Customer ID, Branch, Branch Code, KYC Gap Score) and verify ascending sort order. 14. Click the same column header again and verify descending sort order is applied. 15. Verify non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Verify each grid row displays a View action button in the Actions column. 17. Click View on the first visible row and verify Gap Detail Modal opens. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Non-sortable columns do not display sort behavior. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Selected action completes and shows the expected screen, modal, or download. 15. Non-sortable columns (Type, Template Applied, Priority, Actions) do not change row order on click. 16. Each grid row displays a View action button in the Actions column. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, medium, functional |
@@ -1372,10 +1372,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | Test data available |
-| Test Data | Customer records |
-| Steps | 1. Compare report data with source data |
-| Expected Result | Displayed values accurately match source records |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Grid data accuracy against source records. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + Database |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1387,10 +1387,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Medium |
-| Preconditions | Long customer name |
-| Test Data | Long customer name |
-| Steps | 1. Review grid display |
-| Expected Result | Grid remains properly formatted and data remains readable |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Grid handles long customer names — Long names should display without UI breakage. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, medium, functional |
@@ -1402,10 +1402,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Medium |
-| Preconditions | Long template exists |
-| Test Data | Long template name |
-| Steps | 1. Review Template Applied column |
-| Expected Result | Grid remains properly formatted without data corruption |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Grid handles long template names. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, medium, functional |
@@ -1417,10 +1417,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | Test dataset available |
-| Test Data | Test dataset |
-| Steps | 1. Review report records |
-| Expected Result | No duplicate records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Grid displays no duplicate records. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1432,10 +1432,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Refresh page 2. Review grid |
-| Expected Result | Grid reloads successfully with correct data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Grid displays records after page refresh. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, functional |
@@ -1447,10 +1447,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | Filters applied |
-| Test Data | N/A |
-| Steps | 1. Apply filters 2. Click Clear Filters |
-| Expected Result | Complete dataset is displayed after filter reset |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Grid displays records after filter reset. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, filter |
@@ -1462,10 +1462,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | High |
-| Preconditions | Apply restrictive filters |
-| Test Data | Test filter combination |
-| Steps | 1. Apply filters returning no results |
-| Expected Result | Grid displays empty state without errors |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Apply filters that yield zero matches and verify empty state or no-records message is displayed. 16. Verify Template Applied No Name of the KYC template assigned to this customer. 17. Verify layout, badges, and controls render without overlap or clipping. 18. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 19. Verify no unhandled errors occur during test execution. 20. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Grid remains stable when no records match filters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Empty state or no-records message is displayed. 17. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, high, filter |
@@ -1477,10 +1477,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review Priority column |
-| Expected Result | Priority values are limited to Low, Medium, High and Critical |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Priority values contain only supported classifications. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1492,10 +1492,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Report Grid |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | N/A |
-| Steps | 1. Review grid actions |
-| Expected Result | Only View action is available and no edit functionality is present |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify no Edit button or inline edit controls are present in the landing grid. 16. Verify Missing Fields and Gap Type are not shown as landing table columns. 17. Verify Bulk Notify or bulk remediation actions are not available on the landing page. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Report is read-only from landing grid. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. No Edit button or inline edit controls are present in the landing grid. 17. Missing Fields and Gap Type are not shown as landing table columns. 18. Bulk Notify or bulk remediation actions are not available on the landing page. 19. Template Applied No Name of the KYC template assigned to this customer. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-report-grid, critical, functional |
@@ -1507,10 +1507,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Customer exists with known missing fields |
-| Test Data | Mandatory(3)+Mandatory(3)+Optional(1) |
-| Steps | 1. Open customer Gap Detail Modal 2. Note missing fields and weights 3. Calculate total manually 4. Compare with displayed score |
-| Expected Result | Display score equals sum of all missing field weights |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KYC Gap Score is calculated as sum of missing field weights. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1522,10 +1522,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Customer has missing Mandatory field |
-| Test Data | Mandatory Field |
-| Steps | 1. Open Gap Detail Modal 2. Verify weight assigned to Mandatory field |
-| Expected Result | Each missing Mandatory field contributes exactly 3 points |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Simplified KYC Customer (CIF-1001); Score: 3; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Missing Mandatory field contributes 3 points to Gap Score. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1537,10 +1537,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Customer has missing Optional field |
-| Test Data | Optional Field |
-| Steps | 1. Open Gap Detail Modal 2. Verify weight assigned to Optional field |
-| Expected Result | Each missing Optional field contributes exactly 1 point |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Simplified KYC Customer (CIF-1001); Score: 3; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Missing Optional field contributes 1 point to Gap Score. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1552,10 +1552,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer prepared |
-| Test Data | 1 Mandatory field |
-| Steps | 1. Open customer record with one missing Mandatory field |
-| Expected Result | KYC Gap Score is displayed as 3 |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customer with one missing Mandatory field displays score 3. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1567,10 +1567,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer prepared |
-| Test Data | 1 Optional field |
-| Steps | 1. Open customer record with one missing Optional field |
-| Expected Result | KYC Gap Score is displayed as 1 |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customer with one missing Optional field displays score 1. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1582,10 +1582,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer prepared |
-| Test Data | 3 Mandatory fields |
-| Steps | 1. Open customer with 3 missing Mandatory fields |
-| Expected Result | KYC Gap Score is displayed as 9 |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation with multiple Mandatory fields. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1597,10 +1597,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer prepared |
-| Test Data | 4 Optional fields |
-| Steps | 1. Open customer with 4 missing Optional fields |
-| Expected Result | KYC Gap Score is displayed as 4 |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation with multiple Optional fields. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1612,10 +1612,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer prepared |
-| Test Data | 2 Mandatory + 3 Optional |
-| Steps | 1. Open customer with mixed missing fields |
-| Expected Result | KYC Gap Score is displayed as 9 |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation with mixed Mandatory and Optional fields. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1627,10 +1627,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review KYC Gap Score column |
-| Expected Result | KYC Gap Score is displayed as integer value only |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score is displayed as integer value. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1642,10 +1642,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer with complete KYC |
-| Test Data | Complete KYC record |
-| Steps | 1. Open customer record |
-| Expected Result | KYC Gap Score is displayed as 0 |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Complete KYC Customer (CIF-1004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Complete KYC Customer (CIF-1004); Score: 0; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Verify customer with zero missing fields displays KYC Gap Score of 0. 9. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Customer with no missing fields displays score 0. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Customer with zero missing fields displays KYC Gap Score of 0. 10. Modal Total KYC Gap Score matches the grid row score. 11. Refresh report data after backend template or field changes and verify scores recalculate correctly. 12. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1657,10 +1657,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Customer record available |
-| Test Data | Test dataset |
-| Steps | 1. Note score from grid 2. Open Gap Detail Modal 3. Compare scores |
-| Expected Result | Score value is identical in report and modal |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score displayed in report matches score in Gap Detail Modal. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1672,10 +1672,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Customer with multiple missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Count missing fields 2. Sum weights 3. Compare with score |
-| Expected Result | All missing fields contribute to final score |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation includes all missing fields. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1687,10 +1687,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | High |
-| Preconditions | Customer with completed and missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Review customer data 2. Verify score calculation |
-| Expected Result | Only missing fields contribute to score |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation excludes completed fields. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, high, gap-score, business-rule |
@@ -1702,10 +1702,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Customer with missing Mandatory field |
-| Test Data | Test dataset |
-| Steps | 1. Complete missing Mandatory field 2. Refresh report |
-| Expected Result | KYC Gap Score decreases by 3 points |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score updates after Mandatory field remediation. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1717,10 +1717,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Customer with missing Optional field |
-| Test Data | Test dataset |
-| Steps | 1. Complete missing Optional field 2. Refresh report |
-| Expected Result | KYC Gap Score decreases by 1 point |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score updates after Optional field remediation. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1732,10 +1732,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Medium |
-| Preconditions | Customer exists |
-| Test Data | Test dataset |
-| Steps | 1. Update unrelated field 2. Refresh report |
-| Expected Result | KYC Gap Score remains unchanged |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score remains unchanged when unrelated customer data changes. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, medium, gap-score, business-rule |
@@ -1747,10 +1747,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Template score bands configured |
-| Test Data | Test dataset |
-| Steps | 1. Open customer record 2. Verify score and priority |
-| Expected Result | Displayed priority matches template-defined Low band |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Low priority classification based on template score bands. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1762,10 +1762,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Template score bands configured |
-| Test Data | Test dataset |
-| Steps | 1. Open customer record 2. Verify score and priority |
-| Expected Result | Displayed priority matches template-defined Medium band |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Medium priority classification based on template score bands. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1777,10 +1777,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Template score bands configured |
-| Test Data | Test dataset |
-| Steps | 1. Open customer record 2. Verify score and priority |
-| Expected Result | Displayed priority matches template-defined High band |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Ravi Patel (CUST-1000005) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Ravi Patel (CUST-1000005); Score: 36; Priority: High |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. High priority classification based on template score bands. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1792,10 +1792,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Template score bands configured |
-| Test Data | Test dataset |
-| Steps | 1. Open customer record 2. Verify score and priority |
-| Expected Result | Displayed priority matches template-defined Critical band |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Critical priority classification based on template score bands. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1807,10 +1807,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Multiple templates with different score bands available |
-| Test Data | Same score, different templates |
-| Steps | 1. Compare customers having same score under different templates |
-| Expected Result | Priority is derived from assigned template configuration |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Priority is derived from assigned template score bands. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1822,10 +1822,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Multiple templates configured |
-| Test Data | Same score across templates |
-| Steps | 1. Compare customers with identical scores |
-| Expected Result | Customers may display different priorities based on assigned template |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Same score can result in different priorities under different templates. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1837,10 +1837,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Template score bands updated |
-| Test Data | Test dataset |
-| Steps | 1. Modify score bands 2. Refresh report |
-| Expected Result | Priority is recalculated according to updated template bands |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Priority recalculation after score band configuration change. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1852,10 +1852,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | High |
-| Preconditions | Template updated with additional field |
-| Test Data | Test dataset |
-| Steps | 1. Add field to template 2. Refresh report |
-| Expected Result | KYC Gap Score is recalculated correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score recalculation after new field is added to template. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, high, gap-score, business-rule |
@@ -1867,10 +1867,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Field requirement modified |
-| Test Data | Optional→Mandatory |
-| Steps | 1. Change field requirement 2. Refresh report |
-| Expected Result | Score reflects updated field weight |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score recalculation after field requirement changes. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, gap-score, business-rule |
@@ -1882,10 +1882,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | High |
-| Preconditions | User is on report page |
-| Test Data | Test dataset |
-| Steps | 1. Review report data |
-| Expected Result | All displayed scores are zero or positive integers |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Verify customer with zero missing fields displays KYC Gap Score of 0. 9. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score does not display negative values. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Customer with zero missing fields displays KYC Gap Score of 0. 10. Modal Total KYC Gap Score matches the grid row score. 11. Refresh report data after backend template or field changes and verify scores recalculate correctly. 12. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, high, boundary, negative |
@@ -1897,10 +1897,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Medium |
-| Preconditions | Customer record available |
-| Test Data | Test dataset |
-| Steps | 1. Refresh report multiple times |
-| Expected Result | Score remains consistent across refreshes |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation consistency across multiple refreshes. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, medium, gap-score, business-rule |
@@ -1912,10 +1912,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer prepared |
-| Test Data | Boundary score |
-| Steps | 1. Open customer having highest score band value |
-| Expected Result | Score and priority are calculated correctly at upper boundary |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation for highest configured score range. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, boundary, negative |
@@ -1927,10 +1927,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Test customer prepared |
-| Test Data | Boundary score |
-| Steps | 1. Open customer having lowest score band value |
-| Expected Result | Score and priority are calculated correctly at lower boundary |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score calculation for lowest configured score range. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, boundary, negative |
@@ -1942,10 +1942,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Score Calculation |
 | Priority | Critical |
-| Preconditions | Export functionality available |
-| Test Data | Export file |
-| Steps | 1. Export report 2. Compare score values |
-| Expected Result | Exported scores match application data exactly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Simplified KYC Customer (CIF-1001) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Simplified KYC Customer (CIF-1001); Score: 3; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify mandatory missing field weight contributes +3 to KYC Gap Score. 5. Verify optional missing field weight contributes +1 to KYC Gap Score. 6. Verify KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 7. Verify priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 8. Open Gap Detail Modal and verify modal Total KYC Gap Score matches the grid row score. 9. Refresh report data after backend template or field changes and verify scores recalculate correctly. 10. Verify Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. 11. Verify layout, badges, and controls render without overlap or clipping. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score displayed in exported report matches application data. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Mandatory missing field weight contributes +3 to KYC Gap Score. 6. Optional missing field weight contributes +1 to KYC Gap Score. 7. KYC Gap Score displays as a raw integer (not a percentage) with colour-coded risk label. 8. Priority classification (Low/Medium/High/Critical) aligns with template score band configuration. 9. Modal Total KYC Gap Score matches the grid row score. 10. Refresh report data after backend template or field changes and verify scores recalculate correctly. 11. Formula KYC Gap Score = Σ (weight of each missing field) Mandatory field missing +3 to Gap Score Optional field missing +1 to Gap Score Score display Raw integer (e.g., 7), not a percentage. |
 | Automation Candidate | Yes |
 | Automation Layer | API + Database |
 | Tags | kyc-gap-report-gap-score-calculation, critical, export |
@@ -1957,10 +1957,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page with records available |
-| Test Data | Test customer |
-| Steps | 1. Locate customer record 2. Click View button |
-| Expected Result | Gap Detail Modal opens successfully for selected customer |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. View button opens Gap Detail Modal. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -1972,10 +1972,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | Test customer |
-| Steps | 1. Open Gap Detail Modal 2. Verify customer name |
-| Expected Result | Customer name displayed in modal matches selected record |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal displays customer name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -1987,10 +1987,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | IN-CUS-78821 |
-| Steps | 1. Open Gap Detail Modal 2. Verify Customer ID |
-| Expected Result | Displayed Customer ID matches report record |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal displays CIF/Customer ID. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -2002,10 +2002,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | High |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | Test customer |
-| Steps | 1. Open Gap Detail Modal 2. Verify Branch Name |
-| Expected Result | Branch Name matches report record |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal displays Branch Name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, high, modal |
@@ -2017,10 +2017,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | High |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | MUM01 |
-| Steps | 1. Open Gap Detail Modal 2. Verify Branch Code |
-| Expected Result | Branch Code matches report record |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal displays Branch Code. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, high, modal |
@@ -2032,10 +2032,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | Test template |
-| Steps | 1. Open Gap Detail Modal 2. Verify Template Applied |
-| Expected Result | Template displayed matches report record |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal displays applied template. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -2047,10 +2047,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | N/A |
-| Steps | 1. Open Gap Detail Modal 2. Verify Missing Fields section |
-| Expected Result | Missing Fields section is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Missing Fields section is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -2062,10 +2062,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Open Gap Detail Modal 2. Review Missing Fields list |
-| Expected Result | Field name is displayed for every missing field |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Each missing field displays field name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, functional |
@@ -2077,10 +2077,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | High |
-| Preconditions | Customer has missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Open Gap Detail Modal 2. Review Missing Fields list |
-| Expected Result | Field description is displayed for every missing field |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Each missing field displays description. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI + Security |
 | Tags | kyc-gap-report-gap-detail-modal, high, functional |
@@ -2092,10 +2092,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Open Gap Detail Modal 2. Verify weights |
-| Expected Result | Each missing field displays correct weight value |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Each missing field displays weight. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, gap-score, business-rule |
@@ -2107,10 +2107,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Open Gap Detail Modal 2. Review requirement type |
-| Expected Result | Requirement type is displayed correctly for each field |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Each missing field displays requirement type. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, functional |
@@ -2122,10 +2122,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has missing Mandatory field |
-| Test Data | Mandatory Field |
-| Steps | 1. Open Gap Detail Modal 2. Verify requirement type |
-| Expected Result | Missing Mandatory fields are labeled as Mandatory |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Mandatory fields display correct requirement type. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, functional |
@@ -2137,10 +2137,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has missing Optional field |
-| Test Data | Optional Field |
-| Steps | 1. Open Gap Detail Modal 2. Verify requirement type |
-| Expected Result | Missing Optional fields are labeled as Optional |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Optional fields display correct requirement type. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, functional |
@@ -2152,13 +2152,13 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | N/A |
-| Steps | 1. Open Gap Detail Modal 2. Verify Gap Type badge |
-| Expected Result | Gap Type badge is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Type badge is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | kyc-gap-report-gap-detail-modal, critical, modal |
+| Tags | kyc-gap-report-gap-detail-modal, critical, functional |
 
 ### KGR-145 — Verify CIP Gap Type badge
 
@@ -2167,10 +2167,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has CIP gap |
-| Test Data | Test customer |
-| Steps | 1. Open Gap Detail Modal |
-| Expected Result | CIP badge is displayed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. CIP Gap Type badge. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -2182,10 +2182,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has CDD gap |
-| Test Data | Test customer |
-| Steps | 1. Open Gap Detail Modal |
-| Expected Result | CDD badge is displayed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. CDD Gap Type badge. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -2197,10 +2197,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has EDD gap |
-| Test Data | Test customer |
-| Steps | 1. Open Gap Detail Modal |
-| Expected Result | EDD badge is displayed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. EDD Gap Type badge. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -2212,10 +2212,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | N/A |
-| Steps | 1. Open Gap Detail Modal 2. Verify Score Summary |
-| Expected Result | Score Summary section is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Score Summary section is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, gap-score, business-rule |
@@ -2227,10 +2227,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | Test dataset |
-| Steps | 1. Open Gap Detail Modal 2. Verify score |
-| Expected Result | Total KYC Gap Score is displayed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Total KYC Gap Score displayed in modal. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, gap-score, business-rule |
@@ -2242,10 +2242,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer record available |
-| Test Data | Test dataset |
-| Steps | 1. Note score from grid 2. Open modal 3. Compare values |
-| Expected Result | Modal score matches report grid score |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal score matches report grid score. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, gap-score, business-rule |
@@ -2257,10 +2257,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | N/A |
-| Steps | 1. Open Gap Detail Modal 2. Verify risk label |
-| Expected Result | Risk label is displayed with score summary |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Risk label is displayed in score summary. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, gap-score, business-rule |
@@ -2272,10 +2272,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer record available |
-| Test Data | Test dataset |
-| Steps | 1. Compare report priority and modal risk label |
-| Expected Result | Risk label matches report priority classification |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Risk label matches customer priority. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, functional |
@@ -2287,10 +2287,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Medium |
-| Preconditions | Customer with one missing field available |
-| Test Data | Test customer |
-| Steps | 1. Open Gap Detail Modal |
-| Expected Result | Single missing field is displayed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal handles customer with single missing field. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, medium, modal |
@@ -2302,10 +2302,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer with multiple missing fields available |
-| Test Data | Test customer |
-| Steps | 1. Open Gap Detail Modal |
-| Expected Result | All missing fields are displayed without truncation |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal handles customer with multiple missing fields. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, modal |
@@ -2317,10 +2317,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has known missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Count displayed missing fields 2. Compare with source data |
-| Expected Result | Missing field count matches source data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Missing field count matches displayed records. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, functional |
@@ -2332,10 +2332,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Critical |
-| Preconditions | Customer has multiple missing fields |
-| Test Data | Test dataset |
-| Steps | 1. Sum displayed weights 2. Compare with score |
-| Expected Result | Score summary equals total of displayed field weights |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Total score equals sum of displayed field weights. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, critical, gap-score, business-rule |
@@ -2347,10 +2347,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | High |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | N/A |
-| Steps | 1. Open modal 2. Click Close/X button |
-| Expected Result | Modal closes successfully |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal can be closed using Close/X button. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, high, modal |
@@ -2362,10 +2362,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Medium |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | N/A |
-| Steps | 1. Open modal 2. Press ESC key |
-| Expected Result | Modal closes successfully or behaves as per design |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal can be closed using ESC key. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, medium, modal |
@@ -2377,10 +2377,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | Medium |
-| Preconditions | Gap Detail Modal is open |
-| Test Data | Test dataset |
-| Steps | 1. Open modal 2. Close modal 3. Verify grid |
-| Expected Result | Report data remains unchanged after modal closure |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal closes without data corruption. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, medium, modal |
@@ -2392,10 +2392,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Gap Detail Modal |
 | Priority | High |
-| Preconditions | Customer has many missing fields |
-| Test Data | Test customer |
-| Steps | 1. Open modal with large dataset |
-| Expected Result | Modal scrolls correctly and all data remains accessible |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal supports scrolling for large datasets. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-gap-detail-modal, high, modal |
@@ -2407,10 +2407,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | Report contains records |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Scroll to bottom of report |
-| Expected Result | Pagination controls are displayed successfully |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination controls are displayed on report page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, pagination |
@@ -2422,10 +2422,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | Report contains records |
-| Test Data | N/A |
-| Steps | 1. Navigate to report page 2. Review pagination section |
-| Expected Result | Items Per Page dropdown is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Items Per Page dropdown is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, pagination |
@@ -2437,10 +2437,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | Report contains records |
-| Test Data | N/A |
-| Steps | 1. Open report page 2. Observe Items Per Page control |
-| Expected Result | Default page size is displayed as configured |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Items Per Page default value. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, pagination |
@@ -2452,10 +2452,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | Report contains more than 10 records |
-| Test Data | 10 |
-| Steps | 1. Select 10 from page size dropdown |
-| Expected Result | Maximum 10 records are displayed on current page |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Items Per Page supports value 10. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, functional |
@@ -2467,10 +2467,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | Report contains more than 20 records |
-| Test Data | 20 |
-| Steps | 1. Select 20 from page size dropdown |
-| Expected Result | Maximum 20 records are displayed on current page |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Items Per Page supports value 20. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, functional |
@@ -2482,10 +2482,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | Report contains more than 50 records |
-| Test Data | 50 |
-| Steps | 1. Select 50 from page size dropdown |
-| Expected Result | Maximum 50 records are displayed on current page |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Items Per Page supports value 50. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, functional |
@@ -2497,10 +2497,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | Report contains multiple pages |
-| Test Data | N/A |
-| Steps | 1. Change page size from 10 to 20 |
-| Expected Result | Grid refreshes and displays records according to selected page size |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Page size changes update grid correctly. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, pagination |
@@ -2512,10 +2512,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | User is on paginated report |
-| Test Data | N/A |
-| Steps | 1. Navigate to report page |
-| Expected Result | Previous button is displayed in pagination controls |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Previous button is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, functional |
@@ -2527,10 +2527,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | User is on paginated report |
-| Test Data | N/A |
-| Steps | 1. Navigate to report page |
-| Expected Result | Next button is displayed in pagination controls |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Next button is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, functional |
@@ -2542,10 +2542,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | Multiple pages available |
-| Test Data | N/A |
-| Steps | 1. Click Next button |
-| Expected Result | User is navigated to next page and new records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Next button navigates to next page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | Service Layer |
 | Tags | kyc-gap-report-pagination, critical, functional |
@@ -2557,10 +2557,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | N/A |
-| Steps | 1. Click Previous button |
-| Expected Result | User is navigated to previous page and corresponding records are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Previous button navigates to previous page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, functional |
@@ -2572,10 +2572,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | User is on Page 1 |
-| Test Data | N/A |
-| Steps | 1. Observe Previous button |
-| Expected Result | Previous button is disabled or unavailable on first page |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Previous button behavior on first page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, functional |
@@ -2587,10 +2587,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | User is on last page |
-| Test Data | N/A |
-| Steps | 1. Navigate to last page 2. Observe Next button |
-| Expected Result | Next button is disabled or unavailable on last page |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Next button behavior on last page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, functional |
@@ -2602,10 +2602,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | Multiple pages available |
-| Test Data | N/A |
-| Steps | 1. Navigate to report page |
-| Expected Result | Page indicator displays "Page X of Y" |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Page indicator is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, functional |
@@ -2617,10 +2617,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | Multiple records available |
-| Test Data | N/A |
-| Steps | 1. Navigate to report page |
-| Expected Result | Item range indicator displays "A-B of N items" |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Item range indicator is displayed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, functional |
@@ -2632,10 +2632,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | Known dataset available |
-| Test Data | Test dataset |
-| Steps | 1. Verify total records 2. Verify page count |
-| Expected Result | Page count is calculated correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Page count calculation. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, pagination |
@@ -2647,10 +2647,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | Apply filters resulting in multiple pages |
-| Test Data | Filtered dataset |
-| Steps | 1. Apply filter 2. Navigate pages |
-| Expected Result | Pagination works correctly for filtered records |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination with filtered records. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, filter |
@@ -2662,10 +2662,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | Search returns multiple pages |
-| Test Data | Test dataset |
-| Steps | 1. Search records 2. Navigate pages |
-| Expected Result | Pagination works correctly for searched records |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination with search results. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, filter |
@@ -2677,10 +2677,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | Search criteria |
-| Steps | 1. Navigate to page 2 2. Perform search |
-| Expected Result | Pagination resets to Page 1 after search |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination resets to Page 1 after Search. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, filter |
@@ -2692,10 +2692,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | MUM01 |
-| Steps | 1. Navigate to page 2 2. Apply Branch filter |
-| Expected Result | Pagination resets to Page 1 after filter application |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination resets to Page 1 after Branch filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, filter |
@@ -2707,10 +2707,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | Individual |
-| Steps | 1. Navigate to page 2 2. Apply Customer Type filter |
-| Expected Result | Pagination resets to Page 1 after filter application |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination resets to Page 1 after Customer Type filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, filter |
@@ -2722,10 +2722,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | Standard KYC - Individual |
-| Steps | 1. Navigate to page 2 2. Apply Template filter |
-| Expected Result | Pagination resets to Page 1 after filter application |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination resets to Page 1 after Template filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, filter |
@@ -2737,10 +2737,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | Critical |
-| Steps | 1. Navigate to page 2 2. Apply Priority filter |
-| Expected Result | Pagination resets to Page 1 after filter application |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination resets to Page 1 after Priority filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, filter |
@@ -2752,10 +2752,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | Min=5 Max=10 |
-| Steps | 1. Navigate to page 2 2. Apply Gap Score filter |
-| Expected Result | Pagination resets to Page 1 after filter application |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination resets to Page 1 after Gap Score filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, gap-score, business-rule |
@@ -2767,10 +2767,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 with filters applied |
-| Test Data | N/A |
-| Steps | 1. Apply filters 2. Navigate to page 2 3. Click Clear Filters |
-| Expected Result | Pagination resets to Page 1 and full dataset is displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination resets to Page 1 after Clear Filters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, filter |
@@ -2782,10 +2782,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | User is on page greater than 1 |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2 2. Open Gap Detail Modal 3. Close Modal |
-| Expected Result | User remains on same page after closing modal |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination state is retained when opening and closing Gap Detail Modal. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, modal |
@@ -2797,10 +2797,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Critical |
-| Preconditions | User is on page greater than 1 |
-| Test Data | N/A |
-| Steps | 1. Navigate to page 2 2. Open Template screen 3. Return to Report |
-| Expected Result | Previously selected page remains active |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination state retained while navigating between Report and Template screens. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, critical, pagination |
@@ -2812,10 +2812,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | Dataset prepared |
-| Test Data | 10 Records |
-| Steps | 1. Set page size to 10 2. Load exactly 10 records |
-| Expected Result | Single page is displayed correctly without extra page generation |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination works correctly when total records equal page size. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, pagination |
@@ -2827,10 +2827,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | Medium |
-| Preconditions | Dataset prepared |
-| Test Data | 5 Records |
-| Steps | 1. Set page size to 10 2. Load 5 records |
-| Expected Result | Single page is displayed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination works correctly when total records are less than page size. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, medium, pagination |
@@ -2842,10 +2842,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Pagination |
 | Priority | High |
-| Preconditions | No matching records available |
-| Test Data | N/A |
-| Steps | 1. Apply filters resulting in zero records |
-| Expected Result | Pagination remains stable and no application error occurs |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Report dataset exceeds default page size. |
+| Test Data | Role: Compliance Officer; Page sizes: 10, 20, 50; Default: 10 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify default page size is 10 records per page. 5. Change items per page to 10 and verify grid displays at most 10 rows. 6. Change items per page to 20 and verify grid displays at most 20 rows. 7. Change items per page to 50 and verify grid displays at most 50 rows. 8. Click Next page and verify page indicator updates to next page number. 9. Click Previous page and verify navigation returns to prior page. 10. Verify page indicator displays "Page X of Y" and item range "A–B of N items" format. 11. Navigate to a later page, apply a filter change, and verify pagination resets to page 1. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Pagination works correctly when no records are available. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Default page size is 10 records per page. 6. Pagination or page size change updates the grid as expected. 7. Selected action completes and shows the expected screen, modal, or download. 8. Page indicator displays "Page X of Y" and item range "A–B of N items" format. 9. to a later page, apply a filter change, and verify pagination resets to page 1 completes successfully. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-pagination, high, pagination |
@@ -2857,10 +2857,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Navigate to KYC Gap Report 2. Verify Export button |
-| Expected Result | Export button is visible and accessible |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export button is displayed on KYC Gap Report page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -2872,10 +2872,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Report contains records |
-| Test Data | N/A |
-| Steps | 1. Navigate to report page 2. Observe Export button |
-| Expected Result | Export button is enabled |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export button is enabled when records exist. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -2887,10 +2887,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page with records |
-| Test Data | N/A |
-| Steps | 1. Click Export button |
-| Expected Result | Report file is downloaded successfully without errors |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export downloads report successfully. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + API |
 | Tags | kyc-gap-report-export, critical, export |
@@ -2902,10 +2902,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open exported file 2. Verify records |
-| Expected Result | Exported file contains report records |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains report records. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -2917,10 +2917,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | Customer column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains Customer column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -2932,10 +2932,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | Customer ID column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains Customer ID column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -2947,10 +2947,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | Type column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains Type column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -2962,10 +2962,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | Branch column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains Branch column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -2977,10 +2977,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | Branch Code column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains Branch Code column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -2992,10 +2992,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | Template Applied column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains Template Applied column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3007,10 +3007,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | KYC Gap Score column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains KYC Gap Score column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3022,10 +3022,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Export file |
-| Steps | 1. Open export file |
-| Expected Result | Priority column is present with correct values |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported file contains Priority column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3037,10 +3037,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Test dataset |
-| Steps | 1. Count records in report 2. Count records in export |
-| Expected Result | Exported record count matches report data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported record count matches report record count. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + API |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3052,10 +3052,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Test dataset |
-| Steps | 1. Compare report and export values |
-| Expected Result | Customer values match report data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported Customer values match report data. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3067,10 +3067,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Test dataset |
-| Steps | 1. Compare report scores with export |
-| Expected Result | Exported scores match report data exactly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Simplified KYC Customer (CIF-1001); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported KYC Gap Score values match report data. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + API |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3082,10 +3082,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Export completed successfully |
-| Test Data | Test dataset |
-| Steps | 1. Compare report priorities with export |
-| Expected Result | Exported priorities match report data exactly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Simplified KYC Customer (CIF-1001); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Exported Priority values match report data. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3097,10 +3097,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Search filter applied |
-| Test Data | Vikram Shah |
-| Steps | 1. Apply Search filter 2. Export report |
-| Expected Result | Only filtered records are exported |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export respects active Search filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3112,10 +3112,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Branch filter applied |
-| Test Data | MUM01 |
-| Steps | 1. Apply Branch filter 2. Export report |
-| Expected Result | Only branch-filtered records are exported |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export respects active Branch filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3127,10 +3127,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Customer Type filter applied |
-| Test Data | Corporate |
-| Steps | 1. Apply Customer Type filter 2. Export report |
-| Expected Result | Only filtered customer type records are exported |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export respects active Customer Type filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3142,10 +3142,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Template filter applied |
-| Test Data | Standard KYC - Corporate |
-| Steps | 1. Apply Template filter 2. Export report |
-| Expected Result | Only template-filtered records are exported |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export respects active Template filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3157,10 +3157,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Priority filter applied |
-| Test Data | Critical |
-| Steps | 1. Apply Priority filter 2. Export report |
-| Expected Result | Only selected priority records are exported |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export respects active Priority filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3172,10 +3172,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Gap Score filter applied |
-| Test Data | Min=5 Max=10 |
-| Steps | 1. Apply score range filter 2. Export report |
-| Expected Result | Only records within selected score range are exported |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export respects active Gap Score filter. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3187,10 +3187,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Multiple filters applied |
-| Test Data | Branch+Priority+Template |
-| Steps | 1. Apply multiple filters 2. Export report |
-| Expected Result | Only records matching all active filters are exported |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export supports combined filters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3202,10 +3202,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Medium |
-| Preconditions | Sorted report available |
-| Test Data | N/A |
-| Steps | 1. Sort report 2. Export data |
-| Expected Result | Export completes successfully with accurate data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export after sorting. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, medium, export |
@@ -3217,10 +3217,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | User is on Page 1 |
-| Test Data | N/A |
-| Steps | 1. Export report |
-| Expected Result | Export completes successfully |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export works from Page 1. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -3232,10 +3232,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | User is on Page 2 or higher |
-| Test Data | N/A |
-| Steps | 1. Navigate to Page 2 2. Export report |
-| Expected Result | Export includes all applicable records, not just current page |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export works from non-first page. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -3247,10 +3247,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Medium |
-| Preconditions | Page size changed |
-| Test Data | 50 Records/Page |
-| Steps | 1. Change page size 2. Export report |
-| Expected Result | Exported data remains accurate |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export works when page size is changed. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, medium, export |
@@ -3262,10 +3262,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | Export completed |
-| Test Data | Export file |
-| Steps | 1. Open exported file |
-| Expected Result | Exported file opens successfully without corruption |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export file opens successfully. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -3277,10 +3277,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | Critical |
-| Preconditions | Large dataset available |
-| Test Data | 10000 Records |
-| Steps | 1. Export large dataset |
-| Expected Result | Export completes successfully without application failure |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export handles large datasets. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | No |
 | Automation Layer | Manual |
 | Tags | kyc-gap-report-export, critical, export |
@@ -3292,10 +3292,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Export |
 | Priority | High |
-| Preconditions | No matching records available |
-| Test Data | N/A |
-| Steps | 1. Apply filters resulting in no records 2. Click Export |
-| Expected Result | System displays appropriate behavior for empty dataset export without crashing |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Browser allows file downloads. |
+| Test Data | Role: Compliance Officer; Branch filter: INST-DEMO-001; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Action: Export filtered grid |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Click Export button in the page header action area. 5. Verify export initiates download or export dialog without errors. 6. Verify exported dataset includes only currently filtered and sorted visible records per business rules. 7. Verify exported columns match on-screen grid columns and exclude modal-only fields. 8. Apply filters and sorting, export data, and verify export respects active view state. 9. Verify Records are read-only from the report view. 10. Verify layout, badges, and controls render without overlap or clipping. 11. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 12. Verify no unhandled errors occur during test execution. 13. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Export behavior when no records are available. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Selected action completes and shows the expected screen, modal, or download. 6. Export initiates download or export dialog without errors. 7. Exported dataset includes only currently filtered and sorted visible records per business rules. 8. Exported columns match on-screen grid columns and exclude modal-only fields. 9. Export respects active view state. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-export, high, export |
@@ -3307,10 +3307,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User logged in as Compliance Officer |
-| Test Data | Compliance Officer |
-| Steps | 1. Login as Compliance Officer 2. Navigate to KYC Gap Report |
-| Expected Result | KYC Gap Report is accessible |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Authenticated Compliance Officer can access KYC Gap Report. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, critical, functional |
@@ -3322,10 +3322,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User logged in as Administrator |
-| Test Data | Administrator |
-| Steps | 1. Login as Administrator 2. Navigate to KYC Gap Report |
-| Expected Result | KYC Gap Report is accessible |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Authenticated Administrator can access KYC Gap Report. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, critical, functional |
@@ -3337,10 +3337,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User logged in with unauthorized role |
-| Test Data | Unauthorized Role |
-| Steps | 1. Login with unauthorized role 2. Attempt to access report |
-| Expected Result | Access is denied as per RBAC configuration |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Unauthorized role cannot access KYC Gap Report. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, critical, rbac, security |
@@ -3352,10 +3352,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User not logged in |
-| Test Data | KYC Gap Report URL |
-| Steps | 1. Open KYC Gap Report URL directly |
-| Expected Result | User is redirected to login page or access denied page |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Unauthenticated user cannot access KYC Gap Report URL. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, critical, rbac, security |
@@ -3367,10 +3367,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User logged in with unauthorized role |
-| Test Data | KYC Gap Report URL |
-| Steps | 1. Enter report URL directly |
-| Expected Result | Access remains restricted |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Direct URL access respects RBAC permissions. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, critical, rbac, security |
@@ -3382,10 +3382,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | High |
-| Preconditions | User session configured with timeout |
-| Test Data | N/A |
-| Steps | 1. Login 2. Allow session to expire 3. Access report |
-| Expected Result | User is redirected to login screen |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Session timeout prevents report access. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, high, functional |
@@ -3397,10 +3397,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Review report actions 2. Attempt modification |
-| Expected Result | No edit functionality is available |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report is read-only. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, critical, functional |
@@ -3412,10 +3412,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Review page actions |
-| Expected Result | Bulk Notify action is not available |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report does not provide Bulk Notify action. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, high, functional |
@@ -3427,10 +3427,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | N/A |
-| Steps | 1. Review Actions column |
-| Expected Result | Only View action is available |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report does not provide Edit action. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-security-audit, critical, functional |
@@ -3442,13 +3442,13 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User opens Gap Detail Modal |
-| Test Data | N/A |
-| Steps | 1. Open Gap Detail Modal 2. Review controls |
-| Expected Result | Modal provides read-only information only |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. View action does not allow data modification. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | kyc-gap-report-security-audit, critical, modal |
+| Tags | kyc-gap-report-security-audit, critical, functional |
 
 ### KGR-231 — Verify audit log entry generated for template creation
 
@@ -3457,10 +3457,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User has permission to create template |
-| Test Data | Test Template |
-| Steps | 1. Create template 2. Review audit log |
-| Expected Result | Audit log contains template creation event |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log entry generated for template creation. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3472,10 +3472,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | Template creation performed |
-| Test Data | Test Template |
-| Steps | 1. Create template 2. Review audit log |
-| Expected Result | Audit entry contains correct User ID |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log captures user ID during template creation. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3487,10 +3487,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | Template creation performed |
-| Test Data | Test Template |
-| Steps | 1. Create template 2. Review audit log |
-| Expected Result | Audit entry contains accurate timestamp |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log captures timestamp during template creation. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3502,10 +3502,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User has permission to clone template |
-| Test Data | Cloned Template |
-| Steps | 1. Clone template 2. Review audit log |
-| Expected Result | Audit log contains template clone event |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log entry generated for template cloning. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3517,10 +3517,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User has permission to modify template |
-| Test Data | Mandatory → Optional |
-| Steps | 1. Change field requirement 2. Save changes |
-| Expected Result | Audit log captures configuration change |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log entry generated when field requirement changes. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3532,10 +3532,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | Requirement change performed |
-| Test Data | Test Configuration |
-| Steps | 1. Change field requirement 2. Review audit log |
-| Expected Result | Previous value is recorded correctly |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log records previous value for requirement change. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3547,10 +3547,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | Requirement change performed |
-| Test Data | Test Configuration |
-| Steps | 1. Change field requirement 2. Review audit log |
-| Expected Result | New value is recorded correctly |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log records new value for requirement change. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3562,10 +3562,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User has permission to modify template |
-| Test Data | Custom Field |
-| Steps | 1. Add custom field 2. Save changes |
-| Expected Result | Audit log contains custom field addition event |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log entry generated when custom field is added. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3577,10 +3577,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User has permission to modify template |
-| Test Data | Score Band Update |
-| Steps | 1. Update score bands 2. Save changes |
-| Expected Result | Audit log contains score band modification event |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log entry generated when score bands are modified. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3592,10 +3592,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | Score bands modified |
-| Test Data | Test Configuration |
-| Steps | 1. Update score bands 2. Review audit log |
-| Expected Result | Audit log contains both previous and updated values |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log captures before and after values for score band changes. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3607,10 +3607,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | High |
-| Preconditions | Audit records available |
-| Test Data | N/A |
-| Steps | 1. Open audit log 2. Attempt modification |
-| Expected Result | Audit records cannot be modified |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log remains immutable. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | No |
 | Automation Layer | Manual |
 | Tags | kyc-gap-report-security-audit, high, audit, compliance |
@@ -3622,10 +3622,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Medium |
-| Preconditions | Audit entries available |
-| Test Data | N/A |
-| Steps | 1. Review audit log 2. Refresh page |
-| Expected Result | Audit records remain available after refresh |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit records are retained after page refresh. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, medium, audit, compliance |
@@ -3637,10 +3637,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User logged in with unauthorized role |
-| Test Data | Unauthorized User |
-| Steps | 1. Attempt template modification |
-| Expected Result | Modification is blocked |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Unauthorized user cannot modify template configuration. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, rbac, security |
@@ -3652,10 +3652,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | High |
-| Preconditions | User logged in with unauthorized role |
-| Test Data | Unauthorized User |
-| Steps | 1. Attempt audit log access |
-| Expected Result | Access to audit records is denied |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Unauthorized user cannot access audit records. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, high, rbac, security |
@@ -3667,10 +3667,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User logged into application |
-| Test Data | KYC Gap Report URL |
-| Steps | 1. Logout 2. Access report URL |
-| Expected Result | User is redirected to login page |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Application prevents access after logout. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, functional |
@@ -3682,10 +3682,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Medium |
-| Preconditions | User previously logged out |
-| Test Data | Authorized User |
-| Steps | 1. Login again 2. Access report |
-| Expected Result | KYC Gap Report is accessible again |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report remains accessible after successful re-authentication. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, medium, functional |
@@ -3697,10 +3697,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User has archive permission |
-| Test Data | Test Template |
-| Steps | 1. Archive template 2. Review audit log |
-| Expected Result | Audit log contains template archival event |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit log captures template archival action. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | Database + Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3712,10 +3712,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | User has template management access |
-| Test Data | Test Template |
-| Steps | 1. Review template actions 2. Attempt delete |
-| Expected Result | Delete option is unavailable and only archive/deactivate is supported |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Templates cannot be permanently deleted. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | No |
 | Automation Layer | Manual |
 | Tags | kyc-gap-report-security-audit, critical, functional |
@@ -3727,10 +3727,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | High |
-| Preconditions | Archived template exists |
-| Test Data | Test Template |
-| Steps | 1. Open audit records for archived template |
-| Expected Result | Audit history remains available for archived template |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Archived templates remain traceable in audit history. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | No |
 | Automation Layer | Manual |
 | Tags | kyc-gap-report-security-audit, high, audit, compliance |
@@ -3742,10 +3742,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Security & Audit |
 | Priority | Critical |
-| Preconditions | Template lifecycle actions performed |
-| Test Data | Test Template |
-| Steps | 1. Perform lifecycle actions 2. Review audit history |
-| Expected Result | Complete end-to-end audit trail is available for template lifecycle |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Verify Records are read-only from the report view. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Audit trail completeness for template lifecycle. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Records are read-only from the report view. |
 | Automation Candidate | No |
 | Automation Layer | Manual |
 | Tags | kyc-gap-report-security-audit, critical, audit, compliance |
@@ -3757,10 +3757,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Blank Search |
-| Steps | 1. Leave Search field blank 2. Observe results |
-| Expected Result | Complete dataset is displayed without errors |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Submit search with blank or whitespace-only value and verify full dataset or validation behavior. 5. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 6. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 14. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 15. Verify Records are read-only from the report view. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Search with blank value. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Submit search with blank or whitespace-only value and verify full dataset or validation behavior. 6. Search or filter input returns the expected matching or empty result set. 7. Inclusive/exclusive boundary behavior. 8. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3772,10 +3772,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data |  |
-| Steps | 1. Enter spaces in Search field |
-| Expected Result | System treats input as blank and displays valid results |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Submit search with blank or whitespace-only value and verify full dataset or validation behavior. 5. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 6. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 14. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 15. Verify Records are read-only from the report view. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Search with whitespace-only value. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Submit search with blank or whitespace-only value and verify full dataset or validation behavior. 6. Search or filter input returns the expected matching or empty result set. 7. Inclusive/exclusive boundary behavior. 8. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, high, boundary, negative |
@@ -3787,10 +3787,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Medium |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Long Text |
-| Steps | 1. Enter maximum length search value |
-| Expected Result | System processes input without UI or application failure |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Search with maximum supported characters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, medium, filter |
@@ -3802,10 +3802,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | OR 1=1 -- |
-| Steps | 1. Enter SQL injection string |
-| Expected Result | System treats input as text and prevents unauthorized behavior |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Search with SQL injection pattern. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + Security |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3817,10 +3817,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | <script>alert(1)</script> |
-| Steps | 1. Enter script tag payload |
-| Expected Result | Script is not executed and application remains secure |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Search with script injection pattern. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI + Security |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3832,10 +3832,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Min=5 |
-| Steps | 1. Enter Min score only |
-| Expected Result | Records greater than or equal to Min value are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with Min value only. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, high, gap-score, business-rule |
@@ -3847,10 +3847,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Max=10 |
-| Steps | 1. Enter Max score only |
-| Expected Result | Records less than or equal to Max value are displayed |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with Max value only. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, high, gap-score, business-rule |
@@ -3862,13 +3862,13 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Min=20 Max=10 |
-| Steps | 1. Enter Min=20 2. Enter Max=10 |
-| Expected Result | System prevents invalid range or displays validation message |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with Min greater than Max. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
+| Tags | kyc-gap-report-boundary-negative-testing, critical, gap-score, business-rule |
 
 ### KGR-259 — Verify Gap Score filter with negative values
 
@@ -3877,10 +3877,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Min=-1 |
-| Steps | 1. Enter negative value |
-| Expected Result | Negative values are rejected or handled appropriately |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with negative values. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3892,10 +3892,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | 5.5 |
-| Steps | 1. Enter decimal score value |
-| Expected Result | System validates or processes input according to specification |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with decimal values. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, high, gap-score, business-rule |
@@ -3907,10 +3907,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | ABC |
-| Steps | 1. Enter alphabetic value |
-| Expected Result | Alphabetic values are not accepted |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with alphabetic characters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, gap-score, business-rule |
@@ -3922,13 +3922,13 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | @#$% |
-| Steps | 1. Enter special characters |
-| Expected Result | Invalid characters are not accepted |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify grid handles edge-case customer names without layout breakage or data misalignment. 15. Verify Records are read-only from the report view. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with special characters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Grid handles edge-case customer names without layout breakage or data misalignment. 8. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
+| Tags | kyc-gap-report-boundary-negative-testing, critical, gap-score, business-rule |
 
 ### KGR-263 — Verify Gap Score boundary value 0
 
@@ -3937,10 +3937,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 0 |
-| Steps | 1. Filter using score 0 |
-| Expected Result | Records with score 0 are returned correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 0. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3952,10 +3952,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 25 |
-| Steps | 1. Filter using score 25 |
-| Expected Result | Boundary value is processed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 25. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3967,10 +3967,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 26 |
-| Steps | 1. Filter using score 26 |
-| Expected Result | Boundary value is processed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 26. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3982,10 +3982,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 50 |
-| Steps | 1. Filter using score 50 |
-| Expected Result | Boundary value is processed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 50. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -3997,10 +3997,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 51 |
-| Steps | 1. Filter using score 51 |
-| Expected Result | Boundary value is processed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 51. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -4012,10 +4012,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 75 |
-| Steps | 1. Filter using score 75 |
-| Expected Result | Boundary value is processed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 75. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -4027,10 +4027,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 76 |
-| Steps | 1. Filter using score 76 |
-| Expected Result | Boundary value is processed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 76. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -4042,10 +4042,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | Test customer exists |
-| Test Data | 100 |
-| Steps | 1. Filter using score 100 |
-| Expected Result | Boundary value is processed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score boundary value 100. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
@@ -4057,10 +4057,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | 101 |
-| Steps | 1. Enter score greater than 100 |
-| Expected Result | System rejects invalid value or returns appropriate result |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score filter with value greater than 100. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, gap-score, business-rule |
@@ -4072,10 +4072,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | High |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Non-matching filters |
-| Steps | 1. Apply restrictive filters |
-| Expected Result | System displays empty state without errors |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Submit search with blank or whitespace-only value and verify full dataset or validation behavior. 5. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 6. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 14. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 15. Verify Records are read-only from the report view. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report behavior when no records match filters. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Submit search with blank or whitespace-only value and verify full dataset or validation behavior. 6. Search or filter input returns the expected matching or empty result set. 7. Inclusive/exclusive boundary behavior. 8. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, high, filter |
@@ -4087,10 +4087,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Medium |
-| Preconditions | Customer with one missing field exists |
-| Test Data | Single Missing Field |
-| Steps | 1. Open customer detail |
-| Expected Result | Modal displays accurate information |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Opening Gap Detail Modal for customer with single missing field. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, medium, modal |
@@ -4102,10 +4102,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | High |
-| Preconditions | Customer with many missing fields exists |
-| Test Data | Large Missing Field Set |
-| Steps | 1. Open customer detail |
-| Expected Result | Modal displays all fields correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Opening Gap Detail Modal for customer with large number of missing fields. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, high, modal |
@@ -4117,10 +4117,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Medium |
-| Preconditions | Test dataset prepared |
-| Test Data | All Critical Records |
-| Steps | 1. Load dataset |
-| Expected Result | Report functions correctly with single-priority data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report behavior when all customers belong to same priority. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, medium, functional |
@@ -4132,10 +4132,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Medium |
-| Preconditions | Test dataset prepared |
-| Test Data | Single Branch Dataset |
-| Steps | 1. Load dataset |
-| Expected Result | Report functions correctly with single-branch data |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report behavior when all customers belong to same branch. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, medium, functional |
@@ -4147,10 +4147,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | High |
-| Preconditions | Test dataset contains duplicate names |
-| Test Data | Duplicate Names |
-| Steps | 1. Search duplicate customer names |
-| Expected Result | Correct records are displayed with unique identifiers |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify grid handles edge-case customer names without layout breakage or data misalignment. 15. Verify Records are read-only from the report view. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report behavior with duplicate customer names. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Grid handles edge-case customer names without layout breakage or data misalignment. 8. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, high, functional |
@@ -4162,10 +4162,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Medium |
-| Preconditions | Customer record exists |
-| Test Data | Special Character Name |
-| Steps | 1. Search and review customer record |
-| Expected Result | Special characters are displayed correctly |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify grid handles edge-case customer names without layout breakage or data misalignment. 15. Verify Records are read-only from the report view. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report behavior with special characters in customer name. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Grid handles edge-case customer names without layout breakage or data misalignment. 8. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, medium, functional |
@@ -4177,10 +4177,10 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Medium |
-| Preconditions | Customer record exists |
-| Test Data | Long Customer Name |
-| Steps | 1. Review customer record |
-| Expected Result | Grid and modal remain properly formatted |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report behavior with extremely long customer names. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, medium, functional |
@@ -4192,10 +4192,175 @@
 | Module | KYC Module |
 | Feature | KYC Gap Report - Boundary & Negative Testing |
 | Priority | Critical |
-| Preconditions | User is on KYC Gap Report page |
-| Test Data | Invalid Score Range |
-| Steps | 1. Enter invalid filter values 2. Correct input |
-| Expected Result | System recovers successfully and continues normal operation |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Branch: INST-DEMO-001; Template: Standard KYC — Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Enter invalid Gap Score filter values and verify validation prevents incorrect filtering. 5. Apply Gap Score boundary filter at value 0 and verify inclusive/exclusive boundary behavior. 6. Apply Gap Score boundary filter at value 25 and verify inclusive/exclusive boundary behavior. 7. Apply Gap Score boundary filter at value 26 and verify inclusive/exclusive boundary behavior. 8. Apply Gap Score boundary filter at value 50 and verify inclusive/exclusive boundary behavior. 9. Apply Gap Score boundary filter at value 51 and verify inclusive/exclusive boundary behavior. 10. Apply Gap Score boundary filter at value 75 and verify inclusive/exclusive boundary behavior. 11. Apply Gap Score boundary filter at value 76 and verify inclusive/exclusive boundary behavior. 12. Apply Gap Score boundary filter at value 100 and verify inclusive/exclusive boundary behavior. 13. Apply Gap Score boundary filter at value 101 and verify inclusive/exclusive boundary behavior. 14. Verify Records are read-only from the report view. 15. Verify layout, badges, and controls render without overlap or clipping. 16. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 17. Verify no unhandled errors occur during test execution. 18. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report recovery after invalid filter input. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Search or filter input returns the expected matching or empty result set. 6. Inclusive/exclusive boundary behavior. 7. Records are read-only from the report view. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | kyc-gap-report-boundary-negative-testing, critical, boundary, negative |
+
+### KGR-281 — Verify Refresh button is visible and reloads report data without losing applied filters
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report |
+| Priority | High |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Boundary and invalid inputs prepared per test data. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Gap score: 12; Priority: Low |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 8. Verify no KPI data, customer records, or export controls are exposed to unauthorized users. 9. Note current KPI values, filter selections, and visible grid rows. 10. Refresh the browser or click Refresh control and wait for data reload to complete. 11. Verify page components reload successfully without JavaScript errors or broken layout. 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Report reloads with fresh data and active filters stay applied. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. 8. Access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 9. No KPI data, customer records, or export controls are exposed to unauthorized users. 10. Refresh the browser or click Refresh control and wait for data reload to complete. 11. Page components reload successfully without JavaScript errors or broken layout. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | kyc-gap-report, high, filter |
+
+### KGR-282 — Verify breadcrumb navigation displays correct KYC module path on landing page
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report |
+| Priority | Medium |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Ravi Patel (CUST-1000005) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Ravi Patel (CUST-1000005); Gap score: 36; Priority: High |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Verify page title displays as "KYC Gap Report". 4. Verify page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 5. Verify Export button is visible, enabled, and positioned in the page header. 6. Verify KYC Gap Report is listed in KYC module navigation. 7. Verify access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 8. Verify no KPI data, customer records, or export controls are exposed to unauthorized users. 9. Verify layout, badges, and controls render without overlap or clipping. 10. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 11. Verify no unhandled errors occur during test execution. 12. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Breadcrumb shows KYC Gap Report in the module path. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. Page title displays as "KYC Gap Report". 5. Page subtitle displays as "Missing or expired KYC fields — CBS & DMS import vs. template requirements". 6. Export button is visible, enabled, and positioned in the page header. 7. KYC Gap Report is listed in KYC module navigation. 8. Access is blocked with appropriate unauthorized message, redirect, or HTTP 403 response. 9. No KPI data, customer records, or export controls are exposed to unauthorized users. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | kyc-gap-report, medium, functional |
+
+### KGR-283 — Verify Individual and Corporate Type badges use distinct colour coding in grid
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Report Grid |
+| Priority | High |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Individual and Corporate rows show distinct Type badge colours. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | kyc-gap-report-report-grid, high, functional |
+
+### KGR-284 — Verify KYC Gap Score displays colour-coded risk label (Low/Medium/High/Critical) in grid
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Report Grid |
+| Priority | High |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify Template Applied No Name of the KYC template assigned to this customer. 16. Verify layout, badges, and controls render without overlap or clipping. 17. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 18. Verify no unhandled errors occur during test execution. 19. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Gap Score displays the correct colour-coded risk label per score band. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. Template Applied No Name of the KYC template assigned to this customer. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | kyc-gap-report-report-grid, high, gap-score, business-rule |
+
+### KGR-285 — Verify Edit button is not present in report grid per read-only design
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Report Grid |
+| Priority | High |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify no Edit button or inline edit controls are present in the landing grid. 16. Verify Missing Fields and Gap Type are not shown as landing table columns. 17. Verify Bulk Notify or bulk remediation actions are not available on the landing page. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. No Edit action is available in the report grid. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. No Edit button or inline edit controls are present in the landing grid. 17. Missing Fields and Gap Type are not shown as landing table columns. 18. Bulk Notify or bulk remediation actions are not available on the landing page. 19. Template Applied No Name of the KYC template assigned to this customer. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | kyc-gap-report-report-grid, high, functional |
+
+### KGR-286 — Verify Missing Fields column is not displayed in landing grid
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Report Grid |
+| Priority | High |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. Customer Kumar Global Traders Pvt. Ltd. (CUST-1000004) exists with gap profile matching the scenario. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Type: Corporate |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Verify "Customer" column header is displayed in the report grid. 5. Verify "Customer ID" column header is displayed in the report grid. 6. Verify "Type" column header is displayed in the report grid. 7. Verify "Branch" column header is displayed in the report grid. 8. Verify "Branch Code" column header is displayed in the report grid. 9. Verify "Template Applied" column header is displayed in the report grid. 10. Verify "KYC Gap Score" column header is displayed in the report grid. 11. Verify "Priority" column header is displayed in the report grid. 12. Verify "Actions" column header is displayed in the report grid. 13. Verify each grid row displays a View action button in the Actions column. 14. Click View on the first visible row and verify Gap Detail Modal opens. 15. Verify no Edit button or inline edit controls are present in the landing grid. 16. Verify Missing Fields and Gap Type are not shown as landing table columns. 17. Verify Bulk Notify or bulk remediation actions are not available on the landing page. 18. Verify Template Applied No Name of the KYC template assigned to this customer. 19. Verify layout, badges, and controls render without overlap or clipping. 20. Verify displayed values reconcile with CBS/DMS gap data for the test customer. |
+| Expected Result | 1. Missing Fields are not shown as a landing grid column. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. "Customer" column header is displayed in the report grid. 6. "Customer ID" column header is displayed in the report grid. 7. "Type" column header is displayed in the report grid. 8. "Branch" column header is displayed in the report grid. 9. "Branch Code" column header is displayed in the report grid. 10. "Template Applied" column header is displayed in the report grid. 11. "KYC Gap Score" column header is displayed in the report grid. 12. "Priority" column header is displayed in the report grid. 13. "Actions" column header is displayed in the report grid. 14. Each grid row displays a View action button in the Actions column. 15. Selected action completes and shows the expected screen, modal, or download. 16. No Edit button or inline edit controls are present in the landing grid. 17. Missing Fields and Gap Type are not shown as landing table columns. 18. Bulk Notify or bulk remediation actions are not available on the landing page. 19. Template Applied No Name of the KYC template assigned to this customer. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | kyc-gap-report-report-grid, high, functional |
+
+### KGR-287 — Verify Gap Detail Modal displays CIF ID and branch code in customer metadata section
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Gap Detail Modal |
+| Priority | High |
+| Preconditions | 1. Valid user with KYC Gap Report access is logged in. 2. At least one customer with documented KYC gaps exists in the report. |
+| Test Data | Role: Compliance Officer; Customer: Kumar Global Traders Pvt. Ltd. (CUST-1000004); Template: Standard KYC — Corporate; Weights: mandatory +3, optional +1 |
+| Steps | 1. Open KYC Gap Report. 2. Verify the landing page title, subtitle, and Export action are displayed. 3. Confirm KPI summary, filters, and report grid are visible before scenario steps. 4. Open Gap Detail Modal via View action on a customer row with known gaps. 5. Verify modal header displays customer name, CIF ID, branch name, branch code, and template applied. 6. Verify Missing Fields list shows field name, description, requirement type, and weight for each gap. 7. Verify Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 8. Verify Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 9. Close modal using close icon or Escape key and verify focus returns to the originating grid row. 10. Verify Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 11. Verify Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). 12. Verify layout, badges, and controls render without overlap or clipping. 13. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 14. Verify no unhandled errors occur during test execution. 15. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Modal shows CIF ID and branch code for the selected customer. 2. KYC Gap Report opens successfully. 3. The landing page title, subtitle, and Export action are displayed. 4. KPI summary, filters, and report grid are visible before scenario steps are confirmed. 5. Gap Detail Modal via View action on a customer row with known gaps opens successfully. 6. Modal header displays customer name, CIF ID, branch name, branch code, and template applied. 7. Missing Fields list shows field name, description, requirement type, and weight for each gap. 8. Gap Type badge (CIP / CDD / EDD) is displayed alongside missing fields section. 9. Score Summary shows Total KYC Gap Score as sum of missing field weights with risk label. 10. Modal closes and focus returns to the report grid. 11. Mandatory fields display weight 3 and Optional fields display weight 1 in modal detail rows. 12. Missing Fields list — each field shows: name, description, weight, and requirement type (Mandatory/Optional). |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | kyc-gap-report-gap-detail-modal, high, modal |
+
+### KGR-288 — Verify keyboard navigation reaches search, filters, grid, and pagination controls in logical tab order
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Security & Audit |
+| Priority | Medium |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Repeat scenario in each browser version listed in test data. 10. Verify layout, fonts, filters, grid, and modal render consistently across browsers. 11. Tab through search, filters, grid headers, pagination, and Export using keyboard only. 12. Verify visible focus indicators and ARIA roles on table, combobox, and dialog elements. 13. Verify Records are read-only from the report view. 14. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 15. Verify no unhandled errors occur during test execution. 16. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Search, filters, grid, and pagination are reachable via keyboard tab order. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Repeat scenario in each browser version listed in test data. 11. Layout, fonts, filters, grid, and modal render consistently across browsers. 12. Tab through search, filters, grid headers, pagination, and Export using keyboard only. 13. Visible focus indicators and ARIA roles on table, combobox, and dialog elements. 14. Records are read-only from the report view. |
+| Automation Candidate | Yes |
+| Automation Layer | Database + Manual |
+| Tags | kyc-gap-report-security-audit, medium, filter |
+
+### KGR-289 — Verify ARIA roles and labels are present on report table, filters, and Gap Detail Modal
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Security & Audit |
+| Priority | Medium |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Repeat scenario in each browser version listed in test data. 10. Verify layout, fonts, filters, grid, and modal render consistently across browsers. 11. Tab through search, filters, grid headers, pagination, and Export using keyboard only. 12. Verify visible focus indicators and ARIA roles on table, combobox, and dialog elements. 13. Verify Records are read-only from the report view. 14. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 15. Verify no unhandled errors occur during test execution. 16. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Table, filters, and modal expose appropriate ARIA roles and labels. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Repeat scenario in each browser version listed in test data. 11. Layout, fonts, filters, grid, and modal render consistently across browsers. 12. Tab through search, filters, grid headers, pagination, and Export using keyboard only. 13. Visible focus indicators and ARIA roles on table, combobox, and dialog elements. 14. Records are read-only from the report view. |
+| Automation Candidate | Yes |
+| Automation Layer | Database + Manual |
+| Tags | kyc-gap-report-security-audit, medium, modal |
+
+### KGR-290 — Verify KYC Gap Report initial page load completes within acceptable performance threshold
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Security & Audit |
+| Priority | Medium |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Open browser developer tools Performance or Network panel. 10. Measure initial page load time and verify it meets SLA threshold defined in test data. 11. Repeat scenario in each browser version listed in test data. 12. Verify layout, fonts, filters, grid, and modal render consistently across browsers. 13. Verify Records are read-only from the report view. 14. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 15. Verify no unhandled errors occur during test execution. 16. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. Initial page load completes within the SLA in test data. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Browser developer tools Performance or Network panel opens successfully. 11. Measure initial page load time and verify it meets SLA threshold defined in test data. 12. Repeat scenario in each browser version listed in test data. 13. Layout, fonts, filters, grid, and modal render consistently across browsers. 14. Records are read-only from the report view. |
+| Automation Candidate | Yes |
+| Automation Layer | Database + Manual |
+| Tags | kyc-gap-report-security-audit, medium, functional |
+
+### KGR-291 — Verify KYC Gap Report layout and controls render consistently in Chrome and Edge browsers
+
+| Field | Value |
+| --- | --- |
+| Module | KYC Module |
+| Feature | KYC Gap Report - Security & Audit |
+| Priority | Medium |
+| Preconditions | 1. User role or session configured per test data. |
+| Test Data | Role: Unauthorized User; Action: Attempt KYC Gap Report access |
+| Steps | 1. Configure user role or session per test data. 2. Attempt to access KYC Gap Report. 3. Perform a report access or export action and verify audit log entry is created. 4. Verify audit record includes user ID, timestamp, action type, and module identifier. 5. Refresh page and verify audit records remain available and immutable. 6. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 7. Authenticate as Administrator and verify report access per role permissions. 8. Authenticate as unauthorized role and verify access is denied. 9. Repeat scenario in each browser version listed in test data. 10. Verify layout, fonts, filters, grid, and modal render consistently across browsers. 11. Verify Records are read-only from the report view. 12. Verify displayed values reconcile with CBS/DMS gap data for the test customer. 13. Verify no unhandled errors occur during test execution. 14. Verify active filters and grid state remain consistent after interactions. |
+| Expected Result | 1. KYC Gap Report layout and controls render consistently in Chrome and Edge browsers. 2. Configured role or session behaves per test data. 3. Access attempt produces the expected allow or deny result. 4. Perform a report access or export action and verify audit log entry is created. 5. Audit record includes user ID, timestamp, action type, and module identifier. 6. Refresh page and verify audit records remain available and immutable. 7. Authenticate as Compliance Officer and verify full read access to KYC Gap Report. 8. Authenticate as Administrator and verify report access per role permissions. 9. Authenticate as unauthorized role and verify access is denied. 10. Repeat scenario in each browser version listed in test data. 11. Layout, fonts, filters, grid, and modal render consistently across browsers. 12. Records are read-only from the report view. |
+| Automation Candidate | Yes |
+| Automation Layer | Database + Manual |
+| Tags | kyc-gap-report-security-audit, medium, functional |
