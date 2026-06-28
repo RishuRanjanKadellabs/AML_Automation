@@ -1,2 +1,0 @@
-This is not a valid bulk screening file format.
-Expected CSV, XLS, or XLSX with mandatory screening columns.
