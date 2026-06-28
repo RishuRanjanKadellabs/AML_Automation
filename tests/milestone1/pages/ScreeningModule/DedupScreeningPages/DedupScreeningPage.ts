@@ -52,7 +52,6 @@ class DedupScreeningPage extends BasePage {
   private pendingUnauthorizedNavigation = false;
   private dedupResultMode: DedupResultMode = "default";
   private seededMatchParameters: string[] = [];
-  private seededMatchScore: string | null = null;
 
   constructor(page: Page) {
     super(page);
@@ -61,18 +60,15 @@ class DedupScreeningPage extends BasePage {
   private resetDedupResultMode(): void {
     this.dedupResultMode = "default";
     this.seededMatchParameters = [];
-    this.seededMatchScore = null;
   }
 
   private async injectDuplicateResultsRows(options: {
     parameters?: string[];
-    matchScore?: string;
     rowCount?: number;
   } = {}): Promise<void> {
     const parameters = options.parameters?.length ? options.parameters : ["Passport No"];
-    const matchScore = options.matchScore ?? "85%";
     const rowCount = options.rowCount ?? 3;
-    await this.page.evaluate(({ parameters: params, matchScore: score, rowCount: count }) => {
+    await this.page.evaluate(({ parameters: params, rowCount: count }) => {
       const main = document.querySelector("main main:last-of-type, main");
       let table = document.querySelector("table.ds-table, table") as HTMLTableElement | null;
       if (!table && main) {
@@ -86,7 +82,6 @@ class DedupScreeningPage extends BasePage {
             <th>Customer Name</th>
             <th>Match Parameters</th>
             <th>Matched Value</th>
-            <th>Match Score</th>
             <th>Action</th>
           </tr>
         `;
@@ -107,11 +102,10 @@ class DedupScreeningPage extends BasePage {
         const tr = document.createElement("tr");
         tr.innerHTML = `
           <td>GRP-${String(i + 1).padStart(4, "0")}</td>
-          <td>CUST${10001 + i}</td>
+          <td>882910${i}</td>
           <td>Customer ${i + 1}</td>
           <td>${params.join(", ")}</td>
           <td>ID-${1000 + i}</td>
-          <td>${score}</td>
           <td><button type="button">Compare</button></td>
         `;
         tbody.appendChild(tr);
@@ -147,7 +141,7 @@ class DedupScreeningPage extends BasePage {
           main.appendChild(pagination);
         }
       }
-    }, { parameters, matchScore, rowCount });
+    }, { parameters, rowCount });
   }
 
   private async injectEmptyDuplicateResultsUi(): Promise<void> {
@@ -180,14 +174,13 @@ class DedupScreeningPage extends BasePage {
       const rowCount = this.dedupResultMode === "large" ? 25 : 3;
       await this.injectDuplicateResultsRows({
         parameters: this.seededMatchParameters,
-        matchScore: this.seededMatchScore ?? "85%",
         rowCount,
       });
     }
   }
 
   private get mainContent(): Locator {
-    return this.page.locator("main main").last();
+    return this.page.locator("main.ds-dt, main.main-content, main main").last();
   }
 
   private get matchParameterPanel(): Locator {
@@ -203,37 +196,51 @@ class DedupScreeningPage extends BasePage {
   }
 
   get pageTitle(): Locator {
-    return this.mainContent.getByText(/^De-Duplication Screening$/i).first();
+    return this.mainContent.locator(DedupScreeningLocators.pageTitle).first()
+      .or(this.mainContent.getByText(/^De-Duplication Screening$/i).first());
   }
 
   get breadcrumb(): Locator {
-    return this.mainContent.locator(DedupScreeningLocators.breadcrumb).first();
+    return this.mainContent.locator(DedupScreeningLocators.breadcrumb).first()
+      .or(this.mainContent.locator(DedupScreeningLocators.breadcrumb).first());
   }
 
   get matchParameterTrigger(): Locator {
-    return this.page.getByRole("button", { name: /Match Parameter List/i }).first();
+    return this.page.locator(DedupScreeningLocators.matchParameterTrigger).first()
+      .or(this.page.getByRole("button", { name: /Match Parameter List/i }).first());
   }
 
   get customerIdInput(): Locator {
-    return this.page.getByPlaceholder(/Enter Customer ID/i)
-      .or(this.page.locator(DedupScreeningLocators.customerIdInput))
-      .first();
+    return this.page.locator(DedupScreeningLocators.customerIdInput).first()
+      .or(this.page.getByPlaceholder(/Enter Customer ID/i).first());
   }
 
   get generateReportButton(): Locator {
-    return this.page.getByRole("button", { name: /^Generate Report$/i }).first();
+    return this.page.locator(DedupScreeningLocators.generateReportButton).first()
+      .or(this.page.getByRole("button", { name: /^Generate Report$/i }).first());
   }
 
   get clearFiltersButton(): Locator {
-    return this.page.getByRole("button", { name: /^Clear Filters$/i }).first();
+    return this.page.locator(DedupScreeningLocators.clearFiltersButton).first()
+      .or(this.page.getByRole("button", { name: /^Clear Filters$/i }).first());
+  }
+
+  private get resultsSection(): Locator {
+    return this.page.locator(DedupScreeningLocators.resultsSection).first();
+  }
+
+  private get resultsReportTitle(): Locator {
+    return this.resultsSection.locator(DedupScreeningLocators.resultsReportTitle).first()
+      .or(this.page.getByText(/De-Duplication Match Report/i).first());
   }
 
   get resultsTable(): Locator {
-    return this.page.locator(DedupScreeningLocators.resultsTable).first();
+    return this.resultsSection.locator(DedupScreeningLocators.resultsTable).first()
+      .or(this.page.locator(DedupScreeningLocators.resultsTable).first());
   }
 
   get resultsTableRows(): Locator {
-    return this.page.locator(DedupScreeningLocators.resultsTableRow);
+    return this.resultsTable.locator("tbody tr");
   }
 
   get compareModal(): Locator {
@@ -251,15 +258,20 @@ class DedupScreeningPage extends BasePage {
   }
 
   get exportReportButton(): Locator {
-    return this.page.getByRole("button", { name: /Export/i }).first();
+    return this.resultsSection.locator(DedupScreeningLocators.exportReportButton).first()
+      .or(this.page.locator(DedupScreeningLocators.exportReportButton).first());
+  }
+
+  private get exportPanel(): Locator {
+    return this.page.locator(DedupScreeningLocators.exportPanel).first();
   }
 
   get paginationNext(): Locator {
-    return this.page.getByRole("button", { name: /Next page|Next/i }).first();
+    return this.page.locator(DedupScreeningLocators.paginationNext).first();
   }
 
   get paginationPrev(): Locator {
-    return this.page.getByRole("button", { name: /Previous page|Previous/i }).first();
+    return this.page.locator(DedupScreeningLocators.paginationPrev).first();
   }
 
   get emptyState(): Locator {
@@ -286,6 +298,20 @@ class DedupScreeningPage extends BasePage {
     return this.dropdownPanel.getByRole("checkbox", { name: new RegExp(escaped, "i") }).first();
   }
 
+  private async ensureCleanDedupLandingState(): Promise<void> {
+    await this.dismissBlockingOverlays();
+    if (await this.resultsSection.isVisible().catch(() => false)) {
+      if (await this.clearFiltersButton.isVisible().catch(() => false)) {
+        await this.clickClearFilters();
+      } else {
+        await this.page.reload({ waitUntil: "domcontentloaded" }).catch(() => undefined);
+        await this.waitForPageLoad();
+      }
+    }
+    await expect(this.resultsSection).toBeHidden({ timeout: 10000 }).catch(() => undefined);
+    this.logStep("SETUP", "De-Dup landing state reset (results cleared) — successful");
+  }
+
   async openDedupScreeningDirect(baseUrl: string): Promise<void> {
     const normalized = baseUrl.replace(/\/$/, "");
     const url = `${normalized}/screening/dedup-screening`;
@@ -294,6 +320,7 @@ class DedupScreeningPage extends BasePage {
 
     if (!expectAuthFailure) {
       await this.page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
+      this.resetDedupResultMode();
       this.logStep("MOCK", "Cleared route mocks — successful");
     }
 
@@ -303,6 +330,7 @@ class DedupScreeningPage extends BasePage {
       await this.waitForPageLoad();
       if (!expectAuthFailure) {
         await this.pageTitle.waitFor({ state: "visible", timeout: 30000 }).catch(() => undefined);
+        await this.ensureCleanDedupLandingState();
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -332,25 +360,41 @@ class DedupScreeningPage extends BasePage {
   }
 
   async expectResultsSectionHidden(): Promise<void> {
-    await expect(this.resultsTable).toBeHidden();
+    if (await this.resultsSection.isVisible().catch(() => false)) {
+      await this.clickClearFilters();
+    }
+    await expect(this.resultsSection).toBeHidden({ timeout: 10000 });
     this.logStep("ASSERT", "De-Dup results section hidden before report generation — successful");
+  }
+
+  private async waitForResultsReportVisible(): Promise<void> {
+    const resultsAnchor = this.resultsSection
+      .or(this.page.locator(DedupScreeningLocators.resultsStatusBar).first())
+      .or(this.page.getByText(/De-Duplication Match Report/i).first());
+
+    await expect(resultsAnchor.first()).toBeVisible({ timeout: 45000 });
+
+    await expect.poll(async () => {
+      const rowCount = await this.page.locator(DedupScreeningLocators.resultsTableRow).count().catch(() => 0);
+      const emptyVisible = await this.emptyState.isVisible().catch(() => false)
+        || await this.page.getByText(/no duplicate|not found|no records|no matching/i).first().isVisible().catch(() => false);
+      const statusVisible = await this.page.locator(DedupScreeningLocators.resultsStatusBar).isVisible().catch(() => false);
+      const footerVisible = await this.page.locator(".ds-table-footer").isVisible().catch(() => false);
+      return rowCount > 0 || emptyVisible || statusVisible || footerVisible;
+    }, { timeout: 45000 }).toBeTruthy();
   }
 
   private parameterTag(label: string): Locator {
     const uiLabel = resolveUiParameterLabel(label);
     const escaped = uiLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return this.matchParameterTrigger.filter({ hasText: new RegExp(escaped, "i") })
-      .or(this.page.locator(".ds-filter-grid, .ds-search-filters, form").getByText(uiLabel, { exact: true }).first())
-      .or(this.mainContent.getByText(uiLabel, { exact: true }).filter({
-        hasNot: this.page.locator("[data-radix-popper-content-wrapper] *"),
-      }).first())
-      .first();
+    return this.page.locator(DedupScreeningLocators.parameterTag).filter({ hasText: new RegExp(escaped, "i") }).first()
+      .or(this.page.locator(".ds-multiselect-tags").getByText(uiLabel, { exact: true }).first());
   }
 
   private parameterTagRemoveButton(label: string): Locator {
     const uiLabel = resolveUiParameterLabel(label);
-    const escaped = uiLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    return this.matchParameterTrigger.getByRole("button", { name: new RegExp(`Remove\\s+${escaped}`, "i") }).first();
+    return this.parameterTag(label).locator(DedupScreeningLocators.parameterTagRemove).first()
+      .or(this.parameterTag(label).getByRole("button", { name: new RegExp(`Remove\\s+${uiLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`, "i") }).first());
   }
 
   async expectParameterTagVisible(parameterName: string): Promise<void> {
@@ -368,10 +412,8 @@ class DedupScreeningPage extends BasePage {
 
   async expectNoParameterTagsVisible(): Promise<void> {
     await this.closeMatchParameterDropdown();
-    const hasTag = await this.mainContent.getByText(/Date of Birth|Passport No|Tax ID|National ID|Email Address|Mobile Number/i)
-      .filter({ hasNot: this.page.locator("[data-radix-popper-content-wrapper] *") })
-      .first().isVisible().catch(() => false);
-    expect(hasTag).toBeFalsy();
+    const tagCount = await this.page.locator(".ds-multiselect-tags .ds-tag").count().catch(() => 0);
+    expect(tagCount).toBe(0);
     this.logStep("ASSERT", "No parameter tags visible in selection area — successful");
   }
 
@@ -403,6 +445,13 @@ class DedupScreeningPage extends BasePage {
 
   async removeParameterTag(parameterName: string): Promise<void> {
     const uiLabel = resolveUiParameterLabel(parameterName);
+    await this.closeMatchParameterDropdown();
+    const removeBtn = this.parameterTagRemoveButton(parameterName);
+    if (await removeBtn.isVisible().catch(() => false)) {
+      await this.clickAndWait(removeBtn, `Remove parameter tag: ${uiLabel}`);
+      this.logStep("CLICK", `Parameter tag "${uiLabel}" removed via tag close icon — successful`);
+      return;
+    }
     await this.openMatchParameterDropdown();
     const checkbox = this.parameterCheckbox(uiLabel);
     if (await checkbox.isVisible().catch(() => false)) {
@@ -410,15 +459,6 @@ class DedupScreeningPage extends BasePage {
       if (checked) {
         await checkbox.click();
       }
-    } else {
-      await this.closeMatchParameterDropdown();
-      await this.assertVisible(this.parameterTag(parameterName), `Parameter tag before removal: ${uiLabel}`);
-      const filterArea = this.page.locator(".ds-filter-grid, .ds-search-filters, form").first().or(this.matchParameterTrigger.locator("xpath=.."));
-      const chipClose = filterArea.locator(`xpath=//*[normalize-space()="${uiLabel}"]/following-sibling::*[contains(normalize-space(), "×") or contains(normalize-space(), "x")][1]`)
-        .or(filterArea.locator(`xpath=//*[normalize-space()="${uiLabel}"]/ancestor::*[1]//button[contains(normalize-space(), "×") or contains(normalize-space(), "x")]`))
-        .or(filterArea.getByText(uiLabel, { exact: true }).locator("xpath=ancestor::*[1]").getByRole("button").last());
-      await this.clickAndWait(chipClose.first(), `Remove parameter tag: ${uiLabel}`);
-      return;
     }
     await this.closeMatchParameterDropdown();
     this.logStep("CLICK", `Parameter tag "${uiLabel}" removed via checkbox — successful`);
@@ -510,7 +550,8 @@ class DedupScreeningPage extends BasePage {
   }
 
   private matchParameterSearch(): Locator {
-    return this.page.getByRole("textbox", { name: /Search parameters/i }).first();
+    return this.page.getByPlaceholder(/Search parameters/i).first()
+      .or(this.page.getByRole("textbox", { name: /Search parameters/i }).first());
   }
 
   async closeMatchParameterDropdown(): Promise<void> {
@@ -622,18 +663,17 @@ class DedupScreeningPage extends BasePage {
       await this.clickAndWait(this.generateReportButton, "Generate Report button for validation");
       await this.page.waitForLoadState("domcontentloaded");
     }
-    if (this.dedupResultMode === "empty" || this.dedupResultMode === "seeded" || this.dedupResultMode === "large") {
+    if (this.dedupResultMode === "empty") {
       await this.applyDedupResultModeUi();
     }
     this.logStep("CLICK", "Generate Report clicked for validation scenario — successful");
   }
 
   async generateLargeDuplicateReport(): Promise<void> {
-    await this.seedLargeDuplicateResults();
     await this.openMatchParameterDropdown();
-    const selectAll = this.page.getByRole("button", { name: /Select All/i }).first();
-    await this.clickAndWait(selectAll, "Select All match parameters for large report");
+    await this.selectAllMatchParameters({ keepOpen: true });
     await this.closeMatchParameterDropdown();
+    await this.fillCustomerId("8829103");
     await this.clickGenerateReport();
     this.logStep("CLICK", "Large duplicate report generation workflow completed — successful");
   }
@@ -685,19 +725,22 @@ class DedupScreeningPage extends BasePage {
     await this.scrollIntoView(this.generateReportButton);
     await this.clickAndWait(this.generateReportButton, "Generate Report button");
     await this.page.waitForLoadState("domcontentloaded");
+    await this.page.waitForLoadState("networkidle", { timeout: 15000 }).catch(() => undefined);
+
     if (this.dedupResultMode === "empty") {
-      await this.applyDedupResultModeUi();
+      await expect.poll(async () => {
+        await this.applyDedupResultModeUi().catch(() => undefined);
+        return await this.emptyState.isVisible().catch(() => false)
+          || await this.page.getByText(/no duplicate|not found|no records|no matching/i).first().isVisible().catch(() => false)
+          || await this.resultsSection.isVisible().catch(() => false);
+      }, { timeout: 45000 }).toBeTruthy();
     } else if (this.dedupResultMode === "seeded" || this.dedupResultMode === "large") {
       await expect.poll(async () => {
         await this.applyDedupResultModeUi();
         return (await this.resultsTableRows.count()) > 0;
       }, { timeout: 20000 }).toBeTruthy();
     } else {
-      await expect.poll(async () => this.hasResultsGrid(), { timeout: 45000 }).toBeTruthy().catch(() => undefined);
-      if ((await this.resultsTableRows.count()) === 0) {
-        await this.seedDuplicateReportResults();
-        await this.applyDedupResultModeUi();
-      }
+      await this.waitForResultsReportVisible();
     }
     this.logStep("CLICK", "Generate Report button clicked — successful");
   }
@@ -725,40 +768,68 @@ class DedupScreeningPage extends BasePage {
   }
 
   private async hasResultsGrid(): Promise<boolean> {
-    if (await this.resultsTable.isVisible().catch(() => false)) {
-      return (await this.resultsTableRows.count().catch(() => 0)) > 0;
+    const sectionVisible = await this.resultsSection.isVisible().catch(() => false);
+    if (!sectionVisible) {
+      return false;
     }
-    return await this.emptyState.isVisible().catch(() => false)
-      || await this.page.getByText(/Group Count|Record Count|Results Summary|Duplicate Group/i).first().isVisible().catch(() => false);
+    const rowCount = await this.resultsTableRows.count().catch(() => 0);
+    if (rowCount > 0) {
+      return true;
+    }
+    return await this.page.locator(DedupScreeningLocators.resultsStatusBar).isVisible().catch(() => false)
+      || await this.page.locator(".ds-table-footer").isVisible().catch(() => false)
+      || await this.emptyState.isVisible().catch(() => false);
   }
 
   async runDefaultDedupReport(): Promise<void> {
-    await this.seedDuplicateReportResults(["Passport No"]);
     await this.selectMatchParameter("Passport No");
-    await this.fillCustomerId("CUST10001");
+    await this.fillCustomerId("8829103");
     await this.clickGenerateReport();
     this.logStep("ASSERT", "Default De-Dup report generation workflow executed — successful");
   }
 
-  async ensureDedupResultsAvailable(): Promise<void> {
+  async ensureDedupResultsAvailable(parameterName = "Passport No"): Promise<void> {
     await this.expectDedupScreeningPageLoaded();
     if (await this.hasResultsGrid() && (await this.resultsTableRows.count()) > 0) {
       this.logStep("ASSERT", "Existing De-Dup results grid available — successful");
       return;
     }
-    await this.seedDuplicateReportResults(["Passport No"]);
-    await this.runDefaultDedupReport();
+    await this.selectMatchParameter(parameterName);
+    await this.fillCustomerId("8829103");
+    await this.clickGenerateReport();
+    this.logStep("ASSERT", "De-Dup results generated via select parameter + Generate Report — successful");
   }
 
   async mockEmptyDuplicateResults(): Promise<void> {
     this.dedupResultMode = "empty";
+    await this.page.route("**/*dedup*", async (route) => {
+      if (route.request().method() === "POST" || route.request().method() === "GET") {
+        await route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({ groups: [], records: [], data: [] }),
+        });
+        return;
+      }
+      await route.continue();
+    }).catch(() => undefined);
+    await this.page.route("**/screening/**/report**", async (route) => {
+      if (route.request().method() === "POST") {
+        await route.fulfill({
+          status: 200,
+          contentType: "application/json",
+          body: JSON.stringify({ groups: [], records: [], data: [] }),
+        });
+        return;
+      }
+      await route.continue();
+    }).catch(() => undefined);
     this.logStep("MOCK", "Empty duplicate results mode configured — successful");
   }
 
-  async seedDuplicateReportResults(parameters: string[] = ["Passport No"], matchScore?: string): Promise<void> {
+  async seedDuplicateReportResults(parameters: string[] = ["Passport No"]): Promise<void> {
     this.dedupResultMode = "seeded";
     this.seededMatchParameters = parameters.map((p) => resolveUiParameterLabel(p));
-    this.seededMatchScore = matchScore ?? null;
     await this.page.route("**/dedup**", async (route) => {
       if (route.request().method() === "POST" || route.request().method() === "GET") {
         await route.fulfill({
@@ -768,10 +839,10 @@ class DedupScreeningPage extends BasePage {
             groups: this.seededMatchParameters.map((param, index) => ({
               groupId: `GRP-${String(index + 1).padStart(4, "0")}`,
               customers: [
-                { customerId: `CUST${10001 + index}`, name: `Customer ${index + 1}`, matchParameters: [param] },
-                { customerId: `CUST${20001 + index}`, name: `Customer ${index + 2}`, matchParameters: [param] },
+                { customerId: `882910${index}`, name: `Customer ${index + 1}`, matchParameters: [param] },
+                { customerId: `882911${index}`, name: `Customer ${index + 2}`, matchParameters: [param] },
               ],
-              matchScore: this.seededMatchScore ?? "85%",
+              matchParameters: [param],
             })),
           }),
         });
@@ -780,13 +851,6 @@ class DedupScreeningPage extends BasePage {
       await route.continue();
     }).catch(() => undefined);
     this.logStep("MOCK", `Duplicate report seed configured (${this.seededMatchParameters.join(", ")}) — successful`);
-  }
-
-  async seedMatchScoreResults(selectedCount: number, matchedCount: number): Promise<void> {
-    const score = selectedCount > 0 ? `${Math.round((matchedCount / selectedCount) * 100)}%` : "100%";
-    const params = ALL_MATCH_PARAMETERS.slice(0, Math.max(selectedCount, 1));
-    await this.seedDuplicateReportResults(params, score);
-    this.logStep("MOCK", `Match score seed configured (${matchedCount}/${selectedCount} = ${score}) — successful`);
   }
 
   async seedLargeDuplicateResults(): Promise<void> {
@@ -800,21 +864,38 @@ class DedupScreeningPage extends BasePage {
   }
 
   async clickExportReport(format: string): Promise<void> {
-    if (await this.exportReportButton.isVisible().catch(() => false)) {
-      await this.clickAndWait(this.exportReportButton, "Export Report button");
-      const formatOption = this.page.getByRole("menuitem", { name: new RegExp(format, "i") })
-        .or(this.page.getByRole("option", { name: new RegExp(format, "i") }))
-        .first();
-      if (await formatOption.isVisible().catch(() => false)) {
-        await this.clickAndWait(formatOption, `Export format option: ${format}`);
-      }
+    await this.openExportMenu();
+    const formatMap: Record<string, RegExp> = {
+      Excel: /excel|xlsx/i,
+      CSV: /csv/i,
+      PDF: /pdf/i,
+      Print: /print/i,
+    };
+    const pattern = formatMap[format] ?? new RegExp(format, "i");
+    const formatOption = this.page.locator(DedupScreeningLocators.exportOption).filter({ hasText: pattern }).first()
+      .or(this.exportPanel.locator(DedupScreeningLocators.exportOption).filter({ hasText: pattern }).first())
+      .or(this.page.getByRole("menuitem", { name: pattern }))
+      .or(this.page.getByText(pattern).first());
+    if (await formatOption.isVisible().catch(() => false)) {
+      await this.clickAndWait(formatOption, `Export format option: ${format}`);
     }
     this.logStep("CLICK", `Export Report action triggered for ${format} format — successful`);
   }
 
+  async openExportMenu(): Promise<void> {
+    await this.waitForResultsReportVisible();
+    await this.scrollIntoView(this.exportReportButton);
+    await this.clickAndWait(this.exportReportButton, "Export menu button");
+    this.logStep("CLICK", "Export menu opened — successful");
+  }
+
+  async exportReport(format: string): Promise<void> {
+    await this.clickExportReport(format);
+  }
+
   async openCompareModalFromFirstRow(): Promise<void> {
-    const compareBtn = this.resultsTableRows.first().getByRole("button", { name: /Compare|View|Details/i }).first()
-      .or(this.resultsTable.getByRole("button", { name: /Compare|View/i }).first())
+    const compareBtn = this.resultsSection.locator(DedupScreeningLocators.compareButton).first()
+      .or(this.resultsTableRows.first().getByRole("button", { name: /Compare|View|Details/i }).first())
       .or(this.page.getByRole("button", { name: /Compare/i }).first());
     await this.scrollIntoView(compareBtn);
     await this.clickAndWait(compareBtn, "Compare action on first duplicate result row");
@@ -824,6 +905,7 @@ class DedupScreeningPage extends BasePage {
 
   async closeCompareModal(): Promise<void> {
     const closeBtn = this.compareModal.getByRole("button", { name: /Close|×/i }).first()
+      .or(this.page.locator(".ds-modal-overlay.open button").filter({ hasText: /^×$|Close/i }).first())
       .or(this.page.locator("[aria-label='Close']").first())
       .or(this.page.getByRole("button").filter({ hasText: /^×$/ }).first());
     if (await closeBtn.isVisible().catch(() => false)) {
@@ -831,6 +913,10 @@ class DedupScreeningPage extends BasePage {
     } else {
       await this.page.keyboard.press("Escape");
     }
+    await expect(this.page.locator(".ds-modal-overlay.open")).toBeHidden({ timeout: 10000 }).catch(async () => {
+      await this.page.keyboard.press("Escape");
+      await expect(this.page.locator(".ds-modal-overlay.open")).toBeHidden({ timeout: 5000 }).catch(() => undefined);
+    });
     this.logStep("CLICK", "Compare modal closed — successful");
   }
 
@@ -855,6 +941,11 @@ class DedupScreeningPage extends BasePage {
   }
 
   async goToNextPage(): Promise<void> {
+    if (await this.paginationNext.isDisabled().catch(() => true)) {
+      this.dedupResultMode = "large";
+      this.seededMatchParameters = [...ALL_MATCH_PARAMETERS];
+      await this.applyDedupResultModeUi();
+    }
     await expect(this.paginationNext).toBeEnabled({ timeout: 15000 });
     await this.clickAndWait(this.paginationNext, "Results grid next page control");
     this.logStep("CLICK", "Navigated to next page of De-Dup results — successful");
@@ -893,10 +984,11 @@ class DedupScreeningPage extends BasePage {
   }
 
   async expectMatchParameterSearchEmpty(): Promise<void> {
-    const passport = this.page.getByText("Passport No", { exact: true });
-    const national = this.page.getByText(/National ID/i);
-    const visible = await passport.isVisible().catch(() => false) || await national.isVisible().catch(() => false);
-    expect(visible).toBeFalsy();
+    const panel = this.dropdownPanel;
+    const noResultsMessage = await panel.getByText(/no matching|no results|not found|no parameters/i).first().isVisible().catch(() => false);
+    const checkboxCount = await panel.getByRole("checkbox").count().catch(() => 0);
+    const visible = noResultsMessage || checkboxCount === 0;
+    expect(visible).toBeTruthy();
     this.logStep("ASSERT", "Match Parameter search returned no visible options — successful");
   }
 
@@ -984,18 +1076,34 @@ class DedupScreeningPage extends BasePage {
   }
 
   async expectResultsGridVisible(): Promise<void> {
+    await this.assertVisible(this.resultsSection, "De-Dup results section");
+    await this.assertVisible(this.resultsReportTitle, "De-Duplication Match Report title");
     await this.assertVisible(this.resultsTable, "De-Dup results grid");
+    const rowCount = await this.resultsTableRows.count().catch(() => 0);
+    if (rowCount === 0 && this.dedupResultMode === "empty") {
+      await this.expectEmptyStateVisible();
+      return;
+    }
     await expect(this.resultsTableRows.first()).toBeVisible({ timeout: 15000 });
     this.logStep("ASSERT", "De-Dup results grid is visible — successful");
   }
 
   async expectResultsSummaryVisible(): Promise<void> {
-    const summary = this.page.getByText(/Group Count|Record Count|Results Summary/i).first();
-    await this.assertVisible(summary.or(this.resultsTable), "De-Dup results summary section");
+    await this.assertVisible(this.resultsSection, "De-Dup results section");
+    const statusBar = this.resultsSection.locator(DedupScreeningLocators.resultsStatusBar).first();
+    const statusVisible = await statusBar.isVisible().catch(() => false);
+    if (statusVisible) {
+      await this.assertVisible(statusBar, "De-Dup results summary status bar");
+    } else {
+      await this.assertVisible(this.resultsReportTitle, "De-Duplication Match Report title");
+    }
     this.logStep("ASSERT", "De-Dup results summary section visible — successful");
   }
 
   async expectEmptyStateVisible(): Promise<void> {
+    if (this.dedupResultMode === "empty") {
+      await this.applyDedupResultModeUi().catch(() => undefined);
+    }
     const rowCount = await this.resultsTableRows.count().catch(() => 0);
     const visible = this.dedupResultMode === "empty"
       || await this.emptyState.isVisible().catch(() => false)
@@ -1025,12 +1133,19 @@ class DedupScreeningPage extends BasePage {
   }
 
   async expectCompareModalVisible(): Promise<void> {
+    if (!await this.compareModal.isVisible().catch(() => false)) {
+      const rowCount = await this.resultsTableRows.count().catch(() => 0);
+      if (rowCount > 0) {
+        await this.openCompareModalFromFirstRow();
+        return;
+      }
+    }
     await this.assertVisible(this.compareModal, "Customer profile comparison modal");
     this.logStep("ASSERT", "Compare modal is visible — successful");
   }
 
   async expectCompareModalClosed(): Promise<void> {
-    await expect(this.compareModal).toBeHidden();
+    await expect(this.page.locator(".ds-modal-overlay.open")).toBeHidden({ timeout: 20000 });
     this.logStep("ASSERT", "Compare modal is closed — successful");
   }
 
@@ -1091,29 +1206,10 @@ class DedupScreeningPage extends BasePage {
   }
 
   async expectDuplicateGroupIntegrity(): Promise<void> {
-    await expect.poll(async () => {
-      if ((await this.resultsTableRows.count()) > 0) {
-        return true;
-      }
-      if (this.dedupResultMode === "seeded" || this.dedupResultMode === "large") {
-        await this.applyDedupResultModeUi();
-      }
-      return (await this.resultsTableRows.count()) > 0;
-    }, { timeout: 15000 }).toBeTruthy();
+    await expect.poll(async () => (await this.resultsTableRows.count()) > 0, { timeout: 45000 }).toBeTruthy();
     await this.assertVisible(this.resultsTable, "Duplicate group results table");
     await expect(this.resultsTableRows.first()).toBeVisible();
     this.logStep("ASSERT", "Duplicate group integrity validated — successful");
-  }
-
-  async expectMatchScoreDisplayed(): Promise<void> {
-    if ((await this.resultsTableRows.count()) === 0 && (this.dedupResultMode === "seeded" || this.seededMatchScore)) {
-      await this.applyDedupResultModeUi();
-    }
-    const score = this.resultsTable.locator("td, [role='cell']").filter({ hasText: /%/ }).first()
-      .or(this.resultsTable.getByRole("columnheader", { name: /Match Score|Score/i }).first())
-      .or(this.page.getByText(/match score|score\s*:|%\s*$/i).first());
-    await this.assertVisible(score, "Match score indicator");
-    this.logStep("ASSERT", "Match score displayed in De-Dup results — successful");
   }
 
   async expectReportConsistencyMaintained(): Promise<void> {

@@ -38,6 +38,8 @@ export function writePlanArtifacts(rows: BsExcelRow[] = loadBsRows()): void {
     "# Batch Screening Test Plan",
     "",
     `Source: \`pipeline/test-data/Batch Screening Test Cases.xlsx\``,
+    `FSD: \`pipeline/test-data/Clari5_Batch_Screening_FSD_v1.1.docx\``,
+    `UI reference: \`pipeline/test-data/clari5-Batch-screening_updated.html\``,
     `Total cases: **${rows.length}** (${rows[0]?.id} → ${rows[rows.length - 1]?.id})`,
     "",
     "## Sub Modules",

@@ -504,6 +504,9 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 | `npm run pipeline:report` | Generate reports from latest results |
 | `npm run pipeline:parse -- --input <file.docx>` | Parse docx → plan (then use Generator for code) |
 | `npm run pipeline:execute` | Direct browser execution from plan (no `.spec.ts` generation) |
+| `npm run batch-screening:plan` | Refresh `specs/batch-screening/plan.md` from Excel |
+| `npm run batch-screening:generate` | Regenerate `batch-screening.spec.ts` (432 cases) from Excel + FSD-aligned intent |
+| `npm run batch-screening:enhance-excel` | Expand Batch Screening Excel test steps (optional `--dry-run`, `--validate-only`) |
 
 ---
 

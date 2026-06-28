@@ -1,1682 +1,1594 @@
 [
   {
-    "id": "SMR-P1-TC-001",
+    "id": "SMR-TC-001",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify user can access Sanction MIS Reports module from Sanction Screening navigation",
+    "taskDescription": "Verify that an analyst can open the Sanction MIS Reports module from the Sanction Screening menu. This confirms users can reach the report catalog without navigation errors.",
     "priority": "High",
-    "expectedResult": "Sanction MIS Reports landing page should open successfully without errors"
+    "expectedResult": "The Sanction MIS Reports landing page opens with breadcrumb Sanction Screening / Sanction MIS Reports and the report catalog is visible."
   },
   {
-    "id": "SMR-P1-TC-002",
+    "id": "SMR-TC-002",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify landing page loads all primary components successfully",
+    "taskDescription": "Verify that the landing page displays the page title and purpose subtitle. This helps users confirm they are in the correct sanctions reporting workspace.",
     "priority": "High",
-    "expectedResult": "Page should display page title, statistics section, search, filters, report grid and pagination controls"
+    "expectedResult": "The title Sanction MIS Reports and the management subtitle are displayed clearly."
   },
   {
-    "id": "SMR-P1-TC-003",
+    "id": "SMR-TC-003",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify breadcrumb navigation is displayed correctly",
-    "priority": "Medium",
-    "expectedResult": "Breadcrumb should display Sanction Screening > Sanction MIS Reports"
-  },
-  {
-    "id": "SMR-P1-TC-004",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify statistics section displays all configured report summary cards",
+    "taskDescription": "Verify that the report catalog grid displays all required columns. This ensures analysts can identify report identity, schedule, status, and available actions.",
     "priority": "High",
-    "expectedResult": "Statistics section should display Total Reports, Generated, Pending, Daily, Weekly and Monthly summary cards"
+    "expectedResult": "The grid displays Report ID, Report Name, Frequency, Status, and Actions columns."
   },
   {
-    "id": "SMR-P1-TC-005",
+    "id": "SMR-TC-004",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify statistics cards display report summary values",
+    "taskDescription": "Verify that all configured Sanction MIS reports appear in the catalog. This ensures no scheduled report is hidden from compliance review.",
     "priority": "High",
-    "expectedResult": "Each statistics card should display a value and should not appear blank or broken"
+    "expectedResult": "Seven reports are listed including Comprehensive Sanctions Screening Intelligence Report, Enhanced Due Diligence: PEP and Adverse Media Analytics Report, Screening Exception Authorization and Tracking Report, Geographic Risk Exposure Intelligence Report, Related Party High-Risk Country Linkage Report, Screening Logic Governance and Change Control Report, and Exception List Governance and Accountability Report."
   },
   {
-    "id": "SMR-P1-TC-006",
+    "id": "SMR-TC-005",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report search functionality using report name",
+    "taskDescription": "Verify that the View action opens the selected report detail page. This supports analysts reviewing the latest generated MIS output.",
     "priority": "High",
-    "expectedResult": "Matching report should be displayed in report grid"
+    "expectedResult": "The Comprehensive Sanctions Screening Intelligence Report detail page opens with the correct report title and content sections."
   },
   {
-    "id": "SMR-P1-TC-007",
+    "id": "SMR-TC-006",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report search functionality using report ID",
+    "taskDescription": "Verify that clicking the report name link navigates to the same report as the View action. This ensures consistent navigation paths for analysts.",
     "priority": "High",
-    "expectedResult": "Corresponding report should be displayed"
+    "expectedResult": "The report detail page opens and matches the report selected from the name link."
   },
   {
-    "id": "SMR-P1-TC-008",
+    "id": "SMR-TC-007",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify search supports partial keyword matching",
+    "taskDescription": "Verify that the Generate action is available for each catalog report. This confirms on-demand regeneration is supported for operational reporting.",
     "priority": "High",
-    "expectedResult": "System should display reports containing entered keyword"
+    "expectedResult": "Every report row displays a Generate action alongside View."
   },
   {
-    "id": "SMR-P1-TC-009",
+    "id": "SMR-TC-008",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify system behavior when search criteria returns no matching records",
-    "priority": "Medium",
-    "expectedResult": "No matching records should be displayed and application should remain stable"
-  },
-  {
-    "id": "SMR-P1-TC-010",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify clearing search criteria restores complete report listing",
-    "priority": "Medium",
-    "expectedResult": "Complete report listing should be displayed again"
-  },
-  {
-    "id": "SMR-P1-TC-011",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Frequency filter is available and accessible on landing page",
+    "taskDescription": "Verify that landing page pagination controls display record counts correctly. This helps analysts navigate large report catalogs in production.",
     "priority": "High",
-    "expectedResult": "Frequency filter should be visible and accessible"
+    "expectedResult": "Pagination footer shows items-per-page options and a range such as 1–7 of 7 items with page count."
   },
   {
-    "id": "SMR-P1-TC-012",
+    "id": "SMR-TC-009",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Frequency filter displays configured options",
+    "taskDescription": "Verify that clicking Add New Rule on the landing toolbar opens the configuration form. Analysts use this action to create new MIS report scheduling rules.",
     "priority": "High",
-    "expectedResult": "Available frequency options should be displayed correctly"
+    "expectedResult": "Add New Rule opens the report configuration form with Save Changes and Cancel actions visible."
   },
   {
-    "id": "SMR-P1-TC-013",
+    "id": "SMR-TC-010",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Frequency filter updates report listing based on selected frequency",
+    "taskDescription": "Verify that back navigation from a report returns to the catalog without losing context. This supports efficient review across multiple MIS reports.",
     "priority": "High",
-    "expectedResult": "Only reports matching selected frequency should be displayed"
+    "expectedResult": "The landing page catalog is displayed again with the same report list."
   },
   {
-    "id": "SMR-P1-TC-014",
+    "id": "SMR-TC-011",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Status filter is available and accessible on landing page",
+    "taskDescription": "Verify that each catalog row shows the configured schedule frequency. This helps operations teams validate reporting cadence.",
     "priority": "High",
-    "expectedResult": "Status filter should be visible and accessible"
+    "expectedResult": "Each report row displays the correct frequency label matching its schedule."
   },
   {
-    "id": "SMR-P1-TC-015",
+    "id": "SMR-TC-012",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Status filter displays configured options",
+    "taskDescription": "Verify that generated reports display a Generated status badge in the catalog. This gives analysts immediate visibility of report readiness.",
     "priority": "High",
-    "expectedResult": "Available status options should be displayed correctly"
+    "expectedResult": "All listed reports show a Generated status indicator in the catalog."
   },
   {
-    "id": "SMR-P1-TC-016",
+    "id": "SMR-TC-013",
     "module": "Sanction Screening",
     "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Status filter updates report listing based on selected status",
+    "taskDescription": "Verify that clicking Filter on the landing page opens catalog filter controls. Landing filters help analysts narrow the report list before opening individual reports.",
     "priority": "High",
-    "expectedResult": "Only reports matching selected status should be displayed"
+    "expectedResult": "Landing filter controls open and the report catalog reflects the selected filter criteria."
   },
   {
-    "id": "SMR-P1-TC-017",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify multiple filters can be applied together",
-    "priority": "High",
-    "expectedResult": "Report grid should display records satisfying all selected criteria"
-  },
-  {
-    "id": "SMR-P1-TC-018",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report grid displays configured report information",
-    "priority": "High",
-    "expectedResult": "Report grid should display Report ID, Report Name, Frequency, Status and Actions columns"
-  },
-  {
-    "id": "SMR-P1-TC-019",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify all configured Sanction MIS Reports are listed in report grid",
-    "priority": "High",
-    "expectedResult": "All configured Sanction MIS Reports should be displayed in the grid"
-  },
-  {
-    "id": "SMR-P1-TC-020",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report information is displayed correctly in each row",
-    "priority": "Medium",
-    "expectedResult": "Each report row should display valid Report ID, Report Name, Frequency and Status information"
-  },
-  {
-    "id": "SMR-P1-TC-021",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify View action is available for report records",
-    "priority": "High",
-    "expectedResult": "View action should be available for report records"
-  },
-  {
-    "id": "SMR-P1-TC-022",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify View action opens selected report",
-    "priority": "High",
-    "expectedResult": "Selected report details page should open successfully"
-  },
-  {
-    "id": "SMR-P1-TC-023",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Generate action is available for report records",
-    "priority": "High",
-    "expectedResult": "Generate action should be available for report records"
-  },
-  {
-    "id": "SMR-P1-TC-024",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Generate action processes selected report",
-    "priority": "High",
-    "expectedResult": "Report generation should be initiated successfully and status should reflect latest state"
-  },
-  {
-    "id": "SMR-P1-TC-025",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify pagination controls and record count information are displayed",
-    "priority": "Medium",
-    "expectedResult": "Items per page control and record count information should be displayed correctly"
-  },
-  {
-    "id": "SMR-P2-TC-001",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report generation can be initiated from landing page",
-    "priority": "High",
-    "expectedResult": "Report generation process should be initiated successfully"
-  },
-  {
-    "id": "SMR-P2-TC-002",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Generate action is available for all configured reports",
-    "priority": "High",
-    "expectedResult": "Generate action should be available for all configured reports"
-  },
-  {
-    "id": "SMR-P2-TC-003",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify generated report can be opened using View action",
-    "priority": "High",
-    "expectedResult": "Selected report should open successfully"
-  },
-  {
-    "id": "SMR-P2-TC-004",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify correct report opens after selecting View",
-    "priority": "High",
-    "expectedResult": "Report page should correspond to selected report"
-  },
-  {
-    "id": "SMR-P2-TC-005",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report page displays report title",
-    "priority": "High",
-    "expectedResult": "Report title should be displayed prominently on report page"
-  },
-  {
-    "id": "SMR-P2-TC-006",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report page displays report period information",
-    "priority": "High",
-    "expectedResult": "Report period information should be displayed"
-  },
-  {
-    "id": "SMR-P2-TC-007",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report page displays generated date information",
-    "priority": "High",
-    "expectedResult": "Generated Date should be displayed"
-  },
-  {
-    "id": "SMR-P2-TC-008",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report page displays generated by information",
-    "priority": "High",
-    "expectedResult": "Generated By information should be displayed"
-  },
-  {
-    "id": "SMR-P2-TC-009",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report page displays total records information",
-    "priority": "High",
-    "expectedResult": "Total Records information should be displayed"
-  },
-  {
-    "id": "SMR-P2-TC-010",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report metadata section loads successfully",
-    "priority": "Medium",
-    "expectedResult": "Metadata section should load successfully without missing information"
-  },
-  {
-    "id": "SMR-P2-TC-011",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify user can return to report listing after reviewing report",
-    "priority": "Medium",
-    "expectedResult": "User should be navigated back to Sanction MIS Reports landing page successfully"
-  },
-  {
-    "id": "SMR-P2-TC-012",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report page loads successfully after report generation",
-    "priority": "High",
-    "expectedResult": "Generated report should load successfully and display report contents"
-  },
-  {
-    "id": "SMR-P3-TC-001",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report header section is displayed correctly for all MIS reports",
-    "priority": "High",
-    "expectedResult": "Report header should be displayed successfully"
-  },
-  {
-    "id": "SMR-P3-TC-002",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report title is displayed correctly in report header",
-    "priority": "High",
-    "expectedResult": "Correct report title should be displayed"
-  },
-  {
-    "id": "SMR-P3-TC-003",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report description section is displayed",
-    "priority": "Medium",
-    "expectedResult": "Report description should be displayed where available"
-  },
-  {
-    "id": "SMR-P3-TC-004",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report filters section is displayed",
-    "priority": "High",
-    "expectedResult": "Report filter section should be displayed successfully"
-  },
-  {
-    "id": "SMR-P3-TC-005",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report filters can be applied successfully",
-    "priority": "High",
-    "expectedResult": "Report should display filtered results"
-  },
-  {
-    "id": "SMR-P3-TC-006",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report filters can be reset or cleared",
-    "priority": "Medium",
-    "expectedResult": "Default report data should be restored"
-  },
-  {
-    "id": "SMR-P3-TC-007",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify executive summary section is displayed",
-    "priority": "High",
-    "expectedResult": "Executive summary section should be displayed successfully"
-  },
-  {
-    "id": "SMR-P3-TC-008",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify KPI cards are displayed in executive summary",
-    "priority": "High",
-    "expectedResult": "Configured KPI cards should be displayed"
-  },
-  {
-    "id": "SMR-P3-TC-009",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify KPI cards display metric values",
-    "priority": "High",
-    "expectedResult": "KPI cards should display metric values and should not be blank"
-  },
-  {
-    "id": "SMR-P3-TC-010",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify distribution section is displayed when available",
-    "priority": "High",
-    "expectedResult": "Distribution section should be displayed successfully"
-  },
-  {
-    "id": "SMR-P3-TC-011",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify distribution tables display summarized report information",
-    "priority": "High",
-    "expectedResult": "Distribution tables should display summarized information correctly"
-  },
-  {
-    "id": "SMR-P3-TC-012",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify detailed records section is displayed",
-    "priority": "High",
-    "expectedResult": "Detailed records section should be displayed successfully"
-  },
-  {
-    "id": "SMR-P3-TC-013",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify detailed records table displays record information",
-    "priority": "High",
-    "expectedResult": "Detailed records table should display report records successfully"
-  },
-  {
-    "id": "SMR-P3-TC-014",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify detailed records section reflects applied filters",
-    "priority": "High",
-    "expectedResult": "Detailed records should display filtered data only"
-  },
-  {
-    "id": "SMR-P3-TC-015",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify PDF export option is available",
-    "priority": "High",
-    "expectedResult": "PDF export option should be displayed"
-  },
-  {
-    "id": "SMR-P3-TC-016",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Excel export option is available",
-    "priority": "High",
-    "expectedResult": "Excel export option should be displayed"
-  },
-  {
-    "id": "SMR-P3-TC-017",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify PDF export process can be initiated",
-    "priority": "High",
-    "expectedResult": "PDF export process should be initiated successfully"
-  },
-  {
-    "id": "SMR-P3-TC-018",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify Excel export process can be initiated",
-    "priority": "High",
-    "expectedResult": "Excel export process should be initiated successfully"
-  },
-  {
-    "id": "SMR-P4-TC-001",
+    "id": "SMR-TC-014",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify Comprehensive Sanctions Screening Intelligence Report opens successfully from report listing",
+    "taskDescription": "Verify that all Report Filters are displayed on the Comprehensive Sanctions Screening Intelligence Report. Analysts must see every available filter before running single or combined analysis.",
     "priority": "High",
-    "expectedResult": "Comprehensive Sanctions Screening Intelligence Report should open successfully"
+    "expectedResult": "All configured filters (Date Range, Screening Type, Customer/Prospect Type, Customer Id / Name / Hit Id, Watchlist Name, Branch Code, Channel, Screening Status) plus Apply Filters and Reset actions are visible on the Comprehensive Sanctions Screening Intelligence Report."
   },
   {
-    "id": "SMR-P4-TC-002",
+    "id": "SMR-TC-015",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify report header information is displayed correctly",
+    "taskDescription": "Verify that the Date Range filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report title and report metadata should be displayed successfully"
+    "expectedResult": "Date Range filter is applied and report results reflect the selected period on the Comprehensive Sanctions Screening Intelligence Report."
   },
   {
-    "id": "SMR-P4-TC-003",
+    "id": "SMR-TC-016",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify report period information is displayed",
+    "taskDescription": "Verify that the Screening Type filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report Period should be displayed"
+    "expectedResult": "Only Forward screening type records are displayed on the Comprehensive Sanctions Screening Intelligence Report."
   },
   {
-    "id": "SMR-P4-TC-004",
+    "id": "SMR-TC-017",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify executive summary section is displayed",
+    "taskDescription": "Verify that the Customer/Prospect Type filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Executive summary section should be displayed successfully"
+    "expectedResult": "Detail records show Individual customer or prospect type on the Comprehensive Sanctions Screening Intelligence Report."
   },
   {
-    "id": "SMR-P4-TC-005",
+    "id": "SMR-TC-018",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify all screening summary KPI cards are displayed",
+    "taskDescription": "Verify that the Customer Id / Name / Hit Id filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "All configured KPI cards should be visible with values"
+    "expectedResult": "Detail records matching the entered customer identifier or name are displayed."
   },
   {
-    "id": "SMR-P4-TC-006",
+    "id": "SMR-TC-019",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify KPI cards display values",
+    "taskDescription": "Verify that the Watchlist Name filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "KPI cards should display values and should not appear blank"
+    "expectedResult": "Hit records from the selected watchlist are displayed and summary totals align with the filter."
   },
   {
-    "id": "SMR-P4-TC-007",
+    "id": "SMR-TC-020",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify Watchlist Distribution section is displayed",
+    "taskDescription": "Verify that the Branch Code filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Watchlist Distribution section should be displayed successfully"
+    "expectedResult": "Only records linked to the selected branch are displayed in the detail grid."
   },
   {
-    "id": "SMR-P4-TC-008",
+    "id": "SMR-TC-021",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify Watchlist Distribution displays summarized screening information",
+    "taskDescription": "Verify that the Channel filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Watchlist distribution data should be displayed successfully"
+    "expectedResult": "Detail records match the selected Retail channel filter."
   },
   {
-    "id": "SMR-P4-TC-009",
+    "id": "SMR-TC-022",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify Customer Type Distribution section is displayed",
+    "taskDescription": "Verify that the Screening Status filter can be applied independently on the Comprehensive Sanctions Screening Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Customer Type Distribution section should be displayed successfully"
+    "expectedResult": "Only True Match disposition records are displayed in the detailed hit records."
   },
   {
-    "id": "SMR-P4-TC-010",
+    "id": "SMR-TC-023",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify Customer Type Distribution displays summarized customer information",
+    "taskDescription": "Verify that multiple filters can be applied together on the Comprehensive Sanctions Screening Intelligence Report. Combined filter validation supports targeted multi-criteria compliance analysis.",
     "priority": "High",
-    "expectedResult": "Customer type distribution information should be displayed successfully"
+    "expectedResult": "Combined Forward screening type, NYC-01 branch, and OFAC SDN watchlist filters narrow KPI and detail records consistently."
   },
   {
-    "id": "SMR-P4-TC-011",
-    "module": "Sanction Screening",
-    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify detailed screening records section is displayed",
-    "priority": "High",
-    "expectedResult": "Detailed screening records section should be displayed"
-  },
-  {
-    "id": "SMR-P4-TC-012",
-    "module": "Sanction Screening",
-    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify detailed screening records display record information",
-    "priority": "High",
-    "expectedResult": "Detailed records table should display screening record information successfully"
-  },
-  {
-    "id": "SMR-P4-TC-013",
-    "module": "Sanction Screening",
-    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify detailed records section remains consistent with applied report filters",
-    "priority": "High",
-    "expectedResult": "Detailed records should display filtered results only"
-  },
-  {
-    "id": "SMR-P4-TC-014",
-    "module": "Sanction Screening",
-    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify PDF export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "PDF export option should be available"
-  },
-  {
-    "id": "SMR-P4-TC-015",
-    "module": "Sanction Screening",
-    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify Excel export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "Excel export option should be available"
-  },
-  {
-    "id": "SMR-P4-TC-016",
+    "id": "SMR-TC-024",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify PEP & Adverse Media Analytics Report opens successfully from report listing",
+    "taskDescription": "Verify that all Report Filters are displayed on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Analysts must see every available filter before running single or combined analysis.",
     "priority": "High",
-    "expectedResult": "PEP & Adverse Media Analytics Report should open successfully"
+    "expectedResult": "All configured filters (Date Range, Screening Type, Customer/Prospect Type, Customer Id / Name / Hit Id, Watchlist Name, Nationality, Channel, Screening Status) plus Apply Filters and Reset actions are visible on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report."
   },
   {
-    "id": "SMR-P4-TC-017",
+    "id": "SMR-TC-025",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify report header information is displayed correctly",
+    "taskDescription": "Verify that the Date Range filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report title and metadata section should be displayed successfully"
+    "expectedResult": "Date Range filter is applied and PEP analytics reflect the selected reporting period."
   },
   {
-    "id": "SMR-P4-TC-018",
+    "id": "SMR-TC-026",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify report period information is displayed",
+    "taskDescription": "Verify that the Screening Type filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report Period should be displayed"
+    "expectedResult": "PEP and adverse media records match the Online screening type filter."
   },
   {
-    "id": "SMR-P4-TC-019",
+    "id": "SMR-TC-027",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify executive summary section is displayed",
+    "taskDescription": "Verify that the Customer/Prospect Type filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Executive summary section should be displayed successfully"
+    "expectedResult": "Detail records show Individual customer or prospect type on the PEP and Adverse Media Analytics Report."
   },
   {
-    "id": "SMR-P4-TC-020",
+    "id": "SMR-TC-028",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify PEP-related KPI metrics are displayed",
+    "taskDescription": "Verify that the Customer Id / Name / Hit Id filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Configured PEP KPI metrics should be displayed with values"
+    "expectedResult": "PEP detail records matching the entered identifier or name are displayed."
   },
   {
-    "id": "SMR-P4-TC-021",
+    "id": "SMR-TC-029",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify Adverse Media KPI metrics are displayed",
+    "taskDescription": "Verify that the Watchlist Name filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Configured Adverse Media KPI metrics should be displayed with values"
+    "expectedResult": "PEP records linked to the Dow Jones watchlist are displayed."
   },
   {
-    "id": "SMR-P4-TC-022",
+    "id": "SMR-TC-030",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify KPI cards display values",
+    "taskDescription": "Verify that the Nationality filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "KPI cards should display values and should not appear blank"
+    "expectedResult": "PEP records for the selected nationality are displayed in the detail grid."
   },
   {
-    "id": "SMR-P4-TC-023",
+    "id": "SMR-TC-031",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify Nationality Distribution section is displayed",
+    "taskDescription": "Verify that the Channel filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Nationality Distribution section should be displayed successfully"
+    "expectedResult": "Detail records match the selected Online channel filter."
   },
   {
-    "id": "SMR-P4-TC-024",
+    "id": "SMR-TC-032",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify Nationality Distribution displays summarized information",
+    "taskDescription": "Verify that the Screening Status filter can be applied independently on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Nationality-based summarized information should be displayed successfully"
+    "expectedResult": "Only Current PEP status records are displayed in the detail grid."
   },
   {
-    "id": "SMR-P4-TC-025",
+    "id": "SMR-TC-033",
     "module": "Sanction Screening",
     "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify detailed records section is displayed",
+    "taskDescription": "Verify that multiple filters can be applied together on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Combined filter validation supports targeted multi-criteria compliance analysis.",
     "priority": "High",
-    "expectedResult": "Detailed records section should be displayed successfully"
+    "expectedResult": "Combined nationality, Current PEP status, and watchlist filters narrow PEP KPI and detail records consistently."
   },
   {
-    "id": "SMR-P4-TC-026",
-    "module": "Sanction Screening",
-    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify detailed records display record information",
-    "priority": "High",
-    "expectedResult": "Detailed records table should display record information successfully"
-  },
-  {
-    "id": "SMR-P4-TC-027",
-    "module": "Sanction Screening",
-    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify detailed records remain consistent with applied filters",
-    "priority": "High",
-    "expectedResult": "Detailed records should display filtered results only"
-  },
-  {
-    "id": "SMR-P4-TC-028",
-    "module": "Sanction Screening",
-    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify PDF export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "PDF export option should be available"
-  },
-  {
-    "id": "SMR-P4-TC-029",
-    "module": "Sanction Screening",
-    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify Excel export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "Excel export option should be available"
-  },
-  {
-    "id": "SMR-P4-TC-030",
-    "module": "Sanction Screening",
-    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify report displays PEP and Adverse Media information within the same report structure",
-    "priority": "High",
-    "expectedResult": "Report should present both PEP and Adverse Media related information within the report structure"
-  },
-  {
-    "id": "SMR-P5-TC-001",
+    "id": "SMR-TC-034",
     "module": "Sanction Screening",
     "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify Screening Exception Authorization & Tracking Report opens successfully from report listing",
+    "taskDescription": "Verify that all Report Filters are displayed on the Screening Exception Authorization & Tracking Report. Analysts must see every available filter before running single or combined analysis.",
     "priority": "High",
-    "expectedResult": "Screening Exception Authorization & Tracking Report should open successfully"
+    "expectedResult": "All configured filters (Date Range, Sanction List Name, User ID, Customer Type, Exception Status) plus Apply Filters and Reset actions are visible on the Screening Exception Authorization & Tracking Report."
   },
   {
-    "id": "SMR-P5-TC-002",
+    "id": "SMR-TC-035",
     "module": "Sanction Screening",
     "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify report header information is displayed correctly",
+    "taskDescription": "Verify that the Date Range filter can be applied independently on the Screening Exception Authorization & Tracking Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report title and metadata should be displayed successfully"
+    "expectedResult": "Exception authorization results reflect the selected Date Range period."
   },
   {
-    "id": "SMR-P5-TC-003",
+    "id": "SMR-TC-036",
     "module": "Sanction Screening",
     "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify report period information is displayed",
+    "taskDescription": "Verify that the Sanction List Name filter can be applied independently on the Screening Exception Authorization & Tracking Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report Period should be displayed"
+    "expectedResult": "Exception records linked to the OFAC SDN List are displayed."
   },
   {
-    "id": "SMR-P5-TC-004",
+    "id": "SMR-TC-037",
     "module": "Sanction Screening",
     "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify exception summary section is displayed",
+    "taskDescription": "Verify that the User ID filter can be applied independently on the Screening Exception Authorization & Tracking Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Exception summary section should be displayed successfully"
+    "expectedResult": "Exceptions associated with the entered User ID appear in Maker or Checker columns."
   },
   {
-    "id": "SMR-P5-TC-005",
+    "id": "SMR-TC-038",
     "module": "Sanction Screening",
     "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify exception summary metrics display values",
+    "taskDescription": "Verify that the Customer Type filter can be applied independently on the Screening Exception Authorization & Tracking Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Summary metrics should display values and should not appear blank"
+    "expectedResult": "Only Individual customer exceptions are displayed in the detail grid."
   },
   {
-    "id": "SMR-P5-TC-006",
+    "id": "SMR-TC-039",
     "module": "Sanction Screening",
     "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify exception records section is displayed",
+    "taskDescription": "Verify that the Exception Status filter can be applied independently on the Screening Exception Authorization & Tracking Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Exception records section should be displayed successfully"
+    "expectedResult": "Only Active exception authorization records are displayed."
   },
   {
-    "id": "SMR-P5-TC-007",
+    "id": "SMR-TC-040",
     "module": "Sanction Screening",
     "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify exception records display exception information",
+    "taskDescription": "Verify that multiple filters can be applied together on the Screening Exception Authorization & Tracking Report. Combined filter validation supports targeted multi-criteria compliance analysis.",
     "priority": "High",
-    "expectedResult": "Exception records should display available exception information successfully"
+    "expectedResult": "Combined list, status, and customer type filters narrow exception KPI and detail records consistently."
   },
   {
-    "id": "SMR-P5-TC-008",
+    "id": "SMR-TC-041",
     "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify Maker information is displayed for exception records",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that all Report Filters are displayed on the Geographic Risk Exposure Intelligence Report. Analysts must see every available filter before running single or combined analysis.",
     "priority": "High",
-    "expectedResult": "Maker information should be displayed for exception records"
+    "expectedResult": "All configured filters (Date Range, High-Risk Country List, Screening Type, Customer Type, Customer ID / Name / Prospect ID, Sanction List Name, Branch Code, Screening Status, Min. Match Score Threshold, Department / Business Unit) plus Apply Filters and Reset actions are visible on the Geographic Risk Exposure Intelligence Report."
   },
   {
-    "id": "SMR-P5-TC-009",
+    "id": "SMR-TC-042",
     "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify Checker information is displayed for exception records",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Date Range filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Checker information should be displayed for exception records"
+    "expectedResult": "Geographic risk results reflect the selected Date Range period."
   },
   {
-    "id": "SMR-P5-TC-010",
+    "id": "SMR-TC-043",
     "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify exception expiry information is displayed",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the High-Risk Country List filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Exception expiry information should be displayed where applicable"
+    "expectedResult": "Country breakdown and detail records reflect the selected high-risk country list."
   },
   {
-    "id": "SMR-P5-TC-011",
+    "id": "SMR-TC-044",
     "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify detailed records remain consistent with applied filters",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Screening Type filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Displayed records should reflect selected filter criteria"
+    "expectedResult": "Geographic exposure records match the Online screening type filter."
   },
   {
-    "id": "SMR-P5-TC-012",
+    "id": "SMR-TC-045",
     "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify PDF export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "PDF export option should be available"
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Customer Type filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Only Individual customer geographic risk records are displayed."
   },
   {
-    "id": "SMR-P5-TC-013",
+    "id": "SMR-TC-046",
     "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify Excel export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "Excel export option should be available"
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Customer ID / Name / Prospect ID filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "The detail grid displays the customer matching the entered identifier or name."
   },
   {
-    "id": "SMR-P5-TC-014",
+    "id": "SMR-TC-047",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Sanction List Name filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Geographic risk records linked to the selected sanction list are displayed."
+  },
+  {
+    "id": "SMR-TC-048",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Branch Code filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Only records for the selected branch are displayed in the detail grid."
+  },
+  {
+    "id": "SMR-TC-049",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Screening Status filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Only True Match geographic exposure records are displayed."
+  },
+  {
+    "id": "SMR-TC-050",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Min. Match Score Threshold filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Only records with match score at or above 85 are displayed."
+  },
+  {
+    "id": "SMR-TC-051",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Department / Business Unit filter can be applied independently on the Geographic Risk Exposure Intelligence Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Geographic risk records are scoped to the Retail Banking department."
+  },
+  {
+    "id": "SMR-TC-052",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that multiple filters can be applied together on the Geographic Risk Exposure Intelligence Report. Combined filter validation supports targeted multi-criteria compliance analysis.",
+    "priority": "High",
+    "expectedResult": "Combined country list, match score threshold, department, and screening type filters narrow geographic KPI and detail records consistently."
+  },
+  {
+    "id": "SMR-TC-053",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that all Report Filters are displayed on the Related Party High-Risk Country Linkage Report. Analysts must see every available filter before running single or combined analysis.",
+    "priority": "High",
+    "expectedResult": "All configured filters (Date Range, Customer ID, Customer Type, Relationship Type) plus Apply Filters and Reset actions are visible on the Related Party High-Risk Country Linkage Report."
+  },
+  {
+    "id": "SMR-TC-054",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that the Date Range filter can be applied independently on the Related Party High-Risk Country Linkage Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Related party linkage results reflect the selected Date Range period."
+  },
+  {
+    "id": "SMR-TC-055",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that the Customer ID filter can be applied independently on the Related Party High-Risk Country Linkage Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "The detail grid displays the customer matching the entered Customer ID."
+  },
+  {
+    "id": "SMR-TC-056",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that the Customer Type filter can be applied independently on the Related Party High-Risk Country Linkage Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Only Individual customer linkage records are displayed."
+  },
+  {
+    "id": "SMR-TC-057",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that the Relationship Type filter can be applied independently on the Related Party High-Risk Country Linkage Report. Single-filter validation confirms this criterion works correctly on its own.",
+    "priority": "High",
+    "expectedResult": "Customers with UBO related parties are displayed in the detail grid."
+  },
+  {
+    "id": "SMR-TC-058",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that multiple filters can be applied together on the Related Party High-Risk Country Linkage Report. Combined filter validation supports targeted multi-criteria compliance analysis.",
+    "priority": "High",
+    "expectedResult": "Combined customer type, UBO relationship, and Customer ID filters narrow linkage KPI and detail records consistently."
+  },
+  {
+    "id": "SMR-TC-059",
     "module": "Sanction Screening",
     "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify Screening Logic Governance & Change Control Report opens successfully from report listing",
+    "taskDescription": "Verify that all Report Filters are displayed on the Screening Logic Governance & Change Control Report. Analysts must see every available filter before running single or combined analysis.",
     "priority": "High",
-    "expectedResult": "Screening Logic Governance & Change Control Report should open successfully"
+    "expectedResult": "All configured filters (Date Range, Sanction List Name) plus Apply Filters and Reset actions are visible on the Screening Logic Governance & Change Control Report."
   },
   {
-    "id": "SMR-P5-TC-015",
+    "id": "SMR-TC-060",
     "module": "Sanction Screening",
     "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify report header information is displayed correctly",
+    "taskDescription": "Verify that the Date Range filter can be applied independently on the Screening Logic Governance & Change Control Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report title and metadata should be displayed successfully"
+    "expectedResult": "Governance configuration results reflect the selected Date Range period."
   },
   {
-    "id": "SMR-P5-TC-016",
+    "id": "SMR-TC-061",
     "module": "Sanction Screening",
     "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify report period information is displayed",
+    "taskDescription": "Verify that the Sanction List Name filter can be applied independently on the Screening Logic Governance & Change Control Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report Period should be displayed"
+    "expectedResult": "Only configuration data for the OFAC SDN List watchlist is displayed."
   },
   {
-    "id": "SMR-P5-TC-017",
+    "id": "SMR-TC-062",
     "module": "Sanction Screening",
     "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify governance summary section is displayed",
+    "taskDescription": "Verify that multiple filters can be applied together on the Screening Logic Governance & Change Control Report. Combined filter validation supports targeted multi-criteria compliance analysis.",
     "priority": "High",
-    "expectedResult": "Governance summary section should be displayed successfully"
+    "expectedResult": "Combined date range and watchlist filters scope governance configuration sections to the selected list and period."
   },
   {
-    "id": "SMR-P5-TC-018",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify governance summary metrics display values",
-    "priority": "High",
-    "expectedResult": "Summary metrics should display values and should not appear blank"
-  },
-  {
-    "id": "SMR-P5-TC-019",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify configuration details section is displayed",
-    "priority": "High",
-    "expectedResult": "Configuration details section should be displayed successfully"
-  },
-  {
-    "id": "SMR-P5-TC-020",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify logic change records section is displayed",
-    "priority": "High",
-    "expectedResult": "Logic change records section should be displayed successfully"
-  },
-  {
-    "id": "SMR-P5-TC-021",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify logic change records display available change information",
-    "priority": "High",
-    "expectedResult": "Logic change records should display available governance information successfully"
-  },
-  {
-    "id": "SMR-P5-TC-022",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify parameter-related information is displayed in governance records where available",
-    "priority": "Medium",
-    "expectedResult": "Available parameter-related information should be displayed successfully"
-  },
-  {
-    "id": "SMR-P5-TC-023",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify threshold-related information is displayed in governance records where available",
-    "priority": "Medium",
-    "expectedResult": "Available threshold-related information should be displayed successfully"
-  },
-  {
-    "id": "SMR-P5-TC-024",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify detailed records remain consistent with applied filters",
-    "priority": "High",
-    "expectedResult": "Displayed governance records should reflect selected filter criteria"
-  },
-  {
-    "id": "SMR-P5-TC-025",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify PDF export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "PDF export option should be available"
-  },
-  {
-    "id": "SMR-P5-TC-026",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify Excel export option is available for report",
-    "priority": "Medium",
-    "expectedResult": "Excel export option should be available"
-  },
-  {
-    "id": "SMR-P5-TC-027",
+    "id": "SMR-TC-063",
     "module": "Sanction Screening",
     "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify Exception List Governance & Accountability Report opens successfully from report listing",
+    "taskDescription": "Verify that all Report Filters are displayed on the Exception List Governance & Accountability Report. Analysts must see every available filter before running single or combined analysis.",
     "priority": "High",
-    "expectedResult": "Exception List Governance & Accountability Report should open successfully"
+    "expectedResult": "All configured filters (Date Range, Sanction List Name, User ID, Customer Type, Exception Status) plus Apply Filters and Reset actions are visible on the Exception List Governance & Accountability Report."
   },
   {
-    "id": "SMR-P5-TC-028",
+    "id": "SMR-TC-064",
     "module": "Sanction Screening",
     "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify report header information is displayed correctly",
+    "taskDescription": "Verify that the Date Range filter can be applied independently on the Exception List Governance & Accountability Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report title and metadata should be displayed successfully"
+    "expectedResult": "Exception governance results reflect the selected Date Range period."
   },
   {
-    "id": "SMR-P5-TC-029",
+    "id": "SMR-TC-065",
     "module": "Sanction Screening",
     "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify report period information is displayed",
+    "taskDescription": "Verify that the Sanction List Name filter can be applied independently on the Exception List Governance & Accountability Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Report Period should be displayed"
+    "expectedResult": "Governance records linked to the OFAC SDN List are displayed."
   },
   {
-    "id": "SMR-P5-TC-030",
+    "id": "SMR-TC-066",
     "module": "Sanction Screening",
     "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify exception governance summary section is displayed",
+    "taskDescription": "Verify that the User ID filter can be applied independently on the Exception List Governance & Accountability Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Exception governance summary section should be displayed successfully"
+    "expectedResult": "Exceptions associated with the entered User ID appear in governance detail records."
   },
   {
-    "id": "SMR-P5-TC-031",
+    "id": "SMR-TC-067",
     "module": "Sanction Screening",
     "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify exception governance summary metrics display values",
+    "taskDescription": "Verify that the Customer Type filter can be applied independently on the Exception List Governance & Accountability Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Summary metrics should display values and should not appear blank"
+    "expectedResult": "Only Corporate customer exceptions are displayed in the governance detail grid."
   },
   {
-    "id": "SMR-P5-TC-032",
+    "id": "SMR-TC-068",
     "module": "Sanction Screening",
     "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify Active and Expired exception information is displayed",
+    "taskDescription": "Verify that the Exception Status filter can be applied independently on the Exception List Governance & Accountability Report. Single-filter validation confirms this criterion works correctly on its own.",
     "priority": "High",
-    "expectedResult": "Active and Expired exception information should be displayed where available"
+    "expectedResult": "Only Expired exception governance records are displayed for follow-up."
   },
   {
-    "id": "SMR-P5-TC-033",
+    "id": "SMR-TC-069",
     "module": "Sanction Screening",
     "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify New and Removed exception information is displayed",
+    "taskDescription": "Verify that multiple filters can be applied together on the Exception List Governance & Accountability Report. Combined filter validation supports targeted multi-criteria compliance analysis.",
     "priority": "High",
-    "expectedResult": "New and Removed exception information should be displayed where available"
+    "expectedResult": "Combined list, expired status, and customer type filters narrow governance KPI and detail records consistently."
   },
   {
-    "id": "SMR-P5-TC-034",
+    "id": "SMR-TC-070",
     "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify exception records section is displayed",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that the date range picker opens from report filters on a detail page. Accurate period selection is required for regulatory MIS reporting.",
     "priority": "High",
-    "expectedResult": "Exception records section should be displayed successfully"
+    "expectedResult": "The date range picker dialog opens with preset options and a calendar."
   },
   {
-    "id": "SMR-P5-TC-035",
+    "id": "SMR-TC-071",
     "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify exception records display accountability information",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that preset date ranges can be selected and applied. Presets speed up common reporting periods such as This Month or Last 30 Days.",
     "priority": "High",
-    "expectedResult": "Exception records should display available accountability information successfully"
+    "expectedResult": "The selected preset range is applied and shown in the Date Range filter field."
   },
   {
-    "id": "SMR-P5-TC-036",
+    "id": "SMR-TC-072",
     "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify Maker information is displayed for exception records",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that analysts can select a custom From and To date using the calendar. Custom ranges support audit requests outside standard presets.",
     "priority": "High",
-    "expectedResult": "Maker information should be displayed where available"
+    "expectedResult": "The custom date range is applied and reflected in the filter field."
   },
   {
-    "id": "SMR-P5-TC-037",
+    "id": "SMR-TC-073",
     "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify Checker information is displayed for exception records",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that manual DD/MM/YYYY entry is accepted in the date range picker. Manual entry supports precise audit periods.",
     "priority": "High",
-    "expectedResult": "Checker information should be displayed where available"
+    "expectedResult": "The manually entered date range is accepted and displayed in the filter field."
   },
   {
-    "id": "SMR-P5-TC-038",
+    "id": "SMR-TC-074",
     "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify Added Date and Expiry Date information is displayed",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that Clear removes the selected date range in the picker. Clearing supports resetting filters before a new analysis.",
     "priority": "High",
-    "expectedResult": "Added Date and Expiry Date information should be displayed where available"
+    "expectedResult": "The date range selection is cleared and the filter shows the default placeholder."
   },
   {
-    "id": "SMR-P5-TC-039",
+    "id": "SMR-TC-075",
     "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify exception records remain consistent with applied filters",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that the date range picker closes when clicking outside the dialog. This confirms standard modal behaviour for filter controls.",
     "priority": "High",
-    "expectedResult": "Displayed records should reflect selected filter criteria"
+    "expectedResult": "The date range picker closes and the report page remains usable."
   },
   {
-    "id": "SMR-P5-TC-040",
+    "id": "SMR-TC-076",
     "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify PDF and Excel export options are available for report",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that an invalid manual date entry is rejected or ignored. Invalid dates must not corrupt report filtering logic.",
     "priority": "Medium",
-    "expectedResult": "PDF and Excel export options should be available for report export"
+    "expectedResult": "Invalid date input is not applied and the previous or empty range remains."
   },
   {
-    "id": "SMR-P6-TC-001",
+    "id": "SMR-TC-077",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Add Report screen opens successfully",
-    "priority": "High",
-    "expectedResult": "Add Report screen should open successfully"
-  },
-  {
-    "id": "SMR-P6-TC-002",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify all configured fields are displayed on Add Report screen",
-    "priority": "High",
-    "expectedResult": "Report ID, Rule Description, Category, Severity, Status, Frequency, Risk Score, From Date and To Date fields should be displayed"
-  },
-  {
-    "id": "SMR-P6-TC-003",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Report ID field is available on Add Report screen",
+    "subModule": "Date Range Picker",
+    "taskDescription": "Verify that a From date after To date is handled correctly when entered manually. Date integrity prevents misleading MIS results.",
     "priority": "Medium",
-    "expectedResult": "Report ID field should be displayed"
+    "expectedResult": "The application adjusts or rejects the invalid range and does not apply a reversed period."
   },
   {
-    "id": "SMR-P6-TC-004",
+    "id": "SMR-TC-078",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Report ID is auto-generated",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that report metadata displays period, generation time, author, and record counts. Metadata is essential for audit defensibility.",
     "priority": "High",
-    "expectedResult": "Report ID should be populated automatically without manual entry"
+    "expectedResult": "Report metadata shows period, generation timestamp, generating team, and total record count."
   },
   {
-    "id": "SMR-P6-TC-005",
+    "id": "SMR-TC-079",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify user can enter Rule Description",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that Apply Filters refreshes KPI, summary, and detail sections together. Consistent refresh prevents conflicting analytics within one report.",
     "priority": "High",
-    "expectedResult": "Rule Description should be accepted successfully"
+    "expectedResult": "Filtered KPI values and detail rows reflect the selected Screening Type."
   },
   {
-    "id": "SMR-P6-TC-006",
+    "id": "SMR-TC-080",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Category field is available for selection",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that Reset clears report filters to the default view. Reset supports returning to the full reporting period quickly.",
     "priority": "High",
-    "expectedResult": "Category field should be available"
+    "expectedResult": "Report filters are cleared and the default unfiltered view is restored."
   },
   {
-    "id": "SMR-P6-TC-007",
+    "id": "SMR-TC-081",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Severity field is available for selection",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that CSV, PDF, and XLS export actions are available on report detail pages. Export supports offline compliance review and regulatory submissions.",
     "priority": "High",
-    "expectedResult": "Severity field should be available"
+    "expectedResult": "CSV, PDF, and XLS export actions are displayed on the report detail page."
   },
   {
-    "id": "SMR-P6-TC-008",
+    "id": "SMR-TC-082",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Status field is available for selection",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that CSV export can be initiated from a filtered report view. Exported files must reflect the analyst's current analysis scope.",
     "priority": "High",
-    "expectedResult": "Status field should be available"
+    "expectedResult": "CSV export initiates successfully while filters remain applied."
   },
   {
-    "id": "SMR-P6-TC-009",
+    "id": "SMR-TC-083",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Frequency field is available for selection",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that detail grid pagination displays record range and page controls. Pagination is required for large screening populations.",
     "priority": "High",
-    "expectedResult": "Frequency field should be available"
+    "expectedResult": "Pagination shows the current record range and navigation controls for large datasets."
   },
   {
-    "id": "SMR-P6-TC-010",
+    "id": "SMR-TC-084",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Risk Score field is available",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that inline search within the detailed records grid filters visible rows. Inline search helps analysts locate specific customers quickly.",
     "priority": "High",
-    "expectedResult": "Risk Score field should be available"
+    "expectedResult": "Detail rows matching the search keyword are displayed."
   },
   {
-    "id": "SMR-P6-TC-011",
+    "id": "SMR-TC-085",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify From Date and To Date fields are available",
-    "priority": "High",
-    "expectedResult": "From Date and To Date fields should be displayed"
-  },
-  {
-    "id": "SMR-P6-TC-012",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Save Changes button is displayed",
-    "priority": "High",
-    "expectedResult": "Save Changes button should be displayed"
-  },
-  {
-    "id": "SMR-P6-TC-013",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Cancel button is displayed",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that sortable detail columns can reorder records when a column header is used. Sorting supports triage of highest-risk records first.",
     "priority": "Medium",
-    "expectedResult": "Cancel button should be displayed"
+    "expectedResult": "Detail records reorder according to the selected column sort."
   },
   {
-    "id": "SMR-P6-TC-014",
+    "id": "SMR-TC-086",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Edit Report screen opens successfully",
-    "priority": "High",
-    "expectedResult": "Edit Report screen should open successfully with report details"
-  },
-  {
-    "id": "SMR-P6-TC-015",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify existing report information is populated on Edit screen",
-    "priority": "High",
-    "expectedResult": "Existing report details should be populated in editable fields"
-  },
-  {
-    "id": "SMR-P6-TC-016",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify report configuration can be saved successfully",
-    "priority": "High",
-    "expectedResult": "Report configuration should be saved successfully"
-  },
-  {
-    "id": "SMR-P6-TC-017",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Cancel action closes Add/Edit Report screen without saving changes",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that applying filters returning no records shows an appropriate empty state. Empty results must be clearly distinguishable from system errors.",
     "priority": "Medium",
-    "expectedResult": "Add/Edit screen should close and unsaved changes should not be retained"
+    "expectedResult": "No matching records are displayed and the page remains stable without errors."
   },
   {
-    "id": "SMR-P6-TC-018",
+    "id": "SMR-TC-087",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Rule Description field is mandatory",
-    "priority": "High",
-    "expectedResult": "System should display validation message and prevent save operation"
-  },
-  {
-    "id": "SMR-P6-TC-019",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify configured validation message is displayed for blank Rule Description",
-    "priority": "High",
-    "expectedResult": "Validation message \"Report description is required\" should be displayed"
-  },
-  {
-    "id": "SMR-P6-TC-020",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Category value can be selected and retained during save",
+    "subModule": "Report Detail – Common",
+    "taskDescription": "Verify that the Columns selector is available on applicable reports. Column control helps analysts tailor detail review to investigation needs.",
     "priority": "Medium",
-    "expectedResult": "Selected Category should be retained after save"
+    "expectedResult": "The Columns selector button is displayed on supported report detail pages."
   },
   {
-    "id": "SMR-P6-TC-021",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Severity value can be selected and retained during save",
-    "priority": "Medium",
-    "expectedResult": "Selected Severity should be retained after save"
-  },
-  {
-    "id": "SMR-P6-TC-022",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Status value can be selected and retained during save",
-    "priority": "High",
-    "expectedResult": "Selected Status should be retained after save"
-  },
-  {
-    "id": "SMR-P6-TC-023",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Frequency value can be selected and retained during save",
-    "priority": "High",
-    "expectedResult": "Selected Frequency should be retained after save"
-  },
-  {
-    "id": "SMR-P6-TC-024",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Daily frequency option is available for selection",
-    "priority": "Medium",
-    "expectedResult": "Daily frequency option should be available"
-  },
-  {
-    "id": "SMR-P6-TC-025",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Weekly frequency option is available for selection",
-    "priority": "Medium",
-    "expectedResult": "Weekly frequency option should be available"
-  },
-  {
-    "id": "SMR-P6-TC-026",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Monthly frequency option is available for selection",
-    "priority": "Medium",
-    "expectedResult": "Monthly frequency option should be available"
-  },
-  {
-    "id": "SMR-P6-TC-027",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Risk Score value can be entered and saved",
-    "priority": "High",
-    "expectedResult": "Risk Score should be accepted and retained after save"
-  },
-  {
-    "id": "SMR-P6-TC-028",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify From Date field accepts date selection",
-    "priority": "Medium",
-    "expectedResult": "From Date should be selected successfully"
-  },
-  {
-    "id": "SMR-P6-TC-029",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify To Date field accepts date selection",
-    "priority": "Medium",
-    "expectedResult": "To Date should be selected successfully"
-  },
-  {
-    "id": "SMR-P6-TC-030",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify saved report configuration is displayed correctly when reopened",
-    "priority": "High",
-    "expectedResult": "Previously saved values should be displayed correctly"
-  },
-  {
-    "id": "SMR-P6-TC-031",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Severity dropdown displays all configured values",
-    "priority": "Medium",
-    "expectedResult": "Severity dropdown should display all configured values (e.g., High, Medium) without duplication or missing options"
-  },
-  {
-    "id": "SMR-P6-TC-032",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Status dropdown displays all configured values",
-    "priority": "High",
-    "expectedResult": "Status dropdown should display Generated, Pending and Failed options correctly"
-  },
-  {
-    "id": "SMR-P6-TC-033",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify Risk Score field enforces configured value boundaries",
-    "priority": "High",
-    "expectedResult": "Values within configured range (0–100) should be accepted. Values outside the allowed range should be rejected with validation feedback and configuration should not be saved"
-  },
-  {
-    "id": "SMR-P6-TC-034",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Configuration",
-    "taskDescription": "Verify From Date cannot be greater than To Date",
-    "priority": "High",
-    "expectedResult": "System should prevent save operation and display validation message indicating From Date must be earlier than or equal to To Date"
-  },
-  {
-    "id": "SMR-P7-TC-001",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify Date Range Picker is accessible from report filters",
-    "priority": "High",
-    "expectedResult": "Date Range Picker should open successfully"
-  },
-  {
-    "id": "SMR-P7-TC-002",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify all configured preset options are displayed",
-    "priority": "High",
-    "expectedResult": "Today, This Week, Last 7 Days, This Month, Last Month, Last 30 Days, Last 3 Months and This Year options should be displayed"
-  },
-  {
-    "id": "SMR-P7-TC-003",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify user can select a preset date range",
-    "priority": "High",
-    "expectedResult": "Selected preset range should be applied successfully"
-  },
-  {
-    "id": "SMR-P7-TC-004",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify Apply action applies selected date range",
-    "priority": "High",
-    "expectedResult": "Selected date range should be applied to report results"
-  },
-  {
-    "id": "SMR-P7-TC-005",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify Clear action removes applied date range",
-    "priority": "High",
-    "expectedResult": "Applied date range should be cleared successfully"
-  },
-  {
-    "id": "SMR-P7-TC-006",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify user can manually select From Date",
-    "priority": "Medium",
-    "expectedResult": "Selected From Date should be accepted successfully"
-  },
-  {
-    "id": "SMR-P7-TC-007",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify user can manually select To Date",
-    "priority": "Medium",
-    "expectedResult": "Selected To Date should be accepted successfully"
-  },
-  {
-    "id": "SMR-P7-TC-008",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify manually selected date range can be applied",
-    "priority": "High",
-    "expectedResult": "Report should display results based on selected date range"
-  },
-  {
-    "id": "SMR-P7-TC-009",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify selected date range remains visible after applying filter",
-    "priority": "Medium",
-    "expectedResult": "Applied date range should remain visible in filter control"
-  },
-  {
-    "id": "SMR-P7-TC-010",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify report results refresh after date range filter is applied",
-    "priority": "High",
-    "expectedResult": "Report results should refresh according to selected date range"
-  },
-  {
-    "id": "SMR-P7-TC-011",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports Date Range Picker",
-    "taskDescription": "Verify report results return to default view after date filter is cleared",
-    "priority": "Medium",
-    "expectedResult": "Default report data should be restored after clearing date filter"
-  },
-  {
-    "id": "SMR-P8-TC-001",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify system prevents saving report configuration when Rule Description is blank",
-    "priority": "High",
-    "expectedResult": "Report configuration should not be saved and validation message should be displayed"
-  },
-  {
-    "id": "SMR-P8-TC-002",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify system behavior when search criteria returns no matching records",
-    "priority": "Medium",
-    "expectedResult": "No matching records should be displayed and page should remain stable"
-  },
-  {
-    "id": "SMR-P8-TC-003",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report behavior when applied filters return no records",
-    "priority": "Medium",
-    "expectedResult": "Report should display no matching records without UI errors"
-  },
-  {
-    "id": "SMR-P8-TC-004",
-    "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report behavior when date range returns no records",
-    "priority": "Medium",
-    "expectedResult": "Report should remain stable and display no matching records"
-  },
-  {
-    "id": "SMR-P8-TC-005",
-    "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify exception records contain Maker information where available",
-    "priority": "High",
-    "expectedResult": "Maker information should be displayed where available"
-  },
-  {
-    "id": "SMR-P8-TC-006",
-    "module": "Sanction Screening",
-    "subModule": "Screening Exception Authorization & Tracking Report",
-    "taskDescription": "Verify exception records contain Checker information where available",
-    "priority": "High",
-    "expectedResult": "Checker information should be displayed where available"
-  },
-  {
-    "id": "SMR-P8-TC-007",
-    "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify exception records display exception validity information",
-    "priority": "High",
-    "expectedResult": "Added Date and Expiry Date information should be displayed where available"
-  },
-  {
-    "id": "SMR-P8-TC-008",
-    "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify Active and Expired exception information is available for governance review",
-    "priority": "High",
-    "expectedResult": "Active and Expired exception information should be available where applicable"
-  },
-  {
-    "id": "SMR-P8-TC-009",
-    "module": "Sanction Screening",
-    "subModule": "Exception List Governance & Accountability Report",
-    "taskDescription": "Verify New and Removed exception information is available for governance review",
-    "priority": "High",
-    "expectedResult": "New and Removed exception information should be available where applicable"
-  },
-  {
-    "id": "SMR-P8-TC-010",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify governance records display logic change information",
-    "priority": "High",
-    "expectedResult": "Available logic change information should be displayed successfully"
-  },
-  {
-    "id": "SMR-P8-TC-011",
-    "module": "Sanction Screening",
-    "subModule": "Screening Logic Governance & Change Control Report",
-    "taskDescription": "Verify governance records display configuration-related information",
-    "priority": "High",
-    "expectedResult": "Available configuration-related information should be displayed successfully"
-  },
-  {
-    "id": "SMR-P8-TC-012",
-    "module": "Sanction Screening",
-    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify report provides visibility into PEP monitoring information",
-    "priority": "High",
-    "expectedResult": "PEP-related information should be displayed where available"
-  },
-  {
-    "id": "SMR-P8-TC-013",
-    "module": "Sanction Screening",
-    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
-    "taskDescription": "Verify report provides visibility into Adverse Media monitoring information",
-    "priority": "High",
-    "expectedResult": "Adverse Media information should be displayed where available"
-  },
-  {
-    "id": "SMR-P8-TC-014",
+    "id": "SMR-TC-088",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify report provides visibility into watchlist-level screening information",
+    "taskDescription": "Verify that screening summary KPI cards display hit volumes and disposition counts. KPIs provide executive visibility into screening workload and outcomes.",
     "priority": "High",
-    "expectedResult": "Watchlist-level screening information should be displayed successfully"
+    "expectedResult": "KPI cards show Total Hits Screened, Confirmed Hits, New Exposure Hits, Recurring Hits, and False Positives with numeric values."
   },
   {
-    "id": "SMR-P8-TC-015",
+    "id": "SMR-TC-089",
     "module": "Sanction Screening",
     "subModule": "Comprehensive Sanctions Screening Intelligence Report",
-    "taskDescription": "Verify report provides visibility into customer-type screening information",
+    "taskDescription": "Verify that watchlist distribution summaries align with detailed hit records. Distribution analytics must reconcile to underlying screening data.",
     "priority": "High",
-    "expectedResult": "Customer-type screening information should be displayed successfully"
+    "expectedResult": "Filtered detail records correspond to the selected watchlist and distribution counts remain consistent."
   },
   {
-    "id": "SMR-P8-TC-016",
+    "id": "SMR-TC-090",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify export options remain available after applying report filters",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that Forward, Reverse, and Incremental screening types can be filtered independently. Screening type filtering supports channel-specific investigations.",
+    "priority": "High",
+    "expectedResult": "Only records matching the Forward screening type are displayed."
+  },
+  {
+    "id": "SMR-TC-091",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that detailed hit records display match score and resolution status. Match score and status drive analyst prioritization workflows.",
+    "priority": "High",
+    "expectedResult": "Detailed records show Hit Date, Customer Name, Watchlist, Match Score, Status, Branch, and Remarks."
+  },
+  {
+    "id": "SMR-TC-092",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that True Match and False Positive outcomes can be distinguished in results. Correct disposition labelling supports regulatory reporting accuracy.",
+    "priority": "High",
+    "expectedResult": "Records display distinct True Match and False Positive status labels."
+  },
+  {
+    "id": "SMR-TC-093",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that regulatory guidance definitions are displayed on the report. Embedded guidance helps analysts apply consistent disposition standards.",
     "priority": "Medium",
-    "expectedResult": "PDF and Excel export options should remain available"
+    "expectedResult": "Regulatory Guidance & Definitions section explains True Match, False Positive, and audit traceability requirements."
   },
   {
-    "id": "SMR-P8-TC-017",
+    "id": "SMR-TC-094",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify export options remain available after applying date range filters",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that combined date range and branch filters narrow hit records accurately. Multi-filter analysis supports localized compliance investigations.",
+    "priority": "High",
+    "expectedResult": "Detail rows satisfy both the selected date range and branch filter criteria."
+  },
+  {
+    "id": "SMR-TC-095",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that PEP and Adverse Media KPI metrics are displayed in the executive summary. These metrics measure elevated customer risk exposure.",
+    "priority": "High",
+    "expectedResult": "KPI cards display PEP counts, adverse media matches, exposure rate, and domestic PEP metrics."
+  },
+  {
+    "id": "SMR-TC-096",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that Current PEP and Former PEP records can be filtered separately. PEP status filtering supports risk-based monitoring tiers.",
+    "priority": "High",
+    "expectedResult": "Only records with Current PEP status are displayed in the detail grid."
+  },
+  {
+    "id": "SMR-TC-097",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that Adverse Media category distribution reflects filtered detail records. Category analytics guide investigation prioritization.",
+    "priority": "High",
+    "expectedResult": "Adverse media categories in the summary align with filtered detailed records."
+  },
+  {
+    "id": "SMR-TC-098",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that nationality and watchlist filters refine PEP screening results. Combined filters support targeted enhanced due diligence reviews.",
+    "priority": "High",
+    "expectedResult": "Detailed PEP records match the selected nationality and watchlist criteria."
+  },
+  {
+    "id": "SMR-TC-099",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that Domestic and Foreign PEP classifications appear in detailed records. Classification supports jurisdiction-specific PEP policies.",
+    "priority": "High",
+    "expectedResult": "Records display Domestic, Foreign, or International Organisation PEP classifications."
+  },
+  {
+    "id": "SMR-TC-100",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that high-risk country PEP concentration is visible in the summary section. Geographic PEP exposure informs country-risk reporting.",
     "priority": "Medium",
-    "expectedResult": "PDF and Excel export options should remain available"
+    "expectedResult": "High-risk country PEP summary lists countries with associated risk classifications."
   },
   {
-    "id": "SMR-P8-TC-018",
+    "id": "SMR-TC-101",
     "module": "Sanction Screening",
-    "subModule": "Sanction MIS Reports",
-    "taskDescription": "Verify report pages remain stable when no records are available",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that exported PEP report data remains consistent with on-screen filtered results. Export integrity is required for audit submissions.",
+    "priority": "High",
+    "expectedResult": "Export initiates successfully and reflects the filtered report scope."
+  },
+  {
+    "id": "SMR-TC-102",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that exception summary KPIs show active, expired, and expiring counts. Exception lifecycle metrics support timely renewals and closures.",
+    "priority": "High",
+    "expectedResult": "KPI cards display active, expired, expiring, new, and removed exception counts."
+  },
+  {
+    "id": "SMR-TC-103",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that exception records display Maker and Checker accountability fields. Maker-checker data is required for exception governance audits.",
+    "priority": "High",
+    "expectedResult": "Each exception record shows Maker, Checker, status, and expiry information."
+  },
+  {
+    "id": "SMR-TC-104",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that Active exception filter returns only active authorization records. Status filtering prevents expired exceptions from skewing operational metrics.",
+    "priority": "High",
+    "expectedResult": "Only Active exception records are displayed."
+  },
+  {
+    "id": "SMR-TC-105",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that Expiring in 30 Days filter highlights renewals requiring attention. Early visibility reduces compliance risk from lapsed exceptions.",
+    "priority": "High",
+    "expectedResult": "Records with near-term expiry dates are displayed for renewal review."
+  },
+  {
+    "id": "SMR-TC-106",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that exception distribution by watchlist reconciles to filtered detail records. Watchlist analytics must match underlying exception data.",
+    "priority": "High",
+    "expectedResult": "Watchlist distribution counts align with filtered exception detail records."
+  },
+  {
+    "id": "SMR-TC-107",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that User ID filter traces exceptions authorized by a specific analyst. User filtering supports individual accountability reviews.",
+    "priority": "High",
+    "expectedResult": "Displayed exceptions are associated with the selected User ID."
+  },
+  {
+    "id": "SMR-TC-108",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that geographic risk KPIs quantify customers linked to high-risk jurisdictions. These metrics support FATF-aligned geographic reporting.",
+    "priority": "High",
+    "expectedResult": "KPI cards show screened customers, high-risk links, exposure rate, and jurisdiction counts."
+  },
+  {
+    "id": "SMR-TC-109",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that country breakdown shows sanctioned and high-risk classifications. Country-level risk labels guide enhanced due diligence decisions.",
+    "priority": "High",
+    "expectedResult": "Country breakdown lists jurisdictions with appropriate risk classification labels."
+  },
+  {
+    "id": "SMR-TC-110",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that Minimum Match Score Threshold filter excludes low-confidence geographic hits. Threshold control reduces noise in geographic exposure analysis.",
+    "priority": "High",
+    "expectedResult": "Only records meeting or exceeding the threshold match score are displayed."
+  },
+  {
+    "id": "SMR-TC-111",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that matched field type distribution reflects nationality, residence, and incorporation exposure. Field-type analytics explain how geographic risk arose.",
+    "priority": "High",
+    "expectedResult": "Summary and detail rows show matched geographic field types such as Nationality or Country of Incorporation."
+  },
+  {
+    "id": "SMR-TC-112",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that department filter scopes geographic exposure to a business unit. Department scoping supports localized compliance reporting.",
+    "priority": "High",
+    "expectedResult": "Detailed geographic risk records match the selected department filter."
+  },
+  {
+    "id": "SMR-TC-113",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that combined high-risk country list and screening type filters refine results accurately. Multi-filter geographic analysis supports targeted reviews.",
+    "priority": "High",
+    "expectedResult": "Displayed records satisfy both the country list source and screening type criteria."
+  },
+  {
+    "id": "SMR-TC-114",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that related party KPIs quantify customers with high-risk linked parties. Linkage metrics highlight indirect sanctions and geographic exposure.",
+    "priority": "High",
+    "expectedResult": "KPI cards show analyzed customers, linked customers, and related party counts."
+  },
+  {
+    "id": "SMR-TC-115",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that relationship type filter returns customers with matching related party roles. Role filtering supports UBO and director-focused investigations.",
+    "priority": "High",
+    "expectedResult": "Displayed customers include related parties with the UBO relationship type."
+  },
+  {
+    "id": "SMR-TC-116",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that detailed records show up to three related parties per customer. Multi-party linkage visibility supports complex ownership reviews.",
+    "priority": "High",
+    "expectedResult": "Detail rows display related party names, relationships, and nationalities for up to three linked parties."
+  },
+  {
+    "id": "SMR-TC-117",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that high-risk country exposure summary aligns with detailed linkage records. Summary analytics must reconcile to customer-level detail.",
+    "priority": "High",
+    "expectedResult": "Summary country exposure counts remain consistent with filtered detailed records."
+  },
+  {
+    "id": "SMR-TC-118",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that Customer ID search locates a specific linkage record quickly. Targeted lookup supports investigator workflows during customer reviews.",
+    "priority": "High",
+    "expectedResult": "The detail grid displays the customer matching the entered Customer ID."
+  },
+  {
+    "id": "SMR-TC-119",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that related party type distribution focuses on high-risk linked parties. Type distribution highlights dominant exposure channels such as UBO or Director.",
     "priority": "Medium",
-    "expectedResult": "Report page should load successfully without UI or navigation issues"
+    "expectedResult": "Related party type distribution summarizes high-risk relationship categories."
   },
   {
-    "id": "SMR-GAP-001",
+    "id": "SMR-TC-120",
     "module": "Sanction Screening",
-    "subModule": "Dashboard Counters",
-    "taskDescription": "Verify Total Reports counter matches total records available in report grid",
-    "priority": "Critical",
-    "expectedResult": "Total Reports counter equals actual report records"
-  },
-  {
-    "id": "SMR-GAP-002",
-    "module": "Sanction Screening",
-    "subModule": "Dashboard Counters",
-    "taskDescription": "Verify Generated counter matches reports having Generated status",
-    "priority": "Critical",
-    "expectedResult": "Generated counter matches grid records"
-  },
-  {
-    "id": "SMR-GAP-003",
-    "module": "Sanction Screening",
-    "subModule": "Dashboard Counters",
-    "taskDescription": "Verify Pending counter matches reports having Pending status",
-    "priority": "Critical",
-    "expectedResult": "Pending counter matches report records"
-  },
-  {
-    "id": "SMR-GAP-004",
-    "module": "Sanction Screening",
-    "subModule": "Dashboard Counters",
-    "taskDescription": "Verify Daily/Weekly/Monthly counters match report frequency distribution",
-    "priority": "Critical",
-    "expectedResult": "All frequency counters display accurate counts"
-  },
-  {
-    "id": "SMR-GAP-005",
-    "module": "Sanction Screening",
-    "subModule": "Report Grid Sorting",
-    "taskDescription": "Verify Report ID ascending sorting",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that governance KPIs track configuration changes and pending approvals. Change metrics support screening logic oversight committees.",
     "priority": "High",
-    "expectedResult": "Records sorted ascending"
+    "expectedResult": "KPI cards show configuration changes, threshold adjustments, pending approvals, and rejected changes."
   },
   {
-    "id": "SMR-GAP-006",
+    "id": "SMR-TC-121",
     "module": "Sanction Screening",
-    "subModule": "Report Grid Sorting",
-    "taskDescription": "Verify Report ID descending sorting",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that watchlist configuration sections display parameter-level audit details. Parameter history is required for screening logic traceability.",
     "priority": "High",
-    "expectedResult": "Records sorted descending"
+    "expectedResult": "Configuration tables list parameters, current values, previous values, makers, checkers, and change reasons."
   },
   {
-    "id": "SMR-GAP-007",
+    "id": "SMR-TC-122",
     "module": "Sanction Screening",
-    "subModule": "Report Grid Sorting",
-    "taskDescription": "Verify Report Name sorting (Asc/Desc)",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that match score threshold changes are visible in governance records. Threshold audit trails explain alert volume shifts over time.",
     "priority": "High",
-    "expectedResult": "Names sort correctly in both directions"
+    "expectedResult": "Threshold adjustments show prior and current values with change dates and accountability users."
   },
   {
-    "id": "SMR-GAP-008",
+    "id": "SMR-TC-123",
     "module": "Sanction Screening",
-    "subModule": "Report Grid Sorting",
-    "taskDescription": "Verify Frequency and Status sorting functionality",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that matching logic changes such as Fuzzy or Hybrid rules are recorded. Logic changes can materially affect screening outcomes and must be auditable.",
     "priority": "High",
-    "expectedResult": "Sorting behaves correctly"
+    "expectedResult": "Matching logic parameters display the active logic type and any documented change history."
   },
   {
-    "id": "SMR-GAP-009",
+    "id": "SMR-TC-124",
     "module": "Sanction Screening",
-    "subModule": "Search & Filters",
-    "taskDescription": "Verify Frequency filter persists after clearing search keyword",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that watchlist-level pagination supports review of large configuration inventories. Pagination enables complete governance coverage across all lists.",
     "priority": "High",
-    "expectedResult": "Monthly filter remains active"
+    "expectedResult": "Pagination moves between watchlist configuration sections and updates the displayed range."
   },
   {
-    "id": "SMR-GAP-010",
+    "id": "SMR-TC-125",
     "module": "Sanction Screening",
-    "subModule": "Search & Filters",
-    "taskDescription": "Verify combined Status + Frequency filter accuracy",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that Sanction List Name filter limits governance results to one watchlist. List-specific filtering supports targeted configuration audits.",
     "priority": "High",
-    "expectedResult": "Only matching records displayed"
+    "expectedResult": "Only configuration data for the selected watchlist is displayed."
   },
   {
-    "id": "SMR-GAP-011",
+    "id": "SMR-TC-126",
     "module": "Sanction Screening",
-    "subModule": "Search",
-    "taskDescription": "Verify special characters in search field",
-    "priority": "High",
-    "expectedResult": "No crash, error or unexpected behavior"
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that new field additions are flagged in configuration change records. New field markers help reviewers identify recent screening scope expansions.",
+    "priority": "Medium",
+    "expectedResult": "New field additions are identifiable in configuration records with supporting remarks."
   },
   {
-    "id": "SMR-GAP-012",
+    "id": "SMR-TC-127",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that exception governance summary distinguishes active, expired, new, and removed exceptions. Lifecycle breakdown supports accountability reporting to compliance committees.",
+    "priority": "High",
+    "expectedResult": "Governance KPI cards show active, expired, new, and removed exception counts."
+  },
+  {
+    "id": "SMR-TC-128",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that nationality breakdown includes new exceptions added in the reporting period. Period-specific additions highlight emerging exception trends.",
+    "priority": "High",
+    "expectedResult": "Nationality summary shows total and newly added exception counts by country."
+  },
+  {
+    "id": "SMR-TC-129",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that detailed exception list records show added and expiry dates. Date accountability fields support exception renewal governance.",
+    "priority": "High",
+    "expectedResult": "Detail records display added date, expiry date, maker, checker, and exception status."
+  },
+  {
+    "id": "SMR-TC-130",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that Expired exception filter supports review of lapsed authorizations. Expired exception visibility prevents continued reliance on invalid approvals.",
+    "priority": "High",
+    "expectedResult": "Only expired exception records are displayed for governance follow-up."
+  },
+  {
+    "id": "SMR-TC-131",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that exception governance reporting differs from authorization tracking by emphasizing accountability metrics. Distinct reports prevent duplicate governance blind spots.",
+    "priority": "Medium",
+    "expectedResult": "Governance report emphasizes accountability, lifecycle breakdown, and nationality trends for oversight."
+  },
+  {
+    "id": "SMR-TC-132",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that clicking Add New Rule opens the report configuration form with all required fields. The form must expose every field needed to define a new MIS report rule.",
+    "priority": "High",
+    "expectedResult": "The Add New Rule form opens showing Report ID, Rule Description, Category, Severity, Status, Frequency, Risk Score, date fields, and Save Changes and Cancel actions."
+  },
+  {
+    "id": "SMR-TC-133",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that Report ID is auto-generated when creating a new rule. Auto-generation prevents duplicate manual identifiers.",
+    "priority": "High",
+    "expectedResult": "Report ID is auto-generated and displayed in a read-only or pre-filled state."
+  },
+  {
+    "id": "SMR-TC-134",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that a user can complete the Add New Rule form with all fields and submit it successfully. End-to-end rule creation adds a new scheduled MIS report to the catalog.",
+    "priority": "High",
+    "expectedResult": "The report rule is saved successfully and the new entry is visible in the catalog with the configured values."
+  },
+  {
+    "id": "SMR-TC-135",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that Cancel closes the configuration form without saving changes. Cancel protects users from accidental partial submissions.",
+    "priority": "High",
+    "expectedResult": "The form closes without saving and previously entered values are not retained."
+  },
+  {
+    "id": "SMR-TC-136",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that Rule Description is mandatory when saving a report rule. Mandatory description text supports audit identification of report purpose.",
+    "priority": "High",
+    "expectedResult": "Save is blocked and a validation message indicates Rule Description is required."
+  },
+  {
+    "id": "SMR-TC-137",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that Risk Score accepts only values within configured boundaries. Boundary enforcement prevents invalid risk thresholds in reporting rules.",
+    "priority": "Medium",
+    "expectedResult": "Invalid Risk Score input is rejected with appropriate validation feedback."
+  },
+  {
+    "id": "SMR-TC-138",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that From Date cannot be later than To Date when saving a rule. Valid date ranges ensure meaningful report periods.",
+    "priority": "High",
+    "expectedResult": "Save is blocked and a date range validation message is displayed."
+  },
+  {
+    "id": "SMR-TC-139",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that Daily, Weekly, and Monthly frequency options are available. Frequency options must match operational scheduling needs.",
+    "priority": "Medium",
+    "expectedResult": "Daily, Weekly, and Monthly frequency options are listed."
+  },
+  {
+    "id": "SMR-TC-140",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that an existing report rule can be edited and saved. Edit capability supports ongoing maintenance of MIS schedules.",
+    "priority": "High",
+    "expectedResult": "Updated configuration values are saved and displayed when the rule is reopened."
+  },
+  {
+    "id": "SMR-TC-141",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that saved rule configuration values persist after reopening the form. Data persistence ensures reporting continuity across sessions.",
+    "priority": "High",
+    "expectedResult": "All saved configuration values including frequency, status, and dates are retained."
+  },
+  {
+    "id": "SMR-TC-142",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that consecutive new rules receive unique Report IDs. Unique identifiers prevent catalog collisions and audit confusion.",
+    "priority": "Medium",
+    "expectedResult": "Each saved rule receives a unique Report ID."
+  },
+  {
+    "id": "SMR-TC-143",
+    "module": "Sanction Screening",
+    "subModule": "Report Rule Configuration",
+    "taskDescription": "Verify that Report ID format follows the configured MIS naming pattern. Consistent identifiers support integration and audit searches.",
+    "priority": "Medium",
+    "expectedResult": "Report ID follows the configured Sanctions MIS report naming pattern with a standard prefix and numeric sequence."
+  },
+  {
+    "id": "SMR-TC-144",
+    "module": "Sanction Screening",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that generating a report without required backend data shows a controlled message. Controlled failures prevent silent data gaps in compliance reporting.",
+    "priority": "Medium",
+    "expectedResult": "A clear message indicates generation could not complete and the application remains stable."
+  },
+  {
+    "id": "SMR-TC-145",
+    "module": "Sanction Screening",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that searching detail records with no matches shows an empty grid message. Empty search results must be distinguishable from system failure.",
+    "priority": "High",
+    "expectedResult": "No matching records are displayed and an appropriate empty state message appears."
+  },
+  {
+    "id": "SMR-TC-146",
+    "module": "Sanction Screening",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that export with no available records is handled gracefully. Export failures must not corrupt application state.",
+    "priority": "Medium",
+    "expectedResult": "Export is blocked or a clear no-data message is shown without application errors."
+  },
+  {
+    "id": "SMR-TC-147",
+    "module": "Sanction Screening",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that invalid date entry in report rule configuration is rejected. Invalid scheduling dates must not create incorrect MIS runs.",
+    "priority": "High",
+    "expectedResult": "Invalid date input is rejected and the rule is not saved."
+  },
+  {
+    "id": "SMR-TC-148",
+    "module": "Sanction Screening",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that same-day From and To dates are accepted for single-day MIS analysis. Same-day reporting supports ad hoc investigation requests.",
+    "priority": "Medium",
+    "expectedResult": "Same-day range is applied successfully and results load for that day."
+  },
+  {
+    "id": "SMR-TC-149",
+    "module": "Sanction Screening",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that leap year dates are accepted in date filters and configuration. Date controls must handle February 29 correctly.",
+    "priority": "Low",
+    "expectedResult": "Leap year date is accepted without validation errors."
+  },
+  {
+    "id": "SMR-TC-150",
+    "module": "Sanction Screening",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that large report datasets paginate without performance degradation on the first page load. Responsiveness is required for high-volume screening environments.",
+    "priority": "Medium",
+    "expectedResult": "Report sections load within acceptable time and pagination navigates successfully."
+  },
+  {
+    "id": "SMR-TC-151",
     "module": "Sanction Screening",
     "subModule": "Search Security",
-    "taskDescription": "Verify SQL Injection protection in search field",
-    "priority": "Critical",
-    "expectedResult": "Query treated as plain text"
-  },
-  {
-    "id": "SMR-GAP-013",
-    "module": "Sanction Screening",
-    "subModule": "Configuration Security",
-    "taskDescription": "Verify XSS protection in Rule Description field",
-    "priority": "Critical",
-    "expectedResult": "Script not executed or stored unsafely"
-  },
-  {
-    "id": "SMR-GAP-014",
-    "module": "Sanction Screening",
-    "subModule": "Add Report Configuration",
-    "taskDescription": "Verify Report ID uniqueness during consecutive report creation",
-    "priority": "High",
-    "expectedResult": "Every Report ID remains unique"
-  },
-  {
-    "id": "SMR-GAP-015",
-    "module": "Sanction Screening",
-    "subModule": "Add Report Configuration",
-    "taskDescription": "Verify Report ID sequence generation follows configured format",
-    "priority": "High",
-    "expectedResult": "IDs generated sequentially"
-  },
-  {
-    "id": "SMR-GAP-016",
-    "module": "Sanction Screening",
-    "subModule": "Risk Score Validation",
-    "taskDescription": "Verify decimal values handling in Risk Score field",
+    "taskDescription": "Verify that special characters in detail search do not cause application errors. Robust search handling protects system stability during analyst investigations.",
     "priority": "Medium",
-    "expectedResult": "Behavior follows configured validation rules"
+    "expectedResult": "Application remains stable and returns no matches or safe results without errors."
   },
   {
-    "id": "SMR-GAP-017",
+    "id": "SMR-TC-152",
     "module": "Sanction Screening",
-    "subModule": "Risk Score Validation",
-    "taskDescription": "Verify alphabetic values in Risk Score field",
+    "subModule": "Search Security",
+    "taskDescription": "Verify that SQL injection patterns in search fields are handled safely. Input sanitization protects backend screening data stores.",
     "priority": "High",
-    "expectedResult": "Validation displayed and save blocked"
+    "expectedResult": "Search input is sanitized and no unauthorized data exposure or errors occur."
   },
   {
-    "id": "SMR-GAP-018",
+    "id": "SMR-TC-153",
     "module": "Sanction Screening",
-    "subModule": "Risk Score Validation",
-    "taskDescription": "Verify special characters in Risk Score field",
+    "subModule": "Search Security",
+    "taskDescription": "Verify that script injection in Rule Description is rejected or escaped on save. Configuration forms must prevent stored cross-site scripting risk.",
     "priority": "High",
-    "expectedResult": "Validation displayed and save blocked"
+    "expectedResult": "Script content is rejected or safely escaped and does not execute in the application."
   },
   {
-    "id": "SMR-GAP-019",
+    "id": "SMR-TC-154",
     "module": "Sanction Screening",
-    "subModule": "Date Validation",
-    "taskDescription": "Verify same-day date range selection",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that export options remain available after applying report filters. Analysts must be able to export the same scoped view they reviewed on screen.",
     "priority": "Medium",
-    "expectedResult": "System handles same-day range correctly"
+    "expectedResult": "Export actions remain available after filters are applied."
   },
   {
-    "id": "SMR-GAP-020",
+    "id": "SMR-TC-155",
     "module": "Sanction Screening",
-    "subModule": "Date Validation",
-    "taskDescription": "Verify leap year date acceptance",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that report pages remain stable when no records exist for the selected period. Empty reports should still render headers and guidance sections.",
     "priority": "Medium",
-    "expectedResult": "Date accepted successfully"
+    "expectedResult": "Report layout remains intact with zero records and no error messages."
   },
   {
-    "id": "SMR-GAP-021",
+    "id": "SMR-TC-156",
     "module": "Sanction Screening",
-    "subModule": "Date Validation",
-    "taskDescription": "Verify invalid manually entered date",
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that unauthorized users cannot access report configuration actions. Role-based restrictions protect MIS rule integrity.",
     "priority": "High",
-    "expectedResult": "Validation displayed"
+    "expectedResult": "Configuration or generation actions are disabled or access denied for unauthorized users."
   },
   {
-    "id": "SMR-GAP-022",
+    "id": "SMR-TC-157",
     "module": "Sanction Screening",
-    "subModule": "AML Governance & Audit",
-    "taskDescription": "Verify audit logging for Create / Modify / Generate / Export actions including User and Timestamp attribution",
-    "priority": "Critical",
-    "expectedResult": "Audit log captures Action, User, Timestamp and Activity details accurately"
+    "subModule": "Validation & Error Handling",
+    "taskDescription": "Verify that create, modify, generate, and export actions are recorded in the audit trail with user and timestamp. Audit logging supports regulatory examinations.",
+    "priority": "High",
+    "expectedResult": "Audit trail entries exist for MIS report generation and export with user attribution and timestamps."
+  },
+  {
+    "id": "SMR-TC-158",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that Reset clears applied filters on the Comprehensive Sanctions Screening Intelligence Report. Reset must restore the default unfiltered view after filter analysis.",
+    "priority": "High",
+    "expectedResult": "Reset clears all applied filters on Comprehensive Sanctions Screening Intelligence Report and restores the default report view."
+  },
+  {
+    "id": "SMR-TC-159",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that the Columns selector is available and usable on the Comprehensive Sanctions Screening Intelligence Report. Column control lets analysts tailor the detail grid to their review needs.",
+    "priority": "High",
+    "expectedResult": "Columns selector opens on Comprehensive Sanctions Screening Intelligence Report and displays configurable detail grid column options."
+  },
+  {
+    "id": "SMR-TC-160",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that Search records filters detail rows on the Comprehensive Sanctions Screening Intelligence Report. Inline search helps analysts locate specific records within a large report.",
+    "priority": "High",
+    "expectedResult": "Search records narrows detail rows on Comprehensive Sanctions Screening Intelligence Report and clearing the search restores the full grid."
+  },
+  {
+    "id": "SMR-TC-161",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that detail grid pagination works on the Comprehensive Sanctions Screening Intelligence Report. Pagination is required when report datasets exceed one page of records.",
+    "priority": "Medium",
+    "expectedResult": "Detail grid pagination on Comprehensive Sanctions Screening Intelligence Report shows record range text and navigates to the next page successfully."
+  },
+  {
+    "id": "SMR-TC-162",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that PDF export can be initiated from the Comprehensive Sanctions Screening Intelligence Report. PDF export supports offline compliance review and regulatory submissions.",
+    "priority": "High",
+    "expectedResult": "PDF export initiates successfully from Comprehensive Sanctions Screening Intelligence Report."
+  },
+  {
+    "id": "SMR-TC-163",
+    "module": "Sanction Screening",
+    "subModule": "Comprehensive Sanctions Screening Intelligence Report",
+    "taskDescription": "Verify that XLS export can be initiated from the Comprehensive Sanctions Screening Intelligence Report. Spreadsheet export supports further analysis in external tools.",
+    "priority": "High",
+    "expectedResult": "XLS export initiates successfully from Comprehensive Sanctions Screening Intelligence Report."
+  },
+  {
+    "id": "SMR-TC-164",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that Reset clears applied filters on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Reset must restore the default unfiltered view after filter analysis.",
+    "priority": "High",
+    "expectedResult": "Reset clears all applied filters on Enhanced Due Diligence: PEP & Adverse Media Analytics Report and restores the default report view."
+  },
+  {
+    "id": "SMR-TC-165",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that the Columns selector is available and usable on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Column control lets analysts tailor the detail grid to their review needs.",
+    "priority": "High",
+    "expectedResult": "Columns selector opens on Enhanced Due Diligence: PEP & Adverse Media Analytics Report and displays configurable detail grid column options."
+  },
+  {
+    "id": "SMR-TC-166",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that Search records filters detail rows on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Inline search helps analysts locate specific records within a large report.",
+    "priority": "High",
+    "expectedResult": "Search records narrows detail rows on Enhanced Due Diligence: PEP & Adverse Media Analytics Report and clearing the search restores the full grid."
+  },
+  {
+    "id": "SMR-TC-167",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that detail grid pagination works on the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Pagination is required when report datasets exceed one page of records.",
+    "priority": "Medium",
+    "expectedResult": "Detail grid pagination on Enhanced Due Diligence: PEP & Adverse Media Analytics Report shows record range text and navigates to the next page successfully."
+  },
+  {
+    "id": "SMR-TC-168",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that PDF export can be initiated from the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. PDF export supports offline compliance review and regulatory submissions.",
+    "priority": "High",
+    "expectedResult": "PDF export initiates successfully from Enhanced Due Diligence: PEP & Adverse Media Analytics Report."
+  },
+  {
+    "id": "SMR-TC-169",
+    "module": "Sanction Screening",
+    "subModule": "Enhanced Due Diligence: PEP & Adverse Media Analytics Report",
+    "taskDescription": "Verify that XLS export can be initiated from the Enhanced Due Diligence: PEP & Adverse Media Analytics Report. Spreadsheet export supports further analysis in external tools.",
+    "priority": "High",
+    "expectedResult": "XLS export initiates successfully from Enhanced Due Diligence: PEP & Adverse Media Analytics Report."
+  },
+  {
+    "id": "SMR-TC-170",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that Reset clears applied filters on the Screening Exception Authorization & Tracking Report. Reset must restore the default unfiltered view after filter analysis.",
+    "priority": "High",
+    "expectedResult": "Reset clears all applied filters on Screening Exception Authorization & Tracking Report and restores the default report view."
+  },
+  {
+    "id": "SMR-TC-171",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that the Columns selector is available and usable on the Screening Exception Authorization & Tracking Report. Column control lets analysts tailor the detail grid to their review needs.",
+    "priority": "High",
+    "expectedResult": "Columns selector opens on Screening Exception Authorization & Tracking Report and displays configurable detail grid column options."
+  },
+  {
+    "id": "SMR-TC-172",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that Search records filters detail rows on the Screening Exception Authorization & Tracking Report. Inline search helps analysts locate specific records within a large report.",
+    "priority": "High",
+    "expectedResult": "Search records narrows detail rows on Screening Exception Authorization & Tracking Report and clearing the search restores the full grid."
+  },
+  {
+    "id": "SMR-TC-173",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that detail grid pagination works on the Screening Exception Authorization & Tracking Report. Pagination is required when report datasets exceed one page of records.",
+    "priority": "Medium",
+    "expectedResult": "Detail grid pagination on Screening Exception Authorization & Tracking Report shows record range text and navigates to the next page successfully."
+  },
+  {
+    "id": "SMR-TC-174",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that PDF export can be initiated from the Screening Exception Authorization & Tracking Report. PDF export supports offline compliance review and regulatory submissions.",
+    "priority": "High",
+    "expectedResult": "PDF export initiates successfully from Screening Exception Authorization & Tracking Report."
+  },
+  {
+    "id": "SMR-TC-175",
+    "module": "Sanction Screening",
+    "subModule": "Screening Exception Authorization & Tracking Report",
+    "taskDescription": "Verify that XLS export can be initiated from the Screening Exception Authorization & Tracking Report. Spreadsheet export supports further analysis in external tools.",
+    "priority": "High",
+    "expectedResult": "XLS export initiates successfully from Screening Exception Authorization & Tracking Report."
+  },
+  {
+    "id": "SMR-TC-176",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that Reset clears applied filters on the Geographic Risk Exposure Intelligence Report. Reset must restore the default unfiltered view after filter analysis.",
+    "priority": "High",
+    "expectedResult": "Reset clears all applied filters on Geographic Risk Exposure Intelligence Report and restores the default report view."
+  },
+  {
+    "id": "SMR-TC-177",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that the Columns selector is available and usable on the Geographic Risk Exposure Intelligence Report. Column control lets analysts tailor the detail grid to their review needs.",
+    "priority": "High",
+    "expectedResult": "Columns selector opens on Geographic Risk Exposure Intelligence Report and displays configurable detail grid column options."
+  },
+  {
+    "id": "SMR-TC-178",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that Search records filters detail rows on the Geographic Risk Exposure Intelligence Report. Inline search helps analysts locate specific records within a large report.",
+    "priority": "High",
+    "expectedResult": "Search records narrows detail rows on Geographic Risk Exposure Intelligence Report and clearing the search restores the full grid."
+  },
+  {
+    "id": "SMR-TC-179",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that detail grid pagination works on the Geographic Risk Exposure Intelligence Report. Pagination is required when report datasets exceed one page of records.",
+    "priority": "Medium",
+    "expectedResult": "Detail grid pagination on Geographic Risk Exposure Intelligence Report shows record range text and navigates to the next page successfully."
+  },
+  {
+    "id": "SMR-TC-180",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that PDF export can be initiated from the Geographic Risk Exposure Intelligence Report. PDF export supports offline compliance review and regulatory submissions.",
+    "priority": "High",
+    "expectedResult": "PDF export initiates successfully from Geographic Risk Exposure Intelligence Report."
+  },
+  {
+    "id": "SMR-TC-181",
+    "module": "Sanction Screening",
+    "subModule": "Geographic Risk Exposure Intelligence Report",
+    "taskDescription": "Verify that XLS export can be initiated from the Geographic Risk Exposure Intelligence Report. Spreadsheet export supports further analysis in external tools.",
+    "priority": "High",
+    "expectedResult": "XLS export initiates successfully from Geographic Risk Exposure Intelligence Report."
+  },
+  {
+    "id": "SMR-TC-182",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that Reset clears applied filters on the Related Party High-Risk Country Linkage Report. Reset must restore the default unfiltered view after filter analysis.",
+    "priority": "High",
+    "expectedResult": "Reset clears all applied filters on Related Party High-Risk Country Linkage Report and restores the default report view."
+  },
+  {
+    "id": "SMR-TC-183",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that the Columns selector is available and usable on the Related Party High-Risk Country Linkage Report. Column control lets analysts tailor the detail grid to their review needs.",
+    "priority": "High",
+    "expectedResult": "Columns selector opens on Related Party High-Risk Country Linkage Report and displays configurable detail grid column options."
+  },
+  {
+    "id": "SMR-TC-184",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that Search records filters detail rows on the Related Party High-Risk Country Linkage Report. Inline search helps analysts locate specific records within a large report.",
+    "priority": "High",
+    "expectedResult": "Search records narrows detail rows on Related Party High-Risk Country Linkage Report and clearing the search restores the full grid."
+  },
+  {
+    "id": "SMR-TC-185",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that detail grid pagination works on the Related Party High-Risk Country Linkage Report. Pagination is required when report datasets exceed one page of records.",
+    "priority": "Medium",
+    "expectedResult": "Detail grid pagination on Related Party High-Risk Country Linkage Report shows record range text and navigates to the next page successfully."
+  },
+  {
+    "id": "SMR-TC-186",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that PDF export can be initiated from the Related Party High-Risk Country Linkage Report. PDF export supports offline compliance review and regulatory submissions.",
+    "priority": "High",
+    "expectedResult": "PDF export initiates successfully from Related Party High-Risk Country Linkage Report."
+  },
+  {
+    "id": "SMR-TC-187",
+    "module": "Sanction Screening",
+    "subModule": "Related Party High-Risk Country Linkage Report",
+    "taskDescription": "Verify that XLS export can be initiated from the Related Party High-Risk Country Linkage Report. Spreadsheet export supports further analysis in external tools.",
+    "priority": "High",
+    "expectedResult": "XLS export initiates successfully from Related Party High-Risk Country Linkage Report."
+  },
+  {
+    "id": "SMR-TC-188",
+    "module": "Sanction Screening",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that Reset clears applied filters on the Screening Logic Governance & Change Control Report. Reset must restore the default unfiltered view after filter analysis.",
+    "priority": "High",
+    "expectedResult": "Reset clears all applied filters on Screening Logic Governance & Change Control Report and restores the default report view."
+  },
+  {
+    "id": "SMR-TC-189",
+    "module": "Sanction Screening",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that the Columns selector is available and usable on the Screening Logic Governance & Change Control Report. Column control lets analysts tailor the detail grid to their review needs.",
+    "priority": "High",
+    "expectedResult": "Columns selector opens on Screening Logic Governance & Change Control Report and displays configurable detail grid column options."
+  },
+  {
+    "id": "SMR-TC-190",
+    "module": "Sanction Screening",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that Search records filters detail rows on the Screening Logic Governance & Change Control Report. Inline search helps analysts locate specific records within a large report.",
+    "priority": "High",
+    "expectedResult": "Search records narrows detail rows on Screening Logic Governance & Change Control Report and clearing the search restores the full grid."
+  },
+  {
+    "id": "SMR-TC-191",
+    "module": "Sanction Screening",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that detail grid pagination works on the Screening Logic Governance & Change Control Report. Pagination is required when report datasets exceed one page of records.",
+    "priority": "Medium",
+    "expectedResult": "Detail grid pagination on Screening Logic Governance & Change Control Report shows record range text and navigates to the next page successfully."
+  },
+  {
+    "id": "SMR-TC-192",
+    "module": "Sanction Screening",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that PDF export can be initiated from the Screening Logic Governance & Change Control Report. PDF export supports offline compliance review and regulatory submissions.",
+    "priority": "High",
+    "expectedResult": "PDF export initiates successfully from Screening Logic Governance & Change Control Report."
+  },
+  {
+    "id": "SMR-TC-193",
+    "module": "Sanction Screening",
+    "subModule": "Screening Logic Governance & Change Control Report",
+    "taskDescription": "Verify that XLS export can be initiated from the Screening Logic Governance & Change Control Report. Spreadsheet export supports further analysis in external tools.",
+    "priority": "High",
+    "expectedResult": "XLS export initiates successfully from Screening Logic Governance & Change Control Report."
+  },
+  {
+    "id": "SMR-TC-194",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that Reset clears applied filters on the Exception List Governance & Accountability Report. Reset must restore the default unfiltered view after filter analysis.",
+    "priority": "High",
+    "expectedResult": "Reset clears all applied filters on Exception List Governance & Accountability Report and restores the default report view."
+  },
+  {
+    "id": "SMR-TC-195",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that the Columns selector is available and usable on the Exception List Governance & Accountability Report. Column control lets analysts tailor the detail grid to their review needs.",
+    "priority": "High",
+    "expectedResult": "Columns selector opens on Exception List Governance & Accountability Report and displays configurable detail grid column options."
+  },
+  {
+    "id": "SMR-TC-196",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that Search records filters detail rows on the Exception List Governance & Accountability Report. Inline search helps analysts locate specific records within a large report.",
+    "priority": "High",
+    "expectedResult": "Search records narrows detail rows on Exception List Governance & Accountability Report and clearing the search restores the full grid."
+  },
+  {
+    "id": "SMR-TC-197",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that detail grid pagination works on the Exception List Governance & Accountability Report. Pagination is required when report datasets exceed one page of records.",
+    "priority": "Medium",
+    "expectedResult": "Detail grid pagination on Exception List Governance & Accountability Report shows record range text and navigates to the next page successfully."
+  },
+  {
+    "id": "SMR-TC-198",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that PDF export can be initiated from the Exception List Governance & Accountability Report. PDF export supports offline compliance review and regulatory submissions.",
+    "priority": "High",
+    "expectedResult": "PDF export initiates successfully from Exception List Governance & Accountability Report."
+  },
+  {
+    "id": "SMR-TC-199",
+    "module": "Sanction Screening",
+    "subModule": "Exception List Governance & Accountability Report",
+    "taskDescription": "Verify that XLS export can be initiated from the Exception List Governance & Accountability Report. Spreadsheet export supports further analysis in external tools.",
+    "priority": "High",
+    "expectedResult": "XLS export initiates successfully from Exception List Governance & Accountability Report."
   }
 ]

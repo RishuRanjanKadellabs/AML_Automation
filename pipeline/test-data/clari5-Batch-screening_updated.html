@@ -1,0 +1,1934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 – Sanctions Screening</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── Reset & Base ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: 'Inter', sans-serif; font-size: 14px; color: #161616; background: #f5f5f5; overflow: hidden; }
+
+/* ─── Page switching ─── */
+.screen { display: none; height: 100vh; flex-direction: column; overflow: hidden; }
+.screen.active { display: flex; }
+
+/* ─── Colors (matching reference exactly) ─── */
+/* Primary: #2A53A0 | Active BG: #EAF2FF | Active border-l: #2A53A0 */
+/* Table header bg: #F0F0F0 | Header text: #2A53A0 */
+/* Footer bg: #f8f9fa | Confirm btn: #2A53A0 */
+
+/* ═══════════════════════════════════
+   LANDING PAGE (New_Sanction_Screening)
+   – uses Figma Make style: top nav with tabs, no sidebar
+═══════════════════════════════════ */
+.lp-topnav {
+  height: 64px; background: #fff; border-bottom: 1px solid #e5e7eb;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 24px; flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+.lp-left { display: flex; align-items: center; gap: 24px; }
+.lp-title { font-size: 17px; font-weight: 700; color: #111827; }
+.lp-tabs { display: flex; gap: 4px; }
+.lp-tab {
+  height: 38px; padding: 0 16px; border-radius: 8px;
+  border: none; background: transparent; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; color: #4b5563;
+  display: flex; align-items: center; gap: 7px; transition: all .15s;
+}
+.lp-tab:hover { background: #f3f4f6; }
+.lp-tab.active { background: #2A53A0; color: #fff; font-weight: 600; }
+.lp-right { display: flex; align-items: center; gap: 8px; }
+.notif-btn {
+  width: 38px; height: 38px; border-radius: 10px; border: none; background: transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  color: #4b5563; position: relative; transition: background .15s;
+}
+.notif-btn:hover { background: #f3f4f6; }
+.notif-dot {
+  position: absolute; top: 5px; right: 5px; width: 16px; height: 16px;
+  background: #ef4444; border-radius: 50%; color: #fff; font-size: 9px;
+  font-weight: 700; display: flex; align-items: center; justify-content: center;
+  border: 2px solid #fff;
+}
+.user-pill {
+  display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 10px;
+  border-radius: 10px; border: none; background: transparent; cursor: pointer; transition: background .15s;
+}
+.user-pill:hover { background: #f3f4f6; }
+.avatar {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #2A53A0);
+  color: #fff; font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #dbeafe;
+}
+.user-name { font-size: 13px; font-weight: 500; color: #1f2937; }
+
+/* Landing page body */
+.lp-body { flex: 1; overflow: hidden; display: flex; flex-direction: column; background: #f5f7fa; }
+.lp-header-bar {
+  background: #fff; border-bottom: 1px solid #e5e7eb; padding: 18px 28px;
+  display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;
+}
+.lp-heading { display: flex; align-items: center; gap: 10px; }
+.lp-heading h1 { font-size: 19px; font-weight: 700; color: #111827; }
+.count-badge {
+  padding: 3px 11px; border-radius: 20px; font-size: 12px; font-weight: 700;
+  background: linear-gradient(135deg, #dbeafe, #eff6ff); color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+.lp-filter-row {
+  background: #fff; border-bottom: 1px solid #e5e7eb;
+  padding: 12px 28px; display: flex; align-items: center; justify-content: space-between;
+  flex-shrink: 0; gap: 12px;
+}
+.filter-left { display: flex; align-items: center; gap: 10px; }
+.filter-meta { font-size: 13px; color: #6b7280; }
+.filter-meta strong { color: #374151; }
+.add-filter-btn {
+  display: flex; align-items: center; gap: 5px; padding: 5px 11px;
+  border: 1px solid #d1d5db; border-radius: 7px; background: #fff;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: #374151;
+  cursor: pointer; transition: all .12s;
+}
+.add-filter-btn:hover { background: #f9fafb; border-color: #9ca3af; }
+.search-box { position: relative; }
+.search-box svg { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+.search-box input {
+  width: 300px; height: 40px; padding: 0 14px 0 38px;
+  border: 1px solid #d1d5db; border-radius: 8px; font-family: 'Inter', sans-serif;
+  font-size: 13px; color: #111827; outline: none; background: #fff;
+  transition: border-color .15s, box-shadow .15s;
+}
+.search-box input:focus { border-color: #2A53A0; box-shadow: 0 0 0 3px rgba(42,83,160,.12); }
+
+.lp-table-wrap { flex: 1; overflow-y: auto; padding: 16px 28px 20px; }
+
+/* ═══════════════════════════════════
+   SHARED: INNER APP LAYOUT (pages 1–4)
+   – has sidebar + main content
+═══════════════════════════════════ */
+.app-shell { flex: 1; display: flex; overflow: hidden; }
+
+/* ─── Sidebar ─── */
+.sidebar {
+  width: 240px; flex-shrink: 0; background: #fff;
+  border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; overflow: hidden;
+}
+.sb-logo-bar {
+  height: 54px; flex-shrink: 0; border-bottom: 1px solid #e5e7eb;
+  display: flex; align-items: center; padding: 0 16px; gap: 0;
+}
+.sb-logo-area { flex: 1; display: flex; align-items: center; justify-content: center; }
+.sb-logo-text { font-size: 17px; font-weight: 800; color: #2A53A0; letter-spacing: -0.5px; }
+.sb-logo-divider { width: 1px; height: 24px; background: #e5e7eb; flex-shrink: 0; }
+.sb-search { padding: 12px 14px; border-bottom: 1px solid #e5e7eb; }
+.sb-search-wrap { position: relative; }
+.sb-search-wrap svg { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+.sb-search-wrap input {
+  width: 100%; height: 40px; padding: 0 12px 0 34px;
+  border: 1px solid #e5e7eb; border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 13px; color: #374151; outline: none;
+}
+.sb-search-wrap input:focus { border-color: #2A53A0; box-shadow: 0 0 0 3px rgba(42,83,160,.1); }
+.sb-nav { flex: 1; overflow-y: auto; padding: 8px 0; }
+.sb-group-btn {
+  width: 100%; height: 46px; padding: 0 16px; border: none; background: transparent;
+  display: flex; align-items: center; gap: 8px; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 400; color: #161616;
+  border-radius: 8px; transition: background .12s; text-align: left;
+}
+.sb-group-btn:hover { background: #f3f4f6; }
+.sb-group-btn.open { color: #2A53A0; font-weight: 600; }
+.sb-group-btn .spacer { flex: 1; }
+.sb-children { margin-top: 4px; }
+.sb-child-btn {
+  width: 100%; padding: 9px 16px 9px 27px; border: none; background: transparent;
+  display: flex; align-items: center; gap: 8px; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 400; color: #4b5563;
+  transition: all .12s; text-align: left; border-radius: 0;
+}
+.sb-child-btn:hover { color: #2A53A0; background: #f8fafc; }
+.sb-child-btn.active {
+  background: #EAF2FF; color: #2A53A0; font-weight: 500;
+  border-left: 4px solid #2A53A0; padding-left: 23px;
+}
+.sb-child-btn.disabled { color: #d1d5db; cursor: not-allowed; pointer-events: none; }
+
+/* ─── Top bar (page header bar inside app shell) ─── */
+.page-topbar {
+  height: 58px; background: #fff; border-bottom: 1px solid #e5e7eb;
+  display: flex; align-items: center; padding: 0 20px; gap: 12px; flex-shrink: 0;
+}
+.back-btn {
+  display: flex; align-items: center; gap: 6px; padding: 0 12px; height: 36px;
+  border: 1px solid #e5e7eb; border-radius: 8px; background: #fff;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: #374151;
+  cursor: pointer; transition: all .12s;
+}
+.back-btn:hover { border-color: #2A53A0; color: #2A53A0; }
+.topbar-title { font-size: 16px; font-weight: 700; color: #111827; flex: 1; }
+.topbar-subtitle { font-size: 11px; color: #9ca3af; font-family: monospace; margin-top: 1px; }
+
+/* ─── Shared main content ─── */
+.main-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f5f7fa; }
+.scroll-pane { flex: 1; overflow-y: auto; padding: 20px 24px; }
+.app-footer {
+  height: 42px; background: #f9fafb; border-top: 1px solid #e5e7eb;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center;
+  padding: 0 16px; font-size: 11px; color: #6b7280; flex-shrink: 0;
+}
+.app-footer .center { text-align: center; display: flex; align-items: center; justify-content: center; gap: 4px; }
+.app-footer .right { text-align: right; }
+
+/* ─── Shared buttons ─── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 16px;
+  background: #2A53A0; color: #fff; border: none; border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; cursor: pointer; transition: background .15s;
+}
+.btn-primary:hover { background: #1e3a70; }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 7px; height: 40px; padding: 0 16px;
+  background: #fff; color: #374151; border: 1px solid #d1d5db; border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .12s;
+}
+.btn-outline:hover { background: #f9fafb; border-color: #9ca3af; }
+.btn-outline.green-icon svg { color: #16a34a; }
+
+/* ─── Tables ─── */
+.table-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+table { width: 100%; border-collapse: collapse; }
+thead tr { background: #F0F0F0; height: 48px; border-bottom: 1px solid #e5e7eb; position: sticky; top: 0; z-index: 5; }
+th {
+  padding: 0 16px; text-align: left; font-size: 13px; font-weight: 600;
+  color: #2A53A0; white-space: nowrap; background: #F0F0F0;
+}
+td { padding: 12px 16px; font-size: 13px; color: #374151; border-bottom: 1px solid #f3f4f6; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #f8fafc; }
+.table-footer-bar {
+  padding: 12px 16px; background: #f9fafb; border-top: 1px solid #e5e7eb;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: #6b7280;
+}
+
+/* ─── Badges ─── */
+.badge {
+  display: inline-flex; align-items: center; padding: 2px 10px; border-radius: 20px;
+  font-size: 11px; font-weight: 600; white-space: nowrap;
+}
+.badge-red { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
+.badge-orange { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+.badge-yellow { background: #fefce8; color: #a16207; border: 1px solid #fde68a; }
+.badge-amber { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+.badge-green { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+.badge-blue { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+.badge-blue2 { background: #dbeafe; color: #2A53A0; border: 1px solid #93c5fd; }
+.badge-purple { background: #faf5ff; color: #7c3aed; border: 1px solid #e9d5ff; }
+.badge-gray { background: #f3f4f6; color: #4b5563; border: 1px solid #e5e7eb; }
+.badge-slate { background: #f8fafc; color: #475569; border: 1px solid #e2e8f0; }
+
+/* Action buttons in table */
+.action-cell { display: flex; align-items: center; gap: 6px; flex-wrap: nowrap; }
+.act-btn {
+  display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 10px;
+  border-radius: 6px; border: 1px solid #e5e7eb; background: #fff;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; cursor: pointer;
+  color: #374151; transition: all .12s; white-space: nowrap;
+}
+.act-btn:hover { border-color: #9ca3af; background: #f9fafb; }
+.act-btn.exception { border-color: #e9d5ff; color: #7c3aed; background: #faf5ff; }
+.act-btn.exception:hover { background: #f3e8ff; border-color: #c4b5fd; }
+.act-btn.view { border-color: #bfdbfe; color: #2A53A0; background: #eff6ff; }
+.act-btn.view:hover { background: #dbeafe; border-color: #93c5fd; }
+
+/* Score bar */
+.score-wrap { display: flex; align-items: center; gap: 8px; }
+.score-bar-track { width: 52px; height: 4px; background: #e5e7eb; border-radius: 2px; overflow: hidden; }
+.score-bar-fill { height: 100%; border-radius: 2px; }
+.bar-red { background: #ef4444; }
+.bar-orange { background: #f97316; }
+.bar-yellow { background: #eab308; }
+.score-val { font-size: 13px; font-weight: 700; }
+.val-red { color: #dc2626; }
+.val-orange { color: #c2410c; }
+.val-yellow { color: #a16207; }
+
+/* Clickable number link */
+.num-link {
+  color: #2A53A0; font-weight: 700; font-size: 14px; cursor: pointer;
+  text-decoration: underline; text-decoration-color: transparent; transition: .15s;
+}
+.num-link:hover { text-decoration-color: #2A53A0; }
+
+/* Pagination */
+.pagination { display: flex; align-items: center; gap: 5px; }
+.pg-btn {
+  width: 30px; height: 30px; border-radius: 7px; border: 1px solid #e5e7eb;
+  background: #fff; font-size: 12px; font-weight: 500; color: #374151;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .12s;
+}
+.pg-btn:hover { border-color: #2A53A0; color: #2A53A0; }
+.pg-btn.active { background: #2A53A0; border-color: #2A53A0; color: #fff; }
+
+/* ═══════════════════════════════════
+   PAGE 1 – SCREENING RESULTS
+═══════════════════════════════════ */
+/* Inner nav header */
+.inner-topnav {
+  background: #fff; border-bottom: 1px solid #e5e7eb;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; height: 58px; flex-shrink: 0;
+}
+/* Subject card */
+.subject-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  padding: 16px 20px; margin-bottom: 14px; display: flex; flex-wrap: wrap;
+  gap: 20px; align-items: center; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.subject-field label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #6b7280; display: block; margin-bottom: 4px; }
+.subject-field .val { font-size: 14px; font-weight: 500; color: #111827; }
+.subject-field .val.big { font-size: 16px; font-weight: 700; }
+.subject-field .val.muted { color: #9ca3af; }
+.field-divider { width: 1px; height: 32px; background: #e5e7eb; }
+
+/* AI banner */
+.ai-banner {
+  background: #fff; border: 1px solid rgba(42,83,160,.25); border-radius: 10px;
+  overflow: hidden; margin-bottom: 14px; position: relative;
+  box-shadow: 0 2px 8px rgba(42,83,160,.08);
+}
+.ai-banner-top-bar { height: 4px; background: #2A53A0; }
+.ai-banner-body { padding: 16px 20px; display: flex; gap: 14px; }
+.ai-icon-box {
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: 8px;
+  background: rgba(42,83,160,.1); display: flex; align-items: center; justify-content: center;
+  color: #2A53A0;
+}
+.ai-label-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.ai-module-label { font-size: 11px; font-weight: 700; color: #2A53A0; text-transform: uppercase; letter-spacing: 0.6px; }
+.ai-tag { padding: 1px 8px; border-radius: 20px; background: #f3f4f6; border: 1px solid #e5e7eb; font-size: 10px; font-weight: 700; color: #6b7280; text-transform: uppercase; }
+.ai-text { font-size: 13px; color: #374151; line-height: 1.65; }
+.ai-text .hl-blue { color: #2A53A0; font-weight: 700; background: rgba(42,83,160,.06); padding: 0 4px; border-radius: 3px; }
+.ai-text .hl-red { color: #dc2626; font-weight: 700; background: #fef2f2; padding: 0 4px; border-radius: 3px; }
+.ai-text .hl-red-b { color: #991b1b; font-weight: 700; }
+.ai-text .hl-green { color: #16a34a; font-style: italic; background: #f0fdf4; padding: 0 4px; border-radius: 3px; }
+.ai-badges { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+
+/* Stats strip */
+.stats-strip { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 14px; }
+.stat-chip {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 8px;
+  padding: 10px 16px; display: flex; align-items: center; gap: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+}
+.stat-number { line-height: 1; }
+.stat-number.big { font-size: 22px; font-weight: 800; }
+.stat-number.red { color: #dc2626; }
+.stat-number.blue { color: #2A53A0; }
+.stat-number.gray { color: #9ca3af; }
+.stat-label { font-size: 11px; color: #6b7280; margin-top: 2px; }
+
+/* Results table section */
+.section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.section-title { font-size: 16px; font-weight: 700; color: #111827; }
+
+/* ═══════════════════════════════════
+   REVIEW PAGE (Pages 2/3/4 as tabs)
+═══════════════════════════════════ */
+.review-header {
+  background: #fff; border-bottom: 1px solid #e5e7eb; flex-shrink: 0;
+}
+.review-header-row1 {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px 0;
+}
+.review-title-wrap .review-title { font-size: 18px; font-weight: 700; color: #111827; }
+.review-title-wrap .review-ref { font-size: 11px; color: #6b7280; font-family: monospace; margin-top: 3px; }
+.review-actions { display: flex; align-items: center; gap: 8px; }
+.review-tab-bar { display: flex; align-items: flex-end; gap: 0; padding: 0 20px; margin-top: 12px; border-bottom: 2px solid #e5e7eb; }
+.rtab {
+  display: flex; align-items: center; gap: 7px; padding: 10px 18px;
+  border: none; background: transparent; cursor: pointer;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #6b7280;
+  border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all .15s;
+}
+.rtab:hover { color: #2A53A0; }
+.rtab.active { color: #2A53A0; border-bottom-color: #2A53A0; }
+.rtab.active svg { color: #2A53A0; }
+.tab-pane { display: none; }
+.tab-pane.active { display: block; }
+
+/* ─── Tab 1: AI Summary ─── */
+.alert-banner {
+  background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px;
+  padding: 14px 18px; margin-bottom: 16px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.alert-banner svg { flex-shrink: 0; margin-top: 1px; }
+.alert-banner h3 { font-size: 14px; font-weight: 700; color: #991b1b; margin-bottom: 4px; }
+.alert-banner p { font-size: 13px; color: #7f1d1d; line-height: 1.6; }
+.narrative-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  padding: 20px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.narrative-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.narrative-header h3 { font-size: 14px; font-weight: 700; color: #111827; }
+.conf-badge { padding: 2px 10px; border-radius: 20px; background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; font-size: 11px; font-weight: 700; }
+.narrative-text { font-size: 13px; color: #374151; line-height: 1.7; margin-bottom: 12px; }
+.narrative-text:last-of-type { margin-bottom: 0; }
+.signal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.signal-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 14px; }
+.signal-card h4 { font-size: 12px; font-weight: 700; color: #1f2937; margin-bottom: 4px; display: flex; align-items: center; gap: 5px; }
+.signal-card p { font-size: 12px; color: #4b5563; line-height: 1.55; }
+
+/* ─── Tab 2: Match Details ─── */
+.status-grid { display: grid; grid-template-columns: 100px 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+.status-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.status-card label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #9ca3af; display: block; margin-bottom: 8px; }
+.big-score { font-size: 32px; font-weight: 900; color: #dc2626; line-height: 1; }
+.big-score span { font-size: 15px; font-weight: 400; color: #9ca3af; }
+.kv-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid #f3f4f6; }
+.kv-row:last-child { border-bottom: none; }
+.kv-row .k { font-size: 12px; color: #6b7280; }
+.kv-row .v { font-size: 12px; font-weight: 600; color: #1f2937; }
+.hit-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.hit-header { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-bottom: 1px solid #f3f4f6; }
+.hit-score-col { text-align: center; min-width: 60px; }
+.hit-score-num { font-size: 22px; font-weight: 800; }
+.hit-score-num.red { color: #dc2626; }
+.hit-score-num.orange { color: #c2410c; }
+.hit-score-num.yellow { color: #a16207; }
+.hit-info { flex: 1; }
+.hit-list-name { font-size: 14px; font-weight: 700; color: #111827; }
+.hit-meta { font-size: 12px; color: #6b7280; margin-top: 3px; line-height: 1.5; }
+.hit-actions { display: flex; gap: 8px; }
+.btn-vfp { padding: 6px 12px; border: 1px solid #e5e7eb; border-radius: 7px; background: #fff; font-family: 'Inter', sans-serif; font-size: 12px; color: #374151; cursor: pointer; }
+.btn-esc { padding: 6px 12px; border: none; border-radius: 7px; background: #dc2626; font-family: 'Inter', sans-serif; font-size: 12px; color: #fff; font-weight: 600; cursor: pointer; }
+td.sc-green { color: #15803d; font-weight: 700; }
+td.sc-blue { color: #2A53A0; font-weight: 700; }
+td.sc-yellow { color: #a16207; font-weight: 700; }
+td.sc-red { color: #dc2626; font-weight: 700; }
+td.sc-gray { color: #6b7280; }
+
+/* ─── Tab 3: View Summary ─── */
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.sum-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 18px; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.sum-card h3 { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #9ca3af; margin-bottom: 14px; }
+.sum-kv { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f3f4f6; }
+.sum-kv:last-child { border-bottom: none; }
+.sum-kv .k { font-size: 12px; color: #6b7280; }
+.sum-kv .v { font-size: 13px; font-weight: 600; color: #1f2937; }
+.sum-kv .v.big-red { font-size: 28px; font-weight: 900; color: #dc2626; line-height: 1; }
+.sum-kv .v.red { color: #dc2626; }
+.risk-legend { margin-top: 10px; font-size: 11px; color: #9ca3af; line-height: 1.8; border-top: 1px solid #f3f4f6; padding-top: 10px; }
+.detail-table-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+.detail-table-card .card-header { padding: 14px 18px; border-bottom: 1px solid #e5e7eb; font-size: 13px; font-weight: 700; color: #111827; }
+.wl-section-row td { background: #f0f5ff !important; }
+.wl-section-row2 td { background: #fff9f5 !important; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+
+/* SVG icon helper */
+svg { display: inline-block; vertical-align: middle; }
+
+/* ─── Action dropdown button (original Figma style) ─── */
+.action-dropdown { position: relative; display: inline-block; }
+.action-dropdown-btn {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 6px 10px; min-width: 140px;
+  border-radius: 8px; border: 1px solid #2E5AAC; color: #2E5AAC;
+  background: #fff; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  cursor: pointer; transition: all .15s; white-space: nowrap;
+}
+.action-dropdown-btn:hover { background: #2E5AAC; color: #fff; }
+.action-dropdown-btn:hover svg { stroke: #fff; }
+.action-dropdown-btn span { flex: 1; text-align: left; }
+.action-dropdown-menu {
+  display: none; position: fixed; z-index: 9999;
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 2px 6px rgba(0,0,0,0.06);
+  min-width: 210px; padding: 6px; overflow: visible;
+}
+.action-dropdown-menu.open { display: block; }
+.action-dropdown-item {
+  display: flex; align-items: center; gap: 9px;
+  width: 100%; padding: 8px 11px; border: none; background: transparent;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: #374151;
+  cursor: pointer; border-radius: 7px; text-align: left; transition: background .1s;
+  white-space: nowrap;
+}
+.action-dropdown-item:hover { background: #f3f4f6; color: #111827; }
+.action-dropdown-item.divider-above { border-top: 1px solid #f3f4f6; margin-top: 4px; padding-top: 10px; }
+.action-dropdown-item svg { flex-shrink: 0; }
+.action-dropdown-item.item-view { color: #2A53A0; }
+.action-dropdown-item.item-view:hover { background: #eff6ff; }
+.action-dropdown-item.item-exception { color: #7c3aed; }
+.action-dropdown-item.item-exception:hover { background: #faf5ff; }
+.action-dropdown-item.item-danger { color: #dc2626; }
+.action-dropdown-item.item-danger:hover { background: #fef2f2; }
+
+/* ─── Date filter dropdown ─── */
+.date-dropdown { position: relative; display: inline-block; }
+.date-dropdown-btn {
+  display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px;
+  background: #fff; color: #374151; border: 1px solid #d1d5db; border-radius: 12px;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; cursor: pointer; transition: all .12s;
+}
+.date-dropdown-btn:hover { background: #f9fafb; border-color: #9ca3af; }
+.date-dropdown-btn.open { border-color: #2A53A0; box-shadow: 0 0 0 3px rgba(42,83,160,.1); }
+.date-dropdown-menu {
+  display: none; position: absolute; top: calc(100% + 6px); left: 0; z-index: 9999;
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 190px; padding: 6px;
+}
+.date-dropdown-menu.open { display: block; }
+.date-dropdown-item {
+  display: flex; align-items: center; gap: 9px;
+  width: 100%; padding: 8px 11px; border: none; background: transparent;
+  font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 400; color: #374151;
+  cursor: pointer; border-radius: 7px; text-align: left; transition: background .1s;
+}
+.date-dropdown-item:hover { background: #f3f4f6; }
+.date-dropdown-item.active { background: #eff6ff; color: #2A53A0; font-weight: 600; }
+.date-dropdown-item.active::after { content: '✓'; margin-left: auto; font-size: 12px; }
+.date-dropdown-divider { height: 1px; background: #f3f4f6; margin: 4px 0; }
+
+/* ─── Clickable customer name ─── */
+.customer-name-link {
+  color: #111827; font-weight: 600; cursor: pointer; transition: color .15s;
+  text-decoration: underline; text-decoration-color: transparent;
+}
+.customer-name-link:hover { color: #2A53A0; text-decoration-color: #2A53A0; }
+
+/* ─── Matched list number — prominent clickable chip ─── */
+.matched-list-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 10px 5px 8px;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border: 1.5px solid #93c5fd;
+  border-radius: 20px; cursor: pointer;
+  transition: all .18s; position: relative;
+  box-shadow: 0 1px 3px rgba(42,83,160,.1);
+  user-select: none;
+}
+.matched-list-link:hover {
+  background: linear-gradient(135deg, #2A53A0, #1e3a70);
+  border-color: #2A53A0;
+  box-shadow: 0 3px 10px rgba(42,83,160,.3);
+  transform: translateY(-1px);
+}
+.matched-list-link:hover .matched-list-num,
+.matched-list-link:hover .matched-list-label,
+.matched-list-link:hover .matched-list-icon { color: #fff; stroke: #fff; }
+.matched-list-link:hover .matched-list-tooltip { opacity: 1; visibility: visible; transform: translateY(0); }
+.matched-list-num {
+  font-size: 15px; font-weight: 800; color: #2A53A0; line-height: 1;
+}
+.matched-list-label {
+  font-size: 11px; font-weight: 600; color: #3b82f6; text-transform: uppercase; letter-spacing: 0.4px;
+}
+.matched-list-icon { color: #3b82f6; flex-shrink: 0; stroke: #3b82f6; transition: stroke .18s; }
+.matched-list-tooltip {
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px);
+  background: #1e293b; color: #fff; font-size: 11px; font-weight: 500;
+  padding: 5px 10px; border-radius: 6px; white-space: nowrap;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: all .18s; z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.matched-list-tooltip::after {
+  content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: #1e293b;
+}
+
+/* ─── Comment Modal ─── */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 99999;
+  background: rgba(0,0,0,0.45); backdrop-filter: blur(2px);
+  align-items: center; justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: #fff; border-radius: 14px; width: 480px; max-width: 94vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.1);
+  overflow: hidden; animation: modalSlide .18s ease;
+}
+@keyframes modalSlide { from { transform: translateY(-16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px 14px; border-bottom: 1px solid #e5e7eb;
+}
+.modal-title { font-size: 15px; font-weight: 700; color: #111827; display: flex; align-items: center; gap: 8px; }
+.modal-title-icon { width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.modal-close {
+  width: 32px; height: 32px; border-radius: 8px; border: none; background: transparent;
+  cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; transition: background .12s;
+}
+.modal-close:hover { background: #f3f4f6; }
+.modal-body { padding: 18px 22px; }
+.modal-action-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #6b7280;
+  margin-bottom: 6px;
+}
+.modal-action-badge {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px;
+  border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 16px;
+}
+.modal-comment-label {
+  font-size: 12px; font-weight: 600; color: #374151; margin-bottom: 6px;
+  display: flex; align-items: center; gap: 4px;
+}
+.modal-comment-label .req { color: #dc2626; }
+.modal-textarea {
+  width: 100%; height: 100px; padding: 10px 12px;
+  border: 1.5px solid #d1d5db; border-radius: 8px;
+  font-family: 'Inter', sans-serif; font-size: 13px; color: #111827;
+  resize: vertical; outline: none; transition: border-color .15s, box-shadow .15s;
+  line-height: 1.5;
+}
+.modal-textarea:focus { border-color: #2A53A0; box-shadow: 0 0 0 3px rgba(42,83,160,.1); }
+.modal-textarea.error { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,.08); }
+.modal-error-msg { font-size: 11px; color: #dc2626; margin-top: 5px; display: none; }
+.modal-error-msg.visible { display: block; }
+.modal-footer {
+  padding: 14px 22px 18px; display: flex; align-items: center; justify-content: flex-end;
+  gap: 10px; border-top: 1px solid #f3f4f6;
+}
+
+/* ─── Filter chips bar ─── */
+.filters-bar {
+  background: #fff; border-bottom: 1px solid #e5e7eb;
+  padding: 10px 28px; display: flex; align-items: center; gap: 8px; flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.filter-chip {
+  display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px;
+  border: 1px solid #d1d5db; border-radius: 8px; background: #fff;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; color: #374151;
+  cursor: pointer; transition: all .12s; white-space: nowrap; position: relative;
+}
+.filter-chip:hover { border-color: #2A53A0; color: #2A53A0; background: #f8fbff; }
+.filter-chip.active { border-color: #2A53A0; background: #eff6ff; color: #2A53A0; font-weight: 600; }
+.filter-chip svg { flex-shrink: 0; }
+.filter-chip-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px; color: #9ca3af; margin-right: 2px; }
+.filter-chip.active .filter-chip-label { color: #93c5fd; }
+.filter-divider { width: 1px; height: 22px; background: #e5e7eb; flex-shrink: 0; }
+.filter-clear-btn {
+  display: flex; align-items: center; gap: 5px; height: 34px; padding: 0 10px;
+  border: none; background: transparent; font-family: 'Inter', sans-serif;
+  font-size: 12px; font-weight: 500; color: #9ca3af; cursor: pointer; transition: color .12s;
+}
+.filter-clear-btn:hover { color: #dc2626; }
+
+/* Filter dropdown panel */
+.filter-panel {
+  display: none; position: fixed; z-index: 9990;
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12); min-width: 220px; padding: 12px;
+}
+.filter-panel.open { display: block; }
+.filter-panel-title { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: #9ca3af; margin-bottom: 8px; }
+.filter-panel input, .filter-panel select {
+  width: 100%; height: 36px; padding: 0 10px;
+  border: 1px solid #d1d5db; border-radius: 7px;
+  font-family: 'Inter', sans-serif; font-size: 13px; color: #111827; outline: none;
+  margin-bottom: 8px;
+}
+.filter-panel input:focus, .filter-panel select:focus { border-color: #2A53A0; }
+.filter-panel-row { display: flex; gap: 8px; }
+.filter-panel-apply {
+  width: 100%; height: 34px; background: #2A53A0; color: #fff; border: none;
+  border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600;
+  cursor: pointer; transition: background .12s;
+}
+.filter-panel-apply:hover { background: #1e3a70; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 0 — LANDING PAGE (Match Results)
+     Source: New_Sanction_Screening_221225.mhtml (Figma Make)
+═══════════════════════════════════════════════════════════ -->
+<div id="screen-landing" class="screen active">
+
+  <!-- Top nav with tabs (Figma Make style) -->
+  <nav class="lp-topnav">
+    <div class="lp-left">
+      <div class="lp-title">Sanctions Screening</div>
+      <div class="lp-tabs">
+        <button class="lp-tab active">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          Match Results
+        </button>
+        <button class="lp-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg>
+          Watchlists
+        </button>
+        <button class="lp-tab">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg>
+          Screening
+        </button>
+      </div>
+    </div>
+    <div class="lp-right">
+      <button class="notif-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg>
+        <span class="notif-dot">3</span>
+      </button>
+      <button class="notif-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+      <div style="width:1px;height:22px;background:#e5e7eb;margin:0 4px;"></div>
+      <button class="user-pill">
+        <div class="avatar">MK</div>
+        <span class="user-name">Megha Khandelwal</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="lp-body">
+    <!-- Header bar -->
+    <div class="lp-header-bar">
+      <div class="lp-heading">
+        <h1>Match Results</h1>
+        <span class="count-badge">14 Total</span>
+      </div>
+      <div style="display:flex;gap:10px;">
+        <div class="date-dropdown" id="date-dd">
+          <button class="date-dropdown-btn" id="date-dd-btn" onclick="toggleDateDD(event)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+            <span id="date-dd-label">Last Year</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="date-dropdown-menu" id="date-dd-menu">
+            <button class="date-dropdown-item" onclick="selectDate('Today')">Today</button>
+            <button class="date-dropdown-item" onclick="selectDate('Yesterday')">Yesterday</button>
+            <button class="date-dropdown-item" onclick="selectDate('Last 7 Days')">Last 7 Days</button>
+            <button class="date-dropdown-item" onclick="selectDate('Last 30 Days')">Last 30 Days</button>
+            <div class="date-dropdown-divider"></div>
+            <button class="date-dropdown-item" onclick="selectDate('This Week')">This Week</button>
+            <button class="date-dropdown-item" onclick="selectDate('Last Week')">Last Week</button>
+            <button class="date-dropdown-item" onclick="selectDate('This Month')">This Month</button>
+            <button class="date-dropdown-item" onclick="selectDate('Last Month')">Last Month</button>
+            <div class="date-dropdown-divider"></div>
+            <button class="date-dropdown-item" onclick="selectDate('This Quarter')">This Quarter</button>
+            <button class="date-dropdown-item" onclick="selectDate('Last Quarter')">Last Quarter</button>
+            <button class="date-dropdown-item" onclick="selectDate('This Year')">This Year</button>
+            <button class="date-dropdown-item active" id="date-opt-last-year" onclick="selectDate('Last Year')">Last Year</button>
+            <div class="date-dropdown-divider"></div>
+            <button class="date-dropdown-item" onclick="selectDate('Custom Range')">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              Custom Range…
+            </button>
+          </div>
+        </div>
+        <button class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Report
+        </button>
+      </div>
+    </div>
+
+    <!-- Filters bar -->
+    <div class="filters-bar">
+      <!-- Date Range -->
+      <div class="filter-chip" id="fc-date" onclick="toggleFilterPanel(event,'fp-date','fc-date')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+        <span class="filter-chip-label">Date Range</span>
+        <span id="fc-date-val">All</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="filter-panel" id="fp-date">
+        <div class="filter-panel-title">Date Range</div>
+        <input type="date" id="fp-date-from" placeholder="From">
+        <input type="date" id="fp-date-to" placeholder="To">
+        <button class="filter-panel-apply" onclick="applyFilter('fc-date','fc-date-val','fp-date', function(){ var f=document.getElementById('fp-date-from').value; var t=document.getElementById('fp-date-to').value; return (f&&t) ? f+' – '+t : (f||t||'All'); })">Apply</button>
+      </div>
+
+      <!-- Branch -->
+      <div class="filter-chip" id="fc-branch" onclick="toggleFilterPanel(event,'fp-branch','fc-branch')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <span class="filter-chip-label">Branch</span>
+        <span id="fc-branch-val">All</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="filter-panel" id="fp-branch">
+        <div class="filter-panel-title">Branch</div>
+        <select id="fp-branch-sel">
+          <option value="">All Branches</option>
+          <option>Mumbai - Main</option>
+          <option>Delhi - Central</option>
+          <option>Chennai - South</option>
+          <option>Kolkata - East</option>
+          <option>Bengaluru - West</option>
+        </select>
+        <button class="filter-panel-apply" onclick="applyFilter('fc-branch','fc-branch-val','fp-branch', function(){ var v=document.getElementById('fp-branch-sel').value; return v||'All'; })">Apply</button>
+      </div>
+
+      <!-- Customer ID -->
+      <div class="filter-chip" id="fc-custid" onclick="toggleFilterPanel(event,'fp-custid','fc-custid')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        <span class="filter-chip-label">Customer ID</span>
+        <span id="fc-custid-val">All</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="filter-panel" id="fp-custid">
+        <div class="filter-panel-title">Customer ID</div>
+        <input type="text" id="fp-custid-inp" placeholder="e.g. CUST-2025-08355">
+        <button class="filter-panel-apply" onclick="applyFilter('fc-custid','fc-custid-val','fp-custid', function(){ var v=document.getElementById('fp-custid-inp').value.trim(); return v||'All'; })">Apply</button>
+      </div>
+
+      <!-- Account Number -->
+      <div class="filter-chip" id="fc-acct" onclick="toggleFilterPanel(event,'fp-acct','fc-acct')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg>
+        <span class="filter-chip-label">Account No.</span>
+        <span id="fc-acct-val">All</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="filter-panel" id="fp-acct">
+        <div class="filter-panel-title">Account Number</div>
+        <input type="text" id="fp-acct-inp" placeholder="e.g. ACC-0012345678">
+        <button class="filter-panel-apply" onclick="applyFilter('fc-acct','fc-acct-val','fp-acct', function(){ var v=document.getElementById('fp-acct-inp').value.trim(); return v||'All'; })">Apply</button>
+      </div>
+
+      <!-- Screening Type -->
+      <div class="filter-chip" id="fc-scrtype" onclick="toggleFilterPanel(event,'fp-scrtype','fc-scrtype')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg>
+        <span class="filter-chip-label">Screening Type</span>
+        <span id="fc-scrtype-val">All</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="filter-panel" id="fp-scrtype">
+        <div class="filter-panel-title">Screening Type</div>
+        <select id="fp-scrtype-sel">
+          <option value="">All Types</option>
+          <option>Single</option>
+          <option>Bulk</option>
+          <option>Batch</option>
+          <option>Real-time</option>
+        </select>
+        <button class="filter-panel-apply" onclick="applyFilter('fc-scrtype','fc-scrtype-val','fp-scrtype', function(){ var v=document.getElementById('fp-scrtype-sel').value; return v||'All'; })">Apply</button>
+      </div>
+
+      <!-- List Name -->
+      <div class="filter-chip" id="fc-listname" onclick="toggleFilterPanel(event,'fp-listname','fc-listname')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg>
+        <span class="filter-chip-label">List Name</span>
+        <span id="fc-listname-val">All</span>
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+      <div class="filter-panel" id="fp-listname">
+        <div class="filter-panel-title">List Name</div>
+        <select id="fp-listname-sel">
+          <option value="">All Lists</option>
+          <option>OFAC SDN List</option>
+          <option>UN Security Council Consolidated List (UNSCR 1267)</option>
+          <option>UAE Local Lists (Terrorist & Sanction)</option>
+          <option>EU Sanctions List</option>
+          <option>UK HM Treasury List</option>
+          <option>DFAT Australia Sanctions</option>
+          <option>World Bank Debarment List</option>
+          <option>INTERPOL Red Notice</option>
+        </select>
+        <button class="filter-panel-apply" onclick="applyFilter('fc-listname','fc-listname-val','fp-listname', function(){ var v=document.getElementById('fp-listname-sel').value; return v||'All'; })">Apply</button>
+      </div>
+
+      <div class="filter-divider"></div>
+      <button class="filter-clear-btn" onclick="clearAllFilters()">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        Clear Filters
+      </button>
+    </div>
+
+    <!-- Filter row -->
+    <div class="lp-filter-row">
+      <div class="filter-left">
+        <span class="filter-meta"><strong>Showing 1-10 of 14</strong></span>
+        <span style="color:#d1d5db">·</span>
+        <span class="filter-meta">Sorted by: Date (Newest First)</span>
+      </div>
+      <div class="search-box">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search by name, customer ID, list name...">
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="lp-table-wrap">
+      <div class="table-card">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Cust ID</th>
+              <th>Number of Matched List</th>
+              <th>Highest Match Score</th>
+              <th>List Name With Highest Match Score</th>
+              <th>Match Category</th>
+              <th>Match Type</th>
+              <th>Match Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="landing-tbody"></tbody>
+        </table>
+        <div class="table-footer-bar">
+          <span>Showing 1-10 of 14 results</span>
+          <div class="pagination">
+            <button class="pg-btn">←</button>
+            <button class="pg-btn active">1</button>
+            <button class="pg-btn">2</button>
+            <button class="pg-btn">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-footer">
+    <div>Your license will expire on June 12, 2026</div>
+    <div class="center">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg>
+      Clari5 - A Perfios Software Company
+    </div>
+    <div class="right">Important Links</div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 1 — SCREENING RESULTS (Page-1)
+     Source: page-1.mhtml
+     Shown when user clicks "View" on landing page
+═══════════════════════════════════════════════════════════ -->
+<div id="screen-p1" class="screen">
+  <!-- App-level top nav -->
+  <nav style="height:54px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 16px;flex-shrink:0;">
+    <div class="sb-logo-area" style="justify-content:flex-start;gap:12px;">
+      <span style="font-size:16px;font-weight:800;color:#2A53A0;letter-spacing:-.5px;">Clari5</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="notif-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><span class="notif-dot">3</span></button>
+      <div style="width:1px;height:22px;background:#e5e7eb;margin:0 4px;"></div>
+      <button class="user-pill"><div class="avatar">C</div><span class="user-name">charu.c</span></button>
+    </div>
+  </nav>
+
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sb-logo-bar">
+        <div class="sb-logo-area"><span class="sb-logo-text">Clari5</span></div>
+        <div class="sb-logo-divider"></div>
+        <div class="sb-logo-area" style="padding-left:8px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#dbeafe"/><path d="M7 12l3 3 7-7" stroke="#2A53A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="sb-search">
+        <div class="sb-search-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+          <input type="text" placeholder="Search menus...">
+        </div>
+      </div>
+      <nav class="sb-nav" id="sb-p1"></nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-area">
+      <!-- Page topbar -->
+      <div class="inner-topnav">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <button class="back-btn" onclick="goTo('screen-landing')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+          </button>
+          <div>
+            <h1 style="font-size:17px;font-weight:700;color:#111827;">Screening Results</h1>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn-outline">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export Report
+          </button>
+          <button class="btn-primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            New Screening
+          </button>
+        </div>
+      </div>
+
+      <div class="scroll-pane">
+        <!-- Subject card -->
+        <div class="subject-card">
+          <div class="subject-field">
+            <label>Primary Name</label>
+            <div class="val big">william</div>
+          </div>
+          <div class="field-divider"></div>
+          <div class="subject-field">
+            <label>ID Number</label>
+            <div class="val muted">—</div>
+          </div>
+          <div class="field-divider"></div>
+          <div class="subject-field">
+            <label>Date of Birth</label>
+            <div class="val muted">—</div>
+          </div>
+          <div class="field-divider"></div>
+          <div class="subject-field">
+            <label>Nationality</label>
+            <div class="val muted">—</div>
+          </div>
+          <div class="field-divider"></div>
+          <div class="subject-field">
+            <label>Entity Type</label>
+            <div class="val">individual</div>
+          </div>
+          <div class="field-divider"></div>
+          <div class="subject-field">
+            <label>Watchlist Profile</label>
+            <span class="badge badge-blue2">High-Risk Jurisdiction Screening</span>
+          </div>
+          <div class="field-divider"></div>
+          <div class="subject-field">
+            <label>Purpose</label>
+            <div class="val">Customer Onboarding</div>
+          </div>
+        </div>
+
+        <!-- AI banner -->
+        <div class="ai-banner">
+          <div class="ai-banner-top-bar"></div>
+          <div class="ai-banner-body">
+            <div class="ai-icon-box">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2M20 14h2M15 13v2M9 13v2"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div class="ai-label-row">
+                <span class="ai-module-label">AI Screening Summary</span>
+                <span class="ai-tag">GENAI • GPT-4O</span>
+              </div>
+              <p class="ai-text">
+                Screening for <span class="hl-blue">WILLIAM</span> returned <span class="hl-red">1 potential watchlist match</span> across active lists.
+                <span class="hl-red-b">1 record is Critical</span> (≥90% score) — linked to the
+                <span style="font-weight:700;background:#fef2f2;padding:0 4px;border-radius:3px;">Singapore High-Risk Screening</span>,
+                which may carry mandatory EDD obligations.
+              </p>
+              <p class="ai-text" style="margin-top:6px;">
+                No ID number was provided — name-based matching only.
+                <span class="hl-green">Click any row to view the full AI analysis and watchlist hit details.</span>
+              </p>
+              <div class="ai-badges">
+                <span class="badge badge-red" style="gap:5px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+                  1 Critical match
+                </span>
+                <span class="badge badge-amber" style="gap:5px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                  Missing ID – disambiguation needed
+                </span>
+                <span class="badge badge-blue" style="gap:5px;">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h.01M3 18h.01M3 6h.01M8 12h13M8 18h13M8 6h13"/></svg>
+                  1 List hit across 1 result
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stats strip -->
+        <div class="stats-strip">
+          <div class="stat-chip">
+            <div><div class="stat-number big red">1</div><div class="stat-label">Critical</div></div>
+          </div>
+          <div class="stat-chip">
+            <div><div class="stat-number big gray">0</div><div class="stat-label">High</div></div>
+          </div>
+          <div class="stat-chip">
+            <div><div class="stat-number big gray">0</div><div class="stat-label">Medium</div></div>
+          </div>
+          <div class="stat-chip">
+            <div><div class="stat-number big gray" style="font-size:16px;margin-top:2px;">1 of 1</div><div class="stat-label">Results shown</div></div>
+          </div>
+        </div>
+
+        <!-- Results table -->
+        <div class="section-header">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="2"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+            <span class="section-title">1 Potential Matches Found</span>
+          </div>
+          <button class="btn-outline" style="height:34px;font-size:12px;padding:0 12px;">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 20a1 1 0 0 0 .553.895l2 1A1 1 0 0 0 14 21v-7a2 2 0 0 1 .517-1.341L21.74 4.67A1 1 0 0 0 21 3H3a1 1 0 0 0-.742 1.67l7.225 7.989A2 2 0 0 1 10 14z"/></svg>
+            Filter Results
+          </button>
+        </div>
+        <div class="table-card">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th><th>Cust ID</th><th>Number Of Matched List</th>
+                <th>Highest Match Score</th><th>List Name With Highest Match Score</th>
+                <th>Match Category</th><th>Match Type</th><th>Match Date</th><th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight:700;color:#111827;">WILLIAM</td>
+                <td style="font-family:monospace;font-size:12px;">CUST-90263</td>
+                <td>
+                  <!-- Clicking this number goes to the Review page -->
+                  <div class="matched-list-link" onclick="goTo('screen-review','ai')" title="Click to view match details">
+                    <span class="matched-list-num">3</span>
+                    <span class="matched-list-label">lists</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="matched-list-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    <span class="matched-list-tooltip">Click to view match details</span>
+                  </div>
+                </td>
+                <td>
+                  <div class="score-wrap">
+                    <span class="score-val val-red">92%</span>
+                    <div class="score-bar-track"><div class="score-bar-fill bar-red" style="width:92%"></div></div>
+                  </div>
+                </td>
+                <td style="color:#2A53A0;font-size:12px;">Singapore High-Risk Screening</td>
+                <td><span class="badge badge-red">Sanctions</span></td>
+                <td>Individual</td>
+                <td style="font-size:12px;color:#6b7280;">08-05-2026</td>
+                <td>
+                  <div class="action-dropdown">
+                    <button class="action-dropdown-btn" id="p1drop-0-btn" onclick="toggleActionDD(event,'p1drop-0')" style="min-width:130px;">
+                      <span id="p1drop-0-label">Actions</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+                    </button>
+                    <div class="action-dropdown-menu" id="p1drop-0">
+                      <button class="action-dropdown-item item-view" onclick="closeAllDropdowns();openCommentModal('View Details', function(){ goTo('screen-review','ai'); }, 'view')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+                        View Details
+                      </button>
+                      <div style="height:1px;background:#f3f4f6;margin:4px 0;"></div>
+                      <button class="action-dropdown-item" onclick="closeAllDropdowns();openCommentModal('Under Review', function(){ setActionStatus('p1drop-0','Under Review'); })">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        Under Review
+                      </button>
+                      <button class="action-dropdown-item" onclick="closeAllDropdowns();openCommentModal('Move to Case', function(){ setActionStatus('p1drop-0','Move to Case'); })">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        Move to Case
+                      </button>
+                      <button class="action-dropdown-item" onclick="closeAllDropdowns();openCommentModal('Move to Whitelist', function(){ setActionStatus('p1drop-0','Move to Whitelist'); })">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        Move to Whitelist
+                      </button>
+                      <div style="height:1px;background:#f3f4f6;margin:4px 0;"></div>
+                      <button class="action-dropdown-item item-exception" onclick="closeAllDropdowns();openCommentModal('Move to Exception List', function(){ setActionStatus('p1drop-0','Move to Exception List'); }, 'exception')">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        Move to Exception List
+                      </button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="table-footer-bar">
+            <span>Showing 1 of 1 results</span>
+            <span>Search Time: 0.42 seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-footer">
+        <div>Your license will expire on June 12, 2026</div>
+        <div class="center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> Clari5 - A Perfios Software Company</div>
+        <div class="right">Important Links</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     SCREEN 2 — MATCH REVIEW (Pages 2 + 3 + 4 as tabs)
+     Source: page-2.mhtml (AI Summary), page-3.mhtml (Match Details), page-4.mhtml (View Summary)
+     Shown when user clicks "Number Of Matched List" on Screen 1
+═══════════════════════════════════════════════════════════ -->
+<div id="screen-review" class="screen">
+  <!-- App-level top nav -->
+  <nav style="height:54px;background:#fff;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;justify-content:space-between;padding:0 16px;flex-shrink:0;">
+    <div class="sb-logo-area" style="justify-content:flex-start;gap:12px;">
+      <span style="font-size:16px;font-weight:800;color:#2A53A0;letter-spacing:-.5px;">Clari5</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="notif-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.268 21a2 2 0 0 0 3.464 0"/><path d="M3.262 15.326A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.673C19.41 13.956 18 12.499 18 8A6 6 0 0 0 6 8c0 4.499-1.411 5.956-2.738 7.326"/></svg><span class="notif-dot">3</span></button>
+      <div style="width:1px;height:22px;background:#e5e7eb;margin:0 4px;"></div>
+      <button class="user-pill"><div class="avatar">C</div><span class="user-name">charu.c</span></button>
+    </div>
+  </nav>
+
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sb-logo-bar">
+        <div class="sb-logo-area"><span class="sb-logo-text">Clari5</span></div>
+        <div class="sb-logo-divider"></div>
+        <div class="sb-logo-area" style="padding-left:8px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="5" fill="#dbeafe"/><path d="M7 12l3 3 7-7" stroke="#2A53A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+      <div class="sb-search">
+        <div class="sb-search-wrap">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+          <input type="text" placeholder="Search menus...">
+        </div>
+      </div>
+      <nav class="sb-nav" id="sb-review"></nav>
+    </aside>
+
+    <!-- Main -->
+    <div class="main-area">
+      <!-- Review header with title + action buttons + tabs -->
+      <div class="review-header">
+        <div class="review-header-row1">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <button class="back-btn" onclick="goTo('screen-p1')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            </button>
+            <div class="review-title-wrap">
+              <div class="review-title">Match Review</div>
+              <div class="review-ref">Ref ID: <span>SCR-001-1778218453580</span></div>
+            </div>
+          </div>
+          <div class="review-actions">
+            <button class="btn-outline">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Report
+            </button>
+            <div style="width:1px;height:24px;background:#d1d5db;"></div>
+            <button class="btn-outline green-icon" onclick="openCommentModal('False Positive', function(){ alert('Marked as False Positive'); }, 'positive')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+              False Positive
+            </button>
+            <button class="btn-primary" onclick="openCommentModal('Confirm Match', function(){ alert('Match Confirmed'); }, 'confirm')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+              Confirm Match
+            </button>
+          </div>
+        </div>
+        <!-- Tabs -->
+        <div class="review-tab-bar">
+          <button class="rtab active" id="tab-btn-ai" onclick="switchTab('ai')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4M22 5h-4M4 17v2M5 18H3"/></svg>
+            AI Summary
+          </button>
+          <button class="rtab" id="tab-btn-match" onclick="switchTab('match')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M7 12h10M10 18h4"/></svg>
+            Match Details
+          </button>
+          <button class="rtab" id="tab-btn-summary" onclick="switchTab('summary')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            View Summary
+          </button>
+        </div>
+      </div>
+
+      <div class="scroll-pane">
+
+        <!-- ─── TAB: AI SUMMARY (page-2) ─── -->
+        <div id="tab-ai" class="tab-pane active">
+          <div class="alert-banner">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <div>
+              <h3>High-Confidence Sanctions Match — Immediate Action Required</h3>
+              <p><strong>WILLIAM (CUST-90263)</strong> has returned 3 watchlist hits — 1 on the Singapore High-Risk Screening List (Critical, 92%) and 1 on the MAS Watchlist – Persons of Interest (High, 88%). MAS regulatory obligations apply. <strong>Do not transact until resolved.</strong></p>
+            </div>
+          </div>
+
+          <div class="narrative-card">
+            <div class="narrative-header">
+              <div class="ai-icon-box" style="width:34px;height:34px;flex-shrink:0;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+              </div>
+              <h3>AI Investigation Narrative</h3>
+              <span style="font-size:11px;color:#9ca3af;">GenAI GPT-4o</span>
+              <span class="conf-badge">Confidence: High</span>
+            </div>
+            <p class="narrative-text">The customer <strong>WILLIAM (CUST-90263, Singaporean national)</strong> has produced an overall risk score of <strong>92/100 (Critical)</strong> across 3 watchlist hits. The highest-scoring hit originates from the <strong>Singapore MAS High-Risk Screening List (SGP_HRS_001)</strong> — a MAS-designated list of individuals subject to enhanced due diligence under the MAS Notice on Prevention of Money Laundering and Countering the Financing of Terrorism. Any financial activity involving a designated individual on this list requires mandatory EDD under Singapore AML/CFT law.</p>
+            <p class="narrative-text">The top watchlist match is <strong>WILLIAM JAMES HARRINGTON (92%)</strong> on the Singapore MAS High-Risk Screening List, and <strong>WILLIAM J. HARRINGTON (88%)</strong> on the MAS Watchlist – Persons of Interest. A third hit on the <strong>OFAC SDN List (75%)</strong> carries international asset-freeze obligations. Across all hits, Singaporean nationality scored <strong>100%</strong>, and name similarity ranged from 75%–92%.</p>
+            <p class="narrative-text">The provided passport number (7234580J) did not match the watchlist record (K2947631B), meaning the match cannot be ruled out through passport comparison alone. The combination of high name similarity, matching nationality, and dual MAS-list exposure makes this a <strong>non-dismissible match</strong>.</p>
+            <p class="narrative-text"><strong>Recommended action:</strong> escalate to a sanctions case immediately and initiate EDD to collect full identity documentation (NRIC/Passport) to attempt disambiguation.</p>
+
+            <div class="signal-grid">
+              <div class="signal-card">
+                <h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/></svg> MAS High-Risk Designation (Singapore)</h4>
+                <p>Critical hit on Singapore MAS High-Risk Screening List (SGP_HRS_001, 92%). Enhanced due diligence is mandatory under MAS AML/CFT Notice.</p>
+              </div>
+              <div class="signal-card">
+                <h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/></svg> OFAC SDN Exposure</h4>
+                <p>Third-party exposure via OFAC SDN List (75%). International asset-freeze obligations may apply if match is confirmed.</p>
+              </div>
+              <div class="signal-card">
+                <h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> SG Nationality Match: 100% Across All Hits</h4>
+                <p>Singaporean nationality is the top-scoring attribute across all 3 hits. Passport mismatch (0%) does not exclude the match alone.</p>
+              </div>
+              <div class="signal-card">
+                <h4><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#a16207" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Passport Mismatch — Cannot Exclude Match</h4>
+                <p>Passport 7234580J ≠ K2947631B on watchlist. Disambiguation via NRIC or official passport is required before ruling out.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ─── TAB: MATCH DETAILS (page-3) ─── -->
+        <div id="tab-match" class="tab-pane">
+          <div class="status-grid">
+            <div class="status-card">
+              <label>Overall Risk Score</label>
+              <div class="big-score">92 <span>/ 100</span></div>
+            </div>
+            <div class="status-card">
+              <label>Status Details</label>
+              <div class="kv-row"><span class="k">Status</span><span class="badge badge-amber">Potential Match</span></div>
+              <div class="kv-row"><span class="k">Total Matches</span><span class="v">3</span></div>
+              <div class="kv-row"><span class="k">Highest Match</span><span class="v" style="font-size:12px;color:#2A53A0;">Singapore High-Risk Screening List</span></div>
+            </div>
+            <div class="status-card">
+              <label>Match Details (Screened Subject)</label>
+              <div class="kv-row"><span class="k">Full Name</span><span class="v">william</span></div>
+              <div class="kv-row"><span class="k">Date of Birth</span><span class="v" style="color:#9ca3af;">—</span></div>
+              <div class="kv-row"><span class="k">Nationality</span><span class="v" style="color:#9ca3af;">—</span></div>
+              <div class="kv-row"><span class="k">Place of Birth</span><span class="v" style="color:#9ca3af;">—</span></div>
+            </div>
+          </div>
+
+          <p style="font-size:13px;font-weight:700;color:#374151;margin-bottom:12px;">Watchlist Hits (3)</p>
+
+          <!-- Hit 1: 92% Critical -->
+          <div class="hit-card">
+            <div class="hit-header">
+              <div class="hit-score-col">
+                <div class="hit-score-num red">92%</div>
+                <div style="margin-top:3px;"><span class="badge badge-red" style="font-size:10px;padding:2px 8px;">Critical</span></div>
+              </div>
+              <div class="hit-info">
+                <div class="hit-list-name">Singapore High-Risk Screening List</div>
+                <div class="hit-meta">Sanctions · Monetary Authority of Singapore (MAS)<br>Singapore MAS-designated high-risk individuals subject to enhanced due diligence under the MAS Notice on Prevention of Money Laundering and Countering the Financing of Terrorism.</div>
+              </div>
+              <div class="hit-actions">
+                <button class="btn-vfp" onclick="openCommentModal('View Full Profile', function(){}, 'view')">View Full Profile</button>
+                <button class="btn-esc" onclick="openCommentModal('Escalate Case', function(){}, 'confirm')">Escalate Case</button>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>william</td><td>WILLIAM JAMES HARRINGTON</td><td class="sc-green">92%</td></tr>
+                <tr><td>Date of Birth</td><td class="sc-gray">—</td><td>1971-09-04</td><td class="sc-yellow">78%</td></tr>
+                <tr><td>Nationality</td><td class="sc-gray">—</td><td>Singapore</td><td class="sc-green">100%</td></tr>
+                <tr><td>Place of Birth</td><td class="sc-gray">—</td><td>Singapore</td><td class="sc-green">100%</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Hit 2: 88% High -->
+          <div class="hit-card">
+            <div class="hit-header">
+              <div class="hit-score-col">
+                <div class="hit-score-num orange">88%</div>
+                <div style="margin-top:3px;"><span class="badge badge-orange" style="font-size:10px;padding:2px 8px;">High</span></div>
+              </div>
+              <div class="hit-info">
+                <div class="hit-list-name">MAS Watchlist – Persons of Interest</div>
+                <div class="hit-meta">Sanctions · Monetary Authority of Singapore (MAS)<br>Watchlist of persons flagged under MAS regulatory notices for suspicious financial activity originating from Singapore.</div>
+              </div>
+              <div class="hit-actions">
+                <button class="btn-vfp" onclick="openCommentModal('View Full Profile', function(){}, 'view')">View Full Profile</button>
+                <button class="btn-esc" onclick="openCommentModal('Escalate Case', function(){}, 'confirm')">Escalate Case</button>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>william</td><td>WILLIAM JAMES HARRINGTON</td><td class="sc-blue">88%</td></tr>
+                <tr><td>Passport Number</td><td class="sc-gray">—</td><td>K2947631B</td><td class="sc-red">0%</td></tr>
+                <tr><td>Nationality</td><td class="sc-gray">—</td><td>Singapore</td><td class="sc-green">100%</td></tr>
+                <tr><td>Gender</td><td class="sc-gray">—</td><td>Male</td><td class="sc-green">100%</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Hit 3: 75% High -->
+          <div class="hit-card">
+            <div class="hit-header">
+              <div class="hit-score-col">
+                <div class="hit-score-num yellow">75%</div>
+                <div style="margin-top:3px;"><span class="badge badge-orange" style="font-size:10px;padding:2px 8px;">High</span></div>
+              </div>
+              <div class="hit-info">
+                <div class="hit-list-name">OFAC SDN List</div>
+                <div class="hit-meta">Sanctions · US Treasury / OFAC<br>Specially Designated Nationals and Blocked Persons list maintained by the US Department of Treasury Office of Foreign Assets Control.</div>
+              </div>
+              <div class="hit-actions">
+                <button class="btn-vfp" onclick="openCommentModal('View Full Profile', function(){}, 'view')">View Full Profile</button>
+                <button class="btn-esc" onclick="openCommentModal('Escalate Case', function(){}, 'confirm')">Escalate Case</button>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>Attribute</th><th>Screened Subject</th><th>Watchlist Value</th><th>Score</th></tr></thead>
+              <tbody>
+                <tr><td>Full Name</td><td>william</td><td>HARRINGTON, WILLIAM JAMES</td><td class="sc-yellow">75%</td></tr>
+                <tr><td>Nationality</td><td class="sc-gray">—</td><td>Singapore</td><td class="sc-green">100%</td></tr>
+                <tr><td>Date of Birth</td><td class="sc-gray">—</td><td>1971-09-04</td><td class="sc-yellow">60%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ─── TAB: VIEW SUMMARY (page-4) ─── -->
+        <div id="tab-summary" class="tab-pane">
+          <div class="summary-grid">
+            <div class="sum-card">
+              <h3>Customer Information</h3>
+              <div class="sum-kv"><span class="k">Customer ID</span><span class="v" style="font-family:monospace;font-size:12px;">CUST-90263</span></div>
+              <div class="sum-kv"><span class="k">Customer Type</span><span class="v">Individual</span></div>
+              <div class="sum-kv"><span class="k">Overall CRC Score</span><span class="v big-red">92</span></div>
+              <div class="sum-kv"><span class="k">CRC Category</span><span class="badge badge-red">Critical</span></div>
+            </div>
+            <div class="sum-card">
+              <h3>Match Statistics</h3>
+              <div class="sum-kv"><span class="k">Total List Matches</span><span class="v">3</span></div>
+              <div class="sum-kv"><span class="k">Highest Match Score</span><span class="v red">92.00%</span></div>
+              <div class="sum-kv"><span class="k">Used for Calculation</span><span class="v" style="font-size:12px;">Highest match score</span></div>
+              <div class="sum-kv"><span class="k">Sanctions Risk</span><span class="v red">High</span></div>
+              <div class="sum-kv"><span class="k">Cut-off Threshold</span><span class="v">80%</span></div>
+              <div class="risk-legend">
+                <strong>Risk Ranges:</strong><br>
+                Low: 50 – 70% &nbsp;·&nbsp; Medium: 70.1 – 90% &nbsp;·&nbsp; High: &gt;90.1%
+              </div>
+            </div>
+          </div>
+
+          <div class="detail-table-card">
+            <div class="card-header">Detailed Attribute Comparison — Customer details vs. watchlist records</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Score</th><th>WL</th><th>Key Attribute</th><th>Weight %</th>
+                  <th>Customer Value</th><th colspan="2">Watchlist Records</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- WL 1 block -->
+                <tr class="wl-section-row">
+                  <td rowspan="6" style="font-size:16px;font-weight:800;color:#2A53A0;text-align:center;vertical-align:middle;">92.0%</td>
+                  <td rowspan="6" style="font-size:11px;color:#6b7280;vertical-align:middle;line-height:1.5;max-width:110px;"><strong>UN Security Council<br>Consolidated List<br>(UNSCR 1267)</strong><br><span style="color:#dc2626;font-weight:700;">92.00%</span></td>
+                  <td>Name</td><td>40%</td><td>WILLIAM</td><td>WILLIAM JAMES HARRINGTON</td><td class="sc-green">98%</td>
+                </tr>
+                <tr class="wl-section-row"><td>Passport No.</td><td>7%</td><td class="sc-gray">—</td><td>K2947681B</td><td class="sc-blue">89%</td></tr>
+                <tr class="wl-section-row"><td>Date of Birth</td><td>25%</td><td class="sc-gray">—</td><td>1971-09-04</td><td class="sc-yellow">78%</td></tr>
+                <tr class="wl-section-row"><td>Nationality</td><td>12%</td><td class="sc-gray">—</td><td>SGP</td><td class="sc-red">0%</td></tr>
+                <tr class="wl-section-row"><td>Place of Birth</td><td>11%</td><td class="sc-gray">—</td><td>Singapore</td><td class="sc-green">100%</td></tr>
+                <tr class="wl-section-row"><td>Gender</td><td>5%</td><td class="sc-gray">—</td><td>Male</td><td class="sc-red">0%</td></tr>
+                <!-- WL 2 block -->
+                <tr class="wl-section-row2">
+                  <td rowspan="6" style="font-size:16px;font-weight:800;color:#c2410c;text-align:center;vertical-align:middle;">75.0%</td>
+                  <td rowspan="6" style="font-size:11px;color:#6b7280;vertical-align:middle;line-height:1.5;max-width:110px;"><strong>OFAC SDN</strong><br><span style="color:#c2410c;font-weight:700;">75.00%</span></td>
+                  <td>Name</td><td>40%</td><td>WILLIAM</td><td>WM. JAMES HARRINGTON</td><td class="sc-blue">88%</td>
+                </tr>
+                <tr class="wl-section-row2"><td>Passport No.</td><td>7%</td><td class="sc-gray">—</td><td>K2947600B</td><td class="sc-blue">85%</td></tr>
+                <tr class="wl-section-row2"><td>Date of Birth</td><td>25%</td><td class="sc-gray">—</td><td>1971-09-04</td><td class="sc-yellow">78%</td></tr>
+                <tr class="wl-section-row2"><td>Nationality</td><td>12%</td><td class="sc-gray">—</td><td>Singapore</td><td class="sc-red">0%</td></tr>
+                <tr class="wl-section-row2"><td>Place of Birth</td><td>11%</td><td class="sc-gray">—</td><td>Singapore</td><td class="sc-green">100%</td></tr>
+                <tr class="wl-section-row2"><td>Gender</td><td>5%</td><td class="sc-gray">—</td><td>Male</td><td class="sc-red">0%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div><!-- /scroll-pane -->
+
+      <div class="app-footer">
+        <div>Your license will expire on June 12, 2026</div>
+        <div class="center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M14.83 14.83a4 4 0 1 1 0-5.66"/></svg> Clari5 - A Perfios Software Company</div>
+        <div class="right">Important Links</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     COMMENT MODAL (shared global)
+═══════════════════════════════════ -->
+<div class="modal-overlay" id="comment-modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-title">
+        <div class="modal-title-icon" id="modal-icon-wrap" style="background:#eff6ff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2A53A0" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <span id="modal-title-text">Add Comment</span>
+      </div>
+      <button class="modal-close" onclick="closeCommentModal()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-action-label">Action Being Taken</div>
+      <div class="modal-action-badge" id="modal-action-badge" style="background:#eff6ff;color:#2A53A0;border:1px solid #bfdbfe;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span id="modal-action-name">—</span>
+      </div>
+      <div class="modal-comment-label">
+        Comment <span class="req">*</span> <span style="font-size:11px;color:#9ca3af;font-weight:400;">(required)</span>
+      </div>
+      <textarea class="modal-textarea" id="modal-comment" placeholder="Enter your comment or reason for this action…" oninput="clearModalError()"></textarea>
+      <div class="modal-error-msg" id="modal-error">Please enter a comment before proceeding.</div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-outline" onclick="closeCommentModal()" style="height:36px;font-size:13px;padding:0 16px;">Cancel</button>
+      <button class="btn-primary" id="modal-confirm-btn" onclick="confirmModalAction()" style="height:36px;font-size:13px;padding:0 16px;">Confirm Action</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+//  DATA — Landing page rows (from MHTML)
+// ─────────────────────────────────────────────
+const ROWS = [
+  { name:'William James Harrington', id:'CUST-2025-08355', matched:2, score:95, list:'UN Security Council Consolidated List (UNSCR 1267)', cat:'Sanctions', catStyle:'badge-red', type:'Single', date:'31/12/2025', status:'Under Review', statusStyle:'badge-amber', nav:true },
+  { name:'KHALIFA MOHD T AL SUBAEY', id:'685868', matched:1, score:100, list:'UAE Local Lists (Terrorist & Sanction)', cat:'Sanctions', catStyle:'badge-red', type:'Single', date:'31/12/2025', status:'Under Review', statusStyle:'badge-amber' },
+  { name:'Dawood Ibrahim Kaskar', id:'CUST-2025-08341', matched:3, score:96.5, list:'OFAC SDN List', cat:'Sanctions', catStyle:'badge-red', type:'Single', date:'23/12/2025', status:'Under Review', statusStyle:'badge-amber' },
+  { name:'Ali Hassan Mwinyimvua', id:'CUST-2025-08340', matched:2, score:92.8, list:'UN Consolidated List', cat:'PEP', catStyle:'badge-gray', type:'Bulk', date:'18/12/2025', status:'Under Review', statusStyle:'badge-amber' },
+  { name:'Global Trading Solutions LLC', id:'CUST-2025-08339', matched:1, score:88.3, list:'EU Sanctions List', cat:'Sanctions', catStyle:'badge-red', type:'Single', date:'15/12/2025', status:'Move to case', statusStyle:'badge-orange' },
+  { name:'Vladimir Nikolaev Petrov', id:'CUST-2025-08338', matched:4, score:94.7, list:'OFAC SDN List', cat:'Sanctions', catStyle:'badge-red', type:'Single', date:'10/12/2025', status:'Move to case', statusStyle:'badge-orange' },
+  { name:'Maria Gonzalez Rodriguez', id:'CUST-2025-08337', matched:1, score:78.2, list:'World Bank Debarment List', cat:'Adverse Media', catStyle:'badge-purple', type:'Bulk', date:'05/12/2025', status:'False hits', statusStyle:'badge-gray' },
+  { name:'Ahmed bin Mohammed Al-Rashid', id:'CUST-2025-08336', matched:2, score:85.6, list:'UK HM Treasury List', cat:'PEP', catStyle:'badge-gray', type:'Single', date:'28/11/2025', status:'Under Review', statusStyle:'badge-amber' },
+  { name:'Chen Wei Technology Corp', id:'CUST-2025-08335', matched:1, score:81.4, list:'DFAT Australia Sanctions', cat:'Sanctions', catStyle:'badge-red', type:'Bulk', date:'22/11/2025', status:'Move to Whitelist', statusStyle:'badge-green' },
+  { name:'Ricardo Perez Martinez', id:'CUST-2025-08334', matched:3, score:90.1, list:'INTERPOL Red Notice', cat:'Law Enforcement', catStyle:'badge-slate', type:'Single', date:'17/11/2025', status:'Move to case', statusStyle:'badge-orange' },
+];
+
+function scoreColor(s) {
+  if (s >= 90) return 'val-red';
+  if (s >= 75) return 'val-orange';
+  return 'val-yellow';
+}
+function barColor(s) {
+  if (s >= 90) return 'bar-red';
+  if (s >= 75) return 'bar-orange';
+  return 'bar-yellow';
+}
+
+function buildLandingTable() {
+  const tbody = document.getElementById('landing-tbody');
+  tbody.innerHTML = ROWS.map((r, idx) => {
+    const scoreStr = r.score + '%';
+    const navAttr = r.nav ? `onclick="goTo('screen-p1')"` : '';
+    const dropId = `adrop-${idx}`;
+    return `<tr>
+      <td><span class="customer-name-link" ${navAttr}>${r.name}</span></td>
+      <td style="font-family:monospace;font-size:12px;">${r.id}</td>
+      <td><span class="num-link" ${r.nav ? `onclick="goTo('screen-p1')"` : ''}>${r.matched}</span></td>
+      <td>
+        <div class="score-wrap">
+          <span class="score-val ${scoreColor(r.score)}">${scoreStr}</span>
+          <div class="score-bar-track"><div class="score-bar-fill ${barColor(r.score)}" style="width:${Math.min(r.score,100)}%"></div></div>
+        </div>
+      </td>
+      <td style="font-size:12px;color:#2A53A0;">${r.list}</td>
+      <td><span class="badge ${r.catStyle}">${r.cat}</span></td>
+      <td><span class="badge badge-slate">${r.type}</span></td>
+      <td style="font-size:12px;color:#6b7280;">${r.date}</td>
+      <td>
+        <div class="action-dropdown">
+          <button class="action-dropdown-btn" id="${dropId}-btn" onclick="toggleActionDD(event,'${dropId}')">
+            <span id="${dropId}-label">${r.status}</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="action-dropdown-menu" id="${dropId}">
+            <button class="action-dropdown-item item-view" onclick="closeAllDropdowns();${r.nav ? "openCommentModal('View', function(){ goTo('screen-p1'); }, 'view')" : "openCommentModal('View', function(){}, 'view')"}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+              View
+            </button>
+            <div style="height:1px;background:#f3f4f6;margin:4px 0;"></div>
+            <button class="action-dropdown-item" onclick="closeAllDropdowns();openCommentModal('Under Review', function(){ setActionStatus('${dropId}','Under Review'); })">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Under Review
+            </button>
+            <button class="action-dropdown-item" onclick="closeAllDropdowns();openCommentModal('Move to Case', function(){ setActionStatus('${dropId}','Move to case'); })">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              Move to Case
+            </button>
+            <button class="action-dropdown-item" onclick="closeAllDropdowns();openCommentModal('Move to Whitelist', function(){ setActionStatus('${dropId}','Move to Whitelist'); })">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Move to Whitelist
+            </button>
+            <div style="height:1px;background:#f3f4f6;margin:4px 0;"></div>
+            <button class="action-dropdown-item item-exception" onclick="closeAllDropdowns();openCommentModal('Move to Exception List', function(){ setActionStatus('${dropId}','Move to Exception List'); }, 'exception')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              Move to Exception List
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ─────────────────────────────────────────────
+//  SIDEBAR HTML (shared between p1 and review)
+// ─────────────────────────────────────────────
+const sidebarHTML = `
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24 21H26V26H24z"/><path d="M20 16H22V26H20z"/><path d="M11,26a5,5,0,0,1-5-5H8a3,3,0,1,0,3-3V16a5,5,0,0,1,0,10Z"/><path d="M28,2H4A2,2,0,0,0,2,4V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V4A2,2,0,0,0,28,2Zm0,9H14V4H28ZM12,4v7H4V4ZM4,28V13H28l0,15Z"/></svg>
+      <span class="spacer">Dashboards</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M12,4A5,5,0,1,1,7,9,5,5,0,0,1,12,4m0-2a7,7,0,1,0,7,7A7,7,0,0,0,12,2Z"/><path d="M22,30H20V25a5,5,0,0,0-5-5H9a5,5,0,0,0-5,5v5H2V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/><path d="M22 4H32V6H22z"/><path d="M22 9H32V11H22z"/><path d="M22 14H29V16H22z"/></svg>
+      <span class="spacer">KYC</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M32 14 28 14 28 10 26 10 26 14 22 14 22 16 26 16 26 20 28 20 28 16 32 16z"/><path d="M12,4A5,5,0,1,1,7,9,5,5,0,0,1,12,4m0-2a7,7,0,1,0,7,7A7,7,0,0,0,12,2Z"/><path d="M22,30H20V25a5,5,0,0,0-5-5H9a5,5,0,0,0-5,5v5H2V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/></svg>
+      <span class="spacer">Customer Onboarding</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn open">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+      <span class="spacer">Sanction Screening</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11 3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+    </button>
+    <div class="sb-children">
+      <button class="sb-child-btn active">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M20,8H18A5,5,0,0,0,8,8H6A7,7,0,0,1,20,8Z"/><path d="M25,15a3,3,0,0,0-1.47.4A3,3,0,0,0,21,14a3,3,0,0,0-1.47.4A3,3,0,0,0,16,13.18V8a3,3,0,0,0-6,0v11.1L7.77,17.58A3,3,0,0,0,6,17a3,3,0,0,0-2.12,5.13l8,7.3A6.16,6.16,0,0,0,16,31h5a7,7,0,0,0,7-7V18A3,3,0,0,0,25,15Z"/></svg>
+        Manual Screening (Single / File-based)
+      </button>
+      <button class="sb-child-btn">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M16,18a1,1,0,0,1-.47-.12l-13-7a1,1,0,0,1,0-1.76l13-7a1,1,0,0,1,.95,0l13,7a1,1,0,0,1,0,1.76l-13,7A1,1,0,0,1,16,18ZM5.11,10,16,15.86,26.89,10,16,4.14Z"/><path d="M16,24a1,1,0,0,1-.47-.12l-13-7,.95-1.76L16,21.86l12.52-6.74.95,1.76Z"/><path d="M16,30a1,1,0,0,1-.47-.12l-13-7,.95-1.76L16,27.86l12.52-6.74.95,1.76Z"/></svg>
+        Batch Screening (Forward Screening / Reverse Screening)
+      </button>
+      <button class="sb-child-btn">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M28,10V28H10V10H28m0-2H10a2,2,0,0,0-2,2V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V10a2,2,0,0,0-2-2Z"/><path d="M4,18H2V4A2,2,0,0,1,4,2H18V4H4Z"/></svg>
+        De-dup Screening
+      </button>
+      <button class="sb-child-btn">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M10 6H28V8H10z"/><path d="M10 24H28V26H10z"/><path d="M10 15H28V17H10z"/><path d="M4 15H6V17H4z"/><path d="M4 6H6V8H4z"/><path d="M4 24H6V26H4z"/></svg>
+        Exception List Management
+      </button>
+      <button class="sb-child-btn">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M10 6H28V8H10z"/><path d="M10 24H28V26H10z"/><path d="M10 15H28V17H10z"/><path d="M4 15H6V17H4z"/><path d="M4 6H6V8H4z"/><path d="M4 24H6V26H4z"/></svg>
+        Custom List Management
+      </button>
+      <button class="sb-child-btn disabled">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M27,22.14V17a2,2,0,0,0-2-2H17V9.86a4,4,0,1,0-2,0V15H7a2,2,0,0,0-2,2v5.14a4,4,0,1,0,2,0V17H25v5.14a4,4,0,1,0,2,0Z"/></svg>
+        Sanction Screening Workflow
+      </button>
+      <button class="sb-child-btn">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M4,2H2V28a2,2,0,0,0,2,2H30V28H4V25H26V17H4V13H18V5H4ZM24,19v4H4V19ZM16,7v4H4V7Z"/></svg>
+        Sanction MIS Reports
+      </button>
+    </div>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M14 16.59 11.41 14 10 15.41 14 19.41 22 11.41 20.59 10 14 16.59z"/><path d="M16,30L9.824,26.707A11,11,0,0,1,4,17V4A2,2,0,0,1,6,2H26a2,2,0,0,1,2,2V17a11,11,0,0,1-5.824,9.707Z"/></svg>
+      <span class="spacer">Customer Risk View</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17Z"/></svg>
+      <span class="spacer">Real-time Monitoring</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M22,6H16V4a2,2,0,0,0-4,0V6H6A2,2,0,0,0,4,8V28a2,2,0,0,0,2,2H26a2,2,0,0,0,2-2V8A2,2,0,0,0,26,6ZM14,4h4V8H14Zm12,24H6V8h6v2a2,2,0,0,0,4,0V8h4v2a2,2,0,0,0,4,0V8h2Z"/></svg>
+      <span class="spacer">Batch Monitoring</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M29,10H26V7a3,3,0,0,0-3-3H3A3,3,0,0,0,0,7V22a3,3,0,0,0,3,3H6v3a3,3,0,0,0,3,3H29a3,3,0,0,0,3-3V13A3,3,0,0,0,29,10Z"/></svg>
+      <span class="spacer">Payments Workflow(Real time)</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/></svg>
+      <span class="spacer">AI-Powered Investigation Analytics</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M24 21H26V26H24z"/><path d="M20 16H22V26H20z"/></svg>
+      <span class="spacer">MIS Reports</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M28,2H4A2,2,0,0,0,2,4V28a2,2,0,0,0,2,2H28a2,2,0,0,0,2-2V4A2,2,0,0,0,28,2Zm0,9H14V4H28ZM4,28V13H28l0,15Z"/></svg>
+      <span class="spacer">Regulatory Reports</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+  <div>
+    <button class="sb-group-btn">
+      <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2A14 14 0 1 0 30 16 14 14 0 0 0 16 2zm0 26A12 12 0 1 1 28 16 12 12 0 0 1 16 28z"/><path d="M16 10a2 2 0 1 0 2 2 2 2 0 0 0-2-2zM16 20h-2v-8h4v2h-2z"/></svg>
+      <span class="spacer">Administration</span>
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+    </button>
+  </div>
+`;
+
+// ─────────────────────────────────────────────
+//  DROPDOWN HELPERS
+// ─────────────────────────────────────────────
+let _openActionDD = null;
+
+// ─────────────────────────────────────────────
+//  COMMENT MODAL
+// ─────────────────────────────────────────────
+let _modalCallback = null;
+
+const modalStyles = {
+  view:      { bg:'#eff6ff', color:'#2A53A0', border:'#bfdbfe', iconBg:'#eff6ff', iconColor:'#2A53A0' },
+  exception: { bg:'#faf5ff', color:'#7c3aed', border:'#e9d5ff', iconBg:'#faf5ff', iconColor:'#7c3aed' },
+  confirm:   { bg:'#fef2f2', color:'#dc2626', border:'#fecaca', iconBg:'#fef2f2', iconColor:'#dc2626' },
+  positive:  { bg:'#f0fdf4', color:'#15803d', border:'#bbf7d0', iconBg:'#f0fdf4', iconColor:'#15803d' },
+  default:   { bg:'#eff6ff', color:'#2A53A0', border:'#bfdbfe', iconBg:'#eff6ff', iconColor:'#2A53A0' },
+};
+
+function openCommentModal(actionName, callback, styleKey) {
+  _modalCallback = callback;
+  const style = modalStyles[styleKey] || modalStyles.default;
+  document.getElementById('modal-title-text').textContent = 'Add Comment — ' + actionName;
+  document.getElementById('modal-action-name').textContent = actionName;
+  const badge = document.getElementById('modal-action-badge');
+  badge.style.background = style.bg;
+  badge.style.color = style.color;
+  badge.style.border = '1px solid ' + style.border;
+  const iconWrap = document.getElementById('modal-icon-wrap');
+  iconWrap.style.background = style.iconBg;
+  iconWrap.querySelector('svg').setAttribute('stroke', style.iconColor);
+  const btn = document.getElementById('modal-confirm-btn');
+  btn.style.background = styleKey === 'confirm' ? '#dc2626' : (styleKey === 'positive' ? '#16a34a' : '#2A53A0');
+  // reset
+  document.getElementById('modal-comment').value = '';
+  document.getElementById('modal-comment').classList.remove('error');
+  document.getElementById('modal-error').classList.remove('visible');
+  document.getElementById('comment-modal').classList.add('open');
+  setTimeout(() => document.getElementById('modal-comment').focus(), 80);
+}
+
+function closeCommentModal() {
+  document.getElementById('comment-modal').classList.remove('open');
+  _modalCallback = null;
+}
+
+function confirmModalAction() {
+  const comment = document.getElementById('modal-comment').value.trim();
+  if (!comment) {
+    document.getElementById('modal-comment').classList.add('error');
+    document.getElementById('modal-error').classList.add('visible');
+    return;
+  }
+  closeCommentModal();
+  if (_modalCallback) _modalCallback();
+}
+
+function clearModalError() {
+  document.getElementById('modal-comment').classList.remove('error');
+  document.getElementById('modal-error').classList.remove('visible');
+}
+
+// Close modal on overlay click
+document.getElementById('comment-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCommentModal();
+});
+
+// ─────────────────────────────────────────────
+//  FILTER HELPERS
+// ─────────────────────────────────────────────
+let _openFilter = null;
+
+function toggleFilterPanel(e, panelId, chipId) {
+  e.stopPropagation();
+  const panel = document.getElementById(panelId);
+  const chip = document.getElementById(chipId);
+  const rect = chip.getBoundingClientRect();
+  if (panel.classList.contains('open')) {
+    panel.classList.remove('open');
+    _openFilter = null;
+  } else {
+    // close any open filter
+    document.querySelectorAll('.filter-panel.open').forEach(p => p.classList.remove('open'));
+    panel.style.top = (rect.bottom + 6) + 'px';
+    panel.style.left = rect.left + 'px';
+    panel.classList.add('open');
+    _openFilter = panelId;
+  }
+}
+
+function applyFilter(chipId, valId, panelId, getVal) {
+  const val = getVal();
+  const chip = document.getElementById(chipId);
+  document.getElementById(valId).textContent = val;
+  if (val && val !== 'All') {
+    chip.classList.add('active');
+  } else {
+    chip.classList.remove('active');
+  }
+  document.getElementById(panelId).classList.remove('open');
+  _openFilter = null;
+}
+
+function clearAllFilters() {
+  [['fc-date','fc-date-val'],['fc-branch','fc-branch-val'],['fc-custid','fc-custid-val'],
+   ['fc-acct','fc-acct-val'],['fc-scrtype','fc-scrtype-val'],['fc-listname','fc-listname-val']
+  ].forEach(([chipId, valId]) => {
+    document.getElementById(valId).textContent = 'All';
+    document.getElementById(chipId).classList.remove('active');
+  });
+  // reset inputs
+  ['fp-date-from','fp-date-to','fp-custid-inp','fp-acct-inp'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  ['fp-branch-sel','fp-scrtype-sel','fp-listname-sel'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+}
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.filter-chip') && !e.target.closest('.filter-panel')) {
+    document.querySelectorAll('.filter-panel.open').forEach(p => p.classList.remove('open'));
+    _openFilter = null;
+  }
+});
+
+function toggleActionDD(e, dropId) {
+  e.stopPropagation();
+  const menu = document.getElementById(dropId);
+  const btn = document.getElementById(dropId + '-btn');
+  // Position the menu using fixed coordinates
+  const rect = btn.getBoundingClientRect();
+  menu.style.top = (rect.bottom + 4) + 'px';
+  menu.style.left = rect.left + 'px';
+  if (menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    _openActionDD = null;
+  } else {
+    closeAllDropdowns();
+    menu.classList.add('open');
+    _openActionDD = dropId;
+  }
+}
+
+function setActionStatus(dropId, status) {
+  const label = document.getElementById(dropId + '-label');
+  if (label) label.textContent = status;
+  closeAllDropdowns();
+}
+
+function closeAllDropdowns() {
+  document.querySelectorAll('.action-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+  document.querySelectorAll('.date-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+  document.getElementById('date-dd-btn') && document.getElementById('date-dd-btn').classList.remove('open');
+  _openActionDD = null;
+}
+
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.action-dropdown') && !e.target.closest('.date-dropdown')) {
+    closeAllDropdowns();
+  }
+});
+
+function toggleDateDD(e) {
+  e.stopPropagation();
+  const menu = document.getElementById('date-dd-menu');
+  const btn = document.getElementById('date-dd-btn');
+  if (menu.classList.contains('open')) {
+    menu.classList.remove('open');
+    btn.classList.remove('open');
+  } else {
+    closeAllDropdowns();
+    menu.classList.add('open');
+    btn.classList.add('open');
+  }
+}
+
+function selectDate(val) {
+  document.getElementById('date-dd-label').textContent = val;
+  // Update active state
+  document.querySelectorAll('.date-dropdown-item').forEach(i => i.classList.remove('active'));
+  document.querySelectorAll('.date-dropdown-item').forEach(i => {
+    if (i.textContent.trim() === val) i.classList.add('active');
+  });
+  closeAllDropdowns();
+}
+
+// ─────────────────────────────────────────────
+//  NAVIGATION
+// ─────────────────────────────────────────────
+function goTo(screenId, tab) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(screenId).classList.add('active');
+  // Scroll to top
+  const sp = document.getElementById(screenId).querySelector('.scroll-pane');
+  if (sp) sp.scrollTop = 0;
+  // If navigating to review, set tab
+  if (screenId === 'screen-review' && tab) {
+    switchTab(tab);
+  }
+}
+
+function switchTab(tabId) {
+  // Deactivate all tabs
+  ['ai','match','summary'].forEach(t => {
+    document.getElementById('tab-' + t).classList.remove('active');
+    document.getElementById('tab-btn-' + t).classList.remove('active');
+  });
+  document.getElementById('tab-' + tabId).classList.add('active');
+  document.getElementById('tab-btn-' + tabId).classList.add('active');
+  // Scroll review scroll-pane to top
+  const sp = document.getElementById('screen-review').querySelector('.scroll-pane');
+  if (sp) sp.scrollTop = 0;
+}
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  buildLandingTable();
+  document.getElementById('sb-p1').innerHTML = sidebarHTML;
+  document.getElementById('sb-review').innerHTML = sidebarHTML;
+});
+</script>
+</body>
+</html>

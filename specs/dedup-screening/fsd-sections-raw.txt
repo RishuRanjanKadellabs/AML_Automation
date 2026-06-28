@@ -1,0 +1,1108 @@
+
+
+CLARI5
+
+
+
+AML — Anti-Money Laundering Platform
+
+
+
+Functional Specification Document
+
+De-Duplication Screening Module
+
+
+
+
+
+Module Name
+
+De-Duplication Screening
+
+Application
+
+Clari5 AML Platform
+
+Document Type
+
+Functional Specification Document (FSD)
+
+Version
+
+1.0
+
+Prepared By
+
+Business Analyst / Product Team
+
+Date
+
+June 2026
+
+Status
+
+Draft
+
+
+
+© Clari5 — A Perfios Software Company. Confidential.
+
+
+
+
+
+1. Introduction
+
+1.1 Purpose
+
+This Functional Specification Document (FSD) describes the De-Duplication Screening module of the Clari5 AML platform. It covers the business objective, user interactions, screen components, data inputs/outputs, business rules, and acceptance criteria for the module.
+
+
+
+1.2 Scope
+
+Identification of duplicate customer records within the bank's core system
+
+Configurable multi-parameter matching across KYC identity fields
+
+Side-by-side KYC comparison for identified duplicate pairs
+
+Grouped reporting with export capabilities
+
+
+
+1.3 Definitions & Abbreviations
+
+Term
+
+Definition
+
+De-Duplication (De-dup)
+
+The process of identifying two or more customer records in a system that represent the same real-world entity.
+
+KYC
+
+Know Your Customer — regulatory process for identity verification of bank customers.
+
+Match Parameter
+
+A KYC data field (e.g. Passport No., Aadhar Card, PAN) used as the basis of comparison for duplicate detection.
+
+Match Score
+
+A percentage indicating the similarity confidence between two customer records for a given matching group.
+
+Group ID
+
+A system-generated identifier (e.g. GRP-0001) assigned to a set of records detected as duplicates.
+
+AML
+
+Anti-Money Laundering — regulatory framework to prevent illegal financial flows.
+
+PAN
+
+Permanent Account Number — a unique 10-character alphanumeric tax identifier issued by the Indian Income Tax Department.
+
+
+
+2. Module Overview
+
+2.1 Business Context
+
+Banks maintain large customer databases accumulated over years. The same customer may have been onboarded multiple times under slightly different names, addresses, or using partial identity documents. These duplicate records create compliance risks, inflate AML alert volumes, and complicate regulatory reporting.
+
+
+
+The De-Duplication Screening module enables compliance officers and analysts to identify such duplicate records by systematically comparing KYC parameters across the customer base. The module is positioned within the Sanction Screening section of the Clari5 AML platform.
+
+
+
+2.2 Module Position in Navigation
+
+Application
+
+Clari5 AML Platform
+
+Parent Section
+
+Sanction Screening
+
+Module
+
+De-dup Screening
+
+Breadcrumb
+
+Sanction Screening > De-dup Screening
+
+
+
+2.3 Related Modules (Sidebar)
+
+Module Name
+
+Description
+
+Manual Screening
+
+Allows analysts to manually screen individual customer records against sanction lists.
+
+Batch Screening
+
+Runs automated bulk screening of customer records against configured sanction lists.
+
+De-dup Screening
+
+(Current module) Identifies duplicate customer records based on matching KYC parameters. 
+
+Exception List Mgmt.
+
+Manages the list of entities exempted from sanction screening.
+
+Sanction MIS Reports
+
+Management Information System reports for sanction screening activities.
+
+
+
+3. User Roles & Access
+
+Role
+
+Access Level
+
+Compliance Analyst
+
+Full Access
+
+Compliance Officer
+
+Full Access
+
+Admin
+
+Full Access 
+
+Auditor
+
+Full Access
+
+
+
+4. Screen Layout & Components
+
+4.1 Global Header
+
+A sticky application header (height: 54px) is displayed at the top of all screens and contains the following elements:
+
+
+
+Component
+
+Specification
+
+Logo & Brand
+
+Clari5 logo icon (26x26px SVG), brand name "Clari5" in bold, "AML" pill badge in brand blue (#2A53A0).
+
+Breadcrumb
+
+Chevron-separated path: Sanction Screening > De-dup Screening. Final segment shown in brand blue bold to indicate active module.
+
+User Profile
+
+Avatar initials circle (30x30px) + logged-in user name. Displayed right-aligned. Example: "AK" / Arun Kumar.
+
+
+
+4.2 Left Navigation Sidebar
+
+A fixed sidebar (width: 240px) groups navigation links under the "Sanction Screening" section label. Each item renders at 40px height with a 3px left border indicator for the active state.
+
+
+
+4.3 Main Content Area
+
+The main content area is scrollable and contains three primary components:
+
+Page Header — module title, subtitle, and icon
+
+Filter Card — search criteria input controls
+
+Results Section — match report table (visible after report generation)
+
+
+
+4.4 Page Header
+
+Element
+
+Details
+
+Icon
+
+38x38px icon box with brand-light background (#EBF2FF) and a de-dup SVG icon in brand blue.
+
+Title
+
+"De-Duplication Screening" — 20px bold, letter spacing -0.3px.
+
+Subtitle
+
+"Identify duplicate customer records based on matching KYC parameters" — 13px muted text.
+
+
+
+5. Filter Card — Search Criteria
+
+5.1 Overview
+
+The Filter Card is a white card with a 1px border, 8px border-radius, and subtle shadow. It contains all user-configurable search parameters and action buttons. The card title reads "Search Filters" with a funnel icon.
+
+
+
+5.2 Input Fields
+
+Field Name
+
+Type
+
+Grid Span
+
+Description
+
+Match Parameter List
+
+Multi-select dropdown
+
+6 columns
+
+Allows selection of one or more KYC identity parameters to use as the basis for duplicate detection. Supports search and Select All. See Section 5.3 for parameter options.
+
+Customer ID
+
+Text input
+
+4 columns
+
+Free-text entry to narrow results to a specific customer ID. Optional field. Placeholder: "Enter Customer ID...".
+
+
+
+5.3 Match Parameter Options
+
+The multi-select dropdown presents the following configurable matching parameters:
+
+
+
+#
+
+Parameter Name
+
+Notes
+
+1
+
+Date of Birth
+
+Matches exact DOB across records
+
+2
+
+National ID / Aadhar Card / Emirates ID / SSN
+
+Covers national identity numbers across geographies
+
+3
+
+Passport No
+
+Exact match on passport document number
+
+4
+
+Driving License
+
+Driving licence number match
+
+5
+
+Mobile Number
+
+Primary registered mobile number
+
+6
+
+Email Address
+
+Primary registered email address
+
+7
+
+Contact Number
+
+Secondary or alternate phone numbers
+
+8
+
+Corporate Registration Number
+
+Applicable for non-individual / corporate entities
+
+9
+
+Tax ID / PAN
+
+Income tax PAN or equivalent tax identifier
+
+10
+
+IMEI Number / IMSI Number
+
+Device-level identifiers for digital channel linkage
+
+11
+
+IP / Mac Address
+
+Network-level identifiers for digital channel linkage
+
+
+
+5.4 Multi-Select Dropdown Behaviour
+
+Trigger: Clicking the trigger box opens the dropdown panel below it.
+
+Search: An inline search box filters parameter labels in real time (case-insensitive).
+
+Select All: A "Select All" toggle at the top of the options list checks or unchecks all parameters simultaneously.
+
+Tags: Each selected parameter is rendered as a removable pill tag inside the trigger box (brand blue, rounded).
+
+Removal: Clicking the × on a tag deselects that parameter.
+
+Close: Clicking outside the dropdown or pressing Escape closes the panel.
+
+State indicator: The chevron icon rotates 180° when the panel is open.
+
+
+
+5.5 Filter Action Buttons
+
+Button
+
+Style
+
+Behaviour
+
+Generate Report
+
+Primary (filled brand blue)
+
+Triggers the de-duplication analysis. Shows a spinning loader and "Generating..." state for ~1.1s, then reveals the Results Section below and auto-scrolls to it.
+
+Clear Filters
+
+Ghost (transparent, border)
+
+Deselects all parameter checkboxes, clears text inputs, and resets all select dropdowns to their default state.
+
+
+
+6. Results Section — De-Duplication Match Report
+
+6.1 Visibility
+
+The Results Section is hidden by default and is revealed only after the user clicks "Generate Report." On display, the browser auto-scrolls to bring it into view.
+
+
+
+6.2 Status Bar
+
+A green confirmation banner is displayed at the top of the results area:
+
+"Report generated successfully"
+
+
+
+6.3 Results Header
+
+Element
+
+Specification
+
+Section Title
+
+"De-Duplication Match Report" in 16px bold with a copy icon.
+
+Group Count Badge
+
+Blue pill badge showing total number of duplicate groups identified (e.g. "4 Matching Groups").
+
+Records Badge
+
+Green pill badge showing total customer records in the result set (e.g. "8 Records").
+
+Export Button
+
+Secondary button with a dropdown. Opens the export format panel. See Section 6.5.
+
+
+
+6.4 Results Table
+
+The match report is rendered as a bordered data table with the following columns:
+
+
+
+Column
+
+Width
+
+Data Type
+
+Description
+
+Example
+
+Notes
+
+Group ID
+
+130px
+
+String
+
+System-generated duplicate group identifier. Uses rowspan across all records in the group.
+
+GRP-0001
+
+Includes a green dot indicator labelled "Active Group".
+
+Customer ID
+
+Auto
+
+String
+
+Unique identifier of the customer record in the core banking system.
+
+8829103
+
+One row per customer record.
+
+Customer Name
+
+Auto
+
+String
+
+Full name of the customer as recorded in the system.
+
+Rajesh K
+
+
+
+Match Parameters
+
+Auto
+
+Tags
+
+The KYC parameter(s) on which the duplicate match was detected. Rendered as key-icon pill tags.
+
+Passport No, DOB, PAN
+
+Uses rowspan across the group. Multiple tags displayed vertically.
+
+ID Number
+
+Auto
+
+String (mono)
+
+The actual value of the primary matching identifier for that record.
+
+Z1234567
+
+Rendered in monospace font.
+
+View
+
+Center-aligned
+
+Action Button
+
+Opens the KYC Comparison Modal for the corresponding duplicate group.
+
+"Compare" button
+
+Uses rowspan across the group. One Compare button per group.
+
+
+
+6.5 Export Options
+
+Export Format
+
+Description
+
+Export to Excel (.xlsx)
+
+Downloads the match report as a Microsoft Excel workbook.
+
+Export to CSV
+
+Downloads the match report as a comma-separated values flat file.
+
+Export to PDF
+
+Generates and downloads a formatted PDF version of the match report.
+
+Print Report
+
+Opens the browser print dialog after a short delay (400ms).
+
+A toast notification appears in the bottom-right corner after selecting an export format, confirming the action with the appropriate message.
+
+
+
+6.6 Table Footer & Pagination
+
+A footer bar below the results table shows:
+
+"Showing X of Y records | Z duplicate groups found" — summary counts.
+
+Pagination controls: Previous (‹), page number buttons, and Next (›).
+
+Active page button is highlighted in brand blue.
+
+
+
+7. KYC Comparison Modal
+
+7.1 Trigger
+
+The modal opens when the user clicks the "Compare" button in the View column of any duplicate group row in the results table.
+
+
+
+7.2 Modal Header
+
+Element
+
+Details
+
+Title
+
+Displays both customer names with a ↔ arrow separator. Example: "Rajesh K  ↔  Rajesh Kumar".
+
+Subtitle
+
+Shows the matched parameter and match score. Example: "Matched via: Passport  |  Match Score: 100%".
+
+Close Button
+
+✕ button in the top-right corner. Also dismissible by clicking the overlay background or pressing Escape.
+
+
+
+7.3 Tab Navigation
+
+The modal contains a tab bar with the following tab:
+
+Side-by-Side Compare (default and only active tab) — shows both customer records in a two-column layout for direct field-by-field comparison.
+
+
+
+7.4 Side-by-Side Compare View
+
+The compare view renders two columns side by side:
+
+
+
+Element
+
+Specification
+
+Match Notice Banner
+
+Yellow/amber warning banner at top: "⚠ Highlighted fields are the matched parameters used for de-duplication."
+
+Column Header — Customer 1
+
+Blue-themed header showing customer avatar (initials circle in brand blue) and customer name.
+
+Column Header — Customer 2
+
+Brown-themed header (#6d4c41) showing avatar and customer name.
+
+Field Rows
+
+All KYC fields listed in both columns: Full Name, Customer ID, Date of Birth, PAN Number, Aadhar Card, Passport No., Mobile Number, Email Address, Address, Branch, Customer Type, Account Status.
+
+Matched Field Highlighting
+
+Fields that contributed to the duplicate match are highlighted with an amber/yellow background (#fff3cd), amber border (#ffc107), and bold brown text (#5d4037) in both columns.
+
+
+
+7.5 KYC Fields Displayed in Modal
+
+#
+
+Field Label
+
+Field Key / Notes
+
+1
+
+Full Name
+
+name
+
+2
+
+Customer ID
+
+id — unique system identifier
+
+3
+
+Date of Birth
+
+dob
+
+4
+
+PAN Number
+
+pan
+
+5
+
+Aadhar Card
+
+aadhar — shows N/A if not available
+
+6
+
+Passport No.
+
+passport — shows N/A if not available
+
+7
+
+Mobile Number
+
+mobile
+
+8
+
+Email Address
+
+email
+
+9
+
+Address
+
+address
+
+10
+
+Branch
+
+branch — bank branch name
+
+11
+
+Customer Type
+
+type — e.g. Individual, NRI, Corporate
+
+12
+
+Account Status
+
+status — Active / Pending / Closed
+
+
+
+8. Sample Duplicate Group Data
+
+8.1 Duplicate Groups — Summary
+
+Group ID
+
+Score
+
+Customer 1
+
+Customer 2
+
+Match Parameters
+
+GRP-0001
+
+94%
+
+Rajesh K (8829103)
+
+Rajesh Kumar (8832890)
+
+Passport No, Date of Birth, Tax ID / PAN
+
+GRP-0002
+
+88%
+
+Amit Sharma (1102931)
+
+Amit S (1102932)
+
+Aadhar Card, Date of Birth, Tax ID / PAN
+
+GRP-0003
+
+76%
+
+Priya Mehta (2201456)
+
+P. Mehta (2201457)
+
+Tax ID / PAN, Date of Birth
+
+GRP-0004
+
+82%
+
+Sunita Rao (3310882)
+
+S. Rao (3310883)
+
+Mobile Number, Date of Birth, Tax ID / PAN
+
+
+
+9. Business Rules
+
+9.1 Report Generation
+
+The user must select at least one Match Parameter before generating a report.
+
+If Customer ID is provided, results are filtered to groups containing that customer.
+
+If no Customer ID is provided, the report covers all customers in the system matching the selected parameters for today.
+
+
+
+9.2 Duplicate Matching Logic
+
+Two customer records are grouped as duplicates if they share an identical value for at least one selected match parameter.
+
+Multiple parameters can match simultaneously; all matched parameters are displayed in the Match Parameters column.
+
+The Match Score reflects the percentage of selected parameters that match between the two records.
+
+Records with Account Status of "Closed" may still appear in duplicate groups for historical compliance tracking.
+
+
+
+9.3 Group Management
+
+Each duplicate group is assigned a unique, sequential Group ID (GRP-XXXX).
+
+A group may contain more than two records if multiple records share the same identity parameter value.
+
+Active Groups are those not yet reviewed or resolved by a compliance officer.
+
+
+
+9.4 Data Display Rules
+
+Fields with no available data display as "N/A" or "—" (em dash) in the comparison modal.
+
+ID numbers in the results table are rendered in monospace font for readability.
+
+Matched fields in the comparison modal are visually highlighted in amber.
+
+The "Active Group" status indicator uses a green dot for visual emphasis.
+
+
+
+10. Validations & Error Handling
+
+Scenario
+
+Validation
+
+User Feedback
+
+No parameter selected
+
+At least one parameter required
+
+Inline error or button disabled until a parameter is selected.
+
+Invalid Customer ID format
+
+Numeric or alphanumeric only
+
+Inline field validation error message.
+
+No duplicates found
+
+Zero results for applied filters
+
+Empty state message: "No duplicate records found for the selected criteria."
+
+Report generation failure
+
+Server/API error
+
+Error toast notification with retry option.
+
+Export failure
+
+Download or server error
+
+Error toast: "Export failed. Please try again."
+
+
+
+11. Non-Functional Requirements
+
+Category
+
+Requirement
+
+Target / Notes
+
+Performance
+
+Report Generation
+
+Results must load within 3 seconds for datasets up to 100,000 customer records.
+
+Performance
+
+Modal Load Time
+
+KYC comparison modal must open within 500ms of clicking Compare.
+
+Usability
+
+Responsive Design
+
+Sidebar collapses on screens narrower than 900px. Filter grid adjusts to 6-column layout.
+
+Accessibility
+
+Keyboard Navigation
+
+Modal dismissible with Escape key. All interactive elements keyboard-accessible.
+
+Security
+
+Role-Based Access
+
+Module access governed by user role. KYC data visible only to authorised roles.
+
+Data Privacy
+
+PII Handling
+
+All Aadhar, PAN, Passport data must be masked in exported files per data privacy policy. Full data visible only in the authenticated session. TBD.
+
+Audit
+
+Logging
+
+All report generation and export actions must be logged with user ID, timestamp, and filter criteria.
+
+Browser Support
+
+Compatibility
+
+Chrome 110+, Firefox 115+, Edge 110+. IBM Plex Sans / IBM Plex Mono fonts via Google Fonts CDN.
+
+
+
+12. Acceptance Criteria
+
+12.1 Filter & Search
+
+User can select one or more match parameters from the multi-select dropdown.
+
+Select All / Deselect All toggles function correctly.
+
+Search within the dropdown filters options correctly in real time.
+
+Parameter tags are displayed and individually removable in the trigger box.
+
+Customer ID field accepts input and filters results correctly when provided.
+
+Clear Filters resets all controls to their default state.
+
+
+
+12.2 Report Generation
+
+Clicking Generate Report shows a loading spinner for approximately 1 second.
+
+The Results Section appears and scrolls into view after generation.
+
+The results table displays the correct number of duplicate groups and records.
+
+Group ID, Customer IDs, names, match parameters, and ID numbers render correctly.
+
+The Compare button is available for each group.
+
+
+
+12.3 KYC Comparison Modal
+
+Compare button opens the modal with the correct customer names in the header.
+
+Match parameter and match score are displayed accurately in the subtitle.
+
+Both customer records are displayed side by side with all 12 KYC fields.
+
+Matched fields are highlighted in amber in both columns.
+
+Modal closes on ✕ button click, overlay background click, or Escape key.
+
+
+
+12.4 Export
+
+All four export options are available from the Export dropdown.
+
+Selecting an export option shows the appropriate toast notification.
+
+Print option opens the browser print dialog.
+
+
+
+
+
+13. Appendix — Field Reference
+
+13.1 Customer Record Fields
+
+Field
+
+Internal Key
+
+Data Type
+
+Notes
+
+Full Name
+
+name
+
+String
+
+May appear abbreviated (e.g. "Rajesh K" vs "Rajesh Kumar")
+
+Customer ID
+
+id
+
+String (numeric)
+
+Unique per record in core banking system
+
+Date of Birth
+
+dob
+
+Date
+
+Format: DD MMM YYYY
+
+PAN Number
+
+pan
+
+String (10 chars)
+
+Alphanumeric, e.g. BXJRK4823G
+
+Aadhar Card
+
+aadhar
+
+String (12 digit groups)
+
+Format: XXXX-XXXX-XXXX. N/A if not available.
+
+Passport No.
+
+passport
+
+String
+
+Format varies by country. N/A if not available.
+
+Mobile Number
+
+mobile
+
+String
+
+With country code, e.g. +91-9811223344
+
+Email Address
+
+email
+
+String
+
+Primary email on record
+
+Address
+
+address
+
+String
+
+Full mailing address
+
+Branch
+
+branch
+
+String
+
+Bank branch name
+
+Customer Type
+
+type
+
+Enum
+
+Individual, NRI, Corporate, etc.
+
+Account Status
+
+status
+
+Enum
+
+Active, Pending, Closed
+
+
+
+
+
+
+
+End of Document — De-Duplication Screening FSD v1.0
+

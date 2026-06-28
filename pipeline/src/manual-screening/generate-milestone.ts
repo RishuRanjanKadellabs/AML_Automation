@@ -7,6 +7,7 @@ import * as fs from "fs";
 import * as path from "path";
 import { loadMsRows, describeLabel } from "./parser";
 import { writePlanArtifacts, subModuleDescribeOrder } from "./plan-builder";
+import { writeMsHtmlInventory } from "./html-inventory";
 import type { MsExcelRow } from "./types";
 import { mapMsTestLogic, formatTestTitle } from "./test-logic";
 import { formatExcelComment } from "./excel-intent";
@@ -83,9 +84,11 @@ function generateSpecs(rows: MsExcelRow[]): void {
 function main(): void {
   const generateSpecsFlag = process.argv.includes("--generate-specs");
   const rows = loadMsRows();
+  const inventory = writeMsHtmlInventory();
   writePlanArtifacts(rows);
 
   if (!generateSpecsFlag) {
+    console.log(`HTML inventory refreshed (${inventory.screens.length} screens).`);
     console.log("Planning artifacts updated. Pass --generate-specs to write Playwright specs.");
     return;
   }
@@ -96,6 +99,7 @@ function main(): void {
   }
 
   generateSpecs(rows);
+  console.log(`HTML inventory refreshed (${inventory.screens.length} screens).`);
   console.log("Manual Screening milestone specs generated.");
 }
 

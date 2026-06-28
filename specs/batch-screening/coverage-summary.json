@@ -2548,5 +2548,47 @@
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "BS-426",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "BS-427",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "BS-428",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "BS-429",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "BS-430",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "BS-431",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
+  },
+  {
+    "excelTestCaseId": "BS-432",
+    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/batchScreeningTests/batch-screening.spec.ts",
+    "automationStatus": "Generated",
+    "missingInformation": ""
   }
 ]

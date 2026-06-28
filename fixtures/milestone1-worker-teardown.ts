@@ -1,7 +1,7 @@
 import type { Browser, BrowserContext, Page } from "@playwright/test";
 
 /** Max time to spend closing headed Chromium before moving on (avoids 5-min Playwright waits). */
-export const TEARDOWN_TIMEOUT_MS = 15_000;
+export const TEARDOWN_TIMEOUT_MS = 8_000;
 
 /** Headless milestone1 runs are ~2–3× faster and tolerate more parallel workers. */
 export function isMilestone1Headless(): boolean {
@@ -38,7 +38,9 @@ async function withTimeout<T>(
 }
 
 export async function dismissOpenUi(page: Page): Promise<void> {
-  if (page.isClosed()) return;
+  if (page.isClosed()) {
+    return;
+  }
 
   await page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
 
@@ -49,39 +51,65 @@ export async function dismissOpenUi(page: Page): Promise<void> {
   }
 }
 
+async function closePagesInContext(context: BrowserContext): Promise<void> {
+  await Promise.allSettled(
+    [...context.pages()].map(async (page) => {
+      await dismissOpenUi(page);
+      await page.close({ runBeforeUnload: false }).catch(() => undefined);
+    }),
+  );
+}
+
 export async function closePageGracefully(page: Page): Promise<void> {
-  if (page.isClosed()) return;
+  if (page.isClosed()) {
+    return;
+  }
 
   await withTimeout("closePageGracefully", async () => {
     await dismissOpenUi(page);
-    await page.goto("about:blank", { waitUntil: "commit", timeout: 5000 }).catch(() => undefined);
     await page.close({ runBeforeUnload: false });
-  });
+  }, 4000);
 }
 
 export async function closeWorkerContextGracefully(context: BrowserContext): Promise<void> {
   await withTimeout("closeWorkerContextGracefully", async () => {
-    for (const page of [...context.pages()]) {
-      await dismissOpenUi(page);
-      await page.goto("about:blank", { waitUntil: "commit", timeout: 5000 }).catch(() => undefined);
-      await page.close({ runBeforeUnload: false }).catch(() => undefined);
-    }
+    await closePagesInContext(context);
     await context.close();
   });
 }
 
 export async function closeBrowserGracefully(browser: Browser): Promise<void> {
   await withTimeout("closeBrowserGracefully", async () => {
-    for (const context of [...browser.contexts()]) {
-      await closeWorkerContextGracefully(context);
-    }
-    await browser.close();
+    await Promise.allSettled(
+      [...browser.contexts()].map(async (context) => {
+        await closePagesInContext(context);
+        await context.close().catch(() => undefined);
+      }),
+    );
+    await browser.close().catch(() => undefined);
   });
 }
 
-/** Reset worker page after a failed attempt so retries start from a clean state. */
+/** Reset worker page after a failed attempt so the next test starts from a stable shell. */
 export async function resetPageAfterFailure(page: Page): Promise<void> {
-  if (page.isClosed()) return;
+  if (page.isClosed()) {
+    return;
+  }
+
   await dismissOpenUi(page);
+  await page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
+
+  let origin = "";
+  try {
+    origin = new URL(page.url()).origin;
+  } catch {
+    origin = "";
+  }
+
+  if (origin && origin !== "null" && !origin.startsWith("about:")) {
+    await page.goto(`${origin}/`, { waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    return;
+  }
+
   await page.goto("about:blank", { waitUntil: "commit", timeout: 5000 }).catch(() => undefined);
 }

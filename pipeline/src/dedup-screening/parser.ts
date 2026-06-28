@@ -24,8 +24,8 @@ export function isDedupScreeningCaseId(id: string): boolean {
   return /^DDS-TC-\d+$/i.test(id);
 }
 
-export function loadDdsRows(): DdsExcelRow[] {
-  const wb = XLSX.readFile(DDS_EXCEL_PATH);
+export function loadDdsRows(excelPath = DDS_EXCEL_PATH): DdsExcelRow[] {
+  const wb = XLSX.readFile(excelPath);
   const sheet = wb.Sheets[wb.SheetNames[0]];
   const raw = XLSX.utils.sheet_to_json<Record<string, string>>(sheet, { defval: "" });
   const seen = new Set<string>();

@@ -1,0 +1,113 @@
+{
+  "activeRules": [
+    {
+      "ruleId": "ms-rule-onboarding",
+      "ruleCode": "SR_ONBOARDING_SCREENING",
+      "ruleName": "Onboarding Screening",
+      "description": "Comprehensive screening for new customer onboarding with UN, OFAC, and EU sanctions lists",
+      "status": "ACTIVE",
+      "versionNo": 1,
+      "watchlists": [
+        { "sourceCode": "OFAC_SDN", "sourceName": "OFAC SDN List" },
+        { "sourceCode": "UN_1267", "sourceName": "UN Security Council Consolidated List" },
+        { "sourceCode": "EU_SANCTIONS", "sourceName": "EU Sanctions List" }
+      ],
+      "thresholds": { "exactMatchThreshold": 100, "fuzzyMatchThreshold": 75, "phoneticMatchThreshold": 0 },
+      "parameters": [
+        { "parameterName": "SCREENING_TYPE", "parameterValue": "Onboarding" },
+        { "parameterName": "ALERT_THRESHOLD", "parameterValue": "75" }
+      ]
+    },
+    {
+      "ruleId": "ms-rule-monitoring",
+      "ruleCode": "SR_CONTINUOUS_MONITORING",
+      "ruleName": "Continuous Monitoring",
+      "description": "Ongoing monitoring of customer transactions against major lists",
+      "status": "ACTIVE",
+      "versionNo": 1,
+      "watchlists": [
+        { "sourceCode": "OFAC_SDN", "sourceName": "OFAC SDN List" },
+        { "sourceCode": "UN_1267", "sourceName": "UN Security Council Consolidated List" },
+        { "sourceCode": "EU_SANCTIONS", "sourceName": "EU Sanctions List" }
+      ],
+      "thresholds": { "exactMatchThreshold": 100, "fuzzyMatchThreshold": 80, "phoneticMatchThreshold": 0 },
+      "parameters": [
+        { "parameterName": "SCREENING_TYPE", "parameterValue": "Monitoring" },
+        { "parameterName": "ALERT_THRESHOLD", "parameterValue": "80" }
+      ]
+    },
+    {
+      "ruleId": "ms-rule-highrisk",
+      "ruleCode": "SR_HIGH_RISK_JURISDICTION",
+      "ruleName": "High-Risk Jurisdiction Screening",
+      "description": "Enhanced screening for customers from high-risk countries with broadened criteria",
+      "status": "ACTIVE",
+      "versionNo": 1,
+      "watchlists": [
+        { "sourceCode": "OFAC_SDN", "sourceName": "OFAC SDN List" },
+        { "sourceCode": "UN_1267", "sourceName": "UN Security Council Consolidated List" },
+        { "sourceCode": "EU_SANCTIONS", "sourceName": "EU Sanctions List" },
+        { "sourceCode": "UK_HMT", "sourceName": "UK HM Treasury List" },
+        { "sourceCode": "MAS_HRS", "sourceName": "Singapore High-Risk Screening" }
+      ],
+      "thresholds": { "exactMatchThreshold": 100, "fuzzyMatchThreshold": 70, "phoneticMatchThreshold": 75 },
+      "parameters": [
+        { "parameterName": "SCREENING_TYPE", "parameterValue": "Enhanced Due-Diligence" },
+        { "parameterName": "ALERT_THRESHOLD", "parameterValue": "70" }
+      ]
+    },
+    {
+      "ruleId": "ms-rule-singapore",
+      "ruleCode": "SR_SINGAPORE_HIGH_RISK",
+      "ruleName": "Singapore High-Risk Screening",
+      "description": "MAS-designated high-risk individuals and entities subject to enhanced due diligence under Singapore AML/CFT requirements",
+      "status": "ACTIVE",
+      "versionNo": 1,
+      "watchlists": [
+        { "sourceCode": "SGP_HRS", "sourceName": "Singapore High-Risk Screening" },
+        { "sourceCode": "MAS_POI", "sourceName": "MAS Watchlist – Persons of Interest" },
+        { "sourceCode": "OFAC_SDN", "sourceName": "OFAC SDN List" },
+        { "sourceCode": "UN_1267", "sourceName": "UN Security Council Consolidated List" }
+      ],
+      "thresholds": { "exactMatchThreshold": 100, "fuzzyMatchThreshold": 75, "phoneticMatchThreshold": 75 },
+      "parameters": [
+        { "parameterName": "SCREENING_TYPE", "parameterValue": "MAS Regulatory" },
+        { "parameterName": "ALERT_THRESHOLD", "parameterValue": "75" }
+      ]
+    },
+    {
+      "ruleId": "ms-rule-mas",
+      "ruleCode": "SR_MAS_REGULATORY",
+      "ruleName": "MAS Regulatory Watchlist",
+      "description": "Screening against MAS-designated watchlists and regulatory notices",
+      "status": "ACTIVE",
+      "versionNo": 1,
+      "watchlists": [
+        { "sourceCode": "MAS_POI", "sourceName": "MAS Watchlist – Persons of Interest" },
+        { "sourceCode": "MAS_HRS", "sourceName": "Singapore High-Risk Screening" }
+      ],
+      "thresholds": { "exactMatchThreshold": 100, "fuzzyMatchThreshold": 80, "phoneticMatchThreshold": 0 },
+      "parameters": [
+        { "parameterName": "SCREENING_TYPE", "parameterValue": "MAS Regulatory" },
+        { "parameterName": "ALERT_THRESHOLD", "parameterValue": "80" }
+      ]
+    },
+    {
+      "ruleId": "ms-rule-uae",
+      "ruleCode": "SR_UAE_COMPLIANCE",
+      "ruleName": "UAE Compliance Watchlist",
+      "description": "UAE Cabinet designated terrorists and sanctioned entities",
+      "status": "ACTIVE",
+      "versionNo": 1,
+      "watchlists": [
+        { "sourceCode": "UAE_LOCAL", "sourceName": "UAE Local Lists" }
+      ],
+      "thresholds": { "exactMatchThreshold": 100, "fuzzyMatchThreshold": 75, "phoneticMatchThreshold": 0 },
+      "parameters": [
+        { "parameterName": "SCREENING_TYPE", "parameterValue": "Regulatory" },
+        { "parameterName": "ALERT_THRESHOLD", "parameterValue": "75" },
+        { "parameterName": "ID_OVERRIDE", "parameterValue": "true" }
+      ]
+    }
+  ]
+}

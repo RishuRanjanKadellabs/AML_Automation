@@ -26,8 +26,8 @@ export function isManualScreeningCaseId(id: string): boolean {
     || /^TC_MS\d+_\d+$/i.test(id);
 }
 
-export function loadMsRows(): MsExcelRow[] {
-  const wb = XLSX.readFile(MS_EXCEL_PATH);
+export function loadMsRows(excelPath = MS_EXCEL_PATH): MsExcelRow[] {
+  const wb = XLSX.readFile(excelPath);
   const sheet = wb.Sheets[wb.SheetNames[0]];
   const raw = XLSX.utils.sheet_to_json<Record<string, string>>(sheet, { defval: "" });
   const seen = new Set<string>();

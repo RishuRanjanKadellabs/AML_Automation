@@ -14,6 +14,10 @@ const SanctionMisReportsLocators = {
   paginationPrev: 'button:has-text("Previous")',
   emptyState: "text=/no reports|no data|no records/i",
   validationMessage: '[role="alert"], .text-destructive',
+  reportFiltersPanel: '.filters-panel, :has-text("Report Filters")',
+  detailSearchInput: 'input[placeholder*="Search records" i]',
+  columnsButton: 'button:has-text("Columns")',
+  detailPaginationBar: ".pagination-bar",
 };
 
 export default SanctionMisReportsLocators;
