@@ -5,9 +5,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "navigation-page-access",
       "high",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -16,8 +17,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
-      "high",
+      "navigation-page-access",
+      "medium",
       "functional"
     ]
   },
@@ -27,9 +28,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "navigation-page-access",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -38,9 +40,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "navigation-page-access",
       "medium",
-      "functional"
+      "browser-compat"
     ]
   },
   {
@@ -49,8 +51,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
-      "low",
+      "navigation-page-access",
+      "medium",
       "functional"
     ]
   },
@@ -60,9 +62,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "navigation-page-access",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -71,7 +74,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "navigation-page-access",
       "medium",
       "functional"
     ]
@@ -82,9 +85,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
-      "low",
-      "functional"
+      "navigation-page-access",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -93,7 +97,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "status-tabs",
       "medium",
       "functional"
     ]
@@ -104,8 +108,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
-      "low",
+      "status-tabs",
+      "medium",
       "functional"
     ]
   },
@@ -115,7 +119,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "status-tabs",
       "medium",
       "functional"
     ]
@@ -126,7 +130,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "status-tabs",
       "medium",
       "functional"
     ]
@@ -137,9 +141,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "status-tabs",
       "medium",
-      "performance"
+      "functional"
     ]
   },
   {
@@ -148,8 +152,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
-      "high",
+      "status-tabs",
+      "medium",
       "functional"
     ]
   },
@@ -159,10 +163,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "page-framework",
+      "status-tabs",
       "medium",
-      "rbac",
-      "security"
+      "functional"
     ]
   },
   {
@@ -171,7 +174,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
+      "search-filter",
       "high",
       "functional"
     ]
@@ -182,8 +185,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "high",
+      "search-filter",
+      "medium",
       "functional"
     ]
   },
@@ -193,7 +196,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
+      "search-filter",
       "high",
       "functional"
     ]
@@ -204,8 +207,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "high",
+      "search-filter",
+      "medium",
       "functional"
     ]
   },
@@ -215,8 +218,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "high",
+      "search-filter",
+      "medium",
       "functional"
     ]
   },
@@ -226,8 +229,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "high",
+      "search-filter",
+      "medium",
       "functional"
     ]
   },
@@ -237,8 +240,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "high",
+      "search-filter",
+      "medium",
       "functional"
     ]
   },
@@ -248,7 +251,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
+      "data-table-sorting",
       "high",
       "functional"
     ]
@@ -259,8 +262,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "low",
+      "data-table-sorting",
+      "medium",
       "functional"
     ]
   },
@@ -270,10 +273,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "high",
-      "rbac",
-      "security"
+      "data-table-sorting",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -282,8 +284,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
-      "high",
+      "data-table-sorting",
+      "medium",
       "functional"
     ]
   },
@@ -293,7 +295,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "tab-bar",
+      "data-table-sorting",
       "medium",
       "functional"
     ]
@@ -304,7 +306,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
+      "data-table-sorting",
       "medium",
       "functional"
     ]
@@ -315,8 +317,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
-      "high",
+      "data-table-sorting",
+      "medium",
       "functional"
     ]
   },
@@ -326,8 +328,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
-      "high",
+      "data-table-sorting",
+      "medium",
       "functional"
     ]
   },
@@ -337,7 +339,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
+      "data-table-sorting",
       "medium",
       "functional"
     ]
@@ -348,7 +350,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
+      "data-table-sorting",
       "medium",
       "functional"
     ]
@@ -359,8 +361,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
-      "medium",
+      "category-management-add-category",
+      "high",
       "functional"
     ]
   },
@@ -370,9 +372,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
-      "medium",
-      "functional"
+      "category-management-add-category",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -381,8 +384,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
-      "high",
+      "category-management-add-category",
+      "medium",
       "functional"
     ]
   },
@@ -392,9 +395,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
-      "low",
-      "accessibility"
+      "category-management-add-category",
+      "medium",
+      "maker-checker"
     ]
   },
   {
@@ -403,7 +406,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
+      "category-management-add-category",
       "medium",
       "functional"
     ]
@@ -414,9 +417,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "search-filter",
-      "high",
-      "functional"
+      "category-management-add-category",
+      "medium",
+      "error-handling"
     ]
   },
   {
@@ -425,8 +428,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
-      "high",
+      "category-management-add-category",
+      "medium",
       "functional"
     ]
   },
@@ -436,8 +439,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
-      "medium",
+      "category-management-add-category",
+      "high",
       "functional"
     ]
   },
@@ -447,8 +450,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
-      "low",
+      "category-management-add-category",
+      "high",
       "functional"
     ]
   },
@@ -458,8 +461,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
-      "high",
+      "category-management-add-category",
+      "medium",
       "functional"
     ]
   },
@@ -469,7 +472,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
+      "category-management-add-category",
       "medium",
       "functional"
     ]
@@ -480,9 +483,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
-      "low",
-      "functional"
+      "category-management-add-category",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -491,8 +495,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
-      "low",
+      "category-management-category-controls",
+      "medium",
       "functional"
     ]
   },
@@ -502,8 +506,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "table-sorting",
-      "medium",
+      "category-management-category-controls",
+      "high",
       "functional"
     ]
   },
@@ -513,9 +517,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "category-badges",
-      "medium",
-      "functional"
+      "category-management-category-controls",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -524,7 +529,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "category-badges",
+      "category-management-category-controls",
       "medium",
       "functional"
     ]
@@ -535,7 +540,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "category-badges",
+      "category-management-category-controls",
       "medium",
       "functional"
     ]
@@ -546,9 +551,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "category-badges",
-      "medium",
-      "functional"
+      "category-management-category-controls",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -557,9 +563,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "risk-level-badges",
+      "category-management-category-controls",
       "medium",
-      "functional"
+      "api"
     ]
   },
   {
@@ -568,7 +574,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "risk-level-badges",
+      "category-management-category-controls",
       "medium",
       "functional"
     ]
@@ -579,9 +585,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "risk-level-badges",
+      "category-management-category-controls",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -590,8 +597,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "match-type-badges",
-      "medium",
+      "add-ignore-word",
+      "high",
       "functional"
     ]
   },
@@ -601,8 +608,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "match-type-badges",
-      "medium",
+      "add-ignore-word",
+      "high",
       "functional"
     ]
   },
@@ -612,7 +619,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "status-badges",
+      "add-ignore-word",
       "medium",
       "functional"
     ]
@@ -623,7 +630,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "status-badges",
+      "add-ignore-word",
       "medium",
       "functional"
     ]
@@ -634,7 +641,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "status-badges",
+      "add-ignore-word",
       "medium",
       "functional"
     ]
@@ -645,8 +652,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
-      "high",
+      "add-ignore-word",
+      "medium",
       "functional"
     ]
   },
@@ -656,10 +663,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
-      "high",
-      "rbac",
-      "security"
+      "add-ignore-word",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -668,9 +674,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
-      "high",
-      "functional"
+      "add-ignore-word",
+      "medium",
+      "error-handling"
     ]
   },
   {
@@ -679,10 +685,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
-      "high",
-      "rbac",
-      "security"
+      "add-ignore-word",
+      "medium",
+      "error-handling"
     ]
   },
   {
@@ -691,10 +696,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
+      "add-ignore-word",
       "high",
-      "rbac",
-      "security"
+      "functional"
     ]
   },
   {
@@ -703,10 +707,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
-      "high",
-      "rbac",
-      "security"
+      "add-ignore-word",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -715,7 +718,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
+      "add-ignore-word",
       "high",
       "functional"
     ]
@@ -726,7 +729,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "row-actions",
+      "add-ignore-word",
       "high",
       "functional"
     ]
@@ -737,9 +740,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "export-functionality",
-      "high",
-      "export"
+      "add-ignore-word",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -748,9 +751,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "export-functionality",
-      "high",
-      "export"
+      "add-ignore-word",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -759,9 +762,21 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "export-functionality",
-      "high",
-      "export"
+      "add-ignore-word",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-070",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "add-ignore-word",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -770,396 +785,13 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "export-functionality",
-      "medium",
-      "export"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-073",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-074",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "medium",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-075",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-077",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-078",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-080",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
+      "add-ignore-word",
       "medium",
       "functional"
     ]
   },
   {
-    "testCaseId": "IWC-TC-081",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "medium",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-082",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-083",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-084",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "medium",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-085",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-086",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-087",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-088",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-089",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-090",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "high",
-      "notifications"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-091",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-092",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-093",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "category-controls-modal",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-094",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-095",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-096",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-097",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-098",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-099",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-100",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-101",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-102",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-103",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-104",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "low",
-      "accessibility"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-105",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-106",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-107",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-109",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-110",
+    "testCaseId": "IWC-TC-072",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
@@ -1170,7 +802,18 @@
     ]
   },
   {
-    "testCaseId": "IWC-TC-111",
+    "testCaseId": "IWC-TC-073",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "live-narrative-tester",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-074",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
@@ -1178,6 +821,415 @@
       "live-narrative-tester",
       "medium",
       "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-075",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "live-narrative-tester",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-076",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "live-narrative-tester",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-077",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "live-narrative-tester",
+      "medium",
+      "error-handling"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-078",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "live-narrative-tester",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-079",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "live-narrative-tester",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-080",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-081",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-082",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-083",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-084",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-085",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-086",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-087",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-088",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-089",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "ignore-word-row-actions",
+      "medium",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-090",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "high"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-091",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-092",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-093",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-094",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "high",
+      "maker-checker"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-095",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-096",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-097",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-098",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "maker-checker"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-099",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-100",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-101",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-102",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-103",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-104",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "high"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-105",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "medium"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-106",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "medium"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-107",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-108",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "medium"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-109",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "medium",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-110",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-111",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1186,9 +1238,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
-      "high",
-      "functional"
+      "maker-checker-workflow",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1197,9 +1250,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
-      "medium",
-      "functional"
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1208,9 +1262,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
+      "maker-checker-workflow",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1219,9 +1274,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
+      "maker-checker-workflow",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1230,9 +1286,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
+      "maker-checker-workflow",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1241,9 +1298,22 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
-      "low",
-      "error-handling"
+      "maker-checker-workflow",
+      "medium",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-118",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1252,8 +1322,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high",
+      "maker-checker-workflow",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1264,8 +1334,20 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
+      "maker-checker-workflow",
       "medium",
+      "rbac",
+      "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-121",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "maker-checker-workflow",
+      "high",
       "rbac",
       "security"
     ]
@@ -1276,8 +1358,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high",
+      "maker-checker-workflow",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1288,9 +1370,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
+      "maker-checker-workflow",
       "medium",
-      "export"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1299,9 +1382,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "low",
-      "export"
+      "audit-history",
+      "high",
+      "word-history"
     ]
   },
   {
@@ -1310,9 +1393,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high",
-      "export"
+      "audit-history",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1321,8 +1404,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high"
+      "audit-history",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1331,9 +1415,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "low",
-      "functional"
+      "audit-history",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1342,9 +1427,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
+      "audit-history",
       "medium",
-      "export"
+      "functional"
     ]
   },
   {
@@ -1353,9 +1438,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high",
-      "export"
+      "audit-history",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1364,9 +1449,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high",
-      "export"
+      "audit-history",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1375,9 +1461,10 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high",
-      "error-handling"
+      "audit-history",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1386,9 +1473,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
+      "audit-history",
       "medium",
-      "export"
+      "functional"
     ]
   },
   {
@@ -1397,10 +1484,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "high",
-      "rbac",
-      "security"
+      "audit-history",
+      "medium",
+      "word-history"
     ]
   },
   {
@@ -1409,7 +1495,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
+      "access-control-rbac",
       "high",
       "rbac",
       "security"
@@ -1421,8 +1507,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "medium",
+      "access-control-rbac",
+      "high",
       "rbac",
       "security"
     ]
@@ -1433,8 +1519,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "bulk-upload",
-      "medium",
+      "access-control-rbac",
+      "high",
       "rbac",
       "security"
     ]
@@ -1445,8 +1531,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
-      "high",
+      "access-control-rbac",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1457,8 +1543,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
-      "high",
+      "access-control-rbac",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1469,7 +1555,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
+      "access-control-rbac",
       "high",
       "rbac",
       "security"
@@ -1481,8 +1567,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
-      "medium",
+      "access-control-rbac",
+      "high",
       "rbac",
       "security"
     ]
@@ -1493,8 +1579,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
-      "high",
+      "access-control-rbac",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1505,8 +1591,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
-      "high",
+      "access-control-rbac",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1517,7 +1603,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
+      "access-control-rbac",
       "medium",
       "rbac",
       "security"
@@ -1529,10 +1615,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
-      "low",
-      "rbac",
-      "security"
+      "field-business-rule-validation",
+      "high",
+      "functional"
     ]
   },
   {
@@ -1541,10 +1626,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "checker-approval-modal",
-      "high",
-      "rbac",
-      "security"
+      "field-business-rule-validation",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1553,30 +1637,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
-      "high",
-      "word-history"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-147",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "word-history-panel",
+      "field-business-rule-validation",
       "medium",
-      "word-history"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-148",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "word-history-panel",
-      "high",
       "functional"
     ]
   },
@@ -1586,21 +1648,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
+      "field-business-rule-validation",
       "high",
       "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-150",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "word-history-panel",
-      "high",
-      "rbac",
-      "security"
     ]
   },
   {
@@ -1609,10 +1659,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
+      "field-business-rule-validation",
       "medium",
-      "rbac",
-      "security"
+      "functional"
     ]
   },
   {
@@ -1621,7 +1670,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
+      "field-business-rule-validation",
       "medium",
       "functional"
     ]
@@ -1632,9 +1681,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
+      "field-business-rule-validation",
       "medium",
-      "word-history"
+      "functional"
     ]
   },
   {
@@ -1643,9 +1692,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
+      "field-business-rule-validation",
       "medium",
-      "word-history"
+      "export"
     ]
   },
   {
@@ -1654,7 +1703,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
+      "field-business-rule-validation",
       "medium",
       "export"
     ]
@@ -1665,10 +1714,42 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "word-history-panel",
-      "high",
-      "rbac",
-      "security"
+      "status-tabs",
+      "medium",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-157",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "navigation-page-access",
+      "medium",
+      "performance"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-158",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "navigation-page-access",
+      "medium",
+      "browser-compat"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-159",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "data-table-sorting",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1677,10 +1758,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "high",
-      "rbac",
-      "security"
+      "navigation-page-access",
+      "low",
+      "functional"
     ]
   },
   {
@@ -1689,8 +1769,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "high",
+      "navigation-page-access",
+      "low",
       "functional"
     ]
   },
@@ -1700,10 +1780,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "high",
-      "rbac",
-      "security"
+      "category-management-add-category",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1712,10 +1791,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "high",
-      "rbac",
-      "security"
+      "category-management-category-controls",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1724,10 +1802,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "high",
-      "rbac",
-      "security"
+      "add-ignore-word",
+      "medium",
+      "functional"
     ]
   },
   {
@@ -1736,10 +1813,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "high",
-      "rbac",
-      "security"
+      "bulk-upload",
+      "medium"
     ]
   },
   {
@@ -1748,8 +1823,8 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "high",
+      "maker-checker-workflow",
+      "low",
       "rbac",
       "security"
     ]
@@ -1760,10 +1835,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "medium",
-      "rbac",
-      "security"
+      "audit-history",
+      "low",
+      "word-history"
     ]
   },
   {
@@ -1772,20 +1846,127 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "permissions-rbac",
-      "medium",
-      "word-history"
+      "bulk-upload",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-169",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "low",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-170",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "high"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-171",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "export",
+      "medium"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-172",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "category-management-add-category",
+      "high",
+      "maker-checker"
     ]
   },
   {
     "testCaseId": "IWC-TC-173",
-    "automationLayer": "API + UI",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "api-data-model",
+      "category-management-add-category",
+      "medium",
+      "error-handling"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-174",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "add-ignore-word",
       "high",
-      "api"
+      "error-handling"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-175",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "field-business-rule-validation",
+      "high",
+      "maker-checker"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-176",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "high",
+      "export"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-178",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "bulk-upload",
+      "high"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-179",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "add-ignore-word",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-180",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "live-narrative-tester",
+      "high",
+      "functional"
     ]
   },
   {
@@ -1794,9 +1975,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "error-handling",
+      "live-narrative-tester",
       "high",
-      "api"
+      "functional"
     ]
   },
   {
@@ -1805,21 +1986,21 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "error-handling",
-      "medium",
-      "api"
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
-    "testCaseId": "IWC-TC-183",
+    "testCaseId": "IWC-TC-184",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "error-handling",
-      "high",
-      "rbac",
-      "security"
+      "field-business-rule-validation",
+      "medium",
+      "browser-compat"
     ]
   },
   {
@@ -1828,9 +2009,31 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "ui-ux-consistency",
-      "low",
-      "functional"
+      "regression-compatibility",
+      "medium",
+      "browser-compat"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-186",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "regression-compatibility",
+      "medium",
+      "browser-compat"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-187",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "regression-compatibility",
+      "medium",
+      "browser-compat"
     ]
   },
   {
@@ -1839,9 +2042,18 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "ui-ux-consistency",
-      "medium",
-      "notifications"
+      "accessibility",
+      "medium"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-189",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "accessibility",
+      "low"
     ]
   },
   {
@@ -1860,8 +2072,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "accessibility",
-      "medium"
+      "security-validation",
+      "high",
+      "functional"
     ]
   },
   {
@@ -1870,20 +2083,54 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "accessibility",
-      "medium"
+      "regression-compatibility",
+      "high",
+      "export"
     ]
   },
   {
-    "testCaseId": "IWC-TC-194",
+    "testCaseId": "IWC-TC-193",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "security-validation",
+      "regression-compatibility",
+      "medium",
+      "error-handling"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-194",
+    "automationLayer": "UI + Manual",
+    "automationCandidate": "Yes",
+    "reason": "UAT scenarios may require business stakeholder sign-off beyond automated checks",
+    "tags": [
+      "uat-scenarios",
       "high",
       "rbac",
       "security"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-195",
+    "automationLayer": "UI + Manual",
+    "automationCandidate": "Yes",
+    "reason": "UAT scenarios may require business stakeholder sign-off beyond automated checks",
+    "tags": [
+      "uat-scenarios",
+      "high",
+      "functional"
+    ]
+  },
+  {
+    "testCaseId": "IWC-TC-196",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Ignore Words Configuration UI automation via Playwright page object",
+    "tags": [
+      "audit-history",
+      "medium",
+      "word-history"
     ]
   },
   {
@@ -1892,7 +2139,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "regression-validation",
+      "add-ignore-word",
       "high",
       "rbac",
       "security"
@@ -1904,7 +2151,7 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "regression-validation",
+      "maker-checker-workflow",
       "high",
       "rbac",
       "security"
@@ -1916,599 +2163,9 @@
     "automationCandidate": "Yes",
     "reason": "Ignore Words Configuration UI automation via Playwright page object",
     "tags": [
-      "regression-validation",
-      "high",
-      "export"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-200",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-201",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "medium",
-      "error-handling"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-202",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "regression-validation",
-      "medium",
-      "api"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-204",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "sidebar-navigation",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-205",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "sidebar-navigation",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-207",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "match-type-behavior",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-208",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "match-type-behavior",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-209",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "data-validation",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-210",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "data-validation",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-214",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "browser-compatibility",
-      "high",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-215",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "browser-compatibility",
-      "medium",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-216",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "browser-compatibility",
-      "medium",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-219",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "navigation-flow",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-220",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "navigation-flow",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-221",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "navigation-flow",
-      "high",
-      "export"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-222",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "navigation-flow",
-      "high",
-      "word-history"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-224",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-226",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-227",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-228",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-229",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "word-history"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-230",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-231",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-232",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "duplicate-validation",
-      "high",
-      "error-handling"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-233",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "row-actions",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-234",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "row-actions",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-235",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
       "live-narrative-tester",
       "medium",
       "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-236",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "notifications",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-237",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-238",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-239",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "maker-checker"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-240",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "medium",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-245",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "security-validation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-246",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "negative-scenarios",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-247",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "negative-scenarios",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-248",
-    "automationLayer": "UI + Manual",
-    "automationCandidate": "Yes",
-    "reason": "UAT scenarios may require business stakeholder sign-off beyond automated checks",
-    "tags": [
-      "uat-scenarios",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-249",
-    "automationLayer": "UI + Manual",
-    "automationCandidate": "Yes",
-    "reason": "UAT scenarios may require business stakeholder sign-off beyond automated checks",
-    "tags": [
-      "uat-scenarios",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-250",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "word-history-panel",
-      "medium",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-251",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "checker-approval-modal",
-      "medium",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-252",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "error-handling",
-      "medium",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-254",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "screening-engine"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-255",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-256",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "maker-checker-governance",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-257",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "maker-checker-governance",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-258",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "maker-checker-governance",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-259",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "maker-checker-governance",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-264",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "bulk-upload",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-265",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "bulk-upload",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-266",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-269",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-ignore-word-panel",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-270",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "IWC-TC-271",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Ignore Words Configuration UI automation via Playwright page object",
-    "tags": [
-      "add-category-modal",
-      "medium",
-      "error-handling"
     ]
   }
 ]

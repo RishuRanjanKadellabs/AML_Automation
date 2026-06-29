@@ -1,3201 +1,2081 @@
-# Keyword Manager — Detailed Test Cases (200)
+# Keyword Manager — Detailed Test Cases (130)
 
-### KM-TC-001 — Verify user can navigate to Keyword Manager module from Configuration menu
+### KM-TC-001 — Open Keyword Manager from nested configuration menu
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Navigation & Page Load |
+| Feature | Navigation & Page Access |
 | Priority | High |
-| Preconditions | User logged into AML application with valid access |
-| Test Data | N/A |
-| Steps | 1. Login to AML application 2. Navigate to Configuration menu 3. Click Screening – Keyword Configuration |
-| Acceptance Criteria | User should successfully land on Keyword Manager listing page |
-| Expected Result | Keyword Manager listing page loads successfully with Active, Inactive, and Drafted tabs displayed |
+| Preconditions | Maker account with keyword create/edit permission is available. |
+| Test Data | Menu path: Configuration > Sanctions Screening Configuration > Keyword Manager User role: Maker |
+| Steps | 1. From the main menu, open Configuration > Sanctions Screening Configuration > Keyword Manager. 2. Confirm the listing page loads with breadcrumb, status tabs, toolbar, and data table. 3. Verify no error banner or blank content area is shown. |
+| Acceptance Criteria | Maker can reach Keyword Manager and breadcrumb matches module path. |
+| Expected Result | Keyword Manager page opens; breadcrumb shows 'Sanctions Screening Configuration / Keyword Manager'; listing displays Active, Inactive, and Drafted Keyword tabs with record counts; toolbar actions reflect Maker permissions; no error state is shown. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | navigation-page-load, high, functional |
+| Tags | navigation-page-access, high, rbac, security |
 
-### KM-TC-002 — Verify Keyword Manager page title and breadcrumb display correctly
+### KM-TC-002 — Access Keyword Manager via direct URL after authentication
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Navigation & Page Load |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Navigate to Configuration > Screening – Keyword Configuration 2. Observe page header and breadcrumb |
-| Acceptance Criteria | Page title and breadcrumb should match specification |
-| Expected Result | Breadcrumb should display 'Configuration > Screening – Keyword Configuration' and page title should be correct |
+| Preconditions | Maker account with keyword create/edit permission is available. |
+| Test Data | URL pattern: /configuration/sanctions-screening/keyword-manager User role: Maker |
+| Steps | 1. Log in as Maker and open Keyword Manager via menu. 2. Copy the browser URL. 3. Open a new tab, paste the URL, and press Enter. 4. Refresh once with active session. 5. Confirm listing reloads without redirect loop. |
+| Acceptance Criteria | Authenticated user can open page directly without redirect loop. |
+| Expected Result | Direct URL resolves to Keyword Manager and remains accessible after refresh with active session. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | navigation-page-load, medium, functional |
+| Tags | navigation-page-access, medium, rbac, security |
 
-### KM-TC-003 — Verify Active tab is selected by default on page load
+### KM-TC-003 — Validate page load performance for authorized user
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Navigation & Page Load |
-| Priority | High |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager page 2. Observe default tab selection |
-| Acceptance Criteria | Active tab should be highlighted as default |
-| Expected Result | Active tab should be selected by default and display active keyword entries |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-page-load, high, functional |
-
-### KM-TC-004 — Verify Active, Inactive, and Drafted tabs are all visible on listing page
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Navigation & Page Load |
-| Priority | High |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager page 2. Observe tab bar |
-| Acceptance Criteria | All three tabs should be displayed in tab bar |
-| Expected Result | Active, Inactive, and Drafted tabs should all be visible with entry counts |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-page-load, high, functional |
-
-### KM-TC-005 — Verify entry counts displayed in each tab are accurate
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Navigation & Page Load |
-| Priority | High |
-| Preconditions | User on Keyword Manager page with known dataset |
-| Test Data | Known keyword dataset |
-| Steps | 1. Open Keyword Manager page 2. Observe count shown on each tab 3. Compare with actual record counts |
-| Acceptance Criteria | Tab counts should reflect actual number of entries per status |
-| Expected Result | Count displayed on each tab should match actual keyword entries for that status |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-page-load, high, functional |
-
-### KM-TC-006 — Verify page remains stable during initial data load for large keyword datasets
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Navigation & Page Load |
-| Priority | High |
-| Preconditions | Large keyword dataset available |
-| Test Data | Large dataset |
-| Steps | 1. Open Keyword Manager page with large dataset 2. Observe page loading behaviour |
-| Acceptance Criteria | Page should remain responsive during initial load |
-| Expected Result | Page should load without freeze, crash, or timeout |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-page-load, high, functional |
-
-### KM-TC-007 — Verify empty state is displayed when no keyword entries exist
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Navigation & Page Load |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | No keyword entries in system |
-| Test Data | Empty dataset |
-| Steps | 1. Open Keyword Manager page with empty dataset |
-| Acceptance Criteria | Proper empty state message should appear |
-| Expected Result | System should display a proper no-records-found empty state message without errors |
+| Preconditions | Maker is logged in. Standard internal network conditions. |
+| Test Data | Operational target: first interactive view <= 5 seconds on internal network User role: Maker |
+| Steps | 1. Open browser developer network timing. 2. Navigate to Keyword Manager. 3. Record time until table and toolbar are interactive. |
+| Acceptance Criteria | Page becomes interactive within acceptable operational threshold. |
+| Expected Result | Page load completes within threshold and controls are clickable with no blank state freeze. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | navigation-page-load, medium, functional |
+| Tags | navigation-page-access, medium, rbac, security |
 
-### KM-TC-008 — Verify action bar buttons are visible on Keyword Manager listing page
+### KM-TC-004 — Verify browser back and forward navigation stability
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Navigation & Page Load |
-| Priority | High |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager page 2. Observe toolbar/action bar |
-| Acceptance Criteria | Add Keyword, Add Category, Category Controls, Bulk Import, Export buttons should be visible |
-| Expected Result | All configured action buttons should be visible in the action bar |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-page-load, high, export |
-
-### KM-TC-009 — Verify clicking Inactive tab loads inactive keyword entries
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Tab Navigation |
-| Priority | High |
-| Preconditions | User on Keyword Manager page with inactive keywords |
-| Test Data | N/A |
-| Steps | 1. Click the Inactive tab 2. Observe results |
-| Acceptance Criteria | Inactive entries should display after clicking Inactive tab |
-| Expected Result | Inactive tab should load and display only inactive keyword entries |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-navigation, high, functional |
-
-### KM-TC-010 — Verify clicking Drafted tab loads drafted keyword entries
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Tab Navigation |
-| Priority | High |
-| Preconditions | User on Keyword Manager page with drafted keywords |
-| Test Data | N/A |
-| Steps | 1. Click the Drafted tab 2. Observe results |
-| Acceptance Criteria | Drafted entries should display after clicking Drafted tab |
-| Expected Result | Drafted tab should load and display only drafted keyword entries |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-navigation, high, functional |
-
-### KM-TC-011 — Verify switching between tabs does not lose data or cause errors
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Tab Navigation |
-| Priority | Medium |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Click Active tab 2. Click Inactive tab 3. Click Drafted tab 4. Return to Active tab |
-| Acceptance Criteria | Tab switching should be stable and data consistent |
-| Expected Result | Tab switching should be smooth; data should reload correctly without errors |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-navigation, medium, error-handling |
-
-### KM-TC-012 — Verify table headers are consistent across all tabs
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Tab Navigation |
-| Priority | Medium |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Open Active tab and note headers 2. Click Inactive and note headers 3. Click Drafted and note headers |
-| Acceptance Criteria | Same column headers should appear on all tabs |
-| Expected Result | Column headers should be identical across Active, Inactive, and Drafted tabs |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-navigation, medium, functional |
-
-### KM-TC-013 — Verify keyword listing table displays all configured columns
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | User on Keyword Manager Active tab |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager page 2. Observe table column headers |
-| Acceptance Criteria | Table should show all defined columns |
-| Expected Result | Table should display Keyword/Phrase, Category, Risk Level, Match Type, Threshold Score, Status, and Actions columns |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-014 — Verify Keyword/Phrase column displays correct values
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | Known keyword dataset available |
-| Test Data | Known keyword list |
-| Steps | 1. Open listing page 2. Cross-check Keyword column values |
-| Acceptance Criteria | Keyword values should match stored entries |
-| Expected Result | Correct keyword/phrase values should be displayed for each entry |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-015 — Verify Category column displays correct category assignment per keyword
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | Known dataset |
-| Test Data | Known category mapping |
-| Steps | 1. Open listing 2. Verify Category values |
-| Acceptance Criteria | Category names should match each keyword's configured category |
-| Expected Result | Each keyword should show its correctly assigned category |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-016 — Verify Risk Level column displays correct risk badge for each keyword
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | Keyword entries with all risk levels available |
-| Test Data | Mixed risk dataset |
-| Steps | 1. Open listing 2. Observe Risk Level column for Low, Medium, High values |
-| Acceptance Criteria | Risk badges (Low/Medium/High) should be accurately displayed |
-| Expected Result | Low, Medium, High badges should display with correct styling for each entry |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-017 — Verify Match Type column correctly identifies Exact Match and Fuzzy Match entries
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | Dataset with both Exact and Fuzzy entries |
-| Test Data | Exact and Fuzzy entries |
-| Steps | 1. Open listing 2. Review Match Type column for multiple rows |
-| Acceptance Criteria | Match Type should be accurate per entry |
-| Expected Result | Exact Match and Fuzzy Match values should display correctly per entry |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-018 — Verify Threshold Score column is populated for Fuzzy Match entries
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | Fuzzy Match keyword entries available |
-| Test Data | Fuzzy Match entries |
-| Steps | 1. Open listing 2. Check Threshold Score column for Fuzzy Match rows |
-| Acceptance Criteria | Threshold Score should be shown for Fuzzy Match rows |
-| Expected Result | Threshold Score (1-100) should be displayed for Fuzzy Match entries |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-019 — Verify Threshold Score column is blank or N/A for Exact Match entries
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | Exact Match keyword entries available |
-| Test Data | Exact Match entries |
-| Steps | 1. Open listing 2. Check Threshold Score column for Exact Match rows |
-| Acceptance Criteria | Exact Match entries should not show a Threshold Score |
-| Expected Result | Threshold Score column should be empty or N/A for Exact Match entries |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-020 — Verify Status column displays correct status for each entry
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | High |
-| Preconditions | Dataset with all status types |
-| Test Data | Mixed status dataset |
-| Steps | 1. Open listing 2. Review Status column values |
-| Acceptance Criteria | Status badges (Active, Inactive, Draft, Pending Approval) should be accurate |
-| Expected Result | Correct status badges should display for each keyword entry |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, high, functional |
-
-### KM-TC-021 — Verify long keyword phrases do not break table layout
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | Medium |
-| Preconditions | Keywords with long phrases available |
-| Test Data | Long keyword phrases |
-| Steps | 1. Open listing with long keyword phrases 2. Observe table rendering |
-| Acceptance Criteria | Long text should not cause layout distortion |
-| Expected Result | Long keyword phrases should render without breaking table alignment |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, medium, functional |
-
-### KM-TC-022 — Verify table supports vertical scrolling for large datasets
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Keyword Listing Table |
-| Priority | Medium |
-| Preconditions | Large keyword dataset |
-| Test Data | Large dataset |
-| Steps | 1. Open listing with many records 2. Scroll table vertically |
-| Acceptance Criteria | Table should be scrollable when records exceed viewport height |
-| Expected Result | Table should scroll smoothly without layout issues |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | keyword-listing-table, medium, functional |
-
-### KM-TC-023 — Verify search field is visible in toolbar on keyword listing page
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Search Functionality |
-| Priority | High |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager page 2. Observe toolbar area |
-| Acceptance Criteria | Search input should be present in toolbar |
-| Expected Result | Search input field should be visible with placeholder text |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-functionality, high, functional |
-
-### KM-TC-024 — Verify search returns matching records when valid keyword is entered
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Search Functionality |
-| Priority | High |
-| Preconditions | Known keyword entries available |
-| Test Data | Known keyword: 'hawala' |
-| Steps | 1. Enter known keyword phrase in search field 2. Observe filtered results |
-| Acceptance Criteria | Search should return entries matching the typed text |
-| Expected Result | Only records matching the search text should be displayed |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-functionality, high, functional |
-
-### KM-TC-025 — Verify search is case-insensitive
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Search Functionality |
-| Priority | Medium |
-| Preconditions | Searchable keyword entries available |
-| Test Data | Lowercase/uppercase variants |
-| Steps | 1. Search using lowercase text 2. Search using uppercase text 3. Compare results |
-| Acceptance Criteria | Same results should appear regardless of case used |
-| Expected Result | Search results should be identical regardless of case input |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-functionality, medium, functional |
-
-### KM-TC-026 — Verify search returns no results for unmatched text
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Search Functionality |
-| Priority | Medium |
-| Preconditions | Keyword listing has known entries |
-| Test Data | Invalid search: 'zzz999' |
-| Steps | 1. Enter text that does not match any keyword 2. Observe results |
-| Acceptance Criteria | System should show empty state for unmatched search |
-| Expected Result | No records found message should display without errors |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-functionality, medium, functional |
-
-### KM-TC-027 — Verify clearing search field restores full keyword listing
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Search Functionality |
-| Priority | High |
-| Preconditions | Search is currently active with filtered results |
-| Test Data | N/A |
-| Steps | 1. Apply a search filter 2. Clear the search field 3. Observe results |
-| Acceptance Criteria | Clearing the search should show all records again |
-| Expected Result | Full keyword listing should be restored after clearing search |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-functionality, high, functional |
-
-### KM-TC-028 — Verify special characters are handled safely in search field
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Search Functionality |
-| Priority | High |
-| Preconditions | Search field is accessible |
-| Test Data | Special chars: @#$%^&* |
-| Steps | 1. Enter special characters in search field 2. Observe behaviour |
-| Acceptance Criteria | System should not crash or error on special character input |
-| Expected Result | System should handle special character input without crash or API error |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-functionality, high, error-handling |
-
-### KM-TC-029 — Verify Add Category modal opens when Add Category button is clicked
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | High |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Click Add Category button in toolbar 2. Observe modal behaviour |
-| Acceptance Criteria | Modal should appear as overlay on clicking Add Category |
-| Expected Result | 'Create a new Keyword screening category' modal should open as overlay |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, high, functional |
-
-### KM-TC-030 — Verify Category Name field is mandatory in Add Category modal
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Critical |
-| Preconditions | Add Category modal is open |
-| Test Data | Blank name |
-| Steps | 1. Leave Category Name blank 2. Click Add Category button |
-| Acceptance Criteria | Submission should be blocked if Category Name is empty |
-| Expected Result | Inline validation error should appear and modal should not close |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, critical, functional |
-
-### KM-TC-031 — Verify Category Name accepts valid input up to 100 characters
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | High |
-| Preconditions | Add Category modal is open |
-| Test Data | 100-character name string |
-| Steps | 1. Enter a category name of exactly 100 characters 2. Submit form |
-| Acceptance Criteria | Category Name field should accept up to 100 characters |
-| Expected Result | Category name should be accepted and submitted successfully |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, high, functional |
-
-### KM-TC-032 — Verify Category Name beyond 100 characters is rejected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | High |
-| Preconditions | Add Category modal is open |
-| Test Data | 101+ character string |
-| Steps | 1. Enter a name exceeding 100 characters 2. Submit |
-| Acceptance Criteria | Field should enforce 100-character limit |
-| Expected Result | System should restrict input or display validation error for names over 100 characters |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, high, maker-checker |
-
-### KM-TC-033 — Verify duplicate Category Name is rejected with inline error
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Critical |
-| Preconditions | Existing category 'ML_TF' is in system |
-| Test Data | Existing category name |
-| Steps | 1. Enter category name 'ML_TF' 2. Submit |
-| Acceptance Criteria | Duplicate category names should not be allowed |
-| Expected Result | Inline error should appear stating the name already exists and form should not submit |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, critical, error-handling |
-
-### KM-TC-034 — Verify Category Description field is optional
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | High |
-| Preconditions | Add Category modal is open |
-| Test Data | Category name only |
-| Steps | 1. Enter Category Name only 2. Leave description blank 3. Submit |
-| Acceptance Criteria | Category should be created successfully without description |
-| Expected Result | Category should be submitted successfully without a description |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, high, functional |
-
-### KM-TC-035 — Verify Category Description accepts up to 500 characters
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Medium |
-| Preconditions | Add Category modal is open |
-| Test Data | 500-character description |
-| Steps | 1. Enter 500-character description 2. Submit |
-| Acceptance Criteria | Description field should allow up to 500 characters |
-| Expected Result | Description should be accepted within the 500 character limit |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, medium, error-handling |
-
-### KM-TC-036 — Verify Category Description beyond 500 characters is restricted
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Medium |
-| Preconditions | Add Category modal is open |
-| Test Data | 501+ character description |
-| Steps | 1. Enter description exceeding 500 characters |
-| Acceptance Criteria | Field should not accept more than 500 characters |
-| Expected Result | System should restrict input or show error for description over 500 characters |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, medium, error-handling |
-
-### KM-TC-037 — Verify successful Add Category submission sends entry for Checker approval
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Critical |
-| Preconditions | User is Maker with valid inputs |
-| Test Data | Category Name: 'TEST_CATEGORY' |
-| Steps | 1. Enter valid Category Name and Description 2. Click Add Category |
-| Acceptance Criteria | New category should enter Pending Approval state |
-| Expected Result | Modal closes, category enters Pending Approval, audit log entry is created |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, critical, rbac, security |
-
-### KM-TC-038 — Verify Cancel button on Add Category modal discards data without saving
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Medium |
-| Preconditions | Add Category modal is open with data entered |
-| Test Data | N/A |
-| Steps | 1. Enter category name 2. Click Cancel |
-| Acceptance Criteria | Modal should close and no category should be created |
-| Expected Result | Modal should close without saving; no new category should appear in the system |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, medium, functional |
-
-### KM-TC-039 — Verify confirmation prompt appears when cancelling Add Category with populated fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Medium |
-| Preconditions | Add Category modal is open with data entered |
-| Test Data | N/A |
-| Steps | 1. Enter category name 2. Click Cancel 3. Observe behaviour |
-| Acceptance Criteria | System should warn user before discarding entered data |
-| Expected Result | Confirmation prompt should appear asking user to confirm discarding data |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, medium, functional |
-
-### KM-TC-040 — Verify Add Category modal close button works correctly
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Category |
-| Priority | Medium |
-| Preconditions | Add Category modal is open |
-| Test Data | N/A |
-| Steps | 1. Click the X/close button on modal |
-| Acceptance Criteria | Modal should close on clicking X button |
-| Expected Result | Modal should close without saving |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category, medium, functional |
-
-### KM-TC-041 — Verify Category Controls panel opens when Category Controls button is clicked
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | High |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Click Category Controls button in toolbar |
-| Acceptance Criteria | Panel should open listing all existing categories |
-| Expected Result | Category Controls modal/panel should open showing all categories with enable/disable toggles |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, high, functional |
-
-### KM-TC-042 — Verify all existing categories are listed in Category Controls panel
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | High |
-| Preconditions | Multiple categories configured |
-| Test Data | Known category list |
-| Steps | 1. Open Category Controls panel 2. Count listed categories |
-| Acceptance Criteria | Every configured category should appear in the panel |
-| Expected Result | All configured categories should be listed in Category Controls panel |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, high, functional |
-
-### KM-TC-043 — Verify enabled category toggle shows correct active state
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | High |
-| Preconditions | Enabled category available |
-| Test Data | Active category |
-| Steps | 1. Open Category Controls 2. Observe toggle state for active category |
-| Acceptance Criteria | Active categories should show enabled toggle state |
-| Expected Result | Enabled category should show toggle in ON/active position |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, high, functional |
-
-### KM-TC-044 — Verify user can disable an active category using the toggle
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | Critical |
-| Preconditions | Active category with keywords available |
-| Test Data | Active category |
-| Steps | 1. Open Category Controls 2. Toggle an active category to disabled 3. Save changes |
-| Acceptance Criteria | Toggling off should disable the category and all its keywords |
-| Expected Result | Category should be submitted for Maker-Checker approval to disable |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, critical, functional |
-
-### KM-TC-045 — Verify user can re-enable a disabled category using the toggle
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | Critical |
-| Preconditions | Disabled category available |
-| Test Data | Disabled category |
-| Steps | 1. Open Category Controls 2. Toggle a disabled category to enabled 3. Save changes |
-| Acceptance Criteria | Toggle should re-enable disabled category and its keywords |
-| Expected Result | Re-enabling request should be submitted for Maker-Checker approval |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, critical, functional |
-
-### KM-TC-046 — Verify disabling a category removes all its keywords from active screening
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | Critical |
-| Preconditions | Category with multiple active keywords |
-| Test Data | Category with keywords |
-| Steps | 1. Disable category 2. Verify keywords in that category become inactive in screening |
-| Acceptance Criteria | Keywords under disabled category should stop being evaluated |
-| Expected Result | All keywords under the disabled category should cease to be evaluated at next screening run |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, critical, functional |
-
-### KM-TC-047 — Verify Cancel button on Category Controls panel discards unsaved changes
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | Medium |
-| Preconditions | Category Controls panel is open with unsaved toggle changes |
-| Test Data | N/A |
-| Steps | 1. Toggle a category state 2. Click Cancel 3. Reopen panel |
-| Acceptance Criteria | Closing without saving should not modify categories |
-| Expected Result | Original category states should be retained; no changes should be saved |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, medium, functional |
-
-### KM-TC-048 — Verify category controls changes are subject to Maker-Checker approval
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Category Controls |
-| Priority | Critical |
-| Preconditions | Maker changes category state |
-| Test Data | N/A |
-| Steps | 1. Toggle a category 2. Save changes 3. Observe system state |
-| Acceptance Criteria | Changes should not take effect until approved by Checker |
-| Expected Result | Changes should enter Pending Approval state and require Checker approval before taking effect |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls, critical, rbac, security |
-
-### KM-TC-049 — Verify Add Keyword panel opens when Add Keyword button is clicked
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Click Add Keyword button in toolbar |
-| Acceptance Criteria | Add New Keyword panel should open |
-| Expected Result | Add New Keyword panel should open as a right-side panel or modal |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-050 — Verify Keyword/Phrase field is mandatory
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel is open |
-| Test Data | Blank keyword |
-| Steps | 1. Leave Keyword/Phrase blank 2. Click Submit |
-| Acceptance Criteria | Form should not submit without a keyword value |
-| Expected Result | Inline validation error should display and submission should be blocked |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-051 — Verify Keyword/Phrase field accepts up to 500 characters
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel is open |
-| Test Data | 500-character string |
-| Steps | 1. Enter exactly 500-character keyword phrase 2. Submit |
-| Acceptance Criteria | Field should support up to 500 characters |
-| Expected Result | Input should be accepted and submitted successfully |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, error-handling |
-
-### KM-TC-052 — Verify Keyword/Phrase field beyond 500 characters is restricted
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel is open |
-| Test Data | 501+ character string |
-| Steps | 1. Enter more than 500 characters |
-| Acceptance Criteria | Field should enforce 500-character limit |
-| Expected Result | System should restrict or show validation error for phrases exceeding 500 characters |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, error-handling |
-
-### KM-TC-053 — Verify Category dropdown is mandatory and lists only active categories
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel is open |
-| Test Data | N/A |
-| Steps | 1. Open Category dropdown 2. Observe listed categories 3. Try to submit without selecting |
-| Acceptance Criteria | Category must be selected from active categories |
-| Expected Result | Only active categories should be listed; submission should be blocked without a category selection |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-054 — Verify Risk Level is mandatory and supports Low, Medium, and High options
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel is open |
-| Test Data | N/A |
-| Steps | 1. Open Risk Level dropdown 2. Observe options 3. Try to submit without selection |
-| Acceptance Criteria | Risk Level field must be selected |
-| Expected Result | Low, Medium, High options should be available; form should block submission without a selection |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-055 — Verify Match Type is mandatory and presents Exact Match and Fuzzy Match options
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel is open |
-| Test Data | N/A |
-| Steps | 1. Open Match Type dropdown 2. Observe available options |
-| Acceptance Criteria | Match Type must be selected from the two allowed options |
-| Expected Result | Only Exact Match and Fuzzy Match options should be available |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-056 — Verify Threshold Score field is hidden when Exact Match is selected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel is open |
-| Test Data | N/A |
-| Steps | 1. Select Exact Match as Match Type 2. Observe Threshold Score field |
-| Acceptance Criteria | Threshold Score should not appear for Exact Match |
-| Expected Result | Threshold Score field should be hidden/invisible when Exact Match is selected |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-057 — Verify Threshold Score field appears when Fuzzy Match is selected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel is open |
-| Test Data | N/A |
-| Steps | 1. Select Fuzzy Match as Match Type 2. Observe Threshold Score field |
-| Acceptance Criteria | Threshold Score must appear for Fuzzy Match |
-| Expected Result | Threshold Score field should become visible and mandatory when Fuzzy Match is selected |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-058 — Verify Threshold Score field is mandatory when Fuzzy Match is selected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | Blank Threshold Score |
-| Steps | 1. Select Fuzzy Match 2. Leave Threshold Score blank 3. Submit |
-| Acceptance Criteria | Form should block submission if Fuzzy Match chosen but no Threshold Score entered |
-| Expected Result | Inline error should block submission: Threshold Score is required for Fuzzy Match |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-059 — Verify Threshold Score accepts values between 1 and 100 inclusive
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 1, 50, 100 |
-| Steps | 1. Enter Threshold Score of 1 2. Enter score of 50 3. Enter score of 100 |
-| Acceptance Criteria | Valid range is 1 to 100 |
-| Expected Result | All values between 1 and 100 should be accepted |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-060 — Verify Threshold Score value below 1 is clamped to 1
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 0, -5 |
-| Steps | 1. Enter Threshold Score of 0 or negative value |
-| Acceptance Criteria | Values below 1 should be corrected to 1 |
-| Expected Result | System should clamp the value to 1 and display 1 in the field |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-061 — Verify Threshold Score value above 100 is clamped to 100
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 101, 200 |
-| Steps | 1. Enter Threshold Score of 101 or higher |
-| Acceptance Criteria | Values above 100 should be corrected to 100 |
-| Expected Result | System should clamp the value to 100 and display 100 in the field |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-062 — Verify live precision indicator shows 'Low precision' for Threshold Score below 50
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 30 |
-| Steps | 1. Enter Threshold Score of 30 |
-| Acceptance Criteria | Indicator should reflect Low precision for scores 1–49 |
-| Expected Result | Live indicator should display 'Low precision' label |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-063 — Verify live precision indicator shows 'Balanced' for Threshold Score between 50 and 79
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 65 |
-| Steps | 1. Enter Threshold Score of 65 |
-| Acceptance Criteria | Indicator should reflect Balanced for scores 50–79 |
-| Expected Result | Live indicator should display 'Balanced' label |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-064 — Verify live precision indicator shows 'High precision' for Threshold Score of 80 or above
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 85 |
-| Steps | 1. Enter Threshold Score of 85 |
-| Acceptance Criteria | Indicator should reflect High precision for scores 80–100 |
-| Expected Result | Live indicator should display 'High precision' label |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-065 — Verify Threshold Score boundary 50 displays 'Balanced' precision
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 50 |
-| Steps | 1. Enter Threshold Score of 50 |
-| Acceptance Criteria | Score of exactly 50 should show Balanced |
-| Expected Result | Live indicator should display 'Balanced' for score of exactly 50 |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-066 — Verify Threshold Score boundary 80 displays 'High precision'
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 80 |
-| Steps | 1. Enter Threshold Score of 80 |
-| Acceptance Criteria | Score of exactly 80 should show High precision |
-| Expected Result | Live indicator should display 'High precision' for score of exactly 80 |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-067 — Verify Threshold Score boundary 49 displays 'Low precision'
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with Fuzzy Match selected |
-| Test Data | 49 |
-| Steps | 1. Enter Threshold Score of 49 |
-| Acceptance Criteria | Score of exactly 49 should show Low precision |
-| Expected Result | Live indicator should display 'Low precision' for score of exactly 49 |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-068 — Verify Screening Fields selector is mandatory with at least one field required
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Add Keyword panel is open |
-| Test Data | No screening fields |
-| Steps | 1. Leave Screening Fields unselected 2. Submit |
-| Acceptance Criteria | Form should block submission without any Screening Fields selected |
-| Expected Result | Inline validation error should block submission: at least one Screening Field must be selected |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, functional |
-
-### KM-TC-069 — Verify Screening Fields displays three groups: Name Screening, Adverse Media Screening, KYC/Onboarding Screening
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel is open |
-| Test Data | N/A |
-| Steps | 1. Open Screening Fields selector 2. Observe available groups |
-| Acceptance Criteria | All three groups should be present in the multi-select control |
-| Expected Result | Three field groups should be visible: Name Screening, Adverse Media Screening, KYC/Onboarding Screening |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-070 — Verify Name Screening group contains all 7 configured fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel, Screening Fields open |
-| Test Data | N/A |
-| Steps | 1. Expand Name Screening group 2. Count available fields |
-| Acceptance Criteria | All 7 Name Screening fields should be selectable |
-| Expected Result | 7 fields should be present: Business/Entity Name Suffix; Business Type/Industry Code; Occupation/Designation; Registered Address; Entity Description; Relationship Manager Notes; Beneficial Owner Description |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-071 — Verify Adverse Media Screening group contains all 7 configured fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel, Screening Fields open |
-| Test Data | N/A |
-| Steps | 1. Expand Adverse Media Screening group 2. Count available fields |
-| Acceptance Criteria | All 7 Adverse Media fields should be selectable |
-| Expected Result | 7 fields should be present: News Article Full Text; Article Headline; Source/Publication Category; Associated Entity Names; Country/Jurisdiction Tags; Regulatory Body Name; Crime Type Tags |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-072 — Verify KYC/Onboarding Screening group contains all 6 configured fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel, Screening Fields open |
-| Test Data | N/A |
-| Steps | 1. Expand KYC/Onboarding Screening group 2. Count available fields |
-| Acceptance Criteria | All 6 KYC fields should be selectable |
-| Expected Result | 6 fields should be present: Purpose of Account/Relationship; Source of Funds Description; Source of Wealth Description; Business Activity Description; Expected Transaction Description; Supporting Document Text (OCR) |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-073 — Verify user can select a single Screening Field
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel, Screening Fields open |
-| Test Data | Purpose of Account/Relationship |
-| Steps | 1. Select one field from any group |
-| Acceptance Criteria | Single field selection should be supported |
-| Expected Result | Selected field should appear as a chip in the selector |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-074 — Verify user can select multiple Screening Fields across different groups
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel, Screening Fields open |
-| Test Data | Business Type; Crime Type Tags |
-| Steps | 1. Select one field from Name Screening 2. Select one field from Adverse Media 3. Observe selections |
-| Acceptance Criteria | Cross-group multi-selection should be supported |
-| Expected Result | Both fields should remain selected simultaneously as chips |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-075 — Verify selected Screening Fields appear as removable chips
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Add Keyword panel with fields selected |
-| Test Data | 3 fields selected |
-| Steps | 1. Select 3 screening fields 2. Observe chip display |
-| Acceptance Criteria | Selected fields should display as removable chip elements |
-| Expected Result | Selected fields should appear as chips with remove/X icons |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-076 — Verify removing a chip deselects that Screening Field
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | Chips visible for selected fields |
-| Test Data | N/A |
-| Steps | 1. Select multiple fields 2. Click X on one chip 3. Observe remaining selection |
-| Acceptance Criteria | Clicking X on chip should remove that field from selection |
-| Expected Result | Removed field should be deselected; remaining chips should stay intact |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-077 — Verify search box in Screening Fields selector filters available fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Medium |
-| Preconditions | Screening Fields selector is open |
-| Test Data | Search: 'source' |
-| Steps | 1. Type 'source' in search box 2. Observe filtered results |
-| Acceptance Criteria | Typing in search box should filter field list |
-| Expected Result | Only fields containing 'source' in name should be displayed |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, medium, functional |
-
-### KM-TC-078 — Verify Save Draft saves keyword entry in Draft state
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | High |
-| Preconditions | All mandatory fields except Screening Fields are filled |
-| Test Data | N/A |
-| Steps | 1. Fill in keyword details 2. Click Save Draft |
-| Acceptance Criteria | Clicking Save Draft should persist entry as Draft |
-| Expected Result | Entry should be saved with DRAFT status and visible in the Drafted tab |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, high, functional |
-
-### KM-TC-079 — Verify Submit sends keyword for Checker approval when all mandatory fields are valid
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | All mandatory fields filled correctly |
-| Test Data | Complete valid keyword |
-| Steps | 1. Fill all mandatory fields 2. Click Submit |
-| Acceptance Criteria | Valid submission should enter Pending Approval state |
-| Expected Result | Entry should enter Pending Approval state; Maker should be notified |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, rbac, security |
-
-### KM-TC-080 — Verify duplicate keyword entry (same keyword, match type, and category) is rejected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Existing keyword 'hawala' with Fuzzy Match in ML_TF exists |
-| Test Data | Duplicate: hawala, Fuzzy Match, ML_TF |
-| Steps | 1. Enter keyword 'hawala' 2. Select Fuzzy Match and ML_TF category 3. Submit |
-| Acceptance Criteria | Duplicates should be blocked with inline validation |
-| Expected Result | System should reject with inline message: duplicate entry already exists |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, maker-checker |
-
-### KM-TC-081 — Verify Cancel on Add Keyword panel shows confirmation prompt if fields are populated
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Medium |
-| Preconditions | Add Keyword panel with data entered |
-| Test Data | N/A |
-| Steps | 1. Enter keyword data 2. Click Cancel |
-| Acceptance Criteria | Cancel should prompt user before discarding |
-| Expected Result | Confirmation prompt should appear asking user to confirm discarding data |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, medium, functional |
-
-### KM-TC-082 — Verify Cancel on Add Keyword panel with empty fields closes without prompt
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Medium |
-| Preconditions | Add Keyword panel with no data entered |
-| Test Data | N/A |
-| Steps | 1. Open Add Keyword panel 2. Click Cancel immediately |
-| Acceptance Criteria | Cancel with no data should close immediately |
-| Expected Result | Panel should close immediately without a confirmation prompt |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, medium, functional |
-
-### KM-TC-083 — Verify entry remains in Pending Approval state until Checker acts
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Add Keyword |
-| Priority | Critical |
-| Preconditions | Keyword submitted by Maker |
-| Test Data | N/A |
-| Steps | 1. Submit keyword entry 2. Observe status without Checker action |
-| Acceptance Criteria | No auto-approval should occur |
-| Expected Result | Entry should remain in Pending Approval state with no status change until Checker approves or rejects |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-keyword, critical, rbac, security |
-
-### KM-TC-084 — Verify Live Narrative Tester panel is visible in Add Keyword panel
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Live Narrative Tester |
-| Priority | High |
-| Preconditions | Add Keyword panel is open |
-| Test Data | N/A |
-| Steps | 1. Open Add Keyword panel 2. Scroll to Live Narrative Tester section |
-| Acceptance Criteria | Tester section should be present |
-| Expected Result | Live Narrative Tester section should be visible within the Add Keyword panel |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, high, functional |
-
-### KM-TC-085 — Verify Live Narrative Tester updates preview in real time as user types keyword
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Live Narrative Tester |
-| Priority | High |
-| Preconditions | Add Keyword panel with Tester visible |
-| Test Data | Keyword: hawala; Sample text: 'hwala transfer' |
-| Steps | 1. Enter keyword 'hawala' 2. Paste sample text in tester 3. Observe highlighting |
-| Acceptance Criteria | Preview should react to keyword input |
-| Expected Result | Matching tokens in sample text should be highlighted in real time as keyword is entered |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, high, functional |
-
-### KM-TC-086 — Verify Exact Match tester highlights only exact token matches
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Live Narrative Tester |
-| Priority | High |
-| Preconditions | Exact Match selected, keyword entered |
-| Test Data | hawala vs hwala |
-| Steps | 1. Select Exact Match 2. Enter keyword 'hawala' 3. Paste text with 'hawala' and 'hwala' 4. Observe highlights |
-| Acceptance Criteria | Exact Match mode should require exact token equality |
-| Expected Result | Only 'hawala' (exact) should be highlighted; 'hwala' should not match |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, high, functional |
-
-### KM-TC-087 — Verify Fuzzy Match tester highlights tokens meeting or exceeding the Threshold Score
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Live Narrative Tester |
-| Priority | High |
-| Preconditions | Fuzzy Match selected, threshold 75 |
-| Test Data | Threshold 75; text: 'hwala transfer' |
-| Steps | 1. Select Fuzzy Match 2. Enter score 75 3. Paste text with near-match token 4. Observe highlights |
-| Acceptance Criteria | Fuzzy tester should respect Threshold Score |
-| Expected Result | Tokens with similarity ≥ 75 should be highlighted; below-threshold tokens should not be |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, high, functional |
-
-### KM-TC-088 — Verify Tester preview does not affect live screening or create audit records
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Live Narrative Tester |
-| Priority | High |
-| Preconditions | Tester used with pasted sample text |
-| Test Data | N/A |
-| Steps | 1. Use Live Tester to preview matches 2. Check audit logs and screening runs |
-| Acceptance Criteria | Tester is preview-only and should have no system-side effect |
-| Expected Result | No audit record, alert, or screening event should be created from Tester usage |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, high, functional |
-
-### KM-TC-089 — Verify Tester updates when Match Type is changed
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Live Narrative Tester |
-| Priority | Medium |
-| Preconditions | Live Tester active with sample text |
-| Test Data | Mixed match text |
-| Steps | 1. Select Exact Match and observe preview 2. Switch to Fuzzy Match with score 70 3. Observe updated preview |
-| Acceptance Criteria | Switching Match Type should re-evaluate the preview |
-| Expected Result | Preview should update immediately when Match Type is changed |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, medium, functional |
-
-### KM-TC-090 — Verify Tester updates when Threshold Score changes
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Live Narrative Tester |
-| Priority | Medium |
-| Preconditions | Fuzzy Match selected, sample text pasted |
-| Test Data | Score 90 vs 50 |
-| Steps | 1. Set score 90 and observe 2. Change score to 50 and observe |
-| Acceptance Criteria | Changing score should update highlighted matches |
-| Expected Result | Preview should update to reflect the new threshold when score is changed |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, medium, functional |
-
-### KM-TC-091 — Verify Checker can view pending keyword entries submitted by Maker
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | Critical |
-| Preconditions | Keyword submitted by Maker |
-| Test Data | Pending keyword entry |
-| Steps | 1. Login as Checker 2. Navigate to Keyword Manager Pending Approval queue |
-| Acceptance Criteria | Checker should see Pending Approval entries |
-| Expected Result | Checker should see the submitted keyword entry in Pending Approval state |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, critical, rbac, security |
-
-### KM-TC-092 — Verify Checker can approve a pending keyword entry
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | Critical |
-| Preconditions | Keyword in Pending Approval state |
-| Test Data | Pending keyword |
-| Steps | 1. Checker opens pending entry 2. Clicks Approve 3. Observe status change |
-| Acceptance Criteria | Approval should activate the keyword entry |
-| Expected Result | Entry should move to Active status and be applied from next screening run |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, critical, rbac, security |
-
-### KM-TC-093 — Verify Checker can reject a pending keyword entry
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | Critical |
-| Preconditions | Keyword in Pending Approval state |
-| Test Data | Pending keyword |
-| Steps | 1. Checker opens pending entry 2. Clicks Reject 3. Enters rejection comment |
-| Acceptance Criteria | Rejection should return entry to Draft with comments |
-| Expected Result | Entry should return to Draft state with Checker comments; Maker should be notified |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, critical, rbac, security |
-
-### KM-TC-094 — Verify Maker cannot approve their own submitted keyword entries
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | Critical |
-| Preconditions | Same user submitted entry |
-| Test Data | Own submitted entry |
-| Steps | 1. Login as Maker who submitted entry 2. Attempt to approve own submission |
-| Acceptance Criteria | Self-approval should be blocked |
-| Expected Result | System should block self-approval and display appropriate error message |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, critical, rbac, security |
-
-### KM-TC-095 — Verify entries in Pending Approval state are locked from editing
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | Critical |
-| Preconditions | Keyword in Pending Approval state |
-| Test Data | Pending keyword |
-| Steps | 1. Try to edit a Pending Approval entry |
-| Acceptance Criteria | Pending entries should be read-only until Checker acts |
-| Expected Result | System should prevent editing of entries in Pending Approval state |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, critical, rbac, security |
-
-### KM-TC-096 — Verify rejected entries return to Draft state for Maker revision
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | High |
-| Preconditions | Keyword rejected by Checker |
-| Test Data | Rejected keyword |
-| Steps | 1. Checker rejects entry 2. Maker logs in and views entry |
-| Acceptance Criteria | Rejected entries should be editable again |
-| Expected Result | Entry should appear in Drafted tab with Checker comments; Maker should be able to edit and resubmit |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, high, rbac, security |
-
-### KM-TC-097 — Verify audit log is created for every Maker-Checker action
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | Critical |
-| Preconditions | Approval/rejection actions performed |
-| Test Data | N/A |
-| Steps | 1. Submit keyword 2. Checker approves 3. Check audit logs |
-| Acceptance Criteria | All governance actions should generate audit entries |
-| Expected Result | Audit log should record: timestamp, actor, action (Submit/Approve/Reject) for each step |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, critical, rbac, security |
-
-### KM-TC-098 — Verify Maker and Checker must be different users
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Maker-Checker Governance |
-| Priority | Critical |
-| Preconditions | Single user account |
-| Test Data | Same user credentials |
-| Steps | 1. Attempt to submit and approve using same user account |
-| Acceptance Criteria | Maker-Checker separation must be enforced |
-| Expected Result | System should enforce four-eyes governance and prevent same-user approval |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, critical, rbac, security |
-
-### KM-TC-099 — Verify user can disable an active keyword entry via action controls
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Disable Keyword |
-| Priority | High |
-| Preconditions | Active keyword entry visible in listing |
-| Test Data | Active keyword |
-| Steps | 1. Open Active tab 2. Click Disable/Off action button for a keyword |
-| Acceptance Criteria | Disable action should be available for active entries |
-| Expected Result | Disable request should be submitted for Maker-Checker approval |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | disable-keyword, high, functional |
-
-### KM-TC-100 — Verify disabled keyword is no longer evaluated at next screening run
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Disable Keyword |
-| Priority | Critical |
-| Preconditions | Keyword disabled and approved by Checker |
-| Test Data | Active keyword in screening |
-| Steps | 1. Disable keyword entry 2. Checker approves 3. Run next screening |
-| Acceptance Criteria | Deactivated keyword should cease to be applied in screening |
-| Expected Result | Keyword should not generate alerts after deactivation at next screening run |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | disable-keyword, critical, functional |
-
-### KM-TC-101 — Verify hard deletion of keyword entries is not permitted
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Disable Keyword |
-| Priority | Critical |
-| Preconditions | Active keyword entry |
-| Test Data | N/A |
-| Steps | 1. Open keyword actions 2. Observe available options |
-| Acceptance Criteria | No permanent delete option should be available |
-| Expected Result | No permanent delete option should exist; only logical deactivation is permitted |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | disable-keyword, critical, functional |
-
-### KM-TC-102 — Verify disable action requires Maker-Checker approval
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Disable Keyword |
-| Priority | Critical |
-| Preconditions | Active keyword entry |
-| Test Data | Active keyword |
-| Steps | 1. Initiate disable action 2. Observe workflow state |
-| Acceptance Criteria | Disabling should enter Pending Approval state |
-| Expected Result | Disable request should enter Pending Approval and not take effect until Checker approves |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | disable-keyword, critical, rbac, security |
-
-### KM-TC-103 — Verify audit log records disable action with timestamp, actor, and reason
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Disable Keyword |
-| Priority | High |
-| Preconditions | Keyword disable workflow completed |
-| Test Data | N/A |
-| Steps | 1. Disable keyword with reason 2. Checker approves 3. Check audit logs |
-| Acceptance Criteria | All deactivation events should be logged |
-| Expected Result | Audit log should capture: actor, timestamp, reason for disable action |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | disable-keyword, high, functional |
-
-### KM-TC-104 — Verify disabled keyword entry moves to Inactive tab
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Disable Keyword |
-| Priority | High |
-| Preconditions | Keyword disable approved by Checker |
-| Test Data | N/A |
-| Steps | 1. Disable keyword 2. Checker approves 3. Check Inactive tab |
-| Acceptance Criteria | Inactive entries should appear in Inactive tab |
-| Expected Result | Disabled keyword should now appear in the Inactive tab, not the Active tab |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | disable-keyword, high, functional |
-
-### KM-TC-105 — Verify user can re-enable an inactive keyword entry
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Enable Keyword |
-| Priority | High |
-| Preconditions | Inactive keyword entry in Inactive tab |
-| Test Data | Inactive keyword |
-| Steps | 1. Open Inactive tab 2. Click Enable/On action for a keyword |
-| Acceptance Criteria | Enable action should be available for inactive entries |
-| Expected Result | Enable request should be submitted for Maker-Checker approval |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | enable-keyword, high, functional |
-
-### KM-TC-106 — Verify re-enabled keyword enters Active state after Checker approval
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Enable Keyword |
-| Priority | Critical |
-| Preconditions | Enable request in Pending Approval |
-| Test Data | N/A |
-| Steps | 1. Enable keyword 2. Checker approves 3. Check Active tab |
-| Acceptance Criteria | Re-activation should restore keyword to Active status |
-| Expected Result | Keyword should move back to Active tab and be applied at next screening run |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | enable-keyword, critical, rbac, security |
-
-### KM-TC-107 — Verify Bulk Import option is accessible from Keyword Manager toolbar
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | High |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager page 2. Click Bulk Import button |
-| Acceptance Criteria | Import button should be visible and clickable |
-| Expected Result | Bulk Import interface/modal should open |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, high |
-
-### KM-TC-108 — Verify system accepts valid CSV file for bulk import
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | Critical |
-| Preconditions | Bulk Import interface open |
-| Test Data | Valid keyword CSV |
-| Steps | 1. Upload valid CSV file with correct columns and data |
-| Acceptance Criteria | Valid CSV should be accepted without errors |
-| Expected Result | File should be accepted and import validation should pass |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, critical, export |
-
-### KM-TC-109 — Verify system accepts valid XLSX file for bulk import
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | Critical |
-| Preconditions | Bulk Import interface open |
-| Test Data | Valid keyword XLSX |
-| Steps | 1. Upload valid XLSX file with correct data |
-| Acceptance Criteria | Valid XLSX should be accepted without errors |
-| Expected Result | File should be accepted and import validation should pass |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, critical, error-handling |
-
-### KM-TC-110 — Verify import validates field completeness: missing Keyword/Phrase is rejected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | High |
-| Preconditions | Bulk Import interface open |
-| Test Data | CSV with blank keyword |
-| Steps | 1. Upload CSV with one row missing Keyword/Phrase |
-| Acceptance Criteria | Rows with missing mandatory fields should be flagged |
-| Expected Result | Import should be blocked or the row should be flagged with a missing-field error |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, high, export |
-
-### KM-TC-111 — Verify import validates that Fuzzy Match rows include Threshold Score
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | Critical |
-| Preconditions | Bulk Import interface open |
-| Test Data | Fuzzy row, no score |
-| Steps | 1. Upload file with Fuzzy Match row but no Threshold Score |
-| Acceptance Criteria | Fuzzy rows without Threshold Score should be flagged |
-| Expected Result | Import should flag or reject rows with Fuzzy Match and missing Threshold Score |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, critical, functional |
-
-### KM-TC-112 — Verify import validates that each row has at least one Screening Field
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | Critical |
-| Preconditions | Bulk Import interface open |
-| Test Data | Row missing all screening fields |
-| Steps | 1. Upload file with a row having no Screening Fields |
-| Acceptance Criteria | Rows with no Screening Fields should be rejected |
-| Expected Result | Import should reject rows with no Screening Fields mapped |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, critical, maker-checker |
-
-### KM-TC-113 — Verify duplicate rows in import file are flagged during validation
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | High |
-| Preconditions | Bulk Import interface open |
-| Test Data | File with 2 identical rows |
-| Steps | 1. Upload file with duplicate keyword rows |
-| Acceptance Criteria | Duplicate keyword rows should be identified during import validation |
-| Expected Result | Duplicate rows should be flagged during validation; import should not silently accept duplicates |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, high, functional |
-
-### KM-TC-114 — Verify bulk import is treated as a single Maker action requiring Checker approval
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | Critical |
-| Preconditions | Valid import file uploaded |
-| Test Data | Valid import batch |
-| Steps | 1. Upload valid import file 2. Confirm import 3. Observe workflow state |
-| Acceptance Criteria | Full import batch should enter Pending Approval |
-| Expected Result | All records from bulk import should enter Pending Approval as a single Maker action |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, critical, rbac, security |
-
-### KM-TC-115 — Verify no records from bulk import become active without Checker approval
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | Critical |
-| Preconditions | Bulk import submitted by Maker |
-| Test Data | N/A |
-| Steps | 1. Submit bulk import 2. Check Active tab without Checker action |
-| Acceptance Criteria | Import records should stay inactive until approved |
-| Expected Result | No imported keywords should appear in Active tab until Checker approves the batch |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, critical, rbac, security |
-
-### KM-TC-116 — Verify unsupported file type is rejected during import
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | High |
-| Preconditions | Bulk Import interface open |
-| Test Data | PDF file |
-| Steps | 1. Attempt to upload a PDF or TXT file |
-| Acceptance Criteria | Only CSV and XLSX should be accepted |
-| Expected Result | System should reject unsupported file type with clear error message |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, high, export |
-
-### KM-TC-117 — Verify import validation error displays the specific field/column that failed
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Bulk Import |
-| Priority | High |
-| Preconditions | Invalid import file with column error |
-| Test Data | CSV missing Category column |
-| Steps | 1. Upload file missing a required column 2. Observe error message |
-| Acceptance Criteria | Error messages should identify the exact failure |
-| Expected Result | Error should identify the specific missing or invalid column/field |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-import, high, export |
-
-### KM-TC-118 — Verify Export button is visible and accessible for authorised users
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Export |
-| Priority | High |
-| Preconditions | Authorised user on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager page 2. Observe Export button |
-| Acceptance Criteria | Export option should be available in toolbar |
-| Expected Result | Export button should be visible for users with export permission |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export, high |
-
-### KM-TC-119 — Verify exported file includes all keyword fields: keyword, category, risk level, match type, threshold score, screening fields, status, version
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Export |
-| Priority | High |
-| Preconditions | Export triggered with full active dataset |
-| Test Data | N/A |
-| Steps | 1. Click Export 2. Open downloaded file 3. Check columns |
-| Acceptance Criteria | Export should contain all defined fields |
-| Expected Result | All required columns should be present in the exported file |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export, high |
-
-### KM-TC-120 — Verify Threshold Score is included for Fuzzy Match entries in export
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Export |
-| Priority | High |
-| Preconditions | Export with Fuzzy Match keywords |
-| Test Data | Fuzzy Match keyword export |
-| Steps | 1. Export active keywords 2. Check Threshold Score column for Fuzzy rows |
-| Acceptance Criteria | Fuzzy Match rows should include Threshold Score in export |
-| Expected Result | Threshold Score should be populated for Fuzzy Match rows in the export |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export, high |
-
-### KM-TC-121 — Verify Threshold Score column is blank for Exact Match entries in export
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Export |
-| Priority | Medium |
-| Preconditions | Export with Exact Match keywords |
-| Test Data | Exact Match export |
-| Steps | 1. Export active keywords 2. Check Threshold Score column for Exact rows |
-| Acceptance Criteria | Exact Match rows should not have Threshold Score in export |
-| Expected Result | Threshold Score should be blank or N/A for Exact Match rows in export |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export, medium |
-
-### KM-TC-122 — Verify Screening Fields mapping is included in export
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Export |
-| Priority | High |
-| Preconditions | Export with mapped keywords |
-| Test Data | Keywords with mapped fields |
-| Steps | 1. Export active keywords 2. Check Screening Fields column |
-| Acceptance Criteria | Each exported row should show its Screening Fields |
-| Expected Result | Screening Fields column should show all mapped fields for each keyword row |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export, high |
-
-### KM-TC-123 — Verify export generates audit log entry
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Export |
-| Priority | High |
-| Preconditions | Export action completed |
-| Test Data | N/A |
-| Steps | 1. Trigger export 2. Check audit logs |
-| Acceptance Criteria | Export activity should be tracked in audit log |
-| Expected Result | Audit log should capture export activity including user, timestamp, and action |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export, high |
-
-### KM-TC-124 — Verify active keyword with Exact Match is only evaluated against its mapped Screening Fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Engine |
-| Priority | Critical |
-| Preconditions | Active Exact Match keyword with specific field mapping |
-| Test Data | Keyword: 'offshore account'; mapped to Purpose of Account only |
-| Steps | 1. Activate keyword mapped to Purpose of Account only 2. Run screening 3. Confirm keyword only evaluated on mapped field |
-| Acceptance Criteria | Keyword should not evaluate unmapped fields |
-| Expected Result | Keyword match should only occur on mapped field; no alerts from unmapped fields |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | screening-engine, critical, functional |
-
-### KM-TC-125 — Verify active keyword with Fuzzy Match generates match when similarity meets Threshold Score
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Engine |
-| Priority | Critical |
-| Preconditions | Active Fuzzy Match keyword, score 75, mapped fields |
-| Test Data | Keyword: 'hawala'; text: 'hwala transfer'; score 82 |
-| Steps | 1. Activate Fuzzy keyword (score 75) 2. Run screening on text with 82-score similarity |
-| Acceptance Criteria | Fuzzy keyword should alert when similarity ≥ threshold |
-| Expected Result | Match event should be generated and alert raised since 82 ≥ 75 |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | screening-engine, critical, functional |
-
-### KM-TC-126 — Verify Fuzzy Match keyword does NOT fire when similarity falls below Threshold Score
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Engine |
-| Priority | Critical |
-| Preconditions | Active Fuzzy keyword, score 80 |
-| Test Data | Score 70 vs threshold 80 |
-| Steps | 1. Run screening with a text scoring 70 against keyword |
-| Acceptance Criteria | Tokens below threshold should not match |
-| Expected Result | No match event should be generated; score 70 < 80 threshold |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | screening-engine, critical, functional |
-
-### KM-TC-127 — Verify keyword matching is case-insensitive by default
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Engine |
-| Priority | High |
-| Preconditions | Active keyword 'hawala' |
-| Test Data | All case variants |
-| Steps | 1. Screen text 'HAWALA' 2. Screen text 'Hawala' 3. Screen text 'hawala' |
-| Acceptance Criteria | Case should not affect matching per BR-002 |
-| Expected Result | All case variants should generate a match for the keyword |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | screening-engine, high, functional |
-
-### KM-TC-128 — Verify special characters are normalised before matching per BR-008
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Engine |
-| Priority | High |
-| Preconditions | Active Exact Match keyword |
-| Test Data | Keyword: 'hawala'; text: 'hàwala' |
-| Steps | 1. Run screening with text containing diacritics or punctuation variations of keyword |
-| Acceptance Criteria | Punctuation and diacritics should be stripped before comparison |
-| Expected Result | Normalised text should be evaluated; match should occur if post-normalisation text equals keyword |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | screening-engine, high, functional |
-
-### KM-TC-129 — Verify keyword match contributes to alert generation on batch screening page
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Engine |
-| Priority | Critical |
-| Preconditions | Active keyword, screening run completed |
-| Test Data | Screening with keyword match |
-| Steps | 1. Run batch screening 2. Verify alert generated for matching customer |
-| Acceptance Criteria | Alert should appear in batch screening when keyword is matched |
-| Expected Result | Alert should appear on the batch screening page for the matched keyword |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | screening-engine, critical, functional |
-
-### KM-TC-130 — Verify keyword changes take effect at next screening run, not retroactively
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Engine |
-| Priority | High |
-| Preconditions | Keyword updated and approved |
-| Test Data | N/A |
-| Steps | 1. Update keyword 2. Check past alerts 3. Run new screening |
-| Acceptance Criteria | Updates should only affect future screening, not historical |
-| Expected Result | Historical alerts should be unchanged; updated keyword should only apply from next screening invocation |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | screening-engine, high, functional |
-
-### KM-TC-131 — Verify Draft state entry is visible only in Drafted tab
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Workflow States |
-| Priority | High |
-| Preconditions | Drafted keyword entry |
-| Test Data | N/A |
-| Steps | 1. Create and save as Draft 2. Check Active tab 3. Check Inactive tab 4. Check Drafted tab |
-| Acceptance Criteria | Draft entries should not appear in Active or Inactive tabs |
-| Expected Result | Draft entry should only appear in Drafted tab |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | workflow-states, high, functional |
-
-### KM-TC-132 — Verify Pending Approval state entry is not shown in Active tab
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Workflow States |
-| Priority | Critical |
-| Preconditions | Keyword submitted for approval |
-| Test Data | N/A |
-| Steps | 1. Submit keyword 2. Check Active tab |
-| Acceptance Criteria | Pending entries must not be applied to screening |
-| Expected Result | Pending Approval entry should not appear in Active tab or be applied in screening |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | workflow-states, critical, functional |
-
-### KM-TC-133 — Verify Approved/Active keyword appears in Active tab
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Workflow States |
-| Priority | High |
-| Preconditions | Keyword approved by Checker |
-| Test Data | N/A |
-| Steps | 1. Approve keyword as Checker 2. Check Active tab |
-| Acceptance Criteria | Approved keywords should be listed in Active tab |
-| Expected Result | Approved keyword should appear in Active tab with Active status badge |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | workflow-states, high, maker-checker |
-
-### KM-TC-134 — Verify Inactive keyword does not appear in Active tab
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Workflow States |
-| Priority | High |
-| Preconditions | Inactive keyword entry |
-| Test Data | Inactive keyword |
-| Steps | 1. Check Active tab 2. Check Inactive tab |
-| Acceptance Criteria | Inactive entries should be isolated to Inactive tab |
-| Expected Result | Inactive keyword should only appear in Inactive tab |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | workflow-states, high, functional |
-
-### KM-TC-135 — Verify all five workflow states are supported: Draft, Pending Approval, Active, Rejected, Inactive
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Workflow States |
-| Priority | High |
-| Preconditions | Dataset with keywords in all states |
-| Test Data | Entries in all 5 states |
-| Steps | 1. Create entries in each state 2. Verify each state is displayed correctly |
-| Acceptance Criteria | System should reflect all defined states |
-| Expected Result | System should correctly display Draft, Pending Approval, Active, Rejected, and Inactive states |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | workflow-states, high, maker-checker |
-
-### KM-TC-136 — Verify authorised Maker can access Add Keyword functionality
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | High |
-| Preconditions | User with Maker role |
-| Test Data | Maker account |
-| Steps | 1. Login as Maker 2. Navigate to Keyword Manager 3. Click Add Keyword |
-| Acceptance Criteria | Maker role should have access to create keywords |
-| Expected Result | Add Keyword panel should open successfully for Maker role |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, high, rbac, security |
-
-### KM-TC-137 — Verify unauthorised users cannot access Keyword Manager module
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | Critical |
-| Preconditions | User without Keyword Manager access |
-| Test Data | Restricted role |
-| Steps | 1. Login as restricted role 2. Attempt to navigate to Keyword Manager |
-| Acceptance Criteria | Non-authorised users should be blocked |
-| Expected Result | System should deny access or hide Keyword Manager from navigation |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, critical, functional |
-
-### KM-TC-138 — Verify unauthorised users cannot execute Add Keyword action
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | Critical |
-| Preconditions | Restricted user on Keyword Manager page |
-| Test Data | Restricted account |
-| Steps | 1. Attempt to access Add Keyword action as restricted user |
-| Acceptance Criteria | Add Keyword should be restricted by RBAC |
-| Expected Result | System should block the action or not show Add Keyword button to restricted users |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, critical, rbac, security |
-
-### KM-TC-139 — Verify unauthorised users cannot execute Bulk Import
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | Critical |
-| Preconditions | Restricted user on Keyword Manager page |
-| Test Data | Restricted account |
-| Steps | 1. Attempt Bulk Import as restricted user |
-| Acceptance Criteria | Import feature should be RBAC-controlled |
-| Expected Result | System should restrict bulk import access for unauthorised users |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, critical, rbac, security |
-
-### KM-TC-140 — Verify unauthorised users cannot access Export functionality
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | High |
-| Preconditions | Restricted user on Keyword Manager page |
-| Test Data | Restricted account |
-| Steps | 1. Attempt Export as restricted user |
-| Acceptance Criteria | Export should be RBAC-controlled |
-| Expected Result | Export button should be hidden or inaccessible for users without export permission |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, high, rbac, security |
-
-### KM-TC-141 — Verify SQL injection in Keyword/Phrase field is handled safely
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | Critical |
-| Preconditions | Add Keyword panel open |
-| Test Data | SQL payload: ' OR 1=1 -- |
-| Steps | 1. Enter SQL injection payload in Keyword/Phrase field 2. Submit |
-| Acceptance Criteria | System should sanitise SQL injection attempts |
-| Expected Result | System should sanitise input; no query manipulation or data exposure should occur |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, critical, functional |
-
-### KM-TC-142 — Verify XSS payload in keyword fields is sanitised
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | Critical |
-| Preconditions | Add Keyword panel open |
-| Test Data | <script>alert(1)</script> |
-| Steps | 1. Enter XSS payload in Keyword/Phrase field 2. Submit |
-| Acceptance Criteria | Script injection should be blocked |
-| Expected Result | System should sanitise XSS payload; no script execution should occur |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, critical, functional |
-
-### KM-TC-143 — Verify session expiry during keyword workflow redirects user to login
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | High |
-| Preconditions | Active session with keyword in progress |
-| Test Data | Expired session |
-| Steps | 1. Begin adding keyword 2. Allow session to expire 3. Attempt to submit |
-| Acceptance Criteria | Expired sessions should be safely handled |
-| Expected Result | System should redirect to login page on session expiry without corrupting workflow |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, high, session |
-
-### KM-TC-144 — Verify audit logs capture all keyword creation, modification, and deactivation actions
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | RBAC & Security |
-| Priority | Critical |
-| Preconditions | Multiple keyword actions performed |
-| Test Data | N/A |
-| Steps | 1. Create, update, and deactivate keywords 2. Review audit logs |
-| Acceptance Criteria | Comprehensive audit trail should be maintained |
-| Expected Result | Audit logs should capture every action with user, timestamp, and action type |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | rbac-security, critical, functional |
-
-### KM-TC-145 — Verify BR-001: Both Exact Match and Fuzzy Match modes are available and functional
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | Add Keyword panel |
-| Test Data | N/A |
-| Steps | 1. Create one Exact Match keyword 2. Create one Fuzzy Match keyword |
-| Acceptance Criteria | Two match modes must be supported per BR-001 |
-| Expected Result | Both modes should work correctly with their respective configuration requirements |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### KM-TC-146 — Verify BR-003: Fuzzy Match without Threshold Score is blocked
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | Critical |
-| Preconditions | Add Keyword panel |
-| Test Data | Blank threshold with Fuzzy |
-| Steps | 1. Select Fuzzy Match 2. Clear Threshold Score 3. Submit |
-| Acceptance Criteria | Fuzzy Match must have Threshold Score per BR-003 |
-| Expected Result | Inline error should block submission |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, critical, functional |
-
-### KM-TC-147 — Verify BR-004: Threshold Score clamping – value 0 becomes 1
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | Add Keyword with Fuzzy Match |
-| Test Data | 0 |
-| Steps | 1. Enter Threshold Score of 0 |
-| Acceptance Criteria | Score below 1 must be clamped to 1 per BR-004 |
-| Expected Result | Field should display 1 after clamping |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### KM-TC-148 — Verify BR-004: Threshold Score clamping – value 101 becomes 100
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | Add Keyword with Fuzzy Match |
-| Test Data | 101 |
-| Steps | 1. Enter Threshold Score of 101 |
-| Acceptance Criteria | Score above 100 must be clamped to 100 per BR-004 |
-| Expected Result | Field should display 100 after clamping |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### KM-TC-149 — Verify BR-005: Keyword is only evaluated against mapped Screening Fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | Critical |
-| Preconditions | Active keyword with specific field mapping |
-| Test Data | N/A |
-| Steps | 1. Activate keyword mapped to Occupation only 2. Run screening with data in multiple fields |
-| Acceptance Criteria | Unmapped fields must not be scanned per BR-005 |
-| Expected Result | Only the mapped Occupation field should be evaluated; other fields should be ignored |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, critical, functional |
-
-### KM-TC-150 — Verify BR-007: Submission blocked when no Screening Fields are selected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | Critical |
-| Preconditions | Add Keyword panel |
-| Test Data | No screening fields |
-| Steps | 1. Fill all fields except Screening Fields 2. Submit |
-| Acceptance Criteria | At least one Screening Field must be mapped per BR-007 |
-| Expected Result | Inline error should block submission until at least one Screening Field is selected |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, critical, functional |
-
-### KM-TC-151 — Verify BR-009: No global field scanning occurs unless all relevant fields are explicitly selected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | Active keyword without full field mapping |
-| Test Data | Keyword with limited field mapping |
-| Steps | 1. Run screening 2. Verify only mapped fields are scanned |
-| Acceptance Criteria | Mapping must be explicit per BR-009 |
-| Expected Result | Screening should only evaluate the explicitly mapped fields |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### KM-TC-152 — Verify BR-010: Permanent deletion of keyword entries is not permitted
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | Critical |
-| Preconditions | Active keyword entry |
-| Test Data | N/A |
-| Steps | 1. Look for delete option 2. Confirm only deactivate is available |
-| Acceptance Criteria | Logical deactivation only per BR-010 |
-| Expected Result | No hard-delete option should exist; only logical deactivation with audit record should be available |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, critical, functional |
-
-### KM-TC-153 — Verify BR-011: All operations (add, disable, import, export) require Maker-Checker governance
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Business Rules |
-| Priority | Critical |
-| Preconditions | Multiple operations performed |
-| Test Data | N/A |
-| Steps | 1. Perform add, disable, import operations 2. Verify each enters Pending Approval |
-| Acceptance Criteria | Governance should apply to all keyword operations per BR-011 |
-| Expected Result | Every Maker action should require Checker approval before taking effect |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, critical, rbac, security |
-
-### KM-TC-154 — Verify keyword mapped to fields across multiple groups is evaluated on all mapped fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Fields |
-| Priority | High |
-| Preconditions | Keyword mapped to Name Screening and Adverse Media fields |
-| Test Data | Keyword mapped to 2 groups |
-| Steps | 1. Create keyword mapped to Occupation AND News Article Full Text 2. Run screening |
-| Acceptance Criteria | Cross-group mapping should work correctly |
-| Expected Result | Keyword should be evaluated against both Occupation and News Article Full Text fields |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | screening-fields, high, functional |
-
-### KM-TC-155 — Verify keyword mapped only to KYC/Onboarding fields does not fire on Name Screening fields
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Fields |
-| Priority | Critical |
-| Preconditions | Keyword mapped only to KYC fields |
-| Test Data | N/A |
-| Steps | 1. Run screening with data in both KYC and Name Screening fields |
-| Acceptance Criteria | Scope isolation must work per BR-005 |
-| Expected Result | Keyword should only alert based on KYC field matches; Name Screening fields should be ignored |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | screening-fields, critical, functional |
-
-### KM-TC-156 — Verify all 20 Screening Fields across three groups are selectable in Add Keyword panel
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Fields |
-| Priority | High |
-| Preconditions | Add Keyword panel open |
-| Test Data | N/A |
-| Steps | 1. Open Screening Fields selector 2. Count total available fields across all groups |
-| Acceptance Criteria | All 20 fields must be available |
-| Expected Result | Exactly 20 fields should be available across Name Screening (7), Adverse Media (7), and KYC/Onboarding (6) groups |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | screening-fields, high, functional |
-
-### KM-TC-157 — Verify Screening Fields selection persists when re-opening keyword entry
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Screening Fields |
-| Priority | High |
-| Preconditions | Keyword saved with Screening Fields |
-| Test Data | N/A |
-| Steps | 1. Save keyword with 3 fields mapped 2. Reopen keyword entry 3. Observe Screening Fields |
-| Acceptance Criteria | Saved field mappings should be retained |
-| Expected Result | Previously selected Screening Fields should still be shown as selected/chips when reopening entry |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | screening-fields, high, functional |
-
-### KM-TC-158 — Verify risk level badges display correct colour coding (Low=green, Medium=amber, High=red)
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | UI Components |
-| Priority | Medium |
-| Preconditions | Keyword entries with all risk levels visible |
-| Test Data | N/A |
-| Steps | 1. Open listing page 2. Observe badge colours for Low, Medium, High |
-| Acceptance Criteria | Badge colours should match design specification |
-| Expected Result | Low badge should be green, Medium amber/yellow, High red per design specification |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | ui-components, medium, functional |
-
-### KM-TC-159 — Verify status badges display correct colour coding per specification
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | UI Components |
-| Priority | Medium |
-| Preconditions | Entries in all status types |
-| Test Data | Active, Inactive, Draft, Pending entries |
-| Steps | 1. Review status badges in listing |
-| Acceptance Criteria | Status badge colours should match design |
-| Expected Result | Active=green, Inactive=grey, Draft=amber, Pending=blue per specification |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | ui-components, medium, functional |
-
-### KM-TC-160 — Verify match type badges display correct styling for Exact Match and Fuzzy Match
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | UI Components |
-| Priority | Medium |
-| Preconditions | Listing with both match types |
-| Test Data | N/A |
-| Steps | 1. Observe Match Type column badges |
-| Acceptance Criteria | Match type badges should be visually distinct |
-| Expected Result | Exact Match and Fuzzy Match should have distinct badge styles |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | ui-components, medium, functional |
-
-### KM-TC-161 — Verify modal overlay background dims main content correctly
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | UI Components |
+| Feature | Navigation & Page Access |
 | Priority | Low |
-| Preconditions | Add Category or Add Keyword modal open |
-| Test Data | N/A |
-| Steps | 1. Open any modal 2. Observe background dimming |
-| Acceptance Criteria | Modal should appear with overlay |
-| Expected Result | Background content should be dimmed/overlaid when modal is open |
+| Preconditions | Maker is logged in with keyword create/edit permission. |
+| Test Data | Secondary module: Sanctions Screening Configuration main page User role: Maker |
+| Steps | 1. Log in to AML application as Maker user with create/edit permission. 2. Navigate to Configuration > Sanctions Screening Configuration > Keyword Manager. 3. Navigate to another configuration submodule. 4. Use browser back button to return to Keyword Manager. 5. Use browser forward and back again. |
+| Acceptance Criteria | Navigation history preserves module access state correctly. |
+| Expected Result | Keyword Manager restores correctly on history navigation with no broken breadcrumb or missing controls. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | ui-components, low, functional |
+| Tags | navigation-page-access, low, rbac, security |
 
-### KM-TC-162 — Verify Add Category modal header uses correct styling
+### KM-TC-005 — Open Keyword Manager in parallel tabs
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | UI Components |
+| Feature | Navigation & Page Access |
 | Priority | Low |
-| Preconditions | Add Category modal open |
-| Test Data | N/A |
-| Steps | 1. Open Add Category modal 2. Observe header styling |
-| Acceptance Criteria | Modal header should follow design specification |
-| Expected Result | Modal header should display correct background colour, font, and layout |
+| Preconditions | Maker is logged in and on Keyword Manager. |
+| Test Data | Search keyword: OFAC User role: Maker |
+| Steps | 1. Log in to AML application as Maker user with create/edit permission. 2. Navigate to Configuration > Sanctions Screening Configuration > Keyword Manager. 3. Open Keyword Manager in first tab. 4. Duplicate tab and switch to duplicate. 5. Use Search in duplicate tab and verify response. |
+| Acceptance Criteria | Module can be accessed in multiple tabs without session conflict. |
+| Expected Result | Both tabs remain usable; searching in one tab does not break the other tab state. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | ui-components, low, functional |
+| Tags | navigation-page-access, low, rbac, security |
 
-### KM-TC-163 — Verify Add Keyword submit button is disabled until mandatory fields are complete
+### KM-TC-006 — Ensure unauthorized deep-link is blocked for non-permitted role
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | UI Components |
+| Feature | Navigation & Page Access |
 | Priority | High |
-| Preconditions | Add Keyword panel with incomplete fields |
-| Test Data | N/A |
-| Steps | 1. Open Add Keyword panel 2. Observe submit button state before completing mandatory fields |
-| Acceptance Criteria | Submit button should not be active without valid required fields |
-| Expected Result | Submit button should appear disabled until all mandatory fields have valid values |
+| Preconditions | User account without Keyword Manager module permission. |
+| Test Data | Viewer profile without keyword create rights User role: Viewer |
+| Steps | 1. Log in with an account lacking Keyword Manager permission. 2. Open the Keyword Manager URL directly. 3. Observe access-denied response. 4. Confirm no editable controls are exposed. |
+| Acceptance Criteria | User without module access is denied entry with clear message. |
+| Expected Result | System blocks access and shows authorization message or redirects to permitted page; no editable controls are exposed. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | ui-components, high, functional |
+| Tags | navigation-page-access, high, rbac, security |
 
-### KM-TC-164 — Verify action buttons (enable/disable) render correctly per design
+### KM-TC-007 — Verify breadcrumb click returns to parent module
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | UI Components |
+| Feature | Navigation & Page Access |
 | Priority | Low |
-| Preconditions | Active keyword entries in listing |
-| Test Data | N/A |
-| Steps | 1. Observe action buttons in listing table |
-| Acceptance Criteria | Action buttons should have correct styling |
-| Expected Result | Enable and disable buttons should render with correct colour and icon styles |
+| Preconditions | Maker is logged in with keyword create/edit permission. |
+| Test Data | Breadcrumb text: Sanctions Screening Configuration / Keyword Manager User role: Maker |
+| Steps | 1. Log in to AML application as Maker user with create/edit permission. 2. Navigate to Configuration > Sanctions Screening Configuration > Keyword Manager. 3. Click 'Sanctions Screening Configuration' breadcrumb segment. 4. Validate parent module screen is opened. 5. Navigate back to Keyword Manager from menu. |
+| Acceptance Criteria | Breadcrumb supports navigation to parent screen. |
+| Expected Result | Breadcrumb click opens parent module and user can return to Keyword Manager normally. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | ui-components, low, functional |
+| Tags | navigation-page-access, low, rbac, security |
 
-### KM-TC-165 — Verify sidebar navigation highlights Keyword Manager as active when on this page
+### KM-TC-008 — Retain selected environment context after page revisit
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | UI Components |
+| Feature | Navigation & Page Access |
+| Priority | Medium |
+| Preconditions | Maker is logged in with keyword create/edit permission. |
+| Test Data | Entity context: UAE Retail User role: Maker |
+| Steps | 1. Log in to AML application as Maker user with create/edit permission. 2. Navigate to Configuration > Sanctions Screening Configuration > Keyword Manager. 3. Select branch/entity context 'UAE Retail'. 4. Open Keyword Manager and note selected context. 5. Navigate away and return to Keyword Manager. |
+| Acceptance Criteria | Configured branch/entity context remains consistent on revisit. |
+| Expected Result | Keyword Manager opens under the same selected context and shows data for that entity without forced reset. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | navigation-page-access, medium, rbac, security |
+
+### KM-TC-009 — Load default Active tab on first entry
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Status Tabs |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing (Active tab selected). |
+| Test Data | Seeded data: at least 5 active records User role: Maker |
+| Steps | 1. Open Keyword Manager and inspect selected tab. |
+| Acceptance Criteria | Active tab is selected by default for authorized users. |
+| Expected Result | Active tab is highlighted on initial load and table rows belong to active status only. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, high, rbac, security |
+
+### KM-TC-010 — Switch among all status tabs
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Status Tabs |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing (Active tab selected). |
+| Test Data | Tab names: Active, Inactive, Drafted Keyword User role: Maker |
+| Steps | 1. Click Inactive tab and review table status values. 2. Click Drafted Keyword tab and review table status values. 3. Return to Active tab. |
+| Acceptance Criteria | User can switch to Active, Inactive, and Drafted Keyword tabs. |
+| Expected Result | Each tab loads corresponding status records and preserves table structure and toolbar responsiveness. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, high, rbac, security |
+
+### KM-TC-011 — Validate tab counters against row totals
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Status Tabs |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager listing (Active tab selected). |
+| Test Data | Pagination size: 25 rows User role: Maker |
+| Steps | 1. Capture badge count on Active tab. 2. Apply no filters and count visible rows page by page. 3. Repeat for Inactive and Drafted Keyword tabs. |
+| Acceptance Criteria | Tab badges display accurate counts for each status. |
+| Expected Result | Badge counter on each tab equals total rows available for that status set. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, medium, rbac, security |
+
+### KM-TC-012 — Confirm no unsupported Pending Approval tab is shown
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Status Tabs |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing (Active tab selected). |
+| Test Data | Expected tabs: Active, Inactive, Drafted Keyword User role: Viewer |
+| Steps | 1. Inspect all status tabs visible above data table. |
+| Acceptance Criteria | Only approved status tabs are visible in UI. |
+| Expected Result | UI shows exactly three tabs (Active, Inactive, Drafted Keyword) and does not display a separate Pending Approval tab. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, high, rbac, security |
+
+### KM-TC-013 — Preserve selected tab after browser refresh
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Status Tabs |
 | Priority | Low |
-| Preconditions | User on Keyword Manager page |
-| Test Data | N/A |
-| Steps | 1. Observe sidebar navigation 2. Check Keyword Manager menu item state |
-| Acceptance Criteria | Active nav item should be visually highlighted |
-| Expected Result | Keyword Manager nav item should show active/highlighted state in sidebar |
+| Preconditions | Maker is on Keyword Manager listing (Active tab selected). |
+| Test Data | Tab under test: Drafted Keyword User role: Maker |
+| Steps | 1. Open Drafted Keyword tab. 2. Refresh browser. 3. Verify selected tab and data state. |
+| Acceptance Criteria | Current tab state remains after refresh. |
+| Expected Result | After refresh, Drafted Keyword remains selected and drafted records are displayed. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | ui-components, low, functional |
+| Tags | status-tabs, low, rbac, security |
 
-### KM-TC-166 — Verify all mandatory form fields have visible labels with red asterisk indicator
+### KM-TC-014 — Keep search keyword when switching tabs
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Accessibility |
+| Feature | Status Tabs |
 | Priority | Medium |
-| Preconditions | Add Keyword and Add Category panels open |
-| Test Data | N/A |
-| Steps | 1. Open Add Keyword panel 2. Inspect mandatory field labels |
-| Acceptance Criteria | Required fields must be clearly marked |
-| Expected Result | All mandatory fields should display a visible red asterisk (*) in their label |
+| Preconditions | Maker is on Keyword Manager listing (Active tab selected). |
+| Test Data | Search text: OFAC User role: Maker |
+| Steps | 1. Enter Search value 'OFAC'. 2. Switch from Active to Inactive tab. 3. Observe whether same search term applies and result set updates. |
+| Acceptance Criteria | Search context behavior is consistent across tab transitions. |
+| Expected Result | Search term persists in input and each tab returns only matching records within that tab status. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | accessibility, medium, functional |
+| Tags | status-tabs, medium, rbac, security |
 
-### KM-TC-167 — Verify Tab key navigation follows logical order through keyword form fields
+### KM-TC-015 — Show zero-state message for empty status tab
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Accessibility |
+| Feature | Status Tabs |
+| Priority | Low |
+| Preconditions | Maker is on Keyword Manager listing (Active tab selected). |
+| Test Data | Drafted records: 0 User role: Maker |
+| Steps | 1. Click Drafted Keyword tab when no draft exists. |
+| Acceptance Criteria | Empty tab presents user guidance without layout break. |
+| Expected Result | Table area shows clear empty-state message and action buttons remain available based on role permissions. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, low, rbac, security |
+
+### KM-TC-016 — Search by full keyword phrase
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Search & Filter |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Keyword phrase: OFAC User role: Maker |
+| Steps | 1. Enter 'OFAC' in Search field and execute. 2. Review returned rows. |
+| Acceptance Criteria | Search returns precise phrase matches in current tab. |
+| Expected Result | Returned rows contain keyword phrase 'OFAC' and no unrelated records. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | search-filter, high, rbac, security |
+
+### KM-TC-017 — Search by partial text fragment
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Search & Filter |
 | Priority | Medium |
-| Preconditions | Add Keyword panel open |
-| Test Data | N/A |
-| Steps | 1. Use Tab key to navigate through all form fields 2. Observe focus order |
-| Acceptance Criteria | Keyboard navigation should follow reading order |
-| Expected Result | Focus should move logically through fields: Keyword, Category, Risk Level, Match Type, Threshold Score, Screening Fields |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Partial fragment: High User role: Maker |
+| Steps | 1. Enter partial text 'High' in Search field. 2. Execute search and inspect matching records. |
+| Acceptance Criteria | Search supports partial term retrieval. |
+| Expected Result | Results include records containing the fragment in keyword/phrase and exclude fully non-matching records. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | accessibility, medium |
+| Tags | search-filter, medium, rbac, security |
 
-### KM-TC-168 — Verify keyboard focus indicators are visible on all interactive elements
+### KM-TC-018 — Validate case-insensitive search behavior
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Accessibility |
+| Feature | Search & Filter |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Uppercase and lowercase variants of 'Politically Exposed Person' User role: Maker |
+| Steps | 1. Search using uppercase 'POLITICALLY EXPOSED PERSON'. 2. Repeat search using lowercase 'politically exposed person'. 3. Compare result counts. |
+| Acceptance Criteria | Search logic is not sensitive to character case. |
+| Expected Result | Both searches produce identical result set and count, confirming case-insensitive lookup. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | search-filter, high, rbac, security |
+
+### KM-TC-019 — Search with no matching records
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Search & Filter |
 | Priority | Medium |
-| Preconditions | Keyword Manager page loaded |
-| Test Data | N/A |
-| Steps | 1. Navigate page using Tab key only 2. Observe focus indicators on all controls |
-| Acceptance Criteria | Focus rings should be visible |
-| Expected Result | Visible focus rings should appear on all interactive elements when navigated by keyboard |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Search text: ZZZ_NON_EXISTENT_999 User role: Viewer |
+| Steps | 1. Enter 'ZZZ_NON_EXISTENT_999' in Search and submit. |
+| Acceptance Criteria | System handles unmatched query cleanly. |
+| Expected Result | No-result state is displayed with table headers intact and no stale records visible. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | accessibility, medium |
+| Tags | search-filter, medium, rbac, security |
 
-### KM-TC-169 — Verify inline validation error messages are readable and positioned near the relevant field
+### KM-TC-020 — Clear search and restore full list
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Accessibility |
+| Feature | Search & Filter |
 | Priority | Medium |
-| Preconditions | Form with validation errors triggered |
-| Test Data | N/A |
-| Steps | 1. Submit form with missing mandatory fields 2. Observe error message placement |
-| Acceptance Criteria | Error messages should be contextual and clear |
-| Expected Result | Error messages should appear directly adjacent to the field they relate to |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Before clear: filtered set, After clear: full Active set User role: Maker |
+| Steps | 1. Search for 'OFAC'. 2. Clear search input and trigger search reset. 3. Review row count before and after clear. |
+| Acceptance Criteria | Clearing search resets the data set promptly. |
+| Expected Result | Table repopulates full tab dataset immediately after clearing search criteria. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | accessibility, medium, error-handling |
+| Tags | search-filter, medium, rbac, security |
 
-### KM-TC-170 — Verify page layout is usable at 200% browser zoom
+### KM-TC-021 — Run search independently per status tab
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Accessibility |
+| Feature | Search & Filter |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Search text: Terror User role: Maker |
+| Steps | 1. Search for 'Terror'. 2. Capture result count in Active tab. 3. Switch to Inactive tab without changing search text. |
+| Acceptance Criteria | Search scope remains limited to active tab. |
+| Expected Result | Result count updates to records from selected tab only; cross-tab records do not leak into view. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | search-filter, high, rbac, security |
+
+### KM-TC-022 — Trim leading and trailing spaces in search input
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Search & Filter |
+| Priority | Low |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Search text with padding spaces User role: Maker |
+| Steps | 1. Enter search text with spaces: '   OFAC   '. 2. Execute search. |
+| Acceptance Criteria | Search normalizes padded whitespace. |
+| Expected Result | Search engine trims spaces and returns same records as input 'OFAC'. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | search-filter, low, rbac, security |
+
+### KM-TC-023 — Sort Keyword/Phrase in ascending order
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | Keyword Manager page loaded |
-| Test Data | N/A |
-| Steps | 1. Set browser zoom to 200% 2. Navigate all sections |
-| Acceptance Criteria | Zoom should not break layout |
-| Expected Result | Layout, controls, and table should remain usable and readable at 200% zoom without overflow or overlap |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Sort column: Keyword/Phrase, direction: ascending User role: Viewer |
+| Steps | 1. Click 'Keyword/Phrase' column header once. 2. Inspect first 10 rows in table. |
+| Acceptance Criteria | Ascending sort arranges rows correctly. |
+| Expected Result | Rows are ordered ascending by 'Keyword/Phrase' according to displayed value semantics. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | accessibility, medium, browser-compat |
+| Tags | data-table-sorting, medium, rbac, security |
 
-### KM-TC-171 — Verify Keyword Manager listing page loads within acceptable time threshold
+### KM-TC-024 — Sort Category in descending order
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Performance |
-| Priority | High |
-| Preconditions | Keyword dataset of varying sizes |
-| Test Data | Large and small datasets |
-| Steps | 1. Open Keyword Manager page 2. Measure load time |
-| Acceptance Criteria | Page should meet performance SLA |
-| Expected Result | Page should load within configured acceptable response threshold |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | performance, high |
-
-### KM-TC-172 — Verify Add Keyword submission completes within acceptable time
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Performance |
-| Priority | High |
-| Preconditions | Valid keyword form filled |
-| Test Data | N/A |
-| Steps | 1. Submit keyword entry 2. Measure response time |
-| Acceptance Criteria | Form submission should respond quickly |
-| Expected Result | Submission response should complete within acceptable time threshold |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | performance, high, functional |
-
-### KM-TC-173 — Verify bulk import processing completes within acceptable time for large files
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Performance |
-| Priority | High |
-| Preconditions | Large import file available |
-| Test Data | Large import file |
-| Steps | 1. Upload large import file 2. Measure processing time |
-| Acceptance Criteria | Bulk import should meet performance requirements |
-| Expected Result | Import processing should complete within acceptable time threshold without timeout |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | performance, high |
-
-### KM-TC-174 — Verify rapid repeated clicks on Submit do not create duplicate keyword entries
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Performance |
-| Priority | High |
-| Preconditions | Add Keyword panel with valid data |
-| Test Data | N/A |
-| Steps | 1. Fill keyword form 2. Rapidly click Submit multiple times |
-| Acceptance Criteria | System should prevent duplicate submissions |
-| Expected Result | System should process only one submission; no duplicate entries should be created |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | performance, high, api |
-
-### KM-TC-175 — Verify Keyword Manager remains stable during prolonged usage
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Performance |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | User actively using Keyword Manager for extended time |
-| Test Data | N/A |
-| Steps | 1. Perform repeated add, search, and navigation actions over extended period |
-| Acceptance Criteria | System should not degrade during extended sessions |
-| Expected Result | System should remain responsive and stable throughout prolonged usage |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Sort column: Category, direction: descending User role: Viewer |
+| Steps | 1. Click 'Category' header twice to apply descending order. 2. Inspect first 10 rows. |
+| Acceptance Criteria | Descending sort arranges rows correctly. |
+| Expected Result | Rows are ordered descending by 'Category' and sort indicator reflects descending state. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | performance, medium, session |
+| Tags | data-table-sorting, medium, rbac, security |
 
-### KM-TC-176 — Verify Keyword Manager functions correctly in Chrome 120+
+### KM-TC-025 — Validate multi-page table row consistency
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Browser Compatibility |
+| Feature | Data Table & Sorting |
+| Priority | Low |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Page size: 25, Total records: >= 40 User role: Viewer |
+| Steps | 1. Move from page 1 to page 2 using pagination control. 2. Return to page 1. |
+| Acceptance Criteria | Row numbering and data continuity remain stable across pages. |
+| Expected Result | Pagination changes page content correctly; no duplicate or missing rows between transitions. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | data-table-sorting, low, rbac, security |
+
+### KM-TC-026 — Check column visibility and order
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Data Table & Sorting |
 | Priority | High |
-| Preconditions | Chrome 120+ available |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager in Chrome 2. Test Add Keyword, Search, Category controls |
-| Acceptance Criteria | All features should work in Chrome |
-| Expected Result | All keyword management functions should work correctly in Chrome 120+ |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Expected order: Keyword/Phrase, Category, Risk Level, Match Type, Threshold Score, Screening Fields, Created Date, Status, Actions User role: Viewer |
+| Steps | 1. Inspect table header labels from left to right. |
+| Acceptance Criteria | All expected columns are present in configured order. |
+| Expected Result | All required columns are visible in expected order and Actions column is present at the far right. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | browser-compatibility, high, browser-compat |
+| Tags | data-table-sorting, high, rbac, security |
 
-### KM-TC-177 — Verify Keyword Manager functions correctly in Edge 120+
+### KM-TC-027 — Ensure long keyword text is safely rendered
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Browser Compatibility |
-| Priority | High |
-| Preconditions | Edge 120+ available |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager in Edge 2. Test key workflows |
-| Acceptance Criteria | All features should work in Edge |
-| Expected Result | All keyword management functions should work correctly in Edge 120+ |
+| Feature | Data Table & Sorting |
+| Priority | Low |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Keyword length: approximately 320 characters User role: Viewer |
+| Steps | 1. Search and open row with long keyword phrase. 2. Observe table cell wrapping/truncation behavior. |
+| Acceptance Criteria | Long phrases render without breaking table alignment. |
+| Expected Result | Long phrase appears with controlled wrapping or truncation; adjacent columns remain aligned. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | browser-compatibility, high, browser-compat |
+| Tags | data-table-sorting, low, rbac, security |
 
-### KM-TC-178 — Verify Keyword Manager functions correctly in Firefox 120+ and Safari 16+
+### KM-TC-028 — Verify created date format is consistent
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Browser Compatibility |
+| Feature | Data Table & Sorting |
+| Priority | Low |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Expected display format: YYYY-MM-DD HH:mm or configured locale equivalent User role: Viewer |
+| Steps | 1. Inspect Created Date values for first 15 rows. |
+| Acceptance Criteria | Created Date follows system date-time format for all rows. |
+| Expected Result | All displayed dates use one consistent format with valid timestamps and no null text for completed records. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | data-table-sorting, low, rbac, security |
+
+### KM-TC-029 — Sort Status in ascending order
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | Firefox 120+ and Safari 16+ available |
-| Test Data | N/A |
-| Steps | 1. Open Keyword Manager in Firefox and Safari 2. Test key workflows |
-| Acceptance Criteria | All features should work in Firefox and Safari |
-| Expected Result | All keyword management functions should work correctly in Firefox and Safari |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Sort column: Status, direction: ascending User role: Viewer |
+| Steps | 1. Click 'Status' column header once. 2. Inspect first 10 rows in table. |
+| Acceptance Criteria | Ascending sort arranges rows correctly. |
+| Expected Result | Rows are ordered ascending by 'Status' according to displayed value semantics. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | browser-compatibility, medium, browser-compat |
+| Tags | data-table-sorting, medium, rbac, security |
 
-### KM-TC-179 — Verify system handles empty Keyword/Phrase field submission gracefully
+### KM-TC-030 — Sort Keyword/Phrase in descending order
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Negative Edge Cases |
-| Priority | Critical |
-| Preconditions | Add Keyword panel open |
-| Test Data | Empty input |
-| Steps | 1. Leave Keyword/Phrase empty 2. Submit |
-| Acceptance Criteria | Empty keyword should not be accepted |
-| Expected Result | Inline validation error should block submission |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-edge-cases, critical, functional |
-
-### KM-TC-180 — Verify system handles whitespace-only Keyword/Phrase
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Negative Edge Cases |
-| Priority | High |
-| Preconditions | Add Keyword panel open |
-| Test Data | Spaces only |
-| Steps | 1. Enter only spaces in Keyword/Phrase 2. Submit |
-| Acceptance Criteria | Spaces-only input should be rejected |
-| Expected Result | System should reject whitespace-only input with validation error |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-edge-cases, high, maker-checker |
-
-### KM-TC-181 — Verify non-integer Threshold Score value is handled safely
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Negative Edge Cases |
-| Priority | High |
-| Preconditions | Add Keyword panel, Fuzzy Match selected |
-| Test Data | 75.5 |
-| Steps | 1. Enter decimal value like 75.5 in Threshold Score |
-| Acceptance Criteria | Threshold Score must be an integer |
-| Expected Result | System should reject or round decimal; only integers 1-100 should be accepted |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-edge-cases, high, functional |
-
-### KM-TC-182 — Verify alphabetic characters in Threshold Score are rejected
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Negative Edge Cases |
-| Priority | High |
-| Preconditions | Add Keyword panel, Fuzzy Match selected |
-| Test Data | abc |
-| Steps | 1. Enter 'abc' in Threshold Score field |
-| Acceptance Criteria | Threshold Score must be numeric |
-| Expected Result | System should reject non-numeric input in Threshold Score field |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-edge-cases, high, maker-checker |
-
-### KM-TC-183 — Verify system handles concurrent keyword submissions from multiple Maker users
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Negative Edge Cases |
-| Priority | High |
-| Preconditions | Multiple Maker users active simultaneously |
-| Test Data | Concurrent submissions |
-| Steps | 1. Submit keywords from two Maker accounts simultaneously |
-| Acceptance Criteria | Concurrent submissions should not conflict |
-| Expected Result | System should handle concurrent submissions without conflict or data corruption |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-edge-cases, high, rbac, security |
-
-### KM-TC-184 — Verify system handles network interruption during keyword submission
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Negative Edge Cases |
-| Priority | High |
-| Preconditions | Keyword being submitted during network interruption |
-| Test Data | N/A |
-| Steps | 1. Fill keyword form 2. Disconnect network 3. Submit 4. Reconnect |
-| Acceptance Criteria | Network loss should be handled gracefully |
-| Expected Result | System should display appropriate error; no partial or corrupted entry should be created |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-edge-cases, high, functional |
-
-### KM-TC-185 — Verify stale browser session data does not show outdated keyword statuses
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Negative Edge Cases |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | Keyword status updated in another tab |
-| Test Data | N/A |
-| Steps | 1. Open two browser tabs 2. Update keyword status in tab 1 3. Refresh tab 2 and observe |
-| Acceptance Criteria | Page should show current status, not stale cache |
-| Expected Result | Tab 2 should reflect the latest status after refresh |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Sort column: Keyword/Phrase, direction: descending User role: Viewer |
+| Steps | 1. Click 'Keyword/Phrase' header twice to apply descending order. 2. Inspect first 10 rows. |
+| Acceptance Criteria | Descending sort arranges rows correctly. |
+| Expected Result | Rows are ordered descending by 'Keyword/Phrase' and sort indicator reflects descending state. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | negative-edge-cases, medium, browser-compat |
+| Tags | data-table-sorting, medium, rbac, security |
 
-### KM-TC-186 — Verify system handles Screening Fields selector with all 20 fields selected simultaneously
+### KM-TC-031 — Create a new custom category with mandatory fields
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Negative Edge Cases |
+| Feature | Category Management - Add Category |
 | Priority | High |
-| Preconditions | Add Keyword panel, Screening Fields open |
-| Test Data | All 20 fields selected |
-| Steps | 1. Select all 20 available Screening Fields 2. Submit |
-| Acceptance Criteria | Maximum field selection should be supported |
-| Expected Result | All 20 fields should be accepted and entry should submit successfully |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Name=Cybercrime Indicators; Description=Category for regional watchlist enrichment User role: Maker |
+| Steps | 1. Click Add Category. 2. Enter Name 'CustomCategory_A1'. 3. Enter Description 'Category for regional watchlist enrichment'. 4. Submit for checker approval. |
+| Acceptance Criteria | Maker can submit unique category with valid details. |
+| Expected Result | Category request is created in pending state and visible to checker for approval. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | negative-edge-cases, high, functional |
+| Tags | category-management-add-category, high, rbac, security |
 
-### KM-TC-187 — Verify browser refresh during Add Keyword form completion shows expected behaviour
+### KM-TC-032 — Reject duplicate category name
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Negative Edge Cases |
+| Feature | Category Management - Add Category |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Name=Sanctions User role: Maker |
+| Steps | 1. Click Add Category. 2. Enter Name 'Sanctions'. 3. Submit category. |
+| Acceptance Criteria | System blocks creating category with existing name. |
+| Expected Result | Submission is blocked with duplicate category validation message and no new request is created. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, rbac, security |
+
+### KM-TC-033 — Validate category name max length 100 characters
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Add Category |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Name length=101 characters User role: Maker |
+| Steps | 1. Open Add Category. 2. Paste 101-character category name. 3. Attempt submission. |
+| Acceptance Criteria | Name field enforces 100-character upper limit. |
+| Expected Result | System prevents submission and indicates category name length must not exceed 100 characters. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, rbac, security |
+
+### KM-TC-034 — Validate category description max length 500 characters
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Add Category |
 | Priority | Medium |
-| Preconditions | Add Keyword panel with data partially entered |
-| Test Data | Partially filled form |
-| Steps | 1. Enter partial keyword data 2. Press F5 to refresh 3. Observe state |
-| Acceptance Criteria | Page refresh should be handled safely |
-| Expected Result | Page should either retain session data or return to clean state without broken UI |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Name=Cybercrime Indicators; Description length=501 User role: Maker |
+| Steps | 1. Open Add Category. 2. Enter Name 'CustomCategory_A4_D'. 3. Paste 501-character description. 4. Submit category. |
+| Acceptance Criteria | Description field enforces 500-character upper limit. |
+| Expected Result | System shows validation error for description length and prevents submission. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | negative-edge-cases, medium, browser-compat |
+| Tags | category-management-add-category, medium, rbac, security |
 
-### KM-TC-188 — Verify logout clears in-progress keyword form data
+### KM-TC-035 — Cancel Add Category operation
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Negative Edge Cases |
+| Feature | Category Management - Add Category |
 | Priority | Medium |
-| Preconditions | User has partial keyword data in form |
-| Test Data | N/A |
-| Steps | 1. Partially fill keyword form 2. Logout 3. Log back in 4. Navigate to Keyword Manager |
-| Acceptance Criteria | Logging out should clear unsaved changes |
-| Expected Result | Form should be clean on re-login; no previously entered but unsaved data should persist |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Cancelled category name=Cybercrime Indicators User role: Maker |
+| Steps | 1. Open Add Category. 2. Enter Name 'CustomCategory_A5_Cancel'. 3. Click Cancel. 4. Search for entered name. |
+| Acceptance Criteria | Cancel closes panel without creating a request. |
+| Expected Result | Panel closes and cancelled category is not available in list or pending queue. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | negative-edge-cases, medium, session |
+| Tags | category-management-add-category, medium, rbac, security |
 
-### KM-TC-189 — Verify keyword activation status reflects immediately in screening engine after Checker approval
+### KM-TC-036 — Allow special characters supported by naming convention
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Integration |
-| Priority | Critical |
-| Preconditions | Keyword approved by Checker |
-| Test Data | Approved keyword |
-| Steps | 1. Approve keyword as Checker 2. Trigger new screening run 3. Verify keyword is evaluated |
-| Acceptance Criteria | Approved keyword should be queued for next screening run |
-| Expected Result | Newly approved keyword should be applied in the next screening run after approval |
+| Feature | Category Management - Add Category |
+| Priority | Low |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Name=Geo-Political_Alerts 2026 User role: Maker |
+| Steps | 1. Open Add Category. 2. Enter Name 'Geo-Political_Alerts 2026'. 3. Enter valid description and submit. |
+| Acceptance Criteria | Permitted characters are accepted in category name. |
+| Expected Result | Category is accepted when characters are within allowed naming rules. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, low, rbac, security |
+
+### KM-TC-037 — Disable category control for Sanctions
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Target category is currently enabled. |
+| Test Data | Category=Sanctions; Action=Disable User role: Maker |
+| Steps | 1. Open Category Controls. 2. Toggle Sanctions to disabled state. 3. Submit change for checker approval. |
+| Acceptance Criteria | Maker can request category disable action via controls. |
+| Expected Result | Disable request is logged and enters maker-checker workflow. After Checker approval, all active Sanctions-category keywords are excluded from the next screening run while remaining visible in the listing. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-038 — Enable disabled category Terrorism
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Target category is currently disabled. |
+| Test Data | Category=Terrorism; Action=Enable User role: Maker |
+| Steps | 1. Open Category Controls. 2. Toggle Terrorism to enabled state. 3. Submit enable request. |
+| Acceptance Criteria | Previously disabled category can be enabled through control flow. |
+| Expected Result | Enable request is submitted and Terrorism becomes available after checker approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-039 — Prevent category toggle without permission
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Role=Viewer User role: Viewer |
+| Steps | 1. Open Category Controls. 2. Attempt to toggle any category state. |
+| Acceptance Criteria | Viewer cannot alter category control states. |
+| Expected Result | Toggles are disabled or hidden for viewer; no control update request can be initiated. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-040 — Disable category control for Financial Crime
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Target category is currently enabled. |
+| Test Data | Category=Financial Crime; Action=Disable User role: Maker |
+| Steps | 1. Open Category Controls. 2. Toggle Financial Crime to disabled state. 3. Submit change for checker approval. |
+| Acceptance Criteria | Maker can request category disable action via controls. |
+| Expected Result | Disable request for Financial Crime is captured in maker-checker workflow and category shows pending lock. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-041 — Enable disabled category Sanctions
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Target category is currently disabled. |
+| Test Data | Category=Sanctions; Action=Enable User role: Maker |
+| Steps | 1. Open Category Controls. 2. Toggle Sanctions to enabled state. 3. Submit enable request. |
+| Acceptance Criteria | Previously disabled category can be enabled through control flow. |
+| Expected Result | Enable request is submitted and Sanctions becomes available after checker approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-042 — Disable category control for PEP
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Target category is currently enabled. |
+| Test Data | Category=PEP; Action=Disable User role: Maker |
+| Steps | 1. Open Category Controls. 2. Toggle PEP to disabled state. 3. Submit change for checker approval. |
+| Acceptance Criteria | Maker can request category disable action via controls. |
+| Expected Result | Disable request for PEP is captured in maker-checker workflow and category shows pending lock. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-043 — Enable disabled category Financial Crime
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Target category is currently disabled. |
+| Test Data | Category=Financial Crime; Action=Enable User role: Maker |
+| Steps | 1. Open Category Controls. 2. Toggle Financial Crime to enabled state. 3. Submit enable request. |
+| Acceptance Criteria | Previously disabled category can be enabled through control flow. |
+| Expected Result | Enable request is submitted and Financial Crime becomes available after checker approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-044 — Submit exact-match keyword with all mandatory fields and screening field mapping
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Add Keyword |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword: money laundering; Category: Financial Crime; Risk: High; Match Type: Exact Match; Screening Fields: News Article Full Text, Crime Type Tags User role: Maker |
+| Steps | 1. Click Add Keyword. 2. Enter Keyword 'money laundering', Category Financial Crime, Risk Level High, Match Type Exact Match. 3. Map Screening Fields: News Article Full Text; Crime Type Tags. 4. Click Submit. 5. Confirm checker submission modal with timestamp. 6. Locate entry in Drafted Keyword tab or pending queue. |
+| Acceptance Criteria | Maker can submit exact keyword when all required fields are valid. |
+| Expected Result | Submission succeeds. Threshold Score field remains hidden. Request enters Pending Approval with full field payload captured for Checker review. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-keyword, high, rbac, security |
+
+### KM-TC-045 — Submit fuzzy-match keyword with mandatory threshold and screening field mapping
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Add Keyword |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword: hawala; Threshold: 75; Screening Fields: Business Activity Description, Source of Funds Description User role: Maker |
+| Steps | 1. Click Add Keyword. 2. Enter Keyword 'hawala', Category Financial Crime, Risk Level High, Match Type Fuzzy Match. 3. Enter Threshold Score 75. 4. Map Screening Fields: Business Activity Description; Source of Funds Description. 5. Submit for checker approval. |
+| Acceptance Criteria | Threshold is mandatory and accepted within 1-100 for fuzzy match. |
+| Expected Result | Fuzzy keyword is accepted with threshold 75 stored. Request routes to Checker queue; precision hint reflected Balanced/High band at entry time. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-keyword, high, rbac, security |
+
+### KM-TC-046 — Save keyword as draft
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Add Keyword |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword=hawala DRAFT; Match Type=Exact Match User role: Maker |
+| Steps | 1. Open Add Keyword panel and enter valid mandatory fields. 2. Click Save Draft instead of Submit. 3. Open Drafted Keyword tab and search by phrase. |
+| Acceptance Criteria | Save Draft stores record in Drafted Keyword tab without checker submission. |
+| Expected Result | Record appears in Drafted Keyword tab with status indicating draft state and no checker request generated yet. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-keyword, medium, rbac, security |
+
+### KM-TC-047 — Cancel Add Keyword discards unsaved entry
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Add Keyword |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword=bearer shares CANCEL User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Enter Keyword 'temp cancel phrase' and partially complete Category. 3. Click Cancel. 4. Confirm discard if confirmation prompt appears. 5. Search all tabs for the entered phrase. |
+| Acceptance Criteria | Cancel discards unsaved changes. |
+| Expected Result | No draft, pending, or active record is created. Search across Active, Inactive, and Drafted tabs returns zero matches. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-keyword, medium, rbac, security |
+
+### KM-TC-048 — Enforce mandatory field validation in add keyword
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Add Keyword |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Missing required fields: Category, Risk Level, Match Type, Screening Fields User role: Maker |
+| Steps | 1. Open Add Keyword panel. 2. Leave Category and Screening Fields empty. 3. Click Submit. |
+| Acceptance Criteria | System blocks submission when required inputs are missing. |
+| Expected Result | Validation messages appear for each mandatory field and record is not submitted. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-keyword, high, rbac, security |
+
+### KM-TC-049 — Map keyword to single field from Name Screening group
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Fields Mapping |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword: politically exposed; Selected field: Occupation / Designation; Other groups: none User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Enter Keyword 'politically exposed', Category PEP, Risk Level High, Match Type Fuzzy Match, Threshold 80. 3. Open Screening Fields dropdown under Name Screening group. 4. Select only Occupation / Designation. 5. Submit for checker approval. 6. After approval, open the keyword row and verify stored mapping. |
+| Acceptance Criteria | Keyword scans only selected field in Name Screening group. |
+| Expected Result | Approved keyword stores exactly one Screening Field (Occupation / Designation). Listing and history show no fields from Adverse Media or KYC groups. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | screening-fields-mapping, high, rbac, security |
+
+### KM-TC-050 — Map keyword to cross-group field selection
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Fields Mapping |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword: corruption; Fields: Beneficial Owner Description \| News Article Full Text \| Source of Funds Description User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Enter Keyword 'corruption', Category Financial Crime, Risk Level Medium, Match Type Fuzzy Match, Threshold 70. 3. Select Screening Fields across groups: Beneficial Owner Description (Name); News Article Full Text (Adverse Media); Source of Funds Description (KYC). 4. Submit for checker approval. 5. Review Screening Fields column on listing row. |
+| Acceptance Criteria | Multi-select can include fields from multiple groups. |
+| Expected Result | All three selected fields persist after approval. Combined mapping is visible on the listing row and in audit history. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | screening-fields-mapping, high, rbac, security |
+
+### KM-TC-051 — Require at least one screening field selection
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Fields Mapping |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Screening Fields selection count=0 User role: Maker |
+| Steps | 1. Fill all mandatory keyword inputs except screening fields. 2. Attempt submit. |
+| Acceptance Criteria | Submission is blocked when no field is selected. |
+| Expected Result | System shows mandatory validation for Screening Fields and prevents submission. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | screening-fields-mapping, high, rbac, security |
+
+### KM-TC-052 — Persist screening field mappings after edit
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Fields Mapping |
+| Priority | Medium |
+| Preconditions | Maker is logged in. An active approved keyword exists for edit. |
+| Test Data | Updated fields=Regulatory Body Name in Article\|Business Type / Industry Code User role: Maker |
+| Steps | 1. Open keyword for edit/update action. 2. Change field mapping to 'Regulatory Body Name in Article' and 'Business Type / Industry Code'. 3. Submit update and complete checker approval. |
+| Acceptance Criteria | Edited field mappings are saved correctly after approval flow. |
+| Expected Result | Post-approval keyword shows updated screening field mappings exactly as submitted. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | screening-fields-mapping, medium, rbac, security |
+
+### KM-TC-053 — Accept fuzzy threshold at boundary value 1
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Threshold Score=1 User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Set Match Type as Fuzzy Match. 3. Enter Threshold Score '1'. 4. Submit with valid mandatory fields. |
+| Acceptance Criteria | Valid threshold within 1-100 is accepted. |
+| Expected Result | System accepts threshold value and stores fuzzy keyword with entered score. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, high, rbac, security |
+
+### KM-TC-054 — Reject fuzzy threshold below valid range (0)
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Match Type: Fuzzy Match; Threshold Score: 0 |
+| Steps | 1. Open Add Keyword and select Match Type Fuzzy Match. 2. Complete all other mandatory fields. 3. Enter Threshold Score 0. 4. Click Submit. 5. Observe inline validation on Threshold Score. |
+| Acceptance Criteria | Threshold values outside 1–100 are blocked at submission. |
+| Expected Result | Validation error states allowed range is 1 to 100 and submission is blocked. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, high, maker-checker |
+
+### KM-TC-055 — Hide threshold input for Exact Match
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Match Type=Exact Match User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Select Match Type as Exact Match. 3. Inspect form controls. |
+| Acceptance Criteria | Threshold input is not shown when match type is Exact Match. |
+| Expected Result | Threshold Score field is hidden/disabled and exact keyword can be submitted without threshold. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, high, rbac, security |
+
+### KM-TC-056 — Classify threshold hint as Low/Balanced/High
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Threshold checks: 45(Low), 70(Balanced), 85(High) User role: Maker |
+| Steps | 1. Select Fuzzy Match. 2. Enter threshold 45, then 70, then 85 and observe hint text. |
+| Acceptance Criteria | UI hint reflects threshold precision band definition. |
+| Expected Result | Hint labels align to bands: <50 Low, 50-79 Balanced, >=80 High. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, medium, rbac, security |
+
+### KM-TC-057 — Accept fuzzy threshold at boundary value 80
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Threshold Score=80 User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Set Match Type as Fuzzy Match. 3. Enter Threshold Score '80'. 4. Submit with valid mandatory fields. |
+| Acceptance Criteria | Valid threshold within 1-100 is accepted. |
+| Expected Result | System accepts threshold value and stores fuzzy keyword with entered score. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, high, rbac, security |
+
+### KM-TC-058 — Accept fuzzy threshold at upper boundary value 100
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Match Type: Fuzzy Match; Threshold Score: 100; Keyword: Iran; Category: Sanctions; Risk Level: High |
+| Steps | 1. Open Add Keyword and select Match Type Fuzzy Match. 2. Enter Keyword 'Iran', Category Sanctions, Risk Level High. 3. Map Screening Fields: Country / Jurisdiction Tags; Registered Address. 4. Enter Threshold Score 100. 5. Confirm precision hint shows High precision. 6. Submit for checker approval. |
+| Acceptance Criteria | Maximum threshold 100 is accepted for fuzzy keywords. |
+| Expected Result | Validation error states allowed range is 1 to 100 and submission is blocked. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, high, functional |
+
+### KM-TC-059 — Accept fuzzy threshold at boundary value 65
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Threshold Score=65 User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Set Match Type as Fuzzy Match. 3. Enter Threshold Score '65'. 4. Submit with valid mandatory fields. |
+| Acceptance Criteria | Valid threshold within 1-100 is accepted. |
+| Expected Result | System accepts threshold value and stores fuzzy keyword with entered score. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, high, rbac, security |
+
+### KM-TC-060 — Clamp threshold input above 100 to maximum allowed value
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Match Type: Fuzzy Match; Input value: 105; Expected stored value: 100 |
+| Steps | 1. Open Add Keyword and select Match Type Fuzzy Match. 2. Click into Threshold Score field. 3. Type 105 and tab out of the field. 4. Observe the normalized value displayed. 5. Complete remaining mandatory fields and submit. |
+| Acceptance Criteria | Out-of-range threshold input is normalized to valid maximum per business rule BR-004. |
+| Expected Result | Validation error states allowed range is 1 to 100 and submission is blocked. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | fuzzy-match-threshold-score, high, functional |
+
+### KM-TC-061 — Run live narrative tester with a strong match narrative
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Live Narrative Tester |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Narrative=Customer known as Mohammad Al Kareem appears on OFAC sanctions watchlist; Expected similarity >= configured threshold User role: Maker |
+| Steps | 1. Open Add Keyword with fuzzy match configuration. 2. Enter narrative 'Customer known as Mohammad Al Kareem appears on OFAC sanctions watchlist'. 3. Run Live Narrative Tester. |
+| Acceptance Criteria | Tester returns high similarity output for aligned keyword narrative. |
+| Expected Result | Tester output indicates match with similarity score and highlights triggered keyword mapping. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | live-narrative-tester, high, rbac, security |
+
+### KM-TC-062 — Run live narrative tester with non-matching narrative
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Live Narrative Tester |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Narrative=Customer bought office stationery for branch admin tasks User role: Maker |
+| Steps | 1. Open Live Narrative Tester. 2. Enter unrelated narrative text about benign retail purchase. 3. Execute tester. |
+| Acceptance Criteria | Tester correctly returns no-match when similarity is below threshold. |
+| Expected Result | Tester reports no match and similarity score remains below keyword threshold. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | live-narrative-tester, medium, rbac, security |
+
+### KM-TC-063 — Validate narrative tester input length handling
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Live Narrative Tester |
+| Priority | Low |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Narrative length approximately 900 characters User role: Maker |
+| Steps | 1. Paste narrative around 900 characters into tester input. 2. Run tester and observe response. |
+| Acceptance Criteria | Tester accepts long narrative input without truncation errors. |
+| Expected Result | Narrative is processed successfully and output returns without UI crash or malformed result. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | live-narrative-tester, low, rbac, security |
+
+### KM-TC-064 — Clear narrative tester output between runs
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Live Narrative Tester |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Run1=OFAC narrative, Run2=benign narrative User role: Maker |
+| Steps | 1. Run tester with first narrative. 2. Replace with second narrative and rerun. |
+| Acceptance Criteria | Previous result does not leak into next test execution. |
+| Expected Result | Second result reflects only second narrative and previous score/output is replaced. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | live-narrative-tester, medium, rbac, security |
+
+### KM-TC-065 — Disable active keyword from row action
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Keyword Row Actions |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Keyword=OFAC ENTITY; Action=Disable; Reason=Obsolete list term User role: Maker |
+| Steps | 1. In Active tab locate keyword 'OFAC ENTITY'. 2. Click row action Disable. 3. Submit reason 'Obsolete list term'. |
+| Acceptance Criteria | Active record can be moved to inactive via maker-checker flow. |
+| Expected Result | Disable request is logged for approval and keyword is locked from further edits until decision. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | keyword-row-actions, high, rbac, security |
+
+### KM-TC-066 — Enable inactive keyword from row action
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Keyword Row Actions |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Keyword=LEGACY WATCH TERM; Action=Enable User role: Maker |
+| Steps | 1. Open Inactive tab and find 'LEGACY WATCH TERM'. 2. Click row action Enable. 3. Submit request. |
+| Acceptance Criteria | Inactive record can be reactivated after approval. |
+| Expected Result | Enable request enters maker-checker queue and record transitions to active after approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | keyword-row-actions, high, rbac, security |
+
+### KM-TC-067 — Submit drafted keyword using row action
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Keyword Row Actions |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Draft keyword: bearer shares User role: Maker |
+| Steps | 1. Open Drafted Keyword tab. 2. Use row action Submit on selected draft. |
+| Acceptance Criteria | Drafted record can be submitted for checker review. |
+| Expected Result | Draft status changes to pending checker decision and draft row becomes non-editable until processed. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | keyword-row-actions, medium, rbac, security |
+
+### KM-TC-068 — Validate hard delete action is unavailable
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Keyword Row Actions |
+| Priority | High |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Expected actions: Disable/Enable/Submit based on tab User role: Viewer |
+| Steps | 1. Inspect row actions in Active, Inactive, and Drafted tabs. |
+| Acceptance Criteria | Row actions do not provide permanent delete. |
+| Expected Result | No hard delete action is present for any status tab. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | keyword-row-actions, high, rbac, security |
+
+### KM-TC-069 — Restrict row action for viewer role
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Keyword Row Actions |
+| Priority | High |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Role=Viewer User role: Viewer |
+| Steps | 1. Open Active tab. 2. Attempt to click Disable action for any row. |
+| Acceptance Criteria | Viewer cannot execute state-changing row actions. |
+| Expected Result | Viewer sees disabled actions or no actionable controls; no request is created. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | keyword-row-actions, high, rbac, security |
+
+### KM-TC-070 — Download bulk upload template
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Expected columns: Keyword/Phrase, Category, Risk Level, Match Type, Threshold Score, Screening Fields User role: Maker |
+| Steps | 1. Click Bulk Upload. 2. Select Download Template. 3. Open downloaded file and inspect headers. |
+| Acceptance Criteria | Template download provides required columns and valid format. |
+| Expected Result | Template downloads and displays all required sections and contains all required input columns for import. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, rbac, security |
+
+### KM-TC-071 — Upload valid CSV under 10MB
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | File=km_bulk_valid_50rows.csv; Size=1.2MB; Rows=50 User role: Maker |
+| Steps | 1. Open Bulk Upload. 2. Upload file 'km_bulk_valid_50rows.csv' (size 1.2MB). 3. Submit import batch. |
+| Acceptance Criteria | Valid file uploads and creates drafted entries for checker flow. |
+| Expected Result | Upload succeeds and all valid rows are created as drafted/pending records with batch reference. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, rbac, security |
+
+### KM-TC-072 — Upload valid XLSX under 10MB
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | File=km_bulk_valid_30rows.xlsx; Size=2.8MB; Rows=30 User role: Maker |
+| Steps | 1. Open Bulk Upload panel. 2. Upload 'km_bulk_valid_30rows.xlsx' (size 2.8MB). 3. Submit batch. |
+| Acceptance Criteria | XLSX format is accepted when schema is valid. |
+| Expected Result | System accepts XLSX file and queues rows for checker approval workflow. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, rbac, security |
+
+### KM-TC-073 — Reject bulk file above 10MB
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | File=km_bulk_oversize.xlsx; Size=10.7MB User role: Maker |
+| Steps | 1. Open Bulk Upload. 2. Upload 'km_bulk_oversize.xlsx' (size 10.7MB). |
+| Acceptance Criteria | File size limit is strictly enforced. |
+| Expected Result | Upload is rejected with message indicating maximum allowed file size is 10MB. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, rbac, security |
+
+### KM-TC-074 — Reject malformed bulk schema file
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | File missing columns: Match Type, Screening Fields User role: Maker |
+| Steps | 1. Upload 'km_bulk_missing_columns.csv'. 2. Review validation output. |
+| Acceptance Criteria | Import validates mandatory columns before processing. |
+| Expected Result | System blocks import and returns clear column-level validation errors. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, rbac, security |
+
+### KM-TC-075 — Handle mixed valid and invalid rows in one upload
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Rows=20 (15 valid, 5 invalid duplicate/threshold issues) User role: Maker |
+| Steps | 1. Upload 'km_bulk_mixed_20rows.csv'. 2. Submit import. 3. Open validation report. |
+| Acceptance Criteria | Row-level validation identifies failed rows precisely. |
+| Expected Result | Valid rows proceed to drafted queue and invalid rows are listed with exact rejection reasons. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium, rbac, security |
+
+### KM-TC-076 — Prevent duplicate rows in bulk upload
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Duplicate key rule: keyword + match type + category User role: Maker |
+| Steps | 1. Upload CSV containing duplicate business-key rows. 2. Submit batch and inspect result. |
+| Acceptance Criteria | Duplicate detection applies same business key as manual entry. |
+| Expected Result | Duplicate rows are rejected with explicit reason while unique rows continue per workflow. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, rbac, security |
+
+### KM-TC-077 — Export Active tab data to CSV
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Export |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Export scope tab=Active User role: Maker |
+| Steps | 1. Open 'Active' tab. 2. Click Export. 3. Open downloaded CSV. |
+| Acceptance Criteria | Export action downloads CSV scoped to selected tab data. |
+| Expected Result | CSV file downloads and contains records only from Active tab at export time. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, high, rbac, security |
+
+### KM-TC-078 — Verify export includes metadata columns
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Export |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Expected metadata headers include Category, Risk Level, Match Type, Threshold Score, Screening Fields, Status User role: Maker |
+| Steps | 1. Run export from Active tab. 2. Inspect CSV headers. |
+| Acceptance Criteria | CSV includes keyword metadata required by operations team. |
+| Expected Result | Exported CSV contains all metadata columns and populated values per record. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, medium, rbac, security |
+
+### KM-TC-079 — Verify export includes maker-checker columns
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Export |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager (Active tab). |
+| Test Data | Expected columns: Maker, Checker, Decision, Decision Date User role: Maker |
+| Steps | 1. Export records containing approved and rejected actions. 2. Inspect maker-checker related columns. |
+| Acceptance Criteria | CSV contains maker and checker audit fields. |
+| Expected Result | CSV includes maker-checker columns with correct values for each workflow record. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, medium, rbac, security |
+
+### KM-TC-080 — Submit new keyword by maker and approve by checker
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Maker and Checker accounts available. Maker can submit new keywords. |
+| Test Data | Keyword=arms dealer; Decision=Approve User role: Maker |
+| Steps | 1. Create keyword 'MC_APPROVAL_CASE_01' and click Submit. 2. Log out maker and log in as checker. 3. Open pending request and approve via checker modal. |
+| Acceptance Criteria | Two-step maker-checker lifecycle completes successfully. |
+| Expected Result | Approved keyword moves to Active tab with checker decision and timestamp recorded. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### KM-TC-081 — Submit new keyword by maker and reject by checker
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Maker and Checker accounts available. Maker can submit new keywords. |
+| Test Data | Keyword=no questions asked; Decision=Reject; Reason=Ambiguous phrase User role: Maker |
+| Steps | 1. Submit keyword 'MC_REJECT_CASE_01'. 2. Log in as checker and open pending item. 3. Select Reject, enter reason 'Ambiguous phrase', and confirm. |
+| Acceptance Criteria | Checker can reject request with mandatory reason. |
+| Expected Result | Request is marked rejected with reason; keyword does not appear in Active tab. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### KM-TC-082 — Prevent maker from self-approving own request
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Maker is logged in. Same user submitted a keyword change that is awaiting approval. |
+| Test Data | Self-approval attempt on own request User role: Maker |
+| Steps | 1. Submit keyword change as maker. 2. Attempt to open checker approval modal for same request using same account. |
+| Acceptance Criteria | Maker cannot approve changes created by same user. |
+| Expected Result | System blocks self-approval and displays policy message requiring different checker identity. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### KM-TC-083 — Lock pending request from further maker edits
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Maker is logged in. A keyword request is in Pending Approval state. |
+| Test Data | Request status=Pending User role: Maker |
+| Steps | 1. Open pending request from Drafted/queue view. 2. Attempt to edit keyword phrase or category. |
+| Acceptance Criteria | Pending items are immutable until checker decision. |
+| Expected Result | Fields are read-only while request is pending; maker cannot modify or resubmit same pending record. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### KM-TC-084 — Require decision comment in checker modal where configured
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Checker is logged in with approval permission. Pending keyword request exists. |
+| Test Data | Decision=Reject; Comment field left empty User role: Checker |
+| Steps | 1. Open pending keyword request. 2. Choose Reject without entering comment. 3. Attempt confirm. |
+| Acceptance Criteria | Checker modal enforces decision comment policy. |
+| Expected Result | Modal blocks confirmation and prompts checker to provide rejection comment. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### KM-TC-085 — Capture checker approval timestamp and actor
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Checker is logged in. Pending request MC_AUDIT_CASE_02 is in queue. |
+| Test Data | Request=MC_AUDIT_CASE_02 User role: Checker |
+| Steps | 1. Approve pending request 'MC_AUDIT_CASE_02'. 2. Open keyword history panel for approved item. |
+| Acceptance Criteria | Decision metadata is audit-ready after workflow completion. |
+| Expected Result | History captures checker username, decision, and precise timestamp entry. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### KM-TC-086 — Process multiple pending requests sequentially
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Checker is logged in. At least three pending keyword requests exist. |
+| Test Data | Queue actions: Approve, Reject, Approve User role: Checker |
+| Steps | 1. Open first pending item and approve. 2. Open second pending item and reject with reason. 3. Open third pending item and approve. |
+| Acceptance Criteria | Checker can approve/reject batch of queued requests without state loss. |
+| Expected Result | Each request is processed with independent decision records and queue count updates after each action. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### KM-TC-087 — Open keyword history timeline from row action
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Audit History |
+| Priority | High |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Keyword=OFAC ENTITY User role: Viewer |
+| Steps | 1. Locate keyword row 'OFAC ENTITY'. 2. Open Keyword History panel from Actions. |
+| Acceptance Criteria | History panel is accessible for each keyword row. |
+| Expected Result | History panel opens with chronological timeline entries for create/update/status changes. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, high, rbac, security |
+
+### KM-TC-088 — Verify history includes maker and checker events
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Audit History |
+| Priority | High |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Keyword with at least one approve/reject cycle User role: Viewer |
+| Steps | 1. Open history panel for approved keyword. 2. Inspect event actor details. |
+| Acceptance Criteria | Timeline records both request creator and decision maker. |
+| Expected Result | Timeline contains maker submission and checker decision events with actor names and timestamps. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, high, rbac, security |
+
+### KM-TC-089 — Validate event ordering in history timeline
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Keyword updated at least 4 times User role: Viewer |
+| Steps | 1. Open history panel for frequently updated keyword. 2. Compare event sequence by timestamp. |
+| Acceptance Criteria | Events are displayed in correct chronological order. |
+| Expected Result | Timeline order matches actual transaction chronology with latest event clearly identified. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, rbac, security |
+
+### KM-TC-090 — Verify history captures status transitions
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Status sequence: Active -> Inactive -> Active User role: Viewer |
+| Steps | 1. Open history for keyword that was disabled and re-enabled. 2. Inspect status transition entries. |
+| Acceptance Criteria | Transitions Active/Inactive/Drafted are traceable in timeline. |
+| Expected Result | History includes explicit status transition events with action initiator and decision details. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, rbac, security |
+
+### KM-TC-091 — Confirm history panel is read-only for all roles
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Audit History |
+| Priority | Low |
+| Preconditions | Viewer is logged in with read-only permission and is on Keyword Manager (Active tab). |
+| Test Data | Role=Checker User role: Checker |
+| Steps | 1. Open keyword history panel. 2. Inspect for editable fields or action buttons. |
+| Acceptance Criteria | No edit controls are available in audit timeline. |
+| Expected Result | History panel presents immutable audit data only; no modification controls are displayed. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, low, rbac, security |
+
+### KM-TC-092 — Validate exact match normalization behavior
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Engine Behaviour |
+| Priority | High |
+| Preconditions | Active exact-match keyword 'offshore account' mapped to Purpose of Account / Relationship. |
+| Test Data | Keyword=Alpha Risk Entity; Narrative token spacing variant User role: Maker |
+| Steps | 1. Create/confirm exact keyword 'Alpha Risk Entity'. 2. Run screening input 'alpha   risk entity'. |
+| Acceptance Criteria | Exact match compares normalized tokens consistently. |
+| Expected Result | Engine returns match because normalized token sequence is equivalent despite case and spacing differences. |
 | Automation Candidate | Yes |
 | Automation Layer | API + UI |
-| Tags | integration, critical, rbac, security |
+| Tags | screening-engine-behaviour, high, rbac, security |
 
-### KM-TC-190 — Verify batch screening alert is generated when an active keyword match occurs
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Integration |
-| Priority | Critical |
-| Preconditions | Active keyword and screening data matching keyword |
-| Test Data | Known matching screening data |
-| Steps | 1. Run batch screening 2. Navigate to batch screening results |
-| Acceptance Criteria | Alert should appear on batch screening page for keyword match |
-| Expected Result | Alert should be present on batch screening page for the matched subject |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | integration, critical, functional |
-
-### KM-TC-191 — Verify keyword deactivation is reflected in next screening run
+### KM-TC-093 — Validate fuzzy match similarity against threshold
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Integration |
-| Priority | Critical |
-| Preconditions | Active keyword deactivated and Checker approved |
-| Test Data | N/A |
-| Steps | 1. Deactivate keyword 2. Approve as Checker 3. Run batch screening |
-| Acceptance Criteria | Deactivated keyword should not generate alerts in subsequent runs |
-| Expected Result | Deactivated keyword should not generate any new alerts in subsequent screening runs |
+| Feature | Screening Engine Behaviour |
+| Priority | High |
+| Preconditions | Active fuzzy-match keyword with Threshold 80 is approved. |
+| Test Data | Threshold=80; Narrative1~78; Narrative2~84 User role: Maker |
+| Steps | 1. Run screening narrative with similarity estimated around 78. 2. Run second narrative with similarity estimated around 84. |
+| Acceptance Criteria | Fuzzy match triggers only when similarity meets or exceeds threshold. |
+| Expected Result | First narrative does not trigger keyword; second narrative triggers keyword due to crossing threshold. |
+| Automation Candidate | Yes |
+| Automation Layer | API + UI |
+| Tags | screening-engine-behaviour, high, rbac, security |
+
+### KM-TC-094 — Ensure screening checks only mapped fields
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Engine Behaviour |
+| Priority | High |
+| Preconditions | Active keyword mapped only to News Article Full Text. Screening data contains match in Business / Entity Name Suffix only. |
+| Test Data | Mapped field=News Article Full Text; Unmapped field=Relationship Manager Notes User role: Maker |
+| Steps | 1. Populate matching phrase in unmapped field 'Relationship Manager Notes'. 2. Run screening. 3. Populate same phrase in mapped field 'News Article Full Text' and rerun. |
+| Acceptance Criteria | Unmapped fields do not trigger keyword matches. |
+| Expected Result | No hit occurs from unmapped field; hit occurs when phrase appears in mapped field. |
+| Automation Candidate | Yes |
+| Automation Layer | API + UI |
+| Tags | screening-engine-behaviour, high, rbac, security |
+
+### KM-TC-095 — Validate inactive keywords are excluded from screening
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Engine Behaviour |
+| Priority | High |
+| Preconditions | Keyword 'Dormant Term' is Inactive. Screening input file contains the exact phrase. |
+| Test Data | Inactive keyword=Dormant Term User role: Maker |
+| Steps | 1. Run screening input containing exact inactive keyword phrase. |
+| Acceptance Criteria | Inactive status prevents keyword from triggering alerts. |
+| Expected Result | Screening engine does not trigger inactive keyword in results. |
+| Automation Candidate | Yes |
+| Automation Layer | API + UI |
+| Tags | screening-engine-behaviour, high, rbac, security |
+
+### KM-TC-096 — Maker can create draft and submit keyword
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Maker is logged in with keyword create/edit permission. |
+| Test Data | Role=Maker; Keyword=cryptocurrency exchange User role: Maker |
+| Steps | 1. Create keyword 'RBAC_MAKER_01'. 2. Save Draft. 3. Submit drafted keyword. |
+| Acceptance Criteria | Maker permissions include create, draft, and submit. |
+| Expected Result | Maker can perform create/draft/submit actions and request enters checker queue. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | integration, critical, functional |
+| Tags | access-control-rbac, high, rbac, security |
 
-### KM-TC-192 — Verify Screening Fields update for a keyword takes effect at next screening invocation
+### KM-TC-097 — Checker can approve or reject but cannot author new keyword
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Checker is logged in with approval permission. |
+| Test Data | Role=Checker User role: Checker |
+| Steps | 1. Attempt to open Add Keyword panel. 2. Open pending request and approve/reject. |
+| Acceptance Criteria | Checker has decision authority without maker authoring permission. |
+| Expected Result | Checker can process pending requests but cannot create fresh keyword records as maker. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, high, rbac, security |
+
+### KM-TC-098 — Viewer has read-only access to keyword data
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Viewer is logged in with read-only permission. |
+| Test Data | Role=Viewer User role: Viewer |
+| Steps | 1. Open Keyword Manager and perform search. 2. Attempt Add Keyword, Add Category, and row actions. |
+| Acceptance Criteria | Viewer can search/export (if allowed) but cannot change status or create data. |
+| Expected Result | Viewer can view records; all state-changing controls are hidden or disabled. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, high, rbac, security |
+
+### KM-TC-099 — Restrict Bulk Upload to maker role
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Access Control (RBAC) |
+| Priority | Medium |
+| Preconditions | Viewer is logged in with read-only permission. |
+| Test Data | Role=Viewer, bulk upload restricted User role: Viewer |
+| Steps | 1. Inspect toolbar for Bulk Upload option. 2. Attempt access via direct URL/action endpoint if available. |
+| Acceptance Criteria | Only authorized maker users can execute bulk import. |
+| Expected Result | Bulk Upload is inaccessible to viewer and backend rejects unauthorized import attempts. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, medium, rbac, security |
+
+### KM-TC-100 — Restrict Category Controls to authorized role
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Access Control (RBAC) |
+| Priority | Medium |
+| Preconditions | Viewer is logged in with read-only permission. |
+| Test Data | Role=Viewer User role: Viewer |
+| Steps | 1. Open Category Controls. 2. Attempt to change category state. |
+| Acceptance Criteria | Category toggling only available for authorized maker/checker workflow. |
+| Expected Result | Viewer cannot toggle category state and no control update request is created. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, medium, rbac, security |
+
+### KM-TC-101 — Reject duplicate keyword for same category and match type
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Field & Business Rule Validation |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Active keyword 'OFAC BLOCKED' exists in Sanctions category (Exact Match). |
+| Test Data | Keyword=OFAC BLOCKED; Category=Sanctions; Match Type=Exact Match (already exists) User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Enter same keyword, category, and match type as existing record. 3. Submit request. |
+| Acceptance Criteria | Duplicate business key validation is enforced. |
+| Expected Result | System rejects submission with duplicate key message for keyword+match type+category combination. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, high, rbac, security |
+
+### KM-TC-102 — Allow same keyword in different category
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager. Keyword 'TRANSFER RISK' exists in Financial Crime category. |
+| Test Data | Keyword=TRANSFER RISK; Existing category=Financial Crime; New category=PEP User role: Maker |
+| Steps | 1. Add keyword 'TRANSFER RISK' with category PEP and same match type. 2. Submit request. |
+| Acceptance Criteria | Duplicate logic considers category in uniqueness key. |
+| Expected Result | Submission is accepted because category differs from existing business key. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, rbac, security |
+
+### KM-TC-103 — Treat keyword duplicates as case-insensitive
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Field & Business Rule Validation |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Keyword 'High Alert Name' exists in active listing. |
+| Test Data | Existing=High Alert Name; New=HIGH ALERT NAME User role: Maker |
+| Steps | 1. Attempt to add keyword 'HIGH ALERT NAME' with same category and match type. |
+| Acceptance Criteria | Validation normalizes case before duplicate check. |
+| Expected Result | System rejects as duplicate because duplicate matching is case-insensitive. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, high, rbac, security |
+
+### KM-TC-104 — Validate keyword length maximum 500 characters
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Field & Business Rule Validation |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword length=501 User role: Maker |
+| Steps | 1. Paste 501-character phrase in Keyword/Phrase field. 2. Attempt Submit. |
+| Acceptance Criteria | Keyword/Phrase field enforces 500-character cap. |
+| Expected Result | Validation message indicates max 500 characters and submission is prevented. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, high, rbac, security |
+
+### KM-TC-105 — Reject threshold when fuzzy selected and field blank
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Field & Business Rule Validation |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Match Type=Fuzzy; Threshold Score=blank User role: Maker |
+| Steps | 1. Select Match Type as Fuzzy Match. 2. Leave Threshold Score blank. 3. Attempt submit. |
+| Acceptance Criteria | Fuzzy threshold is mandatory. |
+| Expected Result | System blocks submission and prompts user to enter Threshold Score between 1 and 100. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, high, rbac, security |
+
+### KM-TC-106 — Trim keyword leading and trailing spaces before save
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Field & Business Rule Validation |
+| Priority | Low |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Input keyword with external spaces User role: Maker |
+| Steps | 1. Enter keyword as '  OFAC Core Term  '. 2. Submit and complete approval. 3. Search for saved keyword. |
+| Acceptance Criteria | Stored keyword is normalized without external spaces. |
+| Expected Result | System stores normalized keyword 'OFAC Core Term' and duplicate logic applies to trimmed value. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, low, rbac, security |
+
+### KM-TC-107 — Run end-to-end regression of create to approval flow
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Regression, Compatibility & UAT |
+| Priority | High |
+| Preconditions | Release candidate build deployed. Maker and Checker accounts available. |
+| Test Data | Build=RC; Keyword=REG_FLOW_01 User role: Maker |
+| Steps | 1. Create fuzzy keyword with mapped fields and submit. 2. Log in as checker and approve. 3. Validate keyword appears in Active and supports search/export. |
+| Acceptance Criteria | Core flow remains stable in release candidate build. |
+| Expected Result | Complete flow executes without functional regression and resulting record is available in production workflow. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility-uat, high, rbac, security |
+
+### KM-TC-108 — Validate responsive usability at laptop and tablet widths
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Regression, Compatibility & UAT |
+| Priority | Medium |
+| Preconditions | Maker is logged in and on Keyword Manager listing. |
+| Test Data | Viewports=1366x768 and 1024x768 User role: Maker |
+| Steps | 1. Set viewport to 1366x768 and validate toolbar plus add keyword flow. 2. Set viewport to 1024x768 and validate tab switching plus search. |
+| Acceptance Criteria | Critical actions remain accessible on supported resolutions. |
+| Expected Result | Page remains usable at both resolutions with no blocked controls or clipped mandatory fields. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility-uat, medium, rbac, security |
+
+### KM-TC-109 — Capture UAT sign-off scenario with business user
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Regression, Compatibility & UAT |
+| Priority | High |
+| Preconditions | UAT business user is logged in with viewer permission. UAT keyword dataset is loaded. |
+| Test Data | UAT keyword sample=PEP Linked Entity; Export format=CSV User role: Viewer |
+| Steps | 1. Search for known operational keyword and review details. 2. Export current tab and confirm expected columns in downloaded file. 3. Open history panel and validate traceability of recent approved change. |
+| Acceptance Criteria | Business user verifies expected outcomes for operational readiness. |
+| Expected Result | Business user confirms data visibility, export completeness, and audit trace meet UAT acceptance criteria. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility-uat, high, rbac, security |
+
+### KM-TC-110 — Validate reference keyword hawala with fuzzy match and threshold
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Sample Keyword Validation |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword: hawala; Threshold: 75; Fields: Business Activity Description, Source of Funds Description User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Enter Keyword "hawala", Match Type Fuzzy Match, Threshold 75. 3. Map Screening Fields: Business Activity Description; Source of Funds Description. 4. Paste narrative 'hwala transfer personal funds' in Live Narrative Tester. |
+| Acceptance Criteria | Sample typology keyword configures and previews correctly |
+| Expected Result | Preview highlights variant above threshold. Keyword is submittable with selected screening fields and fuzzy configuration. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | sample-keyword-validation, high, rbac, security |
+
+### KM-TC-111 — Validate shell company keyword on adverse media fields
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Sample Keyword Validation |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword: shell company; Fields: News Article Full Text, Crime Type Tags User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Enter "shell company", Category Financial Crime, Risk High, Exact Match. 3. Select Screening Fields: News Article Full Text; Crime Type Tags. 4. Submit for approval. |
+| Acceptance Criteria | High-risk typology term maps to adverse media screening context |
+| Expected Result | Submission routes to checker approval with High risk and exact match stored. Screening Fields chips show both selected fields. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | sample-keyword-validation, medium, rbac, security |
+
+### KM-TC-112 — Keyword match contributes to alert on batch screening page
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
 | Feature | Integration |
 | Priority | High |
-| Preconditions | Keyword with updated field mapping approved |
-| Test Data | Updated field mapping |
-| Steps | 1. Update Screening Fields for keyword 2. Approve update 3. Run new screening |
-| Acceptance Criteria | Field mapping changes should apply from next run |
-| Expected Result | New field mapping should apply only from the next screening run |
+| Preconditions | Active keyword mapped to Expected Transaction Description. Batch screening job is available. |
+| Test Data | Keyword: suspicious transfer; Batch file row with matching narrative User role: Maker |
+| Steps | 1. Configure and approve keyword mapped to Expected Transaction Description. 2. Run batch screening file containing matching narrative. 3. Open batch screening results/alerts page. 4. Locate alert tied to the keyword match. |
+| Acceptance Criteria | Approved keyword generates alert when matched text appears in mapped field during batch run |
+| Expected Result | Batch screening run produces an alert referencing the matched keyword. Alert appears on batch screening review page for analyst action. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | integration, high, functional |
+| Tags | integration, high, rbac, security |
 
-### KM-TC-193 — Verify 'offshore account' can be created as Exact Match, HIGH risk, mapped to Purpose of Account and Registered Address
+### KM-TC-113 — Keyword does not alert when match occurs only in unmapped field
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Sample Keyword Validation |
+| Feature | Integration |
 | Priority | High |
-| Preconditions | Add Keyword panel open |
-| Test Data | Keyword: offshore account |
-| Steps | 1. Create keyword 'offshore account' 2. Select Exact Match 3. Select HIGH risk 4. Map Purpose of Account/Relationship and Registered Address 5. Submit |
-| Acceptance Criteria | Sample keyword configuration should be supported |
-| Expected Result | Keyword should be created successfully with specified configuration |
+| Preconditions | Active keyword mapped only to News Article Full Text. Screening data contains match in Business / Entity Name Suffix only. |
+| Test Data | Keyword mapped: Source of Funds only; Match text in: Entity Name field User role: Maker |
+| Steps | 1. Approve keyword mapped solely to Source of Funds Description. 2. Run batch screening where typology term appears only in Business / Entity Name Suffix. 3. Review batch alerts for that customer record. |
+| Acceptance Criteria | Field scoping prevents cross-field false positives in downstream screening |
+| Expected Result | No keyword alert is raised for the record because the match occurred in a field not mapped to the keyword. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | sample-keyword-validation, high, functional |
+| Tags | integration, high, rbac, security |
 
-### KM-TC-194 — Verify 'hawala' can be created as Fuzzy Match (75), HIGH risk, mapped to Business Activity Description and Source of Funds Description
+### KM-TC-114 — Listing remains responsive with large active keyword dataset
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Sample Keyword Validation |
-| Priority | High |
-| Preconditions | Add Keyword panel open |
-| Test Data | Keyword: hawala, score 75 |
-| Steps | 1. Create keyword 'hawala' 2. Select Fuzzy Match 3. Enter Threshold Score 75 4. Select HIGH risk 5. Map Business Activity Description and Source of Funds Description 6. Submit |
-| Acceptance Criteria | Sample keyword with fuzzy configuration should work |
-| Expected Result | Keyword should be created and configured successfully |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | sample-keyword-validation, high, functional |
-
-### KM-TC-195 — Verify 'politically exposed' as Fuzzy Match (80), HIGH risk, mapped to Occupation, News Article Full Text, and Article Headline
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Sample Keyword Validation |
-| Priority | High |
-| Preconditions | Add Keyword panel open |
-| Test Data | Keyword: politically exposed, score 80 |
-| Steps | 1. Create keyword 'politically exposed' 2. Fuzzy Match, score 80 3. HIGH risk 4. Map Occupation/Designation, News Article Full Text, Article Headline 5. Submit |
-| Acceptance Criteria | PEP keyword configuration should be supported |
-| Expected Result | Keyword should be configured and submitted for approval successfully |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | sample-keyword-validation, high, functional |
-
-### KM-TC-196 — Verify 'Iran' as Exact Match, HIGH risk, mapped to Country/Jurisdiction Tags and Registered Address
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Sample Keyword Validation |
-| Priority | High |
-| Preconditions | Add Keyword panel open |
-| Test Data | Keyword: Iran |
-| Steps | 1. Create keyword 'Iran' 2. Exact Match, HIGH risk 3. Map Country/Jurisdiction Tags and Registered Address 4. Submit |
-| Acceptance Criteria | Geographic keyword should be supported |
-| Expected Result | Keyword should be created and configured correctly per FSD sample reference |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | sample-keyword-validation, high, functional |
-
-### KM-TC-197 — Verify 'casino' as Exact Match, MEDIUM risk, mapped to Business Type/Industry Code and Business Activity Description
-
-| Field | Value |
-| --- | --- |
-| Module | Keyword Manager |
-| Feature | Sample Keyword Validation |
+| Feature | Performance |
 | Priority | Medium |
-| Preconditions | Add Keyword panel open |
-| Test Data | Keyword: casino |
-| Steps | 1. Create keyword 'casino' 2. Exact Match, MEDIUM risk 3. Map Business Type/Industry Code and Business Activity Description 4. Submit |
-| Acceptance Criteria | Industry keyword should be configured correctly |
-| Expected Result | Keyword should be created with correct configuration matching sample reference |
+| Preconditions | Maker is logged in. Environment seeded with 500+ active keywords. |
+| Test Data | Dataset: 500+ active keywords User role: Maker |
+| Steps | 1. Measure time until table renders. 2. Switch tabs and apply search filter. 3. Open Add Keyword panel. |
+| Acceptance Criteria | Page loads and remains interactive with high record volume |
+| Expected Result | Initial table renders within acceptable response time. Tab switch, search, and panel open remain responsive without browser hang or timeout errors. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | sample-keyword-validation, medium, functional |
+| Tags | performance, medium, rbac, security |
 
-### KM-TC-198 — Verify keyword entry version is tracked and included in exported data
+### KM-TC-115 — Close Add Category modal by clicking overlay backdrop
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Additional Coverage |
+| Feature | Category Management - Add Category |
 | Priority | Medium |
-| Preconditions | Active keyword with known version |
-| Test Data | N/A |
-| Steps | 1. Export keyword list 2. Check version column |
-| Acceptance Criteria | Version tracking should be maintained |
-| Expected Result | Exported file should include version number for each keyword entry |
+| Preconditions | Maker is on Keyword Manager listing. |
+| Test Data | Modal: Add Category User role: Maker |
+| Steps | 1. Click Add Category. 2. Enter partial category name. 3. Click dimmed overlay outside modal. |
+| Acceptance Criteria | Overlay click dismisses modal without creating category |
+| Expected Result | Modal closes without submitting. No category request is created. Fields are reset on reopen. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | additional-coverage, medium, export |
+| Tags | category-management-add-category, medium, rbac, security |
 
-### KM-TC-199 — Verify keyword created by Maker retains Maker's identity in audit log
+### KM-TC-116 — Display Low precision indicator for threshold below 50
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Additional Coverage |
+| Feature | Fuzzy Match & Threshold Score |
 | Priority | High |
-| Preconditions | Keyword submitted by specific Maker |
-| Test Data | Maker A account |
-| Steps | 1. Submit keyword as Maker A 2. Check audit log |
-| Acceptance Criteria | Actor identity should be captured |
-| Expected Result | Audit log should record Maker A as the creator of the keyword entry |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Threshold Score: 45 User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Select Match Type Fuzzy Match. 3. Enter Threshold Score 45. 4. Observe precision hint indicator. |
+| Acceptance Criteria | Threshold hint warns when score is in low-precision range |
+| Expected Result | Precision hint displays Low precision (or equivalent warning) for scores below 50, indicating elevated false-positive risk. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | additional-coverage, high, rbac, security |
+| Tags | fuzzy-match-threshold-score, high, rbac, security |
 
-### KM-TC-200 — Verify Keyword Manager module loads correctly after clearing browser cache
+### KM-TC-117 — Require documented justification or warning for threshold 1–49 on submit
 
 | Field | Value |
 | --- | --- |
 | Module | Keyword Manager |
-| Feature | Additional Coverage |
-| Priority | Medium |
-| Preconditions | Keyword Manager page loaded at least once before |
-| Test Data | N/A |
-| Steps | 1. Clear browser cache 2. Navigate to Keyword Manager 3. Observe page load |
-| Acceptance Criteria | Page should load fresh without cache-related issues |
-| Expected Result | Keyword Manager page should load correctly and display all data after cache is cleared |
+| Feature | Fuzzy Match & Threshold Score |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Threshold Score: 40 User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Complete mandatory fields with Fuzzy Match and Threshold 40. 3. Click Submit. 4. Observe justification requirement. |
+| Acceptance Criteria | Low-precision fuzzy keywords require compliance acknowledgment before submit |
+| Expected Result | Submit is blocked or requires explicit justification/acknowledgment for low-precision threshold before request is sent to checker. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | additional-coverage, medium, browser-compat |
+| Tags | fuzzy-match-threshold-score, high, rbac, security |
+
+### KM-TC-118 — Remove selected screening field using chip remove control
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Fields Mapping |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Fields: Occupation / Designation, News Article Full Text User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Open Screening Fields dropdown. 3. Select Occupation / Designation and News Article Full Text. 4. Click remove (×) on one chip. |
+| Acceptance Criteria | Selected fields display as removable chips on selector trigger |
+| Expected Result | Removed field chip disappears from selector. Field is unchecked in dropdown. Remaining selected fields persist. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | screening-fields-mapping, medium, rbac, security |
+
+### KM-TC-119 — Filter screening fields using in-dropdown search
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Fields Mapping |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Search: "funds" User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Open Screening Fields dropdown. 3. Type "funds" in search box. 4. Review filtered options. |
+| Acceptance Criteria | Screening Fields search narrows options across all groups |
+| Expected Result | Dropdown shows only fields containing 'funds' (e.g., Source of Funds Description). Non-matching fields and empty groups are hidden. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | screening-fields-mapping, medium, rbac, security |
+
+### KM-TC-120 — Verify loading stability during initial data load for large datasets
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Navigation & Page Access |
+| Priority | Medium |
+| Preconditions | Maker account available. Large keyword dataset loaded. Network throttling can be applied. |
+| Test Data | Network: Slow 3G User role: Maker |
+| Steps | 1. Log in as Maker. 2. Enable Slow 3G throttling. 3. Navigate to Configuration > Sanctions Screening Configuration > Keyword Manager. 4. Observe table area during load. |
+| Acceptance Criteria | Loading indicator or skeleton shown while keyword list loads |
+| Expected Result | Loading spinner or skeleton displays until rows render. Page does not show broken layout or unhandled errors during delayed load. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | navigation-page-access, medium, rbac, security |
+
+### KM-TC-121 — Checker rejection returns keyword entry to Draft with comments
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Maker is logged in. A keyword submission was rejected by Checker with comments. |
+| Test Data | Rejection comment: Threshold too low for typology User role: Maker |
+| Steps | 1. Open pending keyword approval. 2. Reject with comment "Threshold too low for typology". 3. Log in as Maker. 4. Open Drafted Keyword tab and locate rejected entry. |
+| Acceptance Criteria | Rejected submissions return to Maker for revision |
+| Expected Result | Entry status returns to Drafted. Checker comment is visible to Maker. Maker can edit threshold and resubmit. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### KM-TC-122 — Verify core workflows on Google Chrome
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Regression, Compatibility & UAT |
+| Priority | Medium |
+| Preconditions | Maker is logged in using Google Chrome (latest). |
+| Test Data | Browser: Google Chrome User role: Maker |
+| Steps | 1. Add draft keyword with screening fields. 2. Search, export, open history. |
+| Acceptance Criteria | Keyword Manager functions on Chrome latest |
+| Expected Result | Core workflows complete on Chrome without layout defects or console errors. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility-uat, medium, rbac, security |
+
+### KM-TC-123 — Verify core workflows on Microsoft Edge
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Regression, Compatibility & UAT |
+| Priority | Medium |
+| Preconditions | Maker is logged in using Microsoft Edge (latest). |
+| Test Data | Browser: Microsoft Edge User role: Maker |
+| Steps | 1. Open Add Category and Bulk Upload modals. 2. Submit keyword for approval. |
+| Acceptance Criteria | Keyword Manager functions on Edge latest |
+| Expected Result | Modals, panels, and maker-checker flow work correctly on Edge. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility-uat, medium, rbac, security |
+
+### KM-TC-124 — Verify core workflows on Mozilla Firefox
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Regression, Compatibility & UAT |
+| Priority | Medium |
+| Preconditions | Maker is logged in using Mozilla Firefox (latest). |
+| Test Data | Browser: Mozilla Firefox User role: Checker |
+| Steps | 1. Configure fuzzy keyword with threshold. 2. Disable active keyword and confirm checker modal. |
+| Acceptance Criteria | Keyword Manager functions on Firefox latest |
+| Expected Result | Fuzzy threshold UI, tab navigation, and disable workflow function on Firefox without regression. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility-uat, medium, rbac, security |
+
+### KM-TC-125 — Validate duplicate category name on field blur
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Add Category |
+| Priority | High |
+| Preconditions | Maker is on Keyword Manager. Category 'Sanctions' already exists. |
+| Test Data | Category Name: Sanctions (existing) User role: Maker |
+| Steps | 1. Click Add Category. 2. Enter Category Name 'Sanctions'. 3. Tab out of Category Name field (focus-out). 4. Observe inline validation. 5. Attempt to click Add Category without changing the name. |
+| Acceptance Criteria | Duplicate category names are detected before modal submission. |
+| Expected Result | Inline duplicate error appears on focus-out. Add Category remains disabled or submission is blocked. No duplicate category request is queued for approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, rbac, security |
+
+### KM-TC-126 — Verify disabled category excludes keywords from screening engine
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Category Controls |
+| Priority | High |
+| Preconditions | Sanctions category enabled with active keywords. Maker and Checker accounts available. |
+| Test Data | Category: Sanctions; Keyword: export limited; Screening field: Expected Transaction Description User role: Maker |
+| Steps | 1. As Maker, disable Sanctions category via Category Controls and complete Checker approval. 2. Run batch screening on a file where mapped field text matches an active Sanctions keyword. 3. Review batch screening alerts for the test record. |
+| Acceptance Criteria | Category disable stops evaluation of all keywords in that category at next screening run. |
+| Expected Result | No keyword alert is generated for Sanctions-category terms after approved disable. Audit trail records category disable with actor, timestamp, and checker decision. |
+| Automation Candidate | Yes |
+| Automation Layer | API + UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### KM-TC-127 — Clear all selected screening fields using Clear all control
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Fields Mapping |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Fields cleared after multi-select User role: Maker |
+| Steps | 1. Open Screening Fields dropdown. 2. Select Occupation / Designation and Source of Funds Description. 3. Click Clear all in dropdown footer. 4. Attempt Submit with other mandatory fields completed. |
+| Acceptance Criteria | Maker can reset screening field selection before submission. |
+| Expected Result | All chips removed and selection count returns to zero. Submit is blocked with mandatory Screening Fields validation. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | screening-fields-mapping, medium, rbac, security |
+
+### KM-TC-128 — Approved category becomes available in Add Keyword dropdown
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Category Management - Add Category |
+| Priority | Medium |
+| Preconditions | Category 'Narcotics Typology' was submitted by Maker and approved by Checker. |
+| Test Data | Category: Narcotics Typology; Keyword: drug trafficking User role: Maker |
+| Steps | 1. As Checker, approve pending category 'Narcotics Typology'. 2. As Maker, open Add Keyword. 3. Open Category dropdown. 4. Select 'Narcotics Typology'. 5. Complete and submit a keyword under that category. |
+| Acceptance Criteria | Newly approved categories are selectable when creating keywords. |
+| Expected Result | Approved category appears in Category dropdown without page redeploy. Keyword submits under new category and follows standard maker-checker workflow. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, rbac, security |
+
+### KM-TC-129 — Prompt confirmation when cancelling Add Keyword with unsaved data
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Add Keyword |
+| Priority | Medium |
+| Preconditions | Maker is on Keyword Manager with Add Keyword panel open. |
+| Test Data | Keyword: casino; Action: Cancel with populated form User role: Maker |
+| Steps | 1. Open Add Keyword. 2. Enter Keyword 'casino' and select Category. 3. Click Cancel or back navigation control. 4. Observe confirmation prompt. 5. Choose Stay/Continue editing, then cancel again and confirm discard. |
+| Acceptance Criteria | Cancel protects against accidental loss of in-progress keyword entry. |
+| Expected Result | Confirmation prompt appears before discarding data. Choosing stay returns to populated form. Confirming discard closes panel without creating draft or pending record. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-keyword, medium, rbac, security |
+
+### KM-TC-130 — Validate special-character normalization during exact match screening
+
+| Field | Value |
+| --- | --- |
+| Module | Keyword Manager |
+| Feature | Screening Engine Behaviour |
+| Priority | High |
+| Preconditions | Active exact-match keyword 'offshore account' mapped to Purpose of Account / Relationship. |
+| Test Data | Keyword: offshore account; Field value: Off-Shore Account.; Match Type: Exact Match User role: Maker |
+| Steps | 1. Confirm keyword 'offshore account' is Active with Exact Match. 2. Run screening on field value 'Off-Shore Account.' (mixed case, hyphen, trailing punctuation). 3. Review match outcome in screening results. |
+| Acceptance Criteria | Punctuation and diacritics are normalized before exact match comparison. |
+| Expected Result | Screening engine normalizes punctuation/case and returns a match. Alert or match event references the keyword and mapped field only. |
+| Automation Candidate | Yes |
+| Automation Layer | API + UI |
+| Tags | screening-engine-behaviour, high, rbac, security |

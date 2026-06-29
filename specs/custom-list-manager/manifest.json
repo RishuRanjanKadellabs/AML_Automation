@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T08:03:38.203Z",
+  "generatedAt": "2026-06-28T18:51:21.591Z",
   "testCases": [
     {
       "id": "CLM-TC-001",
@@ -17,78 +17,79 @@
     {
       "id": "CLM-TC-002",
       "subModule": "Custom List Manager - Navigation & Access",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify sidebar is rendered correctly on Custom List Manager pages",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-navigation-access",
-        "high",
+        "medium",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-003",
       "subModule": "Custom List Manager - Navigation & Access",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify all configured menu items are visible in sidebar",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-navigation-access",
-        "high",
-        "functional"
+        "medium",
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-004",
       "subModule": "Custom List Manager - Navigation & Access",
-      "priority": "Medium",
+      "priority": "Low",
       "taskDescription": "Verify active menu highlighting for currently selected page",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-navigation-access",
-        "medium",
+        "low",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-005",
       "subModule": "Custom List Manager - Navigation & Access",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify navigation routing between available module pages",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-navigation-access",
-        "high",
-        "functional"
+        "medium",
+        "maker-checker"
       ]
     },
     {
       "id": "CLM-TC-006",
       "subModule": "Custom List Manager - Navigation & Access",
-      "priority": "Medium",
+      "priority": "Low",
       "taskDescription": "Verify navigation state is maintained after page refresh",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-navigation-access",
-        "medium",
+        "low",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-007",
       "subModule": "Custom List Manager - Navigation & Access",
-      "priority": "Medium",
+      "priority": "Low",
       "taskDescription": "Verify user identity section is displayed in sidebar",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-navigation-access",
-        "medium",
+        "low",
         "functional"
       ]
     },
@@ -102,105 +103,119 @@
       "tags": [
         "custom-list-manager-navigation-access",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-009",
       "subModule": "Custom List Manager - Breadcrumb & Top Bar",
-      "priority": "High",
+      "priority": "Low",
       "taskDescription": "Verify breadcrumb is displayed on Custom List Manager pages",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-breadcrumb-top-bar",
-        "high",
+        "low",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-010",
       "subModule": "Custom List Manager - Breadcrumb & Top Bar",
-      "priority": "High",
+      "priority": "Low",
       "taskDescription": "Verify breadcrumb updates correctly during navigation",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-breadcrumb-top-bar",
-        "high",
+        "low",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-011",
       "subModule": "Custom List Manager - Breadcrumb & Top Bar",
-      "priority": "High",
+      "priority": "Low",
       "taskDescription": "Verify breadcrumb navigation redirects user to selected level",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-breadcrumb-top-bar",
-        "high",
+        "low",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-012",
       "subModule": "Custom List Manager - Breadcrumb & Top Bar",
-      "priority": "High",
+      "priority": "Low",
       "taskDescription": "Verify notification icon is displayed in top bar",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-breadcrumb-top-bar",
-        "high",
+        "low",
         "alerts"
       ]
     },
     {
       "id": "CLM-TC-013",
       "subModule": "Custom List Manager - Breadcrumb & Top Bar",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify notification panel opens from notification icon",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-breadcrumb-top-bar",
-        "high",
-        "alerts"
+        "medium",
+        "ttl"
       ]
     },
     {
       "id": "CLM-TC-014",
       "subModule": "Custom List Manager - Breadcrumb & Top Bar",
-      "priority": "Medium",
+      "priority": "Low",
       "taskDescription": "Verify notification panel can be closed and reopened",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-breadcrumb-top-bar",
-        "medium",
+        "low",
         "alerts"
       ]
     },
     {
       "id": "CLM-TC-015",
       "subModule": "Custom List Manager - Dashboard",
-      "priority": "High",
+      "priority": "Low",
       "taskDescription": "Verify Custom Lists dashboard header is displayed",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-dashboard",
-        "high",
+        "low",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-016",
       "subModule": "Custom List Manager - Dashboard",
-      "priority": "Medium",
+      "priority": "Low",
       "taskDescription": "Verify dashboard subtitle/description is displayed",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "custom-list-manager-dashboard",
+        "low",
+        "functional"
+      ]
+    },
+    {
+      "id": "CLM-TC-017",
+      "subModule": "Custom List Manager - Dashboard",
+      "priority": "Medium",
+      "taskDescription": "Verify all configured summary cards are displayed",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -210,28 +225,15 @@
       ]
     },
     {
-      "id": "CLM-TC-017",
-      "subModule": "Custom List Manager - Dashboard",
-      "priority": "High",
-      "taskDescription": "Verify all configured summary cards are displayed",
-      "automationLayer": "UI",
-      "automationCandidate": "Yes",
-      "tags": [
-        "custom-list-manager-dashboard",
-        "high",
-        "functional"
-      ]
-    },
-    {
       "id": "CLM-TC-018",
       "subModule": "Custom List Manager - Dashboard",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify summary cards display numeric metric values",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-dashboard",
-        "high",
+        "medium",
         "functional"
       ]
     },
@@ -245,7 +247,7 @@
       "tags": [
         "custom-list-manager-dashboard",
         "high",
-        "functional"
+        "error-handling"
       ]
     },
     {
@@ -271,7 +273,8 @@
       "tags": [
         "custom-list-manager-dashboard",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -284,7 +287,8 @@
       "tags": [
         "custom-list-manager-dashboard",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -297,20 +301,20 @@
       "tags": [
         "custom-list-manager-search-filters",
         "high",
-        "screening-matching"
+        "functional"
       ]
     },
     {
       "id": "CLM-TC-024",
       "subModule": "Custom List Manager - Search & Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify search functionality using partial list name",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-search-filters",
-        "high",
-        "screening-matching"
+        "medium",
+        "functional"
       ]
     },
     {
@@ -336,19 +340,19 @@
       "tags": [
         "custom-list-manager-search-filters",
         "high",
-        "screening-matching"
+        "functional"
       ]
     },
     {
       "id": "CLM-TC-027",
       "subModule": "Custom List Manager - Search & Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify Status filter visibility and availability",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-search-filters",
-        "high",
+        "medium",
         "functional"
       ]
     },
@@ -362,7 +366,7 @@
       "tags": [
         "custom-list-manager-search-filters",
         "high",
-        "screening-matching"
+        "functional"
       ]
     },
     {
@@ -407,13 +411,13 @@
     {
       "id": "CLM-TC-032",
       "subModule": "Custom List Manager - Search & Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify reset/clear functionality restores complete dataset",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-search-filters",
-        "high",
+        "medium",
         "functional"
       ]
     },
@@ -427,7 +431,7 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "high",
-        "functional"
+        "ttl"
       ]
     },
     {
@@ -440,7 +444,8 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -453,7 +458,8 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -466,7 +472,8 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -479,7 +486,8 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -492,7 +500,8 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -505,7 +514,8 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "high",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -544,7 +554,8 @@
       "tags": [
         "custom-list-manager-grid-data-presentation",
         "medium",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -583,7 +594,8 @@
       "tags": [
         "custom-list-manager-export-pagination",
         "high",
-        "export"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -596,7 +608,8 @@
       "tags": [
         "custom-list-manager-export-pagination",
         "high",
-        "export"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -609,7 +622,8 @@
       "tags": [
         "custom-list-manager-export-pagination",
         "high",
-        "export"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -661,7 +675,8 @@
       "tags": [
         "custom-list-manager-landing-actions",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -713,7 +728,8 @@
       "tags": [
         "custom-list-manager-landing-actions",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -726,7 +742,8 @@
       "tags": [
         "custom-list-manager-landing-actions",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -739,7 +756,8 @@
       "tags": [
         "custom-list-manager-landing-actions",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -752,7 +770,8 @@
       "tags": [
         "custom-list-manager-landing-actions",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -791,7 +810,8 @@
       "tags": [
         "custom-list-manager-create-list-form",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -817,7 +837,8 @@
       "tags": [
         "custom-list-manager-create-list-form",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -830,7 +851,8 @@
       "tags": [
         "custom-list-manager-create-list-form",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -843,7 +865,8 @@
       "tags": [
         "custom-list-manager-create-list-form",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -856,7 +879,8 @@
       "tags": [
         "custom-list-manager-create-list-form",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -895,7 +919,8 @@
       "tags": [
         "custom-list-manager-list-name-validation",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -921,7 +946,8 @@
       "tags": [
         "custom-list-manager-list-name-validation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -960,7 +986,8 @@
       "tags": [
         "custom-list-manager-list-name-validation",
         "high",
-        "error-handling"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -986,7 +1013,7 @@
       "tags": [
         "custom-list-manager-purpose-configuration",
         "high",
-        "functional"
+        "maker-checker"
       ]
     },
     {
@@ -999,7 +1026,8 @@
       "tags": [
         "custom-list-manager-purpose-configuration",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1012,7 +1040,8 @@
       "tags": [
         "custom-list-manager-purpose-configuration",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1025,7 +1054,7 @@
       "tags": [
         "custom-list-manager-action-on-hit-configuration",
         "high",
-        "functional"
+        "alerts"
       ]
     },
     {
@@ -1038,7 +1067,7 @@
       "tags": [
         "custom-list-manager-action-on-hit-configuration",
         "high",
-        "functional"
+        "screening-matching"
       ]
     },
     {
@@ -1051,20 +1080,20 @@
       "tags": [
         "custom-list-manager-action-on-hit-configuration",
         "high",
-        "functional"
+        "screening-matching"
       ]
     },
     {
       "id": "CLM-TC-082",
       "subModule": "Custom List Manager - Action On Hit Configuration",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify selected Action On Hit value is retained before submission",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-action-on-hit-configuration",
-        "medium",
-        "functional"
+        "high",
+        "screening-matching"
       ]
     },
     {
@@ -1109,13 +1138,13 @@
     {
       "id": "CLM-TC-086",
       "subModule": "Custom List Manager - TTL Configuration",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify selected TTL value is retained before submission",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-ttl-configuration",
-        "medium",
+        "high",
         "ttl"
       ]
     },
@@ -1181,7 +1210,8 @@
       "tags": [
         "custom-list-manager-matching-configuration",
         "medium",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1194,7 +1224,8 @@
       "tags": [
         "custom-list-manager-matching-configuration",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1207,7 +1238,8 @@
       "tags": [
         "custom-list-manager-reason-for-creation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1220,7 +1252,8 @@
       "tags": [
         "custom-list-manager-reason-for-creation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1233,7 +1266,8 @@
       "tags": [
         "custom-list-manager-reason-for-creation",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1246,7 +1280,8 @@
       "tags": [
         "custom-list-manager-reason-for-creation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1259,7 +1294,8 @@
       "tags": [
         "custom-list-manager-reason-for-creation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1272,7 +1308,8 @@
       "tags": [
         "custom-list-manager-reason-for-creation",
         "high",
-        "error-handling"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1285,7 +1322,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1298,7 +1336,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1311,7 +1350,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1324,7 +1364,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1337,7 +1378,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1350,7 +1392,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1363,7 +1406,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "medium",
-        "browser-compat"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1376,7 +1420,8 @@
       "tags": [
         "custom-list-manager-draft-management",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1389,7 +1434,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1416,7 +1462,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1443,7 +1490,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1456,7 +1504,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1469,7 +1518,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1496,7 +1546,8 @@
       "tags": [
         "custom-list-manager-edit-list",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1509,7 +1560,8 @@
       "tags": [
         "custom-list-manager-edit-list",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1522,7 +1574,8 @@
       "tags": [
         "custom-list-manager-edit-list",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1535,7 +1588,8 @@
       "tags": [
         "custom-list-manager-edit-list",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1548,7 +1602,8 @@
       "tags": [
         "custom-list-manager-edit-list",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1575,7 +1630,8 @@
       "tags": [
         "custom-list-manager-edit-list",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1588,7 +1644,8 @@
       "tags": [
         "custom-list-manager-edit-list",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1641,7 +1698,8 @@
       "tags": [
         "custom-list-manager-enable-disable",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1654,7 +1712,8 @@
       "tags": [
         "custom-list-manager-enable-disable",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1667,7 +1726,8 @@
       "tags": [
         "custom-list-manager-enable-disable",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1680,7 +1740,8 @@
       "tags": [
         "custom-list-manager-enable-disable",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1693,7 +1754,8 @@
       "tags": [
         "custom-list-manager-enable-disable",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1734,7 +1796,8 @@
       "tags": [
         "custom-list-manager-metadata-integrity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1747,7 +1810,8 @@
       "tags": [
         "custom-list-manager-metadata-integrity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1760,7 +1824,8 @@
       "tags": [
         "custom-list-manager-metadata-integrity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1773,7 +1838,8 @@
       "tags": [
         "custom-list-manager-metadata-integrity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1786,7 +1852,8 @@
       "tags": [
         "custom-list-manager-metadata-integrity",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1839,7 +1906,7 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "high",
-        "functional"
+        "maker-checker"
       ]
     },
     {
@@ -1852,7 +1919,8 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1865,7 +1933,8 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1878,7 +1947,8 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1891,7 +1961,8 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1904,7 +1975,8 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1917,7 +1989,8 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1930,7 +2003,8 @@
       "tags": [
         "custom-list-manager-add-entity-form",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -1969,7 +2043,8 @@
       "tags": [
         "custom-list-manager-minimum-screening-eligibility-rule",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2035,7 +2110,8 @@
       "tags": [
         "custom-list-manager-minimum-screening-eligibility-rule",
         "medium",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2048,7 +2124,8 @@
       "tags": [
         "custom-list-manager-minimum-screening-eligibility-rule",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2061,7 +2138,8 @@
       "tags": [
         "custom-list-manager-minimum-screening-eligibility-rule",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2087,7 +2165,7 @@
       "tags": [
         "custom-list-manager-identity-information",
         "high",
-        "functional"
+        "screening-matching"
       ]
     },
     {
@@ -2100,7 +2178,7 @@
       "tags": [
         "custom-list-manager-identity-information",
         "high",
-        "functional"
+        "screening-matching"
       ]
     },
     {
@@ -2152,7 +2230,8 @@
       "tags": [
         "custom-list-manager-identity-information",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2165,7 +2244,8 @@
       "tags": [
         "custom-list-manager-identity-information",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2178,7 +2258,8 @@
       "tags": [
         "custom-list-manager-identity-information",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2191,7 +2272,8 @@
       "tags": [
         "custom-list-manager-identity-information",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2204,7 +2286,8 @@
       "tags": [
         "custom-list-manager-identity-information",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2217,7 +2300,8 @@
       "tags": [
         "custom-list-manager-identity-information",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2230,7 +2314,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2243,7 +2328,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2256,7 +2342,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2269,7 +2356,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2282,7 +2370,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2295,7 +2384,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2308,7 +2398,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2321,7 +2412,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2334,7 +2426,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2347,7 +2440,8 @@
       "tags": [
         "custom-list-manager-identifier-information",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2360,7 +2454,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2373,7 +2468,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2386,7 +2482,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2425,7 +2522,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2438,7 +2536,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "medium",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2451,7 +2550,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2464,7 +2564,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2477,7 +2578,8 @@
       "tags": [
         "custom-list-manager-digital-identifiers",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2490,7 +2592,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2503,7 +2606,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2516,7 +2620,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2529,7 +2634,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2542,7 +2648,8 @@
       "tags": [
         "custom-list-manager-localization",
         "medium",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2555,7 +2662,8 @@
       "tags": [
         "custom-list-manager-localization",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2568,7 +2676,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2581,7 +2690,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2594,7 +2704,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2607,7 +2718,8 @@
       "tags": [
         "custom-list-manager-localization",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2620,7 +2732,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2633,7 +2746,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2646,7 +2760,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2659,7 +2774,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2672,7 +2788,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2685,7 +2802,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2698,7 +2816,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2711,7 +2830,8 @@
       "tags": [
         "custom-list-manager-risk-governance",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2724,7 +2844,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "high",
-        "alerts"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2737,7 +2858,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "high",
-        "alerts"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2750,7 +2872,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2763,7 +2886,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2776,7 +2900,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2789,7 +2914,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2802,7 +2928,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "medium",
-        "alerts"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2815,7 +2942,8 @@
       "tags": [
         "custom-list-manager-real-time-alert-configuration",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2855,7 +2983,8 @@
       "tags": [
         "custom-list-manager-entity-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2882,7 +3011,8 @@
       "tags": [
         "custom-list-manager-entity-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2909,7 +3039,8 @@
       "tags": [
         "custom-list-manager-entity-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2922,7 +3053,8 @@
       "tags": [
         "custom-list-manager-entity-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2935,7 +3067,8 @@
       "tags": [
         "custom-list-manager-entity-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2948,7 +3081,8 @@
       "tags": [
         "custom-list-manager-entity-submission-workflow",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2961,7 +3095,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2974,7 +3109,7 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "functional"
+        "ttl"
       ]
     },
     {
@@ -2987,7 +3122,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3000,7 +3136,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3013,7 +3150,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3026,7 +3164,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3039,7 +3178,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3052,7 +3192,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3065,7 +3206,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "medium",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3078,7 +3220,8 @@
       "tags": [
         "custom-list-manager-entity-grid",
         "high",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3091,19 +3234,19 @@
       "tags": [
         "custom-list-manager-search-filters",
         "high",
-        "screening-matching"
+        "functional"
       ]
     },
     {
       "id": "CLM-TC-238",
       "subModule": "Custom List Manager - Search & Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify entity search using partial name",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-search-filters",
-        "high",
+        "medium",
         "functional"
       ]
     },
@@ -3117,7 +3260,7 @@
       "tags": [
         "custom-list-manager-search-filters",
         "high",
-        "screening-matching"
+        "functional"
       ]
     },
     {
@@ -3136,14 +3279,14 @@
     {
       "id": "CLM-TC-241",
       "subModule": "Custom List Manager - Search & Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify status filter is available for entity management",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-search-filters",
-        "high",
-        "functional"
+        "medium",
+        "ttl"
       ]
     },
     {
@@ -3169,7 +3312,7 @@
       "tags": [
         "custom-list-manager-search-filters",
         "high",
-        "functional"
+        "ttl"
       ]
     },
     {
@@ -3188,26 +3331,26 @@
     {
       "id": "CLM-TC-245",
       "subModule": "Custom List Manager - Search & Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify reset functionality clears applied search and filters",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-search-filters",
-        "high",
+        "medium",
         "functional"
       ]
     },
     {
       "id": "CLM-TC-246",
       "subModule": "Custom List Manager - Search & Filters",
-      "priority": "Medium",
+      "priority": "Low",
       "taskDescription": "Verify search and filter state remains accurate after page refresh",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-search-filters",
-        "medium",
+        "low",
         "functional"
       ]
     },
@@ -3247,7 +3390,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3260,7 +3404,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3273,7 +3418,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3286,7 +3432,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3299,7 +3446,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3312,7 +3460,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3325,7 +3474,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3338,7 +3488,8 @@
       "tags": [
         "custom-list-manager-view-entity",
         "medium",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3351,7 +3502,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3364,7 +3516,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3377,7 +3530,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3390,7 +3544,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3403,7 +3558,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "medium",
-        "session"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3430,7 +3586,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3443,7 +3600,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3456,7 +3614,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3469,7 +3628,8 @@
       "tags": [
         "custom-list-manager-edit-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3482,7 +3642,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3495,7 +3656,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3522,7 +3684,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3535,7 +3698,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3548,7 +3712,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3561,7 +3726,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3574,7 +3740,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3587,7 +3754,8 @@
       "tags": [
         "custom-list-manager-enable-disable-entity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3642,7 +3810,8 @@
       "tags": [
         "custom-list-manager-entity-metadata",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3655,7 +3824,8 @@
       "tags": [
         "custom-list-manager-entity-metadata",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3668,7 +3838,8 @@
       "tags": [
         "custom-list-manager-entity-metadata",
         "medium",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3681,7 +3852,8 @@
       "tags": [
         "custom-list-manager-entity-metadata",
         "high",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3694,7 +3866,8 @@
       "tags": [
         "custom-list-manager-entity-metadata",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3707,7 +3880,8 @@
       "tags": [
         "custom-list-manager-entity-metadata",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3733,7 +3907,8 @@
       "tags": [
         "custom-list-manager-entity-history",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3746,7 +3921,8 @@
       "tags": [
         "custom-list-manager-entity-history",
         "high",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3759,7 +3935,8 @@
       "tags": [
         "custom-list-manager-entity-history",
         "high",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -3772,19 +3949,20 @@
       "tags": [
         "custom-list-manager-entity-history",
         "high",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-290",
       "subModule": "Custom List Manager - Entity History",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify history entries display activity timestamps",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-entity-history",
-        "medium",
+        "high",
         "functional"
       ]
     },
@@ -3863,32 +4041,32 @@
       "tags": [
         "custom-list-manager-template-download",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-297",
       "subModule": "Custom List Manager - Template Download",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify template column headers are clearly identifiable",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-template-download",
-        "medium",
-        "functional"
+        "high",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-298",
       "subModule": "Custom List Manager - Template Download",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify template remains downloadable across multiple attempts",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-template-download",
-        "medium",
+        "high",
         "export"
       ]
     },
@@ -3908,13 +4086,13 @@
     {
       "id": "CLM-TC-300",
       "subModule": "Custom List Manager - Template Download",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify template download does not alter existing uploaded records",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-template-download",
-        "medium",
+        "high",
         "export"
       ]
     },
@@ -3941,7 +4119,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -3954,7 +4132,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -3967,7 +4145,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "maker-checker"
+        "bulk-upload"
       ]
     },
     {
@@ -3980,20 +4158,21 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-306",
       "subModule": "Custom List Manager - Upload Validation",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify upload request status is displayed",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-upload-validation",
-        "medium",
-        "functional"
+        "high",
+        "bulk-upload"
       ]
     },
     {
@@ -4006,7 +4185,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -4019,7 +4198,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -4032,7 +4211,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -4045,7 +4224,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -4058,7 +4237,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -4077,14 +4256,14 @@
     {
       "id": "CLM-TC-313",
       "subModule": "Custom List Manager - Upload Validation",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify upload request retains uploaded file details",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-upload-validation",
-        "medium",
-        "functional"
+        "high",
+        "bulk-upload"
       ]
     },
     {
@@ -4097,7 +4276,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "maker-checker"
+        "bulk-upload"
       ]
     },
     {
@@ -4110,7 +4289,7 @@
       "tags": [
         "custom-list-manager-upload-validation",
         "high",
-        "maker-checker"
+        "bulk-upload"
       ]
     },
     {
@@ -4123,7 +4302,7 @@
       "tags": [
         "custom-list-manager-file-format-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -4136,7 +4315,7 @@
       "tags": [
         "custom-list-manager-file-format-validation",
         "high",
-        "maker-checker"
+        "bulk-upload"
       ]
     },
     {
@@ -4149,7 +4328,7 @@
       "tags": [
         "custom-list-manager-file-format-validation",
         "high",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -4162,33 +4341,33 @@
       "tags": [
         "custom-list-manager-file-format-validation",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-320",
       "subModule": "Custom List Manager - File Format Validation",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify file containing only headers is validated",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-file-format-validation",
-        "medium",
-        "functional"
+        "high",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-321",
       "subModule": "Custom List Manager - File Format Validation",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify file containing special characters is handled appropriately",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-file-format-validation",
-        "medium",
-        "functional"
+        "high",
+        "bulk-upload"
       ]
     },
     {
@@ -4201,7 +4380,7 @@
       "tags": [
         "custom-list-manager-file-format-validation",
         "high",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -4227,19 +4406,19 @@
       "tags": [
         "custom-list-manager-file-format-validation",
         "high",
-        "maker-checker"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-325",
       "subModule": "Custom List Manager - File Format Validation",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify file format validation results are communicated to user",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-file-format-validation",
-        "medium",
+        "high",
         "error-handling"
       ]
     },
@@ -4324,13 +4503,13 @@
     {
       "id": "CLM-TC-332",
       "subModule": "Custom List Manager - Mandatory Columns",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify column order changes do not impact mandatory column validation when supported",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-mandatory-columns",
-        "medium",
+        "high",
         "error-handling"
       ]
     },
@@ -4435,19 +4614,19 @@
       "tags": [
         "custom-list-manager-duplicate-detection",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-341",
       "subModule": "Custom List Manager - Duplicate Detection",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify duplicate validation remains consistent across repeated uploads",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-duplicate-detection",
-        "medium",
+        "high",
         "error-handling"
       ]
     },
@@ -4461,32 +4640,32 @@
       "tags": [
         "custom-list-manager-duplicate-detection",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-343",
       "subModule": "Custom List Manager - Duplicate Detection",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify duplicate validation does not impact unrelated valid records",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-duplicate-detection",
-        "medium",
+        "high",
         "error-handling"
       ]
     },
     {
       "id": "CLM-TC-344",
       "subModule": "Custom List Manager - Duplicate Detection",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify duplicate validation preserves onboarding traceability",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-duplicate-detection",
-        "medium",
+        "high",
         "error-handling"
       ]
     },
@@ -4500,7 +4679,7 @@
       "tags": [
         "custom-list-manager-duplicate-detection",
         "high",
-        "functional"
+        "bulk-upload"
       ]
     },
     {
@@ -4513,7 +4692,8 @@
       "tags": [
         "custom-list-manager-validation-report",
         "high",
-        "error-handling"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4532,26 +4712,26 @@
     {
       "id": "CLM-TC-348",
       "subModule": "Custom List Manager - Validation Report",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify validation report identifies records that failed validation",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-validation-report",
-        "high",
+        "medium",
         "error-handling"
       ]
     },
     {
       "id": "CLM-TC-349",
       "subModule": "Custom List Manager - Validation Report",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify validation report provides record-level traceability",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-validation-report",
-        "high",
+        "medium",
         "error-handling"
       ]
     },
@@ -4571,26 +4751,26 @@
     {
       "id": "CLM-TC-351",
       "subModule": "Custom List Manager - Validation Report",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify validation report accurately reflects upload outcome",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-validation-report",
-        "high",
+        "medium",
         "error-handling"
       ]
     },
     {
       "id": "CLM-TC-352",
       "subModule": "Custom List Manager - Validation Report",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify validation report supports upload correction activities",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-validation-report",
-        "high",
+        "medium",
         "error-handling"
       ]
     },
@@ -4604,7 +4784,8 @@
       "tags": [
         "custom-list-manager-validation-report",
         "high",
-        "error-handling"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4617,7 +4798,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4630,7 +4812,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4671,7 +4854,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4698,7 +4882,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4711,7 +4896,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4724,7 +4910,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4737,7 +4924,8 @@
       "tags": [
         "custom-list-manager-submission-workflow",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4750,7 +4938,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4763,7 +4952,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4776,7 +4966,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4789,7 +4980,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4802,7 +4994,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4815,7 +5008,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4828,7 +5022,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "medium",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4841,7 +5036,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4854,7 +5050,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4867,7 +5064,8 @@
       "tags": [
         "custom-list-manager-all-requests",
         "high",
-        "audit"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4880,7 +5078,8 @@
       "tags": [
         "custom-list-manager-my-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4893,7 +5092,8 @@
       "tags": [
         "custom-list-manager-my-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4906,7 +5106,8 @@
       "tags": [
         "custom-list-manager-my-requests",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4919,7 +5120,8 @@
       "tags": [
         "custom-list-manager-my-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4932,7 +5134,8 @@
       "tags": [
         "custom-list-manager-my-requests",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4945,7 +5148,8 @@
       "tags": [
         "custom-list-manager-my-requests",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4958,20 +5162,22 @@
       "tags": [
         "custom-list-manager-my-requests",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-381",
       "subModule": "Custom List Manager - My Requests",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify My Requests inventory remains accurate after page refresh",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-my-requests",
-        "medium",
-        "audit"
+        "high",
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4984,7 +5190,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -4997,7 +5204,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5010,7 +5218,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5023,7 +5232,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5036,7 +5246,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5049,7 +5260,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5076,7 +5288,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5089,7 +5302,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5102,7 +5316,8 @@
       "tags": [
         "custom-list-manager-request-details",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5157,7 +5372,8 @@
       "tags": [
         "custom-list-manager-approval-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5170,7 +5386,8 @@
       "tags": [
         "custom-list-manager-approval-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5183,7 +5400,8 @@
       "tags": [
         "custom-list-manager-approval-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5210,7 +5428,8 @@
       "tags": [
         "custom-list-manager-approval-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5223,7 +5442,8 @@
       "tags": [
         "custom-list-manager-approval-workflow",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5236,7 +5456,8 @@
       "tags": [
         "custom-list-manager-approval-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5263,7 +5484,8 @@
       "tags": [
         "custom-list-manager-rejection-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5276,7 +5498,8 @@
       "tags": [
         "custom-list-manager-rejection-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5289,7 +5512,8 @@
       "tags": [
         "custom-list-manager-rejection-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5316,7 +5540,8 @@
       "tags": [
         "custom-list-manager-rejection-workflow",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5329,7 +5554,8 @@
       "tags": [
         "custom-list-manager-rejection-workflow",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5342,7 +5568,8 @@
       "tags": [
         "custom-list-manager-rejection-workflow",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5397,7 +5624,8 @@
       "tags": [
         "custom-list-manager-segregation-of-duties",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5438,7 +5666,8 @@
       "tags": [
         "custom-list-manager-segregation-of-duties",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5451,7 +5680,8 @@
       "tags": [
         "custom-list-manager-segregation-of-duties",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5464,7 +5694,8 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "high",
-        "functional"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5477,7 +5708,8 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5490,7 +5722,8 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5503,7 +5736,8 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5516,7 +5750,8 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5529,7 +5764,8 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5542,7 +5778,8 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -5555,20 +5792,21 @@
       "tags": [
         "custom-list-manager-sla-validation",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-426",
       "subModule": "Custom List Manager - Audit Listing",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify Audit page is accessible from Custom List Manager navigation",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-listing",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -5581,72 +5819,72 @@
       "tags": [
         "custom-list-manager-audit-listing",
         "high",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-428",
       "subModule": "Custom List Manager - Audit Listing",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit listing displays sufficient information to identify audited events",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-listing",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-429",
       "subModule": "Custom List Manager - Audit Listing",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify onboarding activities are captured within audit listing",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-listing",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-430",
       "subModule": "Custom List Manager - Audit Listing",
-      "priority": "Custom list activities should be available in audit listing",
+      "priority": "Medium",
       "taskDescription": "Verify custom list lifecycle activities are captured within audit listing",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-listing",
-        "custom list activities should be available in audit listing",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-431",
       "subModule": "Custom List Manager - Audit Listing",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify bulk upload activities are captured within audit listing",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-listing",
-        "high",
+        "medium",
         "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-432",
       "subModule": "Custom List Manager - Audit Listing",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify approval and rejection activities are captured within audit listing",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-listing",
-        "high",
-        "maker-checker"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -5659,20 +5897,20 @@
       "tags": [
         "custom-list-manager-audit-listing",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-434",
       "subModule": "Custom List Manager - Audit Listing",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify newly generated activity appears in audit listing",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-listing",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -5685,32 +5923,32 @@
       "tags": [
         "custom-list-manager-audit-listing",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-436",
       "subModule": "Custom List Manager - Audit Search",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit search control is available",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-search",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-437",
       "subModule": "Custom List Manager - Audit Search",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit search returns matching audit records",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-search",
-        "high",
+        "medium",
         "screening-matching"
       ]
     },
@@ -5724,20 +5962,20 @@
       "tags": [
         "custom-list-manager-audit-search",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-439",
       "subModule": "Custom List Manager - Audit Search",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit search result accuracy",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-search",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -5763,7 +6001,7 @@
       "tags": [
         "custom-list-manager-audit-search",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -5776,58 +6014,58 @@
       "tags": [
         "custom-list-manager-audit-search",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-443",
       "subModule": "Custom List Manager - Audit Search",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify search capability supports audit investigation activities",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-search",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-444",
       "subModule": "Custom List Manager - Audit Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit filter controls are available",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-filters",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-445",
       "subModule": "Custom List Manager - Audit Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit records can be filtered using available filter criteria",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-filters",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-446",
       "subModule": "Custom List Manager - Audit Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify filter results display only matching audit records",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-filters",
-        "high",
+        "medium",
         "screening-matching"
       ]
     },
@@ -5841,7 +6079,7 @@
       "tags": [
         "custom-list-manager-audit-filters",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -5854,7 +6092,7 @@
       "tags": [
         "custom-list-manager-audit-filters",
         "high",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -5867,72 +6105,72 @@
       "tags": [
         "custom-list-manager-audit-filters",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-450",
       "subModule": "Custom List Manager - Audit Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify filter reset functionality restores complete audit inventory",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-filters",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-451",
       "subModule": "Custom List Manager - Audit Filters",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit filtering supports compliance investigation requirements",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-filters",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-452",
       "subModule": "Custom List Manager - Audit Date Range",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify date range filter controls are available on Audit page",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-date-range",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-453",
       "subModule": "Custom List Manager - Audit Date Range",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit records can be retrieved using valid date range criteria",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-date-range",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-454",
       "subModule": "Custom List Manager - Audit Date Range",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify date range results contain only activities within selected period",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-date-range",
-        "high",
-        "functional"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -5945,7 +6183,7 @@
       "tags": [
         "custom-list-manager-audit-date-range",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -5971,85 +6209,85 @@
       "tags": [
         "custom-list-manager-audit-date-range",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-458",
       "subModule": "Custom List Manager - Audit Date Range",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify date range filter can be cleared successfully",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-date-range",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-459",
       "subModule": "Custom List Manager - Audit Date Range",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify date range filtering supports compliance investigation activities",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-date-range",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-460",
       "subModule": "Custom List Manager - Event Details",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify user can open detailed view of audit event",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-event-details",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-461",
       "subModule": "Custom List Manager - Event Details",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify Event Details displays sufficient information to identify audited activity",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-event-details",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-462",
       "subModule": "Custom List Manager - Event Details",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify Event Details displays associated user information",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-event-details",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-463",
       "subModule": "Custom List Manager - Event Details",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify Event Details displays activity timing information",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-event-details",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -6062,97 +6300,97 @@
       "tags": [
         "custom-list-manager-event-details",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-465",
       "subModule": "Custom List Manager - Event Details",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify Event Details remain accessible for approved governance activities",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-event-details",
-        "medium",
-        "maker-checker"
+        "high",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-466",
       "subModule": "Custom List Manager - Event Details",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify Event Details remain accessible for rejected governance activities",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-event-details",
-        "medium",
-        "maker-checker"
+        "high",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-467",
       "subModule": "Custom List Manager - Event Details",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify Event Details provide sufficient information for compliance investigations",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-event-details",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-468",
       "subModule": "Custom List Manager - Audit Export",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit export option is available",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-export",
-        "high",
+        "medium",
         "export"
       ]
     },
     {
       "id": "CLM-TC-469",
       "subModule": "Custom List Manager - Audit Export",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit records can be exported successfully",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-export",
-        "high",
+        "medium",
         "export"
       ]
     },
     {
       "id": "CLM-TC-470",
       "subModule": "Custom List Manager - Audit Export",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify exported audit data matches displayed audit inventory",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-export",
-        "high",
+        "medium",
         "export"
       ]
     },
     {
       "id": "CLM-TC-471",
       "subModule": "Custom List Manager - Audit Export",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify export supports filtered audit results",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-export",
-        "high",
+        "medium",
         "export"
       ]
     },
@@ -6198,27 +6436,27 @@
     {
       "id": "CLM-TC-475",
       "subModule": "Custom List Manager - Audit Export",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit export supports compliance and regulatory review requirements",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-export",
-        "high",
+        "medium",
         "export"
       ]
     },
     {
       "id": "CLM-TC-476",
       "subModule": "Custom List Manager - Audit Integrity",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit records remain available after related business object changes",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-integrity",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -6231,7 +6469,8 @@
       "tags": [
         "custom-list-manager-audit-integrity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6244,33 +6483,34 @@
       "tags": [
         "custom-list-manager-audit-integrity",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-479",
       "subModule": "Custom List Manager - Audit Integrity",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit entries remain associated with the correct activity",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-integrity",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-480",
       "subModule": "Custom List Manager - Audit Integrity",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit entries remain associated with the responsible user",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-integrity",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -6283,7 +6523,7 @@
       "tags": [
         "custom-list-manager-audit-integrity",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
@@ -6296,20 +6536,20 @@
       "tags": [
         "custom-list-manager-audit-integrity",
         "medium",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-483",
       "subModule": "Custom List Manager - Audit Integrity",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit records support reconstruction of business activity history",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-integrity",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -6322,20 +6562,20 @@
       "tags": [
         "custom-list-manager-audit-integrity",
         "high",
-        "audit"
+        "bulk-upload"
       ]
     },
     {
       "id": "CLM-TC-485",
       "subModule": "Custom List Manager - Audit Integrity",
-      "priority": "High",
+      "priority": "Medium",
       "taskDescription": "Verify audit trail maintains compliance and regulatory traceability",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-audit-integrity",
-        "high",
-        "audit"
+        "medium",
+        "bulk-upload"
       ]
     },
     {
@@ -6374,32 +6614,32 @@
       "tags": [
         "custom-list-manager-ttl-display",
         "high",
-        "maker-checker"
+        "ttl"
       ]
     },
     {
       "id": "CLM-TC-489",
       "subModule": "Custom List Manager - TTL Display",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify TTL information remains available after entity modification requests are processed",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-ttl-display",
-        "medium",
+        "high",
         "ttl"
       ]
     },
     {
       "id": "CLM-TC-490",
       "subModule": "Custom List Manager - TTL Display",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify TTL information remains accurate after page refresh and navigation events",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-ttl-display",
-        "medium",
+        "high",
         "audit"
       ]
     },
@@ -6458,13 +6698,13 @@
     {
       "id": "CLM-TC-495",
       "subModule": "Custom List Manager - Expiry",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify entity expiry does not impact audit history and governance records",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-expiry",
-        "medium",
+        "high",
         "audit"
       ]
     },
@@ -6497,39 +6737,39 @@
     {
       "id": "CLM-TC-498",
       "subModule": "Custom List Manager - Expiring Soon",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify expiring-soon indication remains consistent across system views",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-expiring-soon",
-        "medium",
+        "high",
         "ttl"
       ]
     },
     {
       "id": "CLM-TC-499",
       "subModule": "Custom List Manager - Expiring Soon",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify expiring-soon entities remain available for governance review",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-expiring-soon",
-        "medium",
+        "high",
         "ttl"
       ]
     },
     {
       "id": "CLM-TC-500",
       "subModule": "Custom List Manager - Expiring Soon",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify lifecycle monitoring information updates appropriately as entity approaches expiry",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-expiring-soon",
-        "medium",
+        "high",
         "ttl"
       ]
     },
@@ -6575,13 +6815,13 @@
     {
       "id": "CLM-TC-504",
       "subModule": "Custom List Manager - Expired Status",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify expired status remains consistent after page refresh and navigation",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-expired-status",
-        "medium",
+        "high",
         "audit"
       ]
     },
@@ -6634,7 +6874,8 @@
       "tags": [
         "custom-list-manager-screening-exclusion",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6666,13 +6907,13 @@
     {
       "id": "CLM-TC-511",
       "subModule": "Custom List Manager - Screening Exclusion",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify screening eligibility behavior remains consistent across entity inventory",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-screening-exclusion",
-        "medium",
+        "high",
         "screening-matching"
       ]
     },
@@ -6686,7 +6927,8 @@
       "tags": [
         "custom-list-manager-screening-exclusion",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6738,7 +6980,8 @@
       "tags": [
         "custom-list-manager-fuzzy-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6868,7 +7111,8 @@
       "tags": [
         "custom-list-manager-multilingual-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6881,7 +7125,8 @@
       "tags": [
         "custom-list-manager-multilingual-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6933,7 +7178,8 @@
       "tags": [
         "custom-list-manager-name-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6946,7 +7192,8 @@
       "tags": [
         "custom-list-manager-name-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -6972,7 +7219,8 @@
       "tags": [
         "custom-list-manager-name-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7024,7 +7272,8 @@
       "tags": [
         "custom-list-manager-name-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7037,7 +7286,8 @@
       "tags": [
         "custom-list-manager-name-matching",
         "medium",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7050,7 +7300,8 @@
       "tags": [
         "custom-list-manager-name-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7271,7 +7522,8 @@
       "tags": [
         "custom-list-manager-digital-identifier-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7284,7 +7536,8 @@
       "tags": [
         "custom-list-manager-digital-identifier-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7297,7 +7550,8 @@
       "tags": [
         "custom-list-manager-digital-identifier-matching",
         "medium",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7310,7 +7564,8 @@
       "tags": [
         "custom-list-manager-digital-identifier-matching",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7336,7 +7591,8 @@
       "tags": [
         "custom-list-manager-action-on-hit-behaviour",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7368,27 +7624,27 @@
     {
       "id": "CLM-TC-565",
       "subModule": "Custom List Manager - Action On Hit Behaviour",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify Action On Hit configuration remains associated with the correct custom list",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-action-on-hit-behaviour",
-        "medium",
+        "high",
         "screening-matching"
       ]
     },
     {
       "id": "CLM-TC-566",
       "subModule": "Custom List Manager - Action On Hit Behaviour",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify Action On Hit configuration changes are traceable through governance workflow",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-action-on-hit-behaviour",
-        "medium",
-        "maker-checker"
+        "high",
+        "screening-matching"
       ]
     },
     {
@@ -7401,7 +7657,8 @@
       "tags": [
         "custom-list-manager-action-on-hit-behaviour",
         "medium",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7440,7 +7697,8 @@
       "tags": [
         "custom-list-manager-alert-generation",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7453,7 +7711,8 @@
       "tags": [
         "custom-list-manager-alert-generation",
         "high",
-        "alerts"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7466,7 +7725,8 @@
       "tags": [
         "custom-list-manager-alert-generation",
         "high",
-        "screening-matching"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7479,19 +7739,20 @@
       "tags": [
         "custom-list-manager-alert-generation",
         "high",
-        "alerts"
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "CLM-TC-574",
       "subModule": "Custom List Manager - Alert Generation",
-      "priority": "Medium",
+      "priority": "High",
       "taskDescription": "Verify alert generation remains consistent across repeated screening executions",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "custom-list-manager-alert-generation",
-        "medium",
+        "high",
         "screening-matching"
       ]
     },
@@ -7505,7 +7766,8 @@
       "tags": [
         "custom-list-manager-alert-generation",
         "high",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -7531,7 +7793,8 @@
       "tags": [
         "custom-list-manager-alert-generation",
         "medium",
-        "maker-checker"
+        "rbac",
+        "security"
       ]
     },
     {

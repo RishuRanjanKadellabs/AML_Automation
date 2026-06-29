@@ -57,7 +57,7 @@ function withIwcTab(row: IwcExcelRow, tabName: string, extra: string[] = [], use
 }
 
 function defaultIgnoreWord(row: IwcExcelRow): string {
-  return extractIgnoreWord(row.testData) ?? "trading company";
+  return extractIgnoreWord(row.testData) ?? "draft word";
 }
 
 function defaultCategory(row: IwcExcelRow): string {
@@ -104,8 +104,10 @@ function resolvePageFramework(row: IwcExcelRow): string {
     extra.push("await iwcPage.expectTopBarVisible()");
   } else if (task.includes("status bar")) {
     extra.push("await iwcPage.expectStatusBarVisible()");
-  } else if (task.includes("title") || task.includes("header") || task.includes("breadcrumb")) {
+  } else if (task.includes("title") || task.includes("header")) {
     extra.push("await iwcPage.expectPageTitleVisible()");
+  } else if (task.includes("breadcrumb")) {
+    extra.push("await iwcPage.expectBreadcrumbVisible()");
   } else if (task.includes("toolbar") || task.includes("action bar")) {
     extra.push("await iwcPage.expectToolbarVisible()");
   } else if (task.includes("responsive") || task.includes("viewport") || resolution) {
@@ -236,7 +238,9 @@ function resolveAddCategoryModal(row: IwcExcelRow): string {
   const name = extractValue(row.testData, "Category Name") ?? defaultCategory(row);
   const extra: string[] = ["await iwcPage.openAddCategoryModal()"];
 
-  if (task.includes("cancel") || task.includes("close")) {
+  if (task.includes("overlay") || task.includes("backdrop")) {
+    extra.push("await iwcPage.clickModalOverlay()");
+  } else if (task.includes("cancel") || task.includes("close")) {
     extra.push("await iwcPage.cancelAddCategory()");
   } else if (task.includes("validation") || task.includes("empty") || task.includes("required")) {
     extra.push("await iwcPage.submitAddCategory()");
@@ -266,6 +270,8 @@ function resolveCategoryControlsModal(row: IwcExcelRow): string {
 
   if (task.includes("toggle") || task.includes("enable") || task.includes("disable")) {
     extra.push(`await iwcPage.toggleCategoryControl("${category}")`);
+  } else if (task.includes("overlay") || task.includes("backdrop")) {
+    extra.push("await iwcPage.clickModalOverlay()");
   } else if (task.includes("close") || task.includes("cancel")) {
     extra.push("await iwcPage.closeCategoryControlsModal()");
   } else if (task.includes("reorder") || task.includes("drag")) {
@@ -299,7 +305,9 @@ function resolveAddIgnoreWordPanel(row: IwcExcelRow): string {
   const matchType = defaultMatchType(row);
   const extra: string[] = ["await iwcPage.openAddIgnoreWordPanel()"];
 
-  if (task.includes("cancel") || task.includes("close") || task.includes("back arrow") || task.includes("breadcrumb")) {
+  if (task.includes("overlay") && !task.includes("does not close")) {
+    extra.push("await iwcPage.clickPanelOverlay()");
+  } else if (task.includes("cancel") || task.includes("close") || task.includes("back arrow") || task.includes("breadcrumb")) {
     if (task.includes("overlay")) {
       extra.push("await iwcPage.clickPanelOverlay()");
     } else if (task.includes("back arrow")) {
@@ -456,6 +464,12 @@ function resolveBulkUpload(row: IwcExcelRow): string {
 
   if (task.includes("template") || task.includes("download")) {
     extra.push("await iwcPage.downloadBulkUploadTemplate()");
+  } else if (task.includes("cancel") || task.includes("close") || (task.includes("overlay") && task.includes("backdrop"))) {
+    if (task.includes("overlay") || task.includes("backdrop")) {
+      extra.push("await iwcPage.clickModalOverlay()");
+    } else {
+      extra.push("await iwcPage.cancelBulkUploadModal()");
+    }
   } else if (task.includes("invalid") || task.includes("error") || task.includes("reject")) {
     extra.push(`await iwcPage.selectBulkUploadCategory("${category}")`);
     extra.push(`await iwcPage.uploadBulkFile("${file}")`);
@@ -469,8 +483,6 @@ function resolveBulkUpload(row: IwcExcelRow): string {
     extra.push(`await iwcPage.selectBulkUploadCategory("${category}")`);
     extra.push(`await iwcPage.uploadBulkFile("${file}")`);
     extra.push("await iwcPage.submitBulkUpload()");
-  } else if (task.includes("cancel") || task.includes("close")) {
-    extra.push("await iwcPage.cancelBulkUploadModal()");
   } else if (task.includes("drafted") || task.includes("checker")) {
     extra.push(`await iwcPage.selectBulkUploadCategory("${category}")`);
     extra.push(`await iwcPage.uploadBulkFile("${file}")`);
@@ -533,19 +545,73 @@ function resolveMakerCheckerGovernance(row: IwcExcelRow): string {
   const task = row.taskDescription.toLowerCase();
   const role = extractUserRole(row) ?? "Checker";
   const word = defaultIgnoreWord(row);
+  const categoryName = extractValue(row.testData, "Category Name") ?? "Investigation Terms";
   const extra: string[] = [
     `// TODO: Maker-checker role login — switch session to role: ${role}`,
-    "await iwcPage.openMakerCheckerQueue()",
   ];
 
-  if (task.includes("reject") || task.includes("decline")) {
+  if (task.includes("checker approval modal") && (task.includes("overlay") || task.includes("backdrop"))) {
+    extra.push("await iwcPage.expectCheckerApprovalModal()");
+    extra.push("await iwcPage.clickModalOverlay()");
+  } else if (task.includes("overlay") || task.includes("backdrop")) {
+    extra.push("await iwcPage.openAddCategoryModal()");
+    extra.push("await iwcPage.clickModalOverlay()");
+  } else if (task.includes("category") && (task.includes("submit") || task.includes("creates pending"))) {
+    extra.push("await iwcPage.openAddCategoryModal()");
+    extra.push(`await iwcPage.fillCategoryName("${categoryName}")`);
+    extra.push("await iwcPage.submitAddCategory()");
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+  } else if (task.includes("category") && task.includes("approv")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+    extra.push("await iwcPage.approveIgnoreWord()");
+  } else if (task.includes("category") && task.includes("reject")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+    extra.push("await iwcPage.rejectIgnoreWord()");
+  } else if (task.includes("cannot approve own") || task.includes("maker cannot approve")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+    extra.push("await iwcPage.expectRbacControlsHidden()");
+  } else if (task.includes("bulk upload")) {
+    extra.push("await iwcPage.openBulkUploadModal()");
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+  } else if (task.includes("disable request") || (task.includes("disable") && task.includes("submit"))) {
+    extra.push(`await iwcPage.disableIgnoreWord("${word}")`);
+  } else if (task.includes("enable") && task.includes("approv")) {
+    extra.push('await iwcPage.openTab("Inactive")');
+    extra.push(`await iwcPage.enableIgnoreWord("${word}")`);
+    extra.push("await iwcPage.approveIgnoreWord()");
+  } else if (task.includes("reject") && task.includes("disable")) {
+    extra.push(`await iwcPage.disableIgnoreWord("${word}")`);
+    extra.push("await iwcPage.rejectIgnoreWord()");
+  } else if (task.includes("rejection returns") || task.includes("returns ignore word to drafted")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+    extra.push("await iwcPage.rejectIgnoreWord()");
+    extra.push('await iwcPage.openTab("Drafted")');
+    extra.push(`await iwcPage.openWordHistoryPanel("${word}")`);
+  } else if (task.includes("approv") && task.includes("drafted")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+    extra.push("await iwcPage.approveIgnoreWord()");
+  } else if ((task.includes("reject") || task.includes("decline")) && task.includes("drafted")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+    extra.push("await iwcPage.rejectIgnoreWord()");
+    extra.push('await iwcPage.openTab("Drafted")');
+  } else if (
+    task.includes("submits drafted")
+    || task.includes("submit drafted")
+    || (task.includes("drafted") && task.includes("submit"))
+  ) {
+    extra.push('await iwcPage.openTab("Drafted")');
+    extra.push(`await iwcPage.submitDraftedIgnoreWord("${word}")`);
+  } else if (task.includes("workflow status") || task.includes("visibility")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
+    extra.push("await iwcPage.expectMakerCheckerQueueVisible()");
+  } else if (task.includes("prevent editing") || task.includes("pending checker")) {
+    extra.push(`await iwcPage.editIgnoreWord("${word}")`);
+  } else if (task.includes("reject") || task.includes("decline")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
     extra.push("await iwcPage.rejectIgnoreWord()");
   } else if (task.includes("approve") || task.includes("confirm")) {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
     extra.push("await iwcPage.approveIgnoreWord()");
-  } else if (task.includes("not available") || task.includes("hidden") || role.toLowerCase() === "maker") {
-    extra.push("await iwcPage.expectRbacControlsHidden()");
-  } else if (task.includes("queue") || task.includes("pending")) {
-    extra.push('await iwcPage.openTab("Drafted")');
   } else if (task.includes("submit") || task.includes("create")) {
     extra.push("await iwcPage.openAddIgnoreWordPanel()");
     extra.push(`await iwcPage.fillIgnoreWordPhrase("${word}")`);
@@ -553,7 +619,9 @@ function resolveMakerCheckerGovernance(row: IwcExcelRow): string {
     extra.push(`await iwcPage.selectRiskLevel("${defaultRiskLevel(row)}")`);
     extra.push(`await iwcPage.selectMatchType("${defaultMatchType(row)}")`);
     extra.push("await iwcPage.submitIgnoreWord()");
+    extra.push("await iwcPage.openMakerCheckerQueue()");
   } else {
+    extra.push("await iwcPage.openMakerCheckerQueue()");
     extra.push("await iwcPage.expectMakerCheckerQueueVisible()");
   }
 
@@ -984,26 +1052,34 @@ export function mapIwcTestLogic(row: IwcExcelRow): string {
   const sm = row.subModule;
 
   switch (sm) {
+    case "Navigation & Page Access":
     case "Page Framework":
       return resolvePageFramework(row);
     case "Sidebar Navigation":
       return resolveSidebarNavigation(row);
+    case "Status Tabs":
     case "Tab Bar":
       return resolveTabBar(row);
+    case "Data Table & Sorting":
     case "Table & Sorting":
       return resolveTableAndSorting(row);
     case "Search & Filter":
       return resolveSearchAndFilter(row);
+    case "Category Management – Add Category":
     case "Add Category Modal":
       return resolveAddCategoryModal(row);
+    case "Category Management – Category Controls":
     case "Category Controls Modal":
       return resolveCategoryControlsModal(row);
     case "Category Badges":
       return resolveCategoryBadges(row);
+    case "Add Ignore Word":
     case "Add Ignore Word Panel":
       return resolveAddIgnoreWordPanel(row);
+    case "Ignore Word Row Actions":
     case "Row Actions":
       return resolveRowActions(row);
+    case "Audit History":
     case "Word History Panel":
       return resolveWordHistoryPanel(row);
     case "Risk Level Badges":
@@ -1014,16 +1090,20 @@ export function mapIwcTestLogic(row: IwcExcelRow): string {
       return resolveStatusBadges(row);
     case "Bulk Upload":
       return resolveBulkUpload(row);
+    case "Export":
     case "Export Functionality":
       return resolveExportFunctionality(row);
     case "Live Narrative Tester":
       return resolveLiveNarrativeTester(row);
+    case "Maker-Checker Workflow":
     case "Maker-Checker Governance":
       return resolveMakerCheckerGovernance(row);
     case "Checker Approval Modal":
       return resolveCheckerApprovalModal(row);
+    case "Access Control (RBAC)":
     case "Permissions & RBAC":
       return resolvePermissionsRbac(row);
+    case "Field & Business Rule Validation":
     case "Business Rules":
       return resolveBusinessRules(row);
     case "Match Type Behavior":
@@ -1044,6 +1124,7 @@ export function mapIwcTestLogic(row: IwcExcelRow): string {
       return resolveBrowserCompatibility(row);
     case "Security Validation":
       return resolveSecurityValidation(row);
+    case "Regression & Compatibility":
     case "Regression Validation":
       return resolveRegressionValidation(row);
     case "Negative Scenarios":

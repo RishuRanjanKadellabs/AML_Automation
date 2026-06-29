@@ -1,7 +1,7 @@
 # Screening Configuration Test Plan
 
 Source: `pipeline/test-data/Screening Configuration Test Cases.xlsx`
-Total cases: **315** (SC-TC-001 → SC-TC-315)
+Total cases: **318** (SC-TC-001 → SC-TC-318)
 
 Generator: playwright-test MCP explored `/configuration/sanction-screening-config` for POM locators.
 
@@ -24,13 +24,13 @@ Generator: playwright-test MCP explored `/configuration/sanction-screening-confi
 - Pagination: 5
 - Page Refresh: 1
 - View Watchlist: 1
-- Edit Watchlist: 16
+- Edit Watchlist: 17
 - Status Management: 2
 - Create Watchlist - Basic Information: 1
 - Basic Information: 19
 - List Selection: 20
-- Field Mapping: 20
-- Match Score Configuration: 15
+- Field Mapping: 21
+- Match Score Configuration: 16
 - Result Configuration: 30
 - View Watchlist Details: 15
 - Lists Library: 10
@@ -59,7 +59,7 @@ Generator: playwright-test MCP explored `/configuration/sanction-screening-confi
 - Screening Engine: 2
 - End-to-End AML Validation: 1
 - Security - XSS: 3
-- Security - HTML Injection: 2
+- Security - Injection: 2
 - Security - SQL Injection: 2
 - Security - CSV Injection: 1
 - Security - Parameter Tampering: 2

@@ -1,3569 +1,3105 @@
-# Ignore Words Configuration — Detailed Test Cases (223)
+# Ignore Words Configuration — Detailed Test Cases (194)
 
-### IWC-TC-001 — Verify Ignore Words Configuration page loads successfully
+### IWC-TC-001 — Open Ignore Words Configuration from left navigation
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
 | Priority | High |
-| Preconditions | User should be logged into AML application with access to Ignore Words Configuration module |
-| Test Data | User Role: Compliance Officer |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Inspect page layout and UI components: Ignore Words Configuration page loads successfully >> Step 4: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 5: Apply test data — User Role: Compliance Officer >> Step 6: Compare actual result with expected result: Ignore Words Configuration page should load successfully with all layout sections rendered correctly without layout issues or frontend errors. |
-| Acceptance Criteria | The system should load the Ignore Words Configuration module with sidebar, top bar, tabs, toolbar, table, and status bar without UI distortion or console errors |
-| Expected Result | Ignore Words Configuration page should load successfully with all layout sections rendered correctly without layout issues or frontend errors. |
+| Preconditions | Maker account exists with Configuration module access. |
+| Test Data | User role: Maker Menu path: Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration |
+| Steps | 1. From the application dashboard, expand Configuration in the left navigation. 2. Select Sanctions Screening Configuration. 3. Click Screening – Ignore Words Configuration. |
+| Acceptance Criteria | Maker can reach the screen through full menu path |
+| Expected Result | Ignore Words Configuration listing loads. Active, Inactive, and Drafted Ignore Word tabs display record counts. Toolbar shows Export, Category Controls, Add Category, Bulk Upload, and Add Ignore Word. The ignore words table is populated for the default Active tab. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, high, error-handling |
+| Tags | navigation-page-access, high, rbac, security |
 
-### IWC-TC-002 — Verify navigation path via Configuration sidebar menu
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Page Framework |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should have access to Configuration menu |
-| Test Data | Navigation Path: Configuration → Ignore Words Configuration |
-| Steps | Step 1: Inspect page layout and UI components: navigation path via Configuration sidebar menu >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Navigation Path: Configuration → Ignore Words Configuration >> Step 4: Compare actual result with expected result: User should navigate successfully to Ignore Words Configuration screen. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | The module should be accessible via Configuration → Ignore Words Configuration in the left navigation sidebar |
-| Expected Result | User should navigate successfully to Ignore Words Configuration screen. All UI sections render without layout distortion or console errors. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | page-framework, high, functional |
-
-### IWC-TC-003 — Verify active sidebar highlight for Ignore Words Configuration
+### IWC-TC-002 — Verify breadcrumb text on page load
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | Active Menu: Ignore Words Configuration |
-| Steps | Step 1: Inspect page layout and UI components: active sidebar highlight for Ignore Words Configuration >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Active Menu: Ignore Words Configuration >> Step 4: Compare actual result with expected result: Sidebar item should be highlighted with blue left-border, #EAF2FF background, and #2A53A0 text. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | The Ignore Words Configuration sidebar item should display active styling with blue left-border indicator, background #EAF2FF, and text/border color #2A53A0 |
-| Expected Result | Sidebar item should be highlighted with blue left-border, #EAF2FF background, and #2A53A0 text. All UI sections render without layout distortion or console errors. |
+| Preconditions | Maker is on the Ignore Words Configuration listing (Active tab). |
+| Test Data | Expected breadcrumb: Sanctions Screening Configuration / Screening – Ignore Words Configuration |
+| Steps | 1. Observe the breadcrumb at the top of the page. 2. Read the parent breadcrumb node. 3. Read the current page breadcrumb node. |
+| Acceptance Criteria | Breadcrumb shows correct hierarchy |
+| Expected Result | Breadcrumb reads 'Sanctions Screening Configuration / Screening – Ignore Words Configuration'. The current page node is visually distinguished as the active location. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, functional |
+| Tags | navigation-page-access, medium, functional |
 
-### IWC-TC-004 — Verify full-viewport single-page layout without page-level scrolling
+### IWC-TC-003 — Access page directly using valid deep link
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page with sufficient table data |
-| Test Data | Table Records: 10+ active ignore words |
-| Steps | Step 1: Inspect page layout and UI components: full-viewport single-page layout without page-level scrolling >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Table Records: 10+ active ignore words >> Step 4: Compare actual result with expected result: Only table area and sidebar nav should scroll; outer page should not scroll. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | The application should use full-viewport layout where only internal areas scroll independently |
-| Expected Result | Only table area and sidebar nav should scroll; outer page should not scroll. All UI sections render without layout distortion or console errors. |
+| Preconditions | Maker has an active session and has previously opened Ignore Words Configuration once in this browser. |
+| Test Data | User role: Maker Access method: Direct URL |
+| Steps | 1. While on Ignore Words Configuration, copy the browser URL. 2. Open a new browser tab and paste the URL. 3. Press Enter and wait for the page to finish loading. |
+| Acceptance Criteria | Authorized user can open screen through direct URL |
+| Expected Result | Listing opens without re-authentication. Breadcrumb, status tabs, toolbar, and table data match the original session. No permission or routing error is shown. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, functional |
+| Tags | navigation-page-access, medium, rbac, security |
 
-### IWC-TC-005 — Verify sidebar fixed width and structure
+### IWC-TC-004 — Refresh page and retain access
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | Sidebar Width: 240px |
-| Steps | Step 1: Inspect page layout and UI components: sidebar fixed width and structure >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Sidebar Width: 240px >> Step 4: Compare actual result with expected result: Sidebar should display at 240px with logo, bank name, menu search, and navigation hierarchy. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | The left sidebar should be 240px fixed width containing logo, bank name, menu search, and navigation |
-| Expected Result | Sidebar should display at 240px with logo, bank name, menu search, and navigation hierarchy. All UI sections render without layout distortion or console errors. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | page-framework, low, functional |
-
-### IWC-TC-006 — Verify main content area layout structure
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Inspect page layout and UI components: main content area layout structure >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 4: Compare actual result with expected result: All five main sections should render in correct vertical order. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | Main content should follow Top Bar → Tabs Bar → Toolbar → Table Area → Status Bar |
-| Expected Result | All five main sections should render in correct vertical order. All UI sections render without layout distortion or console errors. |
+| Preconditions | Maker is on Ignore Words Configuration with the Active tab selected. |
+| Test Data | Tab before refresh: Active |
+| Steps | 1. Note the Active tab count and a visible row in the table. 2. Refresh the browser page. 3. Wait until the listing fully reloads. 4. Confirm the Active tab remains selected. |
+| Acceptance Criteria | Screen remains accessible after browser refresh |
+| Expected Result | Session remains valid after refresh. Active tab stays selected, tab count is unchanged, and the table repopulates with the same active ignore words. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, functional |
+| Tags | navigation-page-access, medium, browser-compat |
 
-### IWC-TC-007 — Verify top bar height and user information display
+### IWC-TC-005 — Open page using breadcrumb back navigation
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration |
-| Test Data | Logged-in User: Charu Chauhan |
-| Steps | Step 1: Inspect page layout and UI components: top bar height and user information display >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Logged-in User: Charu Chauhan >> Step 4: Compare actual result with expected result: Top bar should be 54px with breadcrumb and user avatar displayed correctly. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | Top bar should be 54px height with breadcrumb left and username plus avatar right |
-| Expected Result | Top bar should be 54px with breadcrumb and user avatar displayed correctly. All UI sections render without layout distortion or console errors. |
+| Preconditions | Maker is on Ignore Words Configuration listing. |
+| Test Data | Breadcrumb parent: Sanctions Screening Configuration |
+| Steps | 1. Click the Sanctions Screening Configuration breadcrumb link. 2. Confirm the parent configuration screen opens. 3. Return to Screening – Ignore Words Configuration using the left navigation. |
+| Acceptance Criteria | User can navigate back to parent module and return |
+| Expected Result | Parent screen opens without error. Returning to Ignore Words Configuration restores the listing with tabs and table intact. No session timeout occurs. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, functional |
+| Tags | navigation-page-access, medium, functional |
 
-### IWC-TC-008 — Verify status bar content and height
+### IWC-TC-006 — Validate toolbar controls are visible on initial load
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | License Expiry: June 12, 2026 |
-| Steps | Step 1: Inspect page layout and UI components: status bar content and height >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — License Expiry: June 12, 2026 >> Step 4: Compare actual result with expected result: Status bar should display license expiry, copyright, and important links. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | Status bar should be 42px displaying license expiry, copyright, and important links |
-| Expected Result | Status bar should display license expiry, copyright, and important links. All UI sections render without layout distortion or console errors. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | page-framework, low, functional |
-
-### IWC-TC-009 — Verify breadcrumb parent link navigation
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | Parent Link: Entity Suffixes Screening Configuration |
-| Steps | Step 1: Inspect page layout and UI components: breadcrumb parent link navigation >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Parent Link: Entity Suffixes Screening Configuration >> Step 4: Compare actual result with expected result: Parent breadcrumb should navigate to Entity Suffixes Screening Configuration. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | Parent link Entity Suffixes Screening Configuration should be #2A53A0, clickable, and navigate up |
-| Expected Result | Parent breadcrumb should navigate to Entity Suffixes Screening Configuration. All UI sections render without layout distortion or console errors. |
+| Preconditions | Maker is on Ignore Words Configuration listing. |
+| Test Data | User role: Maker |
+| Steps | 1. Review the toolbar on initial page load. 2. Confirm search field is present on the left. 3. Confirm Export, Category Controls, Add Category, Bulk Upload, and Add Ignore Word actions are visible on the right. |
+| Acceptance Criteria | All major actions appear for Maker role |
+| Expected Result | All primary toolbar controls are visible and enabled for the Maker role. Search accepts input. Action buttons are clickable. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, functional |
+| Tags | navigation-page-access, medium, rbac, security |
 
-### IWC-TC-010 — Verify breadcrumb current page label
+### IWC-TC-007 — Validate page title and tab counters load
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | Current Page: Screening – Ignore Words Configuration |
-| Steps | Step 1: Inspect page layout and UI components: breadcrumb current page label >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Current Page: Screening – Ignore Words Configuration >> Step 4: Compare actual result with expected result: Current page label should be #161616 with / separator in #D1D5DB. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | Current page Screening – Ignore Words Configuration should be #161616 and non-clickable |
-| Expected Result | Current page label should be #161616 with / separator in #D1D5DB. All UI sections render without layout distortion or console errors. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | page-framework, low, functional |
-
-### IWC-TC-011 — Verify page responsiveness on medium screen resolution
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | Resolution: 1024x768 |
-| Steps | Step 1: Inspect page layout and UI components: page responsiveness on medium screen resolution >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Resolution: 1024x768 >> Step 4: Compare actual result with expected result: Layout should adjust without overlap or broken components. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | Page should render correctly on medium screen resolutions |
-| Expected Result | Layout should adjust without overlap or broken components. All UI sections render without layout distortion or console errors. |
+| Preconditions | At least one active, inactive, and drafted ignore word exist in the environment. |
+| Test Data | Expected tabs: Active, Inactive, Drafted Ignore Word |
+| Steps | 1. Open Ignore Words Configuration. 2. Read the count shown on the Active tab label. 3. Read the count on the Inactive tab label. 4. Read the count on the Drafted Ignore Word tab label. 5. Compare each count with the number of rows shown after selecting that tab. |
+| Acceptance Criteria | Page header and tab counts load without placeholders |
+| Expected Result | Each tab label count matches the number of records in that status. Counts update only after approved workflow transitions, not on draft save alone. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, functional |
+| Tags | navigation-page-access, medium, functional |
 
-### IWC-TC-012 — Verify page responsiveness on smaller screen resolution
+### IWC-TC-008 — Verify unauthorized route access is blocked
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Navigation & Page Access |
+| Priority | High |
+| Preconditions | Viewer account exists without Ignore Words Configuration permission. |
+| Test Data | User role: Viewer (no configuration write/read permission) |
+| Steps | 1. Log in as Viewer. 2. Attempt to open Screening – Ignore Words Configuration via direct URL or menu. |
+| Acceptance Criteria | User without module access cannot open the page |
+| Expected Result | Access is denied. User is redirected or shown an authorization message. Ignore words data is not exposed. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | navigation-page-access, high, rbac, security |
+
+### IWC-TC-009 — Verify Active tab default load behavior
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Status Tabs |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; User should be on Ignore Words Configuration page |
-| Test Data | Resolution: 768x720 |
-| Steps | Step 1: Inspect page layout and UI components: page responsiveness on smaller screen resolution >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Resolution: 768x720 >> Step 4: Compare actual result with expected result: Components should remain visible without overlap or truncation. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | Page should remain usable on smaller screens |
-| Expected Result | Components should remain visible without overlap or truncation. All UI sections render without layout distortion or console errors. |
+| Preconditions | Maker is on Ignore Words Configuration. |
+| Test Data | Default tab: Active |
+| Steps | 1. Open the listing and observe the default tab on first load. 2. Verify the table shows only Active-status records. 3. Confirm each visible row displays an Active status badge. |
+| Acceptance Criteria | Active tab is selected by default |
+| Expected Result | Active tab is selected by default. Only approved, operational ignore words appear. Disable action is available in the Actions column. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, functional |
+| Tags | status-tabs, medium, functional |
 
-### IWC-TC-013 — Verify loading indicator during slow network
+### IWC-TC-010 — Switch from Active to Inactive tab
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Status Tabs |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; Slow network simulation enabled |
-| Test Data | Network Profile: Slow 3G |
-| Steps | Step 1: Inspect page layout and UI components: loading indicator during slow network >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Network Profile: Slow 3G >> Step 4: Compare actual result with expected result: Loaders or skeletons should appear until content renders. All UI sections render without layout distortion or console errors |
-| Acceptance Criteria | System should display loading indicators under delayed network |
-| Expected Result | Loaders or skeletons should appear until content renders. All UI sections render without layout distortion or console errors. |
+| Preconditions | Inactive ignore words exist (e.g., 'and', 'the'). |
+| Test Data | Sample inactive words: and, the, of, for |
+| Steps | 1. From the Active tab, click the Inactive tab. 2. Review the table contents and status badges. |
+| Acceptance Criteria | Tab switch updates row status data correctly |
+| Expected Result | Inactive tab loads deactivated ignore words only. Each row shows Inactive status. Enable action is available instead of Disable. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, performance |
+| Tags | status-tabs, medium, functional |
 
-### IWC-TC-014 — Verify empty-state when no ignore words exist for tab
+### IWC-TC-011 — Switch from Inactive to Drafted Ignore Word tab
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Page Framework |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; Tab with zero records should exist |
-| Test Data | Tab: Inactive (0 records) |
-| Steps | Step 1: Inspect page layout and UI components: empty-state when no ignore words exist for tab >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — Tab: Inactive (0 records) >> Step 4: Compare actual result with expected result: Table should show No ignore words found for this filter. Empty-state message displayed when tab has zero records |
-| Acceptance Criteria | System should display meaningful empty state when tab has no records |
-| Expected Result | Table should show No ignore words found for this filter. Empty-state message displayed when tab has zero records. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | page-framework, high, functional |
-
-### IWC-TC-015 — Verify frontend console stability during page load
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Page Framework |
+| Feature | Status Tabs |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; user navigated to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; Browser console access available |
-| Test Data | User Role: Admin |
-| Steps | Step 1: Inspect page layout and UI components: frontend console stability during page load >> Step 2: Check sidebar, top bar, tabs, toolbar, table area, and status bar for correct rendering >> Step 3: Apply test data — User Role: Admin >> Step 4: Compare actual result with expected result: No JavaScript errors or unhandled exceptions in console. No JavaScript errors or unhandled exceptions during page load |
-| Acceptance Criteria | No frontend console errors during module load |
-| Expected Result | No JavaScript errors or unhandled exceptions in console. No JavaScript errors or unhandled exceptions during page load. |
+| Preconditions | At least one drafted ignore word exists (e.g., 'co' or 'son'). |
+| Test Data | Sample drafted words: co, son |
+| Steps | 1. Click the Drafted Ignore Word tab. 2. Locate a drafted record and review its status and row actions. |
+| Acceptance Criteria | Drafted tab shows only draft records |
+| Expected Result | Drafted tab shows entries saved as draft or returned after checker rejection. Status displays as Drafted. Submit action is available; word is not applied in live screening. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | page-framework, medium, rbac, security |
+| Tags | status-tabs, medium, functional |
 
-### IWC-TC-016 — Verify default Active tab selection on page load
+### IWC-TC-012 — Validate tab counters against table row count
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; User opened Ignore Words Configuration page |
-| Test Data | Default Tab: Active |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 4: Perform action: default Active tab selection on page load >> Step 5: Apply test data — Default Tab: Active >> Step 6: Compare actual result with expected result: Active tab selected with #2A53A0 text and 2px bottom border. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Active tab should be selected by default on page load |
-| Expected Result | Active tab selected with #2A53A0 text and 2px bottom border. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-017 — Verify Active tab dynamic count
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Active ignore words exist |
-| Test Data | Expected Count: 10 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 4: Perform action: Active tab dynamic count >> Step 5: Apply test data — Expected Count: 10 >> Step 6: Compare actual result with expected result: Active tab count should match active record count. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Active tab should display Active (n) matching status=active count |
-| Expected Result | Active tab count should match active record count. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-018 — Verify Inactive tab dynamic count
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Inactive records exist |
-| Test Data | Expected Count: 2 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 4: Perform action: Inactive tab dynamic count >> Step 5: Apply test data — Expected Count: 2 >> Step 6: Compare actual result with expected result: Inactive tab count should be accurate. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Inactive tab should display Inactive (n) matching inactive records |
-| Expected Result | Inactive tab count should be accurate. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-019 — Verify Drafted Ignore Word tab dynamic count
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Drafted records exist |
-| Test Data | Expected Count: 2 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 4: Perform action: Drafted Ignore Word tab dynamic count >> Step 5: Apply test data — Expected Count: 2 >> Step 6: Compare actual result with expected result: Drafted tab count should match drafted records. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Drafted tab should display Drafted Ignore Word (n) |
-| Expected Result | Drafted tab count should match drafted records. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-020 — Verify absence of Pending Approval tab
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; User on Ignore Words Configuration page |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 2: Perform action: absence of Pending Approval tab >> Step 3: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 4: Compare actual result with expected result: Only Active, Inactive, and Drafted tabs visible; no Pending Approval tab. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Pending Approval tab should not be displayed |
-| Expected Result | Only Active, Inactive, and Drafted tabs visible; no Pending Approval tab. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-021 — Verify Inactive tab filters table to inactive records
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Active and inactive records exist |
-| Test Data | Inactive Words: offshore account, correspondent banking |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Inactive Words: offshore account, correspondent banking >> Step 7: Compare actual result with expected result: Only inactive records displayed with Inactive status badge. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Inactive tab should show only status=inactive records |
-| Expected Result | Only inactive records displayed with Inactive status badge. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-022 — Verify Drafted tab filters table to drafted records
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Drafted records exist |
-| Test Data | Drafted Words: wire transfer agency, crypto exchange |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Drafted Words: wire transfer agency, crypto exchange >> Step 7: Compare actual result with expected result: Only drafted records displayed. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Drafted tab should show only status=drafted records |
-| Expected Result | Only drafted records displayed. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-023 — Verify tab switch resets search input
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Search filter applied on current tab |
-| Test Data | Search Text: trading |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Text: trading >> Step 7: Compare actual result with expected result: Search cleared and full dataset shown for new tab. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Tab switch should clear search and re-render new dataset.. |
-| Expected Result | Search cleared and full dataset shown for new tab. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-024 — Verify inactive tab hover styling
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; User on Ignore Words Configuration page |
-| Test Data | Tab: Inactive |
-| Steps | Step 1: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 2: Perform action: inactive tab hover styling >> Step 3: Apply test data — Tab: Inactive >> Step 4: Compare actual result with expected result: Tab text changes to #374151 on hover. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Non-active tab hover should change text to #374151 |
-| Expected Result | Tab text changes to #374151 on hover. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, low, functional |
-
-### IWC-TC-025 — Verify tab count updates after disable action per FSD BR-007
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Admin user; active word exists |
-| Test Data | Word: trading company |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: trading company >> Step 7: Compare actual result with expected result: Active count decreases and Inactive count increases immediately. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Tab counts update immediately after status change. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Active count decreases and Inactive count increases immediately. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, rbac, security |
-
-### IWC-TC-026 — Verify tab count updates after new word submission
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Admin user |
-| Test Data | New Word: private limited company |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 4: Perform action: tab count updates after new word submission >> Step 5: Apply test data — New Word: private limited company >> Step 6: Compare actual result with expected result: Drafted tab count increments immediately. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Drafted count updates after submitting new word |
-| Expected Result | Drafted tab count increments immediately. Tab styling and record count must match the selected status filter. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | tab-bar, high, functional |
-
-### IWC-TC-027 — Verify sorting resets on tab switch
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Tab Bar |
+| Feature | Status Tabs |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with seed data on Active, Inactive, and Drafted tabs; Column sorted on current tab |
-| Test Data | Sort Column: Ignore Word / Phrase |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the tab bar showing Active, Inactive, and Drafted Ignore Word tabs with record counts >> Step 4: Perform action: sorting resets on tab switch >> Step 5: Apply test data — Sort Column: Ignore Word / Phrase >> Step 6: Compare actual result with expected result: Sort order resets to default on tab switch. Tab styling and record count must match the selected status filter |
-| Acceptance Criteria | Tab switch resets sort to default insertion order |
-| Expected Result | Sort order resets to default on tab switch. Tab styling and record count must match the selected status filter. |
+| Preconditions | Environment contains records across Active, Inactive, and Drafted statuses. |
+| Test Data | Tabs: Active, Inactive, Drafted Ignore Word |
+| Steps | 1. Note the count on each status tab. 2. Select Active tab and count visible rows. 3. Repeat for Inactive and Drafted tabs. |
+| Acceptance Criteria | Selected tab count matches records fetched |
+| Expected Result | Tab label counts equal the row count in each respective table. Totals reconcile with backend status distribution. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | tab-bar, medium, functional |
+| Tags | status-tabs, medium, functional |
 
-### IWC-TC-028 — Verify toolbar search input rendering
+### IWC-TC-013 — Retain tab selection after search reset
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Search & Filter |
+| Feature | Status Tabs |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; User on Ignore Words Configuration page |
-| Test Data | Placeholder: Search ignore words by phrase, category... |
-| Steps | Step 1: Enter search/filter term from test data in toolbar >> Step 2: Apply filter and review table results >> Step 3: Clear filter and confirm full list restores >> Step 4: Apply test data — Placeholder: Search ignore words by phrase, category... >> Step 5: Compare actual result with expected result: Search input renders with icon, 300px width, 46px height, correct placeholder. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Search input 300px width, 46px height, icon prefix, correct placeholder.. |
-| Expected Result | Search input renders with icon, 300px width, 46px height, correct placeholder. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Maker is on Inactive tab with search cleared. |
+| Test Data | Search term: limited Starting tab: Inactive |
+| Steps | 1. Select the Inactive tab. 2. Enter 'limited' in the search field and confirm filtered results. 3. Clear the search field. 4. Verify the Inactive tab remains selected and the full inactive list returns. |
+| Acceptance Criteria | Clearing search does not force tab reset |
+| Expected Result | Search filters within the current tab only. Clearing search restores the full inactive list without switching tabs. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | search-filter, medium, functional |
+| Tags | status-tabs, medium, functional |
 
-### IWC-TC-029 — Verify real-time search by ignore word phrase
+### IWC-TC-014 — Retain selected tab after page refresh
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Status Tabs |
+| Priority | Medium |
+| Preconditions | Maker is on Drafted Ignore Word tab. |
+| Test Data | Tab before refresh: Drafted Ignore Word |
+| Steps | 1. Select the Drafted Ignore Word tab. 2. Refresh the browser. 3. After reload, confirm which tab is selected. |
+| Acceptance Criteria | Current status context persists after refresh |
+| Expected Result | Page reloads successfully. Drafted Ignore Word tab remains selected and drafted records are still listed. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, medium, functional |
+
+### IWC-TC-015 — Show empty-state message for tab with zero records
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Status Tabs |
+| Priority | Medium |
+| Preconditions | Test environment has zero inactive ignore words (or use filtered test data). |
+| Test Data | Tab: Inactive Expected row count: 0 |
+| Steps | 1. Click the Inactive tab. 2. Observe the table body when no records exist. |
+| Acceptance Criteria | System handles empty status bucket clearly |
+| Expected Result | Empty-state message is shown (e.g., 'No ignore words found for this filter.'). Tab count displays (0). No erroneous data rows appear. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, medium, functional |
+
+### IWC-TC-016 — Search by exact ignore word phrase
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Search & Filter |
 | Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Multiple active records exist |
-| Test Data | Search Term: trading |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: trading >> Step 7: Compare actual result with expected result: Only rows containing trading in phrase displayed. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Real-time case-insensitive partial match on Ignore Word/Phrase.. |
-| Expected Result | Only rows containing trading in phrase displayed. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Active ignore word 'private limited' exists. |
+| Test Data | Search term: private limited Tab: Active |
+| Steps | 1. On the Active tab, enter 'private limited' in the search field. 2. Review the filtered table results. |
+| Acceptance Criteria | Search returns rows with exact phrase match |
+| Expected Result | Only rows matching the full phrase 'private limited' (or containing it per search rules) are displayed. Non-matching active words are hidden. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | search-filter, high, functional |
 
-### IWC-TC-030 — Verify real-time search by category
+### IWC-TC-017 — Search by partial text value
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Search & Filter |
+| Priority | Medium |
+| Preconditions | Active ignore word 'international' exists. |
+| Test Data | Search term: nation Expected match: international |
+| Steps | 1. Enter partial text 'nation' in the search field. 2. Review matching rows. |
+| Acceptance Criteria | Search supports partial token matching |
+| Expected Result | Rows whose phrase or category contains 'nation' are returned, including 'international'. Search applies client-side without a full page reload. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | search-filter, medium, functional |
+
+### IWC-TC-018 — Search is case-insensitive
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Search & Filter |
 | Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Multiple categories on Active tab |
-| Test Data | Search Term: Common Noise Words |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: Common Noise Words >> Step 7: Compare actual result with expected result: Only Common Noise Words category rows displayed. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Search matches Category field case-insensitively.. |
-| Expected Result | Only Common Noise Words category rows displayed. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Active ignore word 'LLC' exists. |
+| Test Data | Stored word: LLC Search input: llc |
+| Steps | 1. Search using lowercase 'llc'. 2. Compare results with the stored value 'LLC'. |
+| Acceptance Criteria | Uppercase and lowercase keywords produce same result set |
+| Expected Result | Case-insensitive search returns the 'LLC' record. No duplicate or missed match due to casing. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | search-filter, high, functional |
 
-### IWC-TC-031 — Verify search excludes Risk Level
+### IWC-TC-019 — Search by category label
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Search & Filter |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Records with Low, Medium, High risk exist |
-| Test Data | Search Term: High |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: High >> Step 7: Compare actual result with expected result: Rows not returned based solely on Risk Level value. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Search should not match Risk Level field.. |
-| Expected Result | Rows not returned based solely on Risk Level value. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Words exist under Entity Suffixes and Personal Titles categories. |
+| Test Data | Search term: Entity Suffixes |
+| Steps | 1. Search for 'Entity Suffixes'. 2. Review rows returned. |
+| Acceptance Criteria | Rows can be filtered through category text in search |
+| Expected Result | All visible rows belong to the Entity Suffixes category. Category badge matches the search term. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | search-filter, medium, functional |
 
-### IWC-TC-032 — Verify search excludes Match Type
+### IWC-TC-020 — Clear search and restore full list
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Search & Filter |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Exact phrase and Partial match records exist |
-| Test Data | Search Term: Exact phrase |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: Exact phrase >> Step 7: Compare actual result with expected result: Search does not filter by Match Type column. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Search should not match Match Type field.. |
-| Expected Result | Search does not filter by Match Type column. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Maker applied a search filter that reduced the visible row count. |
+| Test Data | Initial search: trading |
+| Steps | 1. Clear the search field completely. 2. Compare the row count before search, after search, and after clear. |
+| Acceptance Criteria | Removing filter restores full tab dataset |
+| Expected Result | Full tab dataset is restored after clearing search. Row count returns to the pre-search total. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | search-filter, medium, functional |
 
-### IWC-TC-033 — Verify search excludes Created Date
+### IWC-TC-021 — Search with special characters is handled safely
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Search & Filter |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Records with various dates exist |
-| Test Data | Search Term: Jan 2026 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: Jan 2026 >> Step 7: Compare actual result with expected result: Search does not filter by Created Date. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Search should not match Created Date field.. |
-| Expected Result | Search does not filter by Created Date. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Maker is on Active tab. |
+| Test Data | Search input: O'Brien & Co. |
+| Steps | 1. Enter special characters in search: O'Brien & Co. 2. Observe results and page behaviour. |
+| Acceptance Criteria | Search engine does not crash on symbols |
+| Expected Result | Search handles special characters safely. No script execution, page error, or broken layout occurs. Results reflect literal text matching or a controlled no-match state. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | search-filter, medium, functional |
 
-### IWC-TC-034 — Verify search excludes Status
+### IWC-TC-022 — Search state remains when switching tabs
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Search & Filter |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; User on Active tab |
-| Test Data | Search Term: Active |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: Active >> Step 7: Compare actual result with expected result: Search does not filter by Status badge text. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Search should not match Status field.. |
-| Expected Result | Search does not filter by Status badge text. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Search term 'ltd' returns results on Active tab. |
+| Test Data | Search term: ltd |
+| Steps | 1. Apply search 'ltd' on Active tab. 2. Switch to Inactive tab without clearing search. 3. Observe whether the search term persists and how results change. |
+| Acceptance Criteria | Search keyword is applied consistently on switched tab |
+| Expected Result | Search term remains in the field after tab switch. Results re-filter against the newly selected tab dataset. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | search-filter, medium, functional |
 
-### IWC-TC-035 — Verify search empty state message
+### IWC-TC-023 — Verify all table columns are displayed
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Search & Filter |
+| Feature | Data Table & Sorting |
 | Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Tab with records exists |
-| Test Data | Search Term: xyznonexistent123 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: xyznonexistent123 >> Step 7: Compare actual result with expected result: Single row with empty state message displayed. Empty-state message displayed when tab has zero records |
-| Acceptance Criteria | No results shows No ignore words found for this filter.. |
-| Expected Result | Single row with empty state message displayed. Empty-state message displayed when tab has zero records. |
+| Preconditions | At least one ignore word exists on Active tab. |
+| Test Data | Expected columns: Ignore Word/Phrase, Category, Risk Level, Match Type, Created Date, Status, Actions |
+| Steps | 1. On Active tab, verify table column headers. |
+| Acceptance Criteria | Expected table headers are visible in order |
+| Expected Result | All seven columns are displayed with correct labels. Status and Actions align with the selected tab context. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | search-filter, high, functional |
+| Tags | data-table-sorting, high, functional |
 
-### IWC-TC-036 — Verify search focus state styling
+### IWC-TC-024 — Sort Ignore Word/Phrase column ascending
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Search & Filter |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; User on Ignore Words Configuration page |
-| Test Data | Search Term: trading; Tab: Active |
-| Steps | Step 1: Enter search/filter term from test data in toolbar >> Step 2: Apply filter and review table results >> Step 3: Clear filter and confirm full list restores >> Step 4: Apply test data — Search Term: trading; Tab: Active >> Step 5: Compare actual result with expected result: Search input shows blue border and focus ring. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Focus shows border #2A53A0 and ring rgba(42,83,160,0.1).. |
-| Expected Result | Search input shows blue border and focus ring. Search applies to current tab; clearing restores the full dataset. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-filter, low, accessibility |
-
-### IWC-TC-037 — Verify clearing search restores full dataset
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Search & Filter |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Search filter applied |
-| Test Data | Search Term: trading (cleared) |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search Term: trading (cleared) >> Step 7: Compare actual result with expected result: Full tab dataset restored after clearing search. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Clearing search restores complete current tab data.. |
-| Expected Result | Full tab dataset restored after clearing search. Search applies to current tab; clearing restores the full dataset. |
+| Preconditions | Multiple active ignore words exist. |
+| Test Data | Column: Ignore Word/Phrase Sort: Ascending |
+| Steps | 1. Click the Ignore Word/Phrase column sort control once for ascending order. 2. Verify the first and last visible values are in A–Z order. |
+| Acceptance Criteria | Ascending sort orders rows alphabetically |
+| Expected Result | Rows reorder alphabetically by ignore word/phrase ascending. Sort indicator reflects ascending state. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | search-filter, medium, functional |
+| Tags | data-table-sorting, medium, functional |
 
-### IWC-TC-038 — Verify search scoped to current tab only
+### IWC-TC-025 — Sort Ignore Word/Phrase column descending
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Search & Filter |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; on main list view with multiple ignore word records on current tab; Words exist on different tabs |
-| Test Data | Active-only Word: trading company |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Active-only Word: trading company >> Step 7: Compare actual result with expected result: Active-only word not returned on Inactive tab search. Search applies to current tab; clearing restores the full dataset |
-| Acceptance Criteria | Search filters only records on selected tab.. |
-| Expected Result | Active-only word not returned on Inactive tab search. Search applies to current tab; clearing restores the full dataset. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | search-filter, high, functional |
-
-### IWC-TC-039 — Verify all table column headers
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; Data exists on Active tab |
-| Test Data | Columns: Word, Category, Risk, Match Type, Date, Status, Actions |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: all table column headers >> Step 5: Apply test data — Columns: Word, Category, Risk, Match Type, Date, Status, Actions >> Step 6: Compare actual result with expected result: All seven columns visible with #2A53A0 header styling. Headers include Word/Phrase, Category, Risk Level, Match Type, Date, Status |
-| Acceptance Criteria | Seven columns displayed with correct headers |
-| Expected Result | All seven columns visible with #2A53A0 header styling. Headers include Word/Phrase, Category, Risk Level, Match Type, Date, Status. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | table-sorting, high, functional |
-
-### IWC-TC-040 — Verify sticky table header on scroll
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; Enough rows to scroll |
-| Test Data | Records: 10+ |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: sticky table header on scroll >> Step 5: Apply test data — Records: 10+ >> Step 6: Compare actual result with expected result: Headers remain sticky during scroll. Table displays correct columns, sort order, and pagination |
-| Acceptance Criteria | Sticky thead with #F0F0F0 background during scroll |
-| Expected Result | Headers remain sticky during scroll. Table displays correct columns, sort order, and pagination. |
+| Preconditions | Active tab has multiple records. |
+| Test Data | Column: Ignore Word/Phrase Sort: Descending |
+| Steps | 1. Sort Ignore Word/Phrase descending. 2. Confirm order is reversed from ascending. |
+| Acceptance Criteria | Descending sort reverses alphabetical order |
+| Expected Result | Rows display in Z–A order. Toggling sort direction reorders without data loss. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | table-sorting, medium, functional |
+| Tags | data-table-sorting, medium, functional |
 
-### IWC-TC-041 — Verify table row height and hover
+### IWC-TC-026 — Sort Category column ascending
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; User on Active tab |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: table row height and hover >> Step 5: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 6: Compare actual result with expected result: Rows 46px height with hover highlight. Table displays correct columns, sort order, and pagination |
-| Acceptance Criteria | Rows 46px with #F9FAFB hover |
-| Expected Result | Rows 46px height with hover highlight. Table displays correct columns, sort order, and pagination. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | table-sorting, low, functional |
-
-### IWC-TC-042 — Verify ascending sort on Ignore Word/Phrase
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; Multiple records on Active tab |
-| Test Data | Sort: Ascending |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: ascending sort on Ignore Word/Phrase >> Step 5: Apply test data — Sort: Ascending >> Step 6: Compare actual result with expected result: Rows sorted alphabetically ascending. Table displays correct columns, sort order, and pagination |
-| Acceptance Criteria | Sort button sorts ascending alphabetically |
-| Expected Result | Rows sorted alphabetically ascending. Table displays correct columns, sort order, and pagination. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | table-sorting, high, functional |
-
-### IWC-TC-043 — Verify sort cycle ascending descending default
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; Multiple records exist |
+| Preconditions | Words exist in multiple categories. |
 | Test Data | Column: Category |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: sort cycle ascending descending default >> Step 5: Apply test data — Column: Category >> Step 6: Compare actual result with expected result: Sort cycles through all three states. Table displays correct columns, sort order, and pagination |
-| Acceptance Criteria | Sort cycles ascending → descending → default |
-| Expected Result | Sort cycles through all three states. Table displays correct columns, sort order, and pagination. |
+| Steps | 1. Sort by Category ascending. 2. Verify grouped alphabetical order by category name. |
+| Acceptance Criteria | Category sort works on text values |
+| Expected Result | Rows sort by category name A–Z. Category badge text matches sort order. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | table-sorting, medium, functional |
+| Tags | data-table-sorting, medium, functional |
 
-### IWC-TC-044 — Verify sort icons on sortable columns
+### IWC-TC-027 — Sort Risk Level column by configured ranking
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; User on page with data |
-| Test Data | Column: Ignore Word/Phrase; Sort: ascending then descending |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: sort icons on sortable columns >> Step 5: Apply test data — Column: Ignore Word/Phrase; Sort: ascending then descending >> Step 6: Compare actual result with expected result: Sort icons visible on six sortable columns. Table displays correct columns, sort order, and pagination |
-| Acceptance Criteria | Up-down arrow on all sortable columns |
-| Expected Result | Sort icons visible on six sortable columns. Table displays correct columns, sort order, and pagination. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | table-sorting, low, functional |
-
-### IWC-TC-045 — Verify Actions column not sortable
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; User on page |
-| Test Data | Column: Actions |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: Actions column not sortable >> Step 5: Apply test data — Column: Actions >> Step 6: Compare actual result with expected result: Actions column has no sort button. Table displays correct columns, sort order, and pagination |
-| Acceptance Criteria | Actions column has no sort |
-| Expected Result | Actions column has no sort button. Table displays correct columns, sort order, and pagination. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | table-sorting, low, functional |
-
-### IWC-TC-046 — Verify Created Date DD Mon YYYY format
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Table & Sorting |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active tab selected with sufficient rows for sort testing; Records with dates exist |
-| Test Data | Example: 01 Jan 2026 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure ignore word records are displayed in the data table >> Step 4: Perform sorting or pagination action: Created Date DD Mon YYYY format >> Step 5: Apply test data — Example: 01 Jan 2026 >> Step 6: Compare actual result with expected result: Dates in correct format. Table displays correct columns, sort order, and pagination |
-| Acceptance Criteria | Dates display as DD Mon YYYY in #374151 |
-| Expected Result | Dates in correct format. Table displays correct columns, sort order, and pagination. |
+| Preconditions | Active words exist with Low, Medium, and High risk levels. |
+| Test Data | Risk levels present: Low, Medium, High |
+| Steps | 1. Sort by Risk Level. 2. Verify ordering follows business ranking High > Medium > Low (or configured order). |
+| Acceptance Criteria | Risk sorting follows Low-Medium-High logic |
+| Expected Result | Risk Level sort uses configured severity ranking, not plain alphabetical order. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | table-sorting, medium, functional |
+| Tags | data-table-sorting, medium, functional |
 
-### IWC-TC-047 — Verify Entity Suffixes category badge colour styling
+### IWC-TC-028 — Sort Match Type column
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Category Badges |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with Entity Suffixes category exists |
-| Test Data | Category: Entity Suffixes |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Entity Suffixes category badge colour styling >> Step 5: Apply test data — Category: Entity Suffixes >> Step 6: Compare actual result with expected result: Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category |
-| Acceptance Criteria | Entity Suffixes badge should use background #FFF7ED, text #C2410C, border #FED7AA |
-| Expected Result | Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category. |
+| Preconditions | Both Exact phrase and Partial match records exist. |
+| Test Data | Match types: Exact phrase, Partial match |
+| Steps | 1. Sort by Match Type. 2. Review row ordering. |
+| Acceptance Criteria | Rows sort correctly by Exact phrase and Partial match |
+| Expected Result | Rows group consistently by match type. Badge values remain accurate after sort. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | category-badges, medium, functional |
+| Tags | data-table-sorting, medium, functional |
 
-### IWC-TC-048 — Verify Common Noise Words category badge colour styling
+### IWC-TC-029 — Sort Created Date newest to oldest
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Category Badges |
+| Feature | Data Table & Sorting |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with Common Noise Words category exists |
+| Preconditions | Multiple records with different created dates exist. |
+| Test Data | Column: Created Date |
+| Steps | 1. Sort Created Date from newest to oldest. 2. Compare top row date with the most recently created record. |
+| Acceptance Criteria | Date sort supports chronology |
+| Expected Result | Newest created date appears first. Date format remains consistent (e.g., DD Mon YYYY). |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | data-table-sorting, medium, functional |
+
+### IWC-TC-030 — Validate status badges by selected tab
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Data Table & Sorting |
+| Priority | Medium |
+| Preconditions | Records exist on Active, Inactive, and Drafted tabs. |
+| Test Data | Tabs: Active, Inactive, Drafted |
+| Steps | 1. On Active tab, confirm all rows show Active status badge. 2. Switch to Inactive and confirm Inactive badges. 3. Switch to Drafted and confirm Drafted badges. |
+| Acceptance Criteria | Status labels are consistent with selected tab context |
+| Expected Result | Status badge on every row matches the selected tab. No cross-status records leak into a tab. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | data-table-sorting, medium, functional |
+
+### IWC-TC-031 — Retain column sort after switching status tabs
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Data Table & Sorting |
+| Priority | Medium |
+| Preconditions | Multiple ignore words exist on Active and Inactive tabs. |
+| Test Data | Initial tab: Active Sort: Category ascending |
+| Steps | 1. On Active tab, sort Category ascending. 2. Switch to Inactive tab. 3. Switch back to Active tab. 4. Verify sort indicator and row order on Active tab. |
+| Acceptance Criteria | Sort preference persists across tab navigation within the listing |
+| Expected Result | Category ascending sort remains applied when returning to Active tab. Row order is unchanged from before the tab switch. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | data-table-sorting, medium, functional |
+
+### IWC-TC-032 — Verify row action column availability per tab
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Data Table & Sorting |
+| Priority | Medium |
+| Preconditions | At least one record exists on each tab. |
+| Test Data | Tabs: Active, Inactive, Drafted |
+| Steps | 1. On Active tab, confirm Disable action is shown and Submit is absent. 2. On Inactive tab, confirm Enable action is shown. 3. On Drafted tab, confirm Submit action is shown and Disable/Enable are absent. |
+| Acceptance Criteria | Actions column provides context-specific controls |
+| Expected Result | Row actions are tab-appropriate. No hard-delete action appears on any tab. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | data-table-sorting, medium, functional |
+
+### IWC-TC-033 — Open Add Category modal from toolbar
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | High |
+| Preconditions | Maker is on Ignore Words Configuration listing. |
+| Test Data | Action: Add Category |
+| Steps | 1. Click Add Category in the toolbar. 2. Review modal title, mandatory field markers, and footer buttons. |
+| Acceptance Criteria | Modal opens with required fields and action buttons |
+| Expected Result | Add Category modal opens over a dimmed backdrop. Category Name is marked mandatory; Description is optional. Cancel and Add Category buttons are visible. Add Category button is disabled until a valid name is entered. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, functional |
+
+### IWC-TC-034 — Create new category with valid mandatory values
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | High |
+| Preconditions | Category name 'Regulatory Review Terms' does not already exist. |
+| Test Data | Category Name: Regulatory Review Terms Description: Terms temporarily excluded during regulatory review cycles. |
+| Steps | 1. Click Add Category. 2. Enter Category Name: Regulatory Review Terms. 3. Enter Description: Terms temporarily excluded during regulatory review cycles. 4. Click Add Category. 5. Review the checker confirmation modal and dismiss it. |
+| Acceptance Criteria | Category submission enters maker-checker queue |
+| Expected Result | Modal closes after successful validation. Checker approval confirmation displays with submitter and timestamp. Category is not available in Add Ignore Word dropdown until checker approval completes. Audit entry is created for the submission. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, rbac, security |
+
+### IWC-TC-035 — Validate Category Name required field
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Add Category modal is open. |
+| Test Data | Category Name: (blank) |
+| Steps | 1. Leave Category Name empty. 2. Click Add Category. |
+| Acceptance Criteria | Submit is blocked when Category Name is blank |
+| Expected Result | Inline validation prevents submission. Modal remains open. No checker request is created. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, functional |
+
+### IWC-TC-036 — Validate Category Name maximum length 100
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Add Category modal is open. |
+| Test Data | Category Name length: 101 characters (exceeds maximum 100) |
+| Steps | 1. Paste a 101-character value into Category Name. 2. Enter a valid description. 3. Click Add Category. |
+| Acceptance Criteria | System rejects values beyond 100 characters |
+| Expected Result | Category Name length validation appears. Submission is blocked and modal remains open. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, maker-checker |
+
+### IWC-TC-037 — Allow Category Name exactly 100 characters
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Maker opened Add Category modal. |
+| Test Data | Category Name length: 100 |
+| Steps | 1. Enter Category Name with exactly 100 characters. 2. Enter description with 120 characters. 3. Click Submit. |
+| Acceptance Criteria | Boundary length value is accepted |
+| Expected Result | Submission is accepted and routed for checker approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, functional |
+
+### IWC-TC-038 — Validate Description maximum length 500
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Maker opened Add Category modal. |
+| Test Data | Description length: 501 |
+| Steps | 1. Enter valid category name 'Payments Terms'. 2. Paste description with 501 characters. 3. Attempt Submit. |
+| Acceptance Criteria | Description longer than 500 characters is rejected |
+| Expected Result | Length validation is displayed for Description and submit does not proceed. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, error-handling |
+
+### IWC-TC-039 — Allow blank optional Description field
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Maker opened Add Category modal. |
+| Test Data | Category Name: Geo Exceptions; Description: empty |
+| Steps | 1. Enter Category Name as 'Geo Exceptions'. 2. Leave Description empty. 3. Click Submit. |
+| Acceptance Criteria | Category can be submitted without Description |
+| Expected Result | Add Category modal closes. A success notification confirms the category request was sent for checker approval. The new category name does not appear in the Category dropdown until checker approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, functional |
+
+### IWC-TC-040 — Prevent duplicate category name exact match
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | High |
+| Preconditions | Category 'Entity Suffixes' already exists and is active. |
+| Test Data | Existing category: Entity Suffixes New entry: Entity Suffixes |
+| Steps | 1. Open Add Category modal. 2. Enter Category Name: Entity Suffixes. 3. Tab out of the field or attempt submission. |
+| Acceptance Criteria | System blocks duplicate category creation |
+| Expected Result | Duplicate category is blocked with inline validation on focus-out or submit. No pending checker request is created for a duplicate name. Uniqueness is enforced across all active categories. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, functional |
+
+### IWC-TC-041 — Prevent duplicate category name with case variation
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | High |
+| Preconditions | Category 'Business Descriptors' exists. |
+| Test Data | Existing: Business Descriptors New input: business descriptors |
+| Steps | 1. Open Add Category modal. 2. Enter Category Name: business descriptors (all lowercase). 3. Attempt to submit. |
+| Acceptance Criteria | Uniqueness check is case-insensitive |
+| Expected Result | Case-insensitive duplicate check blocks submission. Inline error identifies the naming conflict. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, functional |
+
+### IWC-TC-042 — Trim leading and trailing spaces in category name
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Add Category modal is open. |
+| Test Data | Input: '  Trade Finance Terms  ' Stored expected: Trade Finance Terms |
+| Steps | 1. Enter Category Name with leading/trailing spaces: '  Trade Finance Terms  '. 2. Submit the form. |
+| Acceptance Criteria | Whitespace is normalized before duplicate check |
+| Expected Result | System trims surrounding spaces before duplicate check and save. Stored category name excludes leading/trailing whitespace. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, functional |
+
+### IWC-TC-043 — Cancel Add Category modal without saving
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Add Category modal is open with unsaved entries. |
+| Test Data | Category Name: Temporary Category |
+| Steps | 1. Enter any values in Category Name and Description. 2. Click Cancel. 3. Reopen Add Category modal. |
+| Acceptance Criteria | Cancel closes modal and does not create draft |
+| Expected Result | Modal closes without creating a checker request. Previously entered values are not retained on reopen. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, functional |
+
+### IWC-TC-044 — Verify maker-checker confirmation details after submit
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Maker submits a new valid category. |
+| Test Data | Category: Payment Reference Noise |
+| Steps | 1. Submit a new category with valid name and description. 2. Read the checker confirmation modal fields. 3. Click OK to dismiss. |
+| Acceptance Criteria | Approval modal shows action metadata before final submission |
+| Expected Result | Confirmation modal shows submitted-by user, timestamp, and Pending Checker status. Message states the category awaits checker review. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, rbac, security |
+
+### IWC-TC-045 — Open Category Controls panel from toolbar
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Category Controls |
+| Priority | Medium |
+| Preconditions | Multiple categories exist with ignore word counts. |
+| Test Data | Sample categories: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
+| Steps | 1. Click Category Controls in the toolbar. 2. Review each category row for name, word count, and enable toggle. |
+| Acceptance Criteria | Category Controls opens with toggle list and word counts |
+| Expected Result | Category Controls modal lists all categories with accurate ignore word counts and current enable/disable toggle state. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, medium, functional |
+
+### IWC-TC-046 — Disable an active category using toggle
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Category Controls |
+| Priority | High |
+| Preconditions | Category 'Business Descriptors' is currently enabled. |
+| Test Data | Category: Business Descriptors Action: Disable category |
+| Steps | 1. Open Category Controls. 2. Turn off the toggle for Business Descriptors. 3. Click Save. 4. Complete checker approval as Checker. |
+| Acceptance Criteria | Category disable action initiates approval workflow |
+| Expected Result | Disable request is sent for checker approval. After approval, category toggle shows disabled and ignore words in that category are not applied during screening until re-enabled. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, functional |
+
+### IWC-TC-047 — Enable an inactive category using toggle
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Category Controls |
+| Priority | High |
+| Preconditions | Category 'Common Noise Words' is disabled. |
+| Test Data | Category: Common Noise Words Action: Enable category |
+| Steps | 1. Open Category Controls. 2. Enable Common Noise Words toggle. 3. Click Save and complete checker approval. |
+| Acceptance Criteria | Enable action is captured with maker-checker |
+| Expected Result | Enable request enters checker workflow. After approval, category is enabled and its ignore words participate in screening again. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### IWC-TC-048 — Validate category word count updates after enabling
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Category Controls |
+| Priority | Medium |
+| Preconditions | Category was recently re-enabled after being disabled. |
 | Test Data | Category: Common Noise Words |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Common Noise Words category badge colour styling >> Step 5: Apply test data — Category: Common Noise Words >> Step 6: Compare actual result with expected result: Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category |
-| Acceptance Criteria | Common Noise Words badge should use background #FEF2F2, text #B91C1C, border #FECACA |
-| Expected Result | Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category. |
+| Steps | 1. Open Category Controls after checker approval of enable action. 2. Compare word count for the re-enabled category against Active tab filtered by that category. |
+| Acceptance Criteria | Displayed count reflects linked words for category |
+| Expected Result | Word count in Category Controls matches the number of active ignore words assigned to that category. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | category-badges, medium, functional |
+| Tags | category-management-category-controls, medium, functional |
 
-### IWC-TC-049 — Verify Personal Titles (Politically Exposed Persons) category badge colour styling
+### IWC-TC-049 — Verify each category row shows name and ignore word count
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Category Badges |
+| Feature | Category Management – Category Controls |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with Personal Titles (Politically Exposed Persons) category exists |
-| Test Data | Category: Personal Titles (Politically Exposed Persons) |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Personal Titles (Politically Exposed Persons) category badge colour styling >> Step 5: Apply test data — Category: Personal Titles (Politically Exposed Persons) >> Step 6: Compare actual result with expected result: Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category |
-| Acceptance Criteria | Personal Titles (Politically Exposed Persons) badge should use background #F0FDF4, text #166534, border #BBF7D0 |
-| Expected Result | Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category. |
+| Preconditions | At least four categories are configured with varying word counts. |
+| Test Data | Categories: Entity Suffixes (10), Personal Titles (7), Business Descriptors (7), Common Noise Words (4) |
+| Steps | 1. Open Category Controls. 2. For each listed category, read the category name and displayed ignore word count. 3. Cross-check one category count against the Active tab filtered by that category. |
+| Acceptance Criteria | Category Controls displays accurate per-category inventory counts |
+| Expected Result | Every category row shows the correct name and live ignore word count. Counts reconcile with listing data. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | category-badges, medium, functional |
+| Tags | category-management-category-controls, medium, functional |
 
-### IWC-TC-050 — Verify Business Descriptors category badge colour styling
+### IWC-TC-050 — Prevent toggle interaction for Viewer role
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Category Badges |
+| Feature | Category Management – Category Controls |
+| Priority | High |
+| Preconditions | Viewer account is logged in. |
+| Test Data | User role: Viewer |
+| Steps | 1. Open Ignore Words Configuration as Viewer. 2. Open Category Controls if visible. 3. Attempt to change any category toggle. |
+| Acceptance Criteria | Viewer sees read-only controls |
+| Expected Result | Viewer cannot modify category toggles. Controls are hidden or read-only. No save action is available. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, high, rbac, security |
+
+### IWC-TC-051 — Reject invalid rapid double-toggle submission
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Category Controls |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with Business Descriptors category exists |
-| Test Data | Category: Business Descriptors |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Business Descriptors category badge colour styling >> Step 5: Apply test data — Category: Business Descriptors >> Step 6: Compare actual result with expected result: Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category |
-| Acceptance Criteria | Business Descriptors badge should use background #EFF6FF, text #1D4ED8, border #BFDBFE |
-| Expected Result | Category badge displays correct colour-coded pill styling. Badge color and label match the assigned category. |
+| Preconditions | Maker opens Category Controls for enabled category. |
+| Test Data | Category: Geography Terms; Rapid toggle sequence OFF->ON |
+| Steps | 1. Toggle category OFF then immediately ON before confirmation. 2. Submit one action. 3. Review pending requests list. |
+| Acceptance Criteria | System prevents duplicate pending requests |
+| Expected Result | Only one valid pending request is recorded. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | category-badges, medium, functional |
+| Tags | category-management-category-controls, medium, api |
 
-### IWC-TC-051 — Verify Low risk level pill badge rendering
+### IWC-TC-052 — Close Category Controls without persisting changes
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Risk Level Badges |
+| Feature | Category Management – Category Controls |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with Low risk exists |
-| Test Data | Risk Level: Low |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Low risk level pill badge rendering >> Step 5: Apply test data — Risk Level: Low >> Step 6: Compare actual result with expected result: Low risk pill badge displays with correct styling. Badge reflects correct Low/Medium/High risk styling |
-| Acceptance Criteria | Low risk should display as rounded pill with correct colour coding |
-| Expected Result | Low risk pill badge displays with correct styling. Badge reflects correct Low/Medium/High risk styling. |
+| Preconditions | Category Controls modal is open. |
+| Test Data | Action: Cancel without Save |
+| Steps | 1. Change one or more toggles. 2. Click Cancel. 3. Reopen Category Controls. |
+| Acceptance Criteria | Unsubmitted toggle changes are discarded on cancel |
+| Expected Result | Unsaved toggle changes are discarded. Category enablement state matches pre-cancel configuration. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | risk-level-badges, medium, functional |
+| Tags | category-management-category-controls, medium, functional |
 
-### IWC-TC-052 — Verify Medium risk level pill badge rendering
+### IWC-TC-053 — Verify category controls action audit entry after checker approval
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Risk Level Badges |
+| Feature | Category Management – Category Controls |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with Medium risk exists |
-| Test Data | Risk Level: Medium |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Medium risk level pill badge rendering >> Step 5: Apply test data — Risk Level: Medium >> Step 6: Compare actual result with expected result: Medium risk pill badge displays with correct styling. Badge reflects correct Low/Medium/High risk styling |
-| Acceptance Criteria | Medium risk should display as rounded pill with correct colour coding |
-| Expected Result | Medium risk pill badge displays with correct styling. Badge reflects correct Low/Medium/High risk styling. |
+| Preconditions | Disable request for a category has been approved by Checker. |
+| Test Data | Category: Geography Terms; Action: Disable approved |
+| Steps | 1. Log in as Checker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open Word History panel for a word in affected category. 4. Inspect activity timeline. 5. Locate category status change event. |
+| Acceptance Criteria | Approved category status changes appear in history |
+| Expected Result | Audit timeline includes category control action with actor and timestamp. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | risk-level-badges, medium, functional |
+| Tags | category-management-category-controls, medium, rbac, security |
 
-### IWC-TC-053 — Verify High risk level pill badge rendering
+### IWC-TC-054 — Open Add Ignore Word panel
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Risk Level Badges |
+| Feature | Add Ignore Word |
+| Priority | High |
+| Preconditions | Maker is on Ignore Words Configuration listing. |
+| Test Data | Action: Add Ignore Word |
+| Steps | 1. Click Add Ignore Word. 2. Review panel title, mandatory fields, Live Narrative Tester, Preview section, and footer actions. |
+| Acceptance Criteria | Panel opens with all required fields |
+| Expected Result | Right-side panel opens with title 'Add New Ignore Word'. Mandatory fields: Ignore Word/Phrase, Category, Risk Level, Match Type. Footer shows Cancel, Save Draft, and Submit. No permanent delete option is present. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-ignore-word, high, functional |
+
+### IWC-TC-055 — Submit ignore word with Exact phrase and Low risk
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Add Ignore Word |
+| Priority | High |
+| Preconditions | Category 'Entity Suffixes' is active. Word 'GmbH' does not exist. |
+| Test Data | Word: GmbH Category: Entity Suffixes Risk: Low Match Type: Exact phrase |
+| Steps | 1. Open Add Ignore Word. 2. Enter Ignore Word/Phrase: GmbH. 3. Select Category: Entity Suffixes, Risk Level: Low, Match Type: Exact phrase. 4. Click Submit and dismiss the checker confirmation. |
+| Acceptance Criteria | Valid mandatory inputs are accepted |
+| Expected Result | Submission creates a pending checker request. Entry is not active in screening until checker approval. Confirmation shows Pending Checker status with submitter details. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-ignore-word, high, functional |
+
+### IWC-TC-056 — Submit ignore word with Partial match and High risk
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with High risk exists |
-| Test Data | Risk Level: High |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: High risk level pill badge rendering >> Step 5: Apply test data — Risk Level: High >> Step 6: Compare actual result with expected result: High risk pill badge displays with correct styling. Badge reflects correct Low/Medium/High risk styling |
-| Acceptance Criteria | High risk should display as rounded pill with correct colour coding |
-| Expected Result | High risk pill badge displays with correct styling. Badge reflects correct Low/Medium/High risk styling. |
+| Preconditions | Category 'Business Descriptors' is active. |
+| Test Data | Word: bank Category: Business Descriptors Risk: High Match Type: Partial match |
+| Steps | 1. Open Add Ignore Word. 2. Enter Word: bank. 3. Set Category: Business Descriptors, Risk: High, Match Type: Partial match. 4. Click Submit. |
+| Acceptance Criteria | System accepts alternate risk and match combinations |
+| Expected Result | High-risk partial-match entry is submitted for checker approval. Risk and match type persist on the pending record. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | risk-level-badges, medium, functional |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-054 — Verify Exact phrase match type badge
+### IWC-TC-057 — Validate Word/Phrase is required
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Match Type Badges |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Exact phrase record exists |
-| Test Data | Match Type: Exact phrase |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Exact phrase match type badge >> Step 5: Apply test data — Match Type: Exact phrase >> Step 6: Compare actual result with expected result: Exact phrase badge displays with green border styling. Badge shows Exact phrase or Partial match correctly |
-| Acceptance Criteria | Exact phrase badge should have green border styling |
-| Expected Result | Exact phrase badge displays with green border styling. Badge shows Exact phrase or Partial match correctly. |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Ignore Word/Phrase: (blank) |
+| Steps | 1. Leave Ignore Word/Phrase empty. 2. Select valid Category, Risk Level, and Match Type. 3. Click Submit. |
+| Acceptance Criteria | Submit blocked when Word/Phrase is blank |
+| Expected Result | Mandatory field validation appears for Ignore Word/Phrase. No checker request is created. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | match-type-badges, medium, functional |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-055 — Verify Partial match match type badge
+### IWC-TC-058 — Validate Category is required
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Match Type Badges |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Partial match record exists |
-| Test Data | Match Type: Partial match |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Partial match match type badge >> Step 5: Apply test data — Match Type: Partial match >> Step 6: Compare actual result with expected result: Partial match badge displays with grey border styling. Badge shows Exact phrase or Partial match correctly |
-| Acceptance Criteria | Partial match badge should have grey border styling |
-| Expected Result | Partial match badge displays with grey border styling. Badge shows Exact phrase or Partial match correctly. |
+| Preconditions | Maker opened Add Ignore Word panel. |
+| Test Data | Category: not selected |
+| Steps | 1. Enter Word/Phrase 'cash structuring'. 2. Do not select Category; fill other fields. 3. Click Submit. |
+| Acceptance Criteria | Submit blocked if Category not selected |
+| Expected Result | Category required validation appears and no request is created. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | match-type-badges, medium, functional |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-056 — Verify Active status badge styling
+### IWC-TC-059 — Validate Risk Level is required
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Status Badges |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with active status exists |
-| Test Data | Status: Active |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Active status badge styling >> Step 5: Apply test data — Status: Active >> Step 6: Compare actual result with expected result: Active status badge displays correct pill styling centred in column. Badge shows correct Active/Inactive/Drafted status |
-| Acceptance Criteria | Active status badge background #DCFCE7 text #166534 |
-| Expected Result | Active status badge displays correct pill styling centred in column. Badge shows correct Active/Inactive/Drafted status. |
+| Preconditions | Maker opened Add Ignore Word panel. |
+| Test Data | Risk Level: not selected |
+| Steps | 1. Enter Word/Phrase and select Category. 2. Leave Risk Level empty and select Match Type. 3. Click Submit. |
+| Acceptance Criteria | Submit blocked if Risk Level missing |
+| Expected Result | Risk Level required validation is displayed. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | status-badges, medium, functional |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-057 — Verify Inactive status badge styling
+### IWC-TC-060 — Validate Match Type is required
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Status Badges |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with inactive status exists |
-| Test Data | Status: Inactive |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Inactive status badge styling >> Step 5: Apply test data — Status: Inactive >> Step 6: Compare actual result with expected result: Inactive status badge displays correct pill styling centred in column. Badge shows correct Active/Inactive/Drafted status |
-| Acceptance Criteria | Inactive status badge background #F3F4F6 text #6B7280 |
-| Expected Result | Inactive status badge displays correct pill styling centred in column. Badge shows correct Active/Inactive/Drafted status. |
+| Preconditions | Maker opened Add Ignore Word panel. |
+| Test Data | Match Type: not selected |
+| Steps | 1. Enter Word/Phrase and select Category and Risk Level. 2. Leave Match Type unselected. 3. Click Submit. |
+| Acceptance Criteria | Submit blocked if Match Type is missing |
+| Expected Result | Match Type required validation appears and record is not submitted. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | status-badges, medium, functional |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-058 — Verify Drafted status badge styling
+### IWC-TC-061 — Validate Word/Phrase maximum length 500
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Status Badges |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record with drafted status exists |
-| Test Data | Status: Drafted |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate ignore word rows displaying badge elements in the table >> Step 4: Inspect badge label, color, and styling: Drafted status badge styling >> Step 5: Apply test data — Status: Drafted >> Step 6: Compare actual result with expected result: Drafted status badge displays correct pill styling centred in column. Badge shows correct Active/Inactive/Drafted status |
-| Acceptance Criteria | Drafted status badge background #FEF3C7 text #92400E |
-| Expected Result | Drafted status badge displays correct pill styling centred in column. Badge shows correct Active/Inactive/Drafted status. |
+| Preconditions | Maker opened Add Ignore Word panel. |
+| Test Data | Word/Phrase length: 501 |
+| Steps | 1. Paste 501-character text in Word/Phrase. 2. Fill other mandatory fields. 3. Attempt Submit. |
+| Acceptance Criteria | Input beyond 500 chars is rejected |
+| Expected Result | Length validation appears for Word/Phrase and submit is blocked. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | status-badges, medium, functional |
+| Tags | add-ignore-word, medium, error-handling |
 
-### IWC-TC-059 — Verify Disable (Off) button on active rows
+### IWC-TC-062 — Allow Word/Phrase length exactly 500
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active record exists; Admin user |
-| Test Data | Word: trading company |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: trading company >> Step 7: Compare actual result with expected result: Off button visible with red tint styling on active row. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Active rows show 32x32px red-tint Off button per FSD row actions column |
-| Expected Result | Off button visible with red tint styling on active row. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, functional |
-
-### IWC-TC-060 — Verify Enable (On) button on inactive rows
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Inactive record exists; Admin user |
-| Test Data | Word: offshore account |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: offshore account >> Step 7: Compare actual result with expected result: On button visible with green tint styling on inactive row. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Inactive rows show 32x32px green-tint On button. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | On button visible with green tint styling on inactive row. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, rbac, security |
-
-### IWC-TC-061 — Verify Submit action on drafted rows
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Drafted record exists; Admin user |
-| Test Data | Word: crypto exchange |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Fill Word/Phrase, Category, Risk Level, and Match Type >> Step 4: Click Submit for Checker approval (FSD Section 4.3 Step 8b) >> Step 5: Verify Checker Approval modal opens >> Step 6: Confirm record appears on Drafted tab and is not active until approved (FSD Section 7.1) >> Step 7: Apply test data — Word: crypto exchange >> Step 8: Compare actual result with expected result: Submit button displayed on drafted rows. Record on Drafted tab; Checker modal shown; not active until approved (FSD 7.1) |
-| Acceptance Criteria | Drafted rows show Submit action per FSD row actions column |
-| Expected Result | Submit button displayed on drafted rows. Record on Drafted tab; Checker modal shown; not active until approved (FSD 7.1). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, functional |
-
-### IWC-TC-062 — Verify disable action triggers Checker Approval popup
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user; active word exists |
-| Test Data | Word: trading company |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: trading company >> Step 7: Compare actual result with expected result: Checker Approval popup shown with disable message and Pending Checker status. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Disabling active word triggers Checker Approval popup per FSD row actions column |
-| Expected Result | Checker Approval popup shown with disable message and Pending Checker status. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, rbac, security |
-
-### IWC-TC-063 — Verify enable action triggers Checker Approval popup
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user; inactive word exists |
-| Test Data | Word: offshore account |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the target ignore word row using test data >> Step 4: Click the applicable row action button (On/Off/Submit/History) >> Step 5: Observe system response including any Checker Approval popup >> Step 6: Apply test data — Word: offshore account >> Step 7: Compare actual result with expected result: Checker Approval popup shown with enable message. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Enabling inactive word triggers Checker Approval popup. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Checker Approval popup shown with enable message. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, rbac, security |
-
-### IWC-TC-064 — Verify drafted Submit triggers Checker Approval popup
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user; drafted word exists |
-| Test Data | Word: wire transfer agency |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Fill Word/Phrase, Category, Risk Level, and Match Type >> Step 4: Click Submit for Checker approval (FSD Section 4.3 Step 8b) >> Step 5: Verify Checker Approval modal opens >> Step 6: Confirm record appears on Drafted tab and is not active until approved (FSD Section 7.1) >> Step 7: Apply test data — Word: wire transfer agency >> Step 8: Compare actual result with expected result: Checker Approval popup shown for drafted submission. Checker Approval popup shown where Maker-Checker applies (FSD BR-007) |
-| Acceptance Criteria | Submit on drafted row triggers Checker Approval popup |
-| Expected Result | Checker Approval popup shown for drafted submission. Checker Approval popup shown where Maker-Checker applies (FSD BR-007). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, rbac, security |
-
-### IWC-TC-065 — Verify absence of Delete action per FSD BR-006
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user on any tab |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the target ignore word row using test data >> Step 4: Click the applicable row action button (On/Off/Submit/History) >> Step 5: Observe system response including any Checker Approval popup >> Step 6: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 7: Compare actual result with expected result: No delete action visible; disable is only deactivation method. No delete option; disable is the only deactivation method (FSD BR-006) |
-| Acceptance Criteria | Delete action should not be available; records can only be disabled. Per FSD BR-006: no hard delete; disable only. |
-| Expected Result | No delete action visible; disable is only deactivation method. No delete option; disable is the only deactivation method (FSD BR-006). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, functional |
-
-### IWC-TC-066 — Verify row action updates tab counts immediately
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user; active word exists |
-| Test Data | Word: international trade |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the target ignore word row using test data >> Step 4: Click the applicable row action button (On/Off/Submit/History) >> Step 5: Observe system response including any Checker Approval popup >> Step 6: Apply test data — Word: international trade >> Step 7: Compare actual result with expected result: Tab counts update immediately after action. Checker Approval popup shown where Maker-Checker applies (FSD BR-007) |
-| Acceptance Criteria | Status change updates tab counts per FSD BR-007 |
-| Expected Result | Tab counts update immediately after action. Checker Approval popup shown where Maker-Checker applies (FSD BR-007). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, functional |
-
-### IWC-TC-067 — Verify Export button visibility in toolbar (FSD Section 5.1.4)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Export Functionality |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; records exist on target tab for export per FSD 5.1.4 |
-| Test Data | Tab: Active; Expected File: ignore_words_export.csv |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate Export button in toolbar on Active tab >> Step 4: Verify button label, icon, secondary styling, and chevron >> Step 5: Apply test data — Tab: Active; Expected File: ignore_words_export.csv >> Step 6: Compare actual result with expected result: Export button visible with secondary styling and icons. Button shows Export label, icon, and secondary styling in toolbar |
-| Acceptance Criteria | Export secondary button with export icon and chevron visible. Per FSD 5.1.4: export active ignore word list in structured CSV with all fields and metadata. |
-| Expected Result | Export button visible with secondary styling and icons. Button shows Export label, icon, and secondary styling in toolbar. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export-functionality, high, export |
-
-### IWC-TC-068 — Verify CSV export downloads ignore_words_export.csv (FSD Section 5.1.4)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Export Functionality |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; records exist on target tab for export per FSD 5.1.4; Records exist on Active tab |
-| Test Data | Filename: ignore_words_export.csv |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Ensure records exist on Active tab >> Step 4: Click Export (FSD Section 5.1.4) >> Step 5: Verify file name ignore_words_export.csv downloads >> Step 6: Open CSV and confirm metadata header and data rows >> Step 7: Apply test data — Filename: ignore_words_export.csv >> Step 8: Compare actual result with expected result: CSV file ignore_words_export.csv downloaded successfully. File ignore_words_export.csv downloads with metadata header and data rows |
-| Acceptance Criteria | Export downloads current tab as ignore_words_export.csv per FSD 5.1.4. Per FSD 5.1.4: export active ignore word list in structured CSV with all fields and metadata. |
-| Expected Result | CSV file ignore_words_export.csv downloaded successfully. File ignore_words_export.csv downloads with metadata header and data rows. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export-functionality, high, export |
-
-### IWC-TC-069 — Verify export scope limited to active tab per FSD 5.1.4
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Export Functionality |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; records exist on target tab for export per FSD 5.1.4; Records on Active and Inactive tabs |
-| Test Data | Tab: Inactive |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Switch to tab specified in test data and note visible records >> Step 4: Click Export (FSD Section 5.1.4) >> Step 5: Open CSV and verify only current-tab records are included >> Step 6: Apply test data — Tab: Inactive >> Step 7: Compare actual result with expected result: Exported CSV contains only inactive tab records. CSV contains only records from the currently selected tab |
-| Acceptance Criteria | Export includes only current tab records. Per FSD 5.1.4: export active ignore word list in structured CSV with all fields and metadata. |
-| Expected Result | Exported CSV contains only inactive tab records. CSV contains only records from the currently selected tab. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | export-functionality, high, export |
-
-### IWC-TC-071 — Verify export CSV column headers (FSD Section 5.1.4)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Export Functionality |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; records exist on target tab for export per FSD 5.1.4; Records exist to export |
-| Test Data | Format: CSV |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Export records from tab with data (FSD Section 5.1.4) >> Step 4: Open ignore_words_export.csv >> Step 5: Verify headers: Word/Phrase, Category, Risk Level, Match Type, Date, Status >> Step 6: Apply test data — Format: CSV >> Step 7: Compare actual result with expected result: CSV headers match specified columns. Headers include Word/Phrase, Category, Risk Level, Match Type, Date, Status |
-| Acceptance Criteria | Exported CSV contains Word/Phrase, Category, Risk Level, Match Type, Date, Status. Per FSD 5.1.4: export active ignore word list in structured CSV with all fields and metadata. |
-| Expected Result | CSV headers match specified columns. Headers include Word/Phrase, Category, Risk Level, Match Type, Date, Status. |
+| Preconditions | Maker opened Add Ignore Word panel. |
+| Test Data | Word/Phrase length: 500 |
+| Steps | 1. Enter 500-character Word/Phrase value. 2. Select valid Category, Risk Level, and Match Type. 3. Click Submit. |
+| Acceptance Criteria | Boundary length value is accepted |
+| Expected Result | Request is accepted and sent to maker-checker flow. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | export-functionality, medium, export |
+| Tags | add-ignore-word, medium, error-handling |
 
-### IWC-TC-073 — Verify Add Category modal opens from toolbar (FSD Section 4.2)
+### IWC-TC-063 — Save valid ignore word as draft
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
+| Feature | Add Ignore Word |
 | Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Admin user on main list view |
-| Test Data | Category Name: Cybercrime; Description: Optional per FSD 4.2 Step 4 |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Category (FSD Section 4.2 Step 2) >> Step 3: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 4: Perform test action: Add Category modal opens from toolbar >> Step 5: Apply test data — Category Name: Cybercrime; Description: Optional per FSD 4.2 Step 4 >> Step 6: Compare actual result with expected result: Add Category modal opens with semi-transparent overlay. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | Clicking Add Category opens modal with overlay. Per FSD 4.2: category name unique (max 100 chars); optional description (max 500); Checker approval on submit. |
-| Expected Result | Add Category modal opens with semi-transparent overlay. Checker approval workflow triggered on submit (FSD Section 4.2). |
+| Preconditions | Category 'Personal Titles' is available. |
+| Test Data | Word: Baroness Category: Personal Titles |
+| Steps | 1. Open Add Ignore Word. 2. Enter Word: Baroness, Category: Personal Titles, Risk: Low, Match Type: Exact phrase. 3. Click Save Draft. |
+| Acceptance Criteria | Save Draft stores entry under Drafted Ignore Word tab |
+| Expected Result | Entry is saved with Drafted status. It appears on Drafted Ignore Word tab. Word is not used in live screening. No checker request is created until Submit. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | add-category-modal, high, rbac, security |
+| Tags | add-ignore-word, high, functional |
 
-### IWC-TC-074 — Verify Add Category modal structure and header (FSD Section 4.2)
+### IWC-TC-064 — Cancel Add Ignore Word panel after input
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Width: 440px |
-| Steps | Step 1: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 2: Perform test action: Add Category modal structure and header >> Step 3: Apply test data — Width: 440px >> Step 4: Compare actual result with expected result: Modal structure matches FSD specifications. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | Modal 440px width, #2A53A0 header, title Add Category, subtitle, close button. Per FSD 4.2: category name unique (max 100 chars); optional description (max 500); Checker approval on submit. |
-| Expected Result | Modal structure matches FSD specifications. Checker approval workflow triggered on submit (FSD Section 4.2). |
+| Preconditions | Add Ignore Word panel is open with Word/Phrase 'temporary ignore' entered. |
+| Test Data | Word entered then cancelled: temporary ignore |
+| Steps | 1. Click Cancel and confirm discard if prompted. 2. Search Active and Drafted tabs for 'temporary ignore'. |
+| Acceptance Criteria | Cancel discards unsaved data |
+| Expected Result | No record is saved. Cancelled word does not appear on Active or Drafted tabs. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | add-category-modal, medium, rbac, security |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-075 — Verify Category Name required field (FSD Section 4.2)
+### IWC-TC-065 — Prevent duplicate ignore word in same category and match type
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
+| Feature | Add Ignore Word |
 | Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Placeholder: e.g. Cybercrime, Narcotics... |
-| Steps | Step 1: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 2: Perform test action: Category Name required field >> Step 3: Apply test data — Placeholder: e.g. Cybercrime, Narcotics... >> Step 4: Compare actual result with expected result: Category Name field required with correct placeholder. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | Category Name text input required min 2 characters |
-| Expected Result | Category Name field required with correct placeholder. Checker approval workflow triggered on submit (FSD Section 4.2). |
+| Preconditions | Active word 'holdings' exists under Business Descriptors with Exact phrase match. |
+| Test Data | Existing: holdings \| Business Descriptors \| Exact phrase New: holdings |
+| Steps | 1. Open Add Ignore Word. 2. Enter Word: holdings, same category and match type as existing record. 3. Click Submit. |
+| Acceptance Criteria | Duplicate rule blocks submission |
+| Expected Result | Duplicate submission is blocked within the same category and match type. Inline validation message is shown. No checker request is created. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | add-category-modal, high, functional |
+| Tags | add-ignore-word, high, functional |
 
-### IWC-TC-077 — Verify submit button disabled when name less than 2 chars (FSD Section 4.2)
+### IWC-TC-066 — Treat duplicate words case-insensitively
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
+| Feature | Add Ignore Word |
 | Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Category Name: A |
-| Steps | Step 1: Locate target row on Active or Inactive tab >> Step 2: Click Off (disable) or On (enable) action button >> Step 3: Verify Checker Approval popup appears (FSD BR-007) >> Step 4: Apply test data — Category Name: A >> Step 5: Compare actual result with expected result: Submit button disabled with grey background. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Add Category button grey #C7C7C7 when name under 2 characters. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Submit button disabled with grey background. Checker Approval popup displayed before status change takes effect. |
+| Preconditions | Active word 'Wire Transfer' exists under Business Descriptors with Partial match. |
+| Test Data | Existing: Wire Transfer New input: wire transfer Category: Business Descriptors Match Type: Partial match |
+| Steps | 1. Open Add Ignore Word. 2. Enter Word: wire transfer (lowercase), same category and match type. 3. Click Submit. |
+| Acceptance Criteria | Duplicate check ignores letter case |
+| Expected Result | Case-insensitive duplicate validation blocks submission in the add flow and during bulk import. No duplicate active record is created. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | add-category-modal, high, rbac, security |
+| Tags | add-ignore-word, high, functional |
 
-### IWC-TC-078 — Verify submit button enabled when name 2 or more chars (FSD Section 4.2)
+### IWC-TC-067 — Trim whitespace around word before validation
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Category Name: Cybercrime |
-| Steps | Step 1: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 2: Perform test action: submit button enabled when name 2 or more chars >> Step 3: Apply test data — Category Name: Cybercrime >> Step 4: Compare actual result with expected result: Submit button enabled with blue background. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | Add Category button #2A53A0 when name >= 2 characters. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Submit button enabled with blue background. Checker approval workflow triggered on submit (FSD Section 4.2). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category-modal, high, rbac, security |
-
-### IWC-TC-080 — Verify Cancel closes modal and resets fields (FSD Section 4.2)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal with data entered |
-| Test Data | Category Name: Narcotics |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Category (FSD Section 4.2 Step 2) >> Step 3: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 4: Perform test action: Cancel closes modal and resets fields >> Step 5: Apply test data — Category Name: Narcotics >> Step 6: Compare actual result with expected result: Modal closed; fields empty on reopen. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | Cancel closes modal, clears fields, removes ready state |
-| Expected Result | Modal closed; fields empty on reopen. Checker approval workflow triggered on submit (FSD Section 4.2). |
+| Preconditions | Existing record: 'cash mule'. |
+| Test Data | Raw input has leading and trailing spaces |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Click Add Ignore Word. 4. Enter Word/Phrase "controlled account", Category "Business Descriptors", Risk Level "Medium", Match Type "Partial match". 5. Click Submit. 6. Review the Request Submitted modal content. 7. Click OK to close the modal. |
+| Acceptance Criteria | Leading/trailing spaces are removed before duplicate check |
+| Expected Result | Request Submitted modal shows the ignore word name, submitter name, timestamp, and status "Pending Checker". Modal closes on OK. Record appears on Drafted tab awaiting checker action. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | add-category-modal, medium, functional |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-081 — Verify overlay click closes Add Category modal (FSD Section 4.2)
+### IWC-TC-068 — Assign Medium risk level correctly on submission
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Category Name: Cybercrime; Description: Optional per FSD 4.2 Step 4 |
-| Steps | Step 1: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 2: Perform test action: overlay click closes Add Category modal >> Step 3: Apply test data — Category Name: Cybercrime; Description: Optional per FSD 4.2 Step 4 >> Step 4: Compare actual result with expected result: Modal closes on overlay click. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | Clicking overlay closes modal. Per FSD 4.2: category name unique (max 100 chars); optional description (max 500); Checker approval on submit. |
-| Expected Result | Modal closes on overlay click. Checker approval workflow triggered on submit (FSD Section 4.2). |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Word: consultancy Risk: Medium |
+| Steps | 1. Enter a new unique word with Risk Level: Medium. 2. Complete remaining mandatory fields and Submit. 3. After checker approval, open the record on Active tab. |
+| Acceptance Criteria | Selected risk level is persisted accurately |
+| Expected Result | Medium risk level is stored and displayed on the approved active record. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | add-category-modal, medium, rbac, security |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-082 — Verify close X button closes modal (FSD Section 4.2)
+### IWC-TC-069 — Retain selected category while editing other fields
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
-| Priority | Low |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Category Name: Cybercrime; Description: Optional per FSD 4.2 Step 4 |
-| Steps | Step 1: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 2: Perform test action: close X button closes modal >> Step 3: Apply test data — Category Name: Cybercrime; Description: Optional per FSD 4.2 Step 4 >> Step 4: Compare actual result with expected result: Modal closes without saving. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | Close button in header closes modal |
-| Expected Result | Modal closes without saving. Checker approval workflow triggered on submit (FSD Section 4.2). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category-modal, low, functional |
-
-### IWC-TC-083 — Verify new category appears in Add Ignore Word dropdown (FSD Section 4.2)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Admin created new category Cybercrime |
-| Test Data | Category: Cybercrime |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Category (FSD Section 4.2 Step 2) >> Step 3: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 4: Perform test action: new category appears in Add Ignore Word dropdown >> Step 5: Apply test data — Category: Cybercrime >> Step 6: Compare actual result with expected result: Cybercrime appears in Category dropdown options. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | New category added via modal appears in Category dropdown |
-| Expected Result | Cybercrime appears in Category dropdown options. Checker approval workflow triggered on submit (FSD Section 4.2). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category-modal, high, functional |
-
-### IWC-TC-084 — Verify new category appears in Bulk Upload dropdown (FSD Section 4.2)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Admin created new category |
-| Test Data | Category: Cybercrime |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Category (FSD Section 4.2 Step 2) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — Category: Cybercrime >> Step 8: Compare actual result with expected result: New category available in bulk upload dropdown. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | New category appears in Bulk Upload category dropdown. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | New category available in bulk upload dropdown. Checker approval workflow triggered on submit (FSD Section 4.2). |
+| Preconditions | Maker opened Add Ignore Word panel. |
+| Test Data | Category: Industry Terms |
+| Steps | 1. Select Category 'Industry Terms'. 2. Type Word/Phrase and change Risk Level values. 3. Verify Category remains selected before submit. |
+| Acceptance Criteria | Category selection should not reset unexpectedly |
+| Expected Result | Category value remains unchanged unless user explicitly modifies it. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | add-category-modal, medium, rbac, security |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-085 — Verify Category Controls modal opens
+### IWC-TC-070 — Display maker-checker prompt after Submit
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
-| Priority | High |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Admin user on main list |
-| Test Data | Category: Entity Suffixes; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Click Category Controls in the toolbar to open the modal >> Step 4: Perform test action: Category Controls modal opens >> Step 5: Apply test data — Category: Entity Suffixes; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 6: Compare actual result with expected result: Category Controls modal opens with #1E3A70 header. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Category Controls button opens modal with dark navy header |
-| Expected Result | Category Controls modal opens with #1E3A70 header. Changes persist on Save only; Cancel discards unsaved toggles. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls-modal, high, functional |
-
-### IWC-TC-086 — Verify default categories listed with word counts
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
-| Priority | High |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Category Controls modal open |
-| Test Data | Categories: Entity Suffixes(4), Common Noise Words(3), Personal Titles(3), Business Descriptors(6) |
-| Steps | Step 1: Click Category Controls in the toolbar to open the modal >> Step 2: Perform test action: default categories listed with word counts >> Step 3: Apply test data — Categories: Entity Suffixes(4), Common Noise Words(3), Personal Titles(3), Business Descriptors(6) >> Step 4: Compare actual result with expected result: All four categories listed with correct word counts and enabled toggles. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Four default categories with name, count, toggle displayed |
-| Expected Result | All four categories listed with correct word counts and enabled toggles. Changes persist on Save only; Cancel discards unsaved toggles. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls-modal, high, functional |
-
-### IWC-TC-087 — Verify category row layout
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Category Controls modal open |
-| Test Data | Category: Entity Suffixes |
-| Steps | Step 1: Click Category Controls in the toolbar to open the modal >> Step 2: Perform test action: category row layout >> Step 3: Apply test data — Category: Entity Suffixes >> Step 4: Compare actual result with expected result: Row layout matches FSD specification. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Each row shows name 15px semibold, n ignore words count, 52x28 toggle |
-| Expected Result | Row layout matches FSD specification. Changes persist on Save only; Cancel discards unsaved toggles. |
+| Preconditions | Valid new ignore word entered on Add panel. |
+| Test Data | Word: PLC |
+| Steps | 1. Click Submit. 2. Capture confirmation modal content. |
+| Acceptance Criteria | Submit action always routes through approval confirmation modal |
+| Expected Result | Checker approval modal confirms request submission with user, timestamp, and Pending Checker status. Word is not active until checker acts. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | category-controls-modal, medium, functional |
+| Tags | add-ignore-word, medium, rbac, security |
 
-### IWC-TC-088 — Verify toggle switch off state styling
+### IWC-TC-071 — Ensure no hard delete option in Add Ignore Word panel
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
-| Priority | Low |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Category Controls modal open |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Click Category Controls in the toolbar to open the modal >> Step 2: Perform test action: toggle switch off state styling >> Step 3: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 4: Compare actual result with expected result: Toggle off styling correct. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Toggle off state #D1D5DC background with white 22px knob |
-| Expected Result | Toggle off styling correct. Changes persist on Save only; Cancel discards unsaved toggles. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls-modal, low, functional |
-
-### IWC-TC-089 — Verify toggle switch on state styling
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
-| Priority | Low |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Category Controls modal open |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Click Category Controls in the toolbar to open the modal >> Step 2: Perform test action: toggle switch on state styling >> Step 3: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 4: Compare actual result with expected result: Toggle on styling with smooth transition. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Toggle on state #2A53A0 background knob transitions 0.2s |
-| Expected Result | Toggle on styling with smooth transition. Changes persist on Save only; Cancel discards unsaved toggles. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls-modal, low, functional |
-
-### IWC-TC-090 — Verify Save persists toggle states per FSD BR-005
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
-| Priority | High |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Admin user; toggled category off |
-| Test Data | Category: Entity Suffixes disabled |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Click Category Controls in the toolbar to open the modal >> Step 4: Perform test action: Save persists toggle states per FSD BR-005 >> Step 5: Apply test data — Category: Entity Suffixes disabled >> Step 6: Compare actual result with expected result: Settings saved; toast shown; category disabled for screening per FSD BR-005. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Save persists toggles, closes modal, shows toast Category controls saved. |
-| Expected Result | Settings saved; toast shown; category disabled for screening per FSD BR-005. Changes persist on Save only; Cancel discards unsaved toggles. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls-modal, high, notifications |
-
-### IWC-TC-091 — Verify category disable does not change individual word status per FSD BR-005
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Entity Suffixes category with active words; category disabled |
-| Test Data | Category: Entity Suffixes |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Category: Entity Suffixes >> Step 7: Compare actual result with expected result: Individual words remain Active status in list but category screening disabled globally. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Disabling category deactivates screening globally without changing word statuses in list. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Individual words remain Active status in list but category screening disabled globally. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls-modal, high, rbac, security |
-
-### IWC-TC-092 — Verify Cancel closes without saving
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
+| Feature | Add Ignore Word |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Category Controls modal open with toggles changed |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Click Category Controls in the toolbar to open the modal >> Step 2: Perform test action: Cancel closes without saving >> Step 3: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 4: Compare actual result with expected result: Changes discarded; original toggle states preserved. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Cancel closes modal without persisting toggle changes |
-| Expected Result | Changes discarded; original toggle states preserved. Changes persist on Save only; Cancel discards unsaved toggles. |
+| Preconditions | Maker opened Add Ignore Word panel. |
+| Test Data | Panel actions |
+| Steps | 1. Inspect footer action buttons. 2. Search for any delete/remove control. 3. Attempt to locate permanent delete command. |
+| Acceptance Criteria | UI offers only Save Draft, Submit, and Cancel actions |
+| Expected Result | No hard delete action is exposed from add panel. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | category-controls-modal, medium, functional |
+| Tags | add-ignore-word, medium, functional |
 
-### IWC-TC-093 — Verify overlay click closes Category Controls modal
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Category Controls Modal |
-| Priority | Medium |
-| Preconditions | Admin user on main list view; Category Controls button visible in toolbar; Category Controls modal open |
-| Test Data | Category: Entity Suffixes; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
-| Steps | Step 1: Click Category Controls in the toolbar to open the modal >> Step 2: Perform test action: overlay click closes Category Controls modal >> Step 3: Apply test data — Category: Entity Suffixes; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 4: Compare actual result with expected result: Modal closes on overlay click. Changes persist on Save only; Cancel discards unsaved toggles |
-| Acceptance Criteria | Overlay click closes modal |
-| Expected Result | Modal closes on overlay click. Changes persist on Save only; Cancel discards unsaved toggles. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | category-controls-modal, medium, functional |
-
-### IWC-TC-094 — Verify Add Ignore Word panel opens from primary CTA (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Admin user on main list |
-| Test Data | Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Ignore Word (FSD Section 4.3 Step 2) >> Step 3: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 4: Perform test action: Add Ignore Word panel opens from primary CTA >> Step 5: Apply test data — Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 6: Compare actual result with expected result: Right-side panel slides in from right with overlay. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Primary blue Add Ignore Word button opens right-side panel |
-| Expected Result | Right-side panel slides in from right with overlay. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-095 — Verify panel dimensions and animation (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Width: 680px max |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: panel dimensions and animation >> Step 3: Apply test data — Width: 680px max >> Step 4: Compare actual result with expected result: Panel dimensions and slide-in animation match specification. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Panel min(680px,100vw) width, 100vh height, slide-right animation 0.25s |
-| Expected Result | Panel dimensions and slide-in animation match specification. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, medium, functional |
-
-### IWC-TC-096 — Verify panel overlay does not close on click (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
-| Steps | Step 1: Ensure the Add Ignore Word panel is open with sample data entered >> Step 2: Click the dimmed overlay outside the panel form (not on input fields) >> Step 3: Observe whether the panel closes or remains open >> Step 4: Close the panel using Cancel or back arrow to complete the test >> Step 5: Apply test data — Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 6: Compare actual result with expected result: Panel remains open when overlay clicked. Panel stays open until Cancel or back arrow is used (FSD Section 4.3) |
-| Acceptance Criteria | Clicking overlay does NOT close panel; requires Cancel or back arrow |
-| Expected Result | Panel remains open when overlay clicked. Panel stays open until Cancel or back arrow is used (FSD Section 4.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-097 — Verify panel top bar back arrow closes panel (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: panel top bar back arrow closes panel >> Step 3: Apply test data — Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 4: Compare actual result with expected result: Panel closes on back arrow click. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Back arrow 32x32 closes panel |
-| Expected Result | Panel closes on back arrow click. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, medium, functional |
-
-### IWC-TC-098 — Verify panel breadcrumb parent link closes panel (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: panel breadcrumb parent link closes panel >> Step 3: Apply test data — Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 4: Compare actual result with expected result: Panel closes on breadcrumb parent click. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Clicking Ignore Words Configuration breadcrumb closes panel |
-| Expected Result | Panel closes on breadcrumb parent click. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, medium, functional |
-
-### IWC-TC-099 — Verify Ignore Word/Phrase required field (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Placeholder: e.g. trading company, financial services, private limited... |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: Ignore Word/Phrase required field >> Step 3: Apply test data — Placeholder: e.g. trading company, financial services, private limited... >> Step 4: Compare actual result with expected result: Required field with correct placeholder displayed. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Ignore Word/Phrase text input required full width 46px height |
-| Expected Result | Required field with correct placeholder displayed. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-100 — Verify Category dropdown required with default options (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Options: Entity Suffixes, Common Noise Words, Personal Titles, Business Descriptors |
-| Steps | Step 1: Open Category dropdown (FSD Section 4.3 Step 4) >> Step 2: Verify options: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 3: Confirm Category field is marked mandatory >> Step 4: Apply test data — Options: Entity Suffixes, Common Noise Words, Personal Titles, Business Descriptors >> Step 5: Compare actual result with expected result: All default category options available. All FSD 4.1 categories listed; field marked mandatory |
-| Acceptance Criteria | Category dropdown required with Entity Suffixes, Common Noise Words, Personal Titles, Business Descriptors |
-| Expected Result | All default category options available. All FSD 4.1 categories listed; field marked mandatory. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-101 — Verify Risk Level dropdown required (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Options: Low, Medium, High |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: Risk Level dropdown required >> Step 3: Apply test data — Options: Low, Medium, High >> Step 4: Compare actual result with expected result: All risk level options available. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Risk Level dropdown required with Low, Medium, High |
-| Expected Result | All risk level options available. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-102 — Verify Match Type dropdown required (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Options: Exact phrase, Partial match |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: Match Type dropdown required >> Step 3: Apply test data — Options: Exact phrase, Partial match >> Step 4: Compare actual result with expected result: Both match type options available. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Match Type dropdown required with Exact phrase, Partial match |
-| Expected Result | Both match type options available. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-103 — Verify three-column grid layout for dropdowns (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Grid: 1fr 1fr 1fr |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: three-column grid layout for dropdowns >> Step 3: Apply test data — Grid: 1fr 1fr 1fr >> Step 4: Compare actual result with expected result: Three dropdowns displayed in equal-width grid. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Category, Risk Level, Match Type in 3-column equal grid gap 16px |
-| Expected Result | Three dropdowns displayed in equal-width grid. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, medium, functional |
-
-### IWC-TC-104 — Verify dropdown focus state styling (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | Low |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: dropdown focus state styling >> Step 3: Apply test data — Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase; Categories per FSD 4.1: Entity Suffixes, Personal Titles, Business Descriptors, Common Noise Words >> Step 4: Compare actual result with expected result: Dropdowns show blue focus border and ring. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | Dropdown focus #2A53A0 border plus 2px ring |
-| Expected Result | Dropdowns show blue focus border and ring. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, low, accessibility |
-
-### IWC-TC-105 — Verify Cancel button closes panel without saving (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Panel with data entered |
-| Test Data | Word: test phrase |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Ignore Word (FSD Section 4.3 Step 2) >> Step 3: Enter test data in the Add Ignore Word panel fields >> Step 4: Click Cancel in the panel footer (FSD Section 4.3 Step 8c) >> Step 5: If fields contain data, verify confirmation prompt appears before discard >> Step 6: Confirm panel closes and no new record is created on any tab >> Step 7: Apply test data — Word: test phrase >> Step 8: Compare actual result with expected result: Panel closes; no new record created. Confirmation prompt shown when fields have data (FSD 4.3 Step 8c); no record added |
-| Acceptance Criteria | Cancel secondary button closes panel without saving. Per FSD 4.3 Step 8c: confirmation prompt when fields populated before discard. |
-| Expected Result | Panel closes; no new record created. Confirmation prompt shown when fields have data (FSD 4.3 Step 8c); no record added. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-106 — Verify Submit validation for empty Ignore Word/Phrase (FSD Section 4.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Ignore Word: (empty) |
-| Steps | Step 1: Leave Ignore Word/Phrase empty; complete other fields if required >> Step 2: Click Submit (FSD Section 4.3 Step 8b) >> Step 3: Observe validation alert and confirm no record is created >> Step 4: Apply test data — Ignore Word: (empty) >> Step 5: Compare actual result with expected result: Alert displayed; no record created. Validation alert shown; submission blocked per FSD Section 4.3 Step 8b |
-| Acceptance Criteria | Empty word shows alert Please enter an ignore word or phrase. Per FSD 4.3 Step 8b and FSD 7.1: submit sends for Checker approval; status Pending Approval until approved. |
-| Expected Result | Alert displayed; no record created. Validation alert shown; submission blocked per FSD Section 4.3 Step 8b. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, rbac, security |
-
-### IWC-TC-107 — Verify successful submit creates drafted record per FSD BR-003 / FSD 7.1
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Admin user; all fields filled |
-| Test Data | Word: financial services; Category: Entity Suffixes; Risk: Low; Match: Exact phrase |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Ignore Word (FSD Section 4.3 Step 2) >> Step 3: Fill Word/Phrase, Category, Risk Level, and Match Type >> Step 4: Click Submit for Checker approval (FSD Section 4.3 Step 8b) >> Step 5: Verify Checker Approval modal opens >> Step 6: Confirm record appears on Drafted tab and is not active until approved (FSD Section 7.1) >> Step 7: Apply test data — Word: financial services; Category: Entity Suffixes; Risk: Low; Match: Exact phrase >> Step 8: Compare actual result with expected result: Record created as Drafted; tab count updated; Checker Approval popup shown. Record on Drafted tab; Checker modal shown; not active until approved (FSD 7.1) |
-| Acceptance Criteria | Valid submit adds status=drafted, updates counts, closes panel, opens Checker popup |
-| Expected Result | Record created as Drafted; tab count updated; Checker Approval popup shown. Record on Drafted tab; Checker modal shown; not active until approved (FSD 7.1). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, rbac, security |
-
-### IWC-TC-109 — Verify mandatory fields validation per FSD BR-002
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Missing: Category |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: mandatory fields validation per FSD BR-002 >> Step 3: Apply test data — Missing: Category >> Step 4: Compare actual result with expected result: Submission blocked until all mandatory fields populated. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | All four fields required: Word, Category, Risk Level, Match Type |
-| Expected Result | Submission blocked until all mandatory fields populated. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-110 — Verify Live Narrative Tester card rendering
+### IWC-TC-072 — Open Live Narrative Tester from Add Ignore Word panel
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Live Narrative Tester |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open |
-| Test Data | Word: trading company; Narrative: Payment to trading company for goods |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Word: trading company; Narrative: Payment to trading company for goods >> Step 5: Compare actual result with expected result: Tester card renders with #F8FAFC header and correct titles. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | Card with header Live Narrative Tester and subtitle displayed |
-| Expected Result | Tester card renders with #F8FAFC header and correct titles. Preview updates in real time based on Match Type selection. |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Word being composed: trading |
+| Steps | 1. Locate Live Narrative Tester and Preview sections within the panel. 2. Enter a sample word in Ignore Word/Phrase field. |
+| Acceptance Criteria | Narrative tester launches within add flow |
+| Expected Result | Live Narrative Tester and Preview are embedded in the add panel. Preview updates as the ignore word field changes. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | live-narrative-tester, medium, screening-engine |
 
-### IWC-TC-111 — Verify narrative textarea placeholder and behavior
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Live Narrative Tester |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open |
-| Test Data | Placeholder: Paste a transaction remark or narrative here... |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Placeholder: Paste a transaction remark or narrative here... >> Step 5: Compare actual result with expected result: Textarea accepts narrative input with correct placeholder. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | Textarea 4 rows, resize disabled, placeholder for transaction remark |
-| Expected Result | Textarea accepts narrative input with correct placeholder. Preview updates in real time based on Match Type selection. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, medium, functional |
-
-### IWC-TC-112 — Verify real-time preview update on narrative input
+### IWC-TC-073 — Validate exact phrase match behavior in tester
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Live Narrative Tester |
 | Priority | High |
-| Preconditions | Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open; word entered |
-| Test Data | Word: trading company; Narrative: Payment to trading company for goods |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Word: trading company; Narrative: Payment to trading company for goods >> Step 5: Compare actual result with expected result: Preview updates in real time as narrative is typed. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | Typing in narrative triggers updatePreview in real time |
-| Expected Result | Preview updates in real time as narrative is typed. Preview updates in real time based on Match Type selection. |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Word: Ltd Match Type: Exact phrase Narrative: ABC Ltd Holdings |
+| Steps | 1. Enter Ignore Word/Phrase: Ltd with Match Type: Exact phrase. 2. Paste narrative: ABC Ltd Holdings. 3. Review Preview highlights. |
+| Acceptance Criteria | Exact phrase triggers only full phrase matches |
+| Expected Result | Preview highlights standalone token 'Ltd' only. 'Holdings' is not highlighted unless separately configured. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | live-narrative-tester, high, functional |
 
-### IWC-TC-113 — Verify preview empty state when no narrative
+### IWC-TC-074 — Validate exact phrase non-match for partial token
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Live Narrative Tester |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open |
-| Test Data | Narrative: (empty); Word: trading company |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Narrative: (empty); Word: trading company >> Step 5: Compare actual result with expected result: Empty state message in #9CA3AF displayed. Empty-state message displayed when tab has zero records |
-| Acceptance Criteria | Empty narrative shows No narrative entered. Paste text above... |
-| Expected Result | Empty state message in #9CA3AF displayed. Empty-state message displayed when tab has zero records. |
+| Preconditions | Add Ignore Word panel open with Match Type: Exact phrase. |
+| Test Data | Word: Ltd Narrative token: Ltds |
+| Steps | 1. Enter Word: Ltd. 2. Paste narrative containing token 'Ltds' (plural form). 3. Review Preview. |
+| Acceptance Criteria | Exact phrase mode should not match fragmented terms |
+| Expected Result | Exact phrase mode does not highlight 'Ltds'. Only tokens equal to 'Ltd' after normalisation are matched. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | live-narrative-tester, medium, functional |
 
-### IWC-TC-114 — Verify preview shows narrative without highlight when word empty
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Live Narrative Tester |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open |
-| Test Data | Narrative: Sample transaction text |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Narrative: Sample transaction text >> Step 5: Compare actual result with expected result: Narrative displayed without highlights when word field empty. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | When word empty but narrative entered, preview shows plain text |
-| Expected Result | Narrative displayed without highlights when word field empty. Preview updates in real time based on Match Type selection. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, medium, functional |
-
-### IWC-TC-115 — Verify highlight against all active words
+### IWC-TC-075 — Validate partial match behavior in tester
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Live Narrative Tester |
 | Priority | High |
-| Preconditions | Add Ignore Word panel open per FSD 4.3 Step 7; Active words in multiple categories exist |
-| Test Data | Narrative contains trading company and politically exposed |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Narrative contains trading company and politically exposed >> Step 5: Compare actual result with expected result: All matching active words highlighted regardless of selected category. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | Preview highlights ALL active ignore words plus current draft word regardless of category |
-| Expected Result | All matching active words highlighted regardless of selected category. Preview updates in real time based on Match Type selection. |
+| Preconditions | Add Ignore Word panel open with Match Type: Partial match. |
+| Test Data | Word: bank Match Type: Partial match Narrative: Interbank settlement with Eurobank reference |
+| Steps | 1. Enter Word: bank. 2. Paste narrative: Interbank settlement with Eurobank reference. 3. Review Preview highlights. |
+| Acceptance Criteria | Partial mode matches token occurrences |
+| Expected Result | Partial match highlights 'bank' substring within tokens such as Interbank and Eurobank. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | live-narrative-tester, high, functional |
 
-### IWC-TC-116 — Verify longest-first highlight sorting
+### IWC-TC-076 — Validate case-insensitive match in tester
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Live Narrative Tester |
 | Priority | Medium |
-| Preconditions | Add Ignore Word panel open per FSD 4.3 Step 7; Active words with substring relationships exist |
-| Test Data | Words: international trade, trade |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Words: international trade, trade >> Step 5: Compare actual result with expected result: Longer phrases highlighted correctly without substring overlap issues. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | Words sorted longest-first to prevent substring conflicts in highlighting |
-| Expected Result | Longer phrases highlighted correctly without substring overlap issues. Preview updates in real time based on Match Type selection. |
+| Preconditions | Add Ignore Word panel open. |
+| Test Data | Configured word: BANK Narrative token: bank |
+| Steps | 1. Enter Word: BANK (uppercase) with Exact phrase. 2. Paste narrative containing lowercase 'bank'. 3. Review Preview. |
+| Acceptance Criteria | Tester should match regardless of text case |
+| Expected Result | Preview matching is case-insensitive. Lowercase narrative token is highlighted. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | live-narrative-tester, medium, functional |
 
-### IWC-TC-117 — Verify highlight styling
+### IWC-TC-077 — Handle large narrative input in tester
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Live Narrative Tester |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open per FSD 4.3 Step 7; Add Ignore Word panel open per FSD 4.3 Step 7; Matching narrative entered |
-| Test Data | Word: trading company; Narrative: Payment to trading company for goods; Match: Exact phrase |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Word: trading company; Narrative: Payment to trading company for goods; Match: Exact phrase >> Step 5: Compare actual result with expected result: Matched words highlighted with specified amber styling. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | Highlights use background #FEF3C7, text #92400E, padding, border-radius, font-weight 500 |
-| Expected Result | Matched words highlighted with specified amber styling. Preview updates in real time based on Match Type selection. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | live-narrative-tester, low, error-handling |
-
-### IWC-TC-119 — Verify Bulk Upload modal opens (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Admin user on main list |
-| Test Data | Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB >> Step 8: Compare actual result with expected result: Bulk Upload modal opens with correct header. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Bulk Upload button opens 500px modal. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Bulk Upload modal opens with correct header. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, rbac, security |
-
-### IWC-TC-120 — Verify Bulk Upload modal header content (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Bulk Upload modal open |
-| Test Data | Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB >> Step 6: Compare actual result with expected result: Header content matches specification. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Title Bulk Upload Ignore Words and subtitle about CSV/XLSX. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Header content matches specification. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Live Narrative Tester is open. |
+| Test Data | Narrative length: 1500 characters |
+| Steps | 1. Log in as authorised user with Ignore Words Configuration access. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Paste 1500-character narrative paragraph. 4. Run tester. 5. Observe result rendering and responsiveness. |
+| Acceptance Criteria | Tester processes long text without UI break |
+| Expected Result | Live Narrative Tester highlights matching tokens in the preview panel within one second of narrative input. Highlighted tokens correspond to the configured ignore word using the selected match type. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | bulk-upload, medium, rbac, security |
+| Tags | live-narrative-tester, medium, error-handling |
 
-### IWC-TC-122 — Verify All Categories not valid for upload
+### IWC-TC-078 — Clear tester input and reset output
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Bulk Upload modal open with file selected |
-| Test Data | Category: All Categories |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — Category: All Categories >> Step 6: Compare actual result with expected result: Upload blocked or validation error when All Categories selected. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | All Categories selection should not be valid for upload submission. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Upload blocked or validation error when All Categories selected. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, rbac, security |
-
-### IWC-TC-123 — Verify file drop zone default state (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
+| Feature | Live Narrative Tester |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Bulk Upload modal open |
-| Test Data | Hint: Supported CSV, XLSX \| Max 10 MB |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — Hint: Supported CSV, XLSX \| Max 10 MB >> Step 6: Compare actual result with expected result: Drop zone displays upload icon, instructions, and format hint. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Dashed border drop zone with drag and drop and browse text |
-| Expected Result | Drop zone displays upload icon, instructions, and format hint. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Narrative text is present in Live Narrative Tester. |
+| Test Data | Narrative: (cleared) |
+| Steps | 1. Clear the narrative textarea. 2. Observe Preview panel. |
+| Acceptance Criteria | Reset action clears previous test state |
+| Expected Result | Preview resets to empty-state message. No stale highlights remain. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | bulk-upload, medium, export |
+| Tags | live-narrative-tester, medium, functional |
 
-### IWC-TC-124 — Verify drop zone hover and drag-over styling (FSD Section 5.1.3)
+### IWC-TC-079 — Return from tester to add form with values preserved
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | Low |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Bulk Upload modal open |
-| Test Data | Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB >> Step 6: Compare actual result with expected result: Drop zone styling changes on drag-over. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Hover/drag changes border #2A53A0 and background #EFF6FF |
-| Expected Result | Drop zone styling changes on drag-over. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Feature | Live Narrative Tester |
+| Priority | Medium |
+| Preconditions | Add Ignore Word panel has populated fields. |
+| Test Data | Word: services Narrative: Global services payment |
+| Steps | 1. Enter values in word, category, risk, match type, and narrative fields. 2. Scroll within the panel without closing it. 3. Confirm all entered values remain intact. |
+| Acceptance Criteria | Closing tester should not lose form data |
+| Expected Result | Field values and preview state are preserved during in-panel navigation. No data loss occurs before submit or cancel. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | bulk-upload, low, export |
+| Tags | live-narrative-tester, medium, functional |
 
-### IWC-TC-125 — Verify file selection via browse (FSD Section 5.1.3)
+### IWC-TC-080 — Disable action appears only on Active tab rows
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | Medium |
+| Preconditions | Records exist on Active, Inactive, and Drafted tabs. |
+| Test Data | Tabs reviewed: Active, Inactive, Drafted |
+| Steps | 1. On Active tab, confirm Disable (minus) icon is present in Actions. 2. Switch to Inactive tab and confirm Disable is not shown. 3. Switch to Drafted tab and confirm Disable is not shown. |
+| Acceptance Criteria | Active rows show Disable as primary action |
+| Expected Result | Disable action is available only for active ignore words. Inactive rows show Enable; Drafted rows show Submit. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, medium, functional |
+
+### IWC-TC-081 — Execute Disable action for active ignore word
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | High |
+| Preconditions | Active ignore word 'trading' exists on Active tab. |
+| Test Data | Word: trading Tab: Active |
+| Steps | 1. Locate 'trading' on Active tab. 2. Click Disable in the Actions column. 3. Review and dismiss the checker confirmation modal. |
+| Acceptance Criteria | Disable request requires checker approval |
+| Expected Result | Disable request is submitted for checker approval with Pending Checker status. After checker approval, 'trading' moves to Inactive tab and Active count decreases by one. Word is excluded from screening. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, high, rbac, security |
+
+### IWC-TC-082 — Enable action is available only in Inactive tab
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | Medium |
+| Preconditions | Inactive ignore word 'and' exists. |
+| Test Data | Word: and Tab: Inactive |
+| Steps | 1. On Inactive tab, locate 'and'. 2. Confirm Enable action is shown and Disable is absent. |
+| Acceptance Criteria | Inactive rows expose Enable action only |
+| Expected Result | Enable action is available only on Inactive tab. No hard-delete action is offered. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, medium, functional |
+
+### IWC-TC-083 — Execute Enable action for inactive ignore word
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | High |
+| Preconditions | Maker is on Inactive tab with target row. |
+| Test Data | Word: legacy account (Inactive) |
+| Steps | 1. Click Enable for selected inactive row. 2. Review confirmation details. 3. Submit request. |
+| Acceptance Criteria | Enable request goes through approval flow |
+| Expected Result | Enable request is created and waits for checker approval. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, high, functional |
+
+### IWC-TC-084 — Submit action is available only in Drafted tab
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | Medium |
+| Preconditions | Drafted ignore word 'co' exists. |
+| Test Data | Word: co Tab: Drafted |
+| Steps | 1. On Drafted tab, locate 'co'. 2. Confirm Submit action is available. 3. Switch to Active tab and confirm Submit is not shown there. |
+| Acceptance Criteria | Draft rows provide Submit action |
+| Expected Result | Submit row action is limited to Drafted tab entries awaiting checker submission. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, medium, functional |
+
+### IWC-TC-085 — Submit drafted ignore word from row action
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | High |
+| Preconditions | Drafted word 'son' exists under Personal Titles. |
+| Test Data | Word: son Category: Personal Titles |
+| Steps | 1. On Drafted tab, click Submit for 'son'. 2. Dismiss checker confirmation modal. |
+| Acceptance Criteria | Draft submit enters checker approval process |
+| Expected Result | Drafted entry is sent for checker approval. Status remains non-active until checker approves. Confirmation modal shows pending state. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, high, rbac, security |
+
+### IWC-TC-086 — Cancel row action confirmation
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | Medium |
+| Preconditions | Maker initiated Disable action on active row. |
+| Test Data | Word: compliance marker |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open row action Disable. 4. Click Cancel in confirmation modal. 5. Check row status and tab placement. |
+| Acceptance Criteria | Canceling confirmation keeps row status unchanged |
+| Expected Result | No status transition occurs when action is canceled. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, medium, functional |
+
+### IWC-TC-087 — Prevent concurrent duplicate action on same row
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | Medium |
+| Preconditions | Disable request for row is already pending checker approval. |
+| Test Data | Row with pending action: shell company |
+| Steps | 1. Log in as Checker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Attempt to trigger another Disable action for same row. 4. Observe action availability. 5. Review system message. |
+| Acceptance Criteria | Pending action blocks additional requests on same record |
+| Expected Result | System blocks duplicate action and shows pending-request notice. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, medium, functional |
+
+### IWC-TC-088 — Verify no hard delete action in row actions menu
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | Medium |
+| Preconditions | Maker is on any tab. |
+| Test Data | Tabs: Active, Inactive, Drafted |
+| Steps | 1. Inspect Actions column on Active, Inactive, and Drafted rows. 2. Confirm available actions. |
+| Acceptance Criteria | Row actions must exclude permanent delete |
+| Expected Result | Only Disable, Enable, or Submit actions are available per status. Permanent delete is not offered, enforcing logical deactivation only. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, medium, functional |
+
+### IWC-TC-089 — Ensure action updates are reflected after checker approval
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Ignore Word Row Actions |
+| Priority | Medium |
+| Preconditions | Maker submitted disable request for an active word; Checker approval is pending. |
+| Test Data | Workflow: Disable approval |
+| Steps | 1. As Checker, approve the pending disable request. 2. Return to Ignore Words Configuration as Maker. 3. Verify word status on Inactive tab and Active count. |
+| Acceptance Criteria | Approved action moves row to correct tab |
+| Expected Result | After checker approval, listing reflects updated status without manual refresh beyond normal load. Tab counts and row placement update correctly. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | ignore-word-row-actions, medium, rbac, security |
+
+### IWC-TC-090 — Open Bulk Upload modal from toolbar
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Bulk Upload |
 | Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Valid CSV file available |
-| Test Data | File: ignore_words_upload.csv (45.2 KB) |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: ignore_words_upload.csv (45.2 KB) >> Step 8: Compare actual result with expected result: Drop zone hidden; file name and size displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Selecting CSV via browse shows file summary row |
-| Expected Result | Drop zone hidden; file name and size displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, export |
-
-### IWC-TC-126 — Verify file selection via drag and drop (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Valid XLSX file available |
-| Test Data | File: ignore_words.xlsx |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: ignore_words.xlsx >> Step 8: Compare actual result with expected result: File selected and summary row displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Drag and drop file selects file same as browse |
-| Expected Result | File selected and summary row displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Maker is on Ignore Words listing. |
+| Test Data | Action: Bulk Upload |
+| Steps | 1. Click Bulk Upload. 2. Review modal fields and template download link. |
+| Acceptance Criteria | Bulk Upload modal opens with category and file controls |
+| Expected Result | Bulk Upload modal opens. Category dropdown, file upload drop zone, template download link, Cancel, and Upload buttons are visible. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | bulk-upload, high |
 
-### IWC-TC-127 — Verify file size display in KB one decimal (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | Low |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; File selected |
-| Test Data | File Size: 45.2 KB |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File Size: 45.2 KB >> Step 8: Compare actual result with expected result: Size displayed in KB with one decimal. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | File size shown in KB with one decimal place |
-| Expected Result | Size displayed in KB with one decimal. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, low, functional |
-
-### IWC-TC-128 — Verify remove file restores drop zone (FSD Section 5.1.3)
+### IWC-TC-091 — Download bulk upload template
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Bulk Upload |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; File selected in bulk upload |
-| Test Data | Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB >> Step 8: Compare actual result with expected result: Drop zone restored; file input reset. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Clicking x clears file and restores drop zone |
-| Expected Result | Drop zone restored; file input reset. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Bulk Upload modal is open. |
+| Test Data | Template format: CSV or XLSX per institution standard |
+| Steps | 1. Click Download template file. 2. Open the downloaded file. |
+| Acceptance Criteria | Template file is downloadable and readable |
+| Expected Result | Template downloads successfully and contains required columns for word/phrase, risk level, and match type aligned with manual add validation. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | bulk-upload, medium, export |
 
-### IWC-TC-129 — Verify accepted file formats CSV and XLSX (FSD Section 5.1.3)
+### IWC-TC-092 — Upload valid CSV file under 10MB
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Bulk Upload |
 | Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Bulk Upload modal open |
-| Test Data | File: document.pdf |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — File: document.pdf >> Step 6: Compare actual result with expected result: Unsupported format rejected or not selectable. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Only.csv and.xlsx accepted |
-| Expected Result | Unsupported format rejected or not selectable. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Valid CSV bulk file under 10 MB prepared for Entity Suffixes. |
+| Test Data | File: ignore_words_entity_suffixes.csv (8 KB) Category: Entity Suffixes |
+| Steps | 1. Open Bulk Upload. 2. Select Category: Entity Suffixes. 3. Attach valid CSV file. 4. Click Upload. |
+| Acceptance Criteria | System accepts valid CSV and creates drafted records |
+| Expected Result | File is accepted. Bulk import is submitted as a single maker action for checker approval. Valid rows appear as drafted/pending entries per workflow rules. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | bulk-upload, high, export |
 
-### IWC-TC-130 — Verify wrong format toast error (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Invalid file upload attempted |
-| Test Data | File: data.txt |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: data.txt >> Step 8: Compare actual result with expected result: Toast error for unsupported format displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Wrong format shows toast Unsupported file format. Please upload CSV or XLSX. |
-| Expected Result | Toast error for unsupported format displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, export |
-
-### IWC-TC-131 — Verify file size exceeds 10 MB toast error (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; File larger than 10 MB available |
-| Test Data | File Size: 12 MB |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File Size: 12 MB >> Step 8: Compare actual result with expected result: Toast error for file size limit displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | File over 10 MB shows toast File size exceeds the 10 MB limit. |
-| Expected Result | Toast error for file size limit displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, error-handling |
-
-### IWC-TC-132 — Verify Download template file link (FSD Section 5.1.3)
+### IWC-TC-093 — Upload valid XLSX file under 10MB
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Bulk Upload |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Bulk Upload modal open |
-| Test Data | Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB >> Step 6: Compare actual result with expected result: Template file download initiated. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Download template file link displayed in #2A53A0 |
-| Expected Result | Template file download initiated. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Maker has valid XLSX with 3 new ignore words. |
+| Test Data | File: iwc_valid_3_rows.xlsx; Size: 350KB |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Select category 'Adverse Media Terms'. 4. Upload file 'iwc_valid_3_rows.xlsx' (350KB). 5. Submit upload. |
+| Acceptance Criteria | System accepts XLSX format |
+| Expected Result | XLSX upload succeeds and request enters maker-checker flow. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium |
+
+### IWC-TC-094 — Reject file larger than 10MB
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Maker opened Bulk Upload modal. |
+| Test Data | File size: 11MB |
+| Steps | 1. Select category. 2. Upload file 'iwc_oversize_11mb.csv'. 3. Observe validation response. |
+| Acceptance Criteria | File size validation enforces 10MB limit |
+| Expected Result | System rejects upload and shows max file size error. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, maker-checker |
+
+### IWC-TC-095 — Reject unsupported file format
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Bulk Upload modal is open. |
+| Test Data | Unsupported files: .pdf, .txt Accepted formats: .csv, .xlsx |
+| Steps | 1. Select a valid category. 2. Attempt to attach unsupported file ignore_words_archive.pdf or ignore_words_notes.txt via browse or drag-drop. |
+| Acceptance Criteria | Only CSV and XLSX extensions are accepted |
+| Expected Result | Unsupported file types are rejected with a clear validation message. Upload does not proceed and no records are imported. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | bulk-upload, medium, export |
 
-### IWC-TC-133 — Verify successful bulk upload creates drafted records per FSD 5.1.3
+### IWC-TC-096 — Validate category selection required for upload
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Bulk Upload modal is open with file selected. |
+| Test Data | Category: (not selected) |
+| Steps | 1. Leave category unselected or on placeholder value. 2. Attempt Upload. |
+| Acceptance Criteria | Upload cannot proceed without category |
+| Expected Result | Category selection is enforced before upload proceeds. Inline validation is shown. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium, functional |
+
+### IWC-TC-097 — Handle duplicate words inside upload file
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Maker has CSV containing repeated word entries. |
+| Test Data | Duplicates in file rows 2 and 5 |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Select category and upload 'iwc_duplicates.csv'. 4. Submit file. 5. Review validation summary. |
+| Acceptance Criteria | Duplicate rows are reported with row-level feedback |
+| Expected Result | System flags duplicate lines and processes only valid unique rows per rules. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium, functional |
+
+### IWC-TC-098 — Handle existing system duplicates during upload
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Active word 'corp' exists. Bulk file contains the same word. |
+| Test Data | Existing active word: corp Bulk file row: corp |
+| Steps | 1. Upload bulk file containing 'corp' for the same category and match type. 2. Review validation outcome. |
+| Acceptance Criteria | Records already present are rejected with clear reason |
+| Expected Result | System duplicate is flagged. Row is rejected or reported in upload summary without creating a duplicate active record. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium, maker-checker |
+
+### IWC-TC-099 — Validate case-insensitive duplicate detection in upload
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Existing word 'Wire Transfer' present in system. |
+| Test Data | Existing: Wire Transfer; Uploaded: wire transfer |
+| Steps | 1. Log in as authorised user with Ignore Words Configuration access. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Upload row with value 'wire transfer'. 4. Submit bulk upload. 5. Review validation outcome. |
+| Acceptance Criteria | Duplicate check ignores case across file and system |
+| Expected Result | System marks entry as duplicate based on case-insensitive comparison. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium, functional |
+
+### IWC-TC-100 — Cancel bulk upload before submit
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Bulk Upload modal is open with category selected and valid file attached. |
+| Test Data | File previously attached: ignore_words_batch.csv |
+| Steps | 1. Click Cancel on Bulk Upload modal. 2. Reopen Bulk Upload. 3. Verify no file remains queued. |
+| Acceptance Criteria | Cancel closes modal and creates no upload request |
+| Expected Result | Upload is discarded. No pending checker request is created. Reopened modal shows empty file selection. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium, export |
+
+### IWC-TC-101 — Verify checker approval modal appears for bulk submit
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Bulk Upload |
 | Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Valid CSV matching schema; category selected |
-| Test Data | Category: Entity Suffixes; File: valid_template.csv |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — Category: Entity Suffixes; File: valid_template.csv >> Step 8: Compare actual result with expected result: Records enter Drafted status; Checker Approval workflow triggered. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Valid upload creates drafted records and triggers Checker Approval. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Records enter Drafted status; Checker Approval workflow triggered. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Valid bulk file ready for upload. |
+| Test Data | File: ignore_words_batch_valid.csv |
+| Steps | 1. Complete bulk upload submission. 2. Capture checker confirmation modal. |
+| Acceptance Criteria | Bulk submission routes through maker-checker confirmation |
+| Expected Result | Bulk upload triggers checker approval modal. Entire batch awaits checker decision before words become active. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | bulk-upload, high, rbac, security |
 
-### IWC-TC-134 — Verify bulk upload schema mismatch error (FSD Section 5.1.3)
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Invalid schema CSV available |
-| Test Data | File: invalid_schema.csv |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: invalid_schema.csv >> Step 8: Compare actual result with expected result: Modal with row-level schema errors displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Non-conforming file returns schema error with row-level errors. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Modal with row-level schema errors displayed. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, rbac, security |
-
-### IWC-TC-135 — Verify Cancel closes bulk upload and clears file (FSD Section 5.1.3)
+### IWC-TC-102 — Verify uploaded words appear in Drafted Ignore Word tab before approval
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Bulk Upload |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; File selected in bulk upload |
-| Test Data | Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB >> Step 8: Compare actual result with expected result: Modal closed; file cleared on reopen. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Cancel closes modal and removes selected file. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Modal closed; file cleared on reopen. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | Bulk upload submitted and awaiting checker approval. |
+| Test Data | Bulk file words: sa, bv, plc |
+| Steps | 1. Before checker approval, open Drafted Ignore Word tab. 2. Locate imported words from the bulk file. |
+| Acceptance Criteria | Submitted bulk records are visible in drafted state |
+| Expected Result | Imported words appear as drafted or pending entries. None are active in screening until checker approval. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | bulk-upload, medium, rbac, security |
+| Tags | bulk-upload, medium, functional |
 
-### IWC-TC-136 — Verify overlay click closes Bulk Upload modal (FSD Section 5.1.3)
+### IWC-TC-103 — Validate partial upload success with mixed valid and invalid rows
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Bulk Upload |
 | Priority | Medium |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; Bulk Upload modal open |
-| Test Data | Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — Category: Entity Suffixes; File: valid_ignore_words_export.csv; Formats per FSD 5.1.3: CSV, XLSX; Max 10 MB >> Step 6: Compare actual result with expected result: Modal closes. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | Overlay click closes modal. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Modal closes. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
+| Preconditions | CSV has 6 rows with 4 valid and 2 invalid entries. |
+| Test Data | File rows: 4 valid, 2 invalid |
+| Steps | 1. Log in as authorised user with Ignore Words Configuration access. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Upload file 'iwc_mixed_6_rows.csv'. 4. Submit request. 5. Review row-level processing summary. |
+| Acceptance Criteria | System processes valid rows and reports failed rows |
+| Expected Result | Valid rows are accepted while invalid rows are listed with rejection reasons. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | bulk-upload, medium, rbac, security |
+| Tags | bulk-upload, medium, functional |
 
-### IWC-TC-137 — Verify Checker Approval popup structure after submit
+### IWC-TC-104 — Export Active tab records to CSV
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
+| Feature | Export |
 | Priority | High |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Admin submitted new ignore word |
-| Test Data | Word: financial services |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — Word: financial services >> Step 6: Compare actual result with expected result: Checker Approval popup displays with correct structure. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | Popup shows Request Submitted header, icon, message, request details, OK button |
-| Expected Result | Checker Approval popup displays with correct structure. Approve/Reject updates record status per FSD Maker-Checker rules. |
+| Preconditions | Active tab has multiple records. |
+| Test Data | Tab: Active |
+| Steps | 1. Select Active tab. 2. Click Export. 3. Open downloaded CSV. |
+| Acceptance Criteria | Export generates CSV containing active records |
+| Expected Result | Export file contains only active records with Word/Phrase, Category, Risk Level, Match Type, Created Date, Status, and maker/checker metadata columns. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | checker-approval-modal, high, rbac, security |
+| Tags | export, high |
 
-### IWC-TC-138 — Verify Checker popup message for new word submission
+### IWC-TC-105 — Export Inactive tab records to CSV
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
-| Priority | High |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Admin submitted word |
-| Test Data | Word: financial services |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — Word: financial services >> Step 6: Compare actual result with expected result: Correct submission message displayed. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | Message shows [word] has been submitted and sent for Checker Approval. |
-| Expected Result | Correct submission message displayed. Approve/Reject updates record status per FSD Maker-Checker rules. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | checker-approval-modal, high, rbac, security |
-
-### IWC-TC-139 — Verify Checker popup request details section
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
-| Priority | High |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Checker popup displayed |
-| Test Data | Submitted by: Charu Chauhan |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — Submitted by: Charu Chauhan >> Step 6: Compare actual result with expected result: Submitter, timestamp, and Pending Checker status displayed. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | Details show Submitted by, Timestamp, Status Pending Checker |
-| Expected Result | Submitter, timestamp, and Pending Checker status displayed. Approve/Reject updates record status per FSD Maker-Checker rules. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | checker-approval-modal, high, rbac, security |
-
-### IWC-TC-140 — Verify Checker popup timestamp format
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
+| Feature | Export |
 | Priority | Medium |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Checker popup displayed after action |
-| Test Data | Format: DD Mon YYYY HH:MM:SS |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — Format: DD Mon YYYY HH:MM:SS >> Step 6: Compare actual result with expected result: Timestamp recorded and displayed correctly. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | Timestamp displayed in readable format with date and time |
-| Expected Result | Timestamp recorded and displayed correctly. Approve/Reject updates record status per FSD Maker-Checker rules. |
+| Preconditions | Maker is on Inactive tab with records. |
+| Test Data | Source tab: Inactive |
+| Steps | 1. Click Export. 2. Open downloaded CSV. 3. Verify all exported rows are inactive. |
+| Acceptance Criteria | Export respects current tab filter |
+| Expected Result | Exported file contains only inactive records from selected context. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | checker-approval-modal, medium, rbac, security |
+| Tags | export, medium |
 
-### IWC-TC-141 — Verify Checker popup for disable action
+### IWC-TC-106 — Validate export file contains metadata header section
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
-| Priority | High |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Admin disabled active word |
-| Test Data | Word: trading company |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: trading company >> Step 7: Compare actual result with expected result: Disable-specific Checker message displayed. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Disable shows message word has been sent for Checker Approval to disable. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Disable-specific Checker message displayed. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | checker-approval-modal, high, rbac, security |
-
-### IWC-TC-142 — Verify Checker popup for enable action
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
-| Priority | High |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Admin enabled inactive word |
-| Test Data | Word: offshore account |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — Word: offshore account >> Step 6: Compare actual result with expected result: Enable-specific Checker message displayed. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Enable shows message word has been sent for Checker Approval to enable. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Enable-specific Checker message displayed. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | checker-approval-modal, high, rbac, security |
-
-### IWC-TC-143 — Verify OK button closes Checker popup
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
+| Feature | Export |
 | Priority | Medium |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Checker popup open |
-| Test Data | User Role: Checker |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — User Role: Checker >> Step 6: Compare actual result with expected result: Popup closes on OK click. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | OK button closes Checker Approval popup |
-| Expected Result | Popup closes on OK click. Approve/Reject updates record status per FSD Maker-Checker rules. |
+| Preconditions | Active tab export completed. |
+| Test Data | Export source: Active tab |
+| Steps | 1. Open exported CSV in a text editor. 2. Review header comment/metadata section before column headers. |
+| Acceptance Criteria | CSV includes report metadata rows |
+| Expected Result | File includes metadata header with export timestamp, exported-by user, and checker governance note before data rows. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | checker-approval-modal, medium, rbac, security |
+| Tags | export, medium |
 
-### IWC-TC-144 — Verify overlay click closes Checker popup
+### IWC-TC-107 — Validate maker-checker related columns in exported file
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
+| Feature | Export |
+| Priority | High |
+| Preconditions | Data contains approved and pending records. |
+| Test Data | Expected columns: Maker, Checker, Approval Status, Action Date |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Export dataset from page. 4. Open CSV column headers. 5. Locate maker-checker columns. |
+| Acceptance Criteria | Export includes maker, checker, and approval status fields |
+| Expected Result | Maker-checker columns are present and filled where applicable. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, high, rbac, security |
+
+### IWC-TC-108 — Export with active search filter applied
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Export |
+| Priority | Medium |
+| Preconditions | Search 'wire' applied on Active tab. |
+| Test Data | Search keyword: wire |
+| Steps | 1. Keep search filter active. 2. Click Export. 3. Verify CSV rows match search criteria. |
+| Acceptance Criteria | Exported data reflects current search filter |
+| Expected Result | CSV includes only records matching active filter context. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, medium |
+
+### IWC-TC-109 — Viewer role can perform read-only export
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Export |
+| Priority | Medium |
+| Preconditions | Viewer user is on Ignore Words page. |
+| Test Data | Role: Viewer |
+| Steps | 1. Click Export as Viewer. 2. Download and open CSV. 3. Confirm no edit controls are available in UI. |
+| Acceptance Criteria | Viewer can export but cannot change data |
+| Expected Result | Export works for Viewer while write actions remain restricted. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, medium, rbac, security |
+
+### IWC-TC-110 — Maker submit new category creates pending request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Category name 'Investigation Terms' is unique. |
+| Test Data | Category: Investigation Terms |
+| Steps | 1. As Maker, submit new category Investigation Terms with description. 2. Note confirmation details. 3. Log in as Checker and open the pending approvals queue. 4. Locate the category creation request. |
+| Acceptance Criteria | Submit action routes item to checker queue |
+| Expected Result | Category request appears in checker queue with Pending Checker Approval status. Category is not selectable in Add Ignore Word until approved. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### IWC-TC-111 — Checker approves category creation request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Pending category creation request exists. |
+| Test Data | Pending category: Investigation Terms |
+| Steps | 1. Log in as Checker. 2. Approve the pending category request. 3. As Maker, open Add Ignore Word and inspect Category dropdown. |
+| Acceptance Criteria | Approved request activates category for use |
+| Expected Result | Category becomes selectable after approval. Audit trail records checker approval with user and timestamp. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### IWC-TC-112 — Checker rejects category creation request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Pending category creation request exists. |
+| Test Data | Rejection comment: Category scope overlaps existing Entity Suffixes |
+| Steps | 1. As Checker, reject the category request with comments. 2. As Maker, verify category is not in dropdown. 3. Review audit/history if available. |
+| Acceptance Criteria | Rejected request does not activate category |
+| Expected Result | Category is not created. Maker can revise and resubmit. Rejection reason is retained in audit trail. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-113 — Maker cannot approve own request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Maker has a pending ignore word or category request they submitted. |
+| Test Data | Request owner: Maker user A Current user: Maker user A (same account) |
+| Steps | 1. As the same Maker user, open the checker approvals queue. 2. Locate own pending request. 3. Attempt to approve the request. |
+| Acceptance Criteria | Four-eyes principle enforced — maker cannot approve own submissions even if dual roles exist on the account |
+| Expected Result | Self-approval is blocked. Approve action is hidden or denied with permission message. Request remains pending until a different checker user acts. Audit log records the blocked attempt if applicable. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### IWC-TC-114 — Maker submits drafted ignore word for approval
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Drafted word exists on Drafted tab. |
+| Test Data | Drafted word: co |
+| Steps | 1. As Maker, submit drafted word from row action or add panel. 2. Verify confirmation modal. |
+| Acceptance Criteria | Drafted item transitions to pending approval |
+| Expected Result | Draft moves to pending checker workflow. Entry is locked from further edits until checker decision. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-115 — Checker approves drafted ignore word submission
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Ignore word submission is pending checker approval. |
+| Test Data | Word: co |
+| Steps | 1. As Checker, approve the pending ignore word. 2. Verify listing on Active tab. |
+| Acceptance Criteria | Approved draft moves to Active tab |
+| Expected Result | Word status becomes Active after approval. It appears on Active tab and is applied in subsequent screening runs. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### IWC-TC-116 — Checker rejects drafted ignore word submission
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Ignore word submission is pending checker approval. |
+| Test Data | Rejection comment: Word too generic for current risk appetite |
+| Steps | 1. As Checker, reject with comments. 2. As Maker, open Drafted tab. |
+| Acceptance Criteria | Rejected draft does not become active |
+| Expected Result | Entry returns to Drafted state. Rejection comments are visible to Maker. Word remains non-operational. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-117 — Maker submits disable request for active word
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Active word 'global' exists. |
+| Test Data | Word: global |
+| Steps | 1. As Maker, click Disable for 'global'. 2. Confirm checker submission modal. |
+| Acceptance Criteria | Disable request enters checker queue |
+| Expected Result | Disable request enters pending approval. Word remains active until checker approves disable. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-118 — Checker approves disable request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Disable request for 'global' is pending. |
+| Test Data | Word: global |
+| Steps | 1. As Checker, approve disable request. 2. Verify word on Inactive tab. |
+| Acceptance Criteria | Approved disable moves record to inactive |
+| Expected Result | Word moves to Inactive after approval. Screening engine stops applying it on next run. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### IWC-TC-119 — Checker rejects disable request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Pending disable request exists. |
+| Test Data | Reject reason: Still required for screening |
+| Steps | 1. Log in as Checker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open pending disable request. 4. Reject with reason 'Still required for screening'. 5. Verify word remains in Active tab. |
+| Acceptance Criteria | Rejected disable keeps record active |
+| Expected Result | Word stays active and request marked rejected. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-120 — Maker submits bulk upload for checker review
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Maker uploaded valid file through Bulk Upload. |
+| Test Data | File: iwc_valid_5_rows.csv |
+| Steps | 1. Submit bulk upload. 2. Open workflow queue. 3. Confirm bulk request appears as pending. |
+| Acceptance Criteria | Bulk request is queued for checker decision |
+| Expected Result | Bulk upload request appears in pending checker queue. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-121 — Checker approves bulk upload request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Pending bulk upload request exists. |
+| Test Data | Sample uploaded word: compliance shell |
+| Steps | 1. Log in as Checker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Login as Checker and open bulk request. 4. Approve request. 5. Search uploaded words in Active tab. |
+| Acceptance Criteria | Approved bulk rows are activated per workflow |
+| Expected Result | Approved bulk rows become available per active workflow status. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### IWC-TC-122 — Checker rejects bulk upload request
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | Pending bulk upload request exists. |
+| Test Data | Reject reason: Data quality issue |
+| Steps | 1. Log in as Checker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open pending bulk request as Checker. 4. Reject with reason 'Data quality issue'. 5. Verify uploaded words are not activated. |
+| Acceptance Criteria | Rejected bulk request does not apply rows |
+| Expected Result | Bulk request is rejected and rows are not applied to active data. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-123 — Workflow status visibility for Maker after checker decision
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Medium |
+| Preconditions | At least one request has completed checker action. |
+| Test Data | Request types: Add Category, Add Ignore Word, Disable |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Login as Maker. 4. Open submitted requests history. 5. Review final status and remarks. |
+| Acceptance Criteria | Maker can see final approval or rejection outcome |
+| Expected Result | Maker sees final status, checker user, and decision timestamp. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, medium, rbac, security |
+
+### IWC-TC-124 — Open Word History panel from row context
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | High |
+| Preconditions | Active ignore word 'limited' has audit history. |
+| Test Data | Word: limited |
+| Steps | 1. On Active tab, click the 'limited' hyperlink in the Ignore Word/Phrase column. 2. Review the Word History panel. |
+| Acceptance Criteria | History panel opens for selected word |
+| Expected Result | Word History panel opens from the right. Metadata card shows word, category, risk, match type, status, and created date. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, high, word-history |
+
+### IWC-TC-125 — Validate metadata card fields in history panel
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Word History panel is open for an active word. |
+| Test Data | Word: limited |
+| Steps | 1. Review metadata card fields. 2. Compare values with the listing row. |
+| Acceptance Criteria | Metadata card shows core word details |
+| Expected Result | Metadata card values match the listing row and persisted record exactly. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, functional |
+
+### IWC-TC-126 — Verify timeline entry for word creation
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Word History panel open for a fully approved word. |
+| Test Data | Expected event: Word Added |
+| Steps | 1. Locate earliest timeline event. 2. Verify creation entry details. |
+| Acceptance Criteria | Creation event stores actor and timestamp |
+| Expected Result | Timeline shows Word Added with maker user, role, department, timestamp, and optional note. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, functional |
+
+### IWC-TC-127 — Verify timeline entry for checker approval
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Word has completed checker approval. |
+| Test Data | Expected checker: Charu Chauhan |
+| Steps | 1. Open Word History. 2. Locate Approved & Activated event. |
+| Acceptance Criteria | Approval event records checker and decision |
+| Expected Result | Timeline includes checker approval event with checker user, role, department, timestamp, and approval note if provided. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, rbac, security |
+
+### IWC-TC-128 — Verify timeline entry for disable action
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Word has been disabled through approved workflow. |
+| Test Data | Workflow: Disable |
+| Steps | 1. Open Word History for the disabled word. 2. Locate Disable Requested and Disable Approved events. |
+| Acceptance Criteria | Disable action appears in chronological order |
+| Expected Result | Timeline captures disable request by maker and disable approval by checker with timestamps. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, functional |
+
+### IWC-TC-129 — Verify timeline entry for enable action
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Ignore word was re-enabled through approved checker workflow. |
+| Test Data | Workflow: Enable after inactive |
+| Steps | 1. Open Word History for the re-enabled word. 2. Locate enable-related timeline events. 3. Verify maker request and checker approval entries. |
+| Acceptance Criteria | Enable event is tracked after inactive activation |
+| Expected Result | Timeline includes enable request by maker and enable approval by checker with user, role, department, and timestamps. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, functional |
+
+### IWC-TC-130 — Audit history includes rejection reason
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Checker rejected a drafted ignore word submission. |
+| Test Data | Rejection comment: Requires senior compliance sign-off |
+| Steps | 1. Open Word History for the rejected word. 2. Locate rejection event and comments. |
+| Acceptance Criteria | Rejected requests show checker comments in timeline |
+| Expected Result | Timeline shows rejection with checker comments preserved for audit. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, rbac, security |
+
+### IWC-TC-131 — Verify history access for Viewer role
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Viewer has access to Ignore Words page. |
+| Test Data | Role: Viewer |
+| Steps | 1. Open Word History panel as Viewer. 2. Inspect metadata and timeline content. 3. Attempt to perform edit or action from history panel. |
+| Acceptance Criteria | Viewer can read history but cannot modify records |
+| Expected Result | Viewer can access full audit history in read-only mode. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, rbac, security |
+
+### IWC-TC-132 — Validate history sorting by latest event first
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Selected word has multiple workflow events. |
+| Test Data | Word with 5+ events |
+| Steps | 1. Log in as authorised user with Ignore Words Configuration access. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open Word History panel. 4. Observe first and second timeline timestamps. 5. Compare recency order. |
+| Acceptance Criteria | Recent events appear at top of timeline |
+| Expected Result | Timeline displays most recent event at top consistently. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, functional |
+
+### IWC-TC-133 — Persist history visibility after page refresh and reopen
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Medium |
+| Preconditions | Word History panel was previously opened for ignore word 'limited'. |
+| Test Data | Word: limited |
+| Steps | 1. Close Word History panel. 2. Refresh the browser page. 3. Reopen Word History for 'limited'. 4. Compare timeline events with the prior session. |
+| Acceptance Criteria | Audit data remains accessible and consistent |
+| Expected Result | History data persists after refresh. Timeline events and metadata match pre-refresh content. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, medium, word-history |
+
+### IWC-TC-134 — Maker can access add and submit functions
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Maker account is logged in. |
+| Test Data | User role: Maker |
+| Steps | 1. Open Ignore Words Configuration. 2. Verify Add Ignore Word, Add Category, and Bulk Upload are available. 3. Open Add Ignore Word and confirm Save Draft and Submit are enabled. |
+| Acceptance Criteria | Maker role has create and submit rights |
+| Expected Result | Maker can access create, draft, and submit functions. Checker approval queue actions are not available to Maker. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, high, rbac, security |
+
+### IWC-TC-135 — Maker cannot approve pending requests
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Maker has pending submissions in the queue. |
+| Test Data | User role: Maker |
+| Steps | 1. As Maker, open pending approvals queue. 2. Confirm Approve and Reject are unavailable. |
+| Acceptance Criteria | Maker role does not have checker actions |
+| Expected Result | Maker cannot approve or reject any pending request. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, high, rbac, security |
+
+### IWC-TC-136 — Checker can approve or reject pending requests
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Pending requests exist from other makers. |
+| Test Data | User role: Checker |
+| Steps | 1. Log in as Checker. 2. Open pending queue and approve one request. 3. Reject another with comments. |
+| Acceptance Criteria | Checker role has decision rights |
+| Expected Result | Checker can approve or reject third-party maker submissions. Decisions update record status and audit trail. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, high, rbac, security |
+
+### IWC-TC-137 — Checker cannot create new ignore words directly
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | Medium |
+| Preconditions | Checker account is logged in. |
+| Test Data | User role: Checker |
+| Steps | 1. Open Ignore Words Configuration. 2. Inspect toolbar for Add Ignore Word and Add Category. 3. Attempt to open creation forms if visible. |
+| Acceptance Criteria | Checker has review role only |
+| Expected Result | Checker cannot create new ignore words or categories. Add actions are hidden or blocked. Checker can still access approval queue. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, medium, rbac, security |
+
+### IWC-TC-138 — Viewer can access page and read records
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | Medium |
+| Preconditions | Viewer account exists with read permission. |
+| Test Data | User role: Viewer |
+| Steps | 1. Log in as Viewer. 2. Open Ignore Words Configuration. 3. Browse tabs and search. |
+| Acceptance Criteria | Viewer has read-only visibility |
+| Expected Result | Viewer can read listing data across tabs. Create, submit, and row mutation actions are unavailable. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, medium, rbac, security |
+
+### IWC-TC-139 — Viewer cannot access Add Ignore Word panel
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Viewer is on Ignore Words listing. |
+| Test Data | User role: Viewer |
+| Steps | 1. Confirm Add Ignore Word button is hidden or disabled. 2. Attempt direct navigation to add panel URL if applicable. |
+| Acceptance Criteria | Write controls are restricted for Viewer |
+| Expected Result | Viewer cannot open Add Ignore Word panel or create records. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, high, rbac, security |
+
+### IWC-TC-140 — Viewer cannot perform row enable or disable actions
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | High |
+| Preconditions | Viewer is on tab with data rows. |
+| Test Data | Role: Viewer; Tab: Active/Inactive |
+| Steps | 1. Log in as Viewer. 2. Attempt to access Ignore Words Configuration via menu navigation or direct URL. 3. Open row action menu as Viewer. 4. Attempt to click Enable or Disable. 5. Observe result. |
+| Acceptance Criteria | Row action controls are read-only for Viewer |
+| Expected Result | Enable/Disable actions are hidden or disabled for Viewer. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, high, rbac, security |
+
+### IWC-TC-141 — Role-based visibility of Bulk Upload action
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | Medium |
+| Preconditions | Accounts for Maker, Checker, and Viewer are available. |
+| Test Data | Roles: Maker, Checker, Viewer |
+| Steps | 1. Log in as Viewer. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Login as Maker and check Bulk Upload button. 4. Login as Checker and check same button. 5. Login as Viewer and check same button. |
+| Acceptance Criteria | Bulk Upload appears only for authorized role |
+| Expected Result | Bulk Upload is available only to roles with upload permission. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, medium, rbac, security |
+
+### IWC-TC-142 — Role-based visibility of Category Controls toggles
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | Medium |
+| Preconditions | Category Controls is accessible to all test roles. |
+| Test Data | Roles compared: Maker, Checker, Viewer |
+| Steps | 1. Log in as Viewer. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open Category Controls as Maker. 4. Open Category Controls as Checker. 5. Open Category Controls as Viewer and compare toggle state. |
+| Acceptance Criteria | Only allowed role can toggle category state |
+| Expected Result | Toggle interaction is enabled only for authorized role. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, medium, rbac, security |
+
+### IWC-TC-143 — Session role switch updates UI permissions immediately
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Access Control (RBAC) |
+| Priority | Medium |
+| Preconditions | User can log out and log in with different role accounts. |
+| Test Data | Role switch: Maker -> Viewer |
+| Steps | 1. Log in as Viewer. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Log out and log in as Viewer. 4. Compare visible actions on same page. |
+| Acceptance Criteria | Toolbar actions refresh according to current login role |
+| Expected Result | UI permissions update immediately and reflect active role. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | access-control-rbac, medium, rbac, security |
+
+### IWC-TC-144 — Case-insensitive matching for exact phrase business rule
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | High |
+| Preconditions | Active word 'Shell Company' with Exact phrase exists, or compose on Add panel. |
+| Test Data | Stored word: Shell Company Narrative: payment to shell company account |
+| Steps | 1. On Add panel, set Word: Shell Company, Match Type: Exact phrase. 2. Paste narrative containing lowercase 'shell company'. 3. Review Preview. |
+| Acceptance Criteria | Exact phrase should match regardless of text case |
+| Expected Result | Case-insensitive exact phrase matching highlights the token. Business rule BR-002 is satisfied in preview and live screening. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, high, functional |
+
+### IWC-TC-145 — Exact phrase does not match split word sequence
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Exact phrase word 'New York' is configured or being composed. |
+| Test Data | Phrase: New York Narrative token: NewYork |
+| Steps | 1. Use Match Type: Exact phrase for 'New York'. 2. Paste narrative: NewYork branch transfer. 3. Review Preview. |
+| Acceptance Criteria | Exact phrase requires contiguous phrase |
+| Expected Result | Concatenated token 'NewYork' is not matched. Exact phrase requires token-boundary equality after normalisation. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, functional |
+
+### IWC-TC-146 — Partial match detects word inside longer sentence
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Partial match word 'bank' configured or composed. |
+| Test Data | Word: bank Narrative: Payment via interbank channel |
+| Steps | 1. Set Match Type: Partial match for 'bank'. 2. Paste narrative: Payment via interbank channel. 3. Review Preview. |
+| Acceptance Criteria | Partial match should detect token occurrence |
+| Expected Result | Substring 'bank' within 'interbank' is identified and would be stripped in screening. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, functional |
+
+### IWC-TC-149 — No permanent delete business rule enforced at row level
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | High |
+| Preconditions | Maker is on any tab. |
+| Test Data | Business rule: No permanent delete |
+| Steps | 1. Inspect row actions and add panel for delete options. |
+| Acceptance Criteria | Records cannot be hard deleted from any status tab |
+| Expected Result | No hard-delete capability exists. Deactivation via Disable with checker approval is the only removal path. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, high, functional |
+
+### IWC-TC-151 — Word/Phrase field trims surrounding spaces before save
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Input: '  holdings  ' Expected stored: holdings |
+| Steps | 1. Enter Word with leading/trailing spaces: '  holdings  '. 2. Submit or Save Draft. 3. Verify stored value on listing. |
+| Acceptance Criteria | Stored value excludes accidental surrounding spaces |
+| Expected Result | Surrounding whitespace is trimmed before validation and persistence. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, functional |
+
+### IWC-TC-152 — Category name trims surrounding spaces before duplicate check
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Category 'Geo Exceptions' exists. |
+| Test Data | Input with leading and trailing spaces |
+| Steps | 1. Log in as authorised user with Ignore Words Configuration access. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open Add Category modal. 4. Enter value '  Geo Exceptions  '. 5. Submit form. |
+| Acceptance Criteria | Whitespace-normalized value used for uniqueness |
+| Expected Result | System trims value and flags as duplicate category. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, functional |
+
+### IWC-TC-153 — Risk level value persists correctly through workflow
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Maker can submit and Checker can approve a new ignore word. |
+| Test Data | Word: offshore shell; Risk Level: High |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Create ignore word with Risk Level High. 4. Approve request as Checker. 5. Open active record and verify Risk Level column. |
+| Acceptance Criteria | Selected risk level remains unchanged after approval |
+| Expected Result | Approved active record keeps Risk Level as High. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, functional |
+
+### IWC-TC-154 — Bulk upload applies same duplicate business rules as manual add
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Existing words include 'shell company' and 'wire transfer'. |
+| Test Data | File: iwc_dup_existing.csv |
+| Steps | 1. Log in as authorised user with Ignore Words Configuration access. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Upload CSV containing duplicate entries for existing words. 4. Submit bulk request. 5. Review validation response. |
+| Acceptance Criteria | Bulk channel enforces standard duplicate constraints |
+| Expected Result | Bulk upload rejects duplicates using same validation rule set. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, export |
+
+### IWC-TC-155 — Export includes approved and pending status values accurately
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Dataset has both approved and pending records. |
+| Test Data | Records sampled: approved word, pending disable request |
+| Steps | 1. Log in as authorised user with Ignore Words Configuration access. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Trigger Export from Ignore Words page. 4. Open CSV and inspect Status and Approval Status columns. 5. Cross-check with UI record statuses. |
+| Acceptance Criteria | Status mapping in export follows workflow state |
+| Expected Result | CSV status values match live UI and workflow state. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, export |
+
+### IWC-TC-156 — Verify no separate Pending Approval tab on listing screen
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Status Tabs |
+| Priority | Medium |
+| Preconditions | Pending checker requests exist in the system. |
+| Test Data | Expected tabs: Active, Inactive, Drafted Ignore Word |
+| Steps | 1. Open Ignore Words Configuration listing. 2. Review available status tabs. |
+| Acceptance Criteria | Only Active, Inactive, and Drafted Ignore Word tabs are shown |
+| Expected Result | No separate Pending Approval tab exists on the listing. Pending items are managed through checker queue and drafted/pending statuses. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | status-tabs, medium, functional |
+
+### IWC-TC-157 — Verify loading indicator during delayed page load
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Navigation & Page Access |
+| Priority | Medium |
+| Preconditions | Browser dev tools available; network throttling can be enabled |
+| Test Data | Network: Slow 3G |
+| Steps | 1. Log in as Maker. 2. Enable Slow 3G or equivalent network throttling. 3. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 4. Observe the table area while data loads. |
+| Acceptance Criteria | System shows loading state while listing data is fetched |
+| Expected Result | A loading spinner or skeleton placeholder appears in the table area until ignore word rows render. No blank broken layout or unhandled error is shown. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | navigation-page-access, medium, performance |
+
+### IWC-TC-158 — Verify no JavaScript console errors on module load
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Navigation & Page Access |
+| Priority | Medium |
+| Preconditions | Browser developer console open before navigation |
+| Test Data | Browser: Chrome or Edge |
+| Steps | 1. Log in as Maker. 2. Open browser console and clear existing messages. 3. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 4. Review console for errors after page fully loads. |
+| Acceptance Criteria | Page load completes without frontend exceptions |
+| Expected Result | No uncaught JavaScript errors or unhandled promise rejections appear in the console during page load and initial table render. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | navigation-page-access, medium, browser-compat |
+
+### IWC-TC-159 — Verify table header remains visible when scrolling long lists
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Data Table & Sorting |
+| Priority | Medium |
+| Preconditions | Active tab contains enough rows to require vertical scroll. |
+| Test Data | Tab: Active |
+| Steps | 1. Scroll down within the table area. 2. Observe column header behaviour. |
+| Acceptance Criteria | Sticky header stays fixed while scrolling table body |
+| Expected Result | Table header remains visible (sticky) while scrolling long lists. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | data-table-sorting, medium, functional |
+
+### IWC-TC-160 — Verify footer status bar displays license and copyright information
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Navigation & Page Access |
 | Priority | Low |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Checker popup open |
-| Test Data | User Role: Checker |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — User Role: Checker >> Step 6: Compare actual result with expected result: Popup closes on overlay click. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | Overlay click closes Checker popup |
-| Expected Result | Popup closes on overlay click. Approve/Reject updates record status per FSD Maker-Checker rules. |
+| Preconditions | Maker is on Ignore Words Configuration. |
+| Test Data | Footer elements: license expiry, copyright, links |
+| Steps | 1. Scroll to page footer status bar. 2. Read displayed information. |
+| Acceptance Criteria | Status bar shows institutional footer content |
+| Expected Result | Status bar shows license expiry date, copyright notice, and Important Links without obscuring main content. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | checker-approval-modal, low, rbac, security |
+| Tags | navigation-page-access, low, functional |
 
-### IWC-TC-145 — Verify drafted word requires Checker approval before Active per FSD BR-003 / FSD 7.1
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
-| Priority | High |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Word submitted by Maker |
-| Test Data | Word: new test word |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — Word: new test word >> Step 6: Compare actual result with expected result: Word status remains Drafted until Checker approval completes. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | New word remains Drafted until Checker approves |
-| Expected Result | Word status remains Drafted until Checker approval completes. Approve/Reject updates record status per FSD Maker-Checker rules. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | checker-approval-modal, high, rbac, security |
-
-### IWC-TC-146 — Verify Word History panel opens on word click per FSD audit / Word History
+### IWC-TC-161 — Filter Configuration menu using sidebar search input
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | High |
-| Preconditions | User on main list view; ignore word record with history exists in table; Record with history exists |
-| Test Data | Word: trading company |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target ignore word row >> Step 4: Click History icon in Actions column >> Step 5: Review audit entries in Word History panel >> Step 6: Apply test data — Word: trading company >> Step 7: Compare actual result with expected result: Word History panel slides in from right. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Clicking ignore word/phrase opens right-side Word History panel.. |
-| Expected Result | Word History panel slides in from right. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, high, word-history |
-
-### IWC-TC-147 — Verify Word History panel title
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | Medium |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word History panel open |
-| Test Data | Word: trading company |
-| Steps | Step 1: Locate target ignore word row >> Step 2: Click History icon in Actions column >> Step 3: Review audit entries in Word History panel >> Step 4: Apply test data — Word: trading company >> Step 5: Compare actual result with expected result: Title displays History â€” trading company. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Panel title shows History â€” [word].. |
-| Expected Result | Title displays History â€” trading company. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, medium, word-history |
-
-### IWC-TC-148 — Verify history metadata card fields
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | High |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word History panel open |
-| Test Data | Word: trading company |
-| Steps | Step 1: Locate target ignore word row >> Step 2: Click History icon in Actions column >> Step 3: Review audit entries in Word History panel >> Step 4: Apply test data — Word: trading company >> Step 5: Compare actual result with expected result: All six metadata fields displayed correctly. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Meta card shows Word/Phrase, Category, Risk Level, Match Type, Status, Created Date.. |
-| Expected Result | All six metadata fields displayed correctly. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, high, functional |
-
-### IWC-TC-149 — Verify activity timeline rendering
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | High |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word with multi-event history exists |
-| Test Data | Word: defense services |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Click the History icon on the target ignore word row >> Step 4: Review the Word History panel entries and audit details >> Step 5: Apply test data — Word: defense services >> Step 6: Compare actual result with expected result: Complete activity timeline rendered with all event details. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Timeline shows chronological events with icons, action, date, user, role, department, notes |
-| Expected Result | Complete activity timeline rendered with all event details. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, high, functional |
-
-### IWC-TC-150 — Verify timeline event types
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | High |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word with full lifecycle history |
-| Test Data | Word: politically exposed |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Click the History icon on the target ignore word row >> Step 4: Review the Word History panel entries and audit details >> Step 5: Apply test data — Word: politically exposed >> Step 6: Compare actual result with expected result: All relevant lifecycle events displayed in timeline. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Timeline includes Word Added, Sent for Checker Review, Approved, Disable Requested events |
-| Expected Result | All relevant lifecycle events displayed in timeline. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, high, rbac, security |
-
-### IWC-TC-151 — Verify timeline user avatar and role display
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | Medium |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word History panel with events |
-| Test Data | User: Charu Chauhan; Role: Checker |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Click the History icon on the target ignore word row >> Step 4: Review the Word History panel entries and audit details >> Step 5: Apply test data — User: Charu Chauhan; Role: Checker >> Step 6: Compare actual result with expected result: User details displayed with avatar initials and role. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Each event shows user avatar initials, name, role, department |
-| Expected Result | User details displayed with avatar initials and role. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, medium, rbac, security |
-
-### IWC-TC-152 — Verify timeline notes display
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | Medium |
-| Preconditions | User on main list view; ignore word record with history exists in table; History event with note exists |
-| Test Data | Note: Added as part of initial Entity Suffixes list setup. |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Click the History icon on the target ignore word row >> Step 4: Review the Word History panel entries and audit details >> Step 5: Apply test data — Note: Added as part of initial Entity Suffixes list setup. >> Step 6: Compare actual result with expected result: Note displayed in bordered info box. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Events with notes show note text in styled box |
-| Expected Result | Note displayed in bordered info box. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, medium, functional |
-
-### IWC-TC-153 — Verify back arrow closes Word History panel
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | Medium |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word History panel open |
-| Test Data | Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase |
-| Steps | Step 1: Locate target ignore word row >> Step 2: Click History icon in Actions column >> Step 3: Review audit entries in Word History panel >> Step 4: Apply test data — Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase >> Step 5: Compare actual result with expected result: History panel closes. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Back arrow closes history panel.. |
-| Expected Result | History panel closes. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, medium, word-history |
-
-### IWC-TC-154 — Verify overlay click closes Word History panel
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | Medium |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word History panel open |
-| Test Data | Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase |
-| Steps | Step 1: Locate target ignore word row >> Step 2: Click History icon in Actions column >> Step 3: Review audit entries in Word History panel >> Step 4: Apply test data — Word: test phrase; Category: Entity Suffixes; Risk: Low; Match: Exact phrase >> Step 5: Compare actual result with expected result: History panel closes. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Overlay click closes history panel.. |
-| Expected Result | History panel closes. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, medium, word-history |
-
-### IWC-TC-155 — Verify default history for word without detailed history
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | Medium |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word without custom history data |
-| Test Data | Word: export limited |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target ignore word row >> Step 4: Click History icon in Actions column >> Step 5: Review audit entries in Word History panel >> Step 6: Apply test data — Word: export limited >> Step 7: Compare actual result with expected result: Default Word Added event displayed. Audit history shows user, action, and timestamp for the word |
-| Acceptance Criteria | Word without detailed history shows default Word Added system event.. |
-| Expected Result | Default Word Added event displayed. Audit history shows user, action, and timestamp for the word. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, medium, export |
-
-### IWC-TC-156 — Verify audit log generated for create update enable disable per FSD audit / Word History
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | High |
-| Preconditions | User on main list view; ignore word record with history exists in table; Admin performs disable then enable |
-| Test Data | Word: international trade |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: international trade >> Step 7: Compare actual result with expected result: Audit timeline reflects all status change actions. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | All create, update, enable, disable actions generate audit log entries. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Audit timeline reflects all status change actions. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, high, rbac, security |
-
-### IWC-TC-160 — Verify Viewer cannot Add Ignore Word
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Viewer |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Viewer cannot Add Ignore Word >> Step 4: Apply test data — User Role: Viewer >> Step 5: Compare actual result with expected result: Add Ignore Word button hidden or disabled for Viewer. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | Viewer cannot access Add Ignore Word |
-| Expected Result | Add Ignore Word button hidden or disabled for Viewer. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, high, rbac, security |
-
-### IWC-TC-161 — Verify Compliance Officer cannot Add Ignore Word
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Compliance Officer |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Compliance Officer cannot Add Ignore Word >> Step 4: Apply test data — User Role: Compliance Officer >> Step 5: Compare actual result with expected result: Add Ignore Word not available for Compliance Officer. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | Compliance Officer cannot add ignore words |
-| Expected Result | Add Ignore Word not available for Compliance Officer. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, high, functional |
-
-### IWC-TC-162 — Verify Admin can Add Ignore Word
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Admin |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Admin can Add Ignore Word >> Step 4: Apply test data — User Role: Admin >> Step 5: Compare actual result with expected result: Admin can add ignore words successfully. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | Admin can open and submit Add Ignore Word panel |
-| Expected Result | Admin can add ignore words successfully. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, high, rbac, security |
-
-### IWC-TC-163 — Verify Admin can toggle enable disable
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Admin |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — User Role: Admin >> Step 7: Compare actual result with expected result: Admin can trigger enable/disable actions. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Admin can perform Off/On row actions. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Admin can trigger enable/disable actions. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, high, rbac, security |
-
-### IWC-TC-164 — Verify Admin can Add Category and Category Controls
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Admin |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Admin can Add Category and Category Controls >> Step 4: Apply test data — User Role: Admin >> Step 5: Compare actual result with expected result: Admin can access both category modals. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | Admin can access category management features. Per FSD 4.2: category name unique (max 100 chars); optional description (max 500); Checker approval on submit. |
-| Expected Result | Admin can access both category modals. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, high, rbac, security |
-
-### IWC-TC-165 — Verify Admin can Bulk Upload
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Admin |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — User Role: Admin >> Step 8: Compare actual result with expected result: Bulk Upload accessible for Admin. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | Admin can access bulk upload. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Bulk Upload accessible for Admin. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, high, rbac, security |
-
-### IWC-TC-166 — Verify Checker can approve requests
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Checker |
-| Steps | Step 1: Log in as Checker with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Checker can approve requests >> Step 4: Apply test data — User Role: Checker >> Step 5: Compare actual result with expected result: Checker can approve pending requests. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | Checker role can approve disable, enable, submit requests |
-| Expected Result | Checker can approve pending requests. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, high, rbac, security |
-
-### IWC-TC-167 — Verify Checker cannot Add Ignore Word
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Checker |
-| Steps | Step 1: Log in as Checker with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Checker cannot Add Ignore Word >> Step 4: Apply test data — User Role: Checker >> Step 5: Compare actual result with expected result: Add Ignore Word not available for Checker. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | Checker cannot add new ignore words |
-| Expected Result | Add Ignore Word not available for Checker. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, medium, rbac, security |
-
-### IWC-TC-168 — Verify Compliance Officer cannot view audit trail button
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Permissions & RBAC |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Compliance Officer |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Compliance Officer cannot view audit trail button >> Step 4: Apply test data — User Role: Compliance Officer >> Step 5: Compare actual result with expected result: Audit Trail button not present in toolbar. Action allowed or blocked per the assigned user role |
-| Acceptance Criteria | System-wide Audit Trail toolbar button removed; Compliance Officer uses Word History |
-| Expected Result | Audit Trail button not present in toolbar. Action allowed or blocked per the assigned user role. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | permissions-rbac, medium, word-history |
-
-### IWC-TC-173 — Verify DELETE endpoint removed per FSD
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | API & Data Model |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin credentials |
-| Test Data | Endpoint: DELETE /api/v1/ignore-words/:id |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: DELETE endpoint removed per FSD >> Step 4: Apply test data — Endpoint: DELETE /api/v1/ignore-words/:id >> Step 5: Compare actual result with expected result: DELETE endpoint unavailable; disable-only workflow enforced. API response matches expected data model and status codes |
-| Acceptance Criteria | DELETE /api/v1/ignore-words/:id should not be available. Per FSD BR-006: no hard delete; disable only. |
-| Expected Result | DELETE endpoint unavailable; disable-only workflow enforced. API response matches expected data model and status codes. |
-| Automation Candidate | Yes |
-| Automation Layer | API + UI |
-| Tags | api-data-model, high, api |
-
-### IWC-TC-181 — Verify API failure state on list load
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Error Handling |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; API failure simulated |
-| Test Data | API Status: 500 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: API failure state on list load >> Step 4: Apply test data — API Status: 500 >> Step 5: Compare actual result with expected result: Error state displayed without breaking layout. User receives clear error/validation message; no data corruption |
-| Acceptance Criteria | User-friendly error when GET ignore-words fails |
-| Expected Result | Error state displayed without breaking layout. User receives clear error/validation message; no data corruption. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | error-handling, high, api |
-
-### IWC-TC-182 — Verify Retry after API failure
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Error Handling |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; API failure then recovery |
-| Test Data | API Status: Restored |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Retry after API failure >> Step 4: Apply test data — API Status: Restored >> Step 5: Compare actual result with expected result: Data loads successfully after retry. User receives clear error/validation message; no data corruption |
-| Acceptance Criteria | Retry restores data after API recovery |
-| Expected Result | Data loads successfully after retry. User receives clear error/validation message; no data corruption. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | error-handling, medium, api |
-
-### IWC-TC-183 — Verify unauthorized access handling
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Error Handling |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Unauthorized session |
-| Test Data | User: unauthorized_guest |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: unauthorized access handling >> Step 4: Apply test data — User: unauthorized_guest >> Step 5: Compare actual result with expected result: Unauthorized access blocked appropriately. User receives clear error/validation message; no data corruption |
-| Acceptance Criteria | Unauthorized user redirected or shown access message |
-| Expected Result | Unauthorized access blocked appropriately. User receives clear error/validation message; no data corruption. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | error-handling, high, rbac, security |
-
-### IWC-TC-185 — Verify Inter font usage across module
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | UI/UX Consistency |
+| Feature | Navigation & Page Access |
 | Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; User on Ignore Words Configuration page |
-| Test Data | Font: Inter |
-| Steps | Step 1: Perform test action: Inter font usage across module >> Step 2: Apply test data — Font: Inter >> Step 3: Compare actual result with expected result: Inter font applied across module elements. Styling matches application design standards |
-| Acceptance Criteria | Module uses Inter font family per typography spec |
-| Expected Result | Inter font applied across module elements. Styling matches application design standards. |
+| Preconditions | Maker is on application home with sidebar visible. |
+| Test Data | Sidebar search: Ignore Words |
+| Steps | 1. Enter 'Ignore Words' in the sidebar menu search. 2. Select the filtered Ignore Words Configuration menu item. |
+| Acceptance Criteria | Sidebar search narrows visible navigation items |
+| Expected Result | Menu search filters to Ignore Words Configuration. Selecting it opens the listing. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | ui-ux-consistency, low, functional |
+| Tags | navigation-page-access, low, functional |
 
-### IWC-TC-188 — Verify toast notification styling and auto-dismiss
+### IWC-TC-162 — Close Add Category modal by clicking overlay backdrop
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | UI/UX Consistency |
+| Feature | Category Management – Add Category |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin adds category |
-| Test Data | Toast: Category added successfully |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: toast notification styling and auto-dismiss >> Step 4: Apply test data — Toast: Category added successfully >> Step 5: Compare actual result with expected result: Toast appears bottom-right and auto-dismisses after ~2.8 seconds. Styling matches application design standards |
-| Acceptance Criteria | Toast bottom-right #161616 bg, 14px font, auto-dismiss 2.8s |
-| Expected Result | Toast appears bottom-right and auto-dismisses after ~2.8 seconds. Styling matches application design standards. |
+| Preconditions | Maker on listing page |
+| Test Data | Modal: Add Category |
+| Steps | 1. Click Add Category. 2. Click the dimmed overlay area outside the modal box. |
+| Acceptance Criteria | Clicking outside modal dismisses Add Category dialog |
+| Expected Result | Add Category modal closes. No category request is submitted. Entered fields are discarded. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | ui-ux-consistency, medium, notifications |
+| Tags | category-management-add-category, medium, functional |
 
-### IWC-TC-190 — Verify keyboard navigation across toolbar buttons
+### IWC-TC-163 — Close Category Controls modal by clicking overlay backdrop
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Category Controls |
+| Priority | Medium |
+| Preconditions | Maker on listing page |
+| Test Data | Modal: Category Controls |
+| Steps | 1. Open Category Controls. 2. Toggle one category switch. 3. Click overlay backdrop outside modal. |
+| Acceptance Criteria | Overlay click dismisses Category Controls without saving |
+| Expected Result | Modal closes without saving toggle changes. Reopening Category Controls shows prior saved state, not unsaved toggle. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-category-controls, medium, functional |
+
+### IWC-TC-164 — Verify Add Ignore Word panel does not close when clicking overlay
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Add Ignore Word |
+| Priority | Medium |
+| Preconditions | Add Ignore Word panel is open with partial form data entered. |
+| Test Data | Word: test value |
+| Steps | 1. Enter Word/Phrase: test value. 2. Click the dimmed overlay to the left of the panel. |
+| Acceptance Criteria | Right-side panel requires explicit Cancel or back action |
+| Expected Result | Panel does not close when clicking the overlay. User must use Cancel or complete submission to exit. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-ignore-word, medium, functional |
+
+### IWC-TC-165 — Close Bulk Upload modal by clicking overlay backdrop
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Medium |
+| Preconditions | Maker on listing page |
+| Test Data | Modal: Bulk Upload |
+| Steps | 1. Open Bulk Upload. 2. Click overlay outside the modal. |
+| Acceptance Criteria | Overlay click dismisses bulk upload without uploading |
+| Expected Result | Bulk Upload modal closes. No file is uploaded and no draft records are created. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, medium |
+
+### IWC-TC-166 — Close Checker approval modal by clicking overlay backdrop
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | Low |
+| Preconditions | Maker just submitted an ignore word for approval |
+| Test Data | Action: Submit ignore word |
+| Steps | 1. Log in as Maker. 2. Submit a new ignore word for checker approval. 3. When Request Submitted modal appears, click overlay backdrop. |
+| Acceptance Criteria | Overlay click dismisses confirmation modal after action submission |
+| Expected Result | Checker approval modal closes. Submitted request remains in pending/drafted state; closing modal does not cancel the request. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, low, rbac, security |
+
+### IWC-TC-167 — Close Word History panel by clicking overlay backdrop
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
+| Priority | Low |
+| Preconditions | Active ignore word exists |
+| Test Data | Word: limited |
+| Steps | 1. Log in as authorised user. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Click an ignore word link to open Word History. 4. Click overlay to the left of the history panel. |
+| Acceptance Criteria | Overlay click dismisses history side panel |
+| Expected Result | Word History panel closes and listing page is fully interactive again. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | audit-history, low, word-history |
+
+### IWC-TC-168 — Upload bulk file using drag and drop
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Valid CSV bulk file prepared with 2 ignore words |
+| Test Data | File: ignore_words_bulk.csv (2 rows) |
+| Steps | 1. Log in as Maker. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Open Bulk Upload. 4. Drag CSV file onto the upload drop zone. 5. Confirm file name appears in selected file row. |
+| Acceptance Criteria | Drag-and-drop selects file for bulk upload |
+| Expected Result | Drop zone accepts the file. Selected file row shows file name and size. Upload button becomes available. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, export |
+
+### IWC-TC-169 — Verify drop zone highlights on drag-over
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | Low |
+| Preconditions | Bulk Upload modal open |
+| Test Data | File: any valid CSV |
+| Steps | 1. Open Bulk Upload modal. 2. Drag a file over the drop zone without releasing. 3. Observe drop zone styling. 4. Release or move cursor away and observe reset. |
+| Acceptance Criteria | Drag-over provides visual affordance on upload zone |
+| Expected Result | Drop zone border and background change while file is dragged over it, then revert when drag leaves the zone. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, low, export |
+
+### IWC-TC-170 — Export includes only records from the currently selected tab
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Export |
+| Priority | High |
+| Preconditions | Active and Inactive tabs each have distinct records |
+| Test Data | Tabs compared: Active vs Inactive |
+| Steps | 1. Select Inactive tab. 2. Click Export. 3. Open downloaded file and list Word/Phrase values. 4. Repeat export from Active tab. |
+| Acceptance Criteria | Export scope matches active status tab filter |
+| Expected Result | Inactive-tab export contains only inactive records. Active-tab export contains only active records. No cross-tab records appear in either file. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, high |
+
+### IWC-TC-171 — Export drafted ignore words from Drafted tab
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Export |
+| Priority | Medium |
+| Preconditions | At least one drafted ignore word exists |
+| Test Data | Tab: Drafted Ignore Word |
+| Steps | 1. Select Drafted Ignore Word tab. 2. Click Export. 3. Open downloaded CSV. |
+| Acceptance Criteria | Drafted tab data can be exported for review |
+| Expected Result | CSV contains only drafted records with Status column showing Drafted (or equivalent). Maker-checker columns reflect pending approval state. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | export, medium |
+
+### IWC-TC-172 — Reject category name exceeding 100 characters
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | High |
+| Preconditions | Add Category modal is open. |
+| Test Data | Category Name length: 101 characters |
+| Steps | 1. Paste a 101-character category name. 2. Attempt to submit. |
+| Acceptance Criteria | Category Name field enforces maximum length of 100 characters |
+| Expected Result | Submission is blocked with length validation. Modal remains open. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, high, maker-checker |
+
+### IWC-TC-173 — Reject category description exceeding 500 characters
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Category Management – Add Category |
+| Priority | Medium |
+| Preconditions | Add Category modal is open. |
+| Test Data | Description length: 501 characters |
+| Steps | 1. Enter valid category name: Regional Descriptors. 2. Paste a 501-character description. 3. Attempt to submit. |
+| Acceptance Criteria | Category Description enforces maximum length of 500 characters |
+| Expected Result | Description length validation blocks submission. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | category-management-add-category, medium, error-handling |
+
+### IWC-TC-174 — Reject ignore word phrase exceeding 500 characters
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Add Ignore Word |
+| Priority | High |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Phrase length: 501 characters |
+| Steps | 1. Paste a 501-character phrase into Ignore Word/Phrase. 2. Complete other mandatory fields. 3. Click Submit. |
+| Acceptance Criteria | Word/Phrase field enforces maximum length of 500 characters |
+| Expected Result | Maximum length validation blocks submission. No checker request is created. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-ignore-word, high, error-handling |
+
+### IWC-TC-175 — Reject whitespace-only ignore word phrase
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | High |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Input: '     ' (spaces only) |
+| Steps | 1. Enter whitespace-only value in Ignore Word/Phrase. 2. Attempt Save Draft or Submit. |
+| Acceptance Criteria | Mandatory Word/Phrase cannot be blank or spaces only |
+| Expected Result | Whitespace-only input is rejected as invalid. Mandatory field validation prevents save. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, high, maker-checker |
+
+### IWC-TC-176 — Reject empty bulk upload file
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Empty CSV file prepared |
+| Test Data | File: empty.csv (0 bytes or headers only) |
+| Steps | 1. Log in as Maker. 2. Open Bulk Upload. 3. Select Category. 4. Attach empty CSV file. 5. Click Upload. |
+| Acceptance Criteria | Zero-byte or header-only file cannot be uploaded |
+| Expected Result | Upload is rejected with validation message indicating file contains no data rows. No draft records are created. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high, export |
+
+### IWC-TC-178 — Reject bulk upload when All Categories is selected
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Bulk Upload |
+| Priority | High |
+| Preconditions | Bulk Upload modal is open. |
+| Test Data | Category: All Categories |
+| Steps | 1. Select Category: All Categories. 2. Attach a valid CSV file. 3. Attempt Upload. |
+| Acceptance Criteria | Bulk upload requires a specific target category |
+| Expected Result | Upload is blocked. A specific target category must be selected before bulk import proceeds. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | bulk-upload, high |
+
+### IWC-TC-179 — Confirm discard when cancelling Add Ignore Word with populated fields
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Add Ignore Word |
+| Priority | High |
+| Preconditions | Add Ignore Word panel has populated fields. |
+| Test Data | Populated word: temporary test word |
+| Steps | 1. Click Cancel. 2. If confirmation prompt appears, confirm discard. |
+| Acceptance Criteria | Cancel prompts confirmation when form has data |
+| Expected Result | Confirmation prompt appears when discarding populated form. On confirm, panel closes and no record is saved. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | add-ignore-word, high, functional |
+
+### IWC-TC-180 — Partial match highlights substring within token in preview
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Live Narrative Tester |
+| Priority | High |
+| Preconditions | Add Ignore Word panel open with Partial match selected. |
+| Test Data | Word: bank Match Type: Partial match |
+| Steps | 1. Enter Word: bank. 2. Paste narrative: Eurobank international transfer. 3. Review Preview highlighting. |
+| Acceptance Criteria | Partial match mode strips ignore word found inside a token |
+| Expected Result | Preview highlights 'bank' substring inside 'Eurobank'. Confirms partial-match preview behaviour. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | live-narrative-tester, high, functional |
+
+### IWC-TC-181 — Exact phrase does not match substring within longer token
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Live Narrative Tester |
+| Priority | High |
+| Preconditions | Add Ignore Word panel open with Exact phrase selected. |
+| Test Data | Word: bank Match Type: Exact phrase |
+| Steps | 1. Enter Word: bank. 2. Paste narrative: Eurobank international transfer. 3. Review Preview. |
+| Acceptance Criteria | Exact match mode requires whole-token equality |
+| Expected Result | Exact phrase does not highlight 'bank' inside 'Eurobank'. Standalone token 'bank' would match if present. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | live-narrative-tester, high, functional |
+
+### IWC-TC-182 — Prevent editing ignore word while pending checker approval
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Maker-Checker Workflow |
+| Priority | High |
+| Preconditions | Ignore word is in Pending Approval state after maker submit. |
+| Test Data | Status: Pending Approval |
+| Steps | 1. Attempt to edit the pending record from listing or add panel. |
+| Acceptance Criteria | Pending records are locked from further maker edits |
+| Expected Result | Record is locked from edits until checker approves or rejects. Maker must wait for checker decision or rejection before revising. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | maker-checker-workflow, high, rbac, security |
+
+### IWC-TC-184 — Duplicate ignore word shows inline validation not browser alert
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Field & Business Rule Validation |
+| Priority | Medium |
+| Preconditions | Duplicate active word exists. |
+| Test Data | Existing: corp |
+| Steps | 1. Attempt to add duplicate word through Add panel. 2. Observe validation presentation. |
+| Acceptance Criteria | Duplicate errors display as inline field or form validation |
+| Expected Result | Duplicate is shown via inline field validation, not a browser alert dialog. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | field-business-rule-validation, medium, browser-compat |
+
+### IWC-TC-185 — Verify core workflows on Google Chrome
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Regression & Compatibility |
+| Priority | Medium |
+| Preconditions | Google Chrome browser available |
+| Test Data | Browser: Google Chrome (latest) |
+| Steps | 1. Log in as Maker using Chrome. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Execute: add draft word, search, switch tab, export. 4. Verify no layout breakage. |
+| Acceptance Criteria | Module functions on Chrome latest stable |
+| Expected Result | All core actions complete without UI defects or console errors on Chrome. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility, medium, browser-compat |
+
+### IWC-TC-186 — Verify core workflows on Microsoft Edge
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Regression & Compatibility |
+| Priority | Medium |
+| Preconditions | Microsoft Edge browser available |
+| Test Data | Browser: Microsoft Edge (latest) |
+| Steps | 1. Log in as Maker using Edge. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Execute: open Add Category, open Bulk Upload, view history. 4. Verify modals and panels render correctly. |
+| Acceptance Criteria | Module functions on Edge latest stable |
+| Expected Result | Modals, side panels, and table render correctly. No Edge-specific layout or script errors. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility, medium, browser-compat |
+
+### IWC-TC-187 — Verify core workflows on Mozilla Firefox
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Regression & Compatibility |
+| Priority | Medium |
+| Preconditions | Mozilla Firefox browser available |
+| Test Data | Browser: Mozilla Firefox (latest) |
+| Steps | 1. Log in as Maker using Firefox. 2. Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration. 3. Execute tab switch, sort column, disable active word. 4. Verify checker modal appears. |
+| Acceptance Criteria | Module functions on Firefox latest stable |
+| Expected Result | Tab switching, sorting, and maker-checker modal work on Firefox without functional regression. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | regression-compatibility, medium, browser-compat |
+
+### IWC-TC-188 — Navigate toolbar buttons using keyboard Tab key
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Accessibility |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; User on module page |
-| Test Data | Key: Tab |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: keyboard navigation across toolbar buttons >> Step 4: Apply test data — Key: Tab >> Step 5: Compare actual result with expected result: All toolbar buttons reachable via keyboard. Component meets accessibility requirements for labels and focus |
-| Acceptance Criteria | Keyboard Tab navigates toolbar actions |
-| Expected Result | All toolbar buttons reachable via keyboard. Component meets accessibility requirements for labels and focus. |
+| Preconditions | User on Ignore Words listing page |
+| Test Data | Input: Keyboard Tab navigation |
+| Steps | 1. Press Tab repeatedly from top of page. 2. Verify focus moves through Search, Export, Category Controls, Add Category, Bulk Upload, Add Ignore Word. |
+| Acceptance Criteria | Toolbar controls are reachable via keyboard |
+| Expected Result | Each toolbar button receives visible focus in logical order and can be activated with Enter or Space. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | accessibility, medium |
 
-### IWC-TC-191 — Verify keyboard focus indicators visible
+### IWC-TC-189 — Verify visible keyboard focus indicator on interactive controls
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Accessibility |
+| Priority | Low |
+| Preconditions | User on Ignore Words listing page |
+| Test Data | Input: Keyboard navigation |
+| Steps | 1. Tab to Search field and toolbar buttons. 2. Observe focus styling on each control. |
+| Acceptance Criteria | Focused elements show discernible focus ring or outline |
+| Expected Result | Focused control shows visible focus indicator meeting contrast requirements. User can identify which control is active. |
+| Automation Candidate | Yes |
+| Automation Layer | UI |
+| Tags | accessibility, low |
+
+### IWC-TC-190 — Close Add Category modal using Escape key
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Accessibility |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Keyboard navigation active |
-| Test Data | Key: Tab |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: keyboard focus indicators visible >> Step 4: Apply test data — Key: Tab >> Step 5: Compare actual result with expected result: Visible focus indicators on focused elements. Component meets accessibility requirements for labels and focus |
-| Acceptance Criteria | Focused elements show visible focus indicators |
-| Expected Result | Visible focus indicators on focused elements. Component meets accessibility requirements for labels and focus. |
+| Preconditions | Add Category modal is open. |
+| Test Data | Keyboard action: Escape |
+| Steps | 1. Press the Escape key. |
+| Acceptance Criteria | Modal supports keyboard dismissal |
+| Expected Result | Modal closes without saving. Focus returns to the listing page. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | accessibility, medium |
 
-### IWC-TC-192 — Verify modal keyboard trap and Escape close
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Accessibility |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Category modal open |
-| Test Data | Key: Escape |
-| Steps | Step 1: Perform test action: modal keyboard trap and Escape close >> Step 2: Apply test data — Key: Escape >> Step 3: Compare actual result with expected result: Modal keyboard accessible; Escape closes modal if supported. Component meets accessibility requirements for labels and focus |
-| Acceptance Criteria | Modals support keyboard interaction and Escape to close where applicable |
-| Expected Result | Modal keyboard accessible; Escape closes modal if supported. Component meets accessibility requirements for labels and focus. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | accessibility, medium |
-
-### IWC-TC-194 — Verify Admin-only actions hidden from unauthorized roles
+### IWC-TC-191 — Sanitize script tags entered in ignore word phrase field
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Security Validation |
 | Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | User Role: Compliance Officer |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Admin-only actions hidden from unauthorized roles >> Step 4: Apply test data — User Role: Compliance Officer >> Step 5: Compare actual result with expected result: Admin-only actions not available to Compliance Officer. Unauthorized access or input is blocked appropriately |
-| Acceptance Criteria | Add, toggle, category, bulk actions restricted to Admin |
-| Expected Result | Admin-only actions not available to Compliance Officer. Unauthorized access or input is blocked appropriately. |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Malicious input: <script>alert('xss')</script> |
+| Steps | 1. Enter script payload in Ignore Word/Phrase: <script>alert('xss')</script>. 2. Save Draft or attempt Submit. 3. Reopen record and inspect rendered value. |
+| Acceptance Criteria | Malicious script input is not executed in the UI |
+| Expected Result | Input is sanitised or rejected. Script does not execute in panel, listing, or history views. Stored value is safe for display. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | security-validation, high, rbac, security |
+| Tags | security-validation, high, functional |
 
-### IWC-TC-197 — Verify complete end-to-end add word workflow
+### IWC-TC-192 — End-to-end regression: bulk upload then export active tab
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Regression Validation |
+| Feature | Regression & Compatibility |
 | Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user |
-| Test Data | Word: correspondent services |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: complete end-to-end add word workflow >> Step 4: Apply test data — Word: correspondent services >> Step 5: Compare actual result with expected result: Complete add workflow executes without errors. Existing functionality remains unaffected after the change |
-| Acceptance Criteria | Full workflow: add word, submit, checker popup, drafted tab, history |
-| Expected Result | Complete add workflow executes without errors. Existing functionality remains unaffected after the change. |
+| Preconditions | Valid bulk CSV with two new unique words prepared. |
+| Test Data | Bulk words: sa, bv Browser: Google Chrome (latest) |
+| Steps | 1. As Maker, bulk upload two words and submit for approval. 2. As Checker, approve the bulk request. 3. On Active tab, export records. 4. Open export file and locate the two approved words. |
+| Acceptance Criteria | Bulk upload and export workflow completes without defect |
+| Expected Result | Imported words progress from bulk upload through checker approval to Active status. Export file lists both approved words with complete metadata. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | regression-validation, high, rbac, security |
+| Tags | regression-compatibility, high, export |
 
-### IWC-TC-198 — Verify complete disable enable workflow with Checker
+### IWC-TC-193 — Regression: no console errors during add-submit-approve-disable cycle
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Regression Validation |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user |
-| Test Data | Word: security advisory |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: security advisory >> Step 7: Compare actual result with expected result: Disable/enable workflow completes with Checker approval steps. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Disable active word, verify inactive tab, enable back with Checker popup. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Disable/enable workflow completes with Checker approval steps. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | regression-validation, high, rbac, security |
-
-### IWC-TC-199 — Verify complete bulk upload and export workflow
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Regression Validation |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user; valid CSV |
-| Test Data | File: bulk_words.csv |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: bulk_words.csv >> Step 8: Compare actual result with expected result: Bulk upload and export workflow completes successfully. Existing functionality remains unaffected after the change |
-| Acceptance Criteria | Bulk upload words then export Drafted tab. Per FSD 5.1.4: export active ignore word list in structured CSV with all fields and metadata. |
-| Expected Result | Bulk upload and export workflow completes successfully. Existing functionality remains unaffected after the change. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | regression-validation, high, export |
-
-### IWC-TC-200 — Verify category add then use in ignore word form
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Regression Validation |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user |
-| Test Data | Category: Narcotics; Word: controlled substance |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: category add then use in ignore word form >> Step 4: Apply test data — Category: Narcotics; Word: controlled substance >> Step 5: Compare actual result with expected result: New category usable in ignore word creation workflow. Existing functionality remains unaffected after the change |
-| Acceptance Criteria | Add category then create ignore word in new category |
-| Expected Result | New category usable in ignore word creation workflow. Existing functionality remains unaffected after the change. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | regression-validation, high, functional |
-
-### IWC-TC-201 — Verify frontend console stability during complete workflow
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Regression Validation |
+| Feature | Regression & Compatibility |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Console open; Admin user |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: frontend console stability during complete workflow >> Step 4: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 5: Compare actual result with expected result: No JavaScript errors during complete workflow. No JavaScript errors or unhandled exceptions during page load |
-| Acceptance Criteria | No console errors during full module workflow |
-| Expected Result | No JavaScript errors during complete workflow. No JavaScript errors or unhandled exceptions during page load. |
+| Preconditions | Maker and Checker test accounts available |
+| Test Data | Lifecycle: create → approve → disable |
+| Steps | 1. Log in as Maker with console open. 2. Add and submit word. 3. Log in as Checker and approve. 4. Log in as Maker and disable word. 5. Review console throughout. |
+| Acceptance Criteria | Full lifecycle workflow runs without frontend errors |
+| Expected Result | No JavaScript errors logged during the complete maker-checker lifecycle workflow. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | regression-validation, medium, error-handling |
+| Tags | regression-compatibility, medium, error-handling |
 
-### IWC-TC-202 — Verify data consistency after multiple tab switches and searches
+### IWC-TC-194 — UAT: Maker creates ignore word and Checker approves to Active
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Regression Validation |
+| Feature | UAT Scenarios |
+| Priority | High |
+| Preconditions | Clean test environment or unique word available. |
+| Test Data | Word: SA Category: Entity Suffixes UAT users: Maker + Checker |
+| Steps | 1. As Maker, add ignore word SA under Entity Suffixes (Low, Exact phrase) and Submit. 2. As Checker, approve the submission. 3. Confirm word appears on Active tab. 4. Run a sample screening narrative containing 'SA' to confirm suppression after approval. |
+| Acceptance Criteria | Business users complete standard onboarding of a new ignore word |
+| Expected Result | End-to-end UAT completes: draft/submit → checker approval → active listing → word excluded from screening token comparison. |
+| Automation Candidate | Yes |
+| Automation Layer | UI + Manual |
+| Tags | uat-scenarios, high, rbac, security |
+
+### IWC-TC-195 — UAT: Active disable and re-enable lifecycle without permanent delete
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | UAT Scenarios |
+| Priority | High |
+| Preconditions | Active word 'enterprises' exists. |
+| Test Data | Word: enterprises |
+| Steps | 1. As Maker, Disable 'enterprises' and complete checker approval. 2. Verify word on Inactive tab. 3. As Maker, Enable 'enterprises' and complete checker approval. 4. Confirm word returns to Active tab. 5. Verify no delete option existed at any stage. |
+| Acceptance Criteria | Compliance team can temporarily deactivate and reactivate an ignore word |
+| Expected Result | Full disable → inactive → enable → active lifecycle completes through maker-checker governance. Record persists throughout; permanent delete is never offered. |
+| Automation Candidate | Yes |
+| Automation Layer | UI + Manual |
+| Tags | uat-scenarios, high, functional |
+
+### IWC-TC-196 — Open Word History by clicking ignore word hyperlink in table
+
+| Field | Value |
+| --- | --- |
+| Module | Ignore Words Configuration |
+| Feature | Audit History |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Multiple records exist |
-| Test Data | Search term: trading; Expected filter: partial match on word/phrase |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search term: trading; Expected filter: partial match on word/phrase >> Step 7: Compare actual result with expected result: Tab counts and table data remain consistent. Existing functionality remains unaffected after the change |
-| Acceptance Criteria | Data remains consistent after rapid tab and search interactions.. |
-| Expected Result | Tab counts and table data remain consistent. Existing functionality remains unaffected after the change. |
+| Preconditions | Active ignore word 'ltd' exists with history entries. |
+| Test Data | Word: ltd |
+| Steps | 1. On Active tab, click the 'ltd' hyperlink in the Ignore Word/Phrase column. 2. Verify Word History panel opens. |
+| Acceptance Criteria | Users can access audit trail from the listing row |
+| Expected Result | Clicking the word link opens Word History without using a separate menu. Panel shows metadata and activity timeline for that record. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | regression-validation, medium, api |
+| Tags | audit-history, medium, word-history |
 
-### IWC-TC-204 — Verify Configuration parent menu expand collapse
+### IWC-TC-197 — Submit multi-word phrase ignore word for checker approval
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Sidebar Navigation |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words |
-| Test Data | Menu: Configuration |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Configuration parent menu expand collapse >> Step 4: Apply test data — Menu: Configuration >> Step 5: Compare actual result with expected result: Configuration submenu expands with chevron indicator when active. Sidebar navigation highlights and routes correctly |
-| Acceptance Criteria | Configuration parent item should expand to show submenu with chevron rotation |
-| Expected Result | Configuration submenu expands with chevron indicator when active. Sidebar navigation highlights and routes correctly. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | sidebar-navigation, medium, functional |
-
-### IWC-TC-205 — Verify sidebar menu search input
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Sidebar Navigation |
-| Priority | Low |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; User on any page with sidebar visible |
-| Test Data | Search: Ignore |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — Search: Ignore >> Step 7: Compare actual result with expected result: Sidebar menu search filters navigation items. Sidebar navigation highlights and routes correctly |
-| Acceptance Criteria | Sidebar should contain Search menus... input for filtering navigation.. |
-| Expected Result | Sidebar menu search filters navigation items. Sidebar navigation highlights and routes correctly. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | sidebar-navigation, low, functional |
-
-### IWC-TC-207 — Verify Exact phrase match highlights only exact phrase in live tester
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Match Type Behavior |
+| Feature | Add Ignore Word |
 | Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open; active Exact phrase word exists |
-| Test Data | Word: trading company; Match: Exact phrase; Narrative A: trading company payment; Narrative B: trading |
-| Steps | Step 1: Perform test action: Exact phrase match highlights only exact phrase in live tester >> Step 2: Apply test data — Word: trading company; Match: Exact phrase; Narrative A: trading company payment; Narrative B: trading >> Step 3: Compare actual result with expected result: Exact phrase highlighted only when full phrase present; partial substring alone not highlighted for exact type. Matching logic behaves per selected Match Type |
-| Acceptance Criteria | Exact phrase ignore word should highlight only when full exact phrase appears in narrative |
-| Expected Result | Exact phrase highlighted only when full phrase present; partial substring alone not highlighted for exact type. Matching logic behaves per selected Match Type. |
+| Preconditions | Phrase 'private limited' does not already exist as an active entry. |
+| Test Data | Phrase: private limited Category: Entity Suffixes |
+| Steps | 1. Open Add Ignore Word. 2. Enter Ignore Word/Phrase: private limited. 3. Set Category: Entity Suffixes, Risk: Low, Match Type: Exact phrase. 4. Paste narrative: ABC private limited trading account. 5. Submit for checker approval. |
+| Acceptance Criteria | Multi-token phrases are supported as a single ignore entry |
+| Expected Result | Multi-word phrase is accepted and submitted. Preview highlights the full phrase in narrative. After checker approval, phrase is stripped as a unit during screening. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | match-type-behavior, high, functional |
+| Tags | add-ignore-word, high, rbac, security |
 
-### IWC-TC-208 — Verify Partial match highlights substring in live tester
+### IWC-TC-198 — Checker rejection returns ignore word to Drafted tab with comments
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
-| Feature | Match Type Behavior |
+| Feature | Maker-Checker Workflow |
 | Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open |
-| Test Data | Word: international trade; Match: Partial match; Narrative: trade settlement |
-| Steps | Step 1: Perform test action: Partial match highlights substring in live tester >> Step 2: Apply test data — Word: international trade; Match: Partial match; Narrative: trade settlement >> Step 3: Compare actual result with expected result: Partial match highlights appropriate substring matches in narrative preview. Matching logic behaves per selected Match Type |
-| Acceptance Criteria | Partial match ignore word should highlight when partial substring found in narrative |
-| Expected Result | Partial match highlights appropriate substring matches in narrative preview. Matching logic behaves per selected Match Type. |
+| Preconditions | Maker submitted new word 'microfinance' pending checker approval. |
+| Test Data | Word: microfinance Rejection comment: Too broad for current policy |
+| Steps | 1. As Checker, reject the submission with comment: Too broad for current policy. 2. As Maker, open Drafted Ignore Word tab. 3. Open Word History for the record. |
+| Acceptance Criteria | Rejected entries re-enter draft state for maker revision |
+| Expected Result | Record returns to Drafted status. Maker can edit and resubmit. Rejection comment is visible in history and checker workflow. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
-| Tags | match-type-behavior, high, functional |
+| Tags | maker-checker-workflow, high, rbac, security |
 
-### IWC-TC-209 — Verify ignore word maximum length 200 characters
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Data Validation |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open |
-| Test Data | Word Length: 201 characters |
-| Steps | Step 1: Perform test action: ignore word maximum length 200 characters >> Step 2: Apply test data — Word Length: 201 characters >> Step 3: Compare actual result with expected result: System rejects or truncates input exceeding 200 character limit. Invalid input is rejected with appropriate validation feedback |
-| Acceptance Criteria | Ignore Word/Phrase field should enforce String(200) maximum length |
-| Expected Result | System rejects or truncates input exceeding 200 character limit. Invalid input is rejected with appropriate validation feedback. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | data-validation, medium, functional |
-
-### IWC-TC-210 — Verify category name uniqueness on duplicate add
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Data Validation |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Category Entity Suffixes already exists |
-| Test Data | Category Name: Entity Suffixes |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: category name uniqueness on duplicate add >> Step 4: Apply test data — Category Name: Entity Suffixes >> Step 5: Compare actual result with expected result: Duplicate category name rejected or prevented with appropriate message. Invalid input is rejected with appropriate validation feedback |
-| Acceptance Criteria | Adding category with existing name should be handled appropriately |
-| Expected Result | Duplicate category name rejected or prevented with appropriate message. Invalid input is rejected with appropriate validation feedback. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | data-validation, medium, functional |
-
-### IWC-TC-214 — Verify module behavior on Google Chrome
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Browser Compatibility |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Chrome browser available |
-| Test Data | Browser: Chrome Latest |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: module behavior on Google Chrome >> Step 4: Apply test data — Browser: Chrome Latest >> Step 5: Compare actual result with expected result: Module functions without browser-specific issues on Chrome. Feature works consistently across supported browsers |
-| Acceptance Criteria | Module functions correctly on Chrome |
-| Expected Result | Module functions without browser-specific issues on Chrome. Feature works consistently across supported browsers. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | browser-compatibility, high, browser-compat |
-
-### IWC-TC-215 — Verify module behavior on Microsoft Edge
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Browser Compatibility |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Edge browser available |
-| Test Data | Browser: Edge Latest |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: module behavior on Microsoft Edge >> Step 4: Apply test data — Browser: Edge Latest >> Step 5: Compare actual result with expected result: Module functions without browser-specific issues on Edge. Feature works consistently across supported browsers |
-| Acceptance Criteria | Module functions correctly on Edge |
-| Expected Result | Module functions without browser-specific issues on Edge. Feature works consistently across supported browsers. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | browser-compatibility, medium, browser-compat |
-
-### IWC-TC-216 — Verify module behavior on Mozilla Firefox
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Browser Compatibility |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Firefox browser available |
-| Test Data | Browser: Firefox Latest |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: module behavior on Mozilla Firefox >> Step 4: Apply test data — Browser: Firefox Latest >> Step 5: Compare actual result with expected result: Module functions without browser-specific issues on Firefox. Feature works consistently across supported browsers |
-| Acceptance Criteria | Module functions correctly on Firefox |
-| Expected Result | Module functions without browser-specific issues on Firefox. Feature works consistently across supported browsers. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | browser-compatibility, medium, browser-compat |
-
-### IWC-TC-219 — Verify Main List View to Add Ignore Word Panel flow
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Navigation Flow |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin on main list |
-| Test Data | Flow: List → Add Panel |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Perform test action: Main List View to Add Ignore Word Panel flow >> Step 3: Apply test data — Flow: List → Add Panel >> Step 4: Compare actual result with expected result: Navigation flow completes per Appendix A. User reaches the correct screen without broken navigation |
-| Acceptance Criteria | Appendix A flow from list to Add Ignore Word panel via primary button |
-| Expected Result | Navigation flow completes per Appendix A. User reaches the correct screen without broken navigation. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-flow, high, functional |
-
-### IWC-TC-220 — Verify Add Ignore Word Panel return to Main List View
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Navigation Flow |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open |
-| Test Data | Flow: Panel → List |
-| Steps | Step 1: Perform test action: Add Ignore Word Panel return to Main List View >> Step 2: Apply test data — Flow: Panel → List >> Step 3: Compare actual result with expected result: All three return paths navigate back to Main List View. User reaches the correct screen without broken navigation |
-| Acceptance Criteria | Panel returns to list via Cancel, back arrow, or Submit |
-| Expected Result | All three return paths navigate back to Main List View. User reaches the correct screen without broken navigation. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-flow, high, functional |
-
-### IWC-TC-221 — Verify Main List View to CSV Download via Export
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Navigation Flow |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Records on Active tab |
-| Test Data | Flow: List → CSV Download |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Ensure records exist on Active tab >> Step 3: Click Export (FSD Section 5.1.4) >> Step 4: Verify file name ignore_words_export.csv downloads >> Step 5: Open CSV and confirm metadata header and data rows >> Step 6: Apply test data — Flow: List → CSV Download >> Step 7: Compare actual result with expected result: Export navigation flow completes with CSV download. User reaches the correct screen without broken navigation |
-| Acceptance Criteria | Export from list triggers CSV download per Appendix A. Per FSD 5.1.4: export active ignore word list in structured CSV with all fields and metadata. |
-| Expected Result | Export navigation flow completes with CSV download. User reaches the correct screen without broken navigation. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-flow, high, export |
-
-### IWC-TC-222 — Verify clicking ignore word opens Word History from list
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Navigation Flow |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Record exists in table |
-| Test Data | Flow: List → Word History Panel |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Locate target ignore word row >> Step 3: Click History icon in Actions column >> Step 4: Review audit entries in Word History panel >> Step 5: Apply test data — Flow: List → Word History Panel >> Step 6: Compare actual result with expected result: Word click opens Word History panel successfully. User reaches the correct screen without broken navigation |
-| Acceptance Criteria | Click word in table opens Word History panel per entry point spec.. |
-| Expected Result | Word click opens Word History panel successfully. User reaches the correct screen without broken navigation. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | navigation-flow, high, word-history |
-
-### IWC-TC-224 — Verify FSD BR-002 all mandatory fields required on submit
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open |
-| Test Data | BR-02 |
-| Steps | Step 1: Perform test action: FSD BR-002 all mandatory fields required on submit >> Step 2: Apply test data — BR-02 >> Step 3: Compare actual result with expected result: Submit blocked when any mandatory field missing. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Word, Category, Risk Level, Match Type all required |
-| Expected Result | Submit blocked when any mandatory field missing. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### IWC-TC-226 — Verify FSD 5.1.3 bulk upload drafted status and Checker workflow
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Valid bulk file |
-| Test Data | FSD 5.1.3 bulk upload workflow |
-| Steps | Step 1: Log in as Checker with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — FSD 5.1.3 bulk upload workflow >> Step 8: Compare actual result with expected result: Bulk records in Drafted status with Checker workflow triggered. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Bulk uploaded records enter Drafted and trigger Checker Approval. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Bulk records in Drafted status with Checker workflow triggered. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, rbac, security |
-
-### IWC-TC-227 — Verify bulk upload validation category required and All Categories invalid for upload
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Bulk Upload modal open |
-| Test Data | BR-10 |
-| Steps | Step 1: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 2: Select category and attach test file >> Step 3: Submit upload and review validation outcome >> Step 4: Verify records enter Drafted status pending Checker approval >> Step 5: Apply test data — BR-10 >> Step 6: Compare actual result with expected result: Upload rejected when All Categories selected. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Specific category must be selected for bulk upload. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Upload rejected when All Categories selected. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, rbac, security |
-
-### IWC-TC-228 — Verify narrative preview scope live tester highlights all active words plus draft
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Active words in multiple categories |
-| Test Data | BR-11 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: narrative preview scope live tester highlights all active words plus draft >> Step 4: Apply test data — BR-11 >> Step 5: Compare actual result with expected result: All active matches plus draft word highlighted. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Tester scope includes all active words regardless of category plus current draft |
-| Expected Result | All active matches plus draft word highlighted. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### IWC-TC-229 — Verify FSD audit / Word History word history and audit logging on all actions
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin performs lifecycle actions on word |
-| Test Data | BR-12 |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target ignore word row >> Step 4: Click History icon in Actions column >> Step 5: Review audit entries in Word History panel >> Step 6: Apply test data — BR-12 >> Step 7: Compare actual result with expected result: Complete audit trail visible in Word History panel. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | History panel and audit logs capture create, update, enable, disable.. |
-| Expected Result | Complete audit trail visible in Word History panel. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, word-history |
-
-### IWC-TC-230 — Verify client-side search (phrase and category only) search limited to phrase and category only
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Mixed dataset |
-| Test Data | BR-13 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Enter search/filter term from test data in toolbar >> Step 4: Apply filter and review table results >> Step 5: Clear filter and confirm full list restores >> Step 6: Apply test data — BR-13 >> Step 7: Compare actual result with expected result: Search works for phrase and category only. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Search matches only Ignore Word/Phrase and Category fields.. |
-| Expected Result | Search works for phrase and category only. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### IWC-TC-231 — Verify tab switch behaviour sort resets on tab switch
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Sorted column on tab |
-| Test Data | BR-14 |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: tab switch behaviour sort resets on tab switch >> Step 4: Apply test data — BR-14 >> Step 5: Compare actual result with expected result: Sort order reset to default insertion order after tab switch. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Sort order resets to default on tab change |
-| Expected Result | Sort order reset to default insertion order after tab switch. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, medium, functional |
-
-### IWC-TC-232 — Verify same ignore word allowed in different category per FSD BR-001
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Duplicate Validation |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Word trading company exists in Entity Suffixes category |
-| Test Data | Word: trading company; Category: Common Noise Words; Match: Exact phrase |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: same ignore word allowed in different category per FSD BR-001 >> Step 4: Apply test data — Word: trading company; Category: Common Noise Words; Match: Exact phrase >> Step 5: Compare actual result with expected result: Word saved as Drafted without duplicate error; Checker Approval popup displayed. Duplicate entries are prevented per FSD rules |
-| Acceptance Criteria | Same word/phrase may exist in different categories without duplicate error |
-| Expected Result | Word saved as Drafted without duplicate error; Checker Approval popup displayed. Duplicate entries are prevented per FSD rules. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | duplicate-validation, high, error-handling |
-
-### IWC-TC-233 — Verify Off action not displayed on inactive rows per FSD row actions column
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Inactive record exists on Inactive tab; Admin user |
-| Test Data | Word: offshore account |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the target ignore word row using test data >> Step 4: Click the applicable row action button (On/Off/Submit/History) >> Step 5: Observe system response including any Checker Approval popup >> Step 6: Apply test data — Word: offshore account >> Step 7: Compare actual result with expected result: On/Enable button displayed; Off/Disable button not displayed. Checker Approval popup shown where Maker-Checker applies (FSD BR-007) |
-| Acceptance Criteria | Inactive rows should show Enable action only not Disable |
-| Expected Result | On/Enable button displayed; Off/Disable button not displayed. Checker Approval popup shown where Maker-Checker applies (FSD BR-007). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, functional |
-
-### IWC-TC-234 — Verify drafted rows do not show Off or On actions per HTML
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Row Actions |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Drafted record exists; Admin user |
-| Test Data | Word: crypto exchange |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate the target ignore word row using test data >> Step 4: Click the applicable row action button (On/Off/Submit/History) >> Step 5: Observe system response including any Checker Approval popup >> Step 6: Apply test data — Word: crypto exchange >> Step 7: Compare actual result with expected result: Submit button displayed; Off and On action buttons not displayed. Checker Approval popup shown where Maker-Checker applies (FSD BR-007) |
-| Acceptance Criteria | Drafted rows should display Submit action only per HTML renderTable logic |
-| Expected Result | Submit button displayed; Off and On action buttons not displayed. Checker Approval popup shown where Maker-Checker applies (FSD BR-007). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | row-actions, high, functional |
-
-### IWC-TC-235 — Verify inactive and drafted words are not highlighted in preview
+### IWC-TC-199 — Normalise punctuation and hyphens before exact phrase matching in preview
 
 | Field | Value |
 | --- | --- |
 | Module | Ignore Words Configuration |
 | Feature | Live Narrative Tester |
 | Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open per FSD 4.3 Step 7; Inactive and drafted words exist; Add Ignore Word panel open |
-| Test Data | Inactive: offshore account; Drafted: wire transfer agency |
-| Steps | Step 1: Open Add Ignore Word panel; go to Live Narrative Tester (FSD Section 4.3 Step 7) >> Step 2: Enter word and narrative from test data >> Step 3: Observe real-time preview highlighting per Match Type >> Step 4: Apply test data — Inactive: offshore account; Drafted: wire transfer agency >> Step 5: Compare actual result with expected result: Inactive and drafted words not highlighted unless they are active or the current typed draft word. Preview updates in real time based on Match Type selection |
-| Acceptance Criteria | Live tester highlights only active ignore words plus current draft word being typed |
-| Expected Result | Inactive and drafted words not highlighted unless they are active or the current typed draft word. Preview updates in real time based on Match Type selection. |
+| Preconditions | Add Ignore Word panel is open. |
+| Test Data | Word: co-op Narrative: Payment to CO OP branch |
+| Steps | 1. Enter Word: co-op with Match Type: Exact phrase. 2. Paste narrative: Payment to CO OP branch. 3. Review Preview highlighting. |
+| Acceptance Criteria | Special characters are normalised consistently with screening pipeline |
+| Expected Result | Preview applies normalisation (punctuation/hyphen handling) before match evaluation. Matching behaviour aligns with screening engine token normalisation rules. |
 | Automation Candidate | Yes |
 | Automation Layer | UI |
 | Tags | live-narrative-tester, medium, functional |
-
-### IWC-TC-236 — Verify word submit shows Checker Approval popup not toast per FSD ÂSection 8.2 and HTML
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Notifications |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user; Add Ignore Word panel open |
-| Test Data | Word: correspondent services |
-| Steps | Step 1: Perform test action: word submit shows Checker Approval popup not toast per FSD ÂSection 8.2 and HTML >> Step 2: Apply test data — Word: correspondent services >> Step 3: Compare actual result with expected result: Checker Approval popup displayed with Request sent for Checker Approval; no bottom-right toast for word submit. User receives appropriate success or error notification |
-| Acceptance Criteria | Word submitted trigger should open Checker Approval modal per HTML showChecker |
-| Expected Result | Checker Approval popup displayed with Request sent for Checker Approval; no bottom-right toast for word submit. User receives appropriate success or error notification. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | notifications, high, rbac, security |
-
-### IWC-TC-237 — Verify FSD BR-003 / FSD 7.1 word remains Drafted until Checker approves
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin submitted new ignore word; Checker approval pending |
-| Test Data | Word: new compliance phrase |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: FSD BR-003 / FSD 7.1 word remains Drafted until Checker approves >> Step 4: Apply test data — Word: new compliance phrase >> Step 5: Compare actual result with expected result: Word status remains Drafted; Active tab does not show word until Checker approves. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Newly submitted word must not become Active without Checker approval |
-| Expected Result | Word status remains Drafted; Active tab does not show word until Checker approves. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, rbac, security |
-
-### IWC-TC-238 — Verify FSD BR-007 tab counts unchanged on failed submit
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin on Add Ignore Word panel |
-| Test Data | User Role: Compliance Officer; Module: Ignore Words Configuration |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: FSD BR-007 tab counts unchanged on failed submit >> Step 4: Apply test data — User Role: Compliance Officer; Module: Ignore Words Configuration >> Step 5: Compare actual result with expected result: Tab counts remain unchanged after failed validation. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Failed submission should not change tab counts |
-| Expected Result | Tab counts remain unchanged after failed validation. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, functional |
-
-### IWC-TC-239 — Verify FSD BR-002 rejects whitespace-only ignore word phrase
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel open |
-| Test Data | Word: (spaces only) |
-| Steps | Step 1: Perform test action: FSD BR-002 rejects whitespace-only ignore word phrase >> Step 2: Apply test data — Word: (spaces only) >> Step 3: Compare actual result with expected result: Submit blocked with validation; alert or inline error; no Drafted record created. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Whitespace-only input should be treated as empty and blocked on submit |
-| Expected Result | Submit blocked with validation; alert or inline error; no Drafted record created. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, high, maker-checker |
-
-### IWC-TC-240 — Verify FSD audit / Word History no audit entry on failed bulk upload
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Business Rules |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Invalid bulk upload file |
-| Test Data | File: invalid_schema.csv |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target ignore word row >> Step 4: Click History icon in Actions column >> Step 5: Review audit entries in Word History panel >> Step 6: Apply test data — File: invalid_schema.csv >> Step 7: Compare actual result with expected result: No CREATE or BULK_UPLOAD audit entries created for failed import. System enforces the stated FSD business rule without exception |
-| Acceptance Criteria | Failed bulk upload should not create audit log entries for imported words. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | No CREATE or BULK_UPLOAD audit entries created for failed import. System enforces the stated FSD business rule without exception. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | business-rules, medium, rbac, security |
-
-### IWC-TC-245 — Verify XSS payload in search treated as literal text
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Security Validation |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; User on Ignore Words Configuration page |
-| Test Data | Search: <script>alert(1)</script> |
-| Steps | Step 1: Enter search/filter term from test data in toolbar >> Step 2: Apply filter and review table results >> Step 3: Clear filter and confirm full list restores >> Step 4: Apply test data — Search: <script>alert(1)</script> >> Step 5: Compare actual result with expected result: No script execution; search treated as literal; table renders safely. Unauthorized access or input is blocked appropriately |
-| Acceptance Criteria | Search input should not execute script tags.. |
-| Expected Result | No script execution; search treated as literal; table renders safely. Unauthorized access or input is blocked appropriately. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | security-validation, high, functional |
-
-### IWC-TC-246 — Verify empty bulk upload file rejected
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Negative Scenarios |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Empty bulk file available |
-| Test Data | File: empty.csv |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: empty.csv >> Step 8: Compare actual result with expected result: Upload rejected with clear error; no partial records created. System handles invalid input gracefully without crash |
-| Acceptance Criteria | Empty CSV/XLSX file should fail gracefully. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Upload rejected with clear error; no partial records created. System handles invalid input gracefully without crash. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-scenarios, high, rbac, security |
-
-### IWC-TC-247 — Verify double-click Submit on Add Ignore Word prevented
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Negative Scenarios |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Add Ignore Word panel with valid data |
-| Test Data | Word: double submit test |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: double-click Submit on Add Ignore Word prevented >> Step 4: Apply test data — Word: double submit test >> Step 5: Compare actual result with expected result: Only one Drafted record created; UI prevents duplicate submission. System handles invalid input gracefully without crash |
-| Acceptance Criteria | Double submit should not create duplicate drafted records. Per FSD 4.3 Step 8b and FSD 7.1: submit sends for Checker approval; status Pending Approval until approved. |
-| Expected Result | Only one Drafted record created; UI prevents duplicate submission. System handles invalid input gracefully without crash. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | negative-scenarios, high, rbac, security |
-
-### IWC-TC-248 — UAT verify Admin creates ignore word and Checker approves to Active
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | UAT Scenarios |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin and Checker users available |
-| Test Data | Word: uat approval test |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: UAT verify Admin creates ignore word and Checker approves to Active >> Step 4: Apply test data — Word: uat approval test >> Step 5: Compare actual result with expected result: Complete workflow succeeds; word appears Active after Checker approval; Word History shows approval event. End-to-end workflow completes as per business requirement |
-| Acceptance Criteria | End-to-end Maker-Checker workflow from draft to active |
-| Expected Result | Complete workflow succeeds; word appears Active after Checker approval; Word History shows approval event. End-to-end workflow completes as per business requirement. |
-| Automation Candidate | Yes |
-| Automation Layer | UI + Manual |
-| Tags | uat-scenarios, high, rbac, security |
-
-### IWC-TC-249 — UAT verify active disable enable lifecycle without delete per FSD BR-006
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | UAT Scenarios |
-| Priority | High |
-| Preconditions | User logged into AML application as Admin; browser session active; module reachable at /configuration/screening-ignore-words; Admin user; active word exists |
-| Test Data | Word: security advisory |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: security advisory >> Step 7: Compare actual result with expected result: Word moves Active to Inactive to Active via Checker workflow; delete never available. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Full lifecycle uses disable and enable only; no delete action. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Word moves Active to Inactive to Active via Checker workflow; delete never available. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI + Manual |
-| Tags | uat-scenarios, high, rbac, security |
-
-### IWC-TC-250 — Verify timeline dot colors for add review approve disable events per HTML
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Word History Panel |
-| Priority | Medium |
-| Preconditions | User on main list view; ignore word record with history exists in table; Word with full lifecycle history e.g. defense services |
-| Test Data | Word: defense services |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Locate target row on Active or Inactive tab >> Step 4: Click Off (disable) or On (enable) action button >> Step 5: Verify Checker Approval popup appears (FSD BR-007) >> Step 6: Apply test data — Word: defense services >> Step 7: Compare actual result with expected result: Timeline dots display correct color classes per event type in HTML. Checker Approval popup displayed before status change takes effect |
-| Acceptance Criteria | Timeline should use color-coded dots: add green, review amber, approve green, disable red. Per FSD BR-007: enable/disable requires Maker-Checker approval before effective. |
-| Expected Result | Timeline dots display correct color classes per event type in HTML. Checker Approval popup displayed before status change takes effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | word-history-panel, medium, rbac, security |
-
-### IWC-TC-251 — Verify Checker modal title Request sent for Checker Approval per HTML
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Checker Approval Modal |
-| Priority | Medium |
-| Preconditions | Admin user; action triggering Checker popup completed (Submit/Disable/Enable); Checker popup displayed after submit |
-| Test Data | User Role: Checker |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Trigger the Checker Approval workflow from a pending action >> Step 4: Review Checker Approval modal content and actions >> Step 5: Apply test data — User Role: Checker >> Step 6: Compare actual result with expected result: Heading displays Request sent for Checker Approval. Approve/Reject updates record status per FSD Maker-Checker rules |
-| Acceptance Criteria | Checker modal heading should match HTML h3 text |
-| Expected Result | Heading displays Request sent for Checker Approval. Approve/Reject updates record status per FSD Maker-Checker rules. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | checker-approval-modal, medium, rbac, security |
-
-### IWC-TC-252 — Verify duplicate word shows inline error not browser alert per FSD ÂSection 8.1
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Error Handling |
-| Priority | Medium |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Duplicate word exists in category and match type |
-| Test Data | Duplicate: trading company |
-| Steps | Step 1: Log in as Compliance Officer or Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: duplicate word shows inline error not browser alert per FSD ÂSection 8.1 >> Step 4: Apply test data — Duplicate: trading company >> Step 5: Compare actual result with expected result: Inline error This word/phrase already exists in the selected category. User receives clear error/validation message; no data corruption |
-| Acceptance Criteria | Duplicate validation should show inline error below field not alert dialog |
-| Expected Result | Inline error This word/phrase already exists in the selected category. User receives clear error/validation message; no data corruption. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | error-handling, medium, browser-compat |
-
-### IWC-TC-254 — Verify Save Draft saves entry as Drafted per FSD 4.3 Step 8a
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Admin user on Add Ignore Word panel |
-| Test Data | Word: co; Category: Entity Suffixes; Risk: Low; Match: Exact phrase |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Ignore Word (FSD Section 4.3 Step 2) >> Step 3: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 4: Perform test action: Save Draft saves entry as Drafted per FSD 4.3 Step 8a >> Step 5: Apply test data — Word: co; Category: Entity Suffixes; Risk: Low; Match: Exact phrase >> Step 6: Compare actual result with expected result: Record saved as Drafted per FSD; toast shown; not sent for Checker approval on Save Draft. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | FSD 4.3 Step 8a: Save Draft saves status=DRAFT, appears in Drafted tab, not applied by screening engine. : Save Draft button shows toast. |
-| Expected Result | Record saved as Drafted per FSD; toast shown; not sent for Checker approval on Save Draft. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, screening-engine |
-
-### IWC-TC-255 — Verify Save Draft validation for empty Ignore Word/Phrase
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Ignore Word: (empty) |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: Save Draft validation for empty Ignore Word/Phrase >> Step 3: Apply test data — Ignore Word: (empty) >> Step 4: Compare actual result with expected result: Alert displayed: Please enter an ignore word or phrase to save as draft. Validation alert shown; submission blocked per FSD Section 4.3 Step 8b |
-| Acceptance Criteria | saveDraftWord: alert when word empty. Per FSD 4.3 Step 8a: saved as DRAFT on Drafted tab; not sent for approval. |
-| Expected Result | Alert displayed: Please enter an ignore word or phrase to save as draft. Validation alert shown; submission blocked per FSD Section 4.3 Step 8b. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, functional |
-
-### IWC-TC-256 — Verify Checker rejection returns entry to Draft per FSD 7.1
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Maker-Checker Governance |
-| Priority | High |
-| Preconditions | Maker and Checker test users available; FSD Section 7 workflow applicable; Checker user; pending submission exists |
-| Test Data | Status: Rejected |
-| Steps | Step 1: Log in as Checker with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Checker rejection returns entry to Draft per FSD 7.1 >> Step 4: Apply test data — Status: Rejected >> Step 5: Compare actual result with expected result: Entry returned to Draft state with Checker comments per FSD 7.1 and 7.2. Maker action requires Checker approval before taking effect |
-| Acceptance Criteria | FSD 7.1 Rejected state: entry rejected by Checker; returned to Maker with comments. FSD 7.2: upon rejection entry returned to Draft state |
-| Expected Result | Entry returned to Draft state with Checker comments per FSD 7.1 and 7.2. Maker action requires Checker approval before taking effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, high, rbac, security |
-
-### IWC-TC-257 — Verify Pending Approval entries locked from edits per FSD 7.2
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Maker-Checker Governance |
-| Priority | High |
-| Preconditions | Maker and Checker test users available; FSD Section 7 workflow applicable; Word submitted and awaiting Checker approval per FSD 7.1 |
-| Test Data | Word: services |
-| Steps | Step 1: Log in as Checker with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Pending Approval entries locked from edits per FSD 7.2 >> Step 4: Apply test data — Word: services >> Step 5: Compare actual result with expected result: Edit actions blocked while status is Pending Approval per FSD 7.2. Maker action requires Checker approval before taking effect |
-| Acceptance Criteria | FSD 7.2: entries in Pending Approval state locked from further edits until Checker decision |
-| Expected Result | Edit actions blocked while status is Pending Approval per FSD 7.2. Maker action requires Checker approval before taking effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, high, rbac, security |
-
-### IWC-TC-258 — Verify Maker cannot approve own submission per FSD 7.2
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Maker-Checker Governance |
-| Priority | High |
-| Preconditions | Maker and Checker test users available; FSD Section 7 workflow applicable; User account with both Maker and Checker roles |
-| Test Data | User: Rahul Sharma |
-| Steps | Step 1: Log in as Checker with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: Maker cannot approve own submission per FSD 7.2 >> Step 4: Apply test data — User: Rahul Sharma >> Step 5: Compare actual result with expected result: Self-approval blocked per FSD 7.2. Maker action requires Checker approval before taking effect |
-| Acceptance Criteria | FSD 7.2: Maker may not approve own submissions; Maker and Checker must be different users |
-| Expected Result | Self-approval blocked per FSD 7.2. Maker action requires Checker approval before taking effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, high, rbac, security |
-
-### IWC-TC-259 — Verify emergency override not permitted per FSD 7.2
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Maker-Checker Governance |
-| Priority | High |
-| Preconditions | User logged into AML application as Compliance Officer or Admin; browser session active; module reachable at /configuration/screening-ignore-words; Maker and Checker test users available; FSD Section 7 workflow applicable |
-| Test Data | Action: bypass Checker approval |
-| Steps | Step 1: Log in as Checker with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration and wait for page to load >> Step 3: Perform test action: emergency override not permitted per FSD 7.2 >> Step 4: Apply test data — Action: bypass Checker approval >> Step 5: Compare actual result with expected result: Emergency override unavailable per FSD 7.2. Maker action requires Checker approval before taking effect |
-| Acceptance Criteria | FSD 7.2: emergency override bypassing Checker approval not permitted without separate privileged-access policy |
-| Expected Result | Emergency override unavailable per FSD 7.2. Maker action requires Checker approval before taking effect. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | maker-checker-governance, high, rbac, security |
-
-### IWC-TC-264 — Verify bulk import character encoding validation per FSD 5.1.3
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; CSV/XLSX file with invalid encoding |
-| Test Data | File: invalid_encoding.csv |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: invalid_encoding.csv >> Step 8: Compare actual result with expected result: Upload rejected with encoding validation error per FSD 5.1.3. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | FSD 5.1.3: import validation checks character encoding compliance. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Upload rejected with encoding validation error per FSD 5.1.3. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, rbac, security |
-
-### IWC-TC-265 — Verify bulk import field completeness validation per FSD 5.1.3
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Bulk Upload |
-| Priority | High |
-| Preconditions | Admin user on main list view; Bulk Upload button visible; valid CSV/XLSX test files available per FSD 5.1.3; CSV/XLSX missing mandatory fields |
-| Test Data | File: incomplete_rows.csv |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Bulk Upload (FSD Section 5.1.3) >> Step 3: Open Bulk Upload panel (FSD Section 5.1.3) >> Step 4: Select category and attach test file >> Step 5: Submit upload and review validation outcome >> Step 6: Verify records enter Drafted status pending Checker approval >> Step 7: Apply test data — File: incomplete_rows.csv >> Step 8: Compare actual result with expected result: Row-level completeness validation errors displayed per FSD 5.1.3. Valid records enter Drafted status pending Checker approval (FSD 5.1.3) |
-| Acceptance Criteria | FSD 5.1.3: import validation checks field completeness. Per FSD 5.1.3: CSV/XLSX import with validation and Checker approval before active. |
-| Expected Result | Row-level completeness validation errors displayed per FSD 5.1.3. Valid records enter Drafted status pending Checker approval (FSD 5.1.3). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | bulk-upload, high, rbac, security |
-
-### IWC-TC-266 — Verify category must exist before adding ignore word per FSD 4.3 Step 4
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | High |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Required category not yet created |
-| Test Data | Category: Cybercrime (new) |
-| Steps | Step 1: Log in as Admin with access to Ignore Words Configuration >> Step 2: Navigate to Configuration > Sanctions Screening Configuration > Screening – Ignore Words Configuration; click Add Ignore Word (FSD Section 4.3 Step 2) >> Step 3: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 4: Perform test action: category must exist before adding ignore word per FSD 4.3 Step 4 >> Step 5: Apply test data — Category: Cybercrime (new) >> Step 6: Compare actual result with expected result: Category unavailable until Add Category process completed per FSD 4.3 Step 4. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | FSD 4.3 Step 4: dropdown lists active categories; if required category does not exist Maker must complete Add Category (Section 4.2) first |
-| Expected Result | Category unavailable until Add Category process completed per FSD 4.3 Step 4. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, high, rbac, security |
-
-### IWC-TC-269 — Verify Risk Level definitions per FSD 4.3 Step 5
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Ignore Word Panel |
-| Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Ignore Word primary button visible per FSD 4.3 Step 2; Add Ignore Word panel open |
-| Test Data | Risk Levels: Low, Medium, High |
-| Steps | Step 1: In the Add Ignore Word panel, complete or review fields per FSD Section 4.3 Steps 3–6 (Word/Phrase, Category, Risk Level, Match Type) >> Step 2: Perform test action: Risk Level definitions per FSD 4.3 Step 5 >> Step 3: Apply test data — Risk Levels: Low, Medium, High >> Step 4: Compare actual result with expected result: Low=very common generic (e.g. Behavior aligns with FSD Section 4.3 panel workflow |
-| Acceptance Criteria | FSD 4.3 Step 5 defines Low, Medium, High risk semantics with examples |
-| Expected Result | Low=very common generic (e.g. Behavior aligns with FSD Section 4.3 panel workflow. |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-ignore-word-panel, medium, functional |
-
-### IWC-TC-270 — Verify Category Name maximum 100 characters per FSD 4.2 Step 3
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
-| Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Category Name Length: 101 characters |
-| Steps | Step 1: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 2: Perform test action: Category Name maximum 100 characters per FSD 4.2 Step 3 >> Step 3: Apply test data — Category Name Length: 101 characters >> Step 4: Compare actual result with expected result: Submission blocked or error shown exceeding 100 character limit per FSD 4.2 Step 3. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | FSD 4.2 Step 3: Category Name maximum 100 characters |
-| Expected Result | Submission blocked or error shown exceeding 100 character limit per FSD 4.2 Step 3. Checker approval workflow triggered on submit (FSD Section 4.2). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category-modal, medium, functional |
-
-### IWC-TC-271 — Verify Category Description maximum 500 characters per FSD 4.2 Step 4
-
-| Field | Value |
-| --- | --- |
-| Module | Ignore Words Configuration |
-| Feature | Add Category Modal |
-| Priority | Medium |
-| Preconditions | Admin/Maker user on main list view; Add Category toolbar button visible per FSD 4.2 Step 2; Add Category modal open |
-| Test Data | Description Length: 501 characters |
-| Steps | Step 1: Review modal fields: Category Name (required, max 100 chars) and Description (optional, max 500 chars) per FSD Section 4.2 >> Step 2: Perform test action: Category Description maximum 500 characters per FSD 4.2 Step 4 >> Step 3: Apply test data — Description Length: 501 characters >> Step 4: Compare actual result with expected result: Submission blocked or error shown exceeding 500 character limit per FSD 4.2 Step 4. Checker approval workflow triggered on submit (FSD Section 4.2) |
-| Acceptance Criteria | FSD 4.2 Step 4: Category Description maximum 500 characters |
-| Expected Result | Submission blocked or error shown exceeding 500 character limit per FSD 4.2 Step 4. Checker approval workflow triggered on submit (FSD Section 4.2). |
-| Automation Candidate | Yes |
-| Automation Layer | UI |
-| Tags | add-category-modal, medium, error-handling |

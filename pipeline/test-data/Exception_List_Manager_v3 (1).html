@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 AML — Exception List Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:14px;color:#161616;background:#f8fafc;overflow:hidden}
+button,input,select,textarea{font-family:inherit}
+svg{display:block;flex-shrink:0}
+
+/* ── Shell ── */
+.shell{display:flex;height:100vh;overflow:hidden}
+
+/* ══════════════════════════════
+   SIDEBAR
+══════════════════════════════ */
+.sb{
+  width:240px;min-width:240px;
+  background:#fff;border-right:1px solid #e5e7eb;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.sb-brand{
+  height:54px;flex-shrink:0;border-bottom:1px solid #e5e7eb;
+  display:flex;align-items:center;padding:0 16px;gap:0;
+}
+.sb-brand-logo{flex:1;display:flex;justify-content:center;align-items:center;padding-right:6px}
+.logo{
+  font-size:18px;font-weight:800;color:#2A53A0;letter-spacing:-.5px;
+  background:none;border-radius:0;width:auto;height:auto;
+}
+.sb-brand-div{width:1px;height:24px;background:#e5e7eb;flex-shrink:0}
+.sb-brand-inst{flex:1;display:flex;justify-content:center;align-items:center;padding-left:8px}
+.sb-brand-inst-icon{width:28px;height:28px;background:#dbeafe;border-radius:6px;display:flex;align-items:center;justify-content:center}
+
+/* Sidebar search */
+.sb-search{padding:12px 14px;border-bottom:1px solid #e5e7eb}
+.sb-search-inner{position:relative}
+.sb-search-inner svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#9ca3af;pointer-events:none}
+.sb-search-inner input{
+  width:100%;height:40px;padding:0 12px 0 32px;
+  border:1px solid #e5e7eb;border-radius:8px;
+  font-size:13px;color:#374151;background:#fff;outline:none;
+}
+.sb-search-inner input::placeholder{color:#9ca3af}
+.sb-search-inner input:focus{border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.1)}
+
+/* Nav */
+.sb-nav{flex:1;overflow-y:auto;padding:8px 0}
+.sb-nav::-webkit-scrollbar{width:3px}
+.sb-nav::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:2px}
+.nav-s{
+  font-size:10px;font-weight:600;color:#9ca3af;
+  text-transform:uppercase;letter-spacing:.06em;
+  padding:12px 16px 4px;
+}
+.ni{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 16px;cursor:pointer;
+  font-size:14px;font-weight:400;color:#374151;
+  margin:1px 0;transition:all .12s;border-radius:0;
+}
+.ni:hover{background:#f3f4f6;color:#111827}
+.ni.active{
+  background:#EAF2FF;color:#2A53A0;font-weight:500;
+  border-left:3px solid #2A53A0;padding-left:13px;
+}
+.nb{
+  margin-left:auto;background:#fee2e2;color:#dc2626;
+  font-size:10px;font-weight:600;padding:1px 7px;border-radius:10px;
+}
+
+/* User area at bottom */
+.sb-user{
+  padding:12px 16px;border-top:1px solid #e5e7eb;
+  display:flex;align-items:center;gap:10px;flex-shrink:0;
+}
+.ua{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,#2A53A0,#4A7BD0);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.un{font-size:13px;font-weight:500;color:#111827;line-height:1.3}
+.ur{font-size:11px;color:#6b7280}
+
+/* ══════════════════════════════
+   MAIN AREA
+══════════════════════════════ */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#f8fafc;min-width:0}
+
+/* Top bar */
+.topbar{
+  height:54px;flex-shrink:0;
+  background:#fff;border-bottom:1px solid #e5e7eb;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;z-index:20;
+}
+.bc{font-size:13px;color:#6b7280}
+.bc span{color:#2A53A0;cursor:pointer;font-weight:500}
+.bc span:hover{text-decoration:underline}
+.tbr{display:flex;align-items:center;gap:8px;position:relative}
+.nib{
+  width:34px;height:34px;border-radius:8px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#6b7280;transition:all .12s;position:relative;
+}
+.nib:hover{background:#f3f4f6;color:#2A53A0}
+.ndot{
+  position:absolute;top:6px;right:6px;
+  width:7px;height:7px;border-radius:50%;
+  background:#ef4444;border:1.5px solid #fff;
+}
+.np{
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  width:320px;position:absolute;right:0;top:42px;z-index:100;
+  display:none;box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.np.open{display:block}
+.nph{
+  padding:12px 14px;border-bottom:1px solid #e5e7eb;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;font-weight:600;color:#111827;
+}
+.npc{font-size:12px;color:#2A53A0;cursor:pointer;font-weight:400}
+.npc:hover{text-decoration:underline}
+.npi{padding:10px 14px;border-bottom:1px solid #f3f4f6;cursor:pointer;font-size:13px}
+.npi:last-child{border-bottom:none}
+.npi:hover{background:#f9fafb}
+.npi.unread{background:#EAF2FF}
+.npm{color:#111827;line-height:1.45;font-weight:400}
+.npt{color:#9ca3af;margin-top:2px;font-size:11px}
+
+/* ── Scrollable content wrapper ── */
+.content{flex:1;overflow-y:auto;padding:20px}
+.content::-webkit-scrollbar{width:5px}
+.content::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
+
+/* ── View switching ── */
+.view{display:none}
+.view.active{display:block}
+
+/* ── Page header ── */
+.ph{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.ph-t{font-size:18px;font-weight:600;color:#111827;letter-spacing:-.3px}
+.ph-d{font-size:13px;color:#6b7280;margin-top:3px}
+.ph-a{display:flex;gap:8px;align-items:center;flex-shrink:0}
+
+/* ── Buttons ── */
+.btn{
+  padding:8px 14px;border-radius:8px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;font-size:13px;font-weight:500;color:#374151;
+  display:inline-flex;align-items:center;gap:6px;font-family:inherit;
+  white-space:nowrap;transition:all .12s;
+}
+.btn:hover{background:#f9fafb;border-color:#d1d5db}
+.btn-p{background:#2A53A0;color:#fff;border-color:#2A53A0}
+.btn-p:hover{background:#1e3a70;border-color:#1e3a70}
+.btn-sm{padding:6px 12px;font-size:12px}
+.btn-d{background:#fff;color:#dc2626;border-color:#fecaca}
+.btn-d:hover{background:#fee2e2}
+.btn-w{background:#fff;color:#d97706;border-color:#fde68a}
+.btn-w:hover{background:#fef3c7}
+.btn-g{background:#fff;color:#16a34a;border-color:#bbf7d0}
+.btn-g:hover{background:#f0fdf4}
+
+/* ── Stats strip ── */
+.stats{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;margin-bottom:18px;
+}
+.stat{
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+.sl{font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.sv{font-size:22px;font-weight:700;line-height:1}
+.vb{color:#2A53A0}.vg{color:#16a34a}.va{color:#d97706}.vr{color:#dc2626}
+
+/* ── List status tabs ── */
+.ltabs{
+  display:flex;border-bottom:1px solid #e5e7eb;
+  margin-bottom:16px;background:#fff;
+}
+.ltab{
+  padding:10px 18px;font-size:13px;font-weight:500;color:#6b7280;
+  cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:all .15s;white-space:nowrap;
+}
+.ltab:hover{color:#111827}
+.ltab.active{color:#2A53A0;border-bottom-color:#2A53A0;font-weight:600}
+.ltab-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:18px;height:16px;padding:0 5px;border-radius:10px;
+  font-size:10px;font-weight:700;background:#EAF2FF;color:#2A53A0;margin-left:5px;
+}
+
+/* ── Cards ── */
+.card{
+  background:#fff;border:1px solid #e5e7eb;
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+
+/* ── Table toolbar ── */
+.tbr2{
+  display:flex;gap:8px;align-items:center;
+  padding:10px 14px;border-bottom:1px solid #e5e7eb;flex-wrap:wrap;
+  background:#fff;
+}
+.sw{position:relative;flex:1;min-width:170px}
+.sw input{
+  width:100%;padding:7px 10px 7px 30px;
+  border:1px solid #e5e7eb;border-radius:8px;
+  font-size:13px;background:#fff;font-family:inherit;color:#374151;outline:none;
+}
+.sw input:focus{border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.1)}
+.sw input::placeholder{color:#9ca3af}
+.si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:12px}
+.fsel{
+  padding:6px 10px;border:1px solid #e5e7eb;border-radius:8px;
+  font-size:12px;background:#fff;font-family:inherit;
+  cursor:pointer;color:#374151;outline:none;
+}
+.fsel:focus{border-color:#2A53A0}
+
+/* ── Tables ── */
+table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+thead{background:#F0F0F0}
+th{
+  padding:10px 14px;text-align:left;font-weight:600;font-size:12px;
+  color:#2A53A0;border-bottom:1px solid #e5e7eb;white-space:nowrap;
+  letter-spacing:.01em;
+}
+td{
+  padding:10px 14px;border-bottom:1px solid #f3f4f6;
+  vertical-align:middle;color:#374151;
+}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#f9fafb}
+
+/* ── Badges ── */
+.b{
+  display:inline-flex;align-items:center;
+  padding:3px 10px;border-radius:20px;
+  font-size:11px;font-weight:600;white-space:nowrap;
+}
+.b-ac{background:#dcfce7;color:#16a34a}
+.b-di{background:#f3f4f6;color:#6b7280}
+.b-pe{background:#fef3c7;color:#d97706}
+.b-de{background:#fee2e2;color:#dc2626}
+.b-ex{background:#f3f4f6;color:#6b7280}
+.b-ap{background:#dcfce7;color:#16a34a}
+.b-rj{background:#fee2e2;color:#dc2626}
+.b-su{background:#fef3c7;color:#d97706}
+.b-ob{background:#dbeafe;color:#2A53A0}
+.b-pr{background:#dcfce7;color:#16a34a}
+.b-ev{background:#f5f3ff;color:#6d28d9}
+.b-pp{background:#fff7ed;color:#c2410c}
+.b-mx{background:#f3f4f6;color:#6b7280}
+.sc-hi{background:#fee2e2;color:#dc2626;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600}
+.sc-md{background:#fef3c7;color:#d97706;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600}
+.sc-lo{background:#dcfce7;color:#16a34a;padding:3px 9px;border-radius:4px;font-size:11px;font-weight:600}
+
+/* ── Action icons ── */
+.ract{display:flex;gap:5px}
+.ib{
+  width:28px;height:28px;border-radius:6px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:#6b7280;transition:all .12s;
+}
+.ib:hover{background:#eff6ff;color:#2A53A0;border-color:#bfdbfe}
+.ib.dl:hover{color:#dc2626;border-color:#fecaca;background:#fee2e2}
+
+/* ── Pagination ── */
+.pager{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-top:1px solid #e5e7eb;background:#fafafa;
+}
+.pi{font-size:12px;color:#6b7280}
+.pbtns{display:flex;gap:4px}
+.pb{
+  width:28px;height:28px;border-radius:6px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;font-size:12px;font-weight:500;
+  display:flex;align-items:center;justify-content:center;color:#374151;
+  transition:all .12s;
+}
+.pb.active{background:#2A53A0;color:#fff;border-color:#2A53A0}
+.pb:hover:not(.active){background:#eff6ff;border-color:#bfdbfe;color:#2A53A0}
+
+/* ── Metadata grid ── */
+.mg{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;
+  margin-bottom:18px;background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);
+}
+.mi{padding:13px 16px;border-right:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb}
+.mi:nth-child(3n){border-right:none}
+.mi:nth-last-child(-n+3){border-bottom:none}
+.ml{font-size:10px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.mv{font-size:13px;font-weight:600;color:#111827}
+.mv.sm{font-weight:400;color:#374151;font-size:13px}
+
+/* ── Section header ── */
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.st{font-size:12px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:.05em}
+
+/* ── Inline panels ── */
+.pw{display:none}.pw.open{display:block}
+.panel{
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  margin-bottom:16px;overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.pnh{
+  padding:14px 16px;border-bottom:1px solid #e5e7eb;
+  display:flex;align-items:center;justify-content:space-between;
+  background:#fafafa;
+}
+.pnh h3{font-size:14px;font-weight:600;color:#111827}
+.pnb{padding:16px}
+.pnf{
+  padding:12px 16px;border-top:1px solid #e5e7eb;
+  display:flex;justify-content:flex-end;gap:8px;background:#f9fafb;align-items:center;
+}
+
+/* ── Form rows / groups ── */
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.fr.c3{grid-template-columns:1fr 1fr 1fr}
+.fr.c1{grid-template-columns:1fr}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:11px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em}
+.fg input,.fg select,.fg textarea{
+  padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px;
+  font-size:13px;background:#fff;font-family:inherit;color:#111827;outline:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.09);
+}
+.fg textarea{resize:vertical;min-height:60px}
+.req{color:#ef4444}
+.fgt{
+  font-size:11px;font-weight:700;color:#2A53A0;
+  text-transform:uppercase;letter-spacing:.05em;
+  margin:14px 0 9px;padding-bottom:6px;border-bottom:1px solid #e5e7eb;
+}
+.fgt:first-child{margin-top:0}
+.fhint{font-size:11px;color:#9ca3af;margin-top:2px}
+.fwarn{font-size:12px;color:#d97706;background:#fef3c7;padding:8px 11px;border-radius:8px;margin-bottom:13px;line-height:1.5;border:1px solid #fde68a}
+.finfo{font-size:12px;color:#2A53A0;background:#EAF2FF;padding:8px 11px;border-radius:8px;margin-bottom:13px;line-height:1.5;border:1px solid #bfdbfe}
+
+/* ── Toggle ── */
+.trow{display:flex;align-items:center;gap:10px;font-size:13px;color:#374151;margin-bottom:10px}
+.tgl{
+  width:34px;height:18px;background:#d1d5db;border-radius:9px;
+  cursor:pointer;position:relative;flex-shrink:0;transition:background .15s;
+}
+.tgl.on{background:#2A53A0}
+.tgl::after{
+  content:'';position:absolute;width:14px;height:14px;
+  border-radius:50%;background:#fff;top:2px;left:2px;
+  transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.tgl.on::after{left:18px}
+
+/* ── Inline modals (.mov) ── */
+.mov{
+  display:none;background:rgba(0,0,0,.35);border-radius:10px;
+  align-items:center;justify-content:center;padding:20px;margin-bottom:16px;
+}
+.mov.open{display:flex}
+.modal{
+  background:#fff;border-radius:12px;border:1px solid #e5e7eb;
+  width:500px;max-width:100%;
+  box-shadow:0 8px 30px rgba(0,0,0,.12);
+}
+.modal.wide{width:640px}
+.modal.scroll{max-height:80vh;overflow-y:auto}
+.mh{
+  padding:14px 18px;border-bottom:1px solid #e5e7eb;
+  display:flex;justify-content:space-between;align-items:center;
+  background:#fafafa;border-radius:12px 12px 0 0;
+}
+.mh h3{font-size:15px;font-weight:600;color:#111827}
+.mc2{padding:16px 18px}
+.mf{
+  padding:12px 18px;border-top:1px solid #e5e7eb;
+  display:flex;justify-content:flex-end;gap:8px;background:#f9fafb;
+  border-radius:0 0 12px 12px;
+}
+
+/* ── Request cards (maker-checker) ── */
+.rcard{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:14px 16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.rh{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px;gap:12px}
+.rid{font-size:11px;color:#9ca3af}.rtype{font-size:13px;font-weight:500;margin-top:1px;color:#111827}
+.rmeta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.rf{font-size:12px}.rfl{color:#9ca3af;margin-bottom:2px}.rfv{color:#111827;font-weight:500}
+.rsumm{font-size:12px;color:#374151;background:#f8fafc;padding:8px 10px;border-radius:8px;margin-bottom:10px;border-left:3px solid #bfdbfe;line-height:1.5}
+.rsumm.warn{border-color:#fde68a;background:#fef3c7}
+.ract2{display:flex;gap:8px;align-items:center;justify-content:flex-end}
+.rtag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:10px;white-space:nowrap}
+.rtag-new{background:#dcfce7;color:#16a34a}
+.rtag-edit{background:#dbeafe;color:#2A53A0}
+.rtag-bulk{background:#f5f3ff;color:#6d28d9}
+.rtag-del{background:#fee2e2;color:#dc2626}
+.rtag-renew{background:#fef3c7;color:#d97706}
+.sla-warn{color:#dc2626;font-weight:600}
+
+/* ── Audit trail ── */
+.arow{display:flex;gap:11px;padding:10px 0;border-bottom:1px solid #f3f4f6}
+.arow:last-child{border-bottom:none}
+.adot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.adot.g{background:#16a34a}.adot.b{background:#2A53A0}.adot.a{background:#d97706}
+.adot.r{background:#dc2626}.adot.gr{background:#9ca3af}.adot.v{background:#7c3aed}
+.ae{font-size:13px;font-weight:500;color:#111827}.ad{font-size:12px;color:#6b7280;margin-top:2px;line-height:1.4}
+.at{font-size:11px;color:#9ca3af;margin-top:2px}
+
+/* ── History items ── */
+.hist-item{border:1px solid #e5e7eb;border-radius:8px;margin-bottom:9px;overflow:hidden}
+.hist-hdr{
+  padding:10px 14px;background:#fafafa;
+  display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+}
+.hist-hdr:hover{background:#f3f4f6}
+.hist-body{padding:12px 14px;border-top:1px solid #e5e7eb;display:none;font-size:12px;color:#374151;line-height:1.6}
+.hist-body.open{display:block}
+
+/* ── Report sections ── */
+.rep-section{background:#fff;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.rep-sh{padding:12px 16px;border-bottom:1px solid #e5e7eb;display:flex;justify-content:space-between;align-items:center;background:#fafafa}
+.rep-sh h3{font-size:12px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:.05em}
+.rep-body{padding:0}
+.rep-row{display:flex;gap:12px;padding:10px 16px;border-bottom:1px solid #f3f4f6;align-items:center;font-size:13px}
+.rep-row:last-child{border-bottom:none}
+.rep-row:hover{background:#f9fafb}
+.rc-pill{font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:#EAF2FF;color:#2A53A0;white-space:nowrap}
+
+/* ── Action dropdown ── */
+.adrop-wrap{position:relative;display:inline-block}
+.adrop-btn{
+  width:30px;height:30px;border-radius:6px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:#6b7280;font-weight:700;letter-spacing:1px;line-height:1;
+  transition:all .12s;
+}
+.adrop-btn:hover{background:#f3f4f6;color:#2A53A0;border-color:#bfdbfe}
+.adrop-menu{
+  display:none;position:fixed;z-index:9999;background:#fff;
+  border:1px solid #e5e7eb;border-radius:10px;
+  box-shadow:0 8px 30px rgba(0,0,0,.13);min-width:178px;padding:5px;
+}
+.adrop-menu.open{display:block}
+.adrop-item{
+  display:flex;align-items:center;gap:9px;width:100%;
+  padding:9px 12px;border-radius:7px;font-size:13px;color:#374151;
+  background:none;border:none;cursor:pointer;text-align:left;
+  font-family:inherit;transition:background .1s;
+}
+.adrop-item:hover{background:#eff6ff;color:#2A53A0}
+.adrop-item.danger{color:#dc2626}
+.adrop-item.danger:hover{background:#fee2e2;color:#dc2626}
+.adrop-divider{height:1px;background:#f3f4f6;margin:4px 0}
+
+/* ── Comment / Confirm modal (fixed overlay) ── */
+.cmov{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,.46);backdrop-filter:blur(2px);
+  align-items:center;justify-content:center;
+}
+.cmov.open{display:flex}
+.cmodal{
+  background:#fff;border-radius:12px;width:460px;max-width:94vw;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);animation:cmin .18s ease;overflow:hidden;
+}
+@keyframes cmin{from{transform:translateY(-14px);opacity:0}to{transform:translateY(0);opacity:1}}
+.cmh{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px 13px;border-bottom:1px solid #e5e7eb;background:#fafafa;
+}
+.cmh h3{font-size:15px;font-weight:700;color:#111827;margin:0}
+.cmh button{
+  width:28px;height:28px;border-radius:6px;border:none;background:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#9ca3af;font-size:16px;transition:background .12s;
+}
+.cmh button:hover{background:#f3f4f6;color:#374151}
+.cmb{padding:18px 20px}
+.cmaction-label{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:#9ca3af;margin-bottom:6px;
+}
+.cmaction-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;
+  margin-bottom:16px;background:#EAF2FF;color:#2A53A0;border:1px solid #bfdbfe;
+}
+.cmlabel{
+  font-size:12px;font-weight:600;color:#374151;margin-bottom:6px;
+  display:flex;align-items:center;gap:4px;
+}
+.cmreq{color:#ef4444}
+.cmtxt{
+  width:100%;height:90px;padding:10px 12px;
+  border:1px solid #d1d5db;border-radius:8px;font-size:13px;
+  font-family:inherit;resize:vertical;outline:none;color:#111827;line-height:1.5;
+  transition:border-color .15s,box-shadow .15s;
+}
+.cmtxt:focus{border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.09)}
+.cmtxt.err{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.09)}
+.cmerr{font-size:11px;color:#ef4444;margin-top:5px;display:none}
+.cmerr.show{display:block}
+.cmf{
+  padding:13px 20px 17px;border-top:1px solid #f3f4f6;
+  display:flex;justify-content:flex-end;gap:9px;
+}
+
+/* ── Checker approval success modal ── */
+.checker-mov{
+  display:none;position:fixed;inset:0;z-index:10001;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(2px);
+  align-items:center;justify-content:center;
+}
+.checker-mov.open{display:flex}
+.checker-box{
+  background:#fff;border-radius:14px;width:420px;max-width:94vw;
+  box-shadow:0 24px 64px rgba(0,0,0,.22);animation:cmin .18s ease;overflow:hidden;
+}
+.checker-header{
+  background:#1e3a70;padding:16px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.checker-header h3{font-size:15px;font-weight:600;color:#fff;margin:0}
+.checker-header button{
+  background:none;border:none;color:rgba(255,255,255,.7);
+  font-size:20px;cursor:pointer;line-height:1;padding:0;
+}
+.checker-header button:hover{color:#fff}
+.checker-body{padding:28px 24px 24px;text-align:center}
+.checker-icon{
+  width:60px;height:60px;border-radius:50%;background:#dcfce7;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+}
+.checker-body h4{font-size:17px;font-weight:700;color:#111827;margin-bottom:8px}
+.checker-body p{font-size:13px;color:#555;line-height:1.6;margin-bottom:20px}
+.checker-meta{
+  background:#f0f4ff;border:1px solid #c7d5f0;border-radius:10px;
+  padding:13px 16px;text-align:left;margin-bottom:20px;
+}
+.checker-meta-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:6px}
+.checker-meta-row:last-child{margin-bottom:0}
+.checker-meta-label{color:#6b7280}
+.checker-meta-value{font-weight:600;color:#111827}
+.checker-meta-badge{background:#fef3c7;color:#92400e;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700}
+
+/* Column widths */
+.w7{width:7%}.w8{width:8%}.w9{width:9%}.w10{width:10%}.w11{width:11%}.w12{width:12%}
+.w13{width:13%}.w14{width:14%}.w15{width:15%}.w16{width:16%}.w18{width:18%}.w20{width:20%}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:5px;height:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
+
+code{background:#f3f4f6;padding:1px 6px;border-radius:4px;font-size:12px;font-family:monospace;color:#374151}
+
+/* Radio rows */
+.radio-row{display:flex;gap:18px;padding:6px 0}
+.radio-row label{display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;color:#374151}
+.radio-row input[type=radio]{accent-color:#2A53A0}
+
+/* Global action dropdown menu */
+#globalAdropMenu{display:none;position:fixed;z-index:9999;background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.13);min-width:178px;padding:5px}
+#globalAdropMenu.open{display:block}
+</style>
+
+<div class="shell">
+
+<!-- ═══════════ SIDEBAR ═══════════ -->
+<div class="sb">
+  <div class="sb-brand">
+    <div class="sb-brand-logo">
+      <span class="logo">Clari5</span>
+    </div>
+    <div class="sb-brand-div"></div>
+    <div class="sb-brand-inst">
+      <div class="sb-brand-inst-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 12l3 3 7-7" stroke="#2A53A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="sb-search">
+    <div class="sb-search-inner">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-.7-7.7S4.2.7,2.3,3S.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+      <input type="text" placeholder="Search menus...">
+    </div>
+  </div>
+  <div class="sb-nav">
+    <div class="nav-s">Exception lists</div>
+    <div class="ni active" onclick="setNav(this,'landing')">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".75"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".75"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".75"/><rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".35"/></svg>
+      Exception lists
+    </div>
+    <div class="ni" onclick="setNav(this,'maker')">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M2 8h8M2 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Maker-checker <span class="nb" id="mcNavBadge">3</span>
+    </div>
+    <div class="ni" onclick="setNav(this,'audit')">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3l2 2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+      Audit trail
+    </div>
+    <div class="ni" onclick="setNav(this,'report')">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1.5" stroke="currentColor" stroke-width="1.4"/><path d="M5 8h6M5 11h4M5 5h6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Exception register
+    </div>
+    <div class="nav-s">Screening</div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Sanctions screening
+    </div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 4h4.2l-3.4 2.5 1.3 4L8 10.2l-3.5 2.3 1.3-4L2.4 6h4.2z" fill="currentColor" opacity=".65"/></svg>
+      Custom list manager
+    </div>
+    <div class="nav-s">Admin</div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      RBAC &amp; roles
+    </div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Settings
+    </div>
+  </div>
+  <div class="sb-user">
+    <div class="ua">CC</div>
+    <div><div class="un">Charu Chauhan</div><div class="ur">Compliance Officer</div></div>
+  </div>
+</div>
+
+<!-- ═══════════ MAIN ═══════════ -->
+<div class="main">
+  <div class="topbar">
+    <div class="bc" id="bc"><span>Exception lists</span></div>
+    <div class="tbr">
+      <button class="btn btn-sm">&#8681; Export</button>
+      <div class="nib" onclick="toggleNotif()">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1a5 5 0 015 5v3l1.5 2H1.5L3 9V6a5 5 0 015-5z" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 13.5a1.5 1.5 0 003 0" stroke="currentColor" stroke-width="1.4"/></svg>
+        <div class="ndot"></div>
+      </div>
+      <div class="np" id="notifPanel">
+        <div class="nph">Notifications <span class="npc" onclick="toggleNotif()">Mark all read</span></div>
+        <div class="npi unread"><div class="npm">MCR-001 pending 20h — onboarding SLA at risk, escalated to Compliance Manager</div><div class="npt">Today 09:00</div></div>
+        <div class="npi unread"><div class="npm">"Senator James Okafor" exception expiring in 30 days — renewal review required</div><div class="npt">Yesterday 14:22</div></div>
+        <div class="npi"><div class="npm">Bulk upload approved — 14 exception entries added to Periodic Re-Screen list</div><div class="npt">25 Apr 2026, 15:30</div></div>
+        <div class="npi"><div class="npm">"Elena Petrov" exception expired — alerts re-activated on EU List</div><div class="npt">01 Mar 2026, 00:05</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+  <!-- ═══════════════════════════════════
+       VIEW: LANDING — EXCEPTION LISTS
+  ═══════════════════════════════════ -->
+  <div class="view active" id="view-landing">
+    <div class="ph">
+      <div><div class="ph-t">Exception lists</div><div class="ph-d">False-positive suppression for customer name-match screening — onboarding, periodic re-screening, and event-driven</div></div>
+      <div class="ph-a">
+        <button class="btn btn-sm" onclick="openPanel('lnd','bulk')">&#8679; Bulk upload</button>
+        <button class="btn btn-p" onclick="openPanel('lnd','create')">+ Create new list</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="sl">Total lists</div><div class="sv vb">6</div></div>
+      <div class="stat"><div class="sl">Active lists</div><div class="sv vg">5</div></div>
+      <div class="stat"><div class="sl">Total exceptions</div><div class="sv vb">52</div></div>
+      <div class="stat"><div class="sl">Pending approval</div><div class="sv va" id="pendingCount">3</div></div>
+    </div>
+
+    <!-- Status Tabs -->
+    <div class="ltabs" id="listTabBar">
+      <div class="ltab active" onclick="switchListTab(this,'Active')">Active <span class="ltab-badge">5</span></div>
+      <div class="ltab" onclick="switchListTab(this,'Suspended')">Suspended <span class="ltab-badge">1</span></div>
+      <div class="ltab" onclick="switchListTab(this,'')">All <span class="ltab-badge">6</span></div>
+    </div>
+
+    <!-- Create list panel -->
+    <div class="pw" id="panel-lnd-create">
+      <div class="panel">
+        <div class="pnh"><h3>Create new exception list</h3><button class="btn btn-sm" onclick="closePanel('lnd','create')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="fwarn">List creation requires Maker-Checker approval by a Compliance Officer or Compliance Manager. This request will enter the queue after submission.</div>
+          <div class="fr">
+            <div class="fg"><label>List name <span class="req">*</span></label><input type="text" placeholder="e.g. Onboarding Exceptions — OFAC SDN (max 100 chars)" maxlength="100"></div>
+            <div class="fg"><label>Category <span class="req">*</span></label>
+              <select>
+                <option value="">Select category</option>
+                <option>Onboarding Exceptions</option>
+                <option>Periodic Re-Screen Exceptions</option>
+                <option>Event-Driven Exceptions</option>
+                <option>PEP Exceptions</option>
+                <option>High-Risk Country Exceptions</option>
+                <option>Mixed</option>
+              </select>
+            </div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Default entry TTL <span class="req">*</span></label>
+              <select><option>3 months</option><option>6 months</option><option selected>12 months</option><option>24 months (MLRO sign-off required)</option></select>
+            </div>
+            <div class="fg"><label>Default review frequency <span class="req">*</span></label>
+              <select><option>3 months</option><option selected>6 months</option><option>12 months</option></select>
+              <span class="fhint">PEP lists: must not exceed 6 months.</span>
+            </div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Purpose / description <span class="req">*</span></label><textarea placeholder="Max 500 characters — retained in audit log..." maxlength="500"></textarea></div>
+          </div>
+          <div style="display:flex;gap:24px;flex-wrap:wrap">
+            <div class="trow"><div class="tgl on" onclick="this.classList.toggle('on')"></div> Notify Compliance Officer on new entry submission</div>
+            <div class="trow"><div class="tgl on" onclick="this.classList.toggle('on')"></div> Auto-expire entries at TTL without renewal</div>
+          </div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('lnd','create')">Cancel</button>
+          <button class="btn btn-w btn-sm">Save as draft</button>
+          <button class="btn btn-p btn-sm" onclick="closePanel('lnd','create')">Submit for approval &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bulk upload panel -->
+    <div class="pw" id="panel-lnd-bulk">
+      <div class="panel">
+        <div class="pnh"><h3>Bulk upload exception entries</h3><button class="btn btn-sm" onclick="closePanel('lnd','bulk')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="fr">
+            <div class="fg"><label>Exception list <span class="req">*</span></label>
+              <select><option>Onboarding Exceptions — OFAC SDN</option><option>Periodic Re-Screen — UN Consolidated List</option><option>PEP Approved Customers — Enhanced DD</option></select>
+            </div>
+            <div class="fg"><label>Reason for addition <span class="req">*</span></label><input type="text" placeholder="Max 500 characters" maxlength="500"></div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Upload file <span class="req">*</span></label><input type="file" accept=".csv,.xlsx"></div>
+          </div>
+          <div style="background:#f8fafc;border-radius:8px;padding:11px 13px;font-size:12px;color:#374151;margin-top:4px;line-height:1.7;border:1px solid #e5e7eb">
+            Max 10,000 rows · Max 25 MB · CSV (UTF-8) or XLSX<br>
+            Required: <code>customer_id</code> · <code>full_name</code> · <code>date_of_birth</code> · <code>matched_watchlist_entry</code> · <code>match_score</code> · <code>distinguishing_attributes</code> · <code>reason_code</code> · <code>expiry_date</code>
+            <div style="margin-top:8px"><button class="btn btn-sm">&#8681; Download template (XLSX)</button></div>
+          </div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('lnd','bulk')">Cancel</button>
+          <button class="btn btn-p btn-sm">Validate &amp; submit &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lists table -->
+    <div class="card">
+      <div class="tbr2">
+        <div class="sw"><span class="si">&#9906;</span><input type="text" placeholder="Search by list name or status..." oninput="filterLists(this.value)"></div>
+        <select class="fsel" onchange="filterListsByStatus(this.value)"><option value="">All statuses</option><option>Active</option><option>Suspended</option><option>Pending approval</option></select>
+        <select class="fsel" onchange="filterListsByCat(this.value)"><option value="">All categories</option><option>Onboarding Exceptions</option><option>Periodic Re-Screen Exceptions</option><option>PEP Exceptions</option><option>Event-Driven Exceptions</option><option>High-Risk Country Exceptions</option><option>Mixed</option></select>
+        <select class="fsel"><option>10 / page</option><option>25 / page</option><option>50 / page</option></select>
+        <button class="btn btn-sm">&#8681; CSV</button><button class="btn btn-sm">&#8681; PDF</button>
+      </div>
+      <table>
+        <thead><tr>
+          <th class="w18">List name &#8645;</th>
+          <th class="w13">Category</th>
+          <th class="w8">Status &#8645;</th>
+          <th class="w7">Total &#8645;</th>
+          <th class="w7">Active &#8645;</th>
+          <th class="w7">Exp 30d &#8645;</th>
+          <th class="w7">Expired &#8645;</th>
+          <th class="w10">Date created &#8645;</th>
+          <th class="w10">Last modified &#8645;</th>
+          <th class="w13">Actions</th>
+        </tr></thead>
+        <tbody id="listsTbody"></tbody>
+      </table>
+      <div class="pager">
+        <div class="pi">Showing 1–6 of 6 lists</div>
+        <div class="pbtns"><div class="pb">&#8249;</div><div class="pb active">1</div><div class="pb">&#8250;</div></div>
+      </div>
+    </div>
+
+    <!-- Edit List Modal -->
+    <div class="mov" id="editListMov">
+      <div class="modal">
+        <div class="mh"><h3>Edit exception list</h3><button class="btn btn-sm" onclick="closeMov('editListMov')">&#215;</button></div>
+        <div class="mc2">
+          <div class="fg" style="margin-bottom:11px"><label>List name <span class="req">*</span></label><input type="text" id="el-name" maxlength="100"></div>
+          <div class="fg" style="margin-bottom:11px"><label>Category</label>
+            <div style="font-size:13px;color:#6b7280;padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px;background:#f9fafb">Category cannot be changed after creation.</div>
+          </div>
+          <div class="fr" style="margin-bottom:11px">
+            <div class="fg"><label>Default TTL <span class="req">*</span></label><select><option>3 months</option><option>6 months</option><option selected>12 months</option></select></div>
+            <div class="fg"><label>Review frequency <span class="req">*</span></label><select><option>3 months</option><option selected>6 months</option><option>12 months</option></select></div>
+          </div>
+          <div class="fg"><label>Reason for edit <span class="req">*</span></label><textarea placeholder="Max 500 characters — retained in audit log..." maxlength="500"></textarea></div>
+        </div>
+        <div class="mf"><button class="btn" onclick="closeMov('editListMov')">Cancel</button><button class="btn btn-p btn-sm" onclick="closeMov('editListMov')">Submit for approval &#8594;</button></div>
+      </div>
+    </div>
+
+    <!-- Suspend/Activate List Modal -->
+    <div class="mov" id="suspendListMov">
+      <div class="modal">
+        <div class="mh"><h3 id="suspendTitle">Suspend exception list</h3><button class="btn btn-sm" onclick="closeMov('suspendListMov')">&#215;</button></div>
+        <div class="mc2">
+          <div style="font-size:13px;color:#374151;margin-bottom:12px;line-height:1.6">Controlling screening engine status for <strong id="suspendListName" style="color:#111827"></strong>. All entry records are retained on suspend. Both actions require Maker-Checker approval.</div>
+          <div class="fg"><label>Reason <span class="req">*</span></label><textarea placeholder="Mandatory — retained in audit log..."></textarea></div>
+        </div>
+        <div class="mf"><button class="btn" onclick="closeMov('suspendListMov')">Cancel</button><button class="btn btn-p btn-sm" onclick="closeMov('suspendListMov')">Submit for approval &#8594;</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       VIEW: DETAIL
+  ═══════════════════════════════════ -->
+  <div class="view" id="view-detail">
+    <div class="ph">
+      <div><div class="ph-t" id="det-title">Onboarding Exceptions — OFAC SDN</div><div class="ph-d" id="det-desc">EL-001 · Onboarding Exceptions</div></div>
+      <div class="ph-a">
+        <button class="btn btn-sm" onclick="goLanding()">&#8592; All lists</button>
+        <button class="btn btn-p btn-sm" onclick="openPanel('det','addentry')">+ Add entry</button>
+        <button class="btn btn-sm" onclick="openPanel('det','bulkdet')">&#8679; Bulk upload</button>
+      </div>
+    </div>
+
+    <div class="sh"><div class="st">Sub-section 1 — List metadata</div></div>
+    <div class="mg" id="det-meta"></div>
+
+    <!-- Add entry panel -->
+    <div class="pw" id="panel-det-addentry">
+      <div class="panel">
+        <div class="pnh"><h3>Add exception entry</h3><button class="btn btn-sm" onclick="closePanel('det','addentry')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="finfo">Every entry requires documented distinguishing attributes proving the customer is a <strong>different entity</strong> from the watchlist hit. Minimum viable entry: Customer ID · Full Name · DOB · Matched Watchlist Entry · Match Score · Distinguishing Attributes · Reason Code · Evidence Reference · Watchlist Scope · Expiry Date.</div>
+
+          <div class="fgt">Customer identity</div>
+          <div class="fr c3">
+            <div class="fg"><label>Customer ID <span class="req">*</span></label><input type="text" placeholder="e.g. CUS-001234"></div>
+            <div class="fg"><label>Full legal name <span class="req">*</span></label><input type="text" placeholder="As on identity document"></div>
+            <div class="fg"><label>Date of birth <span class="req">*</span></label><input type="date"><span class="fhint">Most critical disambiguation field.</span></div>
+          </div>
+          <div class="fr c3">
+            <div class="fg"><label>Nationality</label><input type="text" placeholder="e.g. British, Nigerian"></div>
+            <div class="fg"><label>Gender</label><select><option value="">Select</option><option>Male</option><option>Female</option><option>Not specified</option></select></div>
+            <div class="fg"><label>Original script name</label><input type="text" placeholder="e.g. إبراهيم الراشد (UTF-8)"><span class="fhint">Required if alert triggered by non-Latin name.</span></div>
+          </div>
+
+          <div class="fgt">Screening context</div>
+          <div class="fr c3">
+            <div class="fg"><label>Screening trigger type <span class="req">*</span></label>
+              <select><option>Onboarding</option><option>Periodic Re-Screening</option><option>Event-Driven</option></select>
+            </div>
+            <div class="fg"><label>Watchlist name <span class="req">*</span></label>
+              <select><option>OFAC SDN</option><option>UN Consolidated List</option><option>EU Consolidated List</option><option>HMT UK Sanctions</option><option>NFIU</option><option>Internal Blacklist</option></select>
+            </div>
+            <div class="fg"><label>Match score at exception <span class="req">*</span></label><input type="number" min="0" max="100" placeholder="e.g. 92"><span class="fhint">% from screening engine — permanent evidence.</span></div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Matched watchlist entry <span class="req">*</span></label><input type="text" placeholder="e.g. Ibrahim Al-Rashid, DOB 1965, Syrian national, OFAC Ref: SDN-12345"><span class="fhint">The exact name + reference of the entity that triggered the match.</span></div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Distinguishing attributes <span class="req">*</span></label>
+              <textarea id="attrib-ta" style="min-height:80px" placeholder="Document specific differences between the customer and the watchlist hit. (min 50 characters)" oninput="checkAttrib(this)"></textarea>
+              <span class="fhint" id="attrib-hint" style="color:#dc2626">Primary regulatory evidence field — minimum 50 characters required.</span>
+            </div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Alert reference ID</label><input type="text" placeholder="e.g. ALT-2026-004521"></div>
+            <div class="fg"><label>Screening date</label><input type="date"></div>
+          </div>
+
+          <div class="fgt">Exception scope &amp; type</div>
+          <div class="fr c3">
+            <div class="fg"><label>Exception type <span class="req">*</span></label><select><option>Individual</option><option>Corporate</option><option>IP Range</option><option>Mobile Number</option></select></div>
+            <div class="fg"><label>Watchlist scope <span class="req">*</span></label><select><option>OFAC SDN</option><option>UN Consolidated List</option><option>EU Consolidated List</option><option>HMT UK Sanctions</option><option>NFIU</option></select><span class="fhint">Exception applies ONLY to selected watchlist(s).</span></div>
+            <div class="fg"><label>Jurisdiction scope</label><input type="text" placeholder="Optional — limit to jurisdiction"></div>
+          </div>
+
+          <div class="fgt">Evidence &amp; justification</div>
+          <div class="fr c3">
+            <div class="fg"><label>Reason code <span class="req">*</span></label>
+              <select id="rc-sel" onchange="updateRcHint(this)">
+                <option>Confirmed Different Person</option>
+                <option>Name Variant — Same Legitimate Customer</option>
+                <option>Corporate Name Coincidence</option>
+                <option>Regulatory / Law Enforcement Confirmation</option>
+                <option>PEP — Approved with Enhanced Due Diligence</option>
+                <option>High-Risk Country — Justified Business Purpose</option>
+                <option>Other</option>
+              </select>
+              <span class="fhint" id="rc-hint"></span>
+            </div>
+            <div class="fg"><label>Evidence reference <span class="req">*</span></label><input type="text" placeholder="Case ID / KYC ref. / investigation no."></div>
+            <div class="fg"><label>Confirming document type</label><select><option value="">Select...</option><option>Passport</option><option>National ID</option><option>Biometric KYC Report</option><option>Corporate Registry Extract</option><option>Other</option></select></div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Reason detail <span class="req">*</span></label><textarea style="min-height:64px" placeholder="Detailed free-text explanation — minimum 50 characters, maximum 2,000..." maxlength="2000"></textarea></div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Evidence attachment</label><input type="file" accept=".pdf,.docx,.jpg,.png"><span class="fhint">PDF, DOCX, JPG, PNG · Max 10 MB · SHA-256 tamper-evident checksum stored.</span></div>
+          </div>
+
+          <div class="fgt">Governance &amp; TTL</div>
+          <div class="fr c3">
+            <div class="fg"><label>Expiry date (TTL) <span class="req">*</span></label><input type="date"><span class="fhint">No permanent exceptions without MLRO sign-off.</span></div>
+            <div class="fg"><label>Review frequency <span class="req">*</span></label><select><option>3 months</option><option selected>6 months</option><option>12 months</option></select></div>
+            <div class="fg" style="justify-content:flex-end">
+              <div class="finfo" style="margin-bottom:0;margin-top:16px">
+                <strong>Checker:</strong> Compliance Officer or Compliance Manager required.<br>
+                PEP / Other entries: MLRO required as Checker.
+              </div>
+            </div>
+          </div>
+          <div class="trow"><div class="tgl on" onclick="this.classList.toggle('on')"></div>Trigger immediate notification to Compliance Officer on submission</div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('det','addentry')">Cancel</button>
+          <button class="btn btn-w btn-sm">Save as draft</button>
+          <button class="btn btn-p btn-sm" onclick="submitEntry()">Submit for approval &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bulk upload (detail) panel -->
+    <div class="pw" id="panel-det-bulkdet">
+      <div class="panel">
+        <div class="pnh"><h3>Bulk upload — <span id="bul-listname" style="font-weight:400;color:#6b7280"></span></h3><button class="btn btn-sm" onclick="closePanel('det','bulkdet')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="fr">
+            <div class="fg"><label>Reason for addition <span class="req">*</span></label><input type="text" placeholder="Max 500 characters" maxlength="500"></div>
+            <div class="fg"><label>Upload file <span class="req">*</span></label><input type="file" accept=".csv,.xlsx"></div>
+          </div>
+          <div style="background:#f8fafc;border-radius:8px;padding:11px 13px;font-size:12px;color:#374151;line-height:1.7;margin-top:4px;border:1px solid #e5e7eb">
+            Max 10,000 rows · Max 25 MB · CSV (UTF-8) or XLSX<br>
+            Required: <code>customer_id</code> · <code>full_name</code> · <code>date_of_birth</code> · <code>matched_watchlist_entry</code> · <code>match_score</code> · <code>distinguishing_attributes</code> · <code>reason_code</code> · <code>expiry_date</code>
+            <div style="margin-top:8px"><button class="btn btn-sm">&#8681; Download template (XLSX)</button></div>
+          </div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('det','bulkdet')">Cancel</button>
+          <button class="btn btn-p btn-sm">Validate &amp; submit &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- View history panel -->
+    <div class="pw" id="panel-det-history">
+      <div class="panel">
+        <div class="pnh"><h3>Entry history — <span id="hist-name" style="font-weight:400;color:#6b7280"></span></h3><button class="btn btn-sm" onclick="closePanel('det','history')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="hist-item"><div class="hist-hdr" onclick="toggleHist(this)"><span>27 Apr 2026, 11:43 — Alert suppressed</span><span style="color:#9ca3af;font-size:11px">&#9660;</span></div><div class="hist-body"><strong>Watchlist:</strong> OFAC SDN · <strong>Match score:</strong> 92% · <strong>Suppressed by:</strong> CSEL-001 · Entry active and in-scope.</div></div>
+          <div class="hist-item"><div class="hist-hdr" onclick="toggleHist(this)"><span>13 Jan 2026, 09:15 — Entry approved</span><span style="color:#9ca3af;font-size:11px">&#9660;</span></div><div class="hist-body"><strong>Checker:</strong> Sarah Chen (Compliance Officer) · <strong>Reason code:</strong> Confirmed Different Person · <strong>Evidence:</strong> CASE-2026-000341</div></div>
+          <div class="hist-item"><div class="hist-hdr" onclick="toggleHist(this)"><span>12 Jan 2026, 10:42 — Entry submitted</span><span style="color:#9ca3af;font-size:11px">&#9660;</span></div><div class="hist-body"><strong>Maker:</strong> Rohan Kapoor · <strong>Distinguishing attributes:</strong> Different DOB (customer 1982, hit 1941). Different nationality. Biometric verification passed.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-section 2 — Entries -->
+    <div class="sh">
+      <div class="st">Sub-section 2 — Exception entries</div>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-sm">&#8681; Export CSV</button>
+        <button class="btn btn-sm">&#8681; Export PDF</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tbr2">
+        <div class="sw"><span class="si">&#9906;</span><input type="text" placeholder="Search by name, customer ID, watchlist..." oninput="filterEntries(this.value)"></div>
+        <select class="fsel" onchange="filterEntriesByStatus(this.value)"><option value="">All statuses</option><option>Active</option><option>Suspended</option><option>Expired</option><option>Pending approval</option></select>
+        <select class="fsel"><option value="">All reason codes</option><option>Confirmed Different Person</option><option>Name Variant</option><option>Corporate Name Coincidence</option><option>PEP — Approved with EDD</option><option>Other</option></select>
+        <select class="fsel"><option value="">All watchlists</option><option>OFAC SDN</option><option>UN Consolidated List</option><option>EU Consolidated List</option><option>HMT UK Sanctions</option><option>NFIU</option></select>
+      </div>
+      <table>
+        <thead><tr>
+          <th class="w9">Entry ID</th>
+          <th class="w14">Customer name</th>
+          <th class="w8">Type</th>
+          <th class="w16">Matched watchlist entry</th>
+          <th class="w10">Watchlist scope</th>
+          <th class="w7">Score</th>
+          <th class="w11">Reason code</th>
+          <th class="w7">Status &#8645;</th>
+          <th class="w9">Expiry &#8645;</th>
+          <th class="w9">Approved by</th>
+          <th class="w10">Actions</th>
+        </tr></thead>
+        <tbody id="entTbody"></tbody>
+      </table>
+      <div class="pager">
+        <div class="pi" id="entPager">Showing 1–6 of 6 entries</div>
+        <div class="pbtns"><div class="pb">&#8249;</div><div class="pb active">1</div><div class="pb">&#8250;</div></div>
+      </div>
+    </div>
+
+    <!-- Edit list modal -->
+    <div class="mov" id="editDetMov">
+      <div class="modal wide scroll">
+        <div class="mh"><h3>Edit exception list</h3><button class="btn btn-sm" onclick="closeMov('editDetMov')">&#215;</button></div>
+        <div class="mc2">
+          <div class="fr">
+            <div class="fg"><label>List name <span class="req">*</span></label><input type="text" id="edl-name" maxlength="100"></div>
+            <div class="fg"><label>Default TTL <span class="req">*</span></label><select><option>3 months</option><option>6 months</option><option selected>12 months</option></select></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Review frequency <span class="req">*</span></label><select><option>3 months</option><option selected>6 months</option><option>12 months</option></select></div>
+            <div class="fg"><label>Purpose <span class="req">*</span></label><textarea maxlength="500"></textarea></div>
+          </div>
+          <div class="fg"><label>Reason for edit <span class="req">*</span></label><textarea placeholder="Max 500 characters — retained in audit log..." maxlength="500"></textarea></div>
+          <div style="font-size:11px;color:#9ca3af;margin-top:8px">List Category cannot be changed after creation.</div>
+        </div>
+        <div class="mf"><button class="btn" onclick="closeMov('editDetMov')">Cancel</button><button class="btn btn-p btn-sm" onclick="closeMov('editDetMov')">Submit for approval &#8594;</button></div>
+      </div>
+    </div>
+
+    <!-- Edit entry modal -->
+    <div class="mov" id="editEntMov">
+      <div class="modal wide scroll">
+        <div class="mh"><h3>Edit exception entry — <span id="ee-name" style="font-weight:400;color:#6b7280"></span></h3><button class="btn btn-sm" onclick="closeMov('editEntMov')">&#215;</button></div>
+        <div class="mc2">
+          <div class="fwarn">All edits require Maker-Checker approval. Entries in Pending Approval status cannot be edited until the pending request is resolved.</div>
+          <div class="fr c3">
+            <div class="fg"><label>Watchlist scope <span class="req">*</span></label><select><option>OFAC SDN</option><option>UN Consolidated List</option><option>EU Consolidated List</option><option>HMT UK Sanctions</option></select></div>
+            <div class="fg"><label>Reason code <span class="req">*</span></label><select><option>Confirmed Different Person</option><option>Name Variant — Same Legitimate Customer</option><option>Corporate Name Coincidence</option><option>PEP — Approved with EDD</option><option>Other</option></select></div>
+            <div class="fg"><label>Expiry date (TTL) <span class="req">*</span></label><input type="date"></div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Distinguishing attributes <span class="req">*</span></label><textarea style="min-height:80px" placeholder="Minimum 50 characters..." maxlength="2000"></textarea></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Evidence reference</label><input type="text" placeholder="Case ID / KYC ref."></div>
+            <div class="fg"><label>Reason for edit <span class="req">*</span></label><textarea placeholder="Max 500 characters — retained in audit log..." maxlength="500"></textarea></div>
+          </div>
+        </div>
+        <div class="mf"><button class="btn" onclick="closeMov('editEntMov')">Cancel</button><button class="btn btn-p btn-sm" onclick="closeMov('editEntMov')">Submit for approval &#8594;</button></div>
+      </div>
+    </div>
+
+    <!-- Suspend/Delete entry modal -->
+    <div class="mov" id="suspendEntMov">
+      <div class="modal">
+        <div class="mh"><h3 id="suspEntTitle">Suspend exception entry</h3><button class="btn btn-sm" onclick="closeMov('suspendEntMov')">&#215;</button></div>
+        <div class="mc2">
+          <div id="suspEntWarn" class="fwarn">Suspending this entry will immediately remove it from the screening evaluation path. Alert suppression ceases on Checker approval. The entry can be re-activated later.</div>
+          <div class="fg" style="margin-bottom:11px"><label>Entry <span class="req">*</span></label><input type="text" id="suspEntName" readonly style="background:#f9fafb;color:#6b7280"></div>
+          <div class="fg"><label>Reason <span class="req">*</span></label><textarea placeholder="Mandatory — retained in audit log..." maxlength="500"></textarea></div>
+        </div>
+        <div class="mf"><button class="btn" onclick="closeMov('suspendEntMov')">Cancel</button><button class="btn btn-p btn-sm" onclick="closeMov('suspendEntMov')">Submit for approval &#8594;</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       VIEW: MAKER-CHECKER
+  ═══════════════════════════════════ -->
+  <div class="view" id="view-maker">
+    <div class="ph">
+      <div><div class="ph-t">Maker-checker queue</div><div class="ph-d">All CSEL requests require Compliance Officer or Compliance Manager as Checker. PEP / Other entries require MLRO.</div></div>
+    </div>
+    <div class="ltabs">
+      <div class="ltab active" id="mcTabAll" onclick="switchMCTab(this,'mc-all')">All requests <span class="ltab-badge" id="mcAllBadge">3</span></div>
+      <div class="ltab" id="mcTabMine" onclick="switchMCTab(this,'mc-mine')">My requests <span class="ltab-badge">1</span></div>
+    </div>
+    <div id="mc-all"></div>
+    <div id="mc-mine" style="display:none"></div>
+
+    <!-- Approve modal -->
+    <div class="mov" id="approveMov">
+      <div class="modal wide">
+        <div class="mh"><h3 id="approveTitle">Approve exception entry</h3><button class="btn btn-sm" onclick="closeMov('approveMov')">&#215;</button></div>
+        <div class="mc2" id="approveContent"></div>
+        <div class="mc2" style="padding-top:0">
+          <div class="fg"><label id="approveComLabel">Checker comments (optional on approval; mandatory on rejection)</label><textarea id="approveComment" placeholder="Add notes..." maxlength="2000"></textarea></div>
+        </div>
+        <div class="mf" id="approveMf"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       VIEW: AUDIT TRAIL
+  ═══════════════════════════════════ -->
+  <div class="view" id="view-audit">
+    <div class="ph">
+      <div><div class="ph-t">Audit trail</div><div class="ph-d">Immutable log of all CSEL actions — write-once, 7-year retention</div></div>
+      <div class="ph-a">
+        <button class="btn btn-sm">&#8681; Export CSV</button>
+        <button class="btn btn-sm">&#8681; Export PDF</button>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:12px">
+      <div class="tbr2">
+        <div class="sw"><span class="si">&#9906;</span><input type="text" placeholder="Search by event, customer, entry ID..."></div>
+        <select class="fsel"><option value="">All event types</option><option>Alert suppressed</option><option>Entry submitted</option><option>Entry approved</option><option>Entry rejected</option><option>Entry expired</option><option>Entry suspended</option><option>Material identity change</option><option>Bulk upload</option></select>
+        <select class="fsel"><option value="">All lists</option><option>Onboarding Exceptions — OFAC SDN</option><option>Periodic Re-Screen — UN List</option></select>
+        <input type="date" class="fsel" style="color:#9ca3af">
+        <input type="date" class="fsel" style="color:#9ca3af">
+      </div>
+      <div style="padding:0 14px" id="auditList"></div>
+      <div class="pager"><div class="pi">Showing 1–8 of 284 events</div><div class="pbtns"><div class="pb">&#8249;</div><div class="pb active">1</div><div class="pb">2</div><div class="pb">&#8250;</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       VIEW: EXCEPTION REGISTER REPORT
+  ═══════════════════════════════════ -->
+  <div class="view" id="view-report">
+    <div class="ph">
+      <div><div class="ph-t">Exception register — April 2026</div><div class="ph-d">Auto-generated 1 May 2026 · Delivered to Compliance Manager &amp; MLRO</div></div>
+      <div class="ph-a">
+        <button class="btn btn-sm">&#8681; Export CSV</button>
+        <button class="btn btn-sm">&#8681; Export PDF</button>
+      </div>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="sl">Total active exceptions</div><div class="sv vb">42</div></div>
+      <div class="stat"><div class="sl">New this month</div><div class="sv va">8</div></div>
+      <div class="stat"><div class="sl">Suppressions this month</div><div class="sv vg">127</div></div>
+      <div class="stat"><div class="sl">Expiring within 30 days</div><div class="sv vr">5</div></div>
+    </div>
+    <div class="rep-section">
+      <div class="rep-sh"><h3>Entries by reason code</h3></div>
+      <div class="rep-body">
+        <div class="rep-row"><span class="rc-pill">Confirmed Different Person</span><span style="flex:1;margin-left:12px">18 entries</span><span style="color:#9ca3af">43%</span><span style="color:#9ca3af;margin-left:24px">Avg TTL: 9 months</span></div>
+        <div class="rep-row"><span class="rc-pill">Name Variant — Same Customer</span><span style="flex:1;margin-left:12px">12 entries</span><span style="color:#9ca3af">29%</span><span style="color:#9ca3af;margin-left:24px">Avg TTL: 12 months</span></div>
+        <div class="rep-row"><span class="rc-pill">PEP — Approved with EDD</span><span style="flex:1;margin-left:12px">7 entries</span><span style="color:#9ca3af">17%</span><span style="color:#9ca3af;margin-left:24px">Avg TTL: 6 months</span></div>
+        <div class="rep-row"><span class="rc-pill">Corporate Name Coincidence</span><span style="flex:1;margin-left:12px">3 entries</span><span style="color:#9ca3af">7%</span><span style="color:#9ca3af;margin-left:24px">Avg TTL: 12 months</span></div>
+        <div class="rep-row"><span class="rc-pill">Other</span><span style="flex:1;margin-left:12px">2 entries</span><span style="color:#9ca3af">5%</span><span style="color:#9ca3af;margin-left:24px">Avg TTL: 4 months</span></div>
+      </div>
+    </div>
+    <div class="rep-section">
+      <div class="rep-sh"><h3>Expiring within 30 days</h3></div>
+      <div class="rep-body">
+        <div class="rep-row"><span style="font-weight:500;min-width:160px">Senator James Okafor</span><span style="color:#9ca3af;min-width:80px;font-size:12px">CUS-009012</span><span class="b b-pp" style="margin-right:8px">PEP Exceptions</span><span style="color:#dc2626;font-weight:600">Expires 30 Jun 2026</span></div>
+        <div class="rep-row"><span style="font-weight:500;min-width:160px">Ahmad Mohamed Hassan</span><span style="color:#9ca3af;min-width:80px;font-size:12px">CUS-007823</span><span class="b b-ob" style="margin-right:8px">Onboarding</span><span style="color:#dc2626;font-weight:600">Expires 20 Sep 2026</span></div>
+      </div>
+    </div>
+    <div class="rep-section">
+      <div class="rep-sh"><h3>Watchlist analysis — false-positive frequency</h3></div>
+      <div class="rep-body">
+        <div class="rep-row"><span style="font-weight:500;flex:1">OFAC SDN</span><span style="color:#6b7280">23 exceptions · 58 suppressions this month</span></div>
+        <div class="rep-row"><span style="font-weight:500;flex:1">UN Consolidated List</span><span style="color:#6b7280">12 exceptions · 41 suppressions this month</span></div>
+        <div class="rep-row"><span style="font-weight:500;flex:1">EU Consolidated List</span><span style="color:#6b7280">4 exceptions · 12 suppressions this month</span></div>
+        <div class="rep-row"><span style="font-weight:500;flex:1">NFIU</span><span style="color:#6b7280">3 exceptions · 16 suppressions this month</span></div>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+</div><!-- /shell -->
+
+<!-- ═══════════ FIXED GLOBAL OVERLAYS ═══════════ -->
+
+<!-- Global action dropdown (positioned by JS) -->
+<div id="globalAdropMenu"></div>
+
+<!-- Comment / Confirm Modal -->
+<div class="cmov" id="commentMov">
+  <div class="cmodal">
+    <div class="cmh">
+      <h3 id="cm-title">Add Comment</h3>
+      <button onclick="closeCMov()">&#215;</button>
+    </div>
+    <div class="cmb">
+      <div class="cmaction-label">Action</div>
+      <div class="cmaction-badge" id="cm-action-badge">—</div>
+      <div class="cmlabel">Comment <span class="cmreq">*</span></div>
+      <textarea class="cmtxt" id="cm-comment" placeholder="Required — retained in audit log..."></textarea>
+      <div class="cmerr" id="cm-err">Comment is required before proceeding.</div>
+    </div>
+    <div class="cmf">
+      <button class="btn" onclick="closeCMov()">Cancel</button>
+      <button class="btn btn-p btn-sm" onclick="confirmCMov()">Confirm &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- Checker Approval Success Modal -->
+<div class="checker-mov" id="checker-modal">
+  <div class="checker-box">
+    <div class="checker-header">
+      <h3>Submitted for Checker Approval</h3>
+      <button onclick="closeCheckerModal()">&#215;</button>
+    </div>
+    <div class="checker-body">
+      <div class="checker-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+      </div>
+      <h4>Request Submitted</h4>
+      <p>Your request has been submitted to the Maker-Checker queue and is pending Checker approval.</p>
+      <div class="checker-meta">
+        <div class="checker-meta-row"><span class="checker-meta-label">Action</span><span class="checker-meta-value" id="checker-action-text">—</span></div>
+        <div class="checker-meta-row"><span class="checker-meta-label">Submitted by</span><span class="checker-meta-value">Charu Chauhan</span></div>
+        <div class="checker-meta-row"><span class="checker-meta-label">Timestamp</span><span class="checker-meta-value" id="checker-ts">—</span></div>
+        <div class="checker-meta-row"><span class="checker-meta-label">Status</span><span class="checker-meta-badge">Pending Approval</span></div>
+      </div>
+      <button class="btn btn-p" style="width:100%" onclick="closeCheckerModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════
+//  DATA
+// ══════════════════════════════════════
+const listsData=[
+  {id:'EL-001',name:'Onboarding Exceptions — OFAC SDN',cat:'Onboarding Exceptions',status:'Active',total:18,active:15,exp30:2,expired:1,created:'12 Jan 2026',modified:'15 Apr 2026'},
+  {id:'EL-002',name:'Periodic Re-Screen — UN Consolidated List',cat:'Periodic Re-Screen Exceptions',status:'Active',total:12,active:10,exp30:1,expired:2,created:'20 Jan 2026',modified:'10 Apr 2026'},
+  {id:'EL-003',name:'PEP Approved Customers — Enhanced DD',cat:'PEP Exceptions',status:'Active',total:7,active:6,exp30:1,expired:0,created:'05 Feb 2026',modified:'01 Apr 2026'},
+  {id:'EL-004',name:'Event-Driven Re-Screen — EU List',cat:'Event-Driven Exceptions',status:'Active',total:5,active:5,exp30:1,expired:0,created:'18 Feb 2026',modified:'20 Mar 2026'},
+  {id:'EL-005',name:'High-Risk Country — Verified Remittance',cat:'High-Risk Country Exceptions',status:'Suspended',total:4,active:0,exp30:0,expired:2,created:'01 Mar 2026',modified:'25 Mar 2026'},
+  {id:'EL-006',name:'Mixed Exception List — Q1 2026',cat:'Mixed',status:'Active',total:6,active:6,exp30:0,expired:0,created:'10 Mar 2026',modified:'05 Apr 2026'},
+];
+
+const entsData=[
+  {id:'CSEL-001',custId:'CUS-004521',name:'Mohammed Al-Rahman',type:'Individual',matched:'Ibrahim Al-Rashid, DOB 1941, Syrian, OFAC SDN-12345',wl:'OFAC SDN',score:92,rc:'Confirmed Different Person',status:'Active',expiry:'15 Oct 2026',approvedBy:'Sarah Chen'},
+  {id:'CSEL-002',custId:'CUS-007823',name:'Ahmad Mohamed Hassan',type:'Individual',matched:'Ahmad Mohamed Hassan, DOB 1958, Libyan, UN 12892',wl:'UN Consolidated',score:98,rc:'Confirmed Different Person',status:'Active',expiry:'20 Sep 2026',approvedBy:'Sarah Chen'},
+  {id:'CSEL-003',custId:'CUS-002341',name:'Green Valley Trading LLC',type:'Corporate',matched:'Green Valley Holdings, Panama, OFAC SDN-67891',wl:'OFAC SDN',score:85,rc:'Corporate Name Coincidence',status:'Active',expiry:'31 Dec 2026',approvedBy:'David Park'},
+  {id:'CSEL-004',custId:'CUS-009012',name:'Senator James Okafor',type:'Individual',matched:'James Okafor, Nigerian PEP, NFIU List',wl:'NFIU',score:100,rc:'PEP — Approved with EDD',status:'Active',expiry:'30 Jun 2026',approvedBy:'MLRO — R. Gupta'},
+  {id:'CSEL-005',custId:'CUS-001190',name:'Khalid bin Abdullah',type:'Individual',matched:'Khalid bin Abdullah Al-Saud, DOB 1962, HMT-3421',wl:'HMT UK Sanctions',score:89,rc:'Name Variant',status:'Pending approval',expiry:'01 Nov 2026',approvedBy:'—'},
+  {id:'CSEL-006',custId:'CUS-005672',name:'Elena Petrov',type:'Individual',matched:'Elena Petrov, DOB 1978, Russian, EU Sanctions',wl:'EU Consolidated',score:94,rc:'Confirmed Different Person',status:'Expired',expiry:'01 Mar 2026',approvedBy:'David Park'},
+];
+
+const mcData=[
+  {id:'MCR-001',type:'New entry',custName:'Khalid bin Abdullah',listName:'Onboarding Exceptions — OFAC SDN',maker:'Analyst — Priya Sharma',submitted:'26 Apr 2026, 09:14',rc:'Name Variant — Same Legitimate Customer',wl:'OFAC SDN',score:89,sla:'24h (Onboarding)',remaining:'8 hrs',urgent:true,warnMsg:'Onboarding SLA — 24h. 8 hours remaining. Escalated to Compliance Manager at 12h.'},
+  {id:'MCR-002',type:'Bulk upload',custName:'14 entries',listName:'Periodic Re-Screen — UN Consolidated List',maker:'Analyst — Arjun Mehta',submitted:'25 Apr 2026, 14:30',rc:'Various',wl:'UN Consolidated List',score:null,sla:'48h',remaining:'26 hrs',urgent:false,warnMsg:null},
+  {id:'MCR-003',type:'Edit entry',custName:'Mohammed Al-Rahman (CSEL-001)',listName:'Onboarding Exceptions — OFAC SDN',maker:'Analyst — Priya Sharma',submitted:'24 Apr 2026, 11:00',rc:'Confirmed Different Person',wl:'OFAC SDN',score:92,sla:'48h',remaining:'35 hrs',urgent:false,warnMsg:null},
+];
+
+const myMcData=[
+  {id:'MCR-004',type:'New entry',custName:'Fatima Al-Qasim',listName:'PEP Approved Customers — Enhanced DD',submitted:'27 Apr 2026, 08:00',status:'Pending approval',rc:'PEP — Approved with EDD'},
+];
+
+const auditData=[
+  {dot:'g',event:'Alert suppressed by CSEL-001',detail:'Customer: Mohammed Al-Rahman (CUS-004521) · Watchlist: OFAC SDN · Match score: 92% · Entry active and in-scope',time:'27 Apr 2026, 11:43:02 UTC',user:'System'},
+  {dot:'b',event:'Exception entry CSEL-002 approved',detail:'Customer: Ahmad Mohamed Hassan · Checker: Sarah Chen (Compliance Officer) · List: Onboarding Exceptions — OFAC SDN',time:'26 Apr 2026, 16:22:11 UTC',user:'Sarah Chen'},
+  {dot:'a',event:'New exception entry submitted — MCR-001',detail:'Customer: Khalid bin Abdullah (CUS-001190) · List: Onboarding Exceptions — OFAC SDN · Watchlist: HMT UK Sanctions · Match score: 89%',time:'26 Apr 2026, 09:14:33 UTC',user:'Priya Sharma'},
+  {dot:'g',event:'Alert suppressed by CSEL-003',detail:'Customer: Green Valley Trading LLC (CUS-002341) · Watchlist: OFAC SDN · Match score: 85% · Entry active',time:'25 Apr 2026, 14:05:18 UTC',user:'System'},
+  {dot:'v',event:'Bulk upload submitted — 14 entries pending approval',detail:'List: Periodic Re-Screen — UN Consolidated List · Submitted by: Arjun Mehta · MCR-002 created',time:'25 Apr 2026, 14:30:00 UTC',user:'Arjun Mehta'},
+  {dot:'r',event:'Exception entry CSEL-006 expired — alerts re-activated',detail:'Customer: Elena Petrov (CUS-005672) · Watchlist: EU Consolidated List · Expiry: 01 Mar 2026 · Alert generation resumed',time:'01 Mar 2026, 00:02:44 UTC',user:'System'},
+  {dot:'a',event:'Material identity change — CSEL entry auto-suspended',detail:'Customer: [CUS-011234] · Name change detected in core banking · All active CSEL entries for this customer suspended within 15 minutes · Compliance Officer notified',time:'15 Feb 2026, 10:30:00 UTC',user:'System'},
+  {dot:'gr',event:'True-Hit Conflict Check blocked submission',detail:'Customer ID CUS-033201 found on active Custom List (Internal Blacklist). Submission blocked. Submitting Analyst notified.',time:'10 Feb 2026, 14:12:00 UTC',user:'System'},
+];
+
+// ══════════════════════════════════════
+//  HELPERS
+// ══════════════════════════════════════
+const catBadge={
+  'Onboarding Exceptions':'b-ob','Periodic Re-Screen Exceptions':'b-pr',
+  'Event-Driven Exceptions':'b-ev','PEP Exceptions':'b-pp',
+  'High-Risk Country Exceptions':'b-pp','Mixed':'b-mx'
+};
+function sb(s){
+  if(s==='Active')return '<span class="b b-ac">Active</span>';
+  if(s==='Suspended')return '<span class="b b-su">Suspended</span>';
+  if(s==='Pending approval')return '<span class="b b-pe">Pending</span>';
+  return '<span class="b b-de">Deleted</span>';
+}
+function eb(s){
+  if(s==='Active')return '<span class="b b-ac">Active</span>';
+  if(s==='Expired')return '<span class="b b-ex">Expired</span>';
+  if(s==='Suspended')return '<span class="b b-su">Suspended</span>';
+  if(s==='Pending approval')return '<span class="b b-pe">Pending</span>';
+  return '<span class="b b-di">'+s+'</span>';
+}
+function scoreBadge(n){
+  if(n>=90)return `<span class="sc-hi">${n}%</span>`;
+  if(n>=75)return `<span class="sc-md">${n}%</span>`;
+  return `<span class="sc-lo">${n}%</span>`;
+}
+
+// ══════════════════════════════════════
+//  ACTION DROPDOWN
+// ══════════════════════════════════════
+let _openMenu=null;
+function positionMenu(btn){
+  const m=document.getElementById('globalAdropMenu');
+  const r=btn.getBoundingClientRect();
+  m.style.top=(r.bottom+4)+'px';
+  m.style.left=Math.max(4,r.right-178)+'px';
+}
+function closeAdrop(){
+  const m=document.getElementById('globalAdropMenu');
+  m.classList.remove('open');
+  _openMenu=null;
+}
+document.addEventListener('click',e=>{
+  const m=document.getElementById('globalAdropMenu');
+  if(_openMenu&&!m.contains(e.target))closeAdrop();
+});
+
+// ══════════════════════════════════════
+//  RENDER LISTS TABLE
+// ══════════════════════════════════════
+function renderLists(data){
+  document.getElementById('listsTbody').innerHTML=data.map(r=>`<tr>
+    <td><span style="font-weight:500;color:#2A53A0;cursor:pointer" onclick="goDetail('${r.id}')">${r.name}</span><div style="font-size:10px;color:#9ca3af;margin-top:1px">${r.id}</div></td>
+    <td><span class="b ${catBadge[r.cat]||'b-mx'}" style="font-size:10px">${r.cat}</span></td>
+    <td>${sb(r.status)}</td>
+    <td style="text-align:center;font-weight:500">${r.total}</td>
+    <td style="text-align:center;color:#16a34a;font-weight:500">${r.active}</td>
+    <td style="text-align:center;${r.exp30>0?'color:#d97706;font-weight:600':''}">${r.exp30}</td>
+    <td style="text-align:center;${r.expired>0?'color:#dc2626':'color:#9ca3af'}">${r.expired}</td>
+    <td style="color:#9ca3af;font-size:12px">${r.created}</td>
+    <td style="color:#9ca3af;font-size:12px">${r.modified}</td>
+    <td><div class="ract">
+      <button class="ib" onclick="goDetail('${r.id}')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </button>
+      <button class="ib" onclick="document.getElementById('el-name').value='${r.name.replace(/'/g,"\\'")}';openMov('editListMov')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </button>
+      <button class="ib ${r.status==='Active'?'dl':''}" onclick="document.getElementById('suspendListName').textContent='${r.name.replace(/'/g,"\\'")}';document.getElementById('suspendTitle').textContent='${r.status==='Active'?'Suspend':'Re-activate'} exception list';openMov('suspendListMov')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${r.status==='Active'?'<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>':'<polygon points="5 3 19 12 5 21 5 3"/>'}</svg>
+      </button>
+    </div></td>
+  </tr>`).join('');
+}
+function filterLists(q){renderLists(listsData.filter(r=>r.name.toLowerCase().includes(q.toLowerCase())))}
+function filterListsByStatus(s){renderLists(s?listsData.filter(r=>r.status===s):listsData)}
+function filterListsByCat(c){renderLists(c?listsData.filter(r=>r.cat===c):listsData)}
+function switchListTab(el,status){
+  document.querySelectorAll('.ltab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  renderLists(status?listsData.filter(r=>r.status===status):listsData);
+}
+
+// ══════════════════════════════════════
+//  DETAIL VIEW
+// ══════════════════════════════════════
+function goDetail(id){
+  const list=listsData.find(l=>l.id===id);
+  if(!list)return;
+  document.getElementById('det-title').textContent=list.name;
+  document.getElementById('det-desc').textContent=list.id+' · '+list.cat;
+  document.getElementById('bul-listname').textContent=list.name;
+  document.getElementById('edl-name').value=list.name;
+  const pending=entsData.filter(e=>e.status==='Pending approval').length;
+  document.getElementById('det-meta').innerHTML=`
+    <div class="mi"><div class="ml">Status</div><div class="mv">${sb(list.status)}</div></div>
+    <div class="mi"><div class="ml">Category</div><div class="mv sm">${list.cat}</div></div>
+    <div class="mi"><div class="ml">Date created</div><div class="mv sm">${list.created}</div></div>
+    <div class="mi"><div class="ml">Last modified</div><div class="mv sm">${list.modified}</div></div>
+    <div class="mi"><div class="ml">Total entries</div><div class="mv vb">${list.total}</div></div>
+    <div class="mi"><div class="ml">Active entries</div><div class="mv vg">${list.active}</div></div>
+    <div class="mi"><div class="ml">Expiring 30 days</div><div class="mv va">${list.exp30}</div></div>
+    <div class="mi"><div class="ml">Expired entries</div><div class="mv ${list.expired>0?'vr':''}"> ${list.expired}</div></div>
+    <div class="mi"><div class="ml">Pending approval</div><div class="mv va">${pending}</div></div>`;
+  showView('detail');
+  document.getElementById('bc').innerHTML=`<span onclick="goLanding()" style="cursor:pointer">Exception lists</span> / ${list.name}`;
+  renderEnts(entsData);
+  closePanel('det','addentry');closePanel('det','bulkdet');closePanel('det','history');
+}
+
+function renderEnts(data){
+  document.getElementById('entTbody').innerHTML=data.map(e=>`<tr>
+    <td style="font-size:11px;color:#9ca3af;font-weight:500">${e.id}</td>
+    <td><div style="font-weight:500;color:#111827">${e.name}</div><div style="font-size:11px;color:#9ca3af">${e.custId}</div></td>
+    <td><span class="b b-mx" style="font-size:10px">${e.type}</span></td>
+    <td style="max-width:0"><div style="font-size:11px;color:#374151;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${e.matched}">${e.matched}</div></td>
+    <td style="font-size:12px;font-weight:500;color:#374151">${e.wl}</td>
+    <td>${scoreBadge(e.score)}</td>
+    <td style="max-width:0"><div style="font-size:11px;color:#374151;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${e.rc}">${e.rc}</div></td>
+    <td>${eb(e.status)}</td>
+    <td style="font-size:11px;${e.status==='Expired'?'color:#dc2626':'color:#9ca3af'}">${e.expiry}</td>
+    <td style="font-size:11px;color:#9ca3af">${e.approvedBy}</td>
+    <td><div class="ract">
+      <button class="ib" onclick="document.getElementById('ee-name').textContent='${e.name.replace(/'/g,"\\'")}';openMov('editEntMov')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      </button>
+      <button class="ib" onclick="document.getElementById('hist-name').textContent='${e.name.replace(/'/g,"\\'")}';openPanel('det','history')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+      </button>
+      <button class="ib ${e.status==='Active'?'dl':''}" onclick="document.getElementById('suspEntName').value='${e.name.replace(/'/g,"\\'")}';document.getElementById('suspEntTitle').textContent='${e.status==='Active'?'Suspend':'Re-activate'} exception entry';openMov('suspendEntMov')">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${e.status==='Active'?'<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>':'<polygon points="5 3 19 12 5 21 5 3"/>'}</svg>
+      </button>
+    </div></td>
+  </tr>`).join('');
+}
+function filterEntries(q){renderEnts(q?entsData.filter(e=>e.name.toLowerCase().includes(q)||e.custId.toLowerCase().includes(q)||e.wl.toLowerCase().includes(q)):entsData)}
+function filterEntriesByStatus(s){renderEnts(s?entsData.filter(e=>e.status===s):entsData)}
+
+// ══════════════════════════════════════
+//  MAKER-CHECKER
+// ══════════════════════════════════════
+const typeTag={'New entry':'rtag-new','Edit entry':'rtag-edit','Bulk upload':'rtag-bulk','Delete entry':'rtag-del','Renew':'rtag-renew'};
+function renderMC(){
+  document.getElementById('mc-all').innerHTML=mcData.map(r=>`
+    <div class="rcard">
+      <div class="rh">
+        <div style="flex:1">
+          <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:5px">
+            <span class="rtag ${typeTag[r.type]||'rtag-new'}">${r.type.toUpperCase()}</span>
+            ${r.urgent?'<span class="rtag rtag-del">&#9888; ONBOARDING — 24h SLA</span>':''}
+            <span style="font-size:11px;color:#9ca3af">${r.id}</span>
+          </div>
+          <div class="rtype">${r.custName}</div>
+          <div class="rid">${r.listName}</div>
+        </div>
+        <div class="ract2">
+          <button class="btn btn-g btn-sm" onclick="openApprove('${r.id}','approve')">&#10003; Approve</button>
+          <button class="btn btn-d btn-sm" onclick="openApprove('${r.id}','reject')">&#215; Reject</button>
+        </div>
+      </div>
+      <div class="rmeta">
+        <div class="rf"><div class="rfl">Maker</div><div class="rfv">${r.maker}</div></div>
+        <div class="rf"><div class="rfl">Submitted</div><div class="rfv">${r.submitted}</div></div>
+        <div class="rf"><div class="rfl">Reason code</div><div class="rfv">${r.rc}</div></div>
+        <div class="rf"><div class="rfl">SLA &amp; time left</div><div class="rfv ${r.urgent?'sla-warn':''}">${r.sla} · ${r.remaining}</div></div>
+      </div>
+      ${r.warnMsg?`<div class="rsumm warn">&#9888; ${r.warnMsg}</div>`:''}
+      <div class="rsumm">Watchlist: <strong>${r.wl}</strong>${r.score?` · Match score: <strong>${r.score}%</strong>`:''}</div>
+    </div>`).join('');
+
+  document.getElementById('mc-mine').innerHTML=myMcData.map(r=>`
+    <div class="rcard">
+      <div class="rh">
+        <div style="flex:1">
+          <div style="display:flex;gap:7px;margin-bottom:5px"><span class="rtag ${typeTag[r.type]||'rtag-new'}">${r.type.toUpperCase()}</span><span style="font-size:11px;color:#9ca3af">${r.id}</span></div>
+          <div class="rtype">${r.custName}</div>
+          <div class="rid">${r.listName}</div>
+        </div>
+        <span class="b b-pe">${r.status}</span>
+      </div>
+      <div class="rmeta" style="grid-template-columns:repeat(2,1fr)">
+        <div class="rf"><div class="rfl">Submitted</div><div class="rfv">${r.submitted}</div></div>
+        <div class="rf"><div class="rfl">Reason code</div><div class="rfv">${r.rc}</div></div>
+      </div>
+    </div>`).join('');
+}
+
+function openApprove(id,action){
+  const r=mcData.find(x=>x.id===id);if(!r)return;
+  const isApprove=action==='approve';
+  document.getElementById('approveTitle').textContent=(isApprove?'Approve':'Reject')+' exception entry';
+  document.getElementById('approveComment').placeholder=isApprove?'Optional approval notes...':'Mandatory — state the reason for rejection so the Maker can address and resubmit...';
+  document.getElementById('approveComLabel').textContent=isApprove?'Checker comments (optional)':'Rejection reason (mandatory)';
+  document.getElementById('approveContent').innerHTML=`
+    <div style="background:#f8fafc;border-radius:8px;padding:13px;margin-bottom:0;border:1px solid #e5e7eb">
+      <div class="fr"><div class="fg"><label>Request ID</label><div style="font-size:13px;font-weight:500">${r.id}</div></div><div class="fg"><label>Customer</label><div style="font-size:13px;font-weight:500">${r.custName}</div></div></div>
+      <div class="fr"><div class="fg"><label>List</label><div style="font-size:13px">${r.listName}</div></div><div class="fg"><label>Reason code</label><div style="font-size:13px">${r.rc}</div></div></div>
+      <div class="fr"><div class="fg"><label>Maker</label><div style="font-size:13px">${r.maker}</div></div><div class="fg"><label>SLA</label><div style="font-size:13px;${r.urgent?'color:#dc2626;font-weight:600':''}">${r.sla} · ${r.remaining} remaining</div></div></div>
+    </div>`;
+  document.getElementById('approveMf').innerHTML=`
+    <button class="btn" onclick="closeMov('approveMov')">Cancel</button>
+    <button class="btn ${isApprove?'btn-g':'btn-d'} btn-sm" onclick="finaliseApprove('${id}','${action}')">${isApprove?'Confirm approval':'Confirm rejection'}</button>`;
+  openMov('approveMov');
+}
+function finaliseApprove(id,action){
+  const idx=mcData.findIndex(r=>r.id===id);
+  if(idx>-1)mcData.splice(idx,1);
+  document.getElementById('mcNavBadge').textContent=mcData.length;
+  document.getElementById('mcAllBadge').textContent=mcData.length;
+  document.getElementById('pendingCount').textContent=mcData.length;
+  closeMov('approveMov');
+  renderMC();
+  showToast(action==='approve'?'Entry approved — now active in screening engine.':'Entry rejected — Maker has been notified.');
+}
+
+// ══════════════════════════════════════
+//  AUDIT
+// ══════════════════════════════════════
+function renderAudit(){
+  document.getElementById('auditList').innerHTML=auditData.map(a=>`
+    <div class="arow">
+      <div class="adot ${a.dot}" style="margin-top:5px"></div>
+      <div style="flex:1">
+        <div class="ae">${a.event}</div>
+        <div class="ad">${a.detail}</div>
+        <div class="at">${a.time} · ${a.user}</div>
+      </div>
+    </div>`).join('');
+}
+
+// ══════════════════════════════════════
+//  FORM HELPERS
+// ══════════════════════════════════════
+const rcHints={
+  'Other':'&#9888; Requires MLRO as Checker. Reason Detail must be at least 200 characters. Max 6 months TTL.',
+  'PEP — Approved with Enhanced Due Diligence':'PEP entries require MLRO as Checker. Review frequency must not exceed 6 months.',
+  'Regulatory / Law Enforcement Confirmation':'Attach the written regulatory/law enforcement confirmation as evidence document.',
+};
+function updateRcHint(sel){
+  const h=document.getElementById('rc-hint');
+  h.textContent=rcHints[sel.value]||'';
+  h.style.color=rcHints[sel.value]?'#d97706':'#9ca3af';
+}
+function checkAttrib(ta){
+  const len=ta.value.length,h=document.getElementById('attrib-hint');
+  if(len>=50){h.textContent=len+' chars ✓';h.style.color='#16a34a';}
+  else{h.textContent='Primary regulatory evidence field — '+(50-len)+' more characters required.';h.style.color='#dc2626';}
+}
+
+// ══════════════════════════════════════
+//  COMMENT / CONFIRM MODAL
+// ══════════════════════════════════════
+let _pendingAction=null;
+let _cmovType='';
+
+function openCommentModal(actionLabel,onConfirm){
+  closeAdrop();
+  _pendingAction=onConfirm;
+  _cmovType='';
+  document.getElementById('cm-title').textContent='Add Comment';
+  document.getElementById('cm-action-badge').textContent=actionLabel;
+  document.getElementById('cm-comment').value='';
+  document.getElementById('cm-comment').classList.remove('err');
+  document.getElementById('cm-err').classList.remove('show');
+  document.getElementById('commentMov').classList.add('open');
+  setTimeout(()=>document.getElementById('cm-comment').focus(),80);
+}
+
+function openEntStatusModal(r){
+  const action=r.status==='Active'?'Disable':'Enable';
+  _cmovType='entity-status';
+  _pendingAction=null;
+  document.getElementById('cm-title').textContent=action+' Entry';
+  document.getElementById('cm-action-badge').textContent=action+' Entry — '+r.name;
+  document.getElementById('cm-comment').value='';
+  document.getElementById('cm-comment').classList.remove('err');
+  document.getElementById('cm-err').classList.remove('show');
+  document.getElementById('commentMov').classList.add('open');
+  setTimeout(()=>document.getElementById('cm-comment').focus(),80);
+}
+
+function closeCMov(){
+  document.getElementById('commentMov').classList.remove('open');
+  _pendingAction=null;
+  _cmovType='';
+}
+
+function confirmCMov(){
+  const txt=document.getElementById('cm-comment').value.trim();
+  if(!txt){
+    document.getElementById('cm-comment').classList.add('err');
+    document.getElementById('cm-err').classList.add('show');
+    return;
+  }
+  document.getElementById('commentMov').classList.remove('open');
+  if(_cmovType==='entity-status'){
+    const now=new Date();
+    document.getElementById('checker-action-text').textContent=document.getElementById('cm-action-badge').textContent;
+    document.getElementById('checker-ts').textContent=now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})+', '+now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('checker-modal').classList.add('open');
+    _pendingAction=null; _cmovType='';
+    return;
+  }
+  if(_pendingAction)_pendingAction();
+  _pendingAction=null;
+}
+
+function closeCheckerModal(){
+  document.getElementById('checker-modal').classList.remove('open');
+}
+
+// ══════════════════════════════════════
+//  NAVIGATION
+// ══════════════════════════════════════
+function setNav(el,v){
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');showView(v);
+}
+function showView(v){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  const labels={landing:'Exception lists',maker:'Maker-checker',audit:'Audit trail',report:'Exception register',detail:'Exception lists'};
+  const bc=document.getElementById('bc');
+  if(labels[v])bc.innerHTML=`<span>${labels[v]}</span>`;
+}
+function goLanding(){showView('landing');document.getElementById('bc').innerHTML='<span>Exception lists</span>';}
+function switchMCTab(el,t){
+  document.querySelectorAll('.ltab').forEach(x=>x.classList.remove('active'));
+  el.classList.add('active');
+  ['mc-all','mc-mine'].forEach(id=>{const d=document.getElementById(id);if(d)d.style.display='none'});
+  const d=document.getElementById(t);if(d)d.style.display='block';
+}
+function openPanel(v,k){const p=document.getElementById('panel-'+v+'-'+k);if(p){p.classList.add('open');setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'nearest'}),50)}}
+function closePanel(v,k){const p=document.getElementById('panel-'+v+'-'+k);if(p)p.classList.remove('open')}
+function openMov(id){document.getElementById(id).classList.add('open')}
+function closeMov(id){document.getElementById(id).classList.remove('open')}
+function toggleNotif(){document.getElementById('notifPanel').classList.toggle('open')}
+function toggleHist(hdr){hdr.nextElementSibling.classList.toggle('open')}
+
+// ══════════════════════════════════════
+//  SUBMIT HELPERS
+// ══════════════════════════════════════
+function submitCreateList(){closePanel('lnd','create');showToast('Exception list submitted for Maker-Checker approval.');document.getElementById('mcNavBadge').textContent=mcData.length+1;}
+function submitEntry(){
+  const ta=document.getElementById('attrib-ta');
+  if(ta.value.trim().length<50){showToast('Distinguishing Attributes must be at least 50 characters.','warn');return;}
+  closePanel('det','addentry');showToast('Exception entry submitted for Maker-Checker approval.');
+}
+
+// ══════════════════════════════════════
+//  TOAST
+// ══════════════════════════════════════
+function showToast(msg,type='info'){
+  let t=document.getElementById('_toast');
+  if(!t){t=document.createElement('div');t.id='_toast';t.style.cssText='position:fixed;bottom:20px;right:20px;padding:10px 16px;border-radius:8px;font-size:13px;z-index:9999;box-shadow:0 4px 16px rgba(0,0,0,.18);transition:opacity .3s;max-width:360px;font-family:Inter,system-ui,sans-serif;line-height:1.4';document.body.appendChild(t);}
+  t.style.background=type==='warn'?'#d97706':type==='error'?'#dc2626':'#111827';
+  t.style.color='#fff';t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._t);t._t=setTimeout(()=>t.style.opacity='0',3200);
+}
+
+// ── Close overlays on Escape ──
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){closeCMov();closeCheckerModal();closeAdrop();}
+});
+
+// ══════════════════════════════════════
+//  INIT
+// ══════════════════════════════════════
+renderLists(listsData);
+renderMC();
+renderAudit();
+</script>
+</html>

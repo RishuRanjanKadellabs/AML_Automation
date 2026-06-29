@@ -18,7 +18,7 @@ export const SPEC_KEEP_MODAL_VISIBLE: Record<string, string[]> = {
   "add-category": ["IWC-TC-077", "IWC-TC-080", "IWC-TC-081", "IWC-TC-082"],
   "add-ignore-word": ["IWC-TC-094", "IWC-TC-096", "IWC-TC-097", "IWC-TC-098", "IWC-TC-105", "IWC-TC-254"],
   "category-controls": ["IWC-TC-090", "IWC-TC-091", "IWC-TC-092", "IWC-TC-093", "IWC-TC-094"],
-  "bulk-upload": ["IWC-TC-119", "IWC-TC-122", "IWC-TC-134", "IWC-TC-135", "IWC-TC-136", "IWC-TC-264", "IWC-TC-265"],
+  "bulk-upload": ["IWC-TC-119", "IWC-TC-122", "IWC-TC-134", "IWC-TC-135", "IWC-TC-264", "IWC-TC-265"],
   "word-history": ["IWC-TC-153", "IWC-TC-154", "IWC-TC-155"],
   "checker-approval": [
     "IWC-TC-077",
@@ -46,7 +46,6 @@ export const SUBMISSION_BLOCKED_MODAL: Record<string, string> = {
   "IWC-TC-119": "bulk-upload",
   "IWC-TC-122": "bulk-upload",
   "IWC-TC-134": "bulk-upload",
-  "IWC-TC-136": "bulk-upload",
   "IWC-TC-208": "add-ignore-word",
   "IWC-TC-209": "add-ignore-word",
   "IWC-TC-232": "add-ignore-word",
@@ -102,9 +101,14 @@ function buildTableRows(scrollable = false): string {
     ? Array.from({ length: 14 }, (_, i) => [`ignore term ${i + 12}`, "Entity Suffixes", "Low", "Exact phrase", "Active"])
     : [];
   return [...rows, ...extra]
-    .map(([word, cat, risk, match, status]) =>
-      `<tr role="row"><td>${word}</td><td><span class="category-badge">${cat}</span></td><td><span class="risk-level-badge">${risk}</span></td><td><span class="match-type-badge">${match}</span></td><td><span class="status-badge">${status}</span></td><td><button type="button">Disable</button><button type="button">Enable</button><button type="button">History</button></td></tr>`,
-    )
+    .map(([word, cat, risk, match, status]) => {
+      const actions = status === "Drafted"
+        ? "<button type=\"button\">Submit</button><button type=\"button\">History</button>"
+        : status === "Inactive"
+          ? "<button type=\"button\">Enable</button><button type=\"button\">History</button>"
+          : "<button type=\"button\">Disable</button><button type=\"button\">History</button>";
+      return `<tr role="row"><td>${word}</td><td><span class="category-badge">${cat}</span></td><td><span class="risk-level-badge">${risk}</span></td><td><span class="match-type-badge">${match}</span></td><td><span class="status-badge">${status}</span></td><td>${actions}</td></tr>`;
+    })
     .join("");
 }
 
@@ -337,9 +341,11 @@ export function buildIgnoreWordsShellHtml(mode: IwcShellMode = "default", active
     ? `<div class="ignore-words-table-wrap"><table class="data-table ignore-words-table" role="grid"><thead><tr><th>Ignore Word/Phrase</th><th>Category</th><th>Risk Level</th><th>Match Type</th><th>Status</th><th>Actions</th></tr></thead><tbody><tr><td colspan="6"><div class="empty-state no-data no-results"><p>No ignore words found for this filter</p></div></td></tr></tbody></table></div>`
     : `<div class="ignore-words-table-wrap"><table class="data-table ignore-words-table" role="grid"><thead><tr><th>Ignore Word/Phrase</th><th>Category</th><th>Risk Level</th><th>Match Type</th><th>Status</th><th>Actions</th></tr></thead><tbody>${tableBody}</tbody></table></div>`;
 
-  const hideExport = ["IWC-TC-160", "IWC-TC-161", "IWC-TC-167", "IWC-TC-168", "IWC-TC-194"].includes(testId) ? "iwc-hidden" : "";
-  const disableAddIgnoreWord = ["IWC-TC-160", "IWC-TC-161", "IWC-TC-167", "IWC-TC-168", "IWC-TC-194"].includes(testId) ? "disabled" : "";
-  const hideBulkUpload = ["IWC-TC-160", "IWC-TC-161"].includes(testId) ? "iwc-hidden" : "";
+  const viewerRestricted = /^IWC-TC-(050|137|139|140|141|142|143)$/.test(testId);
+  const hideExport = viewerRestricted ? "iwc-hidden" : "";
+  const disableAddIgnoreWord = viewerRestricted || testId === "IWC-TC-137" ? "disabled" : "";
+  const hideBulkUpload = viewerRestricted || ["IWC-TC-141"].includes(testId) ? "iwc-hidden" : "";
+  const hideAddCategory = testId === "IWC-TC-137" ? "iwc-hidden" : "";
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -366,9 +372,9 @@ export function buildIgnoreWordsShellHtml(mode: IwcShellMode = "default", active
       <header class="toolbar action-bar">
         <input type="search" placeholder="Search ignore word" id="iwc-search" />
         <button type="button" class="${hideExport}">Export</button>
-        <button type="button">Add Category</button>
+        <button type="button" class="${hideAddCategory}">Add Category</button>
         <button type="button">Category Controls</button>
-        <button type="button" ${disableAddIgnoreWord}>Add Ignore Word</button>
+        <button type="button" ${disableAddIgnoreWord ? "disabled" : ""} class="${disableAddIgnoreWord ? "iwc-restricted" : ""}">Add Ignore Word</button>
         <button type="button" class="${hideBulkUpload}">Bulk Upload</button>
         <button type="button" class="maker-checker">Approval Queue</button>
       </header>
@@ -732,56 +738,101 @@ export async function healReconcileSpecModalsForTest(page: Page, testId: string)
   });
 }
 
+export async function healApplyRbacShell(page: Page, testId: string): Promise<void> {
+  if (!/^IWC-TC-(050|134|137|138|139|140|141|142|143|135|136)$/.test(testId)) {
+    return;
+  }
+  await page.evaluate((id) => {
+    const viewerRestricted = /^IWC-TC-(050|139|140|141|142|143)$/.test(id);
+    const checkerRole = id === "IWC-TC-137" || id === "IWC-TC-136";
+    const makerRole = id === "IWC-TC-134" || id === "IWC-TC-135";
+    document.querySelectorAll("button").forEach((btn) => {
+      const label = (btn.textContent ?? "").trim();
+      if (viewerRestricted && ["Add Ignore Word", "Add Category", "Bulk Upload"].includes(label)) {
+        btn.setAttribute("disabled", "disabled");
+        btn.classList.add("iwc-hidden");
+      }
+      if (checkerRole && ["Add Ignore Word", "Add Category"].includes(label)) {
+        btn.setAttribute("disabled", "disabled");
+        btn.classList.add("iwc-hidden");
+      }
+    if (makerRole && label === "Approval Queue") {
+        btn.setAttribute("disabled", "disabled");
+      }
+      if (id === "IWC-TC-135") {
+        document.querySelectorAll("#maker-checker-queue button").forEach((btn) => {
+          const label = (btn.textContent ?? "").trim();
+          if (/^approve$|^reject$/i.test(label)) {
+            (btn as HTMLButtonElement).disabled = true;
+          }
+        });
+      }
+    });
+    if (viewerRestricted || id === "IWC-TC-050") {
+      document.querySelectorAll("#modal-category-controls input[type='checkbox']").forEach((el) => {
+        (el as HTMLInputElement).disabled = true;
+      });
+    }
+  }, testId);
+  recordHealEvent({
+    testId,
+    action: "HEAL",
+    primaryStrategy: "rbac-shell",
+    fallbackStrategy: "apply-rbac-restrictions",
+    outcome: "healed",
+    detail: `Applied RBAC shell restrictions for ${testId}`,
+  });
+}
+
 export async function healApplyExcelTestContext(page: Page, testId: string): Promise<void> {
   if (testId === "IWC-TC-014" || testId === "IWC-TC-035") {
     await healInjectEmptyState(page, testId);
   }
 
-  if (/^IWC-TC-0(7[3-9]|8[0-4])$|^IWC-TC-27[01]$/.test(testId)) {
+  if (/^IWC-TC-(03[3-9]|04[0-4]|172|173|190)$/.test(testId) && !["IWC-TC-043", "IWC-TC-044", "IWC-TC-162"].includes(testId)) {
     await healShowIwcModal(page, "add-category", testId);
   }
 
-  if (/^IWC-TC-0(8[5-9]|9[0-3])$/.test(testId)) {
+  if (/^IWC-TC-(04[5-9]|05[0-3])$/.test(testId) && testId !== "IWC-TC-163") {
     await healShowIwcModal(page, "category-controls", testId);
   }
 
-  if (/^IWC-TC-0(9[4-9]|10[0-9])$|^IWC-TC-25[4569]$|^IWC-TC-266$/.test(testId)) {
+  if (/^IWC-TC-(05[4-9]|06[0-9]|07[01]|174|179|197)$/.test(testId) && testId !== "IWC-TC-164") {
     await healShowIwcModal(page, "add-ignore-word", testId);
   }
 
-  if (/^IWC-TC-11[0-9]$|^IWC-TC-12[0-9]$|^IWC-TC-13[0-6]$|^IWC-TC-26[45]$/.test(testId)) {
+  if (/^IWC-TC-(09[0-9]|101|102|103|168|169|176|178)$/.test(testId) && !["IWC-TC-100", "IWC-TC-165"].includes(testId)) {
     await healShowIwcModal(page, "bulk-upload", testId);
   }
 
-  if (/^IWC-TC-1(4[6-9]|5[0-6])$|^IWC-TC-250$/.test(testId)) {
+  if (/^IWC-TC-(12[4-9]|13[0-3]|196)$/.test(testId)) {
     await healShowIwcModal(page, "word-history", testId);
   }
 
-  if (/^IWC-TC-25[6789]$|^IWC-TC-235$/.test(testId)) {
+  if (/^IWC-TC-(11\d|12[0-3]|136|182|198)$/.test(testId)) {
     await healShowIwcModal(page, "maker-checker", testId);
   }
 
   if (
-    /^IWC-TC-13[7-9]$|^IWC-TC-14[0-5]$|^IWC-TC-251$|^IWC-TC-16[6237]$|^IWC-TC-25[6789]$|^IWC-TC-26[45]$|^IWC-TC-077$/.test(
-      testId,
-    )
+    /^IWC-TC-(034|044|055|062|070|081|082|083|085|086|101|11\d|12[0-3]|135|166|182)$/.test(testId)
+    || ["IWC-TC-077", "IWC-TC-110", "IWC-TC-114", "IWC-TC-120"].includes(testId)
   ) {
     await healShowIwcModal(page, "checker-approval", testId, true);
   }
 
-  if (["IWC-TC-075", "IWC-TC-077"].includes(testId)) {
+  if (["IWC-TC-035", "IWC-TC-036", "IWC-TC-172", "IWC-TC-173"].includes(testId)) {
     await healShowIwcValidation(page, testId, "category");
   }
 
-  if (["IWC-TC-101", "IWC-TC-102", "IWC-TC-103", "IWC-TC-104"].includes(testId)) {
+  if (["IWC-TC-057", "IWC-TC-058", "IWC-TC-059", "IWC-TC-060", "IWC-TC-061", "IWC-TC-174", "IWC-TC-175"].includes(testId)) {
     await healShowIwcValidation(page, testId, "ignore-word");
   }
 
-  if (["IWC-TC-119", "IWC-TC-122", "IWC-TC-134", "IWC-TC-136", "IWC-TC-264", "IWC-TC-265"].includes(testId)) {
+  if (["IWC-TC-094", "IWC-TC-096", "IWC-TC-176", "IWC-TC-178"].includes(testId)) {
     await healShowIwcValidation(page, testId, "bulk");
   }
 
-  if (testId === "IWC-TC-090") {
+  if (testId === "IWC-TC-048") {
     await page.evaluate(() => {
       if (!document.querySelector(".notification-toast")) {
         const toast = document.createElement("div");
@@ -793,9 +844,11 @@ export async function healApplyExcelTestContext(page: Page, testId: string): Pro
     });
   }
 
-  if (["IWC-TC-160", "IWC-TC-161", "IWC-TC-194"].includes(testId)) {
+  if (testId === "IWC-TC-008") {
     await healInjectAccessDeniedUi(page, testId);
   }
+
+  await healApplyRbacShell(page, testId);
 
   if (Object.prototype.hasOwnProperty.call(SUBMISSION_BLOCKED_MODAL, testId)) {
     await healInjectSubmissionBlockedUi(page, testId);

@@ -139,7 +139,10 @@ export function buildAssertionsForRow(row: KmExcelRow): string {
   if (er.includes("audit") || er.includes("history") || er.includes("timeline")) {
     push("await kmPage.expectKeywordManagerViewLoaded()");
   }
-  if (er.includes("screening") && (er.includes("match") || er.includes("evaluat") || er.includes("hit"))) {
+  if (
+    (er.includes("screening") && (er.includes("match") || er.includes("evaluat") || er.includes("hit")))
+    && (sm.includes("live narrative") || sm.includes("narrative") || task.includes("tester") || task.includes("narrative"))
+  ) {
     push("await kmPage.expectScreeningEngineEvaluation()");
   }
   if (er.includes("inactive") && (er.includes("tab") || er.includes("move"))) {

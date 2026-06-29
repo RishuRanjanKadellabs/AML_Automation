@@ -1,6 +1,6 @@
 # Ignore Words Configuration — Comprehensive Test Planning Deliverable
 
-Generated from `pipeline/test-data/Ignore Words Configuration.xlsx` — 223 requirements.
+Generated from `pipeline/test-data/Ignore Words Configuration.xlsx` — 194 requirements.
 
 ## 1. Requirement Summary
 
@@ -8,8 +8,8 @@ Generated from `pipeline/test-data/Ignore Words Configuration.xlsx` — 223 requ
 | --- | --- |
 | File | `pipeline/test-data/Ignore Words Configuration.xlsx` |
 | Sheet | `AML Test Cases - IWC` |
-| Total requirements | 223 |
-| ID range | IWC-TC-001 → IWC-TC-271 |
+| Total requirements | 194 |
+| ID range | IWC-TC-001 → IWC-TC-199 |
 | Route | `/configuration/screening-ignore-words` |
 | Navigation | Sidebar: Configuration → Screening – Ignore Words Configuration |
 | Tabs | Active, Inactive, Drafted |
@@ -18,52 +18,36 @@ Generated from `pipeline/test-data/Ignore Words Configuration.xlsx` — 223 requ
 
 | Sub Module | Count | ID Range |
 | --- | --- | --- |
-| Page Framework | 15 | IWC-TC-001–IWC-TC-015 |
-| Tab Bar | 12 | IWC-TC-016–IWC-TC-027 |
-| Search & Filter | 11 | IWC-TC-028–IWC-TC-038 |
-| Table & Sorting | 8 | IWC-TC-039–IWC-TC-046 |
-| Category Badges | 4 | IWC-TC-047–IWC-TC-050 |
-| Risk Level Badges | 3 | IWC-TC-051–IWC-TC-053 |
-| Match Type Badges | 2 | IWC-TC-054–IWC-TC-055 |
-| Status Badges | 3 | IWC-TC-056–IWC-TC-058 |
-| Row Actions | 10 | IWC-TC-059–IWC-TC-234 |
-| Export Functionality | 4 | IWC-TC-067–IWC-TC-071 |
-| Add Category Modal | 12 | IWC-TC-073–IWC-TC-271 |
-| Category Controls Modal | 9 | IWC-TC-085–IWC-TC-093 |
-| Add Ignore Word Panel | 19 | IWC-TC-094–IWC-TC-269 |
-| Live Narrative Tester | 9 | IWC-TC-110–IWC-TC-235 |
-| Bulk Upload | 19 | IWC-TC-119–IWC-TC-265 |
-| Checker Approval Modal | 10 | IWC-TC-137–IWC-TC-251 |
-| Word History Panel | 12 | IWC-TC-146–IWC-TC-250 |
-| Permissions & RBAC | 9 | IWC-TC-160–IWC-TC-168 |
-| API & Data Model | 1 | IWC-TC-173–IWC-TC-173 |
-| Error Handling | 4 | IWC-TC-181–IWC-TC-252 |
-| UI/UX Consistency | 2 | IWC-TC-185–IWC-TC-188 |
-| Accessibility | 3 | IWC-TC-190–IWC-TC-192 |
-| Security Validation | 2 | IWC-TC-194–IWC-TC-245 |
-| Regression Validation | 6 | IWC-TC-197–IWC-TC-202 |
-| Sidebar Navigation | 2 | IWC-TC-204–IWC-TC-205 |
-| Match Type Behavior | 2 | IWC-TC-207–IWC-TC-208 |
-| Data Validation | 2 | IWC-TC-209–IWC-TC-210 |
-| Browser Compatibility | 3 | IWC-TC-214–IWC-TC-216 |
-| Navigation Flow | 4 | IWC-TC-219–IWC-TC-222 |
-| Business Rules | 11 | IWC-TC-224–IWC-TC-240 |
-| Duplicate Validation | 1 | IWC-TC-232–IWC-TC-232 |
-| Notifications | 1 | IWC-TC-236–IWC-TC-236 |
-| Negative Scenarios | 2 | IWC-TC-246–IWC-TC-247 |
-| UAT Scenarios | 2 | IWC-TC-248–IWC-TC-249 |
-| Maker-Checker Governance | 4 | IWC-TC-256–IWC-TC-259 |
+| Navigation & Page Access | 12 | IWC-TC-001–IWC-TC-161 |
+| Status Tabs | 8 | IWC-TC-009–IWC-TC-156 |
+| Search & Filter | 7 | IWC-TC-016–IWC-TC-022 |
+| Data Table & Sorting | 11 | IWC-TC-023–IWC-TC-159 |
+| Category Management – Add Category | 15 | IWC-TC-033–IWC-TC-173 |
+| Category Management – Category Controls | 10 | IWC-TC-045–IWC-TC-163 |
+| Add Ignore Word | 22 | IWC-TC-054–IWC-TC-197 |
+| Live Narrative Tester | 11 | IWC-TC-072–IWC-TC-199 |
+| Ignore Word Row Actions | 10 | IWC-TC-080–IWC-TC-089 |
+| Bulk Upload | 19 | IWC-TC-090–IWC-TC-178 |
+| Export | 8 | IWC-TC-104–IWC-TC-171 |
+| Maker-Checker Workflow | 17 | IWC-TC-110–IWC-TC-198 |
+| Audit History | 12 | IWC-TC-124–IWC-TC-196 |
+| Access Control (RBAC) | 10 | IWC-TC-134–IWC-TC-143 |
+| Field & Business Rule Validation | 11 | IWC-TC-144–IWC-TC-184 |
+| Regression & Compatibility | 5 | IWC-TC-185–IWC-TC-193 |
+| Accessibility | 3 | IWC-TC-188–IWC-TC-190 |
+| Security Validation | 1 | IWC-TC-191–IWC-TC-191 |
+| UAT Scenarios | 2 | IWC-TC-194–IWC-TC-195 |
 
 
 ## 2. Coverage Report
 
 | Metric | Value |
 | --- | --- |
-| Total requirements | 223 |
+| Total requirements | 194 |
 | Functional areas (sub-modules) | 35 |
-| Automation candidates | 223 |
+| Automation candidates | 194 |
 | Manual-only scenarios | 0 |
-| Partial gaps (missing info) | 219 |
+| Partial gaps (missing info) | 107 |
 
 ## 3. Playwright POM Planning
 
@@ -81,27 +65,27 @@ Generated from `pipeline/test-data/Ignore Words Configuration.xlsx` — 223 requ
 - **IWC-TC-004**: RBAC role switching mechanism (login fixture per role)
 - **IWC-TC-005**: RBAC role switching mechanism (login fixture per role)
 - **IWC-TC-006**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-007**: RBAC role switching mechanism (login fixture per role)
 - **IWC-TC-008**: RBAC role switching mechanism (login fixture per role)
 - **IWC-TC-009**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-010**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-011**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-012**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-013**: Network throttling profile not specified for Playwright
+- **IWC-TC-013**: RBAC role switching mechanism (login fixture per role)
 - **IWC-TC-014**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-015**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-016**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-017**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-018**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-019**: RBAC role switching mechanism (login fixture per role)
 - **IWC-TC-020**: RBAC role switching mechanism (login fixture per role)
 - **IWC-TC-021**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-022**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-023**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-024**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-025**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-026**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-027**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-028**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-029**: RBAC role switching mechanism (login fixture per role)
-- **IWC-TC-030**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-033**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-034**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-037**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-038**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-039**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-041**: Accessibility tooling and baseline thresholds
+- **IWC-TC-044**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-046**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-047**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-048**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-050**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-051**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-053**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-054**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-055**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-058**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-059**: RBAC role switching mechanism (login fixture per role)
+- **IWC-TC-060**: RBAC role switching mechanism (login fixture per role)

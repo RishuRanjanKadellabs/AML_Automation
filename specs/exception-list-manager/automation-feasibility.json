@@ -7,7 +7,9 @@
     "tags": [
       "audit-trail",
       "list-lifecycle-events",
-      "unspecified"
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -18,7 +20,7 @@
     "tags": [
       "audit-trail",
       "list-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -29,7 +31,7 @@
     "tags": [
       "audit-trail",
       "list-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -40,7 +42,7 @@
     "tags": [
       "audit-trail",
       "list-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -51,7 +53,7 @@
     "tags": [
       "audit-trail",
       "list-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -62,7 +64,7 @@
     "tags": [
       "audit-trail",
       "entry-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -73,7 +75,7 @@
     "tags": [
       "audit-trail",
       "entry-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -84,7 +86,7 @@
     "tags": [
       "audit-trail",
       "entry-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -95,7 +97,7 @@
     "tags": [
       "audit-trail",
       "entry-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -106,7 +108,7 @@
     "tags": [
       "audit-trail",
       "entry-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -117,7 +119,7 @@
     "tags": [
       "audit-trail",
       "entry-lifecycle-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -128,7 +130,7 @@
     "tags": [
       "audit-trail",
       "ttl-bulk-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -139,7 +141,7 @@
     "tags": [
       "audit-trail",
       "ttl-bulk-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -150,18 +152,18 @@
     "tags": [
       "audit-trail",
       "ttl-bulk-events",
-      "unspecified"
+      "high"
     ]
   },
   {
     "testCaseId": "ATL-015",
-    "automationLayer": "UI",
+    "automationLayer": "API + UI",
     "automationCandidate": "Yes",
-    "reason": "Exception List Manager UI automation via Playwright page object",
+    "reason": "Exception List Manager API contract tests via Playwright route interception",
     "tags": [
       "audit-trail",
       "ttl-bulk-events",
-      "unspecified",
+      "high",
       "api"
     ]
   },
@@ -173,7 +175,7 @@
     "tags": [
       "audit-trail",
       "suppression-logging",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -184,7 +186,7 @@
     "tags": [
       "audit-trail",
       "suppression-logging",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -195,7 +197,7 @@
     "tags": [
       "audit-trail",
       "evidence-access-logging",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -206,7 +208,7 @@
     "tags": [
       "audit-trail",
       "evidence-access-logging",
-      "unspecified",
+      "high",
       "export"
     ]
   },
@@ -218,7 +220,7 @@
     "tags": [
       "audit-trail",
       "integrity-conflict-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -229,7 +231,7 @@
     "tags": [
       "audit-trail",
       "integrity-conflict-events",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -240,7 +242,7 @@
     "tags": [
       "audit-trail",
       "report-export-events",
-      "unspecified",
+      "high",
       "export"
     ]
   },
@@ -252,7 +254,7 @@
     "tags": [
       "audit-trail",
       "report-export-events",
-      "unspecified",
+      "high",
       "export"
     ]
   },
@@ -264,7 +266,7 @@
     "tags": [
       "audit-trail",
       "report-export-events",
-      "unspecified",
+      "high",
       "export"
     ]
   },
@@ -276,7 +278,7 @@
     "tags": [
       "audit-trail",
       "report-export-events",
-      "unspecified",
+      "high",
       "export"
     ]
   },
@@ -288,7 +290,7 @@
     "tags": [
       "audit-trail",
       "event-logging-retention",
-      "unspecified"
+      "high"
     ]
   },
   {
@@ -339,6 +341,19 @@
     ]
   },
   {
+    "testCaseId": "ATL-031",
+    "automationLayer": "UI",
+    "automationCandidate": "Yes",
+    "reason": "Exception List Manager UI automation via Playwright page object",
+    "tags": [
+      "audit-trail",
+      "access-control",
+      "high",
+      "rbac",
+      "security"
+    ]
+  },
+  {
     "testCaseId": "EEM-001",
     "automationLayer": "UI",
     "automationCandidate": "Yes",
@@ -346,8 +361,8 @@
     "tags": [
       "exception-entry-management",
       "data-model-field-validation",
-      "unspecified",
-      "functional"
+      "low",
+      "reason-evidence"
     ]
   },
   {
@@ -358,7 +373,7 @@
     "tags": [
       "exception-entry-management",
       "data-model-field-validation",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -370,7 +385,7 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -383,7 +398,7 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
+      "low",
       "notifications"
     ]
   },
@@ -395,7 +410,7 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -407,7 +422,7 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
+      "low",
       "reason-evidence"
     ]
   },
@@ -419,7 +434,7 @@
     "tags": [
       "exception-entry-management",
       "edit-entry",
-      "unspecified",
+      "high",
       "maker-checker"
     ]
   },
@@ -431,8 +446,8 @@
     "tags": [
       "exception-entry-management",
       "edit-entry",
-      "unspecified",
-      "functional"
+      "high",
+      "reason-evidence"
     ]
   },
   {
@@ -443,8 +458,8 @@
     "tags": [
       "exception-entry-management",
       "edit-entry",
-      "unspecified",
-      "functional"
+      "high",
+      "reason-evidence"
     ]
   },
   {
@@ -455,7 +470,7 @@
     "tags": [
       "exception-entry-management",
       "suspend-delete-entry",
-      "unspecified",
+      "high",
       "evaluation-engine"
     ]
   },
@@ -467,7 +482,7 @@
     "tags": [
       "exception-entry-management",
       "suspend-delete-entry",
-      "unspecified",
+      "high",
       "audit-trail"
     ]
   },
@@ -479,7 +494,7 @@
     "tags": [
       "exception-entry-management",
       "ttl-entry-renewal",
-      "unspecified",
+      "high",
       "notifications"
     ]
   },
@@ -491,7 +506,7 @@
     "tags": [
       "exception-entry-management",
       "ttl-entry-renewal",
-      "unspecified",
+      "high",
       "functional"
     ]
   },
@@ -503,8 +518,9 @@
     "tags": [
       "exception-entry-management",
       "ttl-entry-renewal",
-      "unspecified",
-      "functional"
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -515,7 +531,7 @@
     "tags": [
       "exception-entry-management",
       "bulk-upload",
-      "unspecified",
+      "high",
       "export"
     ]
   },
@@ -527,18 +543,18 @@
     "tags": [
       "exception-entry-management",
       "bulk-upload",
-      "unspecified"
+      "medium"
     ]
   },
   {
     "testCaseId": "EEM-017",
-    "automationLayer": "UI",
+    "automationLayer": "API + UI",
     "automationCandidate": "Yes",
-    "reason": "Exception List Manager UI automation via Playwright page object",
+    "reason": "Exception List Manager API contract tests via Playwright route interception",
     "tags": [
       "exception-entry-management",
       "api-synchronisation",
-      "unspecified",
+      "high",
       "api"
     ]
   },
@@ -550,7 +566,7 @@
     "tags": [
       "exception-entry-management",
       "api-synchronisation",
-      "unspecified",
+      "high",
       "api"
     ]
   },
@@ -562,8 +578,9 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
-      "functional"
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -574,7 +591,7 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
+      "high",
       "functional"
     ]
   },
@@ -586,8 +603,8 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
-      "functional"
+      "medium",
+      "reason-evidence"
     ]
   },
   {
@@ -598,7 +615,7 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -610,7 +627,7 @@
     "tags": [
       "exception-entry-management",
       "add-entry",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -624,7 +641,7 @@
       "exception-entry-management",
       "data-model-field-validation",
       "high",
-      "notifications"
+      "functional"
     ]
   },
   {
@@ -648,7 +665,7 @@
       "exception-entry-management",
       "add-entry",
       "high",
-      "functional"
+      "reason-evidence"
     ]
   },
   {
@@ -688,18 +705,6 @@
       "high",
       "rbac",
       "security"
-    ]
-  },
-  {
-    "testCaseId": "EEM-030",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Exception List Manager UI automation via Playwright page object",
-    "tags": [
-      "exception-entry-management",
-      "ttl-entry-renewal",
-      "high",
-      "functional"
     ]
   },
   {
@@ -748,7 +753,7 @@
       "exception-entry-management",
       "edit-entry",
       "medium",
-      "audit-trail"
+      "evaluation-engine"
     ]
   },
   {
@@ -760,7 +765,7 @@
       "exception-entry-management",
       "add-entry",
       "low",
-      "functional"
+      "reason-evidence"
     ]
   },
   {
@@ -784,7 +789,7 @@
       "exception-entry-management",
       "api-synchronisation",
       "medium",
-      "api"
+      "export"
     ]
   },
   {
@@ -796,7 +801,7 @@
       "exception-entry-management",
       "add-entry",
       "high",
-      "functional"
+      "reason-evidence"
     ]
   },
   {
@@ -820,7 +825,7 @@
       "exception-entry-management",
       "suspend-delete-entry",
       "medium",
-      "functional"
+      "export"
     ]
   },
   {
@@ -832,7 +837,7 @@
       "exception-entry-management",
       "data-model-field-validation",
       "medium",
-      "functional"
+      "reason-evidence"
     ]
   },
   {
@@ -915,7 +920,7 @@
     "tags": [
       "exception-list-management",
       "landing-page",
-      "unspecified",
+      "high",
       "functional"
     ]
   },
@@ -927,7 +932,7 @@
     "tags": [
       "exception-list-management",
       "landing-page",
-      "unspecified",
+      "low",
       "export"
     ]
   },
@@ -939,7 +944,7 @@
     "tags": [
       "exception-list-management",
       "create-exception-list",
-      "unspecified",
+      "high",
       "functional"
     ]
   },
@@ -951,7 +956,7 @@
     "tags": [
       "exception-list-management",
       "create-exception-list",
-      "unspecified",
+      "low",
       "error-handling"
     ]
   },
@@ -963,8 +968,8 @@
     "tags": [
       "exception-list-management",
       "create-exception-list",
-      "unspecified",
-      "functional"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -975,8 +980,8 @@
     "tags": [
       "exception-list-management",
       "view-exception-list",
-      "unspecified",
-      "functional"
+      "high",
+      "reason-evidence"
     ]
   },
   {
@@ -987,7 +992,7 @@
     "tags": [
       "exception-list-management",
       "view-exception-list",
-      "unspecified",
+      "low",
       "export"
     ]
   },
@@ -999,7 +1004,7 @@
     "tags": [
       "exception-list-management",
       "edit-exception-list",
-      "unspecified",
+      "high",
       "functional"
     ]
   },
@@ -1011,7 +1016,7 @@
     "tags": [
       "exception-list-management",
       "edit-exception-list",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1023,7 +1028,7 @@
     "tags": [
       "exception-list-management",
       "suspend-re-activate-list",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1035,7 +1040,7 @@
     "tags": [
       "exception-list-management",
       "suspend-re-activate-list",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1047,7 +1052,7 @@
     "tags": [
       "exception-list-management",
       "delete-exception-list",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1059,7 +1064,7 @@
     "tags": [
       "exception-list-management",
       "delete-exception-list",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1071,7 +1076,7 @@
     "tags": [
       "exception-list-management",
       "landing-page",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1083,7 +1088,7 @@
     "tags": [
       "exception-list-management",
       "landing-page",
-      "unspecified",
+      "high",
       "maker-checker"
     ]
   },
@@ -1095,7 +1100,7 @@
     "tags": [
       "exception-list-management",
       "landing-page",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1107,7 +1112,7 @@
     "tags": [
       "exception-list-management",
       "create-exception-list",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1119,7 +1124,7 @@
     "tags": [
       "exception-list-management",
       "create-exception-list",
-      "unspecified",
+      "high",
       "maker-checker"
     ]
   },
@@ -1131,7 +1136,7 @@
     "tags": [
       "exception-list-management",
       "create-exception-list",
-      "unspecified",
+      "low",
       "functional"
     ]
   },
@@ -1143,7 +1148,7 @@
     "tags": [
       "exception-list-management",
       "create-exception-list",
-      "unspecified",
+      "high",
       "maker-checker"
     ]
   },
@@ -1277,7 +1282,7 @@
     "tags": [
       "exception-register-report",
       "executive-summary",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1289,7 +1294,7 @@
     "tags": [
       "exception-register-report",
       "executive-summary",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1301,7 +1306,7 @@
     "tags": [
       "exception-register-report",
       "executive-summary",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1313,7 +1318,7 @@
     "tags": [
       "exception-register-report",
       "executive-summary",
-      "unspecified",
+      "medium",
       "evaluation-engine"
     ]
   },
@@ -1325,7 +1330,7 @@
     "tags": [
       "exception-register-report",
       "executive-summary",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1337,8 +1342,8 @@
     "tags": [
       "exception-register-report",
       "reason-code-analysis",
-      "unspecified",
-      "reason-evidence"
+      "medium",
+      "maker-checker"
     ]
   },
   {
@@ -1349,8 +1354,8 @@
     "tags": [
       "exception-register-report",
       "reason-code-analysis",
-      "unspecified",
-      "reason-evidence"
+      "medium",
+      "maker-checker"
     ]
   },
   {
@@ -1361,7 +1366,7 @@
     "tags": [
       "exception-register-report",
       "watchlist-analysis",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1373,7 +1378,7 @@
     "tags": [
       "exception-register-report",
       "export-delivery",
-      "unspecified",
+      "medium",
       "export"
     ]
   },
@@ -1385,7 +1390,7 @@
     "tags": [
       "exception-register-report",
       "export-delivery",
-      "unspecified",
+      "medium",
       "export"
     ]
   },
@@ -1397,7 +1402,7 @@
     "tags": [
       "exception-register-report",
       "filters-pagination",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1409,7 +1414,7 @@
     "tags": [
       "exception-register-report",
       "filters-pagination",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1421,7 +1426,7 @@
     "tags": [
       "exception-register-report",
       "filters-pagination",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1433,7 +1438,7 @@
     "tags": [
       "exception-register-report",
       "filters-pagination",
-      "unspecified",
+      "medium",
       "reporting"
     ]
   },
@@ -1445,7 +1450,7 @@
     "tags": [
       "exception-register-report",
       "data-integrity-layout",
-      "unspecified",
+      "high",
       "reporting"
     ]
   },
@@ -1457,7 +1462,7 @@
     "tags": [
       "exception-register-report",
       "data-integrity-layout",
-      "unspecified",
+      "high",
       "reporting"
     ]
   },
@@ -1469,7 +1474,7 @@
     "tags": [
       "exception-register-report",
       "data-integrity-layout",
-      "unspecified",
+      "high",
       "reporting"
     ]
   },
@@ -1481,7 +1486,7 @@
     "tags": [
       "exception-register-report",
       "data-integrity-layout",
-      "unspecified",
+      "high",
       "reporting"
     ]
   },
@@ -1493,7 +1498,7 @@
     "tags": [
       "exception-register-report",
       "permissions-refresh",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -1506,7 +1511,7 @@
     "tags": [
       "exception-register-report",
       "permissions-refresh",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -1519,7 +1524,7 @@
     "tags": [
       "exception-register-report",
       "permissions-refresh",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -1532,7 +1537,7 @@
     "tags": [
       "exception-register-report",
       "performance-period-selection",
-      "unspecified",
+      "medium",
       "performance"
     ]
   },
@@ -1544,7 +1549,7 @@
     "tags": [
       "exception-register-report",
       "performance-period-selection",
-      "unspecified",
+      "medium",
       "performance"
     ]
   },
@@ -1556,7 +1561,7 @@
     "tags": [
       "exception-register-report",
       "performance-period-selection",
-      "unspecified",
+      "medium",
       "performance"
     ]
   },
@@ -1568,7 +1573,7 @@
     "tags": [
       "exception-register-report",
       "performance-period-selection",
-      "unspecified",
+      "medium",
       "performance"
     ]
   },
@@ -1581,7 +1586,8 @@
       "exception-register-report",
       "executive-summary",
       "high",
-      "reporting"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1617,7 +1623,8 @@
       "exception-register-report",
       "active-entries-listing",
       "high",
-      "reporting"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1641,7 +1648,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "high",
       "evaluation-engine"
     ]
   },
@@ -1653,7 +1660,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1665,7 +1672,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1677,7 +1684,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "high",
       "evaluation-engine"
     ]
   },
@@ -1689,7 +1696,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "high",
       "evaluation-engine"
     ]
   },
@@ -1701,7 +1708,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1713,7 +1720,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1725,7 +1732,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1737,7 +1744,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1749,7 +1756,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1761,7 +1768,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "high",
       "audit-trail"
     ]
   },
@@ -1773,7 +1780,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1785,7 +1792,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1797,7 +1804,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1809,7 +1816,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1821,7 +1828,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1833,7 +1840,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "audit-trail"
     ]
   },
@@ -1845,7 +1852,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1857,7 +1864,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1869,7 +1876,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1881,7 +1888,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1893,7 +1900,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1905,7 +1912,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1917,7 +1924,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1929,7 +1936,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1941,7 +1948,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1953,7 +1960,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1965,7 +1972,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1977,7 +1984,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -1989,7 +1996,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2001,7 +2008,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2013,7 +2020,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2025,7 +2032,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2037,7 +2044,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2049,7 +2056,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2061,7 +2068,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2073,7 +2080,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2085,7 +2092,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "evaluation-criteria",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2097,7 +2104,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "fuzzy-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2109,7 +2116,7 @@
     "tags": [
       "exception-evaluation-matching-logic",
       "native-script-multilingual-matching",
-      "unspecified",
+      "low",
       "evaluation-engine"
     ]
   },
@@ -2133,7 +2140,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "checker-role-enforcement",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2146,7 +2153,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "checker-role-enforcement",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2159,7 +2166,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "checker-role-enforcement",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2172,7 +2179,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "checker-role-enforcement",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2185,7 +2192,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "checker-role-enforcement",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2198,7 +2205,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "checker-role-enforcement",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2211,7 +2218,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "checker-role-enforcement",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2224,7 +2231,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "queue-views-ownership",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2237,7 +2244,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "queue-views-ownership",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2250,7 +2257,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "queue-views-ownership",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2263,7 +2270,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "queue-views-ownership",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2276,7 +2283,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "approval-rejection-handling",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2289,7 +2296,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "approval-rejection-handling",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2302,7 +2309,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "approval-rejection-handling",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2315,7 +2322,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "approval-rejection-handling",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2328,7 +2335,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "approval-rejection-handling",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2341,7 +2348,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "sla-escalation",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2354,7 +2361,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "sla-escalation",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2367,7 +2374,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "sla-escalation",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2380,7 +2387,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "sla-escalation",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2393,7 +2400,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "sla-escalation",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2406,7 +2413,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "sla-escalation",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2419,7 +2426,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "special-approval-rules",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2432,7 +2439,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "special-approval-rules",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2445,7 +2452,7 @@
     "tags": [
       "maker-checker-approval-workflow",
       "special-approval-rules",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2559,7 +2566,7 @@
       "non-functional-requirements",
       "data-retention",
       "high",
-      "maker-checker"
+      "functional"
     ]
   },
   {
@@ -2620,7 +2627,7 @@
     "tags": [
       "notification-framework",
       "submission-approval-alerts",
-      "unspecified",
+      "high",
       "notifications"
     ]
   },
@@ -2632,7 +2639,7 @@
     "tags": [
       "notification-framework",
       "submission-approval-alerts",
-      "unspecified",
+      "high",
       "notifications"
     ]
   },
@@ -2644,7 +2651,7 @@
     "tags": [
       "notification-framework",
       "submission-approval-alerts",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2657,7 +2664,7 @@
     "tags": [
       "notification-framework",
       "sla-escalation-alerts",
-      "unspecified",
+      "medium",
       "notifications"
     ]
   },
@@ -2669,7 +2676,7 @@
     "tags": [
       "notification-framework",
       "sla-escalation-alerts",
-      "unspecified",
+      "medium",
       "notifications"
     ]
   },
@@ -2681,7 +2688,7 @@
     "tags": [
       "notification-framework",
       "expiry-reminder-alerts",
-      "unspecified",
+      "high",
       "notifications"
     ]
   },
@@ -2693,7 +2700,7 @@
     "tags": [
       "notification-framework",
       "expiry-reminder-alerts",
-      "unspecified",
+      "high",
       "notifications"
     ]
   },
@@ -2705,7 +2712,7 @@
     "tags": [
       "notification-framework",
       "expiry-reminder-alerts",
-      "unspecified",
+      "high",
       "notifications"
     ]
   },
@@ -2717,7 +2724,7 @@
     "tags": [
       "notification-framework",
       "material-identity-change-alerts",
-      "unspecified",
+      "medium",
       "notifications"
     ]
   },
@@ -2729,7 +2736,7 @@
     "tags": [
       "notification-framework",
       "suppression-silence-rule",
-      "unspecified",
+      "high",
       "audit-trail"
     ]
   },
@@ -2741,7 +2748,7 @@
     "tags": [
       "notification-framework",
       "bulk-upload-alerts",
-      "unspecified",
+      "medium",
       "rbac",
       "security"
     ]
@@ -2754,7 +2761,7 @@
     "tags": [
       "notification-framework",
       "bulk-upload-alerts",
-      "unspecified",
+      "medium",
       "notifications"
     ]
   },
@@ -2766,7 +2773,7 @@
     "tags": [
       "notification-framework",
       "monthly-report-delivery",
-      "unspecified",
+      "medium",
       "rbac",
       "security"
     ]
@@ -2779,7 +2786,7 @@
     "tags": [
       "notification-framework",
       "conflict-block-alerts",
-      "unspecified",
+      "medium",
       "notifications"
     ]
   },
@@ -2791,7 +2798,7 @@
     "tags": [
       "notification-framework",
       "notification-timing-validation",
-      "unspecified",
+      "medium",
       "notifications"
     ]
   },
@@ -2851,7 +2858,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2864,7 +2871,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2877,7 +2884,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2890,7 +2897,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2903,7 +2910,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2916,7 +2923,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2929,7 +2936,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2942,7 +2949,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2955,7 +2962,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2968,7 +2975,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2981,7 +2988,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -2994,7 +3001,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -3007,7 +3014,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -3020,7 +3027,7 @@
     "tags": [
       "role-based-access-control",
       "role-permission-matrix",
-      "unspecified",
+      "high",
       "rbac",
       "security"
     ]
@@ -3059,8 +3066,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3071,8 +3078,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3083,8 +3090,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3095,8 +3102,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3107,8 +3114,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3119,8 +3126,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3131,8 +3138,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3143,7 +3150,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
+      "low",
       "export"
     ]
   },
@@ -3155,7 +3162,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
+      "low",
       "maker-checker"
     ]
   },
@@ -3167,8 +3174,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "maker-checker"
     ]
   },
   {
@@ -3179,7 +3186,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "rbac",
       "security"
     ]
@@ -3192,7 +3199,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "export"
     ]
   },
@@ -3204,7 +3211,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "reason-evidence"
     ]
   },
@@ -3216,8 +3223,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "export"
     ]
   },
   {
@@ -3228,7 +3235,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "export"
     ]
   },
@@ -3240,8 +3247,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "export"
     ]
   },
   {
@@ -3252,8 +3259,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "export"
     ]
   },
   {
@@ -3264,8 +3271,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "export"
     ]
   },
   {
@@ -3276,7 +3283,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "reason-evidence"
     ]
   },
@@ -3288,7 +3295,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "reason-evidence"
     ]
   },
@@ -3300,7 +3307,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "reason-evidence"
     ]
   },
@@ -3312,8 +3319,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "export"
     ]
   },
   {
@@ -3324,8 +3331,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "export"
     ]
   },
   {
@@ -3336,7 +3343,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
+      "low",
       "reason-evidence"
     ]
   },
@@ -3348,7 +3355,7 @@
     "tags": [
       "reason-codes-evidence-standards",
       "reason-code-standardization",
-      "unspecified",
+      "low",
       "maker-checker"
     ]
   },
@@ -3360,8 +3367,8 @@
     "tags": [
       "reason-codes-evidence-standards",
       "evidence-attachments",
-      "unspecified",
-      "reason-evidence"
+      "low",
+      "export"
     ]
   },
   {
@@ -3373,7 +3380,7 @@
       "reason-codes-evidence-standards",
       "reason-code-standardization",
       "medium",
-      "reason-evidence"
+      "maker-checker"
     ]
   },
   {

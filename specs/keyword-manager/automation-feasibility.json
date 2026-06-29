@@ -5,9 +5,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
+      "navigation-page-access",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -16,9 +17,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
+      "navigation-page-access",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -27,9 +29,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
-      "high",
-      "functional"
+      "navigation-page-access",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -38,9 +41,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
-      "high",
-      "functional"
+      "navigation-page-access",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -49,9 +53,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
-      "high",
-      "functional"
+      "navigation-page-access",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -60,9 +65,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
+      "navigation-page-access",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -71,9 +77,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
-      "medium",
-      "functional"
+      "navigation-page-access",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -82,9 +89,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "navigation-page-load",
-      "high",
-      "export"
+      "navigation-page-access",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -93,9 +101,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "tab-navigation",
+      "status-tabs",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -104,9 +113,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "tab-navigation",
+      "status-tabs",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -115,9 +125,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "tab-navigation",
+      "status-tabs",
       "medium",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -126,9 +137,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "tab-navigation",
-      "medium",
-      "functional"
+      "status-tabs",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -137,9 +149,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "high",
-      "functional"
+      "status-tabs",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -148,9 +161,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "high",
-      "functional"
+      "status-tabs",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -159,9 +173,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "high",
-      "functional"
+      "status-tabs",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -170,9 +185,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
+      "search-filter",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -181,9 +197,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "high",
-      "functional"
+      "search-filter",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -192,9 +209,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
+      "search-filter",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -203,9 +221,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "high",
-      "functional"
+      "search-filter",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -214,9 +233,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "high",
-      "functional"
+      "search-filter",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -225,9 +245,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "medium",
-      "functional"
+      "search-filter",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -236,9 +257,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "keyword-listing-table",
-      "medium",
-      "functional"
+      "search-filter",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -247,9 +269,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "search-functionality",
-      "high",
-      "functional"
+      "data-table-sorting",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -258,9 +281,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "search-functionality",
-      "high",
-      "functional"
+      "data-table-sorting",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -269,9 +293,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "search-functionality",
-      "medium",
-      "functional"
+      "data-table-sorting",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -280,9 +305,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "search-functionality",
-      "medium",
-      "functional"
+      "data-table-sorting",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -291,9 +317,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "search-functionality",
-      "high",
-      "functional"
+      "data-table-sorting",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -302,9 +329,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "search-functionality",
-      "high",
-      "error-handling"
+      "data-table-sorting",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -313,9 +341,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "high",
-      "functional"
+      "data-table-sorting",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -324,9 +353,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "critical",
-      "functional"
+      "data-table-sorting",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -335,9 +365,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
+      "category-management-add-category",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -346,9 +377,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
+      "category-management-add-category",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -357,9 +389,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "critical",
-      "error-handling"
+      "category-management-add-category",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -368,9 +401,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "high",
-      "functional"
+      "category-management-add-category",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -379,9 +413,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
+      "category-management-add-category",
       "medium",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -390,9 +425,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "medium",
-      "error-handling"
+      "category-management-add-category",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -401,8 +437,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "critical",
+      "category-management-category-controls",
+      "high",
       "rbac",
       "security"
     ]
@@ -413,9 +449,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "medium",
-      "functional"
+      "category-management-category-controls",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -424,9 +461,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "medium",
-      "functional"
+      "category-management-category-controls",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -435,9 +473,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-category",
-      "medium",
-      "functional"
+      "category-management-category-controls",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -446,9 +485,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
+      "category-management-category-controls",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -457,9 +497,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
+      "category-management-category-controls",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -468,9 +509,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
+      "category-management-category-controls",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -479,9 +521,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
-      "critical",
-      "functional"
+      "add-keyword",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -490,9 +533,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
-      "critical",
-      "functional"
+      "add-keyword",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -501,9 +545,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
-      "critical",
-      "functional"
+      "add-keyword",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -512,9 +557,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
+      "add-keyword",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -523,8 +569,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "category-controls",
-      "critical",
+      "add-keyword",
+      "high",
       "rbac",
       "security"
     ]
@@ -535,9 +581,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "screening-fields-mapping",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -546,9 +593,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "screening-fields-mapping",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -557,9 +605,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "screening-fields-mapping",
       "high",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -568,9 +617,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "high",
-      "error-handling"
+      "screening-fields-mapping",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -579,9 +629,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "fuzzy-match-threshold-score",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -590,9 +641,9 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "fuzzy-match-threshold-score",
+      "high",
+      "maker-checker"
     ]
   },
   {
@@ -601,9 +652,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "fuzzy-match-threshold-score",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -612,9 +664,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "fuzzy-match-threshold-score",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -623,9 +676,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "fuzzy-match-threshold-score",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -634,8 +688,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
+      "fuzzy-match-threshold-score",
+      "high",
       "functional"
     ]
   },
@@ -645,9 +699,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "fuzzy-match-threshold-score",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -656,7 +711,7 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "fuzzy-match-threshold-score",
       "high",
       "functional"
     ]
@@ -667,9 +722,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "live-narrative-tester",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -678,9 +734,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "high",
-      "functional"
+      "live-narrative-tester",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -689,9 +746,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "high",
-      "functional"
+      "live-narrative-tester",
+      "low",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -700,9 +758,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "high",
-      "functional"
+      "live-narrative-tester",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -711,9 +770,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "keyword-row-actions",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -722,9 +782,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "keyword-row-actions",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -733,9 +794,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "high",
-      "functional"
+      "keyword-row-actions",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -744,9 +806,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "functional"
+      "keyword-row-actions",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -755,9 +818,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "keyword-row-actions",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -766,9 +830,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "bulk-upload",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -777,9 +842,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "bulk-upload",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -788,9 +854,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "bulk-upload",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -799,9 +866,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "bulk-upload",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -810,9 +878,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "bulk-upload",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -821,9 +890,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "high",
-      "functional"
+      "bulk-upload",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -832,9 +902,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
+      "bulk-upload",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -843,9 +914,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "medium",
-      "functional"
+      "export",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -854,9 +926,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "high",
-      "functional"
+      "export",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -865,8 +938,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
+      "export",
+      "medium",
       "rbac",
       "security"
     ]
@@ -877,9 +950,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
-      "maker-checker"
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -888,9 +962,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "medium",
-      "functional"
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -899,9 +974,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "medium",
-      "functional"
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -910,8 +986,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "add-keyword",
-      "critical",
+      "maker-checker-workflow",
+      "high",
       "rbac",
       "security"
     ]
@@ -922,9 +998,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
-      "high",
-      "functional"
+      "maker-checker-workflow",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -933,9 +1010,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
-      "high",
-      "functional"
+      "maker-checker-workflow",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -944,9 +1022,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
-      "high",
-      "functional"
+      "maker-checker-workflow",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -955,9 +1034,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
+      "audit-history",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -966,9 +1046,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
+      "audit-history",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -977,9 +1058,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
+      "audit-history",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -988,9 +1070,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "live-narrative-tester",
+      "audit-history",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -999,56 +1082,56 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
-      "critical",
+      "audit-history",
+      "low",
       "rbac",
       "security"
     ]
   },
   {
     "testCaseId": "KM-TC-092",
-    "automationLayer": "UI",
+    "automationLayer": "API + UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
-      "critical",
+      "screening-engine-behaviour",
+      "high",
       "rbac",
       "security"
     ]
   },
   {
     "testCaseId": "KM-TC-093",
-    "automationLayer": "UI",
+    "automationLayer": "API + UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
-      "critical",
+      "screening-engine-behaviour",
+      "high",
       "rbac",
       "security"
     ]
   },
   {
     "testCaseId": "KM-TC-094",
-    "automationLayer": "UI",
+    "automationLayer": "API + UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
-      "critical",
+      "screening-engine-behaviour",
+      "high",
       "rbac",
       "security"
     ]
   },
   {
     "testCaseId": "KM-TC-095",
-    "automationLayer": "UI",
+    "automationLayer": "API + UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
-      "critical",
+      "screening-engine-behaviour",
+      "high",
       "rbac",
       "security"
     ]
@@ -1059,7 +1142,7 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
+      "access-control-rbac",
       "high",
       "rbac",
       "security"
@@ -1071,8 +1154,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
-      "critical",
+      "access-control-rbac",
+      "high",
       "rbac",
       "security"
     ]
@@ -1083,8 +1166,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "maker-checker-governance",
-      "critical",
+      "access-control-rbac",
+      "high",
       "rbac",
       "security"
     ]
@@ -1095,9 +1178,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "disable-keyword",
-      "high",
-      "functional"
+      "access-control-rbac",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1106,9 +1190,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "disable-keyword",
-      "critical",
-      "functional"
+      "access-control-rbac",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1117,9 +1202,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "disable-keyword",
-      "critical",
-      "functional"
+      "field-business-rule-validation",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1128,8 +1214,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "disable-keyword",
-      "critical",
+      "field-business-rule-validation",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1140,9 +1226,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "disable-keyword",
+      "field-business-rule-validation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1151,9 +1238,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "disable-keyword",
+      "field-business-rule-validation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1162,9 +1250,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "enable-keyword",
+      "field-business-rule-validation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1173,8 +1262,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "enable-keyword",
-      "critical",
+      "field-business-rule-validation",
+      "low",
       "rbac",
       "security"
     ]
@@ -1185,8 +1274,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
-      "high"
+      "regression-compatibility-uat",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1195,9 +1286,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
-      "critical",
-      "export"
+      "regression-compatibility-uat",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1206,9 +1298,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
-      "critical",
-      "error-handling"
+      "regression-compatibility-uat",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1217,9 +1310,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
+      "sample-keyword-validation",
       "high",
-      "export"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1228,9 +1322,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
-      "critical",
-      "functional"
+      "sample-keyword-validation",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1239,9 +1334,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
-      "critical",
-      "maker-checker"
+      "integration",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1250,9 +1346,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
+      "integration",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1261,8 +1358,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
-      "critical",
+      "performance",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1273,8 +1370,8 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
-      "critical",
+      "category-management-add-category",
+      "medium",
       "rbac",
       "security"
     ]
@@ -1285,9 +1382,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
+      "fuzzy-match-threshold-score",
       "high",
-      "export"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1296,9 +1394,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "bulk-import",
+      "fuzzy-match-threshold-score",
       "high",
-      "export"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1307,8 +1406,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "export",
-      "high"
+      "screening-fields-mapping",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1317,8 +1418,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "export",
-      "high"
+      "screening-fields-mapping",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1327,8 +1430,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "export",
-      "high"
+      "navigation-page-access",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1337,8 +1442,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "export",
-      "medium"
+      "maker-checker-workflow",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1347,8 +1454,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "export",
-      "high"
+      "regression-compatibility-uat",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1357,30 +1466,34 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "export",
-      "high"
+      "regression-compatibility-uat",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
     "testCaseId": "KM-TC-124",
-    "automationLayer": "API + UI",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "screening-engine",
-      "critical",
-      "functional"
+      "regression-compatibility-uat",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
     "testCaseId": "KM-TC-125",
-    "automationLayer": "API + UI",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "screening-engine",
-      "critical",
-      "functional"
+      "category-management-add-category",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1389,42 +1502,46 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "screening-engine",
-      "critical",
-      "functional"
+      "category-management-category-controls",
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
     "testCaseId": "KM-TC-127",
-    "automationLayer": "API + UI",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "screening-engine",
-      "high",
-      "functional"
+      "screening-fields-mapping",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
     "testCaseId": "KM-TC-128",
-    "automationLayer": "API + UI",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "screening-engine",
-      "high",
-      "functional"
+      "category-management-add-category",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
     "testCaseId": "KM-TC-129",
-    "automationLayer": "API + UI",
+    "automationLayer": "UI",
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "screening-engine",
-      "critical",
-      "functional"
+      "add-keyword",
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1433,783 +1550,10 @@
     "automationCandidate": "Yes",
     "reason": "Keyword Manager UI automation via Playwright page object",
     "tags": [
-      "screening-engine",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-131",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "workflow-states",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-132",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "workflow-states",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-133",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "workflow-states",
-      "high",
-      "maker-checker"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-134",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "workflow-states",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-135",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "workflow-states",
-      "high",
-      "maker-checker"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-136",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
+      "screening-engine-behaviour",
       "high",
       "rbac",
       "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-137",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-138",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-139",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-140",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-141",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-142",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-143",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "high",
-      "session"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-144",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "rbac-security",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-145",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-146",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-147",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-148",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-149",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-150",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-151",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-152",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-153",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "business-rules",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-154",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "screening-fields",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-155",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "screening-fields",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-156",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "screening-fields",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-157",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "screening-fields",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-158",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-159",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-160",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-161",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-162",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-163",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-164",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-165",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "ui-components",
-      "low",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-166",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-167",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-168",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-169",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium",
-      "error-handling"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-170",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "accessibility",
-      "medium",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-171",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "performance",
-      "high"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-172",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "performance",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-173",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "performance",
-      "high"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-174",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "performance",
-      "high",
-      "api"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-175",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "performance",
-      "medium",
-      "session"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-176",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "browser-compatibility",
-      "high",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-177",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "browser-compatibility",
-      "high",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-178",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "browser-compatibility",
-      "medium",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-179",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-180",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "high",
-      "maker-checker"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-181",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-182",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "high",
-      "maker-checker"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-183",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-184",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-185",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "medium",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-186",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-187",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "medium",
-      "browser-compat"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-188",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "negative-edge-cases",
-      "medium",
-      "session"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-189",
-    "automationLayer": "API + UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "integration",
-      "critical",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-190",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "integration",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-191",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "integration",
-      "critical",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-192",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "integration",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-193",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "sample-keyword-validation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-194",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "sample-keyword-validation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-195",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "sample-keyword-validation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-196",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "sample-keyword-validation",
-      "high",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-197",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "sample-keyword-validation",
-      "medium",
-      "functional"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-198",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "additional-coverage",
-      "medium",
-      "export"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-199",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "additional-coverage",
-      "high",
-      "rbac",
-      "security"
-    ]
-  },
-  {
-    "testCaseId": "KM-TC-200",
-    "automationLayer": "UI",
-    "automationCandidate": "Yes",
-    "reason": "Keyword Manager UI automation via Playwright page object",
-    "tags": [
-      "additional-coverage",
-      "medium",
-      "browser-compat"
     ]
   }
 ]

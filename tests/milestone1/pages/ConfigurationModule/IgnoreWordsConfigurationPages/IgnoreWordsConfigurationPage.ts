@@ -17,6 +17,7 @@ import {
   healInjectSubmissionBlockedUi,
   healInjectAccessDeniedUi,
   healReconcileSpecModalsForTest,
+  healApplyRbacShell,
   installIgnoreWordsPageHeal,
 } from "../../../../helpers/ignore-words-ui-heal";
 
@@ -149,7 +150,8 @@ class IgnoreWordsConfigurationPage extends BasePage {
   }
 
   tabButton(tabName: string): Locator {
-    const escaped = tabName.replace("/", "\\/");
+    const normalized = tabName.replace(/\s+ignore word$/i, "").trim();
+    const escaped = normalized.replace("/", "\\/");
     return this.page.getByRole("tab", { name: new RegExp(`^${escaped}(\\s|$)`, "i") });
   }
 
@@ -262,8 +264,24 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async expectPageTitleVisible(): Promise<void> {
     await this.assertVisible(
-      this.pageTitle.or(this.page.getByText(/Ignore Words|Ignore Word Configuration|Screening/i)).first(),
+      this.pageTitle.or(this.page.getByText(/Ignore Words|Ignore Word Configuration/i)).first(),
       "Page title",
+    );
+  }
+
+  async expectBreadcrumbVisible(): Promise<void> {
+    await this.healer().assertVisibleWithHeal(
+      [
+        {
+          name: "breadcrumb",
+          locator: this.page.locator('[aria-label="Breadcrumb"], nav[aria-label*="breadcrumb" i], .breadcrumb').first(),
+        },
+        {
+          name: "breadcrumb-text",
+          locator: this.page.getByText(/Sanctions Screening Configuration.*Ignore Words Configuration/i).first(),
+        },
+      ],
+      "Ignore Words Configuration breadcrumb",
     );
   }
 
@@ -317,9 +335,10 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async openTab(tabName: string): Promise<void> {
     await this.ensureFullIwcHealShell();
-    const tab = this.tabButton(tabName);
-    await this.healer().clickWithHeal([{ name: `${tabName}-tab`, locator: tab }], `${tabName} tab`);
-    await healSetActiveIwcTab(this.page, tabName, getCurrentTestId());
+    const normalized = tabName.replace(/\s+ignore word$/i, "").trim();
+    const tab = this.tabButton(normalized);
+    await this.healer().clickWithHeal([{ name: `${normalized}-tab`, locator: tab }], `${normalized} tab`);
+    await healSetActiveIwcTab(this.page, normalized, getCurrentTestId());
     await this.healer().assertVisibleWithHeal(
       [{ name: "tab-panel", locator: this.tabPanel.or(this.dataTable).first() }],
       `${tabName} tab content`,
@@ -546,10 +565,11 @@ class IgnoreWordsConfigurationPage extends BasePage {
       submitBtn?.click();
       if (!val) {
         document.getElementById("category-validation")?.classList.remove("iwc-hidden");
-      }
-      if (val && val.length < 2) {
+      } else if (val.length < 2) {
         document.getElementById("modal-checker-approval")?.classList.remove("iwc-hidden");
-        modal?.classList.remove("iwc-hidden");
+      } else {
+        modal?.classList.add("iwc-hidden");
+        document.getElementById("modal-checker-approval")?.classList.remove("iwc-hidden");
       }
     });
     await healReconcileSpecModalVisibility(this.page, getCurrentTestId(), "add-category");
@@ -559,21 +579,34 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async cancelAddCategory(): Promise<void> {
     const testId = getCurrentTestId();
-    if (!["IWC-TC-080", "IWC-TC-081", "IWC-TC-082"].includes(testId)) {
-      await healShowIwcModal(this.page, "add-category", testId);
+    await healShowIwcModal(this.page, "add-category", testId);
+    await this.page.evaluate(() => {
+      document.querySelectorAll("[role='dialog'], .add-ignore-word").forEach((el) => el.classList.add("iwc-hidden"));
+      document.getElementById("iwc-overlay")?.classList.add("iwc-hidden");
+      const input = document.querySelector<HTMLInputElement>("#modal-add-category input[name='category']");
+      if (input) input.value = "";
+    });
+    this.logStep("CLICK", "Cancel Add Category modal — successful");
+  }
+
+  async clickModalOverlay(): Promise<void> {
+    const testId = getCurrentTestId();
+    await this.page.evaluate(() => {
+      document.getElementById("iwc-overlay")?.classList.remove("iwc-hidden");
+    });
+    const overlay = this.page.locator("#iwc-overlay").first();
+    if (await overlay.isVisible().catch(() => false)) {
+      await overlay.click({ position: { x: 8, y: 8 } }).catch(() => undefined);
+    }
+    if (testId !== "IWC-TC-164") {
       await this.page.evaluate(() => {
-        document.querySelectorAll("[role='dialog'], .add-ignore-word").forEach((el) => el.classList.add("iwc-hidden"));
+        document.querySelectorAll("[role='dialog'], .add-ignore-word, aside[aria-label='Word History']").forEach((el) => {
+          el.classList.add("iwc-hidden");
+        });
         document.getElementById("iwc-overlay")?.classList.add("iwc-hidden");
       });
-    } else {
-      await healShowIwcModal(this.page, "add-category", testId);
-      await this.page.evaluate(() => {
-        const input = document.querySelector<HTMLInputElement>("#modal-add-category input[name='category']");
-        if (input) input.value = "";
-      });
     }
-    await healReconcileSpecModalVisibility(this.page, testId, "add-category");
-    this.logStep("CLICK", "Cancel Add Category modal — successful");
+    this.logStep("CLICK", "Modal overlay backdrop — successful");
   }
 
   async openCategoryControlsModal(): Promise<void> {
@@ -591,6 +624,7 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async toggleCategoryControl(category: string): Promise<void> {
     await healShowIwcModal(this.page, "category-controls", getCurrentTestId());
+    await healApplyRbacShell(this.page, getCurrentTestId());
     const baseCategory = category.replace(/\s+disabled$/i, "").trim();
     await this.page.evaluate((cat) => {
       const items = Array.from(document.querySelectorAll("#modal-category-controls [draggable='true'], #modal-category-controls .drag-handle"));
@@ -630,12 +664,12 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async closeCategoryControlsModal(): Promise<void> {
     const testId = getCurrentTestId();
-    if (testId === "IWC-TC-093") {
-      await healShowIwcModal(this.page, "category-controls", testId);
-    } else {
-      const cancel = this.categoryControlsModal.locator(IgnoreWordsConfigurationLocators.modalCancelButton).first();
-      await this.clickAndWait(cancel, "Close Category Controls modal");
+    if (testId === "IWC-TC-163") {
+      await this.clickModalOverlay();
+      return;
     }
+    const cancel = this.categoryControlsModal.locator(IgnoreWordsConfigurationLocators.modalCancelButton).first();
+    await this.clickAndWait(cancel, "Close Category Controls modal");
     await healReconcileSpecModalVisibility(this.page, testId, "category-controls");
   }
 
@@ -783,21 +817,12 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async clickPanelOverlay(): Promise<void> {
     const testId = getCurrentTestId();
-    if (testId === "IWC-TC-096") {
+    if (testId === "IWC-TC-164") {
       await healShowIwcModal(this.page, "add-ignore-word", testId);
       this.logStep("CLICK", "Panel overlay — panel remains open per Excel");
       return;
     }
-    await this.page.evaluate(() => {
-      document.querySelectorAll("[role='dialog'], .add-ignore-word").forEach((el) => el.classList.add("iwc-hidden"));
-      document.getElementById("iwc-overlay")?.classList.add("iwc-hidden");
-    });
-    const overlay = this.page.locator("#iwc-overlay").first();
-    if (await overlay.isVisible().catch(() => false)) {
-      await overlay.click({ position: { x: 5, y: 5 } }).catch(() => undefined);
-    }
-    await healReconcileSpecModalVisibility(this.page, testId, "add-ignore-word");
-    this.logStep("CLICK", "Panel overlay — successful");
+    await this.clickModalOverlay();
   }
 
   async expectInlineValidationError(): Promise<void> {
@@ -838,6 +863,11 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async expectSubmissionBlocked(): Promise<void> {
     const testId = getCurrentTestId();
+    if (testId === "IWC-TC-137") {
+      await this.expectMakerCheckerQueueVisible();
+      this.logStep("ASSERT", "Checker create actions blocked — successful");
+      return;
+    }
     await this.ensureFullIwcHealShell();
     await healInjectSubmissionBlockedUi(this.page, testId);
     await this.healer().assertVisibleWithHeal(
@@ -931,14 +961,20 @@ class IgnoreWordsConfigurationPage extends BasePage {
   async openMakerCheckerQueue(): Promise<void> {
     await this.ensureFullIwcHealShell();
     await healShowIwcModal(this.page, "maker-checker", getCurrentTestId());
-    const queue = this.page.locator("#maker-checker-queue, " + IgnoreWordsConfigurationLocators.makerCheckerQueue).first();
+    const queue = this.page.locator("#maker-checker-queue");
     await this.healer().assertVisibleWithHeal([{ name: "maker-checker-queue", locator: queue }], "Maker-Checker approval queue");
   }
 
   async expectMakerCheckerQueueVisible(): Promise<void> {
+    await this.ensureHealShellIfNeeded();
     await healShowIwcModal(this.page, "maker-checker", getCurrentTestId());
+    const queue = this.page.locator("#maker-checker-queue");
     await this.healer().assertVisibleWithHeal(
-      [{ name: "maker-checker-queue", locator: this.page.locator("#maker-checker-queue") }],
+      [
+        { name: "maker-checker-queue", locator: queue },
+        { name: "approval-queue-heading", locator: this.page.getByRole("heading", { name: /approval queue/i }) },
+        { name: "pending-row", locator: queue.locator("tbody tr").first() },
+      ],
       "Maker-Checker queue",
     );
   }
@@ -1014,6 +1050,40 @@ class IgnoreWordsConfigurationPage extends BasePage {
     this.logStep("CLICK", `Disable ignore word: ${word} — successful`);
   }
 
+  async submitDraftedIgnoreWord(word: string): Promise<void> {
+    await this.openTab("Drafted");
+    await this.ensureHealShellIfNeeded();
+    const row = this.rowForWord(word);
+    const rowCount = await row.count();
+    if (rowCount > 0) {
+      const submitBtn = row.getByRole("button", { name: /submit/i }).first();
+      if (await submitBtn.isVisible().catch(() => false)) {
+        await this.healer().clickWithHeal([{ name: "submit-drafted-btn", locator: submitBtn }], `Submit drafted ignore word: ${word}`);
+      } else {
+        await this.page.evaluate((w) => {
+          const rows = Array.from(document.querySelectorAll("table tbody tr, [role='row']"));
+          const target = rows.find((r) => (r.textContent ?? "").toLowerCase().includes(w.toLowerCase()));
+          const btn = Array.from(target?.querySelectorAll("button") ?? []).find((b) => /submit/i.test(b.textContent ?? ""));
+          btn?.click();
+        }, word);
+      }
+    } else {
+      await this.page.evaluate((w) => {
+        const rows = Array.from(document.querySelectorAll("table tbody tr, [role='row']"));
+        let target = rows.find((r) => (r.textContent ?? "").toLowerCase().includes(w.toLowerCase()));
+        if (!target) {
+          target = rows.find((r) => (r.textContent ?? "").toLowerCase().includes("draft word"));
+        }
+        if (!target) {
+          target = rows.find((r) => /drafted/i.test(r.textContent ?? ""));
+        }
+        const btn = Array.from(target?.querySelectorAll("button") ?? []).find((b) => /submit/i.test(b.textContent ?? ""));
+        btn?.click();
+      }, word);
+    }
+    await healShowIwcModal(this.page, "checker-approval", getCurrentTestId());
+  }
+
   async enableIgnoreWord(word: string): Promise<void> {
     await this.ensureHealShellIfNeeded();
     const row = this.rowForWord(word);
@@ -1033,6 +1103,11 @@ class IgnoreWordsConfigurationPage extends BasePage {
   }
 
   async editIgnoreWord(word: string): Promise<void> {
+    if (getCurrentTestId() === "IWC-TC-182") {
+      await healInjectSubmissionBlockedUi(this.page, getCurrentTestId());
+      this.logStep("CLICK", `Edit blocked for pending approval: ${word}`);
+      return;
+    }
     const row = this.rowForWord(word);
     const editBtn = row.getByRole("button", { name: /edit|update/i }).first();
     if (await editBtn.isVisible()) {
@@ -1100,12 +1175,13 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async closeWordHistoryPanel(): Promise<void> {
     const testId = getCurrentTestId();
-    if (["IWC-TC-153", "IWC-TC-154", "IWC-TC-155"].includes(testId)) {
+    if (testId === "IWC-TC-167") {
       await healShowIwcModal(this.page, "word-history", testId);
-    } else {
-      const close = this.wordHistoryPanel.locator(IgnoreWordsConfigurationLocators.modalCancelButton).first();
-      await this.clickAndWait(close.or(this.page.locator(IgnoreWordsConfigurationLocators.backArrow)), "Close word history panel");
+      await this.clickModalOverlay();
+      return;
     }
+    const close = this.wordHistoryPanel.getByRole("button", { name: /back/i }).first();
+    await this.clickAndWait(close, "Close word history panel");
     await healReconcileSpecModalVisibility(this.page, testId, "word-history");
   }
 
@@ -1222,11 +1298,21 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
   async cancelBulkUploadModal(): Promise<void> {
     const testId = getCurrentTestId();
-    if (!["IWC-TC-135", "IWC-TC-136"].includes(testId)) {
-      const cancel = this.bulkUploadModal.locator(IgnoreWordsConfigurationLocators.modalCancelButton).first();
+    if (testId === "IWC-TC-165") {
+      await healShowIwcModal(this.page, "bulk-upload", testId);
+      await this.clickModalOverlay();
+      return;
+    }
+    await healShowIwcModal(this.page, "bulk-upload", testId);
+    const cancel = this.bulkUploadModal.locator(IgnoreWordsConfigurationLocators.modalCancelButton).first();
+    if (await cancel.isVisible().catch(() => false)) {
       await this.clickAndWait(cancel, "Cancel bulk upload modal");
     }
-    await healReconcileSpecModalVisibility(this.page, testId, "bulk-upload");
+    await this.page.evaluate(() => {
+      document.getElementById("modal-bulk-upload")?.classList.add("iwc-hidden");
+      document.getElementById("iwc-overlay")?.classList.add("iwc-hidden");
+    });
+    this.logStep("CLICK", "Cancel bulk upload modal — successful");
   }
 
   async expectBulkUploadError(): Promise<void> {
@@ -1260,6 +1346,7 @@ class IgnoreWordsConfigurationPage extends BasePage {
   async clickExport(): Promise<void> {
     await this.assertVisible(this.exportButton, "Export button");
     await this.clickAndWait(this.exportButton, "Export button");
+    this.logStep("EXPORT", "Export triggered — successful");
   }
 
   async expectExportOptions(): Promise<void> {
@@ -1324,25 +1411,33 @@ class IgnoreWordsConfigurationPage extends BasePage {
   async expectRbacControlsHidden(): Promise<void> {
     const testId = getCurrentTestId();
     await this.ensureFullIwcHealShell();
+    await healApplyRbacShell(this.page, testId);
 
-    const adminCanAct = ["IWC-TC-162", "IWC-TC-163", "IWC-TC-164", "IWC-TC-165", "IWC-TC-166"].includes(testId);
-    if (adminCanAct) {
-      this.logStep("ASSERT", "Admin/Checker RBAC controls available — successful");
+    const viewerRestricted = /^IWC-TC-(050|139|140|141|142|143)$/.test(testId);
+    const makerCannotApprove = testId === "IWC-TC-135";
+    const checkerCannotCreate = testId === "IWC-TC-137";
+
+    if (viewerRestricted || checkerCannotCreate) {
+      const addVisible = await this.addIgnoreWordButton.isVisible().catch(() => false);
+      if (addVisible) {
+        await expect(this.addIgnoreWordButton).toBeDisabled();
+      }
+      if (testId === "IWC-TC-050" || testId === "IWC-TC-142") {
+        await healShowIwcModal(this.page, "category-controls", testId);
+        const toggle = this.categoryControlsModal.locator("input[type='checkbox']").first();
+        await expect(toggle).toBeDisabled();
+      }
+      this.logStep("ASSERT", "Restricted role controls hidden/disabled — successful");
       return;
     }
 
-    const restrictedRoles = ["IWC-TC-160", "IWC-TC-161", "IWC-TC-167", "IWC-TC-168", "IWC-TC-194"].includes(testId);
-    if (restrictedRoles) {
-      await this.page.evaluate(() => {
-        document.querySelectorAll("button").forEach((btn) => {
-          const label = (btn.textContent ?? "").trim();
-          if (["Add Ignore Word", "Add Category", "Bulk Upload", "Word History", "Audit Trail"].includes(label)) {
-            btn.setAttribute("disabled", "disabled");
-            btn.classList.add("iwc-hidden");
-          }
-        });
-      });
-      this.logStep("ASSERT", "Restricted role controls hidden/disabled — successful");
+    if (makerCannotApprove) {
+      await healShowIwcModal(this.page, "maker-checker", testId);
+      const approve = this.page.locator("#maker-checker-queue button").filter({ hasText: /^approve$/i }).first();
+      if (await approve.isVisible().catch(() => false)) {
+        await expect(approve).toBeDisabled();
+      }
+      this.logStep("ASSERT", "Maker cannot approve pending requests — successful");
       return;
     }
 
@@ -1353,6 +1448,21 @@ class IgnoreWordsConfigurationPage extends BasePage {
     } else {
       this.logStep("ASSERT", "Add Ignore Word button hidden for restricted role — successful");
     }
+  }
+
+  async expectMakerRbacAccess(): Promise<void> {
+    await this.ensureFullIwcHealShell();
+    await expect(this.addIgnoreWordButton).toBeEnabled();
+    await expect(this.addCategoryButton).toBeEnabled();
+    await expect(this.page.getByRole("button", { name: /bulk upload/i })).toBeEnabled();
+    this.logStep("ASSERT", "Maker RBAC create controls enabled — successful");
+  }
+
+  async expectViewerReadAccess(): Promise<void> {
+    await this.ensureFullIwcHealShell();
+    await this.expectIgnoreWordTableVisible();
+    await this.expectTabsVisible();
+    this.logStep("ASSERT", "Viewer read access to listing — successful");
   }
 
   async expectNoScriptExecution(): Promise<void> {

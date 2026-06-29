@@ -7,7 +7,7 @@ Generated from `pipeline/test-data/Exception List Manager.xlsx` — 279 requirem
 | Property | Value |
 | --- | --- |
 | File | `pipeline/test-data/Exception List Manager.xlsx` |
-| Sheet | `Sheet1` |
+| Sheet | `Exception List Manager` |
 | Total requirements | 279 |
 | ID prefixes | ATL(30), EEM(47), ELM(30), ERR(30), EVAL(41), MCW(30), NFR(8), NTF(19), RBAC(16), RCE(28) |
 | Route | `/configuration/exception-lists` |
@@ -28,12 +28,12 @@ Generated from `pipeline/test-data/Exception List Manager.xlsx` — 279 requirem
 | Audit Trail | Event Logging & Retention | 1 | ATL-026–ATL-026 |
 | Audit Trail | Search & Filters | 1 | ATL-027–ATL-027 |
 | Audit Trail | Auditor Access Control | 1 | ATL-028–ATL-028 |
-| Audit Trail | Access Control | 2 | ATL-029–ATL-030 |
+| Audit Trail | Access Control | 3 | ATL-029–ATL-031 |
 | Exception Entry Management | Data Model & Field Validation | 7 | EEM-001–EEM-042 |
 | Exception Entry Management | Add Entry | 16 | EEM-003–EEM-044 |
 | Exception Entry Management | Edit Entry | 4 | EEM-007–EEM-034 |
 | Exception Entry Management | Suspend / Delete Entry | 4 | EEM-010–EEM-040 |
-| Exception Entry Management | TTL & Entry Renewal | 5 | EEM-012–EEM-031 |
+| Exception Entry Management | TTL & Entry Renewal | 4 | EEM-012–EEM-031 |
 | Exception Entry Management | Bulk Upload | 5 | EEM-015–EEM-045 |
 | Exception Entry Management | API Synchronisation | 6 | EEM-017–EEM-047 |
 | Exception List Management | Landing Page | 11 | ELM-001–ELM-030 |
@@ -93,7 +93,7 @@ Generated from `pipeline/test-data/Exception List Manager.xlsx` — 279 requirem
 | Modules | 10 |
 | Automation candidates | 279 |
 | Manual-only scenarios | 0 |
-| Partial gaps (missing info) | 92 |
+| Partial gaps (missing info) | 172 |
 
 ## 3. Playwright POM Planning
 
@@ -103,43 +103,43 @@ Generated from `pipeline/test-data/Exception List Manager.xlsx` — 279 requirem
 
 ## 4. TODO List (from gap-matrix)
 
-- **ATL-007**: Maker-checker role login and queue seed data
-- **ATL-008**: Maker-checker role login and queue seed data
-- **ATL-012**: TTL expiry simulation clock or seeded expired entries
+- **ATL-001**: RBAC role switching mechanism (login fixture per role)
+- **ATL-002**: RBAC role switching mechanism (login fixture per role)
+- **ATL-003**: RBAC role switching mechanism (login fixture per role)
+- **ATL-004**: RBAC role switching mechanism (login fixture per role)
+- **ATL-005**: RBAC role switching mechanism (login fixture per role)
+- **ATL-006**: RBAC role switching mechanism (login fixture per role)
+- **ATL-007**: RBAC role switching mechanism (login fixture per role)
+- **ATL-008**: RBAC role switching mechanism (login fixture per role)
+- **ATL-009**: RBAC role switching mechanism (login fixture per role)
+- **ATL-010**: RBAC role switching mechanism (login fixture per role)
+- **ATL-011**: RBAC role switching mechanism (login fixture per role)
+- **ATL-012**: RBAC role switching mechanism (login fixture per role)
 - **ATL-013**: Bulk upload sample file paths and column mapping
 - **ATL-014**: Maker-checker role login and queue seed data
 - **ATL-015**: Exact API base URL and auth headers for contract tests
+- **ATL-016**: RBAC role switching mechanism (login fixture per role)
+- **ATL-018**: RBAC role switching mechanism (login fixture per role)
+- **ATL-019**: RBAC role switching mechanism (login fixture per role)
+- **ATL-020**: RBAC role switching mechanism (login fixture per role)
+- **ATL-021**: RBAC role switching mechanism (login fixture per role)
+- **ATL-022**: RBAC role switching mechanism (login fixture per role)
 - **ATL-023**: RBAC role switching mechanism (login fixture per role)
+- **ATL-024**: RBAC role switching mechanism (login fixture per role)
+- **ATL-026**: RBAC role switching mechanism (login fixture per role)
 - **ATL-028**: RBAC role switching mechanism (login fixture per role)
 - **ATL-029**: RBAC role switching mechanism (login fixture per role)
 - **ATL-030**: RBAC role switching mechanism (login fixture per role)
+- **ATL-031**: RBAC role switching mechanism (login fixture per role)
 - **EEM-002**: Fuzzy matching and multilingual test corpus not defined in Excel
 - **EEM-003**: Maker-checker role login and queue seed data
 - **EEM-009**: Maker-checker role login and queue seed data
 - **EEM-012**: RBAC role switching mechanism (login fixture per role)
 - **EEM-013**: TTL expiry simulation clock or seeded expired entries
+- **EEM-014**: RBAC role switching mechanism (login fixture per role)
 - **EEM-017**: Exact API base URL and auth headers for contract tests
 - **EEM-018**: Exact API base URL and auth headers for contract tests
+- **EEM-019**: Maker-checker role login and queue seed data
 - **EEM-023**: Maker-checker role login and queue seed data
 - **EEM-027**: RBAC role switching mechanism (login fixture per role)
 - **EEM-028**: RBAC role switching mechanism (login fixture per role)
-- **EEM-029**: Maker-checker role login and queue seed data
-- **EEM-036**: Exact API base URL and auth headers for contract tests
-- **EEM-037**: Exact API base URL and auth headers for contract tests
-- **EEM-046**: Exact API base URL and auth headers for contract tests
-- **EEM-047**: Exact API base URL and auth headers for contract tests
-- **ELM-010**: Maker-checker role login and queue seed data
-- **ELM-012**: Maker-checker role login and queue seed data
-- **ELM-015**: Maker-checker role login and queue seed data
-- **ELM-023**: Performance or SLA thresholds and measurement tooling
-- **ELM-024**: Maker-checker role login and queue seed data
-- **ELM-025**: RBAC role switching mechanism (login fixture per role)
-- **ELM-027**: RBAC role switching mechanism (login fixture per role)
-- **ELM-030**: Maker-checker role login and queue seed data
-- **ERR-005**: Performance or SLA thresholds and measurement tooling
-- **ERR-023**: Performance or SLA thresholds and measurement tooling
-- **ERR-030**: Maker-checker role login and queue seed data
-- **EVAL-012**: Performance or SLA thresholds and measurement tooling
-- **EVAL-013**: Performance or SLA thresholds and measurement tooling
-- **EVAL-014**: Performance or SLA thresholds and measurement tooling
-- **EVAL-015**: Performance or SLA thresholds and measurement tooling
