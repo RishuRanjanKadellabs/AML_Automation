@@ -39,24 +39,35 @@ function isValidElmId(id: string): boolean {
   return VALID_ID_PREFIXES.includes(prefix);
 }
 
+function pickCell(row: Record<string, string>, ...keys: string[]): string {
+  for (const key of keys) {
+    const value = cellString(row[key]);
+    if (value) return value;
+  }
+  return "";
+}
+
 export function loadElmRows(): ElmExcelRow[] {
   const wb = XLSX.readFile(ELM_EXCEL_PATH);
-  const sheet = wb.Sheets.Sheet1 ?? wb.Sheets[wb.SheetNames[0]];
+  const sheet =
+    wb.Sheets["Exception List Manager"]
+    ?? wb.Sheets.Sheet1
+    ?? wb.Sheets[wb.SheetNames[0]];
   const raw = XLSX.utils.sheet_to_json<Record<string, string>>(sheet);
   const seen = new Set<string>();
 
   return raw
-    .filter((r) => isValidElmId(cellString(r["Test ID"])))
+    .filter((r) => isValidElmId(pickCell(r, "Test Case ID", "Test ID")))
     .map((r) => ({
-      id: cellString(r["Test ID"]),
+      id: pickCell(r, "Test Case ID", "Test ID"),
       module: cellString(r.Module),
-      subModule: cellString(r["Sub-Module"]),
-      taskDescription: normalizeTaskDescription(cellString(r["Test Description"])),
-      preconditions: cellString(r["Pre-Condition"]),
+      subModule: pickCell(r, "Sub Module", "Sub-Module"),
+      taskDescription: normalizeTaskDescription(pickCell(r, "Task Description", "Test Description")),
+      preconditions: pickCell(r, "Preconditions", "Pre-Condition"),
       testSteps: cellString(r["Test Steps"]),
       testData: cellString(r["Test Data"]),
       priority: cellString(r.Priority),
-      expectedResult: cellString(r["Expected Results"]),
+      expectedResult: pickCell(r, "Expected Result", "Expected Results"),
     }))
     .filter((row) => {
       if (seen.has(row.id)) return false;

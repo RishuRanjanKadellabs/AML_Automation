@@ -1,0 +1,1811 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+/* ── Reset & base ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;font-family:'Inter',system-ui,-apple-system,sans-serif;font-size:14px;color:#161616;background:#f8fafc;overflow:hidden}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+button,input,select,textarea{font-family:inherit}
+svg{display:block;flex-shrink:0}
+
+/* ── Shell ── */
+.shell{display:flex;height:100vh;overflow:hidden}
+
+/* ══════════════════════════════
+   SIDEBAR
+══════════════════════════════ */
+.sb{
+  width:240px;min-width:240px;
+  background:#fff;border-right:1px solid #e5e7eb;
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.sb-brand{
+  height:54px;flex-shrink:0;border-bottom:1px solid #e5e7eb;
+  display:flex;align-items:center;padding:0 16px;gap:0;
+}
+.sb-brand-logo{flex:1;display:flex;justify-content:center;align-items:center;padding-right:6px}
+.logo{
+  font-size:18px;font-weight:800;color:#2A53A0;letter-spacing:-.5px;
+  /* hide old box logo entirely */
+  background:none;border-radius:0;width:auto;height:auto;
+}
+.sb-brand-div{width:1px;height:24px;background:#e5e7eb;flex-shrink:0}
+.sb-brand-inst{flex:1;display:flex;justify-content:center;align-items:center;padding-left:8px}
+.sb-brand-inst-icon{width:28px;height:28px;background:#dbeafe;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.sb-t{display:none} /* hide old text labels */
+.sb-s{display:none}
+
+/* Sidebar search */
+.sb-search{padding:12px 14px;border-bottom:1px solid #e5e7eb}
+.sb-search-inner{position:relative}
+.sb-search-inner svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#9ca3af;pointer-events:none}
+.sb-search-inner input{
+  width:100%;height:40px;padding:0 12px 0 32px;
+  border:1px solid #e5e7eb;border-radius:8px;
+  font-size:13px;color:#374151;background:#fff;outline:none;
+}
+.sb-search-inner input::placeholder{color:#9ca3af}
+.sb-search-inner input:focus{border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.1)}
+
+/* Nav */
+.sb-nav{flex:1;overflow-y:auto;padding:8px 0}
+.sb-nav::-webkit-scrollbar{width:3px}
+.sb-nav::-webkit-scrollbar-thumb{background:#e5e7eb;border-radius:2px}
+.nav-s{
+  font-size:10px;font-weight:600;color:#9ca3af;
+  text-transform:uppercase;letter-spacing:.06em;
+  padding:12px 16px 4px;
+}
+.ni{
+  display:flex;align-items:center;gap:9px;
+  padding:9px 16px;cursor:pointer;
+  font-size:14px;font-weight:400;color:#374151;
+  margin:1px 0;transition:all .12s;border-radius:0;
+}
+.ni:hover{background:#f3f4f6;color:#111827}
+.ni.active{
+  background:#EAF2FF;color:#2A53A0;font-weight:500;
+  border-left:3px solid #2A53A0;padding-left:13px;
+}
+.nb{
+  margin-left:auto;background:#fee2e2;color:#dc2626;
+  font-size:10px;font-weight:600;padding:1px 7px;border-radius:10px;
+}
+
+/* User area at bottom */
+.sb-user{
+  padding:12px 16px;border-top:1px solid #e5e7eb;
+  display:flex;align-items:center;gap:10px;flex-shrink:0;
+}
+.ua{
+  width:30px;height:30px;border-radius:50%;
+  background:linear-gradient(135deg,#2A53A0,#4A7BD0);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;color:#fff;flex-shrink:0;
+}
+.un{font-size:13px;font-weight:500;color:#111827;line-height:1.3}
+.ur{font-size:11px;color:#6b7280}
+
+/* ══════════════════════════════
+   MAIN AREA
+══════════════════════════════ */
+.main{flex:1;display:flex;flex-direction:column;overflow:hidden;background:#f8fafc;min-width:0}
+
+/* Top bar */
+.topbar{
+  height:54px;flex-shrink:0;
+  background:#fff;border-bottom:1px solid #e5e7eb;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 20px;z-index:20;
+}
+.bc{font-size:13px;color:#6b7280}
+.bc span{color:#2A53A0;cursor:pointer;font-weight:500}
+.bc span:hover{text-decoration:underline}
+.tbr{display:flex;align-items:center;gap:8px;position:relative}
+.nib{
+  width:34px;height:34px;border-radius:8px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#6b7280;transition:all .12s;position:relative;
+}
+.nib:hover{background:#f3f4f6;color:#2A53A0}
+.ndot{
+  position:absolute;top:6px;right:6px;
+  width:7px;height:7px;border-radius:50%;
+  background:#ef4444;border:1.5px solid #fff;
+}
+.np{
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  width:320px;position:absolute;right:0;top:42px;z-index:100;
+  display:none;box-shadow:0 8px 24px rgba(0,0,0,.1);
+}
+.np.open{display:block}
+.nph{
+  padding:12px 14px;border-bottom:1px solid #e5e7eb;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:13px;font-weight:600;color:#111827;
+}
+.npc{font-size:12px;color:#2A53A0;cursor:pointer;font-weight:400}
+.npc:hover{text-decoration:underline}
+.npi{padding:10px 14px;border-bottom:1px solid #f3f4f6;cursor:pointer;font-size:13px}
+.npi:last-child{border-bottom:none}
+.npi:hover{background:#f9fafb}
+.npi.unread{background:#EAF2FF}
+.npm{color:#111827;line-height:1.45;font-weight:400}
+.npt{color:#9ca3af;margin-top:2px;font-size:11px}
+
+/* ── Scrollable content wrapper ── */
+.content{flex:1;overflow-y:auto;padding:20px}
+.content::-webkit-scrollbar{width:5px}
+.content::-webkit-scrollbar-thumb{background:#d1d5db;border-radius:3px}
+
+/* ── View switching ── */
+.view{display:none}
+.view.active{display:block}
+
+/* ── Page header ── */
+.ph{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.ph-t{font-size:18px;font-weight:600;color:#111827;letter-spacing:-.3px}
+.ph-d{font-size:13px;color:#6b7280;margin-top:3px}
+.ph-a{display:flex;gap:8px;align-items:center;flex-shrink:0}
+
+/* ── Buttons ── */
+.btn{
+  padding:8px 14px;border-radius:8px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;font-size:13px;font-weight:500;color:#374151;
+  display:inline-flex;align-items:center;gap:6px;font-family:inherit;
+  white-space:nowrap;transition:all .12s;
+}
+.btn:hover{background:#f9fafb;border-color:#d1d5db}
+.btn-p{background:#2A53A0;color:#fff;border-color:#2A53A0}
+.btn-p:hover{background:#1e3a70;border-color:#1e3a70}
+.btn-sm{padding:6px 12px;font-size:12px}
+.btn-d{background:#fff;color:#dc2626;border-color:#fecaca}
+.btn-d:hover{background:#fee2e2}
+.btn-w{background:#fff;color:#d97706;border-color:#fde68a}
+.btn-w:hover{background:#fef3c7}
+
+/* ── Stats strip ── */
+.stats{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;margin-bottom:18px;
+}
+.stat{
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  padding:14px 16px;box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+.sl{font-size:11px;font-weight:600;color:#9ca3af;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.sv{font-size:22px;font-weight:700;line-height:1}
+.vb{color:#2A53A0}.vg{color:#16a34a}.va{color:#d97706}.vr{color:#dc2626}
+
+/* ── List status tabs ── */
+.ltabs{
+  display:flex;border-bottom:1px solid #e5e7eb;
+  margin-bottom:16px;background:#fff;
+}
+.ltab{
+  padding:10px 18px;font-size:13px;font-weight:500;color:#6b7280;
+  cursor:pointer;border-bottom:2px solid transparent;
+  margin-bottom:-1px;transition:all .15s;white-space:nowrap;
+}
+.ltab:hover{color:#111827}
+.ltab.active{color:#2A53A0;border-bottom-color:#2A53A0;font-weight:600}
+.ltab-badge{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:18px;height:16px;padding:0 5px;border-radius:10px;
+  font-size:10px;font-weight:700;background:#EAF2FF;color:#2A53A0;margin-left:5px;
+}
+
+
+/* ── Cards ── */
+.card{
+  background:#fff;border:1px solid #e5e7eb;
+  border-radius:10px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+}
+
+/* ── Table toolbar ── */
+.tbr2{
+  display:flex;gap:8px;align-items:center;
+  padding:10px 14px;border-bottom:1px solid #e5e7eb;flex-wrap:wrap;
+  background:#fff;
+}
+.sw{position:relative;flex:1;min-width:170px}
+.sw input{
+  width:100%;padding:7px 10px 7px 30px;
+  border:1px solid #e5e7eb;border-radius:8px;
+  font-size:13px;background:#fff;font-family:inherit;color:#374151;outline:none;
+}
+.sw input:focus{border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.1)}
+.sw input::placeholder{color:#9ca3af}
+.si{position:absolute;left:9px;top:50%;transform:translateY(-50%);color:#9ca3af;font-size:12px}
+.fsel{
+  padding:6px 10px;border:1px solid #e5e7eb;border-radius:8px;
+  font-size:12px;background:#fff;font-family:inherit;
+  cursor:pointer;color:#374151;outline:none;
+}
+.fsel:focus{border-color:#2A53A0}
+
+/* ── Tables ── */
+table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+thead{background:#F0F0F0}
+th{
+  padding:10px 14px;text-align:left;font-weight:600;font-size:12px;
+  color:#2A53A0;border-bottom:1px solid #e5e7eb;white-space:nowrap;
+  letter-spacing:.01em;
+}
+td{
+  padding:10px 14px;border-bottom:1px solid #f3f4f6;
+  vertical-align:middle;color:#374151;
+}
+tr:last-child td{border-bottom:none}
+tbody tr:hover td{background:#f9fafb}
+
+/* ── Badges ── */
+.b{
+  display:inline-flex;align-items:center;
+  padding:3px 10px;border-radius:20px;
+  font-size:11px;font-weight:600;white-space:nowrap;
+}
+.b-ac{background:#dcfce7;color:#16a34a}
+.b-di{background:#f3f4f6;color:#6b7280}
+.b-pe{background:#fef3c7;color:#d97706}
+.b-de{background:#fee2e2;color:#dc2626}
+.b-ex{background:#f3f4f6;color:#6b7280}
+.b-ap{background:#dcfce7;color:#16a34a}
+.b-rj{background:#fee2e2;color:#dc2626}
+.b-bl{background:#fee2e2;color:#dc2626;border:1px solid #fecaca}
+.b-al{background:#fef3c7;color:#d97706;border:1px solid #fde68a}
+.b-in{background:#dbeafe;color:#2A53A0}
+
+/* ── Action icons ── */
+.ract{display:flex;gap:5px}
+.ib{
+  width:28px;height:28px;border-radius:6px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:#6b7280;transition:all .12s;
+}
+.ib:hover{background:#eff6ff;color:#2A53A0;border-color:#bfdbfe}
+.ib.dl:hover{color:#dc2626;border-color:#fecaca;background:#fee2e2}
+
+/* ── Pagination ── */
+.pager{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:10px 14px;border-top:1px solid #e5e7eb;background:#fafafa;
+}
+.pi{font-size:12px;color:#6b7280}
+.pbtns{display:flex;gap:4px}
+.pb{
+  width:28px;height:28px;border-radius:6px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;font-size:12px;font-weight:500;
+  display:flex;align-items:center;justify-content:center;color:#374151;
+  transition:all .12s;
+}
+.pb.active{background:#2A53A0;color:#fff;border-color:#2A53A0}
+.pb:hover:not(.active){background:#eff6ff;border-color:#bfdbfe;color:#2A53A0}
+
+/* ── Metadata grid ── */
+.mg{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  border:1px solid #e5e7eb;border-radius:10px;overflow:hidden;
+  margin-bottom:18px;background:#fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.04);
+}
+.mi{padding:13px 16px;border-right:1px solid #e5e7eb;border-bottom:1px solid #e5e7eb}
+.mi:nth-child(3n){border-right:none}
+.mi:nth-last-child(-n+3){border-bottom:none}
+.ml{font-size:10px;color:#9ca3af;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.mv{font-size:13px;font-weight:600;color:#111827}
+.mv.sm{font-weight:400;color:#374151;font-size:13px}
+
+/* ── Section header ── */
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.st{font-size:12px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:.05em}
+
+/* ── Inline panels ── */
+.pw{display:none}.pw.open{display:block}
+.panel{
+  background:#fff;border:1px solid #e5e7eb;border-radius:10px;
+  margin-bottom:16px;overflow:hidden;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+}
+.pnh{
+  padding:14px 16px;border-bottom:1px solid #e5e7eb;
+  display:flex;align-items:center;justify-content:space-between;
+  background:#fafafa;
+}
+.pnh h3{font-size:14px;font-weight:600;color:#111827}
+.pnb{padding:16px}
+.pnf{
+  padding:12px 16px;border-top:1px solid #e5e7eb;
+  display:flex;justify-content:flex-end;gap:8px;background:#f9fafb;
+}
+
+/* ── Form rows / groups ── */
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.fr.c3{grid-template-columns:1fr 1fr 1fr}
+.fr.c1{grid-template-columns:1fr}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg label{font-size:11px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em}
+.fg input,.fg select,.fg textarea{
+  padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px;
+  font-size:13px;background:#fff;font-family:inherit;color:#111827;outline:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{
+  border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.09);
+}
+.fg textarea{resize:vertical;min-height:60px}
+.req{color:#ef4444}
+.fgt{
+  font-size:11px;font-weight:700;color:#2A53A0;
+  text-transform:uppercase;letter-spacing:.05em;
+  margin:14px 0 9px;padding-bottom:6px;border-bottom:1px solid #e5e7eb;
+}
+
+/* ── Toggles ── */
+.trow{display:flex;align-items:center;gap:10px;font-size:13px;color:#374151;margin-bottom:10px}
+.tgl{
+  width:34px;height:18px;background:#d1d5db;border-radius:9px;
+  cursor:pointer;position:relative;flex-shrink:0;transition:background .15s;
+}
+.tgl.on{background:#2A53A0}
+.tgl::after{
+  content:'';position:absolute;width:14px;height:14px;
+  border-radius:50%;background:#fff;top:2px;left:2px;
+  transition:left .15s;box-shadow:0 1px 2px rgba(0,0,0,.2);
+}
+.tgl.on::after{left:18px}
+
+
+
+/* ── Inline modals (.mov) ── */
+.mov{
+  display:none;background:rgba(0,0,0,.35);border-radius:10px;
+  align-items:center;justify-content:center;padding:20px;margin-bottom:16px;
+}
+.mov.open{display:flex}
+.modal{
+  background:#fff;border-radius:12px;border:1px solid #e5e7eb;
+  width:500px;max-width:100%;
+  box-shadow:0 8px 30px rgba(0,0,0,.12);
+}
+.mh{
+  padding:14px 18px;border-bottom:1px solid #e5e7eb;
+  display:flex;justify-content:space-between;align-items:center;
+  background:#fafafa;border-radius:12px 12px 0 0;
+}
+.mh h3{font-size:15px;font-weight:600;color:#111827}
+.mc2{padding:16px 18px}
+.mf{
+  padding:12px 18px;border-top:1px solid #e5e7eb;
+  display:flex;justify-content:flex-end;gap:8px;background:#f9fafb;
+  border-radius:0 0 12px 12px;
+}
+
+/* ── History items ── */
+.hist-item{border:1px solid #e5e7eb;border-radius:8px;margin-bottom:9px;overflow:hidden}
+.hist-hdr{
+  padding:10px 14px;background:#fafafa;
+  display:flex;justify-content:space-between;align-items:center;cursor:pointer;
+}
+.hist-hdr:hover{background:#f3f4f6}
+.hist-body{padding:12px 14px;border-top:1px solid #e5e7eb;display:none}
+.hist-body.open{display:block}
+.hist-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.hf{font-size:12px}
+.hfl{color:#9ca3af;font-size:11px;margin-bottom:2px;font-weight:500;text-transform:uppercase;letter-spacing:.04em}
+.hfv{color:#111827;font-weight:500}
+
+code{background:#f3f4f6;padding:1px 6px;border-radius:4px;font-size:12px;font-family:monospace;color:#374151}
+
+/* ── Radio rows ── */
+.radio-row{display:flex;gap:18px;padding:6px 0}
+.radio-row label{display:flex;align-items:center;gap:7px;font-size:13px;cursor:pointer;color:#374151}
+.radio-row input[type=radio]{accent-color:#2A53A0}
+
+/* ── Table column widths ── */
+.w8{width:8%}.w9{width:9%}.w10{width:10%}.w11{width:11%}.w12{width:12%}
+.w13{width:13%}.w14{width:14%}.w15{width:15%}.w16{width:16%}
+.w18{width:18%}.w20{width:20%}.w22{width:22%}
+
+/* ── Action dropdown ── */
+.adrop-wrap{position:relative;display:inline-block}
+.adrop-btn{
+  width:30px;height:30px;border-radius:6px;border:1px solid #e5e7eb;
+  background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:16px;color:#6b7280;font-weight:700;letter-spacing:1px;line-height:1;
+  transition:all .12s;
+}
+.adrop-btn:hover{background:#f3f4f6;color:#2A53A0;border-color:#bfdbfe}
+.adrop-menu{
+  display:none;position:fixed;z-index:9999;background:#fff;
+  border:1px solid #e5e7eb;border-radius:10px;
+  box-shadow:0 8px 30px rgba(0,0,0,.13);min-width:178px;padding:5px;
+}
+.adrop-menu.open{display:block}
+.adrop-item{
+  display:flex;align-items:center;gap:9px;width:100%;
+  padding:9px 12px;border-radius:7px;font-size:13px;color:#374151;
+  background:none;border:none;cursor:pointer;text-align:left;
+  font-family:inherit;transition:background .1s;
+}
+.adrop-item:hover{background:#eff6ff;color:#2A53A0}
+.adrop-item.danger{color:#dc2626}
+.adrop-item.danger:hover{background:#fee2e2;color:#dc2626}
+.adrop-divider{height:1px;background:#f3f4f6;margin:4px 0}
+
+/* ── Comment/Confirm modal (fixed overlay) ── */
+.cmov{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,.46);backdrop-filter:blur(2px);
+  align-items:center;justify-content:center;
+}
+.cmov.open{display:flex}
+.cmodal{
+  background:#fff;border-radius:12px;width:460px;max-width:94vw;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);animation:cmin .18s ease;overflow:hidden;
+}
+@keyframes cmin{from{transform:translateY(-14px);opacity:0}to{transform:translateY(0);opacity:1}}
+.cmh{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px 13px;border-bottom:1px solid #e5e7eb;background:#fafafa;
+}
+.cmh h3{font-size:15px;font-weight:700;color:#111827;margin:0}
+.cmh button{
+  width:28px;height:28px;border-radius:6px;border:none;background:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:#9ca3af;font-size:16px;transition:background .12s;
+}
+.cmh button:hover{background:#f3f4f6;color:#374151}
+.cmb{padding:18px 20px}
+.cmaction-label{
+  font-size:10px;font-weight:700;text-transform:uppercase;
+  letter-spacing:.06em;color:#9ca3af;margin-bottom:6px;
+}
+.cmaction-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;
+  margin-bottom:16px;background:#EAF2FF;color:#2A53A0;border:1px solid #bfdbfe;
+}
+.cmlabel{
+  font-size:12px;font-weight:600;color:#374151;margin-bottom:6px;
+  display:flex;align-items:center;gap:4px;
+}
+.cmreq{color:#ef4444}
+.cmtxt{
+  width:100%;height:90px;padding:10px 12px;
+  border:1px solid #d1d5db;border-radius:8px;font-size:13px;
+  font-family:inherit;resize:vertical;outline:none;color:#111827;line-height:1.5;
+  transition:border-color .15s,box-shadow .15s;
+}
+.cmtxt:focus{border-color:#2A53A0;box-shadow:0 0 0 3px rgba(42,83,160,.09)}
+.cmtxt.err{border-color:#ef4444;box-shadow:0 0 0 3px rgba(239,68,68,.09)}
+.cmerr{font-size:11px;color:#ef4444;margin-top:5px;display:none}
+.cmerr.show{display:block}
+.cmf{
+  padding:13px 20px 17px;border-top:1px solid #f3f4f6;
+  display:flex;justify-content:flex-end;gap:9px;
+}
+/* ── Entity profile read-only values ── */
+.ep-val{
+  padding:8px 10px;border:1px solid #e5e7eb;border-radius:8px;
+  font-size:13px;color:#111827;background:#f9fafb;min-height:36px;
+  line-height:1.5;
+}
+/* ── Checker approval success modal ── */
+.checker-mov{
+  display:none;position:fixed;inset:0;z-index:10001;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(2px);
+  align-items:center;justify-content:center;
+}
+.checker-mov.open{display:flex}
+.checker-box{
+  background:#fff;border-radius:14px;width:420px;max-width:94vw;
+  box-shadow:0 24px 64px rgba(0,0,0,.22);animation:cmin .18s ease;overflow:hidden;
+}
+.checker-header{
+  background:#1e3a70;padding:16px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.checker-header h3{font-size:15px;font-weight:600;color:#fff;margin:0}
+.checker-header button{
+  background:none;border:none;color:rgba(255,255,255,.7);
+  font-size:20px;cursor:pointer;line-height:1;padding:0;
+}
+.checker-header button:hover{color:#fff}
+.checker-body{padding:28px 24px 24px;text-align:center}
+.checker-icon{
+  width:60px;height:60px;border-radius:50%;background:#dcfce7;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+}
+.checker-body h4{font-size:17px;font-weight:700;color:#111827;margin-bottom:8px}
+.checker-body p{font-size:13px;color:#555;line-height:1.6;margin-bottom:20px}
+.checker-meta{
+  background:#f0f4ff;border:1px solid #c7d5f0;border-radius:10px;
+  padding:13px 16px;text-align:left;margin-bottom:20px;
+}
+.checker-meta-row{display:flex;justify-content:space-between;align-items:center;font-size:12px;margin-bottom:6px}
+.checker-meta-row:last-child{margin-bottom:0}
+.checker-meta-label{color:#6b7280}
+.checker-meta-value{font-weight:600;color:#111827}
+.checker-meta-badge{background:#fef3c7;color:#92400e;border-radius:20px;padding:2px 10px;font-size:11px;font-weight:700}
+/* ── Entity Profile modal ── */
+.ep-mov{
+  display:none;position:fixed;inset:0;z-index:10001;
+  background:rgba(0,0,0,.46);backdrop-filter:blur(2px);
+  align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;
+}
+.ep-mov.open{display:flex}
+.ep-box{
+  background:#fff;border-radius:14px;width:780px;max-width:100%;
+  box-shadow:0 24px 64px rgba(0,0,0,.22);animation:cmin .18s ease;overflow:hidden;
+  margin:auto;
+}
+.ep-header{
+  background:#1e3a70;padding:16px 20px;
+  display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:1;
+}
+.ep-header h3{font-size:15px;font-weight:600;color:#fff;margin:0}
+.ep-header button{
+  background:none;border:none;color:rgba(255,255,255,.7);
+  font-size:20px;cursor:pointer;line-height:1;padding:0;
+}
+.ep-header button:hover{color:#fff}
+.ep-content{padding:20px 24px 24px}
+</style>
+
+<div class="shell">
+<div class="sb">
+  <div class="sb-brand">
+    <div class="sb-brand-logo">
+      <span class="logo">Clari5</span>
+    </div>
+    <div class="sb-brand-div"></div>
+    <div class="sb-brand-inst">
+      <div class="sb-brand-inst-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7 12l3 3 7-7" stroke="#2A53A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="sb-search">
+    <div class="sb-search-inner">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-.7-7.7S4.2.7,2.3,3S.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+      <input type="text" placeholder="Search menus...">
+    </div>
+  </div>
+  <div class="sb-nav">
+    <div class="nav-s">List manager</div>
+    <div class="ni active" onclick="setNav(this,'landing')">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".75"/><rect x="9" y="1" width="6" height="6" rx="1.5" fill="currentColor" opacity=".75"/><rect x="1" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".75"/><rect x="9" y="9" width="6" height="6" rx="1.5" fill="currentColor" opacity=".35"/></svg>
+      Custom lists
+    </div>
+    <div class="nav-s">Screening</div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Watchlists
+    </div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 2l1.4 4h4.2l-3.4 2.5 1.3 4L8 10.2l-3.5 2.3 1.3-4L2.4 6h4.2z" fill="currentColor" opacity=".65"/></svg>
+      Alert queue
+    </div>
+    <div class="nav-s">Admin</div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      RBAC &amp; roles
+    </div>
+    <div class="ni">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="2" stroke="currentColor" stroke-width="1.4"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.2 3.2l1.4 1.4M11.4 11.4l1.4 1.4M3.2 12.8l1.4-1.4M11.4 4.6l1.4-1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      Settings
+    </div>
+  </div>
+  <div class="sb-user">
+    <div class="ua">CC</div>
+    <div><div class="un">Charu Chauhan</div><div class="ur">Compliance Officer</div></div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="topbar">
+    <div class="bc" id="bc"><span>Custom lists</span></div>
+    <div class="tbr">
+      <button class="btn btn-sm">&#8681; Export</button>
+      <div class="nib" onclick="toggleNotif()">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M8 1a5 5 0 015 5v3l1.5 2H1.5L3 9V6a5 5 0 015-5z" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 13.5a1.5 1.5 0 003 0" stroke="currentColor" stroke-width="1.4"/></svg>
+        <div class="ndot"></div>
+      </div>
+      <div class="np" id="notifPanel">
+        <div class="nph">Notifications <span class="npc" onclick="toggleNotif()">Mark all read</span></div>
+        
+        <div class="npi unread"><div class="npm">"Rajan Mehta" expiring in 30 days — review required</div><div class="npt">Yesterday 14:22</div></div>
+        <div class="npi"><div class="npm">Bulk upload approved: 842 entries added to Internal Fraud List</div><div class="npt">05 Apr 2026, 11:10</div></div>
+        <div class="npi"><div class="npm">"Device Blocklist" re-enabled by Sandeep Seal</div><div class="npt">04 Apr 2026, 16:45</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+
+  <!-- LANDING -->
+  <div class="view active" id="view-landing">
+    <div class="ph">
+      <div><div class="ph-t">Custom lists</div><div class="ph-d">Institution-specific screening lists — beyond standard third-party watchlists (OFAC, UN, EU, NFIU)</div></div>
+      <div class="ph-a">
+        <button class="btn btn-sm" onclick="openAddPurpose()">+ Add purpose</button>
+        <button class="btn btn-sm" onclick="openPurposeControls()">&#9881; Purpose controls</button>
+        <button class="btn btn-sm" onclick="openPanel('lnd','bulk')">&#8679; Bulk upload</button>
+        <button class="btn btn-p" onclick="openPanel('lnd','create')">+ Create new list</button>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="sl">Total lists</div><div class="sv vb">12</div></div>
+      <div class="stat"><div class="sl">Active lists</div><div class="sv vg">9</div></div>
+      <div class="stat"><div class="sl">Total entries</div><div class="sv vb">48,392</div></div>
+      <div class="stat"><div class="sl">Pending approval</div><div class="sv va">3</div></div>
+    </div>
+
+    <!-- Status Tabs -->
+    <div class="ltabs" id="listTabBar">
+      <div class="ltab active" onclick="switchListTab(this,'Active')">Active <span class="ltab-badge">10</span></div>
+      <div class="ltab" onclick="switchListTab(this,'Inactive')">Inactive <span class="ltab-badge">1</span></div>
+      <div class="ltab" onclick="switchListTab(this,'Drafted')">Drafted <span class="ltab-badge">2</span></div>
+    </div>
+
+    <!-- Create list panel -->
+    <div class="pw" id="panel-lnd-create">
+      <div class="panel">
+        <div class="pnh"><h3>Create new custom list</h3><button class="btn btn-sm" onclick="closePanel('lnd','create')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="fr">
+            <div class="fg"><label>List name <span class="req">*</span></label><input type="text" placeholder="Max 100 characters, must be unique" maxlength="100"></div>
+            <div class="fg"><label>Purpose <span class="req">*</span></label>
+              <select id="create-purpose"><option value="">Select purpose</option><option>Internal fraud — flagged entries</option><option>Rejected KYC applicants</option><option>PEP — internal identified</option><option>Adverse media flagged</option><option>Device / IP blocklist</option><option>Investigations — under review</option></select>
+            </div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>List status</label>
+              <div class="trow" style="margin-top:2px;margin-bottom:0"><div class="tgl on" onclick="this.classList.toggle('on')"></div> Enable list (toggle off to create as disabled)</div>
+            </div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Reason for creation <span class="req">*</span></label><textarea placeholder="Max 500 characters — mandatory, retained in audit log..." maxlength="500"></textarea></div>
+          </div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('lnd','create')">Cancel</button>
+          <button class="btn btn-w btn-sm">Save as draft</button>
+          <button class="btn btn-p btn-sm" onclick="closePanel('lnd','create')">Submit for approval &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bulk upload panel -->
+    <div class="pw" id="panel-lnd-bulk">
+      <div class="panel">
+        <div class="pnh"><h3>Bulk upload entries</h3><button class="btn btn-sm" onclick="closePanel('lnd','bulk')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="fr">
+            <div class="fg"><label>List name <span class="req">*</span></label>
+              <select><option>Internal Fraud — Flagged</option><option>Rejected KYC</option><option>PEP Internal</option><option>Device Blocklist</option></select>
+            </div>
+            <div class="fg"><label>Reason for addition <span class="req">*</span></label><input type="text" placeholder="Max 500 characters" maxlength="500"></div>
+          </div>
+          <div class="fr c1">
+            <div class="fg"><label>Upload file <span class="req">*</span></label><input type="file" accept=".csv,.xlsx"></div>
+          </div>
+          <div style="background:#f8f7f4;border-radius:7px;padding:11px 13px;font-size:12px;color:#555;margin-top:4px;line-height:1.7">
+            Max 50,000 records · Max 25 MB · Formats: CSV (UTF-8), XLSX<br>
+            The template columns mirror the Add entry form. Mandatory: <code>reason_for_addition</code> + at least one of <code>full_name</code> / <code>ip_address</code> / <code>mobile_number</code> / <code>device_id</code>.
+            <div style="margin-top:8px"><button class="btn btn-sm" onclick="downloadEntryTemplate()">&#8681; Download template (XLSX)</button></div>
+          </div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('lnd','bulk')">Cancel</button>
+          <button class="btn btn-p btn-sm">Validate &amp; submit &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lists table — actions: View | Edit | Enable/Disable only (no delete) -->
+    <div class="card">
+      <div class="tbr2">
+        <div class="sw"><span class="si">&#9906;</span><input type="text" placeholder="Search by list name or status..." oninput="filterLists(this.value)"></div>
+        <select class="fsel" onchange="filterListsByStatus(this.value)"><option value="">All statuses</option><option>Active</option><option>Disabled</option><option>Pending approval</option></select>
+        <select class="fsel"><option>10 / page</option><option>25 / page</option><option>50 / page</option><option>100 / page</option></select>
+        <button class="btn btn-sm">&#8681; CSV</button><button class="btn btn-sm">&#8681; PDF</button>
+      </div>
+      <table>
+        <thead><tr>
+          <th class="w16">List name &#8645;</th>
+          <th class="w9">Status &#8645;</th>
+          <th class="w8">Records &#8645;</th>
+          <th class="w8">Active &#8645;</th>
+          <th class="w11">Action on hit</th>
+          <th class="w8">TTL &#8645;</th>
+          <th class="w10">Date created &#8645;</th>
+          <th class="w10">Last modified &#8645;</th>
+          <th class="w10">List expiry &#8645;</th>
+          <th class="w10">Actions</th>
+        </tr></thead>
+        <tbody id="listsTbody"></tbody>
+      </table>
+      <div class="pager">
+        <div class="pi">Showing 1–9 of 12 lists</div>
+        <div class="pbtns"><div class="pb">&#8249;</div><div class="pb active">1</div><div class="pb">2</div><div class="pb">&#8250;</div></div>
+      </div>
+    </div>
+
+    <!-- Edit List Modal -->
+    <div class="mov" id="editListMov">
+      <div class="modal" style="width:540px">
+        <div class="mh">
+          <div style="display:flex;align-items:center;gap:9px">
+            <div style="width:30px;height:30px;border-radius:7px;background:#EAF2FF;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+              <svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M13.586 3.586a2 2 0 112.828 2.828l-9.9 9.9a2 2 0 01-.94.534l-3.182.795a.5.5 0 01-.606-.606l.795-3.182a2 2 0 01.534-.94l9.471-9.329z" stroke="#2A53A0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <h3 style="font-size:15px;font-weight:600;color:#111827;line-height:1.2">Edit custom list</h3>
+              <div style="font-size:11px;color:#9ca3af;margin-top:1px">Changes require Maker-Checker approval before taking effect</div>
+            </div>
+          </div>
+          <button class="btn btn-sm" onclick="closeMov('editListMov')" style="width:28px;height:28px;padding:0;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:16px;color:#6b7280;border:1px solid #e5e7eb">&#215;</button>
+        </div>
+
+        <div class="mc2" style="padding:18px 20px">
+
+          <!-- Section: List Identity -->
+          <div class="fgt" style="margin-top:0">List Identity</div>
+
+          <div class="fg" style="margin-bottom:13px">
+            <label>List name <span class="req">*</span></label>
+            <input type="text" id="el-name" value="Internal fraud — flagged" maxlength="100" style="font-weight:500">
+          </div>
+
+          <div class="fg" style="margin-bottom:4px">
+            <label>Purpose <span class="req">*</span></label>
+            <select>
+              <option selected>Internal fraud — flagged entries</option>
+              <option>Rejected KYC applicants</option>
+              <option>PEP — internal identified</option>
+              <option>Adverse media flagged</option>
+              <option>Device / IP blocklist</option>
+            </select>
+          </div>
+
+          <!-- Section: Audit -->
+          <div class="fgt">Audit Trail</div>
+
+          <div class="fg" style="margin-bottom:0">
+            <label>Reason for edit <span class="req">*</span></label>
+            <textarea placeholder="Max 500 characters — retained in audit log…" maxlength="500" style="min-height:72px;resize:vertical"></textarea>
+            <div style="font-size:11px;color:#9ca3af;margin-top:3px">This reason will be recorded against your user account in the immutable audit log.</div>
+          </div>
+
+        </div>
+
+        <div class="mf" style="justify-content:space-between;align-items:center">
+          <div style="font-size:11px;color:#9ca3af;display:flex;align-items:center;gap:5px">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#9ca3af" stroke-width="1.4"/><path d="M8 7v4M8 5.5v.5" stroke="#9ca3af" stroke-width="1.4" stroke-linecap="round"/></svg>
+            Submitted changes await Checker approval
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn" onclick="closeMov('editListMov')">Cancel</button>
+            <button class="btn btn-p btn-sm" onclick="closeMov('editListMov')">Submit for approval &#8594;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enable/Disable List Modal -->
+    <div class="mov" id="enableListMov">
+      <div class="modal">
+        <div class="mh"><h3 id="enListTitle">Enable / disable custom list</h3><button class="btn btn-sm" onclick="closeMov('enableListMov')">&#215;</button></div>
+        <div class="mc2">
+          <div style="font-size:13px;color:#555;margin-bottom:12px;line-height:1.6">Controlling screening engine status for <strong id="enListName" style="color:#1a1a1a"></strong>. All entry records are retained on disable. Both actions require Maker-Checker approval.</div>
+          <div class="fg" style="margin-bottom:11px"><label>Action <span class="req">*</span></label>
+            <div class="radio-row">
+              <label><input type="radio" name="enact" checked onclick="toggleEnDates(true)"> Disable</label>
+              <label><input type="radio" name="enact" onclick="toggleEnDates(false)"> Enable</label>
+            </div>
+          </div>
+          <div class="fr" style="margin-bottom:11px" id="disableDateRow">
+            <div class="fg"><label>Disable date <span class="req">*</span></label><input type="date"></div>
+            <div class="fg"><label>Username (auto-populated)</label><input type="text" value="Charu Chauhan" readonly style="background:#f8f7f4"></div>
+          </div>
+          <div class="fr" style="margin-bottom:11px;display:none" id="enableDateRow">
+            <div class="fg"><label>Enable date <span class="req">*</span></label><input type="date"></div>
+            <div class="fg"><label>Username (auto-populated)</label><input type="text" value="Charu Chauhan" readonly style="background:#f8f7f4"></div>
+          </div>
+          <div class="fg"><label>Reason <span class="req">*</span></label><textarea placeholder="Mandatory — retained in audit log..."></textarea></div>
+        </div>
+        <div class="mf"><button class="btn" onclick="closeMov('enableListMov')">Cancel</button><button class="btn btn-p btn-sm" onclick="closeMov('enableListMov')">Submit for approval &#8594;</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DETAIL VIEW -->
+  <div class="view" id="view-detail">
+    <div class="ph">
+      <div><div class="ph-t" id="det-name">Internal Fraud — Flagged</div><div class="ph-d" id="det-purpose">Internal fraud — flagged entries</div></div>
+      <div class="ph-a">
+        <button class="btn btn-sm" onclick="goLanding()">&#8592; All lists</button>
+        <button class="btn btn-p btn-sm" onclick="openAddEntity()">+ Add entry</button>
+        <button class="btn btn-sm" onclick="openPanel('det','bulkdet')">&#8679; Bulk upload</button>
+      </div>
+    </div>
+
+    <div class="sh"><div class="st">Sub-section 1 — List metadata</div></div>
+    <div class="mg">
+      <div class="mi"><div class="ml">List name</div><div class="mv" id="s1-name">Internal Fraud — Flagged</div></div>
+      <div class="mi"><div class="ml">Purpose</div><div class="mv sm">Internal fraud — flagged entries</div></div>
+      <div class="mi"><div class="ml">Status</div><div class="mv"><span class="b b-ac">Active</span></div></div>
+      <div class="mi"><div class="ml">Maker name</div><div class="mv sm">Rohan Kapoor</div></div>
+      <div class="mi"><div class="ml">Maker submission date</div><div class="mv sm">12 Jan 2026, 10:42</div></div>
+      <div class="mi"><div class="ml">Checker name</div><div class="mv sm">Sandeep Seal</div></div>
+      <div class="mi"><div class="ml">Checker approval date</div><div class="mv sm">13 Jan 2026, 09:15</div></div>
+      <div class="mi"><div class="ml">Default entry TTL</div><div class="mv sm">12 months</div></div>
+      <div class="mi"><div class="ml">Total records</div><div class="mv vb">3,841</div></div>
+      <div class="mi"><div class="ml">Total active records</div><div class="mv vg">3,712</div></div>
+      <div class="mi"><div class="ml">Expiring within 30 days</div><div class="mv va">47</div></div>
+    </div>
+
+    <!-- Add / Edit entity panel (shared form) -->
+    <div class="pw" id="panel-det-addent">
+      <div class="panel">
+        <div class="pnh">
+          <h3 id="addent-title">Add entry</h3>
+          <button class="btn btn-sm" onclick="closePanel('det','addent')">&#215; Close</button>
+        </div>
+        <div class="pnb">
+          <div id="addent-new-note" style="font-size:12px;color:#854F0B;background:#FAEEDA;padding:8px 11px;border-radius:6px;margin-bottom:13px">At least one must be populated: Full Name, IP Address, Mobile Number, or Device ID.</div>
+          <div id="addent-edit-note" style="font-size:12px;color:#854F0B;background:#FAEEDA;padding:8px 11px;border-radius:6px;margin-bottom:13px;display:none">Edit requests are not permitted while this entry has a pending approval. The existing request must first be approved or rejected.</div>
+          <div class="fgt">Identity</div>
+          <div class="fr">
+            <div class="fg"><label>Full name</label><input type="text" id="ae-name" placeholder="Full legal name"></div>
+            <div class="fg"><label>Aliases / alternate names</label><input type="text" id="ae-aliases" placeholder="Pipe-separated: John|Johnny|J. Smith"></div>
+          </div>
+          <div class="fr c3">
+            <div class="fg"><label>Date of birth</label><input type="date" id="ae-dob"></div>
+            <div class="fg"><label>Gender</label><select id="ae-gender"><option value="">Select</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select></div>
+            <div class="fg"><label>Nationality (ISO)</label><input type="text" id="ae-nationality" placeholder="e.g. IN, NG, AE"></div>
+          </div>
+          <div class="fgt">Identifiers</div>
+          <div class="fr c3">
+            <div class="fg"><label>Passport no.</label><input type="text" id="ae-passport"></div>
+            <div class="fg"><label>National ID no.</label><input type="text" id="ae-nationalid"></div>
+            <div class="fg"><label>Tax ID (TIN / PAN)</label><input type="text" id="ae-taxid"></div>
+          </div>
+          <div class="fr c1"><div class="fg"><label>Company registration no.</label><input type="text" id="ae-companyreg" placeholder="For legal entity entries"></div></div>
+          <div class="fgt">Digital identifiers</div>
+          <div class="fr c3">
+            <div class="fg"><label>IP address</label><input type="text" id="ae-ip" placeholder="IPv4/v6 or CIDR range"></div>
+            <div class="fg"><label>Device ID / IMEI</label><input type="text" id="ae-deviceid"></div>
+            <div class="fg"><label>MAC address</label><input type="text" id="ae-mac"></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label>Mobile Number (Format - Country code and mobile number without space - +91987654321)</label><input type="text" id="ae-mobile" placeholder="+91987654321"></div>
+            <div class="fg"><label>Email address</label><input type="email" id="ae-email" placeholder="user@domain.com"></div>
+          </div>
+          <div class="fgt">Localisation (multilingual)</div>
+          <div class="fr">
+            <div class="fg"><label>Name in native script</label><input type="text" id="ae-nativescript" placeholder="e.g. French · Arabic: محمد · Cyrillic"></div>
+            <div class="fg"><label>Script type</label><select id="ae-scripttype"><option value="">Select</option><option value="FR">French (FR)</option><option value="AR">Arabic (AR)</option><option value="CY">Cyrillic (CY)</option></select></div>
+          </div>
+          <div class="fgt">Risk &amp; governance</div>
+          <div class="fr c3">
+            <div class="fg"><label>Valid Up till (TTL)</label><input type="date" id="ae-expiry"></div>
+          </div>
+          <div class="fr">
+            <div class="fg"><label id="ae-reason-label">Reason for addition <span class="req">*</span></label><textarea id="ae-reason" placeholder="Mandatory — max 500 characters, retained in audit log..." maxlength="500"></textarea></div>
+            <div class="fg"><label>Source reference</label><input type="text" id="ae-sourceref" placeholder="Case ID / SAR no. / investigation ref."></div>
+          </div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('det','addent')">Cancel</button>
+          <button class="btn btn-p btn-sm" onclick="closePanel('det','addent')">Submit for approval &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bulk upload (detail) panel -->
+    <div class="pw" id="panel-det-bulkdet">
+      <div class="panel">
+        <div class="pnh"><h3>Bulk upload entries — <span id="bul-listname" style="font-weight:400;color:#555">Internal Fraud — Flagged</span></h3><button class="btn btn-sm" onclick="closePanel('det','bulkdet')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="fr">
+            <div class="fg"><label>Reason for addition <span class="req">*</span></label><input type="text" placeholder="Max 500 characters" maxlength="500"></div>
+            <div class="fg"><label>Upload file <span class="req">*</span></label><input type="file" accept=".csv,.xlsx"></div>
+          </div>
+          <div style="background:#f8f7f4;border-radius:7px;padding:11px 13px;font-size:12px;color:#555;line-height:1.7;margin-top:4px">
+            Max 50,000 records · Max 25 MB · Formats: CSV (UTF-8), XLSX<br>
+            The template columns mirror the Add entry form. Mandatory: <code>reason_for_addition</code> + at least one of <code>full_name</code> / <code>ip_address</code> / <code>mobile_number</code> / <code>device_id</code>.
+            <div style="margin-top:8px"><button class="btn btn-sm" onclick="downloadEntryTemplate()">&#8681; Download template (XLSX)</button></div>
+          </div>
+        </div>
+        <div class="pnf">
+          <button class="btn" onclick="closePanel('det','bulkdet')">Cancel</button>
+          <button class="btn btn-p btn-sm">Validate &amp; submit &#8594;</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh">
+      <div class="st">Sub-section 2 — Entry records</div>
+      <div style="display:flex;gap:7px">
+        <button class="btn btn-sm">&#8681; Export CSV</button>
+        <button class="btn btn-sm">&#8681; Export PDF</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="tbr2">
+        <div class="sw"><span class="si">&#9906;</span><input type="text" placeholder="Search by name, ID, IP, mobile, device..."></div>
+        <select class="fsel"><option value="">All statuses</option><option>Active</option><option>Expired</option><option>Inactive</option></select>
+        <select class="fsel"><option value="">All types</option><option>Individual</option><option>Entity</option><option>IP / Digital</option></select>
+      </div>
+      <table>
+        <thead><tr>
+          <th class="w18">Entry / full name &#8645;</th>
+          <th class="w11">Risk category</th>
+          <th class="w10">Action on hit</th>
+          <th class="w9">Status &#8645;</th>
+          <th class="w11">Date added &#8645;</th>
+          <th class="w11">Expiry date &#8645;</th>
+          <th class="w20">Actions</th>
+        </tr></thead>
+        <tbody id="entTbody"></tbody>
+      </table>
+      <div class="pager">
+        <div class="pi">Showing 1–10 of 3,841 entries</div>
+        <div class="pbtns"><div class="pb">&#8249;</div><div class="pb active">1</div><div class="pb">2</div><div class="pb">3</div><div class="pb">&#8250;</div></div>
+      </div>
+    </div>
+
+
+    <!-- Enable/Disable Entity Modal -->
+    <div class="mov" id="enableEntMov">
+      <div class="modal">
+        <div class="mh"><h3>Enable / disable entry</h3><button class="btn btn-sm" onclick="closeMov('enableEntMov')">&#215;</button></div>
+        <div class="mc2">
+          <div style="font-size:13px;color:#555;margin-bottom:12px;line-height:1.6">Disabling an entry retains it in the list but excludes it from active screening. The entry can be re-activated later. Maker-Checker approval is required.</div>
+          <div class="fg" style="margin-bottom:11px"><label>Action</label>
+            <div class="radio-row">
+              <label><input type="radio" name="enent" checked> Disable (set inactive)</label>
+              <label><input type="radio" name="enent"> Enable (set active)</label>
+            </div>
+          </div>
+          <div class="fg"><label>Reason <span class="req">*</span></label><textarea placeholder="Mandatory — retained in audit log..."></textarea></div>
+        </div>
+        <div class="mf"><button class="btn" onclick="closeMov('enableEntMov')">Cancel</button><button class="btn btn-p btn-sm" onclick="closeMov('enableEntMov')">Submit for approval &#8594;</button></div>
+      </div>
+    </div>
+
+    <!-- View History Panel -->
+    <div class="pw" id="panel-det-history">
+      <div class="panel">
+        <div class="pnh"><h3>Entry history — <span id="hist-name" style="font-weight:400;color:#555"></span></h3><button class="btn btn-sm" onclick="closePanel('det','history')">&#215; Close</button></div>
+        <div class="pnb">
+          <div class="hist-item">
+            <div class="hist-hdr" onclick="toggleHist(this)">
+              <div><div style="font-size:13px;font-weight:500">Edit — Risk category updated</div><div style="font-size:11px;color:#aaa;margin-top:2px">03 Apr 2026, 14:22 · Maker: Priya Subramaniam</div></div>
+              <span class="b b-ap">Approved</span>
+            </div>
+            <div class="hist-body open">
+              <div class="hist-grid">
+                <div class="hf"><div class="hfl">Field changed</div><div class="hfv">Risk category</div></div>
+                <div class="hf"><div class="hfl">Before</div><div class="hfv">Adverse media</div></div>
+                <div class="hf"><div class="hfl">After</div><div class="hfv">Internal fraud</div></div>
+                <div class="hf"><div class="hfl">Maker</div><div class="hfv">Priya Subramaniam</div></div>
+                <div class="hf"><div class="hfl">Checker</div><div class="hfv">Sandeep Seal</div></div>
+                <div class="hf"><div class="hfl">Date of update</div><div class="hfv">04 Apr 2026, 09:10</div></div>
+                <div class="hf" style="grid-column:1/-1"><div class="hfl">Reason</div><div class="hfv">Reclassified following investigation INV-2026-041 — confirmed internal fraud pattern.</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-hdr" onclick="toggleHist(this)">
+              <div><div style="font-size:13px;font-weight:500">Edit — Expiry date extended</div><div style="font-size:11px;color:#aaa;margin-top:2px">15 Feb 2026, 11:05 · Maker: Charu Chauhan</div></div>
+              <span class="b b-ap">Approved</span>
+            </div>
+            <div class="hist-body">
+              <div class="hist-grid">
+                <div class="hf"><div class="hfl">Field changed</div><div class="hfv">Expiry date (TTL)</div></div>
+                <div class="hf"><div class="hfl">Before</div><div class="hfv">12 Jul 2026</div></div>
+                <div class="hf"><div class="hfl">After</div><div class="hfv">12 Jan 2027</div></div>
+                <div class="hf"><div class="hfl">Maker</div><div class="hfv">Charu Chauhan</div></div>
+                <div class="hf"><div class="hfl">Checker</div><div class="hfv">Ritika Gupta</div></div>
+                <div class="hf"><div class="hfl">Date of update</div><div class="hfv">16 Feb 2026, 10:00</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="hist-item">
+            <div class="hist-hdr" onclick="toggleHist(this)">
+              <div><div style="font-size:13px;font-weight:500">Entry added</div><div style="font-size:11px;color:#aaa;margin-top:2px">12 Jan 2026, 10:42 · Maker: Rohan Kapoor</div></div>
+              <span class="b b-ap">Approved</span>
+            </div>
+            <div class="hist-body">
+              <div class="hist-grid">
+                <div class="hf"><div class="hfl">Action</div><div class="hfv">Entry created — Active</div></div>
+                <div class="hf"><div class="hfl">Risk category</div><div class="hfv">Adverse media</div></div>
+                <div class="hf"><div class="hfl">Action on hit</div><div class="hfv">Block transaction</div></div>
+                <div class="hf"><div class="hfl">Maker</div><div class="hfv">Rohan Kapoor</div></div>
+                <div class="hf"><div class="hfl">Checker</div><div class="hfv">Sandeep Seal</div></div>
+                <div class="hf"><div class="hfl">Date of update</div><div class="hfv">13 Jan 2026, 09:15</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pnf"><button class="btn" onclick="closePanel('det','history')">Close</button></div>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ── Checker Approval Success Modal ── -->
+<div class="checker-mov" id="checker-modal" onclick="if(event.target===this)closeCheckerModal()">
+  <div class="checker-box" onclick="event.stopPropagation()">
+    <div class="checker-header">
+      <h3>Request Submitted</h3>
+      <button onclick="closeCheckerModal()">&#215;</button>
+    </div>
+    <div class="checker-body">
+      <div class="checker-icon">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h4>Request sent for Checker Approval</h4>
+      <p>Your request has been submitted successfully and is now pending Checker review. No changes will take effect until the Checker approves the request.</p>
+      <div class="checker-meta">
+        <div class="checker-meta-row">
+          <span class="checker-meta-label">Action</span>
+          <span class="checker-meta-value" id="checker-action-text">—</span>
+        </div>
+        <div class="checker-meta-row">
+          <span class="checker-meta-label">Submitted by</span>
+          <span class="checker-meta-value">Charu Chauhan</span>
+        </div>
+        <div class="checker-meta-row">
+          <span class="checker-meta-label">Submitted at</span>
+          <span class="checker-meta-value" id="checker-ts">—</span>
+        </div>
+        <div class="checker-meta-row">
+          <span class="checker-meta-label">Status</span>
+          <span class="checker-meta-badge">Pending Checker</span>
+        </div>
+      </div>
+      <button class="btn btn-p" style="width:100%;justify-content:center" onclick="closeCheckerModal()">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Entity Profile Modal (View) ── -->
+<div class="ep-mov" id="ep-modal" onclick="if(event.target===this)closeEntityProfile()">
+  <div class="ep-box" onclick="event.stopPropagation()">
+    <div class="ep-header">
+      <h3 id="ep-ename">Entry Profile</h3>
+      <button onclick="closeEntityProfile()">&#215;</button>
+    </div>
+    <div class="ep-content" id="ep-body"></div>
+    <div style="padding:12px 24px 20px;display:flex;justify-content:flex-end;border-top:1px solid #e5e7eb;background:#f9fafb">
+      <button class="btn" onclick="closeEntityProfile()">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Global action dropdown menu (positioned fixed) ── -->
+<div id="globalAdropMenu" class="adrop-menu"></div>
+
+<!-- ── Comment / Confirmation Modal ── -->
+<div class="cmov" id="commentMov" onclick="if(event.target===this)closeCMov()">
+  <div class="cmodal" onclick="event.stopPropagation()">
+    <div class="cmh">
+      <h3 id="cm-title">Confirm Action</h3>
+      <button onclick="closeCMov()">&#215;</button>
+    </div>
+    <div class="cmb">
+      <div class="cmaction-label">Action</div>
+      <div class="cmaction-badge" id="cm-action-badge">—</div>
+      <div class="cmlabel">Comment <span class="cmreq">*</span><span style="font-size:11px;color:#aaa;font-weight:400;margin-left:3px">(required)</span></div>
+      <textarea class="cmtxt" id="cm-comment" placeholder="Enter your comment or reason for this action…" oninput="document.getElementById('cm-err').classList.remove('show');this.classList.remove('err')"></textarea>
+      <div class="cmerr" id="cm-err">Please enter a comment before proceeding.</div>
+    </div>
+    <div class="cmf">
+      <button class="btn" onclick="closeCMov()">Cancel</button>
+      <button class="btn btn-p btn-sm" id="cm-confirm-btn" onclick="confirmCMov()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Add Purpose Modal ── -->
+<div class="cmov" id="purposeMov" onclick="if(event.target===this)closePurposeMov()">
+  <div class="cmodal" onclick="event.stopPropagation()" style="width:480px;max-width:95vw">
+    <div class="cmh">
+      <h3>Add purpose</h3>
+      <button onclick="closePurposeMov()">&#215;</button>
+    </div>
+    <div class="cmb">
+      <div style="background:#f0f4ff;border:1px solid #c7d4f0;border-radius:8px;padding:9px 12px;font-size:12px;color:#3a5a9a;line-height:1.5;margin-bottom:14px">
+        New purposes follow the Maker-Checker workflow. A submitted purpose stays <b>Pending Checker</b> approval and only becomes available in the Create list dropdown once the Checker approves it.
+      </div>
+      <div class="cmlabel">Purpose name <span class="cmreq">*</span></div>
+      <input type="text" id="purpose-input" placeholder="e.g. Mule account network"
+        style="width:100%;padding:10px 12px;border:1px solid #d1d5db;border-radius:8px;font-size:13px;font-family:inherit;outline:none;color:#111827"
+        oninput="document.getElementById('purpose-err').classList.remove('show');this.classList.remove('err')">
+      <div class="cmlabel" style="margin-top:12px">Description / reason for addition <span class="cmreq">*</span></div>
+      <textarea id="purpose-desc" class="cmtxt" placeholder="Mandatory — explain why this purpose is needed. Retained in the audit log…" maxlength="500"
+        oninput="document.getElementById('purpose-err').classList.remove('show')"></textarea>
+      <div class="cmerr" id="purpose-err">Please enter a purpose name and a reason for addition.</div>
+      <div style="margin-top:16px">
+        <div class="cmaction-label" style="margin-bottom:8px">Existing purposes</div>
+        <div id="purpose-list" style="display:flex;flex-direction:column;gap:6px"></div>
+      </div>
+    </div>
+    <div class="cmf">
+      <button class="btn" onclick="closePurposeMov()">Done</button>
+      <button class="btn btn-p btn-sm" onclick="addPurpose()">Submit for approval</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Purpose Controls Modal (enable / disable approved purposes) ── -->
+<div class="cmov" id="purposeCtrlMov" onclick="if(event.target===this)closePurposeControls()">
+  <div class="cmodal" onclick="event.stopPropagation()" style="width:480px;max-width:95vw">
+    <div class="cmh">
+      <h3>Purpose controls</h3>
+      <button onclick="closePurposeControls()">&#215;</button>
+    </div>
+    <div class="cmb">
+      <div style="background:#f0f4ff;border:1px solid #c7d4f0;border-radius:8px;padding:9px 12px;font-size:12px;color:#3a5a9a;line-height:1.5;margin-bottom:14px">
+        Enable or disable Checker-approved purposes. A disabled purpose is retained but is removed from the Create list dropdown so it can no longer be selected for new lists. Only approved (Active) purposes are listed here.
+      </div>
+      <div id="purpose-ctrl-list" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
+    <div class="cmf">
+      <button class="btn" onclick="closePurposeControls()">Cancel</button>
+      <button class="btn btn-p btn-sm" onclick="savePurposeControls()">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const listsData=[
+  {name:"Internal fraud — flagged",status:"Active",records:3841,active:3712,action:"Alert & block",ttl:"12 months",created:"12 Jan 2026",modified:"06 Apr 2026",listExpiry:"12 Jan 2027"},
+  {name:"Rejected KYC applicants",status:"Active",records:12204,active:11890,action:"Alert & block",ttl:"12 months",created:"15 Jan 2026",modified:"05 Apr 2026",listExpiry:"15 Jan 2027"},
+  {name:"PEP — internal identified",status:"Active",records:892,active:871,action:"Generate alert",ttl:"24 months",created:"20 Jan 2026",modified:"04 Apr 2026",listExpiry:"—"},
+  {name:"Device blocklist",status:"Active",records:2341,active:2299,action:"Alert & block",ttl:"6 months",created:"22 Jan 2026",modified:"03 Apr 2026",listExpiry:"22 Jul 2026"},
+  {name:"IP — TOR / VPN exit nodes",status:"Active",records:18420,active:18420,action:"Alert & block",ttl:"3 months",created:"25 Jan 2026",modified:"02 Apr 2026",listExpiry:"25 Apr 2026"},
+  {name:"Adverse media flagged",status:"Active",records:504,active:481,action:"Generate alert",ttl:"12 months",created:"01 Feb 2026",modified:"01 Apr 2026",listExpiry:"01 Feb 2027"},
+  {name:"SIM-farm mobile numbers",status:"Active",records:7812,active:7799,action:"Alert & block",ttl:"6 months",created:"05 Feb 2026",modified:"31 Mar 2026",listExpiry:"05 Aug 2026"},
+  {name:"Investigations — under review",status:"Active",records:239,active:205,action:"Generate alert",ttl:"No expiry",created:"10 Feb 2026",modified:"29 Mar 2026",listExpiry:"—"},
+  {name:"Temp sanctions override",status:"Disabled",records:12,active:0,action:"Alert & block",ttl:"12 months",created:"01 Mar 2026",modified:"29 Mar 2026",listExpiry:"01 Mar 2027"},
+];
+const entsData=[
+  {name:"Rajan Mehta",id:"IND-110482",risk:"Internal fraud",action:"Block",status:"Active",added:"12 Jan 2026",expiry:"12 Jan 2027",
+   aliases:"Raj Mehta|R. Mehta",dob:"1978-04-15",gender:"Male",nationality:"IN",
+   passport:"P1234567",nationalId:"AABPM1234C",taxId:"AABPM1234C",companyReg:"",
+   ip:"",deviceId:"",mac:"",mobile:"+919876543210",email:"",
+   nativeScript:"राजन मेहता",scriptType:"",sourceRef:"CASE-2025-0812"},
+  {name:"Al-Farrukh Trading LLC",id:"ENT-204917",risk:"Internal fraud",action:"Block",status:"Active",added:"06 Apr 2026",expiry:"06 Apr 2027",
+   aliases:"Al Farrukh|AlFarrukh Trading",dob:"",gender:"",nationality:"AE",
+   passport:"",nationalId:"",taxId:"",companyReg:"AE-TR-204917",
+   ip:"",deviceId:"",mac:"",mobile:"",email:"contact@alfarrukh.ae",
+   nativeScript:"الفاروق للتجارة",scriptType:"AR",sourceRef:"CASE-2024-1182"},
+  {name:"192.168.44.0/24",id:"IP-009012",risk:"Fraud cluster",action:"Block",status:"Active",added:"20 Mar 2026",expiry:"20 Jun 2026",
+   aliases:"",dob:"",gender:"",nationality:"",
+   passport:"",nationalId:"",taxId:"",companyReg:"",
+   ip:"192.168.44.0/24",deviceId:"",mac:"",mobile:"",email:"",
+   nativeScript:"",scriptType:"",sourceRef:"INC-2026-0301"},
+  {name:"+23480XXXXXXXX",id:"MOB-334411",risk:"SIM farm",action:"Block",status:"Active",added:"15 Mar 2026",expiry:"15 Sep 2026",
+   aliases:"",dob:"",gender:"",nationality:"NG",
+   passport:"",nationalId:"",taxId:"",companyReg:"",
+   ip:"",deviceId:"",mac:"",mobile:"+23480XXXXXXXX",email:"",
+   nativeScript:"",scriptType:"",sourceRef:"FRD-2026-0144"},
+  {name:"Khalid Al-Mansouri",id:"IND-330129",risk:"PEP",action:"Alert",status:"Active",added:"10 Feb 2026",expiry:"10 Feb 2028",
+   aliases:"Khaled Al Mansouri|K. Al-Mansouri",dob:"1965-09-22",gender:"Male",nationality:"SA",
+   passport:"SA9871234",nationalId:"1234567890",taxId:"",companyReg:"",
+   ip:"",deviceId:"",mac:"",mobile:"+966501234567",email:"",
+   nativeScript:"خالد المنصوري",scriptType:"AR",sourceRef:"PEP-2026-0088"},
+  {name:"GreenBridge Exports Ltd",id:"ENT-510023",risk:"Adverse media",action:"Alert",status:"Active",added:"01 Feb 2026",expiry:"01 Feb 2027",
+   aliases:"GreenBridge Exports|Green Bridge Ltd",dob:"",gender:"",nationality:"GB",
+   passport:"",nationalId:"",taxId:"GB123456789",companyReg:"GB-12345678",
+   ip:"",deviceId:"",mac:"",mobile:"",email:"info@greenbridge.co.uk",
+   nativeScript:"",scriptType:"",sourceRef:"AML-2026-0034"},
+  {name:"IMEI-3571920XXXXXX",id:"DEV-099012",risk:"Fraud device",action:"Block",status:"Active",added:"28 Jan 2026",expiry:"28 Jul 2026",
+   aliases:"",dob:"",gender:"",nationality:"",
+   passport:"",nationalId:"",taxId:"",companyReg:"",
+   ip:"",deviceId:"3571920XXXXXX",mac:"AA:BB:CC:DD:EE:FF",mobile:"",email:"",
+   nativeScript:"",scriptType:"",sourceRef:"DEV-2026-0021"},
+  {name:"Venkatesh Iyer",id:"ACC-334567",risk:"Internal fraud",action:"Block",status:"Expired",added:"05 Apr 2025",expiry:"05 Apr 2026",
+   aliases:"V. Iyer|Venky Iyer",dob:"1982-11-03",gender:"Male",nationality:"IN",
+   passport:"",nationalId:"BQAPI5678D",taxId:"BQAPI5678D",companyReg:"",
+   ip:"",deviceId:"",mac:"",mobile:"+919123456789",email:"v.iyer@tempmail.com",
+   nativeScript:"",scriptType:"",sourceRef:"CASE-2025-0341"},
+  {name:"SwiftPay Corp",id:"ENT-710034",risk:"Internal fraud",action:"Block",status:"Active",added:"22 Jan 2026",expiry:"22 Jan 2027",
+   aliases:"Swift Pay Corporation|SwiftPay",dob:"",gender:"",nationality:"US",
+   passport:"",nationalId:"",taxId:"US-EIN-123456789",companyReg:"US-DE-710034",
+   ip:"",deviceId:"",mac:"",mobile:"",email:"ops@swiftpaycorp.com",
+   nativeScript:"",scriptType:"",sourceRef:"CASE-2026-0019"},
+  {name:"fraud@tempmail.com (domain)",id:"EML-001122",risk:"Fraud cluster",action:"Alert",status:"Active",added:"18 Jan 2026",expiry:"18 Jan 2027",
+   aliases:"",dob:"",gender:"",nationality:"",
+   passport:"",nationalId:"",taxId:"",companyReg:"",
+   ip:"",deviceId:"",mac:"",mobile:"",email:"fraud@tempmail.com",
+   nativeScript:"",scriptType:"",sourceRef:"FRD-2026-0011"},
+];
+
+function sb(s){
+  if(s==='Active')return '<span class="b b-ac">Active</span>';
+  if(s==='Disabled')return '<span class="b b-di">Disabled</span>';
+  if(s==='Pending approval')return '<span class="b b-pe">Pending</span>';
+  return '<span class="b b-de">Deleted</span>';
+}
+function eb(s){
+  if(s==='Active')return '<span class="b b-ac">Active</span>';
+  if(s==='Expired')return '<span class="b b-ex">Expired</span>';
+  return '<span class="b b-di">Inactive</span>';
+}
+
+function renderLists(data){
+  document.getElementById('listsTbody').innerHTML=data.map((r,i)=>`<tr>
+    <td><span style="font-weight:500;color:#185FA5;cursor:pointer" onclick="goDetail('${r.name.replace(/'/g,"\\'")}')"> ${r.name}</span></td>
+    <td>${sb(r.status)}</td>
+    <td style="color:#555">${r.records.toLocaleString()}</td>
+    <td style="color:#3B6D11">${r.active.toLocaleString()}</td>
+    <td>${r.action==='Alert & block'?'<span class="b b-bl">Alert &amp; block</span>':'<span class="b b-al">Generate alert</span>'}</td>
+    <td style="color:#888;font-size:12px">${r.ttl}</td>
+    <td style="color:#888;font-size:12px">${r.created}</td>
+    <td style="color:#888;font-size:12px">${r.modified}</td>
+    <td style="color:${r.listExpiry==='—'?'#aaa':'#854F0B'};font-size:12px">${r.listExpiry}</td>
+    <td><div class="adrop-wrap">
+      <button class="adrop-btn" onclick="showListMenu(event,${i})" title="Actions">&#8942;</button>
+    </div></td>
+  </tr>`).join('');
+}
+
+function renderEnts(data){
+  document.getElementById('entTbody').innerHTML=data.map((r,i)=>`<tr>
+    <td><div style="font-weight:500">${r.name}</div><div style="font-size:11px;color:#aaa">${r.id}</div></td>
+    <td><span class="b b-in" style="font-size:11px">${r.risk}</span></td>
+    <td>${r.action==='Block'?'<span class="b b-bl">Block</span>':'<span class="b b-al">Alert</span>'}</td>
+    <td>${eb(r.status)}</td>
+    <td style="color:#888;font-size:12px">${r.added}</td>
+    <td style="color:${r.status==='Expired'?'#A32D2D':'#888'};font-size:12px">${r.expiry}</td>
+    <td><div class="adrop-wrap">
+      <button class="adrop-btn" onclick="showEntMenu(event,${i})" title="Actions">&#8942;</button>
+    </div></td>
+  </tr>`).join('');
+}
+
+function filterLists(q){renderLists(listsData.filter(r=>r.name.toLowerCase().includes(q.toLowerCase())))}
+function filterListsByStatus(s){renderLists(s?listsData.filter(r=>r.status===s):listsData)}
+
+function setNav(el,v){
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');showView(v);
+}
+function showView(v){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.getElementById('view-'+v).classList.add('active');
+  const bc=document.getElementById('bc');
+  if(v==='landing')bc.innerHTML='<span>Custom lists</span>';
+}
+function goDetail(name){
+  document.getElementById('det-name').textContent=name;
+  document.getElementById('s1-name').textContent=name;
+  document.getElementById('bul-listname').textContent=name;
+  showView('detail');
+  document.getElementById('bc').innerHTML='<span onclick="goLanding()" style="cursor:pointer">Custom lists</span> / '+name;
+  renderEnts(entsData);
+  closePanel('det','addent');closePanel('det','bulkdet');closePanel('det','history');
+}
+function goLanding(){showView('landing');}
+
+function openPanel(v,k){const p=document.getElementById('panel-'+v+'-'+k);if(p){p.classList.add('open');setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'nearest'}),50)}}
+function closePanel(v,k){const p=document.getElementById('panel-'+v+'-'+k);if(p)p.classList.remove('open')}
+function openMov(id){document.getElementById(id).classList.add('open')}
+function closeMov(id){document.getElementById(id).classList.remove('open')}
+
+function toggleNotif(){document.getElementById('notifPanel').classList.toggle('open')}
+function toggleEnDates(disabling){
+  document.getElementById('disableDateRow').style.display=disabling?'':'none';
+  document.getElementById('enableDateRow').style.display=disabling?'none':'';
+}
+function toggleHist(hdr){hdr.nextElementSibling.classList.toggle('open')}
+
+// ── List status tabs ──────────────────────────────────
+const listTabStatus = {Active:'Active', Inactive:'Disabled', Drafted:'Drafted'};
+let currentListTab = 'Active';
+function switchListTab(el, tab) {
+  document.querySelectorAll('.ltab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  currentListTab = tab;
+  const mapped = listTabStatus[tab];
+  // For demo: Active shows real data, others show empty or filtered
+  if (tab === 'Active') {
+    renderLists(listsData.filter(r => r.status === 'Active'));
+  } else if (tab === 'Inactive') {
+    renderLists(listsData.filter(r => r.status === 'Disabled'));
+  } else {
+    renderLists([]); // Drafted — empty for demo
+  }
+}
+
+// ── Global dropdown menu ──────────────────────────────
+let _openMenu = null;
+let _pendingAction = null;
+
+document.addEventListener('click', e => {
+  if (!e.target.closest('.adrop-wrap') && !e.target.closest('#globalAdropMenu')) {
+    closeAdrop();
+  }
+});
+
+function closeAdrop() {
+  const m = document.getElementById('globalAdropMenu');
+  m.classList.remove('open');
+  _openMenu = null;
+}
+
+function positionMenu(btn) {
+  const m = document.getElementById('globalAdropMenu');
+  const rect = btn.getBoundingClientRect();
+  m.style.top = (rect.bottom + 4) + 'px';
+  // Align right edge of menu to right edge of button
+  const menuWidth = 172;
+  let left = rect.right - menuWidth;
+  if (left < 8) left = 8;
+  m.style.left = left + 'px';
+}
+
+function showListMenu(e, idx) {
+  e.stopPropagation();
+  const r = listsData[idx];
+  const m = document.getElementById('globalAdropMenu');
+  positionMenu(e.currentTarget);
+  m.innerHTML = `
+    <button class="adrop-item" onclick="closeAdrop();goDetail('${r.name.replace(/'/g,"\\'")}')">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15.5,7.8C14.3,4.7,11.3,2.6,8,2.5C4.7,2.6,1.7,4.7,0.5,7.8c0,0.1,0,0.2,0,0.3c1.2,3.1,4.1,5.2,7.5,5.3c3.3-0.1,6.3-2.2,7.5-5.3C15.5,8.1,15.5,7.9,15.5,7.8z M8,12.5c-2.7,0-5.4-2-6.5-4.5c1-2.5,3.8-4.5,6.5-4.5s5.4,2,6.5,4.5C13.4,10.5,10.6,12.5,8,12.5z"/><path d="M8,5C6.3,5,5,6.3,5,8s1.3,3,3,3s3-1.3,3-3S9.7,5,8,5z"/></svg>
+      View Details
+    </button>
+    <button class="adrop-item" onclick="closeAdrop();document.getElementById('el-name').value='${r.name.replace(/'/g,"\\'")}';openMov('editListMov');">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M2 26H30V28H2z"/><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+      Edit List
+    </button>
+    <button class="adrop-item" onclick="closeAdrop();openCommentModal('${r.status==='Active'?'Disable':'Enable'} List — ${r.name.replace(/'/g,"\\'")}', function(){ document.getElementById('enListName').textContent='${r.name.replace(/'/g,"\\'")}'; openMov('enableListMov'); })">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      ${r.status==='Active'?'Disable List':'Enable List'}
+    </button>`;
+  if (_openMenu === m) { closeAdrop(); return; }
+  closeAdrop();
+  m.classList.add('open');
+  _openMenu = m;
+}
+
+// Convert "12 Jan 2027" → "2027-01-12" for date inputs
+function toDateInput(d) {
+  if (!d || d === '—') return '';
+  const mo = {Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',
+               Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12'};
+  const p = d.split(' ');
+  return p.length === 3 ? `${p[2]}-${mo[p[1]]||'01'}-${p[0].padStart(2,'0')}` : '';
+}
+
+function openAddEntity() {
+  // Add mode: blank form, "Add entity" title, "Reason for addition" label
+  document.getElementById('addent-title').textContent = 'Add entry';
+  document.getElementById('addent-new-note').style.display  = '';
+  document.getElementById('addent-edit-note').style.display = 'none';
+  document.getElementById('ae-reason-label').innerHTML = 'Reason for addition <span class="req">*</span>';
+  // Clear all fields
+  ['ae-name','ae-aliases','ae-dob','ae-nationality','ae-passport','ae-nationalid',
+   'ae-taxid','ae-companyreg','ae-ip','ae-deviceid','ae-mac','ae-mobile','ae-email',
+   'ae-nativescript','ae-reason','ae-sourceref','ae-expiry'].forEach(id => {
+    const el = document.getElementById(id); if (el) el.value = '';
+  });
+  document.getElementById('ae-gender').value    = '';
+  document.getElementById('ae-scripttype').value = '';
+  openPanel('det','addent');
+}
+
+function populateEditEntity(r) {
+  // Edit mode: pre-populate form, swap title and notes
+  document.getElementById('addent-title').textContent = 'Edit entry';
+  document.getElementById('addent-new-note').style.display  = 'none';
+  document.getElementById('addent-edit-note').style.display = '';
+  document.getElementById('ae-reason-label').innerHTML = 'Reason for edit <span class="req">*</span>';
+  // Populate all fields
+  document.getElementById('ae-name').value        = r.name        || '';
+  document.getElementById('ae-aliases').value     = r.aliases     || '';
+  document.getElementById('ae-dob').value         = r.dob         || '';
+  document.getElementById('ae-gender').value      = r.gender      || '';
+  document.getElementById('ae-nationality').value = r.nationality || '';
+  document.getElementById('ae-passport').value    = r.passport    || '';
+  document.getElementById('ae-nationalid').value  = r.nationalId  || '';
+  document.getElementById('ae-taxid').value       = r.taxId       || '';
+  document.getElementById('ae-companyreg').value  = r.companyReg  || '';
+  document.getElementById('ae-ip').value          = r.ip          || '';
+  document.getElementById('ae-deviceid').value    = r.deviceId    || '';
+  document.getElementById('ae-mac').value         = r.mac         || '';
+  document.getElementById('ae-mobile').value      = r.mobile      || '';
+  document.getElementById('ae-email').value       = r.email       || '';
+  document.getElementById('ae-nativescript').value = r.nativeScript || '';
+  document.getElementById('ae-scripttype').value   = r.scriptType   || '';
+  document.getElementById('ae-expiry').value      = toDateInput(r.expiry);
+  document.getElementById('ae-sourceref').value   = r.sourceRef   || '';
+  document.getElementById('ae-reason').value      = ''; // always fresh
+  openPanel('det','addent');
+}
+
+function showEntMenu(e, idx) {
+  e.stopPropagation();
+  const r = entsData[idx];
+  const m = document.getElementById('globalAdropMenu');
+  positionMenu(e.currentTarget);
+  m.innerHTML = `
+    <button class="adrop-item" onclick="closeAdrop();openEntityProfile(entsData[${idx}])">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0"/><path d="M12 8v4M12 16h.01"/></svg>
+      View
+    </button>
+    <button class="adrop-item" onclick="closeAdrop();document.getElementById('hist-name').textContent='${r.name.replace(/'/g,"\\'")}';openPanel('det','history')">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></svg>
+      View History
+    </button>
+    <button class="adrop-item" onclick="closeAdrop();populateEditEntity(entsData[${idx}])">
+      <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M2 26H30V28H2z"/><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+      Edit
+    </button>
+    <button class="adrop-item" onclick="closeAdrop();openEntDisableModal(entsData[${idx}])">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+      ${r.status==='Active'?'Disable Entry':'Enable Entry'}
+    </button>`;
+  if (_openMenu === m) { closeAdrop(); return; }
+  closeAdrop();
+  m.classList.add('open');
+  _openMenu = m;
+}
+
+// ── Comment / Confirmation Modal ──────────────────────
+let _cmovType = ''; // 'entity-status' | '' for generic
+
+function openCommentModal(actionLabel, onConfirm) {
+  closeAdrop();
+  _pendingAction = onConfirm;
+  _cmovType = '';
+  document.getElementById('cm-title').textContent = 'Add Comment';
+  document.getElementById('cm-action-badge').textContent = actionLabel;
+  document.getElementById('cm-comment').value = '';
+  document.getElementById('cm-comment').classList.remove('err');
+  document.getElementById('cm-err').classList.remove('show');
+  document.getElementById('commentMov').classList.add('open');
+  setTimeout(() => document.getElementById('cm-comment').focus(), 80);
+}
+
+let _entStatusAction = '';
+function openEntDisableModal(r) {
+  _entStatusAction = r.status === 'Active' ? 'Disable' : 'Enable';
+  _pendingAction = null;
+  _cmovType = 'entity-status';
+  document.getElementById('cm-title').textContent = (_entStatusAction === 'Disable' ? 'Disable' : 'Enable') + ' Entry';
+  document.getElementById('cm-action-badge').textContent = _entStatusAction + ' Entry — ' + r.name;
+  document.getElementById('cm-comment').value = '';
+  document.getElementById('cm-comment').classList.remove('err');
+  document.getElementById('cm-err').classList.remove('show');
+  document.getElementById('commentMov').classList.add('open');
+  setTimeout(() => document.getElementById('cm-comment').focus(), 80);
+}
+
+function closeCMov() {
+  document.getElementById('commentMov').classList.remove('open');
+  _pendingAction = null;
+  _cmovType = '';
+}
+
+function confirmCMov() {
+  const txt = document.getElementById('cm-comment').value.trim();
+  if (!txt) {
+    document.getElementById('cm-comment').classList.add('err');
+    document.getElementById('cm-err').classList.add('show');
+    return;
+  }
+  document.getElementById('commentMov').classList.remove('open');
+  if (_cmovType === 'entity-status') {
+    // Show Checker Approval success modal
+    const action = _entStatusAction;
+    document.getElementById('checker-action-text').textContent = action + ' Entry';
+    const now = new Date();
+    document.getElementById('checker-ts').textContent = now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) + ', ' + now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    document.getElementById('checker-modal').classList.add('open');
+    _pendingAction = null;
+    _cmovType = '';
+    return;
+  }
+  if (_pendingAction) _pendingAction();
+  _pendingAction = null;
+}
+
+function closeCheckerModal() {
+  document.getElementById('checker-modal').classList.remove('open');
+}
+
+// ── Entity Profile (View) ──────────────────────────────
+function openEntityProfile(r) {
+  const fmt = v => v || '<span style="color:#bbb;font-style:italic">—</span>';
+  const fmtDate = v => v ? v.replace(/-/g, '/') : '<span style="color:#bbb;font-style:italic">—</span>';
+  const gender = {Male:'Male',Female:'Female',Other:'Other','':''};
+  document.getElementById('ep-body').innerHTML = `
+    <div class="fgt">Identity</div>
+    <div class="fr">
+      <div class="fg"><label>Full name</label><div class="ep-val">${fmt(r.name)}</div></div>
+      <div class="fg"><label>Aliases / alternate names</label><div class="ep-val">${fmt(r.aliases)}</div></div>
+    </div>
+    <div class="fr c3">
+      <div class="fg"><label>Date of birth</label><div class="ep-val">${fmtDate(r.dob)}</div></div>
+      <div class="fg"><label>Gender</label><div class="ep-val">${fmt(r.gender)}</div></div>
+      <div class="fg"><label>Nationality (ISO)</label><div class="ep-val">${fmt(r.nationality)}</div></div>
+    </div>
+    <div class="fgt">Identifiers</div>
+    <div class="fr c3">
+      <div class="fg"><label>Passport no.</label><div class="ep-val">${fmt(r.passport)}</div></div>
+      <div class="fg"><label>National ID no.</label><div class="ep-val">${fmt(r.nationalId)}</div></div>
+      <div class="fg"><label>Tax ID (TIN / PAN)</label><div class="ep-val">${fmt(r.taxId)}</div></div>
+    </div>
+    <div class="fr c1"><div class="fg"><label>Company registration no.</label><div class="ep-val">${fmt(r.companyReg)}</div></div></div>
+    <div class="fgt">Digital identifiers</div>
+    <div class="fr c3">
+      <div class="fg"><label>IP address</label><div class="ep-val">${fmt(r.ip)}</div></div>
+      <div class="fg"><label>Device ID / IMEI</label><div class="ep-val">${fmt(r.deviceId)}</div></div>
+      <div class="fg"><label>MAC address</label><div class="ep-val">${fmt(r.mac)}</div></div>
+    </div>
+    <div class="fr">
+      <div class="fg"><label>Mobile number</label><div class="ep-val">${fmt(r.mobile)}</div></div>
+      <div class="fg"><label>Email address</label><div class="ep-val">${fmt(r.email)}</div></div>
+    </div>
+    <div class="fgt">Localisation (multilingual)</div>
+    <div class="fr">
+      <div class="fg"><label>Name in native script</label><div class="ep-val">${fmt(r.nativeScript)}</div></div>
+      <div class="fg"><label>Script type</label><div class="ep-val">${fmt(r.scriptType)}</div></div>
+    </div>
+    <div class="fgt">Risk &amp; governance</div>
+    <div class="fr c3">
+      <div class="fg"><label>Risk category</label><div class="ep-val">${fmt(r.risk)}</div></div>
+      <div class="fg"><label>Action on hit</label><div class="ep-val">${r.action === 'Block' ? '<span class="b b-bl">Block transaction</span>' : '<span class="b b-al">Generate alert</span>'}</div></div>
+      <div class="fg"><label>Expiry date (TTL)</label><div class="ep-val">${fmt(r.expiry)}</div></div>
+    </div>
+    <div class="fr c1"><div class="fg"><label>Source reference</label><div class="ep-val">${fmt(r.sourceRef)}</div></div></div>
+    <div class="fr c1"><div class="fg"><label>Status</label><div class="ep-val">${r.status === 'Active' ? '<span class="b b-ac">Active</span>' : r.status === 'Expired' ? '<span class="b b-ex">Expired</span>' : '<span class="b b-di">Inactive</span>'}</div></div></div>
+  `;
+  document.getElementById('ep-ename').textContent = r.name;
+  document.getElementById('ep-modal').classList.add('open');
+}
+
+function closeEntityProfile() {
+  document.getElementById('ep-modal').classList.remove('open');
+}
+
+// Close comment modal on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeCMov();
+    closeCheckerModal();
+    closeEntityProfile();
+    closePurposeMov();
+    closePurposeControls();
+    closeAdrop();
+  }
+});
+
+// ── Purpose management (Add purpose · Maker-Checker) ────
+let purposesData = [
+  { name:"Internal fraud — flagged entries", status:"Active", enabled:true },
+  { name:"Rejected KYC applicants",          status:"Active", enabled:true },
+  { name:"PEP — internal identified",        status:"Active", enabled:true },
+  { name:"Adverse media flagged",            status:"Active", enabled:true },
+  { name:"Device / IP blocklist",            status:"Active", enabled:true },
+  { name:"Investigations — under review",    status:"Active", enabled:true }
+];
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+// Only Checker-approved (Active) AND enabled purposes appear in the Create list dropdown
+function renderPurposeOptions(){
+  const sel = document.getElementById('create-purpose');
+  if(!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">Select purpose</option>' +
+    purposesData.filter(p => p.status === 'Active' && p.enabled !== false)
+                .map(p => `<option>${esc(p.name)}</option>`).join('');
+  if(cur) sel.value = cur;
+}
+
+function renderPurposeChips(){
+  const box = document.getElementById('purpose-list');
+  if(!box) return;
+  box.innerHTML = purposesData.map((p, i) => {
+    const pending = p.status === 'Pending approval';
+    const disabled = !pending && p.enabled === false;
+    const badge = pending
+      ? '<span style="background:#fef3c7;color:#92400e;border-radius:100px;padding:2px 9px;font-size:10px;font-weight:700">Pending Checker</span>'
+      : disabled
+        ? '<span style="background:#f3f4f6;color:#6b7280;border-radius:100px;padding:2px 9px;font-size:10px;font-weight:700">Disabled</span>'
+        : '<span style="background:#dcfce7;color:#166534;border-radius:100px;padding:2px 9px;font-size:10px;font-weight:700">Active</span>';
+    const checkerActions = pending
+      ? `<div style="display:flex;gap:6px;margin-left:auto">
+           <button class="btn btn-sm" style="height:26px;font-size:11px;padding:0 10px;color:#166534;border-color:#bbf7d0" onclick="approvePurpose(${i})">Approve</button>
+           <button class="btn btn-sm" style="height:26px;font-size:11px;padding:0 10px;color:#b91c1c;border-color:#fecaca" onclick="rejectPurpose(${i})">Reject</button>
+         </div>`
+      : '';
+    return `<div style="display:flex;align-items:center;gap:9px;border:1px solid #e5e7eb;border-radius:8px;padding:7px 11px;background:#fff">
+              <span style="font-size:12.5px;font-weight:600;color:#1f2937">${esc(p.name)}</span>
+              ${badge}
+              ${checkerActions}
+            </div>`;
+  }).join('');
+}
+
+function openAddPurpose(){
+  const inp  = document.getElementById('purpose-input');
+  const desc = document.getElementById('purpose-desc');
+  inp.value = ''; desc.value = '';
+  inp.classList.remove('err');
+  document.getElementById('purpose-err').classList.remove('show');
+  renderPurposeChips();
+  document.getElementById('purposeMov').classList.add('open');
+  setTimeout(() => inp.focus(), 80);
+}
+
+function closePurposeMov(){
+  document.getElementById('purposeMov').classList.remove('open');
+}
+
+// Maker action — submit a new purpose for Checker approval (enters Pending state)
+function addPurpose(){
+  const inp  = document.getElementById('purpose-input');
+  const desc = document.getElementById('purpose-desc');
+  const name = inp.value.trim();
+  const reason = desc.value.trim();
+  if(!name || !reason){
+    if(!name) inp.classList.add('err');
+    document.getElementById('purpose-err').classList.add('show');
+    return;
+  }
+  if(purposesData.some(p => p.name.toLowerCase() === name.toLowerCase())){
+    inp.classList.add('err');
+    const err = document.getElementById('purpose-err');
+    err.textContent = 'A purpose with this name already exists.';
+    err.classList.add('show');
+    return;
+  }
+  // Submitted by Maker → Pending Checker approval (not yet in the dropdown)
+  purposesData.push({ name, status:'Pending approval', reason });
+  renderPurposeChips();
+  inp.value = ''; desc.value = '';
+  document.getElementById('purpose-err').textContent = 'Please enter a purpose name and a reason for addition.';
+  closePurposeMov();
+  showCheckerModal('Add purpose — ' + name);
+}
+
+// Checker actions (demonstrated within this mockup)
+function approvePurpose(i){
+  if(!purposesData[i]) return;
+  purposesData[i].status = 'Active';
+  if(purposesData[i].enabled === undefined) purposesData[i].enabled = true;
+  renderPurposeChips();
+  renderPurposeOptions();
+}
+function rejectPurpose(i){
+  if(!purposesData[i]) return;
+  purposesData.splice(i, 1);
+  renderPurposeChips();
+}
+
+// Shared Checker Approval confirmation modal
+// ── Purpose controls (enable / disable approved purposes) ──
+let _purposeCtrlDraft = []; // working copy of enabled states while modal is open
+
+function renderPurposeCtrlList(){
+  const box = document.getElementById('purpose-ctrl-list');
+  if(!box) return;
+  const active = purposesData
+    .map((p, i) => ({ p, i }))
+    .filter(o => o.p.status === 'Active');
+  if(active.length === 0){
+    box.innerHTML = '<div style="font-size:12.5px;color:#6b7280;padding:6px 2px">No approved purposes yet. Approved purposes will appear here.</div>';
+    return;
+  }
+  box.innerHTML = active.map(({ p, i }) => {
+    const on = _purposeCtrlDraft[i] !== false;
+    return `<div style="display:flex;align-items:center;gap:10px;border:1px solid #e5e7eb;border-radius:8px;padding:9px 12px;background:#fff">
+              <div style="flex:1;min-width:0">
+                <div style="font-size:12.5px;font-weight:600;color:#1f2937">${esc(p.name)}</div>
+                <div style="font-size:11px;color:#9ca3af;margin-top:1px">${on ? 'Enabled — selectable for new lists' : 'Disabled — hidden from the Create list dropdown'}</div>
+              </div>
+              <div class="tgl ${on ? 'on' : ''}" onclick="togglePurposeCtrl(${i})"></div>
+            </div>`;
+  }).join('');
+}
+
+function openPurposeControls(){
+  _purposeCtrlDraft = purposesData.map(p => p.enabled !== false);
+  renderPurposeCtrlList();
+  document.getElementById('purposeCtrlMov').classList.add('open');
+}
+
+function togglePurposeCtrl(i){
+  _purposeCtrlDraft[i] = !(_purposeCtrlDraft[i] !== false);
+  renderPurposeCtrlList();
+}
+
+function closePurposeControls(){
+  document.getElementById('purposeCtrlMov').classList.remove('open');
+}
+
+function savePurposeControls(){
+  purposesData.forEach((p, i) => {
+    if(p.status === 'Active') p.enabled = _purposeCtrlDraft[i] !== false;
+  });
+  renderPurposeOptions();
+  renderPurposeChips();
+  closePurposeControls();
+}
+
+
+function showCheckerModal(actionText){
+  document.getElementById('checker-action-text').textContent = actionText;
+  const now = new Date();
+  document.getElementById('checker-ts').textContent =
+    now.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}) + ', ' +
+    now.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('checker-modal').classList.add('open');
+}
+
+// ── Bulk-upload entry template download ────────────────
+const ENTRY_TEMPLATE_COLUMNS = [
+  "Full Name",
+  "Aliases / Alternate Names (pipe-separated)",
+  "Date of Birth (YYYY-MM-DD)",
+  "Gender",
+  "Nationality (ISO)",
+  "Passport No.",
+  "National ID No.",
+  "Tax ID (TIN / PAN)",
+  "Company Registration No.",
+  "IP Address",
+  "Device ID / IMEI",
+  "MAC Address",
+  "Mobile Number (e.g. +91987654321)",
+  "Email Address",
+  "Name in Native Script",
+  "Script Type (FR / AR / CY)",
+  "Valid Up till (TTL) (YYYY-MM-DD)",
+  "Reason for Addition",
+  "Source Reference"
+];
+
+function downloadEntryTemplate(){
+  const headers = ENTRY_TEMPLATE_COLUMNS;
+  if(typeof XLSX !== 'undefined'){
+    const ws = XLSX.utils.aoa_to_sheet([headers]);
+    ws['!cols'] = headers.map(h => ({ wch: Math.max(16, h.length + 2) }));
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Custom List Entries');
+    XLSX.writeFile(wb, 'custom_list_entry_template.xlsx');
+  } else {
+    // Fallback: CSV with the same columns
+    const csv = headers.map(h => '"' + h.replace(/"/g,'""') + '"').join(',') + '\r\n';
+    const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'custom_list_entry_template.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+}
+
+renderLists(listsData);
+renderPurposeOptions();
+
+
+</script>

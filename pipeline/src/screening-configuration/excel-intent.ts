@@ -285,11 +285,29 @@ export function buildExcelStepActions(row: ScExcelRow): string[] {
     if (stepMatches(s, "login", "log in", "logged in")) {
       continue;
     }
-    if (stepMatches(s, "open screening configuration", "navigate to watchlist", "screening configuration module", "configurations")) {
+    if (
+      stepMatches(
+        s,
+        "open screening configuration",
+        "navigate to watchlist",
+        "screening configuration module",
+        "configurations",
+        "sanction screening",
+        "sanctions screening configuration",
+        "application menu",
+      )
+      || /open\s+sanction/i.test(s)
+    ) {
       if (!steps.some((x) => x.includes("openScreeningConfig"))) {
         pushUnique(steps, OPEN);
+        pushUnique(steps, "await scPage.openScreeningConfigFromSidebar()");
         pushUnique(steps, "await scPage.expectScreeningConfigPageLoaded()");
       }
+      continue;
+    }
+    if (stepMatches(s, "confirm the listing", "confirm listing", "listing page is displayed", "listing page loads")) {
+      pushUnique(steps, "await scPage.expectScreeningConfigPageLoaded()");
+      pushUnique(steps, "await scPage.expectWatchlistGridVisible()");
       continue;
     }
     if (stepMatches(s, "direct url", "enter url")) {
@@ -464,8 +482,22 @@ export function buildExcelStepActions(row: ScExcelRow): string[] {
       pushUnique(steps, "await scPage.refreshPage()");
     } else if (stepMatches(s, "logout", "log out", "session")) {
       pushUnique(steps, "await scPage.performLogoutAndReturn()");
-    } else if (stepMatches(s, "inspect", "observe", "verify", "validate", "check")) {
-      // assertions phase
+    } else if (stepMatches(s, "compare tab badge", "badge count", "tab counter")) {
+      pushUnique(steps, "await scPage.expectStatusTabsVisible()");
+    } else if (stepMatches(s, "select all tab", "all tab")) {
+      pushUnique(steps, "await scPage.selectStatusTab('All Rules')");
+    } else if (/locate .+ in the grid/i.test(s)) {
+      const keyword = s.replace(/locate/i, "").replace(/in the grid/i, "").replace(/"/g, "").trim();
+      pushUnique(steps, `await scPage.searchWatchlists('${escapeStr(keyword || "Batch Screening")}')`);
+    } else if (stepMatches(s, "review the grid", "grid body", "review grid")) {
+      pushUnique(steps, "await scPage.expectWatchlistGridVisible()");
+    } else if (stepMatches(s, "scroll", "paginate", "pagination")) {
+      pushUnique(steps, "await scPage.expectPaginationVisible()");
+      pushUnique(steps, "await scPage.clickPaginationNext()");
+    } else if (stepMatches(s, "wizard opens", "step indicator", "basic information")) {
+      pushUnique(steps, "await scPage.expectConfigurationWizardStepVisible()");
+    } else if (stepMatches(s, "inspect", "observe", "verify", "validate", "check", "review", "confirm", "compare", "locate", "read", "monitor")) {
+      // Assertion phase covers observation-only Excel steps.
     } else {
       pushUnique(steps, `// TODO: Excel step not mapped — "${escapeStr(s)}"`);
     }

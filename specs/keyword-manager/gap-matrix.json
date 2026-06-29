@@ -1,1402 +1,912 @@
 [
   {
     "requirementId": "KM-TC-001",
-    "requirementDescription": "Verify user can navigate to Keyword Manager module from Configuration menu",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Open Keyword Manager from nested configuration menu",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-002",
-    "requirementDescription": "Verify Keyword Manager page title and breadcrumb display correctly",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Access Keyword Manager via direct URL after authentication",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-003",
-    "requirementDescription": "Verify Active tab is selected by default on page load",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Validate page load performance for authorized user",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-004",
-    "requirementDescription": "Verify Active, Inactive, and Drafted tabs are all visible on listing page",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Verify browser back and forward navigation stability",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-005",
-    "requirementDescription": "Verify entry counts displayed in each tab are accurate",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Open Keyword Manager in parallel tabs",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-006",
-    "requirementDescription": "Verify page remains stable during initial data load for large keyword datasets",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Ensure unauthorized deep-link is blocked for non-permitted role",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-007",
-    "requirementDescription": "Verify empty state is displayed when no keyword entries exist",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Verify breadcrumb click returns to parent module",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-008",
-    "requirementDescription": "Verify action bar buttons are visible on Keyword Manager listing page",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Retain selected environment context after page revisit",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-009",
-    "requirementDescription": "Verify clicking Inactive tab loads inactive keyword entries",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Load default Active tab on first entry",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-010",
-    "requirementDescription": "Verify clicking Drafted tab loads drafted keyword entries",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Switch among all status tabs",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-011",
-    "requirementDescription": "Verify switching between tabs does not lose data or cause errors",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Validate tab counters against row totals",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-012",
-    "requirementDescription": "Verify table headers are consistent across all tabs",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Confirm no unsupported Pending Approval tab is shown",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-013",
-    "requirementDescription": "Verify keyword listing table displays all configured columns",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Preserve selected tab after browser refresh",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-014",
-    "requirementDescription": "Verify Keyword/Phrase column displays correct values",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Keep search keyword when switching tabs",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-015",
-    "requirementDescription": "Verify Category column displays correct category assignment per keyword",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Show zero-state message for empty status tab",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-016",
-    "requirementDescription": "Verify Risk Level column displays correct risk badge for each keyword",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Search by full keyword phrase",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-017",
-    "requirementDescription": "Verify Match Type column correctly identifies Exact Match and Fuzzy Match entries",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Search by partial text fragment",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-018",
-    "requirementDescription": "Verify Threshold Score column is populated for Fuzzy Match entries",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-019",
-    "requirementDescription": "Verify Threshold Score column is blank or N/A for Exact Match entries",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-020",
-    "requirementDescription": "Verify Status column displays correct status for each entry",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-021",
-    "requirementDescription": "Verify long keyword phrases do not break table layout",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-022",
-    "requirementDescription": "Verify table supports vertical scrolling for large datasets",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-023",
-    "requirementDescription": "Verify search field is visible in toolbar on keyword listing page",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-024",
-    "requirementDescription": "Verify search returns matching records when valid keyword is entered",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-025",
-    "requirementDescription": "Verify search is case-insensitive",
+    "requirementDescription": "Validate case-insensitive search behavior",
     "testable": "Partial",
     "missingInformation": "Accessibility tooling and baseline thresholds",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
+    "requirementId": "KM-TC-019",
+    "requirementDescription": "Search with no matching records",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "KM-TC-020",
+    "requirementDescription": "Clear search and restore full list",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "KM-TC-021",
+    "requirementDescription": "Run search independently per status tab",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "KM-TC-022",
+    "requirementDescription": "Trim leading and trailing spaces in search input",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "KM-TC-023",
+    "requirementDescription": "Sort Keyword/Phrase in ascending order",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "KM-TC-024",
+    "requirementDescription": "Sort Category in descending order",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "KM-TC-025",
+    "requirementDescription": "Validate multi-page table row consistency",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
     "requirementId": "KM-TC-026",
-    "requirementDescription": "Verify search returns no results for unmatched text",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Check column visibility and order",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-027",
-    "requirementDescription": "Verify clearing search field restores full keyword listing",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Ensure long keyword text is safely rendered",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-028",
-    "requirementDescription": "Verify special characters are handled safely in search field",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Verify created date format is consistent",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-029",
-    "requirementDescription": "Verify Add Category modal opens when Add Category button is clicked",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Sort Status in ascending order",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-030",
-    "requirementDescription": "Verify Category Name field is mandatory in Add Category modal",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Sort Keyword/Phrase in descending order",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-031",
-    "requirementDescription": "Verify Category Name accepts valid input up to 100 characters",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Create a new custom category with mandatory fields",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-032",
-    "requirementDescription": "Verify Category Name beyond 100 characters is rejected",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Reject duplicate category name",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-033",
-    "requirementDescription": "Verify duplicate Category Name is rejected with inline error",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Validate category name max length 100 characters",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-034",
-    "requirementDescription": "Verify Category Description field is optional",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Validate category description max length 500 characters",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-035",
-    "requirementDescription": "Verify Category Description accepts up to 500 characters",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Cancel Add Category operation",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-036",
-    "requirementDescription": "Verify Category Description beyond 500 characters is restricted",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Allow special characters supported by naming convention",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-037",
-    "requirementDescription": "Verify successful Add Category submission sends entry for Checker approval",
+    "requirementDescription": "Disable category control for Sanctions",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-038",
-    "requirementDescription": "Verify Cancel button on Add Category modal discards data without saving",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Enable disabled category Terrorism",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-039",
-    "requirementDescription": "Verify confirmation prompt appears when cancelling Add Category with populated fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Prevent category toggle without permission",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-040",
-    "requirementDescription": "Verify Add Category modal close button works correctly",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Disable category control for Financial Crime",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-041",
-    "requirementDescription": "Verify Category Controls panel opens when Category Controls button is clicked",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Enable disabled category Sanctions",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-042",
-    "requirementDescription": "Verify all existing categories are listed in Category Controls panel",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Disable category control for PEP",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-043",
-    "requirementDescription": "Verify enabled category toggle shows correct active state",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Enable disabled category Financial Crime",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-044",
-    "requirementDescription": "Verify user can disable an active category using the toggle",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Submit exact-match keyword with all mandatory fields and screening field mapping",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-045",
-    "requirementDescription": "Verify user can re-enable a disabled category using the toggle",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Submit fuzzy-match keyword with mandatory threshold and screening field mapping",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-046",
-    "requirementDescription": "Verify disabling a category removes all its keywords from active screening",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Save keyword as draft",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-047",
-    "requirementDescription": "Verify Cancel button on Category Controls panel discards unsaved changes",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Cancel Add Keyword discards unsaved entry",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-048",
-    "requirementDescription": "Verify category controls changes are subject to Maker-Checker approval",
+    "requirementDescription": "Enforce mandatory field validation in add keyword",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-049",
-    "requirementDescription": "Verify Add Keyword panel opens when Add Keyword button is clicked",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Map keyword to single field from Name Screening group",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-050",
-    "requirementDescription": "Verify Keyword/Phrase field is mandatory",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Map keyword to cross-group field selection",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-051",
-    "requirementDescription": "Verify Keyword/Phrase field accepts up to 500 characters",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Require at least one screening field selection",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-052",
-    "requirementDescription": "Verify Keyword/Phrase field beyond 500 characters is restricted",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Persist screening field mappings after edit",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-053",
-    "requirementDescription": "Verify Category dropdown is mandatory and lists only active categories",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Accept fuzzy threshold at boundary value 1",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-054",
-    "requirementDescription": "Verify Risk Level is mandatory and supports Low, Medium, and High options",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Reject fuzzy threshold below valid range (0)",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-055",
-    "requirementDescription": "Verify Match Type is mandatory and presents Exact Match and Fuzzy Match options",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Hide threshold input for Exact Match",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-056",
-    "requirementDescription": "Verify Threshold Score field is hidden when Exact Match is selected",
+    "requirementDescription": "Classify threshold hint as Low/Balanced/High",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-057",
-    "requirementDescription": "Verify Threshold Score field appears when Fuzzy Match is selected",
+    "requirementDescription": "Accept fuzzy threshold at boundary value 80",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-058",
-    "requirementDescription": "Verify Threshold Score field is mandatory when Fuzzy Match is selected",
+    "requirementDescription": "Accept fuzzy threshold at upper boundary value 100",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-059",
-    "requirementDescription": "Verify Threshold Score accepts values between 1 and 100 inclusive",
+    "requirementDescription": "Accept fuzzy threshold at boundary value 65",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-060",
-    "requirementDescription": "Verify Threshold Score value below 1 is clamped to 1",
+    "requirementDescription": "Clamp threshold input above 100 to maximum allowed value",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-061",
-    "requirementDescription": "Verify Threshold Score value above 100 is clamped to 100",
+    "requirementDescription": "Run live narrative tester with a strong match narrative",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-062",
-    "requirementDescription": "Verify live precision indicator shows 'Low precision' for Threshold Score below 50",
+    "requirementDescription": "Run live narrative tester with non-matching narrative",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-063",
-    "requirementDescription": "Verify live precision indicator shows 'Balanced' for Threshold Score between 50 and 79",
+    "requirementDescription": "Validate narrative tester input length handling",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-064",
-    "requirementDescription": "Verify live precision indicator shows 'High precision' for Threshold Score of 80 or above",
+    "requirementDescription": "Clear narrative tester output between runs",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-065",
-    "requirementDescription": "Verify Threshold Score boundary 50 displays 'Balanced' precision",
+    "requirementDescription": "Disable active keyword from row action",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-066",
-    "requirementDescription": "Verify Threshold Score boundary 80 displays 'High precision'",
+    "requirementDescription": "Enable inactive keyword from row action",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-067",
-    "requirementDescription": "Verify Threshold Score boundary 49 displays 'Low precision'",
+    "requirementDescription": "Submit drafted keyword using row action",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-068",
-    "requirementDescription": "Verify Screening Fields selector is mandatory with at least one field required",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Validate hard delete action is unavailable",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-069",
-    "requirementDescription": "Verify Screening Fields displays three groups: Name Screening, Adverse Media Screening, KYC/Onboarding Screening",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Restrict row action for viewer role",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-070",
-    "requirementDescription": "Verify Name Screening group contains all 7 configured fields",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Download bulk upload template",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-071",
-    "requirementDescription": "Verify Adverse Media Screening group contains all 7 configured fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Upload valid CSV under 10MB",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-072",
-    "requirementDescription": "Verify KYC/Onboarding Screening group contains all 6 configured fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Upload valid XLSX under 10MB",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-073",
-    "requirementDescription": "Verify user can select a single Screening Field",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Reject bulk file above 10MB",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-074",
-    "requirementDescription": "Verify user can select multiple Screening Fields across different groups",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Reject malformed bulk schema file",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-075",
-    "requirementDescription": "Verify selected Screening Fields appear as removable chips",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Handle mixed valid and invalid rows in one upload",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-076",
-    "requirementDescription": "Verify removing a chip deselects that Screening Field",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Prevent duplicate rows in bulk upload",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-077",
-    "requirementDescription": "Verify search box in Screening Fields selector filters available fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Export Active tab data to CSV",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-078",
-    "requirementDescription": "Verify Save Draft saves keyword entry in Draft state",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Verify export includes metadata columns",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-079",
-    "requirementDescription": "Verify Submit sends keyword for Checker approval when all mandatory fields are valid",
+    "requirementDescription": "Verify export includes maker-checker columns",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-080",
-    "requirementDescription": "Verify duplicate keyword entry (same keyword, match type, and category) is rejected",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Submit new keyword by maker and approve by checker",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-081",
-    "requirementDescription": "Verify Cancel on Add Keyword panel shows confirmation prompt if fields are populated",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Submit new keyword by maker and reject by checker",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-082",
-    "requirementDescription": "Verify Cancel on Add Keyword panel with empty fields closes without prompt",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Prevent maker from self-approving own request",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-083",
-    "requirementDescription": "Verify entry remains in Pending Approval state until Checker acts",
+    "requirementDescription": "Lock pending request from further maker edits",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-084",
-    "requirementDescription": "Verify Live Narrative Tester panel is visible in Add Keyword panel",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Require decision comment in checker modal where configured",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-085",
-    "requirementDescription": "Verify Live Narrative Tester updates preview in real time as user types keyword",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Capture checker approval timestamp and actor",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-086",
-    "requirementDescription": "Verify Exact Match tester highlights only exact token matches",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Process multiple pending requests sequentially",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-087",
-    "requirementDescription": "Verify Fuzzy Match tester highlights tokens meeting or exceeding the Threshold Score",
+    "requirementDescription": "Open keyword history timeline from row action",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-088",
-    "requirementDescription": "Verify Tester preview does not affect live screening or create audit records",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Verify history includes maker and checker events",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-089",
-    "requirementDescription": "Verify Tester updates when Match Type is changed",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Validate event ordering in history timeline",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-090",
-    "requirementDescription": "Verify Tester updates when Threshold Score changes",
+    "requirementDescription": "Verify history captures status transitions",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-091",
-    "requirementDescription": "Verify Checker can view pending keyword entries submitted by Maker",
+    "requirementDescription": "Confirm history panel is read-only for all roles",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-092",
-    "requirementDescription": "Verify Checker can approve a pending keyword entry",
+    "requirementDescription": "Validate exact match normalization behavior",
     "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+    "missingInformation": "Accessibility tooling and baseline thresholds",
+    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-093",
-    "requirementDescription": "Verify Checker can reject a pending keyword entry",
+    "requirementDescription": "Validate fuzzy match similarity against threshold",
     "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
+    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-094",
-    "requirementDescription": "Verify Maker cannot approve their own submitted keyword entries",
+    "requirementDescription": "Ensure screening checks only mapped fields",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-095",
-    "requirementDescription": "Verify entries in Pending Approval state are locked from editing",
+    "requirementDescription": "Validate inactive keywords are excluded from screening",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-096",
-    "requirementDescription": "Verify rejected entries return to Draft state for Maker revision",
+    "requirementDescription": "Maker can create draft and submit keyword",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-097",
-    "requirementDescription": "Verify audit log is created for every Maker-Checker action",
+    "requirementDescription": "Checker can approve or reject but cannot author new keyword",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-098",
-    "requirementDescription": "Verify Maker and Checker must be different users",
+    "requirementDescription": "Viewer has read-only access to keyword data",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-099",
-    "requirementDescription": "Verify user can disable an active keyword entry via action controls",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Restrict Bulk Upload to maker role",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-100",
-    "requirementDescription": "Verify disabled keyword is no longer evaluated at next screening run",
+    "requirementDescription": "Restrict Category Controls to authorized role",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-101",
-    "requirementDescription": "Verify hard deletion of keyword entries is not permitted",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Reject duplicate keyword for same category and match type",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-102",
-    "requirementDescription": "Verify disable action requires Maker-Checker approval",
+    "requirementDescription": "Allow same keyword in different category",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-103",
-    "requirementDescription": "Verify audit log records disable action with timestamp, actor, and reason",
+    "requirementDescription": "Treat keyword duplicates as case-insensitive",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-104",
-    "requirementDescription": "Verify disabled keyword entry moves to Inactive tab",
+    "requirementDescription": "Validate keyword length maximum 500 characters",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-105",
-    "requirementDescription": "Verify user can re-enable an inactive keyword entry",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Reject threshold when fuzzy selected and field blank",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-106",
-    "requirementDescription": "Verify re-enabled keyword enters Active state after Checker approval",
+    "requirementDescription": "Trim keyword leading and trailing spaces before save",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-107",
-    "requirementDescription": "Verify Bulk Import option is accessible from Keyword Manager toolbar",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Run end-to-end regression of create to approval flow",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-108",
-    "requirementDescription": "Verify system accepts valid CSV file for bulk import",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Validate responsive usability at laptop and tablet widths",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-109",
-    "requirementDescription": "Verify system accepts valid XLSX file for bulk import",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Capture UAT sign-off scenario with business user",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-110",
-    "requirementDescription": "Verify import validates field completeness: missing Keyword/Phrase is rejected",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-111",
-    "requirementDescription": "Verify import validates that Fuzzy Match rows include Threshold Score",
+    "requirementDescription": "Validate reference keyword hawala with fuzzy match and threshold",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
+    "requirementId": "KM-TC-111",
+    "requirementDescription": "Validate shell company keyword on adverse media fields",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
     "requirementId": "KM-TC-112",
-    "requirementDescription": "Verify import validates that each row has at least one Screening Field",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Keyword match contributes to alert on batch screening page",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-113",
-    "requirementDescription": "Verify duplicate rows in import file are flagged during validation",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Keyword does not alert when match occurs only in unmapped field",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-114",
-    "requirementDescription": "Verify bulk import is treated as a single Maker action requiring Checker approval",
+    "requirementDescription": "Listing remains responsive with large active keyword dataset",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-115",
-    "requirementDescription": "Verify no records from bulk import become active without Checker approval",
+    "requirementDescription": "Close Add Category modal by clicking overlay backdrop",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-116",
-    "requirementDescription": "Verify unsupported file type is rejected during import",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Display Low precision indicator for threshold below 50",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-117",
-    "requirementDescription": "Verify import validation error displays the specific field/column that failed",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Require documented justification or warning for threshold 1–49 on submit",
+    "testable": "Partial",
+    "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-118",
-    "requirementDescription": "Verify Export button is visible and accessible for authorised users",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Remove selected screening field using chip remove control",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-119",
-    "requirementDescription": "Verify exported file includes all keyword fields: keyword, category, risk level, match type, threshold score, screening fields, status, version",
+    "requirementDescription": "Filter screening fields using in-dropdown search",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-120",
-    "requirementDescription": "Verify Threshold Score is included for Fuzzy Match entries in export",
+    "requirementDescription": "Verify loading stability during initial data load for large datasets",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "Network throttling profile not specified for Playwright",
+    "assumptions": "Use route mocking or viewport-only checks where applicable"
   },
   {
     "requirementId": "KM-TC-121",
-    "requirementDescription": "Verify Threshold Score column is blank for Exact Match entries in export",
+    "requirementDescription": "Checker rejection returns keyword entry to Draft with comments",
     "testable": "Partial",
     "missingInformation": "Performance SLA thresholds and measurement tooling",
     "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   },
   {
     "requirementId": "KM-TC-122",
-    "requirementDescription": "Verify Screening Fields mapping is included in export",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Verify core workflows on Google Chrome",
+    "testable": "Partial",
+    "missingInformation": "Cross-browser matrix execution environment",
+    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
   },
   {
     "requirementId": "KM-TC-123",
-    "requirementDescription": "Verify export generates audit log entry",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Verify core workflows on Microsoft Edge",
+    "testable": "Partial",
+    "missingInformation": "Cross-browser matrix execution environment",
+    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
   },
   {
     "requirementId": "KM-TC-124",
-    "requirementDescription": "Verify active keyword with Exact Match is only evaluated against its mapped Screening Fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Verify core workflows on Mozilla Firefox",
+    "testable": "Partial",
+    "missingInformation": "Cross-browser matrix execution environment",
+    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
   },
   {
     "requirementId": "KM-TC-125",
-    "requirementDescription": "Verify active keyword with Fuzzy Match generates match when similarity meets Threshold Score",
+    "requirementDescription": "Validate duplicate category name on field blur",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-126",
-    "requirementDescription": "Verify Fuzzy Match keyword does NOT fire when similarity falls below Threshold Score",
+    "requirementDescription": "Verify disabled category excludes keywords from screening engine",
     "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-127",
-    "requirementDescription": "Verify keyword matching is case-insensitive by default",
+    "requirementDescription": "Clear all selected screening fields using Clear all control",
     "testable": "Partial",
-    "missingInformation": "Accessibility tooling and baseline thresholds",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-128",
-    "requirementDescription": "Verify special characters are normalised before matching per BR-008",
+    "requirementDescription": "Approved category becomes available in Add Keyword dropdown",
     "testable": "Partial",
-    "missingInformation": "Accessibility tooling and baseline thresholds",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-129",
-    "requirementDescription": "Verify keyword match contributes to alert generation on batch screening page",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
+    "requirementDescription": "Prompt confirmation when cancelling Add Keyword with unsaved data",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "KM-TC-130",
-    "requirementDescription": "Verify keyword changes take effect at next screening run, not retroactively",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-131",
-    "requirementDescription": "Verify Draft state entry is visible only in Drafted tab",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-132",
-    "requirementDescription": "Verify Pending Approval state entry is not shown in Active tab",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-133",
-    "requirementDescription": "Verify Approved/Active keyword appears in Active tab",
+    "requirementDescription": "Validate special-character normalization during exact match screening",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-134",
-    "requirementDescription": "Verify Inactive keyword does not appear in Active tab",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-135",
-    "requirementDescription": "Verify all five workflow states are supported: Draft, Pending Approval, Active, Rejected, Inactive",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-136",
-    "requirementDescription": "Verify authorised Maker can access Add Keyword functionality",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-137",
-    "requirementDescription": "Verify unauthorised users cannot access Keyword Manager module",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-138",
-    "requirementDescription": "Verify unauthorised users cannot execute Add Keyword action",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-139",
-    "requirementDescription": "Verify unauthorised users cannot execute Bulk Import",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-140",
-    "requirementDescription": "Verify unauthorised users cannot access Export functionality",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-141",
-    "requirementDescription": "Verify SQL injection in Keyword/Phrase field is handled safely",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-142",
-    "requirementDescription": "Verify XSS payload in keyword fields is sanitised",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-143",
-    "requirementDescription": "Verify session expiry during keyword workflow redirects user to login",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-144",
-    "requirementDescription": "Verify audit logs capture all keyword creation, modification, and deactivation actions",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-145",
-    "requirementDescription": "Verify BR-001: Both Exact Match and Fuzzy Match modes are available and functional",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-146",
-    "requirementDescription": "Verify BR-003: Fuzzy Match without Threshold Score is blocked",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-147",
-    "requirementDescription": "Verify BR-004: Threshold Score clamping – value 0 becomes 1",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-148",
-    "requirementDescription": "Verify BR-004: Threshold Score clamping – value 101 becomes 100",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-149",
-    "requirementDescription": "Verify BR-005: Keyword is only evaluated against mapped Screening Fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-150",
-    "requirementDescription": "Verify BR-007: Submission blocked when no Screening Fields are selected",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-151",
-    "requirementDescription": "Verify BR-009: No global field scanning occurs unless all relevant fields are explicitly selected",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-152",
-    "requirementDescription": "Verify BR-010: Permanent deletion of keyword entries is not permitted",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-153",
-    "requirementDescription": "Verify BR-011: All operations (add, disable, import, export) require Maker-Checker governance",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-154",
-    "requirementDescription": "Verify keyword mapped to fields across multiple groups is evaluated on all mapped fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-155",
-    "requirementDescription": "Verify keyword mapped only to KYC/Onboarding fields does not fire on Name Screening fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-156",
-    "requirementDescription": "Verify all 20 Screening Fields across three groups are selectable in Add Keyword panel",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-157",
-    "requirementDescription": "Verify Screening Fields selection persists when re-opening keyword entry",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-158",
-    "requirementDescription": "Verify risk level badges display correct colour coding (Low=green, Medium=amber, High=red)",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-159",
-    "requirementDescription": "Verify status badges display correct colour coding per specification",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-160",
-    "requirementDescription": "Verify match type badges display correct styling for Exact Match and Fuzzy Match",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-161",
-    "requirementDescription": "Verify modal overlay background dims main content correctly",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-162",
-    "requirementDescription": "Verify Add Category modal header uses correct styling",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-163",
-    "requirementDescription": "Verify Add Keyword submit button is disabled until mandatory fields are complete",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-164",
-    "requirementDescription": "Verify action buttons (enable/disable) render correctly per design",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-165",
-    "requirementDescription": "Verify sidebar navigation highlights Keyword Manager as active when on this page",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-166",
-    "requirementDescription": "Verify all mandatory form fields have visible labels with red asterisk indicator",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-167",
-    "requirementDescription": "Verify Tab key navigation follows logical order through keyword form fields",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-168",
-    "requirementDescription": "Verify keyboard focus indicators are visible on all interactive elements",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-169",
-    "requirementDescription": "Verify inline validation error messages are readable and positioned near the relevant field",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-170",
-    "requirementDescription": "Verify page layout is usable at 200% browser zoom",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-171",
-    "requirementDescription": "Verify Keyword Manager listing page loads within acceptable time threshold",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-172",
-    "requirementDescription": "Verify Add Keyword submission completes within acceptable time",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-173",
-    "requirementDescription": "Verify bulk import processing completes within acceptable time for large files",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-174",
-    "requirementDescription": "Verify rapid repeated clicks on Submit do not create duplicate keyword entries",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-175",
-    "requirementDescription": "Verify Keyword Manager remains stable during prolonged usage",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-176",
-    "requirementDescription": "Verify Keyword Manager functions correctly in Chrome 120+",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-177",
-    "requirementDescription": "Verify Keyword Manager functions correctly in Edge 120+",
-    "testable": "Partial",
-    "missingInformation": "Cross-browser matrix execution environment",
-    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
-  },
-  {
-    "requirementId": "KM-TC-178",
-    "requirementDescription": "Verify Keyword Manager functions correctly in Firefox 120+ and Safari 16+",
-    "testable": "Partial",
-    "missingInformation": "Cross-browser matrix execution environment",
-    "assumptions": "Chromium milestone1 project validates core UI; other browsers manual"
-  },
-  {
-    "requirementId": "KM-TC-179",
-    "requirementDescription": "Verify system handles empty Keyword/Phrase field submission gracefully",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-180",
-    "requirementDescription": "Verify system handles whitespace-only Keyword/Phrase",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-181",
-    "requirementDescription": "Verify non-integer Threshold Score value is handled safely",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-182",
-    "requirementDescription": "Verify alphabetic characters in Threshold Score are rejected",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-183",
-    "requirementDescription": "Verify system handles concurrent keyword submissions from multiple Maker users",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-184",
-    "requirementDescription": "Verify system handles network interruption during keyword submission",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-185",
-    "requirementDescription": "Verify stale browser session data does not show outdated keyword statuses",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-186",
-    "requirementDescription": "Verify system handles Screening Fields selector with all 20 fields selected simultaneously",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-187",
-    "requirementDescription": "Verify browser refresh during Add Keyword form completion shows expected behaviour",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-188",
-    "requirementDescription": "Verify logout clears in-progress keyword form data",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-189",
-    "requirementDescription": "Verify keyword activation status reflects immediately in screening engine after Checker approval",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-190",
-    "requirementDescription": "Verify batch screening alert is generated when an active keyword match occurs",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-191",
-    "requirementDescription": "Verify keyword deactivation is reflected in next screening run",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-192",
-    "requirementDescription": "Verify Screening Fields update for a keyword takes effect at next screening invocation",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-193",
-    "requirementDescription": "Verify 'offshore account' can be created as Exact Match, HIGH risk, mapped to Purpose of Account and Registered Address",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-194",
-    "requirementDescription": "Verify 'hawala' can be created as Fuzzy Match (75), HIGH risk, mapped to Business Activity Description and Source of Funds Description",
-    "testable": "Partial",
-    "missingInformation": "Performance SLA thresholds and measurement tooling",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-195",
-    "requirementDescription": "Verify 'politically exposed' as Fuzzy Match (80), HIGH risk, mapped to Occupation, News Article Full Text, and Article Headline",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-196",
-    "requirementDescription": "Verify 'Iran' as Exact Match, HIGH risk, mapped to Country/Jurisdiction Tags and Registered Address",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-197",
-    "requirementDescription": "Verify 'casino' as Exact Match, MEDIUM risk, mapped to Business Type/Industry Code and Business Activity Description",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-198",
-    "requirementDescription": "Verify keyword entry version is tracked and included in exported data",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
-  },
-  {
-    "requirementId": "KM-TC-199",
-    "requirementDescription": "Verify keyword created by Maker retains Maker's identity in audit log",
-    "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
-  },
-  {
-    "requirementId": "KM-TC-200",
-    "requirementDescription": "Verify Keyword Manager module loads correctly after clearing browser cache",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Keyword Manager via sidebar under Configuration menu → Screening – Keyword Configuration; route placeholder /configuration/keyword-manager"
   }
 ]

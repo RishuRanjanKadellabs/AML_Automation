@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 import type { KmExcelRow } from "./types";
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..", "..");
-export const KM_EXCEL_PATH = path.join(PROJECT_ROOT, "pipeline/test-data/Keyword_Manager_Test.xlsx");
+export const KM_EXCEL_PATH = path.join(PROJECT_ROOT, "pipeline/test-data/Keyword Manager Test.xlsx");
 
 function cellString(value: unknown): string {
   if (value === null || value === undefined) return "";

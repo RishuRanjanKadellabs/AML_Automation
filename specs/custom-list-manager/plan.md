@@ -94,7 +94,7 @@ Generated from `pipeline/test-data/Custom List Manager.xlsx` — 578 requirement
 | Functional areas (sub-modules) | 66 |
 | Automation candidates | 578 |
 | Manual-only scenarios | 0 |
-| Partial gaps (missing info) | 109 |
+| Partial gaps (missing info) | 464 |
 
 ## 3. Playwright POM Planning
 
@@ -106,43 +106,43 @@ Generated from `pipeline/test-data/Custom List Manager.xlsx` — 578 requirement
 
 ## 4. TODO List (from gap-matrix)
 
+- **CLM-TC-001**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-002**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-003**: RBAC role switching mechanism (login fixture per role)
 - **CLM-TC-004**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-010**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-012**: Real-time alert delivery channel and notification text not specified
-- **CLM-TC-013**: Real-time alert delivery channel and notification text not specified
-- **CLM-TC-014**: Real-time alert delivery channel and notification text not specified
-- **CLM-TC-053**: Bulk upload sample file paths and column mapping
-- **CLM-TC-054**: Bulk upload sample file paths and column mapping
-- **CLM-TC-087**: Screening/matching engine backend run requires live service or mock contract
-- **CLM-TC-088**: Screening/matching engine backend run requires live service or mock contract
-- **CLM-TC-089**: Screening/matching engine backend run requires live service or mock contract
-- **CLM-TC-090**: Screening/matching engine backend run requires live service or mock contract
-- **CLM-TC-091**: Screening/matching engine backend run requires live service or mock contract
-- **CLM-TC-108**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-110**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-114**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-120**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-125**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-131**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-132**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-138**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-154**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-195**: Screening/matching engine backend run requires live service or mock contract
-- **CLM-TC-209**: Real-time alert delivery channel and notification text not specified
-- **CLM-TC-218**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-220**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-222**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-262**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-269**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-277**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-278**: RBAC role switching mechanism (login fixture per role)
-- **CLM-TC-293**: Bulk upload sample file paths and column mapping
-- **CLM-TC-294**: Bulk upload sample file paths and column mapping
-- **CLM-TC-298**: Bulk upload sample file paths and column mapping
-- **CLM-TC-301**: Bulk upload sample file paths and column mapping
-- **CLM-TC-302**: Bulk upload sample file paths and column mapping
-- **CLM-TC-303**: Bulk upload sample file paths and column mapping
-- **CLM-TC-307**: Bulk upload sample file paths and column mapping
-- **CLM-TC-308**: Bulk upload sample file paths and column mapping
-- **CLM-TC-309**: Bulk upload sample file paths and column mapping
-- **CLM-TC-316**: Bulk upload sample file paths and column mapping
+- **CLM-TC-005**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-006**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-007**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-008**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-012**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-013**: TTL expiry simulation clock or seeded expired list/entity records
+- **CLM-TC-014**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-021**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-022**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-033**: Bulk upload sample file paths and column mapping
+- **CLM-TC-034**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-035**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-036**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-037**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-038**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-039**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-042**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-045**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-046**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-047**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-051**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-052**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-053**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-054**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-055**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-056**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-057**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-058**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-059**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-060**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-061**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-062**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-063**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-064**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-065**: RBAC role switching mechanism (login fixture per role)
+- **CLM-TC-066**: RBAC role switching mechanism (login fixture per role)

@@ -108,7 +108,14 @@ export const SUB_MODULE_ORDER: Record<string, string[]> = {
 const MODULE_ORDER = Object.keys(SUB_MODULE_ORDER);
 
 function escapeForTemplate(s: string): string {
-  return s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
+  // Emitted into double-quoted string literals (test titles, console.log) and single-line
+  // comments, so escape double quotes/backslashes and collapse newlines.
+  return s
+    .replace(/\\/g, "\\\\")
+    .replace(/"/g, '\\"')
+    .replace(/`/g, "\\`")
+    .replace(/\$/g, "\\$")
+    .replace(/[\r\n]+/g, " ");
 }
 
 function formatStepsLog(row: ElmExcelRow): string {
@@ -150,7 +157,6 @@ function buildSpecFile(rows: ElmExcelRow[]): string {
           const title = escapeForTemplate(formatTestTitle(row));
           const scenario = escapeForTemplate(escapeScenarioComment(row.taskDescription));
           const expected = escapeForTemplate(escapeScenarioComment(row.expectedResult));
-          const stepsLog = escapeForTemplate(formatStepsLog(row));
           const actions = mapElmTestLogic(row);
           const assertions = buildAssertionsForRow(row);
           return `    // Excel Test Case ID: ${row.id}
@@ -158,11 +164,9 @@ function buildSpecFile(rows: ElmExcelRow[]): string {
     // Excel Expected Result: ${expected}
     test("${title}", async ({ testData }) => {
       await test.step("[${row.id}] Navigate and execute documented test steps", async () => {
-        console.log("[${row.id}] Executing Excel test steps: ${stepsLog}");
         ${actions};
       });
       await test.step("[${row.id}] Validate expected results from Excel", async () => {
-        console.log("[${row.id}] Validating: ${expected}");
         ${assertions};
       });
     });`;

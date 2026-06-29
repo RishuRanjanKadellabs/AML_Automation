@@ -157,16 +157,10 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
     push("await clmPage.expectLoadingIndicator()");
   }
   if (
-    er.includes("unauthorized")
-    || er.includes("denied")
-    || er.includes("cannot access")
-    || er.includes("not available")
-    || er.includes("hidden")
-    || er.includes("restricted")
-    || task.includes("unauthorized")
-    || sm.includes("navigation & access")
+    (task.includes("unauthorized") || task.includes("access denied") || task.includes("no access") || task.includes("restricted user"))
+    || (er.includes("unauthorized") && !/authorized user|opens for the authorized/i.test(er))
   ) {
-    if (er.includes("denied") || er.includes("unauthorized") || task.includes("unauthorized")) {
+    if (er.includes("denied") || er.includes("unauthorized") || task.includes("unauthorized") || task.includes("denied")) {
       push("await clmPage.expectAccessDenied()");
     }
     if (sm.includes("segregation") || task.includes("viewer") || task.includes("restricted") || er.includes("not permitted")) {

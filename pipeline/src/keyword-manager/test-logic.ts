@@ -676,67 +676,124 @@ function resolveAdditionalCoverage(row: KmExcelRow): string {
   return withKm(row, extra);
 }
 
-export function mapKmActionLogic(row: KmExcelRow): string {
-  const sm = row.subModule;
+function resolveFuzzyMatchThreshold(row: KmExcelRow): string {
+  const task = row.taskDescription.toLowerCase();
+  const keyword = defaultKeyword(row);
+  const threshold = extractValue(row.testData, "Threshold Score") ?? "85";
+  const extra: string[] = ["await kmPage.openAddKeywordPanel()"];
 
-  switch (sm) {
-    case "Navigation & Page Load":
-      return resolveNavigationPageLoad(row);
-    case "Tab Navigation":
-      return resolveTabNavigation(row);
-    case "Keyword Listing Table":
-      return resolveKeywordListingTable(row);
-    case "Search Functionality":
-      return resolveSearchFunctionality(row);
-    case "Add Category":
-      return resolveAddCategory(row);
-    case "Category Controls":
-      return resolveCategoryControls(row);
-    case "Add Keyword":
-      return resolveAddKeyword(row);
-    case "Live Narrative Tester":
-      return resolveLiveNarrativeTester(row);
-    case "Maker-Checker Governance":
-      return resolveMakerCheckerGovernance(row);
-    case "Disable Keyword":
-      return resolveDisableKeyword(row);
-    case "Enable Keyword":
-      return resolveEnableKeyword(row);
-    case "Bulk Import":
-      return resolveBulkImport(row);
-    case "Export":
-      return resolveExport(row);
-    case "Screening Engine":
-      return resolveScreeningEngine(row);
-    case "Workflow States":
-      return resolveWorkflowStates(row);
-    case "RBAC & Security":
-      return resolveRbacSecurity(row);
-    case "Business Rules":
-      return resolveBusinessRules(row);
-    case "Screening Fields":
-      return resolveScreeningFields(row);
-    case "UI Components":
-      return resolveUiComponents(row);
-    case "Accessibility":
-      return resolveAccessibility(row);
-    case "Performance":
-      return resolvePerformance(row);
-    case "Browser Compatibility":
-      return resolveBrowserCompatibility(row);
-    case "Negative Edge Cases":
-      return resolveNegativeEdgeCases(row);
-    case "Integration":
-      return resolveIntegration(row);
-    case "Sample Keyword Validation":
-      return resolveSampleKeywordValidation(row);
-    case "Additional Coverage":
-      return resolveAdditionalCoverage(row);
-    default:
-      return finalizeActionLogic(
-        "await kmPage.openKeywordManagerDirect(testData.baseUrl);\n    await kmPage.expectKeywordManagerViewLoaded()",
-      );
+  if (task.includes("narrative") || task.includes("tester")) {
+    return resolveLiveNarrativeTester(row);
   }
+  if (task.includes("exact")) {
+    extra.push(`await kmPage.fillKeywordPhrase("${keyword}")`);
+    extra.push('await kmPage.selectMatchType("Exact Match")');
+    extra.push("await kmPage.expectThresholdFieldVisible(false)");
+  } else if (task.includes("threshold") || task.includes("score") || task.includes("fuzzy")) {
+    extra.push(`await kmPage.fillKeywordPhrase("${keyword}")`);
+    extra.push(`await kmPage.selectCategory("${defaultCategory(row)}")`);
+    extra.push('await kmPage.selectMatchType("Fuzzy Match")');
+    extra.push(`await kmPage.fillThresholdScore("${threshold}")`);
+    extra.push("await kmPage.expectThresholdFieldVisible(true)");
+  } else {
+    extra.push(`await kmPage.fillKeywordPhrase("${keyword}")`);
+    extra.push(`await kmPage.selectCategory("${defaultCategory(row)}")`);
+    extra.push('await kmPage.selectMatchType("Fuzzy Match")');
+  }
+
+  return withKm(row, extra);
+}
+
+function resolveKeywordRowActions(row: KmExcelRow): string {
+  const task = row.taskDescription.toLowerCase();
+  if (task.includes("enable") || task.includes("reactivate")) {
+    return resolveEnableKeyword(row);
+  }
+  if (task.includes("disable") || task.includes("deactivate")) {
+    return resolveDisableKeyword(row);
+  }
+  if (task.includes("edit") || task.includes("update")) {
+    const keyword = defaultKeyword(row);
+    return withKm(row, [
+      `await kmPage.searchKeywords("${keyword}")`,
+      "await kmPage.openAddKeywordPanel()",
+      `await kmPage.fillKeywordPhrase("${keyword}")`,
+      "await kmPage.submitKeyword()",
+    ]);
+  }
+  return resolveWorkflowStates(row);
+}
+
+function resolveAuditHistory(row: KmExcelRow): string {
+  const task = row.taskDescription.toLowerCase();
+  const keyword = defaultKeyword(row);
+  const extra: string[] = [
+    "// TODO: Audit history panel locator — open row audit trail when UI selector is confirmed",
+    `await kmPage.searchKeywords("${keyword}")`,
+    "await kmPage.expectKeywordTableVisible()",
+  ];
+
+  if (task.includes("timeline") || task.includes("history") || task.includes("audit")) {
+    extra.push("await kmPage.expectTableRowsVisible()");
+  }
+
+  return withKm(row, extra);
+}
+
+const SUB_MODULE_RESOLVERS: Record<string, (row: KmExcelRow) => string> = {
+  "Navigation & Page Access": resolveNavigationPageLoad,
+  "Navigation & Page Load": resolveNavigationPageLoad,
+  "Status Tabs": resolveTabNavigation,
+  "Tab Navigation": resolveTabNavigation,
+  "Search & Filter": resolveSearchFunctionality,
+  "Search Functionality": resolveSearchFunctionality,
+  "Data Table & Sorting": resolveKeywordListingTable,
+  "Keyword Listing Table": resolveKeywordListingTable,
+  "Category Management - Add Category": resolveAddCategory,
+  "Add Category": resolveAddCategory,
+  "Category Management - Category Controls": resolveCategoryControls,
+  "Category Controls": resolveCategoryControls,
+  "Add Keyword": resolveAddKeyword,
+  "Screening Fields Mapping": resolveScreeningFields,
+  "Screening Fields": resolveScreeningFields,
+  "Fuzzy Match & Threshold Score": resolveFuzzyMatchThreshold,
+  "Live Narrative Tester": resolveLiveNarrativeTester,
+  "Keyword Row Actions": resolveKeywordRowActions,
+  "Disable Keyword": resolveDisableKeyword,
+  "Enable Keyword": resolveEnableKeyword,
+  "Bulk Upload": resolveBulkImport,
+  "Bulk Import": resolveBulkImport,
+  Export: resolveExport,
+  "Maker-Checker Workflow": resolveMakerCheckerGovernance,
+  "Maker-Checker Governance": resolveMakerCheckerGovernance,
+  "Audit History": resolveAuditHistory,
+  "Screening Engine Behaviour": resolveScreeningEngine,
+  "Screening Engine": resolveScreeningEngine,
+  "Access Control (RBAC)": resolveRbacSecurity,
+  "RBAC & Security": resolveRbacSecurity,
+  "Field & Business Rule Validation": resolveBusinessRules,
+  "Business Rules": resolveBusinessRules,
+  "Regression, Compatibility & UAT": resolveBrowserCompatibility,
+  "Browser Compatibility": resolveBrowserCompatibility,
+  "Sample Keyword Validation": resolveSampleKeywordValidation,
+  Integration: resolveIntegration,
+  Performance: resolvePerformance,
+  "UI Components": resolveUiComponents,
+  Accessibility: resolveAccessibility,
+  "Negative Edge Cases": resolveNegativeEdgeCases,
+  "Workflow States": resolveWorkflowStates,
+  "Additional Coverage": resolveAdditionalCoverage,
+};
+
+export function mapKmActionLogic(row: KmExcelRow): string {
+  const resolver = SUB_MODULE_RESOLVERS[row.subModule];
+  if (resolver) {
+    return resolver(row);
+  }
+
+  return finalizeActionLogic(
+    "await kmPage.openKeywordManagerDirect(testData.baseUrl);\n    await kmPage.expectKeywordManagerViewLoaded()",
+  );
 }
 
 /** @deprecated Use mapKmActionLogic + buildAssertionsForRow for spec generation */

@@ -44,6 +44,12 @@ export function buildAssertionsForRow(row: ElmExcelRow): string {
   if (er.includes("search") && (er.includes("input") || er.includes("filter") || er.includes("refresh"))) {
     push("await elmPage.expectSearchInputVisible()");
   }
+  if (
+    (er.includes("pagination") || er.includes("page size") || er.includes("rows per page"))
+    && mod.includes("register report")
+  ) {
+    push("await elmPage.expectReportSectionVisible()");
+  }
   if (er.includes("export") || er.includes("download")) {
     push("await elmPage.expectExportOptions()");
   }
@@ -122,10 +128,54 @@ export function buildAssertionsForRow(row: ElmExcelRow): string {
     push("await elmPage.expectConsoleErrorsFree()");
   }
   if (steps.length === 0) {
-    push("await elmPage.expectExceptionListManagerViewLoaded()");
+    push(fallbackAssertion(row));
   }
 
   return steps.join(";\n    ");
+}
+
+/** Module/sub-module-aware fallback when no keyword rule matched. Uses heal-backed assertions only. */
+function fallbackAssertion(row: ElmExcelRow): string {
+  const mod = row.module.toLowerCase();
+  const sm = row.subModule.toLowerCase();
+
+  if (mod.includes("register report")) {
+    if (sm.includes("executive summary")) return "await elmPage.expectExecutiveSummaryVisible()";
+    if (sm.includes("reason code analysis")) return "await elmPage.expectReasonCodeAnalysisVisible()";
+    if (sm.includes("watchlist analysis")) return "await elmPage.expectWatchlistAnalysisVisible()";
+    if (sm.includes("data integrity") || sm.includes("layout")) return "await elmPage.expectReportLayoutIntact()";
+    return "await elmPage.expectReportSectionVisible()";
+  }
+  if (mod.includes("audit")) return "await elmPage.expectAuditPanelLoaded()";
+  if (mod.includes("evaluation") || mod.includes("matching")) return "await elmPage.expectEvaluationOutcome()";
+  if (mod.includes("maker-checker")) return "await elmPage.expectMakerCheckerQueueVisible()";
+  if (mod.includes("reason code") || mod.includes("evidence")) return "await elmPage.expectReasonCodeVisible()";
+  if (mod.includes("notification")) return "await elmPage.expectNotificationVisible()";
+  if (mod.includes("role-based") || mod.includes("rbac")) return "await elmPage.expectMenuAccess()";
+
+  if (mod.includes("non-functional")) {
+    if (sm.includes("performance")) return "await elmPage.expectPerformanceBaseline()";
+    if (sm.includes("scalability")) return "await elmPage.expectScalabilityIndicators()";
+    if (sm.includes("ttl")) return "await elmPage.expectTtlEnforcement()";
+    if (sm.includes("retention")) return "await elmPage.expectDataRetentionPolicy()";
+    if (sm.includes("evidence security")) return "await elmPage.expectEvidenceSecurityControls()";
+    if (sm.includes("availability")) return "await elmPage.expectAvailabilityStatus()";
+    return "await elmPage.expectExceptionListManagerViewLoaded()";
+  }
+
+  if (mod.includes("entry")) {
+    if (sm.includes("bulk upload")) return "await expect(elmPage.bulkUploadModal).toBeVisible()";
+    if (sm.includes("api")) return "await elmPage.expectApiSyncResponse()";
+    if (sm.includes("ttl") || sm.includes("renewal")) return "await elmPage.expectTtlEnforcement()";
+    return "await elmPage.expectEntryGridVisible()";
+  }
+
+  if (mod.includes("exception list management")) {
+    if (sm.includes("view") || sm.includes("edit")) return "await elmPage.expectListMetadataVisible()";
+    return "await elmPage.expectListGridVisible()";
+  }
+
+  return "await elmPage.expectExceptionListManagerViewLoaded()";
 }
 
 export function formatTestTitle(row: ElmExcelRow): string {

@@ -17,7 +17,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-navigation-access",
-      "high",
+      "medium",
       "functional"
     ]
   },
@@ -28,8 +28,9 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-navigation-access",
-      "high",
-      "functional"
+      "medium",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -39,7 +40,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-navigation-access",
-      "medium",
+      "low",
       "functional"
     ]
   },
@@ -50,8 +51,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-navigation-access",
-      "high",
-      "functional"
+      "medium",
+      "maker-checker"
     ]
   },
   {
@@ -61,7 +62,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-navigation-access",
-      "medium",
+      "low",
       "functional"
     ]
   },
@@ -72,7 +73,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-navigation-access",
-      "medium",
+      "low",
       "functional"
     ]
   },
@@ -84,7 +85,8 @@
     "tags": [
       "custom-list-manager-navigation-access",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -94,7 +96,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-breadcrumb-top-bar",
-      "high",
+      "low",
       "functional"
     ]
   },
@@ -105,7 +107,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-breadcrumb-top-bar",
-      "high",
+      "low",
       "functional"
     ]
   },
@@ -116,7 +118,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-breadcrumb-top-bar",
-      "high",
+      "low",
       "functional"
     ]
   },
@@ -127,7 +129,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-breadcrumb-top-bar",
-      "high",
+      "low",
       "alerts"
     ]
   },
@@ -138,8 +140,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-breadcrumb-top-bar",
-      "high",
-      "alerts"
+      "medium",
+      "ttl"
     ]
   },
   {
@@ -149,7 +151,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-breadcrumb-top-bar",
-      "medium",
+      "low",
       "alerts"
     ]
   },
@@ -160,7 +162,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-dashboard",
-      "high",
+      "low",
       "functional"
     ]
   },
@@ -171,7 +173,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-dashboard",
-      "medium",
+      "low",
       "functional"
     ]
   },
@@ -182,7 +184,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-dashboard",
-      "high",
+      "medium",
       "functional"
     ]
   },
@@ -193,7 +195,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-dashboard",
-      "high",
+      "medium",
       "functional"
     ]
   },
@@ -205,7 +207,7 @@
     "tags": [
       "custom-list-manager-dashboard",
       "high",
-      "functional"
+      "error-handling"
     ]
   },
   {
@@ -227,7 +229,8 @@
     "tags": [
       "custom-list-manager-dashboard",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -238,7 +241,8 @@
     "tags": [
       "custom-list-manager-dashboard",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -249,7 +253,7 @@
     "tags": [
       "custom-list-manager-search-filters",
       "high",
-      "screening-matching"
+      "functional"
     ]
   },
   {
@@ -259,8 +263,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-search-filters",
-      "high",
-      "screening-matching"
+      "medium",
+      "functional"
     ]
   },
   {
@@ -282,7 +286,7 @@
     "tags": [
       "custom-list-manager-search-filters",
       "high",
-      "screening-matching"
+      "functional"
     ]
   },
   {
@@ -292,7 +296,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-search-filters",
-      "high",
+      "medium",
       "functional"
     ]
   },
@@ -304,7 +308,7 @@
     "tags": [
       "custom-list-manager-search-filters",
       "high",
-      "screening-matching"
+      "functional"
     ]
   },
   {
@@ -347,7 +351,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-search-filters",
-      "high",
+      "medium",
       "functional"
     ]
   },
@@ -359,7 +363,7 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "high",
-      "functional"
+      "ttl"
     ]
   },
   {
@@ -370,7 +374,8 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -381,7 +386,8 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -392,7 +398,8 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -403,7 +410,8 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -414,7 +422,8 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -425,7 +434,8 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "high",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -458,7 +468,8 @@
     "tags": [
       "custom-list-manager-grid-data-presentation",
       "medium",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -491,7 +502,8 @@
     "tags": [
       "custom-list-manager-export-pagination",
       "high",
-      "export"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -502,7 +514,8 @@
     "tags": [
       "custom-list-manager-export-pagination",
       "high",
-      "export"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -513,7 +526,8 @@
     "tags": [
       "custom-list-manager-export-pagination",
       "high",
-      "export"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -557,7 +571,8 @@
     "tags": [
       "custom-list-manager-landing-actions",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -601,7 +616,8 @@
     "tags": [
       "custom-list-manager-landing-actions",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -612,7 +628,8 @@
     "tags": [
       "custom-list-manager-landing-actions",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -623,7 +640,8 @@
     "tags": [
       "custom-list-manager-landing-actions",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -634,7 +652,8 @@
     "tags": [
       "custom-list-manager-landing-actions",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -667,7 +686,8 @@
     "tags": [
       "custom-list-manager-create-list-form",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -689,7 +709,8 @@
     "tags": [
       "custom-list-manager-create-list-form",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -700,7 +721,8 @@
     "tags": [
       "custom-list-manager-create-list-form",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -711,7 +733,8 @@
     "tags": [
       "custom-list-manager-create-list-form",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -722,7 +745,8 @@
     "tags": [
       "custom-list-manager-create-list-form",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -755,7 +779,8 @@
     "tags": [
       "custom-list-manager-list-name-validation",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -777,7 +802,8 @@
     "tags": [
       "custom-list-manager-list-name-validation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -810,7 +836,8 @@
     "tags": [
       "custom-list-manager-list-name-validation",
       "high",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -832,7 +859,7 @@
     "tags": [
       "custom-list-manager-purpose-configuration",
       "high",
-      "functional"
+      "maker-checker"
     ]
   },
   {
@@ -843,7 +870,8 @@
     "tags": [
       "custom-list-manager-purpose-configuration",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -854,7 +882,8 @@
     "tags": [
       "custom-list-manager-purpose-configuration",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -865,7 +894,7 @@
     "tags": [
       "custom-list-manager-action-on-hit-configuration",
       "high",
-      "functional"
+      "alerts"
     ]
   },
   {
@@ -876,7 +905,7 @@
     "tags": [
       "custom-list-manager-action-on-hit-configuration",
       "high",
-      "functional"
+      "screening-matching"
     ]
   },
   {
@@ -887,7 +916,7 @@
     "tags": [
       "custom-list-manager-action-on-hit-configuration",
       "high",
-      "functional"
+      "screening-matching"
     ]
   },
   {
@@ -897,8 +926,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-action-on-hit-configuration",
-      "medium",
-      "functional"
+      "high",
+      "screening-matching"
     ]
   },
   {
@@ -941,7 +970,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-ttl-configuration",
-      "medium",
+      "high",
       "ttl"
     ]
   },
@@ -997,7 +1026,8 @@
     "tags": [
       "custom-list-manager-matching-configuration",
       "medium",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1008,7 +1038,8 @@
     "tags": [
       "custom-list-manager-matching-configuration",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1019,7 +1050,8 @@
     "tags": [
       "custom-list-manager-reason-for-creation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1030,7 +1062,8 @@
     "tags": [
       "custom-list-manager-reason-for-creation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1041,7 +1074,8 @@
     "tags": [
       "custom-list-manager-reason-for-creation",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1052,7 +1086,8 @@
     "tags": [
       "custom-list-manager-reason-for-creation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1063,7 +1098,8 @@
     "tags": [
       "custom-list-manager-reason-for-creation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1074,7 +1110,8 @@
     "tags": [
       "custom-list-manager-reason-for-creation",
       "high",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1085,7 +1122,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1096,7 +1134,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1107,7 +1146,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1118,7 +1158,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1129,7 +1170,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1140,7 +1182,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1151,7 +1194,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "medium",
-      "browser-compat"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1162,7 +1206,8 @@
     "tags": [
       "custom-list-manager-draft-management",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1173,7 +1218,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1196,7 +1242,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1219,7 +1266,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1230,7 +1278,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1241,7 +1290,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1264,7 +1314,8 @@
     "tags": [
       "custom-list-manager-edit-list",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1275,7 +1326,8 @@
     "tags": [
       "custom-list-manager-edit-list",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1286,7 +1338,8 @@
     "tags": [
       "custom-list-manager-edit-list",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1297,7 +1350,8 @@
     "tags": [
       "custom-list-manager-edit-list",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1308,7 +1362,8 @@
     "tags": [
       "custom-list-manager-edit-list",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1331,7 +1386,8 @@
     "tags": [
       "custom-list-manager-edit-list",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1342,7 +1398,8 @@
     "tags": [
       "custom-list-manager-edit-list",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1387,7 +1444,8 @@
     "tags": [
       "custom-list-manager-enable-disable",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1398,7 +1456,8 @@
     "tags": [
       "custom-list-manager-enable-disable",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1409,7 +1468,8 @@
     "tags": [
       "custom-list-manager-enable-disable",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1420,7 +1480,8 @@
     "tags": [
       "custom-list-manager-enable-disable",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1431,7 +1492,8 @@
     "tags": [
       "custom-list-manager-enable-disable",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1466,7 +1528,8 @@
     "tags": [
       "custom-list-manager-metadata-integrity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1477,7 +1540,8 @@
     "tags": [
       "custom-list-manager-metadata-integrity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1488,7 +1552,8 @@
     "tags": [
       "custom-list-manager-metadata-integrity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1499,7 +1564,8 @@
     "tags": [
       "custom-list-manager-metadata-integrity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1510,7 +1576,8 @@
     "tags": [
       "custom-list-manager-metadata-integrity",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1555,7 +1622,7 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "high",
-      "functional"
+      "maker-checker"
     ]
   },
   {
@@ -1566,7 +1633,8 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1577,7 +1645,8 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1588,7 +1657,8 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1599,7 +1669,8 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1610,7 +1681,8 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1621,7 +1693,8 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1632,7 +1705,8 @@
     "tags": [
       "custom-list-manager-add-entity-form",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1665,7 +1739,8 @@
     "tags": [
       "custom-list-manager-minimum-screening-eligibility-rule",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1721,7 +1796,8 @@
     "tags": [
       "custom-list-manager-minimum-screening-eligibility-rule",
       "medium",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1732,7 +1808,8 @@
     "tags": [
       "custom-list-manager-minimum-screening-eligibility-rule",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1743,7 +1820,8 @@
     "tags": [
       "custom-list-manager-minimum-screening-eligibility-rule",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1765,7 +1843,7 @@
     "tags": [
       "custom-list-manager-identity-information",
       "high",
-      "functional"
+      "screening-matching"
     ]
   },
   {
@@ -1776,7 +1854,7 @@
     "tags": [
       "custom-list-manager-identity-information",
       "high",
-      "functional"
+      "screening-matching"
     ]
   },
   {
@@ -1820,7 +1898,8 @@
     "tags": [
       "custom-list-manager-identity-information",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1831,7 +1910,8 @@
     "tags": [
       "custom-list-manager-identity-information",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1842,7 +1922,8 @@
     "tags": [
       "custom-list-manager-identity-information",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1853,7 +1934,8 @@
     "tags": [
       "custom-list-manager-identity-information",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1864,7 +1946,8 @@
     "tags": [
       "custom-list-manager-identity-information",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1875,7 +1958,8 @@
     "tags": [
       "custom-list-manager-identity-information",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1886,7 +1970,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1897,7 +1982,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1908,7 +1994,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1919,7 +2006,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1930,7 +2018,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1941,7 +2030,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1952,7 +2042,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1963,7 +2054,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1974,7 +2066,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1985,7 +2078,8 @@
     "tags": [
       "custom-list-manager-identifier-information",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -1996,7 +2090,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2007,7 +2102,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2018,7 +2114,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2051,7 +2148,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2062,7 +2160,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "medium",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2073,7 +2172,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2084,7 +2184,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2095,7 +2196,8 @@
     "tags": [
       "custom-list-manager-digital-identifiers",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2106,7 +2208,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2117,7 +2220,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2128,7 +2232,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2139,7 +2244,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2150,7 +2256,8 @@
     "tags": [
       "custom-list-manager-localization",
       "medium",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2161,7 +2268,8 @@
     "tags": [
       "custom-list-manager-localization",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2172,7 +2280,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2183,7 +2292,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2194,7 +2304,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2205,7 +2316,8 @@
     "tags": [
       "custom-list-manager-localization",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2216,7 +2328,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2227,7 +2340,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2238,7 +2352,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2249,7 +2364,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2260,7 +2376,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2271,7 +2388,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2282,7 +2400,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2293,7 +2412,8 @@
     "tags": [
       "custom-list-manager-risk-governance",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2304,7 +2424,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "high",
-      "alerts"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2315,7 +2436,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "high",
-      "alerts"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2326,7 +2448,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2337,7 +2460,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2348,7 +2472,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2359,7 +2484,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2370,7 +2496,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "medium",
-      "alerts"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2381,7 +2508,8 @@
     "tags": [
       "custom-list-manager-real-time-alert-configuration",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2415,7 +2543,8 @@
     "tags": [
       "custom-list-manager-entity-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2438,7 +2567,8 @@
     "tags": [
       "custom-list-manager-entity-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2461,7 +2591,8 @@
     "tags": [
       "custom-list-manager-entity-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2472,7 +2603,8 @@
     "tags": [
       "custom-list-manager-entity-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2483,7 +2615,8 @@
     "tags": [
       "custom-list-manager-entity-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2494,7 +2627,8 @@
     "tags": [
       "custom-list-manager-entity-submission-workflow",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2505,7 +2639,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2516,7 +2651,7 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "functional"
+      "ttl"
     ]
   },
   {
@@ -2527,7 +2662,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2538,7 +2674,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2549,7 +2686,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2560,7 +2698,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2571,7 +2710,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2582,7 +2722,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2593,7 +2734,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "medium",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2604,7 +2746,8 @@
     "tags": [
       "custom-list-manager-entity-grid",
       "high",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2615,7 +2758,7 @@
     "tags": [
       "custom-list-manager-search-filters",
       "high",
-      "screening-matching"
+      "functional"
     ]
   },
   {
@@ -2625,7 +2768,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-search-filters",
-      "high",
+      "medium",
       "functional"
     ]
   },
@@ -2637,7 +2780,7 @@
     "tags": [
       "custom-list-manager-search-filters",
       "high",
-      "screening-matching"
+      "functional"
     ]
   },
   {
@@ -2658,8 +2801,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-search-filters",
-      "high",
-      "functional"
+      "medium",
+      "ttl"
     ]
   },
   {
@@ -2681,7 +2824,7 @@
     "tags": [
       "custom-list-manager-search-filters",
       "high",
-      "functional"
+      "ttl"
     ]
   },
   {
@@ -2702,7 +2845,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-search-filters",
-      "high",
+      "medium",
       "functional"
     ]
   },
@@ -2713,7 +2856,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-search-filters",
-      "medium",
+      "low",
       "functional"
     ]
   },
@@ -2747,7 +2890,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2758,7 +2902,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2769,7 +2914,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2780,7 +2926,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2791,7 +2938,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2802,7 +2950,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2813,7 +2962,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2824,7 +2974,8 @@
     "tags": [
       "custom-list-manager-view-entity",
       "medium",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2835,7 +2986,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2846,7 +2998,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2857,7 +3010,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2868,7 +3022,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2879,7 +3034,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "medium",
-      "session"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2902,7 +3058,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2913,7 +3070,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2924,7 +3082,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2935,7 +3094,8 @@
     "tags": [
       "custom-list-manager-edit-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2946,7 +3106,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2957,7 +3118,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2980,7 +3142,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -2991,7 +3154,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3002,7 +3166,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3013,7 +3178,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3024,7 +3190,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3035,7 +3202,8 @@
     "tags": [
       "custom-list-manager-enable-disable-entity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3082,7 +3250,8 @@
     "tags": [
       "custom-list-manager-entity-metadata",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3093,7 +3262,8 @@
     "tags": [
       "custom-list-manager-entity-metadata",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3104,7 +3274,8 @@
     "tags": [
       "custom-list-manager-entity-metadata",
       "medium",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3115,7 +3286,8 @@
     "tags": [
       "custom-list-manager-entity-metadata",
       "high",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3126,7 +3298,8 @@
     "tags": [
       "custom-list-manager-entity-metadata",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3137,7 +3310,8 @@
     "tags": [
       "custom-list-manager-entity-metadata",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3159,7 +3333,8 @@
     "tags": [
       "custom-list-manager-entity-history",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3170,7 +3345,8 @@
     "tags": [
       "custom-list-manager-entity-history",
       "high",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3181,7 +3357,8 @@
     "tags": [
       "custom-list-manager-entity-history",
       "high",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3192,7 +3369,8 @@
     "tags": [
       "custom-list-manager-entity-history",
       "high",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3202,7 +3380,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-entity-history",
-      "medium",
+      "high",
       "functional"
     ]
   },
@@ -3269,7 +3447,7 @@
     "tags": [
       "custom-list-manager-template-download",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3279,8 +3457,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-template-download",
-      "medium",
-      "functional"
+      "high",
+      "bulk-upload"
     ]
   },
   {
@@ -3290,7 +3468,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-template-download",
-      "medium",
+      "high",
       "export"
     ]
   },
@@ -3312,7 +3490,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-template-download",
-      "medium",
+      "high",
       "export"
     ]
   },
@@ -3335,7 +3513,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3346,7 +3524,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3357,7 +3535,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "maker-checker"
+      "bulk-upload"
     ]
   },
   {
@@ -3368,7 +3546,8 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3378,8 +3557,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-upload-validation",
-      "medium",
-      "functional"
+      "high",
+      "bulk-upload"
     ]
   },
   {
@@ -3390,7 +3569,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3401,7 +3580,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3412,7 +3591,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3423,7 +3602,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3434,7 +3613,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -3455,8 +3634,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-upload-validation",
-      "medium",
-      "functional"
+      "high",
+      "bulk-upload"
     ]
   },
   {
@@ -3467,7 +3646,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "maker-checker"
+      "bulk-upload"
     ]
   },
   {
@@ -3478,7 +3657,7 @@
     "tags": [
       "custom-list-manager-upload-validation",
       "high",
-      "maker-checker"
+      "bulk-upload"
     ]
   },
   {
@@ -3489,7 +3668,7 @@
     "tags": [
       "custom-list-manager-file-format-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3500,7 +3679,7 @@
     "tags": [
       "custom-list-manager-file-format-validation",
       "high",
-      "maker-checker"
+      "bulk-upload"
     ]
   },
   {
@@ -3511,7 +3690,7 @@
     "tags": [
       "custom-list-manager-file-format-validation",
       "high",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -3522,7 +3701,7 @@
     "tags": [
       "custom-list-manager-file-format-validation",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3532,8 +3711,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-file-format-validation",
-      "medium",
-      "functional"
+      "high",
+      "bulk-upload"
     ]
   },
   {
@@ -3543,8 +3722,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-file-format-validation",
-      "medium",
-      "functional"
+      "high",
+      "bulk-upload"
     ]
   },
   {
@@ -3555,7 +3734,7 @@
     "tags": [
       "custom-list-manager-file-format-validation",
       "high",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -3577,7 +3756,7 @@
     "tags": [
       "custom-list-manager-file-format-validation",
       "high",
-      "maker-checker"
+      "bulk-upload"
     ]
   },
   {
@@ -3587,7 +3766,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-file-format-validation",
-      "medium",
+      "high",
       "error-handling"
     ]
   },
@@ -3664,7 +3843,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-mandatory-columns",
-      "medium",
+      "high",
       "error-handling"
     ]
   },
@@ -3753,7 +3932,7 @@
     "tags": [
       "custom-list-manager-duplicate-detection",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3763,7 +3942,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-duplicate-detection",
-      "medium",
+      "high",
       "error-handling"
     ]
   },
@@ -3775,7 +3954,7 @@
     "tags": [
       "custom-list-manager-duplicate-detection",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3785,7 +3964,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-duplicate-detection",
-      "medium",
+      "high",
       "error-handling"
     ]
   },
@@ -3796,7 +3975,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-duplicate-detection",
-      "medium",
+      "high",
       "error-handling"
     ]
   },
@@ -3808,7 +3987,7 @@
     "tags": [
       "custom-list-manager-duplicate-detection",
       "high",
-      "functional"
+      "bulk-upload"
     ]
   },
   {
@@ -3819,7 +3998,8 @@
     "tags": [
       "custom-list-manager-validation-report",
       "high",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3840,7 +4020,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-validation-report",
-      "high",
+      "medium",
       "error-handling"
     ]
   },
@@ -3851,7 +4031,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-validation-report",
-      "high",
+      "medium",
       "error-handling"
     ]
   },
@@ -3873,7 +4053,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-validation-report",
-      "high",
+      "medium",
       "error-handling"
     ]
   },
@@ -3884,7 +4064,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-validation-report",
-      "high",
+      "medium",
       "error-handling"
     ]
   },
@@ -3896,7 +4076,8 @@
     "tags": [
       "custom-list-manager-validation-report",
       "high",
-      "error-handling"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3907,7 +4088,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3918,7 +4100,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3953,7 +4136,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3976,7 +4160,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3987,7 +4172,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -3998,7 +4184,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4009,7 +4196,8 @@
     "tags": [
       "custom-list-manager-submission-workflow",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4020,7 +4208,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4031,7 +4220,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4042,7 +4232,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4053,7 +4244,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4064,7 +4256,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4075,7 +4268,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4086,7 +4280,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "medium",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4097,7 +4292,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4108,7 +4304,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4119,7 +4316,8 @@
     "tags": [
       "custom-list-manager-all-requests",
       "high",
-      "audit"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4130,7 +4328,8 @@
     "tags": [
       "custom-list-manager-my-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4141,7 +4340,8 @@
     "tags": [
       "custom-list-manager-my-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4152,7 +4352,8 @@
     "tags": [
       "custom-list-manager-my-requests",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4163,7 +4364,8 @@
     "tags": [
       "custom-list-manager-my-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4174,7 +4376,8 @@
     "tags": [
       "custom-list-manager-my-requests",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4185,7 +4388,8 @@
     "tags": [
       "custom-list-manager-my-requests",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4196,7 +4400,8 @@
     "tags": [
       "custom-list-manager-my-requests",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4206,8 +4411,9 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-my-requests",
-      "medium",
-      "audit"
+      "high",
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4218,7 +4424,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4229,7 +4436,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4240,7 +4448,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4251,7 +4460,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4262,7 +4472,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4273,7 +4484,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4296,7 +4508,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4307,7 +4520,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4318,7 +4532,8 @@
     "tags": [
       "custom-list-manager-request-details",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4365,7 +4580,8 @@
     "tags": [
       "custom-list-manager-approval-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4376,7 +4592,8 @@
     "tags": [
       "custom-list-manager-approval-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4387,7 +4604,8 @@
     "tags": [
       "custom-list-manager-approval-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4410,7 +4628,8 @@
     "tags": [
       "custom-list-manager-approval-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4421,7 +4640,8 @@
     "tags": [
       "custom-list-manager-approval-workflow",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4432,7 +4652,8 @@
     "tags": [
       "custom-list-manager-approval-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4455,7 +4676,8 @@
     "tags": [
       "custom-list-manager-rejection-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4466,7 +4688,8 @@
     "tags": [
       "custom-list-manager-rejection-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4477,7 +4700,8 @@
     "tags": [
       "custom-list-manager-rejection-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4500,7 +4724,8 @@
     "tags": [
       "custom-list-manager-rejection-workflow",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4511,7 +4736,8 @@
     "tags": [
       "custom-list-manager-rejection-workflow",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4522,7 +4748,8 @@
     "tags": [
       "custom-list-manager-rejection-workflow",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4569,7 +4796,8 @@
     "tags": [
       "custom-list-manager-segregation-of-duties",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4604,7 +4832,8 @@
     "tags": [
       "custom-list-manager-segregation-of-duties",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4615,7 +4844,8 @@
     "tags": [
       "custom-list-manager-segregation-of-duties",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4626,7 +4856,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "high",
-      "functional"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4637,7 +4868,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4648,7 +4880,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4659,7 +4892,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4670,7 +4904,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4681,7 +4916,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4692,7 +4928,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4703,7 +4940,8 @@
     "tags": [
       "custom-list-manager-sla-validation",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -4713,8 +4951,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-listing",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4725,7 +4963,7 @@
     "tags": [
       "custom-list-manager-audit-listing",
       "high",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4735,8 +4973,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-listing",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4746,8 +4984,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-listing",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4757,8 +4995,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-listing",
-      "custom list activities should be available in audit listing",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4768,7 +5006,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-listing",
-      "high",
+      "medium",
       "bulk-upload"
     ]
   },
@@ -4779,8 +5017,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-listing",
-      "high",
-      "maker-checker"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4791,7 +5029,7 @@
     "tags": [
       "custom-list-manager-audit-listing",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4801,8 +5039,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-listing",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4813,7 +5051,7 @@
     "tags": [
       "custom-list-manager-audit-listing",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4823,8 +5061,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-search",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4834,7 +5072,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-search",
-      "high",
+      "medium",
       "screening-matching"
     ]
   },
@@ -4846,7 +5084,7 @@
     "tags": [
       "custom-list-manager-audit-search",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4856,8 +5094,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-search",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4879,7 +5117,7 @@
     "tags": [
       "custom-list-manager-audit-search",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4890,7 +5128,7 @@
     "tags": [
       "custom-list-manager-audit-search",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4900,8 +5138,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-search",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4911,8 +5149,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-filters",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4922,8 +5160,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-filters",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4933,7 +5171,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-filters",
-      "high",
+      "medium",
       "screening-matching"
     ]
   },
@@ -4945,7 +5183,7 @@
     "tags": [
       "custom-list-manager-audit-filters",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4956,7 +5194,7 @@
     "tags": [
       "custom-list-manager-audit-filters",
       "high",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4967,7 +5205,7 @@
     "tags": [
       "custom-list-manager-audit-filters",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -4977,8 +5215,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-filters",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4988,8 +5226,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-filters",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -4999,8 +5237,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-date-range",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5010,8 +5248,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-date-range",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5021,8 +5259,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-date-range",
-      "high",
-      "functional"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5033,7 +5271,7 @@
     "tags": [
       "custom-list-manager-audit-date-range",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -5055,7 +5293,7 @@
     "tags": [
       "custom-list-manager-audit-date-range",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -5065,8 +5303,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-date-range",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5076,8 +5314,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-date-range",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5087,8 +5325,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-event-details",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5098,8 +5336,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-event-details",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5109,8 +5347,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-event-details",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5120,8 +5358,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-event-details",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5132,7 +5370,7 @@
     "tags": [
       "custom-list-manager-event-details",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -5142,8 +5380,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-event-details",
-      "medium",
-      "maker-checker"
+      "high",
+      "bulk-upload"
     ]
   },
   {
@@ -5153,8 +5391,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-event-details",
-      "medium",
-      "maker-checker"
+      "high",
+      "bulk-upload"
     ]
   },
   {
@@ -5164,8 +5402,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-event-details",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5175,7 +5413,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-export",
-      "high",
+      "medium",
       "export"
     ]
   },
@@ -5186,7 +5424,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-export",
-      "high",
+      "medium",
       "export"
     ]
   },
@@ -5197,7 +5435,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-export",
-      "high",
+      "medium",
       "export"
     ]
   },
@@ -5208,7 +5446,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-export",
-      "high",
+      "medium",
       "export"
     ]
   },
@@ -5252,7 +5490,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-export",
-      "high",
+      "medium",
       "export"
     ]
   },
@@ -5263,8 +5501,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-integrity",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5275,7 +5513,8 @@
     "tags": [
       "custom-list-manager-audit-integrity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5286,7 +5525,8 @@
     "tags": [
       "custom-list-manager-audit-integrity",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5296,8 +5536,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-integrity",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5307,8 +5547,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-integrity",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5319,7 +5559,7 @@
     "tags": [
       "custom-list-manager-audit-integrity",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -5330,7 +5570,7 @@
     "tags": [
       "custom-list-manager-audit-integrity",
       "medium",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -5340,8 +5580,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-integrity",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5352,7 +5592,7 @@
     "tags": [
       "custom-list-manager-audit-integrity",
       "high",
-      "audit"
+      "bulk-upload"
     ]
   },
   {
@@ -5362,8 +5602,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-audit-integrity",
-      "high",
-      "audit"
+      "medium",
+      "bulk-upload"
     ]
   },
   {
@@ -5396,7 +5636,7 @@
     "tags": [
       "custom-list-manager-ttl-display",
       "high",
-      "maker-checker"
+      "ttl"
     ]
   },
   {
@@ -5406,7 +5646,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-ttl-display",
-      "medium",
+      "high",
       "ttl"
     ]
   },
@@ -5417,7 +5657,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-ttl-display",
-      "medium",
+      "high",
       "audit"
     ]
   },
@@ -5472,7 +5712,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-expiry",
-      "medium",
+      "high",
       "audit"
     ]
   },
@@ -5505,7 +5745,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-expiring-soon",
-      "medium",
+      "high",
       "ttl"
     ]
   },
@@ -5516,7 +5756,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-expiring-soon",
-      "medium",
+      "high",
       "ttl"
     ]
   },
@@ -5527,7 +5767,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-expiring-soon",
-      "medium",
+      "high",
       "ttl"
     ]
   },
@@ -5571,7 +5811,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-expired-status",
-      "medium",
+      "high",
       "audit"
     ]
   },
@@ -5616,7 +5856,8 @@
     "tags": [
       "custom-list-manager-screening-exclusion",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5648,7 +5889,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-screening-exclusion",
-      "medium",
+      "high",
       "screening-matching"
     ]
   },
@@ -5660,7 +5901,8 @@
     "tags": [
       "custom-list-manager-screening-exclusion",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5704,7 +5946,8 @@
     "tags": [
       "custom-list-manager-fuzzy-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5814,7 +6057,8 @@
     "tags": [
       "custom-list-manager-multilingual-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5825,7 +6069,8 @@
     "tags": [
       "custom-list-manager-multilingual-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5869,7 +6114,8 @@
     "tags": [
       "custom-list-manager-name-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5880,7 +6126,8 @@
     "tags": [
       "custom-list-manager-name-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5902,7 +6149,8 @@
     "tags": [
       "custom-list-manager-name-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5946,7 +6194,8 @@
     "tags": [
       "custom-list-manager-name-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5957,7 +6206,8 @@
     "tags": [
       "custom-list-manager-name-matching",
       "medium",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -5968,7 +6218,8 @@
     "tags": [
       "custom-list-manager-name-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6155,7 +6406,8 @@
     "tags": [
       "custom-list-manager-digital-identifier-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6166,7 +6418,8 @@
     "tags": [
       "custom-list-manager-digital-identifier-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6177,7 +6430,8 @@
     "tags": [
       "custom-list-manager-digital-identifier-matching",
       "medium",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6188,7 +6442,8 @@
     "tags": [
       "custom-list-manager-digital-identifier-matching",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6210,7 +6465,8 @@
     "tags": [
       "custom-list-manager-action-on-hit-behaviour",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6242,7 +6498,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-action-on-hit-behaviour",
-      "medium",
+      "high",
       "screening-matching"
     ]
   },
@@ -6253,8 +6509,8 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-action-on-hit-behaviour",
-      "medium",
-      "maker-checker"
+      "high",
+      "screening-matching"
     ]
   },
   {
@@ -6265,7 +6521,8 @@
     "tags": [
       "custom-list-manager-action-on-hit-behaviour",
       "medium",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6298,7 +6555,8 @@
     "tags": [
       "custom-list-manager-alert-generation",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6309,7 +6567,8 @@
     "tags": [
       "custom-list-manager-alert-generation",
       "high",
-      "alerts"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6320,7 +6579,8 @@
     "tags": [
       "custom-list-manager-alert-generation",
       "high",
-      "screening-matching"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6331,7 +6591,8 @@
     "tags": [
       "custom-list-manager-alert-generation",
       "high",
-      "alerts"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6341,7 +6602,7 @@
     "reason": "Custom List Manager UI automation via Playwright page object",
     "tags": [
       "custom-list-manager-alert-generation",
-      "medium",
+      "high",
       "screening-matching"
     ]
   },
@@ -6353,7 +6614,8 @@
     "tags": [
       "custom-list-manager-alert-generation",
       "high",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {
@@ -6375,7 +6637,8 @@
     "tags": [
       "custom-list-manager-alert-generation",
       "medium",
-      "maker-checker"
+      "rbac",
+      "security"
     ]
   },
   {

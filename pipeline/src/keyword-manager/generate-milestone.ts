@@ -7,8 +7,8 @@ import * as path from "path";
 import { loadKmRows } from "./parser";
 import { writePlanArtifacts } from "./plan-builder";
 import type { KmExcelRow } from "./types";
-import { buildAssertionsForRow, escapeScenarioComment, formatTestTitle } from "./assertions";
-import { mapKmActionLogic } from "./test-logic";
+import { formatTestTitle } from "./assertions";
+import { buildInstrumentedTestBody } from "./test-body-builder";
 
 const ROOT = path.resolve(__dirname, "../../..");
 const SPEC_DIR = path.join(ROOT, "tests/milestone1/test-cases/ConfigurationModule/keywordManagerTests");
@@ -16,34 +16,17 @@ const SPEC_FILE = path.join(SPEC_DIR, "keyword-manager.spec.ts");
 const PAGE_OBJECT_DIR = path.join(ROOT, "tests/milestone1/pages/ConfigurationModule/KeywordManagerPages");
 const REVIEW_FILE = path.join(ROOT, "specs/keyword-manager/REVIEW.md");
 
-const SUB_MODULE_ORDER = [
-  "Navigation & Page Load",
-  "Tab Navigation",
-  "Keyword Listing Table",
-  "Search Functionality",
-  "Add Category",
-  "Category Controls",
-  "Add Keyword",
-  "Live Narrative Tester",
-  "Maker-Checker Governance",
-  "Disable Keyword",
-  "Enable Keyword",
-  "Bulk Import",
-  "Export",
-  "Screening Engine",
-  "Workflow States",
-  "RBAC & Security",
-  "Business Rules",
-  "Screening Fields",
-  "UI Components",
-  "Accessibility",
-  "Performance",
-  "Browser Compatibility",
-  "Negative Edge Cases",
-  "Integration",
-  "Sample Keyword Validation",
-  "Additional Coverage",
-];
+function subModuleOrder(rows: KmExcelRow[]): string[] {
+  const order: string[] = [];
+  const seen = new Set<string>();
+  for (const row of rows) {
+    if (!seen.has(row.subModule)) {
+      seen.add(row.subModule);
+      order.push(row.subModule);
+    }
+  }
+  return order;
+}
 
 function escapeForTemplate(s: string): string {
   return s.replace(/\\/g, "\\\\").replace(/`/g, "\\`").replace(/\$/g, "\\$");
@@ -59,27 +42,16 @@ function buildSpecFile(rows: KmExcelRow[]): string {
 
   const describeBlocks: string[] = [];
 
-  for (const subModule of SUB_MODULE_ORDER) {
+  for (const subModule of subModuleOrder(rows)) {
     const subRows = bySub.get(subModule);
     if (!subRows?.length) continue;
 
     const tests = subRows
       .map((row) => {
         const title = escapeForTemplate(formatTestTitle(row));
-        const scenario = escapeForTemplate(escapeScenarioComment(row.taskDescription));
-        const expected = escapeForTemplate(escapeScenarioComment(row.expectedResult));
-        const actions = mapKmActionLogic(row);
-        const assertions = buildAssertionsForRow(row);
-        return `  // Excel Test Case ID: ${row.id}
-  // Excel Scenario: ${scenario}
-  // Excel Expected Result: ${expected}
-  test("${title}", async ({ testData }) => {
-    await test.step("[${row.id}] Navigate and execute documented test steps", async () => {
-      ${actions};
-    });
-    await test.step("[${row.id}] Validate expected results from Excel", async () => {
-      ${assertions};
-    });
+        const body = buildInstrumentedTestBody(row);
+        return `  test("${title}", async ({ testData }) => {
+    ${body}
   });`;
       })
       .join("\n\n");
@@ -90,7 +62,7 @@ ${tests}
   }
 
   return `// spec: specs/keyword-manager/plan.md
-// source: pipeline/test-data/Keyword_Manager_Test.xlsx — ${rows.length} cases
+// source: pipeline/test-data/Keyword Manager Test.xlsx — ${rows.length} cases
 import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import KeywordManagerPage from "../../../pages/ConfigurationModule/KeywordManagerPages/KeywordManagerPage";
 

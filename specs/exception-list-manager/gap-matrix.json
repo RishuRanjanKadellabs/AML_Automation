@@ -1,91 +1,91 @@
 [
   {
     "requirementId": "ATL-001",
-    "requirementDescription": "Verify that exception list creation is captured in the audit trail with complete metadata.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify exception list creation is captured in the audit trail with complete metadata",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-002",
     "requirementDescription": "Check that editing an exception list writes a new immutable audit event.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-003",
-    "requirementDescription": "Validate that list suspension is recorded with the correct status change.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that list suspension is recorded with the correct status change.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-004",
     "requirementDescription": "Confirm that re-activation of a list is logged as a separate event.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-005",
     "requirementDescription": "Verify that deleting an exception list leaves a permanent audit record.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-006",
     "requirementDescription": "Ensure that exception entry submission is captured in the audit trail.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-007",
     "requirementDescription": "Check that approving an exception entry creates a separate audit trail record.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-008",
-    "requirementDescription": "Validate that rejection of an exception entry is written to the audit history.",
+    "requirementDescription": "Verify that rejection of an exception entry is written to the audit history.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-009",
     "requirementDescription": "Confirm that entry edit activity is tracked even when only a single field changes.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-010",
     "requirementDescription": "Verify that entry suspension is logged when a user deactivates an approved entry.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-011",
     "requirementDescription": "Check that entry re-activation after suspension is audited separately from the original approval.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-012",
     "requirementDescription": "Ensure that expired entries still remain visible in the audit trail after TTL passes.",
     "testable": "Partial",
-    "missingInformation": "TTL expiry simulation clock or seeded expired entries",
-    "assumptions": "Use pre-seeded expired entry records in test environment"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-013",
-    "requirementDescription": "Validate that bulk upload submission creates a parent audit event.",
+    "requirementDescription": "Verify that bulk upload submission creates a parent audit event.",
     "testable": "Partial",
     "missingInformation": "Bulk upload sample file paths and column mapping",
     "assumptions": "Use pipeline test-data bulk upload fixtures when available"
@@ -106,10 +106,10 @@
   },
   {
     "requirementId": "ATL-016",
-    "requirementDescription": "Validate that every suppressed alert is logged silently without user-facing notification noise.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that every suppressed alert is logged silently without user-facing notification noise.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-017",
@@ -121,37 +121,37 @@
   {
     "requirementId": "ATL-018",
     "requirementDescription": "Check that evidence attachment upload is recorded in the audit trail.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-019",
-    "requirementDescription": "Validate that viewing or downloading evidence is separately logged.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that viewing or downloading evidence is separately logged.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-020",
     "requirementDescription": "Ensure that a material identity change auto-suspension event is captured.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-021",
     "requirementDescription": "Verify that a true-hit conflict check blocked submission is recorded as an integrity event.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-022",
     "requirementDescription": "Confirm that the exception register report generation is logged.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-023",
@@ -163,9 +163,9 @@
   {
     "requirementId": "ATL-024",
     "requirementDescription": "Verify that audit records are read-only and cannot be edited through the application.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-025",
@@ -177,34 +177,41 @@
   {
     "requirementId": "ATL-026",
     "requirementDescription": "Check that the audit trail shows before and after state snapshots for state-changing actions.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-027",
-    "requirementDescription": "Verify audit trail filters by event type, list, and date range per Figma.",
+    "requirementDescription": "Verify audit trail filters narrow results by event type, list, and date range",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "ATL-028",
-    "requirementDescription": "Verify Read-Only Auditor has read/export access only on audit trail.",
+    "requirementDescription": "Verify Read-Only Auditor can view and export audit records but cannot modify them",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-029",
-    "requirementDescription": "Verify MLRO and Compliance Manager have full read access to all audit records.",
+    "requirementDescription": "Verify MLRO has full read access to audit records created by other users",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ATL-030",
-    "requirementDescription": "Verify non-privileged roles see only audit records related to their own submissions.",
+    "requirementDescription": "Verify KYC Analyst sees only audit records linked to their own submissions",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+  },
+  {
+    "requirementId": "ATL-031",
+    "requirementDescription": "Verify Compliance Manager has full read access to audit records created by other users",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
@@ -225,7 +232,7 @@
   },
   {
     "requirementId": "EEM-003",
-    "requirementDescription": "Create a fresh exception entry from the list screen and confirm that it goes through maker-checker approval.",
+    "requirementDescription": "Create a new exception entry from list detail and route it through maker-checker approval",
     "testable": "Partial",
     "missingInformation": "Maker-checker role login and queue seed data",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -267,7 +274,7 @@
   },
   {
     "requirementId": "EEM-009",
-    "requirementDescription": "Validate that scope expansion sends the edit to a higher approval level than a simple reduction.",
+    "requirementDescription": "Verify that scope expansion sends the edit to a higher approval level than a simple reduction.",
     "testable": "Partial",
     "missingInformation": "Maker-checker role login and queue seed data",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -302,10 +309,10 @@
   },
   {
     "requirementId": "EEM-014",
-    "requirementDescription": "Renew an expired entry and ensure the new request follows the standard approval cycle.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Renew an expired exception entry through maker-checker approval",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "EEM-015",
@@ -337,21 +344,21 @@
   },
   {
     "requirementId": "EEM-019",
-    "requirementDescription": "Verify that a partially completed exception entry can be saved as Draft without entering the approval workflow.",
-    "testable": "Yes",
-    "missingInformation": "",
+    "requirementDescription": "Save a partially completed exception entry as Draft without entering maker-checker approval",
+    "testable": "Partial",
+    "missingInformation": "Maker-checker role login and queue seed data",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "EEM-020",
-    "requirementDescription": "Verify that a Draft with missing mandatory fields cannot be submitted for approval.",
+    "requirementDescription": "Block submission of a Draft that still has missing mandatory fields",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "EEM-021",
-    "requirementDescription": "Verify that a saved Draft can be edited and updated values are retained.",
+    "requirementDescription": "Edit and resave a Draft entry with updated field values",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -365,7 +372,7 @@
   },
   {
     "requirementId": "EEM-023",
-    "requirementDescription": "Verify that a completed Draft can be submitted and routed to Maker-Checker approval.",
+    "requirementDescription": "Submit a completed Draft entry into the maker-checker approval queue",
     "testable": "Partial",
     "missingInformation": "Maker-checker role login and queue seed data",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -400,7 +407,7 @@
   },
   {
     "requirementId": "EEM-028",
-    "requirementDescription": "Verify checker requirement hint on entry form per Figma (CO/CM vs MLRO).",
+    "requirementDescription": "Verify entry form displays correct checker routing hint for standard vs PEP/Other reason codes",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
@@ -410,13 +417,6 @@
     "requirementDescription": "Verify Re-activate for suspended entries routes through maker-checker with mandatory reason.",
     "testable": "Partial",
     "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
-  },
-  {
-    "requirementId": "EEM-030",
-    "requirementDescription": "Verify Renew on expired entry creates new approval submission.",
-    "testable": "Yes",
-    "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
@@ -442,14 +442,14 @@
   },
   {
     "requirementId": "EEM-034",
-    "requirementDescription": "Verify View History panel shows submission, approval, and suppression events per Figma.",
+    "requirementDescription": "Verify View History panel shows submission, approval, and suppression events",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "EEM-035",
-    "requirementDescription": "Verify match score colour-coded badge in entry grid per Figma.",
+    "requirementDescription": "Verify match score colour-coded badge in entry grid",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -477,14 +477,14 @@
   },
   {
     "requirementId": "EEM-039",
-    "requirementDescription": "Verify Script Type values AR, ZH-CN, ZH-TW, CY, LA per FSD.",
+    "requirementDescription": "Verify Script Type values AR, ZH-CN, ZH-TW, CY, LA",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "EEM-040",
-    "requirementDescription": "Verify bulk suspend/delete of multiple entries is not supported per FSD.",
+    "requirementDescription": "Verify bulk suspend/delete of multiple entries is not supported",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -505,7 +505,7 @@
   },
   {
     "requirementId": "EEM-043",
-    "requirementDescription": "Verify True Hit confirmed alert cannot be submitted to CSEL per FSD scope.",
+    "requirementDescription": "Verify True Hit confirmed alert cannot be submitted to CSEL scope.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -519,7 +519,7 @@
   },
   {
     "requirementId": "EEM-045",
-    "requirementDescription": "Verify Download Template from bulk upload returns XLSX with all mandatory columns per FSD.",
+    "requirementDescription": "Verify Download Template from bulk upload returns XLSX with all mandatory columns",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -540,10 +540,10 @@
   },
   {
     "requirementId": "ELM-001",
-    "requirementDescription": "Verify exception list landing page opens with updated summary cards (Total lists, Active lists, Total exceptions, Pending approval), status tabs, list grid columns (including Exp 30d/Expired), and row actions per FSD v1.1 and Figma v3.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify exception list landing page shows summary cards, status tabs, and list grid with required columns",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-002",
@@ -562,44 +562,44 @@
   {
     "requirementId": "ELM-004",
     "requirementDescription": "Confirm that mandatory fields and duplicate list names are blocked at save time.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-005",
-    "requirementDescription": "Validate the PEP exception list rule that the default review frequency cannot exceed six months.",
+    "requirementDescription": "Verify the PEP exception list rule that the default review frequency cannot exceed six months.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "ELM-006",
-    "requirementDescription": "Open a list in view mode and confirm that the metadata and entry sections match the FSD layout.",
+    "requirementDescription": "Open exception list detail and confirm metadata panel, entry grid, and permitted actions",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "ELM-007",
-    "requirementDescription": "Validate entry-level search, filter, sort, and export from the list detail screen.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify entry-level search, filter, sort, and export from the list detail screen.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-008",
     "requirementDescription": "Change the allowed fields of an existing list and send the update through approval.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-009",
     "requirementDescription": "Check that the list category stays locked after creation and cannot be changed during edit.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-010",
@@ -632,69 +632,69 @@
   {
     "requirementId": "ELM-014",
     "requirementDescription": "Verify that landing page counters recalculate correctly after entry status changes.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-015",
     "requirementDescription": "Verify that dashboard counters update after approval and rejection actions.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-016",
     "requirementDescription": "Verify that dashboard counters remain consistent after page refresh and re-login.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-017",
     "requirementDescription": "Verify that List Name accepts exactly 100 characters.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-018",
     "requirementDescription": "Verify that List Name exceeding 100 characters is rejected.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-019",
     "requirementDescription": "Verify that Description accepts exactly 500 characters.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-020",
     "requirementDescription": "Verify that Description exceeding 500 characters is rejected.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-021",
-    "requirementDescription": "Verify landing page summary cards display Total lists, Active lists, Total exceptions, and Pending approval per updated Figma.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify landing page summary cards display Total lists, Active lists, Total exceptions, and Pending approval",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-022",
-    "requirementDescription": "Verify list status tabs (Active, Suspended, All) filter the landing grid per updated Figma.",
+    "requirementDescription": "Verify list status tabs (Active, Suspended, All) filter the landing grid",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "ELM-023",
-    "requirementDescription": "Verify landing grid columns include Exp 30d and Expired entry counters per FSD and Figma.",
+    "requirementDescription": "Verify landing grid columns include Exp 30d and Expired entry counters aligned to list detail",
     "testable": "Partial",
     "missingInformation": "Performance or SLA thresholds and measurement tooling",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -715,66 +715,66 @@
   },
   {
     "requirementId": "ELM-026",
-    "requirementDescription": "Verify Reason for Creation is mandatory and retained in audit log per FSD.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify Reason for Creation is mandatory and retained in audit log",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-027",
-    "requirementDescription": "Verify 24 months default TTL option enforces MLRO sign-off requirement per FSD.",
+    "requirementDescription": "Verify 24 months default TTL option enforces MLRO sign-off requirement",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ELM-028",
-    "requirementDescription": "Verify pagination supports 10, 25, 50, and 100 rows per page per FSD.",
+    "requirementDescription": "Verify pagination supports 10, 25, 50, and 100 rows per page",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "ELM-029",
-    "requirementDescription": "Verify Bulk upload is accessible from landing page header per updated Figma.",
+    "requirementDescription": "Verify Bulk upload is accessible from landing page header",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "ELM-030",
-    "requirementDescription": "Verify sidebar menu search filters navigation items per updated Figma shell.",
+    "requirementDescription": "Verify sidebar menu search filters navigation menu items.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-001",
     "requirementDescription": "Verify that the report opens with the correct summary cards and section layout.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-002",
     "requirementDescription": "Check that the total active exceptions count matches the data shown in the report table.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-003",
-    "requirementDescription": "Validate the New This Month metric against newly created exception items.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify the New This Month metric against newly created exception items.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-004",
     "requirementDescription": "Confirm that the Suppressions This Month metric increments when alerts are suppressed.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-005",
@@ -792,7 +792,7 @@
   },
   {
     "requirementId": "ERR-007",
-    "requirementDescription": "Validate that clicking a reason code row opens the corresponding filtered view or detail context.",
+    "requirementDescription": "Verify that clicking a reason code row opens the corresponding filtered view or detail context.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -807,100 +807,100 @@
   {
     "requirementId": "ERR-009",
     "requirementDescription": "Confirm that the report export button creates a CSV file with the same visible data.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-010",
     "requirementDescription": "Confirm that the PDF export mirrors the report layout and includes the header information.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-011",
     "requirementDescription": "Verify that filters for list name or category narrow the report results correctly.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-012",
     "requirementDescription": "Check that status filters return the expected list states such as Active or Suspended.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-013",
-    "requirementDescription": "Validate the page-size control so the report shows the requested number of rows.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify the page-size control so the report shows the requested number of rows.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-014",
     "requirementDescription": "Confirm that pagination navigates between report pages without losing the selected filters.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-015",
     "requirementDescription": "Check that date-related values are displayed in the expected report format.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-016",
-    "requirementDescription": "Validate that very long list names do not break the report layout.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that very long list names do not break the report layout.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-017",
     "requirementDescription": "Check that special characters and punctuation in list names are rendered safely.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-018",
     "requirementDescription": "Confirm that the report handles an empty result set with a proper no-data message.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-019",
     "requirementDescription": "Verify that a user without report permission cannot export or view the register data.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-020",
     "requirementDescription": "Check that the report refreshes to show recent screening activity after new events occur.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-021",
-    "requirementDescription": "Validate that report values are consistent across screen refresh and browser reopen.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that report values are consistent across screen refresh and browser reopen.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-022",
     "requirementDescription": "Check that the report summary does not mix current month and historical month totals.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-023",
@@ -912,20 +912,20 @@
   {
     "requirementId": "ERR-024",
     "requirementDescription": "Verify that the report header shows the correct month label and delivery context.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-025",
     "requirementDescription": "Check that the report keeps the visible list ordering when no sort is changed.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-026",
-    "requirementDescription": "Verify Executive Summary includes renewals, expiries, and pending requests per FSD.",
+    "requirementDescription": "Verify Executive Summary includes renewals, expiries, and pending requests",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -933,27 +933,27 @@
   {
     "requirementId": "ERR-027",
     "requirementDescription": "Verify Suppression Activity Log groups suppressions by exception entry.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-028",
     "requirementDescription": "Verify Entries Expired This Month confirms suppression ceased and alerts resumed.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-029",
-    "requirementDescription": "Verify Active Exception Entries full list section shows required columns per FSD.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify Active Exception Entries section lists all required columns with accurate data",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "ERR-030",
-    "requirementDescription": "Verify Pending Requests section lists outstanding maker-checker approvals at report generation date.",
+    "requirementDescription": "Verify Pending Requests section reflects outstanding maker-checker items at report generation time",
     "testable": "Partial",
     "missingInformation": "Maker-checker role login and queue seed data",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -981,7 +981,7 @@
   },
   {
     "requirementId": "EVAL-004",
-    "requirementDescription": "Validate that an expired exception does not suppress a new hit after the expiry date has passed.",
+    "requirementDescription": "Verify that an expired exception does not suppress a new hit after the expiry date has passed.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1023,7 +1023,7 @@
   },
   {
     "requirementId": "EVAL-010",
-    "requirementDescription": "Validate that one valid exception among multiple candidate records is enough to suppress the hit.",
+    "requirementDescription": "Verify that one valid exception among multiple candidate records is enough to suppress the hit.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1067,8 +1067,8 @@
     "requirementId": "EVAL-016",
     "requirementDescription": "Ensure that fuzzy matching never overrides an exact customer ID mismatch.",
     "testable": "Partial",
-    "missingInformation": "Fuzzy matching and multilingual test corpus not defined in Excel",
-    "assumptions": "Seed evaluation scenarios via test fixtures when corpus available"
+    "missingInformation": "Performance or SLA thresholds and measurement tooling",
+    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "EVAL-017",
@@ -1100,7 +1100,7 @@
   },
   {
     "requirementId": "EVAL-021",
-    "requirementDescription": "Validate behaviour for a very long customer name so the matching logic does not fail on length.",
+    "requirementDescription": "Verify behaviour for a very long customer name so the matching logic does not fail on length.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1135,7 +1135,7 @@
   },
   {
     "requirementId": "EVAL-026",
-    "requirementDescription": "Validate Arabic prefix handling for names such as Al-, El-, Bin-, and Bint-.",
+    "requirementDescription": "Verify Arabic prefix handling for names such as Al-, El-, Bin-, and Bint-.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1163,7 +1163,7 @@
   },
   {
     "requirementId": "EVAL-030",
-    "requirementDescription": "Validate that Traditional Chinese text is handled as a separate script and matched correctly when stored the same way.",
+    "requirementDescription": "Verify that Traditional Chinese text is handled as a separate script and matched correctly when stored the same way.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1191,7 +1191,7 @@
   },
   {
     "requirementId": "EVAL-034",
-    "requirementDescription": "Validate that whitespace differences in a multilingual name do not cause a false mismatch.",
+    "requirementDescription": "Verify that whitespace differences in a multilingual name do not cause a false mismatch.",
     "testable": "Partial",
     "missingInformation": "Fuzzy matching and multilingual test corpus not defined in Excel",
     "assumptions": "Seed evaluation scenarios via test fixtures when corpus available"
@@ -1212,7 +1212,7 @@
   },
   {
     "requirementId": "EVAL-037",
-    "requirementDescription": "Validate that the engine selects the valid active entry when duplicate entries exist for the same customer and watchlist.",
+    "requirementDescription": "Verify that the engine selects the valid active entry when duplicate entries exist for the same customer and watchlist.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1261,7 +1261,7 @@
   },
   {
     "requirementId": "MCW-003",
-    "requirementDescription": "Validate that a Compliance Manager can approve a standard request in the same way as a Compliance Officer.",
+    "requirementDescription": "Verify that a Compliance Manager can approve a standard request in the same way as a Compliance Officer.",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
@@ -1298,68 +1298,68 @@
     "requirementId": "MCW-008",
     "requirementDescription": "Check that a request submitted by the logged-in user is listed under My Requests and not presented for self-approval.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-009",
     "requirementDescription": "Ensure that a checker cannot approve their own request even when the checker role matches the request type.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-010",
-    "requirementDescription": "Validate that All Requests shows every pending item that is waiting for checker action.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that All Requests shows every pending item that is waiting for checker action.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-011",
     "requirementDescription": "Confirm that the queue list is refreshed after an approval so the approved item disappears from the pending view.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-012",
     "requirementDescription": "Verify that approving a standard request changes the workflow status to Approved and activates the exception.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-013",
     "requirementDescription": "Verify that rejecting a request changes its workflow state to Rejected and prevents the exception from becoming active.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-014",
     "requirementDescription": "Check that a rejection cannot be submitted without a clear reason or comment when the process requires justification.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-015",
     "requirementDescription": "Ensure that two approval attempts on the same request are not processed twice.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-016",
     "requirementDescription": "Verify that a rejected request cannot be moved back to pending from the checker screen without a fresh maker submission.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-017",
-    "requirementDescription": "Validate that the onboarding SLA countdown starts from the maker submission timestamp and not from the time the request was opened.",
+    "requirementDescription": "Verify that the onboarding SLA countdown starts from the maker submission timestamp and not from the time the request was opened.",
     "testable": "Partial",
     "missingInformation": "Performance or SLA thresholds and measurement tooling",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1387,7 +1387,7 @@
   },
   {
     "requirementId": "MCW-021",
-    "requirementDescription": "Validate the 24-hour escalation warning for periodic and event-driven requests before the 48-hour breach.",
+    "requirementDescription": "Verify the 24-hour escalation warning for periodic and event-driven requests before the 48-hour breach.",
     "testable": "Partial",
     "missingInformation": "Performance or SLA thresholds and measurement tooling",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1402,41 +1402,41 @@
   {
     "requirementId": "MCW-023",
     "requirementDescription": "Ensure that a request cannot be approved by a user who is not available in the queue because of role restriction, even if the request is searchable by ID.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-024",
     "requirementDescription": "Verify that a request submitted by a maker is shown to the checker with the correct pending state and not auto-approved by system refresh.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-025",
     "requirementDescription": "Check that simultaneous approval attempts from two sessions do not create conflicting workflow states.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-026",
-    "requirementDescription": "Verify checker approval success modal shows action, submitter, timestamp, Pending status per Figma.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify checker approval success modal shows action, submitter, timestamp, Pending status",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-027",
-    "requirementDescription": "Verify mandatory comment modal blocks proceed without comment per Figma.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify mandatory comment modal blocks proceed without comment",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-028",
-    "requirementDescription": "Verify MC request cards show SLA timer, urgency, and escalation warning per Figma.",
+    "requirementDescription": "Verify MC request cards show SLA timer, urgency, and escalation warning",
     "testable": "Partial",
     "missingInformation": "Performance or SLA thresholds and measurement tooling",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1444,9 +1444,9 @@
   {
     "requirementId": "MCW-029",
     "requirementDescription": "Verify bulk upload card shows entry count and supports drill-down.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "MCW-030",
@@ -1485,7 +1485,7 @@
   },
   {
     "requirementId": "NFR-005",
-    "requirementDescription": "Verify evidence attachments store SHA-256 checksum per FSD.",
+    "requirementDescription": "Verify evidence attachments store SHA-256 checksum",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1506,7 +1506,7 @@
   },
   {
     "requirementId": "NFR-008",
-    "requirementDescription": "Verify diacritic normalisation applied during multilingual name matching per FSD.",
+    "requirementDescription": "Verify diacritic normalisation applied during multilingual name matching",
     "testable": "Partial",
     "missingInformation": "Performance or SLA thresholds and measurement tooling",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1521,23 +1521,23 @@
   {
     "requirementId": "NTF-002",
     "requirementDescription": "Confirm that approval of an exception entry notifies the submitting analyst without delay.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-003",
-    "requirementDescription": "Validate that rejection of an exception entry is pushed back to the maker with the checker comment included.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that rejection of an exception entry is pushed back to the maker with the checker comment included.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-004",
     "requirementDescription": "Check that onboarding requests that stay pending for 12 hours trigger the escalation email to the correct stakeholders.",
     "testable": "Partial",
-    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
-    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
+    "missingInformation": "Performance or SLA thresholds and measurement tooling",
+    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
   },
   {
     "requirementId": "NTF-005",
@@ -1557,12 +1557,12 @@
     "requirementId": "NTF-007",
     "requirementDescription": "Confirm that the 7-day expiry warning is delivered as a second escalation, not as a duplicate of the 30-day reminder.",
     "testable": "Partial",
-    "missingInformation": "TTL expiry simulation clock or seeded expired entries",
-    "assumptions": "Use pre-seeded expired entry records in test environment"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-008",
-    "requirementDescription": "Validate that on the expiry date the system notifies the compliance users and clearly indicates that screening alerts are re-activated.",
+    "requirementDescription": "Verify that on the expiry date the system notifies the compliance users and clearly indicates that screening alerts are re-activated.",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
@@ -1577,23 +1577,23 @@
   {
     "requirementId": "NTF-010",
     "requirementDescription": "Confirm that suppressed alert events do not create noisy user notifications and are only written to the audit trail.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-011",
     "requirementDescription": "Verify that a successful bulk upload sends only the maker-side success notification and does not notify unrelated roles.",
     "testable": "Partial",
-    "missingInformation": "Bulk upload sample file paths and column mapping",
-    "assumptions": "Use pipeline test-data bulk upload fixtures when available"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-012",
-    "requirementDescription": "Validate that a bulk upload with validation errors sends an immediate failure notification and exposes the error summary.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify that a bulk upload with validation errors sends an immediate failure notification and exposes the error summary.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-013",
@@ -1611,38 +1611,38 @@
   },
   {
     "requirementId": "NTF-015",
-    "requirementDescription": "Ensure that notification timing follows the FSD rules and not an earlier or later schedule.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Ensure that notification timing follows the segregation-of-duties rules and not an earlier or later schedule.",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-023",
-    "requirementDescription": "Verify notification bell supports Mark all read and unread indicator per Figma.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify notification bell shows unread indicator and Mark all read clears unread styling",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-024",
-    "requirementDescription": "Verify onboarding exception notifications carry higher priority flag per FSD.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify onboarding exception notifications carry higher priority flag",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-025",
-    "requirementDescription": "Verify list suspension warns investigation team about screening alert volume increase per FSD.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify list suspension warns investigation team about screening alert volume increase",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "NTF-026",
-    "requirementDescription": "Verify notification delivery channels are configurable per user in system Settings per FSD.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "requirementDescription": "Verify notification delivery channels are configurable per user in system Settings",
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "RBAC-001",
@@ -1662,19 +1662,19 @@
     "requirementId": "RBAC-003",
     "requirementDescription": "Check that a Compliance Manager has unrestricted CSEL visibility and checker rights on the approved workflow screens.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "RBAC-004",
     "requirementDescription": "Verify that a Risk Analyst is restricted to read-only list access and cannot start entry maintenance actions.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "RBAC-005",
-    "requirementDescription": "Validate that a KYC Analyst can view only their own submissions and cannot use checker functions.",
+    "requirementDescription": "Verify that a KYC Analyst can view only their own submissions and cannot use checker functions.",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
@@ -1689,16 +1689,16 @@
   {
     "requirementId": "RBAC-007",
     "requirementDescription": "Verify that a Level 2 Investigator can create and maintain entries but still cannot approve or delete a request as a checker.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "RBAC-008",
     "requirementDescription": "Check that the System Administrator can manage lists and entries, but does not receive bulk upload permission or checker authority.",
     "testable": "Partial",
-    "missingInformation": "Maker-checker role login and queue seed data",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "RBAC-009",
@@ -1709,7 +1709,7 @@
   },
   {
     "requirementId": "RBAC-010",
-    "requirementDescription": "Validate that a checker cannot approve or reject a request that was submitted from the same account.",
+    "requirementDescription": "Verify that a checker cannot approve or reject a request that was submitted from the same account.",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
@@ -1717,9 +1717,9 @@
   {
     "requirementId": "RBAC-011",
     "requirementDescription": "Check that role-based permissions are refreshed correctly after logout and a different user signs in on the same workstation.",
-    "testable": "Yes",
-    "missingInformation": "",
-    "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
+    "testable": "Partial",
+    "missingInformation": "RBAC role switching mechanism (login fixture per role)",
+    "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "RBAC-012",
@@ -1730,14 +1730,14 @@
   },
   {
     "requirementId": "RBAC-013",
-    "requirementDescription": "Verify that the View Own restriction is enforced for KYC Analyst and Level 1 Investigator accounts.",
+    "requirementDescription": "Verify View Own restriction limits KYC Analyst and Level 1 Investigator to their own submissions",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
   },
   {
     "requirementId": "RBAC-014",
-    "requirementDescription": "Check that the permission matrix stays consistent for all major CSEL actions across roles in the FSD.",
+    "requirementDescription": "Verify role permission matrix stays consistent for all major CSEL actions across supported roles",
     "testable": "Partial",
     "missingInformation": "RBAC role switching mechanism (login fixture per role)",
     "assumptions": "Use mockUnauthorized or fixture role credentials when available"
@@ -1779,7 +1779,7 @@
   },
   {
     "requirementId": "RCE-004",
-    "requirementDescription": "Validate that reason codes are trimmed and stored cleanly when a user pastes extra spaces around the selected value.",
+    "requirementDescription": "Verify that reason codes are trimmed and stored cleanly when a user pastes extra spaces around the selected value.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1849,7 +1849,7 @@
   },
   {
     "requirementId": "RCE-014",
-    "requirementDescription": "Validate that opening an uploaded evidence file shows the exact file that was attached.",
+    "requirementDescription": "Verify that opening an uploaded evidence file shows the exact file that was attached.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"
@@ -1912,7 +1912,7 @@
   },
   {
     "requirementId": "RCE-023",
-    "requirementDescription": "Validate that uploading the same evidence file twice does not corrupt the attachment list.",
+    "requirementDescription": "Verify that uploading the same evidence file twice does not corrupt the attachment list.",
     "testable": "Yes",
     "missingInformation": "",
     "assumptions": "Exception List Manager via Configuration → Exception Lists; route /configuration/exception-lists"

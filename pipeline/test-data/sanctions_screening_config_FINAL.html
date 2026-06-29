@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 – Sanctions Screening Configuration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #161616; height: 100vh; overflow: hidden; }
+
+  /* ── Layout ── */
+  .app { display: flex; height: 100vh; overflow: hidden; }
+  .sidebar { width: 240px; flex-shrink: 0; background: #fff; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; overflow: hidden; }
+  .main-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+  /* ── Sidebar Header ── */
+  .sidebar-header { height: 54px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 16px; gap: 8px; flex-shrink: 0; }
+  .sidebar-header .logo-text { font-size: 18px; font-weight: 800; color: #2A53A0; }
+  .sidebar-header .divider { width: 1px; height: 24px; background: #e5e7eb; }
+  .sidebar-header .bank-text { font-size: 11px; font-weight: 700; color: #525252; letter-spacing: 0.5px; }
+
+  /* ── Sidebar Nav ── */
+  .sidebar-search { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; }
+  .sidebar-search input { width: 100%; height: 38px; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0 12px 0 36px; font-size: 13px; color: #161616; background: #fff; outline: none; }
+  .sidebar-search .search-wrap { position: relative; }
+  .sidebar-search .search-icon { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
+  .sidebar-nav { flex: 1; overflow-y: auto; padding: 8px 0; }
+  .nav-item { display: flex; align-items: center; gap: 8px; padding: 0 16px; height: 46px; border-radius: 8px; cursor: pointer; font-size: 15px; color: #161616; transition: background 0.15s; width: 100%; border: none; background: none; text-align: left; }
+  .nav-item:hover { background: #f3f4f6; }
+  .nav-item.active { color: #2A53A0; font-weight: 600; }
+  .nav-item .nav-chevron { margin-left: auto; color: #9ca3af; }
+  .nav-item.active .nav-chevron { color: #2A53A0; }
+  .nav-sub { margin-top: 4px; }
+  .nav-sub-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px 8px 27px; border-radius: 6px; cursor: pointer; font-size: 15px; color: #525252; transition: all 0.15s; width: 100%; border: none; background: none; text-align: left; }
+  .nav-sub-item:hover { color: #2A53A0; background: #f9fafb; }
+  .nav-sub-item.active { background: #EAF2FF; color: #2A53A0; font-weight: 500; border-left: 4px solid #2A53A0; padding-left: 23px; border-radius: 0 6px 6px 0; }
+
+  /* ── Top Bar ── */
+  .topbar { height: 54px; background: #fff; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 24px; justify-content: space-between; flex-shrink: 0; }
+  .breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+  .breadcrumb .crumb-link { color: #2A53A0; cursor: pointer; }
+  .breadcrumb .crumb-link:hover { color: #1e3a70; }
+  .breadcrumb .crumb-sep { color: #d1d5db; }
+  .breadcrumb .crumb-current { color: #161616; }
+  .topbar-right { display: flex; align-items: center; gap: 12px; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; background: #2A53A0; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; cursor: pointer; }
+
+  /* ── Page Content ── */
+  .page-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+
+  /* ── Tabs ── */
+  .tabs-bar { border-bottom: 1px solid #e5e7eb; background: #fff; padding: 0 24px; flex-shrink: 0; display: flex; }
+  .tab-btn { height: 48px; padding: 0 20px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 500; color: #6b7280; border-bottom: 2px solid transparent; transition: all 0.15s; }
+  .tab-btn.active { color: #2A53A0; border-bottom-color: #2A53A0; }
+  .tab-btn:hover:not(.active) { color: #374151; }
+
+  /* ── Table toolbar ── */
+  .table-toolbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #fff; flex-shrink: 0; }
+  .toolbar-left { position: relative; }
+  .toolbar-left input { height: 46px; width: 260px; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0 12px 0 36px; font-size: 14px; color: #161616; outline: none; background: #fff; }
+  .toolbar-left input:focus { border-color: #2A53A0; box-shadow: 0 0 0 3px rgba(42,83,160,0.1); }
+  .toolbar-left .si { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
+  .toolbar-right { display: flex; gap: 8px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 0 16px; height: 46px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; border: 1px solid #e5e7eb; background: #fff; color: #161616; }
+  .btn:hover { background: #f9fafb; }
+  .btn-primary { background: #2A53A0; color: #fff; border-color: #2A53A0; }
+  .btn-primary:hover { background: #1e3a70; border-color: #1e3a70; }
+
+  /* ── Table ── */
+  .table-wrap { flex: 1; overflow: auto; background: #fff; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead tr { background: #f0f0f0; height: 48px; position: sticky; top: 0; z-index: 5; }
+  th { padding: 0 16px; text-align: left; font-size: 13px; font-weight: 600; color: #2A53A0; white-space: nowrap; }
+  tbody tr { height: 56px; border-bottom: 1px solid #f3f4f6; transition: background 0.1s; }
+  tbody tr:hover { background: #f9fafb; }
+  td { padding: 0 16px; vertical-align: middle; white-space: nowrap; }
+  .sort-btn { display: inline-flex; align-items: center; gap: 4px; background: none; border: none; cursor: pointer; font-size: 13px; font-weight: 600; color: #2A53A0; padding: 4px 0; }
+
+  /* ── Badges ── */
+  .badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 500; border: 1px solid transparent; white-space: nowrap; }
+  .badge-onboarding { background: #dcfce7; color: #166534; border-color: #bbf7d0; }
+  .badge-monitoring { background: #dbeafe; color: #1d4ed8; border-color: #bfdbfe; }
+  .badge-regulatory { background: #fee2e2; color: #991b1b; border-color: #fecaca; }
+  .badge-re-screening { background: #fef3c7; color: #92400e; border-color: #fde68a; }
+  .badge-status-active { background: #dcfce7; color: #166534; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+  .badge-status-inactive { background: #f3f4f6; color: #6b7280; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+  .badge-status-enabled { display: inline-flex; align-items: center; gap: 5px; background: #dcfce7; color: #166534; font-size: 12px; font-weight: 600; padding: 3px 10px 3px 8px; border-radius: 9999px; }
+  .badge-status-enabled::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #16a34a; }
+  .badge-status-disabled { display: inline-flex; align-items: center; gap: 5px; background: #f3f4f6; color: #6b7280; font-size: 12px; font-weight: 600; padding: 3px 10px 3px 8px; border-radius: 9999px; }
+  .badge-status-disabled::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #9ca3af; }
+  .score-badge { background: #eff6ff; color: #2A53A0; font-size: 13px; font-weight: 700; padding: 2px 8px; border-radius: 6px; }
+
+  /* ── Action buttons ── */
+  .action-btn { width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .action-btn.view { background: rgba(59,130,246,0.1); color: #2563eb; }
+  .action-btn.view:hover { background: rgba(59,130,246,0.2); }
+  .action-btn.edit { background: rgba(42,83,160,0.1); color: #2A53A0; }
+  .action-btn.edit:hover { background: rgba(42,83,160,0.2); }
+  .action-btn.disable { background: rgba(239,68,68,0.1); color: #dc2626; font-size: 11px; font-weight: 600; }
+  .action-btn.disable:hover { background: rgba(239,68,68,0.2); }
+  .action-btn.enable { background: rgba(34,197,94,0.1); color: #16a34a; font-size: 11px; font-weight: 600; }
+  .action-btn.enable:hover { background: rgba(34,197,94,0.2); }
+  .actions-cell { display: flex; align-items: center; gap: 6px; }
+
+  /* ── Modal Overlay ── */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); display: flex; align-items: center; justify-content: center; z-index: 100; animation: fadeIn 0.15s; }
+  .modal-overlay.hidden { display: none; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ── Enable/Disable Modal ── */
+  .modal-box { background: #fff; border-radius: 12px; width: 480px; max-width: 95vw; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: slideUp 0.2s; overflow: hidden; }
+  @keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-header { background: #2A53A0; color: #fff; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; }
+  .modal-header h3 { font-size: 16px; font-weight: 600; }
+  .modal-close { background: none; border: none; color: #fff; cursor: pointer; font-size: 18px; line-height: 1; padding: 2px 6px; border-radius: 4px; }
+  .modal-close:hover { background: rgba(255,255,255,0.15); }
+  .modal-body { padding: 20px; }
+  .modal-desc { font-size: 13px; color: #525252; line-height: 1.6; margin-bottom: 16px; }
+  .modal-desc strong { color: #161616; }
+  .form-group { margin-bottom: 16px; }
+  .form-label { display: block; font-size: 13px; font-weight: 600; color: #161616; margin-bottom: 6px; }
+  .form-label .req { color: #da1e28; }
+  .form-input { width: 100%; height: 46px; border: 1px solid #d1d5dc; border-radius: 8px; padding: 0 12px; font-size: 14px; color: #161616; outline: none; background: #fff; font-family: 'Inter', sans-serif; }
+  .form-input:focus { border-color: #2A53A0; box-shadow: 0 0 0 2px rgba(42,83,160,0.15); }
+  .form-textarea { width: 100%; height: 90px; border: 1px solid #d1d5dc; border-radius: 8px; padding: 10px 12px; font-size: 14px; color: #161616; outline: none; background: #fff; font-family: 'Inter', sans-serif; resize: none; }
+  .form-textarea:focus { border-color: #2A53A0; box-shadow: 0 0 0 2px rgba(42,83,160,0.15); }
+  .radio-group { display: flex; gap: 20px; }
+  .radio-label { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 14px; color: #161616; }
+  .radio-label input[type=radio] { accent-color: #2A53A0; width: 16px; height: 16px; cursor: pointer; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .modal-footer { padding: 14px 20px; border-top: 1px solid #f3f4f6; display: flex; justify-content: flex-end; gap: 10px; background: #fafafa; }
+  .btn-cancel { background: #fff; border: 1px solid #e5e7eb; color: #2A53A0; font-size: 14px; font-weight: 500; padding: 0 20px; height: 40px; border-radius: 8px; cursor: pointer; }
+  .btn-cancel:hover { background: #f3f4f6; }
+  .btn-submit { background: #c7c7c7; border: 1px solid #c7c7c7; color: #fff; font-size: 14px; font-weight: 500; padding: 0 20px; height: 40px; border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+  .btn-submit.ready { background: #2A53A0; border-color: #2A53A0; }
+  .btn-submit.ready:hover { background: #1e3a70; }
+  .btn-submit.danger { background: #da1e28; border-color: #da1e28; }
+  .btn-submit.danger:hover { background: #a71d2a; }
+
+  /* ── Create Screening Type (full-screen panel) ── */
+  .panel-overlay { position: fixed; inset: 0; background: #f9fafb; z-index: 100; display: flex; flex-direction: column; animation: fadeIn 0.18s; overflow: hidden; }
+  .panel-overlay.hidden { display: none; }
+  .panel-box { width: 100%; background: #f9fafb; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+  /* Topbar: back-arrow left | centered title | breadcrumb right */
+  .panel-topbar { height: 50px; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; box-shadow: 0 1px 4px rgba(0,0,0,0.07); position: relative; }
+  .panel-topbar-left { display: flex; align-items: center; }
+  .panel-topbar-center { position: absolute; left: 50%; transform: translateX(-50%); font-size: 15px; font-weight: 600; color: #161616; white-space: nowrap; }
+  .panel-topbar-right { display: flex; align-items: center; }
+  .panel-back-btn { width: 32px; height: 32px; border-radius: 50%; border: none; background: none; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #525252; transition: background 0.15s; }
+  .panel-back-btn:hover { background: #f3f4f6; }
+  .panel-breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+  .panel-breadcrumb .pb-link { color: #2A53A0; cursor: pointer; font-weight: 400; }
+  .panel-breadcrumb .pb-link:hover { color: #1e3a70; }
+  .panel-breadcrumb .pb-sep { color: #d1d5db; }
+  .panel-breadcrumb .pb-curr { color: #161616; font-weight: 400; }
+
+  /* Step bar */
+  .panel-steps { height: 73px; background: #fff; border-bottom: 1px solid #f3f4f6; display: flex; align-items: center; padding: 0 48px; flex-shrink: 0; }
+  .step-item { display: contents; }
+  .step-item-inner { display: flex; align-items: center; gap: 12px; cursor: pointer; flex-shrink: 0; }
+  .step-conn { flex: 1; height: 2px; background: #e5e7eb; }
+  .step-circle { width: 32px; height: 32px; border-radius: 50%; border: 2px solid #d1d5dc; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #99a1af; background: #fff; transition: all 0.15s; flex-shrink: 0; }
+  .step-circle.done { background: #198038; border-color: #198038; color: #fff; }
+  .step-circle.active { background: #2A53A0; border-color: #2A53A0; color: #fff; box-shadow: 0 1px 6px rgba(42,83,160,0.35); }
+  .step-label { font-size: 13px; font-weight: 600; color: #525252; white-space: nowrap; }
+  .step-label.active { color: #2A53A0; }
+  .step-label.done { color: #525252; }
+
+  /* Body */
+  .panel-body { flex: 1; overflow-y: auto; padding: 32px 24px; display: flex; justify-content: center; }
+  .panel-body-inner { width: 100%; max-width: 780px; }
+
+  /* Footer */
+  .panel-footer { background: #fff; border-top: 1px solid #e5e7eb; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .panel-footer-left { display: flex; align-items: center; gap: 12px; }
+  .panel-footer-right { display: flex; align-items: center; gap: 12px; }
+  .btn-back { height: 46px; padding: 0 20px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; color: #161616; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s; }
+  .btn-back:hover { background: #f3f4f6; }
+  .btn-cancel-footer { height: 46px; padding: 0 20px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; color: #161616; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s; }
+  .btn-cancel-footer:hover { background: #f3f4f6; }
+  .btn-create { height: 46px; padding: 0 24px; border: none; border-radius: 8px; background: #2A53A0; color: #fff; font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s; }
+  .btn-create:hover { background: #1e3a70; }
+
+  /* ── Step form styles ── */
+  .step-section { display: none; }
+  .step-section.active { display: block; }
+  .form-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .form-card-title { font-size: 15px; font-weight: 700; color: #161616; margin-bottom: 16px; }
+  .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-grid-full { grid-column: 1 / -1; }
+  .select-wrap { position: relative; }
+  .select-wrap select { width: 100%; height: 46px; border: 1px solid #d1d5dc; border-radius: 8px; padding: 0 40px 0 12px; font-size: 14px; color: #161616; outline: none; appearance: none; background: #fff; cursor: pointer; font-family: 'Inter', sans-serif; }
+  .select-wrap select:focus { border-color: #2A53A0; box-shadow: 0 0 0 2px rgba(42,83,160,0.15); }
+  .select-wrap::after { content: ''; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 5px solid #6b7280; pointer-events: none; }
+
+  /* ── Step 2 – list selection ── */
+  .list-group-title { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .list-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; cursor: pointer; transition: border-color 0.15s; margin-bottom: 8px; }
+  .list-item:hover { border-color: rgba(42,83,160,0.4); }
+  .list-item.selected { border-color: #2A53A0; background: #f0f5ff; }
+  .list-item input[type=radio], .list-item input[type=checkbox] { margin-top: 2px; accent-color: #2A53A0; }
+  .list-item-info .list-name { font-size: 14px; font-weight: 600; color: #161616; }
+  .list-item-info .list-count { font-size: 10px; color: #9ca3af; margin-left: 6px; }
+  .list-item-info .list-desc { font-size: 12px; color: #6b7280; margin-top: 2px; }
+  .section-gap { margin-bottom: 20px; }
+
+  /* ── Step 3 – Field mapping ── */
+  .mapping-row { display: grid; grid-template-columns: 1fr 1fr 80px 80px 40px; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid #f3f4f6; }
+  .mapping-header { font-size: 11px; font-weight: 700; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  /* ── Step 4 – Match score ── */
+  .score-row { display: grid; grid-template-columns: 1fr 100px 100px; gap: 12px; align-items: center; padding: 10px 0; border-bottom: 1px solid #f3f4f6; }
+  .score-label { font-size: 13px; font-weight: 600; color: #374151; }
+  .score-input { width: 100%; height: 36px; border: 1px solid #d1d5dc; border-radius: 6px; padding: 0 10px; font-size: 13px; text-align: center; outline: none; font-family: 'Inter', sans-serif; }
+  .score-input:focus { border-color: #2A53A0; }
+
+  /* ── Step 5 – Result config ── */
+  .result-card { border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px; margin-bottom: 12px; }
+  .result-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+  .result-card-title { font-size: 14px; font-weight: 600; color: #161616; }
+  .toggle-wrap { display: flex; align-items: center; gap: 8px; }
+  .toggle { width: 44px; height: 24px; background: #e5e7eb; border-radius: 12px; position: relative; cursor: pointer; transition: background 0.2s; border: none; }
+  .toggle.on { background: #198038; }
+  .toggle::after { content: ''; position: absolute; width: 18px; height: 18px; background: #fff; border-radius: 50%; top: 3px; left: 3px; transition: left 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .toggle.on::after { left: 23px; }
+
+  /* ── View Lists Library ── */
+  .lib-panel { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 100; display: flex; flex-direction: column; animation: fadeIn 0.15s; }
+  .lib-panel.hidden { display: none; }
+  .lib-inner { background: #fff; flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+  .lib-topbar { height: 54px; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .lib-toolbar { border-bottom: 1px solid #e5e7eb; padding: 12px 24px; display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .lib-toolbar input { height: 46px; width: 320px; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0 12px 0 36px; font-size: 14px; outline: none; font-family: 'Inter', sans-serif; }
+  .lib-toolbar input:focus { border-color: #2A53A0; }
+  .lib-toolbar .si { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; }
+  .lib-body { flex: 1; overflow-y: auto; padding: 24px; }
+  .lib-section-title { font-size: 14px; font-weight: 700; color: #2A53A0; display: flex; align-items: center; gap: 8px; margin-bottom: 16px; }
+  .lib-section-title::before { content: ''; width: 8px; height: 8px; background: #2A53A0; border-radius: 50%; }
+  .lib-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 32px; }
+  .lib-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); transition: border-color 0.15s; }
+  .lib-card:hover { border-color: rgba(42,83,160,0.4); }
+  .lib-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 4px; }
+  .lib-card-name { font-size: 14px; font-weight: 700; color: #111827; }
+  .lib-card-desc { font-size: 12px; color: #6b7280; margin-bottom: 16px; line-height: 1.5; }
+  .lib-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; border-top: 1px solid #f3f4f6; padding-top: 12px; margin-bottom: 12px; }
+  .lib-stat-label { font-size: 10px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }
+  .lib-stat-val { font-size: 14px; font-weight: 700; color: #111827; }
+  .lib-card-meta { font-size: 12px; color: #6b7280; }
+
+  /* ── Upload List Panel ── */
+  .upload-panel-box { width: min(560px, 95vw); background: #fff; display: flex; flex-direction: column; max-height: 90vh; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.2); animation: slideUp 0.2s; overflow: hidden; }
+  .upload-header { background: #2A53A0; color: #fff; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .upload-body { padding: 24px; overflow-y: auto; flex: 1; }
+  .upload-dropzone { border: 2px dashed #d1d5dc; border-radius: 10px; padding: 40px 24px; text-align: center; cursor: pointer; transition: all 0.15s; background: #fafafa; }
+  .upload-dropzone:hover, .upload-dropzone.dragging { border-color: #2A53A0; background: #eff6ff; }
+  .upload-dropzone .upload-icon { color: #9ca3af; margin-bottom: 12px; }
+  .upload-dropzone:hover .upload-icon { color: #2A53A0; }
+  .upload-dropzone p { font-size: 14px; color: #6b7280; }
+  .upload-dropzone .browse { color: #2A53A0; font-weight: 600; cursor: pointer; }
+  .upload-dropzone .file-hint { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+  .upload-file-selected { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 12px; background: #f9fafb; }
+  .upload-file-selected .file-name { font-size: 14px; font-weight: 500; color: #161616; flex: 1; }
+  .upload-file-selected .file-size { font-size: 12px; color: #9ca3af; }
+  .upload-file-selected .remove-file { background: none; border: none; color: #9ca3af; cursor: pointer; font-size: 16px; padding: 2px 6px; }
+  .upload-file-selected .remove-file:hover { color: #dc2626; }
+
+  /* ── View Details Panel ── */
+  .detail-panel-box { width: min(680px, 95vw); background: #fff; display: flex; flex-direction: column; height: 100vh; box-shadow: -8px 0 40px rgba(0,0,0,0.15); animation: slideRight 0.25s; margin-left: auto; }
+  #detailPanel { background: rgba(0,0,0,0.45); justify-content: flex-end; flex-direction: row; }
+  .detail-header-bar { padding: 20px 24px 0; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #f3f4f6; padding-bottom: 16px; }
+  .detail-title { font-size: 22px; font-weight: 700; color: #161616; }
+  .detail-body { flex: 1; overflow-y: auto; padding: 24px; }
+  .detail-section { margin-bottom: 24px; }
+  .detail-section-label { font-size: 11px; font-weight: 700; color: #2A53A0; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .detail-field-label { font-size: 11px; font-weight: 600; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+  .detail-field-val { font-size: 14px; font-weight: 600; color: #111827; }
+  .detail-list-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; border: 1px solid #e5e7eb; border-radius: 8px; background: #f9fafb; margin-bottom: 6px; }
+  .detail-score-row { display: grid; grid-template-columns: 1fr 80px 80px; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid #f3f4f6; font-size: 13px; }
+  .detail-footer { padding: 16px 24px; border-top: 1px solid #e5e7eb; display: flex; gap: 10px; }
+
+  /* SVG icons inline helper */
+  .icon { display: inline-flex; align-items: center; justify-content: center; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+
+  /* Range slider custom styling */
+  input[type=range] { -webkit-appearance: none; appearance: none; background: transparent; }
+  input[type=range]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; background: #d1d5db; }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #1e3a6e; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.25); margin-top: -7px; cursor: pointer; }
+  input[type=range]::-moz-range-track { height: 4px; border-radius: 2px; background: #d1d5db; }
+  input[type=range]::-moz-range-thumb { width: 18px; height: 18px; border-radius: 50%; background: #1e3a6e; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,0.25); cursor: pointer; }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <span class="logo-text">clari5</span>
+      <div class="divider"></div>
+      <span class="bank-text">ClarityBank</span>
+    </div>
+    <div class="sidebar-search">
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+        </span>
+        <input type="text" placeholder="Search menus...">
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M24 21H26V26H24z"/><path d="M20 16H22V26H20z"/><path d="M11,26a5.0059,5.0059,0,0,1-5-5H8a3,3,0,1,0,3-3V16a5,5,0,0,1,0,10Z"/><path d="M28,2H4A2.002,2.002,0,0,0,2,4V28a2.0023,2.0023,0,0,0,2,2H28a2.0027,2.0027,0,0,0,2-2V4A2.0023,2.0023,0,0,0,28,2Zm0,9H14V4H28ZM12,4v7H4V4ZM4,28V13H28.0007l.0013,15Z"/></svg>
+        Dashboards
+        <svg class="nav-chevron" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+      </button>
+      <button class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M12,4A5,5,0,1,1,7,9a5,5,0,0,1,5-5m0-2a7,7,0,1,0,7,7A7,7,0,0,0,12,2Z"/><path d="M22,30H20V25a5,5,0,0,0-5-5H9a5,5,0,0,0-5,5v5H2V25a7,7,0,0,1,7-7h6a7,7,0,0,1,7,7Z"/><path d="M22 4H32V6H22z"/><path d="M22 9H32V11H22z"/><path d="M22 14H29V16H22z"/></svg>
+        KYC
+        <svg class="nav-chevron" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+      </button>
+      <button class="nav-item active">
+        <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+        Sanction Screening
+        <svg class="nav-chevron" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11 3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+      </button>
+      <!-- Sub items -->
+      <div class="nav-sub">
+        <button class="nav-sub-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5,8.4c0-0.1,0-0.3,0-0.4c0-0.1,0-0.3,0-0.4l1-0.8c0.4-0.3,0.4-0.9,0.2-1.3l-1.2-2C13.3,3.2,13,3,12.6,3c-0.1,0-0.2,0-0.3,0.1l-1.2,0.4c-0.2-0.1-0.4-0.3-0.7-0.4l-0.3-1.3C10.1,1.3,9.7,1,9.2,1H6.8c-0.5,0-0.9,0.3-1,0.8L5.6,3.1C5.3,3.2,5.1,3.3,4.9,3.4L3.7,3C3.6,3,3.5,3,3.4,3C3,3,2.7,3.2,2.5,3.5l-1.2,2C1.1,5.9,1.2,6.4,1.6,6.8l0.9,0.9c0,0.1,0,0.3,0,0.4c0,0.1,0,0.3,0,0.4L1.6,9.2c-0.4,0.3-0.5,0.9-0.2,1.3l1.2,2C2.7,12.8,3,13,3.4,13c0.1,0,0.2,0,0.3-0.1l1.2-0.4c0.2,0.1,0.4,0.3,0.7,0.4l0.3,1.3c0.1,0.5,0.5,0.8,1,0.8h2.4c0.5,0,0.9-0.3,1-0.8l0.3-1.3c0.2-0.1,0.4-0.2,0.7-0.4l1.2,0.4c0.1,0,0.2,0.1,0.3,0.1c0.4,0,0.7-0.2,0.9-0.5l1.1-2c0.2-0.4,0.2-0.9-0.2-1.3L13.5,8.4z M8,11c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3C11,9.6,9.7,11,8,11z"/></svg>
+          Default Reference Masters
+        </button>
+        <button class="nav-sub-item">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5,8.4c0-0.1,0-0.3,0-0.4c0-0.1,0-0.3,0-0.4l1-0.8c0.4-0.3,0.4-0.9,0.2-1.3l-1.2-2C13.3,3.2,13,3,12.6,3c-0.1,0-0.2,0-0.3,0.1l-1.2,0.4c-0.2-0.1-0.4-0.3-0.7-0.4l-0.3-1.3C10.1,1.3,9.7,1,9.2,1H6.8c-0.5,0-0.9,0.3-1,0.8L5.6,3.1C5.3,3.2,5.1,3.3,4.9,3.4L3.7,3C3.6,3,3.5,3,3.4,3C3,3,2.7,3.2,2.5,3.5l-1.2,2C1.1,5.9,1.2,6.4,1.6,6.8l0.9,0.9c0,0.1,0,0.3,0,0.4c0,0.1,0,0.3,0,0.4L1.6,9.2c-0.4,0.3-0.5,0.9-0.2,1.3l1.2,2C2.7,12.8,3,13,3.4,13c0.1,0,0.2,0,0.3-0.1l1.2-0.4c0.2,0.1,0.4,0.3,0.7,0.4l0.3,1.3c0.1,0.5,0.5,0.8,1,0.8h2.4c0.5,0,0.9-0.3,1-0.8l0.3-1.3c0.2-0.1,0.4-0.2,0.7-0.4l1.2,0.4c0.1,0,0.2,0.1,0.3,0.1c0.4,0,0.7-0.2,0.9-0.5l1.1-2c0.2-0.4,0.2-0.9-0.2-1.3L13.5,8.4z M8,11c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3C11,9.6,9.7,11,8,11z"/></svg>
+          Custom Reference Masters
+        </button>
+        <button class="nav-sub-item active">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M12,4v8H4V4H12 M12,3H4C3.4,3,3,3.4,3,4v8c0,0.6,0.4,1,1,1h8c0.6,0,1-0.4,1-1V4C13,3.4,12.6,3,12,3z"/></svg>
+          Sanctions Screening Configuration
+        </button>
+        <button class="nav-sub-item">
+          <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M10 6H28V8H10z"/><path d="M10 24H28V26H10z"/><path d="M10 15H28V17H10z"/><path d="M4 15H6V17H4z"/><path d="M4 6H6V8H4z"/><path d="M4 24H6V26H4z"/></svg>
+          Screening – Exception List Configuration
+        </button>
+        <button class="nav-sub-item">
+          <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M2 26H30V28H2z"/><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M20.4,4L24,7.6l-3,3L17.4,7L20.4,4z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+          Screening – Ignore Words Configuration
+        </button>
+      </div>
+      <button class="nav-item">
+        <svg width="18" height="18" viewBox="0 0 32 32" fill="currentColor"><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17A1,1,0,0,1,12,30,1.09,1.09,0,0,1,11.61,29.92Z"/></svg>
+        Real-time Monitoring
+        <svg class="nav-chevron" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+      </button>
+    </nav>
+  </aside>
+
+  <!-- ── Main Area ── -->
+  <div class="main-area">
+    <!-- Top Bar -->
+    <div class="topbar">
+      <div class="breadcrumb">
+        <span class="crumb-link">Sanctions Screening Configuration</span>
+      </div>
+      <div class="topbar-right">
+        <span style="font-size:13px;color:#525252;">Charu Chauhan</span>
+        <div class="avatar">CC</div>
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab(this,'enabled')">Enabled (5)</button>
+      <button class="tab-btn" onclick="switchTab(this,'disabled')">Disabled (1)</button>
+      <button class="tab-btn" onclick="switchTab(this,'all')">All (6)</button>
+    </div>
+
+    <!-- Content -->
+    <div class="page-content">
+      <!-- Toolbar -->
+      <div class="table-toolbar">
+        <div class="toolbar-left">
+          <span class="si">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+          </span>
+          <input type="text" placeholder="Search profiles, types..." id="searchInput" oninput="filterTable()">
+        </div>
+        <div class="toolbar-right">
+          <button class="btn" onclick="openLibrary()">
+            <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M18,28H14a2,2,0,0,1-2-2V18.41L4.59,11A2,2,0,0,1,4,9.59V6A2,2,0,0,1,6,4H26a2,2,0,0,1,2,2V9.59A2,2,0,0,1,27.41,11L20,18.41V26A2,2,0,0,1,18,28ZM6,6V9.59l8,8V26h4V17.59l8-8V6Z"/></svg>
+            View Lists Library
+          </button>
+          <button class="btn btn-primary" onclick="openCreate()">
+            <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M17 15 17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"/></svg>
+            Create Screening Type
+          </button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-wrap">
+        <table id="watchlistTable">
+          <thead>
+            <tr>
+              <th><button class="sort-btn">Screening Type <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+              <th><button class="sort-btn">Created Date <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+              <th><button class="sort-btn">Last Modified Date <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+              <th>Created By</th>
+              <th style="text-align:center">Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ENABLE / DISABLE MODAL
+══════════════════════════════════════════ -->
+<div class="modal-overlay hidden" id="toggleModal">
+  <div class="modal-box">
+    <div class="modal-header" id="toggleModalHeader">
+      <h3 id="toggleModalTitle">Enable Screening Type</h3>
+      <button class="modal-close" onclick="closeToggleModal()">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="toggleModalDesc">
+        Controlling screening engine status for <strong id="toggleWatchlistName">Real-Time Onboarding Screening</strong>. All entity records are retained on disable. Both actions require Maker-Checker approval.
+      </p>
+      <div class="form-group">
+        <label class="form-label">Action <span class="req">*</span></label>
+        <div class="radio-group" id="toggleActionGroup">
+          <label class="radio-label"><input type="radio" name="toggleAction" value="disable"> Disable</label>
+          <label class="radio-label"><input type="radio" name="toggleAction" value="enable" checked> Enable</label>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" id="toggleDateLabel">Enable Date <span class="req">*</span></label>
+          <input type="date" class="form-input" id="toggleDate">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Username (Auto-Populated)</label>
+          <input type="text" class="form-input" value="Charu Chauhan" readonly style="background:#f9fafb;color:#6b7280;">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Reason <span class="req">*</span></label>
+        <textarea class="form-textarea" placeholder="Mandatory — retained in audit log..." id="toggleReason" oninput="checkToggleSubmit()"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" onclick="closeToggleModal()">Cancel</button>
+      <button class="btn-submit" id="toggleSubmitBtn">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     VIEW LISTS LIBRARY PANEL
+══════════════════════════════════════════ -->
+<div class="lib-panel hidden" id="libraryPanel">
+  <div class="lib-inner">
+    <div class="lib-topbar">
+      <div class="breadcrumb">
+        <span class="crumb-link" onclick="closeLibrary()">Sanctions Screening Configuration</span>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-current">Lists Library</span>
+      </div>
+      <button class="btn" onclick="closeLibrary()">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M12 4.7 11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z"/></svg>
+        Close
+      </button>
+    </div>
+    <div class="lib-toolbar">
+      <div style="position:relative;">
+        <span class="si" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#9ca3af;">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg>
+        </span>
+        <input type="text" style="height:46px;width:320px;border:1px solid #e5e7eb;border-radius:8px;padding:0 12px 0 36px;font-size:14px;outline:none;font-family:'Inter',sans-serif;" placeholder="Search lists by name, description...">
+      </div>
+      <div class="select-wrap" style="min-width:160px;">
+        <select>
+          <option>All Regions</option>
+          <option>Global</option>
+          <option>Asia Pacific</option>
+          <option>Europe</option>
+          <option>Americas</option>
+        </select>
+      </div>
+    </div>
+    <div class="lib-body">
+      <div>
+        <div class="lib-section-title">Global (14)</div>
+        <div class="lib-cards" id="libGlobalCards"></div>
+      </div>
+      <div>
+        <div class="lib-section-title">Asia Pacific (6)</div>
+        <div class="lib-cards" id="libApacCards"></div>
+      </div>
+      <div>
+        <div class="lib-section-title">Custom Lists (3)</div>
+        <div class="lib-cards" id="libCustomCards"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     CREATE / EDIT WATCHLIST PANEL (5-step)
+══════════════════════════════════════════ -->
+<div class="panel-overlay hidden" id="createPanel">
+  <div class="panel-box">
+    <!-- Top bar: back arrow | centered title | breadcrumb -->
+    <div class="panel-topbar">
+      <div class="panel-topbar-left">
+        <button class="panel-back-btn" onclick="prevStepOrClose()" id="panelBackBtn">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M6.7 12.3 2.9 8.5 15 8.5 15 7.5 2.9 7.5 6.7 3.7 6 3 1 8 6 13z"/></svg>
+        </button>
+      </div>
+      <div class="panel-topbar-center" id="panelTitle">Create New Screening Type</div>
+      <div class="panel-topbar-right">
+        <div class="panel-breadcrumb">
+          <span class="pb-link" onclick="closeCreate()">Sanctions Screening Configuration</span>
+          <span class="pb-sep">/</span>
+          <span class="pb-curr" id="panelBreadcrumb">Create New Screening Type</span>
+        </div>
+      </div>
+    </div>
+    <!-- Step indicators -->
+    <div class="panel-steps" id="panelSteps"></div>
+    <!-- Step body -->
+    <div class="panel-body">
+      <div class="panel-body-inner" id="panelBody"></div>
+    </div>
+    <!-- Footer -->
+    <div class="panel-footer">
+      <div class="panel-footer-left">
+        <button class="btn-back" id="btnPrev" onclick="prevStep()" style="display:none;">Back</button>
+        <button class="btn-cancel-footer" onclick="closeCreate()">Cancel</button>
+      </div>
+      <div class="panel-footer-right">
+        <button class="btn-create" id="btnNext" onclick="nextStep()">Next →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     VIEW DETAILS PANEL
+══════════════════════════════════════════ -->
+<div class="panel-overlay hidden" id="detailPanel">
+  <div class="detail-panel-box">
+    <div class="detail-header-bar">
+      <div>
+        <div style="font-size:12px;color:#9ca3af;margin-bottom:4px;">Rule Details</div>
+        <div class="detail-title" id="detailTitle">Onboarding Screening</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="btn btn-primary" id="detailEditBtn" onclick="editFromDetail()">
+          <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M2 26H30V28H2z"/><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M20.4,4L24,7.6l-3,3L17.4,7L20.4,4z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+          Edit Configuration
+        </button>
+        <button class="btn" onclick="closeDetail()">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M12 4.7 11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z"/></svg>
+          Close
+        </button>
+      </div>
+    </div>
+    <div class="detail-body" id="detailBody"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════
+const watchlists = [
+  { id:1, name:'Real-Time Onboarding Screening', score:'≥ 75%', date:'19/11/2025', lastModified:'02/06/2026', createdBy:'Charu Chauhan', status:'Enabled',
+    desc:'Screens new customers at account opening against sanctions and watchlists before onboarding is completed.',
+    purpose:'New Customer Onboarding',
+    lists:['UN Consolidated List'], matchFields:[{field:'Primary Name',threshold:'75%',weight:60},{field:'Date of Birth',threshold:'90%',weight:40}] },
+  { id:2, name:'Daily Batch Screening', score:'≥ 80%', date:'19/11/2025', lastModified:'28/05/2026', createdBy:'Arjun Mehta', status:'Enabled',
+    desc:'Scheduled overnight batch screening of the existing customer portfolio against updated sanctions lists.',
+    purpose:'Periodic / Batch Review',
+    lists:['UN Consolidated List','US OFAC SDN'], matchFields:[{field:'Primary Name',threshold:'80%',weight:70},{field:'Nationality',threshold:'85%',weight:30}] },
+  { id:3, name:'Continuous / Perpetual Screening', score:'≥ 70%', date:'18/11/2025', lastModified:'10/06/2026', createdBy:'Priya Sharma', status:'Enabled',
+    desc:'Real-time / event-driven re-screening triggered by customer activity or sanctions list updates.',
+    purpose:'Continuous Monitoring',
+    lists:['MAS Watchlist','UN Consolidated List'], matchFields:[{field:'Primary Name',threshold:'70%',weight:65},{field:'Date of Birth',threshold:'85%',weight:35}] },
+  { id:4, name:'Transaction / Payments Screening', score:'≥ 78%', date:'17/11/2025', lastModified:'05/06/2026', createdBy:'Charu Chauhan', status:'Enabled',
+    desc:'Screens individual and bulk payment transactions for sanctions exposure in real time.',
+    purpose:'Payment / Wire Screening',
+    lists:['US OFAC SDN','UN Consolidated List'], matchFields:[{field:'Primary Name',threshold:'78%',weight:60},{field:'Address',threshold:'80%',weight:40}] },
+  { id:5, name:'De-Duplication & Identity Resolution Screening', score:'≥ 85%', date:'16/11/2025', lastModified:'09/06/2026', createdBy:'Vikram Singh', status:'Enabled',
+    desc:'Resolves duplicate identities and links related records before and during screening to reduce false positives.',
+    purpose:'De-Duplication & Identity Resolution',
+    lists:['US OFAC SDN','UN Consolidated List','EU Consolidated'], matchFields:[{field:'Primary Name',threshold:'85%',weight:55},{field:'Date of Birth',threshold:'90%',weight:45}] },
+  { id:6, name:'Ad-Hoc Manual & Bulk Screening', score:'≥ 75%', date:'14/11/2025', lastModified:'21/05/2026', createdBy:'Arjun Mehta', status:'Disabled',
+    desc:'On-demand manual lookups and ad-hoc bulk file screening run by analysts as needed.',
+    purpose:'Ad-hoc / Bulk Screening',
+    lists:['UN Consolidated List'], matchFields:[{field:'Primary Name',threshold:'75%',weight:60},{field:'Date of Birth',threshold:'90%',weight:40}] },
+];
+
+let currentTab = 'enabled';
+let currentEditId = null;
+let currentDetailId = null;
+let currentStep = 1;
+
+// ═══════════════════════════════════════════
+//  TABLE RENDERING
+// ═══════════════════════════════════════════
+function getTabRows() {
+  if (currentTab === 'enabled') return watchlists.filter(w => w.status === 'Enabled');
+  if (currentTab === 'disabled') return watchlists.filter(w => w.status === 'Disabled');
+  return watchlists;
+}
+
+function renderTable(rows) {
+  const tbody = document.getElementById('tableBody');
+  if (!rows) rows = getTabRows();
+  tbody.innerHTML = rows.map(w => `
+    <tr>
+      <td><span style="font-size:14px;font-weight:500;color:#374151;">${w.name}</span></td>
+      <td><span style="font-size:13px;color:#374151;">${w.date}</span></td>
+      <td><span style="font-size:13px;color:#374151;">${w.lastModified}</span></td>
+      <td><span style="font-size:13px;color:#374151;">${w.createdBy}</span></td>
+      <td style="text-align:center"><span class="badge-status-${w.status.toLowerCase()}">${w.status}</span></td>
+      <td>
+        <div class="actions-cell">
+          <button class="action-btn view" onclick="openDetail(${w.id})" title="View Details">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M15.5,7.8C14.3,4.7,11.3,2.6,8,2.5C4.7,2.6,1.7,4.7,0.5,7.8c0,0.1,0,0.2,0,0.3c1.2,3.1,4.1,5.2,7.5,5.3c3.3-0.1,6.3-2.2,7.5-5.3C15.5,8.1,15.5,7.9,15.5,7.8z M8,12.5c-2.7,0-5.4-2-6.5-4.5c1-2.5,3.8-4.5,6.5-4.5s5.4,2,6.5,4.5C13.4,10.5,10.6,12.5,8,12.5z"/><path d="M8,5C6.3,5,5,6.3,5,8s1.3,3,3,3s3-1.3,3-3S9.7,5,8,5z M8,10c-1.1,0-2-0.9-2-2s0.9-2,2-2s2,0.9,2,2S9.1,10,8,10z"/></svg>
+          </button>
+          <button class="action-btn edit" onclick="openEdit(${w.id})" title="Edit Configuration">
+            <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M2 26H30V28H2z"/><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M20.4,4L24,7.6l-3,3L17.4,7L20.4,4z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+          </button>
+          ${w.status === 'Enabled'
+            ? `<button class="action-btn disable" onclick="openToggle(${w.id},'disable')" title="Disable">
+                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+               </button>`
+            : `<button class="action-btn enable" onclick="openToggle(${w.id},'enable')" title="Enable">
+                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+               </button>`
+          }
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function switchTab(btn, tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentTab = tab;
+  renderTable();
+}
+
+function filterTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const rows = getTabRows().filter(w => w.name.toLowerCase().includes(q) || w.purpose.toLowerCase().includes(q));
+  renderTable(rows);
+}
+
+// ═══════════════════════════════════════════
+//  ENABLE / DISABLE MODAL
+// ═══════════════════════════════════════════
+function openToggle(id, action) {
+  const w = watchlists.find(x => x.id === id);
+  currentEditId = id;
+  const isEnable = action === 'enable';
+  document.getElementById('toggleModalTitle').textContent = isEnable ? 'Enable Screening Type' : 'Disable Screening Type';
+  document.getElementById('toggleModalHeader').style.background = isEnable ? '#2A53A0' : '#da1e28';
+  document.getElementById('toggleWatchlistName').textContent = w.name;
+  document.getElementById('toggleDateLabel').textContent = (isEnable ? 'Enable' : 'Disable') + ' Date *';
+  // Pre-select radio
+  document.querySelectorAll('input[name=toggleAction]').forEach(r => r.checked = r.value === action);
+  document.getElementById('toggleReason').value = '';
+  document.getElementById('toggleSubmitBtn').className = 'btn-submit' + (isEnable ? '' : ' danger');
+  document.getElementById('toggleModal').classList.remove('hidden');
+}
+
+function closeToggleModal() {
+  document.getElementById('toggleModal').classList.add('hidden');
+}
+
+function checkToggleSubmit() {
+  const reason = document.getElementById('toggleReason').value.trim();
+  const btn = document.getElementById('toggleSubmitBtn');
+  if (reason.length > 0) btn.classList.add('ready');
+  else btn.classList.remove('ready');
+}
+
+// ═══════════════════════════════════════════
+//  VIEW LISTS LIBRARY
+// ═══════════════════════════════════════════
+const libLists = {
+  global: [
+    { name:'UN Consolidated List', desc:'United Nations consolidated sanctions list', entries:'8,923', region:'Global', updated:'18/11/2025', active:true },
+    { name:'US OFAC SDN', desc:'U.S. Treasury Specially Designated Nationals list', entries:'12,547', region:'Global', updated:'19/11/2025', active:true },
+    { name:'EU Consolidated', desc:'European Union financial sanctions list', entries:'6,234', region:'Global', updated:'17/11/2025', active:true },
+    { name:'UK HMT Sanctions', desc:'Her Majesty\'s Treasury financial sanctions list', entries:'4,891', region:'Global', updated:'15/11/2025', active:true },
+    { name:'World Bank Debarment', desc:'World Bank group debarred entities', entries:'3,102', region:'Global', updated:'10/11/2025', active:true },
+    { name:'OFAC NS-MBS', desc:'OFAC Non-SDN Menu-Based Sanctions list', entries:'1,847', region:'Global', updated:'14/11/2025', active:true },
+  ],
+  apac: [
+    { name:'MAS Watchlist', desc:'Monetary Authority of Singapore watchlist', entries:'2,341', region:'Asia Pacific', updated:'18/11/2025', active:true },
+    { name:'AUSTRAC Watchlist', desc:'Australian Transaction Reports and Analysis Centre list', entries:'1,204', region:'Asia Pacific', updated:'12/11/2025', active:true },
+    { name:'RBI Caution List', desc:'Reserve Bank of India caution advisory list', entries:'887', region:'Asia Pacific', updated:'16/11/2025', active:false },
+    { name:'HKMA Restricted', desc:'Hong Kong Monetary Authority restricted entities', entries:'643', region:'Asia Pacific', updated:'11/11/2025', active:true },
+  ],
+  custom: [
+    { name:'Internal PEP Watchlist', desc:'Internally curated politically exposed persons list', entries:'542', region:'Global', updated:'19/11/2025', active:true },
+    { name:'Adverse Media Entities', desc:'Entities flagged in adverse media screening', entries:'1,283', region:'Global', updated:'18/11/2025', active:true },
+    { name:'Legacy Blocked Parties', desc:'Historical blocked parties from legacy systems', entries:'234', region:'Global', updated:'01/10/2025', active:false },
+  ]
+};
+
+function buildLibCards(arr, containerId) {
+  document.getElementById(containerId).innerHTML = arr.map(l => `
+    <div class="lib-card">
+      <div class="lib-card-header">
+        <div class="lib-card-name">${l.name}</div>
+        ${l.active ? '<svg width="18" height="18" viewBox="0 0 16 16" fill="#22c55e"><path d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7s7-3.1,7-7C15,4.1,11.9,1,8,1z M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z"/></svg>' : '<svg width="18" height="18" viewBox="0 0 16 16" fill="#9ca3af"><path d="M8 1C4.1 1 1 4.1 1 8s3.1 7 7 7 7-3.1 7-7S11.9 1 8 1zm0 13c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6z"/></svg>'}
+      </div>
+      <div class="lib-card-desc">${l.desc}</div>
+      <div class="lib-card-stats">
+        <div><div class="lib-stat-label">Entries</div><div class="lib-stat-val">${l.entries}</div></div>
+        <div><div class="lib-stat-label">Region</div><div class="lib-stat-val" style="font-size:13px;font-weight:600;color:#374151;">${l.region}</div></div>
+      </div>
+      <div class="lib-card-meta">Last Updated: ${l.updated}</div>
+    </div>
+  `).join('');
+}
+
+function openLibrary() {
+  buildLibCards(libLists.global, 'libGlobalCards');
+  buildLibCards(libLists.apac, 'libApacCards');
+  buildLibCards(libLists.custom, 'libCustomCards');
+  document.getElementById('libraryPanel').classList.remove('hidden');
+}
+function closeLibrary() { document.getElementById('libraryPanel').classList.add('hidden'); }
+
+
+// ═══════════════════════════════════════════
+//  CREATE / EDIT WATCHLIST (5-step wizard)
+// ═══════════════════════════════════════════
+const STEPS = ['Basic Information','List Selection','Field Mapping','Match Score Configuration','Result Configuration'];
+
+function buildSteps() {
+  const container = document.getElementById('panelSteps');
+  container.innerHTML = STEPS.map((label, i) => {
+    const n = i + 1;
+    const isDone = n < currentStep;
+    const isActive = n === currentStep;
+    const circleClass = isDone ? 'done' : isActive ? 'active' : '';
+    const labelClass = isDone ? 'done' : isActive ? 'active' : '';
+    const checkSvg = '<svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7s7-3.1,7-7C15,4.1,11.9,1,8,1z M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z"/></svg>';
+    const conn = n < STEPS.length ? `<div class="step-conn"></div>` : '';
+    return `
+      <div class="step-item">
+        <div class="step-item-inner" onclick="goToStep(${n})">
+          <div class="step-circle ${circleClass}">${isDone ? checkSvg : n}</div>
+          <span class="step-label ${labelClass}">${label}</span>
+        </div>
+        ${conn}
+      </div>`;
+  }).join('');
+}
+
+function buildStepBody() {
+  const w = currentEditId ? watchlists.find(x => x.id === currentEditId) : null;
+  const body = document.getElementById('panelBody');
+  if (currentStep === 1) {
+    const PURPOSES = [
+      'New Customer Onboarding',
+      'Periodic / Batch Review',
+      'Continuous Monitoring',
+      'Payment / Wire Screening',
+      'De-Duplication & Identity Resolution',
+      'Ad-hoc / Bulk Screening',
+      'Regulatory Compliance',
+      'Enhanced Due Diligence (EDD)'
+    ];
+    const currentPurpose = w && w.purpose ? w.purpose : PURPOSES[0];
+
+    body.innerHTML = `
+      <div class="form-card">
+        <div class="form-card-title">Basic Information</div>
+        <div class="form-grid-2">
+
+          <!-- Screening Type (name) -->
+          <div class="form-group form-grid-full">
+            <label class="form-label">Screening Type <span class="req">*</span></label>
+            <input type="text" class="form-input" id="s1RuleName" placeholder="e.g. Real-Time Onboarding Screening" value="${w ? w.name : ''}">
+          </div>
+
+          <!-- Description -->
+          <div class="form-group form-grid-full">
+            <label class="form-label">Description</label>
+            <textarea class="form-textarea" id="s1Desc" placeholder="Describe the purpose and usage of this screening type">${w ? w.desc : ''}</textarea>
+          </div>
+
+          <!-- Purpose -->
+          <div class="form-group form-grid-full">
+            <label class="form-label">Purpose <span class="req">*</span></label>
+            <div class="select-wrap">
+              <select id="s1Purpose">
+                ${PURPOSES.map(p => `<option ${p===currentPurpose?'selected':''}>${p}</option>`).join('')}
+              </select>
+            </div>
+            <div style="margin-top:6px;font-size:11px;color:#9ca3af;line-height:1.4;">
+              Select the business purpose this screening type serves.
+            </div>
+          </div>
+
+        </div>
+      </div>`;
+  } else if (currentStep === 2) {
+    const selectedLists = w ? w.lists : [];
+    const allLists = [...libLists.global, ...libLists.apac];
+    body.innerHTML = `
+      <p style="font-size:13px;color:#6b7280;margin-bottom:16px;">Select the sanctions lists to include in this rule profile.</p>
+      <div style="position:relative;margin-bottom:16px;">
+        <span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);color:#9ca3af;"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg></span>
+        <input type="text" class="form-input" style="padding-left:36px;" placeholder="Search available lists...">
+      </div>
+      <div class="section-gap">
+        <div class="list-group-title">Global</div>
+        ${libLists.global.map(l => `
+          <label class="list-item ${selectedLists.includes(l.name)?'selected':''}">
+            <input type="checkbox" ${selectedLists.includes(l.name)?'checked':''} style="margin-top:2px;accent-color:#2A53A0;">
+            <div class="list-item-info">
+              <div><span class="list-name">${l.name}</span><span class="list-count">${l.entries} entries</span></div>
+              <div class="list-desc">${l.desc}</div>
+            </div>
+          </label>`).join('')}
+      </div>
+      <div class="section-gap">
+        <div class="list-group-title">Asia Pacific</div>
+        ${libLists.apac.map(l => `
+          <label class="list-item ${selectedLists.includes(l.name)?'selected':''}">
+            <input type="checkbox" ${selectedLists.includes(l.name)?'checked':''} style="margin-top:2px;accent-color:#2A53A0;">
+            <div class="list-item-info">
+              <div><span class="list-name">${l.name}</span><span class="list-count">${l.entries} entries</span></div>
+              <div class="list-desc">${l.desc}</div>
+            </div>
+          </label>`).join('')}
+      </div>
+      <div class="section-gap">
+        <div class="list-group-title">Custom Lists</div>
+        ${libLists.custom.map(l => `
+          <label class="list-item">
+            <input type="checkbox" style="margin-top:2px;accent-color:#2A53A0;">
+            <div class="list-item-info">
+              <div><span class="list-name">${l.name}</span><span class="list-count">${l.entries} entries</span></div>
+              <div class="list-desc">${l.desc}</div>
+            </div>
+          </label>`).join('')}
+      </div>`;
+  } else if (currentStep === 3) {
+    // ── Step 3: Field Mapping — dropdown list selector, one list at a time ─────
+    function _getSelectedLists() {
+      if (window._wizardLists && window._wizardLists.length > 0) return window._wizardLists;
+      const checks = document.querySelectorAll('.list-item input[type=checkbox]:checked');
+      if (checks.length > 0) {
+        return Array.from(checks).map(cb =>
+          cb.closest('.list-item').querySelector('.list-name').textContent.trim()
+        );
+      }
+      if (w && w.lists && w.lists.length > 0) return w.lists;
+      return ['UN Consolidated List'];
+    }
+    const _selectedLists = _getSelectedLists();
+
+    const SOURCE_OPTIONS = [
+      'full_name','dob','national_id','country','nationality','gender',
+      'passport_number','address','date_of_incorporation','entity_type',
+      'alias','id_number','place_of_birth','citizenship'
+    ];
+    const TARGET_OPTIONS = [
+      'Primary Name','Date of Birth','National ID','Country',
+      'Nationality','Gender','Passport Number','Address',
+      'Date of Incorporation','Entity Type','Alias','ID Number',
+      'Place of Birth','Citizenship'
+    ];
+    const DEFAULT_ROWS = () => ([
+      { source: 'full_name',   target: 'Primary Name'  },
+      { source: 'dob',         target: 'Date of Birth' },
+      { source: 'national_id', target: 'National ID'   },
+      { source: 'country',     target: 'Country'       },
+    ]);
+
+    if (!window._fmData) window._fmData = {};
+    _selectedLists.forEach(name => { if (!window._fmData[name]) window._fmData[name] = DEFAULT_ROWS(); });
+    if (!window._fmActiveList || !_selectedLists.includes(window._fmActiveList)) window._fmActiveList = _selectedLists[0];
+
+    // Render the mapping rows for the currently-selected list
+    function _renderFmRows(listName) {
+      const rows = window._fmData[listName] || [];
+      const bodyEl = document.getElementById('_fmBody');
+      if (!bodyEl) return;
+      bodyEl.innerHTML = rows.length === 0
+        ? `<div style="padding:28px;text-align:center;color:#9ca3af;font-size:13px;">
+             No mappings yet. Click <strong style="color:#2A53A0;">+ Add Field Mapping</strong> below.
+           </div>`
+        : rows.map((r, i) => `
+          <div style="display:grid;grid-template-columns:1fr 28px 1fr 48px;align-items:center;
+                      padding:10px 16px;border-bottom:1px solid #f3f4f6;transition:background 0.1s;"
+               onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background=''">
+            <!-- Source Field (customer master) -->
+            <div style="position:relative;">
+              <select onchange="window._fmData[window._fmActiveList][${i}].source=this.value"
+                style="width:100%;height:38px;border:1px solid #d1d5dc;border-radius:8px;
+                       padding:0 32px 0 12px;font-size:13px;font-weight:600;color:#374151;
+                       font-family:monospace;appearance:none;background:#f9fafb;cursor:pointer;outline:none;">
+                ${SOURCE_OPTIONS.map(o=>`<option value="${o}"${o===r.source?' selected':''}>${o}</option>`).join('')}
+              </select>
+              <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:#6b7280;">
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+              </span>
+            </div>
+            <!-- Arrow -->
+            <div style="text-align:center;color:#9ca3af;">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M9 3 8.3 3.7 11.1 6.5 2 6.5 2 7.5 11.1 7.5 8.3 10.3 9 11 13 7z"/></svg>
+            </div>
+            <!-- Target Attribute (watchlist field) -->
+            <div style="position:relative;">
+              <select onchange="window._fmData[window._fmActiveList][${i}].target=this.value"
+                style="width:100%;height:38px;border:1px solid #d1d5dc;border-radius:8px;
+                       padding:0 32px 0 12px;font-size:13px;color:#161616;
+                       appearance:none;background:#fff;cursor:pointer;outline:none;">
+                ${TARGET_OPTIONS.map(o=>`<option value="${o}"${o===r.target?' selected':''}>${o}</option>`).join('')}
+              </select>
+              <span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);pointer-events:none;color:#6b7280;">
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+              </span>
+            </div>
+            <!-- Delete -->
+            <div style="display:flex;justify-content:center;">
+              <button onclick="window._fmRemoveRow(${i})"
+                style="width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+                       border-radius:6px;background:rgba(239,68,68,0.08);border:none;cursor:pointer;
+                       color:#dc2626;transition:background 0.15s;"
+                onmouseover="this.style.background='rgba(239,68,68,0.18)'"
+                onmouseout="this.style.background='rgba(239,68,68,0.08)'">
+                <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                  <path stroke-linecap="round" d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+          </div>`).join('');
+    }
+
+    // Handlers operate on the active list only
+    window._fmRemoveRow = function(i) {
+      window._fmData[window._fmActiveList].splice(i, 1);
+      _renderFmRows(window._fmActiveList);
+    };
+    window._fmAddRow = function() {
+      window._fmData[window._fmActiveList].push({ source: SOURCE_OPTIONS[0], target: TARGET_OPTIONS[0] });
+      _renderFmRows(window._fmActiveList);
+    };
+    window._fmSelectList = function(name) {
+      window._fmActiveList = name;
+      const nm = document.getElementById('_fmActiveName'); if (nm) nm.textContent = name;
+      _renderFmRows(name);
+    };
+    window._fmCopyToAll = function() {
+      const realKey = window._fmActiveList;
+      const src = JSON.parse(JSON.stringify(window._fmData[realKey]));
+      _selectedLists.filter(n => n !== realKey).forEach(n => { window._fmData[n] = JSON.parse(JSON.stringify(src)); });
+      const toast = document.getElementById('_fmToast');
+      if (toast) {
+        toast.textContent = `Mapping applied to all ${_selectedLists.length - 1} other list(s)`;
+        toast.style.opacity = '1';
+        setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+      }
+    };
+
+    body.innerHTML = `
+      <p style="font-size:13px;color:#6b7280;margin-bottom:20px;">
+        Map source fields from the <strong style="color:#374151;">customer master</strong> to target attributes from the selected <strong style="color:#374151;">sanctions list</strong>.
+        Choose a list below to configure its mapping${_selectedLists.length > 1 ? '; each list is configured independently.' : '.'}
+      </p>
+
+      <!-- List selector -->
+      <div style="margin-bottom:18px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Select List to Configure</label>
+        <div class="select-wrap" style="max-width:440px;">
+          <select onchange="window._fmSelectList(this.value)">
+            ${_selectedLists.map(n => `<option ${n === window._fmActiveList ? 'selected' : ''}>${n}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div id="_fmToast" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+           background:#1f2937;color:#fff;font-size:13px;font-weight:500;padding:10px 20px;
+           border-radius:8px;opacity:0;transition:opacity 0.35s;pointer-events:none;z-index:9999;
+           white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.25);"></div>
+
+      <!-- Single configuration box for the active list -->
+      <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 16px;background:#2A53A0;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="#fff"><path d="M12,4v8H4V4H12 M12,3H4C3.4,3,3,3.4,3,4v8c0,0.6,0.4,1,1,1h8c0.6,0,1-0.4,1-1V4C13,3.4,12.6,3,12,3z"/></svg>
+            <span style="font-size:14px;font-weight:700;color:#fff;" id="_fmActiveName">${window._fmActiveList}</span>
+          </div>
+          ${_selectedLists.length > 1 ? `
+          <button onclick="window._fmCopyToAll()" title="Apply this list's mapping to all other lists"
+            style="display:inline-flex;align-items:center;gap:5px;padding:0 12px;height:28px;
+                   border:1px solid rgba(255,255,255,0.35);border-radius:6px;background:rgba(255,255,255,0.12);
+                   font-size:12px;font-weight:500;color:#fff;cursor:pointer;transition:all 0.15s;white-space:nowrap;"
+            onmouseover="this.style.background='rgba(255,255,255,0.22)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.12)'">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M13 1H6a2 2 0 0 0-2 2v1H3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm-3 12H3V6h7v7zm3-3h-1V6a2 2 0 0 0-2-2H6V3h7v7z"/></svg>
+            Apply to all lists
+          </button>` : ''}
+        </div>
+        <!-- Column headers -->
+        <div style="display:grid;grid-template-columns:1fr 28px 1fr 48px;padding:9px 16px;background:#f8faff;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;">
+            Source Field<span style="display:block;font-size:10px;font-weight:500;color:#9ca3af;text-transform:none;letter-spacing:0;margin-top:1px;">Customer master</span>
+          </div>
+          <div></div>
+          <div style="font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;">
+            Target Attribute<span style="display:block;font-size:10px;font-weight:500;color:#9ca3af;text-transform:none;letter-spacing:0;margin-top:1px;">Sanctions list field</span>
+          </div>
+          <div></div>
+        </div>
+        <div id="_fmBody"></div>
+        <div style="padding:11px 16px;border-top:1px dashed #e5e7eb;background:#fafafa;">
+          <button onclick="window._fmAddRow()"
+            style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;
+                   color:#2A53A0;background:none;border:none;cursor:pointer;padding:4px 0;transition:color 0.15s;"
+            onmouseover="this.style.color='#1e3a70'" onmouseout="this.style.color='#2A53A0'">
+            <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M17 15V8h-2v7H8v2h7v7h2v-7h7v-2z"/></svg>
+            Add Field Mapping
+          </button>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;padding:12px 14px;background:#f0f5ff;border:1px solid #c7d7f5;border-radius:8px;font-size:12px;color:#374151;line-height:1.6;">
+        <strong style="color:#2A53A0;">How field mapping works:</strong>
+        <strong>Source fields</strong> are attribute names from the <em>customer master</em> used for comparison and match scoring.
+        <strong>Target attributes</strong> are fields from the incoming <em>sanctions list data</em>.
+        ${_selectedLists.length > 1 ? ' Switch lists using the selector above — each list keeps its own mapping.' : ''}
+      </div>`;
+
+    _renderFmRows(window._fmActiveList);
+  } else if (currentStep === 4) {
+    // ── Step 4: Match Score Configuration — dropdown list selector ─────────────
+    function _getMSLists() {
+      if (window._wizardLists && window._wizardLists.length > 0) return window._wizardLists;
+      const checks = document.querySelectorAll('.list-item input[type=checkbox]:checked');
+      if (checks.length > 0) {
+        return Array.from(checks).map(cb =>
+          cb.closest('.list-item').querySelector('.list-name').textContent.trim()
+        );
+      }
+      if (w && w.lists && w.lists.length > 0) return w.lists;
+      return ['UN Consolidated List'];
+    }
+    const _msLists = _getMSLists();
+
+    const DEFAULT_MS_FIELDS = () => ([
+      { field:'Primary Name',  source:'full_name',   threshold:80, weight:50 },
+      { field:'Date of Birth', source:'dob',         threshold:80, weight:20 },
+      { field:'National ID',   source:'national_id', threshold:70, weight:15 },
+      { field:'Country',       source:'country',     threshold:85, weight:15 },
+    ]);
+
+    if (!window._msData) window._msData = {};
+    _msLists.forEach(name => {
+      if (!window._msData[name]) {
+        if (w && w.matchFields && w.matchFields.length > 0) {
+          window._msData[name] = w.matchFields.map((f,i) => ({
+            field: f.field,
+            source: ['full_name','dob','national_id','country'][i] || 'full_name',
+            threshold: parseInt(f.threshold),
+            weight: f.weight
+          }));
+        } else {
+          window._msData[name] = DEFAULT_MS_FIELDS();
+        }
+      }
+    });
+    if (!window._msActiveList || !_msLists.includes(window._msActiveList)) window._msActiveList = _msLists[0];
+
+    function _renderMSRows(listName) {
+      const bodyEl = document.getElementById('_msBody');
+      if (!bodyEl) return;
+      const fields = window._msData[listName] || [];
+      bodyEl.innerHTML = fields.map((f, i) => `
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 1fr;gap:0;align-items:center;
+                    padding:16px 20px;border-bottom:1px solid #f3f4f6;background:#fff;transition:background 0.1s;"
+             onmouseover="this.style.background='#fafafa'" onmouseout="this.style.background='#fff'">
+          <!-- Target Field -->
+          <div style="font-size:13px;font-weight:600;color:#1f2937;">${f.field}</div>
+          <!-- Source Field -->
+          <div>
+            <span style="display:inline-block;font-size:11px;font-family:monospace;font-weight:500;
+                         color:#374151;background:#f3f4f6;border:1px solid #e5e7eb;
+                         padding:3px 8px;border-radius:6px;">${f.source}</span>
+          </div>
+          <!-- Threshold Score slider -->
+          <div style="display:flex;align-items:center;gap:10px;padding-left:16px;padding-right:20px;">
+            <input type="range" min="50" max="100" value="${f.threshold}"
+              style="flex:1;height:4px;accent-color:#2A53A0;cursor:pointer;"
+              oninput="window._msData[window._msActiveList][${i}].threshold=+this.value;this.nextElementSibling.value=this.value">
+            <input type="number" min="50" max="100" value="${f.threshold}"
+              style="width:52px;height:34px;border:1px solid #d1d5dc;border-radius:8px;text-align:center;
+                     font-size:13px;font-weight:600;color:#1f2937;outline:none;font-family:'Inter',sans-serif;"
+              oninput="window._msData[window._msActiveList][${i}].threshold=+this.value;this.previousElementSibling.value=this.value">
+          </div>
+          <!-- Weight slider -->
+          <div style="display:flex;align-items:center;gap:10px;padding-left:16px;padding-right:8px;">
+            <input type="range" min="0" max="100" value="${f.weight}"
+              style="flex:1;height:4px;accent-color:#2A53A0;cursor:pointer;"
+              oninput="window._msData[window._msActiveList][${i}].weight=+this.value;this.nextElementSibling.value=this.value">
+            <input type="number" min="0" max="100" value="${f.weight}"
+              style="width:52px;height:34px;border:1px solid #d1d5dc;border-radius:8px;text-align:center;
+                     font-size:13px;font-weight:600;color:#1f2937;outline:none;font-family:'Inter',sans-serif;"
+              oninput="window._msData[window._msActiveList][${i}].weight=+this.value;this.previousElementSibling.value=this.value">
+          </div>
+        </div>`).join('');
+    }
+
+    window._msSelectList = function(name) {
+      window._msActiveList = name;
+      const nm = document.getElementById('_msActiveName'); if (nm) nm.textContent = name;
+      _renderMSRows(name);
+    };
+    window._msCopyToAll = function() {
+      const realKey = window._msActiveList;
+      const src = JSON.parse(JSON.stringify(window._msData[realKey]));
+      _msLists.filter(n => n !== realKey).forEach(n => { window._msData[n] = JSON.parse(JSON.stringify(src)); });
+      const toast = document.getElementById('_msToast');
+      if (toast) {
+        toast.textContent = `Score config applied to all ${_msLists.length - 1} other list(s)`;
+        toast.style.opacity = '1';
+        setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+      }
+    };
+
+    body.innerHTML = `
+      <p style="font-size:13px;color:#6b7280;margin-bottom:20px;">
+        Configure match thresholds and attribute weights for the selected sanctions list.
+        ${_msLists.length > 1 ? 'Choose a list below; each list is scored independently.' : ''}
+      </p>
+
+      <!-- List selector -->
+      <div style="margin-bottom:18px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Select List to Configure</label>
+        <div class="select-wrap" style="max-width:440px;">
+          <select onchange="window._msSelectList(this.value)">
+            ${_msLists.map(n => `<option ${n === window._msActiveList ? 'selected' : ''}>${n}</option>`).join('')}
+          </select>
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div id="_msToast" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+           background:#1f2937;color:#fff;font-size:13px;font-weight:500;padding:10px 20px;
+           border-radius:8px;opacity:0;transition:opacity 0.35s;pointer-events:none;z-index:9999;
+           white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.25);"></div>
+
+      <div style="border:1px solid #e5e7eb;border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,0.05);">
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 20px;background:#2A53A0;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="#fff"><path d="M12,4v8H4V4H12 M12,3H4C3.4,3,3,3.4,3,4v8c0,0.6,0.4,1,1,1h8c0.6,0,1-0.4,1-1V4C13,3.4,12.6,3,12,3z"/></svg>
+            <span style="font-size:14px;font-weight:700;color:#fff;" id="_msActiveName">${window._msActiveList}</span>
+          </div>
+          ${_msLists.length > 1 ? `
+          <button onclick="window._msCopyToAll()" title="Apply this list's score config to all other lists"
+            style="display:inline-flex;align-items:center;gap:5px;padding:0 12px;height:28px;
+                   border:1px solid rgba(255,255,255,0.35);border-radius:6px;background:rgba(255,255,255,0.12);
+                   font-size:12px;font-weight:500;color:#fff;cursor:pointer;transition:all 0.15s;white-space:nowrap;"
+            onmouseover="this.style.background='rgba(255,255,255,0.22)'"
+            onmouseout="this.style.background='rgba(255,255,255,0.12)'">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor"><path d="M13 1H6a2 2 0 0 0-2 2v1H3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm-3 12H3V6h7v7zm3-3h-1V6a2 2 0 0 0-2-2H6V3h7v7z"/></svg>
+            Apply to all lists
+          </button>` : ''}
+        </div>
+        <div style="display:grid;grid-template-columns:160px 120px 1fr 1fr;gap:0;padding:10px 20px;background:#f0f0f0;border-bottom:1px solid #e5e7eb;">
+          <div style="font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;">Target Field</div>
+          <div style="font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;">Source Field</div>
+          <div style="font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;padding-left:16px;">Threshold Score</div>
+          <div style="font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;padding-left:16px;">Weight</div>
+        </div>
+        <div id="_msBody"></div>
+        <div style="padding:10px 20px;background:#f0f5ff;border-top:1px solid #e5e7eb;">
+          <span style="font-size:11px;color:#374151;">
+            <strong style="color:#2A53A0;">Threshold Score:</strong> minimum similarity % (50–100) for this field to register a match.&nbsp;&nbsp;
+            <strong style="color:#2A53A0;">Weight:</strong> relative importance in the overall composite score.
+          </span>
+        </div>
+      </div>`;
+
+    _renderMSRows(window._msActiveList);
+  } else if (currentStep === 5) {
+    // ── Step 5: Result Configuration — per selected list, dropdown selector ────
+    function _getRCLists() {
+      if (window._wizardLists && window._wizardLists.length > 0) return window._wizardLists;
+      const checks = document.querySelectorAll('.list-item input[type=checkbox]:checked');
+      if (checks.length > 0) {
+        return Array.from(checks).map(cb =>
+          cb.closest('.list-item').querySelector('.list-name').textContent.trim()
+        );
+      }
+      if (w && w.lists && w.lists.length > 0) return w.lists;
+      return ['UN Consolidated List'];
+    }
+    const _rcLists = _getRCLists();
+
+    const DEFAULT_RC = () => ({
+      alertThreshold: 80,
+      maxMode: 'topN',
+      topN: 10,
+      minScore: 90,
+      riskLow: [0, 40],
+      riskMed: [41, 70],
+      riskHigh: [71, 100],
+      noMatch: 30
+    });
+
+    if (!window._rcData) window._rcData = {};
+    _rcLists.forEach(name => { if (!window._rcData[name]) window._rcData[name] = DEFAULT_RC(); });
+    if (!window._rcActiveList || !_rcLists.includes(window._rcActiveList)) window._rcActiveList = _rcLists[0];
+
+    function _renderRcBody(listName) {
+      const c = window._rcData[listName];
+      const host = document.getElementById('_rcBody');
+      if (!c || !host) return;
+      host.innerHTML = `
+        <div class="result-card">
+          <div class="result-card-header"><div class="result-card-title">Overall Score Threshold</div></div>
+          <p style="font-size:12px;color:#6b7280;margin-bottom:12px;">Minimum aggregate match score required to generate an alert.</p>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+            <span style="font-size:13px;color:#6b7280;white-space:nowrap;">Alert Threshold</span>
+            <input type="range" min="0" max="100" value="${c.alertThreshold}" style="flex:1;accent-color:#2A53A0;"
+              oninput="window._rcData[window._rcActiveList].alertThreshold=+this.value;this.nextElementSibling.textContent=this.value+'%'">
+            <span style="font-size:14px;font-weight:700;color:#2A53A0;min-width:48px;">${c.alertThreshold}%</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#9ca3af;"><span>More Alerts (0%)</span><span>Fewer Alerts (100%)</span></div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-header"><div class="result-card-title">Maximum Results</div></div>
+          <p style="font-size:12px;color:#6b7280;margin-bottom:12px;">Limit the number of top matches to display in screening results.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-bottom:6px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="radio" name="rcMaxMode" value="topN" ${c.maxMode==='topN'?'checked':''} style="accent-color:#2A53A0;"
+                onchange="window._rcData[window._rcActiveList].maxMode='topN'"> Show Top N Matches
+            </label>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <span style="font-size:13px;color:#6b7280;">Number of matches:</span>
+              <input type="number" class="score-input" value="${c.topN}" min="1" max="100" style="width:60px;"
+                oninput="window._rcData[window._rcActiveList].topN=+this.value">
+              <span style="font-size:13px;color:#6b7280;">matches</span>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+              <input type="radio" name="rcMaxMode" value="minScore" ${c.maxMode==='minScore'?'checked':''} style="accent-color:#2A53A0;"
+                onchange="window._rcData[window._rcActiveList].maxMode='minScore'"> Minimum Match Score &nbsp;≥
+            </label>
+            <input type="number" class="score-input" value="${c.minScore}" min="0" max="100" style="width:60px;"
+              oninput="window._rcData[window._rcActiveList].minScore=+this.value">
+            <span style="font-size:13px;color:#6b7280;">%</span>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-card-header"><div class="result-card-title">Threshold Risk Category</div></div>
+          <p style="font-size:12px;color:#6b7280;margin-bottom:14px;">Define score ranges for each risk level.</p>
+          <div style="display:grid;grid-template-columns:120px 80px 16px 80px;gap:8px;align-items:center;margin-bottom:10px;">
+            <span style="font-size:13px;font-weight:600;color:#166534;background:#dcfce7;padding:4px 10px;border-radius:6px;text-align:center;">Low Risk</span>
+            <input type="number" class="score-input" value="${c.riskLow[0]}" min="0" max="100" oninput="window._rcData[window._rcActiveList].riskLow[0]=+this.value">
+            <span style="text-align:center;color:#9ca3af;">–</span>
+            <input type="number" class="score-input" value="${c.riskLow[1]}" min="0" max="100" oninput="window._rcData[window._rcActiveList].riskLow[1]=+this.value">
+          </div>
+          <div style="display:grid;grid-template-columns:120px 80px 16px 80px;gap:8px;align-items:center;margin-bottom:10px;">
+            <span style="font-size:13px;font-weight:600;color:#92400e;background:#fef3c7;padding:4px 10px;border-radius:6px;text-align:center;">Medium Risk</span>
+            <input type="number" class="score-input" value="${c.riskMed[0]}" min="0" max="100" oninput="window._rcData[window._rcActiveList].riskMed[0]=+this.value">
+            <span style="text-align:center;color:#9ca3af;">–</span>
+            <input type="number" class="score-input" value="${c.riskMed[1]}" min="0" max="100" oninput="window._rcData[window._rcActiveList].riskMed[1]=+this.value">
+          </div>
+          <div style="display:grid;grid-template-columns:120px 80px 16px 80px;gap:8px;align-items:center;">
+            <span style="font-size:13px;font-weight:600;color:#991b1b;background:#fee2e2;padding:4px 10px;border-radius:6px;text-align:center;">High Risk</span>
+            <input type="number" class="score-input" value="${c.riskHigh[0]}" min="0" max="100" oninput="window._rcData[window._rcActiveList].riskHigh[0]=+this.value">
+            <span style="text-align:center;color:#9ca3af;">–</span>
+            <input type="number" class="score-input" value="${c.riskHigh[1]}" min="0" max="100" oninput="window._rcData[window._rcActiveList].riskHigh[1]=+this.value">
+          </div>
+        </div>
+
+        <div class="result-card" style="margin-bottom:0;">
+          <div class="result-card-header"><div class="result-card-title">No-match Record Threshold</div></div>
+          <p style="font-size:12px;color:#6b7280;margin-bottom:12px;">Records with a match score below this value will be treated as no-match.</p>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:13px;color:#374151;">Less than</span>
+            <input type="number" class="score-input" value="${c.noMatch}" min="0" max="100" style="width:70px;" oninput="window._rcData[window._rcActiveList].noMatch=+this.value">
+            <span style="font-size:13px;color:#374151;">%</span>
+          </div>
+        </div>`;
+    }
+
+    window._rcSelectList = function(name) {
+      window._rcActiveList = name;
+      const nm = document.getElementById('_rcActiveName'); if (nm) nm.textContent = name;
+      _renderRcBody(name);
+    };
+    window._rcCopyToAll = function() {
+      const realKey = window._rcActiveList;
+      const src = JSON.parse(JSON.stringify(window._rcData[realKey]));
+      _rcLists.filter(n => n !== realKey).forEach(n => { window._rcData[n] = JSON.parse(JSON.stringify(src)); });
+      const toast = document.getElementById('_rcToast');
+      if (toast) {
+        toast.textContent = `Result config applied to all ${_rcLists.length - 1} other list(s)`;
+        toast.style.opacity = '1';
+        setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+      }
+    };
+
+    body.innerHTML = `
+      <p style="font-size:13px;color:#6b7280;margin-bottom:20px;">
+        Configure how screening results are scored, categorised and displayed for the selected sanctions list.
+        ${_rcLists.length > 1 ? 'Each list keeps its own result configuration.' : ''}
+      </p>
+
+      <!-- List selector -->
+      <div style="margin-bottom:18px;">
+        <label style="display:block;font-size:11px;font-weight:700;color:#2A53A0;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:8px;">Select List to Configure</label>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+          <div class="select-wrap" style="flex:1;min-width:280px;max-width:440px;">
+            <select onchange="window._rcSelectList(this.value)">
+              ${_rcLists.map(n => `<option ${n === window._rcActiveList ? 'selected' : ''}>${n}</option>`).join('')}
+            </select>
+          </div>
+          ${_rcLists.length > 1 ? `
+          <button onclick="window._rcCopyToAll()" title="Apply this list's result config to all other lists"
+            style="display:inline-flex;align-items:center;gap:6px;padding:0 14px;height:46px;
+                   border:1px solid #2A53A0;border-radius:8px;background:#fff;color:#2A53A0;
+                   font-size:13px;font-weight:500;cursor:pointer;transition:all 0.15s;white-space:nowrap;"
+            onmouseover="this.style.background='#f0f5ff'" onmouseout="this.style.background='#fff'">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M13 1H6a2 2 0 0 0-2 2v1H3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-1h1a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2zm-3 12H3V6h7v7zm3-3h-1V6a2 2 0 0 0-2-2H6V3h7v7z"/></svg>
+            Apply to all lists
+          </button>` : ''}
+        </div>
+      </div>
+
+      <!-- Toast -->
+      <div id="_rcToast" style="position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+           background:#1f2937;color:#fff;font-size:13px;font-weight:500;padding:10px 20px;
+           border-radius:8px;opacity:0;transition:opacity 0.35s;pointer-events:none;z-index:9999;
+           white-space:nowrap;box-shadow:0 4px 16px rgba(0,0,0,0.25);"></div>
+
+      <!-- Active-list banner -->
+      <div style="display:flex;align-items:center;gap:8px;padding:10px 14px;background:#2A53A0;border-radius:10px 10px 0 0;">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="#fff"><path d="M12,4v8H4V4H12 M12,3H4C3.4,3,3,3.4,3,4v8c0,0.6,0.4,1,1,1h8c0.6,0,1-0.4,1-1V4C13,3.4,12.6,3,12,3z"/></svg>
+        <span style="font-size:13px;font-weight:700;color:#fff;">Result configuration for: <span id="_rcActiveName">${window._rcActiveList}</span></span>
+      </div>
+      <div style="border:1px solid #e5e7eb;border-top:none;border-radius:0 0 12px 12px;padding:16px;background:#fbfcfe;">
+        <div id="_rcBody"></div>
+      </div>`;
+
+    _renderRcBody(window._rcActiveList);
+  }
+  // Update buttons
+  document.getElementById('btnPrev').style.display = currentStep > 1 ? 'inline-block' : 'none';
+  document.getElementById('btnNext').textContent = currentStep === 5 ? 'Create Screening Type' : 'Next →';
+  buildSteps();
+}
+
+function goToStep(n) {
+  if (n <= currentStep) { currentStep = n; buildStepBody(); }
+}
+function nextStep() {
+  // Capture checked list names before leaving step 2 (DOM gets replaced on next step)
+  if (currentStep === 2) {
+    const checks = document.querySelectorAll('.list-item input[type=checkbox]:checked');
+    if (checks.length > 0) {
+      window._wizardLists = Array.from(checks).map(cb =>
+        cb.closest('.list-item').querySelector('.list-name').textContent.trim()
+      );
+    }
+  }
+  if (currentStep < 5) { currentStep++; buildStepBody(); }
+  else { closeCreate(); alert('Rule configuration saved successfully!'); }
+}
+function prevStep() {
+  if (currentStep > 1) { currentStep--; buildStepBody(); }
+}
+function prevStepOrClose() {
+  if (currentStep > 1) { currentStep--; buildStepBody(); }
+  else { closeCreate(); }
+}
+
+function openCreate() {
+  currentEditId = null;
+  currentStep = 1;
+  window._fmRows = null; window._fmData = null; window._fmActiveList = null; window._msData = null; window._msActiveList = null; window._rcData = null; window._rcActiveList = null; window._wizardLists = null;
+  document.getElementById('panelTitle').textContent = 'Create New Screening Type';
+  document.getElementById('panelBreadcrumb').textContent = 'Create New Screening Type';
+  document.getElementById('createPanel').classList.remove('hidden');
+  buildStepBody();
+}
+
+function openEdit(id) {
+  currentEditId = id;
+  currentStep = 1;
+  const w = watchlists.find(x => x.id === id);
+  window._fmRows = null; window._fmData = null; window._fmActiveList = null; window._msData = null; window._msActiveList = null; window._rcData = null; window._rcActiveList = null;
+  window._wizardLists = w && w.lists ? [...w.lists] : null;
+  document.getElementById('panelTitle').textContent = 'Edit Screening Type';
+  document.getElementById('panelBreadcrumb').textContent = 'Edit: ' + w.name;
+  document.getElementById('createPanel').classList.remove('hidden');
+  buildStepBody();
+}
+
+function closeCreate() {
+  document.getElementById('createPanel').classList.add('hidden');
+  currentEditId = null;
+  window._fmRows = null; window._fmData = null; window._fmActiveList = null; window._msData = null; window._msActiveList = null; window._rcData = null; window._rcActiveList = null; window._wizardLists = null;
+}
+
+// ═══════════════════════════════════════════
+//  VIEW DETAILS
+// ═══════════════════════════════════════════
+function openDetail(id) {
+  const w = watchlists.find(x => x.id === id);
+  currentDetailId = id;
+  document.getElementById('detailTitle').textContent = w.name;
+  document.getElementById('detailBody').innerHTML = `
+    <div class="detail-section">
+      <div class="detail-section-label">Basic Information</div>
+      <div class="detail-grid">
+        <div><div class="detail-field-label">Screening Type</div><div class="detail-field-val">${w.name}</div></div>
+        <div><div class="detail-field-label">Purpose</div><div class="detail-field-val">${w.purpose}</div></div>
+        <div><div class="detail-field-label">Status</div><div><span class="badge-status-${w.status.toLowerCase()}">${w.status}</span></div></div>
+        <div><div class="detail-field-label">Created By</div><div class="detail-field-val">${w.createdBy}</div><div style="font-size:11px;color:#9ca3af;margin-top:2px;">Created ${w.date} · Modified ${w.lastModified}</div></div>
+        <div style="grid-column:1/-1;"><div class="detail-field-label">Description</div><div style="font-size:14px;color:#374151;line-height:1.6;">${w.desc}</div></div>
+      </div>
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-label">Included Sanctions Lists (${w.lists.length})</div>
+      ${w.lists.map(l=>`<div class="detail-list-item"><div style="font-size:14px;font-weight:600;color:#161616;">${l}</div><span class="badge-status-active">Active</span></div>`).join('')}
+    </div>
+    <div class="detail-section">
+      <div class="detail-section-label">Match Score Configuration</div>
+      <div class="detail-score-row" style="font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:0.06em;">
+        <div>Field</div><div style="text-align:center;">Threshold</div><div style="text-align:center;">Weight</div>
+      </div>
+      ${w.matchFields.map(f=>`
+      <div class="detail-score-row">
+        <div style="font-weight:600;color:#161616;">${f.field}</div>
+        <div style="text-align:center;font-weight:700;color:#2A53A0;">${f.threshold}</div>
+        <div style="text-align:center;font-weight:700;color:#374151;">${f.weight}</div>
+      </div>`).join('')}
+    </div>`;
+  document.getElementById('detailPanel').classList.remove('hidden');
+}
+
+function closeDetail() { document.getElementById('detailPanel').classList.add('hidden'); }
+function editFromDetail() { closeDetail(); openEdit(currentDetailId); }
+
+// ═══════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════
+renderTable();
+</script>
+</body>
+</html>

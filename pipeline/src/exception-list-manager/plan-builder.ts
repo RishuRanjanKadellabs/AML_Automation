@@ -42,7 +42,7 @@ function buildRequirementSummary(rows: ElmExcelRow[]): string {
       ["Property", "Value"],
       [
         ["File", "`pipeline/test-data/Exception List Manager.xlsx`"],
-        ["Sheet", "`Sheet1`"],
+        ["Sheet", "`Exception List Manager`"],
         ["Total requirements", String(rows.length)],
         ["ID prefixes", "ATL(30), EEM(47), ELM(30), ERR(30), EVAL(41), MCW(30), NFR(8), NTF(19), RBAC(16), RCE(28)"],
         ["Route", "`/configuration/exception-lists`"],

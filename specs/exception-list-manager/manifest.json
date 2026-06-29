@@ -1,214 +1,216 @@
 {
-  "generatedAt": "2026-06-19T15:54:56.733Z",
+  "generatedAt": "2026-06-28T18:51:02.013Z",
   "testCases": [
     {
       "id": "ATL-001",
       "module": "Audit Trail",
       "subModule": "List Lifecycle Events",
-      "priority": "",
-      "taskDescription": "Verify that exception list creation is captured in the audit trail with complete metadata.",
+      "priority": "High",
+      "taskDescription": "Verify exception list creation is captured in the audit trail with complete metadata",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "list-lifecycle-events",
-        "unspecified"
+        "high",
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "ATL-002",
       "module": "Audit Trail",
       "subModule": "List Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that editing an exception list writes a new immutable audit event.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "list-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-003",
       "module": "Audit Trail",
       "subModule": "List Lifecycle Events",
-      "priority": "",
-      "taskDescription": "Validate that list suspension is recorded with the correct status change.",
+      "priority": "High",
+      "taskDescription": "Verify that list suspension is recorded with the correct status change.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "list-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-004",
       "module": "Audit Trail",
       "subModule": "List Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that re-activation of a list is logged as a separate event.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "list-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-005",
       "module": "Audit Trail",
       "subModule": "List Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that deleting an exception list leaves a permanent audit record.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "list-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-006",
       "module": "Audit Trail",
       "subModule": "Entry Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that exception entry submission is captured in the audit trail.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "entry-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-007",
       "module": "Audit Trail",
       "subModule": "Entry Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that approving an exception entry creates a separate audit trail record.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "entry-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-008",
       "module": "Audit Trail",
       "subModule": "Entry Lifecycle Events",
-      "priority": "",
-      "taskDescription": "Validate that rejection of an exception entry is written to the audit history.",
+      "priority": "High",
+      "taskDescription": "Verify that rejection of an exception entry is written to the audit history.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "entry-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-009",
       "module": "Audit Trail",
       "subModule": "Entry Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that entry edit activity is tracked even when only a single field changes.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "entry-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-010",
       "module": "Audit Trail",
       "subModule": "Entry Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that entry suspension is logged when a user deactivates an approved entry.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "entry-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-011",
       "module": "Audit Trail",
       "subModule": "Entry Lifecycle Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that entry re-activation after suspension is audited separately from the original approval.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "entry-lifecycle-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-012",
       "module": "Audit Trail",
       "subModule": "TTL & Bulk Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that expired entries still remain visible in the audit trail after TTL passes.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "ttl-bulk-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-013",
       "module": "Audit Trail",
       "subModule": "TTL & Bulk Events",
-      "priority": "",
-      "taskDescription": "Validate that bulk upload submission creates a parent audit event.",
+      "priority": "High",
+      "taskDescription": "Verify that bulk upload submission creates a parent audit event.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "ttl-bulk-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-014",
       "module": "Audit Trail",
       "subModule": "TTL & Bulk Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that bulk upload approval or rejection is recorded together with the batch outcome.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "ttl-bulk-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-015",
       "module": "Audit Trail",
       "subModule": "TTL & Bulk Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that API submit, update, and delete events are logged with the caller identity.",
-      "automationLayer": "UI",
+      "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "ttl-bulk-events",
-        "unspecified",
+        "high",
         "api"
       ]
     },
@@ -216,56 +218,56 @@
       "id": "ATL-016",
       "module": "Audit Trail",
       "subModule": "Suppression Logging",
-      "priority": "",
-      "taskDescription": "Validate that every suppressed alert is logged silently without user-facing notification noise.",
+      "priority": "High",
+      "taskDescription": "Verify that every suppressed alert is logged silently without user-facing notification noise.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "suppression-logging",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-017",
       "module": "Audit Trail",
       "subModule": "Suppression Logging",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that suppression logging includes the watchlist, score, and screening timestamps.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "suppression-logging",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-018",
       "module": "Audit Trail",
       "subModule": "Evidence Access Logging",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that evidence attachment upload is recorded in the audit trail.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "evidence-access-logging",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-019",
       "module": "Audit Trail",
       "subModule": "Evidence Access Logging",
-      "priority": "",
-      "taskDescription": "Validate that viewing or downloading evidence is separately logged.",
+      "priority": "High",
+      "taskDescription": "Verify that viewing or downloading evidence is separately logged.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "evidence-access-logging",
-        "unspecified",
+        "high",
         "export"
       ]
     },
@@ -273,42 +275,42 @@
       "id": "ATL-020",
       "module": "Audit Trail",
       "subModule": "Integrity & Conflict Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that a material identity change auto-suspension event is captured.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "integrity-conflict-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-021",
       "module": "Audit Trail",
       "subModule": "Integrity & Conflict Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a true-hit conflict check blocked submission is recorded as an integrity event.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "integrity-conflict-events",
-        "unspecified"
+        "high"
       ]
     },
     {
       "id": "ATL-022",
       "module": "Audit Trail",
       "subModule": "Report & Export Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that the exception register report generation is logged.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "report-export-events",
-        "unspecified",
+        "high",
         "export"
       ]
     },
@@ -316,14 +318,14 @@
       "id": "ATL-023",
       "module": "Audit Trail",
       "subModule": "Report & Export Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that exporting the audit trail to CSV is itself logged.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "report-export-events",
-        "unspecified",
+        "high",
         "export"
       ]
     },
@@ -331,14 +333,14 @@
       "id": "ATL-024",
       "module": "Audit Trail",
       "subModule": "Report & Export Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that audit records are read-only and cannot be edited through the application.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "report-export-events",
-        "unspecified",
+        "high",
         "export"
       ]
     },
@@ -346,14 +348,14 @@
       "id": "ATL-025",
       "module": "Audit Trail",
       "subModule": "Report & Export Events",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that audit records remain searchable after the retention period is configured.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "report-export-events",
-        "unspecified",
+        "high",
         "export"
       ]
     },
@@ -361,14 +363,14 @@
       "id": "ATL-026",
       "module": "Audit Trail",
       "subModule": "Event Logging & Retention",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that the audit trail shows before and after state snapshots for state-changing actions.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "audit-trail",
         "event-logging-retention",
-        "unspecified"
+        "high"
       ]
     },
     {
@@ -376,7 +378,7 @@
       "module": "Audit Trail",
       "subModule": "Search & Filters",
       "priority": "Medium",
-      "taskDescription": "Verify audit trail filters by event type, list, and date range per Figma.",
+      "taskDescription": "Verify audit trail filters narrow results by event type, list, and date range",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -390,7 +392,7 @@
       "module": "Audit Trail",
       "subModule": "Auditor Access Control",
       "priority": "Medium",
-      "taskDescription": "Verify Read-Only Auditor has read/export access only on audit trail.",
+      "taskDescription": "Verify Read-Only Auditor can view and export audit records but cannot modify them",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -405,7 +407,7 @@
       "module": "Audit Trail",
       "subModule": "Access Control",
       "priority": "High",
-      "taskDescription": "Verify MLRO and Compliance Manager have full read access to all audit records.",
+      "taskDescription": "Verify MLRO has full read access to audit records created by other users",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -421,7 +423,7 @@
       "module": "Audit Trail",
       "subModule": "Access Control",
       "priority": "High",
-      "taskDescription": "Verify non-privileged roles see only audit records related to their own submissions.",
+      "taskDescription": "Verify KYC Analyst sees only audit records linked to their own submissions",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -431,32 +433,48 @@
       ]
     },
     {
+      "id": "ATL-031",
+      "module": "Audit Trail",
+      "subModule": "Access Control",
+      "priority": "High",
+      "taskDescription": "Verify Compliance Manager has full read access to audit records created by other users",
+      "automationLayer": "UI",
+      "automationCandidate": "Yes",
+      "tags": [
+        "audit-trail",
+        "access-control",
+        "high",
+        "rbac",
+        "security"
+      ]
+    },
+    {
       "id": "EEM-001",
       "module": "Exception Entry Management",
       "subModule": "Data Model & Field Validation",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that a new exception entry cannot be submitted when any mandatory field is left blank.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "data-model-field-validation",
-        "unspecified",
-        "functional"
+        "low",
+        "reason-evidence"
       ]
     },
     {
       "id": "EEM-002",
       "module": "Exception Entry Management",
       "subModule": "Data Model & Field Validation",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify the conditional behaviour for Original Script Name and Script Type when a non-Latin name is entered.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "data-model-field-validation",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -464,14 +482,14 @@
       "id": "EEM-003",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
-      "taskDescription": "Create a fresh exception entry from the list screen and confirm that it goes through maker-checker approval.",
+      "priority": "High",
+      "taskDescription": "Create a new exception entry from list detail and route it through maker-checker approval",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -480,14 +498,14 @@
       "id": "EEM-004",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Use the alert-driven path and verify that the entry form is prefilled from the screening alert.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
+        "low",
         "notifications"
       ]
     },
@@ -495,14 +513,14 @@
       "id": "EEM-005",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Block the submission when the customer is already present on an active Custom List or blacklist.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -510,14 +528,14 @@
       "id": "EEM-006",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check the warning path when the distinguishing evidence is too thin but the user chooses to continue.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
+        "low",
         "reason-evidence"
       ]
     },
@@ -525,14 +543,14 @@
       "id": "EEM-007",
       "module": "Exception Entry Management",
       "subModule": "Edit Entry",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Update an approved entry and verify that the change is sent back through the approval workflow.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "edit-entry",
-        "unspecified",
+        "high",
         "maker-checker"
       ]
     },
@@ -540,44 +558,44 @@
       "id": "EEM-008",
       "module": "Exception Entry Management",
       "subModule": "Edit Entry",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Make sure an entry sitting in Pending Approval cannot be edited until the request is resolved.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "edit-entry",
-        "unspecified",
-        "functional"
+        "high",
+        "reason-evidence"
       ]
     },
     {
       "id": "EEM-009",
       "module": "Exception Entry Management",
       "subModule": "Edit Entry",
-      "priority": "",
-      "taskDescription": "Validate that scope expansion sends the edit to a higher approval level than a simple reduction.",
+      "priority": "High",
+      "taskDescription": "Verify that scope expansion sends the edit to a higher approval level than a simple reduction.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "edit-entry",
-        "unspecified",
-        "functional"
+        "high",
+        "reason-evidence"
       ]
     },
     {
       "id": "EEM-010",
       "module": "Exception Entry Management",
       "subModule": "Suspend / Delete Entry",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Suspend a live entry and confirm that suppression stops as soon as the approval is completed.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "suspend-delete-entry",
-        "unspecified",
+        "high",
         "evaluation-engine"
       ]
     },
@@ -585,14 +603,14 @@
       "id": "EEM-011",
       "module": "Exception Entry Management",
       "subModule": "Suspend / Delete Entry",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Soft-delete an entry and verify that the system keeps the record for audit and history review.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "suspend-delete-entry",
-        "unspecified",
+        "high",
         "audit-trail"
       ]
     },
@@ -600,14 +618,14 @@
       "id": "EEM-012",
       "module": "Exception Entry Management",
       "subModule": "TTL & Entry Renewal",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that the pre-expiry reminder workflow fires before the TTL runs out.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "ttl-entry-renewal",
-        "unspecified",
+        "high",
         "notifications"
       ]
     },
@@ -615,14 +633,14 @@
       "id": "EEM-013",
       "module": "Exception Entry Management",
       "subModule": "TTL & Entry Renewal",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that an entry flips to Expired automatically and no longer suppresses matches once TTL has passed.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "ttl-entry-renewal",
-        "unspecified",
+        "high",
         "functional"
       ]
     },
@@ -630,29 +648,30 @@
       "id": "EEM-014",
       "module": "Exception Entry Management",
       "subModule": "TTL & Entry Renewal",
-      "priority": "",
-      "taskDescription": "Renew an expired entry and ensure the new request follows the standard approval cycle.",
+      "priority": "High",
+      "taskDescription": "Renew an expired exception entry through maker-checker approval",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "ttl-entry-renewal",
-        "unspecified",
-        "functional"
+        "high",
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "EEM-015",
       "module": "Exception Entry Management",
       "subModule": "Bulk Upload",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Upload a clean CSV batch and verify that the import reaches the approval stage with the correct summary.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "bulk-upload",
-        "unspecified",
+        "high",
         "export"
       ]
     },
@@ -660,28 +679,28 @@
       "id": "EEM-016",
       "module": "Exception Entry Management",
       "subModule": "Bulk Upload",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check how the system handles a mixed file that contains both valid and invalid rows.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "bulk-upload",
-        "unspecified"
+        "medium"
       ]
     },
     {
       "id": "EEM-017",
       "module": "Exception Entry Management",
       "subModule": "API Synchronisation",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that create, update, and delete actions received through API calls are captured in the audit trail.",
-      "automationLayer": "UI",
+      "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "api-synchronisation",
-        "unspecified",
+        "high",
         "api"
       ]
     },
@@ -689,14 +708,14 @@
       "id": "EEM-018",
       "module": "Exception Entry Management",
       "subModule": "API Synchronisation",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Push the API request rate past the configured limit and confirm that throttling kicks in.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "api-synchronisation",
-        "unspecified",
+        "high",
         "api"
       ]
     },
@@ -704,29 +723,30 @@
       "id": "EEM-019",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
-      "taskDescription": "Verify that a partially completed exception entry can be saved as Draft without entering the approval workflow.",
+      "priority": "Medium",
+      "taskDescription": "Save a partially completed exception entry as Draft without entering maker-checker approval",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
-        "functional"
+        "medium",
+        "rbac",
+        "security"
       ]
     },
     {
       "id": "EEM-020",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
-      "taskDescription": "Verify that a Draft with missing mandatory fields cannot be submitted for approval.",
+      "priority": "High",
+      "taskDescription": "Block submission of a Draft that still has missing mandatory fields",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
+        "high",
         "functional"
       ]
     },
@@ -734,29 +754,29 @@
       "id": "EEM-021",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
-      "taskDescription": "Verify that a saved Draft can be edited and updated values are retained.",
+      "priority": "Medium",
+      "taskDescription": "Edit and resave a Draft entry with updated field values",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
-        "functional"
+        "medium",
+        "reason-evidence"
       ]
     },
     {
       "id": "EEM-022",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that invalid updates in Draft prevent successful submission.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -764,14 +784,14 @@
       "id": "EEM-023",
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
-      "priority": "",
-      "taskDescription": "Verify that a completed Draft can be submitted and routed to Maker-Checker approval.",
+      "priority": "High",
+      "taskDescription": "Submit a completed Draft entry into the maker-checker approval queue",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -788,7 +808,7 @@
         "exception-entry-management",
         "data-model-field-validation",
         "high",
-        "notifications"
+        "functional"
       ]
     },
     {
@@ -818,7 +838,7 @@
         "exception-entry-management",
         "add-entry",
         "high",
-        "functional"
+        "reason-evidence"
       ]
     },
     {
@@ -842,7 +862,7 @@
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
       "priority": "Medium",
-      "taskDescription": "Verify checker requirement hint on entry form per Figma (CO/CM vs MLRO).",
+      "taskDescription": "Verify entry form displays correct checker routing hint for standard vs PEP/Other reason codes",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -867,21 +887,6 @@
         "high",
         "rbac",
         "security"
-      ]
-    },
-    {
-      "id": "EEM-030",
-      "module": "Exception Entry Management",
-      "subModule": "TTL & Entry Renewal",
-      "priority": "High",
-      "taskDescription": "Verify Renew on expired entry creates new approval submission.",
-      "automationLayer": "UI",
-      "automationCandidate": "Yes",
-      "tags": [
-        "exception-entry-management",
-        "ttl-entry-renewal",
-        "high",
-        "functional"
       ]
     },
     {
@@ -935,14 +940,14 @@
       "module": "Exception Entry Management",
       "subModule": "Edit Entry",
       "priority": "Medium",
-      "taskDescription": "Verify View History panel shows submission, approval, and suppression events per Figma.",
+      "taskDescription": "Verify View History panel shows submission, approval, and suppression events",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "edit-entry",
         "medium",
-        "audit-trail"
+        "evaluation-engine"
       ]
     },
     {
@@ -950,14 +955,14 @@
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
       "priority": "Low",
-      "taskDescription": "Verify match score colour-coded badge in entry grid per Figma.",
+      "taskDescription": "Verify match score colour-coded badge in entry grid",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "add-entry",
         "low",
-        "functional"
+        "reason-evidence"
       ]
     },
     {
@@ -987,7 +992,7 @@
         "exception-entry-management",
         "api-synchronisation",
         "medium",
-        "api"
+        "export"
       ]
     },
     {
@@ -1002,7 +1007,7 @@
         "exception-entry-management",
         "add-entry",
         "high",
-        "functional"
+        "reason-evidence"
       ]
     },
     {
@@ -1010,7 +1015,7 @@
       "module": "Exception Entry Management",
       "subModule": "Data Model & Field Validation",
       "priority": "Medium",
-      "taskDescription": "Verify Script Type values AR, ZH-CN, ZH-TW, CY, LA per FSD.",
+      "taskDescription": "Verify Script Type values AR, ZH-CN, ZH-TW, CY, LA",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1025,14 +1030,14 @@
       "module": "Exception Entry Management",
       "subModule": "Suspend / Delete Entry",
       "priority": "Medium",
-      "taskDescription": "Verify bulk suspend/delete of multiple entries is not supported per FSD.",
+      "taskDescription": "Verify bulk suspend/delete of multiple entries is not supported",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-entry-management",
         "suspend-delete-entry",
         "medium",
-        "functional"
+        "export"
       ]
     },
     {
@@ -1047,7 +1052,7 @@
         "exception-entry-management",
         "data-model-field-validation",
         "medium",
-        "functional"
+        "reason-evidence"
       ]
     },
     {
@@ -1070,7 +1075,7 @@
       "module": "Exception Entry Management",
       "subModule": "Add Entry",
       "priority": "High",
-      "taskDescription": "Verify True Hit confirmed alert cannot be submitted to CSEL per FSD scope.",
+      "taskDescription": "Verify True Hit confirmed alert cannot be submitted to CSEL scope.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1100,7 +1105,7 @@
       "module": "Exception Entry Management",
       "subModule": "Bulk Upload",
       "priority": "Medium",
-      "taskDescription": "Verify Download Template from bulk upload returns XLSX with all mandatory columns per FSD.",
+      "taskDescription": "Verify Download Template from bulk upload returns XLSX with all mandatory columns",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1144,14 +1149,14 @@
       "id": "ELM-001",
       "module": "Exception List Management",
       "subModule": "Landing Page",
-      "priority": "",
-      "taskDescription": "Verify exception list landing page opens with updated summary cards (Total lists, Active lists, Total exceptions, Pending approval), status tabs, list grid columns (including Exp 30d/Expired), and row actions per FSD v1.1 and Figma v3.",
+      "priority": "High",
+      "taskDescription": "Verify exception list landing page shows summary cards, status tabs, and list grid with required columns",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "landing-page",
-        "unspecified",
+        "high",
         "functional"
       ]
     },
@@ -1159,14 +1164,14 @@
       "id": "ELM-002",
       "module": "Exception List Management",
       "subModule": "Landing Page",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that list search, filter, sort, pagination, and file export behave as a single flow on the landing screen.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "landing-page",
-        "unspecified",
+        "low",
         "export"
       ]
     },
@@ -1174,14 +1179,14 @@
       "id": "ELM-003",
       "module": "Exception List Management",
       "subModule": "Create Exception List",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Create a new exception list with valid input and verify that it is routed through the approval flow.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "create-exception-list",
-        "unspecified",
+        "high",
         "functional"
       ]
     },
@@ -1189,14 +1194,14 @@
       "id": "ELM-004",
       "module": "Exception List Management",
       "subModule": "Create Exception List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that mandatory fields and duplicate list names are blocked at save time.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "create-exception-list",
-        "unspecified",
+        "low",
         "error-handling"
       ]
     },
@@ -1204,44 +1209,44 @@
       "id": "ELM-005",
       "module": "Exception List Management",
       "subModule": "Create Exception List",
-      "priority": "",
-      "taskDescription": "Validate the PEP exception list rule that the default review frequency cannot exceed six months.",
+      "priority": "Low",
+      "taskDescription": "Verify the PEP exception list rule that the default review frequency cannot exceed six months.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "create-exception-list",
-        "unspecified",
-        "functional"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "ELM-006",
       "module": "Exception List Management",
       "subModule": "View Exception List",
-      "priority": "",
-      "taskDescription": "Open a list in view mode and confirm that the metadata and entry sections match the FSD layout.",
+      "priority": "High",
+      "taskDescription": "Open exception list detail and confirm metadata panel, entry grid, and permitted actions",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "view-exception-list",
-        "unspecified",
-        "functional"
+        "high",
+        "reason-evidence"
       ]
     },
     {
       "id": "ELM-007",
       "module": "Exception List Management",
       "subModule": "View Exception List",
-      "priority": "",
-      "taskDescription": "Validate entry-level search, filter, sort, and export from the list detail screen.",
+      "priority": "Low",
+      "taskDescription": "Verify entry-level search, filter, sort, and export from the list detail screen.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "view-exception-list",
-        "unspecified",
+        "low",
         "export"
       ]
     },
@@ -1249,14 +1254,14 @@
       "id": "ELM-008",
       "module": "Exception List Management",
       "subModule": "Edit Exception List",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Change the allowed fields of an existing list and send the update through approval.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "edit-exception-list",
-        "unspecified",
+        "high",
         "functional"
       ]
     },
@@ -1264,14 +1269,14 @@
       "id": "ELM-009",
       "module": "Exception List Management",
       "subModule": "Edit Exception List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that the list category stays locked after creation and cannot be changed during edit.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "edit-exception-list",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1279,14 +1284,14 @@
       "id": "ELM-010",
       "module": "Exception List Management",
       "subModule": "Suspend / Re-activate List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Suspend a list and verify that the system warns the user before the action is committed.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "suspend-re-activate-list",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1294,14 +1299,14 @@
       "id": "ELM-011",
       "module": "Exception List Management",
       "subModule": "Suspend / Re-activate List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Bring back a suspended list and confirm that the earlier active entries return to use.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "suspend-re-activate-list",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1309,14 +1314,14 @@
       "id": "ELM-012",
       "module": "Exception List Management",
       "subModule": "Delete Exception List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Delete a list through the supported soft-delete flow and verify that the reason is mandatory.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "delete-exception-list",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1324,14 +1329,14 @@
       "id": "ELM-013",
       "module": "Exception List Management",
       "subModule": "Delete Exception List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that deleted lists are retained as soft-deleted records and are not physically purged.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "delete-exception-list",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1339,14 +1344,14 @@
       "id": "ELM-014",
       "module": "Exception List Management",
       "subModule": "Landing Page",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that landing page counters recalculate correctly after entry status changes.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "landing-page",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1354,14 +1359,14 @@
       "id": "ELM-015",
       "module": "Exception List Management",
       "subModule": "Landing Page",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that dashboard counters update after approval and rejection actions.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "landing-page",
-        "unspecified",
+        "high",
         "maker-checker"
       ]
     },
@@ -1369,14 +1374,14 @@
       "id": "ELM-016",
       "module": "Exception List Management",
       "subModule": "Landing Page",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that dashboard counters remain consistent after page refresh and re-login.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "landing-page",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1384,14 +1389,14 @@
       "id": "ELM-017",
       "module": "Exception List Management",
       "subModule": "Create Exception List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that List Name accepts exactly 100 characters.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "create-exception-list",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1399,14 +1404,14 @@
       "id": "ELM-018",
       "module": "Exception List Management",
       "subModule": "Create Exception List",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that List Name exceeding 100 characters is rejected.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "create-exception-list",
-        "unspecified",
+        "high",
         "maker-checker"
       ]
     },
@@ -1414,14 +1419,14 @@
       "id": "ELM-019",
       "module": "Exception List Management",
       "subModule": "Create Exception List",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that Description accepts exactly 500 characters.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "create-exception-list",
-        "unspecified",
+        "low",
         "functional"
       ]
     },
@@ -1429,14 +1434,14 @@
       "id": "ELM-020",
       "module": "Exception List Management",
       "subModule": "Create Exception List",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that Description exceeding 500 characters is rejected.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-list-management",
         "create-exception-list",
-        "unspecified",
+        "high",
         "maker-checker"
       ]
     },
@@ -1445,7 +1450,7 @@
       "module": "Exception List Management",
       "subModule": "Landing Page",
       "priority": "High",
-      "taskDescription": "Verify landing page summary cards display Total lists, Active lists, Total exceptions, and Pending approval per updated Figma.",
+      "taskDescription": "Verify landing page summary cards display Total lists, Active lists, Total exceptions, and Pending approval",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1460,7 +1465,7 @@
       "module": "Exception List Management",
       "subModule": "Landing Page",
       "priority": "High",
-      "taskDescription": "Verify list status tabs (Active, Suspended, All) filter the landing grid per updated Figma.",
+      "taskDescription": "Verify list status tabs (Active, Suspended, All) filter the landing grid",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1475,7 +1480,7 @@
       "module": "Exception List Management",
       "subModule": "Landing Page",
       "priority": "Medium",
-      "taskDescription": "Verify landing grid columns include Exp 30d and Expired entry counters per FSD and Figma.",
+      "taskDescription": "Verify landing grid columns include Exp 30d and Expired entry counters aligned to list detail",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1521,7 +1526,7 @@
       "module": "Exception List Management",
       "subModule": "Create Exception List",
       "priority": "High",
-      "taskDescription": "Verify Reason for Creation is mandatory and retained in audit log per FSD.",
+      "taskDescription": "Verify Reason for Creation is mandatory and retained in audit log",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1536,7 +1541,7 @@
       "module": "Exception List Management",
       "subModule": "Create Exception List",
       "priority": "High",
-      "taskDescription": "Verify 24 months default TTL option enforces MLRO sign-off requirement per FSD.",
+      "taskDescription": "Verify 24 months default TTL option enforces MLRO sign-off requirement",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1552,7 +1557,7 @@
       "module": "Exception List Management",
       "subModule": "Landing Page",
       "priority": "Medium",
-      "taskDescription": "Verify pagination supports 10, 25, 50, and 100 rows per page per FSD.",
+      "taskDescription": "Verify pagination supports 10, 25, 50, and 100 rows per page",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1567,7 +1572,7 @@
       "module": "Exception List Management",
       "subModule": "Landing Page",
       "priority": "Medium",
-      "taskDescription": "Verify Bulk upload is accessible from landing page header per updated Figma.",
+      "taskDescription": "Verify Bulk upload is accessible from landing page header",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1582,7 +1587,7 @@
       "module": "Exception List Management",
       "subModule": "Landing Page",
       "priority": "Low",
-      "taskDescription": "Verify sidebar menu search filters navigation items per updated Figma shell.",
+      "taskDescription": "Verify sidebar menu search filters navigation menu items.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -1596,14 +1601,14 @@
       "id": "ERR-001",
       "module": "Exception Register Report",
       "subModule": "Executive Summary",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Verify that the report opens with the correct summary cards and section layout.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "executive-summary",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1611,14 +1616,14 @@
       "id": "ERR-002",
       "module": "Exception Register Report",
       "subModule": "Executive Summary",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that the total active exceptions count matches the data shown in the report table.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "executive-summary",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1626,14 +1631,14 @@
       "id": "ERR-003",
       "module": "Exception Register Report",
       "subModule": "Executive Summary",
-      "priority": "",
-      "taskDescription": "Validate the New This Month metric against newly created exception items.",
+      "priority": "Medium",
+      "taskDescription": "Verify the New This Month metric against newly created exception items.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "executive-summary",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1641,14 +1646,14 @@
       "id": "ERR-004",
       "module": "Exception Register Report",
       "subModule": "Executive Summary",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Confirm that the Suppressions This Month metric increments when alerts are suppressed.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "executive-summary",
-        "unspecified",
+        "medium",
         "evaluation-engine"
       ]
     },
@@ -1656,14 +1661,14 @@
       "id": "ERR-005",
       "module": "Exception Register Report",
       "subModule": "Executive Summary",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check the Expiring Within 30 Days count and sample list entries.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "executive-summary",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1671,44 +1676,44 @@
       "id": "ERR-006",
       "module": "Exception Register Report",
       "subModule": "Reason Code Analysis",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Verify that the Entries by Reason Code breakdown is displayed with percentages.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "reason-code-analysis",
-        "unspecified",
-        "reason-evidence"
+        "medium",
+        "maker-checker"
       ]
     },
     {
       "id": "ERR-007",
       "module": "Exception Register Report",
       "subModule": "Reason Code Analysis",
-      "priority": "",
-      "taskDescription": "Validate that clicking a reason code row opens the corresponding filtered view or detail context.",
+      "priority": "Medium",
+      "taskDescription": "Verify that clicking a reason code row opens the corresponding filtered view or detail context.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "reason-code-analysis",
-        "unspecified",
-        "reason-evidence"
+        "medium",
+        "maker-checker"
       ]
     },
     {
       "id": "ERR-008",
       "module": "Exception Register Report",
       "subModule": "Watchlist Analysis",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that the watchlist analysis section shows the correct top watchlist sources.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "watchlist-analysis",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1716,14 +1721,14 @@
       "id": "ERR-009",
       "module": "Exception Register Report",
       "subModule": "Export & Delivery",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Confirm that the report export button creates a CSV file with the same visible data.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "export-delivery",
-        "unspecified",
+        "medium",
         "export"
       ]
     },
@@ -1731,14 +1736,14 @@
       "id": "ERR-010",
       "module": "Exception Register Report",
       "subModule": "Export & Delivery",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Confirm that the PDF export mirrors the report layout and includes the header information.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "export-delivery",
-        "unspecified",
+        "medium",
         "export"
       ]
     },
@@ -1746,14 +1751,14 @@
       "id": "ERR-011",
       "module": "Exception Register Report",
       "subModule": "Filters & Pagination",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Verify that filters for list name or category narrow the report results correctly.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "filters-pagination",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1761,14 +1766,14 @@
       "id": "ERR-012",
       "module": "Exception Register Report",
       "subModule": "Filters & Pagination",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that status filters return the expected list states such as Active or Suspended.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "filters-pagination",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1776,14 +1781,14 @@
       "id": "ERR-013",
       "module": "Exception Register Report",
       "subModule": "Filters & Pagination",
-      "priority": "",
-      "taskDescription": "Validate the page-size control so the report shows the requested number of rows.",
+      "priority": "Medium",
+      "taskDescription": "Verify the page-size control so the report shows the requested number of rows.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "filters-pagination",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1791,14 +1796,14 @@
       "id": "ERR-014",
       "module": "Exception Register Report",
       "subModule": "Filters & Pagination",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Confirm that pagination navigates between report pages without losing the selected filters.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "filters-pagination",
-        "unspecified",
+        "medium",
         "reporting"
       ]
     },
@@ -1806,14 +1811,14 @@
       "id": "ERR-015",
       "module": "Exception Register Report",
       "subModule": "Data Integrity & Layout",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that date-related values are displayed in the expected report format.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "data-integrity-layout",
-        "unspecified",
+        "high",
         "reporting"
       ]
     },
@@ -1821,14 +1826,14 @@
       "id": "ERR-016",
       "module": "Exception Register Report",
       "subModule": "Data Integrity & Layout",
-      "priority": "",
-      "taskDescription": "Validate that very long list names do not break the report layout.",
+      "priority": "High",
+      "taskDescription": "Verify that very long list names do not break the report layout.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "data-integrity-layout",
-        "unspecified",
+        "high",
         "reporting"
       ]
     },
@@ -1836,14 +1841,14 @@
       "id": "ERR-017",
       "module": "Exception Register Report",
       "subModule": "Data Integrity & Layout",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that special characters and punctuation in list names are rendered safely.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "data-integrity-layout",
-        "unspecified",
+        "high",
         "reporting"
       ]
     },
@@ -1851,14 +1856,14 @@
       "id": "ERR-018",
       "module": "Exception Register Report",
       "subModule": "Data Integrity & Layout",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that the report handles an empty result set with a proper no-data message.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "data-integrity-layout",
-        "unspecified",
+        "high",
         "reporting"
       ]
     },
@@ -1866,14 +1871,14 @@
       "id": "ERR-019",
       "module": "Exception Register Report",
       "subModule": "Permissions & Refresh",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a user without report permission cannot export or view the register data.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "permissions-refresh",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -1882,14 +1887,14 @@
       "id": "ERR-020",
       "module": "Exception Register Report",
       "subModule": "Permissions & Refresh",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that the report refreshes to show recent screening activity after new events occur.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "permissions-refresh",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -1898,14 +1903,14 @@
       "id": "ERR-021",
       "module": "Exception Register Report",
       "subModule": "Permissions & Refresh",
-      "priority": "",
-      "taskDescription": "Validate that report values are consistent across screen refresh and browser reopen.",
+      "priority": "High",
+      "taskDescription": "Verify that report values are consistent across screen refresh and browser reopen.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "permissions-refresh",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -1914,14 +1919,14 @@
       "id": "ERR-022",
       "module": "Exception Register Report",
       "subModule": "Performance & Period Selection",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that the report summary does not mix current month and historical month totals.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "performance-period-selection",
-        "unspecified",
+        "medium",
         "performance"
       ]
     },
@@ -1929,14 +1934,14 @@
       "id": "ERR-023",
       "module": "Exception Register Report",
       "subModule": "Performance & Period Selection",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Confirm that the report can be opened without visible performance lag on a normal dataset.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "performance-period-selection",
-        "unspecified",
+        "medium",
         "performance"
       ]
     },
@@ -1944,14 +1949,14 @@
       "id": "ERR-024",
       "module": "Exception Register Report",
       "subModule": "Performance & Period Selection",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Verify that the report header shows the correct month label and delivery context.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "performance-period-selection",
-        "unspecified",
+        "medium",
         "performance"
       ]
     },
@@ -1959,14 +1964,14 @@
       "id": "ERR-025",
       "module": "Exception Register Report",
       "subModule": "Performance & Period Selection",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that the report keeps the visible list ordering when no sort is changed.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "performance-period-selection",
-        "unspecified",
+        "medium",
         "performance"
       ]
     },
@@ -1975,14 +1980,15 @@
       "module": "Exception Register Report",
       "subModule": "Executive Summary",
       "priority": "High",
-      "taskDescription": "Verify Executive Summary includes renewals, expiries, and pending requests per FSD.",
+      "taskDescription": "Verify Executive Summary includes renewals, expiries, and pending requests",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "executive-summary",
         "high",
-        "reporting"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2020,14 +2026,15 @@
       "module": "Exception Register Report",
       "subModule": "Active Entries Listing",
       "priority": "High",
-      "taskDescription": "Verify Active Exception Entries full list section shows required columns per FSD.",
+      "taskDescription": "Verify Active Exception Entries section lists all required columns with accurate data",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-register-report",
         "active-entries-listing",
         "high",
-        "reporting"
+        "rbac",
+        "security"
       ]
     },
     {
@@ -2035,7 +2042,7 @@
       "module": "Exception Register Report",
       "subModule": "Pending Requests Section",
       "priority": "High",
-      "taskDescription": "Verify Pending Requests section lists outstanding maker-checker approvals at report generation date.",
+      "taskDescription": "Verify Pending Requests section reflects outstanding maker-checker items at report generation time",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -2050,14 +2057,14 @@
       "id": "EVAL-001",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that a screening hit is suppressed only when the customer ID, watchlist scope, status, and expiry checks all pass together.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "high",
         "evaluation-engine"
       ]
     },
@@ -2065,14 +2072,14 @@
       "id": "EVAL-002",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that a watchlist outside the configured scope does not suppress the alert even when the customer ID matches.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2080,14 +2087,14 @@
       "id": "EVAL-003",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that a suspended exception entry is ignored during evaluation even when the rest of the data matches.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2095,14 +2102,14 @@
       "id": "EVAL-004",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
-      "taskDescription": "Validate that an expired exception does not suppress a new hit after the expiry date has passed.",
+      "priority": "High",
+      "taskDescription": "Verify that an expired exception does not suppress a new hit after the expiry date has passed.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "high",
         "evaluation-engine"
       ]
     },
@@ -2110,14 +2117,14 @@
       "id": "EVAL-005",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check the boundary case where the expiry date is exactly today and no suppression should be applied.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "high",
         "evaluation-engine"
       ]
     },
@@ -2125,14 +2132,14 @@
       "id": "EVAL-006",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that a customer ID mismatch blocks suppression even when the name and watchlist appear to match.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2140,14 +2147,14 @@
       "id": "EVAL-007",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that a missing customer ID on the alert does not allow the exception to suppress the hit.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2155,14 +2162,14 @@
       "id": "EVAL-008",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that a blank watchlist scope on the exception record prevents suppression.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2170,14 +2177,14 @@
       "id": "EVAL-009",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that inactive or draft status records are ignored during evaluation.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2185,14 +2192,14 @@
       "id": "EVAL-010",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
-      "taskDescription": "Validate that one valid exception among multiple candidate records is enough to suppress the hit.",
+      "priority": "Low",
+      "taskDescription": "Verify that one valid exception among multiple candidate records is enough to suppress the hit.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2200,14 +2207,14 @@
       "id": "EVAL-011",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that the suppression event is written to audit when an alert is successfully suppressed.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "high",
         "audit-trail"
       ]
     },
@@ -2215,14 +2222,14 @@
       "id": "EVAL-012",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that a small spelling change still matches when the score stays above the configured threshold.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2230,14 +2237,14 @@
       "id": "EVAL-013",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that a name variation below the configured threshold does not apply the exception.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2245,14 +2252,14 @@
       "id": "EVAL-014",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check the boundary case where the match score is exactly equal to the configured threshold.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2260,14 +2267,14 @@
       "id": "EVAL-015",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that phonetic matching catches a sound-alike name even when the spelling is different.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2275,14 +2282,14 @@
       "id": "EVAL-016",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that fuzzy matching never overrides an exact customer ID mismatch.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2290,14 +2297,14 @@
       "id": "EVAL-017",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that leading and trailing spaces do not break a valid fuzzy name match.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "audit-trail"
       ]
     },
@@ -2305,14 +2312,14 @@
       "id": "EVAL-018",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that a case-only difference does not stop a valid name comparison.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2320,14 +2327,14 @@
       "id": "EVAL-019",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that punctuation changes such as hyphens or apostrophes are handled without a false negative.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2335,14 +2342,14 @@
       "id": "EVAL-020",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that an inserted or missing middle name is still evaluated correctly by the matching engine.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2350,14 +2357,14 @@
       "id": "EVAL-021",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
-      "taskDescription": "Validate behaviour for a very long customer name so the matching logic does not fail on length.",
+      "priority": "Low",
+      "taskDescription": "Verify behaviour for a very long customer name so the matching logic does not fail on length.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2365,14 +2372,14 @@
       "id": "EVAL-022",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that names containing diacritics or special characters are handled safely.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2380,14 +2387,14 @@
       "id": "EVAL-023",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that an empty incoming name cannot be used to trigger a false suppression.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2395,14 +2402,14 @@
       "id": "EVAL-024",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that a common short-form spelling does not bypass the customer ID rule.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2410,14 +2417,14 @@
       "id": "EVAL-025",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that Arabic-script names are matched correctly when the alert and the exception both carry the original script.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2425,14 +2432,14 @@
       "id": "EVAL-026",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
-      "taskDescription": "Validate Arabic prefix handling for names such as Al-, El-, Bin-, and Bint-.",
+      "priority": "Low",
+      "taskDescription": "Verify Arabic prefix handling for names such as Al-, El-, Bin-, and Bint-.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2440,14 +2447,14 @@
       "id": "EVAL-027",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that an Arabic-script alert does not get suppressed when the exception stores only a Latin transliteration.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2455,14 +2462,14 @@
       "id": "EVAL-028",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that mixed Latin and Arabic text is stored and displayed without breaking UTF-8 handling.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2470,14 +2477,14 @@
       "id": "EVAL-029",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that Simplified Chinese names are matched exactly when both sides use the same script.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2485,14 +2492,14 @@
       "id": "EVAL-030",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
-      "taskDescription": "Validate that Traditional Chinese text is handled as a separate script and matched correctly when stored the same way.",
+      "priority": "Low",
+      "taskDescription": "Verify that Traditional Chinese text is handled as a separate script and matched correctly when stored the same way.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2500,14 +2507,14 @@
       "id": "EVAL-031",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that Cyrillic names are matched correctly without losing characters during processing.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2515,14 +2522,14 @@
       "id": "EVAL-032",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that the system stores and renders UTF-8 characters without corruption after evaluation.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2530,14 +2537,14 @@
       "id": "EVAL-033",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that the engine uses the Latin name when the alert arrives in Latin script and the exception stores both versions.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2545,14 +2552,14 @@
       "id": "EVAL-034",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
-      "taskDescription": "Validate that whitespace differences in a multilingual name do not cause a false mismatch.",
+      "priority": "Low",
+      "taskDescription": "Verify that whitespace differences in a multilingual name do not cause a false mismatch.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2560,14 +2567,14 @@
       "id": "EVAL-035",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that a multilingual entry with multiple name representations still suppresses the hit when the correct version matches.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2575,14 +2582,14 @@
       "id": "EVAL-036",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that a threshold change on the exception list immediately affects the decision outcome.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2590,14 +2597,14 @@
       "id": "EVAL-037",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
-      "taskDescription": "Validate that the engine selects the valid active entry when duplicate entries exist for the same customer and watchlist.",
+      "priority": "Low",
+      "taskDescription": "Verify that the engine selects the valid active entry when duplicate entries exist for the same customer and watchlist.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2605,14 +2612,14 @@
       "id": "EVAL-038",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Evaluation Criteria",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that an exception is not applied when the customer data is incomplete even though the watchlist matches.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "evaluation-criteria",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2620,14 +2627,14 @@
       "id": "EVAL-039",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Fuzzy Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that the system does not suppress a hit when the name score is close to, but still below, the threshold after normalisation.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "fuzzy-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2635,14 +2642,14 @@
       "id": "EVAL-040",
       "module": "Exception Evaluation & Matching Logic",
       "subModule": "Native Script & Multilingual Matching",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that multilingual search results remain stable after switching between screens or refreshing the page.",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
         "exception-evaluation-matching-logic",
         "native-script-multilingual-matching",
-        "unspecified",
+        "low",
         "evaluation-engine"
       ]
     },
@@ -2665,14 +2672,14 @@
       "id": "MCW-001",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Checker Role Enforcement",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that the Approve and Reject actions are not available to a user who does not have a permitted checker role for a standard CSEL request.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "checker-role-enforcement",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2681,14 +2688,14 @@
       "id": "MCW-002",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Checker Role Enforcement",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that a Compliance Officer can approve a standard exception request when the user holds the correct checker role.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "checker-role-enforcement",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2697,14 +2704,14 @@
       "id": "MCW-003",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Checker Role Enforcement",
-      "priority": "",
-      "taskDescription": "Validate that a Compliance Manager can approve a standard request in the same way as a Compliance Officer.",
+      "priority": "High",
+      "taskDescription": "Verify that a Compliance Manager can approve a standard request in the same way as a Compliance Officer.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "checker-role-enforcement",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2713,14 +2720,14 @@
       "id": "MCW-004",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Checker Role Enforcement",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that a peer analyst cannot process a request even if the user can open the queue screen.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "checker-role-enforcement",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2729,14 +2736,14 @@
       "id": "MCW-005",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Checker Role Enforcement",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that a PEP-related request can be approved only by the MLRO or a designated deputy.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "checker-role-enforcement",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2745,14 +2752,14 @@
       "id": "MCW-006",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Checker Role Enforcement",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that an exception entry tagged with the 'Other' reason code is restricted to MLRO approval only.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "checker-role-enforcement",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2761,14 +2768,14 @@
       "id": "MCW-007",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Checker Role Enforcement",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that renewal of an entry older than 12 months is routed to MLRO approval.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "checker-role-enforcement",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2777,14 +2784,14 @@
       "id": "MCW-008",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Queue Views & Ownership",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that a request submitted by the logged-in user is listed under My Requests and not presented for self-approval.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "queue-views-ownership",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2793,14 +2800,14 @@
       "id": "MCW-009",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Queue Views & Ownership",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that a checker cannot approve their own request even when the checker role matches the request type.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "queue-views-ownership",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2809,14 +2816,14 @@
       "id": "MCW-010",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Queue Views & Ownership",
-      "priority": "",
-      "taskDescription": "Validate that All Requests shows every pending item that is waiting for checker action.",
+      "priority": "High",
+      "taskDescription": "Verify that All Requests shows every pending item that is waiting for checker action.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "queue-views-ownership",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2825,14 +2832,14 @@
       "id": "MCW-011",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Queue Views & Ownership",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that the queue list is refreshed after an approval so the approved item disappears from the pending view.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "queue-views-ownership",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2841,14 +2848,14 @@
       "id": "MCW-012",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Approval / Rejection Handling",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that approving a standard request changes the workflow status to Approved and activates the exception.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "approval-rejection-handling",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2857,14 +2864,14 @@
       "id": "MCW-013",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Approval / Rejection Handling",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that rejecting a request changes its workflow state to Rejected and prevents the exception from becoming active.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "approval-rejection-handling",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2873,14 +2880,14 @@
       "id": "MCW-014",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Approval / Rejection Handling",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that a rejection cannot be submitted without a clear reason or comment when the process requires justification.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "approval-rejection-handling",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2889,14 +2896,14 @@
       "id": "MCW-015",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Approval / Rejection Handling",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that two approval attempts on the same request are not processed twice.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "approval-rejection-handling",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2905,14 +2912,14 @@
       "id": "MCW-016",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Approval / Rejection Handling",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a rejected request cannot be moved back to pending from the checker screen without a fresh maker submission.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "approval-rejection-handling",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2921,14 +2928,14 @@
       "id": "MCW-017",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "SLA & Escalation",
-      "priority": "",
-      "taskDescription": "Validate that the onboarding SLA countdown starts from the maker submission timestamp and not from the time the request was opened.",
+      "priority": "High",
+      "taskDescription": "Verify that the onboarding SLA countdown starts from the maker submission timestamp and not from the time the request was opened.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "sla-escalation",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2937,14 +2944,14 @@
       "id": "MCW-018",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "SLA & Escalation",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that an onboarding request shows the 12-hour escalation warning before the 24-hour SLA breach.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "sla-escalation",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2953,14 +2960,14 @@
       "id": "MCW-019",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "SLA & Escalation",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that an onboarding request crossing the 24-hour SLA produces the required escalation notification path.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "sla-escalation",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2969,14 +2976,14 @@
       "id": "MCW-020",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "SLA & Escalation",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that periodic re-screening and event-driven requests use the 48-hour SLA rule.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "sla-escalation",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -2985,14 +2992,14 @@
       "id": "MCW-021",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "SLA & Escalation",
-      "priority": "",
-      "taskDescription": "Validate the 24-hour escalation warning for periodic and event-driven requests before the 48-hour breach.",
+      "priority": "High",
+      "taskDescription": "Verify the 24-hour escalation warning for periodic and event-driven requests before the 48-hour breach.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "sla-escalation",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3001,14 +3008,14 @@
       "id": "MCW-022",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "SLA & Escalation",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that escalation notifications are generated only once for the same request at the configured SLA threshold.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "sla-escalation",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3017,14 +3024,14 @@
       "id": "MCW-023",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Special Approval Rules",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that a request cannot be approved by a user who is not available in the queue because of role restriction, even if the request is searchable by ID.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "special-approval-rules",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3033,14 +3040,14 @@
       "id": "MCW-024",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Special Approval Rules",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a request submitted by a maker is shown to the checker with the correct pending state and not auto-approved by system refresh.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "special-approval-rules",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3049,14 +3056,14 @@
       "id": "MCW-025",
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Special Approval Rules",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that simultaneous approval attempts from two sessions do not create conflicting workflow states.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "maker-checker-approval-workflow",
         "special-approval-rules",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3066,7 +3073,7 @@
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Approval / Rejection Handling",
       "priority": "Medium",
-      "taskDescription": "Verify checker approval success modal shows action, submitter, timestamp, Pending status per Figma.",
+      "taskDescription": "Verify checker approval success modal shows action, submitter, timestamp, Pending status",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3082,7 +3089,7 @@
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Approval / Rejection Handling",
       "priority": "High",
-      "taskDescription": "Verify mandatory comment modal blocks proceed without comment per Figma.",
+      "taskDescription": "Verify mandatory comment modal blocks proceed without comment",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3098,7 +3105,7 @@
       "module": "Maker-Checker Approval Workflow",
       "subModule": "Queue Views & Ownership",
       "priority": "High",
-      "taskDescription": "Verify MC request cards show SLA timer, urgency, and escalation warning per Figma.",
+      "taskDescription": "Verify MC request cards show SLA timer, urgency, and escalation warning",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3197,7 +3204,7 @@
         "non-functional-requirements",
         "data-retention",
         "high",
-        "maker-checker"
+        "functional"
       ]
     },
     {
@@ -3205,7 +3212,7 @@
       "module": "Non-Functional Requirements",
       "subModule": "Evidence Security",
       "priority": "Medium",
-      "taskDescription": "Verify evidence attachments store SHA-256 checksum per FSD.",
+      "taskDescription": "Verify evidence attachments store SHA-256 checksum",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3252,7 +3259,7 @@
       "module": "Non-Functional Requirements",
       "subModule": "Multilingual Support",
       "priority": "Medium",
-      "taskDescription": "Verify diacritic normalisation applied during multilingual name matching per FSD.",
+      "taskDescription": "Verify diacritic normalisation applied during multilingual name matching",
       "automationLayer": "API + UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3266,14 +3273,14 @@
       "id": "NTF-001",
       "module": "Notification Framework",
       "subModule": "Submission & Approval Alerts",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a new exception submission creates an immediate notification for the compliance team.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "submission-approval-alerts",
-        "unspecified",
+        "high",
         "notifications"
       ]
     },
@@ -3281,14 +3288,14 @@
       "id": "NTF-002",
       "module": "Notification Framework",
       "subModule": "Submission & Approval Alerts",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that approval of an exception entry notifies the submitting analyst without delay.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "submission-approval-alerts",
-        "unspecified",
+        "high",
         "notifications"
       ]
     },
@@ -3296,14 +3303,14 @@
       "id": "NTF-003",
       "module": "Notification Framework",
       "subModule": "Submission & Approval Alerts",
-      "priority": "",
-      "taskDescription": "Validate that rejection of an exception entry is pushed back to the maker with the checker comment included.",
+      "priority": "High",
+      "taskDescription": "Verify that rejection of an exception entry is pushed back to the maker with the checker comment included.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "submission-approval-alerts",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3312,14 +3319,14 @@
       "id": "NTF-004",
       "module": "Notification Framework",
       "subModule": "SLA Escalation Alerts",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that onboarding requests that stay pending for 12 hours trigger the escalation email to the correct stakeholders.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "sla-escalation-alerts",
-        "unspecified",
+        "medium",
         "notifications"
       ]
     },
@@ -3327,14 +3334,14 @@
       "id": "NTF-005",
       "module": "Notification Framework",
       "subModule": "SLA Escalation Alerts",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Verify that periodic or event-driven requests that remain pending beyond 24 hours generate the daily escalation email at 09:00.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "sla-escalation-alerts",
-        "unspecified",
+        "medium",
         "notifications"
       ]
     },
@@ -3342,14 +3349,14 @@
       "id": "NTF-006",
       "module": "Notification Framework",
       "subModule": "Expiry Reminder Alerts",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Ensure that an entry expiring in 30 days alerts both the list owner and the compliance officer.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "expiry-reminder-alerts",
-        "unspecified",
+        "high",
         "notifications"
       ]
     },
@@ -3357,14 +3364,14 @@
       "id": "NTF-007",
       "module": "Notification Framework",
       "subModule": "Expiry Reminder Alerts",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that the 7-day expiry warning is delivered as a second escalation, not as a duplicate of the 30-day reminder.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "expiry-reminder-alerts",
-        "unspecified",
+        "high",
         "notifications"
       ]
     },
@@ -3372,14 +3379,14 @@
       "id": "NTF-008",
       "module": "Notification Framework",
       "subModule": "Expiry Reminder Alerts",
-      "priority": "",
-      "taskDescription": "Validate that on the expiry date the system notifies the compliance users and clearly indicates that screening alerts are re-activated.",
+      "priority": "High",
+      "taskDescription": "Verify that on the expiry date the system notifies the compliance users and clearly indicates that screening alerts are re-activated.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "expiry-reminder-alerts",
-        "unspecified",
+        "high",
         "notifications"
       ]
     },
@@ -3387,14 +3394,14 @@
       "id": "NTF-009",
       "module": "Notification Framework",
       "subModule": "Material Identity Change Alerts",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that a material identity change immediately sends an auto-suspension notification to the Compliance Officer.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "material-identity-change-alerts",
-        "unspecified",
+        "medium",
         "notifications"
       ]
     },
@@ -3402,14 +3409,14 @@
       "id": "NTF-010",
       "module": "Notification Framework",
       "subModule": "Suppression Silence Rule",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that suppressed alert events do not create noisy user notifications and are only written to the audit trail.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "suppression-silence-rule",
-        "unspecified",
+        "high",
         "audit-trail"
       ]
     },
@@ -3417,14 +3424,14 @@
       "id": "NTF-011",
       "module": "Notification Framework",
       "subModule": "Bulk Upload Alerts",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Verify that a successful bulk upload sends only the maker-side success notification and does not notify unrelated roles.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "bulk-upload-alerts",
-        "unspecified",
+        "medium",
         "rbac",
         "security"
       ]
@@ -3433,14 +3440,14 @@
       "id": "NTF-012",
       "module": "Notification Framework",
       "subModule": "Bulk Upload Alerts",
-      "priority": "",
-      "taskDescription": "Validate that a bulk upload with validation errors sends an immediate failure notification and exposes the error summary.",
+      "priority": "Medium",
+      "taskDescription": "Verify that a bulk upload with validation errors sends an immediate failure notification and exposes the error summary.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "bulk-upload-alerts",
-        "unspecified",
+        "medium",
         "notifications"
       ]
     },
@@ -3448,14 +3455,14 @@
       "id": "NTF-013",
       "module": "Notification Framework",
       "subModule": "Monthly Report Delivery",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Confirm that the monthly CSEL Register Report reaches the Compliance Manager and MLRO as a PDF email attachment.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "monthly-report-delivery",
-        "unspecified",
+        "medium",
         "rbac",
         "security"
       ]
@@ -3464,14 +3471,14 @@
       "id": "NTF-014",
       "module": "Notification Framework",
       "subModule": "Conflict Block Alerts",
-      "priority": "",
+      "priority": "Medium",
       "taskDescription": "Check that a True-Hit Conflict blocking event notifies both the submitting analyst and the compliance officer immediately.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "conflict-block-alerts",
-        "unspecified",
+        "medium",
         "notifications"
       ]
     },
@@ -3479,14 +3486,14 @@
       "id": "NTF-015",
       "module": "Notification Framework",
       "subModule": "Notification Timing Validation",
-      "priority": "",
-      "taskDescription": "Ensure that notification timing follows the FSD rules and not an earlier or later schedule.",
+      "priority": "Medium",
+      "taskDescription": "Ensure that notification timing follows the segregation-of-duties rules and not an earlier or later schedule.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "notification-framework",
         "notification-timing-validation",
-        "unspecified",
+        "medium",
         "notifications"
       ]
     },
@@ -3495,7 +3502,7 @@
       "module": "Notification Framework",
       "subModule": "Alert Delivery & Timing",
       "priority": "Low",
-      "taskDescription": "Verify notification bell supports Mark all read and unread indicator per Figma.",
+      "taskDescription": "Verify notification bell shows unread indicator and Mark all read clears unread styling",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3510,7 +3517,7 @@
       "module": "Notification Framework",
       "subModule": "Alert Delivery & Timing",
       "priority": "Medium",
-      "taskDescription": "Verify onboarding exception notifications carry higher priority flag per FSD.",
+      "taskDescription": "Verify onboarding exception notifications carry higher priority flag",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3525,7 +3532,7 @@
       "module": "Notification Framework",
       "subModule": "Alert Delivery & Timing",
       "priority": "High",
-      "taskDescription": "Verify list suspension warns investigation team about screening alert volume increase per FSD.",
+      "taskDescription": "Verify list suspension warns investigation team about screening alert volume increase",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3540,7 +3547,7 @@
       "module": "Notification Framework",
       "subModule": "User Preferences",
       "priority": "Medium",
-      "taskDescription": "Verify notification delivery channels are configurable per user in system Settings per FSD.",
+      "taskDescription": "Verify notification delivery channels are configurable per user in system Settings",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
@@ -3554,14 +3561,14 @@
       "id": "RBAC-001",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a Compliance Officer can see the full CSEL menu and all action controls required for checker operations.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3570,14 +3577,14 @@
       "id": "RBAC-002",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that an MLRO can access all CSEL maintenance screens and handle checker decisions for PEP or other restricted cases.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3586,14 +3593,14 @@
       "id": "RBAC-003",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that a Compliance Manager has unrestricted CSEL visibility and checker rights on the approved workflow screens.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3602,14 +3609,14 @@
       "id": "RBAC-004",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a Risk Analyst is restricted to read-only list access and cannot start entry maintenance actions.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3618,14 +3625,14 @@
       "id": "RBAC-005",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
-      "taskDescription": "Validate that a KYC Analyst can view only their own submissions and cannot use checker functions.",
+      "priority": "High",
+      "taskDescription": "Verify that a KYC Analyst can view only their own submissions and cannot use checker functions.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3634,14 +3641,14 @@
       "id": "RBAC-006",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that a Level 1 Investigator has the same narrow access pattern as a KYC Analyst.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3650,14 +3657,14 @@
       "id": "RBAC-007",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Verify that a Level 2 Investigator can create and maintain entries but still cannot approve or delete a request as a checker.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3666,14 +3673,14 @@
       "id": "RBAC-008",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that the System Administrator can manage lists and entries, but does not receive bulk upload permission or checker authority.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3682,14 +3689,14 @@
       "id": "RBAC-009",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Make sure a non-checker role cannot see or use approval controls even when a pending request is opened directly.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3698,14 +3705,14 @@
       "id": "RBAC-010",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
-      "taskDescription": "Validate that a checker cannot approve or reject a request that was submitted from the same account.",
+      "priority": "High",
+      "taskDescription": "Verify that a checker cannot approve or reject a request that was submitted from the same account.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3714,14 +3721,14 @@
       "id": "RBAC-011",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Check that role-based permissions are refreshed correctly after logout and a different user signs in on the same workstation.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3730,14 +3737,14 @@
       "id": "RBAC-012",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
+      "priority": "High",
       "taskDescription": "Confirm that direct API or backend approval attempts are rejected when the caller does not have checker permission.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3746,14 +3753,14 @@
       "id": "RBAC-013",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
-      "taskDescription": "Verify that the View Own restriction is enforced for KYC Analyst and Level 1 Investigator accounts.",
+      "priority": "High",
+      "taskDescription": "Verify View Own restriction limits KYC Analyst and Level 1 Investigator to their own submissions",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3762,14 +3769,14 @@
       "id": "RBAC-014",
       "module": "Role-Based Access Control",
       "subModule": "Role Permission Matrix",
-      "priority": "",
-      "taskDescription": "Check that the permission matrix stays consistent for all major CSEL actions across roles in the FSD.",
+      "priority": "High",
+      "taskDescription": "Verify role permission matrix stays consistent for all major CSEL actions across supported roles",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "role-based-access-control",
         "role-permission-matrix",
-        "unspecified",
+        "high",
         "rbac",
         "security"
       ]
@@ -3810,119 +3817,119 @@
       "id": "RCE-001",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that a new exception entry cannot be submitted when the reason code field is left blank.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-002",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that attaching evidence does not bypass the mandatory reason code rule.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-003",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that only the configured standard reason codes can be selected for a new exception entry.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-004",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
-      "taskDescription": "Validate that reason codes are trimmed and stored cleanly when a user pastes extra spaces around the selected value.",
+      "priority": "Low",
+      "taskDescription": "Verify that reason codes are trimmed and stored cleanly when a user pastes extra spaces around the selected value.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-005",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that the selected reason code remains intact after the record is saved and reopened.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-006",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that reason code information is displayed correctly in the list view and the entry detail screen.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-007",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that the reason code filter narrows the list to the selected code only.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-008",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that reason codes are exported correctly to CSV and PDF outputs.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
+        "low",
         "export"
       ]
     },
@@ -3930,14 +3937,14 @@
       "id": "RCE-009",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that summary counts by reason code update after a new entry using the same code is approved.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
+        "low",
         "maker-checker"
       ]
     },
@@ -3945,29 +3952,29 @@
       "id": "RCE-010",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that adding evidence to a draft entry does not overwrite the selected reason code.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "maker-checker"
       ]
     },
     {
       "id": "RCE-011",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that the system prompts for supporting evidence when the maker tries to continue without attaching a file.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "rbac",
         "security"
       ]
@@ -3976,14 +3983,14 @@
       "id": "RCE-012",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that a valid PDF evidence file uploads successfully and stays linked to the entry.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "export"
       ]
     },
@@ -3991,14 +3998,14 @@
       "id": "RCE-013",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that more than one supporting document can be attached to the same entry without losing earlier files.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "reason-evidence"
       ]
     },
@@ -4006,29 +4013,29 @@
       "id": "RCE-014",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
-      "taskDescription": "Validate that opening an uploaded evidence file shows the exact file that was attached.",
+      "priority": "Low",
+      "taskDescription": "Verify that opening an uploaded evidence file shows the exact file that was attached.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "export"
       ]
     },
     {
       "id": "RCE-015",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that downloading the evidence file returns an intact copy with the expected filename.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "export"
       ]
     },
@@ -4036,59 +4043,59 @@
       "id": "RCE-016",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that the system blocks an unsupported evidence file type during upload.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "export"
       ]
     },
     {
       "id": "RCE-017",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that an oversized evidence file is not accepted by the upload control.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "export"
       ]
     },
     {
       "id": "RCE-018",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that filenames containing spaces, symbols, or long text are handled safely during attachment upload.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "export"
       ]
     },
     {
       "id": "RCE-019",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that the evidence reference opens the originating case record when the CSEL entry is created from case management.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "reason-evidence"
       ]
     },
@@ -4096,14 +4103,14 @@
       "id": "RCE-020",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that an invalid or unknown evidence reference cannot be saved on the entry.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "reason-evidence"
       ]
     },
@@ -4111,14 +4118,14 @@
       "id": "RCE-021",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that an archived or deleted source case cannot be used as the evidence reference.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "reason-evidence"
       ]
     },
@@ -4126,44 +4133,44 @@
       "id": "RCE-022",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Check that the attachment metadata records who uploaded the file and when it was added.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "export"
       ]
     },
     {
       "id": "RCE-023",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
-      "taskDescription": "Validate that uploading the same evidence file twice does not corrupt the attachment list.",
+      "priority": "Low",
+      "taskDescription": "Verify that uploading the same evidence file twice does not corrupt the attachment list.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "export"
       ]
     },
     {
       "id": "RCE-024",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Confirm that evidence stays available after page refresh and user sign-out/sign-in.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
+        "low",
         "reason-evidence"
       ]
     },
@@ -4171,14 +4178,14 @@
       "id": "RCE-025",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Reason Code Standardization",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Verify that the final approved entry keeps the same reason code and evidence reference in the history view.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "reason-code-standardization",
-        "unspecified",
+        "low",
         "maker-checker"
       ]
     },
@@ -4186,15 +4193,15 @@
       "id": "RCE-026",
       "module": "Reason Codes & Evidence Standards",
       "subModule": "Evidence & Attachments",
-      "priority": "",
+      "priority": "Low",
       "taskDescription": "Ensure that replacing a draft attachment updates the final linked file instead of keeping an outdated document.",
       "automationLayer": "UI",
       "automationCandidate": "Yes",
       "tags": [
         "reason-codes-evidence-standards",
         "evidence-attachments",
-        "unspecified",
-        "reason-evidence"
+        "low",
+        "export"
       ]
     },
     {
@@ -4209,7 +4216,7 @@
         "reason-codes-evidence-standards",
         "reason-code-standardization",
         "medium",
-        "reason-evidence"
+        "maker-checker"
       ]
     },
     {

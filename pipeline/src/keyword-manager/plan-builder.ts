@@ -33,7 +33,7 @@ function buildRequirementSummary(rows: KmExcelRow[]): string {
     mdTable(
       ["Property", "Value"],
       [
-        ["File", "`pipeline/test-data/Keyword_Manager_Test.xlsx`"],
+        ["File", "`pipeline/test-data/Keyword Manager Test.xlsx`"],
         ["Sheet", "`Keyword Manager`"],
         ["Total requirements", String(rows.length)],
         ["ID range", `${rows[0]?.id} → ${rows[rows.length - 1]?.id}`],
@@ -113,7 +113,7 @@ export function writePlanArtifacts(): { rowCount: number; outputDir: string } {
   const planMd = [
     "# Keyword Manager — Comprehensive Test Planning Deliverable",
     "",
-    `Generated from \`pipeline/test-data/Keyword_Manager_Test.xlsx\` — ${rows.length} requirements.`,
+    `Generated from \`pipeline/test-data/Keyword Manager Test.xlsx\` — ${rows.length} requirements.`,
     "",
     buildRequirementSummary(rows),
     "",
