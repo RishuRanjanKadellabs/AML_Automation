@@ -124,7 +124,7 @@ The pipeline uses three specialized AI agents. Here's exactly where each one is 
 
 | When Used | What It Does |
 |---|---|
-| **First run with URL** | Opens a live browser, explores http://localhost:3000, catalogs every page/form/link, writes a comprehensive test plan |
+| **First run with URL** | Opens a live browser, explores https://kadelamldev.customerxps.com:2506, catalogs every page/form/link, writes a comprehensive test plan |
 | **First run with scenarios** | NOT used — the manual scenario list is the plan |
 | **Future runs** | NOT used — plan already exists |
 
@@ -155,7 +155,7 @@ The pipeline uses three specialized AI agents. Here's exactly where each one is 
 
 ## Target: AML Application
 
-**Site:** [http://localhost:3000](http://localhost:3000)
+**Site:** [https://kadelamldev.customerxps.com:2506](https://kadelamldev.customerxps.com:2506)
 **Authentication:** Required — set `EMAIL` / `PASSWORD` in `.env`
 
 ### Test Areas
@@ -176,7 +176,7 @@ The pipeline uses three specialized AI agents. Here's exactly where each one is 
 
 | Input | What Happens | Agent Used |
 |---|---|---|
-| **URL** | AI Planner opens http://localhost:3000, explores every page and flow → writes a test plan | **Planner** |
+| **URL** | AI Planner opens https://kadelamldev.customerxps.com:2506, explores every page and flow → writes a test plan | **Planner** |
 | **Scenarios** | Manual scenario list becomes the plan (skips planning) | None |
 | **"run tests"** | Uses existing `specs/plan.md` or `.spec.ts` files (skips to Phase 2 or 3) | None |
 
@@ -255,9 +255,9 @@ The system supports running tests across multiple environments:
 
 ```
 environments.json
-├── dev          →  http://localhost:3000
-├── uat          →  http://localhost:3000
-└── production   →  http://localhost:3000
+├── dev          →  https://kadelamldev.customerxps.com:2506
+├── uat          →  https://kadelamldev.customerxps.com:2506
+└── production   →  https://kadelamldev.customerxps.com:2506
 ```
 
 When running across environments, the Allure report groups results as:
@@ -396,7 +396,7 @@ Edit `.env`:
 
 ```
 ENV=dev
-BASE_URL=http://localhost:3000
+BASE_URL=https://kadelamldev.customerxps.com:2506
 EMAIL=your-test-user
 PASSWORD=your-test-password
 ```
@@ -408,11 +408,11 @@ PASSWORD=your-test-password
 Open Cursor, press `Ctrl+Shift+P`, type `run-tests`, and tell it what to do:
 
 ```
-"Explore and test the AML app at http://localhost:3000"
+"Explore and test the AML app at https://kadelamldev.customerxps.com:2506"
 ```
 
 ```
-"Test login, screening, and alerts on http://localhost:3000"
+"Test login, screening, and alerts on https://kadelamldev.customerxps.com:2506"
 ```
 
 **Option B — GitHub Copilot**
@@ -476,7 +476,7 @@ npm run pipeline:report
 | **Allure** | Rich interactive test reports with trends and suite grouping |
 | **ExcelJS** | Styled Excel report generation |
 | **ESLint** | Enforces test discipline (no skips, no `.only()`) |
-| **AML Application** | Target app at `http://localhost:3000` — login required |
+| **AML Application** | Target app at `https://kadelamldev.customerxps.com:2506` — login required |
 
 ---
 
@@ -509,4 +509,4 @@ The values reference real CSS selectors discovered during the Planner phase, so 
 
 ---
 
-*Built for http://localhost:3000 — powered by AI agents, once.*
+*Built for https://kadelamldev.customerxps.com:2506 — powered by AI agents, once.*

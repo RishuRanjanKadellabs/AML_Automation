@@ -577,12 +577,13 @@ test.describe("Exception List Manager Module", () => {
     /* Role from Excel: Compliance Officer User with list-management permission can access Exception List Manager. Maker user is editing an existing list that already has a fixed category. 1. Open the Edit screen for the target list */;
     await elmPage.openListView("QA Exception List");
     await elmPage.openEditList("QA Exception List");
+    await elmPage.expectCategoryFieldLocked();
     await elmPage.updateListField("description", "Updated by automation");
     await elmPage.submitEditList();
       });
       await test.step("[ELM-009] Validate expected results from Excel", async () => {
-        await elmPage.expectListGridVisible();
-    await elmPage.expectSubmissionBlocked();
+        await elmPage.expectCategoryFieldLocked();
+    await elmPage.expectListGridVisible();
       });
     });
     });
@@ -980,16 +981,21 @@ test.describe("Exception List Manager Module", () => {
     await elmPage.openAddEntryForm();
     await elmPage.fillCustomerId("CUS-004521");
     await elmPage.selectWatchlistScope("OFAC SDN");
-    await elmPage.selectReasonCode("Confirmed Different Person");
-    await elmPage.fillEvidenceReference("EVD-001");
+    await elmPage.selectReasonCode("Other");
+    await elmPage.fillReasonDetail("Short reason under 200 characters for validation test.");
     await elmPage.submitEntry();
-    await elmPage.openMakerCheckerQueue();
       });
       await test.step("[EEM-027] Validate expected results from Excel", async () => {
-        await elmPage.expectOnExceptionListRoute();
-    await elmPage.expectMakerCheckerQueueVisible();
-    await elmPage.expectReasonCodeVisible();
     await elmPage.expectSubmissionBlocked();
+    await elmPage.openAddEntryForm();
+    await elmPage.fillCustomerId("CUS-004521");
+    await elmPage.selectWatchlistScope("OFAC SDN");
+    await elmPage.selectReasonCode("Other");
+    await elmPage.fillReasonDetail("A".repeat(200));
+    await elmPage.submitEntry();
+    await elmPage.openMakerCheckerQueue();
+    await elmPage.expectMakerCheckerQueueVisible();
+    await elmPage.expectMlroRoutingRequired();
       });
     });
 
@@ -2355,12 +2361,9 @@ test.describe("Exception List Manager Module", () => {
         await elmPage.openExceptionListsDirect(testData.baseUrl);
     /* Role from Excel: Compliance Manager Exception Register report is available for the current period. A restricted role account is available. 1. Log in with a low-privilege account */;
     await elmPage.openExceptionRegisterReport();
-    await elmPage.expectReportSectionVisible();
-    await elmPage.expectSearchInputVisible();
-    await elmPage.expectExportOptions();
       });
       await test.step("[ERR-019] Validate expected results from Excel", async () => {
-        await elmPage.expectExportOptions();
+    await elmPage.expectAccessDenied();
     await elmPage.expectRbacControlsHidden();
       });
     });

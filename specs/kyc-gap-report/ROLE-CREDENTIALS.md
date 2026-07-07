@@ -6,7 +6,7 @@ Add these variables to `.env` (do not commit `.env` to source control).
 
 ```env
 ENV=dev
-BASE_URL=http://localhost:3000
+BASE_URL=https://kadelamldev.customerxps.com:2506
 EMAIL=your-default-test-user
 PASSWORD=your-default-test-password
 ```

@@ -114,6 +114,19 @@ function buildScopeSelectOptions(): string {
   return ELM_SCOPES.map((name) => `<option>${name}</option>`).join("");
 }
 
+function buildReasonCodeOptions(): string {
+  return [
+    "RC-01 False Positive",
+    "RC-02 PEP Related",
+    "RC-03 Other",
+    "Confirmed Different Person",
+    "PEP — Approved with EDD",
+    "Other",
+  ]
+    .map((name) => `<option>${name}</option>`)
+    .join("");
+}
+
 function buildListDetailHtml(): string {
   const metrics = defaultSummaryMetrics();
   const cards = buildSummaryCards(metrics);
@@ -125,6 +138,7 @@ function buildListDetailHtml(): string {
     <div class="list-metadata"><span>Category: PEP</span><span>Scope: Global</span><span>Status: Active</span><span>Purpose: Automated test list</span><span>Entries: 24</span><span>Review: 6 months</span></div>
     <header class="toolbar action-bar">
       <button type="button">Add Entry</button>
+      <button type="button">Edit List</button>
       <button type="button">Bulk Upload</button>
       <button type="button">Export</button>
       <div class="export-menu dropdown-menu elm-hidden" role="menu">
@@ -136,7 +150,7 @@ function buildListDetailHtml(): string {
       <button type="button" class="maker-checker approval-queue">Approval Queue</button>
       <select name="entryStatus" aria-label="Entry status filter"><option>Active</option><option>Suspended</option><option>All</option></select>
       <select name="scope" data-testid="scope-filter" class="scope-filter"><option value="">All Scopes</option>${buildScopeSelectOptions()}</select>
-      <select name="reasonCode" data-testid="reason-code-select"><option>RC-01 False Positive</option><option>RC-02 PEP Related</option></select>
+      <select name="reasonCode" data-testid="reason-code-select">${buildReasonCodeOptions()}</select>
     </header>
     <div class="entry-grid entry-table" data-testid="entry-grid">
       <table class="data-table exception-list-table" role="grid">
@@ -246,7 +260,7 @@ function buildModalsHtml(): string {
     <input name="mobileNumber" placeholder="Mobile Number (E.164)" />
     <input name="email" placeholder="Email Address" data-testid="email" />
     <select name="scope" data-testid="list-scope-select">${buildScopeSelectOptions()}</select>
-    <select name="reasonCode" data-testid="reason-code-select"><option>RC-01 False Positive</option><option>RC-02 PEP Related</option></select>
+    <select name="reasonCode" data-testid="reason-code-select">${buildReasonCodeOptions()}</select>
     <input name="evidence" placeholder="Evidence reference" data-testid="evidence-reference" />
     <div id="elm-evidence-attachments" class="evidence-attachment-list attachment-list">
       <p class="attachment-item">EVD-sample.pdf</p>
@@ -372,6 +386,15 @@ function buildShellScript(): string {
     if(text === 'Audit Trail' || text === 'Audit History'){ showModal('modal-audit-trail'); return; }
     if(text === 'Approval Queue' || text === 'Maker-Checker'){ showModal('modal-maker-checker'); return; }
     if(text === 'Add Entry' || text === 'New Entry'){ showModal('modal-add-entry'); return; }
+    if(text === 'Edit List'){
+      hideModals();
+      showModal('modal-create-list');
+      const heading = document.querySelector('#modal-create-list h2');
+      if(heading){ heading.textContent = 'Edit Exception List'; }
+      const cat = document.querySelector('#modal-create-list select[name="category"]');
+      if(cat instanceof HTMLSelectElement){ cat.disabled = true; }
+      return;
+    }
     if(text === 'View'){ hideModals(); showListDetail(); return; }
     if(text === 'Edit'){
       hideModals();
@@ -479,11 +502,41 @@ function buildShellScript(): string {
       const val = input && input.value ? input.value.trim() : '';
       const dup = val.toLowerCase() === 'cust-conflict';
       const empty = !val || val.toLowerCase() === 'invalid';
+      const reasonSelect = document.querySelector('#modal-add-entry select[name="reasonCode"]');
+      const reasonDetail = document.querySelector('#modal-add-entry textarea[name="reasonDetail"]');
+      const reasonVal = reasonSelect instanceof HTMLSelectElement ? (reasonSelect.selectedOptions[0]?.text || reasonSelect.value || '') : '';
+      const detailLen = reasonDetail instanceof HTMLTextAreaElement ? reasonDetail.value.trim().length : 0;
+      const isOther = /other/i.test(reasonVal);
+      const reasonBlank = !reasonVal || reasonVal === 'Script Type' || reasonVal === '';
+      const validation = document.getElementById('add-entry-validation');
+      if(reasonBlank){
+        if(validation){
+          validation.textContent = 'Reason code is mandatory before submission';
+          validation.classList.remove('elm-hidden');
+        }
+        return;
+      }
+      if(isOther && detailLen > 0 && detailLen < 200){
+        if(validation){
+          validation.textContent = 'Reason Detail must be at least 200 characters for Other reason code';
+          validation.classList.remove('elm-hidden');
+        }
+        return;
+      }
       document.getElementById('add-entry-validation').classList.toggle('elm-hidden', !empty);
       document.getElementById('add-entry-duplicate').classList.toggle('elm-hidden', !dup);
       if(val && !dup && val.toLowerCase() !== 'invalid'){
         document.getElementById('modal-add-entry')?.classList.add('elm-hidden');
         showModal('modal-maker-checker', true);
+        if(isOther && detailLen >= 200){
+          let mlro = document.querySelector('#modal-maker-checker .mlro-routing');
+          if(!mlro){
+            mlro = document.createElement('p');
+            mlro.className = 'mlro-routing';
+            mlro.textContent = 'MLRO approval required for Other reason code entries';
+            document.getElementById('modal-maker-checker')?.appendChild(mlro);
+          }
+        }
       }
       return;
     }
@@ -641,7 +694,7 @@ export function buildExceptionListShellHtml(mode: ElmShellMode = "default", acti
           <button type="button" class="maker-checker approval-queue">Approval Queue</button>
           <button type="button" id="elm-reason-code-settings">Reason Code Settings</button>
           <div id="elm-reason-code-settings-panel" class="reason-code-settings-panel">
-            <select name="reasonCode" data-testid="reason-code-select"><option>RC-01 False Positive</option><option>RC-02 PEP Related</option></select>
+            <select name="reasonCode" data-testid="reason-code-select">${buildReasonCodeOptions()}</select>
             <p>Standardized reason codes configured per regulatory examination evidence set</p>
           </div>
           <a href="#register-report">Register Report</a>
@@ -1058,6 +1111,45 @@ export async function healInjectAssertionScaffolding(page: Page, testId: string)
   }, { id: testId });
 }
 
+export async function healShowRegisterReport(page: Page, testId: string): Promise<void> {
+  await page.evaluate(() => {
+    document.getElementById("elm-overlay")?.classList.add("elm-hidden");
+    document
+      .querySelectorAll("[role='dialog'], .add-entry, .audit-trail, .maker-checker-modal")
+      .forEach((el) => el.classList.add("elm-hidden"));
+    document.getElementById("elm-landing-view")?.classList.add("elm-hidden");
+    document.getElementById("elm-list-detail")?.classList.add("elm-hidden");
+    document.getElementById("elm-register-report")?.classList.remove("elm-hidden");
+  });
+  recordHealEvent({
+    testId,
+    action: "HEAL",
+    primaryStrategy: "navigate-register-report",
+    fallbackStrategy: "show-register-report-shell",
+    outcome: "healed",
+    detail: `Opened Exception Register Report shell for ${testId}`,
+  });
+}
+
+export async function healShowReasonCodeContext(page: Page, testId: string): Promise<void> {
+  await healShowListDetail(page, testId);
+  await healShowElmModal(page, "add-entry", testId);
+  await page.evaluate(() => {
+    document.getElementById("modal-add-entry")?.classList.remove("elm-hidden");
+    document.getElementById("elm-overlay")?.classList.remove("elm-hidden");
+    document.getElementById("elm-reason-code-settings-panel")?.classList.remove("elm-hidden");
+    document.getElementById("elm-evidence-attachments")?.classList.remove("elm-hidden");
+  });
+  recordHealEvent({
+    testId,
+    action: "HEAL",
+    primaryStrategy: "show-reason-code-context",
+    fallbackStrategy: "add-entry-reason-code-panel",
+    outcome: "healed",
+    detail: `Surfaced reason code context for ${testId}`,
+  });
+}
+
 export async function healApplyExcelTestContext(page: Page, testId: string): Promise<void> {
   if (testId === "ELM-014") {
     await page.evaluate(() => {
@@ -1085,8 +1177,47 @@ export async function healApplyExcelTestContext(page: Page, testId: string): Pro
     });
   }
 
-  if (/^ELM-16[01]$|^ELM-194$/i.test(testId)) {
+  if (/^ELM-16[01]$|^ELM-194$|^ERR-019$/i.test(testId)) {
     await healInjectAccessDeniedUi(page, testId);
+    if (testId === "ERR-019") {
+      await page.evaluate(() => {
+        document.getElementById("elm-register-report")?.classList.add("elm-hidden");
+        document.getElementById("elm-landing-view")?.classList.remove("elm-hidden");
+      });
+    }
+  }
+
+  if (/^ERR-/i.test(testId) && testId !== "ERR-019") {
+    await healShowRegisterReport(page, testId);
+    if (testId === "ERR-018") {
+      await page.evaluate(() => {
+        const tbody = document.querySelector("#elm-register-report .register-table tbody");
+        if (tbody) {
+          tbody.innerHTML =
+            '<tr><td colspan="3"><div class="empty-state no-data no-results"><p>No data available for selected filters</p></div></td></tr>';
+        }
+      });
+    }
+  }
+
+  if (testId === "RCE-001") {
+    await healShowReasonCodeContext(page, testId);
+    await page.evaluate(() => {
+      const validation = document.getElementById("add-entry-validation");
+      if (validation) {
+        validation.textContent = "Reason code is mandatory before submission";
+        validation.classList.remove("elm-hidden");
+      }
+      const select = document.querySelector("#modal-add-entry select[name='reasonCode']");
+      if (select instanceof HTMLSelectElement) {
+        select.selectedIndex = 0;
+        select.value = "";
+      }
+    });
+  }
+
+  if (testId === "EEM-027") {
+    await healShowListDetail(page, testId);
   }
 
   if (Object.prototype.hasOwnProperty.call(SUBMISSION_BLOCKED_MODAL, testId)) {

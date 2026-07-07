@@ -16,11 +16,7 @@ import {
   logTestEnd,
 } from "../tests/helpers/action-logger";
 import { flushHealSummaryForTest } from "../tests/helpers/heal-log";
-import { installCustomer360ApiMockOnContext } from "../tests/helpers/customer360-api-mock";
-import { installKeywordManagerHealOnContext } from "../tests/helpers/keyword-manager-ui-heal";
-import { installIgnoreWordsHealOnContext } from "../tests/helpers/ignore-words-ui-heal";
-import { installExceptionListHealOnContext } from "../tests/helpers/exception-list-ui-heal";
-import { installManualScreeningApiMockOnContext } from "../tests/helpers/manual-screening-api-mock";
+import { reinstallMilestone1ContextMocks } from "./milestone1-context-mocks";
 
 type Milestone1WorkerFixtures = {
   browser: Browser;
@@ -58,11 +54,7 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
   workerContext: [
     async ({ browser }, use, workerInfo) => {
       const context = await browser.newContext();
-      await installCustomer360ApiMockOnContext(context);
-      await installKeywordManagerHealOnContext(context);
-      await installIgnoreWordsHealOnContext(context);
-      await installExceptionListHealOnContext(context);
-      await installManualScreeningApiMockOnContext(context);
+      await reinstallMilestone1ContextMocks(context);
       console.log(`[milestone1][worker ${workerInfo.workerIndex}] context ready`);
       await use(context);
       await closeWorkerContextGracefully(context);

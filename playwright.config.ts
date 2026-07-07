@@ -46,6 +46,7 @@ export default defineConfig({
   ],
   use: {
     baseURL,
+    ignoreHTTPSErrors: true,
     headless: false,
     trace: process.env.PW_TRACE === "off" ? "off" : "on-first-retry",
     screenshot: process.env.PW_SCREENSHOT === "off" ? "off" : "only-on-failure",

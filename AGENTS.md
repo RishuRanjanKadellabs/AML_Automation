@@ -87,7 +87,7 @@ URL / .docx / scenarios     Planner (Phase 1)
 
 | Property | Value |
 |----------|-------|
-| Application | AML system at `http://localhost:3000` |
+| Application | AML system at `https://kadelamldev.customerxps.com:2506` |
 | Default env | `dev` (see `tests/fixtures/environments.json`) |
 | Authentication | Typically required — set `EMAIL` / `PASSWORD` in `.env` |
 | Seed file | `tests/seed.spec.ts` |
@@ -97,7 +97,7 @@ URL / .docx / scenarios     Planner (Phase 1)
 
 ```env
 ENV=dev
-BASE_URL=http://localhost:3000
+BASE_URL=https://kadelamldev.customerxps.com:2506
 EMAIL=your-test-user
 PASSWORD=your-test-password
 ```

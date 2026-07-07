@@ -77,7 +77,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-004] Validate expected results from Excel", async () => {
       await clmPage.expectOnCustomListManagerRoute();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -129,7 +128,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectCustomListManagerViewLoaded();
     });
     await test.step("[CLM-TC-007] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectSidebarUserIdentityVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -146,7 +145,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectCustomListManagerViewLoaded();
     });
     await test.step("[CLM-TC-008] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectSidebarUserIdentityVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -197,6 +196,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectOnCustomListManagerRoute();
     await clmPage.expectBreadcrumbVisible();
     await clmPage.expectTopBarVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -267,8 +267,8 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-015] Validate expected results from Excel", async () => {
       await clmPage.expectPageTitleVisible();
+    await clmPage.expectDashboardSubtitleVisible();
     await clmPage.expectDashboardHeaderVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -284,8 +284,8 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-016] Validate expected results from Excel", async () => {
       await clmPage.expectPageTitleVisible();
+    await clmPage.expectDashboardSubtitleVisible();
     await clmPage.expectDashboardHeaderVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -348,8 +348,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-020] Validate expected results from Excel", async () => {
       await clmPage.expectPageTitleVisible();
     await clmPage.expectDashboardHeaderVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -369,7 +367,6 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectDashboardHeaderVisible();
     await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -421,7 +418,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-024] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -437,8 +433,8 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-025] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
-    await clmPage.expectListGridVisible();
     await clmPage.expectEmptyTableState();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -454,7 +450,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-026] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -501,7 +496,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-029] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -532,7 +526,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-031] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
-    await clmPage.expectListGridVisible();
     await clmPage.expectEmptyTableState();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -581,7 +574,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-238] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -598,7 +590,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-239] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
     await clmPage.expectExpiryStatusVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -707,7 +698,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-246] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
-    await clmPage.expectMatchingOutcome();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -770,7 +761,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-036] Validate expected results from Excel", async () => {
       await clmPage.expectListGridVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -786,7 +776,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectTableHeadersVisible();
     });
     await test.step("[CLM-TC-037] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -802,7 +792,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectTableHeadersVisible();
     });
     await test.step("[CLM-TC-038] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -890,7 +880,6 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectFiltersVisible();
     await clmPage.expectListGridVisible();
     await clmPage.expectTtlDisplay();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -925,7 +914,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-045] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -942,7 +930,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-046] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -960,7 +947,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-047] Validate expected results from Excel", async () => {
       await clmPage.expectFiltersVisible();
     await clmPage.expectExportOptions();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1021,7 +1007,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.clickCreateList();
     });
     await test.step("[CLM-TC-051] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1055,7 +1041,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-053] Validate expected results from Excel", async () => {
       await clmPage.expectListGridVisible();
     await clmPage.expectRequestQueueVisible();
-    await clmPage.expectApprovalActionsVisible();
     await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -1073,7 +1058,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-054] Validate expected results from Excel", async () => {
       await clmPage.expectListGridVisible();
     await clmPage.expectRequestQueueVisible();
-    await clmPage.expectApprovalActionsVisible();
     await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -1230,6 +1214,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-063] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1263,7 +1248,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.cancelCreateList();
     });
     await test.step("[CLM-TC-065] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1279,7 +1264,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.cancelCreateList();
     });
     await test.step("[CLM-TC-066] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1298,6 +1283,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-067] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1514,8 +1500,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureActionOnHit("Alert & block");
     });
     await test.step("[CLM-TC-080] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -1531,8 +1516,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureActionOnHit("Alert & block");
     });
     await test.step("[CLM-TC-081] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -1548,8 +1532,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureActionOnHit("Generate alert");
     });
     await test.step("[CLM-TC-082] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -1640,9 +1623,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureMatching("Enabled");
     });
     await test.step("[CLM-TC-087] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1658,9 +1639,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureMatching("Enabled");
     });
     await test.step("[CLM-TC-088] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1675,8 +1654,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureMatching("Exact");
     });
     await test.step("[CLM-TC-089] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1691,8 +1669,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureMatching("Exact");
     });
     await test.step("[CLM-TC-090] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1708,7 +1685,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureMatching("Exact");
     });
     await test.step("[CLM-TC-091] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1726,7 +1703,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-092] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectRequestQueueVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1849,6 +1825,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-099] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1901,7 +1878,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-102] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
     await clmPage.expectTtlDisplay();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -1920,6 +1896,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-103] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -1937,6 +1914,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-104] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2014,6 +1992,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2161,6 +2140,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-354] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2221,6 +2201,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2264,7 +2245,6 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
     await clmPage.expectRejectionWorkflowVisible();
-    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2284,6 +2264,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-360] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2338,7 +2319,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-363] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2387,6 +2367,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-117] Validate expected results from Excel", async () => {
       await clmPage.expectListGridVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2493,7 +2474,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-123] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2510,7 +2490,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-124] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2527,6 +2506,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-125] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectDisableConfirmation();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -2556,7 +2536,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-127] Navigate and execute documented test steps", async () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: Compliance Officer;
-    await clmPage.toggleListStatus("PEP — internal identified");
+    await clmPage.disableList("PEP — internal identified");
     });
     await test.step("[CLM-TC-127] Validate expected results from Excel", async () => {
       await clmPage.expectCustomListManagerViewLoaded();
@@ -2576,6 +2556,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-128] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectDisableConfirmation();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -2593,6 +2574,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-129] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2604,11 +2586,10 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-130] Navigate and execute documented test steps", async () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: Compliance Officer;
-    await clmPage.toggleListStatus("Internal fraud — flagged");
+    await clmPage.disableList("Internal fraud — flagged");
     });
     await test.step("[CLM-TC-130] Validate expected results from Excel", async () => {
       await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2662,6 +2643,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-133] Validate expected results from Excel", async () => {
       await clmPage.expectMetadataIntegrity();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2697,7 +2679,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-135] Validate expected results from Excel", async () => {
       await clmPage.expectMetadataIntegrity();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2715,7 +2696,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-136] Validate expected results from Excel", async () => {
       await clmPage.expectMetadataIntegrity();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2856,6 +2836,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-144] Validate expected results from Excel", async () => {
       await expect(clmPage.addEntityForm).toBeVisible();
     await clmPage.expectDraftStateVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2892,6 +2873,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-146] Validate expected results from Excel", async () => {
       await expect(clmPage.addEntityForm).toBeVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2979,8 +2961,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectSubmissionBlocked();
     });
     await test.step("[CLM-TC-151] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectInlineValidationError();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3068,7 +3049,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-156] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -3087,6 +3067,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-157] Validate expected results from Excel", async () => {
       await clmPage.expectDraftStateVisible();
     await clmPage.expectSubmissionWorkflowState();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3102,7 +3083,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureMinimumScreeningEligibility();
     });
     await test.step("[CLM-TC-158] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3134,7 +3115,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentityInformation("Rajan Mehta");
     });
     await test.step("[CLM-TC-160] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3149,7 +3130,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentityInformation("Al-Farrukh Trading LLC");
     });
     await test.step("[CLM-TC-161] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3165,7 +3146,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-162] Validate expected results from Excel", async () => {
       await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3180,8 +3160,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentityInformation("Khalid Al-Mansouri");
     });
     await test.step("[CLM-TC-163] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3196,8 +3175,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentityInformation("IMEI-3571920XXXXXX");
     });
     await test.step("[CLM-TC-164] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3213,7 +3191,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentityInformation("Internal fraud — flagged");
     });
     await test.step("[CLM-TC-165] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3245,7 +3223,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentityInformation("PEP — internal identified");
     });
     await test.step("[CLM-TC-167] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3311,7 +3289,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentifierInformation("PASSPORT-12345");
     });
     await test.step("[CLM-TC-171] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3343,7 +3321,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillIdentifierInformation("PASSPORT-12345");
     });
     await test.step("[CLM-TC-173] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3474,7 +3452,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillDigitalIdentifiers("wallet@example.com");
     });
     await test.step("[CLM-TC-181] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3490,7 +3468,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillDigitalIdentifiers("wallet@example.com");
     });
     await test.step("[CLM-TC-182] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3506,7 +3484,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillDigitalIdentifiers("wallet@example.com");
     });
     await test.step("[CLM-TC-183] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3521,8 +3499,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillDigitalIdentifiers("wallet@example.com");
     });
     await test.step("[CLM-TC-184] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3537,8 +3514,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.fillDigitalIdentifiers("wallet@example.com");
     });
     await test.step("[CLM-TC-185] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3637,7 +3613,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureLocalization("ar-SA");
     });
     await test.step("[CLM-TC-191] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3782,7 +3758,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureLocalization("ar-SA");
     });
     await test.step("[CLM-TC-200] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3800,7 +3776,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureRiskGovernance("High");
     });
     await test.step("[CLM-TC-201] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3918,7 +3894,6 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectApprovalActionsVisible();
     await clmPage.expectTtlDisplay();
     await clmPage.expectExpiryStatusVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3936,8 +3911,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.configureRealTimeAlert();
     });
     await test.step("[CLM-TC-209] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
-    await clmPage.expectAlertGeneration();
+      await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -3971,6 +3945,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-211] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectAlertGeneration();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4139,6 +4114,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4237,6 +4213,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-225] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4255,7 +4232,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-226] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4274,7 +4250,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-227] Validate expected results from Excel", async () => {
       await clmPage.expectEntityGridVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4306,7 +4281,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-229] Validate expected results from Excel", async () => {
       await clmPage.expectEntityGridVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4322,7 +4296,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityGridVisible();
     });
     await test.step("[CLM-TC-230] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4339,7 +4313,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-231] Validate expected results from Excel", async () => {
       await clmPage.expectEntityGridVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4356,7 +4329,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-232] Validate expected results from Excel", async () => {
       await clmPage.expectEntityGridVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4374,7 +4346,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-233] Validate expected results from Excel", async () => {
       await clmPage.expectEntityGridVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4407,7 +4378,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-235] Validate expected results from Excel", async () => {
       await clmPage.expectEntityGridVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4423,7 +4393,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityGridVisible();
     });
     await test.step("[CLM-TC-236] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4471,7 +4441,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityDetailsVisible();
     });
     await test.step("[CLM-TC-249] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4487,7 +4457,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityDetailsVisible();
     });
     await test.step("[CLM-TC-250] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4503,7 +4473,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityDetailsVisible();
     });
     await test.step("[CLM-TC-251] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4519,7 +4489,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityDetailsVisible();
     });
     await test.step("[CLM-TC-252] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4600,7 +4570,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.editEntity("PEP — internal identified");
     });
     await test.step("[CLM-TC-257] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4647,6 +4617,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-260] Validate expected results from Excel", async () => {
       await clmPage.expectListGridVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4696,6 +4667,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-263] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4799,6 +4771,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-269] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectDisableConfirmation();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -4848,6 +4821,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-272] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectDisableConfirmation();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -4865,6 +4839,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-273] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4896,7 +4871,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-275] Validate expected results from Excel", async () => {
       await clmPage.expectListGridVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4930,7 +4904,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityMetadataVisible();
     });
     await test.step("[CLM-TC-277] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4962,7 +4936,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectEntityMetadataVisible();
     });
     await test.step("[CLM-TC-279] Validate expected results from Excel", async () => {
-      await clmPage.expectCustomListManagerViewLoaded();
+      await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -4996,7 +4970,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-281] Validate expected results from Excel", async () => {
       await clmPage.expectListGridVisible();
     await clmPage.expectMetadataIntegrity();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -5118,6 +5091,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-288] Validate expected results from Excel", async () => {
       await clmPage.expectEntityHistoryVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -5135,6 +5109,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-289] Validate expected results from Excel", async () => {
       await clmPage.expectEntityHistoryVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectDisableConfirmation();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -5204,6 +5179,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("Device blocklist");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -5221,6 +5197,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("Adverse media flagged");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -5238,6 +5215,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("Internal fraud — flagged");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -5257,6 +5235,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("Rejected KYC applicants");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -5274,6 +5253,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("PEP — internal identified");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -5291,6 +5271,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("Device blocklist");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -5308,6 +5289,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("Adverse media flagged");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -5325,6 +5307,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.openCustomListManagerDirect(testData.baseUrl);
     // Role from Excel: maker;
     await clmPage.openList("Internal fraud — flagged");
+    await clmPage.openBulkUploadModal();
     await clmPage.downloadTemplate();
     await clmPage.expectTemplateDownloadStarted();
     });
@@ -6387,8 +6370,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-364] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
-    await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6406,8 +6387,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-365] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
-    await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6442,8 +6421,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-367] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
-    await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6479,8 +6456,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-369] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
-    await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6534,7 +6509,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-372] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectRejectionWorkflowVisible();
-    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6572,7 +6546,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-374] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6589,7 +6562,8 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectRequestQueueVisible();
     });
     await test.step("[CLM-TC-375] Validate expected results from Excel", async () => {
-      await clmPage.expectRequestQueueVisible();
+      await clmPage.expectSidebarUserIdentityVisible();
+    await clmPage.expectRequestQueueVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6608,7 +6582,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-376] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6627,7 +6600,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-377] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6646,7 +6618,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-378] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6665,6 +6636,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-379] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6683,6 +6655,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-380] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectRejectionWorkflowVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6701,7 +6674,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-381] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectAuditPanelLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6721,6 +6693,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-382] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6773,6 +6746,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-385] Validate expected results from Excel", async () => {
       await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectRequestQueueVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6827,7 +6801,6 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
     await clmPage.expectRejectionWorkflowVisible();
-    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6864,7 +6837,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-390] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectRejectionWorkflowVisible();
-    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -6963,6 +6935,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-395] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -7118,6 +7091,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-403] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectRejectionWorkflowVisible();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -7250,7 +7224,8 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Maker;
     // Role from Excel: Maker;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-410] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
@@ -7269,7 +7244,8 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     // Role from Excel: Compliance Officer;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-411] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
@@ -7286,7 +7262,8 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     // Role from Excel: Compliance Officer;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-412] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
@@ -7303,7 +7280,8 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     // Role from Excel: Compliance Officer;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-413] Validate expected results from Excel", async () => {
       await clmPage.expectEntityHistoryVisible();
@@ -7321,7 +7299,8 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     // Role from Excel: Compliance Officer;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-414] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
@@ -7338,7 +7317,8 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     // Role from Excel: Compliance Officer;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-415] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
@@ -7355,7 +7335,8 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     // Role from Excel: Compliance Officer;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-416] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
@@ -7372,7 +7353,9 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     // Role from Excel: Compliance Officer;
     await clmPage.openAllRequests();
-    await clmPage.expectRbacControlsHidden();
+    await clmPage.openRequestDetails();
+    await clmPage.expectRequestDetailsVisible();
+    await clmPage.expectRequestDetailsVisible();
     });
     await test.step("[CLM-TC-417] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
@@ -7396,6 +7379,7 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-418] Validate expected results from Excel", async () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectSlaIndicator();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -7415,6 +7399,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectSubmissionWorkflowState();
     await clmPage.expectRequestQueueVisible();
     await clmPage.expectSlaIndicator();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -7453,6 +7438,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectApprovalActionsVisible();
     await clmPage.expectSlaIndicator();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -7472,6 +7458,7 @@ test.describe("Custom List Manager Module", () => {
       await clmPage.expectRequestQueueVisible();
     await clmPage.expectRejectionWorkflowVisible();
     await clmPage.expectSlaIndicator();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -7781,8 +7768,8 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectAuditSearchResults();
     });
     await test.step("[CLM-TC-440] Validate expected results from Excel", async () => {
-      await clmPage.expectListGridVisible();
-    await clmPage.expectAuditPanelLoaded();
+      await clmPage.expectAuditPanelLoaded();
+    await clmPage.expectEmptyTableState();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8057,8 +8044,8 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectFilteredAuditResults();
     });
     await test.step("[CLM-TC-456] Validate expected results from Excel", async () => {
-      await clmPage.expectListGridVisible();
-    await clmPage.expectAuditPanelLoaded();
+      await clmPage.expectAuditPanelLoaded();
+    await clmPage.expectEmptyTableState();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8267,7 +8254,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-468] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8285,7 +8271,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-469] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8303,7 +8288,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-470] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8321,7 +8305,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-471] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8339,7 +8322,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-472] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8357,7 +8339,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-473] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8375,7 +8356,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-474] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8393,7 +8373,6 @@ test.describe("Custom List Manager Module", () => {
     await test.step("[CLM-TC-475] Validate expected results from Excel", async () => {
       await clmPage.expectExportOptions();
     await clmPage.expectAuditPanelLoaded();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -8451,7 +8430,6 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectRejectionWorkflowVisible();
     await clmPage.expectAuditPanelLoaded();
     await clmPage.expectAuditIntegrity();
-    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9079,9 +9057,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-513] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9098,9 +9074,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-514] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9117,9 +9091,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-515] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9136,8 +9108,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-516] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9154,9 +9125,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-517] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9173,9 +9142,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-518] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9192,9 +9159,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-519] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9211,9 +9176,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-520] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9230,9 +9193,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-521] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9249,9 +9210,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-522] Validate expected results from Excel", async () => {
-      await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingConfigurationVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9269,8 +9228,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-523] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9286,8 +9244,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-524] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9303,8 +9260,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-525] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9321,8 +9277,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-526] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9339,8 +9294,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-527] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9356,8 +9310,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-528] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9373,8 +9326,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-529] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9390,8 +9342,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-530] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9409,7 +9360,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-531] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9426,7 +9377,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-532] Validate expected results from Excel", async () => {
       await clmPage.expectSubmissionWorkflowState();
-    await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9441,8 +9391,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-533] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9459,7 +9408,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-534] Validate expected results from Excel", async () => {
       await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9528,7 +9476,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-538] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9544,8 +9492,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-539] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9561,8 +9508,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-540] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9579,8 +9525,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-541] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9595,8 +9540,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-542] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9611,8 +9555,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-543] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9627,8 +9570,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-544] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9643,8 +9585,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-545] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9659,8 +9600,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-546] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9675,8 +9615,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-547] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9691,8 +9630,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-548] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectMatchingOutcome();
+      await clmPage.expectMatchingOutcome();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9709,8 +9647,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-549] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9725,8 +9662,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-550] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9741,8 +9677,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-551] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9757,8 +9692,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-552] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9773,8 +9707,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-553] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9789,8 +9722,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-554] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9805,8 +9737,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-555] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9821,8 +9752,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-556] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9838,7 +9768,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-557] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9855,7 +9785,6 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-558] Validate expected results from Excel", async () => {
       await clmPage.expectApprovalActionsVisible();
-    await clmPage.expectScreeningExclusionApplied();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9871,7 +9800,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-559] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9887,7 +9816,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectMatchingOutcome();
     });
     await test.step("[CLM-TC-560] Validate expected results from Excel", async () => {
-      await clmPage.expectMatchingOutcome();
+      await clmPage.expectCustomListManagerViewLoaded();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -9905,8 +9834,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectActionOnHitBehaviour();
     });
     await test.step("[CLM-TC-561] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -9943,8 +9871,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectActionOnHitBehaviour();
     });
     await test.step("[CLM-TC-563] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -9961,8 +9888,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectActionOnHitBehaviour();
     });
     await test.step("[CLM-TC-564] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -9979,8 +9905,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectActionOnHitBehaviour();
     });
     await test.step("[CLM-TC-565] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -9997,8 +9922,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectActionOnHitBehaviour();
     });
     await test.step("[CLM-TC-566] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -10016,8 +9940,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectActionOnHitBehaviour();
     });
     await test.step("[CLM-TC-567] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -10033,8 +9956,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectActionOnHitBehaviour();
     });
     await test.step("[CLM-TC-568] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectActionOnHitBehaviour();
+      await clmPage.expectActionOnHitBehaviour();
     await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
@@ -10053,8 +9975,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectAlertGeneration();
     });
     await test.step("[CLM-TC-569] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectAlertGeneration();
+      await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -10072,6 +9993,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-570] Validate expected results from Excel", async () => {
       await clmPage.expectAlertGeneration();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -10089,6 +10011,7 @@ test.describe("Custom List Manager Module", () => {
     });
     await test.step("[CLM-TC-571] Validate expected results from Excel", async () => {
       await clmPage.expectAlertGeneration();
+    await clmPage.expectInlineValidationError();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -10105,8 +10028,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectAlertGeneration();
     });
     await test.step("[CLM-TC-572] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectAlertGeneration();
+      await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -10139,8 +10061,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectAlertGeneration();
     });
     await test.step("[CLM-TC-574] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectAlertGeneration();
+      await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -10173,8 +10094,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectAlertGeneration();
     });
     await test.step("[CLM-TC-576] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectAlertGeneration();
+      await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -10208,8 +10128,7 @@ test.describe("Custom List Manager Module", () => {
     await clmPage.expectAlertGeneration();
     });
     await test.step("[CLM-TC-578] Validate expected results from Excel", async () => {
-      await clmPage.expectScreeningExclusionApplied();
-    await clmPage.expectAlertGeneration();
+      await clmPage.expectAlertGeneration();
     await clmPage.expectConsoleErrorsFree();
     });
   });

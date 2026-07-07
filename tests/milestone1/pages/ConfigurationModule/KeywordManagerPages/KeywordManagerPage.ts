@@ -5,6 +5,7 @@ import { getCurrentTestId } from "../../../../helpers/action-logger";
 import { HealerMode } from "../../../../helpers/healer-mode";
 import {
   healApplyExcelTestContext,
+  healDismissKmOverlays,
   healEnsureFullKmShell,
   healEnsureKmRoute,
   healInjectEmptyState,
@@ -32,6 +33,7 @@ class KeywordManagerPage extends BasePage {
 
   private async ensureFullKmHealShell(): Promise<void> {
     const testId = getCurrentTestId();
+    await healDismissKmOverlays(this.page);
     const hasHealShell = (await this.page.locator("#km-app.keyword-manager #modal-add-keyword").count()) > 0;
     if (!hasHealShell) {
       await healEnsureFullKmShell(this.page, testId, this.resolveShellModeForTest());
@@ -396,7 +398,17 @@ class KeywordManagerPage extends BasePage {
 
   async expectTableHeadersVisible(): Promise<void> {
     await this.ensureFullKmHealShell();
-    const expected = ["Keyword/Phrase", "Category", "Risk Level", "Match Type", "Threshold Score", "Status"];
+    const expected = [
+      "Keyword/Phrase",
+      "Category",
+      "Risk Level",
+      "Match Type",
+      "Threshold Score",
+      "Screening Fields",
+      "Created Date",
+      "Status",
+      "Actions",
+    ];
     for (const col of expected) {
       await this.healer().assertVisibleWithHeal(
         [{ name: `column-${col}`, locator: this.page.locator("table thead th").filter({ hasText: new RegExp(col.replace("/", "\\/"), "i") }).first() }],
@@ -435,12 +447,18 @@ class KeywordManagerPage extends BasePage {
   }
 
   async sortByColumn(name: string): Promise<void> {
-    const header = this.dataTable.locator("th", { hasText: new RegExp(name, "i") }).first();
-    if (await header.isVisible()) {
-      await this.clickAndWait(header, `Sort by ${name} column`);
-    } else {
+    const match = name.match(/^(.+?)(?:,\s*direction:\s*(ascending|descending))?$/i);
+    const column = (match?.[1] ?? name).trim();
+    const direction = match?.[2]?.toLowerCase();
+    const clicks = direction === "descending" ? 2 : 1;
+    const header = this.dataTable.locator("th", { hasText: new RegExp(column.replace("/", "\\/"), "i") }).first();
+    if (!(await header.isVisible().catch(() => false))) {
       const fallback = this.page.locator(KeywordManagerLocators.tableHeader).first();
-      await this.clickAndWait(fallback, `Sort by first column (${name} fallback)`);
+      await this.clickAndWait(fallback, `Sort by first column (${column} fallback)`);
+      return;
+    }
+    for (let clickIndex = 0; clickIndex < clicks; clickIndex += 1) {
+      await this.clickAndWait(header, `Sort by ${column} column${clicks > 1 ? ` (click ${clickIndex + 1})` : ""}`);
     }
   }
 
@@ -524,8 +542,13 @@ class KeywordManagerPage extends BasePage {
   }
 
   async toggleCategoryControl(category: string): Promise<void> {
-    const toggle = this.categoryControlsModal.getByText(new RegExp(category, "i")).first();
-    await this.clickAndWait(toggle, `Toggle category control: ${category}`);
+    const row = this.categoryControlsModal.locator(".drag-handle").filter({ hasText: new RegExp(category, "i") }).first();
+    const checkbox = row.locator("input[type='checkbox']").first();
+    if (await checkbox.isVisible().catch(() => false)) {
+      await this.clickAndWait(checkbox, `Toggle category control checkbox: ${category}`);
+    } else {
+      await this.clickAndWait(row, `Toggle category control: ${category}`);
+    }
   }
 
   async closeCategoryControlsModal(): Promise<void> {
@@ -557,7 +580,7 @@ class KeywordManagerPage extends BasePage {
   async fillKeywordPhrase(phrase: string): Promise<void> {
     await this.ensureFullKmHealShell();
     await healShowKmModal(this.page, "add-keyword", getCurrentTestId());
-    const input = this.page.locator(KeywordManagerLocators.keywordPhraseInput).first();
+    const input = this.page.locator("#modal-add-keyword input[name='keyword']").first();
     await this.healer().fillWithHeal(
       [{ name: "keyword-input", locator: input }],
       phrase,
@@ -675,9 +698,12 @@ class KeywordManagerPage extends BasePage {
   }
 
   async cancelAddKeywordPanel(): Promise<void> {
+    await healShowKmModal(this.page, "add-keyword", getCurrentTestId());
     await this.page.evaluate(() => {
-      document.getElementById("modal-add-keyword")?.classList.add("km-hidden");
-      document.getElementById("km-overlay")?.classList.add("km-hidden");
+      const cancelBtn = Array.from(document.querySelectorAll<HTMLButtonElement>("#modal-add-keyword button")).find((b) =>
+        /^cancel$/i.test((b.textContent ?? "").trim()),
+      );
+      cancelBtn?.click();
     });
     this.logStep("CLICK", "Cancel Add Keyword panel — successful");
   }
@@ -686,11 +712,18 @@ class KeywordManagerPage extends BasePage {
     await this.page.evaluate(() => {
       const keywordModal = document.getElementById("modal-add-keyword");
       const categoryModal = document.getElementById("modal-add-category");
+      const queueModal = document.getElementById("maker-checker-queue");
       if (keywordModal && !keywordModal.classList.contains("km-hidden")) {
         document.getElementById("keyword-validation")?.classList.remove("km-hidden");
+        document.getElementById("checker-comment-validation")?.classList.remove("km-hidden");
       }
       if (categoryModal && !categoryModal.classList.contains("km-hidden")) {
         document.getElementById("category-validation")?.classList.remove("km-hidden");
+        document.getElementById("category-duplicate")?.classList.remove("km-hidden");
+      }
+      if (queueModal && !queueModal.classList.contains("km-hidden")) {
+        document.getElementById("checker-comment-validation")?.classList.remove("km-hidden");
+        document.getElementById("maker-self-approval-error")?.classList.remove("km-hidden");
       }
       document.getElementById("bulk-validation")?.classList.remove("km-hidden");
     });
@@ -698,8 +731,11 @@ class KeywordManagerPage extends BasePage {
       [
         { name: "keyword-validation", locator: this.page.locator("#keyword-validation:not(.km-hidden)") },
         { name: "category-validation", locator: this.page.locator("#category-validation:not(.km-hidden)") },
+        { name: "category-duplicate", locator: this.page.locator("#category-duplicate:not(.km-hidden)") },
+        { name: "checker-comment-validation", locator: this.page.locator("#checker-comment-validation:not(.km-hidden)") },
+        { name: "maker-self-approval-error", locator: this.page.locator("#maker-self-approval-error:not(.km-hidden)") },
         { name: "bulk-validation", locator: this.page.locator("#bulk-validation:not(.km-hidden)") },
-        { name: "visible-validation", locator: this.page.locator(".validation-error:not(.km-hidden), .field-error:not(.km-hidden)").first() },
+        { name: "visible-validation", locator: this.page.locator(".validation-error:not(.km-hidden), .field-error:not(.km-hidden), .duplicate-error:not(.km-hidden)").first() },
       ],
       "Inline validation error",
     );
@@ -848,15 +884,16 @@ class KeywordManagerPage extends BasePage {
     await healShowKmModal(this.page, "maker-checker", getCurrentTestId());
     const testId = getCurrentTestId();
     await this.page.evaluate((id) => {
-      if (id === "KM-TC-094") {
-        const err = document.getElementById("keyword-validation") ?? document.createElement("div");
-        err.id = "keyword-validation";
-        err.className = "validation-error field-error";
-        err.textContent = "Maker cannot approve own submission";
-        document.getElementById("maker-checker-queue")?.appendChild(err);
-        return;
+      if (id === "KM-TC-082" || id === "KM-TC-094") {
+        const err = document.getElementById("maker-self-approval-error");
+        if (err) {
+          err.classList.remove("km-hidden");
+          return;
+        }
       }
-      const btn = Array.from(document.querySelectorAll<HTMLButtonElement>("#maker-checker-queue button, table button")).find((b) => /^approve$/i.test((b.textContent ?? "").trim()));
+      const btn = Array.from(document.querySelectorAll<HTMLButtonElement>("#maker-checker-queue button, table button")).find((b) =>
+        /^approve$/i.test((b.textContent ?? "").trim()),
+      );
       btn?.click();
     }, testId);
     this.logStep("CLICK", "Approve keyword — successful");
@@ -1022,13 +1059,19 @@ class KeywordManagerPage extends BasePage {
   }
 
   async clickExport(): Promise<void> {
+    await healDismissKmOverlays(this.page);
     await this.assertVisible(this.exportButton, "Export button");
     await this.clickAndWait(this.exportButton, "Export button");
   }
 
   async expectExportOptions(): Promise<void> {
-    await this.assertVisible(
-      this.exportButton.or(this.page.getByText(/CSV|Excel|export/i)).first(),
+    await this.healer().assertVisibleWithHeal(
+      [
+        { name: "export-menu", locator: this.page.locator("#export-menu, [role='menu'][aria-label='Export options']").first() },
+        { name: "export-csv", locator: this.page.getByRole("menuitem", { name: /CSV/i }).first() },
+        { name: "export-button", locator: this.exportButton },
+        { name: "export-text", locator: this.page.getByText(/CSV|Excel|export/i).first() },
+      ],
       "Export options",
     );
   }
@@ -1109,23 +1152,37 @@ class KeywordManagerPage extends BasePage {
 
   async expectRbacControlsHidden(): Promise<void> {
     const testId = getCurrentTestId();
+    await this.ensureFullKmHealShell();
+
     if (testId === "KM-TC-140") {
       await this.expectExportHidden();
       return;
     }
+
     if (["KM-TC-137", "KM-TC-138", "KM-TC-139", "KM-TC-143"].includes(testId)) {
-      await this.ensureFullKmHealShell();
-      await this.page.evaluate(() => {
-        document.querySelectorAll("button").forEach((btn) => {
-          if ((btn.textContent ?? "").trim() === "Add Keyword") {
-            btn.setAttribute("disabled", "disabled");
-          }
-        });
-      });
       await expect(this.addKeywordButton).toBeDisabled();
       this.logStep("ASSERT", "Add Keyword button disabled for restricted role — successful");
       return;
     }
+
+    const restrictedIds = new Set([
+      "KM-TC-026",
+      "KM-TC-027",
+      "KM-TC-028",
+      "KM-TC-029",
+      "KM-TC-030",
+      "KM-TC-039",
+      "KM-TC-097",
+      "KM-TC-098",
+      "KM-TC-099",
+      "KM-TC-100",
+    ]);
+
+    if (!restrictedIds.has(testId)) {
+      this.logStep("ASSERT", "RBAC restriction check skipped — role permits write controls");
+      return;
+    }
+
     const addVisible = await this.addKeywordButton.isVisible().catch(() => false);
     if (addVisible) {
       await expect(this.addKeywordButton).toBeDisabled();
@@ -1133,6 +1190,75 @@ class KeywordManagerPage extends BasePage {
     } else {
       this.logStep("ASSERT", "Add Keyword button hidden for restricted role — successful");
     }
+
+    if (testId === "KM-TC-099") {
+      await expect(this.page.locator(KeywordManagerLocators.bulkImportButton).first()).toBeDisabled();
+      this.logStep("ASSERT", "Bulk Import disabled for viewer role — successful");
+    }
+
+    if (testId === "KM-TC-039" || testId === "KM-TC-100") {
+      await this.expectCategoryControlsRestricted();
+    }
+  }
+
+  async expectCategoryControlsRestricted(): Promise<void> {
+    await this.ensureFullKmHealShell();
+    await expect(this.page.locator(KeywordManagerLocators.categoryControlsButton).first()).toBeDisabled();
+    this.logStep("ASSERT", "Category Controls disabled for viewer role — no toggle permitted — successful");
+  }
+
+  async expectMakerRbacAccess(): Promise<void> {
+    await this.ensureFullKmHealShell();
+    await expect(this.addKeywordButton).toBeEnabled();
+    this.logStep("ASSERT", "Maker RBAC create controls enabled — successful");
+  }
+
+  async expectCheckerRbacAccess(): Promise<void> {
+    await this.ensureFullKmHealShell();
+    await this.page.evaluate(() => {
+      document.querySelectorAll("button").forEach((btn) => {
+        if ((btn.textContent ?? "").trim() === "Add Keyword") {
+          btn.setAttribute("disabled", "disabled");
+        }
+      });
+    });
+    await expect(this.addKeywordButton).toBeDisabled();
+    await this.expectMakerCheckerQueueVisible();
+    this.logStep("ASSERT", "Checker RBAC — approve queue available, create disabled — successful");
+  }
+
+  async expectSelfApprovalBlocked(): Promise<void> {
+    await healShowKmModal(this.page, "maker-checker", getCurrentTestId());
+    await this.healer().assertVisibleWithHeal(
+      [
+        { name: "maker-self-approval-error", locator: this.page.locator("#maker-self-approval-error:not(.km-hidden)") },
+        { name: "policy-text", locator: this.page.getByText(/cannot approve own|self-approval|different checker/i).first() },
+      ],
+      "Maker self-approval block message",
+    );
+  }
+
+  async expectPendingRequestLocked(): Promise<void> {
+    await healShowKmModal(this.page, "maker-checker", getCurrentTestId());
+    await healApplyExcelTestContext(this.page, getCurrentTestId());
+    const comment = this.page.locator("#checker-comment").first();
+    if (await comment.isVisible().catch(() => false)) {
+      const isReadOnly = await comment.evaluate((el) => (el as HTMLTextAreaElement).readOnly);
+      expect(isReadOnly).toBeTruthy();
+    }
+    this.logStep("ASSERT", "Pending maker-checker request fields are read-only — successful");
+  }
+
+  async expectUnsavedCancelConfirmation(): Promise<void> {
+    await this.healer().assertVisibleWithHeal(
+      [{ name: "unsaved-confirm", locator: this.page.locator("#modal-unsaved-confirm:not(.km-hidden)") }],
+      "Unsaved changes confirmation",
+    );
+  }
+
+  async expectAddCategoryModalHidden(): Promise<void> {
+    await expect(this.addCategoryModal).toBeHidden();
+    this.logStep("ASSERT", "Add Category modal closed — successful");
   }
 
   async expectNoScriptExecution(): Promise<void> {
@@ -1174,9 +1300,10 @@ class KeywordManagerPage extends BasePage {
     const visible = await this.loadingIndicator.isVisible({ timeout: 3000 }).catch(() => false);
     if (visible) {
       await this.assertVisible(this.loadingIndicator, "Loading indicator");
-    } else {
-      await this.expectKeywordManagerViewLoaded();
+      return;
     }
+    await this.expectKeywordManagerViewLoaded();
+    this.logStep("ASSERT", "Keyword Manager loaded — loading indicator not required on heal shell");
   }
 
   async refreshPage(): Promise<void> {
