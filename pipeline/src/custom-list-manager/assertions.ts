@@ -12,6 +12,22 @@ function isNegativeErrorContext(text: string): boolean {
   );
 }
 
+function isBoilerplateGovernanceEr(er: string): boolean {
+  return /request completes with checker attribution and timestamp.*audit event recorded/i.test(er);
+}
+
+function expectsEmptyTableState(er: string, task: string): boolean {
+  return (
+    (er.includes("empty") && (er.includes("state") || er.includes("table") || er.includes("result")))
+    || er.includes("no matching")
+    || er.includes("no records")
+    || er.includes("not found")
+    || task.includes("non-existing")
+    || task.includes("no matching")
+    || task.includes("zero rows")
+  );
+}
+
 function shouldSkipConsoleCheck(row: ClmExcelRow): boolean {
   const combined = `${row.taskDescription} ${row.expectedResult} ${row.subModule}`.toLowerCase();
   return (
@@ -42,6 +58,16 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
   if (er.includes("title") || er.includes("header") || sm.includes("dashboard")) {
     push("await clmPage.expectPageTitleVisible()");
   }
+  if (er.includes("subtitle") || (er.includes("description") && sm.includes("dashboard"))) {
+    push("await clmPage.expectDashboardSubtitleVisible()");
+  }
+  if (
+    task.includes("user identity")
+    || task.includes("logged-in user")
+    || (er.includes("sidebar") && (er.includes("identity") || er.includes("initials") || er.includes("display name") || er.includes("role label")))
+  ) {
+    push("await clmPage.expectSidebarUserIdentityVisible()");
+  }
   if (er.includes("breadcrumb") || sm.includes("breadcrumb")) {
     push("await clmPage.expectBreadcrumbVisible()");
   }
@@ -58,12 +84,14 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
     push("await clmPage.expectFiltersVisible()");
   }
   if (er.includes("table") || er.includes("column") || er.includes("grid") || er.includes("listing")) {
-    if (sm.includes("entity grid")) {
-      push("await clmPage.expectEntityGridVisible()");
-    } else if (sm.includes("audit listing")) {
-      push("await clmPage.expectAuditListingVisible()");
-    } else {
-      push("await clmPage.expectListGridVisible()");
+    if (!expectsEmptyTableState(er, task)) {
+      if (sm.includes("entity grid")) {
+        push("await clmPage.expectEntityGridVisible()");
+      } else if (sm.includes("audit listing")) {
+        push("await clmPage.expectAuditListingVisible()");
+      } else {
+        push("await clmPage.expectListGridVisible()");
+      }
     }
   }
   if (er.includes("header") && (er.includes("column") || er.includes("table"))) {
@@ -113,7 +141,13 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
   if (er.includes("queue") || er.includes("request") || sm.includes("all requests") || sm.includes("my requests")) {
     push("await clmPage.expectRequestQueueVisible()");
   }
-  if (er.includes("approve") || er.includes("approval") || sm.includes("approval workflow")) {
+  if (
+    (er.includes("approve") || er.includes("approval") || sm.includes("approval workflow"))
+    && !(sm.includes("landing actions") && task.includes("bulk upload"))
+    && !(er.includes("header") && !er.includes("pending approval"))
+    && !(sm.includes("matching configuration") || sm.includes("fuzzy matching") || sm.includes("multilingual matching"))
+    && !(sm.includes("all requests") && isBoilerplateGovernanceEr(er))
+  ) {
     if (task.includes("not available") || task.includes("hidden") || er.includes("cannot approve")) {
       push("await clmPage.expectRbacControlsHidden()");
     } else {
@@ -126,7 +160,11 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
   if (er.includes("sla") || sm.includes("sla validation")) {
     push("await clmPage.expectSlaIndicator()");
   }
-  if (er.includes("audit") || er.includes("event") || sm.includes("audit")) {
+  if (
+    (er.includes("audit") || er.includes("event") || sm.includes("audit"))
+    && !(sm.includes("all requests") && isBoilerplateGovernanceEr(er))
+    && !(sm.includes("my requests") && isBoilerplateGovernanceEr(er))
+  ) {
     push("await clmPage.expectAuditPanelLoaded()");
   }
   if (er.includes("integrity") || sm.includes("audit integrity")) {
@@ -138,11 +176,31 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
   if (er.includes("expir") || sm.includes("expiry") || sm.includes("expiring soon") || sm.includes("expired status")) {
     push("await clmPage.expectExpiryStatusVisible()");
   }
-  if (er.includes("screening") || er.includes("exclusion") || sm.includes("screening exclusion")) {
+  if (
+    er.includes("exclusion")
+    || sm.includes("screening exclusion")
+    || task.includes("screening exclusion")
+    || (er.includes("excluded") && er.includes("screening"))
+    || (er.includes("suppressed") && er.includes("screening"))
+  ) {
     push("await clmPage.expectScreeningExclusionApplied()");
   }
-  if (er.includes("fuzzy") || er.includes("multilingual") || er.includes("alias") || er.includes("match")) {
-    push("await clmPage.expectMatchingOutcome()");
+  if (
+    er.includes("fuzzy")
+    || er.includes("multilingual")
+    || er.includes("alias")
+    || er.includes("match score")
+    || sm.includes("fuzzy matching")
+    || sm.includes("multilingual matching")
+    || task.includes("fuzzy matching")
+    || task.includes("multilingual matching")
+    || (er.includes("match") && (er.includes("fuzzy") || er.includes("screening match") || er.includes("hit score") || er.includes("near-match")))
+  ) {
+    if (sm.includes("matching configuration") || sm.includes("fuzzy matching")) {
+      push("await clmPage.expectMatchingConfigurationVisible()");
+    } else {
+      push("await clmPage.expectMatchingOutcome()");
+    }
   }
   if (er.includes("action on hit") || sm.includes("action on hit")) {
     push("await clmPage.expectActionOnHitBehaviour()");
@@ -150,7 +208,9 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
   if (er.includes("alert") || er.includes("notification") || sm.includes("alert generation")) {
     push("await clmPage.expectAlertGeneration()");
   }
-  if (er.includes("empty") && (er.includes("state") || er.includes("table") || er.includes("result"))) {
+  if (
+    expectsEmptyTableState(er, task)
+  ) {
     push("await clmPage.expectEmptyTableState()");
   }
   if (er.includes("loading") || er.includes("skeleton") || er.includes("spinner")) {
@@ -168,9 +228,14 @@ export function buildAssertionsForRow(row: ClmExcelRow): string {
     }
   }
   if (
-    (er.includes("error") || er.includes("validation") || er.includes("warning") || er.includes("blocked") || er.includes("reject"))
+    (er.includes("error") || er.includes("validation") || er.includes("warning") || er.includes("blocked"))
+    || (er.includes("reject") && (er.includes("validation") || er.includes("error") || sm.includes("rejection workflow") || task.includes("reject request") || task.includes("rejection reason")))
     && !isNegativeErrorContext(er)
     && !isNegativeErrorContext(ac)
+    && !(er.includes("validation") && /pass|successful|accepted|without error|no error/i.test(er))
+    && !(sm.includes("landing actions") && task.includes("bulk upload") && !er.includes("validation error"))
+    && !(sm.includes("audit integrity") && er.includes("reject") && !er.includes("validation error"))
+    && !(sm.includes("sla validation") && er.includes("reject") && !er.includes("validation error"))
   ) {
     if (er.includes("inline") || sm.includes("validation") || sm.includes("mandatory")) {
       push("await clmPage.expectInlineValidationError()");

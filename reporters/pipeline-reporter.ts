@@ -169,7 +169,7 @@ class PipelineReporter implements Reporter {
     this.envName = process.env.ENV || "production";
     this.baseUrl =
       process.env.BASE_URL ||
-      "http://localhost:3000";
+      "https://kadelamldev.customerxps.com:2506";
     fs.mkdirSync(FAILURE_SCREENSHOTS_DIR, { recursive: true });
   }
 

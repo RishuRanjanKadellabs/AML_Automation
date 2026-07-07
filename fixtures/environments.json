@@ -5,13 +5,13 @@
   },
   "environments": {
     "dev": {
-      "baseUrl": "http://localhost:3000"
+      "baseUrl": "https://kadelamldev.customerxps.com:2506"
     },
     "uat": {
-      "baseUrl": "http://localhost:3000"
+      "baseUrl": "https://kadelamldev.customerxps.com:2506"
     },
     "production": {
-      "baseUrl": "http://localhost:3000"
+      "baseUrl": "https://kadelamldev.customerxps.com:2506"
     }
   }
 }

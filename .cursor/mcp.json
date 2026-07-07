@@ -2,17 +2,13 @@
   "mcpServers": {
     "playwright-test": {
       "type": "stdio",
-      "command": "C:\\Program Files\\nodejs\\node.exe",
+      "command": "npx",
       "args": [
-        "C:\\Users\\ArtiKunde\\Downloads\\AML Automation\\AML Automation\\node_modules\\@playwright\\test\\cli.js",
+        "playwright",
         "run-test-mcp-server",
         "-c",
-        "C:\\Users\\ArtiKunde\\Downloads\\AML Automation\\AML Automation"
-      ],
-      "cwd": "C:\\Users\\ArtiKunde\\Downloads\\AML Automation\\AML Automation",
-      "env": {
-        "PATH": "C:\\Program Files\\nodejs;${env:PATH}"
-      }
+        "."
+      ]
     }
   }
 }

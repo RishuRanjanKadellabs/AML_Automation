@@ -1,6 +1,8 @@
 const KycGapReportLocators = {
   gapReportTitle: "h1.gap-report-title",
-  gapReportSubtitle: ".gap-report-subtitle, p.subtitle, [class*='subtitle']",
+  gapReportSubtitle: "p.gap-report-subtitle",
+  gapReportFilterTrigger: "button.mm-custom-select-trigger.kyc-filter-select",
+  gapReportFilterOption: "button.mm-custom-select-option[role='option']",
   kycModuleNav: "nav a:has-text('KYC'), [class*='sidebar'] button:has-text('KYC'), [class*='sidebar'] a:has-text('KYC')",
   kycGapReportLink: "a.sidebar-link[href='/kyc/kyc-gap-report'], a[href='/kyc/kyc-gap-report']:has-text('KYC Gap Report')",
   gapReportBreadcrumb: "nav[aria-label='breadcrumb'], .breadcrumb, [class*='breadcrumb']",
@@ -26,7 +28,7 @@ const KycGapReportLocators = {
   kpiLowPriority: "[class*='kpi']:has-text('Low Priority'), .kpi-card:has-text('Low Priority')",
   gapReportPaginationNext: "button[aria-label='Next page'], button.gap-page-nav-btn:has-text('Next')",
   gapReportPaginationPrev: "button[aria-label='Previous page'], button.gap-page-nav-btn:has-text('Previous')",
-  gapReportPageSizeSelect: "combobox:has(option[value='10']), select[name*='pageSize'], select.page-size",
+  gapReportPageSizeSelect: "select.gap-page-size-select, select[name*='pageSize'], select.page-size",
   gapReportPageIndicator: ".pagination-info, [class*='page-indicator'], [class*='item-range'], text=/Page \\d+ of \\d+/",
   gapReportDetailModal: ".gap-detail-modal, .gap-detail-overlay.open .modal, [role='dialog'] .gap-detail-modal",
   gapReportMissingFieldsSection: ".missing-fields, [class*='missing-fields']",

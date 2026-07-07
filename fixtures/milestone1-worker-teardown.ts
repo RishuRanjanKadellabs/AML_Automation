@@ -1,4 +1,8 @@
 import type { Browser, BrowserContext, Page } from "@playwright/test";
+import {
+  reinstallMilestone1ContextMocks,
+  resetNetworkConditions,
+} from "./milestone1-context-mocks";
 
 /** Max time to spend closing headed Chromium before moving on (avoids 5-min Playwright waits). */
 export const TEARDOWN_TIMEOUT_MS = 8_000;
@@ -42,7 +46,9 @@ export async function dismissOpenUi(page: Page): Promise<void> {
     return;
   }
 
+  await resetNetworkConditions(page);
   await page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
+  await reinstallMilestone1ContextMocks(page.context());
 
   const modal = page.locator("[role='dialog'], .gap-detail-modal, .modal");
   if (await modal.first().isVisible().catch(() => false)) {
@@ -97,7 +103,6 @@ export async function resetPageAfterFailure(page: Page): Promise<void> {
   }
 
   await dismissOpenUi(page);
-  await page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
 
   let origin = "";
   try {

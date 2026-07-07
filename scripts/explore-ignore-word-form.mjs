@@ -1,6 +1,7 @@
 import { chromium } from "playwright";
 
-const url = "http://localhost:3000/configuration/screening-ignore-words";
+const base = (process.env.BASE_URL || "https://kadelamldev.customerxps.com:2506").replace(/\/$/, "");
+const url = `${base}/configuration/screening-ignore-words`;
 
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage();

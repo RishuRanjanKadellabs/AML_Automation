@@ -354,7 +354,7 @@ function resolveEnableDisable(row: ClmExcelRow): string {
   } else if (task.includes("enable")) {
     extra.push(`await clmPage.enableList("${listName}")`);
   } else {
-    extra.push(`await clmPage.toggleListStatus("${listName}")`);
+    extra.push(`await clmPage.disableList("${listName}")`);
   }
   return withClm(row, extra);
 }
@@ -544,6 +544,7 @@ function resolveTemplateDownload(row: ClmExcelRow): string {
   const listName = defaultListName(row);
   return withClm(row, [
     `await clmPage.openList("${listName}")`,
+    "await clmPage.openBulkUploadModal()",
     "await clmPage.downloadTemplate()",
     "await clmPage.expectTemplateDownloadStarted()",
   ]);
@@ -659,12 +660,25 @@ function resolveRejectionWorkflow(row: ClmExcelRow): string {
 
 function resolveSegregationOfDuties(row: ClmExcelRow): string {
   const role = extractUserRole(row) ?? "Maker";
-  // TODO: Segregation of duties — same user cannot approve own request; needs dual-session setup
-  return withClm(row, [
+  const task = row.taskDescription.toLowerCase();
+  const extra: string[] = [
     `// Role from Excel: ${role}`,
     "await clmPage.openAllRequests()",
-    "await clmPage.expectRbacControlsHidden()",
-  ]);
+    "await clmPage.openRequestDetails()",
+  ];
+  if (task.includes("maker identity") || task.includes("maker details")) {
+    extra.push("await clmPage.expectRequestDetailsVisible()");
+  }
+  if (task.includes("checker identity") || task.includes("checker details")) {
+    extra.push("await clmPage.expectRequestDetailsVisible()");
+  }
+  if (task.includes("traceability") || task.includes("accountability") || task.includes("governance")) {
+    extra.push("await clmPage.expectRequestDetailsVisible()");
+  }
+  if (task.includes("audit") || task.includes("regulatory")) {
+    extra.push("await clmPage.expectRequestDetailsVisible()");
+  }
+  return withClm(row, extra);
 }
 
 function resolveSlaValidation(row: ClmExcelRow): string {

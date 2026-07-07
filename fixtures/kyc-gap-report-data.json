@@ -2,8 +2,9 @@
   "defaults": {
     "subtitle": "Missing or expired KYC fields — CBS & DMS import vs. template requirements",
     "module": "KYC Gap Report",
-    "branch": "INST-DEMO-001",
-    "branchCode": "INST-DEMO-001",
+    "branch": "Mumbai Main (MUM01)",
+    "branchCode": "MUM01",
+    "branchExcelAlias": "INST-DEMO-001",
     "scoreWeights": {
       "mandatory": 3,
       "optional": 1

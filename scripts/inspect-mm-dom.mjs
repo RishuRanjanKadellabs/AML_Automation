@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 async function main() {
-  const base = (process.env.BASE_URL || "http://localhost:3000").replace(/\/$/, "");
+  const base = (process.env.BASE_URL || "https://kadelamldev.customerxps.com:2506").replace(/\/$/, "");
   const browser = await chromium.launch();
   const page = await browser.newPage();
   await page.goto(`${base}/kyc/missing-mandatory-data-template`);

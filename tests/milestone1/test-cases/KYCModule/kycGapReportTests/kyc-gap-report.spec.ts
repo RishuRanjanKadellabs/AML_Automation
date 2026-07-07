@@ -29,7 +29,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -53,7 +53,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectKycGapReportListedInNavigation();
@@ -77,7 +77,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleMatchesFsd();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -103,7 +103,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.exportButton).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectKycGapReportListedInNavigation();
@@ -128,7 +128,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -154,7 +154,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await gapPage.expectKycGapReportListedInNavigation();
@@ -179,7 +179,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -205,7 +205,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await gapPage.expectKycGapReportListedInNavigation();
@@ -230,7 +230,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -257,7 +257,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await gapPage.expectKycGapReportListedInNavigation();
@@ -282,7 +282,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -308,7 +308,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectOnGapReportRoute();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -435,7 +435,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -461,7 +461,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -488,7 +488,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectPageLoaded();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -516,7 +516,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await gapPage.expectKycGapReportListedInNavigation();
@@ -543,7 +543,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectBreadcrumbVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -574,7 +574,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -604,7 +604,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -636,7 +636,7 @@ test.describe("KYC Gap Report Module", () => {
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
@@ -664,7 +664,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -695,7 +695,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -726,7 +726,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -759,7 +759,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
@@ -788,7 +788,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -819,7 +819,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -852,7 +852,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
@@ -882,7 +882,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
@@ -912,7 +912,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -942,7 +942,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -972,7 +972,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -1003,7 +1003,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -1034,7 +1034,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
@@ -1064,7 +1064,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -1095,7 +1095,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
       await expect(gapPage.exportButton).toBeVisible();
@@ -1125,7 +1125,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -1155,7 +1155,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCountsMatchGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportTitle).toHaveText(/KYC Gap Report/i);
@@ -1197,7 +1197,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.searchInput).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1238,7 +1238,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1279,7 +1279,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1320,7 +1320,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1361,7 +1361,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1403,7 +1403,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1443,7 +1443,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1484,7 +1484,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1525,7 +1525,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1566,7 +1566,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1608,7 +1608,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -1650,7 +1650,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1691,7 +1691,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1732,7 +1732,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1773,7 +1773,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1814,7 +1814,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1855,7 +1855,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1896,7 +1896,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1937,7 +1937,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -1978,7 +1978,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2020,7 +2020,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2061,7 +2061,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2102,7 +2102,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2144,7 +2144,7 @@ test.describe("KYC Gap Report Module", () => {
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
@@ -2183,7 +2183,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2224,7 +2224,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2265,7 +2265,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2306,7 +2306,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.clearFiltersButton).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -2347,7 +2347,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2388,7 +2388,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2425,7 +2425,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2458,7 +2458,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2491,7 +2491,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2525,7 +2525,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -2558,7 +2558,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -2591,7 +2591,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -2623,7 +2623,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2658,7 +2658,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -2692,7 +2692,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectViewButtonsOnRows();
@@ -2724,7 +2724,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectViewButtonsOnRows();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2756,7 +2756,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2789,7 +2789,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2823,7 +2823,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -2856,7 +2856,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -2889,7 +2889,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -2921,7 +2921,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2954,7 +2954,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -2988,7 +2988,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -3021,7 +3021,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -3054,7 +3054,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -3086,7 +3086,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3120,7 +3120,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3144,18 +3144,15 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await gapPage.clickAndWait(gapPage.exportButton, 'Export button');
-      await gapPage.sortByColumn("Customer");
-      await gapPage.sortByColumn("Branch");
-      await gapPage.sortByColumn("KYC Gap Score");
-      await gapPage.sortByColumn("Priority");
+      await gapPage.searchFsdLongCustomer();
       await gapPage.openFirstRowDetail();
       });
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
+      await gapPage.expectLongCustomerNameDisplayedInGrid();
       await gapPage.expectModalCustomerNameMatchesGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3188,7 +3185,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3221,7 +3218,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3254,7 +3251,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3288,7 +3285,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -3322,7 +3319,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -3354,7 +3351,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3388,7 +3385,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.exportButton).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3420,7 +3417,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3454,7 +3451,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3488,7 +3485,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.exportButton).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3522,7 +3519,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -3553,7 +3550,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3581,7 +3578,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3609,7 +3606,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3637,7 +3634,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3665,7 +3662,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3693,7 +3690,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3721,7 +3718,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3749,7 +3746,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3777,7 +3774,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3806,7 +3803,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3834,7 +3831,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3862,7 +3859,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3889,7 +3886,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3917,7 +3914,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3945,7 +3942,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -3973,7 +3970,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4004,7 +4001,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -4033,7 +4030,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -4062,7 +4059,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -4092,7 +4089,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
       await gapPage.expectModalScoreMatchesGrid();
@@ -4118,7 +4115,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -4146,7 +4143,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectModalScoreMatchesGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4174,7 +4171,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
@@ -4201,7 +4198,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4229,7 +4226,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4257,7 +4254,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4285,7 +4282,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4314,7 +4311,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4342,7 +4339,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4370,7 +4367,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectExportRespectsActiveFilters();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4401,7 +4398,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
       await gapPage.expectViewButtonsOnRows();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4427,7 +4424,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4453,7 +4450,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4480,7 +4477,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -4506,7 +4503,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -4531,7 +4528,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4557,7 +4554,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4582,7 +4579,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4608,7 +4605,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4635,7 +4632,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4660,7 +4657,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4686,7 +4683,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4712,7 +4709,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4738,7 +4735,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4764,7 +4761,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4790,7 +4787,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4816,7 +4813,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4843,7 +4840,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4870,7 +4867,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4898,7 +4895,7 @@ test.describe("KYC Gap Report Module", () => {
       await gapPage.expectGapDetailModalVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectModalScoreMatchesGrid();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       });
@@ -4922,7 +4919,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -4948,7 +4945,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -4974,7 +4971,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5000,7 +4997,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5026,7 +5023,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5053,7 +5050,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5079,7 +5076,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5105,7 +5102,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5131,7 +5128,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5157,7 +5154,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5184,7 +5181,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
@@ -5212,7 +5209,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5241,7 +5238,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5268,7 +5265,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5296,7 +5293,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5324,7 +5321,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5352,7 +5349,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5381,7 +5378,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5407,7 +5404,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5435,7 +5432,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5464,7 +5461,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5492,7 +5489,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5519,7 +5516,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5547,7 +5544,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5575,7 +5572,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5603,7 +5600,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5633,7 +5630,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5663,7 +5660,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5690,7 +5687,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5718,7 +5715,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5747,7 +5744,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5775,7 +5772,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5803,7 +5800,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5831,7 +5828,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5859,7 +5856,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -5887,7 +5884,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.clearFiltersButton).toBeVisible();
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5916,7 +5913,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5943,7 +5940,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -5971,7 +5968,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6000,7 +5997,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6029,7 +6026,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6059,7 +6056,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.exportButton).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6089,7 +6086,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.exportButton).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6119,7 +6116,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectExportRespectsActiveFilters();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6148,7 +6145,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6179,7 +6176,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6209,7 +6206,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6239,7 +6236,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6270,7 +6267,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectGapDetailModalVisible();
       await gapPage.expectExportRespectsActiveFilters();
@@ -6300,7 +6297,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectGapDetailModalVisible();
       await gapPage.expectExportRespectsActiveFilters();
@@ -6329,7 +6326,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6360,7 +6357,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6392,7 +6389,7 @@ test.describe("KYC Gap Report Module", () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectPriorityColumnVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await gapPage.expectGapDetailModalVisible();
       await gapPage.expectExportRespectsActiveFilters();
@@ -6422,7 +6419,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectExportRespectsActiveFilters();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6452,7 +6449,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectExportRespectsActiveFilters();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6483,7 +6480,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
       await gapPage.expectExportRespectsActiveFilters();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6514,7 +6511,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectExportRespectsActiveFilters();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6543,7 +6540,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6573,7 +6570,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6603,7 +6600,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6633,7 +6630,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6663,7 +6660,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6693,7 +6690,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6723,7 +6720,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectGapDetailModalVisible();
@@ -6752,7 +6749,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6782,7 +6779,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6812,7 +6809,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6843,7 +6840,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportPaginationNext).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6873,7 +6870,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6903,7 +6900,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -6934,7 +6931,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectReportResultsOrEmpty();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7595,7 +7592,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7621,7 +7618,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7647,7 +7644,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7674,7 +7671,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7701,7 +7698,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7728,7 +7725,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -7754,7 +7751,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -7781,7 +7778,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -7807,7 +7804,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -7833,7 +7830,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -7859,7 +7856,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -7885,7 +7882,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -7911,7 +7908,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7938,7 +7935,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7965,7 +7962,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -7992,7 +7989,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8019,7 +8016,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8046,7 +8043,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8073,7 +8070,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8100,7 +8097,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportRows.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8128,7 +8125,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -8155,7 +8152,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await expect(gapPage.exportButton).toBeVisible();
@@ -8180,7 +8177,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8208,7 +8205,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await gapPage.expectGapDetailModalVisible();
       await gapPage.expectKpiCardsVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8235,7 +8232,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -8261,7 +8258,7 @@ test.describe("KYC Gap Report Module", () => {
 
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();
@@ -8286,7 +8283,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8312,7 +8309,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8338,7 +8335,7 @@ test.describe("KYC Gap Report Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await expect(gapPage.gapReportTable).toBeVisible();
@@ -8366,7 +8363,7 @@ test.describe("KYC Gap Report Module", () => {
     await test.step("Validate expected results", async () => {
       await expect(gapPage.gapReportFilterComboboxes.first()).toBeVisible();
       await gapPage.expectPageLoaded();
-      await expect(gapPage.gapReportSubtitle).toHaveText(/Missing or expired KYC fields/i);
+      await gapPage.expectGapReportSubtitleDisplayed();
       await gapPage.expectKpiCountsMatchGrid();
       await expect(gapPage.gapReportTable).toBeVisible();
       await gapPage.expectReportResultsOrEmpty();

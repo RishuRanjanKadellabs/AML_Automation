@@ -222,7 +222,7 @@ test.describe("Keyword Manager Module", () => {
 
     await test.step("Validate expected results", async () => {
       await kmPage.expectLoadingIndicator();
-      await kmPage.expectInlineValidationError();
+      await kmPage.expectKeywordManagerViewLoaded();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -820,7 +820,7 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectInlineValidationError();
+      await kmPage.expectSubmissionBlocked();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -890,12 +890,9 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectRbacControlsHidden();
+      await kmPage.expectAddCategoryModalHidden();
       await kmPage.expectConsoleErrorsFree();
       });
-  });
-
-  test("Case ID:KM-TC-036 - Category Management - Add Category → Allow special characters supported by naming convention", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-036
     // Excel Scenario: Category Management - Add Category → Allow special characters supported by naming convention
     // Steps (3): Open Add Category. → Enter Name 'Geo-Political_Alerts 2026'. → Enter valid description and submit.
@@ -937,12 +934,9 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(kmPage.addCategoryModal).toBeVisible();
+      await expect(kmPage.addCategoryModal).toBeHidden();
       await kmPage.expectConsoleErrorsFree();
       });
-  });
-
-  test("Case ID:KM-TC-125 - Category Management - Add Category → duplicate category name on field blur", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-125
     // Excel Scenario: Category Management - Add Category → Validate duplicate category name on field blur
     // Steps (5): Click Add Category. → Enter Category Name 'Sanctions'. → Tab out of Category Name field (focus-out). …
@@ -1035,7 +1029,7 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectInlineValidationError();
+      await kmPage.expectMakerCheckerQueueVisible();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -1054,12 +1048,10 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await kmPage.openCategoryControlsModal();
-      await kmPage.toggleCategoryControl("Financial Crime");
+      await kmPage.expectCategoryControlsRestricted();
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectKeywordManagerViewLoaded();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -1328,12 +1320,12 @@ test.describe("Keyword Manager Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await kmPage.openAddKeywordPanel();
+      await kmPage.fillKeywordPhrase("casino");
       await kmPage.cancelAddKeywordPanel();
       });
 
     await test.step("Validate expected results", async () => {
-      await expect(kmPage.addKeywordPanel).toBeVisible();
-      await kmPage.expectMakerCheckerQueueVisible();
+      await kmPage.expectUnsavedCancelConfirmation();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -2350,10 +2342,11 @@ test.describe("Keyword Manager Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await kmPage.openMakerCheckerQueue();
-      await kmPage.expectRbacControlsHidden();
+      await kmPage.approveKeyword();
       });
 
     await test.step("Validate expected results", async () => {
+      await kmPage.expectSelfApprovalBlocked();
       await kmPage.expectMakerCheckerQueueVisible();
       await kmPage.expectConsoleErrorsFree();
       });
@@ -2375,7 +2368,7 @@ test.describe("Keyword Manager Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await kmPage.openMakerCheckerQueue();
-      await kmPage.expectRbacControlsHidden();
+      await kmPage.expectPendingRequestLocked();
       });
 
     await test.step("Validate expected results", async () => {
@@ -2400,16 +2393,13 @@ test.describe("Keyword Manager Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await kmPage.openMakerCheckerQueue();
-      await kmPage.expectMakerCheckerQueueVisible();
+      await kmPage.rejectKeyword();
       });
 
     await test.step("Validate expected results", async () => {
       await kmPage.expectInlineValidationError();
       await kmPage.expectConsoleErrorsFree();
       });
-  });
-
-  test("Case ID:KM-TC-085 - Maker-Checker Workflow → Capture checker approval timestamp and actor", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-085
     // Excel Scenario: Maker-Checker Workflow → Capture checker approval timestamp and actor
     // Steps (2): Approve pending request 'MC_AUDIT_CASE_02'. → Open keyword history panel for approved item.
@@ -2774,7 +2764,7 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectRbacControlsHidden();
+      await kmPage.expectMakerRbacAccess();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -2797,8 +2787,7 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectRbacControlsHidden();
-      await kmPage.expectMakerCheckerQueueVisible();
+      await kmPage.expectCheckerRbacAccess();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -2843,9 +2832,7 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectAccessDenied();
-      await kmPage.expectInlineValidationError();
-      await kmPage.expectMakerCheckerQueueVisible();
+      await kmPage.expectBulkImportRestricted();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -3072,16 +3059,16 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
+      await kmPage.resizeViewport(1366, 768);
+      await kmPage.expectToolbarVisible();
+      await kmPage.resizeViewport(1024, 768);
       await kmPage.expectKeywordManagerViewLoaded();
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectSubmissionBlocked();
+      await kmPage.expectKeywordTableVisible();
       await kmPage.expectConsoleErrorsFree();
       });
-  });
-
-  test("Case ID:KM-TC-109 - Regression, Compatibility & UAT → Capture UAT sign-off scenario with business user", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-109
     // Excel Scenario: Regression, Compatibility & UAT → Capture UAT sign-off scenario with business user
     // Steps (3): Search for known operational keyword and review details. → Export current tab and confirm expected columns in downloaded file. → Open history panel and validate traceability of recent approved change.

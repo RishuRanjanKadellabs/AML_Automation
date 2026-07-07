@@ -77,7 +77,7 @@ class DetailedLogReporter implements Reporter {
     fs.writeFileSync(LOG_FILE, "", "utf-8");
 
     const env = process.env.ENV || "production";
-    const baseUrl = process.env.BASE_URL || "http://localhost:3000";
+    const baseUrl = process.env.BASE_URL || "https://kadelamldev.customerxps.com:2506";
     const total = suite.allTests().length;
 
     this.write("");
@@ -187,7 +187,7 @@ class DetailedLogReporter implements Reporter {
       startedAt: this.startTime,
       finishedAt,
       environment: process.env.ENV || "production",
-      baseUrl: process.env.BASE_URL || "http://localhost:3000",
+      baseUrl: process.env.BASE_URL || "https://kadelamldev.customerxps.com:2506",
       totalAttempts: this.entries.length,
       passed,
       failed,

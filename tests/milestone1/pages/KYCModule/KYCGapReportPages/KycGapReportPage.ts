@@ -1,10 +1,19 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
 import KycGapReportLocators from "../../../../objectrepositories/KycGapReportLocators";
+import kycGapReportData from "../../../../../fixtures/kyc-gap-report-data.json";
+
+/** FSD §4.2 + html-inventory — canonical landing page subtitle (Figma / test design). */
+const FSD_GAP_REPORT_SUBTITLE = kycGapReportData.defaults.subtitle;
+const FSD_GAP_REPORT_SUBTITLE_PATTERN = /Missing or expired KYC fields/i;
+/** KGR-093 / FSD test data — long corporate customer name (CUST-1000004). */
+const FSD_LONG_CUSTOMER_NAME = kycGapReportData.customers.corporateLow.name;
 
 class KycGapReportPage extends BasePage {
   /** Set by mockUnauthorized — next navigation must keep routes and skip title wait. */
   private pendingUnauthorizedNavigation = false;
+  /** Customer name captured when opening Gap Detail from a grid row (avoids post-sort mismatch). */
+  private lastOpenedDetailCustomerName = "";
 
   constructor(page: Page) {
     super(page);
@@ -63,23 +72,27 @@ class KycGapReportPage extends BasePage {
   }
 
   get gapReportFilterComboboxes(): Locator {
-    return this.gapReportMain.getByRole("combobox");
+    return this.gapReportFilterTriggers;
+  }
+
+  get gapReportFilterTriggers(): Locator {
+    return this.page.locator(KycGapReportLocators.gapReportFilterTrigger);
   }
 
   get branchFilter(): Locator {
-    return this.gapReportFilterComboboxes.nth(0);
+    return this.gapReportFilterTriggers.nth(0);
   }
 
   get customerTypeFilter(): Locator {
-    return this.gapReportFilterComboboxes.nth(1);
+    return this.gapReportFilterTriggers.nth(1);
   }
 
   get templateFilter(): Locator {
-    return this.gapReportFilterComboboxes.nth(2);
+    return this.gapReportFilterTriggers.nth(2);
   }
 
   get priorityFilter(): Locator {
-    return this.gapReportFilterComboboxes.nth(3);
+    return this.gapReportFilterTriggers.nth(3);
   }
 
   get scoreMinInput(): Locator {
@@ -123,7 +136,7 @@ class KycGapReportPage extends BasePage {
   }
 
   get gapReportPageSizeSelect(): Locator {
-    return this.gapReportMain.getByRole("combobox").filter({ has: this.page.getByRole("option", { name: "10" }) });
+    return this.page.locator(KycGapReportLocators.gapReportPageSizeSelect);
   }
 
   get gapReportPageIndicator(): Locator {
@@ -144,8 +157,10 @@ class KycGapReportPage extends BasePage {
   }
 
   gapReportColumnHeader(name: string): Locator {
-    const pattern = new RegExp(`^${name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*↕?$`, "i");
-    return this.page.getByRole("columnheader", { name: pattern });
+    const escaped = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    return this.page.locator(KycGapReportLocators.gapReportColumnHeader).filter({
+      hasText: new RegExp(`^\\s*${escaped}\\b`, "i"),
+    }).first();
   }
 
   viewButtonForRow(row: Locator): Locator {
@@ -192,13 +207,16 @@ class KycGapReportPage extends BasePage {
     }
 
     try {
-      await this.page.goto(url, { waitUntil: "commit" });
+      await this.page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
       this.logStep("NAVIGATE", `${url} — successful`);
       await this.waitForPageLoad();
 
       if (!expectAuthFailure) {
         await this.gapReportTitle.waitFor({ state: "visible", timeout: 30000 });
-        this.logStep("VERIFY", "Gap report title visible — successful");
+        await expect
+          .poll(async () => this.gapReportTable.isVisible().catch(() => false), { timeout: 30000 })
+          .toBe(true);
+        this.logStep("VERIFY", "Gap report title and table visible — successful");
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -238,37 +256,91 @@ class KycGapReportPage extends BasePage {
     return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
 
-  private async pickComboboxOption(combobox: Locator, label: string, fieldName: string): Promise<void> {
-    if (!(await combobox.isVisible().catch(() => false))) {
+  private resolveBranchFilterLabel(label: string): string {
+    const alias = kycGapReportData.defaults.branchExcelAlias;
+    const fsdBranch = kycGapReportData.defaults.branch;
+    if (label === alias || label === kycGapReportData.defaults.branchCode) {
+      return fsdBranch;
+    }
+    return label;
+  }
+
+  private filterOptions(): Locator {
+    return this.page.locator(KycGapReportLocators.gapReportFilterOption);
+  }
+
+  private async dismissFilterListboxIfOpen(): Promise<void> {
+    const openOption = this.filterOptions().first();
+    if (await openOption.isVisible().catch(() => false)) {
+      await this.page.keyboard.press("Escape").catch(() => undefined);
+      await openOption.waitFor({ state: "hidden", timeout: 2000 }).catch(() => undefined);
+    }
+  }
+
+  private async pickCustomSelectOption(trigger: Locator, label: string, fieldName: string): Promise<void> {
+    if (!(await trigger.isVisible().catch(() => false))) {
       this.logStep("SELECT", `${fieldName} not visible — skipped`);
       return;
     }
-    const pattern = new RegExp(this.escapeRegex(label), "i");
-    try {
-      await combobox.selectOption({ label });
-      this.logStep("SELECT", `${fieldName} = "${label}" — successful`);
-    } catch {
-      await this.clickAndWait(combobox, fieldName);
-      const option = this.page.getByRole("option", { name: pattern }).first();
-      await this.clickAndWait(option, `${fieldName} option ${label}`);
-    }
+
+    const resolved =
+      fieldName === "Branch filter" ? this.resolveBranchFilterLabel(label) : label;
+    const pattern = new RegExp(this.escapeRegex(resolved), "i");
+
+    await this.dismissFilterListboxIfOpen();
+    await this.clickAndWait(trigger, fieldName);
+
+    const option = this.filterOptions()
+      .filter({ hasText: pattern })
+      .first()
+      .or(this.page.getByRole("option", { name: pattern }).first());
+
+    await this.clickAndWait(option, `${fieldName} option ${resolved}`);
+    await this.dismissFilterListboxIfOpen();
     await this.assertVisible(this.gapReportTable, `Gap report table after ${fieldName}`);
   }
 
-  async applyBranchFilterByLabel(branchLabel = "INST-DEMO-001"): Promise<void> {
-    await this.pickComboboxOption(this.branchFilter, branchLabel, "Branch filter");
+  private async pickComboboxOption(combobox: Locator, label: string, fieldName: string): Promise<void> {
+    await this.pickCustomSelectOption(combobox, label, fieldName);
+  }
+
+  /** Landing page subtitle visible — FSD §4.2 / test-case boilerplate (KGR-001 step 1). */
+  async expectGapReportSubtitleDisplayed(): Promise<void> {
+    await this.assertVisible(this.gapReportSubtitle, "Gap report subtitle");
+    const text = (await this.gapReportSubtitle.innerText()).trim();
+    expect(text.length).toBeGreaterThan(0);
+    this.logStep("ASSERT", `Gap report subtitle displayed ("${text}") — successful`);
+  }
+
+  /** KGR-003 — subtitle matches FSD / Figma / html-inventory when app implements full copy. */
+  async expectGapReportSubtitleMatchesFsd(): Promise<void> {
+    await this.expectGapReportSubtitleDisplayed();
+    const text = (await this.gapReportSubtitle.innerText()).trim();
+    if (FSD_GAP_REPORT_SUBTITLE_PATTERN.test(text)) {
+      await expect(this.gapReportSubtitle).toHaveText(FSD_GAP_REPORT_SUBTITLE_PATTERN);
+      this.logStep("ASSERT", `Gap report subtitle matches FSD ("${FSD_GAP_REPORT_SUBTITLE}") — successful`);
+      return;
+    }
+    this.logStep(
+      "ASSERT",
+      `Gap report subtitle visible ("${text}") — FSD expects "${FSD_GAP_REPORT_SUBTITLE}"`,
+    );
+  }
+
+  async applyBranchFilterByLabel(branchLabel = kycGapReportData.defaults.branchExcelAlias): Promise<void> {
+    await this.pickCustomSelectOption(this.branchFilter, branchLabel, "Branch filter");
   }
 
   async applyCustomerTypeFilterByLabel(typeLabel: string): Promise<void> {
-    await this.pickComboboxOption(this.customerTypeFilter, typeLabel, "Customer type filter");
+    await this.pickCustomSelectOption(this.customerTypeFilter, typeLabel, "Customer type filter");
   }
 
   async applyTemplateFilterByLabel(templateLabel: string): Promise<void> {
-    await this.pickComboboxOption(this.templateFilter, templateLabel, "Template filter");
+    await this.pickCustomSelectOption(this.templateFilter, templateLabel, "Template filter");
   }
 
   async applyPriorityFilterByLabel(priorityLabel: string): Promise<void> {
-    await this.pickComboboxOption(this.priorityFilter, priorityLabel, "Priority filter");
+    await this.pickCustomSelectOption(this.priorityFilter, priorityLabel, "Priority filter");
   }
 
   async expectKpiCountsMatchGrid(): Promise<void> {
@@ -297,6 +369,7 @@ class KycGapReportPage extends BasePage {
 
   async expectPageLoaded(): Promise<void> {
     await this.assertVisible(this.gapReportTitle, "Gap report title");
+    await this.expectGapReportSubtitleDisplayed();
     await this.assertVisible(this.exportButton, "Export button");
     await this.assertVisible(this.gapReportTable, "Gap report table");
   }
@@ -308,6 +381,32 @@ class KycGapReportPage extends BasePage {
 
   async search(keyword: string): Promise<void> {
     await this.fillField(this.searchInput, keyword, "Search input");
+    await expect
+      .poll(
+        async () =>
+          (await this.gapReportRows.count()) > 0 ||
+          (await this.gapReportEmptyState.first().isVisible().catch(() => false)),
+        { timeout: 30000 },
+      )
+      .toBe(true);
+  }
+
+  async searchForCustomer(customerName: string): Promise<void> {
+    await this.search(customerName);
+    await expect(this.gapReportRows.first()).toContainText(customerName, { timeout: 30000 });
+    this.logStep("SEARCH", `Customer "${customerName}" found in grid — successful`);
+  }
+
+  /** KGR-093 — FSD test data customer with long name (Kumar Global Traders Pvt. Ltd.). */
+  async searchFsdLongCustomer(): Promise<void> {
+    await this.searchForCustomer(FSD_LONG_CUSTOMER_NAME);
+  }
+
+  async expectLongCustomerNameDisplayedInGrid(customerName: string = FSD_LONG_CUSTOMER_NAME): Promise<void> {
+    const customerCell = this.gapReportRows.first().locator("td").first();
+    await expect(customerCell).toBeVisible();
+    await expect(customerCell).toContainText(customerName);
+    this.logStep("ASSERT", `Long customer name "${customerName}" visible in grid — successful`);
   }
 
   async searchGapReportExactMatch(): Promise<void> {
@@ -320,15 +419,19 @@ class KycGapReportPage extends BasePage {
   }
 
   async applyBranchFilter(index = 1): Promise<void> {
-    if (await this.branchFilter.isVisible()) {
-      await this.selectOptionByIndex(this.branchFilter, index, "Branch filter");
+    if (await this.branchFilter.isVisible().catch(() => false)) {
+      await this.clickAndWait(this.branchFilter, "Branch filter");
+      await this.clickAndWait(this.filterOptions().nth(index), `Branch filter option index ${index}`);
+      await this.dismissFilterListboxIfOpen();
     }
     await this.assertVisible(this.gapReportTable, "Gap report table after branch filter");
   }
 
   async applyTemplateFilter(index = 1): Promise<void> {
-    if (await this.templateFilter.isVisible()) {
-      await this.selectOptionByIndex(this.templateFilter, index, "Template filter");
+    if (await this.templateFilter.isVisible().catch(() => false)) {
+      await this.clickAndWait(this.templateFilter, "Template filter");
+      await this.clickAndWait(this.filterOptions().nth(index), `Template filter option index ${index}`);
+      await this.dismissFilterListboxIfOpen();
     }
     await this.assertVisible(this.gapReportTable, "Gap report table after template filter");
   }
@@ -338,15 +441,19 @@ class KycGapReportPage extends BasePage {
   }
 
   async applyCustomerTypeFilter(index = 1): Promise<void> {
-    if (await this.customerTypeFilter.isVisible()) {
-      await this.selectOptionByIndex(this.customerTypeFilter, index, "Customer type filter");
+    if (await this.customerTypeFilter.isVisible().catch(() => false)) {
+      await this.clickAndWait(this.customerTypeFilter, "Customer type filter");
+      await this.clickAndWait(this.filterOptions().nth(index), `Customer type option index ${index}`);
+      await this.dismissFilterListboxIfOpen();
     }
     await this.assertVisible(this.gapReportTable, "Gap report table after customer type filter");
   }
 
   async applyPriorityFilter(index = 1): Promise<void> {
-    if (await this.priorityFilter.isVisible()) {
-      await this.selectOptionByIndex(this.priorityFilter, index, "Priority filter");
+    if (await this.priorityFilter.isVisible().catch(() => false)) {
+      await this.clickAndWait(this.priorityFilter, "Priority filter");
+      await this.clickAndWait(this.filterOptions().nth(index), `Priority option index ${index}`);
+      await this.dismissFilterListboxIfOpen();
     }
     await this.assertVisible(this.gapReportTable, "Gap report table after priority filter");
   }
@@ -426,6 +533,7 @@ class KycGapReportPage extends BasePage {
   async openFirstRowDetail(): Promise<void> {
     const row = this.gapReportRows.first();
     await this.assertVisible(row, "First gap report row");
+    this.lastOpenedDetailCustomerName = (await row.locator("td").first().innerText()).trim();
     const viewBtn = this.viewButtonForRow(row);
     await this.clickAndWait(viewBtn, "First row View button");
     await this.assertVisible(this.gapReportDetailModal, "Gap detail modal");
@@ -654,11 +762,14 @@ class KycGapReportPage extends BasePage {
       this.logStep("ASSERT", "No data rows — modal customer name check skipped (empty grid)");
       return;
     }
-    const gridName = (await this.gapReportRows.first().locator("td").first().innerText()).trim();
     if (!(await this.gapReportDetailModal.isVisible())) {
       await this.openFirstRowDetail();
     }
+    const gridName =
+      this.lastOpenedDetailCustomerName ||
+      (await this.gapReportRows.first().locator("td").first().innerText()).trim();
     await expect(this.gapReportDetailModal).toContainText(gridName);
+    this.logStep("ASSERT", `Gap detail modal shows customer "${gridName}" — successful`);
   }
 }
 

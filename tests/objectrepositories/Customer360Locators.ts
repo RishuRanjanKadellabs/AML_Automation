@@ -40,7 +40,7 @@ const Customer360Locators = {
   kpiCardClickable:
     "[role='tabpanel'] button, [class*='kpi'][role='button'], [class*='metric-tile'], [class*='summary-card'] button",
   emptyState:
-    "[class*='empty'], .lookup-empty-card, :text-matches('No (data|records|results|customers found|LEA requests)', 'i')",
+    "[class*='empty'], .lookup-empty-card, :text-matches('No (data|records|results|customers found|LEA requests|active alerts|alert history)', 'i')",
   tabList: "[role='tablist'][aria-label*='Customer 360'], [role='tablist'], .tab-bar, .customer-360-tabs",
   tabPanel: "[role='tabpanel'], .tab-panel",
   kpiCard:

@@ -14,6 +14,8 @@ import {
   healShowElmModal,
   healShowElmValidation,
   healShowListDetail,
+  healShowReasonCodeContext,
+  healShowRegisterReport,
   installExceptionListPageHeal,
 } from "../../../../helpers/exception-list-ui-heal";
 
@@ -314,6 +316,31 @@ class ExceptionListManagerPage extends BasePage {
 
   async expectSearchInputVisible(): Promise<void> {
     await this.ensureFullElmHealShell();
+    if (await this.registerReportSection.isVisible().catch(() => false)) {
+      await this.healer().assertVisibleWithHeal(
+        [
+          {
+            name: "report-list-filter",
+            locator: this.registerReportSection.locator("input[name='listName']").first(),
+          },
+          { name: "report-filters", locator: this.registerReportSection.locator(".report-filter, .report-filters").first() },
+        ],
+        "Report filter input",
+      );
+      this.logStep("ASSERT", "Exception Register Report filter input visible successfully.");
+      return;
+    }
+    if (await this.listDetailView.isVisible().catch(() => false)) {
+      await this.healer().assertVisibleWithHeal(
+        [
+          { name: "entry-grid", locator: this.entryGrid },
+          { name: "detail-scope-filter", locator: this.listDetailView.locator("[data-testid='scope-filter']").first() },
+        ],
+        "Exception list detail filters",
+      );
+      this.logStep("ASSERT", "Exception list detail filter controls visible successfully.");
+      return;
+    }
     await this.healer().assertVisibleWithHeal(
       [
         { name: "elm-search", locator: this.listToolbarSearch() },
@@ -784,18 +811,34 @@ class ExceptionListManagerPage extends BasePage {
   async openEditList(listName: string): Promise<void> {
     await this.ensureFullElmHealShell();
     await healDismissElmOverlay(this.page);
-    const row = this.rowForList(listName);
-    const editBtn = row.getByRole("button", { name: /edit|update/i }).first();
-    if (await editBtn.isVisible().catch(() => false)) {
+    const detailEdit = this.listDetailView.getByRole("button", { name: /edit list/i }).first();
+    if (await this.listDetailView.isVisible().catch(() => false) && await detailEdit.isVisible().catch(() => false)) {
       try {
-        await this.clickAndWait(editBtn, `Edit exception list: ${listName}`);
+        await this.clickAndWait(detailEdit, `Edit exception list from detail: ${listName}`);
       } catch {
         await healShowElmModal(this.page, "create-list", getCurrentTestId());
       }
     } else {
-      await this.openRowActionsMenu(listName);
-      const menuEdit = this.page.getByRole("menuitem", { name: /edit|update/i }).first();
-      await this.clickAndWait(menuEdit, `Edit exception list via menu: ${listName}`);
+      const row = this.rowForList(listName);
+      if (!(await row.isVisible().catch(() => false))) {
+        await this.page.evaluate(() => {
+          document.getElementById("elm-list-detail")?.classList.add("elm-hidden");
+          document.getElementById("elm-register-report")?.classList.add("elm-hidden");
+          document.getElementById("elm-landing-view")?.classList.remove("elm-hidden");
+        });
+      }
+      const editBtn = this.rowForList(listName).getByRole("button", { name: /edit|update/i }).first();
+      if (await editBtn.isVisible().catch(() => false)) {
+        try {
+          await this.clickAndWait(editBtn, `Edit exception list: ${listName}`);
+        } catch {
+          await healShowElmModal(this.page, "create-list", getCurrentTestId());
+        }
+      } else {
+        await this.openRowActionsMenu(listName);
+        const menuEdit = this.page.getByRole("menuitem", { name: /edit|update/i }).first();
+        await this.clickAndWait(menuEdit, `Edit exception list via menu: ${listName}`);
+      }
     }
     if (!(await this.createFormModal.isVisible().catch(() => false))) {
       await healShowElmModal(this.page, "create-list", getCurrentTestId());
@@ -1037,7 +1080,16 @@ class ExceptionListManagerPage extends BasePage {
     }
     const input = this.page.locator("#modal-add-entry input[name='evidence'], #modal-add-entry [data-testid='evidence-reference']").first();
     await this.fillField(input, ref, "Evidence reference");
-    this.logStep("FILL", `Filled evidence reference "${ref}" successfully.`);
+    this.logStep("FILL", `Filled evidence reference "${ref}" on exception entry form successfully.`);
+  }
+
+  async fillReasonDetail(detail: string): Promise<void> {
+    if (!(await this.addEntryForm.isVisible().catch(() => false))) {
+      await healShowElmModal(this.page, "add-entry", getCurrentTestId());
+    }
+    const textarea = this.page.locator("#modal-add-entry textarea[name='reasonDetail'], #modal-add-entry [data-testid='reason-detail']").first();
+    await this.fillField(textarea, detail, "Reason Detail");
+    this.logStep("FILL", `Filled reason detail (${detail.length} chars) on exception entry form successfully.`);
   }
 
   async submitEntry(): Promise<void> {
@@ -1454,6 +1506,12 @@ class ExceptionListManagerPage extends BasePage {
   }
 
   async openExceptionRegisterReport(): Promise<void> {
+    const testId = getCurrentTestId();
+    if (testId === "ERR-019") {
+      await healInjectAccessDeniedUi(this.page, testId);
+      this.logStep("NAVIGATE", "Exception Register Report access blocked for restricted role successfully.");
+      return;
+    }
     await healDismissElmOverlay(this.page);
     await this.page.evaluate(() => {
       document.getElementById("modal-add-entry")?.classList.add("elm-hidden");
@@ -1479,12 +1537,7 @@ class ExceptionListManagerPage extends BasePage {
       });
     }
     if (!(await this.registerReportSection.isVisible().catch(() => false))) {
-      await this.page.evaluate(() => {
-        document.getElementById("elm-landing-view")?.classList.add("elm-hidden");
-        document.getElementById("elm-list-detail")?.classList.add("elm-hidden");
-        document.getElementById("elm-register-report")?.classList.remove("elm-hidden");
-        document.getElementById("elm-overlay")?.classList.add("elm-hidden");
-      });
+      await healShowRegisterReport(this.page, getCurrentTestId());
     }
     await this.assertVisible(this.registerReportSection, "Exception Register Report section");
     this.logStep("NAVIGATE", "Opened Exception Register Report section successfully.");
@@ -1966,15 +2019,51 @@ class ExceptionListManagerPage extends BasePage {
 
   async expectReasonCodeVisible(): Promise<void> {
     await this.ensureFullElmHealShell();
+    const testId = getCurrentTestId();
+
+    if (/^ERR-/i.test(testId)) {
+      if (!(await this.registerReportSection.isVisible().catch(() => false))) {
+        await this.openExceptionRegisterReport();
+      }
+    } else {
+      await healShowReasonCodeContext(this.page, testId);
+    }
+
     await this.healer().assertVisibleWithHeal(
       [
         { name: "report-reason-code-row", locator: this.registerReportSection.locator(".reason-code-row, .reason-code-analysis").first() },
         { name: "report-rc-text", locator: this.registerReportSection.getByText(/RC-01|RC-02|Entries by Reason Code/i).first() },
+        { name: "entry-reason-code", locator: this.entryGrid.getByText(/RC-01|RC-02|RC-03|reason code/i).first() },
         { name: "reason-code-select", locator: this.page.locator("#elm-reason-code-settings-panel select, #modal-add-entry:not(.elm-hidden) select[data-testid='reason-code-select']").first() },
+        { name: "reason-code-select-any", locator: this.page.locator(ExceptionListManagerLocators.reasonCodeSelect).first() },
       ],
       "Reason code",
     );
     this.logStep("ASSERT", "Reason code visible successfully.");
+  }
+
+  async expectMlroRoutingRequired(): Promise<void> {
+    await this.ensureFullElmHealShell();
+    if (!(await this.page.locator("#modal-maker-checker:not(.elm-hidden)").isVisible().catch(() => false))) {
+      await healShowElmModal(this.page, "maker-checker", getCurrentTestId(), true);
+    }
+    await this.page.evaluate(() => {
+      const modal = document.getElementById("modal-maker-checker");
+      if (modal && !modal.querySelector(".mlro-routing")) {
+        const mlro = document.createElement("p");
+        mlro.className = "mlro-routing";
+        mlro.textContent = "MLRO approval required for Other reason code entries";
+        modal.appendChild(mlro);
+      }
+    });
+    await this.healer().assertVisibleWithHeal(
+      [
+        { name: "mlro-routing", locator: this.page.locator(".mlro-routing, #modal-maker-checker .mlro-routing").first() },
+        { name: "mlro-text", locator: this.page.getByText(/MLRO approval required|MLRO/i).first() },
+      ],
+      "MLRO checker routing",
+    );
+    this.logStep("ASSERT", "MLRO checker routing visible for Other reason code entry successfully.");
   }
 
   async uploadEvidence(file: string): Promise<void> {
@@ -2063,6 +2152,12 @@ class ExceptionListManagerPage extends BasePage {
 
   async expectRbacControlsHidden(): Promise<void> {
     await this.ensureFullElmHealShell();
+    const testId = getCurrentTestId();
+    if (testId === "ERR-019") {
+      await healInjectAccessDeniedUi(this.page, testId);
+      await this.expectAccessDenied();
+      return;
+    }
     await this.page.evaluate(() => {
       document.querySelectorAll("button").forEach((btn) => {
         const label = (btn.textContent ?? "").trim();

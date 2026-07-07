@@ -1381,7 +1381,7 @@ test.describe("Missing Mandatory Data Template", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await mmPage.openAddFieldDialog();
-      await mmPage.cancelButton.click();
+      await mmPage.clickCancelButton();
       });
 
     await test.step("Validate expected results", async () => {
@@ -1536,7 +1536,7 @@ test.describe("Missing Mandatory Data Template", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await mmPage.cancelButton.click();
+      await mmPage.clickCancelButton();
       });
 
     await test.step("Validate expected results", async () => {
@@ -1659,7 +1659,7 @@ test.describe("Missing Mandatory Data Template", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await mmPage.cancelButton.click();
+      await mmPage.clickCancelButton();
       await mmPage.searchTemplates('Archived');
       });
 
@@ -4730,7 +4730,7 @@ test.describe("Missing Mandatory Data Template", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await mmPage.saveChangesAndExpectSuccess();
-      await mmPage.cancelButton.click();
+      await mmPage.clickCancelButton();
       await mmPage.refreshPage();
       await mmPage.reopenTemplateContextAfterRefresh('Simplified KYC');
       await mmPage.expectFieldRequirementPersistedByTestDataFragment('Valid Configuration Update');
