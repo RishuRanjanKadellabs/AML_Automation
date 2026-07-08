@@ -69,6 +69,23 @@ export function isActionTask(row: BsExcelRow): boolean {
   return /false positive|confirm match|move to case|move to whitelist|move to exception|under review|comment modal|actions menu/i.test(t);
 }
 
+export function isBulkUiTask(row: BsExcelRow): boolean {
+  return /bulk row selection|bulk action toolbar/i.test(taskContext(row));
+}
+
+export function isBulkDispositionTask(row: BsExcelRow): boolean {
+  return /bulk|multiple selected|selected records/i.test(taskContext(row)) && !isBulkUiTask(row);
+}
+
+export function isBulkTask(row: BsExcelRow): boolean {
+  return isBulkUiTask(row) || isBulkDispositionTask(row);
+}
+
+export function isUnauthorizedDirectAccessRow(row: BsExcelRow): boolean {
+  const blob = `${row.subModule} ${row.taskDescription} ${row.expectedResult}`.toLowerCase();
+  return /unauthorized.*(?:direct|url|cannot access)|cannot access.*direct|restricted.*direct url/i.test(blob);
+}
+
 export function isFilterOrSearchTask(row: BsExcelRow): boolean {
   const t = taskContext(row);
   return row.subModule.toLowerCase().includes("filters")

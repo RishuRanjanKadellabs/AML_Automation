@@ -90,6 +90,31 @@ export function rowContext(parts: string[]): string {
   return parts.join(" ").toLowerCase();
 }
 
+export function parseGridRowIndex(testData: string): number {
+  const range = testData.match(/Rows?:\s*(\d+)\s*(?:to|-)\s*(\d+)/i);
+  if (range) {
+    return Math.max(0, parseInt(range[1], 10) - 1);
+  }
+  const single = testData.match(/Row:\s*(\d+)/i);
+  if (single) {
+    return Math.max(0, parseInt(single[1], 10) - 1);
+  }
+  return 0;
+}
+
+export function gridRowIndexForDisposition(action: string, testData: string): number {
+  const requested = parseGridRowIndex(testData);
+  const gridRow = requested + 1;
+  const record = GRID.find((r) => r.gridRow === gridRow);
+  if (/under review/i.test(action) && record && /under review/i.test(record.status ?? "")) {
+    const alternative = GRID.find((r) => !/under review/i.test(r.status ?? ""));
+    if (alternative) {
+      return alternative.gridRow - 1;
+    }
+  }
+  return requested;
+}
+
 export function resolveRecordFromContext(context: string): BatchRecordProfile {
   if (/empty|no match|zero result|no records|no matching data/i.test(context)) {
     return {

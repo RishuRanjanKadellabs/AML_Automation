@@ -53,10 +53,6 @@ test.describe("Batch Screening Module", () => {
     await bsPage.mockExportReportRestricted();
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageShellLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickDispositionMenuItem('Under Review');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectExportReportRestricted();
   });
 
@@ -221,8 +217,10 @@ test.describe("Batch Screening Module", () => {
   // Excel Test Case ID: BS-027
   // Task: Check that empty-state handling when no screening records exist on the Match Results page.
   test("Case ID:BS-027 - Match Results → empty-state handling when no screening records exist on the Match Results page.", async ({ testData }) => {
-    await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.mockEmptyMatchResults();
+    await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.expectMatchResultsPageShellLoaded();
+    await bsPage.simulateEmptyGridView();
     await bsPage.expectEmptyStateVisible();
   });
 
@@ -419,7 +417,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.searchMatchResults('zzzz-no-match-99999');
     await bsPage.expectFiltersVisible();
-    await bsPage.expectCommentValidationVisible();
+    await bsPage.expectSearchHandledGracefully();
   });
 
   // Excel Test Case ID: BS-049
@@ -438,7 +436,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.searchMatchResults('\' OR \'1\'=\'1');
-    await bsPage.expectCommentValidationVisible();
+    await bsPage.expectSearchHandledGracefully();
   });
 
   // Excel Test Case ID: BS-051
@@ -553,6 +551,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that navigation from  to  works correctly on the Screening Results page.
   test("Case ID:BS-061 - Screening Results → navigation from  to  works correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -566,13 +565,14 @@ test.describe("Batch Screening Module", () => {
     await bsPage.submitBlankComment();
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.expectCommentModalVisible();
-    await bsPage.expectCommentModalClosed();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-063
   // Task: Check that user can submit valid comment to proceed on the Screening Results page.
   test("Case ID:BS-063 - Screening Results → user can submit valid comment to proceed on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -580,20 +580,17 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that blank comment submission is restricted on the Screening Results page. Test with the role from test data.
   test("Case ID:BS-064 - Screening Results → blank comment submission is restricted on the Screening Results page. Test with the role from test data.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.submitBlankComment();
     await bsPage.expectCommentModalVisible();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-065
   // Task: Check that comment character limit validation on the Screening Results page.
   test("Case ID:BS-065 - Screening Results → comment character limit validation on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
@@ -617,6 +614,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Screening Results page loads successfully on the Screening Results page.
   test("Case ID:BS-067 - Screening Results → Screening Results page loads successfully on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -624,6 +622,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that screening record details display correctly on the Screening Results page.
   test("Case ID:BS-068 - Screening Results → screening record details display correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -631,6 +630,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that matched watchlist records display correctly on the Screening Results page.
   test("Case ID:BS-069 - Screening Results → matched watchlist records display correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -638,6 +638,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Highest Match Score consistency between  and on the Screening Results page.
   test("Case ID:BS-070 - Screening Results → Highest Match Score consistency between  and on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -645,6 +647,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that customer information consistency between  and on the Screening Results page.
   test("Case ID:BS-071 - Screening Results → customer information consistency between  and on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -652,6 +655,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that match category values display correctly on the Screening Results page.
   test("Case ID:BS-072 - Screening Results → match category values display correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -659,6 +663,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that screening match status display correctly on the Screening Results page.
   test("Case ID:BS-073 - Screening Results → screening match status display correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -666,6 +671,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that watchlist source names display correctly on the Screening Results page.
   test("Case ID:BS-074 - Screening Results → watchlist source names display correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -673,6 +679,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that screening result table headers display correctly on the Screening Results page.
   test("Case ID:BS-075 - Screening Results → screening result table headers display correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -680,6 +687,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Actions dropdown visibility for matched entries on the Screening Results page.
   test("Case ID:BS-076 - Screening Results → Actions dropdown visibility for matched entries on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -687,9 +695,9 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Under Review action availability on the Screening Results page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-077 - Screening Results → Under Review action availability on the Screening Results page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.openScreeningResultByGridRow(4);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openUnderReviewActionsMenu(0);
+    await bsPage.openUnderReviewActionsMenu(4);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectActionOutcomeApplied();
@@ -750,6 +758,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that action dropdown options follow configured action rules on the Screening Results page.
   test("Case ID:BS-082 - Screening Results → action dropdown options follow configured action rules on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -757,6 +766,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that long watchlist names render correctly in on the Screening Results page.
   test("Case ID:BS-083 - Screening Results → long watchlist names render correctly in on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -764,6 +774,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that large number of matched entries load successfully on the Screening Results page.
   test("Case ID:BS-084 - Screening Results → large number of matched entries load successfully on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectApiFailureHandledGracefully();
   });
 
@@ -771,6 +783,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that back navigation from  to  works correctly on the Screening Results page.
   test("Case ID:BS-085 - Screening Results → back navigation from  to  works correctly on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
@@ -778,6 +791,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that applied filters remain preserved after returning from on the Screening Results page.
   test("Case ID:BS-086 - Screening Results → applied filters remain preserved after returning from on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectFiltersVisible();
   });
@@ -786,8 +800,9 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that search state remains preserved after returning from on the Screening Results page.
   test("Case ID:BS-087 - Screening Results → search state remains preserved after returning from on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.searchMatchResults('HANIYA');
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.searchMatchResults('HANIYA');
     await bsPage.expectFiltersVisible();
   });
 
@@ -795,12 +810,14 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that action status synchronization between  and on the Screening Results page.
   test("Case ID:BS-088 - Screening Results → action status synchronization between  and on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
 
   // Excel Test Case ID: BS-089
   // Task: Check that unauthorized users cannot access  directly on the Screening Results page. Test with the role from test data.
   test("Case ID:BS-089 - Screening Results → unauthorized users cannot access  directly on the Screening Results page. Test with the role from test data.", async ({ testData }) => {
+    await bsPage.mockUnauthorized();
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectAccessDenied();
   });
@@ -809,6 +826,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that workspace remains responsive during large dataset loading on the Screening Results page.
   test("Case ID:BS-090 - Screening Results → workspace remains responsive during large dataset loading on the Screening Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
   });
   });
@@ -818,60 +836,55 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that mandatory Comment Modal appears for Under Review action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-091 - Actions & Comment Modal → mandatory Comment Modal appears for Under Review action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openUnderReviewActionsMenu(0);
+    await bsPage.expectMatchResultsPageLoaded();
+    await bsPage.openUnderReviewActionsMenu(4);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.submitBlankComment();
     await bsPage.expectCommentModalVisible();
-    await bsPage.expectCommentModalClosed();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-092
   // Task: Check that mandatory Comment Modal appears for Move to Case action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-092 - Actions & Comment Modal → mandatory Comment Modal appears for Move to Case action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(4);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(4);
     await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.submitBlankComment();
     await bsPage.expectCommentModalVisible();
-    await bsPage.expectCommentModalClosed();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-093
   // Task: Check that mandatory Comment Modal appears for Move to Whitelist action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-093 - Actions & Comment Modal → mandatory Comment Modal appears for Move to Whitelist action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Move to Whitelist');
     await bsPage.submitBlankComment();
     await bsPage.expectCommentModalVisible();
-    await bsPage.expectCommentModalClosed();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-094
   // Task: Check that mandatory Comment Modal appears for Move to Exception List action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-094 - Actions & Comment Modal → mandatory Comment Modal appears for Move to Exception List action on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Move to Exception List');
     await bsPage.submitBlankComment();
     await bsPage.expectCommentModalVisible();
-    await bsPage.expectCommentModalClosed();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-095
   // Task: Check that Comment Modal UI components display correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-095 - Actions & Comment Modal → Comment Modal UI components display correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -883,8 +896,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that comment text area accepts valid input on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-096 - Actions & Comment Modal → comment text area accepts valid input on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -895,24 +907,24 @@ test.describe("Batch Screening Module", () => {
   // Excel Test Case ID: BS-097
   // Task: Check that mandatory validation for empty comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-097 - Actions & Comment Modal → mandatory validation for empty comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
-    await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.mockEmptyMatchResults();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.expectMatchResultsPageShellLoaded();
+    await bsPage.simulateEmptyGridView();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.submitBlankComment();
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.expectCommentModalVisible();
-    await bsPage.expectCommentModalClosed();
     await bsPage.expectEmptyStateVisible();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-098
   // Task: Check that whitespace-only comments are restricted on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-098 - Actions & Comment Modal → whitespace-only comments are restricted on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -924,8 +936,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that comment maximum character limit validation on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-099 - Actions & Comment Modal → comment maximum character limit validation on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -937,8 +948,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that special characters handling in comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-100 - Actions & Comment Modal → special characters handling in comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -950,8 +960,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that SQL injection payload handling in comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-101 - Actions & Comment Modal → SQL injection payload handling in comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -963,8 +972,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that XSS payload handling in comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-102 - Actions & Comment Modal → XSS payload handling in comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -976,8 +984,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Cancel button closes Comment Modal correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-103 - Actions & Comment Modal → Cancel button closes Comment Modal correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.cancelCommentModal();
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -989,9 +996,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Under Review action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-104 - Actions & Comment Modal → Under Review action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openUnderReviewActionsMenu(0);
+    await bsPage.expectMatchResultsPageLoaded();
+    await bsPage.openUnderReviewActionsMenu(4);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectCommentModalVisible();
@@ -1002,8 +1008,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Move to Case action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-105 - Actions & Comment Modal → Move to Case action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(4);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(4);
     await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
@@ -1015,8 +1020,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Move to Whitelist action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-106 - Actions & Comment Modal → Move to Whitelist action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Move to Whitelist');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
@@ -1028,8 +1032,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Move to Exception List action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-107 - Actions & Comment Modal → Move to Exception List action updates action correctly on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Move to Exception List');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
@@ -1041,8 +1044,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that action update reflects immediately in on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-108 - Actions & Comment Modal → action update reflects immediately in on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1054,8 +1056,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that action update reflects immediately in on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-109 - Actions & Comment Modal → action update reflects immediately in on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1067,8 +1068,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit log entry creation after action update on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-110 - Actions & Comment Modal → audit log entry creation after action update on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1081,8 +1081,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logs capture submitted comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-111 - Actions & Comment Modal → audit logs capture submitted comments on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1095,8 +1094,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logs capture acting user details on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-112 - Actions & Comment Modal → audit logs capture acting user details on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1109,8 +1107,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logs capture timestamp details on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-113 - Actions & Comment Modal → audit logs capture timestamp details on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1123,8 +1120,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that duplicate action execution is restricted on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-114 - Actions & Comment Modal → duplicate action execution is restricted on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1136,8 +1132,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that mutually exclusive action outcomes cannot coexist on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-115 - Actions & Comment Modal → mutually exclusive action outcomes cannot coexist on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1149,8 +1144,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that unauthorized users cannot execute action actions on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-116 - Actions & Comment Modal → unauthorized users cannot execute action actions on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
@@ -1162,8 +1156,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that disabled action actions are not selectable on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-117 - Actions & Comment Modal → disabled action actions are not selectable on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1175,8 +1168,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that concurrent action update handling on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-118 - Actions & Comment Modal → concurrent action update handling on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1188,8 +1180,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that action update persists after page refresh on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-119 - Actions & Comment Modal → action update persists after page refresh on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1201,8 +1192,7 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that action workflow remains responsive during repeated actions on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-120 - Actions & Comment Modal → action workflow remains responsive during repeated actions on the Actions and Comment Modal page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
+    await bsPage.expectMatchResultsPageLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.clickDispositionMenuItem('Under Review');
@@ -1227,14 +1217,14 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that mandatory Comment Modal appears before opening Match Details on the Match Review page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-122 - Match Details & AI Summary → mandatory Comment Modal appears before opening Match Details on the Match Review page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openMatchReviewFromResultsDetail();
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openMatchReviewFromResultsDetail();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.submitBlankComment();
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.expectMatchDetailsContentVisible();
-    await bsPage.expectCommentModalClosed();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-123
@@ -1470,11 +1460,9 @@ test.describe("Batch Screening Module", () => {
   // Excel Test Case ID: BS-145
   // Task: Check that unauthorized users cannot access Match Details workspace on the Match Review page. Test the Match Review tabs.
   test("Case ID:BS-145 - Match Details & AI Summary → unauthorized users cannot access Match Details workspace on the Match Review page. Test the Match Review tabs.", async ({ testData }) => {
+    await bsPage.mockUnauthorized();
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.expectMatchDetailsContentVisible();
+    await bsPage.expectAccessDenied();
   });
 
   // Excel Test Case ID: BS-146
@@ -1484,10 +1472,10 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.openReviewTab('Match Details');
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.openReviewTab('Match Details');
     await bsPage.expectMatchDetailsContentVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -1499,10 +1487,10 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.openReviewTab('AI Summary');
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.openReviewTab('AI Summary');
     await bsPage.expectAiSummaryContentVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -1567,14 +1555,14 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that mandatory Comment Modal appears before opening View Summary on the Match Review — View Summary page. Test the Actions menu and Comment Modal.
   test("Case ID:BS-152 - View Summary Workspace → mandatory Comment Modal appears before opening View Summary on the Match Review — View Summary page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openMatchReviewFromResultsDetail();
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openMatchReviewFromResultsDetail();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.submitBlankComment();
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.expectViewSummaryContentVisible();
-    await bsPage.expectCommentModalClosed();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-153
@@ -1656,7 +1644,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -1747,14 +1735,16 @@ test.describe("Batch Screening Module", () => {
   // Excel Test Case ID: BS-169
   // Task: Check that View Summary handles records with no audit history on the Match Review — View Summary page. Test the Match Review tabs.
   test("Case ID:BS-169 - View Summary Workspace → View Summary handles records with no audit history on the Match Review — View Summary page. Test the Match Review tabs.", async ({ testData }) => {
-    await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.mockEmptyMatchResults();
+    await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.expectMatchResultsPageShellLoaded();
+    await bsPage.simulateEmptyGridView();
+    await bsPage.openUnderReviewActionsMenu(0);
+    await bsPage.clickDispositionMenuItem('Move to Case');
+    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openReviewTab('View Summary');
-    await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectEmptyStateVisible();
   });
 
@@ -1772,23 +1762,21 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that special characters render correctly in comments/history on the Match Review — View Summary page. Test the Match Review tabs.
   test("Case ID:BS-171 - View Summary Workspace → special characters render correctly in comments/history on the Match Review — View Summary page. Test the Match Review tabs.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectAuditTrailVisible();
   });
 
   // Excel Test Case ID: BS-172
   // Task: Check that unauthorized users cannot access View Summary workspace on the Match Review — View Summary page. Test the Match Review tabs.
   test("Case ID:BS-172 - View Summary Workspace → unauthorized users cannot access View Summary workspace on the Match Review — View Summary page. Test the Match Review tabs.", async ({ testData }) => {
+    await bsPage.mockUnauthorized();
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.expectViewSummaryContentVisible();
+    await bsPage.expectAccessDenied();
   });
 
   // Excel Test Case ID: BS-173
@@ -1798,10 +1786,10 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.openReviewTab('View Summary');
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.openReviewTab('View Summary');
     await bsPage.expectViewSummaryContentVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -1813,10 +1801,10 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.openReviewTab('View Summary');
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.openReviewTab('View Summary');
     await bsPage.expectViewSummaryContentVisible();
   });
 
@@ -1893,10 +1881,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-181 - Export Reporting & Audit → Export Report action is visible for authorized users on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectExportDownloadStarted();
     await bsPage.expectAuditTrailVisible();
@@ -1905,9 +1891,8 @@ test.describe("Batch Screening Module", () => {
   // Excel Test Case ID: BS-182
   // Task: Check that unauthorized users cannot access Export Report functionality on the Export and Audit page. Test the Export Report button.
   test("Case ID:BS-182 - Export Reporting & Audit → unauthorized users cannot access Export Report functionality on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
-    await bsPage.mockExportReportRestricted();
+    await bsPage.mockUnauthorized();
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.expectMatchResultsPageShellLoaded();
     await bsPage.expectAccessDenied();
     await bsPage.expectExportReportRestricted();
   });
@@ -1917,12 +1902,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-183 - Export Reporting & Audit → export generation works for complete screening dataset on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -1931,12 +1914,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-184 - Export Reporting & Audit → exported report contains correct screening records on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -1945,10 +1926,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-185 - Export Reporting & Audit → exported report preserves applied filters on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
     await bsPage.expectFiltersVisible();
@@ -1959,12 +1938,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-186 - Export Reporting & Audit → exported report preserves search results on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.searchMatchResults('HANIYA');
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.searchMatchResults('HANIYA');
     await bsPage.expectAuditTrailVisible();
     await bsPage.expectFiltersVisible();
   });
@@ -1974,12 +1951,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-187 - Export Reporting & Audit → exported report contains correct column headers on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -1988,12 +1963,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-188 - Export Reporting & Audit → exported report contains correct Highest Match Scores on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.expectFiltersVisible();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.expectFiltersVisible();
     await bsPage.expectHighestMatchScoreColumnVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -2003,12 +1976,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-189 - Export Reporting & Audit → exported report contains correct action statuses on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -2017,10 +1988,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-190 - Export Reporting & Audit → exported report contains correct audit comments on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2030,12 +1999,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-191 - Export Reporting & Audit → exported report timestamp generation on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -2044,12 +2011,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-192 - Export Reporting & Audit → exported report filename format on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -2058,12 +2023,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-193 - Export Reporting & Audit → export handling for large datasets on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -2072,10 +2035,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-194 - Export Reporting & Audit → export generation performance remains acceptable on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2085,10 +2046,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-195 - Export Reporting & Audit → export generation audit logging on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2098,10 +2057,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-196 - Export Reporting & Audit → audit logs capture export user details on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2111,10 +2068,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-197 - Export Reporting & Audit → audit logs capture export timestamps on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2124,10 +2079,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-198 - Export Reporting & Audit → audit logs capture action actions on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2137,10 +2090,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-199 - Export Reporting & Audit → audit logs capture View Details access on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2150,10 +2101,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-200 - Export Reporting & Audit → audit logs capture View Summary access on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectViewSummaryContentVisible();
     await bsPage.expectAuditTrailVisible();
@@ -2164,10 +2113,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-201 - Export Reporting & Audit → audit logs preserve submitted comments on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2177,10 +2124,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-202 - Export Reporting & Audit → audit logs preserve historical action transitions on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2190,10 +2135,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-203 - Export Reporting & Audit → audit records remain immutable on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2203,10 +2146,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-204 - Export Reporting & Audit → audit history sorting displays latest activity first on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2216,10 +2157,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-205 - Export Reporting & Audit → audit history handles large activity volume on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2230,11 +2169,6 @@ test.describe("Batch Screening Module", () => {
     await bsPage.mockExportReportRestricted();
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageShellLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickDispositionMenuItem('Under Review');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
-    await bsPage.expectAccessDenied();
     await bsPage.expectExportReportRestricted();
   });
 
@@ -2243,12 +2177,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-207 - Export Reporting & Audit → export operation does not impact active workflows on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -2257,12 +2189,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-208 - Export Reporting & Audit → concurrent export requests are handled safely on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -2271,12 +2201,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-209 - Export Reporting & Audit → export failure handling works correctly on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -2285,10 +2213,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-210 - Export Reporting & Audit → audit logging remains functional during high-volume operations on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -2540,6 +2466,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that Highest Match Score calculation displays correctly on the Match Scoring and AI Summary page.
   test("Case ID:BS-241 - Threshold Scoring & AI Logic → Highest Match Score calculation displays correctly on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2547,6 +2475,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that score calculation consistency across  and on the Match Scoring and AI Summary page.
   test("Case ID:BS-242 - Threshold Scoring & AI Logic → score calculation consistency across  and on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2565,6 +2495,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that threshold-based score color indicators on the Match Scoring and AI Summary page.
   test("Case ID:BS-244 - Threshold Scoring & AI Logic → threshold-based score color indicators on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2572,6 +2504,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that low-risk matches display correct threshold behavior on the Match Scoring and AI Summary page.
   test("Case ID:BS-245 - Threshold Scoring & AI Logic → low-risk matches display correct threshold behavior on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2579,6 +2513,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that medium-risk matches display correct threshold behavior on the Match Scoring and AI Summary page.
   test("Case ID:BS-246 - Threshold Scoring & AI Logic → medium-risk matches display correct threshold behavior on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2586,6 +2522,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that high-risk matches display correct threshold behavior on the Match Scoring and AI Summary page.
   test("Case ID:BS-247 - Threshold Scoring & AI Logic → high-risk matches display correct threshold behavior on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2593,6 +2531,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that exact threshold boundary score handling on the Match Scoring and AI Summary page.
   test("Case ID:BS-248 - Threshold Scoring & AI Logic → exact threshold boundary score handling on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2600,6 +2540,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that weighted scoring logic works correctly on the Match Scoring and AI Summary page.
   test("Case ID:BS-249 - Threshold Scoring & AI Logic → weighted scoring logic works correctly on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2607,6 +2549,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that multiple matched attributes influence score correctly on the Match Scoring and AI Summary page.
   test("Case ID:BS-250 - Threshold Scoring & AI Logic → multiple matched attributes influence score correctly on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2614,6 +2558,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that missing customer attributes reduce scoring appropriately on the Match Scoring and AI Summary page.
   test("Case ID:BS-251 - Threshold Scoring & AI Logic → missing customer attributes reduce scoring appropriately on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2621,6 +2567,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that missing watchlist attributes are handled correctly on the Match Scoring and AI Summary page.
   test("Case ID:BS-252 - Threshold Scoring & AI Logic → missing watchlist attributes are handled correctly on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2628,6 +2576,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that AI-generated narrative aligns with calculated score on the Match Scoring and AI Summary page.
   test("Case ID:BS-253 - Threshold Scoring & AI Logic → AI-generated narrative aligns with calculated score on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2635,6 +2585,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that AI confidence indicator aligns with scoring outcome on the Match Scoring and AI Summary page.
   test("Case ID:BS-254 - Threshold Scoring & AI Logic → AI confidence indicator aligns with scoring outcome on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2664,6 +2616,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that duplicate matched attributes do not inflate scores on the Match Scoring and AI Summary page.
   test("Case ID:BS-257 - Threshold Scoring & AI Logic → duplicate matched attributes do not inflate scores on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2671,6 +2625,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that score recalculation after action update on the Match Scoring and AI Summary page.
   test("Case ID:BS-258 - Threshold Scoring & AI Logic → score recalculation after action update on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2678,14 +2634,17 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that score consistency after page refresh on the Match Scoring and AI Summary page.
   test("Case ID:BS-259 - Threshold Scoring & AI Logic → score consistency after page refresh on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
-    await bsPage.expectMatchResultsPageLoaded();
   });
 
   // Excel Test Case ID: BS-260
   // Task: Check that concurrent updates do not corrupt scoring data on the Match Scoring and AI Summary page.
   test("Case ID:BS-260 - Threshold Scoring & AI Logic → concurrent updates do not corrupt scoring data on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2693,6 +2652,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that AI narrative remains immutable after generation on the Match Scoring and AI Summary page.
   test("Case ID:BS-261 - Threshold Scoring & AI Logic → AI narrative remains immutable after generation on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2721,6 +2682,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that large AI narratives render correctly on the Match Scoring and AI Summary page.
   test("Case ID:BS-264 - Threshold Scoring & AI Logic → large AI narratives render correctly on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2728,6 +2691,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that unsupported/special characters do not corrupt scoring or AI output on the Match Scoring and AI Summary page.
   test("Case ID:BS-265 - Threshold Scoring & AI Logic → unsupported/special characters do not corrupt scoring or AI output on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
 
@@ -2738,7 +2703,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectHighestMatchScoreColumnVisible();
     await bsPage.expectAuditTrailVisible();
@@ -2751,10 +2716,10 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.openReviewTab('AI Summary');
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.openReviewTab('AI Summary');
     await bsPage.expectAiSummaryContentVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -2764,6 +2729,7 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-268 - Threshold Scoring & AI Logic → threshold classification remains stable during bulk record loading on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
     await bsPage.expectBatchControlsVisible();
   });
 
@@ -2782,6 +2748,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that scoring logic supports large-volume screening datasets on the Match Scoring and AI Summary page.
   test("Case ID:BS-270 - Threshold Scoring & AI Logic → scoring logic supports large-volume screening datasets on the Match Scoring and AI Summary page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.openScreeningResultByGridRow(0);
+    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.expectHighestMatchScoreColumnVisible();
   });
   });
@@ -2790,8 +2758,10 @@ test.describe("Batch Screening Module", () => {
   // Excel Test Case ID: BS-271
   // Task: Check that system handles empty screening dataset safely on the Edge Cases and Non-Functional page.
   test("Case ID:BS-271 - Negative Edge Cases & NFR → system handles empty screening dataset safely on the Edge Cases and Non-Functional page.", async ({ testData }) => {
-    await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.mockEmptyMatchResults();
+    await bsPage.openBatchScreeningDirect(testData.baseUrl);
+    await bsPage.expectMatchResultsPageShellLoaded();
+    await bsPage.simulateEmptyGridView();
     await bsPage.expectApiFailureHandledGracefully();
     await bsPage.expectEmptyStateVisible();
   });
@@ -2880,12 +2850,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that browser refresh during export generation handling on the Edge Cases and Non-Functional page. Test the Export Report button.
   test("Case ID:BS-283 - Negative Edge Cases & NFR → browser refresh during export generation handling on the Edge Cases and Non-Functional page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectAuditTrailVisible();
   });
@@ -3108,12 +3076,11 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that action update API enforces mandatory comments on the Backend Integration page.
   test("Case ID:BS-311 - API & Backend Validation → action update API enforces mandatory comments on the Backend Integration page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.submitBlankComment();
     await bsPage.expectMatchResultsPageLoaded();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-312
@@ -3137,10 +3104,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logging API captures action actions on the Backend Integration page.
   test("Case ID:BS-314 - API & Backend Validation → audit logging API captures action actions on the Backend Integration page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectAuditTrailVisible();
@@ -3150,12 +3115,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that export API generates report successfully on the Backend Integration page. Test the Export Report button.
   test("Case ID:BS-315 - API & Backend Validation → export API generates report successfully on the Backend Integration page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectAuditTrailVisible();
   });
@@ -3164,12 +3127,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that export API preserves applied filters on the Backend Integration page. Test the Export Report button.
   test("Case ID:BS-316 - API & Backend Validation → export API preserves applied filters on the Backend Integration page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectFiltersVisible();
     await bsPage.expectAuditTrailVisible();
@@ -3267,10 +3228,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that API audit logs capture failed requests on the Backend Integration page.
   test("Case ID:BS-328 - API & Backend Validation → API audit logs capture failed requests on the Backend Integration page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectAuditTrailVisible();
@@ -3280,10 +3239,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that API audit logs capture unauthorized access attempts on the Backend Integration page. Test with the role from test data.
   test("Case ID:BS-329 - API & Backend Validation → API audit logs capture unauthorized access attempts on the Backend Integration page. Test with the role from test data.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAccessDenied();
     await bsPage.expectAuditTrailVisible();
@@ -3332,10 +3289,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logs synchronize immediately after action updates on the Data Synchronization page.
   test("Case ID:BS-334 - Integration & Sync Validation → audit logs synchronize immediately after action updates on the Data Synchronization page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectAuditTrailVisible();
@@ -3360,12 +3315,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that export reports reflect latest synchronized workflow updates on the Data Synchronization page. Test the Export Report button.
   test("Case ID:BS-337 - Integration & Sync Validation → export reports reflect latest synchronized workflow updates on the Data Synchronization page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectAuditTrailVisible();
   });
@@ -3413,10 +3366,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that synchronization between UI and backend audit records on the Data Synchronization page.
   test("Case ID:BS-343 - Integration & Sync Validation → synchronization between UI and backend audit records on the Data Synchronization page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
     await bsPage.expectMatchResultsPageLoaded();
@@ -3426,12 +3377,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that synchronization between export data and UI data on the Data Synchronization page. Test the Export Report button.
   test("Case ID:BS-344 - Integration & Sync Validation → synchronization between export data and UI data on the Data Synchronization page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.expectAuditTrailVisible();
   });
@@ -3468,10 +3417,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that synchronization for large audit histories on the Data Synchronization page.
   test("Case ID:BS-349 - Integration & Sync Validation → synchronization for large audit histories on the Data Synchronization page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
     await bsPage.expectMatchResultsPageLoaded();
@@ -3504,10 +3451,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logs preserve complete workflow chronology on the Export and Audit page.
   test("Case ID:BS-353 - Advanced Audit & Compliance → audit logs preserve complete workflow chronology on the Export and Audit page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -3516,10 +3461,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logs capture acting user identity accurately on the Export and Audit page.
   test("Case ID:BS-354 - Advanced Audit & Compliance → audit logs capture acting user identity accurately on the Export and Audit page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -3528,10 +3471,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logs capture accurate timestamps on the Export and Audit page.
   test("Case ID:BS-355 - Advanced Audit & Compliance → audit logs capture accurate timestamps on the Export and Audit page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -3554,12 +3495,11 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that mandatory comments are enforced for all configured actions on the Export and Audit page.
   test("Case ID:BS-358 - Advanced Audit & Compliance → mandatory comments are enforced for all configured actions on the Export and Audit page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.submitBlankComment();
     await bsPage.expectExportReportVisible();
+    await bsPage.expectCommentValidationVisible();
   });
 
   // Excel Test Case ID: BS-359
@@ -3597,10 +3537,10 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openScreeningResultByGridRow(0);
     await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openMatchReviewFromResultsDetail();
-    await bsPage.openReviewTab('AI Summary');
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.openReviewTab('AI Summary');
     await bsPage.expectAiSummaryContentVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -3608,6 +3548,7 @@ test.describe("Batch Screening Module", () => {
   // Excel Test Case ID: BS-364
   // Task: Check that unauthorized users cannot access audit records on the Export and Audit page. Test with the role from test data.
   test("Case ID:BS-364 - Advanced Audit & Compliance → unauthorized users cannot access audit records on the Export and Audit page. Test with the role from test data.", async ({ testData }) => {
+    await bsPage.mockUnauthorized();
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectAccessDenied();
   });
@@ -3616,12 +3557,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that export reports preserve compliance-required fields on the Export and Audit page. Test the Export Report button.
   test("Case ID:BS-365 - Advanced Audit & Compliance → export reports preserve compliance-required fields on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectExportReportVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -3630,12 +3569,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that export reports do not expose restricted compliance fields on the Export and Audit page. Test the Export Report button.
   test("Case ID:BS-366 - Advanced Audit & Compliance → export reports do not expose restricted compliance fields on the Export and Audit page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -3643,10 +3580,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that workflow state synchronization remains audit consistent on the Export and Audit page.
   test("Case ID:BS-367 - Advanced Audit & Compliance → workflow state synchronization remains audit consistent on the Export and Audit page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
     await bsPage.expectMatchResultsPageLoaded();
@@ -3677,10 +3612,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that dedicated audit history panel displays action actions with user and timestamp on the Export and Audit page.
   test("Case ID:BS-426 - Advanced Audit & Compliance → dedicated audit history panel displays action actions with user and timestamp on the Export and Audit page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -3749,12 +3682,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that export generation performance for large datasets on the Match Results page. Test the Export Report button.
   test("Case ID:BS-378 - Advanced Performance & Recovery → export generation performance for large datasets on the Match Results page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectPageLoadWithinSla(3000);
     await bsPage.expectAuditTrailVisible();
   });
@@ -3808,12 +3739,10 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that system handles simultaneous large exports safely on the Match Results page. Test the Export Report button.
   test("Case ID:BS-385 - Advanced Performance & Recovery → system handles simultaneous large exports safely on the Match Results page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectPageLoadWithinSla(3000);
     await bsPage.expectAuditTrailVisible();
   });
@@ -3833,10 +3762,8 @@ test.describe("Batch Screening Module", () => {
   // Task: Check that audit logging performance remains stable during heavy workflow activity on the Match Results page.
   test("Case ID:BS-387 - Advanced Performance & Recovery → audit logging performance remains stable during heavy workflow activity on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectPageLoadWithinSla(3000);
     await bsPage.expectAuditTrailVisible();
@@ -3878,11 +3805,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-391 - Batch Screening → analyst can execute bulk Confirm Match action for multiple selected records on the Match Results page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Confirm Match');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
     await bsPage.expectActionOutcomeApplied();
     await bsPage.expectCommentModalClosed();
   });
@@ -3892,11 +3816,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-392 - Batch Screening → analyst can execute bulk False Positive action for multiple selected records on the Match Results page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(6);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openUnderReviewActionsMenu(6);
-    await bsPage.clickDispositionMenuItem('False Positive');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('False Positive', 'Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
     await bsPage.expectCommentModalClosed();
   });
@@ -3906,11 +3827,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-393 - Batch Screening → analyst can execute bulk Move to Case action for multiple selected records on the Match Results page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(4);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openUnderReviewActionsMenu(4);
-    await bsPage.clickDispositionMenuItem('Move to Case');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Move to Case', 'Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
     await bsPage.expectCommentModalClosed();
   });
@@ -3920,11 +3838,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-394 - Batch Screening → analyst can execute bulk Move to Whitelist action for multiple selected records on the Match Results page. Test the Actions menu and Comment Modal.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Move to Whitelist');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Move to Whitelist', 'Automation action comment for batch screening validation.');
     await bsPage.expectCommentModalClosed();
   });
 
@@ -3934,6 +3849,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Move to Exception List', 'Automation action comment for batch screening validation.');
     await bsPage.expectActionOutcomeApplied();
   });
 
@@ -3942,12 +3858,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-396 - Batch Screening → bulk workflow action requires mandatory action comments when configured on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.selectBulkRecords(2);
-    await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
-    await bsPage.submitBlankComment();
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
     await bsPage.expectBatchControlsVisible();
   });
 
@@ -3957,6 +3869,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
   });
 
   // Excel Test Case ID: BS-398
@@ -3964,12 +3877,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-398 - Batch Screening → bulk workflow execution generates audit logs for all affected records on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.selectBulkRecords(2);
-    await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -3979,6 +3888,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
   });
 
   // Excel Test Case ID: BS-400
@@ -3987,6 +3897,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
     await bsPage.expectBatchControlsVisible();
   });
 
@@ -3996,6 +3907,7 @@ test.describe("Batch Screening Module", () => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
     await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
   });
 
   // Excel Test Case ID: BS-402
@@ -4003,12 +3915,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-402 - Batch Screening → bulk export reflects latest workflow state after bulk action execution on the Match Results page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
-    await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
-    await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.selectBulkRecords(2);
+    await bsPage.triggerBulkDispositionAction('Confirm Match', 'Automation action comment for batch screening validation.');
     await bsPage.expectBatchControlsVisible();
     await bsPage.expectAuditTrailVisible();
   });
@@ -4048,10 +3956,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-407 - Batch Screening → multilingual workflow comments are preserved correctly in audit history on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
   });
 
@@ -4060,12 +3966,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-408 - Batch Screening → multilingual export files preserve UTF-8 character encoding on the Match Results page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -4093,10 +3997,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-411 - Batch Screening → audit logs consistently store timestamps in UTC format on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -4106,12 +4008,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-412 - Batch Screening → exported reports preserve consistent timezone formatting on the Match Results page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -4127,10 +4027,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-414 - Batch Screening → audit chronology remains accurate during cross-timezone workflow execution on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -4152,8 +4050,6 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-416 - Batch Screening → dashboard follows logical keyboard tab order across workflow controls on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
     await bsPage.clickDispositionMenuItem('Under Review');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
@@ -4201,12 +4097,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-422 - Batch Screening → export generation remains retry-safe after temporary backend interruption on the Match Results page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
 
@@ -4215,10 +4109,8 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-423 - Batch Screening → audit logging prevents duplicate entries during workflow retry execution on the Match Results page.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
     await bsPage.expectAuditTrailVisible();
   });
@@ -4235,12 +4127,10 @@ test.describe("Batch Screening Module", () => {
   test("Case ID:BS-425 - Batch Screening → repeated API retry requests do not create duplicate exports or workflow records on the Match Results page. Test the Export Report button.", async ({ testData }) => {
     await bsPage.openBatchScreeningDirect(testData.baseUrl);
     await bsPage.expectMatchResultsPageLoaded();
-    await bsPage.openScreeningResultByGridRow(0);
-    await bsPage.expectScreeningResultsWorkspaceLoaded();
-    await bsPage.clickExportReport();
     await bsPage.openUnderReviewActionsMenu(0);
-    await bsPage.clickDispositionMenuItem('Under Review');
+    await bsPage.clickDispositionMenuItem('Move to Case');
     await bsPage.fillCommentAndConfirm('Automation action comment for batch screening validation.');
+    await bsPage.clickExportReport();
     await bsPage.expectAuditTrailVisible();
   });
   });

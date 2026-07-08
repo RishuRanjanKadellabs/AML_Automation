@@ -107,6 +107,9 @@ export function assertionForBullet(bullet: string, row: BsExcelRow): string | nu
     return "await bsPage.expectActionOutcomeApplied()";
   }
   if (/action comment is saved|comment is saved with the user/i.test(bl)) {
+    if (/mandatory comment modal should appear|before action execution/i.test(bl)) {
+      return "await bsPage.expectCommentValidationVisible()";
+    }
     return "await bsPage.expectCommentModalClosed()";
   }
   if (/only matching records|filtered rows match/i.test(bl)) {
@@ -146,6 +149,9 @@ export function assertionForBullet(bullet: string, row: BsExcelRow): string | nu
     return "await bsPage.expectActionOutcomeApplied()";
   }
   if (/error or validation message|safely reject|malicious input|clear error/i.test(bl)) {
+    if (row.subModule.toLowerCase().includes("filters") || row.subModule.toLowerCase().includes("search")) {
+      return "await bsPage.expectSearchHandledGracefully()";
+    }
     return "await bsPage.expectCommentValidationVisible()";
   }
   if (/pagination|page index/i.test(bl)) {
@@ -165,6 +171,9 @@ export function assertionForBullet(bullet: string, row: BsExcelRow): string | nu
   }
   if (/highest match score|color-coded|match score/i.test(bl)) {
     return "await bsPage.expectHighestMatchScoreColumnVisible()";
+  }
+  if (/bulk row selection|bulk action toolbar/i.test(bl)) {
+    return "await bsPage.expectBatchControlsVisible()";
   }
   if (/bulk|selected records/i.test(bl)) {
     return "await bsPage.expectBatchControlsVisible()";
