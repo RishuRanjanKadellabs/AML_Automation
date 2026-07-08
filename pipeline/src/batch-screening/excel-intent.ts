@@ -1,4 +1,4 @@
-import { ACTION_COMMENTS, SEARCH_KEYWORDS } from "./batch-data";
+import { ACTION_COMMENTS, SEARCH_KEYWORDS, gridRowIndexForDisposition } from "./batch-data";
 import { buildAssertionsForRow, hasAuditAssertion } from "./excel-assertions";
 import { getFsdEntryForRow } from "./excel-fsd-context";
 import {
@@ -6,12 +6,16 @@ import {
   filterChipNameFromTask,
   isActionTask,
   isAuditTask,
+  isBulkTask,
+  isBulkDispositionTask,
+  isBulkUiTask,
   isCommentModalTask,
   isExportTask,
   isFilterOrSearchTask,
   isLandingOrShellTask,
   isPureExportTask,
   isRbacUnauthorizedRow,
+  isUnauthorizedDirectAccessRow,
   stepMatchesTask,
   taskContext,
 } from "./task-step-scoper";
@@ -55,15 +59,8 @@ function featureGroup(subModule: string): string {
 }
 
 function gridRowIndex(row: BsExcelRow): number {
-  const range = row.testData.match(/Rows?:\s*(\d+)\s*(?:to|-)\s*(\d+)/i);
-  if (range) {
-    return Math.max(0, parseInt(range[1], 10) - 1);
-  }
-  const single = row.testData.match(/Row:\s*(\d+)/i);
-  if (single) {
-    return Math.max(0, parseInt(single[1], 10) - 1);
-  }
-  return 0;
+  const action = actionNameFromTask(row) || "";
+  return gridRowIndexForDisposition(action, row.testData);
 }
 
 function actionComment(row: BsExcelRow): string {
@@ -85,13 +82,14 @@ function searchKeyword(row: BsExcelRow): string {
 function isScreeningResultsContext(row: BsExcelRow): boolean {
   const sm = row.subModule.toLowerCase();
   const blob = rowBlob(row);
+  if (sm.includes("actions") || sm.includes("comment modal") || sm.includes("export")) {
+    return false;
+  }
   return sm.includes("screening results")
-    || sm.includes("actions")
-    || sm.includes("comment modal")
     || sm.includes("match details")
     || sm.includes("view summary")
     || sm.includes("threshold")
-    || blob.includes("screening results")
+    || blob.includes("screening results page")
     || blob.includes("match review");
 }
 
@@ -153,17 +151,32 @@ function injectAuditPrerequisite(row: BsExcelRow, setup: string[], actions: stri
   const action = actionNameFromTask(row) || "Under Review";
 
   if (!setup.some((s) => s.includes("openScreeningResultByGridRow"))) {
-    pushUnique(setup, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
-    pushUnique(setup, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+    if (row.subModule.toLowerCase().includes("screening results") && !row.subModule.toLowerCase().includes("actions")) {
+      pushUnique(setup, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
+      pushUnique(setup, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+    }
   }
-  pushUnique(actions, `await bsPage.openUnderReviewActionsMenu(${rowIdx})`);
-  pushUnique(actions, `await bsPage.clickDispositionMenuItem('${action}')`);
-  pushUnique(actions, `await bsPage.fillCommentAndConfirm('${comment}')`);
+  const auditAction = /under review/i.test(action) ? "Move to Case" : action;
+  const prereq = [
+    `await bsPage.openUnderReviewActionsMenu(${rowIdx})`,
+    `await bsPage.clickDispositionMenuItem('${auditAction}')`,
+    `await bsPage.fillCommentAndConfirm('${comment}')`,
+  ];
+  for (let i = prereq.length - 1; i >= 0; i -= 1) {
+    if (!actions.includes(prereq[i])) {
+      actions.unshift(prereq[i]);
+    }
+  }
 }
 
 function injectCommentModalActions(row: BsExcelRow, setup: string[], actions: string[]): void {
   if (!isCommentModalTask(row)) {
     return;
+  }
+
+  const sm = row.subModule.toLowerCase();
+  if (sm.includes("actions") || sm.includes("comment modal")) {
+    pushUnique(setup, "await bsPage.expectMatchResultsPageLoaded()");
   }
 
   const rowIdx = gridRowIndex(row);
@@ -173,8 +186,10 @@ function injectCommentModalActions(row: BsExcelRow, setup: string[], actions: st
   const allSteps = [...setup, ...actions];
 
   if (!allSteps.some((s) => s.includes("openScreeningResultByGridRow"))) {
-    pushUnique(setup, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
-    pushUnique(setup, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+    if (row.subModule.toLowerCase().includes("screening results") && !sm.includes("actions")) {
+      pushUnique(setup, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
+      pushUnique(setup, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
+    }
   }
   if (!allSteps.some((s) => s.includes("openUnderReviewActionsMenu"))) {
     pushUnique(actions, `await bsPage.openUnderReviewActionsMenu(${rowIdx})`);
@@ -252,6 +267,20 @@ function shouldAutoOpenScreeningResults(row: BsExcelRow): boolean {
   return isScreeningResultsContext(row);
 }
 
+function shouldOpenScreeningResultDetail(row: BsExcelRow): boolean {
+  if (isBulkTask(row)) {
+    return false;
+  }
+  const sm = row.subModule.toLowerCase();
+  if (sm.includes("actions") || sm.includes("comment modal") || sm.includes("export")) {
+    return false;
+  }
+  if (shouldAutoOpenScreeningResults(row) || isReviewContext(row)) {
+    return true;
+  }
+  return isActionTask(row) && sm.includes("screening results");
+}
+
 function numberedOpensScreeningResults(row: BsExcelRow): boolean {
   return parseNumberedSteps(row.testSteps).some((s) =>
     stepMatches(s, "customer name", "matched list", "number of matched", "screening result", "view details"),
@@ -264,7 +293,7 @@ export function buildExcelSetupActions(row: BsExcelRow): string[] {
   const steps: string[] = [];
   const rowIdx = gridRowIndex(row);
 
-  if (isRbacUnauthorizedRow(row)) {
+  if (isRbacUnauthorizedRow(row) || isUnauthorizedDirectAccessRow(row)) {
     pushUnique(steps, "await bsPage.mockUnauthorized()");
     pushUnique(steps, OPEN);
     return steps;
@@ -275,8 +304,10 @@ export function buildExcelSetupActions(row: BsExcelRow): string[] {
   }
 
   if (isEmptyDatasetRow(row)) {
-    pushUnique(steps, OPEN);
     pushUnique(steps, "await bsPage.mockEmptyMatchResults()");
+    pushUnique(steps, OPEN);
+    pushUnique(steps, "await bsPage.expectMatchResultsPageShellLoaded()");
+    pushUnique(steps, "await bsPage.simulateEmptyGridView()");
     return steps;
   }
 
@@ -294,7 +325,7 @@ export function buildExcelSetupActions(row: BsExcelRow): string[] {
     }
   }
 
-  if (isReviewContext(row) || isActionTask(row)) {
+  if (shouldOpenScreeningResultDetail(row)) {
     if (!steps.some((s) => s.includes("openScreeningResultByGridRow"))) {
       pushUnique(steps, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
       pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
@@ -372,6 +403,9 @@ export function buildExcelStepActions(row: BsExcelRow): string[] {
       continue;
     }
     if (/customer name link|first row of the match results grid|open a screening record/i.test(sl)) {
+      if (row.subModule.toLowerCase().includes("actions") || row.subModule.toLowerCase().includes("comment modal")) {
+        continue;
+      }
       pushUnique(steps, `await bsPage.openScreeningResultByGridRow(${rowIdx})`);
       pushUnique(steps, "await bsPage.expectScreeningResultsWorkspaceLoaded()");
       continue;
@@ -578,6 +612,10 @@ export function buildExcelStepActions(row: BsExcelRow): string[] {
     }
   }
 
+  if (isEmptyDatasetRow(row)) {
+    pushUnique(steps, "await bsPage.simulateEmptyGridView()");
+  }
+
   return steps;
 }
 
@@ -585,7 +623,7 @@ export function buildExcelAssertionActions(row: BsExcelRow): string[] {
   const steps = buildAssertionsForRow(row, getFsdEntryForRow(row));
   const blob = rowBlob(row);
 
-  if (isRbacUnauthorizedRow(row)) {
+  if (isRbacUnauthorizedRow(row) || isUnauthorizedDirectAccessRow(row)) {
     pushUnique(steps, "await bsPage.expectAccessDenied()");
   }
 
@@ -600,6 +638,7 @@ export function buildExcelAssertionActions(row: BsExcelRow): string[] {
       pushUnique(steps, s);
     }
     pushUnique(steps, "await bsPage.expectExportReportRestricted()");
+    return steps;
   }
 
   if (isApiFailureRow(row)) {
@@ -633,7 +672,7 @@ export function buildExcelAlignedLogic(row: BsExcelRow): string {
     assertions = assertions.filter((s) => !s.includes("expectMatchResultsPageLoaded"));
   }
 
-  if (isRbacUnauthorizedRow(row)) {
+  if (isRbacUnauthorizedRow(row) || isUnauthorizedDirectAccessRow(row)) {
     setup = setup.filter((s) => !s.includes("expectMatchResultsPageLoaded"));
     actions = [];
     assertions = assertions.filter((s) =>
@@ -641,6 +680,45 @@ export function buildExcelAlignedLogic(row: BsExcelRow): string {
     );
     if (!assertions.some((s) => s.includes("expectAccessDenied"))) {
       assertions.push("await bsPage.expectAccessDenied()");
+    }
+  } else if (isUnauthorizedExportRestriction(row)) {
+    setup = setup.filter((s) =>
+      !s.includes("openScreeningResult")
+      && !s.includes("expectScreeningResults")
+      && !s.includes("openMatchReview")
+      && !s.includes("expectMatchResultsPageLoaded")
+      && !s.includes("expectExportReportVisible"),
+    );
+    actions = [];
+    assertions = assertions.filter((s) =>
+      s.includes("expectExportReportRestricted") || s.includes("expectMatchResultsPageShellLoaded"),
+    );
+    if (!assertions.some((s) => s.includes("expectExportReportRestricted"))) {
+      assertions.push("await bsPage.expectExportReportRestricted()");
+    }
+  } else if (isBulkDispositionTask(row)) {
+    setup = setup.filter((s) =>
+      !s.includes("openScreeningResult")
+      && !s.includes("expectScreeningResults")
+      && !s.includes("openMatchReview"),
+    );
+    const action = actionNameFromTask(row) || "Confirm Match";
+    const comment = escapeStr(actionComment(row));
+    actions = [
+      "await bsPage.selectBulkRecords(2)",
+      `await bsPage.triggerBulkDispositionAction('${action}', '${comment}')`,
+    ];
+    ({ actions, assertions } = normalizeExportSteps(actions, assertions));
+  } else if (isBulkUiTask(row)) {
+    setup = setup.filter((s) =>
+      !s.includes("openScreeningResult")
+      && !s.includes("expectScreeningResults")
+      && !s.includes("openMatchReview"),
+    );
+    actions = ["await bsPage.selectBulkRecords(2)"];
+    assertions = assertions.filter((s) => !s.includes("triggerBulkDispositionAction"));
+    if (!assertions.some((s) => s.includes("expectBatchControlsVisible"))) {
+      assertions.push("await bsPage.expectBatchControlsVisible()");
     }
   } else {
     if (isPureExportTask(row)) {
@@ -659,6 +737,18 @@ export function buildExcelAlignedLogic(row: BsExcelRow): string {
       injectAuditPrerequisite(row, setup, actions);
     }
     injectCommentModalActions(row, setup, actions);
+    if (isCommentModalTask(row) || row.subModule.toLowerCase().includes("actions")) {
+      setup = setup.filter((s) =>
+        !s.includes("openScreeningResultByGridRow")
+        && !s.includes("expectScreeningResultsWorkspaceLoaded"),
+      );
+      if (actions.some((s) => s.includes("submitBlankComment"))) {
+        assertions = assertions.filter((s) => !s.includes("expectCommentModalClosed"));
+        if (!assertions.some((s) => s.includes("expectCommentValidationVisible"))) {
+          assertions.push("await bsPage.expectCommentValidationVisible()");
+        }
+      }
+    }
     if (isCommentModalTask(row) && /keyboard focus|focus trap/i.test(taskContext(row))) {
       actions = actions.filter((s) =>
         !s.includes("fillCommentAndConfirm") && !s.includes("expectCommentModalClosed"),

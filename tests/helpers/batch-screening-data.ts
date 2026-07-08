@@ -33,6 +33,18 @@ export function parseGridRowIndex(testData: string): number {
   return 0;
 }
 
+export function gridRowIndexForDisposition(action: string, testData: string): number {
+  const requested = parseGridRowIndex(testData);
+  const record = gridRecordByRow(requested + 1);
+  if (/under review/i.test(action) && record && /under review/i.test(record.status ?? "")) {
+    const alternative = BATCH_GRID_RECORDS.find((r) => !/under review/i.test(r.status ?? ""));
+    if (alternative) {
+      return alternative.gridRow - 1;
+    }
+  }
+  return requested;
+}
+
 export function gridRecordByRow(gridRow: number): BatchGridRecord | undefined {
   return BATCH_GRID_RECORDS.find((r) => r.gridRow === gridRow);
 }
