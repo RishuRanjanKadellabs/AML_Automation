@@ -34,7 +34,7 @@ const KycGapReportLocators = {
   gapReportMissingFieldsSection: ".missing-fields, [class*='missing-fields']",
   gapReportScoreBreakdown: ".score-breakdown, [class*='score-breakdown']",
   gapTypeBadge: ".gap-type-badge, [class*='gap-type'], [class*='badge']",
-  gapReportEmptyState: "td.gap-table-empty, .empty-state, [class*='empty-state']",
+  gapReportEmptyState: "td.gap-table-empty, tr:has(td.gap-table-empty), .empty-state, [class*='empty-state'], table tbody tr:has-text('No records'), table tbody td:has-text('No records')",
   viewActionButton: "button.gap-view-btn, button[aria-label*='View gap details']",
   gapPriorityCell: "table tbody tr td[class*='priority'], table tbody tr td:nth-child(6)",
   gapScoreCell: "table tbody tr td:nth-child(7)",
