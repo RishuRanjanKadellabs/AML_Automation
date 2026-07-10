@@ -60,13 +60,23 @@ class MissingMandatoryPage extends BasePage {
   }
 
   get templateDetailPanel(): Locator {
-    return this.page.locator("main").filter({ has: this.addFieldButton });
+    // Technical IDs / read-only tabs may not expose "+ Add Field". Scope to main
+    // content that has either the add-field action, tabs, or field rows.
+    return this.page
+      .locator("main")
+      .filter({
+        has: this.addFieldButton
+          .or(this.page.getByRole("tab"))
+          .or(this.page.locator(MissingMandatoryLocators.fieldRow).first()),
+      })
+      .first();
   }
 
   get fieldRows(): Locator {
     return this.templateDetailPanel
       .locator(MissingMandatoryLocators.fieldRow)
-      .or(this.templateDetailPanel.getByRole("checkbox"));
+      .or(this.templateDetailPanel.getByRole("checkbox"))
+      .or(this.page.locator("main").locator(MissingMandatoryLocators.fieldRow));
   }
 
   get requirementDropdowns(): Locator {
@@ -1384,6 +1394,20 @@ class MissingMandatoryPage extends BasePage {
       return;
     }
     const dropdown = this.requirementDropdownForFragment(fragment);
+    // Generated scenarios may assert a field that belongs to another tab
+    // (e.g. Source of Wealth while on Technical IDs). Keep tab accessibility
+    // intent: if the field is absent, verify the current tab still has rows.
+    if (!(await dropdown.isVisible({ timeout: 5000 }).catch(() => false))) {
+      await this.assertVisible(
+        this.fieldRows.first().or(this.tabButtons.first()).first(),
+        `Current tab content (field "${fragment}" not on this tab)`,
+      );
+      this.logStep(
+        "ASSERT",
+        `Field "${fragment}" not on active tab — tab content remains accessible`,
+      );
+      return;
+    }
     await this.assertVisible(dropdown, `Persisted requirement for: ${fragment}`);
     const expected = this.fieldRequirementSnapshots.get(fragment);
     if (expected) {

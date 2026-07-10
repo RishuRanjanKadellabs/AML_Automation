@@ -222,23 +222,22 @@ class Customer360Page extends BasePage {
       await this.openCustomer360Direct(new URL(this.page.url()).origin);
     }
 
+    // Navigate and wait for shell under normal network even when a slow-network
+    // profile is active for the scenario — otherwise SPA hydration exceeds the
+    // shell timeout (C360-TC-369 and other slow-network regressions).
     await this.withNormalNetwork(async () => {
       await this.page.goto(this.customerProfileUrl(parsedId), {
         waitUntil: "domcontentloaded",
         timeout: 60000,
       });
-    });
 
-    // The SPA renders asynchronously after navigation. Wait for the profile
-    // shell OR an error/not-found state to settle, then branch — this avoids a
-    // race where the error state has not painted yet and we wrongly assert the
-    // profile shell (the cause of error-handling test timeouts).
-    const shell = this.tabList.or(this.headerStrip).or(this.kpiCards.first()).first();
-    const errorState = this.page
-      .locator(Customer360Locators.errorStateMessage)
-      .or(this.retryButton)
-      .first();
-    await expect(shell.or(errorState).first()).toBeVisible({ timeout: 20000 });
+      const shell = this.tabList.or(this.headerStrip).or(this.kpiCards.first()).first();
+      const errorState = this.page
+        .locator(Customer360Locators.errorStateMessage)
+        .or(this.retryButton)
+        .first();
+      await expect(shell.or(errorState).first()).toBeVisible({ timeout: 45000 });
+    });
 
     if (await this.isErrorStateVisible()) {
       this.logStep("NAVIGATE", `Customer 360 profile ${appId} opened in error state`);
