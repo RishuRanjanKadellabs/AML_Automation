@@ -39,8 +39,27 @@ export class HealerMode {
     }
   }
 
-  async navigateWithHeal(page: Page, url: string, shellLocator: Locator, retries = 3): Promise<void> {
+  /** True when the failure is a transient network / navigation flake worth retrying. */
+  static isTransientNavigationError(error: unknown): boolean {
+    const message = errorMessage(error);
+    return /Timeout|ERR_INTERNET_DISCONNECTED|ERR_NETWORK_CHANGED|ERR_CONNECTION_|ERR_NAME_NOT_RESOLVED|ERR_TIMED_OUT|net::ERR_|NS_ERROR_|Navigation failed|Target closed|Page crashed/i.test(
+      message,
+    );
+  }
+
+  /**
+   * Navigate with retries for timeouts and network disconnects.
+   * Prefer waitUntil=domcontentloaded; fall back to commit on stubborn loads.
+   */
+  async gotoWithNetworkHeal(
+    page: Page,
+    url: string,
+    options: { timeout?: number; retries?: number; shellLocator?: Locator } = {},
+  ): Promise<void> {
+    const timeout = options.timeout ?? 60000;
+    const retries = options.retries ?? 5;
     let lastError: unknown;
+
     for (let attempt = 1; attempt <= retries; attempt++) {
       try {
         if (attempt > 1) {
@@ -50,19 +69,36 @@ export class HealerMode {
             action: "NAVIGATE",
             primaryStrategy: "page.goto",
             outcome: "retry",
-            detail: `Retry ${attempt} for ${url}`,
+            detail: `Retry ${attempt}/${retries} for ${url}`,
           });
-          await sleep(750 * attempt);
+          await sleep(Math.min(8000, 1000 * attempt * attempt));
         }
 
-        await page.goto(url, { waitUntil: "commit" });
-        await page.waitForLoadState("domcontentloaded");
+        const waitUntil = attempt <= 2 ? "domcontentloaded" : "commit";
+        await page.goto(url, { waitUntil, timeout });
+        await page.waitForLoadState("domcontentloaded").catch(() => undefined);
         await this.waitForTransientUi(page);
-        await shellLocator.waitFor({ state: "visible", timeout: 30000 });
+        if (options.shellLocator) {
+          await options.shellLocator.waitFor({ state: "visible", timeout: 30000 });
+        }
+
+        if (attempt > 1) {
+          recordHealEvent({
+            testId: this.testId,
+            action: "NAVIGATE",
+            primaryStrategy: "page.goto",
+            fallbackStrategy: `retry-${attempt}`,
+            outcome: "healed",
+            detail: `Recovered navigation to ${url} on attempt ${attempt}`,
+          });
+        }
         return;
       } catch (error) {
         lastError = error;
         this.logStep("HEAL", `[${this.testId}] Navigation attempt ${attempt} failed — ${errorMessage(error)}`, "fail");
+        if (!HealerMode.isTransientNavigationError(error) && attempt >= 2) {
+          break;
+        }
       }
     }
 
@@ -74,6 +110,10 @@ export class HealerMode {
       detail: errorMessage(lastError),
     });
     throw lastError;
+  }
+
+  async navigateWithHeal(page: Page, url: string, shellLocator: Locator, retries = 3): Promise<void> {
+    await this.gotoWithNetworkHeal(page, url, { shellLocator, retries, timeout: 60000 });
   }
 
   async clickWithHeal(strategies: HealStrategy[], label: string, retries = 3): Promise<void> {

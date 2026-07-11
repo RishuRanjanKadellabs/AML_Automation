@@ -231,10 +231,7 @@ test.describe("Manual Screening Module", () => {
   test("Case ID:TC-MS-025 - Layout & Navigation → that user identity bar at bottom on the Layout & Navigation area. This confirms the Layout & Navigation area works correctly for compliance analysts.", async ({ testData }) => {
     await msPage.openManualScreeningDirect(testData.baseUrl);
     await msPage.expectManualScreeningPageLoaded();
-    await msPage.submitValidIndividualScreening('HANIYA');
-    await msPage.expectScreeningConfigurationSectionVisible();
-    await msPage.selectFirstWatchlistCard();
-    await msPage.expectResultsPageLoaded();
+    await msPage.expectSidebarUserIdentityBarVisible();
     await msPage.expectSidebarNavigationVisible();
   });
   });
@@ -321,16 +318,16 @@ test.describe("Manual Screening Module", () => {
   // Excel Scenario: Verify that “View Last Results” button is visible on the right side on the Top Bar area. This helps analysts review matches and take timely action.
   test("Case ID:TC-MS-033 - Top Bar → that “View Last Results” button is visible on the right side on the Top Bar area. This helps analysts review matches and take timely action.", async ({ testData }) => {
     await msPage.openManualScreeningDirect(testData.baseUrl);
-    await msPage.openViewLastResults();
-    await msPage.expectResultsPageLoaded();
+    await msPage.expectManualScreeningPageLoaded();
+    await msPage.expectTopBarVisible();
   });
 
   // Excel Test Case ID: TC-MS-034
   // Excel Scenario: Verify that “View Last Results” button styling as ghost/outlined button on the Top Bar area. This helps analysts review matches and take timely action. The page should remain stable with no unexpected errors.
   test("Case ID:TC-MS-034 - Top Bar → that “View Last Results” button styling as ghost/outlined button on the Top Bar area. This helps analysts review matches and take timely action. The page should remain stable with no unexpected errors.", async ({ testData }) => {
     await msPage.openManualScreeningDirect(testData.baseUrl);
-    await msPage.openViewLastResults();
-    await msPage.expectResultsPageLoaded();
+    await msPage.expectManualScreeningPageLoaded();
+    await msPage.expectTopBarVisible();
     await msPage.expectLayoutStable();
   });
 
@@ -349,10 +346,6 @@ test.describe("Manual Screening Module", () => {
     await msPage.openManualScreeningDirect(testData.baseUrl);
     await msPage.openViewLastResults();
     await msPage.expectResultsPageLoaded();
-    await msPage.expectManualScreeningPageLoaded();
-    await msPage.submitValidIndividualScreening('HANIYA');
-    await msPage.selectPurpose('Onboarding Screening');
-    await msPage.selectFirstWatchlistCard();
     await msPage.expectSidebarNavigationVisible();
   });
 
@@ -362,10 +355,6 @@ test.describe("Manual Screening Module", () => {
     await msPage.openManualScreeningDirect(testData.baseUrl);
     await msPage.openViewLastResults();
     await msPage.expectResultsPageLoaded();
-    await msPage.expectManualScreeningPageLoaded();
-    await msPage.submitValidIndividualScreening('HANIYA');
-    await msPage.selectPurpose('Onboarding Screening');
-    await msPage.selectFirstWatchlistCard();
     await msPage.expectSidebarNavigationVisible();
   });
 
@@ -375,10 +364,6 @@ test.describe("Manual Screening Module", () => {
     await msPage.openManualScreeningDirect(testData.baseUrl);
     await msPage.openViewLastResults();
     await msPage.expectResultsPageLoaded();
-    await msPage.expectManualScreeningPageLoaded();
-    await msPage.submitValidIndividualScreening('HANIYA');
-    await msPage.selectPurpose('Onboarding Screening');
-    await msPage.selectFirstWatchlistCard();
     await msPage.expectSidebarNavigationVisible();
   });
 

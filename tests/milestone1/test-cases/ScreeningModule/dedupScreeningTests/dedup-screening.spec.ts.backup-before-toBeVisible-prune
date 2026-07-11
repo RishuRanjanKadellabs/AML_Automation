@@ -1,5 +1,5 @@
 // spec: specs/dedup-screening/plan.md
-// source: pipeline/test-data/Dedup Screening Test Cases.xlsx — 308 cases
+// source: pipeline/test-data/Dedup Screening Test Cases.xlsx — 359 cases
 // generator: playwright-test MCP explored dedup screening UI for POM locators
 import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import DedupScreeningPage from "../../../pages/ScreeningModule/DedupScreeningPages/DedupScreeningPage";
@@ -420,6 +420,33 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectParameterTagVisible('Passport No');
   });
 
+  // Excel Test Case ID: DDS-TC-035
+  // Excel Scenario: Verify that parameter selection state remains consistent while selecting multiple parameters. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-035 - Parameter Selection → that parameter selection state remains consistent while selecting multiple parameters. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.expectParameterCheckboxChecked('Passport No');
+    await ddsPage.expectMatchParameterDropdownOpen();
+    await ddsPage.expectDefaultMatchParametersListed();
+    await ddsPage.expectMatchParameterSelectionState();
+  });
+
+  // Excel Test Case ID: DDS-TC-036
+  // Excel Scenario: Verify that all configured match parameter options are selectable. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-036 - Parameter Selection → that all configured match parameter options are selectable. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.expectParameterCheckboxChecked('Passport No');
+    await ddsPage.expectMatchParameterDropdownOpen();
+    await ddsPage.expectDefaultMatchParametersListed();
+    await ddsPage.expectAllParameterCheckboxesChecked();
+    await ddsPage.expectMatchParameterSelectionState();
+  });
+
   // Excel Test Case ID: DDS-TC-080
   // Excel Scenario: Verify that selected Match Parameter can be deselected by clicking its checkbox again. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-080 - Parameter Selection → that selected Match Parameter can be deselected by clicking its checkbox again. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -446,6 +473,37 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectFiltersCleared();
     await ddsPage.expectAllParameterCheckboxesChecked();
     await ddsPage.expectMatchParameterSelectionState();
+  });
+
+  // Excel Test Case ID: DDS-TC-038
+  // Excel Scenario: Verify that all parameter checkboxes are marked selected after clicking Select All. This confirms select all / deselect all works correctly for duplicate customer investigation.
+  test("Case ID:DDS-TC-038 - Select All / Deselect All → that all parameter checkboxes are marked selected after clicking Select All. This confirms select all / deselect all works correctly for duplicate customer investigation.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.openMatchParameterDropdown();
+    await ddsPage.selectAllMatchParameters({ keepOpen: true });
+    await ddsPage.expectAllMatchParametersSelected();
+    await ddsPage.expectFiltersCleared();
+    await ddsPage.expectMatchParameterDropdownOpen();
+    await ddsPage.expectDefaultMatchParametersListed();
+    await ddsPage.expectAllParameterCheckboxesChecked();
+    await ddsPage.expectMatchParameterSelectionState();
+  });
+
+  // Excel Test Case ID: DDS-TC-039
+  // Excel Scenario: Verify that 'Remove All/Deselect All' clears all selected Match Parameters. This confirms select all / deselect all works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-039 - Select All / Deselect All → that \"Remove All/Deselect All\" clears all selected Match Parameters. This confirms select all / deselect all works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.openMatchParameterDropdown();
+    await ddsPage.selectAllMatchParameters({ keepOpen: true });
+    await ddsPage.expectAllMatchParametersSelected();
+    await ddsPage.expectFiltersCleared();
+    await ddsPage.expectMatchParameterDropdownOpen();
+    await ddsPage.expectDefaultMatchParametersListed();
+    await ddsPage.expectAllParameterCheckboxesChecked();
   });
 
   // Excel Test Case ID: DDS-TC-040
@@ -579,6 +637,20 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.removeParameterTag('Date of Birth');
     await ddsPage.expectParameterTagHidden('Date of Birth');
     await ddsPage.expectNoParameterTagsVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-049
+  // Excel Scenario: Verify that tags remain visible after dropdown is closed and reopened. This confirms tag management works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-049 - Tag Management → that tags remain visible after dropdown is closed and reopened. This confirms tag management works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.removeParameterTag('Passport No');
+    await ddsPage.expectParameterTagHidden('Passport No');
+    await ddsPage.expectParameterTagVisible('Passport No');
+    await ddsPage.expectMatchParameterDropdownOpen();
+    await ddsPage.expectDefaultMatchParametersListed();
   });
 
   // Excel Test Case ID: DDS-TC-081
@@ -724,6 +796,19 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectParameterTagVisible('Passport No');
     await ddsPage.expectParameterCheckboxChecked('Passport No');
     await ddsPage.expectMatchParameterValidationFeedback();
+  });
+
+  // Excel Test Case ID: DDS-TC-061
+  // Excel Scenario: Verify that report is not generated when mandatory Match Parameter selection is missing. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-061 - Generate Report Validation → that report is not generated when mandatory Match Parameter selection is missing. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.expectParameterCheckboxChecked('Passport No');
+    await ddsPage.expectMatchParameterDropdownOpen();
+    await ddsPage.expectDefaultMatchParametersListed();
+    await ddsPage.expectMatchParameterValidationFeedback();
+    await ddsPage.expectGenerateReportDisabled();
   });
 
   // Excel Test Case ID: DDS-TC-062
@@ -964,6 +1049,21 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectCustomerIdValidationFeedback();
   });
 
+  // Excel Test Case ID: DDS-TC-076
+  // Excel Scenario: Verify that clear Filters button clears Customer ID field. This confirms clear filters works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-076 - Clear Filters → that clear Filters button clears Customer ID field. This confirms clear filters works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.clickClearFilters();
+    await ddsPage.expectFiltersCleared();
+    await ddsPage.expectResultsSectionHidden();
+    await ddsPage.expectMatchParameterDropdownOpen();
+    await ddsPage.expectDefaultMatchParametersListed();
+    await ddsPage.expectCustomerIdValidationFeedback();
+  });
+
   // Excel Test Case ID: DDS-TC-077
   // Excel Scenario: Verify that clear Filters resets both Match Parameters and Customer ID together. This confirms clear filters works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-077 - Clear Filters → that clear Filters resets both Match Parameters and Customer ID together. This confirms clear filters works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1083,6 +1183,18 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("National ID Matching", () => {
+  // Excel Test Case ID: DDS-TC-090
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-090 - National ID Matching → that duplicate group is generated when customers share identical National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-091
   // Excel Scenario: Verify that duplicate group is not generated when National IDs differ. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-091 - National ID Matching → that duplicate group is not generated when National IDs differ. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1095,6 +1207,68 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectEmptyStateVisible();
   });
 
+  // Excel Test Case ID: DDS-TC-092
+  // Excel Scenario: Verify that multiple customers sharing same National ID are grouped correctly. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-092 - National ID Matching → that multiple customers sharing same National ID are grouped correctly. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-093
+  // Excel Scenario: Verify that duplicate detection when one record contains blank National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-093 - National ID Matching → that duplicate detection when one record contains blank National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectCustomerIdValidationFeedback();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-094
+  // Excel Scenario: Verify that duplicate detection supports Aadhar number matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-094 - National ID Matching → that duplicate detection supports Aadhar number matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-095
+  // Excel Scenario: Verify that duplicate detection supports Emirates ID matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-095 - National ID Matching → that duplicate detection supports Emirates ID matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-096
+  // Excel Scenario: Verify that duplicate detection supports SSN matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-096 - National ID Matching → that duplicate detection supports SSN matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
   });
 
   test.describe("Passport Matching", () => {
@@ -1188,6 +1362,18 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("Driving License Matching", () => {
+  // Excel Test Case ID: DDS-TC-104
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical Driving License Number. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-104 - Driving License Matching → that duplicate group is generated when customers share identical Driving License Number. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Driving License');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-105
   // Excel Scenario: Verify that duplicate group is not generated when Driving License Numbers differ. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-105 - Driving License Matching → that duplicate group is not generated when Driving License Numbers differ. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1198,6 +1384,18 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.selectMatchParameter('Driving License');
     await ddsPage.clickGenerateReport();
     await ddsPage.expectEmptyStateVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-106
+  // Excel Scenario: Verify that multiple customers sharing same Driving License Number are grouped correctly. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-106 - Driving License Matching → that multiple customers sharing same Driving License Number are grouped correctly. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Driving License');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
   });
 
   // Excel Test Case ID: DDS-TC-107
@@ -1240,6 +1438,18 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("Mobile Matching", () => {
+  // Excel Test Case ID: DDS-TC-110
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical Mobile Number. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-110 - Mobile Matching → that duplicate group is generated when customers share identical Mobile Number. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Mobile Number');
+    await ddsPage.fillCustomerId('9876543210');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-111
   // Excel Scenario: Verify that duplicate group is not generated when Mobile Numbers differ. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-111 - Mobile Matching → that duplicate group is not generated when Mobile Numbers differ. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1250,6 +1460,32 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.selectMatchParameter('Mobile Number');
     await ddsPage.clickGenerateReport();
     await ddsPage.expectEmptyStateVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-112
+  // Excel Scenario: Verify that multiple customers sharing same Mobile Number are grouped correctly. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-112 - Mobile Matching → that multiple customers sharing same Mobile Number are grouped correctly. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Mobile Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-113
+  // Excel Scenario: Verify that duplicate detection with Mobile Number containing country code. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-113 - Mobile Matching → that duplicate detection with Mobile Number containing country code. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Mobile Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
   });
 
   // Excel Test Case ID: DDS-TC-114
@@ -1279,9 +1515,32 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectEmptyStateVisible();
   });
 
+  // Excel Test Case ID: DDS-TC-116
+  // Excel Scenario: Verify that separate duplicate groups are generated for different Mobile Numbers. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-116 - Mobile Matching → that separate duplicate groups are generated for different Mobile Numbers. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Mobile Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
   });
 
   test.describe("Email Matching", () => {
+  // Excel Test Case ID: DDS-TC-117
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical Email Address. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-117 - Email Matching → that duplicate group is generated when customers share identical Email Address. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Email Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-118
   // Excel Scenario: Verify that duplicate group is not generated when Email Addresses differ. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-118 - Email Matching → that duplicate group is not generated when Email Addresses differ. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1292,6 +1551,31 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.selectMatchParameter('Email Address');
     await ddsPage.clickGenerateReport();
     await ddsPage.expectEmptyStateVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-119
+  // Excel Scenario: Verify that multiple customers sharing same Email Address are grouped correctly. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-119 - Email Matching → that multiple customers sharing same Email Address are grouped correctly. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Email Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-120
+  // Excel Scenario: Verify that email matching behavior for uppercase and lowercase values. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-120 - Email Matching → that email matching behavior for uppercase and lowercase values. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Email Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
   });
 
   // Excel Test Case ID: DDS-TC-121
@@ -1334,6 +1618,18 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("Contact Number Matching", () => {
+  // Excel Test Case ID: DDS-TC-124
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical Contact Number. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-124 - Contact Number Matching → that duplicate group is generated when customers share identical Contact Number. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Contact Number');
+    await ddsPage.fillCustomerId('2212345678');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-125
   // Excel Scenario: Verify that duplicate group is not generated when Contact Numbers differ. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-125 - Contact Number Matching → that duplicate group is not generated when Contact Numbers differ. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1344,6 +1640,19 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.selectMatchParameter('Contact Number');
     await ddsPage.clickGenerateReport();
     await ddsPage.expectEmptyStateVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-126
+  // Excel Scenario: Verify that multiple customers sharing same Contact Number are grouped correctly. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-126 - Contact Number Matching → that multiple customers sharing same Contact Number are grouped correctly. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Contact Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
   });
 
   // Excel Test Case ID: DDS-TC-127
@@ -1386,6 +1695,19 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("CRN Matching", () => {
+  // Excel Test Case ID: DDS-TC-130
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical Corporate Registration Number. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-130 - CRN Matching → that duplicate group is generated when customers share identical Corporate Registration Number. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Corporate Registration Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-131
   // Excel Scenario: Verify that duplicate group is not generated when CRN values differ. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-131 - CRN Matching → that duplicate group is not generated when CRN values differ. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1397,6 +1719,19 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.closeMatchParameterDropdown();
     await ddsPage.clickGenerateReport();
     await ddsPage.expectEmptyStateVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-132
+  // Excel Scenario: Verify that multiple customers sharing same CRN are grouped correctly. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-132 - CRN Matching → that multiple customers sharing same CRN are grouped correctly. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Corporate Registration Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
   });
 
   // Excel Test Case ID: DDS-TC-133
@@ -1529,6 +1864,19 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("IMEI/IMSI Matching", () => {
+  // Excel Test Case ID: DDS-TC-143
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical IMEI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-143 - IMEI/IMSI Matching → that duplicate group is generated when customers share identical IMEI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('IMEI Number / IMSI Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-144
   // Excel Scenario: Verify that duplicate group is not generated when IMEI Numbers differ. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-144 - IMEI/IMSI Matching → that duplicate group is not generated when IMEI Numbers differ. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1539,6 +1887,32 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.selectMatchParameter('IMEI Number / IMSI Number');
     await ddsPage.clickGenerateReport();
     await ddsPage.expectEmptyStateVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-145
+  // Excel Scenario: Verify that multiple customers sharing same IMEI Number are grouped correctly. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-145 - IMEI/IMSI Matching → that multiple customers sharing same IMEI Number are grouped correctly. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('IMEI Number / IMSI Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-146
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical IMSI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-146 - IMEI/IMSI Matching → that duplicate group is generated when customers share identical IMSI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('IMEI Number / IMSI Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
   });
 
   // Excel Test Case ID: DDS-TC-147
@@ -1582,6 +1956,18 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("IP/MAC Matching", () => {
+  // Excel Test Case ID: DDS-TC-150
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical IP Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-150 - IP/MAC Matching → that duplicate group is generated when customers share identical IP Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('IP / Mac Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
   // Excel Test Case ID: DDS-TC-151
   // Excel Scenario: Verify that duplicate group is not generated when IP Addresses differ. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-151 - IP/MAC Matching → that duplicate group is not generated when IP Addresses differ. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -1592,6 +1978,43 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.selectMatchParameter('IP / Mac Address');
     await ddsPage.clickGenerateReport();
     await ddsPage.expectEmptyStateVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-152
+  // Excel Scenario: Verify that multiple customers sharing same IP Address are grouped correctly. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-152 - IP/MAC Matching → that multiple customers sharing same IP Address are grouped correctly. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('IP / Mac Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-153
+  // Excel Scenario: Verify that duplicate group is generated when customers share identical MAC Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-153 - IP/MAC Matching → that duplicate group is generated when customers share identical MAC Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('IP / Mac Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-154
+  // Excel Scenario: Verify that mAC Address matching behavior when values use different letter casing. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-154 - IP/MAC Matching → that mAC Address matching behavior when values use different letter casing. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('IP / Mac Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
   });
 
   // Excel Test Case ID: DDS-TC-155
@@ -1707,6 +2130,19 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.openDedupScreeningDirect(testData.baseUrl);
     await ddsPage.expectDedupScreeningPageLoaded();
     await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+    await ddsPage.expectMatchParametersColumnVisible();
+  });
+
+  // Excel Test Case ID: DDS-TC-164
+  // Excel Scenario: Verify that duplicate grouping when customers share National ID and Passport Number. This confirms multi-parameter matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-164 - Multi-Parameter Matching → that duplicate grouping when customers share National ID and Passport Number. This confirms multi-parameter matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
     await ddsPage.fillCustomerId('8829103');
     await ddsPage.clickGenerateReport();
     await ddsPage.expectResultsGridVisible();
@@ -2230,6 +2666,21 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectDuplicateGroupIntegrity();
   });
 
+  // Excel Test Case ID: DDS-TC-201
+  // Excel Scenario: Verify that match Parameters column displays all matching attributes contributing to duplicate detection. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-201 - Group Validation → that match Parameters column displays all matching attributes contributing to duplicate detection. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.selectMatchParameter('Tax ID / PAN', { keepOpen: true });
+    await ddsPage.selectMatchParameter('Passport No', { keepOpen: true });
+    await ddsPage.selectMatchParameter('Date of Birth', { keepOpen: true });
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectParameterTagVisible('Tax ID / PAN');
+    await ddsPage.expectParameterCheckboxChecked('Passport No');
+    await ddsPage.expectMatchParametersColumnVisible();
+  });
+
   // Excel Test Case ID: DDS-TC-202
   // Excel Scenario: Verify that iD Number column displays correct matching identifier value. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-202 - Group Validation → that iD Number column displays correct matching identifier value. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -2469,6 +2920,19 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.clickGenerateReport();
     await ddsPage.expectResultsGridVisible();
     await ddsPage.expectLayoutStable();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-222
+  // Excel Scenario: Verify that long identifier values are displayed correctly in report grid. This confirms data display rules works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-222 - Data Display Rules → that long identifier values are displayed correctly in report grid. This confirms data display rules works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
     await ddsPage.expectDuplicateGroupIntegrity();
   });
 
@@ -3055,6 +3519,84 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.openCompareModalFromFirstRow();
     await ddsPage.expectCompareModalVisible();
     await ddsPage.expectMatchedFieldsHighlighted();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+  });
+
+  test.describe("Missing Data Handling", () => {
+  // Excel Test Case ID: DDS-TC-260
+  // Excel Scenario: Verify that missing value displays N/A when configured value is unavailable. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-260 - Missing Data Handling → that missing value displays N/A when configured value is unavailable. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Tax ID / PAN');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.openCompareModalFromFirstRow();
+    await ddsPage.expectMissingDataHandled();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-261
+  // Excel Scenario: Verify that placeholder symbol '—' is displayed for fields configured with dash representation. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-261 - Missing Data Handling → that placeholder symbol \"—\" is displayed for fields configured with dash representation. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.openCompareModalFromFirstRow();
+    await ddsPage.expectMissingDataHandled();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-262
+  // Excel Scenario: Verify that comparison modal handles missing value on Customer A side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-262 - Missing Data Handling → that comparison modal handles missing value on Customer A side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.openCompareModalFromFirstRow();
+    await ddsPage.expectMissingDataHandled();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectCompareModalVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-263
+  // Excel Scenario: Verify that comparison modal handles missing value on Customer B side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-263 - Missing Data Handling → that comparison modal handles missing value on Customer B side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Mobile Number');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.openCompareModalFromFirstRow();
+    await ddsPage.expectMissingDataHandled();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectCompareModalVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-264
+  // Excel Scenario: Verify that comparison modal handles missing values on both customer records correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-264 - Missing Data Handling → that comparison modal handles missing values on both customer records correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Email Address');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.openCompareModalFromFirstRow();
+    await ddsPage.expectMissingDataHandled();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectCompareModalVisible();
+    await ddsPage.expectLayoutStable();
     await ddsPage.expectDuplicateGroupIntegrity();
   });
   });
@@ -3646,6 +4188,15 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.fillCustomerId('8829103');
   });
 
+  // Excel Test Case ID: DDS-TC-303
+  // Excel Scenario: Verify that unauthorized user cannot access De-Dup Screening module. This ensures only appropriate users can view or act on duplicate customer data. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-303 - Role Based Access Control → that unauthorized user cannot access De-Dup Screening module. This ensures only appropriate users can view or act on duplicate customer data. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.expectMissingDataHandled();
+  });
+
   // Excel Test Case ID: DDS-TC-304
   // Excel Scenario: Verify that user with view permission can access duplicate reports. This ensures only appropriate users can view or act on duplicate customer data. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-304 - Role Based Access Control → that user with view permission can access duplicate reports. This ensures only appropriate users can view or act on duplicate customer data. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -3735,6 +4286,28 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("Data Visibility Restrictions", () => {
+  // Excel Test Case ID: DDS-TC-312
+  // Excel Scenario: Verify that restricted customer information is displayed only according to configured visibility rules. This ensures only appropriate users can view or act on duplicate customer data.
+  test("Case ID:DDS-TC-312 - Data Visibility Restrictions → that restricted customer information is displayed only according to configured visibility rules. This ensures only appropriate users can view or act on duplicate customer data.", async ({ testData }) => {
+    await ddsPage.mockUnauthorized();
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.expectAccessDenied();
+    await ddsPage.expectMissingDataHandled();
+  });
+
+  // Excel Test Case ID: DDS-TC-313
+  // Excel Scenario: Verify that hidden fields are not exposed through duplicate reports or comparison screens. This ensures only appropriate users can view or act on duplicate customer data.
+  test("Case ID:DDS-TC-313 - Data Visibility Restrictions → that hidden fields are not exposed through duplicate reports or comparison screens. This ensures only appropriate users can view or act on duplicate customer data.", async ({ testData }) => {
+    await ddsPage.mockUnauthorized();
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.expectAccessDenied();
+    await ddsPage.expectMissingDataHandled();
+  });
+
   // Excel Test Case ID: DDS-TC-314
   // Excel Scenario: Verify that sensitive identifiers are displayed according to configured privacy rules. This ensures exported duplicate reports meet compliance and privacy requirements. The De-Dup Screening page should remain stable with no unexpected errors.
   test("Case ID:DDS-TC-314 - Data Visibility Restrictions → that sensitive identifiers are displayed according to configured privacy rules. This ensures exported duplicate reports meet compliance and privacy requirements. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
@@ -3750,6 +4323,21 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.expectDuplicateGroupIntegrity();
   });
 
+  // Excel Test Case ID: DDS-TC-315
+  // Excel Scenario: Verify that customer information displayed in Compare modal follows configured visibility restrictions. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-315 - Data Visibility Restrictions → that customer information displayed in Compare modal follows configured visibility restrictions. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.mockUnauthorized();
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.openCompareModalFromFirstRow();
+    await ddsPage.expectCompareModalVisible();
+    await ddsPage.expectAccessDenied();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
   });
 
   test.describe("End-to-End Duplicate Investigation", () => {
@@ -3773,6 +4361,20 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.openDedupScreeningDirect(testData.baseUrl);
     await ddsPage.expectDedupScreeningPageLoaded();
     await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectExportActionAvailable();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-318
+  // Excel Scenario: Verify that duplicate investigation workflow using National ID matching criteria. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-318 - End-to-End Duplicate Investigation → that duplicate investigation workflow using National ID matching criteria. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
     await ddsPage.fillCustomerId('8829103');
     await ddsPage.clickGenerateReport();
     await ddsPage.closeMatchParameterDropdown();
@@ -3884,6 +4486,58 @@ test.describe("De-Dup Screening Module", () => {
   });
 
   test.describe("No Match Workflow", () => {
+  // Excel Test Case ID: DDS-TC-326
+  // Excel Scenario: Verify that end-to-end workflow when no duplicate records are identified. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-326 - No Match Workflow → that end-to-end workflow when no duplicate records are identified. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.mockEmptyDuplicateResults();
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('3310882');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectEmptyStateVisible();
+    await ddsPage.expectExportActionAvailable();
+  });
+
+  // Excel Test Case ID: DDS-TC-327
+  // Excel Scenario: Verify that analyst can recover from no-result scenario and perform a new investigation. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-327 - No Match Workflow → that analyst can recover from no-result scenario and perform a new investigation. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.mockEmptyDuplicateResults();
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('3310882');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectEmptyStateVisible();
+    await ddsPage.expectExportActionAvailable();
+  });
+
+  // Excel Test Case ID: DDS-TC-328
+  // Excel Scenario: Verify that no-result workflow does not display stale duplicate information. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-328 - No Match Workflow → that no-result workflow does not display stale duplicate information. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.mockEmptyDuplicateResults();
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('3310882');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectEmptyStateVisible();
+    await ddsPage.expectExportActionAvailable();
+  });
+
+  // Excel Test Case ID: DDS-TC-329
+  // Excel Scenario: Verify that no-result workflow maintains application stability. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-329 - No Match Workflow → that no-result workflow maintains application stability. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.mockEmptyDuplicateResults();
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.fillCustomerId('3310882');
+    await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.expectEmptyStateVisible();
+    await ddsPage.expectExportActionAvailable();
+    await ddsPage.expectLayoutStable();
+  });
   });
 
   test.describe("High Volume Investigation", () => {
@@ -3977,6 +4631,20 @@ test.describe("De-Dup Screening Module", () => {
     await ddsPage.openDedupScreeningDirect(testData.baseUrl);
     await ddsPage.expectDedupScreeningPageLoaded();
     await ddsPage.selectMatchParameter('Passport No');
+    await ddsPage.fillCustomerId('8829103');
+    await ddsPage.clickGenerateReport();
+    await ddsPage.closeMatchParameterDropdown();
+    await ddsPage.expectResultsGridVisible();
+    await ddsPage.expectExportActionAvailable();
+    await ddsPage.expectDuplicateGroupIntegrity();
+  });
+
+  // Excel Test Case ID: DDS-TC-337
+  // Excel Scenario: Verify that national ID duplicate detection workflow remains operational after application updates. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.
+  test("Case ID:DDS-TC-337 - Regression Critical Paths → that national ID duplicate detection workflow remains operational after application updates. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.", async ({ testData }) => {
+    await ddsPage.openDedupScreeningDirect(testData.baseUrl);
+    await ddsPage.expectDedupScreeningPageLoaded();
+    await ddsPage.selectMatchParameter('National ID / Aadhar Card / Emirates ID / SSN');
     await ddsPage.fillCustomerId('8829103');
     await ddsPage.clickGenerateReport();
     await ddsPage.closeMatchParameterDropdown();

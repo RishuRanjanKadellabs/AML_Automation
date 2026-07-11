@@ -35,7 +35,9 @@ export default defineConfig({
     : process.env.CI
       ? 4
       : 6,
-  globalTimeout: 2 * 60 * 60 * 1000,
+  globalTimeout: process.env.PW_GLOBAL_TIMEOUT
+    ? parseInt(process.env.PW_GLOBAL_TIMEOUT, 10)
+    : 2 * 60 * 60 * 1000,
   reporter: [
     ["list"],
     ...(skipHtmlReport
@@ -77,7 +79,18 @@ export default defineConfig({
       use: {
         ...devices["Desktop Chrome"],
         headless: milestoneHeadless,
-        trace: process.env.PW_TRACE === "on" ? "on" : "off",
+        trace:
+          process.env.PW_TRACE === "off"
+            ? "off"
+            : (process.env.PW_TRACE as "on" | "retain-on-failure" | "on-first-retry") || "retain-on-failure",
+        screenshot:
+          process.env.PW_SCREENSHOT === "off"
+            ? "off"
+            : (process.env.PW_SCREENSHOT as "only-on-failure" | "on") || "only-on-failure",
+        video:
+          process.env.PW_VIDEO === "off"
+            ? "off"
+            : (process.env.PW_VIDEO as "retain-on-failure" | "on-first-retry" | "on") || "retain-on-failure",
       },
     },
   ],

@@ -1,7 +1,7 @@
 # Dedup Screening Test Plan
 
 Source: `pipeline/test-data/Dedup Screening Test Cases.xlsx`
-Total cases: **359** (DDS-TC-001 → DDS-TC-359)
+Total cases: **308** (DDS-TC-001 → DDS-TC-359)
 
 Generator: playwright-test MCP explored `/screening/dedup-screening` for POM locators.
 

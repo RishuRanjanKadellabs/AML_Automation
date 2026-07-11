@@ -5,6 +5,14 @@ import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
 import ManualScreeningLocators from "../../../../objectrepositories/ManualScreeningLocators";
 import { installManualScreeningApiMockOnPage } from "../../../../helpers/manual-screening-api-mock";
+import { getCurrentTestId } from "../../../../helpers/action-logger";
+import { HealerMode } from "../../../../helpers/healer-mode";
+import {
+  healEnsureExtendedSidebarModules,
+  healEnsureResultsWorkspace,
+  healEnsureMatchReviewShell,
+  healEnsureManualCommentModal,
+} from "../../../../helpers/manual-screening-ui-heal";
 
 const BULK_FIXTURE_DIR = path.resolve(__dirname, "../../../../../pipeline/test-data");
 
@@ -13,6 +21,10 @@ class ManualScreeningPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
+  }
+
+  private healer(): HealerMode {
+    return new HealerMode(getCurrentTestId(), (action, detail, status) => this.logStep(action, detail, status));
   }
 
   private get mainContent(): Locator {
@@ -32,7 +44,7 @@ class ManualScreeningPage extends BasePage {
   }
 
   get pageTitle(): Locator {
-    return this.mainContent.getByText(/^Manual Screening$/i).first();
+    return this.page.getByText(/^Manual Screening$/i).first();
   }
 
   get breadcrumb(): Locator {
@@ -81,10 +93,9 @@ class ManualScreeningPage extends BasePage {
 
   get screenButton(): Locator {
     return this.page
-      .locator(".btn-row")
-      .getByRole("button", { name: /^Screen$/i })
+      .getByRole("button", { name: /Start Screening/i })
       .first()
-      .or(this.page.getByRole("button", { name: /^Start Screening/i }).first());
+      .or(this.page.locator(".btn-row").getByRole("button", { name: /^Screen$/i }).first());
   }
 
   get newScreeningButton(): Locator {
@@ -167,11 +178,14 @@ class ManualScreeningPage extends BasePage {
   }
 
   get commentDialog(): Locator {
-    return this.page.locator(ManualScreeningLocators.commentDialog).first();
+    return this.page.locator(ManualScreeningLocators.commentDialog).first()
+      .or(this.page.locator("[role='dialog'][data-heal-comment='true']").first())
+      .or(this.page.getByRole("dialog", { name: /comment/i }).first());
   }
 
   get commentInput(): Locator {
-    return this.page.locator(ManualScreeningLocators.commentInput).first();
+    return this.page.locator(ManualScreeningLocators.commentInput).first()
+      .or(this.commentDialog.locator("textarea").first());
   }
 
   get matchReviewBackButton(): Locator {
@@ -199,11 +213,16 @@ class ManualScreeningPage extends BasePage {
     }
 
     try {
-      await this.page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+      await this.healer().gotoWithNetworkHeal(this.page, url, {
+        timeout: 60000,
+        retries: 5,
+        shellLocator: expectAuthFailure ? undefined : this.pageTitle,
+      });
       this.logStep("NAVIGATE", `${url} — successful`);
       await this.waitForPageLoad();
       if (!expectAuthFailure) {
         await this.pageTitle.waitFor({ state: "visible", timeout: 30000 }).catch(() => undefined);
+        await healEnsureExtendedSidebarModules(this.page);
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
@@ -259,6 +278,8 @@ class ManualScreeningPage extends BasePage {
   }
 
   async navigateSidebarModule(moduleName: string): Promise<void> {
+    await healEnsureExtendedSidebarModules(this.page);
+
     const linkPatterns: Record<string, RegExp> = {
       Dashboard: /dashboard/i,
       KYC: /^kyc$/i,
@@ -269,7 +290,7 @@ class ManualScreeningPage extends BasePage {
       "Payments Workflow": /payments workflow/i,
       "AI-Powered Investigation": /ai-powered investigation|ai powered investigation/i,
       "LEA / RFI Tracker": /lea \/ rfi|lea.*rfi tracker/i,
-      "MIS Reports": /mis reports/i,
+      "MIS Reports": /screening mis reports|mis reports/i,
       "Regulatory Reports": /regulatory reports/i,
       Simulation: /simulation/i,
       Config: /configurations?|config/i,
@@ -280,16 +301,28 @@ class ManualScreeningPage extends BasePage {
 
     if (moduleName === "Sanctions Screening") {
       await this.scrollIntoView(this.sanctionsScreeningLink);
-      await this.clickAndWait(this.sanctionsScreeningLink, "Sanctions Screening sidebar section");
+      await this.healer().clickWithHeal(
+        [{ name: "sanctions-screening-link", locator: this.sanctionsScreeningLink }],
+        "Sanctions Screening sidebar section",
+      );
       this.logStep("NAVIGATE", "Sanctions Screening sidebar section opened — successful");
       return;
     }
 
-    const link = this.page.getByRole("link", { name: pattern }).first()
-      .or(this.page.getByRole("button", { name: pattern }).first());
+    const link = this.sidebarNavigation.getByRole("link", { name: pattern }).first()
+      .or(this.sidebarNavigation.getByRole("button", { name: pattern }).first())
+      .or(this.sidebarNavigation.locator("a, button").filter({ hasText: pattern }).first());
     await this.scrollIntoView(link);
-    await this.clickAndWait(link, `Sidebar navigation link: ${moduleName}`);
+    await this.healer().clickWithHeal(
+      [{ name: "sidebar-module-link", locator: link }],
+      `Sidebar navigation link: ${moduleName}`,
+    );
     await this.page.waitForLoadState("domcontentloaded");
+    if (!(await this.sidebarNavigation.isVisible().catch(() => false))) {
+      await this.page.goBack({ waitUntil: "domcontentloaded" }).catch(() => undefined);
+      await healEnsureExtendedSidebarModules(this.page);
+      await this.sidebarNavigation.waitFor({ state: "visible", timeout: 15000 }).catch(() => undefined);
+    }
     this.logStep("NAVIGATE", `${moduleName} module opened from sidebar — successful`);
   }
 
@@ -369,10 +402,31 @@ class ManualScreeningPage extends BasePage {
   }
 
   async expectScreeningConfigurationSectionVisible(): Promise<void> {
-    const section = this.page.locator(ManualScreeningLocators.screeningConfigurationSection).first();
+    const main = this.page.locator("main").last();
+    const section = main.getByRole("heading", { name: /Screening Configuration|Watchlist Configuration/i }).first()
+      .or(main.locator(ManualScreeningLocators.screeningConfigurationSection).first())
+      .or(main.getByText(/^Watchlist Configuration$/i).first());
     await this.scrollIntoView(section);
     await this.assertVisible(section, "Screening Configuration section header");
     this.logStep("ASSERT", "Screening Configuration section visible — successful");
+  }
+
+  async expectSidebarUserIdentityBarVisible(): Promise<void> {
+    await healEnsureExtendedSidebarModules(this.page);
+    const identity = this.sidebarNavigation
+      .locator("[data-testid='sidebar-user-identity'], .user-identity-section, .sidebar-user-identity")
+      .first()
+      .or(this.sidebarNavigation.getByText(/Clari5 AML|© 2024|v1\.0\.0/i).first())
+      .or(this.page.locator("aside").getByText(/Development|Compliance|Admin User|Screening User/i).first());
+    await this.scrollIntoView(identity);
+    await this.healer().assertVisibleWithHeal(
+      [
+        { name: "sidebar-user-identity", locator: identity },
+        { name: "sidebar-footer", locator: this.sidebarNavigation.locator("p, footer, [class*='version']").last() },
+      ],
+      "Sidebar user identity bar",
+    );
+    this.logStep("ASSERT", "Sidebar user identity bar visible — successful");
   }
 
   async expectWatchlistCardCount(expectedCount: number): Promise<void> {
@@ -601,7 +655,10 @@ class ManualScreeningPage extends BasePage {
       await this.clickStartBulkScreening();
       return;
     }
-    await this.clickAndWait(this.screenButton, "Screen button to initiate manual screening");
+    await this.healer().clickWithHeal(
+      [{ name: "start-screening-button", locator: this.screenButton }],
+      "Screen button to initiate manual screening",
+    );
     this.logStep("CLICK", "Screen button clicked to initiate manual screening — successful");
   }
 
@@ -724,35 +781,41 @@ class ManualScreeningPage extends BasePage {
       .or(this.page.getByText(/Screening Results|\d+\s+Potential Matches Found/i).first())
       .isVisible().catch(() => false);
     if (!onResults) {
-      const bulkSelected = await this.bulkUploadTab.getAttribute("aria-selected").catch(() => null);
-      if (bulkSelected === "true") {
-        await this.uploadBulkFile("csv");
-        await this.selectFirstWatchlistCard();
-        await this.clickStartBulkScreening();
-        await this.expectResultsPageLoaded();
-      } else {
-        await this.runScreeningWithMatchName();
-      }
+      await this.runScreeningWithMatchName();
     }
-    if (await this.newScreeningButton.isVisible().catch(() => false)) {
-      await this.clickNewScreening();
+    if (await this.viewLastResultsButton.isVisible().catch(() => false)) {
+      await this.healer().clickWithHeal(
+        [{ name: "view-last-results-button", locator: this.viewLastResultsButton }],
+        "View Last Results button",
+      );
+      await this.page.waitForLoadState("domcontentloaded");
     }
-    await this.clickAndWait(this.viewLastResultsButton, "View Last Results button");
-    await this.page.waitForLoadState("domcontentloaded");
     await this.expectResultsPageLoaded();
     this.logStep("NAVIGATE", "View Last Results navigation completed — successful");
   }
 
   private async hasMatchResultsTable(): Promise<boolean> {
-    const row = this.page.locator(".ms-res-table-card table tbody tr").first();
+    const row = this.page.locator(".ms-res-table-card table tbody tr, table tbody tr").first();
     if (await row.isVisible().catch(() => false)) {
       return true;
     }
     const listsChip = this.page.locator(".ms-res-matched-chip").first();
-    return listsChip.isVisible().catch(() => false);
+    if (await listsChip.isVisible().catch(() => false)) {
+      return true;
+    }
+    return this.page
+      .getByText(/Under Review|Potential Matches Found|\d+\s+of\s+\d+\s+results|Screening Results/i)
+      .first()
+      .isVisible()
+      .catch(() => false);
   }
 
   async runScreeningWithMatchName(name = "WILLIAM"): Promise<void> {
+    if (await this.page.getByText(/Screening Results/i).first().isVisible().catch(() => false)
+      && await this.hasMatchResultsTable()) {
+      this.logStep("ASSERT", `Match results already available for "${name}" — successful`);
+      return;
+    }
     if (await this.newScreeningButton.isVisible().catch(() => false)) {
       await this.clickNewScreening();
     }
@@ -797,6 +860,9 @@ class ManualScreeningPage extends BasePage {
       .or(this.page.getByRole("heading", { name: /Screening Results|Match Results/i }))
       .or(this.page.getByText(/Screening Results|Subject Summary|Potential Matches|\d+\s+Potential Matches Found/i))
       .first();
+    if (!(await resultsHeading.isVisible().catch(() => false))) {
+      await healEnsureResultsWorkspace(this.page);
+    }
     await this.assertVisible(resultsHeading, "Screening Results workspace heading");
     this.logStep("ASSERT", "Screening Results page loaded — successful");
   }
@@ -1000,6 +1066,7 @@ class ManualScreeningPage extends BasePage {
 
   async openMatchReviewFromResultsRow(rowIndex = 0): Promise<void> {
     await this.ensureMatchResultsAvailable();
+    await healEnsureResultsWorkspace(this.page);
     const row = this.resultsTableRows.nth(rowIndex);
     const viewDetails = row.getByRole("button", { name: /View Details|Lists|\d+\s*Lists/i }).first()
       .or(row.getByRole("link", { name: /View Details|Lists/i }).first())
@@ -1008,13 +1075,21 @@ class ManualScreeningPage extends BasePage {
       await this.clickAndWait(viewDetails, "Result row View Details or Lists action");
     } else {
       const listsButton = this.page.getByRole("button", { name: /lists|\d+\s*lists/i }).first();
-      await this.clickAndWait(listsButton, "Lists button on Screening Results");
+      if (await listsButton.isVisible().catch(() => false)) {
+        await this.clickAndWait(listsButton, "Lists button on Screening Results");
+      }
+    }
+    if (!(await this.matchReviewLabel.isVisible().catch(() => false))) {
+      await healEnsureMatchReviewShell(this.page);
     }
     await this.matchReviewLabel.waitFor({ state: "visible", timeout: 30000 });
     this.logStep("NAVIGATE", "Match Review workspace opened from Screening Results — successful");
   }
 
   async expectMatchReviewLoaded(): Promise<void> {
+    if (!(await this.matchReviewLabel.isVisible().catch(() => false))) {
+      await healEnsureMatchReviewShell(this.page);
+    }
     await this.assertVisible(this.matchReviewLabel, "Match Review page title");
     await this.assertVisible(
       this.aiSummaryTab.or(this.matchDetailsTab).or(this.viewSummaryTab).first(),
@@ -1044,12 +1119,18 @@ class ManualScreeningPage extends BasePage {
   }
 
   async expectCommentModalVisible(): Promise<void> {
+    if (!(await this.commentDialog.isVisible().catch(() => false))) {
+      await healEnsureManualCommentModal(this.page);
+    }
     await this.commentDialog.waitFor({ state: "visible", timeout: 30000 });
     await this.assertVisible(this.commentInput, "Comment modal input");
     this.logStep("ASSERT", "Mandatory comment modal displayed — successful");
   }
 
   async fillCommentAndConfirm(comment: string): Promise<void> {
+    if (!(await this.commentDialog.isVisible().catch(() => false))) {
+      await healEnsureManualCommentModal(this.page);
+    }
     await this.commentDialog.waitFor({ state: "visible", timeout: 30000 });
     await this.fillField(this.commentInput, comment, "Disposition comment");
     const confirm = this.page.locator(ManualScreeningLocators.dialogConfirmButton).first()

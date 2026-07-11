@@ -234,7 +234,7 @@ async function main(): Promise<void> {
               ["KYC", "Reference Data Registry", "383", "reference-data-registry.spec.ts"],
               ["Screening", "Manual Screening", "445", "manual-screening.spec.ts"],
               ["Screening", "Batch Screening", "432", "batch-screening.spec.ts"],
-              ["Screening", "Dedup Screening", "359", "dedup-screening.spec.ts"],
+              ["Screening", "Dedup Screening", "308", "dedup-screening.spec.ts"],
               ["Screening", "Sanction MIS Reports", "199", "sanction-mis-reports.spec.ts"],
               ["Configuration", "Custom List Manager", "578", "custom-list-manager.spec.ts"],
               ["Configuration", "Screening Configuration", "318", "screening-configuration.spec.ts"],
