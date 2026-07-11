@@ -272,44 +272,12 @@
     "expectedResult": "• Both parameters should remain selected\r\n• Existing selections should not be removed"
   },
   {
-    "id": "DDS-TC-035",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Parameter Selection",
-    "taskDescription": "Verify that parameter selection state remains consistent while selecting multiple parameters. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Previously selected parameters should not be deselected unexpectedly\r\n• System should maintain selection integrity"
-  },
-  {
-    "id": "DDS-TC-036",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Parameter Selection",
-    "taskDescription": "Verify that all configured match parameter options are selectable. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Each parameter should be selectable without errors\r\n• Every parameter should support selection"
-  },
-  {
     "id": "DDS-TC-037",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Select All / Deselect All",
     "taskDescription": "Verify that \"Select All\" option selects all available Match Parameters. This confirms select all / deselect all works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• All 11 Match Parameters should be selected successfully and reflected in dropdown selection area\r\n• User should be able to select all available parameters using Select All option"
-  },
-  {
-    "id": "DDS-TC-038",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Select All / Deselect All",
-    "taskDescription": "Verify that all parameter checkboxes are marked selected after clicking Select All. This confirms select all / deselect all works correctly for duplicate customer investigation.",
-    "priority": "High",
-    "expectedResult": "• Checkbox for every available Match Parameter should display selected state\r\n• All parameter checkboxes should be selected"
-  },
-  {
-    "id": "DDS-TC-039",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Select All / Deselect All",
-    "taskDescription": "Verify that \"Remove All/Deselect All\" clears all selected Match Parameters. This confirms select all / deselect all works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All selected Match Parameters should be removed and no parameter should remain selected\r\n• User should be able to clear all selected parameters at once"
   },
   {
     "id": "DDS-TC-040",
@@ -382,14 +350,6 @@
     "taskDescription": "Verify that removal of last remaining tag clears parameter selection completely. This confirms tag management works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "Medium",
     "expectedResult": "• Selected parameter should be removed and selected values section should become empty\r\n• No parameter should remain selected after last tag removal"
-  },
-  {
-    "id": "DDS-TC-049",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Tag Management",
-    "taskDescription": "Verify that tags remain visible after dropdown is closed and reopened. This confirms tag management works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Previously selected tags should remain visible and selected\r\n• Tag state should persist until user clears selection"
   },
   {
     "id": "DDS-TC-050",
@@ -478,14 +438,6 @@
     "taskDescription": "Verify that generate Report button behavior when no Match Parameter is selected. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• System should display validation message indicating Match Parameter selection is mandatory\r\n• At least one Match Parameter should be mandatory"
-  },
-  {
-    "id": "DDS-TC-061",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Generate Report Validation",
-    "taskDescription": "Verify that report is not generated when mandatory Match Parameter selection is missing. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• System should prevent report generation and display mandatory validation message\r\n• System should prevent invalid request submission"
   },
   {
     "id": "DDS-TC-062",
@@ -600,14 +552,6 @@
     "expectedResult": "• All tags should be removed from selected values section\r\n• All tags should be removed after reset"
   },
   {
-    "id": "DDS-TC-076",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Clear Filters",
-    "taskDescription": "Verify that clear Filters button clears Customer ID field. This confirms clear filters works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customer ID field should become blank\r\n• Customer ID field should be reset"
-  },
-  {
     "id": "DDS-TC-077",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Clear Filters",
@@ -712,60 +656,12 @@
     "expectedResult": "• System should create separate duplicate groups for each matching DOB set\r\n• System should correctly separate different DOB groups"
   },
   {
-    "id": "DDS-TC-090",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – National ID Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical National ID should appear in same duplicate group\r\n• System should identify duplicates using National ID"
-  },
-  {
     "id": "DDS-TC-091",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – National ID Matching",
     "taskDescription": "Verify that duplicate group is not generated when National IDs differ. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching IDs"
-  },
-  {
-    "id": "DDS-TC-092",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – National ID Matching",
-    "taskDescription": "Verify that multiple customers sharing same National ID are grouped correctly. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear within one duplicate group\r\n• System should support group creation for more than two records"
-  },
-  {
-    "id": "DDS-TC-093",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – National ID Matching",
-    "taskDescription": "Verify that duplicate detection when one record contains blank National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Blank records should not be considered duplicate matches\r\n• Blank values should not create duplicate matches"
-  },
-  {
-    "id": "DDS-TC-094",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – National ID Matching",
-    "taskDescription": "Verify that duplicate detection supports Aadhar number matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Matching Aadhar numbers should create duplicate group\r\n• System should identify duplicates using Aadhar value"
-  },
-  {
-    "id": "DDS-TC-095",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – National ID Matching",
-    "taskDescription": "Verify that duplicate detection supports Emirates ID matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Matching Emirates IDs should create duplicate group\r\n• System should identify duplicates using Emirates ID"
-  },
-  {
-    "id": "DDS-TC-096",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – National ID Matching",
-    "taskDescription": "Verify that duplicate detection supports SSN matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Matching SSNs should create duplicate group\r\n• System should identify duplicates using SSN"
   },
   {
     "id": "DDS-TC-097",
@@ -824,28 +720,12 @@
     "expectedResult": "• Each Passport duplicate set should appear only within its own group\r\n• System should correctly segregate matching groups"
   },
   {
-    "id": "DDS-TC-104",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Driving License Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical Driving License Number. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical Driving License Number should appear within the same duplicate group\r\n• System should identify duplicates using Driving License Number"
-  },
-  {
     "id": "DDS-TC-105",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Driving License Matching",
     "taskDescription": "Verify that duplicate group is not generated when Driving License Numbers differ. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching Driving License records"
-  },
-  {
-    "id": "DDS-TC-106",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Driving License Matching",
-    "taskDescription": "Verify that multiple customers sharing same Driving License Number are grouped correctly. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear in same duplicate group\r\n• System should support multi-record duplicate groups"
   },
   {
     "id": "DDS-TC-107",
@@ -872,36 +752,12 @@
     "expectedResult": "• Separate duplicate groups should be generated for each Driving License value\r\n• System should maintain group integrity"
   },
   {
-    "id": "DDS-TC-110",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Mobile Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical Mobile Number. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical Mobile Number should appear in same duplicate group\r\n• System should identify duplicates using Mobile Number"
-  },
-  {
     "id": "DDS-TC-111",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Mobile Matching",
     "taskDescription": "Verify that duplicate group is not generated when Mobile Numbers differ. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching records"
-  },
-  {
-    "id": "DDS-TC-112",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Mobile Matching",
-    "taskDescription": "Verify that multiple customers sharing same Mobile Number are grouped correctly. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear within same duplicate group\r\n• System should support multi-customer matching"
-  },
-  {
-    "id": "DDS-TC-113",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Mobile Matching",
-    "taskDescription": "Verify that duplicate detection with Mobile Number containing country code. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Matching Mobile Numbers should be grouped together\r\n• System should evaluate matching logic consistently"
   },
   {
     "id": "DDS-TC-114",
@@ -920,44 +776,12 @@
     "expectedResult": "• Customers should not be grouped together\r\n• System should not treat missing values as matches"
   },
   {
-    "id": "DDS-TC-116",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Mobile Matching",
-    "taskDescription": "Verify that separate duplicate groups are generated for different Mobile Numbers. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• System should generate separate duplicate groups\r\n• System should maintain group segregation"
-  },
-  {
-    "id": "DDS-TC-117",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Email Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical Email Address. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical Email Address should appear in same duplicate group\r\n• System should identify duplicates using Email Address"
-  },
-  {
     "id": "DDS-TC-118",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Email Matching",
     "taskDescription": "Verify that duplicate group is not generated when Email Addresses differ. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching emails"
-  },
-  {
-    "id": "DDS-TC-119",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Email Matching",
-    "taskDescription": "Verify that multiple customers sharing same Email Address are grouped correctly. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear within same duplicate group\r\n• System should support multi-record duplicate groups"
-  },
-  {
-    "id": "DDS-TC-120",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Email Matching",
-    "taskDescription": "Verify that email matching behavior for uppercase and lowercase values. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Duplicate identification should follow configured case handling logic\r\n• System should follow configured matching logic"
   },
   {
     "id": "DDS-TC-121",
@@ -984,28 +808,12 @@
     "expectedResult": "• System should generate separate duplicate groups\r\n• System should maintain group integrity"
   },
   {
-    "id": "DDS-TC-124",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Contact Number Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical Contact Number. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical Contact Number should appear in same duplicate group\r\n• System should identify duplicates using Contact Number"
-  },
-  {
     "id": "DDS-TC-125",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Contact Number Matching",
     "taskDescription": "Verify that duplicate group is not generated when Contact Numbers differ. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching values"
-  },
-  {
-    "id": "DDS-TC-126",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Contact Number Matching",
-    "taskDescription": "Verify that multiple customers sharing same Contact Number are grouped correctly. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear within same duplicate group\r\n• System should support multi-record matching"
   },
   {
     "id": "DDS-TC-127",
@@ -1032,28 +840,12 @@
     "expectedResult": "• Separate duplicate groups should be generated\r\n• System should maintain group integrity"
   },
   {
-    "id": "DDS-TC-130",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – CRN Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical Corporate Registration Number. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical CRN should appear in same duplicate group\r\n• System should identify duplicates using CRN"
-  },
-  {
     "id": "DDS-TC-131",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – CRN Matching",
     "taskDescription": "Verify that duplicate group is not generated when CRN values differ. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching CRNs"
-  },
-  {
-    "id": "DDS-TC-132",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – CRN Matching",
-    "taskDescription": "Verify that multiple customers sharing same CRN are grouped correctly. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear in same duplicate group\r\n• System should support multi-record matching"
   },
   {
     "id": "DDS-TC-133",
@@ -1136,36 +928,12 @@
     "expectedResult": "• System should generate separate duplicate groups for different PAN values\r\n• System should maintain group integrity"
   },
   {
-    "id": "DDS-TC-143",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – IMEI/IMSI Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical IMEI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical IMEI Number should appear in same duplicate group\r\n• System should identify duplicates using IMEI Number"
-  },
-  {
     "id": "DDS-TC-144",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – IMEI/IMSI Matching",
     "taskDescription": "Verify that duplicate group is not generated when IMEI Numbers differ. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching IMEI values"
-  },
-  {
-    "id": "DDS-TC-145",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – IMEI/IMSI Matching",
-    "taskDescription": "Verify that multiple customers sharing same IMEI Number are grouped correctly. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear within same duplicate group\r\n• System should support multi-record duplicate groups"
-  },
-  {
-    "id": "DDS-TC-146",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – IMEI/IMSI Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical IMSI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical IMSI Number should appear in same duplicate group\r\n• System should identify duplicates using IMSI Number"
   },
   {
     "id": "DDS-TC-147",
@@ -1192,44 +960,12 @@
     "expectedResult": "• System should generate separate duplicate groups for each IMEI/IMSI value\r\n• System should maintain group integrity"
   },
   {
-    "id": "DDS-TC-150",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – IP/MAC Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical IP Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical IP Address should appear within same duplicate group\r\n• System should identify duplicates using IP Address"
-  },
-  {
     "id": "DDS-TC-151",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – IP/MAC Matching",
     "taskDescription": "Verify that duplicate group is not generated when IP Addresses differ. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should not be grouped together\r\n• System should exclude non-matching IP values"
-  },
-  {
-    "id": "DDS-TC-152",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – IP/MAC Matching",
-    "taskDescription": "Verify that multiple customers sharing same IP Address are grouped correctly. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matching customers should appear within same duplicate group\r\n• System should support multi-record duplicate groups"
-  },
-  {
-    "id": "DDS-TC-153",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – IP/MAC Matching",
-    "taskDescription": "Verify that duplicate group is generated when customers share identical MAC Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Customers sharing identical MAC Address should appear within same duplicate group\r\n• System should identify duplicates using MAC Address"
-  },
-  {
-    "id": "DDS-TC-154",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – IP/MAC Matching",
-    "taskDescription": "Verify that mAC Address matching behavior when values use different letter casing. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Duplicate identification should follow configured case handling logic\r\n• System should follow configured MAC matching logic"
   },
   {
     "id": "DDS-TC-155",
@@ -1302,14 +1038,6 @@
     "taskDescription": "Verify that duplicate grouping when customers share Mobile Number and Email Address. This confirms multi-parameter matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Customers should be grouped together when matching criteria are satisfied\r\n• System should support digital identity-based matching"
-  },
-  {
-    "id": "DDS-TC-164",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Multi-Parameter Matching",
-    "taskDescription": "Verify that duplicate grouping when customers share National ID and Passport Number. This confirms multi-parameter matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Critical",
-    "expectedResult": "• Customers should appear in same duplicate group\r\n• System should support multiple identity document matching"
   },
   {
     "id": "DDS-TC-165",
@@ -1600,14 +1328,6 @@
     "expectedResult": "• Customer Names displayed in report should match underlying customer records\r\n• System should display correct customer names"
   },
   {
-    "id": "DDS-TC-201",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Group Validation",
-    "taskDescription": "Verify that match Parameters column displays all matching attributes contributing to duplicate detection. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• All matched parameters should be displayed accurately in Match Parameters column\r\n• System should display complete matching information"
-  },
-  {
     "id": "DDS-TC-202",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Group Validation",
@@ -1766,14 +1486,6 @@
     "taskDescription": "Verify that long customer names are displayed without breaking report layout. This confirms data display rules works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "Low",
     "expectedResult": "• Long values should remain readable without affecting report structure\r\n• System should handle long text values gracefully"
-  },
-  {
-    "id": "DDS-TC-222",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Data Display Rules",
-    "taskDescription": "Verify that long identifier values are displayed correctly in report grid. This confirms data display rules works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Low",
-    "expectedResult": "• Long identifier values should display correctly without truncation issues affecting usability\r\n• System should support long identifier rendering"
   },
   {
     "id": "DDS-TC-223",
@@ -2070,46 +1782,6 @@
     "taskDescription": "Verify that field highlighting remains intact after closing and reopening Compare modal. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "Medium",
     "expectedResult": "• Matching fields should remain highlighted after reopening comparison modal\r\n• System should preserve visual duplicate indicators"
-  },
-  {
-    "id": "DDS-TC-260",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Missing Data Handling",
-    "taskDescription": "Verify that missing value displays N/A when configured value is unavailable. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Missing field should display N/A according to configured display rules\r\n• System should display missing information consistently"
-  },
-  {
-    "id": "DDS-TC-261",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Missing Data Handling",
-    "taskDescription": "Verify that placeholder symbol \"—\" is displayed for fields configured with dash representation. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Configured fields should display \"—\" consistently where applicable\r\n• System should display configured placeholder values correctly"
-  },
-  {
-    "id": "DDS-TC-262",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Missing Data Handling",
-    "taskDescription": "Verify that comparison modal handles missing value on Customer A side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Missing value should be displayed correctly while Customer B value remains unaffected\r\n• System should display missing values without affecting Customer B data"
-  },
-  {
-    "id": "DDS-TC-263",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Missing Data Handling",
-    "taskDescription": "Verify that comparison modal handles missing value on Customer B side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Missing value should be displayed correctly while Customer A value remains unaffected\r\n• System should display missing values independently"
-  },
-  {
-    "id": "DDS-TC-264",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Missing Data Handling",
-    "taskDescription": "Verify that comparison modal handles missing values on both customer records correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Missing values should display consistently without causing layout or rendering issues\r\n• System should support comparison of incomplete records"
   },
   {
     "id": "DDS-TC-265",
@@ -2416,14 +2088,6 @@
     "expectedResult": "• Authorized user should successfully access De-Dup Screening page and perform permitted operations\r\n• User with required permission should be able to access the module"
   },
   {
-    "id": "DDS-TC-303",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Role Based Access Control",
-    "taskDescription": "Verify that unauthorized user cannot access De-Dup Screening module. This ensures only appropriate users can view or act on duplicate customer data. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Critical",
-    "expectedResult": "• System should deny access and display appropriate authorization message\r\n• User without permission should be restricted"
-  },
-  {
     "id": "DDS-TC-304",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Role Based Access Control",
@@ -2488,36 +2152,12 @@
     "expectedResult": "• System should require authentication and should not expose duplicate investigation data\r\n• System should prevent unauthenticated access"
   },
   {
-    "id": "DDS-TC-312",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Data Visibility Restrictions",
-    "taskDescription": "Verify that restricted customer information is displayed only according to configured visibility rules. This ensures only appropriate users can view or act on duplicate customer data.",
-    "priority": "High",
-    "expectedResult": "• Only authorized customer information should be displayed according to configured visibility rules\r\n• System should enforce customer data visibility restrictions"
-  },
-  {
-    "id": "DDS-TC-313",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Data Visibility Restrictions",
-    "taskDescription": "Verify that hidden fields are not exposed through duplicate reports or comparison screens. This ensures only appropriate users can view or act on duplicate customer data.",
-    "priority": "High",
-    "expectedResult": "• Hidden fields should not be visible in reports or comparison views\r\n• System should suppress restricted attributes"
-  },
-  {
     "id": "DDS-TC-314",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – Data Visibility Restrictions",
     "taskDescription": "Verify that sensitive identifiers are displayed according to configured privacy rules. This ensures exported duplicate reports meet compliance and privacy requirements. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "Critical",
     "expectedResult": "• Sensitive identifiers should be displayed according to configured masking or visibility rules\r\n• System should enforce privacy controls"
-  },
-  {
-    "id": "DDS-TC-315",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Data Visibility Restrictions",
-    "taskDescription": "Verify that customer information displayed in Compare modal follows configured visibility restrictions. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Data visibility restrictions should remain effective within Compare modal\r\n• System should apply privacy controls consistently"
   },
   {
     "id": "DDS-TC-316",
@@ -2534,14 +2174,6 @@
     "taskDescription": "Verify that duplicate investigation workflow using Passport matching criteria. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "High",
     "expectedResult": "• Duplicate report and comparison data should support complete investigation workflow\r\n• System should support identity-document based investigations"
-  },
-  {
-    "id": "DDS-TC-318",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – End-to-End Duplicate Investigation",
-    "taskDescription": "Verify that duplicate investigation workflow using National ID matching criteria. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• User should be able to investigate duplicate customers using National ID evidence\r\n• System should support government identifier investigations"
   },
   {
     "id": "DDS-TC-319",
@@ -2600,38 +2232,6 @@
     "expectedResult": "• Results, groups and comparison data should remain consistent\r\n• System should maintain investigation consistency"
   },
   {
-    "id": "DDS-TC-326",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – No Match Workflow",
-    "taskDescription": "Verify that end-to-end workflow when no duplicate records are identified. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• System should display appropriate no-duplicate-found message\r\n• System should support no-match investigation scenarios"
-  },
-  {
-    "id": "DDS-TC-327",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – No Match Workflow",
-    "taskDescription": "Verify that analyst can recover from no-result scenario and perform a new investigation. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• User should be able to perform a new investigation successfully after empty results\r\n• System should support user recovery workflow"
-  },
-  {
-    "id": "DDS-TC-328",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – No Match Workflow",
-    "taskDescription": "Verify that no-result workflow does not display stale duplicate information. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "High",
-    "expectedResult": "• Only no-result message should be displayed and previous duplicate data should not remain visible\r\n• System should clear previous investigation results"
-  },
-  {
-    "id": "DDS-TC-329",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – No Match Workflow",
-    "taskDescription": "Verify that no-result workflow maintains application stability. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Medium",
-    "expectedResult": "• Application should remain stable and responsive after no-result investigation\r\n• System should handle empty investigation scenarios gracefully"
-  },
-  {
     "id": "DDS-TC-330",
     "module": "Sanction Screening",
     "subModule": "De-Dup Screening – High Volume Investigation",
@@ -2686,14 +2286,6 @@
     "taskDescription": "Verify that passport-based duplicate detection workflow remains operational after application updates. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
     "priority": "Critical",
     "expectedResult": "• Passport duplicate detection workflow should function successfully\r\n• Core Passport matching functionality should remain unaffected"
-  },
-  {
-    "id": "DDS-TC-337",
-    "module": "Sanction Screening",
-    "subModule": "De-Dup Screening – Regression Critical Paths",
-    "taskDescription": "Verify that national ID duplicate detection workflow remains operational after application updates. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "priority": "Critical",
-    "expectedResult": "• National ID duplicate detection workflow should function successfully\r\n• Core National ID matching functionality should remain unaffected"
   },
   {
     "id": "DDS-TC-338",

@@ -238,36 +238,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-035",
-    "scenarioName": "Verify that parameter selection state remains consistent while selecting multiple parameters. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-036",
-    "scenarioName": "Verify that all configured match parameter options are selectable. This confirms parameter selection works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-037",
     "scenarioName": "Verify that \"Select All\" option selects all available Match Parameters. This confirms select all / deselect all works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-038",
-    "scenarioName": "Verify that all parameter checkboxes are marked selected after clicking Select All. This confirms select all / deselect all works correctly for duplicate customer investigation.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-039",
-    "scenarioName": "Verify that \"Remove All/Deselect All\" clears all selected Match Parameters. This confirms select all / deselect all works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -331,13 +303,6 @@
   {
     "excelTestCaseId": "DDS-TC-048",
     "scenarioName": "Verify that removal of last remaining tag clears parameter selection completely. This confirms tag management works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-049",
-    "scenarioName": "Verify that tags remain visible after dropdown is closed and reopened. This confirms tag management works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -415,13 +380,6 @@
   {
     "excelTestCaseId": "DDS-TC-060",
     "scenarioName": "Verify that generate Report button behavior when no Match Parameter is selected. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-061",
-    "scenarioName": "Verify that report is not generated when mandatory Match Parameter selection is missing. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -525,13 +483,6 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-076",
-    "scenarioName": "Verify that clear Filters button clears Customer ID field. This confirms clear filters works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-077",
     "scenarioName": "Verify that clear Filters resets both Match Parameters and Customer ID together. This confirms clear filters works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
@@ -623,50 +574,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-090",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-091",
     "scenarioName": "Verify that duplicate group is not generated when National IDs differ. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-092",
-    "scenarioName": "Verify that multiple customers sharing same National ID are grouped correctly. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-093",
-    "scenarioName": "Verify that duplicate detection when one record contains blank National ID. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-094",
-    "scenarioName": "Verify that duplicate detection supports Aadhar number matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-095",
-    "scenarioName": "Verify that duplicate detection supports Emirates ID matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-096",
-    "scenarioName": "Verify that duplicate detection supports SSN matching. This confirms national id matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -721,22 +630,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-104",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical Driving License Number. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-105",
     "scenarioName": "Verify that duplicate group is not generated when Driving License Numbers differ. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-106",
-    "scenarioName": "Verify that multiple customers sharing same Driving License Number are grouped correctly. This confirms driving license matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -763,29 +658,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-110",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical Mobile Number. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-111",
     "scenarioName": "Verify that duplicate group is not generated when Mobile Numbers differ. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-112",
-    "scenarioName": "Verify that multiple customers sharing same Mobile Number are grouped correctly. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-113",
-    "scenarioName": "Verify that duplicate detection with Mobile Number containing country code. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -805,36 +679,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-116",
-    "scenarioName": "Verify that separate duplicate groups are generated for different Mobile Numbers. This confirms mobile matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-117",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical Email Address. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-118",
     "scenarioName": "Verify that duplicate group is not generated when Email Addresses differ. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-119",
-    "scenarioName": "Verify that multiple customers sharing same Email Address are grouped correctly. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-120",
-    "scenarioName": "Verify that email matching behavior for uppercase and lowercase values. This confirms email matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -861,22 +707,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-124",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical Contact Number. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-125",
     "scenarioName": "Verify that duplicate group is not generated when Contact Numbers differ. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-126",
-    "scenarioName": "Verify that multiple customers sharing same Contact Number are grouped correctly. This confirms contact number matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -903,22 +735,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-130",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical Corporate Registration Number. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-131",
     "scenarioName": "Verify that duplicate group is not generated when CRN values differ. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-132",
-    "scenarioName": "Verify that multiple customers sharing same CRN are grouped correctly. This confirms crn matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -994,29 +812,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-143",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical IMEI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-144",
     "scenarioName": "Verify that duplicate group is not generated when IMEI Numbers differ. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-145",
-    "scenarioName": "Verify that multiple customers sharing same IMEI Number are grouped correctly. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-146",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical IMSI Number. This confirms imei/imsi matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -1043,36 +840,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-150",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical IP Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-151",
     "scenarioName": "Verify that duplicate group is not generated when IP Addresses differ. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-152",
-    "scenarioName": "Verify that multiple customers sharing same IP Address are grouped correctly. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-153",
-    "scenarioName": "Verify that duplicate group is generated when customers share identical MAC Address. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-154",
-    "scenarioName": "Verify that mAC Address matching behavior when values use different letter casing. This confirms ip/mac matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -1136,13 +905,6 @@
   {
     "excelTestCaseId": "DDS-TC-163",
     "scenarioName": "Verify that duplicate grouping when customers share Mobile Number and Email Address. This confirms multi-parameter matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-164",
-    "scenarioName": "Verify that duplicate grouping when customers share National ID and Passport Number. This confirms multi-parameter matching works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -1400,13 +1162,6 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-201",
-    "scenarioName": "Verify that match Parameters column displays all matching attributes contributing to duplicate detection. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-202",
     "scenarioName": "Verify that iD Number column displays correct matching identifier value. This protects data quality before duplicate detection runs. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
@@ -1542,13 +1297,6 @@
   {
     "excelTestCaseId": "DDS-TC-221",
     "scenarioName": "Verify that long customer names are displayed without breaking report layout. This confirms data display rules works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-222",
-    "scenarioName": "Verify that long identifier values are displayed correctly in report grid. This confirms data display rules works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -1808,41 +1556,6 @@
   {
     "excelTestCaseId": "DDS-TC-259",
     "scenarioName": "Verify that field highlighting remains intact after closing and reopening Compare modal. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-260",
-    "scenarioName": "Verify that missing value displays N/A when configured value is unavailable. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-261",
-    "scenarioName": "Verify that placeholder symbol \"—\" is displayed for fields configured with dash representation. This confirms missing data handling works correctly for duplicate customer investigation. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-262",
-    "scenarioName": "Verify that comparison modal handles missing value on Customer A side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-263",
-    "scenarioName": "Verify that comparison modal handles missing value on Customer B side correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-264",
-    "scenarioName": "Verify that comparison modal handles missing values on both customer records correctly. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -2114,13 +1827,6 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-303",
-    "scenarioName": "Verify that unauthorized user cannot access De-Dup Screening module. This ensures only appropriate users can view or act on duplicate customer data. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-304",
     "scenarioName": "Verify that user with view permission can access duplicate reports. This ensures only appropriate users can view or act on duplicate customer data. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
@@ -2177,29 +1883,8 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-312",
-    "scenarioName": "Verify that restricted customer information is displayed only according to configured visibility rules. This ensures only appropriate users can view or act on duplicate customer data.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-313",
-    "scenarioName": "Verify that hidden fields are not exposed through duplicate reports or comparison screens. This ensures only appropriate users can view or act on duplicate customer data.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-314",
     "scenarioName": "Verify that sensitive identifiers are displayed according to configured privacy rules. This ensures exported duplicate reports meet compliance and privacy requirements. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-315",
-    "scenarioName": "Verify that customer information displayed in Compare modal follows configured visibility restrictions. This helps analysts compare KYC details before merging or closing duplicate records. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -2214,13 +1899,6 @@
   {
     "excelTestCaseId": "DDS-TC-317",
     "scenarioName": "Verify that duplicate investigation workflow using Passport matching criteria. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-318",
-    "scenarioName": "Verify that duplicate investigation workflow using National ID matching criteria. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
@@ -2275,34 +1953,6 @@
     "missingInformation": ""
   },
   {
-    "excelTestCaseId": "DDS-TC-326",
-    "scenarioName": "Verify that end-to-end workflow when no duplicate records are identified. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-327",
-    "scenarioName": "Verify that analyst can recover from no-result scenario and perform a new investigation. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-328",
-    "scenarioName": "Verify that no-result workflow does not display stale duplicate information. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-329",
-    "scenarioName": "Verify that no-result workflow maintains application stability. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
     "excelTestCaseId": "DDS-TC-330",
     "scenarioName": "Verify that investigation workflow supports large duplicate groups. This ensures duplicate investigations remain usable with large customer datasets. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
@@ -2347,13 +1997,6 @@
   {
     "excelTestCaseId": "DDS-TC-336",
     "scenarioName": "Verify that passport-based duplicate detection workflow remains operational after application updates. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
-    "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
-    "automationStatus": "Generated",
-    "missingInformation": ""
-  },
-  {
-    "excelTestCaseId": "DDS-TC-337",
-    "scenarioName": "Verify that national ID duplicate detection workflow remains operational after application updates. This validates the complete duplicate review path from search to export. The De-Dup Screening page should remain stable with no unexpected errors.",
     "generatedSpecFile": "tests/milestone1/test-cases/ScreeningModule/dedupScreeningTests/dedup-screening.spec.ts",
     "automationStatus": "Generated",
     "missingInformation": ""
