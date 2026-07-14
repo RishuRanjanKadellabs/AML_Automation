@@ -8813,14 +8813,14 @@ test.describe("Reference Data Registry Module", () => {
 
     await test.step("Validate expected results", async () => {
       await rdrPage.expectFilterApplied();
-      await rdrPage.expectAllCellsMatchValue('Country Name', 'Individual');
-      await rdrPage.expectGridTabLoaded();
+      // Excel: matching records remain after search/filter — not Customer-Type "Individual".
       await rdrPage.expectColumnVisible('Country Name');
+      await rdrPage.expectAllCellsNonEmpty('Country Name');
+      await rdrPage.expectGridTabLoaded();
       await rdrPage.expectGridContainsRecords();
       await rdrPage.expectSearchYieldsResults();
       await rdrPage.expectSearchYieldsNoResults();
       await rdrPage.expectFirstRowLinkNavigates();
-      await rdrPage.expectAllCellsNonEmpty('Country Name');
       });
   });
 
@@ -8869,7 +8869,7 @@ test.describe("Reference Data Registry Module", () => {
     await test.step("Validate expected results", async () => {
       await rdrPage.expectSearchYieldsResults();
       await rdrPage.expectFilterApplied();
-      await rdrPage.expectAllCellsMatchValue('Country Name', 'Individual');
+      // Excel: search by Country Name — verify name column populated (not Customer Type "Individual").
       await rdrPage.expectColumnVisible('Country Name');
       await rdrPage.expectGridTabLoaded();
       await rdrPage.expectGridContainsRecords();

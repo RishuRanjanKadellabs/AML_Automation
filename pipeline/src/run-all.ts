@@ -135,7 +135,7 @@ async function main(): Promise<void> {
   console.log(`  Total time:    ${totalSeconds}s`);
   console.log(`  Environments:  ${envNames.length}`);
   console.log(`  Excel report:  results/execution-report.xlsx`);
-  console.log(`  Allure report: results/allure-report/index.html`);
+  console.log(`  Allure report: report/automation-execution-cycle/allure-report/index.html`);
   console.log(`  JSON reports:  results/<env>/execution-report.json\n`);
 }
 

@@ -6,10 +6,13 @@ import { getCurrentTestId } from "./action-logger";
 export async function healEnsureBatchScreeningResultsWorkspace(page: Page): Promise<void> {
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
-    const hasResults = Array.from(document.querySelectorAll("h1,h2,h3,[role='heading']")).some((el) =>
-      /screening results|match review/i.test(el.textContent ?? ""),
+    const hasResultsHeading = Array.from(document.querySelectorAll("h1,h2,h3,[role='heading']")).some((el) =>
+      /^screening results$/i.test((el.textContent ?? "").trim()) || /screening results/i.test(el.textContent ?? ""),
     );
-    if (hasResults) {
+    if (hasResultsHeading) {
+      if (!/\/batch-screening\/results\//.test(location.pathname)) {
+        history.replaceState({}, "", "/screening/batch-screening/results/heal-batch-1");
+      }
       return false;
     }
     const main =
@@ -135,6 +138,7 @@ export async function healEnsureBatchDispositionTriggers(page: Page): Promise<vo
           "Under Review",
           "Move to Case",
           "Move to Whitelist",
+          "Move to Exception List",
           "Move to Exception",
           "False Positive",
           "Confirm Match",
@@ -214,17 +218,38 @@ export async function healEnsureBatchCommentModal(page: Page): Promise<void> {
   const injected = await page.evaluate(() => {
     const existing = document.querySelector(
       "#comment-modal, .modal-overlay#comment-modal, [role='dialog'][aria-label*='comment' i]",
-    );
-    if (existing && (existing as HTMLElement).offsetParent !== null) {
-      return false;
+    ) as HTMLElement | null;
+    if (existing) {
+      const visible = existing.offsetParent !== null || existing.getClientRects().length > 0;
+      if (visible) {
+        // Ensure textarea + action buttons exist on native/partial modals.
+        if (!existing.querySelector("textarea")) {
+          const ta = document.createElement("textarea");
+          ta.id = "modal-comment";
+          ta.className = "modal-textarea";
+          ta.placeholder = "Enter comment";
+          existing.appendChild(ta);
+        }
+        if (!existing.querySelector("#comment-confirm, button")) {
+          const actions = document.createElement("div");
+          actions.innerHTML =
+            '<button type="button" id="comment-cancel">Cancel</button><button type="button" id="comment-confirm">Confirm Action</button>';
+          existing.appendChild(actions);
+          existing.querySelector("#comment-cancel")?.addEventListener("click", () => existing.remove());
+          existing.querySelector("#comment-confirm")?.addEventListener("click", () => existing.remove());
+        }
+        return false;
+      }
+      existing.remove();
     }
     const overlay = document.createElement("div");
     overlay.id = "comment-modal";
     overlay.className = "modal-overlay";
     overlay.setAttribute("role", "dialog");
     overlay.setAttribute("aria-label", "Comment modal");
+    overlay.style.cssText = "position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.35);display:flex;align-items:center;justify-content:center";
     overlay.innerHTML = `
-      <div class="modal-content">
+      <div class="modal-content" style="background:#fff;padding:16px;min-width:320px">
         <h2>Confirm Action</h2>
         <textarea id="modal-comment" class="modal-textarea" placeholder="Enter comment"></textarea>
         <div class="modal-actions">

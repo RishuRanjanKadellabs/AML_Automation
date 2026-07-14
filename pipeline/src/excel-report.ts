@@ -8,6 +8,7 @@ dotenv.config({ path: path.resolve(__dirname, "..", "..", ".env") });
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 const RESULTS_DIR = path.join(PROJECT_ROOT, "results");
+const REPORT_DIR = path.join(PROJECT_ROOT, "report", "automation-execution-cycle");
 
 interface EnvReport {
   envName: string;
@@ -377,7 +378,8 @@ async function generateExcelReport(): Promise<string> {
     }
   }
 
-  const outputPath = path.join(RESULTS_DIR, "test-results.xlsx");
+  fs.mkdirSync(REPORT_DIR, { recursive: true });
+  const outputPath = path.join(REPORT_DIR, "test-results.xlsx");
   await wb.xlsx.writeFile(outputPath);
 
   return outputPath;

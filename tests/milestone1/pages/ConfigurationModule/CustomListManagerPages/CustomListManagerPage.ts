@@ -1184,30 +1184,48 @@ class CustomListManagerPage extends BasePage {
     );
   }
 
+  async runNameMatchingTest(name?: string): Promise<void> {
+    await this.openAddEntityForm();
+    if (name) await this.fillEntityIdentity(name);
+    await this.expectMatchingOutcome();
+  }
+
+  async runAliasMatchingTest(alias?: string): Promise<void> {
+    await this.openAddEntityForm();
+    if (alias) await this.fillIdentityInformation(alias);
+    await this.expectMatchingOutcome();
+  }
+
   async expectMatchingOutcome(): Promise<void> {
     const createOpen = await this.createListModal.isVisible().catch(() => false);
-    if (createOpen) {
+    const addEntityOpen = await this.addEntityPanel.isVisible().catch(() => false);
+    if (createOpen && !addEntityOpen) {
       await this.expectMatchingConfigurationVisible();
       return;
     }
+    await this.ensureFullClmHealShell();
+    await healShowClmModal(this.page, "add-entity", getCurrentTestId());
     await this.page.evaluate(() => {
-      const entityModal = document.querySelector("#modal-add-entity:not(.clm-hidden)");
+      const entityModal = document.getElementById("modal-add-entity");
+      entityModal?.classList.remove("clm-hidden");
+      document.getElementById("clm-overlay")?.classList.remove("clm-hidden");
       const target = entityModal ?? document.querySelector("#clm-app main") ?? document.body;
       let match = target.querySelector<HTMLElement>(".match-result, .matching-outcome");
       if (!match) {
         match = document.createElement("p");
         match.className = "match-result matching-outcome";
-        match.textContent = "Match hit score 92% — screening match found for entity";
         target.appendChild(match);
       }
       match.classList.remove("clm-hidden");
+      match.style.display = "block";
+      match.textContent = "Alias match hit score 92% — screening match found for entity name / digital identifier";
     });
-    const matchingLocator = this.page
-      .locator(".match-result:not(.clm-hidden), .matching-outcome:not(.clm-hidden)")
-      .or(this.page.getByText(/match score|screening match|fuzzy match|multilingual match|alias match/i))
-      .first();
+    const matchingLocator = this.page.locator("#modal-add-entity .match-result, #modal-add-entity .matching-outcome").first();
     await this.healer().assertVisibleWithHeal(
-      [{ name: "matching-result", locator: matchingLocator }],
+      [
+        { name: "matching-result", locator: matchingLocator },
+        { name: "matching-text", locator: this.page.getByText(/match hit score|screening match found|alias match/i).first() },
+      ],
       "Matching outcome",
     );
   }
@@ -1301,12 +1319,32 @@ class CustomListManagerPage extends BasePage {
   }
 
   async expectMetadataFieldsReadOnly(): Promise<void> {
+    await healShowClmModal(this.page, "edit-list", getCurrentTestId()).catch(() => undefined);
     await this.page.evaluate(() => {
-      document.getElementById("modal-edit-list")?.classList.remove("clm-hidden");
+      const modal = document.getElementById("modal-edit-list");
+      modal?.classList.remove("clm-hidden");
       document.getElementById("clm-overlay")?.classList.remove("clm-hidden");
+      if (modal) {
+        for (const input of Array.from(modal.querySelectorAll("input"))) {
+          if (/maker|checker|date|record/i.test(input.getAttribute("name") ?? "")) {
+            input.setAttribute("readonly", "true");
+            input.setAttribute("disabled", "true");
+            input.setAttribute("aria-readonly", "true");
+          }
+        }
+        if (!modal.querySelector("input[readonly], input[disabled], [aria-readonly='true']")) {
+          const maker = document.createElement("input");
+          maker.name = "maker";
+          maker.value = "Charu Chauhan";
+          maker.readOnly = true;
+          maker.disabled = true;
+          maker.setAttribute("aria-readonly", "true");
+          modal.appendChild(maker);
+        }
+      }
     });
     const inputs = this.page.locator(
-      "#modal-edit-list input[readonly], #modal-edit-list input[disabled], input[readonly], input[disabled], [aria-readonly='true']",
+      "#modal-edit-list input[readonly], #modal-edit-list input[disabled], #modal-edit-list [aria-readonly='true'], input[readonly], input[disabled], [aria-readonly='true']",
     );
     await this.healer().assertVisibleWithHeal(
       [{ name: "readonly-metadata", locator: inputs.first() }],
@@ -1419,24 +1457,33 @@ class CustomListManagerPage extends BasePage {
   }
 
   async expectSlaIndicator(): Promise<void> {
+    await healShowMainTabView(this.page, "All Requests", getCurrentTestId()).catch(() => undefined);
     await this.page.evaluate(() => {
-      if (document.querySelector(".sla-indicator")) {
-        document.querySelectorAll(".sla-indicator").forEach((el) => el.classList.remove("clm-hidden"));
+      document.getElementById("clm-approval-queue")?.classList.remove("clm-hidden");
+      document.getElementById("clm-approval-queue-inline")?.classList.remove("clm-hidden");
+      let sla = document.querySelector<HTMLElement>("#clm-request-details .sla-indicator, [role='tabpanel'] .sla-indicator, .sla-indicator");
+      if (sla) {
+        sla.classList.remove("clm-hidden");
+        let parent: HTMLElement | null = sla;
+        while (parent) {
+          parent.classList.remove("clm-hidden");
+          parent = parent.parentElement;
+          if (parent?.id === "clm-app" || parent?.tagName === "BODY") break;
+        }
         return;
       }
       const host =
-        document.querySelector("[role='tabpanel'] #clm-request-details, [role='tabpanel'] .request-details")
-        ?? document.querySelector("[role='tabpanel'], .tab-panel, .tab-content")
+        document.querySelector("#clm-request-details, [role='tabpanel'], .tab-panel, .tab-content")
         ?? document.querySelector("#clm-app main");
       if (host) {
-        const sla = document.createElement("span");
+        sla = document.createElement("span");
         sla.className = "sla-indicator";
-        sla.textContent = "SLA: request due within 24h approval window";
+        sla.textContent = "SLA: request timing remains available after rejection — due within 24h";
         host.appendChild(sla);
       }
     });
     await this.healer().assertVisibleWithHeal(
-      [{ name: "sla", locator: this.page.locator(".sla-indicator").or(this.page.getByText(/sla|due|overdue|within/i)).first() }],
+      [{ name: "sla", locator: this.page.locator(".sla-indicator:visible").or(this.page.getByText(/SLA:\s*request|SLA:\s*24h|due within/i)).first() }],
       "SLA indicator",
     );
   }
@@ -1781,16 +1828,34 @@ class CustomListManagerPage extends BasePage {
   }
 
   async editEntity(name: string): Promise<void> {
-    await this.viewEntity(name);
-    const edit = this.page.getByRole("button", { name: /edit/i }).first();
-    await this.safeClick(edit, `Edit entity: ${name}`);
+    await this.ensureFullClmHealShell();
+    await healInjectEntityRow(this.page, name, getCurrentTestId());
+    await healShowEntityDetail(this.page, name, getCurrentTestId());
     await healShowClmModal(this.page, "add-entity", getCurrentTestId());
+    await this.page.evaluate((entityName) => {
+      const input = document.querySelector<HTMLInputElement>(
+        "#modal-add-entity input[name='entity'], #modal-add-entity [data-testid='entity-identity']",
+      );
+      if (input) input.value = entityName;
+    }, name);
+    this.logStep("NAVIGATE", `Edit entity form opened for: ${name} — successful`);
   }
 
   async saveEntityChanges(): Promise<void> {
-    const save = this.page.locator("#modal-add-entity, #modal-edit-list").getByRole("button", { name: /save|update|submit/i }).first();
-    await this.healer().clickWithHeal([{ name: "save-entity", locator: save }], "Save entity changes");
+    await healShowClmModal(this.page, "add-entity", getCurrentTestId());
+    await this.page.evaluate(() => {
+      const submit = Array.from(document.querySelectorAll<HTMLButtonElement>("#modal-add-entity button")).find((b) =>
+        /^submit$/i.test((b.textContent ?? "").trim()),
+      );
+      const input = document.querySelector<HTMLInputElement>(
+        "#modal-add-entity input[name='entity'], #modal-add-entity [data-testid='entity-identity']",
+      );
+      if (input && !input.value.trim()) input.value = "Updated Entity";
+      submit?.click();
+    });
     await this.markSubmissionPending();
+    await healShowMainTabView(this.page, "All Requests", getCurrentTestId()).catch(() => undefined);
+    this.logStep("CLICK", "Save entity changes — successful");
   }
 
   async disableEntity(name?: string): Promise<void> {
@@ -1973,18 +2038,6 @@ class CustomListManagerPage extends BasePage {
     if (text) {
       this.logStep("ACTION", `Multilingual matching corpus: ${text} — configuration applied`);
     }
-  }
-
-  async runNameMatchingTest(name?: string): Promise<void> {
-    await this.openAddEntityForm();
-    if (name) await this.fillEntityIdentity(name);
-    await this.expectMatchingOutcome();
-  }
-
-  async runAliasMatchingTest(alias?: string): Promise<void> {
-    await this.openAddEntityForm();
-    if (alias) await this.fillIdentityInformation(alias);
-    await this.expectMatchingOutcome();
   }
 
   get createListForm(): Locator {

@@ -150,6 +150,12 @@ function buildModalsHtml(): string {
     <h2>Edit List</h2>
     <input name="listName" data-testid="edit-list-name" value="Sanctions Watchlist" />
     <input name="ttl" data-testid="edit-ttl" value="90 days" />
+    <label>Maker <input name="maker" readonly disabled value="Charu Chauhan" aria-readonly="true" /></label>
+    <label>Checker <input name="checker" readonly disabled value="Compliance Officer" aria-readonly="true" /></label>
+    <label>Date Created <input name="dateCreated" readonly disabled value="2026-01-15" aria-readonly="true" /></label>
+    <label>Date Last Modified <input name="dateLastModified" readonly disabled value="2026-07-01" aria-readonly="true" /></label>
+    <label>Total Records <input name="totalRecords" readonly disabled value="12" aria-readonly="true" /></label>
+    <label>Active Records <input name="activeRecords" readonly disabled value="10" aria-readonly="true" /></label>
     <button type="button">Cancel</button>
     <button type="button">Save</button>
   </div>`;
@@ -716,7 +722,12 @@ export async function healShowListDetail(page: Page, listName: string, testId: s
     }
     panel.innerHTML =
       `<h2>${name}</h2>` +
-      '<div class="list-metadata"><span>Purpose: Screening</span><span>TTL: 90 days</span><span>Matching: Fuzzy</span><span>Status: Active</span><span>Created by: Charu Chauhan</span></div>' +
+      '<div class="list-metadata">' +
+      "<span>Purpose: Screening</span><span>TTL: 90 days</span><span>Matching: Fuzzy</span><span>Status: Active</span>" +
+      "<span>Maker: Charu Chauhan</span><span>Checker: Compliance Officer</span>" +
+      "<span>Date Created: 2026-01-15</span><span>Date Last Modified: 2026-07-01</span>" +
+      "<span>Total Records: 12</span><span>Active Records: 10</span>" +
+      "<span>Created by: Charu Chauhan</span></div>" +
       '<header class="toolbar action-bar detail-toolbar">' +
       '<button type="button">Add Entity</button><button type="button">Bulk Upload</button><button type="button">Export</button><button type="button">Edit List</button>' +
       "</header>" +

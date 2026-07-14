@@ -312,7 +312,7 @@ async function main(): Promise<void> {
               ["Console log", "results/test-run.log", "Human-readable run log"],
               ["Execution JSON", "results/execution-report.json", "Pass/fail per test ID"],
               ["Allure results", "results/allure-results/", "Steps, attachments"],
-              ["Allure HTML", "results/allure-report/", "Dashboard and trends"],
+              ["Allure HTML", "report/automation-execution-cycle/allure-report/", "Dashboard and trends"],
               ["Failure screenshots", "test-results/Screenshots/", "Captured on failure"],
             ],
           ),
