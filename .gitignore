@@ -1,7 +1,6 @@
 allure-report/
 allure-results/
 results/
-report/
 .playwright-mcp/
 node_modules/
 playwright-report/

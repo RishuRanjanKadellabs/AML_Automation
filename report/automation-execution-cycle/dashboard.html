@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QA Automation Dashboard — Automation Execution Cycle</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --pass: #22c55e;
+      --fail: #ef4444;
+      --skip: #f59e0b;
+      --broken: #a855f7;
+      --card-radius: 16px;
+      --accent: #38bdf8;
+    }
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: var(--bs-body-bg);
+      min-height: 100vh;
+    }
+    [data-bs-theme="dark"] body {
+      background: linear-gradient(160deg, #0b1220 0%, #152238 55%, #0f172a 100%);
+    }
+    [data-bs-theme="light"] body {
+      background: linear-gradient(160deg, #f8fafc 0%, #eef2ff 100%);
+    }
+    .hero {
+      border-radius: var(--card-radius);
+      padding: 1.5rem 1.75rem;
+      background: linear-gradient(135deg, rgba(56,189,248,.18), rgba(34,197,94,.12));
+      border: 1px solid rgba(56,189,248,.25);
+      margin-bottom: 1.25rem;
+    }
+    .stat-card {
+      border-radius: var(--card-radius);
+      border: 1px solid var(--bs-border-color);
+      background: var(--bs-body-bg);
+      box-shadow: 0 8px 24px rgba(0,0,0,.12);
+      transition: transform .15s ease, box-shadow .15s ease;
+      height: 100%;
+    }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(0,0,0,.18); }
+    .stat-card .label { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; opacity: .7; }
+    .stat-card .value { font-size: 1.65rem; font-weight: 700; line-height: 1.2; }
+    .chip {
+      display: inline-flex; align-items: center; gap: .35rem;
+      border-radius: 999px; padding: .2rem .7rem; font-size: .75rem; font-weight: 600;
+    }
+    .chip-pass { background: rgba(34,197,94,.15); color: var(--pass); }
+    .chip-fail { background: rgba(239,68,68,.15); color: var(--fail); }
+    .chip-skip { background: rgba(245,158,11,.15); color: var(--skip); }
+    .chip-broken { background: rgba(168,85,247,.15); color: var(--broken); }
+    .chip-excellent { background: rgba(34,197,94,.18); color: #16a34a; }
+    .chip-good { background: rgba(234,179,8,.18); color: #ca8a04; }
+    .chip-average { background: rgba(249,115,22,.18); color: #ea580c; }
+    .chip-poor { background: rgba(239,68,68,.18); color: #dc2626; }
+    .section-card {
+      border-radius: var(--card-radius);
+      border: 1px solid var(--bs-border-color);
+      background: color-mix(in srgb, var(--bs-body-bg) 92%, transparent);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .table thead th { font-size: .72rem; text-transform: uppercase; letter-spacing: .04em; white-space: nowrap; }
+    .table td, .table th { vertical-align: middle; }
+    .progress { height: 8px; border-radius: 999px; }
+    .drill-btn { cursor: pointer; }
+    .drill-btn:hover { color: var(--accent); }
+    .filter-bar { gap: .5rem; }
+    .gallery-card img { width: 100%; height: 140px; object-fit: cover; border-radius: 10px; background: #111; }
+    .sticky-nav {
+      position: sticky; top: 0; z-index: 1020;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bs-body-bg) 85%, transparent);
+      border-bottom: 1px solid var(--bs-border-color);
+    }
+    .muted { opacity: .75; }
+    .grand-total {
+      background: linear-gradient(135deg, rgba(34,197,94,.12), rgba(56,189,248,.12));
+      border: 1px solid rgba(56,189,248,.3);
+    }
+    .chart-box { position: relative; height: 280px; }
+    .chart-box-sm { position: relative; height: 220px; }
+    code.tc { font-size: .8rem; }
+  </style>
+</head>
+<body>
+  <nav class="sticky-nav py-2 mb-3">
+    <div class="container-fluid px-3 px-lg-4 d-flex flex-wrap align-items-center justify-content-between gap-2">
+      <div class="d-flex align-items-center gap-2">
+        <i class="bi bi-speedometer2 text-info fs-4"></i>
+        <div>
+          <div class="fw-bold">QA Automation Dashboard</div>
+          <div class="small muted">Automation Execution Cycle</div>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap align-items-center gap-2">
+        <div class="input-group input-group-sm" style="min-width:220px;max-width:320px">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input id="globalSearch" type="search" class="form-control" placeholder="Search test / module / feature / class" />
+        </div>
+        <button id="themeToggle" class="btn btn-sm btn-outline-secondary" title="Toggle theme"><i class="bi bi-moon-stars"></i></button>
+        <div class="btn-group btn-group-sm">
+          <button class="btn btn-outline-primary" onclick="exportCSV()"><i class="bi bi-filetype-csv"></i> CSV</button>
+          <button class="btn btn-outline-success" onclick="exportExcel()"><i class="bi bi-file-earmark-excel"></i> Excel</button>
+          <button class="btn btn-outline-danger" onclick="window.print()"><i class="bi bi-filetype-pdf"></i> PDF</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid px-3 px-lg-4 pb-5">
+    <div class="hero">
+      <div class="d-flex flex-wrap justify-content-between gap-3">
+        <div>
+          <h1 class="h3 mb-1">Executive Summary</h1>
+          <p class="mb-0 muted small" id="heroNote"></p>
+          <div class="mt-2 d-flex flex-wrap gap-2">
+            <span class="chip chip-pass" id="healthChip"></span>
+            <span class="chip" id="envChip"></span>
+            <span class="chip" id="urlChip"></span>
+          </div>
+        </div>
+        <div class="text-end small muted">
+          <div>Generated: <span id="generatedAt"></span></div>
+          <div>Build: <span id="buildVersion"></span></div>
+          <div>Executor: <span id="executorName"></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top cards -->
+    <div class="row g-3 mb-3" id="topCards"></div>
+
+    <!-- Filters -->
+    <div class="section-card">
+      <div class="d-flex flex-wrap align-items-end filter-bar">
+        <div>
+          <label class="form-label small mb-1">Module</label>
+          <select id="filterModule" class="form-select form-select-sm"><option value="">All</option></select>
+        </div>
+        <div>
+          <label class="form-label small mb-1">Feature</label>
+          <select id="filterFeature" class="form-select form-select-sm"><option value="">All</option></select>
+        </div>
+        <div>
+          <label class="form-label small mb-1">Status</label>
+          <select id="filterStatus" class="form-select form-select-sm">
+            <option value="">All</option>
+            <option>Passed</option>
+            <option>Failed</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label small mb-1">Environment</label>
+          <select id="filterEnv" class="form-select form-select-sm"><option>DEV</option><option>UAT</option><option>PROD</option></select>
+        </div>
+        <div>
+          <label class="form-label small mb-1">Browser</label>
+          <select id="filterBrowser" class="form-select form-select-sm"><option>Chromium</option></select>
+        </div>
+        <div>
+          <label class="form-label small mb-1">Executor</label>
+          <select id="filterExecutor" class="form-select form-select-sm"><option>AML Automation Pipeline</option></select>
+        </div>
+        <button class="btn btn-sm btn-primary" onclick="applyFilters()"><i class="bi bi-funnel"></i> Apply</button>
+        <button class="btn btn-sm btn-outline-secondary" onclick="resetFilters()">Reset</button>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-lg-4">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-pie-chart-fill text-info"></i> Pass / Fail Distribution</h2>
+          <div class="chart-box-sm"><canvas id="pieChart"></canvas></div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-bar-chart-fill text-success"></i> Module Pass %</h2>
+          <div class="chart-box-sm"><canvas id="moduleBarChart"></canvas></div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-graph-up text-warning"></i> Execution Trend</h2>
+          <div class="chart-box-sm"><canvas id="trendChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-stack text-primary"></i> Stacked Module Status</h2>
+          <div class="chart-box"><canvas id="stackedChart"></canvas></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-activity text-danger"></i> Feature Duration Heat (min)</h2>
+          <div class="chart-box"><canvas id="heatChart"></canvas></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Module summary -->
+    <div class="section-card" id="moduleSection">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h5 mb-0"><i class="bi bi-diagram-3"></i> Module Wise Summary</h2>
+        <span class="small muted">Click a module to drill into features</span>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle" id="moduleTable">
+          <thead>
+            <tr>
+              <th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Broken</th><th>Pass %</th><th>Execution Time</th><th>Health</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Feature wise -->
+    <div class="section-card" id="featureSection">
+      <h2 class="h5 mb-3"><i class="bi bi-collection"></i> Feature Wise Summary</h2>
+      <div id="featureAccordions" class="accordion"></div>
+    </div>
+
+    <!-- Test class -->
+    <div class="section-card" id="classSection">
+      <h2 class="h5 mb-3"><i class="bi bi-file-code"></i> Test Class Summary</h2>
+      <div class="table-responsive">
+        <table class="table table-sm table-striped" id="classTable">
+          <thead>
+            <tr><th>Class Name</th><th>Module</th><th>Feature</th><th>Total</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Execution Time</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Failed details -->
+    <div class="section-card" id="failedSection">
+      <h2 class="h5 mb-3"><i class="bi bi-exclamation-triangle text-danger"></i> Failed Test Details <span class="badge text-bg-danger" id="failedCount"></span></h2>
+      <div class="table-responsive">
+        <table class="table table-sm" id="failedTable">
+          <thead>
+            <tr>
+              <th>Test Name</th><th>Module</th><th>Feature</th><th>Failure Reason</th><th>Classification</th>
+              <th>Screenshot</th><th>Video</th><th>Stack Trace</th><th>Retries</th><th>Time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-lg-4">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-arrow-repeat"></i> Retry Analysis</h2>
+          <div id="retryCards"></div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-bug"></i> Defect Summary</h2>
+          <div id="defectCards"></div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-shield-check"></i> Automation Coverage</h2>
+          <div id="coverageCards"></div>
+          <div class="progress mt-3"><div id="coverageBar" class="progress-bar bg-success" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-lg-6">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-hourglass-split text-warning"></i> Top Slowest (suite avg)</h2>
+          <div class="table-responsive"><table class="table table-sm" id="slowTable"><thead><tr><th>#</th><th>Test / Suite</th><th>Module</th><th>Duration</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="section-card">
+          <h2 class="h6 mb-3"><i class="bi bi-lightning-charge text-success"></i> Top Fastest (suite avg)</h2>
+          <div class="table-responsive"><table class="table table-sm" id="fastTable"><thead><tr><th>#</th><th>Test / Suite</th><th>Module</th><th>Duration</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card" id="timelineSection">
+      <h2 class="h5 mb-3"><i class="bi bi-clock-history"></i> Execution Timeline (Feature Durations)</h2>
+      <div class="chart-box" style="height:340px"><canvas id="timelineChart"></canvas></div>
+      <p class="small muted mt-2 mb-0">Parallel cycle execution across KYC / Sanction Screening / Configuration features (aggregated wall-time estimates).</p>
+    </div>
+
+    <div class="section-card" id="envSection">
+      <h2 class="h5 mb-3"><i class="bi bi-hdd-stack"></i> Environment Information</h2>
+      <div class="row g-2" id="envGrid"></div>
+    </div>
+
+    <div class="section-card" id="healthTableSection">
+      <h2 class="h5 mb-3"><i class="bi bi-heart-pulse"></i> Overall Module Health</h2>
+      <div class="table-responsive">
+        <table class="table" id="healthTable">
+          <thead><tr><th>Module</th><th>Health</th><th>Pass %</th><th>Duration</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section-card" id="gallerySection">
+      <h2 class="h5 mb-3"><i class="bi bi-images"></i> Screenshots Gallery</h2>
+      <div class="row g-3" id="gallery"></div>
+      <p class="small muted mb-0" id="galleryNote"></p>
+    </div>
+
+    <div class="section-card grand-total" id="grandTotal">
+      <h2 class="h5 mb-3"><i class="bi bi-calculator"></i> Grand Total</h2>
+      <div class="row g-3" id="grandCards"></div>
+    </div>
+  </div>
+
+  <!-- Feature drill modal -->
+  <div class="modal fade" id="drillModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="drillTitle">Drill-down</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="drillBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    let DATA = null;
+    let charts = {};
+
+    const healthClass = (h) => ({
+      Excellent: 'chip-excellent', Good: 'chip-good', Average: 'chip-average', Poor: 'chip-poor'
+    }[h] || 'chip-average');
+
+    const fmtMin = (m) => {
+      if (m == null) return '—';
+      if (m >= 60) return `${Math.floor(m/60)}h ${Math.round(m%60)}m`;
+      return `${m}m`;
+    };
+
+    async function load() {
+      const res = await fetch('./dashboard-data.json');
+      DATA = await res.json();
+      renderAll();
+    }
+
+    function renderAll() {
+      const e = DATA.executive;
+      document.getElementById('heroNote').textContent = DATA.note;
+      document.getElementById('generatedAt').textContent = new Date(DATA.generatedAt).toLocaleString();
+      document.getElementById('buildVersion').textContent = e.buildVersion;
+      document.getElementById('executorName').textContent = e.executor;
+      document.getElementById('healthChip').innerHTML = `<i class="bi bi-heart-pulse"></i> Health: ${e.health} (${e.successRate}%)`;
+      document.getElementById('healthChip').className = `chip ${healthClass(e.health)}`;
+      document.getElementById('envChip').className = 'chip chip-pass';
+      document.getElementById('envChip').textContent = `Env: ${e.environment}`;
+      document.getElementById('urlChip').innerHTML = `<a href="${e.url}" target="_blank" class="text-decoration-none">${e.url}</a>`;
+
+      document.getElementById('topCards').innerHTML = [
+        card('Total Tests', e.total.toLocaleString(), 'bi-list-check', 'text-info'),
+        card('Passed', e.passed.toLocaleString(), 'bi-check-circle', 'text-success'),
+        card('Failed', e.failed.toLocaleString(), 'bi-x-circle', 'text-danger'),
+        card('Skipped', e.skipped.toLocaleString(), 'bi-slash-circle', 'text-warning'),
+        card('Broken', e.broken.toLocaleString(), 'bi-exclamation-octagon', 'text-purple'),
+        card('Success Rate', e.successRate + '%', 'bi-graph-up-arrow', 'text-success'),
+        card('Execution Time', e.durationLabel, 'bi-stopwatch', 'text-primary'),
+        card('Modules', e.modules, 'bi-boxes', 'text-info'),
+        card('Features', e.features, 'bi-collection', 'text-secondary'),
+        card('Start', new Date(e.startTime).toLocaleString(), 'bi-play', 'text-muted'),
+        card('End', new Date(e.endTime).toLocaleString(), 'bi-flag', 'text-muted'),
+        card('Browser', e.browser, 'bi-browser-chrome', 'text-muted'),
+      ].join('');
+
+      // filters
+      const modSel = document.getElementById('filterModule');
+      DATA.modules.forEach(m => {
+        modSel.insertAdjacentHTML('beforeend', `<option>${m.name}</option>`);
+      });
+      refreshFeatureFilter();
+
+      renderModuleTable();
+      renderFeatures();
+      renderClasses();
+      renderFailed();
+      renderRetryDefectCoverage();
+      renderSlowFast();
+      renderEnv();
+      renderHealth();
+      renderGallery();
+      renderGrand();
+      renderCharts();
+    }
+
+    function card(label, value, icon, color) {
+      return `<div class="col-6 col-md-4 col-xl-2">
+        <div class="stat-card p-3">
+          <div class="d-flex justify-content-between"><span class="label">${label}</span><i class="bi ${icon} ${color}"></i></div>
+          <div class="value mt-1">${value}</div>
+        </div></div>`;
+    }
+
+    function refreshFeatureFilter() {
+      const mod = document.getElementById('filterModule').value;
+      const fs = document.getElementById('filterFeature');
+      fs.innerHTML = '<option value="">All</option>';
+      DATA.modules.filter(m => !mod || m.name === mod).forEach(m => {
+        m.features.forEach(f => fs.insertAdjacentHTML('beforeend', `<option>${f.name}</option>`));
+      });
+    }
+
+    document.getElementById('filterModule').addEventListener('change', refreshFeatureFilter);
+
+    function filteredModules() {
+      const mod = document.getElementById('filterModule').value;
+      const feat = document.getElementById('filterFeature').value;
+      const status = document.getElementById('filterStatus').value;
+      const q = (document.getElementById('globalSearch').value || '').toLowerCase();
+      return DATA.modules
+        .filter(m => !mod || m.name === mod)
+        .map(m => ({
+          ...m,
+          features: m.features.filter(f => {
+            if (feat && f.name !== feat) return false;
+            if (status === 'Passed' && f.failed > 0) return false;
+            if (status === 'Failed' && f.failed === 0) return false;
+            if (q) {
+              const hay = `${m.name} ${f.name} ${f.className}`.toLowerCase();
+              if (!hay.includes(q)) return false;
+            }
+            return true;
+          })
+        }))
+        .filter(m => m.features.length);
+    }
+
+    function applyFilters() {
+      renderModuleTable();
+      renderFeatures();
+      renderClasses();
+      renderFailed();
+    }
+    function resetFilters() {
+      document.getElementById('filterModule').value = '';
+      document.getElementById('filterFeature').value = '';
+      document.getElementById('filterStatus').value = '';
+      document.getElementById('globalSearch').value = '';
+      refreshFeatureFilter();
+      applyFilters();
+    }
+    document.getElementById('globalSearch').addEventListener('input', () => applyFilters());
+
+    function renderModuleTable() {
+      const mods = filteredModules().map(m => {
+        const total = m.features.reduce((s,f)=>s+f.total,0);
+        const passed = m.features.reduce((s,f)=>s+f.passed,0);
+        const failed = m.features.reduce((s,f)=>s+f.failed,0);
+        const skipped = m.features.reduce((s,f)=>s+f.skipped,0);
+        const broken = m.features.reduce((s,f)=>s+f.broken,0);
+        const durationMin = m.features.reduce((s,f)=>s+f.durationMin,0);
+        const passPct = total ? +(100*passed/total).toFixed(1) : 0;
+        return { name: m.name, total, passed, failed, skipped, broken, durationMin, passPct, health: m.health, features: m.features };
+      });
+      const tb = document.querySelector('#moduleTable tbody');
+      tb.innerHTML = mods.map(m => `<tr class="drill-btn" onclick='openDrill(${JSON.stringify(m.name)})'>
+        <td><strong>${m.name}</strong></td>
+        <td>${m.total.toLocaleString()}</td>
+        <td><span class="chip chip-pass">${m.passed.toLocaleString()}</span></td>
+        <td><span class="chip chip-fail">${m.failed}</span></td>
+        <td>${m.skipped}</td>
+        <td>${m.broken}</td>
+        <td>
+          <div class="d-flex align-items-center gap-2">
+            <div class="progress flex-grow-1"><div class="progress-bar ${m.passPct>=95?'bg-success':m.passPct>=90?'bg-warning':'bg-danger'}" style="width:${m.passPct}%"></div></div>
+            <span>${m.passPct}%</span>
+          </div>
+        </td>
+        <td>${fmtMin(m.durationMin)}</td>
+        <td><span class="chip ${healthClass(m.health)}">${m.health}</span></td>
+      </tr>`).join('');
+
+      const tot = mods.reduce((a,m)=>({
+        total:a.total+m.total, passed:a.passed+m.passed, failed:a.failed+m.failed,
+        skipped:a.skipped+m.skipped, broken:a.broken+m.broken, durationMin:a.durationMin+m.durationMin
+      }), {total:0,passed:0,failed:0,skipped:0,broken:0,durationMin:0});
+      const pct = tot.total ? +(100*tot.passed/tot.total).toFixed(2) : 0;
+      document.querySelector('#moduleTable tfoot').innerHTML = `<tr class="fw-bold">
+        <td>Grand Total</td><td>${tot.total.toLocaleString()}</td><td>${tot.passed.toLocaleString()}</td>
+        <td>${tot.failed}</td><td>${tot.skipped}</td><td>${tot.broken}</td><td>${pct}%</td>
+        <td>${fmtMin(tot.durationMin)}</td><td></td></tr>`;
+    }
+
+    function openDrill(moduleName) {
+      const m = DATA.modules.find(x => x.name === moduleName);
+      if (!m) return;
+      document.getElementById('drillTitle').textContent = `${moduleName} → Features → Classes`;
+      document.getElementById('drillBody').innerHTML = `
+        <p class="muted small">Drill-down: Module → Feature → Test Class</p>
+        <table class="table table-sm"><thead><tr>
+          <th>Feature</th><th>Class</th><th>Total</th><th>Passed</th><th>Failed</th><th>Pass %</th><th>Time</th>
+        </tr></thead><tbody>
+        ${m.features.map(f => `<tr>
+          <td>${f.name}</td><td><code>${f.className}</code></td>
+          <td>${f.total}</td><td>${f.passed}</td><td>${f.failed}</td>
+          <td>${f.passPct}%</td><td>${fmtMin(f.durationMin)}</td>
+        </tr>`).join('')}
+        </tbody></table>`;
+      new bootstrap.Modal('#drillModal').show();
+    }
+
+    function renderFeatures() {
+      const acc = document.getElementById('featureAccordions');
+      acc.innerHTML = filteredModules().map((m, i) => `
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button ${i?'collapsed':''}" type="button" data-bs-toggle="collapse" data-bs-target="#acc${i}">
+              ${m.name}
+              <span class="ms-2 chip chip-pass">${m.features.reduce((s,f)=>s+f.passed,0)} pass</span>
+              <span class="ms-1 chip chip-fail">${m.features.reduce((s,f)=>s+f.failed,0)} fail</span>
+            </button>
+          </h2>
+          <div id="acc${i}" class="accordion-collapse collapse ${i?'':'show'}">
+            <div class="accordion-body p-0">
+              <table class="table table-sm mb-0">
+                <thead><tr><th>Feature</th><th>Total</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Time</th><th>Pass %</th></tr></thead>
+                <tbody>
+                ${m.features.map(f => `<tr>
+                  <td>${f.name}</td><td>${f.total}</td><td>${f.passed}</td><td>${f.failed}</td>
+                  <td>${f.skipped}</td><td>${fmtMin(f.durationMin)}</td><td>${f.passPct}%</td>
+                </tr>`).join('')}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>`).join('');
+    }
+
+    function renderClasses() {
+      const rows = [];
+      filteredModules().forEach(m => m.features.forEach(f => rows.push({...f, module: m.name})));
+      document.querySelector('#classTable tbody').innerHTML = rows.map(f => `<tr>
+        <td><code>${f.className}</code></td><td>${f.module}</td><td>${f.name}</td>
+        <td>${f.total}</td><td>${f.passed}</td><td>${f.failed}</td><td>${f.skipped}</td><td>${fmtMin(f.durationMin)}</td>
+      </tr>`).join('');
+    }
+
+    function renderFailed() {
+      const mod = document.getElementById('filterModule').value;
+      const feat = document.getElementById('filterFeature').value;
+      const q = (document.getElementById('globalSearch').value || '').toLowerCase();
+      let rows = DATA.failedTests.filter(t => {
+        if (mod && t.module !== mod) return false;
+        if (feat && t.feature !== feat) return false;
+        if (q && !`${t.name} ${t.module} ${t.feature} ${t.className}`.toLowerCase().includes(q)) return false;
+        return true;
+      });
+      document.getElementById('failedCount').textContent = rows.length;
+      document.querySelector('#failedTable tbody').innerHTML = rows.map(t => `<tr>
+        <td><code class="tc">${t.name}</code></td>
+        <td>${t.module}</td><td>${t.feature}</td>
+        <td class="small">${escapeHtml(t.reason)}</td>
+        <td><span class="chip ${t.classification==='Application bug'?'chip-fail':'chip-skip'}">${t.classification}</span></td>
+        <td>${t.screenshot ? `<a href="${t.screenshot}">View</a>` : '<span class="muted">N/A</span>'}</td>
+        <td>${t.video ? `<a href="${t.video}">View</a>` : '<span class="muted">N/A</span>'}</td>
+        <td><details><summary class="small">stack</summary><pre class="small mb-0">${escapeHtml(t.stack||'')}</pre></details></td>
+        <td>${t.retries ?? '—'}</td>
+        <td>${t.durationSec != null ? t.durationSec+'s' : '—'}</td>
+      </tr>`).join('') || `<tr><td colspan="10" class="text-center muted">No failed tests for current filters</td></tr>`;
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    }
+
+    function renderRetryDefectCoverage() {
+      const r = DATA.retries, d = DATA.defects, c = DATA.coverage;
+      document.getElementById('retryCards').innerHTML = `
+        <div class="d-flex justify-content-between py-1"><span>Total Retries</span><strong>${r.totalRetries}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Passed after Retry</span><strong class="text-success">${r.passedAfterRetry}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Still Failed</span><strong class="text-danger">${r.stillFailed}</strong></div>`;
+      document.getElementById('defectCards').innerHTML = `
+        <div class="d-flex justify-content-between py-1"><span>Total Failed</span><strong>${d.totalFailed}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Automation Issue</span><strong>${d.automationIssue}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Application Bug</span><strong>${d.applicationBug}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Blocked</span><strong>${d.blocked}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Known Issue</span><strong>${d.knownIssue}</strong></div>`;
+      document.getElementById('coverageCards').innerHTML = `
+        <div class="d-flex justify-content-between py-1"><span>Automated</span><strong>${c.automated.toLocaleString()}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Manual</span><strong>${c.manual}</strong></div>
+        <div class="d-flex justify-content-between py-1"><span>Coverage %</span><strong>${c.coveragePct}%</strong></div>`;
+      document.getElementById('coverageBar').style.width = c.coveragePct + '%';
+      document.getElementById('coverageBar').textContent = c.coveragePct + '%';
+    }
+
+    function renderSlowFast() {
+      document.querySelector('#slowTable tbody').innerHTML = DATA.slowestTests.map((t,i)=>`
+        <tr><td>${i+1}</td><td>${t.name}</td><td>${t.module}</td><td>${t.durationSec}s</td></tr>`).join('');
+      document.querySelector('#fastTable tbody').innerHTML = DATA.fastestTests.map((t,i)=>`
+        <tr><td>${i+1}</td><td>${t.name}</td><td>${t.module}</td><td>${t.durationSec}s</td></tr>`).join('');
+    }
+
+    function renderEnv() {
+      const env = {...DATA.environment,
+        'Report Type': DATA.reportType,
+        'OS (exec)': DATA.executive.os,
+        'Start Time': DATA.executive.startTime,
+        'End Time': DATA.executive.endTime,
+      };
+      document.getElementById('envGrid').innerHTML = Object.entries(env).map(([k,v]) => `
+        <div class="col-md-4 col-lg-3"><div class="stat-card p-3"><div class="label">${k}</div><div class="fw-semibold mt-1 text-break">${v}</div></div></div>
+      `).join('');
+    }
+
+    function renderHealth() {
+      document.querySelector('#healthTable tbody').innerHTML = DATA.modules.map(m => `
+        <tr>
+          <td>${m.name}</td>
+          <td><span class="chip ${healthClass(m.health)}">${m.health}</span></td>
+          <td>${m.passPct}%</td>
+          <td>${fmtMin(m.durationMin)}</td>
+        </tr>`).join('');
+    }
+
+    function renderGallery() {
+      const g = document.getElementById('gallery');
+      const withShot = DATA.failedTests.filter(t => t.screenshot);
+      if (!withShot.length) {
+        g.innerHTML = '';
+        document.getElementById('galleryNote').textContent =
+          'No retained screenshot artifacts for the 56 Manual Screening failures in this cycle package. Re-run with PW_SCREENSHOT=on to populate gallery cards.';
+        return;
+      }
+      g.innerHTML = withShot.map(t => `
+        <div class="col-6 col-md-3 col-lg-2"><div class="gallery-card stat-card p-2">
+          <img src="${t.screenshot}" alt="${t.name}" />
+          <div class="small mt-2"><code>${t.name}</code></div>
+        </div></div>`).join('');
+    }
+
+    function renderGrand() {
+      const e = DATA.executive;
+      document.getElementById('grandCards').innerHTML = [
+        ['Total Modules', e.modules],
+        ['Total Features', e.features],
+        ['Total Suites', e.suites],
+        ['Total Test Cases', e.total.toLocaleString()],
+        ['Passed', e.passed.toLocaleString()],
+        ['Failed', e.failed],
+        ['Skipped', e.skipped],
+        ['Broken', e.broken],
+        ['Success Rate', e.successRate + '%'],
+        ['Total Execution Time', e.durationLabel],
+      ].map(([l,v]) => `<div class="col-6 col-md-3 col-xl-2"><div class="stat-card p-3"><div class="label">${l}</div><div class="value">${v}</div></div></div>`).join('');
+    }
+
+    function destroyCharts() {
+      Object.values(charts).forEach(c => c.destroy());
+      charts = {};
+    }
+
+    function renderCharts() {
+      destroyCharts();
+      const e = DATA.executive;
+      const mods = [...DATA.modules].sort((a,b) => b.passPct - a.passPct);
+
+      charts.pie = new Chart(document.getElementById('pieChart'), {
+        type: 'doughnut',
+        data: {
+          labels: ['Passed', 'Failed', 'Skipped', 'Broken'],
+          datasets: [{
+            data: [e.passed, e.failed, e.skipped, e.broken],
+            backgroundColor: ['#22c55e', '#ef4444', '#f59e0b', '#a855f7'],
+          }]
+        },
+        options: { maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
+      });
+
+      charts.bar = new Chart(document.getElementById('moduleBarChart'), {
+        type: 'bar',
+        data: {
+          labels: mods.map(m => m.name),
+          datasets: [{ label: 'Pass %', data: mods.map(m => m.passPct), backgroundColor: '#38bdf8', borderRadius: 8 }]
+        },
+        options: {
+          indexAxis: 'y', maintainAspectRatio: false,
+          scales: { x: { min: 0, max: 100 } },
+          plugins: { legend: { display: false } }
+        }
+      });
+
+      charts.trend = new Chart(document.getElementById('trendChart'), {
+        type: 'line',
+        data: {
+          labels: DATA.trends.map(t => t.build),
+          datasets: [
+            { label: 'Pass %', data: DATA.trends.map(t => t.passPct), borderColor: '#22c55e', tension: .3, fill: false },
+            { label: 'Failed', data: DATA.trends.map(t => t.failed), borderColor: '#ef4444', tension: .3, yAxisID: 'y1', fill: false },
+          ]
+        },
+        options: {
+          maintainAspectRatio: false,
+          scales: {
+            y: { min: 0, max: 100, title: { display: true, text: 'Pass %' } },
+            y1: { position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: 'Failed' } }
+          }
+        }
+      });
+
+      charts.stacked = new Chart(document.getElementById('stackedChart'), {
+        type: 'bar',
+        data: {
+          labels: DATA.modules.map(m => m.name),
+          datasets: [
+            { label: 'Passed', data: DATA.modules.map(m => m.passed), backgroundColor: '#22c55e', stack: 's' },
+            { label: 'Failed', data: DATA.modules.map(m => m.failed), backgroundColor: '#ef4444', stack: 's' },
+            { label: 'Skipped', data: DATA.modules.map(m => m.skipped), backgroundColor: '#f59e0b', stack: 's' },
+          ]
+        },
+        options: { maintainAspectRatio: false, scales: { x: { stacked: true }, y: { stacked: true } } }
+      });
+
+      const feats = DATA.modules.flatMap(m => m.features.map(f => ({...f, module: m.name})));
+      charts.heat = new Chart(document.getElementById('heatChart'), {
+        type: 'bar',
+        data: {
+          labels: feats.map(f => f.name),
+          datasets: [{
+            label: 'Duration (min)',
+            data: feats.map(f => f.durationMin),
+            backgroundColor: feats.map(f => f.failed ? '#ef4444aa' : '#22c55eaa'),
+            borderRadius: 6,
+          }]
+        },
+        options: { maintainAspectRatio: false, plugins: { legend: { display: false } } }
+      });
+
+      charts.timeline = new Chart(document.getElementById('timelineChart'), {
+        type: 'bar',
+        data: {
+          labels: feats.map(f => f.name),
+          datasets: [{
+            label: 'Duration (min)',
+            data: feats.map(f => f.durationMin),
+            backgroundColor: '#38bdf8',
+            borderRadius: 6,
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          maintainAspectRatio: false,
+          plugins: {
+            title: { display: true, text: 'Parallel feature execution profile (aggregated)' },
+            legend: { display: false }
+          }
+        }
+      });
+    }
+
+    function exportCSV() {
+      const rows = [['Module','Feature','Class','Total','Passed','Failed','Skipped','Broken','Pass%','DurationMin']];
+      DATA.modules.forEach(m => m.features.forEach(f => {
+        rows.push([m.name, f.name, f.className, f.total, f.passed, f.failed, f.skipped, f.broken, f.passPct, f.durationMin]);
+      }));
+      const csv = rows.map(r => r.map(x => `"${String(x).replace(/"/g,'""')}"`).join(',')).join('\n');
+      downloadBlob(csv, 'automation-execution-cycle-summary.csv', 'text/csv');
+    }
+
+    function exportExcel() {
+      // CSV with .xls extension opens in Excel without extra libs
+      const rows = [['Module','Feature','Class','Total','Passed','Failed','Skipped','Broken','Pass%','DurationMin']];
+      DATA.modules.forEach(m => m.features.forEach(f => {
+        rows.push([m.name, f.name, f.className, f.total, f.passed, f.failed, f.skipped, f.broken, f.passPct, f.durationMin]);
+      }));
+      const csv = rows.map(r => r.join('\t')).join('\n');
+      downloadBlob(csv, 'automation-execution-cycle-summary.xls', 'application/vnd.ms-excel');
+    }
+
+    function downloadBlob(content, name, type) {
+      const blob = new Blob([content], { type });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }
+
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      const html = document.documentElement;
+      const next = html.getAttribute('data-bs-theme') === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-bs-theme', next);
+      document.querySelector('#themeToggle i').className = next === 'dark' ? 'bi bi-moon-stars' : 'bi bi-sun';
+      renderCharts();
+    });
+
+    load().catch(err => {
+      document.body.innerHTML = `<div class="p-5 text-danger">Failed to load dashboard-data.json: ${err}</div>`;
+    });
+  </script>
+</body>
+</html>
