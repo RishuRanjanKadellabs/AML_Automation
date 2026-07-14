@@ -1,0 +1,119 @@
+{
+  "reportType": "Automation Execution Cycle",
+  "url": "https://kadelamldev.customerxps.com:2506",
+  "verdict": "PARTIAL PASS",
+  "totals": {
+    "excel": 4214,
+    "passed": 4158,
+    "failed": 56,
+    "passPercent": 98.67
+  },
+  "modules": {
+    "KYC": {
+      "excel": 1280,
+      "passed": 1280,
+      "failed": 0,
+      "status": "PASS",
+      "submodules": [
+        {
+          "name": "Customer 360 View",
+          "excel": 382,
+          "passed": 382,
+          "failed": 0
+        },
+        {
+          "name": "KYC Gap Report",
+          "excel": 291,
+          "passed": 291,
+          "failed": 0
+        },
+        {
+          "name": "Missing Mandatory Data",
+          "excel": 224,
+          "passed": 224,
+          "failed": 0
+        },
+        {
+          "name": "Reference Data Registry",
+          "excel": 383,
+          "passed": 383,
+          "failed": 0
+        }
+      ]
+    },
+    "Sanction Screening": {
+      "excel": 1435,
+      "passed": 1379,
+      "failed": 56,
+      "status": "FAIL",
+      "submodules": [
+        {
+          "name": "Manual Screening",
+          "excel": 445,
+          "passed": 389,
+          "failed": 56
+        },
+        {
+          "name": "Batch Screening",
+          "excel": 432,
+          "passed": 432,
+          "failed": 0
+        },
+        {
+          "name": "De-Dup Screening",
+          "excel": 359,
+          "passed": 359,
+          "failed": 0
+        },
+        {
+          "name": "Sanction MIS Reports",
+          "excel": 199,
+          "passed": 199,
+          "failed": 0
+        }
+      ]
+    },
+    "Configuration": {
+      "excel": 1499,
+      "passed": 1499,
+      "failed": 0,
+      "status": "PASS",
+      "submodules": [
+        {
+          "name": "Custom List Manager",
+          "excel": 578,
+          "passed": 578,
+          "failed": 0
+        },
+        {
+          "name": "Exception List Manager",
+          "excel": 279,
+          "passed": 279,
+          "failed": 0
+        },
+        {
+          "name": "Keyword Manager",
+          "excel": 130,
+          "passed": 130,
+          "failed": 0
+        },
+        {
+          "name": "Ignore Words Configuration",
+          "excel": 194,
+          "passed": 194,
+          "failed": 0
+        },
+        {
+          "name": "Screening Configuration",
+          "excel": 318,
+          "passed": 318,
+          "failed": 0
+        }
+      ]
+    }
+  },
+  "openFailures": {
+    "module": "Manual Screening",
+    "count": 56
+  }
+}
