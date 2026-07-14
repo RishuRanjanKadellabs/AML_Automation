@@ -2,7 +2,6 @@ allure-report/
 allure-results/
 results/
 report/
-!report/automation-execution-cycle/allure-history/
 .playwright-mcp/
 node_modules/
 playwright-report/
