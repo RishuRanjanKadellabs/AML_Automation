@@ -2,6 +2,8 @@ import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
 import KycGapReportLocators from "../../../../objectrepositories/KycGapReportLocators";
 import kycGapReportData from "../../../../../fixtures/kyc-gap-report-data.json";
+import { HealerMode } from "../../../../helpers/healer-mode";
+import { getCurrentTestId } from "../../../../helpers/action-logger";
 
 /** FSD §4.2 + html-inventory — canonical landing page subtitle (Figma / test design). */
 const FSD_GAP_REPORT_SUBTITLE = kycGapReportData.defaults.subtitle;
@@ -164,7 +166,50 @@ class KycGapReportPage extends BasePage {
   }
 
   viewButtonForRow(row: Locator): Locator {
-    return row.locator(KycGapReportLocators.viewActionButton);
+    return row
+      .locator(KycGapReportLocators.viewActionButton)
+      .or(row.getByRole("button", { name: /view|details/i }))
+      .or(row.locator("button").last())
+      .first();
+  }
+
+  private async recoverGapReportIfStub(): Promise<void> {
+    if (!(await HealerMode.isStubAppPage(this.page))) {
+      return;
+    }
+    this.logStep("HEAL", 'Gap Report recovered from stub page "It works!"');
+    const origin = new URL(this.page.url()).origin;
+    await this.openGapReportDirect(origin);
+  }
+
+  async openFirstRowDetail(): Promise<void> {
+    await this.recoverGapReportIfStub();
+    await expect
+      .poll(async () => this.gapReportRows.count(), { timeout: 45000 })
+      .toBeGreaterThan(0);
+    const row = this.gapReportRows.first();
+    await this.assertVisible(row, "First gap report row");
+    this.lastOpenedDetailCustomerName = (await row.locator("td").first().innerText()).trim();
+    const viewBtn = this.viewButtonForRow(row);
+    const healer = new HealerMode(getCurrentTestId(), (action, detail, status) =>
+      this.logStep(action, detail, status),
+    );
+    await healer.clickWithHeal(
+      [
+        { name: "row-view-btn", locator: viewBtn },
+        {
+          name: "any-view-btn",
+          locator: this.page.locator(KycGapReportLocators.viewActionButton).first(),
+        },
+        {
+          name: "row-click",
+          locator: row.locator("td").first(),
+        },
+      ],
+      "First row View button",
+      3,
+    );
+    await this.assertVisible(this.gapReportDetailModal, "Gap detail modal");
   }
 
   private async priorityCellByHeaderIndex(row: Locator): Promise<Locator | null> {
@@ -207,7 +252,17 @@ class KycGapReportPage extends BasePage {
     }
 
     try {
-      await this.page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
+      const accessDeniedShell = this.page
+        .getByText(/access denied|unauthorized|forbidden|not authorized/i)
+        .first();
+      const contentShell = this.gapReportTitle.or(this.gapReportTable).first();
+      const healer = new HealerMode(getCurrentTestId(), (action, detail, status) => this.logStep(action, detail, status));
+      await healer.gotoWithNetworkHeal(this.page, url, {
+        timeout: 60000,
+        retries: expectAuthFailure ? 2 : 4,
+        // Auth mocks fulfill 403 HTML — do not wait for title/table.
+        shellLocator: expectAuthFailure ? accessDeniedShell : contentShell,
+      });
       this.logStep("NAVIGATE", `${url} — successful`);
       await this.waitForPageLoad();
 
@@ -539,15 +594,6 @@ class KycGapReportPage extends BasePage {
     await this.assertVisible(this.gapReportTable, "Gap report table after page size change");
   }
 
-  async openFirstRowDetail(): Promise<void> {
-    const row = this.gapReportRows.first();
-    await this.assertVisible(row, "First gap report row");
-    this.lastOpenedDetailCustomerName = (await row.locator("td").first().innerText()).trim();
-    const viewBtn = this.viewButtonForRow(row);
-    await this.clickAndWait(viewBtn, "First row View button");
-    await this.assertVisible(this.gapReportDetailModal, "Gap detail modal");
-  }
-
   /**
    * Assert the Gap Detail Modal is visible. If it is not already open, open it
    * from the first report row first. Generated scenarios assert modal visibility
@@ -649,8 +695,8 @@ class KycGapReportPage extends BasePage {
     await this.page.route("**/kyc/**", (route) => {
       void route.fulfill({
         status: 401,
-        contentType: "text/plain",
-        body: "Unauthorized",
+        contentType: "text/html",
+        body: "<html><body><h1>Unauthorized</h1><p>Access Denied — you are not authorized to view KYC Gap Report.</p></body></html>",
       });
     });
     this.pendingUnauthorizedNavigation = true;
@@ -661,7 +707,7 @@ class KycGapReportPage extends BasePage {
     const deniedMessage = this.page
       .getByText(/unauthorized|access denied|forbidden|sign in|log in|login required|not authorized|permission denied/i)
       .first();
-    await this.assertVisible(deniedMessage, "Access denied message");
+    await this.assertVisible(deniedMessage, "Access denied message", 30000);
   }
 
   async expectUnauthorizedStateVisible(): Promise<void> {

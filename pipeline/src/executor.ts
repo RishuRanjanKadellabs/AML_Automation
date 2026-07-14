@@ -1008,7 +1008,7 @@ async function main(): Promise<void> {
           ...(envArg ? { ENV: envArg, ALLURE_ENVS: config.envs.join(",") } : { ALLURE_ENVS: config.envs.join(",") }),
         },
       });
-      console.log("  ✓ Allure HTML → results/allure-report/index.html\n");
+      console.log("  ✓ Allure HTML → report/automation-execution-cycle/allure-report/index.html\n");
     } catch {
       console.log("  ⚠ Allure HTML generation failed. Run: npm run pipeline:report:allure\n");
     }

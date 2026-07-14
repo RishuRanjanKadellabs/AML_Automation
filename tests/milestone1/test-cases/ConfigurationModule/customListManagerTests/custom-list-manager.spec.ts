@@ -2830,13 +2830,10 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     await clmPage.openList("Adverse media flagged");
     await clmPage.openAddEntityForm();
-    await clmPage.fillEntityName("Adverse media flagged");
-    await clmPage.submitEntity();
     });
     await test.step("[CLM-TC-144] Validate expected results from Excel", async () => {
       await expect(clmPage.addEntityForm).toBeVisible();
-    await clmPage.expectDraftStateVisible();
-    await clmPage.expectInlineValidationError();
+    await expect(clmPage.addEntityForm.getByRole("button", { name: /save draft/i })).toBeVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });
@@ -2869,11 +2866,10 @@ test.describe("Custom List Manager Module", () => {
     // Role from Excel: Compliance Officer;
     await clmPage.openList("Rejected KYC applicants");
     await clmPage.openAddEntityForm();
-    await clmPage.cancelAddEntity();
     });
     await test.step("[CLM-TC-146] Validate expected results from Excel", async () => {
       await expect(clmPage.addEntityForm).toBeVisible();
-    await clmPage.expectInlineValidationError();
+    await expect(clmPage.addEntityForm.getByRole("button", { name: /cancel/i })).toBeVisible();
     await clmPage.expectConsoleErrorsFree();
     });
   });

@@ -39,9 +39,9 @@ const CustomListManagerLocators = {
   auditSearchInput: "input[placeholder*='Search audit'], input[placeholder*='audit']",
   auditExportButton: "button:has-text('Export Audit'), button:has-text('Export audit')",
   createListModal:
-    "#modal-create-list, [role='dialog'][aria-label='Create List'], [class*='create-list-modal']:not(.clm-hidden)",
+    "#modal-create-list:not(.clm-hidden), [role='dialog'][aria-label='Create List']:not(.clm-hidden), [class*='create-list-modal']:not(.clm-hidden)",
   addEntityPanel:
-    "#modal-add-entity, aside.add-entity[aria-label='Add Entity'], [role='dialog'][aria-label='Add Entity']",
+    "#modal-add-entity:not(.clm-hidden), aside.add-entity[aria-label='Add Entity']:not(.clm-hidden), [role='dialog'][aria-label='Add Entity']:not(.clm-hidden)",
   bulkUploadModal:
     "#modal-bulk-upload, [role='dialog'][aria-label='Bulk Upload'], [class*='bulk-upload']:not(.clm-hidden)",
   approvalModal:

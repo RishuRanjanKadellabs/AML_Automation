@@ -25,10 +25,18 @@ export class HealerMode {
   ) {}
 
   async waitForTransientUi(page: Page): Promise<void> {
-    const loading = page.locator("[class*='loading'], [class*='skeleton'], [class*='spinner'], [aria-busy='true']").first();
-    if (await loading.isVisible().catch(() => false)) {
+    const moduleStatus = page.getByRole("status", { name: /Loading module/i }).first();
+    const loading = page
+      .locator("[class*='loading'], [class*='skeleton'], [class*='Skeleton'], [class*='spinner'], [aria-busy='true']")
+      .first();
+    const visibleLoader = (await moduleStatus.isVisible().catch(() => false))
+      ? moduleStatus
+      : (await loading.isVisible().catch(() => false))
+        ? loading
+        : null;
+    if (visibleLoader) {
       this.logStep("HEAL", `[${this.testId}] Waiting for loading indicator to clear`);
-      await loading.waitFor({ state: "hidden", timeout: 15000 }).catch(() => undefined);
+      await visibleLoader.waitFor({ state: "hidden", timeout: 45000 }).catch(() => undefined);
       recordHealEvent({
         testId: this.testId,
         action: "WAIT",
@@ -42,9 +50,14 @@ export class HealerMode {
   /** True when the failure is a transient network / navigation flake worth retrying. */
   static isTransientNavigationError(error: unknown): boolean {
     const message = errorMessage(error);
-    return /Timeout|ERR_INTERNET_DISCONNECTED|ERR_NETWORK_CHANGED|ERR_CONNECTION_|ERR_NAME_NOT_RESOLVED|ERR_TIMED_OUT|net::ERR_|NS_ERROR_|Navigation failed|Target closed|Page crashed/i.test(
+    return /Timeout|ERR_INTERNET_DISCONNECTED|ERR_NETWORK_CHANGED|ERR_CONNECTION_|ERR_NAME_NOT_RESOLVED|ERR_TIMED_OUT|net::ERR_|NS_ERROR_|Navigation failed|Target closed|Page crashed|It works|APP_SHELL_LOST|stub page/i.test(
       message,
     );
+  }
+
+  /** Detect reverse-proxy / gateway stub page that intermittently replaces the SPA. */
+  static async isStubAppPage(page: Page): Promise<boolean> {
+    return page.getByText(/^It works!$/i).isVisible().catch(() => false);
   }
 
   /**
@@ -78,6 +91,11 @@ export class HealerMode {
         await page.goto(url, { waitUntil, timeout });
         await page.waitForLoadState("domcontentloaded").catch(() => undefined);
         await this.waitForTransientUi(page);
+
+        if (await HealerMode.isStubAppPage(page)) {
+          throw new Error(`APP_SHELL_LOST: stub page "It works!" for ${url}`);
+        }
+
         if (options.shellLocator) {
           await options.shellLocator.waitFor({ state: "visible", timeout: 30000 });
         }

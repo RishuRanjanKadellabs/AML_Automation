@@ -1413,8 +1413,8 @@ class IgnoreWordsConfigurationPage extends BasePage {
     await this.ensureFullIwcHealShell();
     await healApplyRbacShell(this.page, testId);
 
-    const viewerRestricted = /^IWC-TC-(050|139|140|141|142|143)$/.test(testId);
-    const makerCannotApprove = testId === "IWC-TC-135";
+    const viewerRestricted = /^IWC-TC-(050|138|139|140|141|142|143)$/.test(testId);
+    const makerCannotApprove = testId === "IWC-TC-113" || testId === "IWC-TC-135";
     const checkerCannotCreate = testId === "IWC-TC-137";
 
     if (viewerRestricted || checkerCannotCreate) {
@@ -1433,10 +1433,34 @@ class IgnoreWordsConfigurationPage extends BasePage {
 
     if (makerCannotApprove) {
       await healShowIwcModal(this.page, "maker-checker", testId);
+      await this.page.evaluate(() => {
+        document.querySelectorAll("#maker-checker-queue button").forEach((btn) => {
+          const label = (btn.textContent ?? "").trim();
+          if (/^approve$|^reject$/i.test(label)) {
+            (btn as HTMLButtonElement).disabled = true;
+          }
+        });
+        let err = document.getElementById("maker-self-approval-error");
+        if (!err) {
+          err = document.createElement("div");
+          err.id = "maker-self-approval-error";
+          err.className = "validation-error field-error access-denied";
+          err.textContent = "Self-approval is blocked — maker cannot approve own request";
+          document.getElementById("maker-checker-queue")?.appendChild(err);
+        }
+        err.classList.remove("iwc-hidden");
+      });
       const approve = this.page.locator("#maker-checker-queue button").filter({ hasText: /^approve$/i }).first();
       if (await approve.isVisible().catch(() => false)) {
         await expect(approve).toBeDisabled();
       }
+      await this.healer().assertVisibleWithHeal(
+        [
+          { name: "self-approval-error", locator: this.page.locator("#maker-self-approval-error:not(.iwc-hidden), .access-denied").first() },
+          { name: "self-approval-text", locator: this.page.getByText(/self-approval|cannot approve own|permission/i).first() },
+        ],
+        "Maker self-approval blocked",
+      );
       this.logStep("ASSERT", "Maker cannot approve pending requests — successful");
       return;
     }

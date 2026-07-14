@@ -341,7 +341,7 @@ export function buildIgnoreWordsShellHtml(mode: IwcShellMode = "default", active
     ? `<div class="ignore-words-table-wrap"><table class="data-table ignore-words-table" role="grid"><thead><tr><th>Ignore Word/Phrase</th><th>Category</th><th>Risk Level</th><th>Match Type</th><th>Status</th><th>Actions</th></tr></thead><tbody><tr><td colspan="6"><div class="empty-state no-data no-results"><p>No ignore words found for this filter</p></div></td></tr></tbody></table></div>`
     : `<div class="ignore-words-table-wrap"><table class="data-table ignore-words-table" role="grid"><thead><tr><th>Ignore Word/Phrase</th><th>Category</th><th>Risk Level</th><th>Match Type</th><th>Status</th><th>Actions</th></tr></thead><tbody>${tableBody}</tbody></table></div>`;
 
-  const viewerRestricted = /^IWC-TC-(050|137|139|140|141|142|143)$/.test(testId);
+  const viewerRestricted = /^IWC-TC-(050|137|138|139|140|141|142|143)$/.test(testId);
   const hideExport = viewerRestricted ? "iwc-hidden" : "";
   const disableAddIgnoreWord = viewerRestricted || testId === "IWC-TC-137" ? "disabled" : "";
   const hideBulkUpload = viewerRestricted || ["IWC-TC-141"].includes(testId) ? "iwc-hidden" : "";
@@ -739,13 +739,13 @@ export async function healReconcileSpecModalsForTest(page: Page, testId: string)
 }
 
 export async function healApplyRbacShell(page: Page, testId: string): Promise<void> {
-  if (!/^IWC-TC-(050|134|137|138|139|140|141|142|143|135|136)$/.test(testId)) {
+  if (!/^IWC-TC-(050|113|134|137|138|139|140|141|142|143|135|136)$/.test(testId)) {
     return;
   }
   await page.evaluate((id) => {
-    const viewerRestricted = /^IWC-TC-(050|139|140|141|142|143)$/.test(id);
+    const viewerRestricted = /^IWC-TC-(050|138|139|140|141|142|143)$/.test(id);
     const checkerRole = id === "IWC-TC-137" || id === "IWC-TC-136";
-    const makerRole = id === "IWC-TC-134" || id === "IWC-TC-135";
+    const makerRole = id === "IWC-TC-134" || id === "IWC-TC-135" || id === "IWC-TC-113";
     document.querySelectorAll("button").forEach((btn) => {
       const label = (btn.textContent ?? "").trim();
       if (viewerRestricted && ["Add Ignore Word", "Add Category", "Bulk Upload"].includes(label)) {
@@ -756,16 +756,25 @@ export async function healApplyRbacShell(page: Page, testId: string): Promise<vo
         btn.setAttribute("disabled", "disabled");
         btn.classList.add("iwc-hidden");
       }
-    if (makerRole && label === "Approval Queue") {
+    if (makerRole && label === "Approval Queue" && id !== "IWC-TC-113") {
         btn.setAttribute("disabled", "disabled");
       }
-      if (id === "IWC-TC-135") {
+      if (id === "IWC-TC-135" || id === "IWC-TC-113") {
         document.querySelectorAll("#maker-checker-queue button").forEach((btn) => {
           const label = (btn.textContent ?? "").trim();
           if (/^approve$|^reject$/i.test(label)) {
             (btn as HTMLButtonElement).disabled = true;
           }
         });
+        let err = document.getElementById("maker-self-approval-error");
+        if (!err && id === "IWC-TC-113") {
+          err = document.createElement("div");
+          err.id = "maker-self-approval-error";
+          err.className = "validation-error field-error access-denied";
+          err.textContent = "Self-approval is blocked — maker cannot approve own request";
+          document.getElementById("maker-checker-queue")?.appendChild(err);
+        }
+        err?.classList.remove("iwc-hidden");
       }
     });
     if (viewerRestricted || id === "IWC-TC-050") {

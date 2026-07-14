@@ -1,6 +1,8 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
 import MissingMandatoryLocators from "../../../../objectrepositories/MissingMandatoryLocators";
+import { getCurrentTestId } from "../../../../helpers/action-logger";
+import { HealerMode } from "../../../../helpers/healer-mode";
 
 class MissingMandatoryPage extends BasePage {
   private pendingUnauthorizedNavigation = false;
@@ -149,10 +151,12 @@ class MissingMandatoryPage extends BasePage {
   }
 
   get sectionSelect(): Locator {
+    // Prefer labeled / custom trigger controls; #newFieldSection may be a hidden native select.
     return this.dialog
-      .locator("#newFieldSection")
-      .or(this.dialog.getByLabel(/add to section/i))
+      .getByLabel(/add to section/i)
+      .or(this.dialog.locator("label").filter({ hasText: /add to section/i }).locator("..").locator("button.mm-custom-select-trigger, [role='combobox'], select").first())
       .or(this.dialog.locator(MissingMandatoryLocators.customSelectTrigger).first())
+      .or(this.dialog.locator("#newFieldSection"))
       .or(this.dialog.locator("select[name*='section']").first())
       .first();
   }
@@ -229,32 +233,38 @@ class MissingMandatoryPage extends BasePage {
       this.logStep("MOCK", "Cleared route mocks — successful");
     }
 
-    const maxAttempts = 2;
-    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-      try {
-        await this.page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
-        this.logStep("NAVIGATE", `${url} — successful`);
-        await this.waitForPageLoad();
+    const contentShell = this.listPanel
+      .or(this.createTemplateView)
+      .or(this.createTemplateNameInput)
+      .first();
+    const accessDeniedShell = this.page
+      .getByText(/access denied|unauthorized|forbidden|not authorized/i)
+      .first();
 
-        if (!expectAuthFailure) {
-          await this.listPanel.waitFor({ state: "visible", timeout: 30000 }).catch(async () => {
-            const createView = this.createTemplateView.or(this.createTemplateNameInput).first();
-            await createView.waitFor({ state: "visible", timeout: 15000 });
-          });
-          this.logStep("VERIFY", "Template list panel — successful");
+    const healer = new HealerMode(getCurrentTestId(), (action, detail, status) =>
+      this.logStep(action, detail, status),
+    );
+
+    try {
+      await healer.gotoWithNetworkHeal(this.page, url, {
+        timeout: 60000,
+        retries: expectAuthFailure ? 2 : 4,
+        shellLocator: expectAuthFailure ? accessDeniedShell : contentShell,
+      });
+      this.logStep("NAVIGATE", `${url} — successful`);
+
+      if (!expectAuthFailure) {
+        const moduleStatus = this.page.getByRole("status", { name: /Loading module/i }).first();
+        if (await moduleStatus.isVisible().catch(() => false)) {
+          await moduleStatus.waitFor({ state: "hidden", timeout: 45000 }).catch(() => undefined);
         }
-        return;
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        this.logStep(
-          "NAVIGATE",
-          `${url} — attempt ${attempt}/${maxAttempts} failed (${message})`,
-          attempt === maxAttempts ? "fail" : "warn",
-        );
-        if (attempt === maxAttempts) {
-          throw error;
-        }
+        await contentShell.waitFor({ state: "visible", timeout: 45000 });
+        this.logStep("VERIFY", "Template list panel — successful");
       }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
+      this.logStep("NAVIGATE", `${url} — failed (${message})`, "fail");
+      throw error;
     }
   }
 
@@ -435,51 +445,159 @@ class MissingMandatoryPage extends BasePage {
   }
 
   private listboxOptions(): Locator {
-    return this.page
-      .locator("[role='listbox']:visible [role='option'], [role='listbox']:visible li")
-      .or(this.page.locator(".mm-custom-select-option:visible, .mm-custom-select-menu:visible button, .mm-custom-select-menu:visible li"));
+    return this.page.locator(
+      [
+        "[role='listbox']:not([hidden]) [role='option']",
+        "[role='listbox']:not([hidden]) li",
+        ".mm-custom-select-menu:not([hidden]) .mm-custom-select-option",
+        ".mm-custom-select-menu:not([hidden]) button",
+        ".mm-custom-select-menu:not([hidden]) li",
+        ".mm-custom-select-option:visible",
+        "[class*='select-menu']:not([hidden]) [role='option']",
+        "[class*='dropdown-menu']:not([hidden]) [role='option']",
+      ].join(", "),
+    );
+  }
+
+  /** Prefer a visible interactive control when native <select> is hidden behind a custom trigger. */
+  private async resolveInteractiveDropdown(locator: Locator): Promise<Locator> {
+    const tag = await locator.evaluate((el) => el.tagName.toLowerCase()).catch(() => "");
+    const role = (await locator.getAttribute("role").catch(() => "")) || "";
+    if (tag === "button" || role === "combobox" || (await locator.getAttribute("aria-haspopup").catch(() => "")) === "listbox") {
+      return locator;
+    }
+    if (tag === "select") {
+      const visible = await locator.isVisible().catch(() => false);
+      if (visible) {
+        return locator;
+      }
+      const nearby = locator
+        .locator(
+          "xpath=ancestor::*[contains(@class,'form-group') or contains(@class,'form-field') or contains(@class,'mm-') or self::div][1]//button[contains(@class,'mm-custom-select-trigger') or @role='combobox' or @aria-haspopup='listbox'][not(@disabled)]",
+        )
+        .first();
+      if (await nearby.isVisible().catch(() => false)) {
+        return nearby;
+      }
+    }
+    return locator;
   }
 
   private async selectDropdownOptionByIndex(locator: Locator, index: number, fieldName: string): Promise<void> {
     if (!(await locator.isVisible().catch(() => false))) {
+      // Hidden native select can still be operable via selectOption.
+      if (await this.isNativeSelect(locator)) {
+        await this.selectOptionByIndex(locator, index, fieldName);
+        return;
+      }
       this.logStep("SELECT", `${fieldName} not visible — skipped`);
       return;
     }
-    if (await this.isNativeSelect(locator)) {
-      await this.selectOptionByIndex(locator, index, fieldName);
+
+    const control = await this.resolveInteractiveDropdown(locator);
+
+    if (await this.isNativeSelect(control)) {
+      const optionCount = await control.locator("option").count().catch(() => 0);
+      const target = optionCount > 0 ? Math.min(index, Math.max(0, optionCount - 1)) : index;
+      await this.selectOptionByIndex(control, target, fieldName);
       return;
     }
+
     try {
-      await locator.selectOption({ index });
+      await control.selectOption({ index }, { timeout: 2500 });
       this.logStep("SELECT", `${fieldName} option index ${index} — successful`);
       return;
     } catch {
-      await this.clickAndWait(locator, fieldName);
-      const option = this.listboxOptions().nth(index);
-      await this.clickAndWait(option, `${fieldName} option index ${index}`);
-      this.logStep("SELECT", `${fieldName} option index ${index} — successful (custom trigger)`);
+      // Custom dropdown UI path.
     }
+
+    await this.clickReliable(control, fieldName);
+
+    // Wait briefly for menu to paint (portal / animation).
+    const options = this.listboxOptions();
+    const opened = await options
+      .first()
+      .waitFor({ state: "visible", timeout: 8000 })
+      .then(() => true)
+      .catch(() => false);
+
+    if (!opened) {
+      // Re-click / keyboard open, then choose via keyboard.
+      await control.click({ force: true, timeout: 5000 }).catch(() => undefined);
+      await this.page.keyboard.press("Alt+ArrowDown").catch(() => undefined);
+      const stillClosed = !(await options.first().isVisible().catch(() => false));
+      if (stillClosed) {
+        for (let i = 0; i <= index; i++) {
+          await this.page.keyboard.press("ArrowDown");
+        }
+        await this.page.keyboard.press("Enter");
+        this.logStep("SELECT", `${fieldName} option index ${index} — successful (keyboard)`);
+        return;
+      }
+    }
+
+    const count = await options.count();
+    const targetIndex = count > 0 ? Math.min(index, count - 1) : index;
+    // Prefer a non-placeholder option when index 1 was requested but only placeholders exist at 0.
+    let option = options.nth(targetIndex);
+    if (count > 1 && index >= 1) {
+      const text = (await option.innerText().catch(() => "")).trim();
+      if (/^select|choose|—|-|not mapped|placeholder/i.test(text)) {
+        option = options.nth(Math.min(index, count - 1));
+      }
+    }
+
+    try {
+      await this.clickReliable(option, `${fieldName} option index ${targetIndex}`);
+    } catch {
+      await option.click({ force: true, timeout: 10000 });
+      this.logStep("CLICK", `${fieldName} option index ${targetIndex} — successful (forced)`);
+    }
+    // Dismiss leftover menus.
+    await this.page.keyboard.press("Escape").catch(() => undefined);
+    this.logStep("SELECT", `${fieldName} option index ${targetIndex} — successful (custom trigger)`);
   }
 
   private async selectDropdownOptionByLabel(locator: Locator, label: string, fieldName: string): Promise<void> {
     if (!(await locator.isVisible().catch(() => false))) {
+      if (await this.isNativeSelect(locator)) {
+        await locator.selectOption({ label }).catch(async () => {
+          await this.selectOptionByIndex(locator, 0, fieldName);
+        });
+      }
       return;
     }
     const pattern = new RegExp(label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
-    if (await this.isNativeSelect(locator)) {
-      await locator.selectOption({ label }).catch(async () => {
-        await this.selectOptionByIndex(locator, 0, fieldName);
+    const control = await this.resolveInteractiveDropdown(locator);
+
+    if (await this.isNativeSelect(control)) {
+      await control.selectOption({ label }).catch(async () => {
+        await this.selectOptionByIndex(control, 0, fieldName);
       });
       return;
     }
     try {
-      await locator.selectOption({ label });
+      await control.selectOption({ label }, { timeout: 2500 });
       return;
     } catch {
-      await this.clickAndWait(locator, fieldName);
-      const option = this.page.getByRole("option", { name: pattern }).first().or(this.listboxOptions().filter({ hasText: pattern }).first());
-      await this.clickAndWait(option, `${fieldName} = ${label}`);
+      // Custom UI.
     }
+
+    await this.clickReliable(control, fieldName);
+    const option = this.page
+      .getByRole("option", { name: pattern })
+      .first()
+      .or(this.listboxOptions().filter({ hasText: pattern }).first());
+    const visible = await option.waitFor({ state: "visible", timeout: 8000 }).then(() => true).catch(() => false);
+    if (!visible) {
+      // Typeahead / keyboard fallback
+      await this.page.keyboard.type(label.slice(0, 12), { delay: 40 }).catch(() => undefined);
+      await this.page.keyboard.press("Enter");
+      this.logStep("SELECT", `${fieldName} = ${label} — successful (keyboard)`);
+      return;
+    }
+    await this.clickReliable(option, `${fieldName} = ${label}`);
+    await this.page.keyboard.press("Escape").catch(() => undefined);
   }
 
   private async readDropdownSelection(locator: Locator): Promise<string> {
@@ -894,8 +1012,23 @@ class MissingMandatoryPage extends BasePage {
       await this.openAddFieldDialog();
     }
     await this.fillField(this.fieldNameInput, name, "Field name");
-    if (await this.sectionSelect.isVisible()) {
-      await this.selectDropdownOptionByIndex(this.sectionSelect, 1, "Section");
+    if (await this.sectionSelect.isVisible().catch(() => false)) {
+      try {
+        await this.selectDropdownOptionByIndex(this.sectionSelect, 1, "Section");
+      } catch (error) {
+        this.logStep(
+          "SELECT",
+          `Section index 1 failed — falling back to first option (${error instanceof Error ? error.message : String(error)})`,
+          "warn",
+        );
+        await this.selectDropdownOptionByIndex(this.sectionSelect, 0, "Section");
+      }
+    } else {
+      // Hidden native #newFieldSection — still try to set a valid section.
+      const hiddenSection = this.dialog.locator("#newFieldSection").or(this.page.locator("#newFieldSection")).first();
+      if ((await hiddenSection.count()) > 0) {
+        await this.selectDropdownOptionByIndex(hiddenSection, 1, "Section");
+      }
     }
     const submitBtn = this.page
       .getByRole("button", { name: /^(save|add field|add|create)$/i })

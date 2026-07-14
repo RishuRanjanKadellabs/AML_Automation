@@ -4,7 +4,7 @@ const Customer360Locators = {
   landingPageHeader: ".lookup-page-header, h2:has-text('Customer 360 Lookup')",
   landingLookupTitle: ":text-matches('Customer 360 Lookup', 'i')",
   customerSearchInput:
-    "input[aria-label='Search customers'], input[placeholder*='Search by Name'], input[placeholder*='Search'], input[name*='search']",
+    "input[aria-label='Search customers'], input[aria-label*='Search'], input[placeholder*='Search by Name'], input[placeholder*='Search'], input[name*='search'], input[type='search']",
   customerSearchButton: "button:has-text('Search'), button[aria-label*='Search']",
   customerSearchResults:
     "[class*='lookup-result'], [class*='result-card'], [role='listbox'], [role='option'], .customer-search-results",

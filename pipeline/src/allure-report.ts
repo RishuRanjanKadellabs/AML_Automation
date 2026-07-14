@@ -7,9 +7,10 @@ dotenv.config({ path: path.resolve(__dirname, "..", "..", ".env") });
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 const RESULTS_DIR = path.join(PROJECT_ROOT, "results");
+const REPORT_DIR = path.join(PROJECT_ROOT, "report", "automation-execution-cycle");
 const ALLURE_COMBINED_DIR = path.join(RESULTS_DIR, "allure-results");
-const ALLURE_REPORT_DIR = path.join(RESULTS_DIR, "allure-report");
-const ALLURE_HISTORY_DIR = path.join(RESULTS_DIR, "allure-history");
+const ALLURE_REPORT_DIR = path.join(REPORT_DIR, "allure-report");
+const ALLURE_HISTORY_DIR = path.join(REPORT_DIR, "allure-history");
 
 function ensureDir(dir: string): void {
   fs.mkdirSync(dir, { recursive: true });
@@ -100,16 +101,35 @@ function collectAllureResults(envFilter: string[] | null): string[] {
 function mergeEnvironmentProperties(envFilter: string[] | null): void {
   const allProps: string[] = [];
 
+  const cycleDashboard = path.join(REPORT_DIR, "dashboard-data.json");
+  if (fs.existsSync(cycleDashboard)) {
+    try {
+      const cycle = JSON.parse(fs.readFileSync(cycleDashboard, "utf-8"));
+      const ex = cycle.executive || {};
+      allProps.push(`Cycle.Total = ${ex.total ?? "N/A"}`);
+      allProps.push(`Cycle.Passed = ${ex.passed ?? "N/A"}`);
+      allProps.push(`Cycle.Failed = ${ex.failed ?? "N/A"}`);
+      allProps.push(`Cycle.SuccessRate = ${ex.successRate ?? "N/A"}%`);
+      allProps.push(`Cycle.URL = ${ex.url ?? "N/A"}`);
+      allProps.push(`Cycle.Environment = ${ex.environment ?? "N/A"}`);
+      allProps.push(
+        `Note = Allure suites below may reflect last Playwright subset only; open dashboard.html for full cycle (not 42).`,
+      );
+    } catch {
+      /* ignore malformed dashboard data */
+    }
+  }
+
   if (!usesEnvSubfolders() && usesFlatLayout()) {
     const reportPath = path.join(RESULTS_DIR, "execution-report.json");
     const report = JSON.parse(fs.readFileSync(reportPath, "utf-8"));
     const clientName = report.environment || process.env.ENV || "dev";
 
-    allProps.push(`${clientName}.URL = ${report.baseUrl || "N/A"}`);
-    allProps.push(`${clientName}.Total = ${report.totalTestCases || 0}`);
-    allProps.push(`${clientName}.Passed = ${report.passed || 0}`);
-    allProps.push(`${clientName}.Failed = ${report.failed || 0}`);
-    allProps.push(`${clientName}.Duration = ${((report.durationMs || 0) / 1000).toFixed(1)}s`);
+    allProps.push(`${clientName}.LastRun.URL = ${report.baseUrl || "N/A"}`);
+    allProps.push(`${clientName}.LastRun.Total = ${report.totalTestCases || 0}`);
+    allProps.push(`${clientName}.LastRun.Passed = ${report.passed || 0}`);
+    allProps.push(`${clientName}.LastRun.Failed = ${report.failed || 0}`);
+    allProps.push(`${clientName}.LastRun.Duration = ${((report.durationMs || 0) / 1000).toFixed(1)}s`);
   } else {
     const entries = fs.readdirSync(RESULTS_DIR, { withFileTypes: true });
 
@@ -137,7 +157,7 @@ function mergeEnvironmentProperties(envFilter: string[] | null): void {
 
   if (allProps.length > 0) {
     allProps.unshift(`Report.Generated = ${new Date().toISOString()}`);
-    allProps.unshift(`Report.Type = Multi-Client QA Execution`);
+    allProps.unshift(`Report.Type = Automation Execution Cycle`);
 
     fs.writeFileSync(
       path.join(ALLURE_COMBINED_DIR, "environment.properties"),

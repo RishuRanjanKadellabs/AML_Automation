@@ -13,6 +13,8 @@ import {
   setCustomer360ViewMode,
 } from "../../../../helpers/customer360-api-mock";
 import { tabNamePattern } from "../../../../helpers/customer360-tab-names";
+import { getCurrentTestId } from "../../../../helpers/action-logger";
+import { HealerMode } from "../../../../helpers/healer-mode";
 
 class Customer360Page extends BasePage {
   private pendingUnauthorizedNavigation = false;
@@ -67,7 +69,58 @@ class Customer360Page extends BasePage {
   }
 
   get customerSearchInput(): Locator {
-    return this.page.locator(Customer360Locators.customerSearchInput).first();
+    return this.page
+      .getByRole("searchbox")
+      .or(this.page.getByPlaceholder(/search/i))
+      .or(this.page.locator(Customer360Locators.customerSearchInput))
+      .first();
+  }
+
+  /** True while SPA shows module skeleton / "Loading module content...". */
+  private async isModuleLoading(): Promise<boolean> {
+    const status = this.page.getByRole("status", { name: /Loading module/i }).first();
+    if (await status.isVisible().catch(() => false)) {
+      return true;
+    }
+    const skeleton = this.page.locator("[class*='skeleton'], [class*='Skeleton']").first();
+    return skeleton.isVisible().catch(() => false);
+  }
+
+  /**
+   * Wait until Customer 360 leaves the module skeleton and either the lookup
+   * search box or a profile shell is visible. Reloads once if the SPA stalls.
+   */
+  private async waitForCustomer360ContentReady(timeout = 60000): Promise<void> {
+    const healer = new HealerMode(getCurrentTestId(), (action, detail, status) =>
+      this.logStep(action, detail, status),
+    );
+    await healer.waitForTransientUi(this.page);
+
+    const deadline = Date.now() + timeout;
+    let reloaded = false;
+    while (Date.now() < deadline) {
+      if (!(await this.isModuleLoading())) {
+        const searchReady = await this.customerSearchInput.isVisible().catch(() => false);
+        const profileReady = await this.tabList
+          .or(this.headerStrip)
+          .or(this.kpiCards.first())
+          .first()
+          .isVisible()
+          .catch(() => false);
+        if (searchReady || profileReady) {
+          this.logStep("WAIT", "Customer 360 module content ready — successful");
+          return;
+        }
+      }
+      if (!reloaded && Date.now() > deadline - timeout + 20000) {
+        reloaded = true;
+        this.logStep("HEAL", "Customer 360 still loading — reload once");
+        await this.page.reload({ waitUntil: "domcontentloaded", timeout: 60000 }).catch(() => undefined);
+        await healer.waitForTransientUi(this.page);
+      }
+      await this.page.waitForTimeout(500);
+    }
+    throw new Error("Customer 360 module content did not become ready before timeout");
   }
 
   get headerStrip(): Locator {
@@ -119,17 +172,45 @@ class Customer360Page extends BasePage {
   async openCustomer360Direct(baseUrl: string): Promise<void> {
     const normalized = baseUrl.replace(/\/$/, "");
     const url = `${normalized}/kyc/customer-360`;
-    if (!this.pendingUnauthorizedNavigation) {
+    const expectAuthFailure = this.pendingUnauthorizedNavigation;
+    this.pendingUnauthorizedNavigation = false;
+
+    if (!expectAuthFailure) {
       await installCustomer360ApiMock(this.page);
       this.logStep("MOCK", "Customer 360 API mock installed — successful");
     }
+
+    const accessDeniedShell = this.page
+      .getByText(/access denied|unauthorized|forbidden|not authorized/i)
+      .first();
+    const landingShell = this.customerSearchInput
+      .or(this.landingPageHeader)
+      .or(this.customer360Title)
+      .first();
+
     await this.withNormalNetwork(async () => {
-      await this.navigateTo(url);
+      const healer = new HealerMode(getCurrentTestId(), (action, detail, status) =>
+        this.logStep(action, detail, status),
+      );
+      await healer.gotoWithNetworkHeal(this.page, url, {
+        timeout: 60000,
+        retries: expectAuthFailure ? 2 : 4,
+        // Auth-denied mocks fulfill 403 HTML (no search box). Normal path must
+        // wait for real landing content — bare `main` is visible during skeleton.
+        shellLocator: expectAuthFailure ? accessDeniedShell : landingShell,
+      });
+      if (!expectAuthFailure) {
+        await this.waitForCustomer360ContentReady(60000);
+      }
     });
-    if (!this.pendingUnauthorizedNavigation) {
+
+    if (!expectAuthFailure) {
       await this.expectCustomer360LandingLoaded();
     }
-    this.pendingUnauthorizedNavigation = false;
+  }
+
+  private accessDeniedLocator(): Locator {
+    return this.page.getByText(/access denied|unauthorized|forbidden|not authorized/i).first();
   }
 
   async openCustomer360FromSidebar(): Promise<void> {
@@ -139,6 +220,10 @@ class Customer360Page extends BasePage {
     // profile, or access-denied) are validated by the dedicated expect* methods
     // in the test's validation step, so we deliberately do not assert here.
     if (this.page.url().includes("/kyc/customer-360")) {
+      return;
+    }
+    if (await this.accessDeniedLocator().isVisible().catch(() => false)) {
+      this.logStep("NAVIGATE", "Access denied already visible — skip sidebar navigation");
       return;
     }
 
@@ -153,6 +238,9 @@ class Customer360Page extends BasePage {
       return;
     }
     if (await this.isOnProfilePage()) {
+      return;
+    }
+    if (await this.accessDeniedLocator().isVisible().catch(() => false)) {
       return;
     }
     await this.expectCustomer360LandingLoaded();
@@ -195,8 +283,11 @@ class Customer360Page extends BasePage {
 
   async expectCustomer360LandingLoaded(): Promise<void> {
     await this.expectOnCustomer360Route();
-    await this.assertVisible(this.customerSearchInput, "Customer 360 lookup search box");
-    await expect(this.landingPageHeader.or(this.customer360Title).first()).toBeVisible({ timeout: 15000 });
+    if (await this.isModuleLoading()) {
+      await this.waitForCustomer360ContentReady(45000);
+    }
+    await this.assertVisible(this.customerSearchInput, "Customer 360 lookup search box", 45000);
+    await expect(this.landingPageHeader.or(this.customer360Title).first()).toBeVisible({ timeout: 30000 });
     await expect(this.page.locator(Customer360Locators.tabList)).toHaveCount(0, { timeout: 3000 }).catch(() => undefined);
     this.logStep("ASSERT", "Customer 360 landing (lookup) page loaded — successful");
   }
@@ -226,17 +317,22 @@ class Customer360Page extends BasePage {
     // profile is active for the scenario — otherwise SPA hydration exceeds the
     // shell timeout (C360-TC-369 and other slow-network regressions).
     await this.withNormalNetwork(async () => {
-      await this.page.goto(this.customerProfileUrl(parsedId), {
-        waitUntil: "domcontentloaded",
-        timeout: 60000,
-      });
-
       const shell = this.tabList.or(this.headerStrip).or(this.kpiCards.first()).first();
       const errorState = this.page
         .locator(Customer360Locators.errorStateMessage)
         .or(this.retryButton)
         .first();
-      await expect(shell.or(errorState).first()).toBeVisible({ timeout: 45000 });
+      const healer = new HealerMode(getCurrentTestId(), (action, detail, status) =>
+        this.logStep(action, detail, status),
+      );
+      await healer.gotoWithNetworkHeal(this.page, this.customerProfileUrl(parsedId), {
+        timeout: 60000,
+        retries: 4,
+        shellLocator: shell.or(errorState).first(),
+      });
+      if (!(await this.isErrorStateVisible())) {
+        await this.waitForCustomer360ContentReady(60000).catch(() => undefined);
+      }
     });
 
     if (await this.isErrorStateVisible()) {
@@ -765,9 +861,7 @@ class Customer360Page extends BasePage {
   }
 
   async expectAccessDenied(): Promise<void> {
-    await expect(
-      this.page.getByText(/access denied|unauthorized|forbidden|not authorized/i).first(),
-    ).toBeVisible({ timeout: 15000 });
+    await expect(this.accessDeniedLocator()).toBeVisible({ timeout: 30000 });
     this.logStep("ASSERT", "Access denied message visible — successful");
   }
 

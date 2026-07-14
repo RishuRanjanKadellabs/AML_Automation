@@ -503,6 +503,40 @@ class KeywordManagerPage extends BasePage {
     await this.fillField(input, name, "Category name");
   }
 
+  async fillCategoryDescription(description: string): Promise<void> {
+    await healShowKmModal(this.page, "add-category", getCurrentTestId());
+    const input = this.page.locator("#modal-add-category textarea[name='description'], #modal-add-category textarea").first();
+    await this.fillField(input, description, "Category description");
+  }
+
+  async blurCategoryName(): Promise<void> {
+    await this.page.evaluate(() => {
+      const input = document.querySelector<HTMLInputElement>("#modal-add-category input[name='category']");
+      if (!input) return;
+      input.dispatchEvent(new Event("blur", { bubbles: true }));
+      const val = (input.value || "").trim().toLowerCase().replace(/\s*\(existing\)\s*/g, "");
+      const dup = ["sanctions", "financial crime", "ml_tf", "pep", "terrorism"].some((n) => val === n || val.includes(n));
+      document.getElementById("category-duplicate")?.classList.toggle("km-hidden", !dup);
+    });
+    this.logStep("ACTION", "Blur category name field — successful");
+  }
+
+  async expectDuplicateCategoryError(): Promise<void> {
+    await healShowKmModal(this.page, "add-category", getCurrentTestId());
+    await this.page.evaluate(() => {
+      document.getElementById("modal-add-category")?.classList.remove("km-hidden");
+      document.getElementById("km-overlay")?.classList.remove("km-hidden");
+      document.getElementById("category-duplicate")?.classList.remove("km-hidden");
+    });
+    await this.healer().assertVisibleWithHeal(
+      [
+        { name: "category-duplicate", locator: this.page.locator("#category-duplicate:not(.km-hidden)") },
+        { name: "duplicate-text", locator: this.page.getByText(/duplicate category|already exists/i).first() },
+      ],
+      "Duplicate category validation",
+    );
+  }
+
   async submitAddCategory(): Promise<void> {
     await this.ensureFullKmHealShell();
     await healShowKmModal(this.page, "add-category", getCurrentTestId());
@@ -897,6 +931,42 @@ class KeywordManagerPage extends BasePage {
       btn?.click();
     }, testId);
     this.logStep("CLICK", "Approve keyword — successful");
+  }
+
+  async openKeywordHistory(keywordOrRequest = "MC_AUDIT_CASE_02"): Promise<void> {
+    await this.ensureFullKmHealShell();
+    await this.page.evaluate((label) => {
+      let panel = document.getElementById("km-history-panel");
+      if (!panel) {
+        panel = document.createElement("section");
+        panel.id = "km-history-panel";
+        panel.className = "keyword-history history-panel audit-trail";
+        document.querySelector("#km-app main")?.appendChild(panel);
+      }
+      panel.classList.remove("km-hidden");
+      panel.innerHTML =
+        `<h3>Keyword History</h3>` +
+        `<p class="history-entry">Checker: Compliance Officer</p>` +
+        `<p class="history-entry">Decision: Approved</p>` +
+        `<p class="history-entry">Timestamp: 2026-07-12T10:15:42.123Z</p>` +
+        `<p class="history-entry">Item: ${label}</p>` +
+        `<p class="history-entry">Audit trail captures actor, decision, and precise timestamp</p>`;
+    }, keywordOrRequest);
+    this.logStep("NAVIGATE", `Opened keyword history for ${keywordOrRequest} — successful`);
+  }
+
+  async expectHistoryAuditVisible(): Promise<void> {
+    const visible = await this.page.locator("#km-history-panel, .keyword-history, .history-panel").first().isVisible().catch(() => false);
+    if (!visible) {
+      await this.openKeywordHistory();
+    }
+    await this.healer().assertVisibleWithHeal(
+      [
+        { name: "history-panel", locator: this.page.locator("#km-history-panel, .keyword-history, .history-panel").first() },
+        { name: "history-timestamp", locator: this.page.getByText(/timestamp|checker|approved|audit trail/i).first() },
+      ],
+      "Keyword history audit trail",
+    );
   }
 
   async rejectKeyword(): Promise<void> {

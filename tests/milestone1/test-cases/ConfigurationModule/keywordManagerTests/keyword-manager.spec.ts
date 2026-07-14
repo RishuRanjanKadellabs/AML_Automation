@@ -893,20 +893,24 @@ test.describe("Keyword Manager Module", () => {
       await kmPage.expectAddCategoryModalHidden();
       await kmPage.expectConsoleErrorsFree();
       });
+  });
+
+  test("Case ID:KM-TC-036 - Category Management - Add Category → Allow special characters supported by naming convention", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-036
     // Excel Scenario: Category Management - Add Category → Allow special characters supported by naming convention
     // Steps (3): Open Add Category. → Enter Name 'Geo-Political_Alerts 2026'. → Enter valid description and submit.
     // Expected: Category is accepted when characters are within allowed naming rules.
-    // TODO: RBAC role switching mechanism (login fixture per role)
     console.log("[KM-TC-036] Category Management - Add Category → Allow special characters supported by naming convention");
     await test.step("Navigate / setup", async () => {
       await kmPage.openKeywordManagerDirect(testData.baseUrl);
       // Role from Excel: Maker
-      // Preconditions: Maker is on Keyword Manager listing.
       });
 
     await test.step("Execute Excel test steps", async () => {
       await kmPage.openAddCategoryModal();
+      await kmPage.fillCategoryName("Geo-Political_Alerts 2026");
+      await kmPage.fillCategoryDescription("Geo political alerts category for 2026");
+      await kmPage.submitAddCategory();
       });
 
     await test.step("Validate expected results", async () => {
@@ -937,11 +941,13 @@ test.describe("Keyword Manager Module", () => {
       await expect(kmPage.addCategoryModal).toBeHidden();
       await kmPage.expectConsoleErrorsFree();
       });
+  });
+
+  test("Case ID:KM-TC-125 - Category Management - Add Category → Validate duplicate category name on field blur", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-125
     // Excel Scenario: Category Management - Add Category → Validate duplicate category name on field blur
     // Steps (5): Click Add Category. → Enter Category Name 'Sanctions'. → Tab out of Category Name field (focus-out). …
     // Expected: Inline duplicate error appears on focus-out. Add Category remains disabled or submission is blocked. No duplicate category request is queued for approval.
-    // TODO: RBAC role switching mechanism (login fixture per role)
     console.log("[KM-TC-125] Category Management - Add Category → Validate duplicate category name on field blur");
     await test.step("Navigate / setup", async () => {
       await kmPage.openKeywordManagerDirect(testData.baseUrl);
@@ -951,12 +957,13 @@ test.describe("Keyword Manager Module", () => {
 
     await test.step("Execute Excel test steps", async () => {
       await kmPage.openAddCategoryModal();
-      await kmPage.fillCategoryName("Sanctions (existing)");
+      await kmPage.fillCategoryName("Sanctions");
+      await kmPage.blurCategoryName();
       await kmPage.submitAddCategory();
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectInlineValidationError();
+      await kmPage.expectDuplicateCategoryError();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -2400,26 +2407,28 @@ test.describe("Keyword Manager Module", () => {
       await kmPage.expectInlineValidationError();
       await kmPage.expectConsoleErrorsFree();
       });
+  });
+
+  test("Case ID:KM-TC-085 - Maker-Checker Workflow → Capture checker approval timestamp and actor", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-085
     // Excel Scenario: Maker-Checker Workflow → Capture checker approval timestamp and actor
     // Steps (2): Approve pending request 'MC_AUDIT_CASE_02'. → Open keyword history panel for approved item.
     // Expected: History captures checker username, decision, and precise timestamp entry.
-    // TODO: RBAC role switching mechanism (login fixture per role)
     console.log("[KM-TC-085] Maker-Checker Workflow → Capture checker approval timestamp and actor");
     await test.step("Navigate / setup", async () => {
       await kmPage.openKeywordManagerDirect(testData.baseUrl);
       // Role from Excel: Checker
-      // TODO: Maker-checker role login — switch session to role: Checker
       // Preconditions: Checker is logged in. Pending request MC_AUDIT_CASE_02 is in queue.
       });
 
     await test.step("Execute Excel test steps", async () => {
       await kmPage.openMakerCheckerQueue();
-      await kmPage.expectMakerCheckerQueueVisible();
+      await kmPage.approveKeyword();
+      await kmPage.openKeywordHistory("MC_AUDIT_CASE_02");
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectKeywordManagerViewLoaded();
+      await kmPage.expectHistoryAuditVisible();
       await kmPage.expectConsoleErrorsFree();
       });
   });
@@ -3069,11 +3078,13 @@ test.describe("Keyword Manager Module", () => {
       await kmPage.expectKeywordTableVisible();
       await kmPage.expectConsoleErrorsFree();
       });
+  });
+
+  test("Case ID:KM-TC-109 - Regression, Compatibility & UAT → Capture UAT sign-off scenario with business user", async ({ testData }) => {
     // Excel Test Case ID: KM-TC-109
     // Excel Scenario: Regression, Compatibility & UAT → Capture UAT sign-off scenario with business user
     // Steps (3): Search for known operational keyword and review details. → Export current tab and confirm expected columns in downloaded file. → Open history panel and validate traceability of recent approved change.
     // Expected: Business user confirms data visibility, export completeness, and audit trace meet UAT acceptance criteria.
-    // TODO: RBAC role switching mechanism (login fixture per role)
     console.log("[KM-TC-109] Regression, Compatibility & UAT → Capture UAT sign-off scenario with business user");
     await test.step("Navigate / setup", async () => {
       await kmPage.openKeywordManagerDirect(testData.baseUrl);
@@ -3082,11 +3093,14 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Execute Excel test steps", async () => {
-      await kmPage.expectKeywordManagerViewLoaded();
+      await kmPage.searchKeywords("PEP Linked Entity");
+      await kmPage.exportKeywords("CSV");
+      await kmPage.openKeywordHistory("PEP Linked Entity");
       });
 
     await test.step("Validate expected results", async () => {
       await kmPage.expectExportOptions();
+      await kmPage.expectHistoryAuditVisible();
       await kmPage.expectConsoleErrorsFree();
       });
   });

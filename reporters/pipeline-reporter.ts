@@ -415,7 +415,7 @@ class PipelineReporter implements Reporter {
           stdio: "inherit",
           env: { ...process.env, ENV: this.envName },
         });
-        console.log(`    ✓ Allure HTML → results/allure-report/index.html\n`);
+        console.log(`    ✓ Allure HTML → report/automation-execution-cycle/allure-report/index.html\n`);
       } catch {
         console.log("    ⚠ Allure HTML generation failed (raw results still in allure-results/)\n");
       }
