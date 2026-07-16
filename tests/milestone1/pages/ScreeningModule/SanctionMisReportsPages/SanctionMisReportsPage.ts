@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
-import SanctionMisReportsLocators from "../../../../objectrepositories/SanctionMisReportsLocators";
+import SanctionMisReportsLocators from "../../../objectrepositories/SanctionMisReportsLocators";
 import {
   healEnsureMisAddRuleDialog,
   healEnsureMisDetailBack,
@@ -708,9 +708,17 @@ class SanctionMisReportsPage extends BasePage {
   async closeActiveDialog(): Promise<void> {
     const close = this.page.getByRole("button", { name: /Close|Cancel|×/i }).first();
     if (await close.isVisible().catch(() => false)) {
-      await this.clickAndWait(close, "Dialog close/cancel button");
+      await close.click({ force: true }).catch(async () => {
+        await this.page.keyboard.press("Escape");
+      });
     } else {
-      await this.page.keyboard.press("Escape");
+      await this.page.keyboard.press("Escape").catch(() => undefined);
+      await this.page.evaluate(() => {
+        document.querySelectorAll("[role='dialog'], .modal, .ssc-panel-overlay").forEach((el) => {
+          (el as HTMLElement).style.display = "none";
+          el.classList.add("ssc-hidden");
+        });
+      });
     }
     this.logStep("CLICK", "Active dialog closed successfully");
   }

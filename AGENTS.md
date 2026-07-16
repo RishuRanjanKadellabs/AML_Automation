@@ -14,30 +14,22 @@ Test cases are authored in **Excel (.xlsx)** and converted into Playwright scrip
 ### Primary workflow — Excel to scripts
 
 ```
-your-tests.xlsx  →  pipeline:from-excel  →  specs/generated/plan.md
-                                           →  tests/e2e/*.spec.ts
-                                           →  npm run pw:run
+your-tests.xlsx  →  qa-automation-pipeline (Cursor agent)
+                 →  tests/milestone2/**/*.spec.ts + POM
+                 →  npm run milestone:run -- 2
 ```
 
-**Upload your Excel file:**
+**FSD + Figma → Excel (Stage 0):** agent `fsd-figma-pipeline` writes under `pipeline/test-data/Milestone2/Test Cases/`, then hand off to `qa-automation-pipeline`.
 
-```bash
-# Place file in pipeline/test-cases/ then run:
-npm run pipeline:from-excel
-
-# Or pass a specific file:
-npm run pipeline:from-excel -- path/to/your-tests.xlsx
-```
-
-See `pipeline/test-cases/SAMPLE-FORMAT.md` for required Excel column layout.
+See `pipeline/test-cases/SAMPLE-FORMAT.md` for Excel column layout (when using raw Excel input).
 
 ### Execution paths
 
 | Path | Input | Output |
 |------|-------|--------|
-| **Excel → scripts** (primary) | `.xlsx` test cases | `tests/e2e/*.spec.ts` + plan |
-| **AI Generator** (enhancement) | `specs/generated/plan.md` | Refined `.spec.ts` + POM via MCP |
-| **Direct execution** (secondary) | plan + prompts | Browser run without code changes |
+| **QA automation pipeline** (primary) | `.xlsx` test cases | `tests/milestone2/` specs + POM |
+| **FSD + Figma Stage 0** | FSD `.docx` + Figma HTML | Excel in `Milestone2/Test Cases/` |
+| **AI Generator / Healer** | plan or failing specs | Refined `.spec.ts` / locators via MCP |
 
 Set `BASE_URL`, `EMAIL`, and `PASSWORD` in `.env` before running tests against your AML application.
 
@@ -139,7 +131,7 @@ tests/
 │   ├── env.ts                    # Environment loader
 │   ├── test-fixture.ts           # Custom Playwright fixture (testData, env)
 │   └── selector-map.json         # Natural language → CSS selector map
-├── helpers/commands.ts           # Reusable helper functions
+├── helpers/                      # Reusable helpers (action-logger, healers, mocks)
 ├── reporters/pipeline-reporter.ts  # Allure + execution-report on every run
 └── seed.spec.ts                  # MCP seed — used by planner_setup_page / generator_setup_page
 
@@ -215,7 +207,7 @@ Before creating any new artifact, **search the project first**:
 |-----------------|-----------|
 | Page object | `tests/PageObjects/` |
 | Locator file | `tests/objectrepositories/` |
-| Helper method | `tests/helpers/commands.ts` |
+| Helper method | `tests/helpers/` |
 | Selector | `tests/fixtures/selector-map.json` |
 
 **Rules:**
@@ -384,7 +376,7 @@ Each scenario must include:
 2. `tests/fixtures/environments.json`
 3. `tests/fixtures/selector-map.json`
 4. `tests/fixtures/test-fixture.ts`
-5. `tests/helpers/commands.ts` and `tests/PageObjects/BasePage.ts`
+5. `tests/helpers/` and existing `BasePage` / milestone page objects
 6. **Search existing** `PageObjects/`, `objectrepositories/`, and `commands.ts` for reusable code
 
 **Workflow (per scenario):**
@@ -501,13 +493,9 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 | `npm run pw:run:report` | Run specs + generate Allure/Excel reports |
 | `npm run pw:ui` | Playwright UI mode for debugging |
 | `npm run lint` | ESLint — must pass before finishing |
-| `npm run pipeline:report` | Generate reports from latest results |
-| `npm run pipeline:parse -- --input <file.docx>` | Parse docx → plan (then use Generator for code) |
-| `npm run pipeline:execute` | Direct browser execution from plan (no `.spec.ts` generation) |
-| `npm run batch-screening:plan` | Refresh `specs/batch-screening/plan.md` from Excel |
-| `npm run batch-screening:generate` | Regenerate `batch-screening.spec.ts` (432 cases) from Excel + FSD-aligned intent |
-| `npm run batch-screening:enhance-excel` | Expand Batch Screening Excel test steps (optional `--dry-run`, `--validate-only`) |
-
+| `npm run pipeline:report` | Generate Excel + Allure reports from latest results |
+| `npm run pipeline:report:allure` | Allure HTML report only |
+| `npm run milestone:run -- 2` | Run Milestone 2 Playwright specs |
 ---
 
 ## Definition of Done

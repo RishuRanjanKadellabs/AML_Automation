@@ -2,7 +2,7 @@ import { Page, Locator, expect } from "@playwright/test";
 
 import BasePage from "../../../../PageObjects/BasePage";
 
-import ReferenceDataRegistryLocators from "../../../../objectrepositories/ReferenceDataRegistryLocators";
+import ReferenceDataRegistryLocators from "../../../objectrepositories/ReferenceDataRegistryLocators";
 
 import pilotData from "../../../../../fixtures/rdr-pilot-data.json";
 
@@ -244,15 +244,23 @@ const EXCEL_TAB_ALIASES: Record<string, string> = {
 
   "Address Master": "Address",
 
+  "Customer Address": "Address",
+
   "Document Master": "Documents",
 
   "Documents Master": "Documents",
+
+  "Customer Documents": "Documents",
 
   "Risk Assessment Master": "Risk Assessment",
 
   "Account Master": "Account",
 
   "Cust-Acct Rel Master": "Cust-Acct Rel",
+
+  "Customer-Account Relationship": "Cust-Acct Rel",
+
+  "Customer Account Relationship": "Cust-Acct Rel",
 
   "Loan Account Master": "Loan Account",
 
@@ -268,9 +276,13 @@ const EXCEL_TAB_ALIASES: Record<string, string> = {
 
   "TXN Device Master": "TXN Device",
 
+  "Transaction Device": "TXN Device",
+
   "Beneficial Owner Master": "Beneficial Owner",
 
   "Related Parties Master": "Related Parties",
+
+  "Related Parties Network": "Related Parties",
 
   "Non Customer Master": "Non Customer",
 
@@ -316,9 +328,13 @@ const EXCEL_MASTER_TO_SLUG: Record<string, string> = {
 
   "Address Master": "address",
 
+  "Customer Address": "address",
+
   "Document Master": "documents",
 
   "Documents Master": "documents",
+
+  "Customer Documents": "documents",
 
   "Risk Assessment": "risk-assessment",
 
@@ -329,6 +345,10 @@ const EXCEL_MASTER_TO_SLUG: Record<string, string> = {
   "Cust-Acct Rel": "cust-acct-rel",
 
   "Cust-Acct Rel Master": "cust-acct-rel",
+
+  "Customer-Account Relationship": "cust-acct-rel",
+
+  "Customer Account Relationship": "cust-acct-rel",
 
   "Loan Account": "loan-account",
 
@@ -354,6 +374,8 @@ const EXCEL_MASTER_TO_SLUG: Record<string, string> = {
 
   "TXN Device Master": "txn-device",
 
+  "Transaction Device": "txn-device",
+
   "Beneficial Owner": "beneficial-owner",
 
   "Beneficial Owner Master": "beneficial-owner",
@@ -361,6 +383,8 @@ const EXCEL_MASTER_TO_SLUG: Record<string, string> = {
   "Related Parties": "related-parties",
 
   "Related Parties Master": "related-parties",
+
+  "Related Parties Network": "related-parties",
 
   "Non Customer": "non-customer",
 
@@ -446,6 +470,67 @@ function resolveMasterTabLabel(excelLabel: string): string {
 
 
 
+/** Canonical RDR URL/tab slugs only — never invent forms like "customer-documents". */
+const CANONICAL_RDR_SLUGS = new Set(Object.keys(MASTER_TAB_LABELS));
+
+const EXCEL_MASTER_FUZZY_SLUGS: Array<{ pattern: RegExp; slug: string }> = [
+
+  { pattern: /customer\s*type/i, slug: "customer-type" },
+
+  { pattern: /customer\s*documents?|documents?\b/i, slug: "documents" },
+
+  { pattern: /customer\s*address|\baddress\b/i, slug: "address" },
+
+  { pattern: /customer[- ]?account\s*rel|cust[- ]?acct/i, slug: "cust-acct-rel" },
+
+  { pattern: /transaction\s*device|txn\s*device/i, slug: "txn-device" },
+
+  { pattern: /related\s*parties(\s*network)?/i, slug: "related-parties" },
+
+  { pattern: /non[- ]?customer/i, slug: "non-customer" },
+
+  { pattern: /risk\s*assessment/i, slug: "risk-assessment" },
+
+  { pattern: /loan\s*account/i, slug: "loan-account" },
+
+  { pattern: /eod\s*balance/i, slug: "eod-balance" },
+
+  { pattern: /mobile\s*banking/i, slug: "mobile-banking" },
+
+  { pattern: /beneficial\s*owner/i, slug: "beneficial-owner" },
+
+  { pattern: /fx\s*rates?/i, slug: "fx-rates" },
+
+  { pattern: /industry\s*code/i, slug: "industry-code" },
+
+  { pattern: /txn\s*type|transaction\s*type/i, slug: "txn-type" },
+
+  { pattern: /card\s*master|\bcards?\b/i, slug: "card" },
+
+  { pattern: /\batm\b/i, slug: "atm" },
+
+  { pattern: /instruments?/i, slug: "instruments" },
+
+  { pattern: /account\s*master|\baccount\b/i, slug: "account" },
+
+  { pattern: /country/i, slug: "country" },
+
+  { pattern: /currency/i, slug: "currency" },
+
+  { pattern: /product/i, slug: "product" },
+
+  { pattern: /branch/i, slug: "branch" },
+
+  { pattern: /channel/i, slug: "channel" },
+
+  { pattern: /employee/i, slug: "employee" },
+
+  { pattern: /reference|ref\s*master/i, slug: "reference" },
+
+  { pattern: /customer\s*master|^customer$/i, slug: "customer" },
+
+];
+
 function resolveSlugFromExcelLabel(excelLabel: string): string {
 
   const normalized = excelLabel.trim();
@@ -472,13 +557,29 @@ function resolveSlugFromExcelLabel(excelLabel: string): string {
 
   const compact = masterPart.toLowerCase().replace(/\s+master$/i, "").replace(/\s+/g, "-");
 
-  if (MASTER_TAB_LABELS[compact]) {
+  if (CANONICAL_RDR_SLUGS.has(compact)) {
 
     return compact;
 
   }
 
-  return compact;
+  for (const { pattern, slug } of EXCEL_MASTER_FUZZY_SLUGS) {
+
+    if (pattern.test(masterPart) && CANONICAL_RDR_SLUGS.has(slug)) {
+
+      return slug;
+
+    }
+
+  }
+
+  throw new Error(
+
+    `Unknown RDR master "${masterPart}" — refused non-canonical slug "${compact}". ` +
+
+      `Use a key from MASTER_TAB_LABELS (e.g. documents, not customer-documents).`,
+
+  );
 
 }
 

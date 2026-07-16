@@ -1,0 +1,33 @@
+---
+description: QA automation pipeline guardrails — protect existing agents, security, orchestration-only generation/execution/healing rules.
+alwaysApply: true
+---
+
+# QA Automation Pipeline — Guardrails
+
+## Existing agents (read-only)
+
+Never modify: `.cursor/agents/test-planner|test-generator|test-healer|headed-executor|headless-executor.agent.md` or `.github/agents/playwright-test-*.agent.md`.
+
+Only new agent allowed for this workflow: `qa-automation-pipeline`.
+
+Orchestrate; do not duplicate generator/healer logic or merge into those agents.
+
+## Security
+
+- No hard-coded credentials/PII/transaction data; mask secrets in logs/reports
+- Use `.env` / fixtures; synthetic/approved data only
+- No destructive production runs; confirm non-prod before MCP execution
+
+## Pipeline quality
+
+- No fabricated requirements, locators, APIs, expected results, or execution results
+- Invalid Excel rows never reach generation
+- Claim execution only with evidence; otherwise `Blocked` + reason
+- Reuse Playwright POM/fixtures/helpers; no second framework
+- Healing: minimal evidence-based fixes; never weaken assertions to force pass
+- Do not modify application source to make tests pass unless explicitly authorized
+
+## Edits
+
+Before writes: list paths + why; avoid protected agents and unrelated app sources; record file summary under `results/qa-pipeline/final/`.

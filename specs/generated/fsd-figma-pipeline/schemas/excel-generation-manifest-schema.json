@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/excel-generation-manifest-schema.json",
+  "title": "Excel Generation Manifest",
+  "description": "Manifest for Excel written from FSD use cases for handoff to qa-automation-pipeline.",
+  "type": "object",
+  "required": ["module", "excelPath", "generatedAt", "rowCount", "columns", "gateStatus"],
+  "properties": {
+    "module": { "type": "string" },
+    "excelPath": { "type": "string", "pattern": ".*\\.xlsx$" },
+    "generatedAt": { "type": "string" },
+    "rowCount": { "type": "integer", "minimum": 0 },
+    "columns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Must align with qa-pipeline excel-input-schema aliases"
+    },
+    "gateStatus": {
+      "type": "string",
+      "enum": ["AwaitingReview", "Approved", "Rejected", "AutoApproved"]
+    },
+    "useCaseIds": { "type": "array", "items": { "type": "string" } },
+    "validationReportPath": { "type": ["string", "null"] }
+  }
+}

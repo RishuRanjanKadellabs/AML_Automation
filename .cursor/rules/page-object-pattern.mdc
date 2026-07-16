@@ -1,0 +1,59 @@
+---
+description: "Defines Page Object Model standards for AML Automation"
+alwaysApply: true
+---
+
+# Page Object Model Standards
+
+## Locator Rules
+- Store all selectors in a separate locator file.
+- Use meaningful names.
+- Avoid hardcoded selectors inside page classes.
+
+Example:
+```typescript
+const HomePageLocators = {
+    heroSection: '.elementor-widget-hero',
+    navMenu: '#primary-menu',
+    contactLink: 'a[href*="contact"]',
+    servicesDropdown: '.menu-item-has-children'
+}
+export default HomePageLocators;
+```
+
+## Page Class Rules
+
+- One class per one feature/page.
+- Import locators.
+- Methods should perform actions.
+- Constructor takes `page: Page`.
+
+Example structure:
+
+```typescript
+import { Page } from "@playwright/test";
+import HomePageLocators from "../objectrepositories/HomePageLocators";
+
+class HomePage {
+  constructor(private readonly page: Page) {}
+
+  get heroSection() {
+    return this.page.locator(HomePageLocators.heroSection);
+  }
+
+  async navigateToContact() {
+    await this.page.locator(HomePageLocators.contactLink).click();
+  }
+
+  async openServicesDropdown() {
+    await this.page.locator(HomePageLocators.servicesDropdown).hover();
+  }
+}
+
+export default HomePage;
+```
+
+## Do Not:
+- Write page.locator() inside spec files.
+- Duplicate locators across files.
+- Add waits unless absolutely necessary.

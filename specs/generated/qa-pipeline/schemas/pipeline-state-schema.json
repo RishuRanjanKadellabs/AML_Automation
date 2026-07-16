@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/pipeline-state-schema.json",
+  "title": "QA Automation Pipeline Case State Transitions",
+  "type": "object",
+  "required": [
+    "testCaseId",
+    "transitions"
+  ],
+  "properties": {
+    "testCaseId": {
+      "type": "string"
+    },
+    "currentState": {
+      "type": "string",
+      "enum": [
+        "Received",
+        "Input validated",
+        "Invalid",
+        "Normalized",
+        "Ready for execution",
+        "Executed",
+        "Execution blocked",
+        "Ready for generation",
+        "Generated",
+        "Ready for healing",
+        "Healing in progress",
+        "Verified",
+        "Failed verification",
+        "Final",
+        "Requires clarification"
+      ]
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "from",
+          "to",
+          "timestamp",
+          "result",
+          "reason"
+        ],
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "result": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/execution-result-schema.json",
+  "title": "QA AI-SDLC Execution Result Schema",
+  "description": "MCP / Cursor execution evidence for a human-readable test case. Never claim execution without evidence.",
+  "type": "object",
+  "required": [
+    "testCaseId",
+    "status",
+    "executed",
+    "environment",
+    "startedAt",
+    "evidence",
+    "comparison"
+  ],
+  "properties": {
+    "testCaseId": {
+      "type": "string"
+    },
+    "requirementId": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "passed",
+        "failed",
+        "blocked",
+        "skipped",
+        "requires-clarification"
+      ]
+    },
+    "executed": {
+      "type": "boolean",
+      "description": "true only when MCP/tool execution evidence exists"
+    },
+    "environment": {
+      "type": "object",
+      "required": [
+        "name",
+        "confirmedSafe"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "baseUrlPresent": {
+          "type": "boolean"
+        },
+        "credentialsPresent": {
+          "type": "boolean"
+        },
+        "confirmedSafe": {
+          "type": "boolean"
+        },
+        "isProduction": {
+          "type": "boolean",
+          "default": false
+        }
+      }
+    },
+    "mcpToolsUsed": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "finishedAt": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "actualResults": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "stepNumber": {
+            "type": "integer"
+          },
+          "observed": {
+            "type": "string"
+          },
+          "matchesExpected": {
+            "type": [
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "required": [
+        "summary"
+      ],
+      "properties": {
+        "summary": {
+          "type": "string"
+        },
+        "mismatches": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": [
+        "artifacts"
+      ],
+      "properties": {
+        "artifacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "type",
+              "pathOrReference"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "screenshot",
+                  "log",
+                  "trace",
+                  "video",
+                  "api-response",
+                  "console",
+                  "mcp-transcript",
+                  "other"
+                ]
+              },
+              "pathOrReference": {
+                "type": "string"
+              },
+              "notes": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "blockReason": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Required when status is blocked"
+    },
+    "sensitiveDataMasked": {
+      "type": "boolean",
+      "default": true
+    }
+  }
+}

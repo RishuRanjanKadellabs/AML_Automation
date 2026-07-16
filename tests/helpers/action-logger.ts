@@ -4,7 +4,8 @@ import type { Locator } from "@playwright/test";
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 const RESULTS_DIR = path.join(PROJECT_ROOT, "results");
-export const MAIN_LOG_FILE = path.join(RESULTS_DIR, "test-run.log");
+/** Same single run log used by detailed-log-reporter (replaced each suite start). */
+export const MAIN_LOG_FILE = path.join(RESULTS_DIR, "execution.log");
 
 export type ActionStatus = "ok" | "fail" | "warn";
 

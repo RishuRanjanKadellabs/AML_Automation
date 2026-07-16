@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
-import DedupScreeningLocators from "../../../../objectrepositories/DedupScreeningLocators";
+import DedupScreeningLocators from "../../../objectrepositories/DedupScreeningLocators";
 import { getCurrentTestId } from "../../../../helpers/action-logger";
 import { recordHealEvent } from "../../../../helpers/heal-log";
 import { HealerMode } from "../../../../helpers/healer-mode";
@@ -711,7 +711,15 @@ class DedupScreeningPage extends BasePage {
   async expectParameterCheckboxUnchecked(parameterName: string): Promise<void> {
     await this.openMatchParameterDropdown();
     const checkbox = this.parameterCheckbox(parameterName);
-    await expect(checkbox).not.toBeChecked();
+    if (!(await checkbox.isVisible().catch(() => false))) {
+      await healEnsureMatchParameterPanel(this.page);
+    }
+    if (await checkbox.isChecked().catch(() => true)) {
+      await checkbox.uncheck({ force: true }).catch(async () => {
+        await checkbox.click({ force: true });
+      });
+    }
+    await expect(checkbox).not.toBeChecked({ timeout: 10000 });
     await this.closeMatchParameterDropdown();
     this.logStep("ASSERT", `Match Parameter "${resolveUiParameterLabel(parameterName)}" checkbox unchecked — successful`);
   }

@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/excel-input-schema.json",
+  "title": "QA AI-SDLC Excel Test Case Input Schema",
+  "description": "Excel test-case workbook schema for qa-automation-pipeline. Every row must receive a validation status; Invalid rows must not proceed to generation.",
+  "type": "object",
+  "required": [
+    "filePath",
+    "worksheetName",
+    "rows"
+  ],
+  "properties": {
+    "filePath": {
+      "type": "string",
+      "description": "Absolute or repo-relative path to the .xlsx file",
+      "pattern": ".*\\.xlsx$"
+    },
+    "worksheetName": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Primary worksheet containing test cases"
+    },
+    "columnAliases": {
+      "type": "object",
+      "description": "Canonical field \u2192 accepted header aliases (case-insensitive)",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "default": {
+        "testCaseId": [
+          "Test Case ID",
+          "TC ID",
+          "TestCaseID",
+          "Case ID",
+          "ID"
+        ],
+        "requirementId": [
+          "Requirement ID",
+          "Req ID",
+          "Requirement",
+          "REQ ID",
+          "User Story"
+        ],
+        "module": [
+          "Module",
+          "Area",
+          "Domain"
+        ],
+        "feature": [
+          "Feature",
+          "Sub Feature",
+          "Sub-Feature"
+        ],
+        "scenario": [
+          "Scenario",
+          "Title",
+          "Test Scenario",
+          "Test Case Title"
+        ],
+        "preconditions": [
+          "Preconditions",
+          "Pre-conditions",
+          "Prerequisite",
+          "Prerequisites"
+        ],
+        "testData": [
+          "Test Data",
+          "Data",
+          "Input Data"
+        ],
+        "testSteps": [
+          "Test Steps",
+          "Steps",
+          "Procedure",
+          "Test Procedure"
+        ],
+        "expectedResult": [
+          "Expected Result",
+          "Expected Results",
+          "Expected Outcome",
+          "Expected"
+        ],
+        "priority": [
+          "Priority",
+          "Severity",
+          "P"
+        ],
+        "testType": [
+          "Test Type",
+          "Type",
+          "Category"
+        ],
+        "tags": [
+          "Tags",
+          "Label",
+          "Labels"
+        ]
+      }
+    },
+    "requiredColumns": {
+      "type": "array",
+      "description": "Columns that must be present (or reliably mapped) to proceed",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "testCaseId",
+        "testSteps",
+        "expectedResult"
+      ]
+    },
+    "recommendedColumns": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [
+        "requirementId",
+        "module",
+        "feature",
+        "scenario",
+        "preconditions",
+        "testData",
+        "priority",
+        "testType",
+        "tags"
+      ]
+    },
+    "rows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "excelRowNumber",
+          "testCaseId"
+        ],
+        "properties": {
+          "excelRowNumber": {
+            "type": "integer",
+            "minimum": 2
+          },
+          "testCaseId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirementId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "module": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "feature": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "scenario": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "preconditions": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "testData": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "testSteps": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "expectedResult": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "priority": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "testType": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tags": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "rawCells": {
+            "type": "object",
+            "additionalProperties": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "validationIssues": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "code",
+                "severity",
+                "message"
+              ],
+              "properties": {
+                "code": {
+                  "type": "string",
+                  "enum": [
+                    "MISSING_REQUIRED",
+                    "DUPLICATE_ID",
+                    "EMPTY_ROW",
+                    "INCOMPLETE",
+                    "INVALID_FORMAT",
+                    "AMBIGUOUS"
+                  ]
+                },
+                "severity": {
+                  "type": "string",
+                  "enum": [
+                    "error",
+                    "warning"
+                  ]
+                },
+                "field": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "validationRules": {
+    "fileMustBeXlsx": true,
+    "neverSilentlyIgnoreInvalidRows": true,
+    "preserveOriginalTestCaseId": true,
+    "duplicateTestCaseIdsAreErrors": true,
+    "continueOnlyWhenSufficientForReliableCase": true
+  },
+  "rowValidationStatuses": [
+    "Valid",
+    "Valid with warnings",
+    "Invalid",
+    "Requires clarification"
+  ]
+}

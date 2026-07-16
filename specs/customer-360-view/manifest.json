@@ -1,8 +1,0 @@
-{
-  "generatedAt": "2026-06-26T19:46:47.904Z",
-  "excelSource": "pipeline/test-data/Customer 360 View.xlsx",
-  "fsdSource": "pipeline/test-data/FSD_Customer_360_View_v1.1.docx",
-  "totalCases": 382,
-  "idRange": "C360-TC-001–C360-TC-382",
-  "specFile": "tests/milestone1/test-cases/KYCModule/customer360ViewTests/customer-360-view.spec.ts"
-}

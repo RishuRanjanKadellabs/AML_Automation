@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
-import BatchScreeningLocators from "../../../../objectrepositories/BatchScreeningLocators";
+import BatchScreeningLocators from "../../../objectrepositories/BatchScreeningLocators";
 import { gridRecordByRow } from "../../../../helpers/batch-screening-data";
 import { getCurrentTestId } from "../../../../helpers/action-logger";
 import { HealerMode } from "../../../../helpers/healer-mode";
@@ -186,7 +186,8 @@ class BatchScreeningPage extends BasePage {
         await this.healer().gotoWithNetworkHeal(this.page, url, {
           timeout: 60000,
           retries: 4,
-          shellLocator: this.matchResultsHeading.or(this.resultsTable).or(this.page.locator("main").first()),
+          // Single headed locator — heading.or(table).or(main) causes strict-mode when both exist.
+          shellLocator: this.matchResultsHeading,
         });
       }
       this.logStep("NAVIGATE", `${url} — successful`);

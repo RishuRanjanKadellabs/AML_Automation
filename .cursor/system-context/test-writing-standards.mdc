@@ -1,0 +1,50 @@
+---
+description: "Defines how test cases must be written for AML Automation"
+alwaysApply: true
+---
+
+# Test Writing Standards
+
+## Spec File Rules
+
+- Use test.describe and test blocks properly.
+- Test cases must be independent.
+- No hard waits (page.waitForTimeout(5000)).
+- Use Playwright auto-waiting and locator expectations.
+- Use helper functions for repeated steps.
+- Keep test logic readable.
+
+## Naming Convention
+
+test.describe('Home Page Tests', () => {
+
+    test('Test Case ID:1 - Verify hero section is visible', async ({ page, testData }) => {
+        const homePage = new HomePage(page);
+        await homePage.navigateToHome(testData);
+        // test steps...
+    });
+  })
+
+
+## Assertions
+
+- Assertions should use Playwright's expect() API.
+- Use toBeVisible(), toHaveText(), toContainText() etc.
+- Avoid unnecessary console logs.
+
+## Never:
+- Put locator inside spec
+- Write business logic in spec
+- Mix test data directly in spec (always use fixtures)
+
+## Never — Skipping or Focusing Tests (mandatory, enforced by ESLint + Playwright):
+- Use `test.skip()` — every test case must always run without exception.
+- Use `test.fixme()` — fix the underlying issue; do not suppress the test.
+- Use `test.only()` — always forbidden; `forbidOnly: true` in playwright.config.ts will fail the run.
+- Use `describe.skip()` or `describe.only()` — entire suites must always run.
+- Use `it.skip()`, `xit()`, or `xdescribe()` — all are banned.
+- Conditionally skip with `test.skip(condition, reason)` — no exceptions.
+- Leave a test body empty as a way to silently pass — always add assertions.
+
+> Enforcement: `eslint.config.mjs` raises a hard error for all of the above.
+> Run `.\lint.ps1` before every commit to verify no skipped tests exist.

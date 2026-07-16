@@ -1,9 +1,0 @@
-{
-  "module": "Screening Configuration",
-  "route": "/configuration/sanction-screening-config",
-  "defaultSearchKeyword": "Batch Screening",
-  "invalidSearchKeyword": "zzzz-no-match",
-  "sampleWatchlistName": "Automation Watchlist Config",
-  "sampleDescription": "Automation test configuration",
-  "defaultMatchScore": "80"
-}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/fsd-inventory-schema.json",
+  "title": "FSD Inventory Schema",
+  "description": "Structured inventory extracted from a module Functional Specification Document (.docx). Source of truth for requirements.",
+  "type": "object",
+  "required": ["module", "sourcePath", "extractedAt", "sections"],
+  "properties": {
+    "module": { "type": "string", "minLength": 1 },
+    "sourcePath": { "type": "string", "pattern": ".*\\.(docx|DOCX)$" },
+    "extractedAt": { "type": "string" },
+    "documentTitle": { "type": ["string", "null"] },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["sectionId", "title", "summary"],
+        "properties": {
+          "sectionId": { "type": "string" },
+          "title": { "type": "string" },
+          "summary": { "type": "string" },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["requirementId", "text"],
+              "properties": {
+                "requirementId": { "type": "string" },
+                "text": { "type": "string" },
+                "kind": {
+                  "type": "string",
+                  "enum": ["functional", "validation", "security", "ui", "data", "other"]
+                }
+              }
+            }
+          },
+          "actors": { "type": "array", "items": { "type": "string" } },
+          "screens": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "assumptions": { "type": "array", "items": { "type": "string" } },
+    "gaps": { "type": "array", "items": { "type": "string" } }
+  }
+}

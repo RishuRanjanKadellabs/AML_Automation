@@ -1,0 +1,51 @@
+---
+description: QA automation pipeline system context — Excel-to-Playwright orchestration using existing agents and project structure.
+alwaysApply: false
+globs: specs/generated/qa-pipeline/**,results/qa-pipeline/**,.cursor/agents/qa-automation-pipeline.agent.md,.cursor/skills/qa-*/**
+---
+
+# QA Automation Pipeline — System Context
+
+## Purpose
+
+Orchestrate `Excel → Validate → Normalize → Execute → Generate → Heal → Report` for Clari5 AML using this repo’s existing Playwright framework and existing generator/healer agents.
+
+## Single new agent
+
+- `.cursor/agents/qa-automation-pipeline.agent.md` — orchestration only
+
+## Protected agents (never modify)
+
+`test-planner`, `test-generator`, `test-healer`, `headed-executor`, `headless-executor`, and `.github/agents/playwright-test-*`
+
+## Where things live
+
+| Asset | Location |
+|-------|----------|
+| Schemas / handoffs / templates | `specs/generated/qa-pipeline/` |
+| Runtime stage outputs | `results/qa-pipeline/` |
+| Generated specs / POM / locators | `tests/milestone2/` — mirror milestone1 layout (`pages/`, `test-cases/`, `objectrepositories/`). Not `tests/e2e/`. Not new modules under `tests/milestone1/`. |
+| Skills | `.cursor/skills/qa-*` |
+| Rules | `.cursor/rules/qa-automation-pipeline-*.mdc` |
+| Docs | `docs/qa-automation-pipeline.md` |
+
+## Generated test placement (required)
+
+```
+tests/milestone2/
+├── pages/<Module>/<Feature>Pages/
+├── test-cases/<Module>/<feature>Tests/
+└── objectrepositories/
+```
+
+Follow the existing Milestone 1 structure; place all **new** pipeline-generated automation under Milestone 2 only.
+
+## Framework
+
+Playwright + TypeScript + POM + `tests/fixtures/test-fixture.ts` + `environments.json` + Allure/`results/<env>/`
+
+## Trigger
+
+```
+Process the Excel file at <file-path> through the QA automation pipeline.
+```

@@ -1,0 +1,114 @@
+---
+description: Project context for AML Automation — what it does, architecture, run commands.
+globs:
+alwaysApply: true
+---
+
+# Project Context — AML Automation
+
+## What the project does
+
+AI-DLC pipeline that reads Excel (.xlsx) or .docx test case documents and generates Playwright tests. Targets the AML application at `https://kadelamldev.customerxps.com:2506` — login required (`EMAIL` / `PASSWORD` in `.env`).
+
+## Tech stack
+
+| Item | Version |
+|------|---------|
+| Playwright | ^1.60.0 |
+| mammoth | ^1.8.0 |
+| tsx | ^4.19.0 |
+| dotenv | ^17.2.3 |
+| allure-js-commons | ^3.x |
+| allure-commandline | ^2.x |
+
+---
+
+## High-level architecture
+
+```
+Excel / FSD+Figma → Cursor agents (.cursor) → tests/milestone2/
+                              ↓
+         Playwright → results/ (raw) → report/ (published Allure/Excel)
+```
+
+**New generated tests** go under `tests/milestone2/` (same layout as milestone1). Do **not** use `tests/e2e/` for new cases.
+
+---
+
+## Directory map
+
+| Path | Purpose |
+|------|--------|
+| **pipeline/src/** | Allure + Excel report builders (`allure-report.ts`, `excel-report.ts`) |
+| **pipeline/scripts/** | Milestone runners (`run-milestone.js`, failed re-run helpers) |
+| **pipeline/test-cases/** | Excel / .docx input files |
+| **pipeline/test-data/Milestone2/** | Stage 0 inputs: `FSD/`, `Figma/`, generated `Test Cases/` |
+| **specs/generated/** | Agent contracts: `qa-pipeline/`, `fsd-figma-pipeline/` (+ optional `plan.md` / prompts for planner/generator) |
+| **tests/milestone1/** | Milestone 1 suite — do not add new modules here |
+| **tests/milestone1/objectrepositories/** | Milestone 1 locators (pages import `../../../objectrepositories/…`) |
+| **tests/milestone1/pages/** | Milestone 1 page objects |
+| **tests/milestone1/test-cases/** | Milestone 1 specs |
+| **tests/milestone2/** | **Required home for all new generated tests** — same layout as milestone1 |
+| **tests/milestone2/objectrepositories/** | Milestone 2 locators |
+| **tests/milestone2/pages/<Module>/<Feature>Pages/** | New page objects |
+| **tests/milestone2/test-cases/<Module>/<feature>Tests/** | New spec files |
+| **tests/seed.spec.ts** | MCP seed for planner/generator browser setup |
+| **reporters/** | Playwright reporter code (`pipeline-reporter`, `detailed-log-reporter`) |
+| **results/** | Raw run output (`execution.log` replaced each run, `allure-results/`, `execution-report.json`, QA stage JSON) |
+| **report/automation-execution-cycle/** | Published Allure HTML, dashboard, Excel (built from `results/`) |
+| **test-results/** | Playwright failure attachments / screenshots |
+| **playwright-report/** | Playwright built-in HTML report |
+| **fixtures/** | env/test fixtures (`environments.json`, `test-fixture.ts`, `milestone1-shared-session.ts`, module `*-data.json`) |
+| **tests/helpers/** | Shared helpers (action-logger, healer-mode, module UI heal / API mocks) |
+| **.cursor/agents/** | Cursor agent commands |
+| **.env** | Credentials (gitignored) |
+
+---
+
+## Key flows
+
+- **Report (Allure + Excel):** `npm run pipeline:report`
+- **Allure only:** `npm run pipeline:report:allure`
+- **Run tests:** `npx playwright test` or `npm run pw:run`
+- **List milestones:** `npm run milestone:list`
+- **Run one milestone:** `npm run milestone:run -- 2` (or `milestone2`) — auto-discovers `tests/milestoneN/`
+- **Run a module path:** `npm run milestone:run -- 2 tests/milestone2/test-cases/ConfigurationModule/`
+- **Run all milestones:** `npm run milestone:all:run`
+- **Milestone1 full suite:** `npm run milestone1:full-suite:run`
+- **Setup browsers:** `npm run setup`
+- **New Excel→scripts:** use Cursor agent `qa-automation-pipeline` (not legacy CLI)
+
+### Milestone projects (auto-discovered)
+
+`playwright.config.ts` creates a `<milestone>-chromium` project for every `tests/milestoneN/` folder. Adding `milestone3` requires no config change.
+
+| Env | Purpose |
+|-----|---------|
+| `PW_MILESTONE_WORKERS` | Worker count for all milestone projects (`PW_MILESTONE1_WORKERS` still works) |
+| `PW_MILESTONES` | Optional filter, e.g. `1,2` or `milestone1,milestone2` |
+| `PW_HEADLESS` / `HEADLESS` | Headless mode for milestone projects |
+
+---
+
+## MCP (Planner / Generator / Healer)
+
+Project MCP is configured in `.cursor/mcp.json` using Playwright's built-in test server:
+
+```
+npx playwright run-test-mcp-server -c .
+```
+
+This exposes `planner_*`, `generator_*`, `test_*`, and `browser_*` tools required by agents in `.cursor/agents/`.
+
+After changing MCP config, restart MCP servers in Cursor (Settings → MCP → reload). Disable any global `@playwright/mcp` server to avoid tool conflicts — the test MCP server includes all browser tools.
+
+---
+
+## Where to add new features
+
+- **New environment:** `fixtures/environments.json`
+- **New Excel / source cases:** `pipeline/test-cases/` or `pipeline/test-data/`
+- **New Playwright specs / page objects / locators:** `tests/milestone2/` only — locators under `tests/milestone2/objectrepositories/` (not a shared `tests/objectrepositories/`). Do **not** create or extend `tests/e2e/` for new work. Do **not** add new modules under `tests/milestone1/`.
+- **New helper:** `tests/helpers/` (shared cross-module logic; keep feature-specific healers in named helper files)
+- **QA automation pipeline (Excel→automation orchestration):** agent `qa-automation-pipeline`; schemas/templates in `specs/generated/qa-pipeline/`; generated code under `tests/milestone2/`; stage outputs in `results/qa-pipeline/` (see `docs/qa-automation-pipeline.md`). Does not modify existing agents.
+- **FSD + Figma HTML Stage 0 (requirements→Excel):** agent `fsd-figma-pipeline`; inputs from `pipeline/test-data/Milestone2/{FSD,Figma}/` (user names files); Excel written to `Milestone2/Test Cases/`; process docs under `.cursor/system-context/fsd-figma-pipeline.mdc` only; handoff to `qa-automation-pipeline` after Excel approval. FSD wins over Figma HTML.

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/alignment-report-schema.json",
+  "title": "FSD vs Figma HTML Alignment Report",
+  "description": "Conflicts and gaps. FSD always wins for requirements.",
+  "type": "object",
+  "required": ["module", "generatedAt", "fsdWins", "items"],
+  "properties": {
+    "module": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "fsdWins": { "type": "boolean", "const": true },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "aligned": { "type": "integer" },
+        "fsdOnly": { "type": "integer" },
+        "htmlOnly": { "type": "integer" },
+        "conflicts": { "type": "integer" }
+      }
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "status", "resolution", "detail"],
+        "properties": {
+          "id": { "type": "string" },
+          "status": {
+            "type": "string",
+            "enum": ["aligned", "fsdOnly", "htmlOnly", "conflict"]
+          },
+          "fsdRef": { "type": ["string", "null"] },
+          "htmlRef": { "type": ["string", "null"] },
+          "resolution": {
+            "type": "string",
+            "enum": ["useFsd", "clarify", "htmlAssistOnly", "skip"]
+          },
+          "detail": { "type": "string" }
+        }
+      }
+    }
+  }
+}
