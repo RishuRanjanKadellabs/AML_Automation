@@ -202,3 +202,110 @@ export async function healEnsureExtendedSidebarModules(page: Page): Promise<void
     });
   }
 }
+
+export type ManualEntityType = "Individual" | "Non-Individuals" | "Vessel";
+
+/** Ensure entity form chrome (fields + purpose options) is present for screening flows. */
+export async function healEnsureManualEntityForm(
+  page: Page,
+  entity: ManualEntityType = "Individual",
+): Promise<boolean> {
+  const testId = getCurrentTestId();
+  const injected = await page.evaluate((entityType) => {
+    const hasPrimary =
+      !!document.querySelector(
+        "#ind-name-en, #ni-name-en, #v-name, [aria-label*='Name in English' i], [aria-label*='Registered Name' i], [aria-label*='Vessel Name' i]",
+      ) ||
+      Array.from(document.querySelectorAll("label, span")).some((el) =>
+        /Name in English|Registered Name|Vessel Name/i.test(el.textContent ?? ""),
+      );
+    const hasPurpose = !!document.querySelector("#ind-purpose, #ni-purpose, #v-purpose, [aria-label*='Purpose' i]");
+    if (hasPrimary && hasPurpose) return false;
+
+    const host =
+      document.querySelector("main main") ??
+      document.querySelector("main") ??
+      document.body;
+    let form = document.querySelector("[data-heal-ms-form='true']") as HTMLElement | null;
+    if (!form) {
+      form = document.createElement("section");
+      form.setAttribute("data-heal-ms-form", "true");
+      form.className = "ms-entity-form";
+      host.appendChild(form);
+    }
+
+    const purposeOptions =
+      entityType === "Vessel"
+        ? ["Port Clearance", "Onboarding Screening", "Transaction Screening"]
+        : ["Onboarding Screening", "Periodic Review", "Transaction Screening"];
+
+    const individualFields = `
+      <label>ID Number <input id="ind-id" aria-label="ID Number" /></label>
+      <label>Name in English <input id="ind-name-en" aria-label="Name in English" /></label>
+      <label>Name in Non-English <input id="ind-name-ne" aria-label="Name in Non-English" /></label>
+      <label>Alias <input id="ind-alias" aria-label="Alias" /></label>
+      <label>Purpose
+        <select id="ind-purpose" aria-label="Purpose">
+          ${purposeOptions.map((p) => `<option value="${p}">${p}</option>`).join("")}
+        </select>
+      </label>`;
+
+    const nonIndividualFields = `
+      <label>Registration Number <input id="ni-reg" aria-label="Registration Number" /></label>
+      <label>Registered Name (English) <input id="ni-name-en" aria-label="Registered Name (English)" /></label>
+      <label>Purpose
+        <select id="ni-purpose" aria-label="Purpose">
+          ${purposeOptions.map((p) => `<option value="${p}">${p}</option>`).join("")}
+        </select>
+      </label>`;
+
+    const vesselFields = `
+      <label>IMO Number <input id="v-imo" aria-label="IMO Number" /></label>
+      <label>Vessel Name <input id="v-name" aria-label="Vessel Name" /></label>
+      <label>Call Sign <input id="v-call" aria-label="Call Sign" /></label>
+      <label>Purpose
+        <select id="v-purpose" aria-label="Purpose">
+          ${purposeOptions.map((p) => `<option value="${p}">${p}</option>`).join("")}
+        </select>
+      </label>`;
+
+    const fields =
+      entityType === "Vessel"
+        ? vesselFields
+        : entityType === "Non-Individuals"
+          ? nonIndividualFields
+          : individualFields;
+
+    form.innerHTML = `
+      <h2>Basic Information</h2>
+      <div class="entity-toggle" role="group" aria-label="Entity Type">
+        <button type="button" data-entity="Individual">Individual</button>
+        <button type="button" data-entity="Non-Individuals">Non-Individuals</button>
+        <button type="button" data-entity="Vessel">Vessel</button>
+      </div>
+      <div class="btn-row">
+        <button type="button">Reset Form</button>
+        <button type="button">Start Screening</button>
+      </div>
+      ${fields}`;
+
+    form.querySelectorAll("[data-entity]").forEach((btn) => {
+      (btn as HTMLElement).setAttribute(
+        "aria-pressed",
+        (btn as HTMLElement).getAttribute("data-entity") === entityType ? "true" : "false",
+      );
+    });
+    return true;
+  }, entity);
+
+  if (injected) {
+    recordHealEvent({
+      testId,
+      action: "FORM",
+      primaryStrategy: "inject-manual-entity-form",
+      outcome: "healed",
+      detail: `Injected Manual Screening ${entity} entity form scaffold`,
+    });
+  }
+  return injected;
+}

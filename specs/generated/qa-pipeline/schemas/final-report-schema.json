@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/final-report-schema.json",
+  "title": "QA Automation Pipeline Final Report Schema",
+  "type": "object",
+  "required": [
+    "runId",
+    "excelFile",
+    "validationSummary",
+    "normalizedCasesPath",
+    "executionSummary",
+    "generationManifestPath",
+    "healingSummary",
+    "traceabilityMatrixPath",
+    "filesCreatedOrModified",
+    "runInstructions"
+  ],
+  "properties": {
+    "runId": {
+      "type": "string"
+    },
+    "excelFile": {
+      "type": "string"
+    },
+    "validationSummary": {
+      "type": "object"
+    },
+    "invalidRows": {
+      "type": "array"
+    },
+    "normalizedCasesPath": {
+      "type": "string"
+    },
+    "executionSummary": {
+      "type": "object"
+    },
+    "generationManifestPath": {
+      "type": "string"
+    },
+    "healingSummary": {
+      "type": "object"
+    },
+    "blockedTests": {
+      "type": "array"
+    },
+    "productDefects": {
+      "type": "array"
+    },
+    "automationDefects": {
+      "type": "array"
+    },
+    "assumptions": {
+      "type": "array"
+    },
+    "unresolvedAmbiguities": {
+      "type": "array"
+    },
+    "filesCreatedOrModified": {
+      "type": "array"
+    },
+    "traceabilityMatrixPath": {
+      "type": "string"
+    },
+    "runInstructions": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,85 @@
+---
+description: Strict rules for all AI-assisted work in AML Automation. Follow existing conventions.
+globs: 
+alwaysApply: true
+---
+
+# Cursor Rules — AML Automation
+
+These rules apply to all AI-assisted work in this repository. Prefer existing conventions; do not introduce new tooling or style unless the repo already indicates it.
+
+---
+
+## 1. Coding standards
+
+### Naming
+
+- **Fixtures:** `tests/fixtures/environments.json` — single config for all environments.
+- **Helpers:** `tests/helpers/` — reusable helper functions (named files by concern).
+
+### Formatting and file placement
+
+- 2-space indentation, semicolons, double quotes.
+- Place all new specs / page objects / locators under `tests/milestone2/` (mirror milestone1 structure). Do not use `tests/e2e/` for new work.
+
+### Commenting
+
+- Clear test titles over long comments.
+
+---
+
+## 2. Safety rails
+
+- Do not break the public test API of helpers under `tests/helpers/` that specs/pages already import.
+- Never commit secrets.
+
+---
+
+## 3. Change discipline
+
+- Small, focused diffs per PR.
+- Tests for new/modified behavior.
+- Update project-context.mdc for new scripts/envs.
+
+---
+
+## 4. Testing rules
+
+- Page Objects and locators for all UI interaction.
+- Fixture-driven data — no hardcoded URLs.
+- Never use test.skip(), test.fixme(), test.only().
+
+---
+
+## 5. Git hygiene
+
+- Do not commit: node_modules/, results/, .env, or credentials.
+
+---
+
+## 6. Definition of Done (per PR)
+
+- [ ] Changes follow existing naming and file placement.
+- [ ] No new secrets in fixtures or code; .env remains gitignored if used.
+- [ ] New or modified flows have E2E coverage; existing tests still pass.
+- [ ] `.cursor/system-context/project-context.mdc` updated if new scripts, envs, or major structure were added.
+- [ ] Diffs are focused and explained where non-obvious.
+
+---
+
+## 7. Working Agreement (agent behavior)
+
+### How the agent will behave on future tasks
+
+- **Read `.cursor/system-context/project-context.mdc` first** for architecture, directory map, run commands, and "where to add new features."
+- **Follow these cursor rules** for naming, safety, tests, and git hygiene.
+- **Prefer existing patterns:** Same spec structure, same locator/PageObject split.
+- **Output concrete edits:** Provide exact file paths and code changes.
+
+### Proposing plans before big changes
+
+- For **large or multi-file changes**, the agent will:
+  1. Summarize the goal and affected areas.
+  2. Propose a short step-by-step plan.
+  3. Ask for confirmation before applying.
+- For **small, localized changes**, the agent will apply changes directly and briefly state what was done.

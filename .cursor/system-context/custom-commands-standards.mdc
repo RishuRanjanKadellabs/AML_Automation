@@ -1,0 +1,31 @@
+---
+description: "Defines how reusable helper functions should be implemented for AML Automation"
+alwaysApply: true
+---
+
+# Helper Functions Standards
+
+## tests/helpers/ Usage
+
+- Put shared / cross-module helpers under `tests/helpers/`.
+- Prefer named files by concern (e.g. `action-logger.ts`, `healer-mode.ts`, `*-ui-heal.ts`).
+- Examples:
+  - navigation helpers
+  - common action methods
+  - element visibility checks
+  - module-specific heal / API mock helpers
+
+Example:
+
+```typescript
+export async function navigateToPage(page: Page, baseUrl: string, path: string): Promise<void> {
+  await page.goto(`${baseUrl}${path}`);
+  await page.waitForLoadState("domcontentloaded");
+}
+```
+
+## Rules
+
+- Do not duplicate reusable logic in page objects.
+- If used in more than 2 places → move into `tests/helpers/`.
+- Helper functions must be generic and reusable (or scoped clearly to one module).

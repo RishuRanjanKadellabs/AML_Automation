@@ -2,13 +2,34 @@ import * as path from "path";
 import * as fs from "fs";
 import * as dotenv from "dotenv";
 import ExcelJS from "exceljs";
-import type { ExecutionReport } from "./results-writer";
 
 dotenv.config({ path: path.resolve(__dirname, "..", "..", ".env") });
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 const RESULTS_DIR = path.join(PROJECT_ROOT, "results");
 const REPORT_DIR = path.join(PROJECT_ROOT, "report", "automation-execution-cycle");
+
+/** Shape of results/<env>/execution-report.json (written by pipeline reporter). */
+interface ExecutionReport {
+  executedAt: string;
+  finishedAt: string;
+  environment: string;
+  baseUrl: string;
+  totalTestCases: number;
+  passed: number;
+  failed: number;
+  skipped: number;
+  durationMs: number;
+  testCases: Array<{
+    id: string;
+    title: string;
+    suite: string;
+    status: string;
+    steps?: Array<{ description: string; status: string; error?: string }>;
+    expectedResults?: Array<{ description: string; status: string; error?: string }>;
+    error?: string;
+  }>;
+}
 
 interface EnvReport {
   envName: string;

@@ -1,6 +1,6 @@
 /**
  * Writes a timestamped line log for every test case:
- *   results/test-run.log          — full per-test log (START, action steps, PASS/FAIL)
+ *   results/execution.log         — single run log (replaced at the start of each run)
  *   results/test-run-detail.json  — structured per-test records (all attempts)
  */
 
@@ -17,8 +17,21 @@ import type {
 
 const PROJECT_ROOT = path.resolve(__dirname, "..");
 const RESULTS_DIR = path.join(PROJECT_ROOT, "results");
-const LOG_FILE = path.join(RESULTS_DIR, "test-run.log");
+/** Sole text log for a Playwright run — truncated on each onBegin. */
+const LOG_FILE = path.join(RESULTS_DIR, "execution.log");
 const DETAIL_FILE = path.join(RESULTS_DIR, "test-run-detail.json");
+
+/** Remove every *.log under results/ so only execution.log remains after onBegin. */
+function clearResultsLogFiles(): void {
+  if (!fs.existsSync(RESULTS_DIR)) {
+    return;
+  }
+  for (const name of fs.readdirSync(RESULTS_DIR)) {
+    if (name.toLowerCase().endsWith(".log")) {
+      fs.unlinkSync(path.join(RESULTS_DIR, name));
+    }
+  }
+}
 
 interface TestLogEntry {
   testId: string;
@@ -74,6 +87,7 @@ class DetailedLogReporter implements Reporter {
   onBegin(_config: FullConfig, suite: Suite): void {
     this.startTime = new Date().toISOString();
     fs.mkdirSync(RESULTS_DIR, { recursive: true });
+    clearResultsLogFiles();
     fs.writeFileSync(LOG_FILE, "", "utf-8");
 
     const env = process.env.ENV || "production";
@@ -82,9 +96,10 @@ class DetailedLogReporter implements Reporter {
 
     this.write("");
     this.write("═".repeat(72));
-    this.write(`  AML Test Run Log — ${this.startTime}`);
+    this.write(`  AML execution.log — ${this.startTime}`);
     this.write(`  Environment: ${env}  |  Base URL: ${baseUrl}`);
     this.write(`  Total tests scheduled: ${total}`);
+    this.write(`  Log file: results/execution.log (replaced each run)`);
     this.write("═".repeat(72));
     this.write("");
   }

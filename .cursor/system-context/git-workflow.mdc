@@ -1,0 +1,33 @@
+---
+description: Enforce PR-first workflow (no direct commits to main). Feature branches only.
+alwaysApply: true
+---
+# Git Workflow Rules (PR-First, Main Protected)
+## Non-negotiable rules
+1. NEVER commit to `main` or push directly to `main`.
+2. ALWAYS work in a feature branch created from the latest `main`.
+3. Feature branch naming must be:
+  - `feature-<TICKET>` (example: `feature-KDL-101`)
+4. Every change must be reviewed via a Pull Request (PR) into `main`.
+5. Every PR must include:
+  - Ticket link (e.g., KDL-101)
+  - Summary of changes
+  - Test evidence
+  - Risk & rollback notes (if relevant)
+## Required workflow (must follow in this order)
+1. Fetch latest main and sync:
+  - `git checkout main`
+  - `git pull origin main`
+2. Create feature branch:
+  - `git checkout -b feature-<TICKET>`
+3. Make code changes ONLY on the feature branch.
+4. Commit with message:
+  - `<TICKET>: <short summary>`
+5. Push feature branch:
+  - `git push -u origin feature-<TICKET>`
+6. Open PR to `main`.
+## Safety checks
+Before any "finish" step, always:
+- confirm branch name matches `feature-<TICKET>`
+- confirm you are NOT on `main`
+- list changed files and summarize impact

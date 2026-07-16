@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
-import Customer360Locators from "../../../../objectrepositories/Customer360Locators";
+import Customer360Locators from "../../../objectrepositories/Customer360Locators";
 import {
   CUSTOMER360_API_ROUTE_PATTERNS,
   formatCustomerIdForApp,

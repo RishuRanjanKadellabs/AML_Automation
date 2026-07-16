@@ -156,7 +156,11 @@ function mergeEnvironmentProperties(envFilter: string[] | null): void {
   }
 
   if (allProps.length > 0) {
-    allProps.unshift(`Report.Generated = ${new Date().toISOString()}`);
+    // Asia/Kolkata (IST, UTC+5:30) — avoid UTC "Z" timestamps in Environment panel
+    const generatedIst = new Date().toLocaleString("sv-SE", {
+      timeZone: "Asia/Kolkata",
+    });
+    allProps.unshift(`Report.Generated = ${generatedIst} IST`);
     allProps.unshift(`Report.Type = Automation Execution Cycle`);
 
     fs.writeFileSync(

@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
-import CustomListManagerLocators from "../../../../objectrepositories/CustomListManagerLocators";
+import CustomListManagerLocators from "../../../objectrepositories/CustomListManagerLocators";
 import { getCurrentTestId } from "../../../../helpers/action-logger";
 import { HealerMode } from "../../../../helpers/healer-mode";
 import {

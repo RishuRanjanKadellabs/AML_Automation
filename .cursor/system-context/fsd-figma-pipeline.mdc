@@ -1,0 +1,87 @@
+---
+description: FSD + Figma HTML Stage 0 — Milestone2 folder layout (FSD/, Figma/, Test Cases/). FSD wins. Cursor-only process docs.
+alwaysApply: false
+globs: specs/generated/fsd-figma-pipeline/**,results/fsd-figma-pipeline/**,.cursor/agents/fsd-figma-pipeline.agent.md,.cursor/skills/qa-fsd*/**,.cursor/skills/qa-figma*/**,.cursor/skills/qa-usecase*/**,.cursor/skills/qa-excel-testcase-generation/**,pipeline/test-data/Milestone2/**
+---
+
+# FSD + Figma HTML Pipeline — System Context (.cursor only)
+
+Authoritative process docs live **under `.cursor/`** (this file + agent + skills + rules).
+
+## Purpose
+
+Stage 0: **FSD (source of truth)** + **Figma HTML (UI/nav assist)** → use cases → Excel in Milestone2 Test Cases → gate → `qa-automation-pipeline` → Playwright under `tests/milestone2/`.
+
+## Priority
+
+| Source | Role |
+|--------|------|
+| FSD `.docx` | Requirements, rules, expected results, use-case scope |
+| Figma HTML | Navigation, screens, labels, controls for steps/locators |
+
+**Conflicts → FSD wins.**
+
+## Folder layout (canonical)
+
+```
+pipeline/test-data/Milestone2/
+  FSD/           # place / select FSD .docx files
+  Figma/         # place / select Figma HTML files
+  Test Cases/    # generated Excel test-case workbooks written here
+```
+
+User **names** which files to use each run. Do not auto-pick an arbitrary file when multiple exist without confirmation.
+
+## Cursor layout
+
+| What | Path |
+|------|------|
+| Agent | `.cursor/agents/fsd-figma-pipeline.agent.md` |
+| This guide | `.cursor/system-context/fsd-figma-pipeline.mdc` |
+| Guardrails | `.cursor/rules/fsd-figma-pipeline-guardrails.mdc` |
+| Skills | `qa-fsd-document-parsing`, `qa-figma-html-inventory`, `qa-fsd-figma-alignment`, `qa-usecase-design-from-fsd`, `qa-excel-testcase-generation` |
+| Schemas / handoffs | `specs/generated/fsd-figma-pipeline/` |
+
+## Trigger
+
+```
+Process FSD + Figma HTML from Milestone2
+FSD: <FsdFileName.docx>
+Figma: <FigmaFileName.html>
+Test Cases: <OutputWorkbook.xlsx>
+```
+
+Resolved paths:
+
+- FSD → `pipeline/test-data/Milestone2/FSD/<FsdFileName.docx>`
+- Figma → `pipeline/test-data/Milestone2/Figma/<FigmaFileName.html>`
+- Excel → `pipeline/test-data/Milestone2/Test Cases/<OutputWorkbook.xlsx>`
+
+Stage JSON under `results/fsd-figma-pipeline/<resultsKey>/`.
+
+## Day-to-day UX
+
+1. Add/update files under Milestone2 `FSD/` and `Figma/`
+2. Tell the agent the **exact FSD + Figma (+ Excel out) filenames**
+3. Approve Excel when prompted
+4. Handoff to `qa-automation-pipeline` → `tests/milestone2/`
+
+## Workflow
+
+```
+Named FSD + named Figma HTML
+  → inventories → alignment (FSD wins) → use cases
+  → Excel in Milestone2/Test Cases/
+  → [Approve Excel]
+  → qa-automation-pipeline → Playwright
+```
+
+## Excel column rules (agents)
+
+- **Acceptance Criteria** = plain-English measurable pass conditions only.
+- Do **not** fill Acceptance Criteria with `REQ-*`, `FSD S*`, or section IDs.
+- Keep FSD/requirement traceability in Stage 0 JSON (`use-cases.json`, coverage matrix) or a dedicated Requirement ID column.
+
+## Protected agents — never modify
+
+`test-planner`, `test-generator`, `test-healer`, executors; invoke `qa-automation-pipeline` only after Excel approval.

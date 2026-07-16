@@ -1,0 +1,41 @@
+---
+description: QA automation pipeline quality gates, validation row statuses, and case state model.
+alwaysApply: false
+globs: specs/generated/qa-pipeline/**,results/qa-pipeline/**,.cursor/agents/qa-automation-pipeline.agent.md
+---
+
+# QA Automation Pipeline — Quality Gates
+
+## Row validation statuses
+
+`Valid` | `Valid with warnings` | `Invalid` | `Requires clarification`
+
+Invalid → no generation.
+
+## Gate A — Generation
+
+- Excel row valid (or valid with warnings)
+- Traceable test-case ID
+- Steps and expected results sufficiently clear
+- Automation feasibility confirmed
+- Assumptions documented
+- Framework identified (Playwright + TS POM)
+
+## Gate B — Healing eligibility
+
+- Syntax OK; project conventions followed
+- Meaningful assertions; no hard-coded credentials
+- Traceability to source TC ID
+
+## Gate C — Final
+
+- Executed successfully **or** blocked with documented external reason
+- Healing completed
+- No unjustified assertion weakening
+- Risks documented; final report complete
+
+## Case states
+
+Received → Input validated → Invalid | Normalized → Ready for execution → Executed | Execution blocked → Ready for generation → Generated → Ready for healing → Healing in progress → Verified | Failed verification → Final | Requires clarification
+
+Record timestamp, result, evidence, reason on each transition.

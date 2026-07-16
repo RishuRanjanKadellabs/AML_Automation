@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/html-inventory-schema.json",
+  "title": "Figma HTML Inventory Schema",
+  "description": "UI/navigation inventory from Figma-exported HTML. Assists steps and locators; must not override FSD.",
+  "type": "object",
+  "required": ["module", "sourcePaths", "extractedAt", "screens"],
+  "properties": {
+    "module": { "type": "string" },
+    "sourcePaths": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "extractedAt": { "type": "string" },
+    "screens": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["screenId", "name"],
+        "properties": {
+          "screenId": { "type": "string" },
+          "name": { "type": "string" },
+          "routeHint": { "type": ["string", "null"] },
+          "navigation": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Breadcrumb or menu path labels"
+          },
+          "controls": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["controlId", "label", "kind"],
+              "properties": {
+                "controlId": { "type": "string" },
+                "label": { "type": "string" },
+                "kind": {
+                  "type": "string",
+                  "enum": ["button", "link", "input", "select", "table", "tab", "checkbox", "radio", "modal", "other"]
+                },
+                "selectorHint": { "type": ["string", "null"] }
+              }
+            }
+          }
+        }
+      }
+    },
+    "navGraph": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "via": { "type": "string" }
+        }
+      }
+    }
+  }
+}

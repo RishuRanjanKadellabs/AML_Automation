@@ -1,6 +1,6 @@
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
-import KycGapReportLocators from "../../../../objectrepositories/KycGapReportLocators";
+import KycGapReportLocators from "../../../objectrepositories/KycGapReportLocators";
 import kycGapReportData from "../../../../../fixtures/kyc-gap-report-data.json";
 import { HealerMode } from "../../../../helpers/healer-mode";
 import { getCurrentTestId } from "../../../../helpers/action-logger";
@@ -70,7 +70,7 @@ class KycGapReportPage extends BasePage {
   }
 
   get searchInput(): Locator {
-    return this.page.locator(KycGapReportLocators.searchInput);
+    return this.page.locator(KycGapReportLocators.searchInput).first();
   }
 
   get gapReportFilterComboboxes(): Locator {

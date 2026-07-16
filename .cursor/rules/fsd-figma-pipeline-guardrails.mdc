@@ -1,0 +1,32 @@
+---
+description: FSD wins over Figma HTML; no invented requirements; Stage 0 → Excel → QA pipeline handoff only.
+globs: specs/generated/fsd-figma-pipeline/**,results/fsd-figma-pipeline/**,pipeline/test-data/Milestone2/**/*
+alwaysApply: false
+---
+
+# FSD + Figma HTML — Guardrails
+
+## Source priority
+
+1. **FSD** = source of truth for behaviour, rules, expected results, scope.
+2. **Figma HTML** = navigation, UI structure, labels, controls only.
+3. On conflict → **FSD wins**; record the conflict in `alignment-report.json`.
+4. HTML-only controls → `assumption` or `requiresClarification`, never silent new requirements.
+
+## Must not
+
+- Invent FSD sections, APIs, credentials, or expected outcomes
+- Modify protected agents (planner/generator/healer/executors/qa-automation-pipeline file)
+- Skip Excel schema validation
+- Generate Playwright scripts before Excel gate approval (unless user auto-approves)
+- Place new specs under `tests/e2e/` or new modules under `tests/milestone1/`
+
+## Must
+
+- Read FSD only from `pipeline/test-data/Milestone2/FSD/` (user-named file)
+- Read Figma HTML only from `pipeline/test-data/Milestone2/Figma/` (user-named file)
+- Write Excel only to `pipeline/test-data/Milestone2/Test Cases/`
+- Trace: FSD section → use case → Excel TC ID → (after handoff) script
+- Use Excel columns compatible with `specs/generated/qa-pipeline/schemas/excel-input-schema.json`
+- Mask secrets/PII in logs and reports
+- Keep process documentation under `.cursor/` only (see `system-context/fsd-figma-pipeline.mdc`)

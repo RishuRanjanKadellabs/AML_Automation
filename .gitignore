@@ -1,6 +1,7 @@
 allure-report/
 allure-results/
 results/
+report/
 .playwright-mcp/
 node_modules/
 playwright-report/
@@ -8,7 +9,6 @@ test-results/
 blob-report/
 playwright/.cache/
 playwright/.auth/
-.cursor/
 .vscode/
 .env
 dist/
