@@ -4,10 +4,16 @@
   "title": "Excel Generation Manifest",
   "description": "Manifest for Excel written from FSD use cases for handoff to qa-automation-pipeline.",
   "type": "object",
-  "required": ["module", "excelPath", "generatedAt", "rowCount", "columns", "gateStatus"],
+  "required": ["module", "excelPath", "generatedAt", "rowCount", "columns", "gateStatus", "excelMode"],
   "properties": {
     "module": { "type": "string" },
     "excelPath": { "type": "string", "pattern": ".*\\.xlsx$" },
+    "excelMode": {
+      "type": "string",
+      "enum": ["create", "reconcile"],
+      "description": "create when workbook was missing; reconcile when existing workbook was updated in place."
+    },
+    "milestone": { "type": "integer", "enum": [1, 2] },
     "generatedAt": { "type": "string" },
     "rowCount": { "type": "integer", "minimum": 0 },
     "columns": {
@@ -17,9 +23,16 @@
     },
     "gateStatus": {
       "type": "string",
-      "enum": ["AwaitingReview", "Approved", "Rejected", "AutoApproved"]
+      "enum": ["AwaitingReview", "Approved", "Rejected", "AutoApproved", "BlockedCoverage", "AwaitingRemovalApproval"]
     },
     "useCaseIds": { "type": "array", "items": { "type": "string" } },
-    "validationReportPath": { "type": ["string", "null"] }
+    "validationReportPath": { "type": ["string", "null"] },
+    "tcDeltaReportPath": { "type": ["string", "null"] },
+    "featureDeltaReportPath": { "type": ["string", "null"] },
+    "activeFsdPath": { "type": ["string", "null"] },
+    "baselineFsdPath": { "type": ["string", "null"] },
+    "activeFigmaPath": { "type": ["string", "null"] },
+    "baselineFigmaPath": { "type": ["string", "null"] },
+    "backupPath": { "type": ["string", "null"] }
   }
 }

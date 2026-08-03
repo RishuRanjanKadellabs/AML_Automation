@@ -3,7 +3,9 @@ import * as dotenv from "dotenv";
 import * as fs from "fs";
 import * as path from "path";
 
-dotenv.config();
+// quiet: true — dotenv v17 prints "◇ injected env…" to stdout by default; that
+// breaks Playwright MCP (stdio must stay JSON-RPC only).
+dotenv.config({ quiet: true });
 
 import { loadTestData, getEnv } from "./fixtures/env";
 
@@ -90,7 +92,8 @@ const milestoneProjects: Project[] = milestones.map((milestone) => ({
   use: milestoneUse,
 }));
 
-console.log(
+// stderr only — stdout pollution breaks MCP JSON-RPC for run-test-mcp-server.
+console.error(
   `\n[playwright.config] ENV=${env} BASE_URL=${baseURL} milestones=[${milestones.join(", ")}] workers=${milestoneWorkers} headless=${milestoneHeadless}\n`,
 );
 

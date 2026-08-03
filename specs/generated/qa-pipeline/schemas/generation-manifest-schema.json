@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/generation-manifest-schema.json",
+  "title": "QA Pipeline Generation Manifest",
+  "type": "object",
+  "required": [
+    "eligibleCaseIds",
+    "generatedCaseIds",
+    "eligibleUiCaseIds",
+    "liveUiValidatedCaseIds",
+    "liveUiEvidenceByCase",
+    "liveUiCoveragePercent",
+    "batchCount",
+    "batchHandoffs",
+    "status"
+  ],
+  "properties": {
+    "pipelineMode": {
+      "type": "string",
+      "enum": ["create", "reconcile"],
+      "description": "create = full eligible set; reconcile = delta add+update only, with retire removals."
+    },
+    "tcDeltaReportPath": { "type": ["string", "null"] },
+    "deltaCaseIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true,
+      "description": "add + update IDs in reconcile generate scope"
+    },
+    "retiredCaseIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "batchCount": { "const": 6 },
+    "currentBatchIndex": { "type": ["integer", "null"], "minimum": 1, "maximum": 6 },
+    "batchPlan": { "type": "string" },
+    "eligibleCaseIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "generatedCaseIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "eligibleUiCaseIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "liveUiValidatedCaseIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "liveUiEvidenceByCase": { "type": "object" },
+    "liveUiCoveragePercent": { "type": "number", "minimum": 0, "maximum": 100 },
+    "batchHandoffs": { "type": "object" },
+    "orchestratorAgentType": { "const": "qa-automation-pipeline" },
+    "orchestratorAgentId": { "type": "string", "minLength": 8 },
+    "generatorAgentType": { "const": "playwright-test-generator" },
+    "generatorAgentId": { "type": "string", "minLength": 8 },
+    "status": { "enum": ["Incomplete", "Complete", "Blocked"] }
+  }
+}

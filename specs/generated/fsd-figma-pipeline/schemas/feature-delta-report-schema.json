@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/feature-delta-report-schema.json",
+  "title": "Stage 0 Feature Delta Report",
+  "description": "FSD (and optional Figma) feature/requirement change report when a revised source is supplied — especially *_New.docx / *_New.html — compared to a baseline without _New. Complements tc-delta-report.json (Excel TC add/update/retire).",
+  "type": "object",
+  "required": [
+    "resultsKey",
+    "generatedAt",
+    "milestone",
+    "sourceRevision",
+    "featuresAdded",
+    "featuresRemoved",
+    "featuresUpdated",
+    "featuresUnchanged",
+    "summary"
+  ],
+  "properties": {
+    "resultsKey": { "type": "string", "minLength": 1 },
+    "generatedAt": { "type": "string" },
+    "milestone": {
+      "type": "integer",
+      "enum": [1, 2]
+    },
+    "sourceRevision": {
+      "type": "object",
+      "required": [
+        "fsdNewDetected",
+        "figmaNewDetected",
+        "activeFsdPath",
+        "activeFigmaPath",
+        "resolutionMode"
+      ],
+      "properties": {
+        "fsdNewDetected": {
+          "type": "boolean",
+          "description": "True when the active FSD filename contains _New before the extension."
+        },
+        "figmaNewDetected": {
+          "type": "boolean",
+          "description": "True when the active Figma HTML filename contains _New before the extension."
+        },
+        "activeFsdPath": {
+          "type": "string",
+          "description": "Resolved FSD used as source of truth for this Stage 0 run."
+        },
+        "baselineFsdPath": {
+          "type": ["string", "null"],
+          "description": "Prior FSD without _New (or previous inventory path) used for feature diff; null when unavailable."
+        },
+        "activeFigmaPath": {
+          "type": "string",
+          "description": "Resolved Figma HTML used for UI steps this run."
+        },
+        "baselineFigmaPath": {
+          "type": ["string", "null"],
+          "description": "Prior Figma without _New used for UI change notes; null when unavailable."
+        },
+        "baselineFsdInventoryPath": {
+          "type": ["string", "null"],
+          "description": "Optional path to parsed baseline inventory (fsd-inventory.baseline.json)."
+        },
+        "resolutionMode": {
+          "type": "string",
+          "enum": [
+            "user-named",
+            "auto-new",
+            "explicit-new",
+            "baseline-only"
+          ],
+          "description": "user-named = exact filenames from trigger; auto-new = preferred *_New when present; explicit-new = user named *_New; baseline-only = no _New and no prior inventory to diff."
+        }
+      }
+    },
+    "featuresAdded": {
+      "type": "array",
+      "description": "FSD sections / features present in the new FSD but not in the baseline.",
+      "items": { "$ref": "#/$defs/featureChange" }
+    },
+    "featuresRemoved": {
+      "type": "array",
+      "description": "FSD sections / features present in the baseline but not in the new FSD.",
+      "items": { "$ref": "#/$defs/featureChange" }
+    },
+    "featuresUpdated": {
+      "type": "array",
+      "description": "Same section/feature identity with requirement text or scope changes.",
+      "items": { "$ref": "#/$defs/featureChange" }
+    },
+    "featuresUnchanged": {
+      "type": "array",
+      "description": "Sections with no material requirement drift (optional short list or ids only).",
+      "items": { "$ref": "#/$defs/featureChange" }
+    },
+    "requirementsAdded": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/requirementChange" }
+    },
+    "requirementsRemoved": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/requirementChange" }
+    },
+    "requirementsUpdated": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/requirementChange" }
+    },
+    "uiChanges": {
+      "type": "object",
+      "description": "Optional Figma-level UI deltas when baseline HTML inventory exists.",
+      "properties": {
+        "controlsAdded": { "type": "array", "items": { "type": "string" } },
+        "controlsRemoved": { "type": "array", "items": { "type": "string" } },
+        "controlsRelabeled": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "screen": { "type": "string" }
+            }
+          }
+        },
+        "flowsAdded": { "type": "array", "items": { "type": "string" } },
+        "flowsRemoved": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "featuresAddedCount",
+        "featuresRemovedCount",
+        "featuresUpdatedCount",
+        "featuresUnchangedCount"
+      ],
+      "properties": {
+        "featuresAddedCount": { "type": "integer", "minimum": 0 },
+        "featuresRemovedCount": { "type": "integer", "minimum": 0 },
+        "featuresUpdatedCount": { "type": "integer", "minimum": 0 },
+        "featuresUnchangedCount": { "type": "integer", "minimum": 0 },
+        "requirementsAddedCount": { "type": "integer", "minimum": 0 },
+        "requirementsRemovedCount": { "type": "integer", "minimum": 0 },
+        "requirementsUpdatedCount": { "type": "integer", "minimum": 0 },
+        "baselineAvailable": {
+          "type": "boolean",
+          "description": "False when no baseline FSD/inventory — feature lists may be empty with a note."
+        }
+      }
+    },
+    "tcImpactHints": {
+      "type": "object",
+      "description": "Optional mapping hints from feature delta → expected Excel TC actions (informational; authoritative TC lists remain in tc-delta-report.json).",
+      "properties": {
+        "expectAddForFeatures": { "type": "array", "items": { "type": "string" } },
+        "expectUpdateForFeatures": { "type": "array", "items": { "type": "string" } },
+        "expectRetireForFeatures": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "featureChange": {
+      "type": "object",
+      "required": ["featureName", "changeType"],
+      "properties": {
+        "featureName": {
+          "type": "string",
+          "description": "Human-readable feature / FSD section title."
+        },
+        "sectionId": { "type": "string" },
+        "changeType": {
+          "type": "string",
+          "enum": ["added", "removed", "updated", "unchanged"]
+        },
+        "reason": { "type": "string" },
+        "requirementIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "changedAspects": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "title",
+              "summary",
+              "requirements",
+              "validations",
+              "screens",
+              "actors",
+              "scope"
+            ]
+          }
+        }
+      }
+    },
+    "requirementChange": {
+      "type": "object",
+      "required": ["requirementId", "changeType"],
+      "properties": {
+        "requirementId": { "type": "string" },
+        "sectionId": { "type": "string" },
+        "featureName": { "type": "string" },
+        "changeType": {
+          "type": "string",
+          "enum": ["added", "removed", "updated"]
+        },
+        "baselineText": { "type": ["string", "null"] },
+        "newText": { "type": ["string", "null"] },
+        "reason": { "type": "string" }
+      }
+    }
+  }
+}

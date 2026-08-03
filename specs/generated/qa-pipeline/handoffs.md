@@ -71,6 +71,7 @@ Invalid rows stop before generation.
   "invokeExistingAgent": ".cursor/agents/test-generator.agent.md",
   "agentAtRef": "@.cursor/agents/test-generator.agent.md",
   "doNotModifyAgentConfig": true,
+  "pipelineMode": "create | reconcile",
   "payload": {
     "normalizedTestCase": {},
     "testCaseId": "",
@@ -85,7 +86,7 @@ Invalid rows stop before generation.
       "fixtures/environments.json",
       "tests/fixtures/environments.json"
     ],
-    "targetFileLocation": "tests/...",
+    "targetFileLocation": "tests/milestone2/...",
     "testData": {},
     "environmentRequirements": {},
     "knownConstraints": [],
@@ -96,24 +97,49 @@ Invalid rows stop before generation.
 }
 ```
 
+### Reconcile / delta generate
+
+When Stage 0 hands off `pipelineMode=reconcile` + `tc-delta-report.json`:
+
+```json
+{
+  "handoff": "qa-pipeline.generate-reconcile",
+  "pipelineMode": "reconcile",
+  "tcDeltaReportPath": "results/fsd-figma-pipeline/<resultsKey>/tc-delta-report.json",
+  "milestone": 1,
+  "specsRoot": "tests/milestone1/",
+  "generateCaseIds": ["<add+update>"],
+  "retireCaseIds": ["<retire>"],
+  "keepCaseIds": ["<keep>"],
+  "actions": {
+    "add": "append test() blocks",
+    "update": "replace matching test() bodies",
+    "retire": "remove matching test() blocks",
+    "keep": "leave unchanged"
+  }
+}
+```
+
 Protected: `.cursor/agents/test-generator.agent.md`, `.github/agents/playwright-test-generator.agent.md`
 
 ---
 
-## Stage 6: Heal → `@.cursor/agents/test-healer.agent.md` (do not edit)
+## Per-batch Heal → `@.cursor/agents/test-healer.agent.md`
 
 ```json
 {
-  "handoff": "qa-pipeline.heal",
+  "handoff": "qa-pipeline.batch-heal",
   "invokeExistingAgent": ".cursor/agents/test-healer.agent.md",
   "agentAtRef": "@.cursor/agents/test-healer.agent.md",
-  "doNotModifyAgentConfig": true,
+  "batchIndex": "<1..6>",
+  "maximumHealCycles": 1,
   "schema": "specs/generated/qa-pipeline/schemas/healing-result-schema.json",
   "input": {
     "generationManifest": "results/qa-pipeline/generation/generation-manifest.json",
-    "failures": "<from execution or pw:run>"
+    "failures": "<classified current-batch failures>",
+    "casesSelectedForHealing": "<automation/locator/synchronization IDs only>"
   },
-  "output": "results/qa-pipeline/healing/healing-report.json"
+  "output": "results/qa-pipeline/healing/batch-<n>/healing-report.json"
 }
 ```
 

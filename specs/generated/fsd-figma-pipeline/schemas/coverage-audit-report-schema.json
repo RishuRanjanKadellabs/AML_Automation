@@ -1,0 +1,322 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/coverage-audit-report-schema.json",
+  "title": "Independent FSD + Figma Excel Coverage Audit Report",
+  "description": "Independent audit of Excel test cases against FSD requirements and Figma UI inventory. Does not trust writer-reported coverage-matrix alone.",
+  "type": "object",
+  "required": [
+    "resultsKey",
+    "excelPath",
+    "auditedAt",
+    "auditMode",
+    "inScopeRequirements",
+    "coveredRequirements",
+    "auditCoveragePct",
+    "actualCoveragePct",
+    "flowCoveragePct",
+    "useCaseCoveragePct",
+    "uncoveredRequirementIds",
+    "verdict",
+    "byFeature"
+  ],
+  "$defs": {
+    "designTypeRollup": {
+      "type": "object",
+      "required": ["expected", "covered", "coveragePct"],
+      "properties": {
+        "expected": { "type": "integer", "minimum": 0 },
+        "covered": { "type": "integer", "minimum": 0 },
+        "coveragePct": { "type": "number", "minimum": 0, "maximum": 100 },
+        "missingIds": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  },
+  "properties": {
+    "resultsKey": { "type": "string" },
+    "excelPath": { "type": "string" },
+    "milestone": { "type": ["integer", "string"] },
+    "fsdPath": { "type": ["string", "null"] },
+    "figmaPath": { "type": ["string", "null"] },
+    "stage0Dir": { "type": ["string", "null"] },
+    "auditedAt": { "type": "string" },
+    "auditMode": {
+      "type": "string",
+      "enum": ["mechanical", "mechanical+semantic"]
+    },
+    "inScopeRequirements": { "type": "integer", "minimum": 0 },
+    "coveredRequirements": { "type": "integer", "minimum": 0 },
+    "auditCoveragePct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "FSD requirement coverage only (subset of actual coverage)"
+    },
+    "actualCoveragePct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Composite: requirements + flows + use cases (weighted)"
+    },
+    "flowCoveragePct": { "type": "number", "minimum": 0, "maximum": 100 },
+    "flowsTotal": { "type": "integer", "minimum": 0 },
+    "flowsCovered": { "type": "integer", "minimum": 0 },
+    "chainCoveragePct": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Dependent flows whose prerequisite chain is evidenced in Excel preconditions/steps"
+    },
+    "chainsTotal": { "type": "integer", "minimum": 0 },
+    "chainsCovered": { "type": "integer", "minimum": 0 },
+    "useCaseCoveragePct": { "type": "number", "minimum": 0, "maximum": 100 },
+    "useCasesExpected": { "type": "integer", "minimum": 0 },
+    "useCasesCovered": { "type": "integer", "minimum": 0 },
+    "byDesignType": {
+      "type": "object",
+      "properties": {
+        "positive": { "$ref": "#/$defs/designTypeRollup" },
+        "negative": { "$ref": "#/$defs/designTypeRollup" },
+        "boundary": { "$ref": "#/$defs/designTypeRollup" },
+        "exception": { "$ref": "#/$defs/designTypeRollup" },
+        "security": { "$ref": "#/$defs/designTypeRollup" }
+      }
+    },
+    "uncoveredRequirementIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "writerCoveragePct": { "type": ["number", "null"] },
+    "writerClaimed100": { "type": ["boolean", "null"] },
+    "coverageClaimGap": {
+      "type": ["number", "null"],
+      "description": "writerCoveragePct minus auditCoveragePct when writer matrix exists"
+    },
+    "useCasesTotal": { "type": "integer", "minimum": 0 },
+    "useCasesWithoutTestCase": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "uncoveredFlows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flowId": { "type": "string" },
+          "sectionId": { "type": "string" },
+          "featureName": { "type": "string" },
+          "flowName": { "type": "string" },
+          "flowKind": { "type": "string" },
+          "requiredDesignTypes": { "type": "array", "items": { "type": "string" } },
+          "missingDesignTypes": { "type": "array", "items": { "type": "string" } },
+          "dependsOnFlowIds": { "type": "array", "items": { "type": "string" } },
+          "chainCovered": { "type": "boolean" },
+          "missingDependencyFlowIds": { "type": "array", "items": { "type": "string" } },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "uncoveredChainFlows": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flowId": { "type": "string" },
+          "sectionId": { "type": "string" },
+          "featureName": { "type": "string" },
+          "flowName": { "type": "string" },
+          "dependsOnFlowIds": { "type": "array", "items": { "type": "string" } },
+          "missingDependencyFlowIds": { "type": "array", "items": { "type": "string" } },
+          "matchedTestCaseIds": { "type": "array", "items": { "type": "string" } },
+          "dependencyCoverageMode": { "type": "string" },
+          "designTypesCovered": { "type": "boolean" }
+        }
+      }
+    },
+    "flowDependencyGraph": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flowId": { "type": "string" },
+          "flowName": { "type": "string" },
+          "sectionId": { "type": "string" },
+          "featureName": { "type": "string" },
+          "dependsOnFlowIds": { "type": "array", "items": { "type": "string" } },
+          "chainSteps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "stepNumber": { "type": "integer" },
+                "label": { "type": "string" },
+                "via": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "flowAudit": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "flowId": { "type": "string" },
+          "sectionId": { "type": "string" },
+          "featureName": { "type": "string" },
+          "flowName": { "type": "string" },
+          "flowKind": { "type": "string" },
+          "source": { "type": "string" },
+          "requiredDesignTypes": { "type": "array", "items": { "type": "string" } },
+          "coveredDesignTypes": { "type": "array", "items": { "type": "string" } },
+          "matchedTestCaseIds": { "type": "array", "items": { "type": "string" } },
+          "fullyCovered": { "type": "boolean" },
+          "designTypesCovered": { "type": "boolean" },
+          "dependsOnFlowIds": { "type": "array", "items": { "type": "string" } },
+          "chainCovered": { "type": "boolean" },
+          "missingDependencyFlowIds": { "type": "array", "items": { "type": "string" } },
+          "dependencyCoverageMode": { "type": "string" }
+        }
+      }
+    },
+    "orphanTestCaseIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Excel TC IDs with no in-scope FSD requirement match"
+    },
+    "figmaControlsTotal": { "type": "integer", "minimum": 0 },
+    "figmaControlsUncovered": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "screenId": { "type": "string" },
+          "controlId": { "type": "string" },
+          "label": { "type": "string" },
+          "kind": { "type": "string" }
+        }
+      }
+    },
+    "qualityIssues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "severity", "testCaseId", "message"],
+        "properties": {
+          "code": { "type": "string" },
+          "severity": { "type": "string", "enum": ["error", "warning", "info"] },
+          "testCaseId": { "type": "string" },
+          "message": { "type": "string" }
+        }
+      }
+    },
+    "verdict": {
+      "type": "string",
+      "enum": ["Pass", "Fail", "ReviewNeeded"]
+    },
+    "verdictReason": { "type": "string" },
+    "byFeature": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "sectionId",
+          "featureName",
+          "reqsInScope",
+          "reqsCovered",
+          "coveragePct",
+          "actualCoveragePct",
+          "flowCoveragePct",
+          "flowsTotal",
+          "flowsCovered",
+          "chainCoveragePct",
+          "chainsTotal",
+          "chainsCovered",
+          "useCaseCoveragePct",
+          "testCaseCount",
+          "uncoveredRequirementIds"
+        ],
+        "properties": {
+          "sectionId": { "type": "string" },
+          "featureName": { "type": "string" },
+          "reqsInScope": { "type": "integer", "minimum": 0 },
+          "reqsCovered": { "type": "integer", "minimum": 0 },
+          "coveragePct": { "type": "number" },
+          "actualCoveragePct": { "type": "number" },
+          "flowCoveragePct": { "type": "number" },
+          "flowsTotal": { "type": "integer", "minimum": 0 },
+          "flowsCovered": { "type": "integer", "minimum": 0 },
+          "chainCoveragePct": { "type": "number" },
+          "chainsTotal": { "type": "integer", "minimum": 0 },
+          "chainsCovered": { "type": "integer", "minimum": 0 },
+          "useCasesExpected": { "type": "integer", "minimum": 0 },
+          "useCasesCovered": { "type": "integer", "minimum": 0 },
+          "useCaseCoveragePct": { "type": "number" },
+          "byDesignType": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "expected": { "type": "integer" },
+                "covered": { "type": "integer" },
+                "coveragePct": { "type": "number" },
+                "missingIds": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          },
+          "flows": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "flowId": { "type": "string" },
+                "flowName": { "type": "string" },
+                "flowKind": { "type": "string" },
+                "requiredDesignTypes": { "type": "array", "items": { "type": "string" } },
+                "coveredDesignTypes": { "type": "array", "items": { "type": "string" } },
+                "fullyCovered": { "type": "boolean" },
+                "designTypesCovered": { "type": "boolean" },
+                "matchedTestCaseIds": { "type": "array", "items": { "type": "string" } },
+                "dependsOnFlowIds": { "type": "array", "items": { "type": "string" } },
+                "chainCovered": { "type": "boolean" },
+                "missingDependencyFlowIds": { "type": "array", "items": { "type": "string" } },
+                "dependencyCoverageMode": { "type": "string" }
+              }
+            }
+          },
+          "testCaseCount": { "type": "integer", "minimum": 0 },
+          "testCaseIds": { "type": "array", "items": { "type": "string" } },
+          "uncoveredRequirementIds": { "type": "array", "items": { "type": "string" } },
+          "uncoveredRequirements": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "requirementId": { "type": "string" },
+                "text": { "type": "string" },
+                "suggestedAction": { "type": "string" }
+              }
+            }
+          },
+          "semanticNotes": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "requirementMappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "requirementId": { "type": "string" },
+          "sectionId": { "type": "string" },
+          "text": { "type": "string" },
+          "matchedTestCaseIds": { "type": "array", "items": { "type": "string" } },
+          "matchMethod": { "type": "string", "enum": ["traceability", "text-overlap", "semantic", "none"] },
+          "matchScore": { "type": "number" }
+        }
+      }
+    },
+    "agentRunDocx": { "type": ["string", "null"] }
+  }
+}

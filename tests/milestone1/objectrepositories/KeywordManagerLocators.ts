@@ -1,9 +1,11 @@
 const KeywordManagerLocators = {
   pageTitle: "h1:has-text('Keyword Manager'), h1:has-text('Keyword Configuration'), h1:has-text('Screening – Keyword Configuration'), h1:has-text('Screening - Keyword Configuration'), [class*='keyword-manager'] h1",
   pageSubtitle: ".keyword-manager-subtitle, [class*='subtitle']",
+  breadcrumbNavigation: "navigation[aria-label*='breadcrumb'], nav:has([href]), navigation",
+  loadingContent: "text=Loading module content...",
   configurationMenu: "button:has-text('Configuration'), button:has-text('Configurations'), [aria-label*='Configuration']",
   configurationSubmenu: "[class*='configuration-submenu'], nav:has-text('Configuration')",
-  keywordManagerLink: "nav a[href*='configuration/keyword-manager'], aside a[href*='configuration/keyword-manager'], [class*='sidebar'] a[href*='configuration/keyword-manager'], a[href='/configuration/keyword-manager']",
+  keywordManagerLink: "nav a[href*='configuration/screening-keywords'], aside a[href*='configuration/screening-keywords'], [class*='sidebar'] a[href*='configuration/screening-keywords'], a[href*='/configuration/screening-keywords']",
   keywordManagerSidebarLabel: "Screening – Keyword Configuration, Screening - Keyword Configuration, Keyword Configuration, Keyword Manager",
   toolbar: "[class*='toolbar'], [class*='action-bar'], header[class*='toolbar']",
   searchInput: "input[placeholder*='Search keyword'], input[placeholder*='phrase'], input[placeholder*='Search'], input[type='search']",

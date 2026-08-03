@@ -1,29 +1,12 @@
-import { test as base } from "@playwright/test";
-import { loadTestData, getEnv, TestData } from "./env";
+/**
+ * When PW_CDP_ENDPOINT is set (module runs via qa:run-module / milestone:run),
+ * route through milestone-shared-session so workers reconnect to the same
+ * headed Chromium window after failures instead of launching a new browser.
+ */
+import { test as baseTest, expect as baseExpect } from "./test-fixture-base";
+import { test as sharedTest, expect as sharedExpect } from "./milestone-shared-session";
 
-export type TestFixture = {
-  testData: TestData;
-  env: string;
-};
+const usePersistentBrowser = Boolean(process.env.PW_CDP_ENDPOINT?.trim());
 
-export const test = base.extend<TestFixture>({
-  page: async ({ page }, use) => {
-    const originalGoto = page.goto.bind(page);
-    page.goto = async (url, options) => {
-      return originalGoto(url, { waitUntil: "commit", ...options });
-    };
-    await use(page);
-  },
-  testData: async ({}, use, testInfo) => {
-    const env = getEnv();
-    const data = loadTestData(env);
-    testInfo.annotations.push({ type: "env", description: env });
-    testInfo.annotations.push({ type: "baseUrl", description: data.baseUrl });
-    await use(data);
-  },
-  env: async ({}, use) => {
-    await use(getEnv());
-  },
-});
-
-export { expect } from "@playwright/test";
+export const test = usePersistentBrowser ? sharedTest : baseTest;
+export const expect = usePersistentBrowser ? sharedExpect : baseExpect;

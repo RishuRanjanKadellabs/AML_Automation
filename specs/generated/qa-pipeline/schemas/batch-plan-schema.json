@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/batch-plan-schema.json",
+  "title": "QA Pipeline Six-Batch Plan",
+  "type": "object",
+  "required": ["batchCount", "totalEligibleCases", "distribution", "batches"],
+  "properties": {
+    "batchCount": { "const": 6 },
+    "totalEligibleCases": { "type": "integer", "minimum": 0 },
+    "distribution": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": { "type": "integer", "minimum": 0 }
+    },
+    "batches": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "required": ["index", "size", "caseIds", "status", "substages"],
+        "properties": {
+          "index": { "type": "integer", "minimum": 1, "maximum": 6 },
+          "size": { "type": "integer", "minimum": 0 },
+          "caseIds": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 },
+            "uniqueItems": true
+          },
+          "status": {
+            "enum": ["pending", "in_progress", "complete", "incomplete", "blocked", "empty"]
+          },
+          "substages": { "type": "object" }
+        }
+      }
+    }
+  }
+}

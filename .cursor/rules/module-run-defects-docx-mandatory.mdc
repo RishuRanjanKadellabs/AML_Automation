@@ -1,0 +1,74 @@
+---
+description: Every milestone module/spec run must produce local defects + DOCX; Google sync only after approval.
+alwaysApply: true
+---
+
+# Module Run — Defects, DOCX, Google Sync
+
+## Rule
+
+Whenever the user asks to **run a module**, **run a spec**, or **execute test cases** under `tests/milestoneN/` — with or without invoking `@execute-raise-defects` — the session **must** use a runner that produces:
+
+1. **Local defect Excel** under `pipeline/test-data/MilestoneN/Defects/` (failures only)
+2. **Execute-raise DOCX** under `docs/agent-runs/execute-raise-defects/`
+3. **Summary JSON** at `results/qa-pipeline/defects/latest-module-run.json`
+
+Google Sheet sync is **deferred** until the user approves the local workbook.
+
+## Approved runners (use one — never bare Playwright alone)
+
+| Command | When |
+|---------|------|
+| `npm run qa:run-module -- --spec <path>` | **Preferred** — headed, **1 worker**, one persistent Chromium (CDP); same window after failures |
+| `npm run qa:execute-raise-defects -- --spec <path>` | Same as `qa:run-module` |
+| `npm run milestone:run -- <N> <optional-path>` | Same persistent-browser behavior; auto-finalizes via pipeline reporter |
+
+**Execution defaults (hard when user asks to run a module):**
+- **Headed** — visible browser (`--headless` to opt out)
+- **1 worker** — sequential (`--workers N` to override)
+- **Persistent CDP Chromium** — one window for the full suite; Playwright worker restarts after failures reconnect to the same browser (`--no-persistent` to disable)
+- Browser closes **only** when the run completes (or the runner exits)
+
+Direct `npx playwright test tests/milestoneN/...` still auto-finalizes **if** the pipeline reporter runs and `PW_DEFER_DEFECT_GENERATION` / `PW_SKIP_MODULE_RUN_DOCX` are not set — but agents **must prefer** `qa:run-module` for explicit spec scope and Chromium ensure.
+
+## Must not
+
+- Run milestone specs with `PW_DEFER_DEFECT_GENERATION=1` unless a heal cycle owns defect timing (QA pipeline batch heal).
+- Sync to Google during the initial run (no `--approve-google` / `PW_APPROVE_GOOGLE_DEFECT_SYNC=1` unless user explicitly approved in the same message).
+- Skip DOCX because JSON artifacts exist.
+- Hand-write defect rows — always `generateDefectFiles` / reporter + `finalize-module-run.cjs`.
+
+## After run — tell the user
+
+```
+Local defect workbook: pipeline/test-data/MilestoneN/Defects/<module>-defects.xlsx
+Agent run DOCX: docs/agent-runs/execute-raise-defects/<timestamp>_....docx
+
+Reply **Approve defects** to sync to the Google Sheet Defects tab.
+```
+
+## Approval → Google sync
+
+When the user replies `Approve defects` / `Approve Google` / equivalent:
+
+```bash
+npm run tracker:cdp-chrome   # if CDP Chrome not already running
+npm run qa:approve-defects-sync
+```
+
+Or explicitly:
+
+```bash
+npm run qa:sync-defects-sheet -- \
+  --rows results/qa-pipeline/defects/milestone-<N>-defect-rows.json \
+  --approved
+```
+
+**Upsert + stale-row prune run by default** on approved sync (matches local Excel). Pass `--no-upsert` only to skip Google stale-module removal.
+
+## Skip flags (internal only)
+
+| Env | Effect |
+|-----|--------|
+| `PW_DEFER_DEFECT_GENERATION=1` | No defects/DOCX until post-heal finalize (QA pipeline) |
+| `PW_SKIP_MODULE_RUN_DOCX=1` | Reporter skips DOCX; `execute-raise-defects` calls finalize once after run |

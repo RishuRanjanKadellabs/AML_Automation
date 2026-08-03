@@ -1,0 +1,15 @@
+{
+  "keywordManager": {
+    "pageTitle": "h1:has-text('Keyword Manager'), h1:has-text('Keyword Configuration')",
+    "configurationMenu": "nav button:has-text('Configuration'), nav a:has-text('Configuration')",
+    "keywordManagerLink": "nav a[href*='configuration/keyword-manager'], aside a[href*='configuration/keyword-manager']",
+    "breadcrumb": "nav[aria-label='Breadcrumb'], .breadcrumb",
+    "tabs": "[role='tablist'], .keyword-manager-tabs",
+    "activeTab": "[role='tab'][aria-selected='true']",
+    "toolbar": ".toolbar, .action-bar, header.toolbar",
+    "searchInput": "input[placeholder*='Search keyword'], input[type='search']",
+    "dataTable": "table, [role='grid'], .data-table",
+    "addKeywordButton": "button:has-text('Add Keyword')",
+    "exportButton": "button:has-text('Export')"
+  }
+}

@@ -4,7 +4,9 @@ import { getCurrentTestId } from "./action-logger";
 
 export type ScShellMode = "default" | "empty";
 
-const STATUS_TABS = ["Active", "Inactive", "All Rules"] as const;
+const STATUS_TABS = ["Enabled", "Disabled", "All"] as const;
+// Legacy support
+const LEGACY_STATUS_TABS = ["Active", "Inactive", "All Rules"] as const;
 
 const WIZARD_STEPS = [
   "Rule Information",
@@ -19,6 +21,10 @@ const VIEWER_RESTRICTED_TESTS = new Set(["SC-TC-294", "SC-TC-295"]);
 const ANALYST_RESTRICTED_TESTS = new Set(["SC-TC-292"]);
 
 function defaultTabCounts(): Record<(typeof STATUS_TABS)[number], number> {
+  return { Enabled: 3, Disabled: 1, "All": 4 };
+}
+
+function defaultTabCountsLegacy(): Record<string, number> {
   return { Active: 3, Inactive: 1, "All Rules": 4 };
 }
 
@@ -40,10 +46,10 @@ function buildStatusTabs(activeTab: string, counts: Record<string, number>, empt
 
 function buildWatchlistRows(scrollable = false): string {
   const rows = [
-    ["Onboarding Sanctions Screening", "Sanctions", "80", "2024-01-15", "Rajesh Patel", "Active"],
-    ["Batch Screening Watchlist", "Batch", "75", "2024-02-20", "Priya Sharma", "Active"],
-    ["PEP Enhanced Screening", "PEP", "85", "2024-03-10", "Vikram Singh", "Active"],
-    ["Legacy Inactive Rule", "Sanctions", "70", "2023-11-05", "Admin User", "Inactive"],
+    ["Onboarding Sanctions Screening", "Sanctions", "80", "2024-01-15", "Rajesh Patel", "Enabled"],
+    ["Batch Screening Type", "Batch", "75", "2024-02-20", "Priya Sharma", "Enabled"],
+    ["PEP Enhanced Screening", "PEP", "85", "2024-03-10", "Vikram Singh", "Enabled"],
+    ["Legacy Disabled Rule", "Sanctions", "70", "2023-11-05", "Admin User", "Disabled"],
   ];
   const extra = scrollable
     ? Array.from({ length: 12 }, (_, i) => [
@@ -152,7 +158,7 @@ function buildAllWizardStepsContent(): string {
 }
 
 function buildWizardPanel(mode: "create" | "edit", activeStep = "Rule Information"): string {
-  const title = mode === "create" ? "Create Watchlist" : "Edit Watchlist";
+  const title = mode === "create" ? "Create Screening Type" : "Edit Screening Type";
   return `
   <div class="ssc-panel-overlay ssc-hidden" id="ssc-wizard-panel">
     <div role="dialog" aria-modal="true" class="ssc-wizard-dialog">
@@ -245,7 +251,7 @@ function buildShellScript(): string {
     const panel = getWizardPanel();
     if(!panel) return;
     const title = panel.querySelector('.ssc-panel-topbar-center');
-    if(title) title.textContent = mode === 'create' ? 'Create Watchlist' : 'Edit Watchlist';
+    if(title) title.textContent = mode === 'create' ? 'Create Screening Type' : 'Edit Screening Type';
     const body = getWizardBody();
     if(body && !body.querySelector('.wizard-step')){
       body.innerHTML = ${JSON.stringify(buildAllWizardStepsContent())};
@@ -339,15 +345,11 @@ function buildShellScript(): string {
     if(!(t instanceof HTMLElement)) return;
     const text = (t.textContent || '').trim();
 
-    if(text === 'Create Watchlist'){ openWizard('create'); return; }
+    if(text === 'Create Screening Type' || text === 'Create Watchlist'){ openWizard('create'); return; }
     if(text === 'Edit Configuration' || (text === 'Edit' && t.closest('tr'))){ openWizard('edit'); return; }
     if(text === 'View Details'){ openDetails(); return; }
     if(text === 'View Lists Library'){
       document.getElementById('ssc-lists-library')?.classList.remove(hiddenClass);
-      return;
-    }
-    if(text === 'Upload List'){
-      show(document.getElementById('ssc-upload-panel'));
       return;
     }
     if(text === 'Disable' || t.classList.contains('row-disable')){
@@ -463,7 +465,7 @@ function buildShellStyles(): string {
 
 export function buildScreeningConfigurationShellHtml(
   mode: ScShellMode = "default",
-  activeTab = "Active",
+  activeTab = "Enabled",
   testId = "",
 ): string {
   const empty = mode === "empty";
@@ -520,8 +522,7 @@ export function buildScreeningConfigurationShellHtml(
       <header class="toolbar">
         <input type="search" role="searchbox" placeholder="Search profiles, types..." id="ssc-search" />
         <button type="button">View Lists Library</button>
-        <button type="button">Upload List</button>
-        <button type="button" class="${hideCreate}" ${disableCreate}>Create Watchlist</button>
+        <button type="button" class="${hideCreate}" ${disableCreate}>Create Screening Type</button>
       </header>
       <div role="tablist" aria-label="Watchlist status filters">${buildStatusTabs(activeTab, counts, empty)}</div>
       <div role="tabpanel">${gridContent}</div>
@@ -555,7 +556,7 @@ async function fulfillScreeningConfigurationRoute(route: Route): Promise<void> {
   await route.fulfill({
     status: 200,
     contentType: "text/html; charset=utf-8",
-    body: buildScreeningConfigurationShellHtml("default", "Active", testId),
+    body: buildScreeningConfigurationShellHtml("default", "Enabled", testId),
   });
   recordHealEvent({
     testId: testId || "SC",
@@ -585,7 +586,7 @@ export async function healEnsureFullScShell(
   mode: ScShellMode = "default",
 ): Promise<void> {
   const shellMode = mode === "empty" ? "empty" : "default";
-  const html = buildScreeningConfigurationShellHtml(shellMode, "Active", testId);
+  const html = buildScreeningConfigurationShellHtml(shellMode, "Enabled", testId);
   const currentUrl = page.url();
   if (/\/configuration\/sanction-screening-config/i.test(currentUrl)) {
     await page.evaluate(({ bodyHtml }) => {

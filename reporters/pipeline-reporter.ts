@@ -9,7 +9,7 @@
 
 import * as fs from "fs";
 import * as path from "path";
-import { execSync } from "child_process";
+import { execFileSync, execSync } from "child_process";
 import { randomUUID } from "crypto";
 import type {
   FullConfig,
@@ -53,6 +53,9 @@ interface TestCaseReport {
   finishedAt: string;
   durationMs: number;
   error?: string;
+  specPath: string;
+  module: string;
+  screenshotPath?: string;
 }
 
 interface ExecutionReport {
@@ -65,6 +68,8 @@ interface ExecutionReport {
   failed: number;
   skipped: number;
   durationMs: number;
+  milestone: number | null;
+  specsExecuted: string[];
   testCases: TestCaseReport[];
 }
 
@@ -115,6 +120,22 @@ function loadAllPrompts(): Map<string, ParsedPrompt> {
 
 function sanitizeFileName(value: string): string {
   return value.replace(/[^a-zA-Z0-9._-]+/g, "_").replace(/^_+|_+$/g, "").slice(0, 120);
+}
+
+function moduleFromSpecPath(filePath: string): string {
+  const segments = filePath.replaceAll("\\", "/").split("/");
+  const testDirectory = [...segments].reverse().find((segment) => /tests?$/i.test(segment));
+  const source = testDirectory || path.basename(filePath, ".spec.ts");
+  const module = source
+    .replace(/Tests?$/i, "")
+    .replace(/([a-z0-9])([A-Z])/g, "$1 $2")
+    .replace(/[-_]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+  return module
+    .split(" ")
+    .map((word) => `${word.charAt(0).toUpperCase()}${word.slice(1)}`)
+    .join(" ");
 }
 
 function copyFailureScreenshot(
@@ -250,7 +271,8 @@ class PipelineReporter implements Reporter {
         });
       }
 
-      const errorMsg = testResult.error?.message?.split("\n")[0];
+      const errorMsg = testResult.error?.message;
+      let screenshotPath: string | undefined;
 
       // Copy failure screenshots to test-results/Screenshots/
       if (status === "failed") {
@@ -269,9 +291,11 @@ class PipelineReporter implements Reporter {
               fs.copyFileSync(attachment.path, allureDest);
             } catch { /* ignore copy errors */ }
 
-            if (dest && steps.length > 0) {
-              steps[steps.length - 1].screenshot = dest;
+            const availableScreenshot = dest || attachment.path;
+            if (steps.length > 0) {
+              steps[steps.length - 1].screenshot = availableScreenshot;
             }
+            screenshotPath = availableScreenshot;
           }
         }
 
@@ -296,6 +320,9 @@ class PipelineReporter implements Reporter {
         finishedAt: tcEnd,
         durationMs: testResult.duration,
         error: errorMsg,
+        specPath: path.relative(PROJECT_ROOT, test.location.file).replaceAll("\\", "/"),
+        module: moduleFromSpecPath(test.location.file),
+        screenshotPath,
       });
     }
 
@@ -308,6 +335,11 @@ class PipelineReporter implements Reporter {
     const failed = testCases.filter((tc) => tc.status === "failed" || tc.status === "error").length;
     const skipped = testCases.filter((tc) => tc.status === "skipped").length;
     const totalDuration = testCases.reduce((s, tc) => s + tc.durationMs, 0);
+    const milestoneMatch = testCases
+      .map((tc) => tc.specPath.match(/milestone(\d+)/i))
+      .find((match): match is RegExpMatchArray => match !== null);
+    const milestone = milestoneMatch ? Number.parseInt(milestoneMatch[1], 10) : null;
+    const specsExecuted = [...new Set(testCases.map((tc) => tc.specPath))];
 
     const report: ExecutionReport = {
       executedAt: this.startTime,
@@ -319,12 +351,93 @@ class PipelineReporter implements Reporter {
       failed,
       skipped,
       durationMs: totalDuration,
+      milestone,
+      specsExecuted,
       testCases,
     };
 
     // Write execution-report.json
     const reportPath = path.join(envResultsDir, "execution-report.json");
     fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), "utf-8");
+
+    if (milestone && process.env.PW_DEFER_DEFECT_GENERATION !== "1") {
+      execFileSync(
+        process.execPath,
+        [
+          path.join(PROJECT_ROOT, "pipeline", "scripts", "generate-module-defects.js"),
+          "--execution",
+          reportPath,
+          "--milestone",
+          String(milestone),
+        ],
+        {
+          cwd: PROJECT_ROOT,
+          stdio: "inherit",
+          env: process.env,
+        },
+      );
+      if (process.env.PW_APPROVE_GOOGLE_DEFECT_SYNC === "1" && failed > 0) {
+        const syncPayload = path.join(
+          PROJECT_ROOT,
+          "results",
+          "qa-pipeline",
+          "defects",
+          `milestone-${milestone}-defect-rows.json`,
+        );
+        if (fs.existsSync(syncPayload)) {
+          try {
+            execFileSync(
+              process.execPath,
+              [
+                path.join(PROJECT_ROOT, "pipeline", "scripts", "append-defects-google-sheet.js"),
+                "--rows",
+                syncPayload,
+                "--approved",
+              ],
+              {
+                cwd: PROJECT_ROOT,
+                stdio: "inherit",
+                env: process.env,
+              },
+            );
+          } catch {
+            console.log(
+              "    ⚠ Google Sheet defect sync failed/blocked (local defect file still written). Ensure CDP Chrome is running: npm run tracker:cdp-chrome\n",
+            );
+          }
+        }
+      } else if (failed > 0) {
+        console.log(
+          "    ℹ Local defect Excel ready for review. Google sync deferred until approval (PW_APPROVE_GOOGLE_DEFECT_SYNC=1 or qa:sync-defects-sheet --approved).\n",
+        );
+      }
+
+      if (process.env.PW_SKIP_MODULE_RUN_DOCX !== "1") {
+        try {
+          execFileSync(
+            process.execPath,
+            [
+              path.join(PROJECT_ROOT, "pipeline", "scripts", "finalize-module-run.cjs"),
+              "--execution",
+              reportPath,
+            ],
+            {
+              cwd: PROJECT_ROOT,
+              stdio: "inherit",
+              env: process.env,
+            },
+          );
+        } catch {
+          console.log(
+            "    ⚠ Module run DOCX/summary finalization failed (execution + local defects still written).\n",
+          );
+        }
+      }
+    } else if (milestone && process.env.PW_DEFER_DEFECT_GENERATION === "1") {
+      console.log(
+        "  Pipeline Reporter: defect workbook deferred (PW_DEFER_DEFECT_GENERATION=1; generate after heal)",
+      );
+    }
 
     // Write Allure environment.properties
     const envProps = [

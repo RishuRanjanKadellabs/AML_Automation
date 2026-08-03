@@ -1,0 +1,55 @@
+---
+description: Require 100% Excel column fidelity (title, steps, expected results) for QA pipeline generation and batch completion gates.
+alwaysApply: true
+---
+
+# Excel Coverage Mandatory — QA Pipeline & Scripting
+
+## Rule
+
+Agents that **generate**, **update**, or **heal** Playwright automation from Excel must map **every eligible case** to runnable code with **100% Excel fidelity** on these dimensions:
+
+1. **Test Case ID + title** — spec `test("Test Case ID:<id> - …")` title must align with the Excel Scenario/title (no ID drift or swapped bodies).
+2. **Test Steps** — every numbered Excel action becomes a Playwright call / page-object method (not comment-only).
+3. **Expected Result / Acceptance Criteria** — every bullet becomes a meaningful `expect()` (no shell-only or weakened substitutes).
+
+Figma, heal shells, and prior specs are **supporting references only**. Excel normalized rows are the source of truth for case identity and fidelity scoring.
+
+## Must do
+
+1. Before batch Execute (and before claiming batch Generate complete), run mechanical audit:
+
+```bash
+npm run qa:audit-excel-fidelity -- \
+  --normalized "<resultsRoot>/normalized/test-cases.json" \
+  --specs "<comma-separated module spec paths>" \
+  --case-ids "<batch case ids comma-separated>" \
+  --out "<resultsRoot>/final/batch-<N>-excel-fidelity-report.json" \
+  --min-steps-pct 100 --min-expected-pct 100 --min-overall-pct 95
+```
+
+2. Record `excelFidelityByBatch` + `excelCoveragePercent=100` in `<resultsRoot>/generation/generation-manifest.json` and `<resultsRoot>/final/state.json` when the batch passes.
+3. Map maker-checker / pending / downstream assessment bullets to explicit assertions (`expectPendingMakerCheckerRequest`, approved-config unchanged, weights-tab score still uses prior mapping, etc.).
+4. Unsaved-state cases must switch tabs away and back, then assert Excel persistence bullets.
+5. Validation cases must assert reject/clamp behavior — not HTML5 `validity.valid` alone when Excel requires clamp/reject outcome.
+6. Completion gate (`npm run qa:verify-completion`) must pass `excelCoveragePercent=100` and `passesExcelFidelityGate=true` when an excel-fidelity report exists for the run scope.
+
+## Must not do
+
+- Swap test bodies across TC IDs (e.g. TC-011 Excel scenario ≠ save-button shell test under the same ID).
+- Mark generation **Done** when `stepsPct`, `expectedPct`, or title alignment is below threshold for any eligible case in scope.
+- Shrink eligible scope to force 100% — use `blockedUiCaseIds` + reasons only for honest blockers.
+- Use bulk comment paste of Excel steps without matching actions.
+- Weaken expected-result asserts to pass when live product differs — leave **Failed/product** instead.
+
+## When Excel fidelity is blocked
+
+1. Status = **Blocked** or batch **Incomplete** (not Done).
+2. Emit failing TC IDs + missed step numbers from `excel-fidelity-report.json`.
+3. Do not proceed to next batch (1–5) until user approves after remediation or explicit gap acceptance.
+
+## Applies to
+
+- `qa-automation-pipeline` (every Generate batch + completion gate)
+- `playwright-test-generator` / `.cursor/agents/test-generator.agent.md`
+- `playwright-test-healer` — do not heal by removing Excel-mapped assertions

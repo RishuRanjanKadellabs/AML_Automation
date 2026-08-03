@@ -1,0 +1,70 @@
+---
+description: Mandatory live UI exploration for Playwright script generation and healing — never skip the running application.
+globs:
+alwaysApply: true
+---
+
+# Live UI Required — Scripting & Healing
+
+## Rule
+
+Agents that **generate**, **update**, or **heal** Playwright automation **must** discover and validate locators against the **live application under test** via Playwright MCP (`generator_setup_page` / `planner_setup_page` / `test_debug` + `browser_*`).
+
+Figma HTML, FSD, Excel, heal shells, and fixtures are **supporting references only**. They must not replace live DOM discovery when the app is reachable.
+
+## Must do
+
+1. Call setup once (`generator_setup_page` or `planner_setup_page` / `test_debug` for heal) with the project seed.
+2. Derive and navigate to the case’s **real module URL** (path under `BASE_URL`), not only the host root and never a route copied from another module.
+3. Use `browser_snapshot` / `browser_evaluate` / `browser_generate_locator` before writing or changing selectors.
+4. Exercise critical flows live before finalizing POM methods (open create, library, enable/disable, etc. as required by the task).
+5. Record evidence (snapshot paths, control labels, aria names) in the change summary.
+6. Update `objectrepositories/` and POM from **live** labels; keep heal-shell fallbacks secondary and aligned to live when possible.
+7. **Single MCP owner:** only one agent session may drive Playwright MCP for a given generation/healing run. Parent must not keep calling `browser_*` while a background child also generates/heals on MCP. QA pipeline Generate defaults to in-parent ownership (see `qa-automation-pipeline` Single MCP owner rules).
+
+## 100% invocation coverage
+
+- **Generator:** every eligible UI case assigned to the invocation must have live route, control/action, expected-result-target, and locator evidence. `liveUiValidatedCaseIds` must equal `eligibleUiCaseIds`; `liveUiCoveragePercent=100`.
+- **Strict gate fields (mandatory per batch 1–6):** each `liveUiEvidenceByCase` entry must include `moduleUrl`, on-disk `evidenceReferences[]` (≤3 cases per ref), and `controlsOrActionsValidated[]`. Run `npm run qa:audit-live-ui-evidence` after each batch Generate; legacy-only `snapshotPaths`/`controlsVerified` without strict fields fail audit.
+- **Healer:** every case whose code is changed must have pre-fix and post-fix evidence on its correct live module route. `liveUiValidatedHealedCaseIds` must equal changed case IDs; `liveUiHealingCoveragePercent=100`.
+- Opening the live app once, checking a representative subset, or reusing evidence from an unrelated/stale browser page is not 100% coverage.
+- Do **not** attach the same snapshot/evidence reference to many cases with rewritten control text. The completion gate fails `noBulkLiveUiEvidence` when any reference is reused above the limit (default 3) or claims conflicting `moduleUrl`s.
+- Do **not** shrink `eligibleUiCaseIds` to force 100% coverage. Exclude only via `blockedUiCaseIds` + `blockedUiReasons` (`honestUiEligibility`).
+- Any missing per-case evidence makes the invocation **Incomplete/Blocked**, never Done.
+
+## Host root vs SPA routes
+
+This AML host may return a generic Apache/`It works!` page at **`BASE_URL/`** while the real Clari5 SPA loads on **module paths**.  
+
+- **Do not** mark live UI Blocked solely because the root path shows Apache.
+- **Do** open the module route(s) for the Excel/FSD under test and confirm the Clari5/AML UI (title, sidebar, or module content).
+- Block only if the **module URL** fails or still shows a non-app page after navigation.
+
+## Must not do
+
+- Skip live exploration because Figma/Excel “already define” labels.
+- Rely only on heal/mock injected UI when the live app responds.
+- Mark generation or healing **complete** if live UI was not opened and inspected (unless blocked — see below).
+- Invent locators from memory or docs without a live snapshot for that screen.
+- Treat `BASE_URL` root Apache alone as proof the AML app is down.
+
+## When live UI is blocked
+
+If the app is down or MCP browser fails:
+
+1. Status = **Blocked** (not Done).
+2. State the exact blocker (URL tried, error, missing env).
+3. Do **not** silently substitute Figma-only / heal-only locator updates as final.
+4. Optionally draft offline notes, but do not claim scripts are live-validated.
+
+**Note:** While login is bypassed, missing `EMAIL`/`PASSWORD` is **not** a live-UI blocker — navigate with `BASE_URL` only.
+
+## Applies to
+
+- `playwright-test-generator` / `.cursor/agents/test-generator.agent.md`
+- `playwright-test-healer` / `.cursor/agents/test-healer.agent.md`
+- `qa-automation-pipeline` six-batch Generate stage (cumulative 100% of eligible
+  UI cases) and its one permitted healer cycle per batch
+- Any ad-hoc agent asked to update specs, POM, or locators
+
+For `qa-automation-pipeline`, `liveUiValidatedCaseIds` must cover every eligible UI case and `liveUiCoveragePercent` must equal **100**. These agents also enforce complete Excel/plan case coverage and forbid Figma/mock-only Final generation.

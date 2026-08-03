@@ -32,6 +32,9 @@ mcp-servers:
     args:
       - playwright
       - run-test-mcp-server
+      - --headless
+      - -c
+      - .
     tools:
       - "*"
 ---

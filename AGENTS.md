@@ -5,6 +5,80 @@
 
 ---
 
+<!-- AGENT-WORKFLOW-FLOWCHARTS:AGENTS-MD:START -->
+## Agent ecosystem — how agents link together
+
+Read this section first. It shows **which agent runs when**, **what each agent produces**, and **where you must approve** before the next step.
+
+> **Tip:** Flowcharts below are **PNG images** — they display in any Markdown viewer. Mermaid source lives in `pipeline/scripts/agent-workflow-diagrams.cjs`.
+
+| Symbol | Meaning |
+|--------|---------|
+| Solid arrow | Normal handoff |
+| Dashed arrow | Optional step |
+| Label on arrow | Human approval required |
+| **Blue box / blue node** | **Cursor agent** (orchestrator or Playwright MCP worker) |
+| Amber box / node | Output or artifact (Excel, specs, defects, gate) |
+| Gray box / node | Input, legend, or human gate (not an agent) |
+
+### Standard pipeline entry points
+
+1. **FSD + Figma → Excel → scripts** (primary): `fsd-figma-pipeline` with **FSD + Figma required**; existing Excel is **optional** (reconcile if present, create if missing) → **Approve Excel** → `qa-automation-pipeline` (invokes `playwright-test-generator` + `playwright-test-healer` per batch) → specs under `tests/milestoneN/`
+2. **Existing specs → defects**: `execute-raise-defects` → local defect Excel → **Approve defects** → Google Sheet → `defect-regression` when dev marks **Resolved**
+
+**Orchestration:** the parent chat invokes named subagents only. If a subagent fails to load, the parent continues orchestration per pipeline checkpoint rules — it must not substitute ad-hoc URL/.docx generation for the Excel pipeline.
+
+### Figure 1 — High-level agent map
+
+Standard AML pipeline with numbered navigation (①–⑨). **Blue boxes = Cursor agents** (orchestrators and Playwright workers). Amber = outputs/artifacts; gray = inputs. Path A: FSD + Figma required; Excel optional on input. Path B: defects → Google → regression.
+
+<p align="center"><img src="docs/agent-workflows/01-high-level-map.png" alt="High-level agent map" width="900" /></p>
+
+### Figure 2 — Primary workflow — Excel to automation
+
+Stage 0 reconciles or creates Excel; after human approval the QA pipeline validates, normalizes, and processes six batches with live UI generation.
+
+<p align="center"><img src="docs/agent-workflows/02-primary-excel-pipeline.png" alt="Primary workflow — Excel to automation" width="900" /></p>
+
+**Inside `qa-automation-pipeline` (each of 6 batches):** `playwright-test-generator` (live UI, 100% cases) → execute → `playwright-test-healer` (once, automation failures only) → verify changed cases. Ask user before batches 2–5.
+
+### Figure 3 — Human approval gates and handoffs
+
+Mandatory subagent invocation at each gate. Parent orchestrates only — must invoke named agents; if a subagent fails, parent continues orchestration per pipeline rules.
+
+<p align="center"><img src="docs/agent-workflows/05-invocation-gates.png" alt="Human approval gates and handoffs" width="900" /></p>
+
+| You say | Must invoke |
+|---------|-------------|
+| FSD + Figma work (Excel optional for reconcile) | `fsd-figma-pipeline` |
+| **Approve Excel** | `qa-automation-pipeline` |
+| Run existing spec + defects | `execute-raise-defects` |
+| **Approve defects** | `qa:approve-defects-sync` or `qa:sync-defects-sheet --approved` (upsert + stale prune by default) |
+| Retest Resolved defects | `defect-regression` |
+| Audit Excel vs FSD (optional) | `fsd-excel-coverage-audit` |
+
+### Figure 4 — Defects and regression
+
+Execute specs to raise local defects; sync to Google after approval. Regression retests Resolved rows.
+
+<p align="center"><img src="docs/agent-workflows/04-defects.png" alt="Defects and regression" width="900" /></p>
+
+### Agent files (orchestrators)
+
+| Agent | Agent file | Invoked when |
+|-------|------------|--------------|
+| Stage 0 Excel | `.cursor/agents/fsd-figma-pipeline.agent.md` | FSD + Figma → test cases (Excel optional on input) |
+| Coverage audit | `.cursor/agents/fsd-excel-coverage-audit.agent.md` | Independent Excel vs FSD check |
+| QA pipeline | `.cursor/agents/qa-automation-pipeline.agent.md` | **Approve Excel** → scripts |
+| Execute + defects | `.cursor/agents/execute-raise-defects.agent.md` | Run spec, raise defects |
+| Defect regression | `.cursor/agents/defect-regression.agent.md` | Google Status = Resolved |
+
+**Playwright workers** (invoked by `qa-automation-pipeline` only): `.cursor/agents/test-generator.agent.md`, `test-healer.agent.md`
+
+Also available: Word export [`docs/AML-Agent-Workflows.docx`](docs/AML-Agent-Workflows.docx) · regenerate: `npm run docs:agent-workflows`
+<!-- AGENT-WORKFLOW-FLOWCHARTS:AGENTS-MD:END -->
+
+
 ## What This Project Does
 
 Playwright + TypeScript test automation for **AML (Anti-Money Laundering) applications**.
@@ -19,7 +93,26 @@ your-tests.xlsx  →  qa-automation-pipeline (Cursor agent)
                  →  npm run milestone:run -- 2
 ```
 
-**FSD + Figma → Excel (Stage 0):** agent `fsd-figma-pipeline` writes under `pipeline/test-data/Milestone2/Test Cases/`, then hand off to `qa-automation-pipeline`.
+**FSD + Figma → Excel (Stage 0):** agent `fsd-figma-pipeline` under `pipeline/test-data/Milestone1|2/Test Cases/`. If the named Excel **already exists**, Stage 0 **reconciles it in place** (add/update/retire via `tc-delta-report.json`); if missing, it **creates** a new workbook. Stage 0 models **dependent flow chains** (`html-inventory.json` `navGraph`/`compositeFlows`, `use-cases.json` `dependsOnUseCaseIds`, Excel Preconditions/multi-step Test Steps). Revised sources may be dropped as `*_New.docx` / `*_New.html` beside the originals — Stage 0 prefers `*_New`, emits `feature-delta-report.json` (features added/removed/updated), reconciles Excel, and on Approve hands off to `qa-automation-pipeline` (reconcile updates specs). After audit gaps, reconcile using `coverage-audit-report.json` (`uncoveredFlows`, `uncoveredChainFlows`).
+
+On **Approve Excel**, the caller must invoke the actual
+`qa-automation-pipeline` subagent with the approved workbook path (and, when
+reconcile, the `tc-delta-report.json`). Reading its
+agent file and performing the workflow directly in the parent is forbidden.
+The invoked agent must complete Validate → Normalize → split generate-scope
+cases into exactly six deterministic near-equal batches. For each batch it
+invokes the existing generator as sole live-MCP owner, appends/updates tests in
+**one spec per module** with live evidence (reconcile also removes retired IDs),
+executes the batch, reports pass/fail, invokes the existing healer once for
+classified automation failures, verifies changed cases once, reports post-heal
+counts, then **asks before starting the next batch** (batches 1–5). After batch 6
+it continues to aggregate Report/Gate. Agent IDs must be recorded in pipeline
+state/manifest. Done only when
+`results/qa-pipeline/final/pipeline-completion-gate.json`
+passes (`npm run qa:verify-completion`, including
+`npm run qa:detect-smoke-stubs`, and reconcile checks when `--delta` is passed).
+
+Stage 0 **must** produce `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` (with `byModule` + `byFeature`), `tc-delta-report.json`, and (when `*_New` or a baseline exists) `feature-delta-report.json`. Display **overall FSD coverage % plus feature changes (added/removed/updated) plus module and feature-level tables** (and TC delta) when delivering Excel, and reach **100%** coverage (or explicit user gap acceptance) before Excel Approve / QA pipeline handoff. See `.cursor/system-context/fsd-figma-pipeline.mdc`.
 
 See `pipeline/test-cases/SAMPLE-FORMAT.md` for Excel column layout (when using raw Excel input).
 
@@ -28,50 +121,50 @@ See `pipeline/test-cases/SAMPLE-FORMAT.md` for Excel column layout (when using r
 | Path | Input | Output |
 |------|-------|--------|
 | **QA automation pipeline** (primary) | `.xlsx` test cases | `tests/milestone2/` specs + POM |
-| **FSD + Figma Stage 0** | FSD `.docx` + Figma HTML | Excel in `Milestone2/Test Cases/` |
-| **AI Generator / Healer** | plan or failing specs | Refined `.spec.ts` / locators via MCP |
+| **Execute & Raise Defects** | Existing `.spec.ts` / module folder | Local `MilestoneN/Defects/*.xlsx` (Defects + **UI Defects** sheets) for review → Google **Defects** + **UI Defects** tabs only after approval |
+| **FSD + Figma Stage 0** | FSD `.docx` + Figma HTML (optional `*_New` revisions) | Excel in `Milestone1|2/Test Cases/` (create if missing, reconcile if present) + **coverage-matrix.json** + **feature-delta-report.json** + **tc-delta-report.json** (100% gate; Approve → spec sync) |
+| **FSD Excel coverage audit** | Existing Excel + FSD + Figma | Independent audit report + verdict (Pass/Fail/ReviewNeeded) vs writer-claimed 100% |
+| **Generator / Healer** (via QA pipeline batches) | Approved Excel test cases | `.spec.ts` + POM via live UI; healer once per batch for automation failures |
 
-Set `BASE_URL`, `EMAIL`, and `PASSWORD` in `.env` before running tests against your AML application.
+Set `BASE_URL` in `.env` before running tests. **`EMAIL` / `PASSWORD` login is currently bypassed** — do not require credentials or add login steps until the user asks to enable auth.
 
 ### AI agents
 
-| Agent | Role | Phase |
-|-------|------|-------|
-| **Planner** | Explores the live AML app, writes a test plan | Phase 1 |
-| **Generator** | Executes scenarios in browser, writes/refines `.spec.ts` + POM | Phase 2 |
-| **Healer** | Debugs and fixes failing tests — selectors and timing only | Phase 4 |
+| Agent | Role | When invoked |
+|-------|------|--------------|
+| **FSD + Figma pipeline** | Stage 0: FSD/Figma → Excel (create or reconcile) | User provides FSD + Figma (+ Excel) |
+| **QA automation pipeline** | Excel → validate → 6 batches → specs + gate | **Approve Excel** |
+| **Generator** | Live UI → `.spec.ts` + POM for assigned Excel cases | Inside each QA pipeline batch |
+| **Healer** | Fixes automation/locator failures once per batch | Inside each QA pipeline batch after execute |
+| **Execute & Raise Defects** | Run spec/module → local defect Excel | Ad-hoc on existing specs |
+| **FSD Excel Coverage Audit** | Independent Excel vs FSD/Figma verification | Optional before Approve Excel |
+| **Defect Regression** | Retest **Resolved** defects → Closed/Reopened | After dev marks Resolved |
+
+Every agent run also produces a **Word summary** under `docs/agent-runs/<agent>/`. See `docs/agent-runs/README.md`.
 
 ---
 
-## Pipeline Flow
+## Pipeline Flow (standard)
 
 ```
-URL / .docx / scenarios     Planner (Phase 1)
-       │                            │
-       ▼                            ▼
-  specs/generated/plan.md    ← planner_save_plan
+FSD + Figma  →  fsd-figma-pipeline (Stage 0)  →  Excel + coverage + TC delta
+       │
+       ▼  Approve Excel
+qa-automation-pipeline  →  Validate → Normalize → 6 batches
+       │
+       ▼  each batch
+playwright-test-generator (live UI)  →  Execute  →  playwright-test-healer (once)  →  Verify
        │
        ▼
-  Generator (Phase 2) — generator_setup_page → browser_* → generator_write_test
-       │
-       ▼
-  tests/e2e/*.spec.ts + PageObjects/ + objectrepositories/
-       │
-       ▼
-  Run tests (Phase 3) — npm run pw:run
-       │
-       ▼ (if failures)
-  Healer (Phase 4) — test_debug → fix → test_run
-       │
-       ▼
-  Reports (Phase 5) — npm run pipeline:report
+tests/milestoneN/**/*.spec.ts + POM  →  completion gate  →  defects (if failures remain)
 ```
 
 **Handoff rules:**
-- Planner saves to `specs/generated/plan.md` (also copy to `specs/plan.md` for human reference).
-- **Generator reads `specs/generated/plan.md` — never invent scenarios not in the plan.**
-- Healer only runs after tests exist in `tests/e2e/` and at least one failure is confirmed.
+- Stage 0 hands off only after **Approve Excel** — invoke `qa-automation-pipeline` (never parent-only script generation).
+- **Generator** reads assigned Excel cases — live UI mandatory; one spec per module.
+- **Healer** runs at most once per batch inside `qa-automation-pipeline` for classified automation failures only.
 - Healer fixes locators, timing, and navigation — **never changes test intent or business logic.**
+- If a subagent fails to load, the orchestrator continues per checkpoint rules in `qa-automation-pipeline` — do not bypass with ad-hoc flows.
 
 ---
 
@@ -81,7 +174,7 @@ URL / .docx / scenarios     Planner (Phase 1)
 |----------|-------|
 | Application | AML system at `https://kadelamldev.customerxps.com:2506` |
 | Default env | `dev` (see `tests/fixtures/environments.json`) |
-| Authentication | Typically required — set `EMAIL` / `PASSWORD` in `.env` |
+| Authentication | **Bypassed for now** — do not require `EMAIL` / `PASSWORD`; navigate via `BASE_URL` only until user enables login |
 | Seed file | `tests/seed.spec.ts` |
 | Test case input | Excel `.xlsx` in `pipeline/test-cases/` |
 
@@ -90,8 +183,7 @@ URL / .docx / scenarios     Planner (Phase 1)
 ```env
 ENV=dev
 BASE_URL=https://kadelamldev.customerxps.com:2506
-EMAIL=your-test-user
-PASSWORD=your-test-password
+# EMAIL / PASSWORD — not required while login is bypassed
 ```
 
 ---
@@ -152,8 +244,9 @@ playwright.config.ts
 Configured in `.cursor/mcp.json`:
 
 ```
-npx playwright run-test-mcp-server -c .
+npx playwright run-test-mcp-server --headless -c .
 ```
+
 
 **Required tools by agent:**
 
@@ -179,15 +272,22 @@ Seed file defaults to `tests/seed.spec.ts`.
 - Follow file creation order: **spec → locator → page object**
 - Follow **locator priority** (see above)
 - **Search existing code before creating anything new** (see Framework Reuse Rule)
+- **Always explore the live application via MCP before generating or healing locators/POM** — open the real module URL, snapshot, then write selectors. Figma/Excel/heal shells are secondary. If live UI is unreachable, mark **Blocked** with reason; do not silently skip (see `.cursor/rules/live-ui-mandatory-for-scripting.mdc`)
+- **100% live evidence whenever Generator or Healer is invoked:** Generator must live-validate every eligible UI case; Healer must capture pre/post live evidence for every case it changes, always on the correct module route. Representative subsets and stale/unrelated browser pages do not count.
+- **Single MCP owner for live Generate/Heal:** only one session may drive Playwright MCP for a run. QA pipeline Generate defaults to the parent/orchestrator; do not parent+child concurrent `browser_*` (see `qa-automation-pipeline` Single MCP owner rules).
 
 ### Must not do
 - Put raw selectors inside spec files
 - Use `page.waitForTimeout()` or other hard waits
 - Use `test.skip()`, `test.fixme()`, `test.only()`, `describe.skip()`, `describe.only()`
 - Wrap actions in manual retry loops — use Playwright config retries instead
-- Add login/authentication steps — this site has no login
+- Add login/authentication steps — **login is bypassed**; do not fill credentials until the user asks to enable auth
+- Create **one `.spec.ts` per test case** — use **one `.spec.ts` per Excel module** under `tests/milestone2/` (Milestone1 pattern)
 - Commit secrets or `.env` contents
 - Duplicate page objects, locators, or helpers that already exist
+- **Skip live UI exploration** for scripting or healing when the app is reachable
+- Finalize locators from Figma/docs/heal shells alone without a live snapshot of that screen
+- Drive Playwright MCP from parent and a background Generate/Heal child at the same time
 
 ### Environment variables (`.env`)
 | Variable | Purpose |
@@ -314,77 +414,85 @@ The pipeline reporter automatically:
 
 **Do not** add custom screenshot logic in specs unless explicitly capturing a named diagnostic — rely on framework defaults.
 
+After milestone execution and **after any pending heal cycle finishes** (or is
+skipped), the reporter / `qa:generate-defects` / `qa:merge-batches` creates
+`pipeline/test-data/Milestone<N>/Defects/<module>-defects.xlsx` for modules
+with **remaining** failed test cases. **N** is resolved from Stage 0 artifacts
+(Test Cases + FSD + Figma under `Milestone1/` or `Milestone2/`) by Test Case ID
+(`resolve-defect-milestone.cjs`), not from spec folder alone. Each row includes Milestone (`M1`/`M2`),
+Feature (functional scenario area within the module, such as Tab Navigation,
+Periodic Review Schedule, Page Layout and Navigation, or Maker-Checker Approval —
+never a repeated module/page name or Playwright suite name), and
+Assigned To (feature owners from M1 `AML-Daily-Tracker.xlsx` and M2 live tracker
+cache). Defect rows must pass `validate-defect-plain-language.cjs` (automatic in
+`generateDefectFiles`; see `.cursor/rules/defect-plain-language-mandatory.mdc`).
+`Summary`, `Steps to Reproduce`, `Expected Result`, and `Actual Result`
+must be detailed (no generic placeholders or title-only steps) and written in
+simple plain English — no selectors, Playwright API names, stack traces, or
+millisecond values (state waits in seconds). Do not include FSD requirement
+traceability IDs in narratives (`BR-011`, `NFR-001`, etc.) — use plain behaviour
+text only; generator strips them via `plainLanguageNarrative`. Summary must not
+contain TC IDs or URLs; steps/actual results use the module page name instead of
+URLs. Defect ID is `DEF-M<N>-<Test Case ID>` without a duplicated module prefix
+(for example `DEF-M1-SC-TC-002`). Defect rows use a single **Status** column
+(`New`, `In Progress`, `Resolved`, `Reopened`, `Closed`; default **New** on
+raise), **Severity** and **Priority** (assigned at defect generation from the
+test execution report via `classify-defect-severity-priority.cjs`; Google sync
+fills empty cells only — preserves values once set; regression never touches them),
+and omit `Sub Module`, `Frontend Developers`, `Backend Developers`, `Executed At`,
+`Local Defect File`, `Classification`, and `Screenshot Reference`. Local Excel is
+written first; Google Sheet sync happens only after human approval of that local
+sheet (`npm run qa:sync-defects-sheet -- --approved`). Rows must be
+**contiguous** on the Defects tab (no blank spacer rows between defects). See
+`.cursor/rules/defect-google-sheet-sync.mdc`. Defect rows are unique by
+Test Case ID (Milestone + TC): re-runs upsert, never duplicate. No defect
+workbook is created for a module with zero remaining failures. While heal may
+still run, set `PW_DEFER_DEFECT_GENERATION=1` so sheets are not written early.
+
+The same rows are synced to the shared Google Sheet **Defects** tab
+(`npm run qa:sync-defects-sheet -- --approved`) when CDP Chrome is running
+(`npm run tracker:cdp-chrome`). Both milestones write into that one Defects tab.
+Sync batch-appends new rows and rewrites contiguously on upsert so blank gaps
+from prior bad syncs are removed.
+If CDP/sign-in is unavailable, local files still generate and Google sync is
+reported Blocked.
+
+**Defect regression (Google only):** invoke `@.cursor/agents/defect-regression.agent.md`
+or `npm run tracker:cdp-chrome` then `npm run qa:defect-regression -- --milestone <N>`.
+Reads **only the shared Google Defects tab** for **Status = Resolved**. Pass → **Closed**;
+fail → **Reopened**. Updates **Status only on Google** (never Severity/Priority).
+Status is written **on Google automatically** after regression (no approval step).
+See `.cursor/rules/defect-status-guardrails.mdc`.
 ---
 
-## Planner Agent
+## Stage 0 — FSD + Figma pipeline (test case authoring)
 
-**When to use:** First run with a URL, or when the site has changed significantly and the plan needs refresh.
+**When to use:** User provides FSD `.docx` + Figma HTML (and optional existing Excel) to create or reconcile manual test cases.
 
-**Before starting — read:**
-1. `tests/fixtures/environments.json`
-2. `tests/fixtures/selector-map.json`
-3. Existing `specs/generated/plan.md` (if present — extend, don't duplicate blindly)
+**Agent:** `fsd-figma-pipeline` — see `.cursor/agents/fsd-figma-pipeline.agent.md` and `.cursor/system-context/fsd-figma-pipeline.mdc`.
 
-**Workflow:**
-1. Call `planner_setup_page` with seed `tests/seed.spec.ts`
-2. Navigate and explore using `browser_navigate`, `browser_snapshot`, `browser_click`
-3. Map all pages, forms, links, footer, mobile menu, legal pages
-4. Design independent scenarios with clear steps and expected results
-5. Save via `planner_save_plan` → **`specs/generated/plan.md`**
-
-**Plan format requirements:**
-```markdown
-### 1. Homepage Tests
-
-**Seed:** `tests/seed.spec.ts`
-
-#### 1.1. Homepage Loads Successfully
-
-**File:** `tests/e2e/homepage-loads.spec.ts`
-
-**Steps:**
-  1. Navigate to homepage
-    - expect: Dashboard is visible
-    - expect: Hero heading is visible
-    - expect: Navigation menu is visible
-```
-
-Each scenario must include:
-- Numeric ID (e.g. `1.1`, `2.3`)
-- Target spec file path under `tests/e2e/`
-- Numbered steps with nested `- expect:` verification points
-- Reference to seed file
-
-**Coverage checklist:**
-- [ ] Homepage content and sections
-- [ ] All main navigation links
-- [ ] Contact mechanisms (WhatsApp, mailto, form)
-- [ ] Footer links and copyright
-- [ ] Service sub-pages
-- [ ] Legal pages (Privacy, Terms)
-- [ ] Social links (href validation, no unnecessary external navigation)
-- [ ] Responsive/mobile layout (at least one mobile scenario)
+**Output:** Excel under `pipeline/test-data/MilestoneN/Test Cases/`, `coverage-matrix.json`, `tc-delta-report.json`, and (when applicable) `feature-delta-report.json`. Human **Approve Excel** hands off to `qa-automation-pipeline`.
 
 ---
 
-## Generator Agent
+## Generator Agent (QA pipeline worker)
 
-**When to use:** After a plan exists at `specs/generated/plan.md`.
+**When to use:** Inside each `qa-automation-pipeline` batch — assigned Excel UI cases only. Not invoked standalone for ad-hoc URL or scenario input.
 
 **Before starting — read:**
-1. `specs/generated/plan.md` — **source of truth; never invent scenarios**
+1. Assigned Excel cases from the batch manifest — **source of truth; never invent scenarios**
 2. `tests/fixtures/environments.json`
 3. `tests/fixtures/selector-map.json`
 4. `tests/fixtures/test-fixture.ts`
 5. `tests/helpers/` and existing `BasePage` / milestone page objects
 6. **Search existing** `PageObjects/`, `objectrepositories/`, and `commands.ts` for reusable code
 
-**Workflow (per scenario):**
-1. Check if spec, locator, or page object already exists for this scenario — extend if yes
-2. Call `generator_setup_page` for the scenario
-3. Execute each plan step live using `browser_*` tools
+**Workflow (per Excel case):**
+1. Check if spec, locator, or page object already exists for this case — extend if yes
+2. Call `generator_setup_page` for the case
+3. Navigate to the case's live module URL and execute each Excel Test Step using `browser_*` tools
 4. Call `generator_read_log` to retrieve captured interactions
-5. Call `generator_write_test` with the generated TypeScript source
+5. Call `generator_write_test` with the generated TypeScript source (append to one spec per module)
 6. Create or extend POM files following **Base Page Standard** and **locator priority**
 
 **Generated spec standards:**
@@ -423,7 +531,8 @@ export default HomePageLocators;
 **Naming conventions:**
 | Artifact | Pattern | Example |
 |----------|---------|---------|
-| Spec file | `<feature>-<action>.spec.ts` | `homepage-loads.spec.ts` |
+| Spec file (Milestone2 / QA pipeline) | **One file per Excel module** | `missing-mandatory.spec.ts` (all MM cases) |
+| Spec file (legacy e2e / single-scenario) | `<feature>-<action>.spec.ts` | `homepage-loads.spec.ts` |
 | Locator file | `<Feature>Locators.ts` | `HomePageLocators.ts` |
 | Page object | `<Feature>.ts` extends `BasePage` | `HomePage.ts` |
 | Test title | `Test Case ID:<id> - <description>` | `Test Case ID:1.1 - Homepage loads successfully` |
@@ -453,27 +562,16 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 4. `tests/fixtures/selector-map.json`
 
 **Workflow:**
-1. Run `test_list` to see all tests
-2. Run `test_debug` on the failing test — pauses at error
-3. Inspect live DOM with `browser_snapshot`
-4. Generate better selectors with `browser_generate_locator` — apply **locator priority**
-5. Fix in this priority order:
+1. Run `test_list` to see all tests / read failure handoff
+2. Classify each failure: automation vs product/data/env
+3. For **automation** failures: `test_debug` + live `browser_snapshot` / `browser_generate_locator`
+4. Fix in this priority order:
    - Update `tests/fixtures/selector-map.json` (if selector is shared)
-   - Update `tests/objectrepositories/<Feature>Locators.ts`
-   - Update `tests/PageObjects/<Feature>.ts` (keep extending `BasePage`)
-   - Update spec **only** if test logic is wrong — never change business intent
-6. Run `test_run` on the fixed test until green
-7. Repeat for all failures; then run full suite: `npm run pw:run`
-
-**Common failure patterns on Elementor sites:**
-
-| Symptom | Likely cause | Fix |
-|---------|--------------|-----|
-| Element not found | Stale CSS class after theme update | Re-select using locator priority; update locator file |
-| Timeout on navigation | Lazy-loaded content or animation | Use `BasePage.waitForPageLoad()` or wait for specific element |
-| Wrong page URL | Menu link changed | Update href pattern in locator or navigation method |
-| Flaky visibility | Element below fold | `BasePage.scrollIntoView()` in page object |
-| Cookie/popup blocking | Consent banner | Dismiss in page object `navigateTo*` method |
+   - Update locator / page object under `tests/milestone2/` (or legacy paths)
+   - Update spec **only** if automation wiring is wrong — never change business intent
+5. Re-run healed tests once to confirm the automation fix
+6. **One heal cycle only** (QA pipeline): then hand off for a single final suite run and **STOP**. Do not loop until 100% green.
+7. Leave product/data/env failures as Failed with classification — do not force pass
 
 **Healer must not:**
 - Add `test.skip()` or suppress failures
@@ -481,6 +579,8 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 - Hardcode URLs — use `testData.baseUrl`
 - Modify test intent, assertions scope, or business logic — fix automation only
 - Create duplicate page objects or locators — extend existing ones
+- Keep healing until the suite is green (hides product defects)
+- Apply a **forced healer**: weaken/replace Excel expected results, drop asserts, soft `or` fallbacks that pass without the required outcome, or unrelated POM helpers — leave Failed/Blocked instead (see `.cursor/skills/qa-self-healing-automation` and `qa-assertion-quality-review`)
 
 ---
 
@@ -493,6 +593,29 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 | `npm run pw:run:report` | Run specs + generate Allure/Excel reports |
 | `npm run pw:ui` | Playwright UI mode for debugging |
 | `npm run lint` | ESLint — must pass before finishing |
+| `npm run fsd:coverage-report` | After every Stage 0 Excel write: feature delta + TCs + coverage % markdown |
+| `npm run fsd:audit-coverage -- --excel <path> [--milestone N] [--fsd <path>] [--figma <path>]` | Independent mechanical audit of Excel vs FSD/Figma |
+| `npm run fsd:audit-report -- --results-key "<module>"` | Render audit markdown + agent run DOCX |
+| `npm run qa:parse-excel` | Mechanical Excel validate → `<resultsRoot>/validation/validation-report.json` |
+| `npm run qa:normalize` | Mechanical normalize of eligible rows → `normalized/test-cases.json` |
+| `npm run qa:assert-normalize` | Fail if normalize is partial/fabricated vs Excel/validation/delta |
+| `npm run qa:detect-smoke-stubs` | Fail if flow Excel cases are comment-only smoke shells |
+| `npm run qa:generate-defects -- --execution <report> --milestone <N>` | Generate failed-module defect workbooks (plain-language gate enforced) |
+| `npm run qa:validate-defect-plain-language -- <defect-rows.json>` | Verify defect rows: no technical terms, no FSD requirement IDs (`BR-xxx`, `NFR-xxx`), valid Feature labels |
+| `npm run qa:execute-raise-defects -- --spec <path>` | Execute a spec/folder; raise **functional** + **UI/cosmetic** local defects (`@.cursor/agents/execute-raise-defects.agent.md`) |
+| `npm run qa:run-module -- --spec <path>` | Same as execute-raise-defects — preferred alias; functional + UI audit + DOCX |
+| `npm run qa:audit-ui-defects -- --execution <report> --spec <path>` | Re-run UI/UX/cosmetic audit only (Figma + Stage 0 baselines) |
+| `npm run qa:sync-ui-defects-sheet -- --rows <payload> --approved` | Sync UI defect rows to Google **UI Defects** tab after local review |
+| `npm run qa:approve-defects-sync` | Sync latest module-run defects to Google after local approval (upsert + stale prune by default) |
+| `npm run qa:assert-defect-integrity` | Verify workbook/payload has no passed Test Case IDs from execution report |
+| `npm run tracker:cdp-chrome` | Launch signed-in CDP Chrome for the shared AML tracker Google Sheet |
+| `npm run qa:sync-defects-sheet -- --rows <json> --approved` | Sync to Google Defects tab after local review; upsert + stale-module prune by default; contiguous rewrite; preserves Status and existing Severity/Priority; `--no-upsert` skips stale prune; `--metadata-only` skips Status/S/P |
+| `npm run qa:defect-regression -- --milestone <N>` | Google-only Resolved retest → Closed/Reopened; auto Google sync; `--defer-google-sync` to skip write |
+| `npm run docs:agent-run -- --agent <slug> --payload <json>` | Write agent run `.docx` (generic / custom payload) |
+| `npm run docs:agent-run:generator -- --results-root <path> --batch <N>` | Generator batch summary |
+| `npm run docs:agent-run:healer -- --results-root <path> --batch <N>` | Healer batch summary |
+| `npm run setup` | Install Playwright Chromium (auto-run by defect-regression when missing) |
+| `npm run qa:verify-completion` | Mechanical QA pipeline gate (includes smoke-stub check) |
 | `npm run pipeline:report` | Generate Excel + Allure reports from latest results |
 | `npm run pipeline:report:allure` | Allure HTML report only |
 | `npm run milestone:run -- 2` | Run Milestone 2 Playwright specs |
@@ -502,18 +625,22 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 
 A generation or healing cycle is complete when:
 
-- [ ] All scenarios from `specs/generated/plan.md` have matching specs in `tests/e2e/`
-- [ ] No scenarios exist that are not in the plan
+- [ ] Every eligible Excel Test Case ID appears in the module spec under `tests/milestoneN/`
+- [ ] No test cases exist that are not in the approved Excel scope
 - [ ] Locators live in `objectrepositories/`, not in spec files
 - [ ] All page objects extend `BasePage`
 - [ ] Existing page objects/locators/helpers reused where applicable — no duplicates
 - [ ] Selectors follow locator priority order
 - [ ] All tests use `test-fixture` import and `testData.baseUrl`
 - [ ] `npm run lint` passes with zero warnings
-- [ ] `npm run pw:run` passes with zero failures
+- [ ] `npm run qa:detect-smoke-stubs` / gate `noSmokeStubSpecs` passes (no comment-only Create/Add/Save stubs)
+- [ ] For the QA pipeline, every eligible UI case has live-generation evidence and live-UI coverage is 100%
+- [ ] Exactly six batch execution reports exist and cumulatively cover every eligible case
+- [ ] Each batch invoked the healer at most once for automation failures and re-ran only changed cases once
 - [ ] New selectors added to `selector-map.json` when discovered
 - [ ] No `skip`, `fixme`, `only`, hard waits, or manual retry loops introduced
 - [ ] Failure reporting verified via `results/<env>/execution-report.json`
+- [ ] Per-batch generated, pre-heal, and post-heal counts are present in the aggregate report
 
 ---
 
@@ -521,6 +648,7 @@ A generation or healing cycle is complete when:
 
 | Agent | Read before starting |
 |-------|---------------------|
-| Planner | `environments.json`, `selector-map.json`, existing `specs/generated/plan.md` |
-| Generator | `specs/generated/plan.md`, `BasePage.ts`, `test-fixture.ts`, `selector-map.json`, existing `PageObjects/` + `objectrepositories/` + `commands.ts` |
-| Healer | Failing spec + its PageObject/Locators + `BasePage.ts`, `selector-map.json`, `results/<env>/execution-report.json` |
+| FSD + Figma pipeline | FSD/Figma inputs, existing Excel, `.cursor/system-context/fsd-figma-pipeline.mdc` |
+| QA automation pipeline | Approved Excel, `tc-delta-report.json` (reconcile), `.cursor/agents/qa-automation-pipeline.agent.md` |
+| Generator | Batch manifest + Excel cases, `BasePage.ts`, `test-fixture.ts`, `selector-map.json`, existing milestone POM/locators |
+| Healer | Failing spec + its PageObject/Locators + `BasePage.ts`, `selector-map.json`, batch execution report |

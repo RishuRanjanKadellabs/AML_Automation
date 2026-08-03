@@ -8,7 +8,7 @@ alwaysApply: true
 
 ## What the project does
 
-AI-DLC pipeline that reads Excel (.xlsx) or .docx test case documents and generates Playwright tests. Targets the AML application at `https://kadelamldev.customerxps.com:2506` — login required (`EMAIL` / `PASSWORD` in `.env`).
+AI-DLC pipeline that reads Excel (.xlsx) or .docx test case documents and generates Playwright tests. Targets the AML application at `https://kadelamldev.customerxps.com:2506`. **Login is currently bypassed** (do not require `EMAIL` / `PASSWORD` until the user asks to enable auth).
 
 ## Tech stack
 
@@ -43,6 +43,10 @@ Excel / FSD+Figma → Cursor agents (.cursor) → tests/milestone2/
 | **pipeline/scripts/** | Milestone runners (`run-milestone.js`, failed re-run helpers) |
 | **pipeline/test-cases/** | Excel / .docx input files |
 | **pipeline/test-data/Milestone2/** | Stage 0 inputs: `FSD/`, `Figma/`, generated `Test Cases/` |
+| **pipeline/test-data/MilestoneN/Defects/** | Per-module Excel defect files for remaining failures after heal (Milestone + Feature + Assigned To; no Sub Module/FE/BE columns) |
+| **pipeline/test-data/Milestone1/Tracker/AML-Daily-Tracker.xlsx** | M1 feature→developer source for defect assignment |
+| **pipeline/test-data/Milestone2/Tracker/** | Cached M2 weekly tracker extracts used for assignment |
+| **Shared Google Sheet Defects tab** | Live defect log for both M1 and M2 (`npm run tracker:cdp-chrome` + `qa:sync-defects-sheet`) |
 | **specs/generated/** | Agent contracts: `qa-pipeline/`, `fsd-figma-pipeline/` (+ optional `plan.md` / prompts for planner/generator) |
 | **tests/milestone1/** | Milestone 1 suite — do not add new modules here |
 | **tests/milestone1/objectrepositories/** | Milestone 1 locators (pages import `../../../objectrepositories/…`) |
@@ -51,14 +55,14 @@ Excel / FSD+Figma → Cursor agents (.cursor) → tests/milestone2/
 | **tests/milestone2/** | **Required home for all new generated tests** — same layout as milestone1 |
 | **tests/milestone2/objectrepositories/** | Milestone 2 locators |
 | **tests/milestone2/pages/<Module>/<Feature>Pages/** | New page objects |
-| **tests/milestone2/test-cases/<Module>/<feature>Tests/** | New spec files |
+| **tests/milestone2/test-cases/<Module>/<feature>Tests/** | New specs — **one `.spec.ts` per Excel module** (not per TC) |
 | **tests/seed.spec.ts** | MCP seed for planner/generator browser setup |
 | **reporters/** | Playwright reporter code (`pipeline-reporter`, `detailed-log-reporter`) |
 | **results/** | Raw run output (`execution.log` replaced each run, `allure-results/`, `execution-report.json`, QA stage JSON) |
 | **report/automation-execution-cycle/** | Published Allure HTML, dashboard, Excel (built from `results/`) |
 | **test-results/** | Playwright failure attachments / screenshots |
 | **playwright-report/** | Playwright built-in HTML report |
-| **fixtures/** | env/test fixtures (`environments.json`, `test-fixture.ts`, `milestone1-shared-session.ts`, module `*-data.json`) |
+| **fixtures/** | env/test fixtures (`environments.json`, `test-fixture.ts`, `milestone1-shared-session.ts`, `milestone-shared-session.ts` for one browser/worker across tests, module `*-data.json`) |
 | **tests/helpers/** | Shared helpers (action-logger, healer-mode, module UI heal / API mocks) |
 | **.cursor/agents/** | Cursor agent commands |
 | **.env** | Credentials (gitignored) |
@@ -71,9 +75,37 @@ Excel / FSD+Figma → Cursor agents (.cursor) → tests/milestone2/
 - **Allure only:** `npm run pipeline:report:allure`
 - **Run tests:** `npx playwright test` or `npm run pw:run`
 - **List milestones:** `npm run milestone:list`
-- **Run one milestone:** `npm run milestone:run -- 2` (or `milestone2`) — auto-discovers `tests/milestoneN/`
+- **Run one milestone:** `npm run milestone:run -- 2` (or `milestone2`) — auto-discovers `tests/milestoneN/`; defaults to **headed**, **1 worker**, full suite; uses one **persistent Chromium (CDP)** so the same window stays open across Playwright worker restarts after failures. Override: `PW_HEADLESS=1`, `PW_MILESTONE_WORKERS=<n>`, `PW_PERSISTENT_BROWSER=0`
 - **Run a module path:** `npm run milestone:run -- 2 tests/milestone2/test-cases/ConfigurationModule/`
 - **Run all milestones:** `npm run milestone:all:run`
+- **Generate module defects from an execution report:** `npm run qa:generate-defects -- --execution <report.json> --milestone <N>` (plain-language narratives + Feature inference; strips FSD requirement IDs from titles/steps via `plainLanguageNarrative`; mechanical gate `validate-defect-plain-language.cjs` must pass incl. `FSD_TRACEABILITY_PATTERNS`). Validate manually: `npm run qa:validate-defect-plain-language -- results/qa-pipeline/defects/milestone-<N>-defect-rows.json`. See `.cursor/rules/defect-plain-language-mandatory.mdc`.
+- **Execute a spec and raise defects (preferred):** `npm run qa:run-module -- --spec <path>` — defaults: **headed**, **1 worker**, **persistent CDP Chromium** (same window after failures; browser closes only when run completes). Alias `qa:execute-raise-defects`. Always writes local defects + execute-raise DOCX; **removes passed TC IDs** from local Excel on regenerate. Google sync after **Approve defects**: `npm run qa:approve-defects-sync`.
+- **Run a module via milestone runner:** `npm run milestone:run -- 2 tests/milestone2/...` — also auto-finalizes local defects + DOCX via pipeline reporter.
+- **Shared Google Sheet defect sync (after local review approval):** `npm run tracker:cdp-chrome` then `npm run qa:sync-defects-sheet -- --rows results/qa-pipeline/defects/milestone-<N>-defect-rows.json --approved`. **Upsert + stale-module prune by default** (drops passed TCs for synced module on Google). Rewrites Defects tab **contiguously**. Preserves existing **Status** (never regress to New) and existing **Severity/Priority** when already set. `--no-upsert` skips stale prune; `--metadata-only` skips Status, Severity, and Priority. See `.cursor/rules/defect-google-sheet-sync.mdc` and `.cursor/rules/defect-pipeline-doc-sync.mdc`.
+- **Defect regression (Google only):** `npm run tracker:cdp-chrome` then `npm run qa:defect-regression -- --milestone <N>`. Reads/writes **Status only on the shared Google Defects tab** for **Resolved** defects. Never updates Severity/Priority. Local Excel is not used. See `.cursor/rules/defect-status-guardrails.mdc` and `.cursor/rules/defect-pipeline-doc-sync.mdc`.
+
+### Defect pipeline scripts (implementation map)
+
+| Script | Role |
+|--------|------|
+| `resolve-defect-milestone.cjs` | Test Case ID → M1/M2 from Test Cases + FSD + Figma folders |
+| `generate-module-defects.js` | Local defect Excel + sync payload; removes passed TC IDs; current failures only; plain-language + Feature inference |
+| `defect-row-prune.cjs` | Shared passed/stale defect row pruning (local + Google) |
+| `assert-defect-sync-integrity.cjs` | Mechanical gate: no passed TC IDs in workbook/payload |
+| `validate-defect-plain-language.cjs` | Mechanical defect narrative gate (technical terms + FSD traceability IDs) |
+| `classify-defect-severity-priority.cjs` | Severity/Priority at generation only |
+| `execute-raise-defects.js` | Spec run + local defects + DOCX (`qa:run-module`) |
+| `finalize-module-run.cjs` | Post-run defects summary + DOCX (auto via pipeline reporter) |
+| `approve-defects-sync.cjs` | Google sync after local defect approval (upsert default) |
+| `append-defects-google-sheet.js` | Google sync (`--approved`; upsert + stale prune default); contiguous rewrite |
+| `defect-regression-run.js` | Resolved retest + auto Google Status |
+| `read-defect-sheet.cjs` | Google Defects tab read (CDP) |
+| `update-defect-google-statuses.cjs` | Regression Google Status writes |
+| `update-defect-workbook-statuses.cjs` | Status merge helpers |
+| `resolve-defect-regression-scope.cjs` | Regression case scope |
+| `parse-spec-regression-index.cjs` | Spec index for regression |
+| `ensure-playwright-chromium.cjs` | Chromium install before regression |
+| `write-agent-run-docx.cjs` | Agent run Word summaries → `docs/agent-runs/` |
 - **Milestone1 full suite:** `npm run milestone1:full-suite:run`
 - **Setup browsers:** `npm run setup`
 - **New Excel→scripts:** use Cursor agent `qa-automation-pipeline` (not legacy CLI)
@@ -95,10 +127,11 @@ Excel / FSD+Figma → Cursor agents (.cursor) → tests/milestone2/
 Project MCP is configured in `.cursor/mcp.json` using Playwright's built-in test server:
 
 ```
-npx playwright run-test-mcp-server -c .
+npx playwright run-test-mcp-server --headless -c .
 ```
 
 This exposes `planner_*`, `generator_*`, `test_*`, and `browser_*` tools required by agents in `.cursor/agents/`.
+**Default is headless** so live exploration / scripting does not open visible browser windows. QA pipeline auto-execute defaults to headless (`PW_HEADLESS=1`; set `PW_HEADLESS=0` to override).
 
 After changing MCP config, restart MCP servers in Cursor (Settings → MCP → reload). Disable any global `@playwright/mcp` server to avoid tool conflicts — the test MCP server includes all browser tools.
 
@@ -108,7 +141,10 @@ After changing MCP config, restart MCP servers in Cursor (Settings → MCP → r
 
 - **New environment:** `fixtures/environments.json`
 - **New Excel / source cases:** `pipeline/test-cases/` or `pipeline/test-data/`
-- **New Playwright specs / page objects / locators:** `tests/milestone2/` only — locators under `tests/milestone2/objectrepositories/` (not a shared `tests/objectrepositories/`). Do **not** create or extend `tests/e2e/` for new work. Do **not** add new modules under `tests/milestone1/`.
+- **New Playwright specs / page objects / locators:** `tests/milestone2/` only — **one `.spec.ts` per Excel module**; locators under `tests/milestone2/objectrepositories/`. Do **not** create or extend `tests/e2e/` for new work. Do **not** add new modules under `tests/milestone1/`. Login currently **bypassed** (no `EMAIL`/`PASSWORD` required until user enables auth).
 - **New helper:** `tests/helpers/` (shared cross-module logic; keep feature-specific healers in named helper files)
-- **QA automation pipeline (Excel→automation orchestration):** agent `qa-automation-pipeline`; schemas/templates in `specs/generated/qa-pipeline/`; generated code under `tests/milestone2/`; stage outputs in `results/qa-pipeline/` (see `docs/qa-automation-pipeline.md`). Does not modify existing agents.
-- **FSD + Figma HTML Stage 0 (requirements→Excel):** agent `fsd-figma-pipeline`; inputs from `pipeline/test-data/Milestone2/{FSD,Figma}/` (user names files); Excel written to `Milestone2/Test Cases/`; process docs under `.cursor/system-context/fsd-figma-pipeline.mdc` only; handoff to `qa-automation-pipeline` after Excel approval. FSD wins over Figma HTML.
+- **QA automation pipeline (Excel→automation orchestration):** agent `qa-automation-pipeline`; schemas/templates in `specs/generated/qa-pipeline/`; generated code under `tests/milestone2/` (or `tests/milestone1/` when Stage 0 milestone=1); stage outputs in `results/qa-pipeline/<excel-basename>/` (per workbook). Mechanical Validate/Normalize via `npm run qa:parse-excel` → `qa:normalize` → `qa:assert-normalize` (never hand-written samples; never Python pandas/openpyxl as primary). On Approve Excel: Validate → Normalize → assert → split exactly six near-equal batches → for each batch Generate with live evidence (append to one spec/module) → execute/report → heal classified automation failures once → verify changed cases once → **show pass/fail and ask before next batch (1–5); turn ends on that ask** → after batch 6 aggregate Report/Gate. **Single MCP owner:** generator/healer live MCP ownership never overlaps; checkpoint every batch substage.
+- **Live UI for scripting/healing:** mandatory — see `.cursor/rules/live-ui-mandatory-for-scripting.mdc`. Never finalize locators without live MCP exploration when the app is up.
+- **FSD + Figma HTML Stage 0 (requirements→Excel):** agent `fsd-figma-pipeline`; inputs from `pipeline/test-data/Milestone1|2/{FSD,Figma}/` (user names files + optional `Milestone: 1|2`; prefer `*_New` revisions when both baseline and `_New` exist); Excel under `MilestoneN/Test Cases/` — **create if missing, reconcile/update in place if present** with mandatory `tc-delta-report.json` + `feature-delta-report.json` (features added/removed/updated vs baseline); mandatory `coverage-matrix.json` (`byModule` + `byFeature`) + **100% FSD requirement coverage**; after **every** Excel write run `npm run fsd:coverage-report` and display **overall % + Feature changes (TCs + coverage %) + Modules + Features (TCs + Coverage %) + TC delta**; Approve/handoff only at 100% unless user accepts gaps; process docs under `.cursor/system-context/fsd-figma-pipeline.mdc` only; handoff to `qa-automation-pipeline` after Excel approval (`create` = full generate; `reconcile` = delta add/update/remove on `tests/milestoneN/` specs). FSD wins over Figma HTML.
+- **Agent run DOCX reports:** every agent invocation writes a stakeholder-facing Word summary under `docs/agent-runs/<agent-slug>/`. **Auto:** `qa:defect-regression`, `qa:run-module` / `qa:execute-raise-defects`, milestone module runs (pipeline reporter → `finalize-module-run`), `qa:verify-completion`, `fsd:coverage-report`. **One-command:** `docs:agent-run:generator|healer`. See `docs/agent-runs/README.md`.
+- **Agent models / usage:** QA pipeline generate/heal agents pinned to **`claude-sonnet-5-thinking-high`** (Sonnet 5); script-only agents use `composer-2.5-fast`. See `.cursor/rules/agent-model-inherit.mdc`.

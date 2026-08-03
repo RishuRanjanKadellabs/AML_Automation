@@ -1,17 +1,23 @@
 ---
-description: QA automation pipeline guardrails — protect existing agents, security, orchestration-only generation/execution/healing rules.
+description: QA automation pipeline guardrails — six live-validated generation, execution, and single-cycle healing batches.
 alwaysApply: true
 ---
 
 # QA Automation Pipeline — Guardrails
 
-## Existing agents (read-only)
+## Existing agents (read-only by default)
 
-Never modify: `.cursor/agents/test-planner|test-generator|test-healer|headed-executor|headless-executor.agent.md` or `.github/agents/playwright-test-*.agent.md`.
+Do **not** casually edit: `.cursor/agents/test-planner|test-generator|test-healer|headed-executor|headless-executor.agent.md` or `.github/agents/playwright-test-*.agent.md`.
 
-Only new agent allowed for this workflow: `qa-automation-pipeline`.
+**Exception:** When the user explicitly authorizes updates to protected agents (e.g. to enforce live UI / full Excel coverage), those edits are allowed.
 
-Orchestrate; do not duplicate generator/healer logic or merge into those agents.
+Only new orchestration agent for this workflow: `qa-automation-pipeline`.
+
+Orchestrate exactly six near-equal generation/execution batches. Invoke the
+existing healer at most once per batch for classified automation failures; do
+not duplicate healer logic.
+
+**Generator must enforce:** live AML UI for every eligible UI case and every locator; 100% of assigned Excel/plan cases; one spec per module under Milestone2; login bypassed until user enables auth; no fabricated results; **Excel Test Steps executed as Playwright actions (no comment-only smoke stubs)**; mechanical gate `npm run qa:detect-smoke-stubs` / `noSmokeStubSpecs` must pass. The pipeline manifest must prove `liveUiCoveragePercent=100`.
 
 ## Security
 
@@ -22,11 +28,125 @@ Orchestrate; do not duplicate generator/healer logic or merge into those agents.
 ## Pipeline quality
 
 - No fabricated requirements, locators, APIs, expected results, or execution results
+- **Mechanical Excel stages (HARD):** Validate/Normalize MUST use
+  `npm run qa:parse-excel` → `npm run qa:normalize` → `npm run qa:assert-normalize`
+  (Node `xlsx` scripts under `pipeline/scripts/`). Never depend on Python
+  `pandas`/`openpyxl`. Never hand-write `validation-report.json` or a
+  “representative sample” `test-cases.json`. If parse/normalize/assert fails →
+  **Blocked** (do not invent row counts).
+- **Per-workbook results root (HARD):** write stage artifacts under
+  `results/qa-pipeline/<excel-basename>/…` (e.g. `Keyword Manager Test/`). Do not
+  share one global `results/qa-pipeline/final/state.json` across concurrent module runs.
 - Invalid Excel rows never reach generation
 - Claim execution only with evidence; otherwise `Blocked` + reason
 - Reuse Playwright POM/fixtures/helpers; no second framework
-- Healing: minimal evidence-based fixes; never weaken assertions to force pass
+- Auto-heal only classified automation/locator/synchronization failures, once per batch; verify only changed cases once
 - Do not modify application source to make tests pass unless explicitly authorized
+- **One `.spec.ts` per Excel module** under `tests/milestone2/` (or `tests/milestone1/` when Stage 0 milestone=1) — never one file per test case
+- **Login bypassed** — do not require `EMAIL`/`PASSWORD` or add login steps until the user asks to enable auth
+- Generate **all** cases in the generate scope (create: all eligible; reconcile: add+update only) — no POC subset
+- Generate every generate-scope UI case from live application evidence; `liveUiValidatedCaseIds` must cover 100% of that scope
+- Split generate-scope cases into exactly six deterministic near-equal batches; sizes differ by at most one (empty batches allowed for small reconcile deltas)
+- After each batch is written, execute only that batch and report pass/fail counts
+- If a batch has healer-eligible failures, finish the one heal + changed-case
+  verification before treating that batch as ready for defect reporting or next-batch ask
+- After each batch **1–5** is fully complete, show Passed/Failed/Blocked counts and
+  **ask the user** before starting the next batch (`awaiting_batch_approval`). The
+  orchestrator turn **must end** on that question — never auto-start batch N+1.
+  After batch 6, continue to aggregate Report/Gate without asking for a next batch
+- After all six batches (and every batch heal cycle) are complete, generate one
+  `pipeline/test-data/Milestone<N>/Defects/<module>-defects.xlsx` for each module
+  with **remaining final (post-heal)** failed test cases, including Milestone
+  (`M1`/`M2`), Feature (functional scenario area within the module — never a
+  repeated module/page name, Playwright suite name, or tracker alias), and Assigned To (feature owners from
+  trackers). Defect IDs use `DEF-M<N>-<Test Case ID>` without duplicated module
+  prefixes. Summary omits TC IDs and URLs and uses the module page name. Also append those
+  rows to the shared Google Sheet **Defects** tab when CDP is available.
+  Require detailed Summary, Steps to Reproduce, Expected Result, and Actual
+  Result (no generic placeholders or title-only steps), written in simple plain
+  English a non-technical reader can follow — no selectors, Playwright API
+  names, stack traces, or millisecond values (state waits in seconds). Defect
+  rows must pass `pipeline/scripts/validate-defect-plain-language.cjs` (also
+  invoked inside `generateDefectFiles`; includes `FSD_TRACEABILITY_PATTERNS` —
+  no `BR-xxx` / `NFR-xxx` IDs in narratives). See
+  `.cursor/rules/defect-plain-language-mandatory.mdc`. Emit
+  **Severity** and **Priority** at defect generation (classifier:
+  `pipeline/scripts/classify-defect-severity-priority.cjs`; set in
+  `generateDefectFiles` from the test execution report only — not on sync or
+  regression). Route each defect to `pipeline/test-data/Milestone{N}/Defects/`
+  where **N** comes from Test Case ID → Stage 0 workbook mapping
+  (`resolve-defect-milestone.cjs`). Emit a single **Status** column (dropdown: New, In Progress,
+  Resolved, Reopened, Closed; default **New** on first raise). Omit Sub Module,
+  Frontend Developers, Backend Developers, Executed At, Local Defect File,
+  Classification, and Screenshot Reference columns. **Never** emit Dev Status + QA Status. Write local defect Excel first; sync to Google only after
+  explicit local-sheet approval (`qa:sync-defects-sheet --approved --upsert`).
+  Google sync must write **contiguous rows** (no blank spacers) per
+  `.cursor/rules/defect-google-sheet-sync.mdc`. Defects are
+  unique by Milestone + Test Case ID (re-runs upsert; never duplicate). Never
+  generate or register a defect file for a zero-failure module. Never write
+  defect sheets while heal is still pending.
+- **Defect regression status (HARD):** only `@.cursor/agents/defect-regression.agent.md`
+  retests **Resolved** defects and may set **Closed** / **Reopened**. **New** and
+  **In Progress** rows must never be modified by regression or automated sync.
+  See `.cursor/rules/defect-status-guardrails.mdc`.
+- Invoke the healer once for that batch's healable failures, then re-run only changed cases once
+- Remaining failures stay Failed/Blocked with evidence and classification
+- Generation must use **live UI** locators (Figma/Excel are not sufficient alone)
+- **100% Excel fidelity gate (HARD):** every generated/updated case in batch scope must pass `npm run qa:audit-excel-fidelity` with title alignment, `stepsPct=100`, and `expectedPct=100`. No swapped TC ID bodies. See `.cursor/rules/excel-coverage-mandatory.mdc`.
+- **Strict live-UI evidence (HARD — every batch including 3–6):** after each batch
+  Generate, every eligible UI case in that batch must have manifest entries with
+  `moduleUrl`, unique `evidenceReferences[]` (≤3 cases per ref via
+  `QA_MAX_CASES_PER_EVIDENCE_REF`), and `controlsOrActionsValidated[]`.
+  Persist evidence files under `<resultsRoot>/live-ui-evidence/batch-<N>/`.
+  Run `npm run qa:capture-live-ui-evidence -- --batch <N>` (or MCP per-case
+  snapshots) then `npm run qa:remediate-live-ui-evidence -- --batch <N>`.
+  Gate check: `npm run qa:audit-live-ui-evidence -- --batch <N> --results-root
+  <resultsRoot> --manifest <resultsRoot>/generation/generation-manifest.json`.
+  Do **not** use legacy-only `snapshotPaths`/`controlsVerified` bulk-attached
+  to whole batches. `liveUiCoveragePercent=100` requires strict fields, not
+  headline IDs alone.
+- **Reconcile mode:** remove retired TC `test()` blocks; update changed IDs; leave keep IDs untouched; pass `--delta` to `qa:verify-completion` and to `qa:split-batches`; require `deltaFullyApplied` + `noRetiredCaseTests`
+
+## Completion gate (strict)
+
+Before status **Done** / **Passed**, the agent **must**:
+
+1. Run `node pipeline/scripts/verify-qa-pipeline-completion.cjs --excel <path> --specs <comma-separated module specs>`
+2. Emit `results/qa-pipeline/final/pipeline-completion-gate.json` (schema: `pipeline-completion-gate-schema.json`)
+3. Pass hard checks: every eligible TC ID in specs; every eligible UI case has live evidence (100%); no per-TC spec files; real Playwright evidence for counts; defect workbooks exist for modules with remaining final (post-heal) failures and none are registered for clean modules
+
+**Forbidden to claim Done when:** generation is still In Progress; specs miss eligible IDs; live-UI generation coverage is below 100%; pass/fail totals are invented; Figma/mock/Excel-only generation was used.
+
+On Approve Excel / pipeline trigger: run Validate → Normalize → split six
+batches → for each batch Generate → Execute → Heal eligible failures once →
+verify changed failures once → **report pass/fail and ask before next batch
+(batches 1–5)** → after batch 6 aggregate Gate.
+
+**Single MCP owner (mandatory — permanent continuity fix):**
+- Exactly one session may own Playwright MCP. Generator and healer ownership is
+  sequential within a batch and must never overlap.
+- Default: run Generate **in the parent/orchestrator session**. Do not background a Generate child while the parent still uses MCP.
+- Background Tasks may do non-MCP work only, or Generate only after the parent fully releases MCP.
+- Zombie child (running, no artifact progress >5 min) → interrupt and continue Generate in parent.
+- During Generate, checkpoint `generation-manifest.json` + `state.json` at least every module and every ≤10 cases.
+
+**Checkpoint / auto-resume (mandatory):**
+- Maintain `<resultsRoot>/final/state.json` (`pipeline-run-state-schema.json`) before/after every stage and during Generate as above. Include `resultsRoot` + `resultsKey`.
+- Between batches 1–5: set `status=awaiting_batch_approval`, print pass/fail, **end the turn**, and wait for user Yes/Proceed before batch N+1.
+- If a child agent dies, stalls (>5 min), or is aborted **within a batch** → for Generate continue in parent as sole MCP owner; otherwise Task `resume` if possible else continue in parent. Do **not** wait for “continue” for intra-batch recovery.
+- Abort of a background child ≠ cancel of the whole pipeline.
+- Do not restart from Excel when later-stage artifacts already exist under **this** `resultsRoot`.
+- Do not resume another module’s checkpoint (different `resultsKey` / Excel path).
+
+## Batch healer boundary
+
+- Invoke `test-healer` only through a batch handoff containing classified
+  `casesSelectedForHealing`; product/data/environment/requirement/tool failures
+  are not healer-eligible.
+- At most one healer invocation and one changed-case verification run per batch;
+  the healer's `test_run` is that run, not an additional orchestrator rerun.
+- Preserve assertions and require pre/post live UI evidence for every changed case.
+- Record pre-heal and post-heal counts before continuing automatically.
 
 ## Edits
 

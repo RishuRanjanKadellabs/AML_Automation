@@ -1,6 +1,5 @@
 import type { BrowserContext, Page } from "@playwright/test";
 import { installCustomer360ApiMockOnContext } from "../tests/helpers/customer360-api-mock";
-import { installKeywordManagerHealOnContext } from "../tests/helpers/keyword-manager-ui-heal";
 import { installIgnoreWordsHealOnContext } from "../tests/helpers/ignore-words-ui-heal";
 import { installExceptionListHealOnContext } from "../tests/helpers/exception-list-ui-heal";
 import { installManualScreeningApiMockOnContext } from "../tests/helpers/manual-screening-api-mock";
@@ -24,10 +23,14 @@ export async function resetNetworkConditions(page: Page): Promise<void> {
   }
 }
 
-/** Reinstall worker-scoped API mocks after page.unrouteAll() clears context routes. */
+/**
+ * Reinstall worker-scoped API mocks after page.unrouteAll() clears context routes.
+ *
+ * Keyword Manager is deliberately absent: its heal shell served a synthetic page on
+ * /configuration/keyword-manager, so specs never reached the live module.
+ */
 export async function reinstallMilestone1ContextMocks(context: BrowserContext): Promise<void> {
   await installCustomer360ApiMockOnContext(context);
-  await installKeywordManagerHealOnContext(context);
   await installIgnoreWordsHealOnContext(context);
   await installExceptionListHealOnContext(context);
   await installManualScreeningApiMockOnContext(context);

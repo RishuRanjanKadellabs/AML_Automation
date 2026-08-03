@@ -4,6 +4,7 @@ import {
   describeLocator,
   type ActionStatus,
 } from "../helpers/action-logger";
+import { registerScreenVisit } from "../helpers/ui-screen-registry";
 
 function defaultAssertTimeout(): number {
   if (process.env.PW_EXPECT_TIMEOUT) {
@@ -24,11 +25,12 @@ class BasePage {
     this.logStep("WAIT", "Page DOM ready — successful");
   }
 
-  async navigateTo(url: string): Promise<void> {
+  async navigateTo(url: string, screenMeta?: { screenName?: string; module?: string; tab?: string }): Promise<void> {
     try {
       await this.page.goto(url, { waitUntil: "commit" });
       this.logStep("NAVIGATE", `${url} — successful`);
       await this.waitForPageLoad();
+      await registerScreenVisit(this.page, screenMeta || {});
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       this.logStep("NAVIGATE", `${url} — failed (${message})`, "fail");

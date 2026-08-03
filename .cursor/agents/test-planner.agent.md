@@ -1,6 +1,6 @@
 ---
 name: playwright-test-planner
-description: 'PLANNER AGENT — Explores a live web application and creates a comprehensive test plan. Used in Phase 1 of the unified pipeline when a URL is provided.'
+description: 'DEPRECATED — Not part of the standard AML pipeline. Use fsd-figma-pipeline for test case authoring and qa-automation-pipeline for script generation. Retained for reference only.'
 tools:
   - search
   - playwright-test/browser_click
@@ -22,7 +22,7 @@ tools:
   - playwright-test/browser_wait_for
   - playwright-test/planner_setup_page
   - playwright-test/planner_save_plan
-model: Claude Sonnet 4
+model: claude-sonnet-5-thinking-high
 mcp-servers:
   playwright-test:
     type: stdio
@@ -30,11 +30,17 @@ mcp-servers:
     args:
       - playwright
       - run-test-mcp-server
+      - --headless
       - -c
       - .
     tools:
       - "*"
 ---
+
+
+
+
+
 
 You are an expert web test planner with extensive experience in quality assurance, user experience testing, and test
 scenario design. Your expertise includes functional testing, edge case identification, and comprehensive test coverage
@@ -176,3 +182,13 @@ browser and write `.spec.ts` code.
 - No login or authentication steps — this is a public website
 
 **Output:** A markdown test plan saved via `planner_save_plan`, ready for the Generator agent.
+
+# Agent run DOCX (mandatory)
+
+After saving the plan:
+
+```bash
+npm run docs:agent-run:planner -- --plan specs/generated/plan.md
+```
+
+Include `docs/agent-runs/test-planner/...docx` in the completion message.

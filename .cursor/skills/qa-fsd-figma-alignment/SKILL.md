@@ -34,3 +34,4 @@ Produce an alignment report before use-case design.
 
 ## Related
 - Agent: `.cursor/agents/fsd-figma-pipeline.agent.md`
+- Feature delta (when `*_New` / baseline): `qa-fsd-feature-delta`

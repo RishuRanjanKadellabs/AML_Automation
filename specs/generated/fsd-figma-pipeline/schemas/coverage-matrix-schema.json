@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/coverage-matrix-schema.json",
+  "title": "FSD Requirement Coverage Matrix",
+  "type": "object",
+  "required": [
+    "resultsKey",
+    "excelPath",
+    "generatedAt",
+    "inScopeRequirements",
+    "coveredRequirements",
+    "coveragePct",
+    "uncoveredRequirementIds",
+    "gateReady",
+    "byModule",
+    "byFeature"
+  ],
+  "properties": {
+    "resultsKey": { "type": "string" },
+    "excelPath": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "excelMode": { "type": "string", "enum": ["create", "reconcile"] },
+    "inScopeRequirements": { "type": "integer", "minimum": 0 },
+    "coveredRequirements": { "type": "integer", "minimum": 0 },
+    "coveragePct": { "type": "number", "minimum": 0, "maximum": 100 },
+    "uncoveredRequirementIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "orphanCaseIds": {
+      "type": "array",
+      "description": "Excel TC IDs with no in-scope FSD requirement mapping (reconcile reverse coverage).",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "gateReady": { "type": "boolean" },
+    "userAcceptedGaps": { "type": "boolean" },
+    "byModule": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["module", "testCaseCount", "reqsCovered", "reqsInScope", "coveragePct"],
+        "properties": {
+          "module": { "type": "string" },
+          "testCaseCount": { "type": "integer", "minimum": 0 },
+          "reqsCovered": { "type": "integer", "minimum": 0 },
+          "reqsInScope": { "type": "integer", "minimum": 0 },
+          "coveragePct": { "type": "number" },
+          "fsdSectionIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "byFeature": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["featureName", "sectionId", "reqsCovered", "reqsInScope", "coveragePct", "testCaseCount"],
+        "properties": {
+          "featureName": { "type": "string" },
+          "sectionId": { "type": "string" },
+          "module": { "type": "string" },
+          "reqsCovered": { "type": "integer", "minimum": 0 },
+          "reqsInScope": { "type": "integer", "minimum": 0 },
+          "coveragePct": { "type": "number" },
+          "testCaseCount": { "type": "integer", "minimum": 0 },
+          "testCaseIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "outOfScopeSections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sectionId": { "type": "string" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "requirementToTestCases": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    }
+  }
+}
