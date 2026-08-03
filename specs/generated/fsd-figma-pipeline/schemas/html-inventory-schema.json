@@ -52,6 +52,36 @@
           "via": { "type": "string" }
         }
       }
+    },
+    "compositeFlows": {
+      "type": "array",
+      "description": "Multi-step dependent flows inferred from navigation or business rules",
+      "items": {
+        "type": "object",
+        "required": ["flowId", "flowName"],
+        "properties": {
+          "flowId": { "type": "string" },
+          "flowName": { "type": "string" },
+          "sectionId": { "type": "string" },
+          "featureName": { "type": "string" },
+          "flowKind": { "type": "string" },
+          "source": { "type": "string" },
+          "requiredDesignTypes": { "type": "array", "items": { "type": "string" } },
+          "dependsOnFlowIds": { "type": "array", "items": { "type": "string" } },
+          "preconditions": { "type": "array", "items": { "type": "string" } },
+          "chainSteps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "stepNumber": { "type": "integer" },
+                "label": { "type": "string" },
+                "via": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

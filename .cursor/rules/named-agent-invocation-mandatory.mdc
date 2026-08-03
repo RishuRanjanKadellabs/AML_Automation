@@ -1,0 +1,105 @@
+---
+description: Require actual subagent invocation when users name an agent or approve an Excel handoff
+alwaysApply: true
+---
+
+# Named Agent Invocation Is Mandatory
+
+## Invocation contract
+
+- When the user references `@.cursor/agents/<name>.agent.md`, invoke the matching
+  subagent type. Reading the file and performing its work in the parent is not
+  equivalent.
+- When the user replies **Approve** / **Approve Excel** to a Stage 0 workbook,
+  invoke `qa-automation-pipeline` with that exact workbook path.
+- When the user references `@.cursor/agents/defect-regression.agent.md`, or asks to
+  **retest resolved defects** / **defect regression**, invoke `defect-regression`
+  (foreground unless background requested).
+- When the user references `@.cursor/agents/execute-raise-defects.agent.md`, or
+  asks to **execute a spec/module and raise defects**, or asks to **run a module**
+  / **run all test cases** for a milestone spec, invoke `execute-raise-defects`
+  with the exact spec/folder path. If the Task enum does not yet expose that type,
+  run `npm run qa:run-module -- --spec <path>` in the parent (still produces local
+  defects + DOCX) — do not use bare `npx playwright test` without finalize.
+- Run the named pipeline agent foreground unless the user explicitly requests
+  background execution.
+- The parent must not generate specs, manufacture manifests, or drive Playwright
+  MCP as a substitute for the invoked agent.
+
+## Agent map (common)
+
+| User intent / @ mention | Invoke |
+|-------------------------|--------|
+| Approve Excel / QA pipeline | `qa-automation-pipeline` |
+| Execute spec + raise defects / run module | `execute-raise-defects` or `npm run qa:run-module -- --spec <path>` |
+| Resolved defect regression | `defect-regression` (`.cursor/agents/defect-regression.agent.md`) |
+| Generate / heal UI scripts (via QA pipeline batches) | `playwright-test-generator` / `playwright-test-healer` |
+| FSD + Figma → Excel | `fsd-figma-pipeline` |
+| Audit Excel vs FSD/Figma coverage | `fsd-excel-coverage-audit` (`.cursor/agents/fsd-excel-coverage-audit.agent.md`) |
+
+## QA pipeline ownership
+
+1. Parent invokes `qa-automation-pipeline` and passes the approved Excel path.
+2. The QA pipeline splits eligible cases into six near-equal batches and invokes
+   the existing `playwright-test-generator` for each assigned batch.
+3. Exactly one session owns Playwright MCP. The QA orchestrator must release MCP
+   while the generator owns it.
+4. After each batch generation, the QA pipeline executes that batch, invokes the
+   existing healer once for classified automation failures, verifies changed
+   cases once, reports counts, then asks before the next batch (batches 1–5).
+5. After batch 6, the pipeline writes aggregate reporting and the completion gate.
+
+## Execute & raise defects ownership
+
+1. Parent invokes `execute-raise-defects` with the user-provided `.spec.ts` or
+   module folder under `tests/milestoneN/`.
+2. That agent runs `npm run qa:run-module -- --spec <path>` with defaults **headed**,
+   **1 worker**, **persistent CDP** (same browser window after failures). Alias:
+   `qa:execute-raise-defects`. Writes **local** defect Excel + execute-raise DOCX.
+   Google Sheet sync is **deferred**.
+3. Agent asks the user to review the local workbook. Only after the user replies
+   **Approve defects** (or equivalent) may it run:
+
+```bash
+npm run tracker:cdp-chrome   # if needed
+npm run qa:approve-defects-sync
+```
+
+   Or explicitly: `npm run qa:sync-defects-sheet -- --rows <payload> --approved --upsert`
+4. No heal / no Excel generation in this agent unless the user separately asks.
+
+## FSD Excel coverage audit ownership
+
+1. Parent invokes `fsd-excel-coverage-audit` when the user asks to **audit**,
+   **verify**, or **review** Excel coverage against FSD/Figma, or references
+   `@.cursor/agents/fsd-excel-coverage-audit.agent.md`.
+2. That agent runs `npm run fsd:audit-coverage` then semantic review, then
+   `npm run fsd:audit-report`. It does **not** modify Excel.
+3. Verdict **Pass** is required before treating writer-claimed 100% as verified.
+4. Do not perform the audit in the parent session when the user named this agent.
+
+## Defect regression ownership
+
+1. Parent invokes `defect-regression` when user references
+   `@.cursor/agents/defect-regression.agent.md` or asks to **retest resolved defects**.
+2. **CDP Chrome required:** `npm run tracker:cdp-chrome` with signed-in Google Sheet.
+3. **Playwright Chromium required:** `ensurePlaywrightChromium()` / `npm run setup` runs automatically before tests; never treat missing-browser launch failures as Reopened.
+4. That agent runs `npm run qa:defect-regression -- --milestone <N>`, reads **only the shared
+   Google Defects tab** for **Status = Resolved**, retests anchor + scope, and plans
+   **Closed** (pass) or **Reopened** (fail).
+5. Status updates are written **on Google only** — never local defect Excel, never
+   **Severity** or **Priority**, during regression.
+6. **New**, **In Progress**, **Reopened**, and **Closed** are never read for regression
+   and never receive automated status changes — mechanical scripts skip them and log `skipped[]`.
+7. Google Status is written **automatically** after regression (no user approval). Use `--defer-google-sync` only to skip.
+8. Do not perform regression status updates in the parent session.
+
+## Proof and failure behavior
+
+- Record invoked agent type and agent/run ID in pipeline state and generation
+  manifest.
+- Missing invocation provenance means **Incomplete**, even if test counts or
+  mechanical checks otherwise pass.
+- Never bulk-populate per-case live evidence from representative snapshots.
+- If the required agent cannot be invoked, report the blocker; do not silently
+  replace it with parent-session implementation.

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/pipeline-completion-gate-schema.json",
+  "title": "QA Pipeline Completion Gate",
+  "type": "object",
+  "required": ["excelPath", "generatedAt", "gateStatus", "checks", "finalCounts"],
+  "properties": {
+    "excelPath": { "type": "string" },
+    "pipelineMode": { "type": "string", "enum": ["create", "reconcile"] },
+    "generatedAt": { "type": "string", "format": "date-time" },
+    "gateStatus": { "enum": ["Passed", "Incomplete", "Blocked"] },
+    "checks": {
+      "type": "object",
+      "required": [
+        "allEligibleCasesInSpecs",
+        "allEligibleUiCasesLiveValidated",
+        "noBulkLiveUiEvidence",
+        "noSmokeStubSpecs",
+        "exactlySixBatches",
+        "allSixBatchesComplete",
+        "realPlaywrightBatchRunsComplete",
+        "healerInvokedAtMostOncePerBatch",
+        "batchHealingComplete",
+        "agentInvocationProvenance",
+        "defectFilesGeneratedForFailures",
+        "noDefectFilesGeneratedForCleanRun"
+      ],
+      "properties": {
+        "pipelineMode": { "type": "string", "enum": ["create", "reconcile"] },
+        "allEligibleCasesInSpecs": { "type": "boolean" },
+        "deltaFullyApplied": { "type": "boolean" },
+        "noRetiredCaseTests": { "type": "boolean" },
+        "defectFilesGeneratedForFailures": { "type": "boolean" },
+        "noDefectFilesGeneratedForCleanRun": { "type": "boolean" },
+        "defectFiles": { "type": "array", "items": { "type": "string" } },
+        "retiredCaseIds": { "type": "array", "items": { "type": "string" } },
+        "deltaGenerateIds": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "finalCounts": { "type": "object" },
+    "evidencePaths": { "type": "object" },
+    "blockReason": { "type": ["string", "null"] }
+  }
+}

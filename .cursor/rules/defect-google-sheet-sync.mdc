@@ -1,0 +1,44 @@
+---
+description: Google Defects tab sync must write contiguous rows with no blank gaps between defects
+alwaysApply: true
+---
+
+# Google Defects Sheet Sync — Contiguous Rows (Mandatory)
+
+Applies to `append-defects-google-sheet.js` / `npm run qa:sync-defects-sheet`.
+
+## Required behavior
+
+1. **New defects** append in **one batch** at the next row after existing data (`existingRows.length + 2`). Never calculate row position with a separate append counter — that caused alternating blank rows (2, blank, 4, blank, …).
+2. **`--upsert`** (default on **`--approved`** sync) updates narrative fields for existing Defect ID / Milestone+Test Case ID matches, **removes stale rows** for Milestone+Module combinations present in the payload when those Test Case IDs are no longer in the payload (e.g. a case now passes), then **rewrites the full deduped sheet contiguously** so prior blank gaps are removed. Use **`--no-upsert`** only to append/skip without stale-module prune.
+3. **Blank spacer rows** detected during read are stripped and the sheet is compacted before new writes.
+4. Agents must **never** paste defect rows one-at-a-time into Google Sheets manually.
+
+## Approval workflow (unchanged)
+
+1. Generate local Excel via `generateDefectFiles` / `qa:generate-defects`
+2. User reviews local workbook
+3. Sync only after **`--approved`** (upsert is automatic unless `--no-upsert`):
+   ```bash
+   npm run tracker:cdp-chrome   # if needed
+   npm run qa:sync-defects-sheet -- \
+     --rows results/qa-pipeline/defects/milestone-<N>-defect-rows.json \
+     --approved
+   ```
+4. **`npm run qa:approve-defects-sync`** uses the latest module-run payload and **upserts by default** (prunes passed/stale module rows on Google). Pass **`--no-upsert`** only to skip stale-module prune.
+
+## Local Excel (passed cases)
+
+`generate-module-defects.js` **must** drop any Test Case ID that **passed** in the current execution from prior local workbook rows (global by TC ID — not module name). The written workbook contains **current failures only** (prior Status preserved for those TCs). Mechanical assert: `npm run qa:assert-defect-integrity`.
+
+## Preserve on upsert
+
+- **Status** — never regress New/In Progress to blank; regression Closed/Reopened only when existing Status was Resolved
+- **Severity / Priority** — preserve when already set on the sheet (fill empty cells only)
+
+## Verification
+
+After sync, log must include contiguous rewrite when upsert ran, e.g.:
+`Google Defects: rewrote N row(s) contiguously (no blank gaps)`
+
+If the user reports alternating empty rows, re-run with **`--approved --upsert`** — do not hand-edit the sheet.

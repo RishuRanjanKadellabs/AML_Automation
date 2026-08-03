@@ -9,7 +9,7 @@ alwaysApply: true
 
 - All environments are defined in a single file: `tests/fixtures/environments.json`.
 - The AML application runs at `https://kadelamldev.customerxps.com:2506` by default (override via `BASE_URL` in `.env`).
-- Login credentials: `EMAIL` / `PASSWORD` in `.env`.
+- **Login is currently bypassed** — do not require `EMAIL` / `PASSWORD` for agent runs until the user asks to enable auth. When re-enabled, credentials come from `EMAIL` / `PASSWORD` in `.env`.
 - The `defaults` block provides shared values; per-env blocks override them.
 
 Example structure:

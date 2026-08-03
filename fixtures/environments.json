@@ -7,8 +7,11 @@
     "dev": {
       "baseUrl": "https://kadelamldev.customerxps.com:2506"
     },
+    "qa": {
+      "baseUrl": "https://kadelamlqa.customerxps.com:2502"
+    },
     "uat": {
-      "baseUrl": "https://kadelamldev.customerxps.com:2506"
+      "baseUrl": "https://kadelamlqa.customerxps.com:2502"
     },
     "production": {
       "baseUrl": "https://kadelamldev.customerxps.com:2506"

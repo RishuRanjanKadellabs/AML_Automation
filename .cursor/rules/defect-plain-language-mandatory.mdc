@@ -1,0 +1,59 @@
+---
+description: Defect Excel and Google Sheet rows must use plain business English, proper Feature labels, and pass the mechanical plain-language gate
+alwaysApply: true
+---
+
+# Defect Plain Language — Mandatory
+
+Applies to **local defect Excel**, **Google Defects tab sync**, and any agent that raises or refreshes defects (`qa-automation-pipeline`, `execute-raise-defects`, headed/headless executors).
+
+## Source of truth
+
+- Narrative generation: `pipeline/scripts/generate-module-defects.js`
+- Mechanical gate: `pipeline/scripts/validate-defect-plain-language.cjs` (runs automatically inside `generateDefectFiles`; must pass before Excel/sync payload is written)
+
+## Module vs Feature (HARD)
+
+| Column | Meaning | Good examples | Forbidden |
+|--------|---------|---------------|-----------|
+| **Module** | Page/screen under test | `Customer Risk Rating Configuration`, `Keyword Manager` | Raw spec folder name, `Configuration` alone when Excel Sub Module exists |
+| **Feature** | Functional area **within** that page | `Tab Navigation`, `Periodic Review Schedule`, `Maker-Checker Approval`, `Page Layout and Navigation`, `Customer Risk Assessment` | Playwright `describe` / suite name (`… Tests`), repeated module title, tracker alias strings, `General Functionality` when a scenario feature can be inferred |
+
+Feature is inferred from the **test scenario title** first (via `inferProductFeature` in `generate-module-defects.js`), not from the spec suite name.
+
+## Narrative columns (HARD — business reader)
+
+Write so a **non-technical product owner** can understand without opening the app code.
+
+| Column | Must | Must NOT |
+|--------|------|----------|
+| **Summary** | Page name + feature + what the user tried + what went wrong (1–3 clear sentences) | TC ID, URL, selector, `expect(…)`, `locator`, `page.goto`, stack trace, ms timing, **FSD requirement IDs** (`BR-011`, `FR-003`, `NFR-001`, `UC-002`, etc.) |
+| **Steps to Reproduce** | Numbered steps from Excel when available; use the **page name**, not environment URL | Title-only single line, automation API names, **FSD requirement IDs** (rewrite as plain behaviour, e.g. “non-retroactive — existing schedules stay unchanged”) |
+| **Expected Result** | What should happen from the user's point of view | Generic placeholder, bullet-only dump without readable sentences, **FSD requirement IDs** |
+| **Actual Result** | Plain outcome, e.g. “menu item could not be clicked within 25 seconds” | Raw Playwright error text, Call log, ANSI codes, **FSD requirement IDs** |
+
+Convert waits to **seconds**, never milliseconds.
+
+**FSD traceability stripping (HARD):** `generate-module-defects.js` must strip leading
+`BR-xxx:` / `FR-xxx:` / `NFR-xxx:` / `UC-xxx:` prefixes from test titles before
+building Summary/Steps/Expected. Inline references such as “aligns with BR-011 …”
+must be rewritten in plain English. The mechanical gate
+(`validate-defect-plain-language.cjs` → `FSD_TRACEABILITY_PATTERNS`) fails any
+narrative column that still contains those IDs. Requirement IDs belong in Excel/FSD
+traceability only — not in defect text read by product owners.
+
+## Agents must
+
+1. Use **`npm run qa:generate-defects`** / `generateDefectFiles` — never hand-write defect rows in chat or Excel.
+2. Treat **`validate-defect-plain-language` failure as Blocked** — fix `generate-module-defects.js` or missing Excel/normalized inputs; do not bypass the gate.
+3. Sync to Google **only after local review** (`qa:sync-defects-sheet --approved --upsert`). Rows must be **contiguous** on the Defects tab — see `.cursor/rules/defect-google-sheet-sync.mdc`.
+
+## Verification
+
+After defect generation:
+
+```bash
+npm run qa:validate-defect-plain-language -- results/qa-pipeline/defects/milestone-<N>-defect-rows.json
+```
+
+Exit code **0** required before claiming defects ready for review or Google sync.

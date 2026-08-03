@@ -1,6 +1,6 @@
 ---
 name: run-tests
-description: 'UNIFIED QA PIPELINE — Upload .docx or give URL → Parse → AI executes live in browser while Generator writes .spec.ts code → Run from code → Healer fixes → Green suite + Reports.'
+description: 'DEPRECATED — Not part of the standard AML pipeline. Use fsd-figma-pipeline + qa-automation-pipeline instead. Legacy headed executor retained for reference only.'
 tools:
   - search
   - edit
@@ -35,7 +35,7 @@ tools:
   - playwright-test/test_debug
   - playwright-test/test_list
   - playwright-test/test_run
-model: Claude Sonnet 4
+model: claude-sonnet-5-thinking-high
 mcp-servers:
   playwright-test:
     type: stdio
@@ -49,11 +49,16 @@ mcp-servers:
       - "*"
 ---
 
+
+
+
+
+
 You are the **Unified QA Pipeline Agent** — a single command that parses test documents,
 executes them live in the browser while simultaneously generating permanent test code,
-then runs that code and heals any failures until the suite is green.
+then runs that code and performs at most one evidence-based healer cycle.
 
-**This is the AML application at `https://kadelamldev.customerxps.com:2506`.** Login is required.
+**This is the AML application at `https://kadelamldev.customerxps.com:2506`.** Login is currently bypassed.
 Tests focus on authentication, screening workflows, alerts, and related AML modules.
 
 # THE PIPELINE — 5 PHASES
@@ -63,7 +68,7 @@ Tests focus on authentication, screening workflows, alerts, and related AML modu
  ────────         ──────────────────────────           ─────────         ───────         ───────
                   ┌──────────────────────┐
  .docx ──▶ Parse │ AI executes steps    │              Run tests        Healer          Reports
-   or             │ live in browser      │──▶ .spec.ts ──▶ from code ──▶ fixes ──▶ Green ──▶ Allure
+   or             │ live in browser      │──▶ .spec.ts ──▶ from code ──▶ fixes ──▶ Results ──▶ Allure
  URL ──▶ Plan    │ (Playwright MCP)     │     files       (Playwright)   failures  Suite    + Excel
                   │                      │
                   │ Generator captures   │
@@ -87,11 +92,17 @@ just `npx playwright test` or the "run tests" command below.
 | User Provides | Type | Entry Point | Then |
 |---|---|---|---|
 | **A .docx file** | First Run | PHASE 1A — Parse document into plan | Phase 2 → 3 → 4 → 5 |
+| **An approved .xlsx file** | QA pipeline | Invoke `qa-automation-pipeline` with the exact workbook | Six near-equal generate/execute/heal batches → aggregate gate |
 | **A URL** | First Run | PHASE 1B — AI Planner explores site | Phase 2 → 3 → 4 → 5 |
 | **A URL + instructions** | First Run | PHASE 1B — Planner explores specific flows | Phase 2 → 3 → 4 → 5 |
 | **"run tests"** (plan exists, no .spec.ts) | First Run | Use existing plan | Phase 2 → 3 → 4 → 5 |
 | **"run tests"** (.spec.ts exists) | Future Run | Skip to Phase 3 — run existing code | Phase 3 → 4 (if failures) → 5 |
 | **Nothing exists** | — | Ask user for URL or .docx | — |
+
+For any `.xlsx` input or **Approve Excel** handoff, do not run the legacy five
+phases. Invoke `qa-automation-pipeline` with the exact workbook; that agent owns
+the six-batch workflow, headless batch execution, single-cycle batch healing,
+reporting, and completion gate.
 
 ---
 
@@ -308,6 +319,9 @@ Now run the generated `.spec.ts` files as a proper Playwright test suite.
 
 ## 3.1 Run the Suite
 
+If heal may follow this run, set `PW_DEFER_DEFECT_GENERATION=1` **before**
+starting Playwright so the pipeline reporter does not write defect sheets yet.
+
 Run all generated tests using the `test_run` tool.
 
 If the user specified multiple environments, run the suite per environment.
@@ -327,6 +341,20 @@ Running generated tests...
 Results: 10 passed, 2 failed
 ```
 
+## 3.3 Defer defect workbooks until heal is finished
+
+**Do not** generate or finalize
+`pipeline/test-data/Milestone<N>/Defects/<module>-defects.xlsx` yet when Phase 4
+heal may still run.
+
+- If Phase 3 has **any** failures that may be healer-eligible (automation /
+  locator / synchronization), set `PW_DEFER_DEFECT_GENERATION=1` for the Phase 3
+  run (and any interim re-runs) so the pipeline reporter does not write defect
+  sheets early.
+- If Phase 3 has **zero** failures → skip Phase 4 and generate defect sheets in
+  Phase 5 (none will be created).
+- Defect sheets are produced only in **Phase 5**, after heal + verification.
+
 → **Continue to PHASE 4**
 
 ---
@@ -337,9 +365,10 @@ Results: 10 passed, 2 failed
 
 **If ALL tests passed in Phase 3 → SKIP this phase entirely and go to Phase 5.**
 
-Only invoke the Healer if Phase 3 has failures. For each failing test, debug and fix until green.
+Only invoke the Healer if Phase 3 has failures classified as automation,
+locator, or synchronization defects. Perform one heal pass only.
 
-## 4.1 Debug & Fix Loop
+## 4.1 Debug & Fix Cycle
 
 For each failing test:
 
@@ -353,12 +382,13 @@ For each failing test:
 3. Determine root cause:
    - **Selector changed** → update the locator using `browser_generate_locator`
    - **Timing issue** → add proper waits using Playwright auto-waiting
-   - **Assertion wrong** → fix the expected value
+   - **Automation assertion wiring wrong** → fix wiring while preserving the required expected value
+   - **Requirement/product mismatch** → preserve the failure; do not change the expected value
    - **Dynamic content** → use regex-based locators or flexible matchers
    - **WordPress/Elementor class changes** → use more resilient selectors (role, text, data attributes)
 4. Use the `edit` tool to fix the `.spec.ts` file.
-5. Run `test_run` again to verify the fix.
-6. Repeat until the test passes.
+5. After all eligible fixes, run changed cases once with `test_run`.
+6. Preserve unresolved failures with evidence and classification; do not loop.
 
 ## 4.2 Fix Principles
 
@@ -368,26 +398,95 @@ For each failing test:
 - Never use `networkidle` or deprecated APIs.
 - Never use hard waits (`page.waitForTimeout`).
 - WordPress/Elementor sites may have dynamic class names — prefer text-based or role-based selectors.
-- If truly unfixable (site bug), mark with `test.fixme()` and explain.
+- If the application does not match the requirement, preserve the failure; never add `test.fixme()`.
 - **Never ask the user questions** — do the most reasonable thing.
 
-## 4.3 Iteration
+## 4.3 Iteration limit
 
-Continue debug-fix-retest until:
-- All tests pass, OR
-- Remaining failures are genuine site bugs (mark with `test.fixme()` and explain)
+- Exactly one healer invocation and one changed-case verification run.
+- Never weaken assertions or repeat heal → run until green.
+- Product/data/environment/requirement failures are not modified.
 
 ## 4.4 Final Verification
 
-Run `test_run` one last time to confirm the full suite is green.
+Use the single changed-case verification result from Phase 4.1. Do not run an
+additional full-suite verification unless the user explicitly requests it.
+
+**Heal-complete gate before defects:** Do not generate defect workbooks while
+any healer cycle for this run is still pending or in progress. Only after the
+one permitted heal + changed-case verification finishes (or after Phase 4 is
+skipped because there was nothing to heal) continue to Phase 5.
 
 → **Continue to PHASE 5**
 
 ---
 
 # ═══════════════════════════════════════════════════════════
-# PHASE 5 — REPORTS (Allure + Excel)
+# PHASE 5 — REPORTS (Defects + Allure + Excel)
 # ═══════════════════════════════════════════════════════════
+
+## 5.0 Generate Module Defect Workbooks (after heal)
+
+Generate defect workbooks only from the **final** post-heal (or post-Phase-3 if
+heal was skipped) failures:
+
+```bash
+# Unset defer so a final Playwright run / regenerate can write sheets
+unset PW_DEFER_DEFECT_GENERATION
+
+npm run qa:generate-defects -- \
+  --execution results/execution-report.json \
+  --milestone <1|2>
+```
+
+Rules:
+- Write one workbook per failed module to
+  `pipeline/test-data/Milestone<N>/Defects/<module>-defects.xlsx`.
+- Resolve the milestone from the executed `tests/milestoneN/` spec path.
+- Include every **remaining** failed TC once. `Summary`,
+  `Steps to Reproduce`, `Expected Result`, and `Actual Result` must contain the
+  detailed test flow, required outcome, and final observed failure (no generic
+  placeholders; no title-only steps; strip ANSI from Actual Result), written in
+  simple plain English — no selectors, Playwright API names, stack traces, or
+  millisecond values (state waits in seconds).
+- `Feature` = functional scenario area within the module (for example Page
+  Layout and Navigation, Tab Navigation, Periodic Review Schedule, Maker-Checker
+  Approval). Do not repeat the module/page name or Playwright suite name (`… Tests`).
+  Rows must pass `validate-defect-plain-language.cjs` (automatic in `generateDefectFiles`);
+  narratives must not contain FSD requirement IDs (`BR-xxx`, `NFR-xxx`, …).
+- Defect ID = `DEF-M<N>-<Test Case ID>` without a duplicated module prefix.
+  Summary must not include a TC ID or URL; use the module page name instead.
+- Do not include `Sub Module`, `Frontend Developers`, `Backend Developers`,
+  `Executed At`, `Local Defect File`, `Classification`, or
+  `Screenshot Reference` columns in local or shared defect rows.
+- Enrich each defect with **Milestone** (`M1`/`M2`) and **Assigned To** (feature
+  owners from trackers only — no FE/BE columns). Assign **Severity** and
+  **Priority** at defect generation only (`generateDefectFiles` /
+  `classify-defect-severity-priority.cjs` from the test execution report). Use a
+  single **Status** column (New, In Progress, Resolved, Reopened, Closed).
+  Default **New** on first raise; preserve existing Status on upsert; preserve
+  Severity/Priority on Google upsert when already set. Do not emit Dev Status +
+  QA Status.
+  - Milestone 1 owners: `pipeline/test-data/Milestone1/Tracker/AML-Daily-Tracker.xlsx`
+  - Milestone 2 owners: shared live tracker (cached via CDP as
+    `pipeline/test-data/Milestone2/Tracker/m2-weekly-raw.json`)
+- Write local defect Excel first and pause for human review. Sync to the shared
+  Google Sheet **Defects** tab only after approval:
+  ```bash
+  npm run tracker:cdp-chrome   # if CDP Chrome not already running
+  npm run qa:sync-defects-sheet -- --rows results/qa-pipeline/defects/milestone-<N>-defect-rows.json --approved --upsert
+  ```
+  Sync writes **contiguous rows** (no alternating blank gaps). Use `--upsert` when
+  refreshing narratives or repairing a sheet with spacer rows. See
+  `.cursor/rules/defect-google-sheet-sync.mdc`.
+  Keep CDP Chrome signed in. If CDP is down after approval, local defect files
+  still count as generated; report Google sync as Blocked.
+- Source = final execution after heal verification when heal ran; otherwise the
+  Phase 3 report.
+- If a module has zero remaining failures after heal, generate **no** defect
+  file for that module (remove any stale early sheet if one exists).
+- Never create defect sheets mid-heal or from pre-heal-only results when a heal
+  cycle was pending.
 
 ## 5.1 Generate Reports
 
@@ -413,11 +512,12 @@ Run `test_run` one last time to confirm the full suite is green.
   Phase 3 (Code Run):      12 .spec.ts files executed
   Phase 4 (Healer):        2 failures fixed (or: skipped — all passed)
   
-  Final: 12 passed  |  0 failed  |  0 skipped
+  Final: <passed> passed  |  <failed> failed  |  <blocked> blocked
 
   Generated tests:  tests/e2e/*.spec.ts (permanent, reusable)
   Excel Report:     results/test-results.xlsx
   Allure Report:    results/allure-report/index.html
+  Defect Files:     pipeline/test-data/Milestone<N>/Defects/ (failed modules only)
 
   Run anytime:      npx playwright test
 ═══════════════════════════════════════════════════════════════
@@ -446,12 +546,23 @@ Phase 4 heals on the default environment.
 - **The Generator uses REAL selectors** from the live browser session — not guesses.
 - **Always use selector-map.json** — never invent selectors.
 - **Always use fixture data** for URLs — never hardcode.
-- **No login flows** — this is a public marketing website with no authentication.
-- **WordPress/Elementor patterns** — expect Elementor widget classes, dynamic class names, and lazy-loaded content.
+- **AML login is bypassed** — do not add credential steps unless the user enables authentication.
+- **Generic URL workflows** — follow the target application's actual framework; do not assume WordPress/Elementor.
 - **Zero user interaction** — handle cookie banners, popups, and edge cases automatically.
 - **Never skip tests** — no `test.skip()`, no `test.only()`.
 - **On failure during Phase 2, continue** — capture error, move to next step/test.
-- **On failure during Phase 3, heal in Phase 4** — don't skip.
+- **On failure during Phase 3, heal eligible automation failures once in Phase 4** — preserve all others.
+- **Defect sheets only after heal is finished** (or skipped) — never while heal is pending; use final remaining failures only.
 - **Always generate reports** at the end — both Excel and Allure.
 - Process test cases **one at a time**, completing each before starting the next.
 - **If stuck**: press Escape, close popups, dismiss banners — always continue.
+
+# Agent run DOCX (mandatory)
+
+After all phases and reports:
+
+```bash
+npm run docs:agent-run:run-tests -- --execution results/execution-report.json
+```
+
+Include `docs/agent-runs/run-tests/...docx` in the final summary.

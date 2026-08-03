@@ -1,0 +1,108 @@
+---
+description: Defect Status, Severity, Priority rules, regression eligibility, and doc-sync expectations
+alwaysApply: true
+---
+
+# Defect Workflow Guardrails
+
+When changing defect generation, sync, regression, or column behavior, update **all**
+layers listed in `.cursor/rules/defect-pipeline-doc-sync.mdc` in the same change.
+
+## Single Status column (hard)
+
+Defect rows (local Excel + Google **Defects** tab) use **one** column: **Status**.
+
+- **Allowed values:** `New`, `In Progress`, `Resolved`, `Reopened`, `Closed`
+- **Forbidden columns:** `Dev Status`, `QA Status`, and legacy split-status schemas
+- **Default on raise:** `New` when QA or pipeline first registers a failure
+- **Dropdown:** apply on local Excel column M and Google `Defects!M2:M500`
+
+Schema: `specs/generated/qa-pipeline/schemas/defect-workbook-schema.json`
+
+## Severity & Priority (set at defect generation only)
+
+**Milestone routing (hard):** Defect workbooks and Google rows go under
+`pipeline/test-data/Milestone{N}/Defects/` where **N** is resolved from Stage 0
+artifacts — Test Cases + FSD + Figma under `pipeline/test-data/Milestone{N}/`.
+Each failed **Test Case ID** maps to the milestone whose Excel workbook contains
+that ID (`resolve-defect-milestone.cjs`). Spec path alone does not override the
+workbook mapping when the TC ID is found in Milestone Excel.
+
+| Milestone folder has Test Cases + FSD + Figma | Defect output |
+|-----------------------------------------------|---------------|
+| Milestone1 only (for that module's TC IDs) | `Milestone1/Defects/` |
+| Milestone2 only (for that module's TC IDs) | `Milestone2/Defects/` |
+
+**Severity** and **Priority** are assigned **once** inside `generateDefectFiles` when
+defect rows are created from the **test execution report** (immediately after
+Playwright finishes — not on a separate post-defect step).
+
+| Field | When set | How |
+|-------|----------|-----|
+| **Severity** | Test run → `failureRecords` → `createWorkbook` | Product impact from failure evidence (Critical / High / Medium / Low). Classifier: `pipeline/scripts/classify-defect-severity-priority.cjs` |
+| **Priority** | Same moment | Fix urgency: test-case Excel **Priority** adjusted by execution impact. **Independent** from Severity — never copied from it |
+
+| Actor | May change Severity/Priority? |
+|-------|------------------------------|
+| `generateDefectFiles` (after test run) | **Yes** — for failed cases in that run |
+| Google sync upsert | **Fill only when sheet cell is empty**; preserve existing values |
+| defect-regression | **Never** |
+| Post-generation backfill / metadata-only sync | **Never** (no backfill script) |
+
+Re-run: a **new test execution** that fails again regenerates the **local** defect row
+with fresh Severity/Priority for that failure. Google preserves values once written.
+
+## Who may change Status
+
+| Actor | May change Status? | Rules |
+|-------|-------------------|--------|
+| QA pipeline / execute-raise-defects | On **new** rows only | Set `New` when creating; preserve existing Status on upsert |
+| Humans (Excel / Google) | Yes | Dev/QA manual workflow |
+| **defect-regression** agent | **Only Resolved → Closed/Reopened on Google** | After anchor TC re-test; **Google Defects tab only** |
+
+## Defect regression — hard boundaries
+
+Invoke `@.cursor/agents/defect-regression.agent.md` / `defect-regression` for retest
+work — do not run regression status logic in the parent session.
+
+| Current Status | Enter regression? | Automated status change? |
+|----------------|-------------------|---------------------------|
+| **New** | No | **Never** |
+| **In Progress** | No | **Never** |
+| **Resolved** | Yes | Yes → **Closed** (pass) or **Reopened** (fail) |
+| **Reopened** | No | **Never** (until human sets back to Resolved) |
+| **Closed** | No | **Never** |
+
+Defect regression **touches Resolved only** — never New, In Progress, Reopened, or Closed.
+
+Mechanical enforcement:
+
+- `read-defect-sheet.cjs` / `loadRegressionDefects` — reads **Google Defects tab only**; filters `Status = Resolved`
+- `defect-regression-run.js` — rejects `--source local` / `--workbook`; requires CDP Chrome
+- `deriveStatusUpdates()` — skips non-Resolved defects
+- `update-defect-google-statuses.cjs` — writes Status **on Google only**; skips rows whose current Status is not Resolved; logs `skipped[]`
+- Local defect Excel is **not** read or updated by defect-regression
+
+Command: `npm run tracker:cdp-chrome` then `npm run qa:defect-regression -- --milestone <N>`  
+Google Status is written **automatically** after regression (no **Approve defects**). Opt out: `--defer-google-sync`.
+
+## Upsert / sync preservation
+
+When upserting defects from pipeline or execute-raise-defects:
+
+- **Preserve** existing `Status` when the row already exists (local + Google)
+- **Never** reset `In Progress`, `Resolved`, `Closed`, or `Reopened` back to `New` from stale local Excel
+- **Preserve** existing **Severity** and **Priority** on Google when already set; fill only when empty
+- **`--metadata-only`** sync skips Status, Severity, and Priority entirely
+- Only **defect-regression** may write `Closed` / `Reopened`, and only from **Resolved**
+
+## Must not
+
+- Emit or require Dev Status + QA Status in new defect workbooks
+- Change Status on **New**, **In Progress**, **Reopened**, or **Closed** during regression
+- Update Severity/Priority after defect generation (backfill, regression, or metadata-only sync)
+- Mirror Priority into Severity or vice versa
+- `append-defects-google-sheet.js` — `mergeRegressionStatus()` blocks Closed/Reopened writes unless existing Status is Resolved
+- Mark regression **Done** without mechanical `skipped` / `applied` evidence when updates were attempted
+- Bypass `defect-regression` agent for Resolved retest → Closed/Reopened workflow
+- Change defect pipeline behavior in scripts only without updating agents, rules, schemas, `AGENTS.md`, and `project-context.mdc`

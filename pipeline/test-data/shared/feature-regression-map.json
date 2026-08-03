@@ -1,0 +1,36 @@
+{
+  "schemaVersion": "1.0",
+  "description": "Optional indirect regression scope when a defect Feature is marked Resolved. Keys are module names; feature entries list related describe/feature areas to retest in addition to direct matches.",
+  "modules": {
+    "Screening Configuration": {
+      "Search": {
+        "indirect": ["Search and Filter", "Filters", "Sorting", "Grid Validation", "Pagination"]
+      },
+      "Lists Library": {
+        "indirect": ["List Selection", "Field Mapping", "Search", "View Screening Type Details"]
+      },
+      "Edit Screening Type": {
+        "indirect": ["View Screening Type Details", "Status Management", "Basic Information", "List Selection"]
+      },
+      "Field Mapping": {
+        "indirect": ["List Selection", "Lists Library", "Field Mapping Impact", "Match Score Configuration"]
+      },
+      "Page Layout": {
+        "indirect": ["Page Navigation", "Screening Type Listing", "Grid Columns", "Empty State"]
+      },
+      "Empty State": {
+        "indirect": ["Screening Type Listing", "Grid Validation", "Page Layout"]
+      }
+    },
+    "Keyword Manager Test": {
+      "Search": {
+        "indirect": ["Tab Switching", "Grid Validation", "Toolbar Actions"]
+      }
+    },
+    "Ignore Words Configuration": {
+      "Search": {
+        "indirect": ["Sorting", "Pagination", "Grid Validation", "Tab Switching"]
+      }
+    }
+  }
+}

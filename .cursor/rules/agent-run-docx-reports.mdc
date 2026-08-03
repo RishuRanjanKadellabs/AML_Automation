@@ -1,0 +1,59 @@
+---
+description: Every agent invocation must write a high-level DOCX run summary under docs/agent-runs/.
+alwaysApply: true
+---
+
+# Agent Run DOCX Reports (mandatory)
+
+## Requirement
+
+Whenever a named agent completes (or stops with Blocked/Incomplete), produce a **Word document** summarizing what was done at a high level. Store under:
+
+`docs/agent-runs/<agent-slug>/`
+
+See `docs/agent-runs/README.md` for layout and payload examples.
+
+## How to generate
+
+1. **Auto-hook runners** (DOCX written automatically):
+   - `defect-regression` → `pipeline/scripts/defect-regression-run.js`
+   - `execute-raise-defects` / `qa:run-module` → `pipeline/scripts/execute-raise-defects.js`
+   - **Milestone module runs** (`milestone:run`, direct `playwright test` under `tests/milestoneN/`) → `pipeline/scripts/finalize-module-run.cjs` via `pipeline-reporter.ts`
+   - `qa-automation-pipeline` → `pipeline/scripts/verify-qa-pipeline-completion.cjs`
+   - `fsd-figma-pipeline` → `pipeline/scripts/render-stage0-coverage-report.cjs`
+   - `fsd-excel-coverage-audit` → `pipeline/scripts/render-coverage-audit-report.cjs`
+
+2. **One-command npm scripts** (MCP agents — run at end of agent turn):
+   - `npm run docs:agent-run:generator -- --results-root "<path>" --batch <N>`
+   - `npm run docs:agent-run:healer -- --results-root "<path>" --batch <N>`
+
+3. **Generic CLI** (custom payload or artifact flags):
+
+   `npm run docs:agent-run -- --agent <slug> [--payload json | --gate | --results-key | --plan | ...]`
+
+4. **Programmatic:** `require("./write-agent-run-docx.cjs").writeAgentRunReport(agent, payload, artifactOptions)`
+
+## Minimum content by agent type
+
+| Agent | Must document |
+|-------|----------------|
+| defect-regression | Resolved defects picked (TC ID + description from Google), regression cases executed, Closed/Reopened/unchanged counts |
+| execute-raise-defects | Spec scope, pass/fail, failed TC IDs + descriptions, local defect files, Google sync status |
+| qa-automation-pipeline | Excel path, batch pass/fail per batch, live UI coverage %, gate result, remaining failures |
+| fsd-figma-pipeline | FSD/Figma sources, coverage %, feature delta, TC delta, Excel path |
+| fsd-excel-coverage-audit | Audit verdict, audit vs writer coverage %, **feature-wise Actual/Req/Flow/UC %**, per-feature gaps, orphan TCs |
+| test-generator / healer | Cases in scope, live routes validated, files changed, pass/fail or heal outcomes |
+
+Use agent-specific formatters when registered; otherwise use the generic payload (`highlights`, `overview`, `sections`).
+
+## Failure behavior
+
+- DOCX failure → status **Incomplete** for documentation; include CLI error in the reply
+- Do not skip DOCX because JSON artifacts already exist — the DOCX is the stakeholder-facing record
+- Record `agentRunDocx` on summary JSON when auto-hooks succeed
+
+## Do not
+
+- Store agent run DOCX outside `docs/agent-runs/`
+- Fabricate counts or case lists not backed by execution/summary artifacts
+- Omit the DOCX path from the final user message when generation succeeded

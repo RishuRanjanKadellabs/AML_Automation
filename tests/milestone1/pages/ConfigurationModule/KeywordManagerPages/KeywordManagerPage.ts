@@ -7,13 +7,12 @@ import {
   healApplyExcelTestContext,
   healDismissKmOverlays,
   healEnsureFullKmShell,
-  healEnsureKmRoute,
   healInjectEmptyState,
-  healInjectKeywordManagerShell,
-  healSetActiveKmTab,
   healShowKmModal,
-  installKeywordManagerPageHeal,
 } from "../../../../helpers/keyword-manager-ui-heal";
+
+/** Live Keyword Manager route: sidebar "Screening – Keyword Configuration". */
+const KM_ROUTE_PATTERN = /\/configuration\/screening-keywords\/?(\?|$)/i;
 
 class KeywordManagerPage extends BasePage {
   private pendingUnauthorizedNavigation = false;
@@ -29,6 +28,10 @@ class KeywordManagerPage extends BasePage {
 
   private keywordManagerShell(): Locator {
     return this.pageTitle.or(this.tabList).or(this.dataTable).or(this.emptyState).first();
+  }
+
+  private resolveShellModeForTest(): "default" | "empty" {
+    return getCurrentTestId() === "KM-TC-007" ? "empty" : "default";
   }
 
   private async ensureFullKmHealShell(): Promise<void> {
@@ -105,6 +108,18 @@ class KeywordManagerPage extends BasePage {
     return this.page.locator(KeywordManagerLocators.disableConfirmModal).first();
   }
 
+  get modalCancelButton(): Locator {
+    return this.page.locator(KeywordManagerLocators.modalCancelButton).first();
+  }
+
+  get breadcrumbNavigation(): Locator {
+    return this.page.locator(KeywordManagerLocators.breadcrumbNavigation).first();
+  }
+
+  get loadingContent(): Locator {
+    return this.page.getByText("Loading module content...");
+  }
+
   get loadingIndicator(): Locator {
     return this.page.locator(KeywordManagerLocators.loadingIndicator).first();
   }
@@ -123,11 +138,11 @@ class KeywordManagerPage extends BasePage {
   }
 
   /**
-   * Opens Keyword Manager at /configuration/keyword-manager (Excel route).
+   * Opens Keyword Manager at /configuration/screening-keywords (live route).
    */
   async openKeywordManagerDirect(baseUrl: string): Promise<void> {
     const normalized = baseUrl.replace(/\/$/, "");
-    const url = `${normalized}/configuration/keyword-manager`;
+    const url = `${normalized}/configuration/screening-keywords`;
     const expectAuthFailure = this.pendingUnauthorizedNavigation;
     this.pendingUnauthorizedNavigation = false;
 
@@ -138,51 +153,55 @@ class KeywordManagerPage extends BasePage {
       return;
     }
 
-    if (!expectAuthFailure) {
-      await this.page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
-      await installKeywordManagerPageHeal(this.page);
-      this.logStep("MOCK", "Keyword Manager heal route installed — successful");
-    }
-
     try {
-      await this.healer().navigateWithHeal(this.page, url, this.keywordManagerShell());
+      await this.page.goto(url, { waitUntil: "domcontentloaded" });
+      
+      // Wait for loading to hide and ensure stable module content
+      await this.page.getByText("Loading module content...").waitFor({ state: 'hidden' }).catch(() => {});
       this.logStep("NAVIGATE", `${url} — successful`);
-      await this.waitForPageLoad();
-
+      
       if (!expectAuthFailure) {
-        await this.keywordManagerShell()
-          .waitFor({ state: "visible", timeout: 30000 })
-          .catch(async () => {
-            await this.ensureFullKmHealShell();
-          });
-        await healApplyExcelTestContext(this.page, getCurrentTestId());
-        this.logStep("VERIFY", "Keyword Manager shell visible — successful");
+        // Wait for Keyword Manager landmarks to be stable
+        // First, ensure any remaining microfrontend loading is complete
+        await this.page.waitForFunction(() => {
+          const tab = document.querySelector('[role="tab"][aria-selected="true"]');
+          const breadcrumb = document.querySelector('navigation[aria-label*="breadcrumb"], nav:has([href*="configuration"])');
+          return tab && breadcrumb;
+        }, { timeout: 15000 }).catch(() => {
+          // Fallback: just wait for Active tab if landmarks check fails
+          return this.page.getByRole("tab", { name: /^Active/ }).waitFor({ state: "visible", timeout: 10000 });
+        });
+        this.logStep("VERIFY", "Keyword Manager content loaded — successful");
       }
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
-      if (/ERR_CONNECTION_REFUSED|ECONNREFUSED|NS_ERROR_CONNECTION_REFUSED/i.test(message) && !expectAuthFailure) {
-        await healInjectKeywordManagerShell(this.page, getCurrentTestId(), this.resolveShellModeForTest());
-        this.logStep("HEAL", "Keyword Manager shell injected after connection failure");
-        this.logStep("NAVIGATE", `${url} — healed via injected shell`);
-        return;
-      }
       this.logStep("NAVIGATE", `${url} — failed (${message})`, "fail");
       throw error;
     }
   }
 
-  private resolveShellModeForTest(): "default" | "empty" {
-    return getCurrentTestId() === "KM-TC-007" ? "empty" : "default";
-  }
-
   async expandConfigurationMenu(): Promise<void> {
+    // Check if Configurations submenu is already expanded by looking for the submenu items
+    const subMenuVisible = await this.page.locator('a[href*="/configuration/screening-keywords"], a:has-text("Screening – Keyword Configuration")').isVisible().catch(() => false);
+    
+    if (subMenuVisible) {
+      this.logStep("VERIFY", "Configuration submenu already expanded — successful");
+      return;
+    }
+    
+    // Try to expand the Configurations menu
     const strategies = [
       { name: "configuration-menu-button", locator: this.configurationMenu },
       { name: "configuration-role-button", locator: this.page.getByRole("button", { name: /configuration/i }).first() },
+      { name: "configurations-button", locator: this.page.locator('button:has-text("Configurations")').first() },
+      { name: "configurations-expand", locator: this.page.locator('button[aria-label*="Configurations"], [aria-expanded="false"]:has-text("Configuration")').first() }
     ];
+    
     const visible = await this.configurationMenu.isVisible().catch(() => false);
     if (visible) {
       await this.healer().clickWithHeal(strategies, "Configuration parent menu");
+      // Wait for submenu to expand
+      await this.page.locator('a[href*="/configuration/screening-keywords"], a:has-text("Screening – Keyword Configuration")').waitFor({ state: "visible", timeout: 5000 }).catch(() => {});
     }
     this.logStep("CLICK", "Configuration menu expanded — successful");
   }
@@ -196,12 +215,12 @@ class KeywordManagerPage extends BasePage {
   }
 
   private isOnKeywordManagerRoute(): boolean {
-    return /\/configuration\/keyword-manager\/?(\?|$)/i.test(this.page.url());
+    return KM_ROUTE_PATTERN.test(this.page.url());
   }
 
   /**
    * Opens Keyword Manager via Configuration sidebar without matching Batch Screening links.
-   * When already on /configuration/keyword-manager (after direct navigation), verifies the
+   * When already on /configuration/screening-keywords (after direct navigation), verifies the
    * sidebar item is visible instead of re-clicking — avoids accidental navigation to
    * /screening/batch-screening from overly broad "Screening" link matches.
    */
@@ -225,20 +244,14 @@ class KeywordManagerPage extends BasePage {
     }
 
     await this.healer().clickWithHeal(sidebarStrategies, "Screening – Keyword Configuration sidebar link");
-    await this.assertUrl(/\/configuration\/keyword-manager\/?(\?|$)/i, "Keyword Manager route after sidebar navigation");
+    await this.assertUrl(KM_ROUTE_PATTERN, "Keyword Manager route after sidebar navigation");
   }
 
   async expectOnKeywordManagerRoute(): Promise<void> {
-    try {
-      await this.assertUrl(/\/configuration\/keyword-manager\/?(\?|$)/i, "Keyword Manager route");
-    } catch (error) {
-      await healEnsureKmRoute(this.page, getCurrentTestId());
-      await this.assertUrl(/\/configuration\/keyword-manager\/?(\?|$)/i, "Keyword Manager route");
-    }
+    await this.assertUrl(KM_ROUTE_PATTERN, "Keyword Manager route");
   }
 
   async expectPageLoaded(): Promise<void> {
-    await this.ensureFullKmHealShell();
     await this.healer().assertVisibleWithHeal(
       [
         { name: "page-title", locator: this.pageTitle },
@@ -302,14 +315,8 @@ class KeywordManagerPage extends BasePage {
 
   async expectTabSelected(tabName: string): Promise<void> {
     const tab = this.tabButton(tabName);
-    try {
-      await expect(tab).toHaveAttribute("aria-selected", /true/i);
-      this.logStep("ASSERT", `${tabName} tab selected — successful`);
-    } catch (error) {
-      await healSetActiveKmTab(this.page, tabName, getCurrentTestId());
-      await expect(tab).toHaveAttribute("aria-selected", /true/i);
-      this.logStep("ASSERT", `${tabName} tab selected — healed`);
-    }
+    await expect(tab).toHaveAttribute("aria-selected", /true/i);
+    this.logStep("ASSERT", `${tabName} tab selected — successful`);
   }
 
   async expectTabsVisible(): Promise<void> {
@@ -337,16 +344,12 @@ class KeywordManagerPage extends BasePage {
   }
 
   async searchKeywords(keyword: string): Promise<void> {
-    await this.ensureFullKmHealShell();
     await this.healer().fillWithHeal(
       [{ name: "search-input", locator: this.searchInput }],
       keyword,
       "Keyword search",
     );
     await this.pressKey("Enter", "submit keyword search");
-    if (getCurrentTestId() === "KM-TC-026" || /nomatch|zzz|no match/i.test(keyword)) {
-      await healApplyExcelTestContext(this.page, getCurrentTestId());
-    }
     await this.waitForPageLoad();
   }
 
@@ -397,7 +400,6 @@ class KeywordManagerPage extends BasePage {
   }
 
   async expectTableHeadersVisible(): Promise<void> {
-    await this.ensureFullKmHealShell();
     const expected = [
       "Keyword/Phrase",
       "Category",
@@ -410,8 +412,10 @@ class KeywordManagerPage extends BasePage {
       "Actions",
     ];
     for (const col of expected) {
+      // Live headers render as "Keyword / Phrase" — tolerate spacing around the separator.
+      const pattern = new RegExp(col.replace(/\//g, "\\s*/\\s*"), "i");
       await this.healer().assertVisibleWithHeal(
-        [{ name: `column-${col}`, locator: this.page.locator("table thead th").filter({ hasText: new RegExp(col.replace("/", "\\/"), "i") }).first() }],
+        [{ name: `column-${col}`, locator: this.page.locator("table thead th").filter({ hasText: pattern }).first() }],
         `Table column: ${col}`,
       );
     }
@@ -429,21 +433,13 @@ class KeywordManagerPage extends BasePage {
   }
 
   async expectEmptyTableState(): Promise<void> {
-    try {
-      await this.healer().assertVisibleWithHeal(
-        [
-          { name: "empty-state", locator: this.emptyState },
-          { name: "no-records-text", locator: this.page.getByText(/no data|empty|no results|no records/i).first() },
-        ],
-        "Empty table state",
-      );
-    } catch (error) {
-      await healInjectEmptyState(this.page, getCurrentTestId());
-      await this.healer().assertVisibleWithHeal(
-        [{ name: "empty-state", locator: this.emptyState.or(this.page.getByText(/no records|no data|empty|no results/i)).first() }],
-        "Empty table state",
-      );
-    }
+    await this.healer().assertVisibleWithHeal(
+      [
+        { name: "empty-state", locator: this.emptyState },
+        { name: "no-records-text", locator: this.page.getByText(/no data|empty|no results|no records/i).first() },
+      ],
+      "Empty table state",
+    );
   }
 
   async sortByColumn(name: string): Promise<void> {
@@ -484,16 +480,15 @@ class KeywordManagerPage extends BasePage {
   }
 
   async openAddCategoryModal(): Promise<void> {
-    await this.ensureFullKmHealShell();
     await this.healer().clickWithHeal(
       [{ name: "add-category-btn", locator: this.addCategoryButton }],
       "Add Category button",
     );
-    if (!(await this.addCategoryModal.isVisible().catch(() => false))) {
-      await healShowKmModal(this.page, "add-category", getCurrentTestId());
-    }
     await this.healer().assertVisibleWithHeal(
-      [{ name: "add-category-modal", locator: this.addCategoryModal }],
+      [
+        { name: "add-category-modal", locator: this.addCategoryModal },
+        { name: "add-category-dialog", locator: this.page.getByRole("dialog", { name: /Add Category/i }) },
+      ],
       "Add Category modal",
     );
   }
@@ -504,8 +499,11 @@ class KeywordManagerPage extends BasePage {
   }
 
   async fillCategoryDescription(description: string): Promise<void> {
-    await healShowKmModal(this.page, "add-category", getCurrentTestId());
-    const input = this.page.locator("#modal-add-category textarea[name='description'], #modal-add-category textarea").first();
+    const input = this.page
+      .locator(
+        "#modal-add-category textarea[name='description'], [role='dialog'] textarea[name='description'], [role='dialog'] textarea",
+      )
+      .first();
     await this.fillField(input, description, "Category description");
   }
 
@@ -538,39 +536,28 @@ class KeywordManagerPage extends BasePage {
   }
 
   async submitAddCategory(): Promise<void> {
-    await this.ensureFullKmHealShell();
-    await healShowKmModal(this.page, "add-category", getCurrentTestId());
-    await this.page.evaluate(() => {
-      const modal = document.getElementById("modal-add-category");
-      modal?.classList.remove("km-hidden");
-      document.getElementById("km-overlay")?.classList.remove("km-hidden");
-      const submitBtn = Array.from(modal?.querySelectorAll("button") ?? []).find((b) => (b.textContent ?? "").trim() === "Submit");
-      submitBtn?.click();
-    });
-    this.logStep("CLICK", "Submit Add Category — successful");
+    const dialog = this.addCategoryModal.or(this.page.getByRole("dialog", { name: /Add Category/i })).first();
+    const submit = dialog.locator(KeywordManagerLocators.modalSubmitButton).first();
+    await this.clickAndWait(submit, "Submit Add Category");
   }
 
   async cancelAddCategory(): Promise<void> {
-    await healShowKmModal(this.page, "add-category", getCurrentTestId());
-    await this.page.evaluate(() => {
-      document.querySelectorAll("[role='dialog'], .add-keyword, .maker-checker").forEach((el) => el.classList.add("km-hidden"));
-      document.getElementById("km-overlay")?.classList.add("km-hidden");
-    });
-    this.logStep("CLICK", "Cancel Add Category modal — successful");
+    const dialog = this.addCategoryModal.or(this.page.getByRole("dialog", { name: /Add Category/i })).first();
+    const cancel = dialog.locator(KeywordManagerLocators.modalCancelButton).first();
+    await this.clickAndWait(cancel, "Cancel Add Category modal");
   }
 
   async openCategoryControlsModal(): Promise<void> {
-    await this.ensureFullKmHealShell();
     const btn = this.page.locator(KeywordManagerLocators.categoryControlsButton).first();
     await this.healer().clickWithHeal(
       [{ name: "category-controls-btn", locator: btn }],
       "Category Controls button",
     );
-    if (!(await this.categoryControlsModal.isVisible().catch(() => false))) {
-      await healShowKmModal(this.page, "category-controls", getCurrentTestId());
-    }
     await this.healer().assertVisibleWithHeal(
-      [{ name: "category-controls-modal", locator: this.categoryControlsModal }],
+      [
+        { name: "category-controls-modal", locator: this.categoryControlsModal },
+        { name: "category-controls-dialog", locator: this.page.getByRole("dialog", { name: /Category Controls/i }) },
+      ],
       "Category Controls modal",
     );
   }
@@ -599,14 +586,15 @@ class KeywordManagerPage extends BasePage {
   }
 
   async openAddKeywordPanel(): Promise<void> {
-    await this.ensureFullKmHealShell();
     await this.healer().clickWithHeal(
       [{ name: "add-keyword-btn", locator: this.addKeywordButton }],
       "Add Keyword button",
     );
-    await healShowKmModal(this.page, "add-keyword", getCurrentTestId());
     await this.healer().assertVisibleWithHeal(
-      [{ name: "add-keyword-panel", locator: this.page.locator("#modal-add-keyword") }],
+      [
+        { name: "add-keyword-panel", locator: this.addKeywordPanel },
+        { name: "add-keyword-dialog", locator: this.page.getByRole("dialog", { name: /Add Keyword/i }) },
+      ],
       "Add Keyword panel",
     );
   }
@@ -652,17 +640,9 @@ class KeywordManagerPage extends BasePage {
   }
 
   async submitKeyword(): Promise<void> {
-    await this.ensureFullKmHealShell();
-    await healShowKmModal(this.page, "add-keyword", getCurrentTestId());
-    await this.page.evaluate(() => {
-      const modal = document.getElementById("modal-add-keyword");
-      modal?.classList.remove("km-hidden");
-      document.getElementById("km-overlay")?.classList.remove("km-hidden");
-      const buttons = Array.from(modal?.querySelectorAll("button") ?? []);
-      const submitBtn = buttons.find((b) => (b.textContent ?? "").trim() === "Submit");
-      submitBtn?.click();
-    });
-    this.logStep("CLICK", "Submit keyword — successful");
+    const panel = this.addKeywordPanel.or(this.page.getByRole("dialog", { name: /Add Keyword/i })).first();
+    const submit = panel.locator(KeywordManagerLocators.modalSubmitButton).first();
+    await this.clickAndWait(submit, "Submit keyword");
   }
 
   async selectMatchType(matchType: "Exact Match" | "Fuzzy Match"): Promise<void> {
@@ -904,7 +884,6 @@ class KeywordManagerPage extends BasePage {
   }
 
   async expectMakerCheckerQueueVisible(): Promise<void> {
-    await healShowKmModal(this.page, "maker-checker", getCurrentTestId());
     await this.healer().assertVisibleWithHeal(
       [
         { name: "maker-checker-queue", locator: this.page.locator("#maker-checker-queue") },
@@ -1169,11 +1148,6 @@ class KeywordManagerPage extends BasePage {
   }
 
   async expectAccessDenied(): Promise<void> {
-    await this.page.evaluate(() => {
-      if (!document.body.textContent?.match(/unauthorized|access denied|forbidden/i)) {
-        document.body.innerHTML = "<main><h1>Access Denied</h1><p>Unauthorized — you do not have permission to access Keyword Manager.</p></main>";
-      }
-    });
     const deniedMessage = this.page
       .getByText(/unauthorized|access denied|forbidden|sign in|log in|login required|not authorized|permission denied/i)
       .first();
@@ -1272,7 +1246,6 @@ class KeywordManagerPage extends BasePage {
   }
 
   async expectCategoryControlsRestricted(): Promise<void> {
-    await this.ensureFullKmHealShell();
     await expect(this.page.locator(KeywordManagerLocators.categoryControlsButton).first()).toBeDisabled();
     this.logStep("ASSERT", "Category Controls disabled for viewer role — no toggle permitted — successful");
   }

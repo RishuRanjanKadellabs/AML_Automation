@@ -8,7 +8,8 @@ globs: specs/generated/qa-pipeline/**,results/qa-pipeline/**,.cursor/agents/qa-a
 
 ## Purpose
 
-Orchestrate `Excel → Validate → Normalize → Execute → Generate → Heal → Report` for Clari5 AML using this repo’s existing Playwright framework and existing generator/healer agents.
+Orchestrate `Excel → Validate → Normalize → six near-equal Generate → Execute
+→ Heal cycles → aggregate Report` for Clari5 AML.
 
 ## Single new agent
 
@@ -16,18 +17,19 @@ Orchestrate `Excel → Validate → Normalize → Execute → Generate → Heal 
 
 ## Protected agents (never modify)
 
-`test-planner`, `test-generator`, `test-healer`, `headed-executor`, `headless-executor`, and `.github/agents/playwright-test-*`
+`test-generator`, `test-healer`, and `.github/agents/playwright-test-*`
 
 ## Where things live
 
 | Asset | Location |
 |-------|----------|
 | Schemas / handoffs / templates | `specs/generated/qa-pipeline/` |
-| Runtime stage outputs | `results/qa-pipeline/` |
+| Runtime stage outputs | `results/qa-pipeline/<excel-basename>/` (per workbook; never share one global tree across concurrent modules) |
 | Generated specs / POM / locators | `tests/milestone2/` — mirror milestone1 layout (`pages/`, `test-cases/`, `objectrepositories/`). Not `tests/e2e/`. Not new modules under `tests/milestone1/`. |
 | Skills | `.cursor/skills/qa-*` |
 | Rules | `.cursor/rules/qa-automation-pipeline-*.mdc` |
 | Docs | `docs/qa-automation-pipeline.md` |
+| Mechanical Excel parse/normalize | `npm run qa:parse-excel` / `qa:normalize` / `qa:assert-normalize` |
 
 ## Generated test placement (required)
 
@@ -35,14 +37,102 @@ Orchestrate `Excel → Validate → Normalize → Execute → Generate → Heal 
 tests/milestone2/
 ├── pages/<Module>/<Feature>Pages/
 ├── test-cases/<Module>/<feature>Tests/
+│   └── <feature>.spec.ts          ← ONE spec file per Excel module
 └── objectrepositories/
 ```
 
 Follow the existing Milestone 1 structure; place all **new** pipeline-generated automation under Milestone 2 only.
 
+### Spec packing (mandatory)
+
+- **One `.spec.ts` per Excel Module** — all test cases for that module in one file (Milestone1 pattern, e.g. `missing-mandatory.spec.ts`).
+- Do **not** create one `.spec.ts` per Test Case ID.
+- Generate **all** eligible Excel cases (100%); never a sample subset.
+
+### Authentication (temporary)
+
+- Login / `EMAIL` / `PASSWORD` are **bypassed** until the user asks to enable them.
+- Do not block generate/execute for missing credentials; navigate via `BASE_URL` / page objects only.
+
+### Six-batch loop (mandatory)
+
+- Split normalized eligible cases into exactly six deterministic near-equal batches
+  via `npm run qa:split-batches` (pass `--delta` in reconcile mode).
+- Validate/Normalize MUST be mechanical (`qa:parse-excel` → `qa:normalize` →
+  `qa:assert-normalize`). Never hand-write sample normalized JSON; never use
+  Python pandas/openpyxl as the primary parser.
+- For each batch: generate all assigned cases, append to the same module spec,
+  report generated count, execute only the batch, and report pre-heal counts.
+- Invoke the existing healer once for classified automation failures only, then
+  re-run changed cases once and report post-heal counts.
+- After batches **1–5**: show pass/fail, set `awaiting_batch_approval`, **stop and
+  ask** before batch N+1. After batch **6**: aggregate reports and gate (no ask).
+- Locators for generation must be discovered from the **live app** (not Figma-only).
+- Every eligible UI case must have live route/control/action evidence; generation coverage must be **100%**.
+
+### Healing boundary
+
+- Product/data/environment/requirement/tooling failures are never auto-healed.
+- At most one healer invocation and one changed-case verification run per batch.
+- Preserve assertions and all remaining failures/classifications.
+
+### Completion gate (mandatory — no extra user instructions)
+
+On every Excel approve / pipeline run, complete the full sequence without asking the user to restate rules.
+
+Before Done:
+
+1. `node pipeline/scripts/verify-qa-pipeline-completion.cjs --excel <path> --specs <module specs> --batch-plan results/qa-pipeline/batches/batch-plan.json`
+2. Write `results/qa-pipeline/final/pipeline-completion-gate.json` (`pipeline-completion-gate-schema.json`)
+3. `gateStatus=Passed` only when all eligible TC IDs are in the one-per-module
+   specs, live evidence is 100%, all six batches completed, and every batch run /
+   optional changed-case verification has real evidence
+
+Never exit while generation is In Progress or with fabricated 100% pass claims.
+
+### Single MCP owner (mandatory)
+
+- One Playwright MCP owner for Generate; default Generate **in-parent**.
+- Never parent+child concurrent `browser_*` / `generator_*`.
+- Zombie Generate child (>5 min no progress) → interrupt → continue in parent.
+- Checkpoint manifest + `state.json` every module and every ≤10 cases during Generate.
+
+### Checkpoint + auto-resume (mandatory)
+
+| Artifact | Path |
+|----------|------|
+| Run checkpoint | `results/qa-pipeline/<excel-basename>/final/state.json` |
+| Schema | `specs/generated/qa-pipeline/schemas/pipeline-run-state-schema.json` |
+
+- Write checkpoint before/after each stage (`validate` → `normalize` →
+  `batchPlan` → `batchLoop` → `report` → `gate` → `done`) and every batch
+  substage. Always record `resultsRoot` + `resultsKey` + `excelPath`.
+- On any new pipeline message / agent start: if checkpoint exists and
+  `status=awaiting_batch_approval`, show last batch pass/fail and wait for
+  Yes/Proceed before starting the next batch. If `status` is `in_progress` /
+  `awaiting_resume` / `blocked` (and not done), **auto-resume** at
+  `currentStage` within the current batch — do not ask for intra-batch continue.
+- Child death / stall (>5 min) / abort → parent **continues locally** within the
+  current batch (Generate = sole MCP owner); Task `resume` only for non-MCP
+  stages when safe.
+- Prefer in-parent Generate over stacking background MCP generators.
+- Between batches 1–5: after full batch completion, always ask before Batch N+1
+  and **end the turn** on that question.
+
 ## Framework
 
 Playwright + TypeScript + POM + `tests/fixtures/test-fixture.ts` + `environments.json` + Allure/`results/<env>/`
+
+## Live UI mandatory (Generate)
+
+The generator **must not skip** the live application:
+
+1. `generator_setup_page` + `browser_*` against every real module URL
+2. Snapshot/evaluate before writing or changing locators
+3. Record per-case live evidence and require `liveUiCoveragePercent=100`
+4. Mark **Blocked** (with reason) if any eligible UI case cannot be live-validated — never treat Figma/mock/heal-only updates as final
+
+See `.cursor/rules/live-ui-mandatory-for-scripting.mdc`.
 
 ## Trigger
 

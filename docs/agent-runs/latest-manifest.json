@@ -1,0 +1,59 @@
+{
+  "runs": [
+    {
+      "generatedAt": "2026-07-30T07:38:37.168Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-07-29_18-46-15_qa-automation-pipeline.docx"
+    },
+    {
+      "generatedAt": "2026-07-30T05:50:22.034Z",
+      "agent": "fsd-figma-pipeline",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/fsd-figma-pipeline/2026-07-28_10-41-05_fsd-figma-pipeline_keyword-manager-test.docx"
+    },
+    {
+      "generatedAt": "2026-07-30T05:39:56.157Z",
+      "agent": "fsd-figma-pipeline",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/fsd-figma-pipeline/2026-07-28_10-41-05_fsd-figma-pipeline_keyword-manager-test.docx"
+    },
+    {
+      "generatedAt": "2026-07-29T13:42:58.013Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-07-29_13-20-00_test-healer_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/Customer Risk Rating Configuration Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-07-29T12:47:25.655Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-07-29_12-47-25_qa-automation-pipeline.docx"
+    },
+    {
+      "generatedAt": "2026-07-29T12:25:12.622Z",
+      "agent": "run-tests",
+      "docxPath": "docs/agent-runs/run-tests/2026-07-29_12-25-12_run-tests_2026-07-29.docx"
+    },
+    {
+      "generatedAt": "2026-07-29T12:25:12.304Z",
+      "agent": "test-planner",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-planner/2026-07-29_12-25-12_test-planner_plan.docx"
+    },
+    {
+      "generatedAt": "2026-07-29T12:18:40.416Z",
+      "agent": "execute-raise-defects",
+      "payloadPath": "results/qa-pipeline/defects/execute-raise-defects-M1.json",
+      "docxPath": "docs/agent-runs/execute-raise-defects/2026-07-29_12-00-00_execute-raise-defects_m1.docx"
+    },
+    {
+      "generatedAt": "2026-07-29T12:17:07.016Z",
+      "agent": "defect-regression",
+      "payloadPath": "results/qa-pipeline/defect-regression/summary-M1.json",
+      "docxPath": "docs/agent-runs/defect-regression/2026-07-29_10-29-07_defect-regression_m1.docx"
+    }
+  ]
+}

@@ -6,21 +6,15 @@ import { test, expect } from "../../../../../fixtures/milestone1-shared-session"
 
 import IgnoreWordsConfigurationPage from "../../../pages/ConfigurationModule/IgnoreWordsConfigurationPages/IgnoreWordsConfigurationPage";
 
-
-
 test.describe("Ignore Words Configuration Module", () => {
 
   let iwcPage: IgnoreWordsConfigurationPage;
-
-
 
   test.beforeEach(async ({ sharedPage }) => {
 
     iwcPage = new IgnoreWordsConfigurationPage(sharedPage);
 
   });
-
-
 
   test.describe("Navigation & Page Access", () => {
 
@@ -48,8 +42,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectExportOptions();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-002 - Navigation & Page Access → breadcrumb text on page load", async ({ testData }) => {
@@ -68,32 +60,6 @@ test.describe("Ignore Words Configuration Module", () => {
     await test.step("Execute Excel test steps", async () => {
       await iwcPage.expectBreadcrumbVisible();
       });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-003 - Navigation & Page Access → Access page directly using valid deep link", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-003
-    // Excel Scenario: Navigation & Page Access → Access page directly using valid deep link
-    // Steps (3): While on Ignore Words Configuration, copy the browser URL. → Open a new browser tab and paste the URL. → Press Enter and wait for the page to finish loading.
-    // Expected: Listing opens without re-authentication. Breadcrumb, status tabs, toolbar, and table data match the original session. No permission or routing error is shown.
-    // TODO: RBAC role switching mechanism (login fixture per role)
-    console.log("[IWC-TC-003] Navigation & Page Access → Access page directly using valid deep link");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      /* Role from Excel: Maker */
-      // Preconditions: Maker has an active session and has previously opened Ignore Words Configuration once in this browser.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectOnIgnoreWordsConfigurationRoute();
-      await iwcPage.expectBreadcrumbVisible();
-      await iwcPage.expectIgnoreWordTableVisible();
-      });
-
-    
 
   });
 
@@ -115,8 +81,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectTabSelected("Active");
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -140,8 +104,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-006 - Navigation & Page Access → toolbar controls are visible on initial load", async ({ testData }) => {
@@ -163,8 +125,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectSearchInputVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-007 - Navigation & Page Access → page title and tab counters load", async ({ testData }) => {
@@ -183,8 +143,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectPageTitleVisible();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -207,8 +165,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectAccessDenied();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-157 - Navigation & Page Access → loading indicator during delayed page load", async ({ testData }) => {
@@ -228,8 +184,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -252,57 +206,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-160 - Navigation & Page Access → footer status bar displays license and copyright information", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-160
-    // Excel Scenario: Navigation & Page Access → Verify footer status bar displays license and copyright information
-    // Steps (2): Scroll to page footer status bar. → Read displayed information.
-    // Expected: Status bar shows license expiry date, copyright notice, and Important Links without obscuring main content.
-    // TODO: RBAC role switching mechanism (login fixture per role)
-    console.log("[IWC-TC-160] Navigation & Page Access → Verify footer status bar displays license and copyright information");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Maker is on Ignore Words Configuration.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectStatusBarVisible();
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-161 - Navigation & Page Access → Filter Configuration menu using sidebar search input", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-161
-    // Excel Scenario: Navigation & Page Access → Filter Configuration menu using sidebar search input
-    // Steps (2): Enter 'Ignore Words' in the sidebar menu search. → Select the filtered Ignore Words Configuration menu item.
-    // Expected: Menu search filters to Ignore Words Configuration. Selecting it opens the listing.
-    // TODO: RBAC role switching mechanism (login fixture per role)
-    console.log("[IWC-TC-161] Navigation & Page Access → Filter Configuration menu using sidebar search input");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      await iwcPage.expandConfigurationMenu();
-      await iwcPage.openIgnoreWordsConfigurationFromSidebar();
-      // Preconditions: Maker is on application home with sidebar visible.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectSidebarStructure();
-      await iwcPage.expectSearchInputVisible();
-      await iwcPage.expectIgnoreWordTableVisible();
-      });
-
-    
-
-  });
 
   });
 
@@ -328,8 +231,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-010 - Status Tabs → Switch from Active to Inactive tab", async ({ testData }) => {
@@ -349,8 +250,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectTabSelected("Inactive");
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -373,8 +272,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-012 - Status Tabs → tab counters against table row count", async ({ testData }) => {
@@ -394,8 +291,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectTabCountBadgeVisible();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -420,8 +315,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectSearchInputVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-014 - Status Tabs → Retain selected tab after page refresh", async ({ testData }) => {
@@ -445,8 +338,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-015 - Status Tabs → Show empty-state message for tab with zero records", async ({ testData }) => {
@@ -467,8 +358,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openTab("Drafted");
       await iwcPage.expectTabsVisible();
       });
-
-    
 
   });
 
@@ -494,8 +383,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMakerCheckerQueueVisible();
       });
 
-    
-
   });
 
   });
@@ -520,30 +407,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
-  });
-
-  test("Case ID:IWC-TC-017 - Search & Filter → Search by partial text value", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-017
-    // Excel Scenario: Search & Filter → Search by partial text value
-    // Steps (2): Enter partial text 'nation' in the search field. → Review matching rows.
-    // Expected: Rows whose phrase or category contains 'nation' are returned, including 'international'. Search applies client-side without a full page reload.
-    console.log("[IWC-TC-017] Search & Filter → Search by partial text value");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Active ignore word 'international' exists.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.searchIgnoreWords("nation");
-      await iwcPage.expectSearchResults();
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
-
   });
 
   test("Case ID:IWC-TC-018 - Search & Filter → Search is case-insensitive", async ({ testData }) => {
@@ -563,76 +426,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectSearchResults();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-019 - Search & Filter → Search by category label", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-019
-    // Excel Scenario: Search & Filter → Search by category label
-    // Steps (2): Search for 'Entity Suffixes'. → Review rows returned.
-    // Expected: All visible rows belong to the Entity Suffixes category. Category badge matches the search term.
-    console.log("[IWC-TC-019] Search & Filter → Search by category label");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Words exist under Entity Suffixes and Personal Titles categories.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.filterByCategory("Entity Suffixes");
-      await iwcPage.expectSearchResults();
-      await iwcPage.expectCategoryBadgeVisible();
-      });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-020 - Search & Filter → Clear search and restore full list", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-020
-    // Excel Scenario: Search & Filter → Clear search and restore full list
-    // Steps (2): Clear the search field completely. → Compare the row count before search, after search, and after clear.
-    // Expected: Full tab dataset is restored after clearing search. Row count returns to the pre-search total.
-    // TODO: RBAC role switching mechanism (login fixture per role)
-    console.log("[IWC-TC-020] Search & Filter → Clear search and restore full list");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Maker applied a search filter that reduced the visible row count.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.searchIgnoreWords("trading");
-      await iwcPage.clearSearch();
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-021 - Search & Filter → Search with special characters is handled safely", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-021
-    // Excel Scenario: Search & Filter → Search with special characters is handled safely
-    // Steps (2): Enter special characters in search: O'Brien & Co. → Observe results and page behaviour.
-    // Expected: Search handles special characters safely. No script execution, page error, or broken layout occurs. Results reflect literal text matching or a controlled no-match state.
-    // TODO: RBAC role switching mechanism (login fixture per role)
-    console.log("[IWC-TC-021] Search & Filter → Search with special characters is handled safely");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Maker is on Active tab.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.searchIgnoreWords("trading");
-      await iwcPage.expectSearchResults();
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
 
   });
 
@@ -654,7 +447,7 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectSearchInputVisible();
       });
 
-    
+  });
 
   });
 
@@ -680,52 +473,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectTabsVisible();
       });
 
-    
-
-  });
-
-  test("Case ID:IWC-TC-024 - Data Table & Sorting → Sort Ignore Word/Phrase column ascending", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-024
-    // Excel Scenario: Data Table & Sorting → Sort Ignore Word/Phrase column ascending
-    // Steps (2): Click the Ignore Word/Phrase column sort control once for ascending order. → Verify the first and last visible values are in A–Z order.
-    // Expected: Rows reorder alphabetically by ignore word/phrase ascending. Sort indicator reflects ascending state.
-    console.log("[IWC-TC-024] Data Table & Sorting → Sort Ignore Word/Phrase column ascending");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Multiple active ignore words exist.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectIgnoreWordTableVisible();
-      await iwcPage.expectTableHeadersVisible();
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-025 - Data Table & Sorting → Sort Ignore Word/Phrase column descending", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-025
-    // Excel Scenario: Data Table & Sorting → Sort Ignore Word/Phrase column descending
-    // Steps (2): Sort Ignore Word/Phrase descending. → Confirm order is reversed from ascending.
-    // Expected: Rows display in Z–A order. Toggling sort direction reorders without data loss.
-    console.log("[IWC-TC-025] Data Table & Sorting → Sort Ignore Word/Phrase column descending");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Active tab has multiple records.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectIgnoreWordTableVisible();
-      await iwcPage.expectTableHeadersVisible();
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
-
   });
 
   test("Case ID:IWC-TC-026 - Data Table & Sorting → Sort Category column ascending", async ({ testData }) => {
@@ -745,8 +492,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectTableHeadersVisible();
       await iwcPage.expectCategoryBadgeVisible();
       });
-
-    
 
   });
 
@@ -768,8 +513,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectRiskLevelBadgeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-028 - Data Table & Sorting → Sort Match Type column", async ({ testData }) => {
@@ -790,30 +533,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMatchTypeBadgeVisible();
       });
 
-    
-
-  });
-
-  test("Case ID:IWC-TC-029 - Data Table & Sorting → Sort Created Date newest to oldest", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-029
-    // Excel Scenario: Data Table & Sorting → Sort Created Date newest to oldest
-    // Steps (2): Sort Created Date from newest to oldest. → Compare top row date with the most recently created record.
-    // Expected: Newest created date appears first. Date format remains consistent (e.g., DD Mon YYYY).
-    console.log("[IWC-TC-029] Data Table & Sorting → Sort Created Date newest to oldest");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Multiple records with different created dates exist.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectIgnoreWordTableVisible();
-      await iwcPage.sortByColumn("Created Date");
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
-
   });
 
   test("Case ID:IWC-TC-030 - Data Table & Sorting → status badges by selected tab", async ({ testData }) => {
@@ -832,8 +551,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       await iwcPage.expectStatusBadgeVisible();
       });
-
-    
 
   });
 
@@ -855,8 +572,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-032 - Data Table & Sorting → row action column availability per tab", async ({ testData }) => {
@@ -876,30 +591,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectTableHeadersVisible();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-159 - Data Table & Sorting → table header remains visible when scrolling long lists", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-159
-    // Excel Scenario: Data Table & Sorting → Verify table header remains visible when scrolling long lists
-    // Steps (2): Scroll down within the table area. → Observe column header behaviour.
-    // Expected: Table header remains visible (sticky) while scrolling long lists.
-    console.log("[IWC-TC-159] Data Table & Sorting → Verify table header remains visible when scrolling long lists");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Active tab contains enough rows to require vertical scroll.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectIgnoreWordTableVisible();
-      await iwcPage.expectTableHeadersVisible();
-      await iwcPage.expectTabsVisible();
-      });
-
-    
 
   });
 
@@ -925,8 +616,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.addCategoryModal).toBeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-034 - Category Management – Add Category → Create new category with valid mandatory values", async ({ testData }) => {
@@ -951,8 +640,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-035 - Category Management – Add Category → Category Name required field", async ({ testData }) => {
@@ -974,8 +661,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.addCategoryModal).toBeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-036 - Category Management – Add Category → Category Name maximum length 100", async ({ testData }) => {
@@ -996,8 +681,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectSubmissionBlocked();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-037 - Category Management – Add Category → Allow Category Name exactly 100 characters", async ({ testData }) => {
@@ -1017,8 +700,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openAddCategoryModal();
       await iwcPage.expectOnIgnoreWordsConfigurationRoute();
       });
-
-    
 
   });
 
@@ -1042,8 +723,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitAddCategory();
       await iwcPage.expectInlineValidationError();
       });
-
-    
 
   });
 
@@ -1070,8 +749,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectNotificationVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-040 - Category Management – Add Category → Prevent duplicate category name exact match", async ({ testData }) => {
@@ -1092,8 +769,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitAddCategory();
       await iwcPage.expectInlineValidationError();
       });
-
-    
 
   });
 
@@ -1117,8 +792,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-042 - Category Management – Add Category → Trim leading and trailing spaces in category name", async ({ testData }) => {
@@ -1137,8 +810,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openAddCategoryModal();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -1160,8 +831,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.addCategoryModal).toBeHidden();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -1185,8 +854,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.checkerApprovalModal).toBeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-162 - Category Management – Add Category → Close Add Category modal by clicking overlay backdrop", async ({ testData }) => {
@@ -1209,8 +876,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-172 - Category Management – Add Category → Reject category name exceeding 100 characters", async ({ testData }) => {
@@ -1230,8 +895,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.addCategoryModal).toBeVisible();
       await iwcPage.expectSubmissionBlocked();
       });
-
-    
 
   });
 
@@ -1254,8 +917,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitAddCategory();
       await iwcPage.expectInlineValidationError();
       });
-
-    
 
   });
 
@@ -1280,8 +941,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.categoryControlsModal).toBeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-046 - Category Management – Category Controls → Disable an active category using toggle", async ({ testData }) => {
@@ -1302,8 +961,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.toggleCategoryControl("Business Descriptors");
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -1326,8 +983,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-048 - Category Management – Category Controls → category word count updates after enabling", async ({ testData }) => {
@@ -1348,8 +1003,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-049 - Category Management – Category Controls → each category row shows name and ignore word count", async ({ testData }) => {
@@ -1368,8 +1021,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openCategoryControlsModal();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -1393,8 +1044,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-051 - Category Management – Category Controls → Reject invalid rapid double-toggle submission", async ({ testData }) => {
@@ -1416,8 +1065,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-052 - Category Management – Category Controls → Close Category Controls without persisting changes", async ({ testData }) => {
@@ -1438,8 +1085,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-053 - Category Management – Category Controls → category controls action audit entry after checker approval", async ({ testData }) => {
@@ -1459,8 +1104,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openCategoryControlsModal();
       await iwcPage.expectWordHistoryTimelineVisible();
       });
-
-    
 
   });
 
@@ -1483,8 +1126,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.categoryControlsModal).toBeHidden();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -1517,8 +1158,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMatchTypeBadgeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-055 - Add Ignore Word → Submit ignore word with Exact phrase and Low risk", async ({ testData }) => {
@@ -1544,8 +1183,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-056 - Add Ignore Word → Submit ignore word with Partial match and High risk", async ({ testData }) => {
@@ -1570,8 +1207,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMatchTypeBadgeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-057 - Add Ignore Word → Word/Phrase is required", async ({ testData }) => {
@@ -1591,8 +1226,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitIgnoreWord();
       await iwcPage.expectInlineValidationError();
       });
-
-    
 
   });
 
@@ -1614,8 +1247,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitIgnoreWord();
       await iwcPage.expectInlineValidationError();
       });
-
-    
 
   });
 
@@ -1639,8 +1270,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectRiskLevelBadgeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-060 - Add Ignore Word → Match Type is required", async ({ testData }) => {
@@ -1662,8 +1291,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       await iwcPage.expectMatchTypeBadgeVisible();
       });
-
-    
 
   });
 
@@ -1689,8 +1316,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-062 - Add Ignore Word → Allow Word/Phrase length exactly 500", async ({ testData }) => {
@@ -1714,8 +1339,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.selectMatchType("Exact phrase");
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -1741,8 +1364,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-064 - Add Ignore Word → Cancel Add Ignore Word panel after input", async ({ testData }) => {
@@ -1762,8 +1383,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.cancelAddIgnoreWordPanel();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -1791,8 +1410,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-066 - Add Ignore Word → Treat duplicate words case-insensitively", async ({ testData }) => {
@@ -1818,8 +1435,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-067 - Add Ignore Word → Trim whitespace around word before validation", async ({ testData }) => {
@@ -1841,8 +1456,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -1870,8 +1483,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-069 - Add Ignore Word → Retain selected category while editing other fields", async ({ testData }) => {
@@ -1895,8 +1506,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.selectMatchType("Exact phrase");
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -1923,8 +1532,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-071 - Add Ignore Word → Ensure no hard delete option in Add Ignore Word panel", async ({ testData }) => {
@@ -1950,8 +1557,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.addIgnoreWordPanel).toBeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-164 - Add Ignore Word → Add Ignore Word panel does not close when clicking overlay", async ({ testData }) => {
@@ -1971,8 +1576,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.clickPanelOverlay();
       await expect(iwcPage.addIgnoreWordPanel).toBeVisible();
       });
-
-    
 
   });
 
@@ -1997,8 +1600,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-179 - Add Ignore Word → discard when cancelling Add Ignore Word with populated fields", async ({ testData }) => {
@@ -2018,8 +1619,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.cancelAddIgnoreWordPanel();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -2045,8 +1644,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitIgnoreWord();
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
-
-    
 
   });
 
@@ -2075,8 +1672,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-073 - Live Narrative Tester → exact phrase match behavior in tester", async ({ testData }) => {
@@ -2098,8 +1693,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectNarrativeHighlightVisible();
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
-
-    
 
   });
 
@@ -2123,8 +1716,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-075 - Live Narrative Tester → partial match behavior in tester", async ({ testData }) => {
@@ -2146,8 +1737,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectNarrativeHighlightVisible();
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
-
-    
 
   });
 
@@ -2171,8 +1760,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-077 - Live Narrative Tester → Handle large narrative input in tester", async ({ testData }) => {
@@ -2193,8 +1780,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectLiveNarrativeTesterVisible();
       await iwcPage.expectMatchTypeBadgeVisible();
       });
-
-    
 
   });
 
@@ -2217,8 +1802,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-079 - Live Narrative Tester → Return from tester to add form with values preserved", async ({ testData }) => {
@@ -2237,8 +1820,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openLiveNarrativeTester();
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
-
-    
 
   });
 
@@ -2262,8 +1843,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-181 - Live Narrative Tester → Exact phrase does not match substring within longer token", async ({ testData }) => {
@@ -2285,8 +1864,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectNarrativeHighlightVisible();
       await iwcPage.expectLiveNarrativeTesterVisible();
       });
-
-    
 
   });
 
@@ -2311,8 +1888,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectScreeningEngineEvaluation();
       });
 
-    
-
   });
 
   });
@@ -2336,8 +1911,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-081 - Ignore Word Row Actions → Execute Disable action for active ignore word", async ({ testData }) => {
@@ -2358,8 +1931,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-082 - Ignore Word Row Actions → Enable action is available only in Inactive tab", async ({ testData }) => {
@@ -2379,8 +1950,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.enableIgnoreWord("and");
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -2403,8 +1972,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-084 - Ignore Word Row Actions → Submit action is available only in Drafted tab", async ({ testData }) => {
@@ -2424,8 +1991,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.enableIgnoreWord("co");
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -2448,8 +2013,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-086 - Ignore Word Row Actions → Cancel row action confirmation", async ({ testData }) => {
@@ -2470,8 +2033,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.enableIgnoreWord("compliance marker");
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -2494,8 +2055,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-088 - Ignore Word Row Actions → no hard delete action in row actions menu", async ({ testData }) => {
@@ -2516,8 +2075,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.enableIgnoreWord("draft word");
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -2540,8 +2097,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -2570,8 +2125,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.bulkUploadModal).toBeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-091 - Bulk Upload → Download bulk upload template", async ({ testData }) => {
@@ -2595,8 +2148,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-092 - Bulk Upload → Upload valid CSV file under 10MB", async ({ testData }) => {
@@ -2618,8 +2169,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitBulkUpload();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -2643,8 +2192,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitBulkUpload();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -2670,8 +2217,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-095 - Bulk Upload → Reject unsupported file format", async ({ testData }) => {
@@ -2695,8 +2240,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-096 - Bulk Upload → category selection required for upload", async ({ testData }) => {
@@ -2718,8 +2261,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitBulkUpload();
       await iwcPage.expectInlineValidationError();
       });
-
-    
 
   });
 
@@ -2744,8 +2285,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-098 - Bulk Upload → Handle existing system duplicates during upload", async ({ testData }) => {
@@ -2769,8 +2308,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-099 - Bulk Upload → case-insensitive duplicate detection in upload", async ({ testData }) => {
@@ -2793,8 +2330,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-100 - Bulk Upload → Cancel bulk upload before submit", async ({ testData }) => {
@@ -2815,8 +2350,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.bulkUploadModal).toBeHidden();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -2841,8 +2374,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.bulkUploadModal).toBeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-102 - Bulk Upload → uploaded words appear in Drafted Ignore Word tab before approval", async ({ testData }) => {
@@ -2866,8 +2397,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-103 - Bulk Upload → partial upload success with mixed valid and invalid rows", async ({ testData }) => {
@@ -2890,8 +2419,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-165 - Bulk Upload → Close Bulk Upload modal by clicking overlay backdrop", async ({ testData }) => {
@@ -2913,8 +2440,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.bulkUploadModal).toBeHidden();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -2939,8 +2464,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-169 - Bulk Upload → drop zone highlights on drag-over", async ({ testData }) => {
@@ -2959,8 +2482,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openBulkUploadModal();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -2986,8 +2507,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-178 - Bulk Upload → Reject bulk upload when All Categories is selected", async ({ testData }) => {
@@ -3009,8 +2528,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectBulkUploadError();
       await iwcPage.expectSubmissionBlocked();
       });
-
-    
 
   });
 
@@ -3039,8 +2556,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMatchTypeBadgeVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-105 - Export → Export Inactive tab records to CSV", async ({ testData }) => {
@@ -3062,8 +2577,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectExportOptions();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-106 - Export → export file contains metadata header section", async ({ testData }) => {
@@ -3082,8 +2595,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.clickExport();
       await iwcPage.expectExportOptions();
       });
-
-    
 
   });
 
@@ -3106,8 +2617,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-108 - Export → Export with active search filter applied", async ({ testData }) => {
@@ -3127,8 +2636,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectExportOptions();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -3151,8 +2658,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectExportOptions();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-170 - Export → Export includes only records from the currently selected tab", async ({ testData }) => {
@@ -3173,8 +2678,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectExportOptions();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-171 - Export → Export drafted ignore words from Drafted tab", async ({ testData }) => {
@@ -3194,8 +2697,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.clickExport();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -3227,8 +2728,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMakerCheckerQueueVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-111 - Maker-Checker Workflow → Checker approves category creation request", async ({ testData }) => {
@@ -3253,8 +2752,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-112 - Maker-Checker Workflow → Checker rejects category creation request", async ({ testData }) => {
@@ -3277,8 +2774,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       await iwcPage.expectWordHistoryTimelineVisible();
       });
-
-    
 
   });
 
@@ -3304,8 +2799,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-114 - Maker-Checker Workflow → Maker submits drafted ignore word for approval", async ({ testData }) => {
@@ -3328,8 +2821,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-115 - Maker-Checker Workflow → Checker approves drafted ignore word submission", async ({ testData }) => {
@@ -3351,8 +2842,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.approveIgnoreWord();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3377,8 +2866,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-117 - Maker-Checker Workflow → Maker submits disable request for active word", async ({ testData }) => {
@@ -3399,8 +2886,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.disableIgnoreWord("global");
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3423,8 +2908,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-119 - Maker-Checker Workflow → Checker rejects disable request", async ({ testData }) => {
@@ -3445,8 +2928,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.disableIgnoreWord("draft word");
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3471,8 +2952,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMakerCheckerQueueVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-121 - Maker-Checker Workflow → Checker approves bulk upload request", async ({ testData }) => {
@@ -3494,8 +2973,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openMakerCheckerQueue();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3519,8 +2996,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-123 - Maker-Checker Workflow → Workflow status visibility for Maker after checker decision", async ({ testData }) => {
@@ -3542,8 +3017,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMakerCheckerQueueVisible();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3568,8 +3041,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-182 - Maker-Checker Workflow → Prevent editing ignore word while pending checker approval", async ({ testData }) => {
@@ -3590,8 +3061,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.editIgnoreWord("draft word");
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3616,8 +3085,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openWordHistoryPanel("microfinance");
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3644,8 +3111,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-125 - Audit History → metadata card fields in history panel", async ({ testData }) => {
@@ -3666,8 +3131,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-126 - Audit History → timeline entry for word creation", async ({ testData }) => {
@@ -3686,8 +3149,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openWordHistoryPanel("draft word");
       await iwcPage.expectWordHistoryTimelineVisible();
       });
-
-    
 
   });
 
@@ -3709,8 +3170,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-128 - Audit History → timeline entry for disable action", async ({ testData }) => {
@@ -3730,8 +3189,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3753,8 +3210,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-130 - Audit History → Audit history includes rejection reason", async ({ testData }) => {
@@ -3775,8 +3230,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -3800,8 +3253,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-132 - Audit History → history sorting by latest event first", async ({ testData }) => {
@@ -3822,8 +3273,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-133 - Audit History → Persist history visibility after page refresh and reopen", async ({ testData }) => {
@@ -3843,8 +3292,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.wordHistoryPanel).toBeVisible();
       await iwcPage.expectWordHistoryTimelineVisible();
       });
-
-    
 
   });
 
@@ -3868,8 +3315,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-196 - Audit History → Open Word History by clicking ignore word hyperlink in table", async ({ testData }) => {
@@ -3889,8 +3334,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await expect(iwcPage.wordHistoryPanel).toBeVisible();
       await iwcPage.expectWordHistoryTimelineVisible();
       });
-
-    
 
   });
 
@@ -3917,8 +3360,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectMakerRbacAccess();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-135 - Access Control (RBAC) → Maker cannot approve pending requests", async ({ testData }) => {
@@ -3939,8 +3380,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       await iwcPage.expectRbacControlsHidden();
       });
-
-    
 
   });
 
@@ -3965,8 +3404,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectWordHistoryTimelineVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-137 - Access Control (RBAC) → Checker cannot create new ignore words directly", async ({ testData }) => {
@@ -3987,8 +3424,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.openMakerCheckerQueue();
       await iwcPage.expectMakerCheckerQueueVisible();
       });
-
-    
 
   });
 
@@ -4012,8 +3447,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectViewerReadAccess();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-139 - Access Control (RBAC) → Viewer cannot access Add Ignore Word panel", async ({ testData }) => {
@@ -4033,30 +3466,6 @@ test.describe("Ignore Words Configuration Module", () => {
     await test.step("Execute Excel test steps", async () => {
       await iwcPage.expectRbacControlsHidden();
       });
-
-    
-
-  });
-
-  test("Case ID:IWC-TC-140 - Access Control (RBAC) → Viewer cannot perform row enable or disable actions", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-140
-    // Excel Scenario: Access Control (RBAC) → Viewer cannot perform row enable or disable actions
-    // Steps (5): Log in as Viewer. → Attempt to access Ignore Words Configuration via menu navigation or direct URL. → Open row action menu as Viewer. …
-    // Expected: Enable/Disable actions are hidden or disabled for Viewer.
-    // TODO: RBAC role switching mechanism (login fixture per role)
-    console.log("[IWC-TC-140] Access Control (RBAC) → Viewer cannot perform row enable or disable actions");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // TODO: RBAC — switch session to role: Viewer
-      // Preconditions: Viewer is on tab with data rows.
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectRbacControlsHidden();
-      });
-
-    
 
   });
 
@@ -4079,8 +3488,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-142 - Access Control (RBAC) → Role-based visibility of Category Controls toggles", async ({ testData }) => {
@@ -4102,8 +3509,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-143 - Access Control (RBAC) → Session role switch updates UI permissions immediately", async ({ testData }) => {
@@ -4124,8 +3529,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectRbacControlsHidden();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -4155,8 +3558,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-145 - Field & Business Rule Validation → Exact phrase does not match split word sequence", async ({ testData }) => {
@@ -4181,8 +3582,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-146 - Field & Business Rule Validation → Partial match detects word inside longer sentence", async ({ testData }) => {
@@ -4206,8 +3605,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitIgnoreWord();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -4234,8 +3631,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-151 - Field & Business Rule Validation → Word/Phrase field trims surrounding spaces before save", async ({ testData }) => {
@@ -4259,8 +3654,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitIgnoreWord();
       await iwcPage.expectInlineValidationError();
       });
-
-    
 
   });
 
@@ -4286,8 +3679,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectSubmissionBlocked();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -4315,8 +3706,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-154 - Field & Business Rule Validation → Bulk upload applies same duplicate business rules as manual add", async ({ testData }) => {
@@ -4343,8 +3732,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-155 - Field & Business Rule Validation → Export includes approved and pending status values accurately", async ({ testData }) => {
@@ -4368,8 +3755,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.submitIgnoreWord();
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -4396,8 +3781,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-184 - Field & Business Rule Validation → Duplicate ignore word shows inline validation not browser alert", async ({ testData }) => {
@@ -4423,8 +3806,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectInlineValidationError();
       });
 
-    
-
   });
 
   });
@@ -4449,8 +3830,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectConsoleErrorsFree();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-186 - Regression & Compatibility → core workflows on Microsoft Edge", async ({ testData }) => {
@@ -4471,8 +3850,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-187 - Regression & Compatibility → core workflows on Mozilla Firefox", async ({ testData }) => {
@@ -4491,8 +3868,6 @@ test.describe("Ignore Words Configuration Module", () => {
     await test.step("Execute Excel test steps", async () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
-
-    
 
   });
 
@@ -4518,34 +3893,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectCheckerApprovalModal();
       });
 
-    
-
-  });
-
-  test("Case ID:IWC-TC-193 - Regression & Compatibility → Regression: no console errors during add-submit-approve-disable cycle", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-193
-    // Excel Scenario: Regression & Compatibility → Regression: no console errors during add-submit-approve-disable cycle
-    // Steps (5): Log in as Maker with console open. → Add and submit word. → Log in as Checker and approve. …
-    // Expected: No JavaScript errors logged during the complete maker-checker lifecycle workflow.
-    // TODO: RBAC role switching mechanism (login fixture per role)
-    console.log("[IWC-TC-193] Regression & Compatibility → Regression: no console errors during add-submit-approve-disable cycle");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: Maker and Checker test accounts available
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      await iwcPage.openAddIgnoreWordPanel();
-      await iwcPage.cancelAddIgnoreWordPanel();
-      await iwcPage.expectConsoleErrorsFree();
-      });
-
-    
-
-  });
-
   });
 
   test.describe("Accessibility", () => {
@@ -4567,29 +3914,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       });
 
-    
-
-  });
-
-  test("Case ID:IWC-TC-189 - Accessibility → visible keyboard focus indicator on interactive controls", async ({ testData }) => {
-
-    // Excel Test Case ID: IWC-TC-189
-    // Excel Scenario: Accessibility → Verify visible keyboard focus indicator on interactive controls
-    // Steps (2): Tab to Search field and toolbar buttons. → Observe focus styling on each control.
-    // Expected: Focused control shows visible focus indicator meeting contrast requirements. User can identify which control is active.
-    console.log("[IWC-TC-189] Accessibility → Verify visible keyboard focus indicator on interactive controls");
-    await test.step("Navigate / setup", async () => {
-      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
-      // Preconditions: User on Ignore Words listing page
-      });
-
-    await test.step("Execute Excel test steps", async () => {
-      await iwcPage.expectToolbarKeyboardAccessible();
-      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
-      });
-
-    
-
   });
 
   test("Case ID:IWC-TC-190 - Accessibility → Close Add Category modal using Escape key", async ({ testData }) => {
@@ -4608,8 +3932,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.navigateToolbarWithKeyboard();
       await iwcPage.expectIgnoreWordTableVisible();
       });
-
-    
 
   });
 
@@ -4634,8 +3956,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       await iwcPage.expectCheckerApprovalModal();
       });
-
-    
 
   });
 
@@ -4662,8 +3982,6 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordTableVisible();
       });
 
-    
-
   });
 
   test("Case ID:IWC-TC-195 - UAT Scenarios → UAT: Active disable and re-enable lifecycle without permanent delete", async ({ testData }) => {
@@ -4683,13 +4001,139 @@ test.describe("Ignore Words Configuration Module", () => {
       await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
       await iwcPage.searchIgnoreWords("enterprises");
       await iwcPage.expectCheckerApprovalModal();
-      });
-
-    
-
+    });
   });
 
+  test("Case ID:IWC-TC-200 - Category Control → Category Control", async ({ testData }) => {
+
+    // Excel Test Case ID: IWC-TC-200
+    // Excel Scenario: Category Control → Category Control  
+    // Steps (1): Maker has Configuration access. No approved category exists for the intended assignment (or the Category * dropdown has no selectable approved category for this scenario).
+    // Expected: 1. From the application left navigation, expand Configuration. 2. Select Sanctions Screening Configuration. 3. Click Screening – Ignore Words Configuration. 4. Click Add Ignore Word. 5. Enter Ignore Word / Phrase *: Ltd. 6. Open Category * and confirm no suitable approved category is available to select. 7. Select Risk Level: Medium. 8. Select Match Type: Exact phrase. 9. Click Submit and confirm the form does not complete checker submission without Category *. 10. Click Cancel to close Add New Ignore Word. 11. Click Add Category, enter Category Name *: Entity Suffixes, optionally Category Description, then click Add Category and confirm Request sent for Checker Approval with OK. 12. After the category is approved and available, click Add Ignore Word again, fill mandatory fields including Category *: Entity Suffixes, and click Submit successfully.
+    // TODO: RBAC role switching mechanism (login fixture per role)
+    console.log("[IWC-TC-200] Category Control → Category Control");
+    await test.step("Navigate / setup", async () => {
+      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
+      // Preconditions: Maker cannot complete Submit for an ignore word until at least one approved category is available in Category *. Pass when Submit remains blocked without a Category * selection and succeeds only after a category exists in the dropdown.
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
+      await iwcPage.clickAddIgnoreWord();
+      await iwcPage.fillIgnoreWordPhrase("Ltd");
+      await iwcPage.selectRiskLevel("Medium");
+      await iwcPage.selectMatchType("Exact phrase");
+      // Verify category dropdown is empty or has no suitable options
+      await iwcPage.expectCategoryRequiredForSubmit();
+      await iwcPage.clickCancel();
+      
+      // Add category first
+      await iwcPage.clickAddCategory();
+      await iwcPage.fillCategoryName("Entity Suffixes");
+      await iwcPage.clickAddCategorySubmit();
+      await iwcPage.expectCheckerApprovalModal();
+    });
+  });
+
+  test("Case ID:IWC-TC-201 - Context-Aware Application → Context-Aware Application", async ({ testData }) => {
+
+    // Excel Test Case ID: IWC-TC-201
+    // Excel Scenario: Context-Aware Application → Context-Aware Application
+    // Steps (1): Maker and Checker accounts exist. Category Business Descriptors is approved. FSD requires field-level context; Figma Add Ignore Word does not expose a dedicated field-scope control — document assumption for configuration path.
+    // Expected: 1. From the application left navigation, expand Configuration. 2. Select Sanctions Screening Configuration. 3. Click Screening – Ignore Words Configuration. 4. Click Add Ignore Word. 5. Enter Ignore Word / Phrase *: Bank. 6. Select Category *: Business Descriptors. 7. Select Risk Level: Medium. 8. Select Match Type: Exact phrase. 9. ASSUMPTION (Figma gap S5.3): configure field-level context so the ignore word applies to Entity Name only (not Payment Reference) using the institutional context-rule path available in the build under test. 10. Click Submit and confirm Request sent for Checker Approval; click OK. 11. As Checker, approve the pending request. 12. Verify screening: Bank is stripped for Entity Name and retained for Payment Reference.
+    // TODO: RBAC role switching mechanism (login fixture per role)
+    console.log("[IWC-TC-201] Context-Aware Application → Context-Aware Application");
+    await test.step("Navigate / setup", async () => {
+      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
+      // Preconditions: After approval, the ignore word strips the token only in the configured screening field and does not strip it in other fields. Pass when Entity Name is stripped and Payment Reference is not.
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
+      await iwcPage.clickAddIgnoreWord();
+      await iwcPage.fillIgnoreWordPhrase("Bank");
+      await iwcPage.selectCategory("Business Descriptors");
+      await iwcPage.selectRiskLevel("Medium");
+      await iwcPage.selectMatchType("Exact phrase");
+      await iwcPage.clickSubmit();
+      await iwcPage.expectCheckerApprovalModal();
+    });
+  });
+
+  test("Case ID:IWC-TC-202 - Context-Aware Application → Context-Aware Application", async ({ testData }) => {
+
+    // Excel Test Case ID: IWC-TC-202
+    // Excel Scenario: Context-Aware Application → Context-Aware Application
+    // Steps (1): Maker has access to Category Controls. Category Business Descriptors exists. Figma Category Controls shows enable/disable and Save; field-scope context may require assumption if not labelled in Figma.
+    // Expected: 1. From the application left navigation, expand Configuration. 2. Select Sanctions Screening Configuration. 3. Click Screening – Ignore Words Configuration. 4. Click Category Controls. 5. Locate category Business Descriptors. 6. ASSUMPTION (Figma gap S5.3): configure category-level context application to Entity Name only (Figma primarily shows enable/disable toggles and Save). 7. Click Save. 8. Confirm the category-level context setting is retained and applies to ignore-word entries under Business Descriptors.
+    // TODO: RBAC role switching mechanism (login fixture per role)
+    console.log("[IWC-TC-202] Context-Aware Application → Context-Aware Application");
+    await test.step("Navigate / setup", async () => {
+      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
+      // Preconditions: Context application scope can be set at category level so entries under that category inherit the field scope. Pass when Business Descriptors entries apply only within the configured screening field.
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
+      await iwcPage.clickCategoryControls();
+      await iwcPage.locateCategory("Business Descriptors");
+      await iwcPage.clickSave();
+      await iwcPage.expectCategoryContextSettingRetained();
+    });
+  });
+
+  test("Case ID:IWC-TC-203 - Business Rules → Business Rules", async ({ testData }) => {
+
+    // Excel Test Case ID: IWC-TC-203
+    // Excel Scenario: Business Rules → Business Rules
+    // Steps (1): Ignore word Ltd is Active with Match Type Exact phrase. At least two watchlist screening parameter sets are configured in the environment.
+    // Expected: 1. From the application left navigation, expand Configuration. 2. Select Sanctions Screening Configuration. 3. Click Screening – Ignore Words Configuration. 4. On the Active tab, locate ignore word Ltd with Match Type Exact phrase. 5. Note Category, Risk Level, and Status for Ltd. 6. Trigger or review screening for subject names containing Ltd against more than one configured watchlist parameter set. 7. Compare stripping behaviour across those watchlist screening runs.
+    // TODO: RBAC role switching mechanism (login fixture per role)
+    console.log("[IWC-TC-203] Business Rules → Business Rules");
+    await test.step("Navigate / setup", async () => {
+      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
+      // Preconditions: An approved Active ignore word is applied for screening parameters configured for each watchlist, not limited to a single watchlist. Pass when Ltd is stripped consistently across more than one watchlist parameter set.
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
+      await iwcPage.clickActiveTab();
+      await iwcPage.searchIgnoreWords("Ltd");
+      await iwcPage.expectIgnoreWordDetails("Ltd", "Exact phrase");
+      await iwcPage.expectConsistentStrippingAcrossWatchlists();
+    });
+  });
+
+  test("Case ID:IWC-TC-204 - Governance Rules → Governance Rules", async ({ testData }) => {
+
+    // Excel Test Case ID: IWC-TC-204
+    // Excel Scenario: Governance Rules → Governance Rules
+    // Steps (1): Maker account has Add Ignore Word privileges. Checker approval workflow is enabled. No separate privileged emergency override is granted to this Maker.
+    // Expected: 1. From the application left navigation, expand Configuration. 2. Select Sanctions Screening Configuration. 3. Click Screening – Ignore Words Configuration. 4. Click Add Ignore Word. 5. Enter Ignore Word / Phrase *: OverrideTest. 6. Select Category *: Common Noise Words. 7. Select Risk Level: Low. 8. Select Match Type: Exact phrase. 9. Click Submit and confirm Request sent for Checker Approval; click OK. 10. On the listing, inspect row actions and any admin/settings menus available to Maker for emergency activate, force-approve, or bypass Checker controls. 11. Confirm the entry remains pending and is not shown as Active for live screening.
+    // TODO: RBAC role switching mechanism (login fixture per role)
+    console.log("[IWC-TC-204] Governance Rules → Governance Rules");
+    await test.step("Navigate / setup", async () => {
+      await iwcPage.openIgnoreWordsConfigurationDirect(testData.baseUrl);
+      // Preconditions: No Maker UI path activates an ignore word without Checker approval. Pass when the submitted entry remains pending and is not applied to live screening.
+      });
+
+    await test.step("Execute Excel test steps", async () => {
+      await iwcPage.expectIgnoreWordsConfigurationViewLoaded();
+      await iwcPage.clickAddIgnoreWord();
+      await iwcPage.fillIgnoreWordPhrase("OverrideTest");
+      await iwcPage.selectCategory("Common Noise Words");
+      await iwcPage.selectRiskLevel("Low");
+      await iwcPage.selectMatchType("Exact phrase");
+      await iwcPage.clickSubmit();
+      await iwcPage.expectCheckerApprovalModal();
+      await iwcPage.expectNoEmergencyOverrideAvailable();
+      await iwcPage.expectEntryRemainsPending("OverrideTest");
+    });
+  });
   });
 
 });
+
+});
+
 

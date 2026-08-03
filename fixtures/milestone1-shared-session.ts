@@ -1,5 +1,5 @@
 import type { Browser, BrowserContext, Page } from "@playwright/test";
-import { test as baseTest, expect } from "./test-fixture";
+import { test as baseTest, expect } from "./test-fixture-base";
 import {
   dismissOpenUi,
   closeWorkerContextGracefully,
@@ -28,14 +28,49 @@ type Milestone1TestFixtures = {
   _resetSharedPage: void;
 };
 
+function cdpEndpoint(): string | undefined {
+  const endpoint = process.env.PW_CDP_ENDPOINT?.trim();
+  return endpoint || undefined;
+}
+
+async function getWorkerContext(browser: Browser): Promise<BrowserContext> {
+  if (cdpEndpoint()) {
+    const existing = browser.contexts()[0];
+    if (!existing) {
+      throw new Error(
+        "Persistent CDP Chromium has no default context. Check pipeline/scripts/persistent-chrome.js.",
+      );
+    }
+    await reinstallMilestone1ContextMocks(existing);
+    return existing;
+  }
+  const context = await browser.newContext({ ignoreHTTPSErrors: true });
+  await reinstallMilestone1ContextMocks(context);
+  return context;
+}
+
 /**
  * Milestone1: one headed browser + context + page per worker (reused across tests).
- * Between tests: clear mocks/modals. After failures: blank page for clean retries.
- * On worker shutdown: timed teardown so headed Chromium never blocks for 5 minutes.
+ * With PW_CDP_ENDPOINT (qa:run-module / milestone:run): workers reconnect to the
+ * same Chromium window after failures — browser stays open until the suite ends.
  */
 export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixtures>({
   browser: [
     async ({ playwright }, use, workerInfo) => {
+      const endpoint = cdpEndpoint();
+      if (endpoint) {
+        const browser = await playwright.chromium.connectOverCDP(endpoint);
+        console.log(
+          `[milestone1][worker ${workerInfo.workerIndex}] CDP connect ${endpoint} (same window after failures)`,
+        );
+        await use(browser);
+        await browser.close().catch(() => undefined);
+        console.log(
+          `[milestone1][worker ${workerInfo.workerIndex}] CDP disconnected (browser process kept alive)`,
+        );
+        return;
+      }
+
       const headless = isMilestone1Headless();
       const browser = await playwright.chromium.launch({
         headless,
@@ -53,10 +88,14 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
 
   workerContext: [
     async ({ browser }, use, workerInfo) => {
-      const context = await browser.newContext();
-      await reinstallMilestone1ContextMocks(context);
-      console.log(`[milestone1][worker ${workerInfo.workerIndex}] context ready`);
+      const context = await getWorkerContext(browser);
+      console.log(
+        `[milestone1][worker ${workerInfo.workerIndex}] context ready (${cdpEndpoint() ? "CDP default" : "new"})`,
+      );
       await use(context);
+      if (cdpEndpoint()) {
+        return;
+      }
       await closeWorkerContextGracefully(context);
       console.log(`[milestone1][worker ${workerInfo.workerIndex}] context closed`);
     },
@@ -65,7 +104,9 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
 
   sharedPage: [
     async ({ workerContext }, use, workerInfo) => {
-      const page = workerContext.pages()[0] ?? (await workerContext.newPage());
+      const page =
+        workerContext.pages().find((p) => !p.isClosed()) ??
+        (await workerContext.newPage());
       console.log(`[milestone1][worker ${workerInfo.workerIndex}] page ready`);
       await use(page);
     },
@@ -104,7 +145,7 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
 
       await dismissOpenUi(sharedPage);
 
-      if (testInfo.status !== testInfo.expectedStatus) {
+      if (!cdpEndpoint() && testInfo.status !== testInfo.expectedStatus) {
         await resetPageAfterFailure(sharedPage);
       }
 

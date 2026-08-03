@@ -1,32 +1,83 @@
 ---
-description: FSD wins over Figma HTML; no invented requirements; Stage 0 → Excel → QA pipeline handoff only.
-globs: specs/generated/fsd-figma-pipeline/**,results/fsd-figma-pipeline/**,pipeline/test-data/Milestone2/**/*
+description: FSD wins over Figma HTML; create vs reconcile Excel; *_New source revision + feature delta; no invented requirements; Stage 0 → Excel → QA pipeline handoff only.
+globs: specs/generated/fsd-figma-pipeline/**,results/fsd-figma-pipeline/**,pipeline/test-data/Milestone1/**/*,pipeline/test-data/Milestone2/**/*
 alwaysApply: false
 ---
 
 # FSD + Figma HTML — Guardrails
 
 ## Source priority
-
 1. **FSD** = source of truth for behaviour, rules, expected results, scope.
-2. **Figma HTML** = navigation, UI structure, labels, controls only.
-3. On conflict → **FSD wins**; record the conflict in `alignment-report.json`.
-4. HTML-only controls → `assumption` or `requiresClarification`, never silent new requirements.
+2. **Figma HTML** = source of truth for **UI flows, navigation, button clicks, field labels, modals, and action order** when writing Test Steps — **for the named HTML of this run only**. Discover flows; do not assume a fixed catalog across modules.
+3. On behaviour/expected-result conflict → **FSD wins**; record the conflict in `alignment-report.json`.
+4. On click-path / control-label conflict for steps → **follow this run’s Figma**; do not invent buttons or reuse another module’s labels.
+5. HTML-only controls → `assumption` or `requiresClarification`, never silent new requirements.
+
+## Input contract
+
+- **Exactly one active** user-named (or auto-resolved) FSD `.docx` and **exactly one active** Figma HTML per Stage 0 run.
+- Prefer `*_New` before the extension when both a baseline and `_New` sibling exist for the same stem (unless the user explicitly names the non-`_New` file).
+- Optional **baseline** siblings (stem without `_New`) are for **feature delta** only — not a second FSD source of truth.
+- Milestone root is **1 or 2** (default 2).
+- Do **not** ask the user to split FSD or HTML into multiple files.
+- Inventories / coverage / TC delta / feature delta under `results/fsd-figma-pipeline/` are machine outputs, not extra inputs.
+
+## Revised sources (`*_New`)
+
+- Active path may be `Something_New.docx` / `Something_New.html`.
+- Baseline = same folder + stem with trailing `_New` removed + same extension, when that file exists.
+- Emit `feature-delta-report.json` (features/requirements added, removed, updated) and display it with Excel delivery.
+- Still reconcile the **same** Excel workbook under `Test Cases/`; do not fork a second workbook only because sources are `_New`.
+- After **Approve Excel**, QA pipeline reconcile updates specs for add+update and removes retire IDs.
+
+## Excel mode
+
+- If named Excel **exists** → **reconcile** that workbook in place (**full column revision** for retained TCs; add / update / retire candidates).
+- If named Excel **missing** → **create** a new workbook.
+- Always write `tc-delta-report.json`.
+- Write `feature-delta-report.json` when `_New` or a baseline inventory exists (otherwise `baselineAvailable=false`).
+- Never renumber existing Test Case IDs; never reuse retired IDs.
+- Never silently delete retire candidates — require **Approve Excel** first.
+- On reconcile, create a timestamped `.bak-*` before overwrite.
+- On reconcile, audit **all** required Excel columns (Module through Expected Result); do not leave steps/expected/AC stale; `keep` only after proven zero drift.
 
 ## Must not
 
 - Invent FSD sections, APIs, credentials, or expected outcomes
-- Modify protected agents (planner/generator/healer/executors/qa-automation-pipeline file)
+- Modify protected Playwright agents (planner/generator/healer/executors) without explicit user authorization
 - Skip Excel schema validation
+- Deliver **bundled** multi-intent Excel rows (one primary intent per TC; flow happy-path separate from field-level validations)
+- Deliver Excel rows with **generic / placeholder Test Steps**, or control/flow labels not in this run’s Figma/FSD (foreign-module leakage)
+- Deliver Excel without writing `coverage-matrix.json` (including `byModule` + `byFeature`), `tc-delta-report.json`, and (when `_New`/baseline) `feature-delta-report.json`, and displaying the full coverage + feature + TC delta report
+- Hand off to qa-automation-pipeline when FSD requirement coverage is &lt; 100% unless the user explicitly accepted gaps
 - Generate Playwright scripts before Excel gate approval (unless user auto-approves)
-- Place new specs under `tests/e2e/` or new modules under `tests/milestone1/`
+- Place **new** create-mode specs under `tests/e2e/`; Milestone2 create stays under `tests/milestone2/`; Milestone1 reconcile/create may update `tests/milestone1/`
+- Whole-file `Read` the Figma HTML or FSD into the model (use inventories + targeted grep/offsets)
+- One-shot `Write` that recreates the entire Excel workbook / full use-case catalog in one tool call
+- Create or keep **per-module Stage 0 generator scripts** under `pipeline/scripts/` (e.g. `generate-*-stage0*.cjs`) — requirements and TCs come from **agents + Stage 0 artifacts only**
+- Stop or re-ask the user when a child hits `resource_exhausted` — continue section-chunked work in the parent
+- Ignore a present `*_New` sibling when resolving sources for a module stem without an explicit non-`_New` override
 
 ## Must
 
-- Read FSD only from `pipeline/test-data/Milestone2/FSD/` (user-named file)
-- Read Figma HTML only from `pipeline/test-data/Milestone2/Figma/` (user-named file)
-- Write Excel only to `pipeline/test-data/Milestone2/Test Cases/`
-- Trace: FSD section → use case → Excel TC ID → (after handoff) script
+- Read active FSD from `pipeline/test-data/Milestone<N>/FSD/` (user-named or `*_New`-preferred)
+- Read active Figma HTML from `pipeline/test-data/Milestone<N>/Figma/` (user-named or `*_New`-preferred)
+- Create or reconcile Excel under `pipeline/test-data/Milestone<N>/Test Cases/`
+- On reconcile: **revise all required columns** for every retained TC against FSD + this run’s Figma; record `changedFields` on updates
+- Split FSD into **atomic** requirements; expand use cases/TCs so independent behaviors are not combined
+- **Discover** interactive flows from this run’s Figma; one happy-path TC per such flow when FSD defines success; field validations as separate TCs
+- Write **concrete UI Test Steps** from this run’s Figma labels — never placeholders, never assumed flows from another module
+- Expand/revise Stage 0 by **FSD-section batches** on `use-cases.json` + Excel, then refresh coverage + deltas — works for **any** module
+- Trace: FSD requirement → use case → Excel TC ID → (after handoff) script
+- Emit `coverage-matrix.json` with `coveragePct`, `gateReady`, `byModule`, `byFeature`, and (reconcile) `orphanCaseIds`
+- Emit `tc-delta-report.json` with add/update/retire/keep
+- Emit `feature-delta-report.json` for `*_New` / baseline comparisons
+- **Display** overall coverage %, Feature changes **with per-feature TCs + coverage %**, Modules table, Features-by-FSD-section table (**TCs + Coverage %**), and TC delta in the Excel delivery reply and in `stage0-summary.md`
+- After **every** Excel create/reconcile, run `npm run fsd:coverage-report -- --results-key "<resultsKey>"` and paste the full stdout into the user reply (writes `final/stage0-coverage-report.md`)
+- **Re-display that same coverage (+ feature + TC delta) block** in the parent chat reply even if a subagent already produced Stage 0
+- Require **100%** in-scope FSD requirement coverage before Approve/handoff (or recorded user gap acceptance)
 - Use Excel columns compatible with `specs/generated/qa-pipeline/schemas/excel-input-schema.json`
+- Excel columns must **not** include Requirement ID / Req ID — map requirements only in Stage 0 JSON
 - Mask secrets/PII in logs and reports
 - Keep process documentation under `.cursor/` only (see `system-context/fsd-figma-pipeline.mdc`)
+- Keep the Excel quality bar (atomic TCs, Figma steps, Shared Quality when §6 in scope) when applying chunked writes

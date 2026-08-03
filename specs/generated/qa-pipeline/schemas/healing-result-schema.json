@@ -12,6 +12,19 @@
     "remainingRisks"
   ],
   "properties": {
+    "batchIndex": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6
+    },
+    "healerAgentId": {
+      "type": "string"
+    },
+    "healerInvocationCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
     "testCaseId": {
       "type": "string"
     },

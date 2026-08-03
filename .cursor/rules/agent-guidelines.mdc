@@ -32,6 +32,7 @@ These rules apply to all AI-assisted work in this repository. Prefer existing co
 
 - Do not break the public test API of helpers under `tests/helpers/` that specs/pages already import.
 - Never commit secrets.
+- **Live UI mandatory for scripting and healing:** never finalize locators/POM/specs from Figma, Excel, or heal shells alone when the AML app is reachable. Use Playwright MCP `browser_*` on the live module URL; if blocked, report Blocked — do not silently skip (see `.cursor/rules/live-ui-mandatory-for-scripting.mdc`).
 
 ---
 
@@ -40,6 +41,7 @@ These rules apply to all AI-assisted work in this repository. Prefer existing co
 - Small, focused diffs per PR.
 - Tests for new/modified behavior.
 - Update project-context.mdc for new scripts/envs.
+- **Defect / pipeline behavior changes:** update implementation **and** keep docs in sync — see `.cursor/rules/defect-pipeline-doc-sync.mdc` (agents, rules, schemas, `AGENTS.md`, `project-context.mdc`).
 
 ---
 

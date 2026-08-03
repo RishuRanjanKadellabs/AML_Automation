@@ -1,0 +1,37 @@
+---
+description: Agent model policy — Sonnet 5 for QA pipeline chain; Composer for script-only agents
+alwaysApply: true
+---
+
+# Agent Model Policy
+
+## QA pipeline chain (Sonnet 5 — pinned)
+
+These agents use **`model: claude-sonnet-5-thinking-high`** so subagent cards match
+Sonnet 5 intent even when Cursor `inherit` is unreliable:
+
+| Agent | Model |
+|-------|--------|
+| `qa-automation-pipeline` | `claude-sonnet-5-thinking-high` |
+| `playwright-test-generator` | `claude-sonnet-5-thinking-high` |
+| `playwright-test-healer` | `claude-sonnet-5-thinking-high` |
+| `playwright-test-generator` / `playwright-test-healer` | `claude-sonnet-5-thinking-high` |
+
+**Quota:** draws from **Other Models** pool. Platform may still fall back to Composer
+when included Sonnet usage is exhausted.
+
+## Script-only agents (Composer — cheap pool)
+
+| Agent | Model |
+|-------|--------|
+| `execute-raise-defects` | `composer-2.5-fast` |
+| `defect-regression` | `composer-2.5-fast` |
+| `fsd-figma-pipeline` | `composer-2.5-fast` |
+| `fsd-excel-coverage-audit` | `composer-2.5-fast` |
+
+## Task invocation rules
+
+- Do **not** pass a conflicting explicit `model:` on Task for pipeline children.
+- If subagent launch fails with usage limit, fall back to repo scripts in parent
+  only when the user explicitly approves (see named-agent-invocation rule).
+- Check Cursor **Usage / Spending** when limits hit mid-pipeline.

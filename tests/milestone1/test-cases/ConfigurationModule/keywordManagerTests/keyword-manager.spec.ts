@@ -324,9 +324,12 @@ test.describe("Keyword Manager Module", () => {
       });
 
     await test.step("Validate expected results", async () => {
-      await kmPage.expectMakerCheckerQueueVisible();
-      await kmPage.expectTabSelected("Inactive");
-      await kmPage.expectTabSelected("Drafted");
+      // Assert exactly three tabs are present: Active, Inactive, Drafted Keyword
+      await kmPage.expectTabsVisible();
+      
+      // Assert NO "Pending Approval" tab exists (Excel Expected Result)
+      await expect(kmPage.page.getByRole('tab', { name: /Pending Approval/i })).not.toBeVisible();
+      
       await kmPage.expectConsoleErrorsFree();
       });
   });
