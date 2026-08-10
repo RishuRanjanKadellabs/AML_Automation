@@ -52,6 +52,28 @@ class BasePage {
     }
   }
 
+  async clickTabAndRegister(
+    tabLocator: Locator,
+    meta: { tab: string; module?: string; screenName?: string; testCaseId?: string },
+  ): Promise<void> {
+    await this.clickAndWait(tabLocator, meta.tab);
+    await registerScreenVisit(this.page, {
+      tab: meta.tab,
+      module: meta.module,
+      screenName: meta.screenName ?? (meta.module ? `${meta.module} — ${meta.tab}` : meta.tab),
+      testCaseId: meta.testCaseId,
+    });
+  }
+
+  async clickAndRegister(
+    locator: Locator,
+    meta: { screenName?: string; module?: string; tab?: string; testCaseId?: string },
+    label?: string,
+  ): Promise<void> {
+    await this.clickAndWait(locator, label);
+    await registerScreenVisit(this.page, meta);
+  }
+
   async fillField(locator: Locator, value: string, fieldName: string): Promise<void> {
     const displayValue = value.length > 60 ? `${value.slice(0, 57)}...` : value;
     try {

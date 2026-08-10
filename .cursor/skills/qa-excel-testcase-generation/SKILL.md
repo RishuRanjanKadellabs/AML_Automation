@@ -49,6 +49,7 @@ else           → excelMode = create
 - `results/fsd-figma-pipeline/<resultsKey>/feature-delta-report.json` (**required** when `_New`/baseline; else `baselineAvailable=false`)
 - `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` (**required**)
 - Gate file: `results/fsd-figma-pipeline/<resultsKey>/gate-excel-review.json`
+- Atomicity report: `results/fsd-figma-pipeline/<resultsKey>/stage0-atomicity-report.json`
 - Update `final/stage0-summary.md` including overall % **and** feature changes **and** module/feature tables **and** TC delta summary
 - On reconcile: timestamped `.bak-*` beside the workbook before overwrite
 
@@ -83,7 +84,7 @@ Write **plain-English, measurable pass conditions** that a reviewer can understa
 **Traceability** (`requirementIds`, `fsdSectionIds`, REQ-* / FSD section refs) belongs in Stage 0 JSON artifacts — **never** in an Excel Requirement ID column and **never** dump IDs into Acceptance Criteria.
 
 ## Steps — create mode
-1. Map each use case → Excel row(s). **Prefer 1 use case → 1 row.** If a use case still bundles intents, **split into multiple rows** before writing (do not ship bundled rows).
+1. Map each use case → Excel row(s). **Exactly 1 use case → 1 row → 1 requirementId.** If a use case bundles intents or maps to 2+ requirements, **split before writing**.
 2. Write **concrete, numbered Test Steps** with real UI labels (FSD + Figma). See **Concrete Test Steps** below — **never** placeholder steps.
 3. Bullet Expected Result / Acceptance Criteria with measurable outcomes for that single intent.
 4. Fill Test Data with the values referenced in the steps (or N/A for observation-only UI checks).
@@ -119,7 +120,9 @@ Write **plain-English, measurable pass conditions** that a reviewer can understa
 1. Validate with existing excel-input rules (IDs, steps, expected present; no duplicate IDs). Reject rows whose Acceptance Criteria are only REQ/FSD IDs. **Also reject / split bundled rows** and **reject placeholder steps**.
 2. **Build coverage matrix** (mandatory):
    - For each in-scope FSD `requirementId`, set `covered` if ≥1 Excel `testCaseId` maps to it.
-   - Compute overall `coveragePct`; set `gateReady` true only at 100% with empty `uncoveredRequirementIds`.
+   - Compute overall `coveragePct`; set `gateReady` true only at 100% with empty `uncoveredRequirementIds` **and** `atomicityReady === true`.
+   - Run `npm run fsd:validate-atomicity -- --results-key "<resultsKey>"` (also runs inside `fsd:coverage-report`).
+   - **`gateReady` requires `atomicityReady` + `fineGrainReady`** — fine-grain adds flow/save/tab/category UI TCs beyond the REQ floor when Figma slots exist.
    - Build **`byModule`** and **`byFeature`**.
    - On reconcile, list **`orphanCaseIds`** (Excel TCs with no in-scope REQ).
    - Write `coverage-matrix.json` (must include `byModule` and `byFeature`; set `excelMode`).
@@ -136,8 +139,8 @@ Write **plain-English, measurable pass conditions** that a reviewer can understa
 
    Never announce Excel with overall-% only. Never skip this script after a successful Excel write.
 4. Mirror the same tables in `final/stage0-summary.md` (the script does this).
-5. If not `gateReady` **or** placeholder steps remain: set gate `BlockedCoverage` / keep rewriting — do **not** request Approve or hand off.
-6. If `gateReady` (or user accepted gaps) **and** all steps are concrete: set gate to `AwaitingReview` unless user said auto-approve.
+5. If not `gateReady` **or** atomicity fails **or** placeholder steps remain: set gate `BlockedCoverage` / `BlockedAtomicity` — do **not** request Approve or hand off.
+6. If `gateReady` (coverage **and** atomicity, or user accepted gaps) **and** all steps are concrete: set gate to `AwaitingReview` unless user said auto-approve.
 7. On approve → handoff trigger for qa-automation-pipeline including `excelMode`, `tcDeltaReportPath`, and `milestone` (reconcile updates Playwright specs for add+update and removes retire IDs).
 
 ## Anti-bundling (mandatory)
@@ -148,6 +151,7 @@ Write **plain-English, measurable pass conditions** that a reviewer can understa
 - Do not combine independent list/filter/sort/KPI/UI attributes into one laundry list.
 - Do not reuse another module’s flow or button names.
 - 100% coverage via a small number of fat rows is a **Stage 0 failure** — split and rebuild.
+- **Create mode:** never read other Excel workbooks in `Test Cases/` — only write the named output file from `use-cases.json`.
 
 ## Concrete Test Steps (mandatory)
 

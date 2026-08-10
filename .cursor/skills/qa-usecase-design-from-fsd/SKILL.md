@@ -27,7 +27,8 @@ Produce testable use cases with FSD traceability, **full in-scope requirement co
 ## Anti-bundling (mandatory)
 
 1. **One primary intent per use case.** Do not pack independent behaviors into a single use case.
-2. If inventory REQs are still coarse, **split into multiple use cases** so each case has one verifiable outcome.
+2. **Exactly one `requirementId` per use case (hard).** If a requirement lists multiple independent checks, split into multiple atomic requirements first, then one use case per requirement.
+3. If inventory REQs are still coarse, **split into multiple use cases** so each case has one verifiable outcome.
 3. **Flow / happy-path:** When **this run’s** Figma shows a complete interactive path and FSD defines success, allow **one** use case for valid completion (open → fill/select → primary action → success). Flow names/labels come from that inventory — never from another module.
 4. **Field-level / rule validations** for that path: **separate** use cases per FSD rule — never folded into the flow use case.
 5. Prefer positive + negative/boundary/exception as **separate** use cases when FSD supports them.
@@ -51,7 +52,7 @@ Model **prerequisite flows** so Excel and audit chain coverage can verify depend
 
 ## Steps
 1. List every in-scope `requirementId` from `fsd-inventory.json` (exclude only explicit out-of-scope sections; record exclusions).
-2. For each in-scope requirement, ensure ≥1 use case references it via `requirementIds` and/or owning `fsdSectionIds`. Prefer **multiple** use cases when the REQ text still lists several independent checks.
+2. For each in-scope requirement, ensure **exactly one dedicated use case** references it via a **single** entry in `requirementIds` (length 1). Add separate use cases for negative/boundary variants — do not map multiple REQs to one use case.
 3. Draft use cases only when FSD supports them; classify design type: positive / negative / boundary / exception / security (only if FSD supports). Use `flow` vs `validation` vs `ui` in title/notes when helpful.
 4. Attach UI navigation wording from HTML inventory where helpful; mark `uiSource`.
 5. Every use case must list ≥1 `fsdSectionIds`. Prefer also listing `requirementIds` for coverage matrix rows.

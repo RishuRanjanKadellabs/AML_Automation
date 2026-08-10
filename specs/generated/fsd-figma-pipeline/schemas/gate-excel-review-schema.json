@@ -13,6 +13,7 @@
       "type": "string",
       "enum": [
         "BlockedCoverage",
+        "BlockedAtomicity",
         "AwaitingReview",
         "Approved",
         "Rejected",
@@ -21,7 +22,13 @@
       ]
     },
     "coveragePct": { "type": "number" },
+    "atomicityReady": { "type": "boolean" },
+    "atomicityReportPath": { "type": ["string", "null"] },
     "userAcceptedGaps": { "type": "boolean" },
+    "userAcceptedAtomicityGaps": {
+      "type": "boolean",
+      "description": "User explicitly accepted bundled/coarse TCs — rare; default false"
+    },
     "tcDeltaReportPath": { "type": ["string", "null"] },
     "pendingRetireCount": { "type": "integer", "minimum": 0 },
     "updatedAt": { "type": "string" },

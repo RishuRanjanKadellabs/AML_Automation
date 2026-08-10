@@ -5,7 +5,7 @@ tools:
   - search
   - edit
   - terminal
-model: composer-2.5-fast
+model: inherit
 ---
 
 
@@ -94,9 +94,10 @@ Alias: `npm run qa:execute-raise-defects -- --spec <path>`
 
 **Defaults (hard — do not override unless user asks):**
 - **Headed** browser (use `--headless` only if user requests headless)
+- **Maximized / fullscreen** browser when UI audit is on (`PW_FULLSCREEN=1`; use `--no-fullscreen` to opt out)
 - **1 worker** (`--workers 1`; override only if user asks)
 - **Persistent CDP Chromium** — one window for the entire suite; failures must **not** close/open a new browser (`--no-persistent` only if user explicitly opts out)
-- **UI audit enabled** (`PW_UI_AUDIT=1` during Playwright; post-execute cosmetic pass). Use `--skip-ui-audit` only if user explicitly opts out.
+- **UI audit enabled** (`PW_UI_AUDIT=1` during Playwright; post-execute cosmetic pass visits every tab/screen, scrolls the full page, and captures alignment, visibility, clutter, spacing, typography, accessibility, copy, and Figma-baseline mismatches). Use `--skip-ui-audit` only if user explicitly opts out.
 
 Useful flags:
 
@@ -109,6 +110,9 @@ npm run qa:run-module -- --spec <path> --workers 3
 
 # Skip UI/UX/cosmetic audit (only when user asks)
 npm run qa:run-module -- --spec <path> --skip-ui-audit
+
+# Disable maximized/fullscreen browser (only when user asks)
+npm run qa:run-module -- --spec <path> --no-fullscreen
 ```
 
 This command:
@@ -195,7 +199,7 @@ If CDP cannot start / user is not signed in, report Google sync as **Blocked**; 
 
 **When:** during execute (screen registry) + post-execute audit pass (automatic unless `--skip-ui-audit`).
 
-**Baseline:** Figma HTML from Stage 0 **and** Stage 0 screenshot folder when available.
+**Baseline:** Figma HTML from Stage 0 **and** Stage 0 screenshot folder when available. Automated **pixel diff** runs when `screenshots/` + manifest exist (threshold default 4% changed pixels; diff images under `results/ui-audit/diffs/`).
 
 **Categories:** Alignment, Spacing, Typography, Color, UX, Accessibility, Responsive, Copy, Layout.
 

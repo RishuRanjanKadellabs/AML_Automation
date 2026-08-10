@@ -30,7 +30,7 @@ tools:
   - playwright-test/test_debug
   - playwright-test/test_list
   - playwright-test/test_run
-model: claude-sonnet-5-thinking-high
+model: inherit
 mcp-servers:
   playwright-test:
     type: stdio

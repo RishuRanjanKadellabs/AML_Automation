@@ -17,12 +17,14 @@
  *   --approve-google       Optional. Sync to Google only after local review approval
  *   --upsert               Optional. Refresh existing Google Defect IDs (requires --approve-google)
  *   --skip-ui-audit        Optional. Skip post-execute UI/UX/cosmetic audit
+ *   --no-fullscreen        Optional. Disable maximized/fullscreen browser (default on with UI audit)
  */
 const fs = require("fs");
 const path = require("path");
 const { absolute, arg, relative, readJson, writeJson, ROOT } = require("./qa-pipeline-utils.cjs");
 const { finalizeModuleRun, syncGoogle } = require("./finalize-module-run.cjs");
 const { ensurePlaywrightChromium } = require("./ensure-playwright-chromium.cjs");
+const { isFullscreenEnabled } = require("./browser-fullscreen.cjs");
 const { runPersistentPlaywright } = require("./run-persistent-playwright.cjs");
 const { auditUiCosmeticDefects } = require("./audit-ui-cosmetic-defects.cjs");
 const { syncUiDefectRowsToGoogleSheet } = require("./append-ui-defects-google-sheet.js");
@@ -70,11 +72,13 @@ async function main() {
   await ensurePlaywrightChromium();
 
   console.log(
-    `Execute+Defects: ${relative(absSpec)} (M${preMilestone}) — headed=${headed} workers=${workers} persistent=${persistent}`,
+    `Execute+Defects: ${relative(absSpec)} (M${preMilestone}) — headed=${headed} workers=${workers} persistent=${persistent} fullscreen=${isFullscreenEnabled()}`,
   );
 
   const skipUiAudit =
     process.argv.includes("--skip-ui-audit") || process.env.PW_SKIP_UI_AUDIT === "1";
+  const noFullscreen =
+    process.argv.includes("--no-fullscreen") || process.env.PW_FULLSCREEN === "0";
 
   const run = await runPersistentPlaywright({
     specPath,
@@ -86,6 +90,8 @@ async function main() {
       PW_DEFER_DEFECT_GENERATION: "0",
       PW_SKIP_MODULE_RUN_DOCX: "1",
       PW_UI_AUDIT: skipUiAudit ? "0" : "1",
+      PW_FULLSCREEN: noFullscreen || skipUiAudit ? "0" : process.env.PW_FULLSCREEN || "1",
+      PW_UI_AUDIT_HEADLESS: skipUiAudit ? undefined : process.env.PW_UI_AUDIT_HEADLESS || "0",
     },
   });
 

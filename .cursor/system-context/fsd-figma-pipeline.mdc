@@ -113,27 +113,30 @@ Resolve active (+ baseline) FSD/Figma (*_New preference)
   → inventories → feature-delta-report → alignment (FSD wins) → use cases
   → [reconcile: parse existing Excel → tc-delta-report]
   → create or in-place patch Excel
-  → coverage-matrix.json + feature-delta-report.json + tc-delta-report.json
-  → `npm run fsd:coverage-report` (Feature changes with TCs + % + Modules + Features + TC delta)
-  → [100% coverage gate] → [Approve Excel]
+  → coverage-matrix.json + stage0-atomicity-report.json + feature-delta-report.json + tc-delta-report.json
+  → `npm run fsd:coverage-report` (Feature changes + **Atomicity gate** + Modules + Features + TC delta)
+  → [100% coverage + atomicity gates] → [Approve Excel]
   → qa-automation-pipeline (create | reconcile → update specs)
 ```
 
-## Mandatory coverage gate
+## Mandatory coverage + atomicity gates
 
 | Rule | Detail |
 |------|--------|
-| Artifact | `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` |
-| Schema | `specs/generated/fsd-figma-pipeline/schemas/coverage-matrix-schema.json` |
-| Formula | `coveragePct = coveredRequirements / inScopeRequirements × 100` |
-| Pass | `coveragePct === 100` and no uncovered requirement IDs |
-| Reverse (reconcile) | Orphan Excel TCs → `orphanCaseIds` / delta `retire` (not silently ignored) |
+| Coverage artifact | `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` |
+| Atomicity artifact | `results/fsd-figma-pipeline/<resultsKey>/stage0-atomicity-report.json` |
+| Validate | `npm run fsd:validate-atomicity -- --results-key "<resultsKey>"` |
+| Coverage pass | `coveragePct === 100` and no uncovered requirement IDs |
+| Atomicity pass | `atomicityReady === true` — one REQ per use case; `testCaseCount >= inScopeRequirements`; negative/boundary TCs when FSD requires; no compound AC |
+| Combined gate | `gateReady = coverage pass AND atomicityReady AND fineGrainReady` |
+| Fine-grain pass | `fineGrainReady === true` — `testCaseCount > inScopeRequirements` when Figma slots exist; every composite flow, save, tab, category UI slot has a dedicated TC |
 | Roll-ups | `byModule` and `byFeature` **required** |
 | Feature delta | `feature-delta-report.json` **required** when `_New` or baseline exists |
 | Delta | `tc-delta-report.json` **required** for create and reconcile |
-| User message | After every Excel write: run `npm run fsd:coverage-report` and paste full markdown (**overall % + Feature changes with TCs + coverage % + Modules + Features with TCs + Coverage % + TC delta**) |
-| Fail | Gate `BlockedCoverage` — add missing cases; no Approve/handoff |
-| Exception | User explicitly accepts gaps → record `userAcceptedGaps: true` |
+| User message | After every Excel write: run `npm run fsd:coverage-report` (includes atomicity section) and paste full markdown |
+| Fail coverage | Gate `BlockedCoverage` |
+| Fail atomicity | Gate `BlockedAtomicity` — split bundled TCs; no Approve/handoff |
+| Exception | User explicitly accepts gaps → record `userAcceptedGaps` / `userAcceptedAtomicityGaps` |
 
 Traceability: **FSD requirement → use case → Excel TC ID → (after handoff) script**.
 
@@ -145,7 +148,9 @@ Traceability: **FSD requirement → use case → Excel TC ID → (after handoff)
 
 ## Test case design (no bundling)
 
-- **Atomic REQs and TCs** — one primary intent per case; split FSD multi-behavior bullets.
+- **Atomic REQs and TCs** — one primary intent per case; **exactly one `requirementId` per use case**; split FSD multi-behavior bullets.
+- **Mechanical gate:** `npm run fsd:validate-atomicity` after every Excel write; `gateReady` requires `atomicityReady`.
+- **Create mode:** never read other workbooks in `Test Cases/` — FSD + Figma + use-cases only.
 - **Discover** interactive flows from this run’s Figma (modules differ — no fixed flow list).
 - **Model flow dependencies** — `navGraph` + `compositeFlows` in html-inventory; `dependsOnUseCaseIds` + `preconditions` in use-cases.json.
 - **One happy-path TC** per discovered flow when FSD defines success; **field validations** always separate; validation/save TCs must **Preconditions or steps** evidence prerequisite navigation.

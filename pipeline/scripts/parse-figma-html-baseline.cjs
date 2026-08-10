@@ -5,6 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 const { absolute, relative } = require("./qa-pipeline-utils.cjs");
+const { parseFigmaTabInventories } = require("./ui-figma-screen-inventory.cjs");
 
 function cleanText(value) {
   return String(value || "")
@@ -54,13 +55,17 @@ function parseFigmaHtmlBaseline(figmaPath) {
     ...extractBetween(html, /<h[1-6][^>]*>([^<]{2,120})<\/h[1-6]>/gi),
   ]);
 
+  const inventories = parseFigmaTabInventories(abs);
+
   return {
     path: relative(abs),
     labels,
     buttons,
-    tabs,
+    tabs: inventories.tabs.length ? inventories.tabs : tabs,
     headings,
     allExpectedText: uniqueStrings([...buttons, ...tabs, ...labels, ...headings]),
+    screens: inventories.screens,
+    categories: inventories.categories,
     notes: [],
   };
 }
@@ -107,17 +112,36 @@ function resolveScreenshotBaselineDir(milestone, moduleName) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
 
+  let bestDir = null;
+  let bestScore = 0;
+
   for (const entry of fs.readdirSync(resultsRoot, { withFileTypes: true })) {
     if (!entry.isDirectory()) continue;
     const dirKey = entry.name.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    if (dirKey.includes(key.slice(0, 12)) || key.includes(dirKey.slice(0, 12))) {
-      const shots = path.join(resultsRoot, entry.name, "screenshots");
-      if (fs.existsSync(shots)) return shots;
-      const figmaShots = path.join(resultsRoot, entry.name, "figma-screenshots");
-      if (fs.existsSync(figmaShots)) return figmaShots;
+    let score = 0;
+    if (dirKey.includes(key.slice(0, 12))) score += 2;
+    if (key.includes(dirKey.slice(0, 12))) score += 2;
+    if (entry.name.toLowerCase().includes(String(moduleName || "").toLowerCase().slice(0, 10))) {
+      score += 1;
     }
+    const shots = path.join(resultsRoot, entry.name, "screenshots");
+    const figmaShots = path.join(resultsRoot, entry.name, "figma-screenshots");
+    const candidate = fs.existsSync(shots)
+      ? shots
+      : fs.existsSync(figmaShots)
+        ? figmaShots
+        : null;
+    if (!candidate || score < bestScore) continue;
+    const hasManifest = fs.existsSync(path.join(candidate, "screenshots-manifest.json"));
+    const hasPng = fs
+      .readdirSync(candidate)
+      .some((file) => /\.png$/i.test(file));
+    if (!hasManifest && !hasPng) continue;
+    bestScore = score;
+    bestDir = candidate;
   }
-  return null;
+
+  return bestDir;
 }
 
 module.exports = {

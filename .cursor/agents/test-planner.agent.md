@@ -22,7 +22,7 @@ tools:
   - playwright-test/browser_wait_for
   - playwright-test/planner_setup_page
   - playwright-test/planner_save_plan
-model: claude-sonnet-5-thinking-high
+model: inherit
 mcp-servers:
   playwright-test:
     type: stdio

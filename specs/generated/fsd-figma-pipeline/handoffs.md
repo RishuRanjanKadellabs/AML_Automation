@@ -25,6 +25,7 @@ results/fsd-figma-pipeline/<resultsKey>/
 | **Feature delta** | `results/fsd-figma-pipeline/<resultsKey>/feature-delta-report.json` |
 | **TC delta** | `results/fsd-figma-pipeline/<resultsKey>/tc-delta-report.json` |
 | Coverage | `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` |
+| **Atomicity** | `results/fsd-figma-pipeline/<resultsKey>/stage0-atomicity-report.json` (`npm run fsd:validate-atomicity`) |
 | **Independent audit** | `results/fsd-coverage-audit/<resultsKey>/coverage-audit-report.json` — includes **chain coverage %** for dependent flows (`dependsOnFlowIds`, `uncoveredChainFlows`); agent `fsd-excel-coverage-audit` |
 | Gate | `results/fsd-figma-pipeline/<resultsKey>/gate-excel-review.json` |
 | Summary | `results/fsd-figma-pipeline/<resultsKey>/final/` |
@@ -81,6 +82,15 @@ Do **not** require the user to state the mode. Detect from filesystem only.
 ---
 
 ## Stage 0 → Excel gate
+
+**Pass criteria:** `coveragePct === 100` **and** `atomicityReady === true` (or user accepted gaps).
+
+```bash
+npm run fsd:validate-atomicity -- --results-key "<resultsKey>"
+npm run fsd:coverage-report -- --results-key "<resultsKey>"
+```
+
+Gate statuses: `BlockedCoverage` | `BlockedAtomicity` | `AwaitingReview`
 
 ```json
 {
