@@ -33,6 +33,12 @@ function readJson(filePath, optional = false) {
   return JSON.parse(fs.readFileSync(abs, "utf8"));
 }
 
+function writeJson(filePath, value) {
+  const abs = absolute(filePath);
+  fs.mkdirSync(path.dirname(abs), { recursive: true });
+  fs.writeFileSync(abs, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
 function rel(filePath) {
   return path.relative(ROOT, absolute(filePath)).replaceAll("\\", "/");
 }
@@ -120,6 +126,46 @@ function render(dir) {
   const featureDelta = readJson(path.join(dir, "feature-delta-report.json"), true);
   const tcDelta = readJson(path.join(dir, "tc-delta-report.json"), true);
   const gate = readJson(path.join(dir, "gate-excel-review.json"), true);
+
+  let atomicityReport = null;
+  try {
+    const {
+      validateStage0Atomicity,
+      renderAtomicityMarkdown,
+    } = require("./validate-stage0-atomicity.cjs");
+    atomicityReport = validateStage0Atomicity({ dir, writeReport: true });
+    if (atomicityReport.atomicityReady !== coverage.atomicityReady) {
+      coverage.atomicityReady = atomicityReport.atomicityReady;
+      coverage.fineGrainReady = atomicityReport.fineGrainReady;
+      coverage.atomicityReportPath = path
+        .relative(ROOT, path.join(dir, "stage0-atomicity-report.json"))
+        .replaceAll("\\", "/");
+      coverage.gateReady =
+        Boolean(coverage.coveragePct === 100) &&
+        (coverage.uncoveredRequirementIds || []).length === 0 &&
+        atomicityReport.gateReady === true;
+      writeJson(path.join(dir, "coverage-matrix.json"), coverage);
+    }
+    if (gate) {
+      gate.atomicityReady = atomicityReport.atomicityReady;
+      gate.fineGrainReady = atomicityReport.fineGrainReady;
+      gate.atomicityReportPath = coverage.atomicityReportPath || null;
+      if (!atomicityReport.gateReady && !gate.userAcceptedAtomicityGaps) {
+        gate.status = "BlockedAtomicity";
+      } else if (
+        gate.status === "BlockedAtomicity" &&
+        atomicityReport.gateReady &&
+        coverage.coveragePct === 100
+      ) {
+        gate.status = "AwaitingReview";
+      }
+      writeJson(path.join(dir, "gate-excel-review.json"), gate);
+    }
+    var atomicityMarkdown = renderAtomicityMarkdown(atomicityReport);
+  } catch (atomicityError) {
+    console.warn(`Atomicity validation skipped: ${atomicityError.message}`);
+    var atomicityMarkdown = "";
+  }
 
   const byFeature = featureIndex(coverage);
   const resultsKey =
@@ -270,10 +316,15 @@ function render(dir) {
     lines.push("");
   }
 
+  if (atomicityMarkdown) {
+    lines.push(atomicityMarkdown.trimEnd());
+    lines.push("");
+  }
+
   lines.push(`### Next`);
   lines.push("");
   lines.push(
-    `1. Review Excel, feature delta (TCs + coverage %), and TC delta.`
+    `1. Review Excel, atomicity gate, feature delta (TCs + coverage %), and TC delta.`
   );
   lines.push(`2. Reply **Approve Excel** or **Revise** with notes.`);
   lines.push(
@@ -317,6 +368,21 @@ function main() {
       process.stdout.write(markdown);
       console.error(`Wrote: ${rel(outPath)}`);
       console.error(`Wrote: ${rel(summaryPath)}`);
+
+      try {
+        const atomicityPath = path.join(dir, "stage0-atomicity-report.json");
+        if (fs.existsSync(atomicityPath)) {
+          const atomicity = readJson(atomicityPath);
+          if (!atomicity.gateReady) {
+            console.error(
+              `Atomicity gate FAILED (${atomicity.errorCount} error(s)) — gate status BlockedAtomicity`,
+            );
+            process.exit(1);
+          }
+        }
+      } catch (_) {
+        /* validate during render */
+      }
 
       try {
         const { writeAgentRunReport } = require("./write-agent-run-docx.cjs");

@@ -28,6 +28,8 @@ const UI_DEFECT_CATEGORIES = [
   "Responsive",
   "Copy",
   "Layout",
+  "Clutter",
+  "Visibility",
 ];
 
 const UI_DEFECT_STATUS_OPTIONS = ["New", "In Progress", "Resolved", "Reopened", "Closed"];

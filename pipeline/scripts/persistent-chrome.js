@@ -6,6 +6,7 @@ const { spawn } = require("child_process");
 const http = require("http");
 const net = require("net");
 const { chromium } = require("playwright");
+const { chromeFullscreenArgs } = require("./browser-fullscreen.cjs");
 
 const HEADED_ARGS = [
   "--disable-background-networking",
@@ -77,6 +78,7 @@ async function startPersistentChrome(options = {}) {
     `--remote-debugging-port=${port}`,
     `--remote-debugging-address=127.0.0.1`,
     ...HEADED_ARGS,
+    ...(!headless ? chromeFullscreenArgs() : []),
     ...(headless ? ["--headless=new"] : []),
     "about:blank",
   ];

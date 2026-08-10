@@ -1,6 +1,14 @@
 {
   "runs": [
     {
+      "generatedAt": "2026-08-05T11:35:37.643Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-08-05_11-35-37_test-healer_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/Risk Rating Configuration Test Cases2",
+      "batch": "1"
+    },
+    {
       "generatedAt": "2026-07-30T07:38:37.168Z",
       "agent": "qa-automation-pipeline",
       "payloadPath": null,

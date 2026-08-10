@@ -64,10 +64,18 @@ function discoverMilestones(): string[] {
 
 const milestones = discoverMilestones();
 
+const fullscreenUi =
+  process.env.PW_FULLSCREEN !== "0" &&
+  process.env.PW_FULLSCREEN !== "false" &&
+  (process.env.PW_FULLSCREEN === "1" ||
+    process.env.PW_FULLSCREEN === "true" ||
+    process.env.PW_UI_AUDIT === "1");
+
 type Project = NonNullable<PlaywrightTestConfig["projects"]>[number];
 
 const milestoneUse = {
   ...devices["Desktop Chrome"],
+  ...(fullscreenUi ? { viewport: null as null } : {}),
   headless: milestoneHeadless,
   trace:
     process.env.PW_TRACE === "off"
@@ -94,7 +102,7 @@ const milestoneProjects: Project[] = milestones.map((milestone) => ({
 
 // stderr only — stdout pollution breaks MCP JSON-RPC for run-test-mcp-server.
 console.error(
-  `\n[playwright.config] ENV=${env} BASE_URL=${baseURL} milestones=[${milestones.join(", ")}] workers=${milestoneWorkers} headless=${milestoneHeadless}\n`,
+  `\n[playwright.config] ENV=${env} BASE_URL=${baseURL} milestones=[${milestones.join(", ")}] workers=${milestoneWorkers} headless=${milestoneHeadless} fullscreen=${fullscreenUi}\n`,
 );
 
 export default defineConfig({

@@ -24,7 +24,7 @@ tools:
   - playwright-test/generator_read_log
   - playwright-test/generator_setup_page
   - playwright-test/generator_write_test
-model: claude-sonnet-5-thinking-high
+model: inherit
 mcp-servers:
   playwright-test:
     type: stdio

@@ -24,7 +24,13 @@
           "useCaseId": { "type": "string" },
           "title": { "type": "string" },
           "fsdSectionIds": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-          "requirementIds": { "type": "array", "items": { "type": "string" } },
+          "requirementIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "maxItems": 1,
+            "description": "Exactly one FSD requirement per use case (atomic design)"
+          },
           "designType": {
             "type": "string",
             "enum": ["positive", "negative", "boundary", "exception", "security"]

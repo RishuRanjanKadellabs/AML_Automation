@@ -5,7 +5,7 @@ description: >-
   requirements, use cases, and Figma UI inventory. Reports true coverage %,
   gaps, orphan TCs, and quality issues. Does not trust writer-reported 100%.
   Use after test case writing or before Approve Excel.
-model: composer-2.5-fast
+model: inherit
 ---
 
 
@@ -107,6 +107,8 @@ Per-feature tables show:
 - **Flows detail** — each flow, dependencies, chain status, missing types, matched TC IDs
 
 **Pass** only when `actualCoveragePct === 100` and no uncovered flows/requirements remain.
+
+**Complements Stage 0 atomicity gate:** independent audit measures FSD/flow coverage; `npm run fsd:validate-atomicity` enforces one-requirement-per-use-case and minimum TC count before `AwaitingReview`. Run both before Approve Excel when Stage 0 quality is in question.
 
 # Workflow (mandatory)
 

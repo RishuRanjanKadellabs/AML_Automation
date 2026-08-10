@@ -35,6 +35,15 @@
       "uniqueItems": true
     },
     "gateReady": { "type": "boolean" },
+    "atomicityReady": {
+      "type": "boolean",
+      "description": "True when stage0-atomicity-report.json passes REQ-level atomicity"
+    },
+    "fineGrainReady": {
+      "type": "boolean",
+      "description": "True when flow/save/tab/UI fine-grain slots from Figma are covered"
+    },
+    "atomicityReportPath": { "type": ["string", "null"] },
     "userAcceptedGaps": { "type": "boolean" },
     "byModule": {
       "type": "array",

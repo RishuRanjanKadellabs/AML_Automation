@@ -8,7 +8,7 @@ description: >-
   delta (for *_New / revised FSD/Figma) → handoff to qa-automation-pipeline. Use when the user names FSD/Figma files (including
   *_New revisions) under pipeline/test-data/Milestone1|2, or asks to run
   /fsd-figma-pipeline.
-model: composer-2.5-fast
+model: inherit
 ---
 
 
@@ -283,6 +283,7 @@ Resolve active (+ baseline) FSD/Figma (prefer *_New when applicable)
 | S0.5–S0.6 | `qa-excel-testcase-generation` (+ existing excel parse/validate skills) |
 | S0.7–S0.8 | Coverage matrix + TC delta + feature delta |
 | S0.8b | `npm run fsd:coverage-report` (mandatory user-facing tables with TCs + %) |
+| S0.8c | `npm run fsd:capture-ui-baseline` (Stage 0 UI screenshot baselines for execute UI audit) |
 | Post-gate | Invoke `@.cursor/agents/qa-automation-pipeline.agent.md` |
 
 ## Outputs (required)
@@ -298,8 +299,10 @@ Resolve active (+ baseline) FSD/Figma (prefer *_New when applicable)
 | **Feature delta** | `results/fsd-figma-pipeline/<resultsKey>/feature-delta-report.json` (**required** when `_New` or baseline exists; otherwise emit with `baselineAvailable=false`) |
 | **TC delta** | `results/fsd-figma-pipeline/<resultsKey>/tc-delta-report.json` (**required** for create and reconcile) |
 | **Coverage matrix** | `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` |
+| **Atomicity report** | `results/fsd-figma-pipeline/<resultsKey>/stage0-atomicity-report.json` (`npm run fsd:validate-atomicity`) |
 | Gate status | `results/fsd-figma-pipeline/<resultsKey>/gate-excel-review.json` |
 | **Coverage report (after every Excel)** | `results/fsd-figma-pipeline/<resultsKey>/final/stage0-coverage-report.md` (`npm run fsd:coverage-report`) |
+| **UI screenshot baselines** | `results/fsd-figma-pipeline/<resultsKey>/screenshots/*.png` + `screenshots-manifest.json` (`npm run fsd:capture-ui-baseline`) |
 | Run summary | `results/fsd-figma-pipeline/<resultsKey>/final/stage0-summary.md` |
 
 # Mandatory FSD requirement coverage (DoD)
@@ -311,14 +314,51 @@ After Excel is written, you **must**:
 3. Every in-scope `requirementId` must have ≥1 `useCaseId` and ≥1 Excel `testCaseId`.
 4. Compute overall `coveragePct = round(1000 * covered / inScope) / 10`.
 5. Build **`byModule`** (Excel Module column roll-up) and **`byFeature`** (one row per in-scope FSD section: section id, feature/section title, reqs covered/in-scope, %, TC count).
-6. Set `gateReady = (coveragePct === 100 && uncoveredRequirementIds.length === 0)`.
-7. **After every Excel write**, run and paste stdout into the user reply:
+6. Set `gateReady = (coveragePct === 100 && uncoveredRequirementIds.length === 0 && atomicityReady === true && fineGrainReady === true)`.
+7. **Atomicity + fine-grain gate (mandatory — same priority as coverage):** after Excel write, run:
+
+```bash
+npm run fsd:validate-atomicity -- --results-key "<resultsKey>"
+```
+
+Mechanical rules (`pipeline/scripts/validate-stage0-atomicity.cjs` → `stage0-atomicity-report.json`):
+
+| Rule | Pass criteria |
+|------|----------------|
+| One requirement per use case | Every use case has **exactly one** `requirementId` — never bundle multiple REQs in one UC/TC |
+| TC count floor | `testCaseCount >= inScopeRequirements` (≥1 dedicated TC per in-scope requirement) |
+| Negative/boundary coverage | FSD validation/boundary rules have matching **negative** or **boundary** use cases — not all-positive workbooks |
+| No compound AC | Acceptance Criteria must not assert multiple independent behaviors (`and` / multi-bullet laundry lists) |
+| No bundled rows | Rows with multiple primary intents fail (mechanical heuristic) |
+| **Fine-grain floor** | When `html-inventory.json` has `compositeFlows` / save buttons / tabs / category screens: `testCaseCount > inScopeRequirements` and `testCaseCount >= inScopeRequirements + fineGrainSlotCount` |
+| **Flow / save / tab / UI slots** | Each discovered Figma slot (composite flow happy path, save happy path, sub-tab navigation, category sidebar display) must map to ≥1 dedicated TC |
+
+Set `fineGrainReady = true` only when all fine-grain slot checks pass. Set `atomicityReady = true` only when REQ-level checks pass. **`gateReady` requires both.**
+
+If fine-grain fails → gate **`BlockedAtomicity`** — add flow happy-path TCs, save happy-path TCs, tab/UI attribute TCs, and validation TCs (still one REQ per UC for requirement-mapped rows). Re-run until `npm run fsd:validate-atomicity` exits 0.
+
+Exception: user explicitly says `accept atomicity gaps` → `userAcceptedAtomicityGaps: true` (rare; document violations).
+
+8. **After every Excel write**, run and paste stdout into the user reply:
 
 ```bash
 npm run fsd:coverage-report -- --results-key "<resultsKey>"
 ```
 
-That script is mandatory (writes `final/stage0-coverage-report.md` + refreshes `stage0-summary.md`). Do **not** stop at a single overall %. Equivalent structure:
+That script runs atomicity validation internally, writes `stage0-atomicity-report.json`, and **fails (exit 1)** when atomicity is not ready. Paste **full stdout** including the **Atomicity gate** section.
+
+7. **After coverage report**, capture Stage 0 UI screenshot baselines (required for execute UI audit visual diff):
+
+```bash
+npm run fsd:capture-ui-baseline -- \
+  --results-key "<resultsKey>" \
+  --spec tests/milestone<N>/test-cases/<Module>/<feature>Tests/<module>.spec.ts
+```
+
+Writes `results/fsd-figma-pipeline/<resultsKey>/screenshots/*.png` + `screenshots-manifest.json`.
+If live app is unreachable, report **Blocked** for baseline capture but continue Stage 0 Excel delivery.
+
+Equivalent structure:
 
 ```
 ## FSD requirement coverage
@@ -403,13 +443,13 @@ npm run fsd:coverage-report -- --results-key "<resultsKey>"
 
 8. Also write the same module + feature tables (and feature-delta + TC delta summary) into `final/stage0-summary.md`.
 
-9. If `gateReady` is **false**:
-   - Set gate status to `BlockedCoverage`
+9. If `gateReady` is **false** (coverage **or** atomicity):
+   - Set gate status to `BlockedCoverage` or `BlockedAtomicity` respectively
    - **Do not** ask for Approve / do not hand off to qa-automation-pipeline
-   - Add missing use cases + Excel rows, rebuild matrix + delta, re-display overall + feature tables until 100%
-   - Exception: user explicitly says `accept coverage gaps` / `accept uncovered requirements` → set `userAcceptedGaps: true`, document uncovered IDs (and mark those features), then allow review/handoff
+   - Add missing use cases + Excel rows **or split bundled rows**, rebuild matrix + delta + atomicity report, re-display overall + feature + atomicity tables until both pass
+   - Exception: user explicitly says `accept coverage gaps` / `accept atomicity gaps` → record flags, document violations, then allow review/handoff
 
-10. If `gateReady` is **true** (or gaps accepted): set gate `AwaitingReview` (or `AutoApproved` if user skipped review) and proceed to human gate.
+10. If `gateReady` is **true** (coverage **and** atomicity, or accepted gaps): set gate `AwaitingReview` (or `AutoApproved` if user skipped review) and proceed to human gate.
 
 ## Human gate (Excel)
 
@@ -464,11 +504,13 @@ Rules are **module-agnostic**: discover what this FSD + Figma pair contains; do 
 
 1. **Split FSD bullets into atomic requirements** when a sentence lists multiple independent behaviors (e.g. several attributes or rules that can fail separately → separate `REQ-*` / separate TCs).
 2. **One primary intent per test case.** Task Description, Acceptance Criteria, and Expected Result must focus on a single verifiable outcome.
-3. **Do not combine** unrelated UI checks, filters, sorts, KPIs, or rules into one TC just to keep the Excel small.
-4. **100% coverage ≠ coarse 1 REQ : 1 fat TC.** Prefer more atomic REQs and more rows over bundled mega-cases. Coverage still requires every in-scope REQ mapped to ≥1 TC.
-5. **Fine grain is mandatory when FSD/Figma lists multiple attributes** (e.g. template card shows name **and** KYC badge **and** version → separate TCs; Create Template required fields each get their own validation TC; filter dimensions each get their own TC). Do **not** collapse to one TC per FSD subsection heading.
-6. **Parity check:** For Missing Mandatory + KYC Gap Report, a healthy atomic workbook is typically **~120–140+** Excel rows when §3–§4 are fully split (plus Shared Quality / §6 NFRs when in scope). Delivering ~1 TC per coarse section bullet (~80) without attribute-level splits is a **regression** — revise before `AwaitingReview`.
-7. **Shared Quality / NFR (§6):** When the FSD has Non-Functional Requirements, include a **Shared Quality** Excel module with separate TCs (do not silently mark all of §6 out of scope unless the user explicitly excludes NFRs for that run).
+3. **One requirement per use case (hard):** each `useCaseId` maps to **exactly one** `requirementId`. Never assign 2+ requirement IDs to one use case or Excel row — split instead.
+4. **Do not combine** unrelated UI checks, filters, sorts, KPIs, or rules into one TC just to keep the Excel small.
+5. **100% coverage ≠ coarse 1 REQ : 1 fat TC.** Prefer more atomic REQs and more rows over bundled mega-cases. Coverage still requires every in-scope REQ mapped to ≥1 TC. **Fine-grain (hard):** when Figma defines flows/saves/tabs/category UI, also add **dedicated TCs beyond the REQ floor** — one happy-path per composite flow, one positive save TC per save button, one TC per sub-tab navigation, one UI TC per category sidebar screen, plus separate validation TCs. **`npm run fsd:validate-atomicity` fails** if `testCaseCount <= inScopeRequirements` when fine-grain slots exist.
+6. **Design-type split (hard):** every FSD validation, boundary, or blocking rule gets its own **negative** or **boundary** use case + TC (with `dependsOnUseCaseIds` to the happy-path setup). Workbooks where **all** use cases are `positive` fail the atomicity gate when negative-eligible requirements exist.
+7. **Parity check:** For Missing Mandatory + KYC Gap Report, a healthy atomic workbook is typically **~120–140+** Excel rows when §3–§4 are fully split (plus Shared Quality / §6 NFRs when in scope). For other modules, **`testCaseCount >= inScopeRequirements + fineGrainSlotCount`** is the mechanical minimum when Figma inventories flows/UI — **equal REQ:TC ratio (1:1) fails fine-grain** when slots exist.
+8. **Shared Quality / NFR (§6):** When the FSD has Non-Functional Requirements, include a **Shared Quality** Excel module with separate TCs (do not silently mark all of §6 out of scope unless the user explicitly excludes NFRs for that run).
+9. **Create mode — no other Excel inputs (hard):** when `excelMode=create`, **never read, copy, or reconcile from any other workbook** in `Test Cases/` (including similarly named `*Test Cases1*` / `*Test Cases2*` siblings). The only Excel input on create is the **output path** you are writing. Other workbooks in the folder must be ignored even if present.
 
 ## Discover flows per run (do not assume a fixed flow catalog)
 
@@ -559,6 +601,9 @@ Also reject before `AwaitingReview` if:
 - Create Template / Add Field only have open+happy-path without separate required-field validation TCs when FSD lists those fields
 - §6 NFRs were dropped without an explicit user exclusion for this run
 - Excel row count for this MM+KYC Gap FSD is far below the fine-grain bar (~120+) with no documented exclusion
+- **`npm run fsd:validate-atomicity` fails** (bundled use cases, TC count below requirement count, all-positive when negatives required, compound AC)
+- **`testCaseCount < inScopeRequirements`** without user `accept atomicity gaps`
+- **Create mode** used another workbook in `Test Cases/` as source (forbidden)
 
 # Test Steps — CONCRETE UI ACTIONS ONLY (mandatory)
 
@@ -632,6 +677,8 @@ Scan **all** Excel rows for forbidden placeholder phrases, for interactive flows
 - Mask secrets/PII in logs
 - **Never hardcode another module’s flow or button names** — discover flows from this run’s Figma + FSD only
 - **Never deliver bundled / multi-intent test cases** (see Test case design above)
+- **Never set `AwaitingReview` when `fsd:validate-atomicity` fails** — gate must be `BlockedAtomicity`
+- **Never read other Excel workbooks on create mode** — FSD + Figma + use-cases only
 - **Never deliver generic / placeholder Test Steps** (see Concrete UI Actions above)
 - **Always derive interactive Test Steps from this run’s Figma HTML / html-inventory** — FSD defines expected results, not invented click paths
 - **Never deliver Excel without a coverage % report that includes module + feature-level tables + feature delta (when baseline/_New) + TC delta**

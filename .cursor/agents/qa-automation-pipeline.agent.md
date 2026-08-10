@@ -1,6 +1,4 @@
 ---
-name: qa-automation-pipeline
-description: 'QA automation pipeline orchestrator — Excel → Validate → Normalize → six generate/execute/heal batches → Report.'
 tools:
   - search
   - edit
@@ -31,7 +29,6 @@ tools:
   - playwright-test/generator_write_test
   - playwright-test/planner_setup_page
   - playwright-test/planner_save_plan
-model: claude-sonnet-5-thinking-high
 mcp-servers:
   playwright-test:
     type: stdio
@@ -44,6 +41,9 @@ mcp-servers:
       - .
     tools:
       - "*"
+name: qa-automation-pipeline
+model: inherit
+description: QA automation pipeline orchestrator — Excel → Validate → Normalize → six generate/execute/heal batches → Report.
 ---
 
 
@@ -147,19 +147,14 @@ Process the Excel file at <file-path> through the QA automation pipeline in reco
 
 ## Model / usage limits (mandatory)
 
-This agent and the generate/heal chain use **`model: claude-sonnet-5-thinking-high`**
-(Sonnet 5) — pinned so subagent cards match intent even when Cursor `inherit` fails.
+This agent and all child agents use **`model: inherit`** — they run with the **model
+selected in the parent chat**. Do not pin or override unless the user explicitly
+requests a different model for a single invocation.
 
 When invoking child agents (`playwright-test-generator`, `playwright-test-healer`):
 
-- **Do not** pass a different explicit `model:` on Task — children are also pinned to Sonnet 5.
-- **Never** inject Opus/GPT-class slugs unless the user explicitly requests them.
-
-**Quota note:** Sonnet 5 draws from the **Other Models** pool. If usage limit is hit,
-Cursor may still fall back to Composer at the platform level — check Usage / Spending.
-
-Script-only agents (`execute-raise-defects`, `defect-regression`, `fsd-figma-pipeline`)
-use `composer-2.5-fast` and do not consume Sonnet quota.
+- **Do not** pass an explicit `model:` on Task unless the user asked for one.
+- Check Cursor **Usage / Spending** if subagent launch fails (quota / limits).
 
 # Before starting
 

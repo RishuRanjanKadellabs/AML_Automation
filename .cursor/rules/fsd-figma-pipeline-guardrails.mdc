@@ -47,6 +47,8 @@ alwaysApply: false
 - Modify protected Playwright agents (planner/generator/healer/executors) without explicit user authorization
 - Skip Excel schema validation
 - Deliver **bundled** multi-intent Excel rows (one primary intent per TC; flow happy-path separate from field-level validations)
+- Set **`AwaitingReview` when atomicity gate fails** — run `npm run fsd:validate-atomicity` and fix splits first
+- **Read or copy from other Excel workbooks on create mode** — only the named output workbook; ignore siblings in `Test Cases/`
 - Deliver Excel rows with **generic / placeholder Test Steps**, or control/flow labels not in this run’s Figma/FSD (foreign-module leakage)
 - Deliver Excel without writing `coverage-matrix.json` (including `byModule` + `byFeature`), `tc-delta-report.json`, and (when `_New`/baseline) `feature-delta-report.json`, and displaying the full coverage + feature + TC delta report
 - Hand off to qa-automation-pipeline when FSD requirement coverage is &lt; 100% unless the user explicitly accepted gaps
@@ -64,12 +66,13 @@ alwaysApply: false
 - Read active Figma HTML from `pipeline/test-data/Milestone<N>/Figma/` (user-named or `*_New`-preferred)
 - Create or reconcile Excel under `pipeline/test-data/Milestone<N>/Test Cases/`
 - On reconcile: **revise all required columns** for every retained TC against FSD + this run’s Figma; record `changedFields` on updates
-- Split FSD into **atomic** requirements; expand use cases/TCs so independent behaviors are not combined
+- Split FSD into **atomic** requirements; **one requirement per use case**; expand use cases/TCs so independent behaviors are not combined
+- Run **`npm run fsd:validate-atomicity`** after every Excel write; **`gateReady` requires `atomicityReady` + `fineGrainReady`**
 - **Discover** interactive flows from this run’s Figma; one happy-path TC per such flow when FSD defines success; field validations as separate TCs
 - Write **concrete UI Test Steps** from this run’s Figma labels — never placeholders, never assumed flows from another module
 - Expand/revise Stage 0 by **FSD-section batches** on `use-cases.json` + Excel, then refresh coverage + deltas — works for **any** module
 - Trace: FSD requirement → use case → Excel TC ID → (after handoff) script
-- Emit `coverage-matrix.json` with `coveragePct`, `gateReady`, `byModule`, `byFeature`, and (reconcile) `orphanCaseIds`
+- Emit `coverage-matrix.json` with `coveragePct`, `gateReady`, `atomicityReady`, `byModule`, `byFeature`, and (reconcile) `orphanCaseIds`
 - Emit `tc-delta-report.json` with add/update/retire/keep
 - Emit `feature-delta-report.json` for `*_New` / baseline comparisons
 - **Display** overall coverage %, Feature changes **with per-feature TCs + coverage %**, Modules table, Features-by-FSD-section table (**TCs + Coverage %**), and TC delta in the Excel delivery reply and in `stage0-summary.md`

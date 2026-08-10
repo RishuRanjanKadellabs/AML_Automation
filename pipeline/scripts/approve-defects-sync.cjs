@@ -5,6 +5,7 @@
  * Usage:
  *   npm run qa:approve-defects-sync
  *   npm run qa:approve-defects-sync -- --rows results/qa-pipeline/defects/milestone-2-defect-rows.json
+ *   npm run qa:approve-defects-sync -- --ui-rows results/qa-pipeline/defects/milestone-2-ui-defect-rows.json
  *   npm run qa:approve-defects-sync -- --upsert
  */
 const fs = require("fs");
@@ -15,51 +16,61 @@ const { syncUiDefectRowsToGoogleSheet } = require("./append-ui-defects-google-sh
 
 async function main() {
   const explicitRows = arg("rows");
+  const explicitUiRows = arg("ui-rows");
   const upsert = !process.argv.includes("--no-upsert");
-  let syncPayloadPath = explicitRows;
 
-  if (!syncPayloadPath) {
-    const latestPath = path.join(
-      ROOT,
-      "results",
-      "qa-pipeline",
-      "defects",
-      "latest-module-run.json",
+  const latestPath = path.join(ROOT, "results", "qa-pipeline", "defects", "latest-module-run.json");
+  const latest = fs.existsSync(latestPath) ? readJson(latestPath) : null;
+
+  let syncPayloadPath = explicitRows || latest?.syncPayload || null;
+  let uiRowsPath =
+    explicitUiRows ||
+    latest?.uiAuditPayload ||
+    null;
+
+  if (!syncPayloadPath && !uiRowsPath) {
+    throw new Error(
+      "No functional or UI defect payload found. Run qa:run-module first or pass --rows / --ui-rows.",
     );
-    if (!fs.existsSync(latestPath)) {
-      throw new Error(
-        "No latest module run summary found. Run a module first (qa:run-module / qa:execute-raise-defects / milestone:run).",
-      );
-    }
-    const latest = readJson(latestPath);
-    syncPayloadPath = latest.syncPayload;
-    if (!syncPayloadPath) {
-      throw new Error("Latest module run has no defect sync payload (zero failures).");
-    }
   }
 
-  console.log(`Approving Google sync for ${syncPayloadPath}`);
-  const result = syncGoogle(syncPayloadPath, upsert);
+  let functionalSync = { status: "Skipped", reason: "No functional defect payload" };
+  if (syncPayloadPath) {
+    console.log(`Approving Google sync for functional defects → ${syncPayloadPath}`);
+    functionalSync = syncGoogle(syncPayloadPath, upsert);
+  }
 
   let uiSync = { status: "Skipped", reason: "No UI defect payload" };
-  const latestPath = path.join(ROOT, "results", "qa-pipeline", "defects", "latest-module-run.json");
-  if (fs.existsSync(latestPath)) {
-    const latest = readJson(latestPath);
-    if (latest.uiAuditPayload) {
-      try {
-        uiSync = await syncUiDefectRowsToGoogleSheet({
-          rowsPath: path.join(ROOT, latest.uiAuditPayload),
-          upsert,
-        });
-      } catch (error) {
-        uiSync = { status: "Blocked", reason: error.message };
-      }
+  if (uiRowsPath) {
+    const absUiRows = path.isAbsolute(uiRowsPath) ? uiRowsPath : path.join(ROOT, uiRowsPath);
+    try {
+      console.log(`Approving Google sync for UI defects → ${relative(absUiRows)}`);
+      uiSync = await syncUiDefectRowsToGoogleSheet({
+        rowsPath: absUiRows,
+        upsert,
+      });
+    } catch (error) {
+      uiSync = { status: "Blocked", reason: error.message };
     }
   }
 
-  console.log(JSON.stringify({ syncPayloadPath, googleSync: result, uiGoogleSync: uiSync }, null, 2));
-  if (result.status !== "Synced" && uiSync.status !== "Synced") {
-    process.exitCode = result.exitCode || (uiSync.status === "Blocked" ? 1 : 0);
+  console.log(
+    JSON.stringify(
+      {
+        syncPayloadPath,
+        uiRowsPath,
+        googleSync: functionalSync,
+        uiGoogleSync: uiSync,
+      },
+      null,
+      2,
+    ),
+  );
+
+  const functionalOk = functionalSync.status === "Synced" || functionalSync.status === "Skipped";
+  const uiOk = uiSync.status === "Synced" || uiSync.status === "Skipped";
+  if (!functionalOk && !uiOk) {
+    process.exitCode = functionalSync.exitCode || (uiSync.status === "Blocked" ? 1 : 0);
   }
 }
 

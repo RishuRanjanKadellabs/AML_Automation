@@ -112,7 +112,7 @@ state/manifest. Done only when
 passes (`npm run qa:verify-completion`, including
 `npm run qa:detect-smoke-stubs`, and reconcile checks when `--delta` is passed).
 
-Stage 0 **must** produce `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` (with `byModule` + `byFeature`), `tc-delta-report.json`, and (when `*_New` or a baseline exists) `feature-delta-report.json`. Display **overall FSD coverage % plus feature changes (added/removed/updated) plus module and feature-level tables** (and TC delta) when delivering Excel, and reach **100%** coverage (or explicit user gap acceptance) before Excel Approve / QA pipeline handoff. See `.cursor/system-context/fsd-figma-pipeline.mdc`.
+Stage 0 **must** produce `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` (with `byModule` + `byFeature`), `stage0-atomicity-report.json` (atomicity gate pass), `tc-delta-report.json`, and (when `*_New` or a baseline exists) `feature-delta-report.json`. Display **overall FSD coverage % plus atomicity gate status plus feature changes** when delivering Excel, and reach **100% coverage + atomicityReady** before Excel Approve / QA pipeline handoff. See `.cursor/system-context/fsd-figma-pipeline.mdc`.
 
 See `pipeline/test-cases/SAMPLE-FORMAT.md` for Excel column layout (when using raw Excel input).
 
@@ -593,7 +593,9 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 | `npm run pw:run:report` | Run specs + generate Allure/Excel reports |
 | `npm run pw:ui` | Playwright UI mode for debugging |
 | `npm run lint` | ESLint — must pass before finishing |
-| `npm run fsd:coverage-report` | After every Stage 0 Excel write: feature delta + TCs + coverage % markdown |
+| `npm run fsd:coverage-report` | After every Stage 0 Excel write: feature delta + **atomicity gate** + TCs + coverage % markdown |
+| `npm run fsd:validate-atomicity -- --results-key "<key>"` | REQ-level atomicity + **fine-grain** gate (flow/save/tab/UI slots from Figma; fails 1:1 REQ:TC floor) |
+| `npm run fsd:capture-ui-baseline -- --results-key "<key>" --spec <path>` | Capture Stage 0 UI screenshot baselines for execute visual diff |
 | `npm run fsd:audit-coverage -- --excel <path> [--milestone N] [--fsd <path>] [--figma <path>]` | Independent mechanical audit of Excel vs FSD/Figma |
 | `npm run fsd:audit-report -- --results-key "<module>"` | Render audit markdown + agent run DOCX |
 | `npm run qa:parse-excel` | Mechanical Excel validate → `<resultsRoot>/validation/validation-report.json` |
@@ -603,8 +605,8 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 | `npm run qa:generate-defects -- --execution <report> --milestone <N>` | Generate failed-module defect workbooks (plain-language gate enforced) |
 | `npm run qa:validate-defect-plain-language -- <defect-rows.json>` | Verify defect rows: no technical terms, no FSD requirement IDs (`BR-xxx`, `NFR-xxx`), valid Feature labels |
 | `npm run qa:execute-raise-defects -- --spec <path>` | Execute a spec/folder; raise **functional** + **UI/cosmetic** local defects (`@.cursor/agents/execute-raise-defects.agent.md`) |
-| `npm run qa:run-module -- --spec <path>` | Same as execute-raise-defects — preferred alias; functional + UI audit + DOCX |
-| `npm run qa:audit-ui-defects -- --execution <report> --spec <path>` | Re-run UI/UX/cosmetic audit only (Figma + Stage 0 baselines) |
+| `npm run qa:run-module -- --spec <path>` | Same as execute-raise-defects — headed, maximized fullscreen, 1 worker, persistent CDP; functional + thorough UI audit + DOCX |
+| `npm run qa:audit-ui-defects -- --execution <report> --spec <path>` | Re-run UI/UX/cosmetic audit only (full-page scroll, alignment, visibility, clutter, Figma + Stage 0 baselines) |
 | `npm run qa:sync-ui-defects-sheet -- --rows <payload> --approved` | Sync UI defect rows to Google **UI Defects** tab after local review |
 | `npm run qa:approve-defects-sync` | Sync latest module-run defects to Google after local approval (upsert + stale prune by default) |
 | `npm run qa:assert-defect-integrity` | Verify workbook/payload has no passed Test Case IDs from execution report |

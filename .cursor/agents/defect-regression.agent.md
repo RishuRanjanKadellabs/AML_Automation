@@ -5,7 +5,7 @@ tools:
   - search
   - edit
   - terminal
-model: composer-2.5-fast
+model: inherit
 ---
 
 
