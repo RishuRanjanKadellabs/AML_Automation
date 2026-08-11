@@ -54,13 +54,23 @@ Model **prerequisite flows** so Excel and audit chain coverage can verify depend
 1. List every in-scope `requirementId` from `fsd-inventory.json` (exclude only explicit out-of-scope sections; record exclusions).
 2. For each in-scope requirement, ensure **exactly one dedicated use case** references it via a **single** entry in `requirementIds` (length 1). Add separate use cases for negative/boundary variants — do not map multiple REQs to one use case.
 3. Draft use cases only when FSD supports them; classify design type: positive / negative / boundary / exception / security (only if FSD supports). Use `flow` vs `validation` vs `ui` in title/notes when helpful.
-4. Attach UI navigation wording from HTML inventory where helpful; mark `uiSource`.
-5. Every use case must list ≥1 `fsdSectionIds`. Prefer also listing `requirementIds` for coverage matrix rows.
-6. Skip or mark clarification for `htmlOnly` alignment items unless user expands scope.
-7. Before finishing: verify no in-scope requirement lacks a use case; add missing use cases until complete.
-8. Self-check: reject any use case whose expected results assert multiple independent outcomes that should be separate cases.
-9. When drafting steps inside use cases (if included): use **concrete UI actions from this run’s Figma** (open control, fill named fields, click primary action). Never placeholders; never another module’s control names.
-10. **Chain self-check:** for every use case with `dependsOnUseCaseIds`, confirm prerequisite use cases exist and cover module/tab navigation before save/validation flows.
+4. **Use-case `title` — plain English (mandatory):** write a short, verb-led sentence a non-technical reviewer understands without the FSD. This title maps **1:1** to Excel **Task Description**.
+
+| Do | Do not |
+|----|--------|
+| One short sentence: what is checked + expected outcome | `REQ-*`, `FSD S*`, `BR-*` / `FR-*` / `NFR-*` / `UC-*` IDs |
+| Clear verb: Open, Save, Verify, Reject, Navigate… | Jargon-only titles; vague “Verify the requirement” |
+| Product language for screen/feature (from FSD/Figma) | Dense raw FSD paste; laundry-list “and … and …” |
+
+**Good:** `Verify Critical risk tier applies when the score is 70 or above`  
+**Bad:** `REQ-S3.2-01: Validate composite banding / Critical ≥70 per FSD S3.2`
+5. Attach UI navigation wording from HTML inventory where helpful; mark `uiSource`.
+6. Every use case must list ≥1 `fsdSectionIds`. Prefer also listing `requirementIds` for coverage matrix rows.
+7. Skip or mark clarification for `htmlOnly` alignment items unless user expands scope.
+8. Before finishing: verify no in-scope requirement lacks a use case; add missing use cases until complete.
+9. Self-check: reject any use case whose expected results assert multiple independent outcomes that should be separate cases; reject titles that fail the plain-English bar above.
+10. When drafting steps inside use cases (if included): use **concrete UI actions from this run’s Figma** (open control, fill named fields, click primary action). Never placeholders; never another module’s control names.
+11. **Chain self-check:** for every use case with `dependsOnUseCaseIds`, confirm prerequisite use cases exist and cover module/tab navigation before save/validation flows.
 
 ## Coverage rule
 Incomplete use-case coverage of in-scope FSD requirements is a **Stage 0 failure**. Do not proceed to Excel generation until every in-scope requirement is linked to ≥1 use case (unless user accepts gaps — rare at this stage; prefer fixing).
@@ -74,6 +84,7 @@ Preserve FSD **section titles** in inventory so Stage 0 Excel delivery can show 
 - Copy Figma marketing/prototype text as business expected results over FSD
 - Leave in-scope requirements without a use case
 - Bundle flow + field validations + unrelated UI checks into one use case
+- Emit use-case titles with `REQ-*` / `FSD S*` / BR/FR/NFR/UC IDs, jargon-only wording, or vague “Verify the requirement” phrasing
 - Emit use-case steps that are generic placeholders for interactive flows
 - Emit validation/save use cases without `dependsOnUseCaseIds` or `preconditions` when a screen/tab prerequisite exists in Figma/FSD
 

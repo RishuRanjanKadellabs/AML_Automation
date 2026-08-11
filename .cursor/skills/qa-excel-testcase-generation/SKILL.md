@@ -74,6 +74,22 @@ Use these headers (compatible with existing Excel workbooks):
 
 Do **not** add a **Requirement ID** (or Req ID / REQ ID) column to the workbook. Traceability stays in Stage 0 JSON only (`use-cases.json`, `coverage-matrix.json`, `tc-delta-report.json`).
 
+### Task Description (mandatory style)
+
+Write **plain-English, verb-led titles** that a non-technical reviewer understands without opening the FSD. Same readability bar as Acceptance Criteria.
+
+| Do | Do not |
+|----|--------|
+| One short sentence: what is checked + expected outcome in plain words | `REQ-*`, `FSD S*`, `BR-*` / `FR-*` / `NFR-*` / `UC-*` IDs |
+| Start with a clear verb: Open, Save, Verify, Reject, Navigate… | Jargon-only titles (“Validate composite score banding per BR-011”) |
+| Name the screen/feature in product language (from FSD/Figma) | Paste dense raw FSD bullet text unchanged |
+| Single intent only | Laundry-list “and … and …” titles; vague “Verify the requirement” |
+
+**Good:** `Verify Critical risk tier applies when the score is 70 or above`  
+**Bad:** `REQ-S3.2-01: Validate composite banding / Critical ≥70 per FSD S3.2`
+
+Map from use-case `title` 1:1. On reconcile, rewrite any Task Description that fails this bar and include `Task Description` in `changedFields`.
+
 ### Acceptance Criteria (mandatory style)
 
 Write **plain-English, measurable pass conditions** that a reviewer can understand without reading the FSD.
@@ -81,16 +97,17 @@ Write **plain-English, measurable pass conditions** that a reviewer can understa
 - Good: plain-English measurable outcomes tied to what the tester will see (control visible, save succeeded, error shown)
 - Bad: `• REQ-S3.2-01` / `• FSD S3.2` / raw requirement or section IDs only
 
-**Traceability** (`requirementIds`, `fsdSectionIds`, REQ-* / FSD section refs) belongs in Stage 0 JSON artifacts — **never** in an Excel Requirement ID column and **never** dump IDs into Acceptance Criteria.
+**Traceability** (`requirementIds`, `fsdSectionIds`, REQ-* / FSD section refs) belongs in Stage 0 JSON artifacts — **never** in an Excel Requirement ID column and **never** dump IDs into Task Description or Acceptance Criteria.
 
 ## Steps — create mode
 1. Map each use case → Excel row(s). **Exactly 1 use case → 1 row → 1 requirementId.** If a use case bundles intents or maps to 2+ requirements, **split before writing**.
-2. Write **concrete, numbered Test Steps** with real UI labels (FSD + Figma). See **Concrete Test Steps** below — **never** placeholder steps.
-3. Bullet Expected Result / Acceptance Criteria with measurable outcomes for that single intent.
-4. Fill Test Data with the values referenced in the steps (or N/A for observation-only UI checks).
-5. Write new `.xlsx` (Sheet1).
-6. Emit `tc-delta-report.json` with `excelMode=create`, all IDs in `add`, empty `update`/`retire`/`keep`.
-7. Validate, build coverage matrix, display report (see below).
+2. Copy use-case `title` into **Task Description** only when it already meets the plain-English style above; otherwise rewrite the title before writing the row.
+3. Write **concrete, numbered Test Steps** with real UI labels (FSD + Figma). See **Concrete Test Steps** below — **never** placeholder steps.
+4. Bullet Expected Result / Acceptance Criteria with measurable outcomes for that single intent.
+5. Fill Test Data with the values referenced in the steps (or N/A for observation-only UI checks).
+6. Write new `.xlsx` (Sheet1).
+7. Emit `tc-delta-report.json` with `excelMode=create`, all IDs in `add`, empty `update`/`retire`/`keep`.
+8. Validate, build coverage matrix, display report (see below).
 
 ## Steps — reconcile mode
 1. Parse existing workbook with `qa-excel-testcase-parsing` (preserve row TC IDs).
@@ -114,10 +131,11 @@ Write **plain-English, measurable pass conditions** that a reviewer can understa
 
 ### Must revise on reconcile (not optional)
 - Do **not** leave Test Steps / Expected Result / Acceptance Criteria / Test Data / Preconditions / Priority / Module / Sub Module / Task Description stale when FSD or Figma differs.
-- Concrete Figma-driven Test Steps and plain-English Acceptance Criteria rules apply to **updated and added** rows the same as create mode.
+- Concrete Figma-driven Test Steps and plain-English **Task Description** + Acceptance Criteria rules apply to **updated and added** rows the same as create mode.
+- Rewrite Task Descriptions that contain requirement IDs, jargon-only wording, or vague “Verify the requirement” phrasing.
 
 ## Shared steps (both modes)
-1. Validate with existing excel-input rules (IDs, steps, expected present; no duplicate IDs). Reject rows whose Acceptance Criteria are only REQ/FSD IDs. **Also reject / split bundled rows** and **reject placeholder steps**.
+1. Validate with existing excel-input rules (IDs, steps, expected present; no duplicate IDs). Reject rows whose Task Description or Acceptance Criteria are only REQ/FSD IDs or opaque jargon. **Also reject / split bundled rows** and **reject placeholder steps**.
 2. **Build coverage matrix** (mandatory):
    - For each in-scope FSD `requirementId`, set `covered` if ≥1 Excel `testCaseId` maps to it.
    - Compute overall `coveragePct`; set `gateReady` true only at 100% with empty `uncoveredRequirementIds` **and** `atomicityReady === true`.
@@ -182,6 +200,7 @@ Map `use-cases.json` **`dependsOnUseCaseIds`** and **`preconditions`** into Exce
 - Negative TC with no linked navigation/happy-path coverage in the workbook
 
 ## Must not
+- Put `REQ-*`, `FSD S*`, BR/FR/NFR/UC IDs, or jargon-only wording into **Task Description**
 - Put `REQ-*`, `FSD S*`, or section IDs alone into Acceptance Criteria
 - Add a **Requirement ID** / Req ID / REQ ID column to Excel (traceability stays in Stage 0 JSON only)
 - Invent steps that change FSD intent
