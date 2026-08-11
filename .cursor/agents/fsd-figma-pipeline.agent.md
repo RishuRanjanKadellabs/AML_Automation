@@ -137,19 +137,19 @@ Detect mode from the filesystem **only**. Do not ask the user to choose:
 4. **Full column revision (mandatory on reconcile):** for every retained (non-retire) existing TC, audit and revise **all** required columns against FSD + this run’s Figma:
    - Test Case ID (preserve — never change)
    - Module, Sub Module
-   - Task Description
+   - Task Description (plain English only — see Task Description style below)
    - Acceptance Criteria (plain English only)
    - Preconditions
    - Test Steps (concrete Figma labels; no placeholders)
    - Test Data
    - Priority
    - Expected Result
-   Any column that is wrong, thin, placeholder, foreign-module, or out of sync with FSD/Figma **must** be rewritten. Record changed column names on each `update` entry’s `changedFields`. A reconcile with `updateCount=0` while dozens of keep rows exist is a **failure** unless the agent documents a completed per-column audit proving zero drift.
+   Any column that is wrong, thin, placeholder, foreign-module, opaque jargon, ID-laden, or out of sync with FSD/Figma **must** be rewritten. Record changed column names on each `update` entry’s `changedFields` (include `Task Description` when rewritten for plain-language). A reconcile with `updateCount=0` while dozens of keep rows exist is a **failure** unless the agent documents a completed per-column audit proving zero drift.
 5. **ID stability (hard):** never renumber or rename existing Test Case IDs; never reuse a retired ID for a new case. New rows get new IDs only.
 6. Before overwrite: copy workbook to a timestamped `.bak-*` beside it (same folder pattern as existing Milestone1 backups).
 7. Apply adds/updates; remove retire rows **only after** the user Approves Excel (including the retire list). Until then keep retire candidates in the delta report and in Excel (or mark pending) — never silent delete.
 8. Reverse coverage: every kept/updated Excel TC must map to ≥1 in-scope FSD requirement; orphans belong in `retire` / `orphanCaseIds`.
-9. **Forbidden on reconcile:** leaving old Test Steps / Expected Result / Acceptance Criteria untouched without reading them against FSD+Figma; classifying rows as `keep` solely because they still map to a REQ ID.
+9. **Forbidden on reconcile:** leaving old Task Description / Test Steps / Expected Result / Acceptance Criteria untouched without reading them against FSD+Figma and the plain-English Task Description bar; classifying rows as `keep` solely because they still map to a REQ ID.
 
 ### Create rules (when Excel missing)
 
@@ -504,13 +504,26 @@ Rules are **module-agnostic**: discover what this FSD + Figma pair contains; do 
 
 1. **Split FSD bullets into atomic requirements** when a sentence lists multiple independent behaviors (e.g. several attributes or rules that can fail separately → separate `REQ-*` / separate TCs).
 2. **One primary intent per test case.** Task Description, Acceptance Criteria, and Expected Result must focus on a single verifiable outcome.
-3. **One requirement per use case (hard):** each `useCaseId` maps to **exactly one** `requirementId`. Never assign 2+ requirement IDs to one use case or Excel row — split instead.
-4. **Do not combine** unrelated UI checks, filters, sorts, KPIs, or rules into one TC just to keep the Excel small.
-5. **100% coverage ≠ coarse 1 REQ : 1 fat TC.** Prefer more atomic REQs and more rows over bundled mega-cases. Coverage still requires every in-scope REQ mapped to ≥1 TC. **Fine-grain (hard):** when Figma defines flows/saves/tabs/category UI, also add **dedicated TCs beyond the REQ floor** — one happy-path per composite flow, one positive save TC per save button, one TC per sub-tab navigation, one UI TC per category sidebar screen, plus separate validation TCs. **`npm run fsd:validate-atomicity` fails** if `testCaseCount <= inScopeRequirements` when fine-grain slots exist.
-6. **Design-type split (hard):** every FSD validation, boundary, or blocking rule gets its own **negative** or **boundary** use case + TC (with `dependsOnUseCaseIds` to the happy-path setup). Workbooks where **all** use cases are `positive` fail the atomicity gate when negative-eligible requirements exist.
-7. **Parity check:** For Missing Mandatory + KYC Gap Report, a healthy atomic workbook is typically **~120–140+** Excel rows when §3–§4 are fully split (plus Shared Quality / §6 NFRs when in scope). For other modules, **`testCaseCount >= inScopeRequirements + fineGrainSlotCount`** is the mechanical minimum when Figma inventories flows/UI — **equal REQ:TC ratio (1:1) fails fine-grain** when slots exist.
-8. **Shared Quality / NFR (§6):** When the FSD has Non-Functional Requirements, include a **Shared Quality** Excel module with separate TCs (do not silently mark all of §6 out of scope unless the user explicitly excludes NFRs for that run).
-9. **Create mode — no other Excel inputs (hard):** when `excelMode=create`, **never read, copy, or reconcile from any other workbook** in `Test Cases/` (including similarly named `*Test Cases1*` / `*Test Cases2*` siblings). The only Excel input on create is the **output path** you are writing. Other workbooks in the folder must be ignored even if present.
+3. **Task Description — plain English (mandatory):** write so a non-technical reviewer understands the case without opening the FSD. Same bar as Acceptance Criteria for readability.
+
+| Do | Do not |
+|----|--------|
+| One short sentence: what the tester checks + expected outcome in plain words | `REQ-*`, `FSD S*`, `BR-*` / `FR-*` / `NFR-*` / `UC-*` IDs |
+| Start with a clear verb: Open, Save, Verify, Reject, Navigate… | Jargon-only titles (“Validate composite score banding per BR-011”) |
+| Name the screen/feature in product language (from FSD/Figma) | Paste dense raw FSD bullet text unchanged |
+| Single intent only | Laundry-list “and … and …” titles |
+
+**Good:** `Verify Critical risk tier applies when the score is 70 or above`  
+**Bad:** `REQ-S3.2-01: Validate composite banding / Critical ≥70 per FSD S3.2`
+
+Use-case `title` in `use-cases.json` must use this same style (maps 1:1 to Excel Task Description). On reconcile, rewrite any Task Description that fails this bar and list `Task Description` in `changedFields`.
+4. **One requirement per use case (hard):** each `useCaseId` maps to **exactly one** `requirementId`. Never assign 2+ requirement IDs to one use case or Excel row — split instead.
+5. **Do not combine** unrelated UI checks, filters, sorts, KPIs, or rules into one TC just to keep the Excel small.
+6. **100% coverage ≠ coarse 1 REQ : 1 fat TC.** Prefer more atomic REQs and more rows over bundled mega-cases. Coverage still requires every in-scope REQ mapped to ≥1 TC. **Fine-grain (hard):** when Figma defines flows/saves/tabs/category UI, also add **dedicated TCs beyond the REQ floor** — one happy-path per composite flow, one positive save TC per save button, one TC per sub-tab navigation, one UI TC per category sidebar screen, plus separate validation TCs. **`npm run fsd:validate-atomicity` fails** if `testCaseCount <= inScopeRequirements` when fine-grain slots exist.
+7. **Design-type split (hard):** every FSD validation, boundary, or blocking rule gets its own **negative** or **boundary** use case + TC (with `dependsOnUseCaseIds` to the happy-path setup). Workbooks where **all** use cases are `positive` fail the atomicity gate when negative-eligible requirements exist.
+8. **Parity check:** For Missing Mandatory + KYC Gap Report, a healthy atomic workbook is typically **~120–140+** Excel rows when §3–§4 are fully split (plus Shared Quality / §6 NFRs when in scope). For other modules, **`testCaseCount >= inScopeRequirements + fineGrainSlotCount`** is the mechanical minimum when Figma inventories flows/UI — **equal REQ:TC ratio (1:1) fails fine-grain** when slots exist.
+9. **Shared Quality / NFR (§6):** When the FSD has Non-Functional Requirements, include a **Shared Quality** Excel module with separate TCs (do not silently mark all of §6 out of scope unless the user explicitly excludes NFRs for that run).
+10. **Create mode — no other Excel inputs (hard):** when `excelMode=create`, **never read, copy, or reconcile from any other workbook** in `Test Cases/` (including similarly named `*Test Cases1*` / `*Test Cases2*` siblings). The only Excel input on create is the **output path** you are writing. Other workbooks in the folder must be ignored even if present.
 
 ## Discover flows per run (do not assume a fixed flow catalog)
 
@@ -596,6 +609,7 @@ Pattern examples (names must come from **this** Figma/FSD, not from memory of an
 Reject / split any row where Acceptance Criteria or Expected Result clearly assert **multiple independent behaviors** that could fail separately (unless they are inseparable steps of one single flow outcome).
 
 Also reject before `AwaitingReview` if:
+- Task Description contains `REQ-*` / `FSD S*` / BR/FR/NFR/UC IDs, or is jargon-only / vague (“Verify the requirement”) without a clear product outcome
 - A single REQ/TC still says “displays A, B, and C” for independent UI attributes → split into A / B / C
 - Items-per-page 10 / 20 / 50 (or similar enums) are one TC → split per value
 - Create Template / Add Field only have open+happy-path without separate required-field validation TCs when FSD lists those fields
@@ -686,6 +700,7 @@ Scan **all** Excel rows for forbidden placeholder phrases, for interactive flows
 - **Never write use cases for negative/validation flows without `dependsOnUseCaseIds` + preconditions** when a screen/tab setup is required
 - **Never omit that coverage report in the user-facing chat reply** after Excel write (including when a subagent ran Stage 0 — parent must re-display overall % + Feature changes + Modules + Features from artifacts; status-only / “don’t regurgitate” summaries are not allowed to replace it)
 - **Never hand off to qa-automation-pipeline at <100% coverage** unless the user explicitly accepted gaps
+- **Excel Task Description must be plain English** (one short, verb-led sentence a non-technical reviewer can understand). Do not put `REQ-*` / `FSD S*` / `BR-*` / `FR-*` / `NFR-*` / `UC-*` IDs in that column — keep those in Stage 0 JSON only (`use-cases.json`, `coverage-matrix.json`)
 - **Excel Acceptance Criteria must be plain English** (measurable pass conditions). Do not put `REQ-*` / `FSD S*` IDs in that column — keep those in Stage 0 JSON only (`use-cases.json`, `coverage-matrix.json`)
 - **Never add a Requirement ID column to Excel** — required columns are Test Case ID, Module, Sub Module, Task Description, Acceptance Criteria, Preconditions, Test Steps, Test Data, Priority, Expected Result only
 - **Never whole-file Read the Figma HTML or FSD into the model**; use inventories + targeted greps/offsets

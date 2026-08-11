@@ -142,6 +142,8 @@ Traceability: **FSD requirement → use case → Excel TC ID → (after handoff)
 
 ## Excel column rules (agents)
 
+- **Task Description** = plain-English, verb-led, single-intent title a non-technical reviewer understands without the FSD (maps from use-case `title`).
+- Do **not** put `REQ-*`, `FSD S*`, `BR-*` / `FR-*` / `NFR-*` / `UC-*` IDs, jargon-only wording, or vague “Verify the requirement” into Task Description.
 - **Acceptance Criteria** = plain-English measurable pass conditions only.
 - Do **not** fill Acceptance Criteria with `REQ-*`, `FSD S*`, or section IDs.
 - Keep FSD/requirement traceability in Stage 0 JSON (`use-cases.json`, `coverage-matrix.json`, `tc-delta-report.json`, `feature-delta-report.json`) only — **do not** add a Requirement ID column to Excel.
