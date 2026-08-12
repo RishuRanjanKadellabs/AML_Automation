@@ -59,7 +59,7 @@ Excel / FSD+Figma → Cursor agents (.cursor) → tests/milestone2/
 | **tests/seed.spec.ts** | MCP seed for planner/generator browser setup |
 | **reporters/** | Playwright reporter code (`pipeline-reporter`, `detailed-log-reporter`) |
 | **results/** | Raw run output (`execution.log` replaced each run, `allure-results/`, `execution-report.json`, QA stage JSON) |
-| **report/automation-execution-cycle/** | Published Allure HTML, dashboard, Excel (built from `results/`) |
+| **report/** | Published Allure HTML (`allure-report/`), trend history (`allure-history/`), Excel (`test-results.xlsx`) — built from `results/` |
 | **test-results/** | Playwright failure attachments / screenshots |
 | **playwright-report/** | Playwright built-in HTML report |
 | **fixtures/** | env/test fixtures (`environments.json`, `test-fixture.ts`, `milestone1-shared-session.ts`, `milestone-shared-session.ts` for one browser/worker across tests, module `*-data.json`) |

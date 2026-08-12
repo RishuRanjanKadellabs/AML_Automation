@@ -7,7 +7,8 @@ dotenv.config({ path: path.resolve(__dirname, "..", "..", ".env") });
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 const RESULTS_DIR = path.join(PROJECT_ROOT, "results");
-const REPORT_DIR = path.join(PROJECT_ROOT, "report", "automation-execution-cycle");
+/** Published Excel lives directly under `report/` (alongside allure-report/). */
+const REPORT_DIR = path.join(PROJECT_ROOT, "report");
 
 /** Shape of results/<env>/execution-report.json (written by pipeline reporter). */
 interface ExecutionReport {
