@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk MIS Reports — Clari5 AML</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --bg:#f4f6fb;--white:#fff;--navy:#1a2d5a;--navy-mid:#243870;--navy-dark:#111e3c;
+ --blue:#2563eb;--blue-light:#dbeafe;--blue-pale:#eff6ff;
+ --border:#e2e8f0;--text:#1e293b;--text-2:#64748b;--text-3:#94a3b8;
+ --critical:#7c3aed;--critical-bg:#f5f3ff;--critical-border:#ddd6fe;
+ --high:#dc2626;--high-bg:#fef2f2;--high-border:#fecaca;
+ --medium:#d97706;--medium-bg:#fffbeb;--medium-border:#fde68a;
+ --low:#16a34a;--low-bg:#f0fdf4;--low-border:#bbf7d0;
+ --teal:#0891b2;--teal-bg:#ecfeff;
+ --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+ --shadow-md:0 4px 16px rgba(0,0,0,.10);--shadow-lg:0 8px 32px rgba(0,0,0,.14);
+ --radius:9px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:13px;min-height:100vh;}
+
+.topnav{background:var(--navy);height:52px;display:flex;align-items:center;padding:0 24px;gap:16px;position:sticky;top:0;z-index:300;}
+.nav-logo{font-weight:800;font-size:15px;color:#fff;letter-spacing:-.3px;display:flex;align-items:center;gap:8px;}
+.nav-logo span{background:var(--blue);color:#fff;border-radius:5px;padding:2px 8px;font-size:11px;font-weight:700;}
+.nav-search{flex:1;max-width:380px;border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:6px 14px;display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.5);font-size:12px;margin:0 auto;background:rgba(255,255,255,.08);}
+.nav-icons{display:flex;gap:18px;align-items:center;color:rgba(255,255,255,.6);}
+.avatar{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;position:relative;}
+.user-info{font-size:11px;line-height:1.3;}
+.user-info strong{display:block;color:#fff;font-weight:600;}
+.user-info span{color:rgba(255,255,255,.5);font-size:10px;}
+.nav-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;position:absolute;bottom:0;right:0;border:1.5px solid var(--navy);}
+
+.app-body{display:flex;min-height:calc(100vh - 52px);}
+.sidebar{width:262px;background:#fff;border-right:1px solid var(--border);flex-shrink:0;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;padding-bottom:20px;}
+.sidebar-hub-btn{margin:14px;background:var(--navy);color:#fff;border:none;border-radius:7px;padding:10px 14px;font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;width:calc(100% - 28px);display:flex;align-items:center;gap:8px;transition:.15s;}
+.sidebar-hub-btn:hover{background:var(--navy-mid);}
+.sb-cat{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);padding:14px 18px 5px;display:flex;align-items:center;gap:7px;}
+.sb-cat::after{content:'';flex:1;height:1px;background:var(--border);}
+.sidebar-item{display:flex;align-items:center;gap:9px;padding:8px 18px;cursor:pointer;transition:.15s;position:relative;font-size:12px;font-weight:500;color:var(--text-2);}
+.sidebar-item:hover{background:var(--bg);color:var(--text);}
+.sidebar-item.active{background:var(--blue-pale);color:var(--blue);font-weight:600;}
+.sidebar-item.active::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);border-radius:0 3px 3px 0;}
+.item-num{width:19px;height:19px;border-radius:5px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:var(--text-3);flex-shrink:0;}
+.sidebar-item.active .item-num{background:var(--blue-light);color:var(--blue);}
+.item-badge{margin-left:auto;background:var(--high-bg);color:var(--high);border-radius:10px;padding:1px 7px;font-size:9px;font-weight:800;}
+
+.main{flex:1;overflow-x:hidden;min-width:0;}
+.page{padding:0 28px 48px;display:none;}
+.page.active{display:block;}
+
+.page-header{display:flex;align-items:flex-start;justify-content:space-between;padding:20px 0 15px;border-bottom:1px solid var(--border);margin-bottom:18px;gap:20px;}
+.page-title{font-size:19px;font-weight:800;color:var(--navy);letter-spacing:-.2px;}
+.page-sub{font-size:12px;color:var(--text-2);margin-top:3px;max-width:640px;line-height:1.5;}
+.breadcrumb{font-size:11px;color:var(--blue);white-space:nowrap;}
+.breadcrumb span{color:var(--text-2);}
+.export-bar{display:flex;gap:5px;}
+.export-btn{display:flex;align-items:center;gap:4px;padding:5px 11px;border:1px solid var(--border);border-radius:5px;background:#fff;font-size:11px;font-weight:600;color:var(--text-2);cursor:pointer;font-family:inherit;}
+.export-btn:hover{background:var(--bg);border-color:var(--blue);color:var(--blue);}
+.export-btn.sched{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+
+.kpi-grid{display:grid;gap:12px;margin-bottom:18px;}
+.kpi-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:13px 15px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.kpi-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
+.k-critical::before{background:var(--critical);} .k-high::before{background:var(--high);}
+.k-medium::before{background:var(--medium);}   .k-low::before{background:var(--low);}
+.k-blue::before{background:var(--blue);}       .k-navy::before{background:var(--navy);}
+.k-teal::before{background:var(--teal);}
+.kpi-lbl{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);margin-bottom:6px;}
+.kpi-val{font-size:23px;font-weight:900;line-height:1;letter-spacing:-.5px;}
+.k-critical .kpi-val{color:var(--critical);} .k-high .kpi-val{color:var(--high);}
+.k-medium .kpi-val{color:var(--medium);}     .k-low .kpi-val{color:var(--low);}
+.k-blue .kpi-val{color:var(--blue);}         .k-navy .kpi-val{color:var(--navy);}
+.k-teal .kpi-val{color:var(--teal);}
+.kpi-sub{font-size:10px;color:var(--text-3);margin-top:4px;display:flex;align-items:center;gap:4px;}
+
+
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:18px;}
+/* filter cards must not clip their dropdown popovers */
+.card.card-filters{overflow:visible;position:relative;z-index:60;}
+.card-head{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border);background:linear-gradient(to right,#f8fafc,#fff);gap:12px;flex-wrap:wrap;}
+.card-title{font-size:13px;font-weight:700;color:var(--navy);display:flex;align-items:center;gap:8px;}
+.card-title small{font-weight:500;color:var(--text-3);font-size:11px;}
+.tbl-badge{background:var(--blue-light);color:var(--blue);border-radius:12px;padding:2px 9px;font-size:11px;font-weight:700;}
+.card-pad{padding:16px 18px;}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:10.5px;color:var(--text-2);font-weight:600;}
+.legend i{width:9px;height:9px;border-radius:3px;display:inline-block;margin-right:5px;vertical-align:-1px;}
+
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px;}
+.grid-2-1{display:grid;grid-template-columns:1.6fr 1fr;gap:16px;margin-bottom:18px;}
+@media(max-width:1180px){.grid-2,.grid-3,.grid-2-1{grid-template-columns:1fr;}}
+
+.table-wrap{overflow-x:auto;max-height:440px;}
+table{width:100%;border-collapse:collapse;}
+thead th{position:sticky;top:0;background:#f8fafc;text-align:left;padding:9px 12px;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);border-bottom:1px solid var(--border);white-space:nowrap;z-index:5;}
+td{padding:9px 12px;border-bottom:1px solid #eef2f7;vertical-align:middle;font-size:12px;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:#fafbfd;}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;}
+.tfoot td{background:#f8fafc;font-weight:800;border-top:2px solid var(--border);}
+
+.rb{display:inline-flex;align-items:center;border-radius:4px;padding:2px 8px;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;white-space:nowrap;}
+.rb.critical{background:var(--critical-bg);color:var(--critical);border:1px solid var(--critical-border);}
+.rb.high{background:var(--high-bg);color:var(--high);border:1px solid var(--high-border);}
+.rb.medium{background:var(--medium-bg);color:var(--medium);border:1px solid var(--medium-border);}
+.rb.low{background:var(--low-bg);color:var(--low);border:1px solid var(--low-border);}
+.pill{display:inline-flex;align-items:center;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700;white-space:nowrap;}
+.pill.sys{background:#eff6ff;color:#1d4ed8;} .pill.mnl{background:#fef9c3;color:#92400e;}
+.pill.ok{background:var(--low-bg);color:var(--low);} .pill.warn{background:var(--medium-bg);color:var(--medium);}
+.pill.bad{background:var(--high-bg);color:var(--high);} .pill.neut{background:#f1f5f9;color:var(--text-2);}
+.pill.crit{background:var(--critical-bg);color:var(--critical);}
+.delta{display:inline-flex;align-items:center;gap:2px;font-size:10.5px;font-weight:800;padding:1px 7px;border-radius:4px;white-space:nowrap;}
+.delta.flat{background:#f1f5f9;color:var(--text-2);}
+.delta.gup{background:var(--low-bg);color:var(--low);}
+.delta.gdown{background:var(--high-bg);color:var(--high);}
+
+.sc{display:inline-flex;align-items:center;gap:7px;}
+.sc-num{font-size:12.5px;font-weight:800;font-variant-numeric:tabular-nums;min-width:22px;}
+.sc-track{height:5px;border-radius:3px;background:#eef2f7;width:56px;overflow:hidden;display:inline-block;}
+.sc-fill{height:100%;border-radius:3px;display:block;}
+
+.heat td{text-align:center;font-weight:800;font-size:11.5px;color:#fff;border:2px solid #fff;padding:11px 8px;font-variant-numeric:tabular-nums;}
+.heat td.rowlbl{background:#f8fafc !important;color:var(--text)!important;text-align:left;font-weight:700;font-size:11.5px;border:none;white-space:nowrap;}
+.heat th{text-align:center;font-size:9.5px;}
+
+/* ── compact score-explainability factor chips ── */
+.fchips{display:flex;flex-wrap:wrap;gap:5px;align-items:center;}
+.fchip{display:inline-flex;align-items:baseline;gap:5px;border-radius:5px;padding:2px 7px;
+  font-size:10.5px;font-weight:600;white-space:nowrap;border:1px solid;cursor:help;}
+.fchip b{font-weight:800;font-variant-numeric:tabular-nums;font-size:11px;}
+
+/* ── multi-select filter controls (all reports) ── */
+.msf-bar{display:flex;align-items:flex-end;gap:14px;flex-wrap:wrap;}
+.msf{position:relative;display:flex;flex-direction:column;gap:5px;}
+.msf-lbl{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--text-2);}
+.msf-btn{min-width:180px;height:34px;border:1px solid var(--border);border-radius:6px;background:#fff;
+  font-family:inherit;font-size:12px;font-weight:600;color:var(--text);padding:0 10px;cursor:pointer;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.msf-btn:hover{border-color:var(--blue);}
+.msf-btn .cnt{background:var(--blue-light);color:var(--blue);border-radius:9px;padding:0 6px;font-size:9.5px;font-weight:800;}
+.msf-btn .cv{color:var(--text-3);font-size:10px;}
+.msf-pop{display:none;position:absolute;top:calc(100% + 5px);left:0;z-index:400;background:#fff;
+  border:1px solid var(--border);border-radius:7px;box-shadow:var(--shadow-lg);min-width:212px;
+  max-height:250px;overflow-y:auto;padding:5px;}
+.msf-pop.open{display:block;}
+.msf-pop label{display:flex;align-items:center;gap:8px;padding:5px 8px;border-radius:5px;font-size:11.5px;
+  font-weight:500;cursor:pointer;white-space:nowrap;}
+.msf-pop label:hover{background:var(--blue-pale);}
+.msf-pop label.all{border-bottom:1px solid var(--border);border-radius:0;margin-bottom:3px;padding-bottom:7px;font-weight:800;}
+.msf-pop input[type=checkbox]{accent-color:var(--blue);cursor:pointer;}
+.msf-note{font-size:11px;color:var(--text-2);font-weight:600;margin-left:auto;}
+.msf-reset{height:34px;padding:0 13px;border:1px solid var(--border);border-radius:6px;background:#fff;
+  font-family:inherit;font-size:11.5px;font-weight:600;color:var(--text-2);cursor:pointer;}
+.msf-reset:hover{background:var(--bg);border-color:var(--blue);color:var(--blue);}
+.msf-num{height:34px;width:104px;border:1px solid var(--border);border-radius:6px;background:#fff;
+  font-family:inherit;font-size:12px;font-weight:600;color:var(--text);padding:0 9px;}
+.msf-num:focus{outline:none;border-color:var(--blue);}
+/* ── chart axis labelling ── */
+.chart-note{margin-top:9px;padding-top:8px;border-top:1px dashed var(--border);font-size:10.5px;
+  color:var(--text-2);line-height:1.55;}
+.chart-note b{color:var(--text);font-weight:800;}
+.bar-axis{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:9px;padding-top:7px;
+  border-top:1px dashed var(--border);font-size:9.5px;font-weight:700;color:var(--text-3);}
+.bar-axis .cat{text-transform:uppercase;letter-spacing:.05em;}
+.th-sub{display:block;font-weight:600;font-size:9px;text-transform:none;letter-spacing:0;color:var(--text-3);margin-top:2px;}
+.bar-axis .scale{display:flex;align-items:center;gap:7px;}
+.bar-axis .scale i{font-style:normal;color:var(--text-3);font-weight:700;}
+.bar-axis .scale b{font-weight:800;color:var(--text-2);text-transform:uppercase;letter-spacing:.05em;}
+.col-chart{display:grid;grid-template-columns:auto 1fr;grid-template-rows:1fr auto;gap:6px 10px;align-items:stretch;}
+.col-y{grid-row:1;grid-column:1;writing-mode:vertical-rl;transform:rotate(180deg);text-align:center;
+  font-size:9.5px;font-weight:800;color:var(--text-2);text-transform:uppercase;letter-spacing:.06em;
+  align-self:center;padding-bottom:22px;}
+.col-plot{grid-row:1;grid-column:2;display:flex;align-items:flex-end;gap:9px;padding-top:8px;
+  border-left:1px solid #cbd5e1;border-bottom:1px solid #cbd5e1;padding-left:6px;}
+.col-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end;}
+.col-v{font-size:11px;font-weight:800;}
+.col-bar{width:100%;border-radius:4px 4px 0 0;min-height:3px;opacity:.9;}
+.col-x{font-size:9.5px;color:var(--text-3);font-weight:600;position:relative;top:15px;white-space:nowrap;}
+.col-xtitle{grid-row:2;grid-column:2;text-align:center;margin-top:19px;font-size:9.5px;font-weight:800;
+  color:var(--text-2);text-transform:uppercase;letter-spacing:.06em;}
+.msf-sel{min-width:140px;height:34px;border:1px solid var(--border);border-radius:6px;background:#fff;
+  font-family:inherit;font-size:12px;font-weight:600;color:var(--text);padding:0 8px;cursor:pointer;}
+.msf-sel:hover{border-color:var(--blue);}
+.msf-sel:focus{outline:none;border-color:var(--blue);}
+
+/* ── active filter chips ── */
+.fchip-bar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:9px 18px;border-top:1px dashed var(--border);background:#fbfdff;}
+.fchip-bar .lead{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--text-2);}
+.afchip{display:inline-flex;align-items:center;gap:6px;background:var(--blue-pale);border:1px solid var(--blue-light);
+  color:var(--blue);border-radius:20px;padding:3px 5px 3px 10px;font-size:10.5px;font-weight:700;}
+.afchip b{font-weight:800;}
+.afchip .x{width:15px;height:15px;border-radius:50%;border:none;background:rgba(37,99,235,.14);color:var(--blue);
+  cursor:pointer;font-size:11px;line-height:1;font-family:inherit;display:flex;align-items:center;justify-content:center;}
+.afchip .x:hover{background:var(--blue);color:#fff;}
+
+/* ── column & order picker ── */
+.col-btn{display:flex;align-items:center;gap:5px;padding:5px 11px;border:1px solid var(--border);border-radius:5px;
+  background:#fff;font-size:11px;font-weight:600;color:var(--text-2);cursor:pointer;font-family:inherit;}
+.col-btn:hover{background:var(--blue-pale);border-color:var(--blue);color:var(--blue);}
+.col-btn .n{background:var(--blue-light);color:var(--blue);border-radius:9px;padding:0 6px;font-size:9.5px;font-weight:800;}
+.ovl{display:none;position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:900;align-items:center;justify-content:center;padding:24px;}
+.ovl.open{display:flex;}
+.mdl{background:#fff;border-radius:10px;box-shadow:0 24px 64px rgba(15,23,42,.3);width:760px;max-width:100%;
+  max-height:88vh;display:flex;flex-direction:column;overflow:hidden;}
+.mdl-head{display:flex;align-items:flex-start;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);}
+.mdl-head h3{font-family:'Poppins','Inter',sans-serif;font-size:15px;font-weight:700;color:var(--navy-dark);margin-bottom:3px;}
+.mdl-head p{font-size:11.5px;color:var(--text-2);}
+.mdl-x{border:none;background:none;font-size:20px;color:var(--text-3);cursor:pointer;line-height:1;padding:0 2px;}
+.mdl-x:hover{color:var(--high);}
+.mdl-body{padding:18px 20px;overflow-y:auto;flex:1;min-height:0;}
+.mdl-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 20px;
+  border-top:1px solid var(--border);background:#f8fafc;}
+.cp-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.cp-pane{border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;min-height:0;}
+.cp-pane-h{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--border);
+  background:#f8fafc;border-radius:8px 8px 0 0;}
+.cp-pane-h span{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);}
+.cp-pane-h .c{background:#e2e8f0;color:var(--text-2);border-radius:9px;padding:0 6px;font-size:9.5px;font-weight:800;}
+.cp-list{max-height:330px;overflow-y:auto;padding:7px;display:flex;flex-direction:column;gap:4px;}
+.cp-row{display:flex;align-items:center;gap:8px;padding:6px 8px;border:1px solid transparent;border-radius:6px;
+  font-size:12px;font-weight:600;color:var(--text);background:#fff;}
+.cp-row:hover{background:var(--blue-pale);border-color:var(--blue-light);}
+.cp-row.sel{cursor:grab;}
+.cp-row.sel.drag{opacity:.4;border-style:dashed;border-color:var(--blue);}
+.cp-row.over{background:var(--blue-pale);border-color:var(--blue);box-shadow:inset 0 2px 0 0 var(--blue);}
+.cp-row .grip{color:#cbd5e1;font-size:12px;letter-spacing:-1px;cursor:grab;}
+.cp-row .lbl{flex:1;}
+.cp-row .idx{font-size:9.5px;font-weight:800;color:var(--text-3);min-width:16px;font-variant-numeric:tabular-nums;}
+.cp-row .lk{font-size:9px;font-weight:800;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;}
+.cp-ib{width:22px;height:22px;border:1px solid var(--border);border-radius:5px;background:#fff;cursor:pointer;
+  font-size:11px;line-height:1;color:var(--text-2);font-family:inherit;display:flex;align-items:center;justify-content:center;}
+.cp-ib:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-pale);}
+.cp-ib:disabled{opacity:.3;cursor:not-allowed;}
+.cp-empty{padding:30px 12px;text-align:center;font-size:11.5px;color:var(--text-3);}
+.btn-p{height:32px;padding:0 16px;border:none;border-radius:6px;background:var(--navy);color:#fff;
+  font-family:inherit;font-size:12px;font-weight:700;cursor:pointer;}
+.btn-p:hover{background:var(--navy-dark);}
+.btn-s{height:32px;padding:0 14px;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--text-2);
+  font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;}
+.btn-s:hover{background:var(--bg);border-color:var(--blue);color:var(--blue);}
+.btn-l{border:none;background:none;font-family:inherit;font-size:11.5px;font-weight:600;color:var(--blue);cursor:pointer;padding:0;}
+.btn-l:hover{text-decoration:underline;}
+
+/* ── schedule dialog ── */
+.frm{display:grid;grid-template-columns:1fr 1fr;gap:13px;margin-bottom:13px;}
+.fld{display:flex;flex-direction:column;gap:5px;}
+.fld.full{margin-bottom:12px;}
+.fld>span{font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);}
+.fld>span em{font-style:normal;font-weight:600;text-transform:none;letter-spacing:0;color:var(--text-3);margin-left:5px;}
+.fld select,.fld input{height:34px;border:1px solid var(--border);border-radius:6px;background:#fff;
+  font-family:inherit;font-size:12.5px;font-weight:600;color:var(--text);padding:0 9px;width:100%;}
+.fld select:focus,.fld input:focus{outline:none;border-color:var(--blue);}
+.fld input.err{border-color:var(--high);background:var(--high-bg);}
+.chk{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--text-2);cursor:pointer;}
+.chk input{accent-color:var(--blue);cursor:pointer;}
+.sch-state{margin-top:12px;padding:10px 12px;border:1px dashed var(--border);border-radius:7px;background:#f8fafc;
+  font-size:11px;color:var(--text-2);line-height:1.6;}
+.sch-state b{color:var(--text);font-weight:800;}
+.sch-cols{margin-top:14px;border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.sch-cols-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;
+  background:#f8fafc;border-bottom:1px solid var(--border);font-size:10px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);}
+.sch-cols-h b{font-weight:700;text-transform:none;letter-spacing:0;color:var(--text-3);}
+.sch-cols-list{max-height:170px;overflow-y:auto;padding:9px 12px;display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;}
+.sch-cols-list .chk{font-size:11.5px;font-weight:600;}
+.sch-list{margin-top:14px;border-top:1px solid var(--border);padding-top:12px;}
+.sch-list h4{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);margin-bottom:8px;}
+.sch-item{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 11px;border:1px solid var(--border);
+  border-radius:7px;margin-bottom:6px;background:#fff;}
+.sch-item .t{font-size:12px;font-weight:700;color:var(--text);}
+.sch-item .d{font-size:10.5px;color:var(--text-3);font-weight:600;margin-top:2px;}
+.sch-item .rm{border:none;background:none;color:var(--text-3);cursor:pointer;font-size:15px;line-height:1;font-family:inherit;}
+.sch-item .rm:hover{color:var(--high);}
+
+.mtx td{text-align:center;font-weight:700;font-size:12px;font-variant-numeric:tabular-nums;border:1px solid #eef2f7;}
+.mtx td.diag{background:#f1f5f9;color:var(--text-2);font-weight:800;}
+.mtx td.esc{background:var(--high-bg);color:var(--high);font-weight:800;}
+.mtx td.des{background:var(--low-bg);color:var(--low);font-weight:800;}
+.mtx td.zero{color:#cbd5e1;font-weight:500;}
+.mtx td.rowlbl{text-align:left;background:#f8fafc;font-weight:800;font-size:11px;white-space:nowrap;}
+
+.prog-row{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.prog-label{width:140px;font-size:11px;font-weight:600;color:var(--text-2);flex-shrink:0;}
+.prog-track{flex:1;height:9px;background:#eef2f7;border-radius:5px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:5px;}
+.prog-val{width:60px;text-align:right;font-size:11.5px;font-weight:800;flex-shrink:0;font-variant-numeric:tabular-nums;}
+
+.rank{width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;background:#f1f5f9;color:var(--text-2);}
+.rank.r1{background:#fef3c7;color:#b45309;} .rank.r2{background:#e2e8f0;color:#475569;} .rank.r3{background:#fed7aa;color:#c2410c;}
+
+.hub-cat{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--text-2);margin:24px 0 12px;display:flex;align-items:center;gap:10px;}
+.hub-cat::after{content:'';flex:1;height:1px;background:var(--border);}
+.hub-cat .cnt{background:var(--bg);border:1px solid var(--border);color:var(--text-3);border-radius:10px;padding:1px 8px;font-size:9.5px;}
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:15px;}
+.hub-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:17px 18px;cursor:pointer;transition:.18s;box-shadow:var(--shadow);position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.hub-card:hover{box-shadow:var(--shadow-md);transform:translateY(-2px);border-color:var(--blue);}
+.hub-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;}
+.c-critical::before{background:var(--critical);} .c-high::before{background:var(--high);}
+.c-medium::before{background:var(--medium);}     .c-low::before{background:var(--low);}
+.c-blue::before{background:var(--blue);}         .c-navy::before{background:var(--navy);}
+.c-teal::before{background:var(--teal);}
+.hub-top{display:flex;align-items:center;gap:10px;margin-bottom:9px;}
+.hub-ico{width:31px;height:31px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;}
+.hub-num{font-size:9.5px;font-weight:800;color:var(--text-3);letter-spacing:.06em;}
+.hub-title{font-size:13.5px;font-weight:700;color:var(--navy);line-height:1.3;}
+.hub-desc{font-size:11.5px;color:var(--text-2);line-height:1.55;flex:1;}
+.hub-footer{display:flex;align-items:center;justify-content:space-between;margin-top:13px;padding-top:11px;border-top:1px solid var(--border);gap:8px;}
+.hub-meta{font-size:10px;color:var(--text-3);font-weight:600;}
+.hub-arrow{color:var(--blue);font-size:13px;font-weight:800;}
+
+.insight{display:flex;gap:11px;padding:12px 15px;border-radius:8px;background:var(--blue-pale);border:1px solid #bfdbfe;margin-bottom:16px;align-items:flex-start;}
+.insight.warn{background:var(--medium-bg);border-color:var(--medium-border);}
+.insight.bad{background:var(--high-bg);border-color:var(--high-border);}
+.insight-ico{font-size:15px;line-height:1.3;flex-shrink:0;}
+.insight-txt{font-size:11.5px;line-height:1.65;color:var(--text);}
+.insight-txt strong{font-weight:800;}
+
+.stat-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #eef2f7;font-size:12px;}
+.stat-row:last-child{border-bottom:none;}
+.stat-k{color:var(--text-2);}
+.stat-v{font-weight:800;font-variant-numeric:tabular-nums;}
+
+.pagination{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:1px solid var(--border);}
+.pg-info{font-size:11px;color:var(--text-2);}
+.pg-btns{display:flex;gap:3px;}
+.pg-btn{min-width:26px;height:26px;border-radius:5px;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;color:var(--text);padding:0 6px;font-family:inherit;}
+.pg-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+#toast{display:none;position:fixed;bottom:22px;right:22px;background:var(--navy);color:#fff;padding:11px 18px;border-radius:8px;font-size:12px;font-weight:500;box-shadow:var(--shadow-md);z-index:999;animation:fadeIn .2s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+ <div class="nav-logo">Clari5 <span>AML</span></div>
+ <div class="nav-search">
+  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+  Search Genie
+ </div>
+ <div class="nav-icons">
+  <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+  <div style="display:flex;align-items:center;gap:7px;">
+   <div class="avatar">S<div class="nav-dot"></div></div>
+   <div class="user-info"><strong>superuser1</strong><span>Chief Risk Officer</span></div>
+  </div>
+ </div>
+</nav>
+
+<div class="app-body">
+ <aside class="sidebar">
+  <button class="sidebar-hub-btn" onclick="showPage('hub')">
+   <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+   Risk MIS Reports Hub
+  </button>
+  <div id="sidebarNav"></div>
+ </aside>
+
+ <div class="main">
+  <div class="page" id="page-hub">
+   <div style="padding:24px 0 0;">
+    <div style="font-size:21px;font-weight:800;color:var(--navy);letter-spacing:-.3px;">Risk MIS Reports</div>
+    <div style="font-size:12.5px;color:var(--text-2);margin-top:5px;max-width:730px;line-height:1.6;">
+     Board- and regulator-ready management information on customer risk — portfolio composition, rating migration,
+     concentration and review governance. Every report is drill-down enabled, parameterised and schedulable.
+    </div>
+    <div id="hubBody"></div>
+   </div>
+  </div>
+  <div id="pages"></div>
+ </div>
+</div>
+
+<div id="toast"></div>
+
+<!-- ══════════ COLUMNS & ORDER PICKER (shared by every report) ══════════ -->
+<div class="ovl" id="cpOvl" onclick="if(event.target===this)closeCols()">
+  <div class="mdl">
+    <div class="mdl-head">
+      <div><h3>Columns &amp; Order</h3><p id="cpSub"></p></div>
+      <button class="mdl-x" onclick="closeCols()">×</button>
+    </div>
+    <div class="mdl-body">
+      <div class="cp-grid">
+        <div class="cp-pane">
+          <div class="cp-pane-h"><span>Available columns</span><span class="c" id="cpAvailC">0</span></div>
+          <div class="cp-list" id="cpAvail"></div>
+        </div>
+        <div class="cp-pane">
+          <div class="cp-pane-h"><span>Shown — in this order</span><span class="c" id="cpSelC">0</span></div>
+          <div class="cp-list" id="cpSel"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mdl-foot">
+      <div style="display:flex;gap:14px;align-items:center;">
+        <button class="btn-l" onclick="cpSelectAll()">Select all</button>
+        <button class="btn-l" onclick="cpDefaults()">Restore defaults</button>
+      </div>
+      <div style="display:flex;gap:9px;">
+        <button class="btn-s" onclick="closeCols()">Cancel</button>
+        <button class="btn-p" onclick="cpApply()">Apply</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ SCHEDULE REPORT (shared by every report) ══════════ -->
+<div class="ovl" id="schOvl" onclick="if(event.target===this)closeSched()">
+  <div class="mdl" style="width:600px">
+    <div class="mdl-head">
+      <div><h3>Schedule Report</h3><p id="schSub"></p></div>
+      <button class="mdl-x" onclick="closeSched()">×</button>
+    </div>
+    <div class="mdl-body">
+      <div class="frm">
+        <label class="fld"><span>Frequency</span>
+          <select id="schFreq" onchange="schFreqChanged()">
+            <option value="Daily">Daily</option>
+            <option value="Weekly" selected>Weekly</option>
+            <option value="Monthly">Monthly</option>
+            <option value="Quarterly">Quarterly</option>
+            <option value="Half-yearly">Half-yearly</option>
+            <option value="Yearly">Yearly</option>
+          </select></label>
+        <label class="fld" id="schOnWrap"><span id="schOnLbl">On</span>
+          <select id="schOn"></select></label>
+        <label class="fld"><span>Time (local)</span>
+          <input type="time" id="schTime" value="08:00"></label>
+        <label class="fld"><span>Format</span>
+          <select id="schFmt">
+            <option>PDF</option><option>Excel</option><option>Word</option><option>CSV</option>
+          </select></label>
+      </div>
+      <label class="fld full"><span>Recipients <em>comma-separated email addresses</em></span>
+        <input type="text" id="schTo" placeholder="risk.committee@bank.com, mlro@bank.com"></label>
+      <label class="chk"><input type="checkbox" id="schKeep" checked onchange="renderSchState()">
+        Apply the filters currently set on this report</label>
+      <div id="schState" class="sch-state"></div>
+
+      <div class="sch-cols" id="schColsWrap">
+        <div class="sch-cols-h">
+          <span>Columns to include <b id="schColsCount"></b></span>
+          <span style="display:flex;gap:12px;">
+            <button class="btn-l" onclick="schColsAll()">Select all</button>
+            <button class="btn-l" onclick="schColsCurrent()">Match current view</button>
+            <button class="btn-l" onclick="schColsNone()">Clear</button>
+          </span>
+        </div>
+        <div class="sch-cols-list" id="schCols"></div>
+      </div>
+
+      <div id="schList"></div>
+    </div>
+    <div class="mdl-foot">
+      <span style="font-size:11px;color:var(--text-3);font-weight:600;" id="schSummary"></span>
+      <div style="display:flex;gap:9px;">
+        <button class="btn-s" onclick="closeSched()">Cancel</button>
+        <button class="btn-p" onclick="schCreate()">Schedule report</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── report is always generated as on the current date ── */
+const _MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const _NOW = new Date();
+const TODAY_LONG  = `${String(_NOW.getDate()).padStart(2,'0')} ${_MON[_NOW.getMonth()]} ${_NOW.getFullYear()}`;
+const TODAY_ISO   = `${_NOW.getFullYear()}-${String(_NOW.getMonth()+1).padStart(2,'0')}-${String(_NOW.getDate()).padStart(2,'0')}`;
+const TODAY_STAMP = `${TODAY_LONG}, ${String(_NOW.getHours()).padStart(2,'0')}:${String(_NOW.getMinutes()).padStart(2,'0')}`;
+/* the comparison point: the previous quarterly review cycle, clamped to a valid day of that month */
+const _PRIOR = (()=>{
+  const y=_NOW.getFullYear(), m=_NOW.getMonth()-3, d=_NOW.getDate();
+  const lastDay = new Date(y, m+1, 0).getDate();
+  return new Date(y, m, Math.min(d, lastDay));
+})();
+const PRIOR_LONG = `${String(_PRIOR.getDate()).padStart(2,'0')} ${_MON[_PRIOR.getMonth()]} ${_PRIOR.getFullYear()}`;
+
+/* ═══════════════════════ REPORT CATALOGUE ═══════════════════════ */
+const CATS = [
+  { name:'Portfolio & Executive',  note:'Where the book stands, and where risk is clustered' },
+  { name:'Register & Governance',  note:'Who needs action — and proof of control' },
+];
+
+const REPORTS = [
+  { id:'r1', num:'01', cat:'Portfolio & Executive', accent:'navy', ico:'📊', icoBg:'#eef2ff', icoFg:'#4f46e5',
+    title:'Executive Risk Summary',
+    desc:'Single-page board pack — portfolio risk composition, 12-month trend, top movers and the concentration headlines.',
+    meta:'4,812 customers · Board pack',
+  },
+
+  { id:'r3', num:'02', cat:'Portfolio & Executive', accent:'high', ico:'🔀', icoBg:'#fef2f2', icoFg:'#dc2626',
+    title:'Risk Rating Migration Matrix',
+    asOn:`as on ${TODAY_LONG}, compared against ${PRIOR_LONG}`,
+    desc:`Every customer\u2019s risk category as on ${TODAY_LONG} (current) set against their category as on ${PRIOR_LONG} (previous review cycle), with escalation and de-escalation rates for the period between the two dates.`,
+    meta:'386 migrations · 5.2% escalation', badge:'386',
+  },
+
+  { id:'r4', num:'03', cat:'Portfolio & Executive', accent:'critical', ico:'🔥', icoBg:'#f5f3ff', icoFg:'#7c3aed',
+    title:'Risk Concentration Analysis',
+    desc:'Heatmap of high-risk density across branch × segment, surfacing pockets where exposure is disproportionately clustered.',
+    meta:'Peak cell 21.4% high-risk',
+  },
+
+  { id:'r9', num:'04', cat:'Register & Governance', accent:'critical', ico:'📕', icoBg:'#f5f3ff', icoFg:'#7c3aed',
+    title:'High-Risk Customer Register',
+    desc:'Register of High and Critical rated customers — risk score, the date they were categorised, and what is driving the score.',
+    meta:'475 customers · 127 Critical', badge:'475',
+  },
+
+  { id:'r11', num:'05', cat:'Register & Governance', accent:'medium', ico:'🗓️', icoBg:'#fffbeb', icoFg:'#d97706',
+    title:'Periodic Review Compliance',
+    desc:'Risk-based review cadence tracking — due, completed, overdue and breach ageing by risk category against policy SLA.',
+    meta:'812 due · 88 overdue', badge:'88',
+  },
+
+  { id:'r12', num:'06', cat:'Register & Governance', accent:'low', ico:'🛡️', icoBg:'#f0fdf4', icoFg:'#16a34a',
+    title:'Risk Override Governance Audit',
+    desc:'Every manual deviation from the model — maker, checker, justification, direction and post-override outcome.',
+    meta:'34 overrides · 6 pending', badge:'6',
+  },
+
+];
+
+/* ═══════════════════════ helpers ═══════════════════════ */
+const COL = {Critical:'#7c3aed',High:'#dc2626',Medium:'#d97706',Low:'#16a34a'};
+
+const cls = c => c.toLowerCase();
+const gradeOf = s => s>=80?'Critical':s>=60?'High':s>=40?'Medium':'Low';
+const nf = n => n.toLocaleString();
+function scoreCell(s){
+  const g = gradeOf(s);
+  return `<span class="sc"><span class="sc-num" style="color:${COL[g]}">${s}</span>
+    <span class="sc-track"><span class="sc-fill" style="width:${s}%;background:${COL[g]}"></span></span></span>`;
+}
+const rbadge = g => `<span class="rb ${cls(g)}">${g}</span>`;
+function dchip(v, goodIsDown=true){
+  if(v===0) return `<span class="delta flat">→ 0</span>`;
+  const up = v>0, good = goodIsDown ? !up : up;
+  return `<span class="delta ${good?'gup':'gdown'}">${up?'↑':'↓'} ${Math.abs(v)}</span>`;
+}
+function showToast(m){
+  const t=document.getElementById('toast'); t.textContent=m; t.style.display='block';
+  clearTimeout(window.__tt); window.__tt=setTimeout(()=>t.style.display='none',2400);
+}
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id)?.classList.add('active');
+  document.querySelectorAll('.sidebar-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('nav-'+id)?.classList.add('active');
+  window.scrollTo({top:0});
+}
+function kpis(cols, items){
+  return `<div class="kpi-grid" style="grid-template-columns:repeat(${cols},1fr)">` +
+    items.map(([lbl,val,sub,accent])=>`<div class="kpi-card k-${accent}">
+      <div class="kpi-lbl">${lbl}</div><div class="kpi-val">${val}</div><div class="kpi-sub">${sub}</div></div>`).join('') +
+    `</div>`;
+}
+function table(head, rows, opts={}){
+  return `<div class="card">
+    <div class="card-head"><div class="card-title">${opts.title||''} ${opts.badge?`<span class="tbl-badge">${opts.badge}</span>`:''}
+      ${opts.sub?`<small>${opts.sub}</small>`:''}</div>${opts.right||''}</div>
+    <div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table></div>
+    ${opts.pager?`<div class="pagination"><div class="pg-info">${opts.pager}</div>
+      <div class="pg-btns"><button class="pg-btn active">1</button><button class="pg-btn">2</button><button class="pg-btn">›</button></div></div>`:''}
+  </div>`;
+}
+/* ── chart axis captions ── every chart states what its axes and marks mean ── */
+function axisNote(txt){ return `<div class="chart-note">${txt}</div>`; }
+
+/* inline SVG line chart — opts.yTitle / opts.xTitle name the axes, opts.yUnit suffixes tick values */
+function lineChart(series, labels, opts={}){
+  const yTitle = opts.yTitle||'', xTitle = opts.xTitle||'', unit = opts.yUnit||'';
+  const W=opts.w||620, H=opts.h||170;
+  const PL = yTitle ? 54 : 34, PR=10, PT=12, PB = xTitle ? 40 : 24;
+  const all = series.flatMap(s=>s.data);
+  const max = opts.max ?? Math.ceil(Math.max(...all)*1.15), min = opts.min ?? 0;
+  const x = i => PL + i*(W-PL-PR)/(labels.length-1);
+  const y = v => PT + (H-PT-PB)*(1-(v-min)/(max-min));
+  const grid = [0,.25,.5,.75,1].map(t=>{
+    const yy = PT+(H-PT-PB)*t, val = Math.round(max-(max-min)*t);
+    return `<line x1="${PL}" y1="${yy}" x2="${W-PR}" y2="${yy}" stroke="#eef2f7"/>
+            <text x="${PL-6}" y="${yy+3}" text-anchor="end" font-size="9" fill="#94a3b8">${val}${unit}</text>`;
+  }).join('');
+  // axis lines
+  const axes = `<line x1="${PL}" y1="${PT}" x2="${PL}" y2="${H-PB}" stroke="#cbd5e1"/>
+                <line x1="${PL}" y1="${H-PB}" x2="${W-PR}" y2="${H-PB}" stroke="#cbd5e1"/>`;
+  const lines = series.map(s=>{
+    const pts = s.data.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
+    const dots = s.data.map((v,i)=>`<circle cx="${x(i)}" cy="${y(v)}" r="3" fill="#fff" stroke="${s.color}" stroke-width="2"/>`).join('');
+    return `<polyline points="${pts}" fill="none" stroke="${s.color}" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>${dots}`;
+  }).join('');
+  const xl = labels.map((l,i)=>`<text x="${x(i)}" y="${H-PB+13}" text-anchor="middle" font-size="9" fill="#94a3b8">${l}</text>`).join('');
+  const yAxisTitle = yTitle ? `<text transform="rotate(-90 12 ${(PT+H-PB)/2})" x="12" y="${(PT+H-PB)/2}"
+      text-anchor="middle" font-size="9.5" font-weight="700" fill="#64748b">${yTitle}</text>` : '';
+  const xAxisTitle = xTitle ? `<text x="${PL+(W-PL-PR)/2}" y="${H-4}" text-anchor="middle"
+      font-size="9.5" font-weight="700" fill="#64748b">${xTitle}</text>` : '';
+  return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:${H}px">${grid}${axes}${lines}${xl}${yAxisTitle}${xAxisTitle}</svg>`;
+}
+/* inline SVG donut */
+function donut(segs, opts={}){
+  const S=opts.size||150, r=S/2-6, cx=S/2, cy=S/2, C=2*Math.PI*r, sw=opts.sw||20;
+  const total = segs.reduce((s,x)=>s+x.v,0);
+  let off=0;
+  const arcs = segs.map(s=>{
+    const len = s.v/total*C;
+    const el = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.c}" stroke-width="${sw}"
+      stroke-dasharray="${len} ${C-len}" stroke-dashoffset="${-off}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    off += len; return el;
+  }).join('');
+  return `<svg viewBox="0 0 ${S} ${S}" style="width:${S}px;height:${S}px">${arcs}
+    <text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="19" font-weight="800" fill="#1e293b">${opts.center||total}</text>
+    <text x="${cx}" y="${cy+13}" text-anchor="middle" font-size="8.5" font-weight="700" fill="#94a3b8">${opts.sub||''}</text></svg>`;
+}
+/* vertical column chart with named axes — used for banded distributions */
+function columns(rows, opts={}){
+  const max = Math.max(...rows.map(r=>r.v));
+  const h = opts.h||210;
+  return `<div class="col-chart">
+    <div class="col-y">${opts.yTitle||''}</div>
+    <div class="col-plot" style="height:${h}px">
+      ${rows.map(r=>`<div class="col-item" title="${esc(r.label)} — ${nf(r.v)} ${opts.unit||''}">
+        <div class="col-v" style="color:${r.c}">${nf(r.v)}</div>
+        <div class="col-bar" style="height:${r.v/max*100}%;background:${r.c}"></div>
+        <div class="col-x">${r.label}</div>
+      </div>`).join('')}
+    </div>
+    <div class="col-xtitle">${opts.xTitle||''}</div>
+  </div>`;
+}
+/* horizontal bar set — opts.cat names the category (y) axis, opts.val names the value (x) axis */
+function bars(rows, opts={}){
+  const body = rows.map(([label,val,max,color,disp])=>`<div class="prog-row">
+    <span class="prog-label">${label}</span>
+    <div class="prog-track"><div class="prog-fill" style="width:${val/max*100}%;background:${color}"></div></div>
+    <span class="prog-val" style="color:${color}">${disp??val}</span></div>`).join('');
+  if(!opts.val && !opts.cat) return body;
+  const scaleMax = rows.length ? rows[0][2] : 0;
+  return body + `<div class="bar-axis">
+    <span class="cat">${opts.cat ? 'Y axis · '+opts.cat : ''}</span>
+    <span class="scale"><i>0</i><b>X axis · ${opts.val||''}</b><i>${opts.maxLabel ?? scaleMax}</i></span>
+  </div>`;
+}
+function heatColor(v,max){
+  const t = Math.min(v/max,1);
+  if(t<.25) return '#16a34a'; if(t<.5) return '#65a30d';
+  if(t<.68) return '#d97706'; if(t<.85) return '#dc2626'; return '#7c3aed';
+}
+</script>
+<script>
+/* ═══════════════════════ SHELL RENDERING ═══════════════════════ */
+function renderSidebar(){
+  let h='';
+  CATS.forEach(c=>{
+    h += `<div class="sb-cat">${c.name}</div>`;
+    REPORTS.filter(r=>r.cat===c.name).forEach(r=>{
+      h += `<div class="sidebar-item" id="nav-${r.id}" onclick="showPage('${r.id}')">
+        <span class="item-num">${r.num}</span>${r.title}
+        ${r.badge?`<span class="item-badge">${r.badge}</span>`:''}</div>`;
+    });
+  });
+  document.getElementById('sidebarNav').innerHTML = h;
+}
+function renderHub(){
+  let h='';
+  CATS.forEach(c=>{
+    const rs = REPORTS.filter(r=>r.cat===c.name);
+    h += `<div class="hub-cat">${c.name} <span class="cnt">${rs.length}</span>
+      <span style="font-weight:500;text-transform:none;letter-spacing:0;color:var(--text-3);font-size:10.5px;">${c.note}</span></div>
+      <div class="hub-grid">` +
+      rs.map(r=>`<div class="hub-card c-${r.accent}" onclick="showPage('${r.id}')">
+        <div class="hub-top"><div class="hub-ico" style="background:${r.icoBg};color:${r.icoFg}">${r.ico}</div>
+          <div><div class="hub-num">REPORT ${r.num}</div><div class="hub-title">${r.title}</div></div></div>
+        <div class="hub-desc">${r.desc}</div>
+        <div class="hub-footer"><span class="hub-meta">${r.meta}</span><span class="hub-arrow">→</span></div>
+      </div>`).join('') + `</div>`;
+  });
+  document.getElementById('hubBody').innerHTML = h;
+}
+function buildPages(){
+  document.getElementById('pages').innerHTML = REPORTS.map(r=>`
+    <div class="page" id="page-${r.id}">
+      <div class="page-header">
+        <div><div class="page-title">${r.title} <span style="font-weight:600;color:var(--text-2);font-size:14px;">— ${r.asOn || `as on ${TODAY_LONG}`}</span></div>
+          <div class="page-sub">${r.desc}</div></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+          <div class="breadcrumb">Risk MIS <span>/ ${r.title}</span></div>
+          <div class="export-bar">
+            <button class="export-btn" onclick="exportReport('${r.id}','PDF')" title="Print / save as PDF — the report exactly as shown">PDF</button>
+            <button class="export-btn" onclick="exportReport('${r.id}','Excel')" title="Download as an Excel workbook">Excel</button>
+            <button class="export-btn" onclick="exportReport('${r.id}','Word')" title="Download as a Word document">Word</button>
+            <button class="export-btn sched" onclick="openSched('${r.id}')">🗓 Schedule</button>
+          </div></div></div>
+      ${(BODIES[r.id]||(()=>''))()}
+    </div>`).join('');
+}
+
+/* ═══════════════════════ SHARED DATA ═══════════════════════ */
+const BRANCHES = ['Lagos Island','Abuja Central','Kano Branch','Port Harcourt','Ikeja','Kaduna','Enugu','Warri'];
+const SEGMENTS = ['Retail','SME','Corporate','HNI','Private Banking'];
+const MONTHS12 = ['May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan','Feb','Mar','Apr'];
+
+const BODIES = {};
+
+/* ════════════════════════════════════════════════════════════════════════
+   FILTER + COLUMN/ORDER ENGINE — shared by every report
+   RSPEC[rid]  declarative spec: { title, filterNote, filters:[…], cols:[…] }
+   RSTATE[rid] live user state:  { f:{key → Set|number|null}, cols:[key,…] }
+   RENDER[rid] repaints only that report's data area (never the filter bar,
+               so an open multi-select popover survives every selection)
+   ════════════════════════════════════════════════════════════════════════ */
+const RSPEC = {}, RSTATE = {}, RENDER = {};
+const esc = v => String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+
+function defineReport(rid, spec){
+  RSPEC[rid]  = spec;
+  RSTATE[rid] = { f:{}, cols: spec.cols.filter(c=>c.def!==false).map(c=>c.key) };
+  (spec.filters||[]).forEach(f => {
+    RSTATE[rid].f[f.key] = f.type==='num'    ? null
+                         : f.type==='select' ? (f.value ?? f.options[0])
+                         : new Set();
+  });
+}
+const fval = (rid,key) => RSTATE[rid].f[key];          // single-select value
+/* ── predicates used inside each report's row filter ── */
+function fpass(rid,key,v){                    // multi-select: empty = All
+  const s = RSTATE[rid].f[key];
+  if(!(s instanceof Set) || s.size===0) return true;
+  return Array.isArray(v) ? v.some(x=>s.has(x)) : s.has(v);
+}
+function fmin(rid,key,v){ const n = RSTATE[rid].f[key]; return n==null || v>=n; }
+
+/* ── filter controls ── */
+function msfLabel(rid,f){
+  const s = RSTATE[rid].f[f.key];
+  if(s.size===0) return `<span>${f.all}</span><span class="cv">▾</span>`;
+  if(s.size===1) return `<span>${[...s][0]}</span><span class="cv">▾</span>`;
+  return `<span>${s.size} selected</span><span class="cnt">${s.size}</span><span class="cv">▾</span>`;
+}
+function msfControl(rid,f){
+  if(f.type==='num'){
+    return `<div class="msf"><span class="msf-lbl">${f.label}</span>
+      <input class="msf-num" type="number" id="${rid}-num-${f.key}" placeholder="${f.ph||'Any'}"
+        value="${RSTATE[rid].f[f.key] ?? ''}" oninput="fNum('${rid}','${f.key}',this.value)"></div>`;
+  }
+  if(f.type==='select'){
+    const cur = RSTATE[rid].f[f.key];
+    return `<div class="msf"><span class="msf-lbl">${f.label}</span>
+      <select class="msf-sel" id="${rid}-sel-${f.key}" onchange="fSelect('${rid}','${f.key}',this.value)">
+        ${f.options.map(o=>`<option value="${esc(o)}" ${o===cur?'selected':''}>${f.optLabel?f.optLabel(o):o}</option>`).join('')}
+      </select></div>`;
+  }
+  const s = RSTATE[rid].f[f.key];
+  return `<div class="msf">
+    <span class="msf-lbl">${f.label}</span>
+    <button class="msf-btn" id="${rid}-mb-${f.key}" onclick="msfToggle(event,this)">${msfLabel(rid,f)}</button>
+    <div class="msf-pop" id="${rid}-mp-${f.key}">
+      <label class="all"><input type="checkbox" class="cb-all" ${s.size===0?'checked':''}
+        onchange="msfAll('${rid}','${f.key}')"> ${f.all}</label>
+      ${f.options.map(o=>`<label><input type="checkbox" data-v="${esc(o)}" ${s.has(o)?'checked':''}
+        onchange="msfPick('${rid}','${f.key}',this.dataset.v,this.checked)"> ${o}</label>`).join('')}
+    </div></div>`;
+}
+function msfToggle(e,btn){
+  e.stopPropagation();
+  const pop = btn.nextElementSibling, wasOpen = pop.classList.contains('open');
+  document.querySelectorAll('.msf-pop.open').forEach(p=>p.classList.remove('open'));
+  if(!wasOpen) pop.classList.add('open');
+}
+function msfPick(rid,key,val,checked){
+  const s = RSTATE[rid].f[key];
+  if(checked) s.add(val); else s.delete(val);
+  syncControl(rid,key); paint(rid);              // popover stays open — true multi-select
+}
+function msfAll(rid,key){
+  RSTATE[rid].f[key].clear();
+  const pop = document.getElementById(`${rid}-mp-${key}`);
+  if(pop) pop.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.checked = cb.classList.contains('cb-all'));
+  syncControl(rid,key); paint(rid);
+}
+function fNum(rid,key,raw){
+  const n = raw==='' ? null : Number(raw);
+  RSTATE[rid].f[key] = (n===null || Number.isNaN(n)) ? null : n;
+  paint(rid);
+}
+function fSelect(rid,key,val){ RSTATE[rid].f[key] = val; paint(rid); }
+function fDefault(rid,f){ return f.type==='select' ? (f.value ?? f.options[0]) : null; }
+function fClearOne(rid,key,val){
+  const f = (RSPEC[rid].filters||[]).find(x=>x.key===key);
+  const s = RSTATE[rid].f[key];
+  if(s instanceof Set){
+    s.delete(val);
+    const pop = document.getElementById(`${rid}-mp-${key}`);
+    if(pop) pop.querySelectorAll('input[type=checkbox]').forEach(cb=>{
+      if(cb.classList.contains('cb-all')) cb.checked = s.size===0;
+      else if(cb.dataset.v===val) cb.checked = false;
+    });
+    syncControl(rid,key);
+  } else if(f && f.type==='select'){
+    RSTATE[rid].f[key] = fDefault(rid,f);
+    const sel = document.getElementById(`${rid}-sel-${key}`); if(sel) sel.value = RSTATE[rid].f[key];
+  } else {
+    RSTATE[rid].f[key] = null;
+    const i = document.getElementById(`${rid}-num-${key}`); if(i) i.value='';
+  }
+  paint(rid);
+}
+function fReset(rid){
+  (RSPEC[rid].filters||[]).forEach(f=>{
+    if(RSTATE[rid].f[f.key] instanceof Set) RSTATE[rid].f[f.key].clear();
+    else RSTATE[rid].f[f.key] = fDefault(rid,f);
+  });
+  const host = document.getElementById(`${rid}-fbar`);
+  if(host) host.innerHTML = filterControlsHtml(rid);
+  paint(rid);
+}
+function syncControl(rid,key){
+  const f = (RSPEC[rid].filters||[]).find(x=>x.key===key);
+  const btn = document.getElementById(`${rid}-mb-${key}`);
+  if(btn && f) btn.innerHTML = msfLabel(rid,f);
+}
+function filterControlsHtml(rid){
+  return (RSPEC[rid].filters||[]).map(f=>msfControl(rid,f)).join('') +
+    `<button class="msf-reset" onclick="fReset('${rid}')">↺ Clear filters</button>
+     <span class="msf-note" id="${rid}-fnote"></span>`;
+}
+/* the filter + column bar. Rendered ONCE per report; only the body repaints. */
+function filterCard(rid){
+  const s = RSPEC[rid];
+  return `<div class="card card-filters">
+    <div class="card-head">
+      <div class="card-title">⚙ Filters <small>${s.filterNote||'narrow this report'}</small></div>
+      <button class="col-btn" onclick="openCols('${rid}')">▦ Columns &amp; Order <span class="n" id="${rid}-cn">–</span></button>
+    </div>
+    <div class="card-pad"><div class="msf-bar" id="${rid}-fbar">${filterControlsHtml(rid)}</div></div>
+    <div class="fchip-bar" id="${rid}-chips" style="display:none"></div>
+  </div>
+  <div id="${rid}-body"></div>`;
+}
+/* active-filter chips + result note + column count — called by every RENDER fn */
+function paintChrome(rid, noteText){
+  const note = document.getElementById(`${rid}-fnote`);
+  if(note) note.textContent = noteText||'';
+  const cn = document.getElementById(`${rid}-cn`);
+  if(cn) cn.textContent = RSTATE[rid].cols.length;
+  const bar = document.getElementById(`${rid}-chips`);
+  if(!bar) return;
+  const chips = [];
+  (RSPEC[rid].filters||[]).forEach(f=>{
+    const v = RSTATE[rid].f[f.key];
+    if(v instanceof Set) v.forEach(x=>chips.push([f,x,x]));
+    else if(f.type==='select'){ if(v!==fDefault(rid,f)) chips.push([f,v,f.optLabel?f.optLabel(v):v]); }
+    else if(v!=null) chips.push([f,v,`≥ ${v}`]);
+  });
+  if(!chips.length){ bar.style.display='none'; bar.innerHTML=''; return; }
+  bar.style.display = 'flex';
+  bar.innerHTML = `<span class="lead">Active filters</span>` +
+    chips.map(([f,raw,disp])=>`<span class="afchip">${f.label} <b>${disp}</b>
+      <button class="x" title="Remove" onclick="fClearOne('${rid}','${f.key}','${esc(raw)}')">×</button></span>`).join('') +
+    `<button class="btn-l" style="margin-left:5px" onclick="fReset('${rid}')">Clear all</button>`;
+}
+/* apply a report's Top-N selection to an already-sorted row set */
+function topN(rid, rows){
+  const n = fval(rid,'topN');
+  return (!n || n==='All') ? rows : rows.slice(0, Number(n));
+}
+function paint(rid){ (RENDER[rid]||(()=>{}))(); }
+function paintAll(){ Object.keys(RENDER).forEach(paint); }
+
+/* ── column-driven table ── */
+function activeCols(rid){
+  const spec = RSPEC[rid].cols;
+  return RSTATE[rid].cols.map(k=>spec.find(c=>c.key===k)).filter(Boolean);
+}
+function specTable(rid, rows, opts={}){
+  const cs = activeCols(rid);
+  if(!cs.length) return `<div class="card"><div class="cp-empty" style="padding:46px">
+    Every column is hidden — open <strong>▦ Columns &amp; Order</strong> to bring some back.</div></div>`;
+  const head = cs.map(c=>`<th class="${c.num?'num':''}">${c.label}</th>`).join('');
+  let body = rows.length
+    ? rows.map((r,i)=>`<tr>${cs.map(c=>`<td class="${c.num?'num':''}">${c.render(r,i)}</td>`).join('')}</tr>`).join('')
+    : `<tr><td colspan="${cs.length}" style="padding:42px;text-align:center;color:var(--text-3);font-size:12.5px;">
+        No rows match the current filters. Clear a filter to continue.</td></tr>`;
+  if(opts.foot && rows.length){
+    body += `<tr class="tfoot">${cs.map((c,i)=>`<td class="${c.num?'num':''}">${
+      i===0 ? (opts.footLabel||'Total') : (opts.foot[c.key] ?? '')}</td>`).join('')}</tr>`;
+  }
+  return table(head, body, opts);
+}
+
+/* ── columns & order picker modal ── */
+let CPR=null, CPD=[], CPDRAG=null;
+function openCols(rid){
+  CPR=rid; CPD=[...RSTATE[rid].cols]; renderCP();
+  document.getElementById('cpOvl').classList.add('open');
+}
+function closeCols(){ document.getElementById('cpOvl').classList.remove('open'); }
+function renderCP(){
+  const spec  = RSPEC[CPR].cols;
+  const avail = spec.filter(c=>!CPD.includes(c.key));
+  document.getElementById('cpSub').innerHTML =
+    `<strong>${RSPEC[CPR].title}</strong> — ${CPD.length} of ${spec.length} columns shown. Drag a row, or use ↑ ↓, to set the order.`;
+  document.getElementById('cpAvailC').textContent = avail.length;
+  document.getElementById('cpSelC').textContent   = CPD.length;
+  document.getElementById('cpAvail').innerHTML = avail.length
+    ? avail.map(c=>`<div class="cp-row"><span class="lbl">${c.label}</span>
+        <button class="cp-ib" title="Add column" onclick="cpAdd('${c.key}')">+</button></div>`).join('')
+    : `<div class="cp-empty">Every available column is already selected.</div>`;
+  document.getElementById('cpSel').innerHTML = CPD.length
+    ? CPD.map((k,i)=>{
+        const c = spec.find(x=>x.key===k);
+        return `<div class="cp-row sel" draggable="true"
+          ondragstart="cpDS(${i},this)" ondragend="cpDE(this)"
+          ondragover="cpDO(event,this)" ondragleave="cpDL(this)" ondrop="cpDrop(event,${i},this)">
+          <span class="grip">⣿</span><span class="idx">${i+1}</span><span class="lbl">${c.label}</span>
+          <button class="cp-ib" title="Move up" onclick="cpMv(${i},-1)" ${i===0?'disabled':''}>↑</button>
+          <button class="cp-ib" title="Move down" onclick="cpMv(${i},1)" ${i===CPD.length-1?'disabled':''}>↓</button>
+          <button class="cp-ib" title="Remove column" onclick="cpDel('${k}')">×</button>
+        </div>`;}).join('')
+    : `<div class="cp-empty">No columns selected — add at least one from the left.</div>`;
+}
+function cpAdd(k){ if(!CPD.includes(k)) CPD.push(k); renderCP(); }
+function cpDel(k){ CPD = CPD.filter(x=>x!==k); renderCP(); }
+function cpMv(i,d){ const j=i+d; if(j<0||j>=CPD.length) return; [CPD[i],CPD[j]]=[CPD[j],CPD[i]]; renderCP(); }
+function cpDS(i,el){ CPDRAG=i; el.classList.add('drag'); }
+function cpDE(el){ el.classList.remove('drag'); }
+function cpDO(e,el){ e.preventDefault(); el.classList.add('over'); }
+function cpDL(el){ el.classList.remove('over'); }
+function cpDrop(e,i,el){
+  e.preventDefault(); el.classList.remove('over');
+  if(CPDRAG===null || CPDRAG===i){ CPDRAG=null; return; }
+  const [m] = CPD.splice(CPDRAG,1); CPD.splice(i,0,m); CPDRAG=null; renderCP();
+}
+function cpSelectAll(){ CPD = RSPEC[CPR].cols.map(c=>c.key); renderCP(); }
+function cpDefaults(){ CPD = RSPEC[CPR].cols.filter(c=>c.def!==false).map(c=>c.key); renderCP(); }
+function cpApply(){
+  RSTATE[CPR].cols = [...CPD];
+  closeCols(); paint(CPR);
+  showToast(`Column layout updated — ${CPD.length} column${CPD.length===1?'':'s'} shown.`);
+}
+/* ── schedule / export ── */
+const SCHEDULES = [];          // { rid, title, freq, on, time, fmt, to[], keep, filters, cols }
+let SCHR = null;
+const DOW = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const DOM = ['1st','5th','10th','15th','20th','25th','Last day'];
+const MONTHS_FULL = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const HALF_YEAR   = MONTHS_FULL.slice(0,6).map((m,i)=>`${m} & ${MONTHS_FULL[i+6]}`);
+/* what the "On" picker offers for each frequency */
+const SCH_ON = {
+  Daily:        null,
+  Weekly:       {label:'On day',    opts:DOW},
+  Monthly:      {label:'On date',   opts:DOM},
+  Quarterly:    {label:'On date',   opts:DOM},
+  'Half-yearly':{label:'In months', opts:HALF_YEAR},
+  Yearly:       {label:'In month',  opts:MONTHS_FULL},
+};
+let SCH_COLS = [];
+
+function reportTitle(rid){ return (REPORTS.find(r=>r.id===rid)||{}).title || 'Report'; }
+function activeFilterSummary(rid){
+  if(!RSPEC[rid]) return [];
+  const out=[];
+  (RSPEC[rid].filters||[]).forEach(f=>{
+    const v = RSTATE[rid].f[f.key];
+    if(v instanceof Set){ if(v.size) out.push(`${f.label}: ${[...v].join(', ')}`); }
+    else if(f.type==='select'){ if(v!==fDefault(rid,f)) out.push(`${f.label}: ${f.optLabel?f.optLabel(v):v}`); }
+    else if(v!=null) out.push(`${f.label} ≥ ${v}`);
+  });
+  return out;
+}
+function openSched(rid){
+  SCHR = rid;
+  document.getElementById('schSub').innerHTML =
+    `<strong>${reportTitle(rid)}</strong> — delivered automatically on the cadence you set.`;
+  document.getElementById('schTo').value = '';
+  document.getElementById('schTo').classList.remove('err');
+  document.getElementById('schKeep').checked = true;
+  SCH_COLS = RSTATE[SCHR] ? [...RSTATE[SCHR].cols] : [];
+  schFreqChanged();
+  renderSchCols(); renderSchState(); renderSchList();
+  document.getElementById('schOvl').classList.add('open');
+}
+function closeSched(){ document.getElementById('schOvl').classList.remove('open'); }
+function schFreqChanged(){
+  const freq = document.getElementById('schFreq').value;
+  const wrap = document.getElementById('schOnWrap');
+  const lbl  = document.getElementById('schOnLbl');
+  const sel  = document.getElementById('schOn');
+  const cfg  = SCH_ON[freq];
+  if(!cfg){ wrap.style.visibility='hidden'; sel.innerHTML=''; }
+  else {
+    wrap.style.visibility='visible';
+    lbl.textContent = cfg.label;
+    sel.innerHTML = cfg.opts.map(o=>`<option>${o}</option>`).join('');
+  }
+  renderSchSummary();
+}
+/* ── columns to include in the scheduled run ── */
+function renderSchCols(){
+  const spec = RSPEC[SCHR] && RSPEC[SCHR].cols;
+  const wrap = document.getElementById('schColsWrap');
+  if(!spec || !spec.length){ wrap.style.display='none'; return; }
+  wrap.style.display='block';
+  document.getElementById('schColsCount').textContent = `— ${SCH_COLS.length} of ${spec.length} selected`;
+  document.getElementById('schCols').innerHTML = spec.map(c=>{
+    const label = c.label.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+    return `<label class="chk"><input type="checkbox" ${SCH_COLS.includes(c.key)?'checked':''}
+      onchange="schColToggle('${c.key}',this.checked)"> ${label}</label>`;
+  }).join('');
+}
+function schColToggle(k,on){
+  if(on){ if(!SCH_COLS.includes(k)) SCH_COLS.push(k); }
+  else SCH_COLS = SCH_COLS.filter(x=>x!==k);
+  renderSchCols();
+}
+function schColsAll(){ SCH_COLS = RSPEC[SCHR].cols.map(c=>c.key); renderSchCols(); }
+function schColsCurrent(){ SCH_COLS = [...RSTATE[SCHR].cols]; renderSchCols(); }
+function schColsNone(){ SCH_COLS = []; renderSchCols(); }
+function schColLabels(){
+  const spec = RSPEC[SCHR] ? RSPEC[SCHR].cols : [];
+  return SCH_COLS.map(k=>(spec.find(c=>c.key===k)||{}).label||k)
+                 .map(l=>l.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim());
+}
+function renderSchState(){
+  const keep = document.getElementById('schKeep').checked;
+  const fs   = activeFilterSummary(SCHR);
+  document.getElementById('schState').innerHTML =
+    `<b>What this schedule will run:</b><br>
+     Filters — ${keep ? (fs.length ? fs.join(' · ') : 'none applied (full data set)')
+                      : 'ignored — the schedule runs against the full data set'}<br>
+     Columns — chosen below; the run uses that selection in the order you tick them.`;
+}
+function renderSchSummary(){
+  const f=document.getElementById('schFreq').value, on=document.getElementById('schOn').value,
+        t=document.getElementById('schTime').value, fmt=document.getElementById('schFmt').value;
+  document.getElementById('schSummary').textContent =
+    f==='Daily' ? `Every day at ${t} · ${fmt}` : `${f} — ${on} at ${t} · ${fmt}`;
+}
+function renderSchList(){
+  const mine = SCHEDULES.filter(s=>s.rid===SCHR);
+  document.getElementById('schList').innerHTML = mine.length ? `<div class="sch-list">
+    <h4>Existing schedules for this report (${mine.length})</h4>
+    ${mine.map(s=>`<div class="sch-item">
+      <div><div class="t">${s.freq==='Daily'?`Every day at ${s.time}`:`${s.freq} — ${s.on} at ${s.time}`} · ${s.fmt}</div>
+        <div class="d">To ${s.to.join(', ')} · ${s.filters.length ? s.filters.length+' filter(s)' : 'no filters'}
+          · ${s.cols.length} column${s.cols.length===1?'':'s'}${s.colLabels.length?` (${s.colLabels.slice(0,3).join(', ')}${s.colLabels.length>3?', +'+(s.colLabels.length-3)+' more':''})`:''}</div></div>
+      <button class="rm" title="Remove schedule" onclick="schRemove('${s.id}')">×</button>
+    </div>`).join('')}</div>` : '';
+}
+function schCreate(){
+  const to = document.getElementById('schTo');
+  const list = to.value.split(',').map(x=>x.trim()).filter(Boolean);
+  const valid = list.length && list.every(e=>/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(e));
+  if(!valid){
+    to.classList.add('err'); to.focus();
+    showToast(list.length ? 'Please check the email addresses entered.' : 'Add at least one recipient.');
+    return;
+  }
+  if(RSPEC[SCHR] && RSPEC[SCHR].cols.length && !SCH_COLS.length){
+    showToast('Select at least one column to include in the scheduled report.');
+    return;
+  }
+  to.classList.remove('err');
+  const freq=document.getElementById('schFreq').value;
+  const s = {
+    id:'S'+(SCHEDULES.length+1)+'-'+SCHR, rid:SCHR, title:reportTitle(SCHR), freq,
+    on: freq==='Daily' ? '' : document.getElementById('schOn').value,
+    time: document.getElementById('schTime').value,
+    fmt: document.getElementById('schFmt').value,
+    to: list,
+    keep: document.getElementById('schKeep').checked,
+    filters: document.getElementById('schKeep').checked ? activeFilterSummary(SCHR) : [],
+    cols: [...SCH_COLS],
+    colLabels: schColLabels(),
+  };
+  SCHEDULES.push(s);
+  to.value=''; renderSchList();
+  showToast(`Scheduled — “${s.title}” will be sent ${freq==='Daily'?`daily at ${s.time}`:`${freq.toLowerCase()} on ${s.on} at ${s.time}`} to ${list.length} recipient${list.length===1?'':'s'}.`);
+}
+function schRemove(id){
+  const i = SCHEDULES.findIndex(s=>s.id===id);
+  if(i>-1){ const s=SCHEDULES[i]; SCHEDULES.splice(i,1); renderSchList(); showToast(`Schedule removed for “${s.title}”.`); }
+}
+/* ══════════ EXPORT — PDF (print), Excel (.xls) and Word (.doc) ══════════
+   Every export is generated from the report exactly as it is on screen:
+   the filters you have applied, the columns you have chosen, in your order. */
+const EXPORT_CSS = `
+  body{font-family:Calibri,'Segoe UI',Arial,sans-serif;font-size:11pt;color:#1e293b;}
+  h1{font-size:18pt;color:#1a2d5a;margin:0 0 3pt;}
+  h2{font-size:12pt;color:#1a2d5a;margin:16pt 0 5pt;border-bottom:1pt solid #2563eb;padding-bottom:3pt;}
+  .exp-brand{font-size:9pt;font-weight:bold;color:#2563eb;letter-spacing:1pt;text-transform:uppercase;}
+  .exp-meta{font-size:10pt;color:#64748b;margin-bottom:10pt;}
+  table{border-collapse:collapse;width:100%;margin-bottom:8pt;}
+  th,td{border:0.5pt solid #cbd5e1;padding:4pt 6pt;font-size:9.5pt;text-align:left;vertical-align:top;}
+  th{background:#eff6ff;color:#1a2d5a;font-weight:bold;}
+  tr.tfoot td{background:#f1f5f9;font-weight:bold;}
+  table.exp-params th{width:130pt;background:#f8fafc;}
+`;
+const PRINT_CSS = `
+  @page{size:A4 landscape;margin:11mm;}
+  body{background:#fff!important;padding:0!important;}
+  .exp-head{margin-bottom:12px;padding-bottom:10px;border-bottom:2px solid #1a2d5a;}
+  .exp-head h1{font-size:20px;font-weight:800;color:#1a2d5a;margin:2px 0;}
+  .exp-brand{font-size:9px;font-weight:800;color:#2563eb;letter-spacing:.1em;text-transform:uppercase;}
+  .exp-meta{font-size:12px;color:#64748b;margin-bottom:8px;}
+  table.exp-params{border-collapse:collapse;margin-top:6px;}
+  table.exp-params th{text-align:left;font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:#64748b;
+    padding:2px 14px 2px 0;font-weight:800;white-space:nowrap;vertical-align:top;}
+  table.exp-params td{font-size:11px;color:#1e293b;padding:2px 0;font-weight:600;}
+  .card{break-inside:avoid;page-break-inside:avoid;box-shadow:none!important;border:1px solid #e2e8f0!important;
+    margin-bottom:11px!important;}
+  .grid-2,.grid-3,.grid-2-1{break-inside:avoid;}
+  .table-wrap{overflow:visible!important;}
+`;
+function exportHeader(rid){
+  const r  = REPORTS.find(x=>x.id===rid) || {};
+  const fs = activeFilterSummary(rid);
+  const cs = RSTATE[rid] ? activeCols(rid).map(c=>c.label) : [];
+  return `<div class="exp-head">
+    <div class="exp-brand">Clari5 AML · Risk MIS</div>
+    <h1>${r.title||'Report'}</h1>
+    <div class="exp-meta">${r.asOn || `As on ${TODAY_LONG}`}</div>
+    <table class="exp-params"><tbody>
+      <tr><th>Generated</th><td>${TODAY_STAMP}</td></tr>
+      <tr><th>Filters applied</th><td>${fs.length ? fs.join(' · ') : 'None — full data set'}</td></tr>
+      <tr><th>Columns shown</th><td>${cs.length ? cs.join(', ') : '—'}</td></tr>
+    </tbody></table></div>`;
+}
+/* drop columns that carry no text (pure bar/graphic cells) so the data export stays clean */
+function stripGraphicCols(tbl){
+  const rows = [...tbl.rows];
+  const body = tbl.tBodies[0] ? [...tbl.tBodies[0].rows] : [];
+  if(!rows.length || !body.length) return;
+  if(rows.some(r=>[...r.cells].some(c=>c.colSpan>1))) return;      // colspan rows would misalign
+  const n = rows[0].cells.length;
+  for(let c=n-1;c>=0;c--){
+    // judge emptiness on the data rows only — the header always carries a label
+    if(body.every(r=>!r.cells[c] || !r.cells[c].textContent.trim()))
+      rows.forEach(r=>{ if(r.cells[c]) r.deleteCell(c); });
+  }
+}
+/* the data view: KPI figures + every table on the report, no charts */
+function exportTables(rid){
+  const page = document.getElementById('page-'+rid);
+  const out  = [];
+  const kpi  = [...page.querySelectorAll('.kpi-card')];
+  if(kpi.length){
+    out.push(`<h2>Key figures</h2><table><thead><tr>${
+      kpi.map(k=>`<th>${k.querySelector('.kpi-lbl').textContent.trim()}</th>`).join('')}</tr></thead><tbody><tr>${
+      kpi.map(k=>`<td>${k.querySelector('.kpi-val').textContent.trim()}</td>`).join('')}</tr><tr>${
+      kpi.map(k=>`<td>${k.querySelector('.kpi-sub').textContent.trim()}</td>`).join('')}</tr></tbody></table>`);
+  }
+  page.querySelectorAll('.card').forEach(card=>{
+    if(card.classList.contains('card-filters')) return;
+    const t = card.querySelector('table'); if(!t) return;
+    const title = card.querySelector('.card-title')?.textContent.replace(/\s+/g,' ').trim() || 'Data';
+    const c = t.cloneNode(true);
+    c.querySelectorAll('button,input,select').forEach(n=>n.remove());
+    stripGraphicCols(c);
+    out.push(`<h2>${title}</h2>${c.outerHTML}`);
+  });
+  return out.join('');
+}
+/* the visual view: the report as rendered, charts included, controls stripped */
+function exportVisual(rid){
+  const c = document.getElementById('page-'+rid).cloneNode(true);
+  c.querySelectorAll('.card-filters, .page-header').forEach(n=>n.remove());
+  c.querySelectorAll('button,input,select').forEach(n=>n.remove());
+  return c.innerHTML;
+}
+function downloadBlob(blob, name){
+  const a = document.createElement('a'), url = URL.createObjectURL(blob);
+  a.href = url; a.download = name; a.style.display='none';
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); }, 500);
+}
+function fileStem(rid){
+  return (reportTitle(rid)||'report').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').toLowerCase()
+    + '-' + TODAY_ISO;
+}
+function exportReport(rid, fmt){
+  if(fmt==='PDF') return printReport(rid);
+  const isXls = fmt==='Excel';
+  const sheet = 'Report ' + ((REPORTS.find(r=>r.id===rid)||{}).num || '');
+  const doc = `<html xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:w="urn:schemas-microsoft-com:office:word"
+  xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>${reportTitle(rid)}</title>
+${isXls ? `<!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>
+  <x:Name>${sheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions>
+  </x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]-->` : ''}
+<style>${EXPORT_CSS}</style></head><body>${exportHeader(rid)}${exportTables(rid)}</body></html>`;
+  const mime = isXls ? 'application/vnd.ms-excel' : 'application/msword';
+  const name = `${fileStem(rid)}.${isXls ? 'xls' : 'doc'}`;
+  downloadBlob(new Blob(['﻿'+doc], {type:`${mime};charset=utf-8`}), name);
+  showToast(`${fmt} generated — ${name} downloaded. Opens in ${isXls?'Excel':'Word'} with the columns and filters currently set.`);
+}
+function printReport(rid){
+  const old = document.getElementById('printFrame'); if(old) old.remove();
+  const f = document.createElement('iframe');
+  f.id = 'printFrame';
+  f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden;';
+  document.body.appendChild(f);
+  const styles = [...document.querySelectorAll('style')].map(s=>s.textContent).join('\n');
+  const d = f.contentWindow.document;
+  d.open();
+  d.write(`<html><head><meta charset="utf-8"><title>${fileStem(rid)}</title>
+    <style>${styles}${PRINT_CSS}</style></head>
+    <body>${exportHeader(rid)}${exportVisual(rid)}</body></html>`);
+  d.close();
+  showToast('PDF preview opened — choose “Save as PDF” as the destination in the print dialog.');
+  setTimeout(()=>{ try{ f.contentWindow.focus(); f.contentWindow.print(); }catch(e){ showToast('Unable to open the print dialog in this browser.'); } }, 320);
+}
+
+document.addEventListener('click', ()=>{
+  document.querySelectorAll('.msf-pop.open').forEach(p=>p.classList.remove('open'));
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ closeCols(); closeSched(); } });
+document.addEventListener('change', e=>{
+  if(['schFreq','schOn','schTime','schFmt'].includes(e.target.id)) renderSchSummary();
+});
+
+/* ══════ R1 · EXECUTIVE RISK SUMMARY ══════ */
+const R1_MOVERS = [
+  // id, name, segment, branch, prev, now, delta, fromGrade, toGrade
+  ['8829103','Emeka Okonkwo','HNI','Lagos Island',61,86,25,'High','Critical'],
+  ['6601293','Chioma Obi','Corporate','Kano Branch',45,81,36,'Medium','Critical'],
+  ['8823401','Femi Alabi','Retail','Lagos Island',30,71,41,'Low','High'],
+  ['1145782','Ifeanyi Okafor','Corporate','Lagos Island',52,74,22,'Medium','High'],
+  ['3308412','Ngozi Eze','Corporate','Port Harcourt',88,92,4,'Critical','Critical'],
+  ['2203847','Chidi Nwosu','Retail','Kano Branch',30,55,25,'Low','Medium'],
+  ['5520031','Tunde Bakare','SME','Abuja Central',49,67,18,'Medium','High'],
+  ['9934012','Kemi Adeola','SME','Abuja Central',46,63,17,'Medium','High'],
+  ['7712093','Seun Afolabi','Private Banking','Ikeja',41,58,17,'Medium','Medium'],
+  ['2267190','Halima Yusuf','Retail','Kaduna',22,44,22,'Low','Medium'],
+].map(m=>({id:m[0],name:m[1],segment:m[2],branch:m[3],prev:m[4],now:m[5],delta:m[6],from:m[7],to:m[8]}));
+
+defineReport('r1', {
+  title:'Top System-Driven Risk Movements This Cycle',
+  filterNote:'scope the movers table by segment, branch, risk category or score change',
+  filters:[
+    {key:'segment', label:'Segment',    all:'All Segments', options:SEGMENTS},
+    {key:'branch',  label:'Branch',     all:'All Branches', options:BRANCHES},
+    {key:'grade',   label:'Risk Category', all:'All Categories', options:['Critical','High','Medium','Low']},
+    {key:'minDelta',label:'Min Score Δ',type:'num', ph:'Any'},
+    {key:'topN',    label:'Show',       type:'select', value:'10',
+     options:['5','10','15','25','50','All'], optLabel:o=>o==='All'?'All rows':`Top ${o}`},
+  ],
+  cols:[
+    {key:'customer', label:'Customer',
+     render:m=>`<strong>${m.name}</strong><div style="font-size:10px;color:var(--text-3)">${m.id} · ${m.branch}</div>`},
+    {key:'cid',      label:'Customer ID', def:false, render:m=>`<span style="font-family:ui-monospace,monospace;font-size:11px">${m.id}</span>`},
+    {key:'segment',  label:'Segment',  render:m=>m.segment},
+    {key:'branch',   label:'Branch',   def:false, render:m=>m.branch},
+    {key:'prev',     label:'Prev',     num:true, render:m=>m.prev},
+    {key:'now',      label:'Now',      num:true, render:m=>scoreCell(m.now)},
+    {key:'delta',    label:'Δ',        num:true, render:m=>dchip(m.delta,false)},
+    {key:'from',     label:'From Category', def:false, render:m=>rbadge(m.from)},
+    {key:'to',       label:'To Category',   def:false, render:m=>rbadge(m.to)},
+    {key:'migration',label:'Migration', render:m=>`${rbadge(m.from)} <span style="color:var(--text-3)">→</span> ${rbadge(m.to)}`},
+  ],
+});
+RENDER.r1 = () => {
+  const host = document.getElementById('r1-body'); if(!host) return;
+  const rows = R1_MOVERS.filter(m =>
+    fpass('r1','segment',m.segment) && fpass('r1','branch',m.branch) &&
+    fpass('r1','grade',m.to) && fmin('r1','minDelta',m.delta)
+  ).sort((a,b)=>b.delta-a.delta);
+  const shownRows = topN('r1', rows);
+  paintChrome('r1', `Listing ${shownRows.length} of ${rows.length} matching movers (${R1_MOVERS.length} total)`);
+  host.innerHTML = specTable('r1', shownRows, {
+    title:'Top System-Driven Risk Movements This Cycle', badge:String(shownRows.length),
+    sub:'rating changes generated by the risk engine — manual overrides are excluded (see Report 06)',
+    right:'<span style="font-size:10.5px;color:var(--text-3);font-weight:600;">Ranked by largest score increase</span>'});
+};
+
+BODIES.r1 = () => {
+  const comp = [{n:'Low',v:3134,c:COL.Low},{n:'Medium',v:1203,c:COL.Medium},{n:'High',v:348,c:COL.High},{n:'Critical',v:127,c:COL.Critical}];
+  const total = 4812;
+  // score distribution — continuous 10-point bands, no gaps between bands
+  const bands = [
+    ['0–10',412,'Low'],['10.01–20',689,'Low'],['20.01–30',1024,'Low'],['30.01–40',1009,'Low'],
+    ['40.01–50',703,'Medium'],['50.01–60',500,'Medium'],
+    ['60.01–70',214,'High'],['70.01–80',134,'High'],
+    ['80.01–90',89,'Critical'],['90.01–100',38,'Critical'],
+  ];
+  return `
+  ${kpis(6,[
+    ['Total Customers','4,812','','navy'],
+    ['Critical','127','','critical'],
+    ['High','348','','high'],
+    ['Medium','1,203','','medium'],
+    ['Low','3,134','','low'],
+    ['Net Escalations (vs Yesterday)','+35','','teal'],
+  ])}
+
+  <div class="grid-2-1">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Risk Composition Trend <small>12 months, % of portfolio</small></div>
+        <div class="legend"><span><i style="background:${COL.Critical}"></i>Critical</span><span><i style="background:${COL.High}"></i>High</span><span><i style="background:${COL.Medium}"></i>Medium</span></div></div>
+      <div class="card-pad">${lineChart([
+        {color:COL.Critical,data:[1.9,2.0,2.0,2.1,2.2,2.2,2.3,2.4,2.4,2.5,2.5,2.6]},
+        {color:COL.High,data:[6.1,6.2,6.4,6.3,6.5,6.7,6.8,6.9,7.0,7.0,7.1,7.2]},
+        {color:COL.Medium,data:[24.1,24.3,24.2,24.6,24.5,24.8,24.7,24.9,25.0,25.1,25.0,25.0]},
+      ], MONTHS12, {h:210,max:28,yTitle:'% of portfolio',xTitle:'Month (rolling 12 months)',yUnit:'%'})}
+      ${axisNote(`<b>X axis:</b> calendar month, oldest to newest. <b>Y axis:</b> customers in that risk category as a
+        percentage of the total book. Each point is the month-end position.`)}</div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">Portfolio Composition <small>share of total customers</small></div></div>
+      <div class="card-pad" style="display:flex;flex-direction:column;align-items:center;gap:14px;">
+        ${donut(comp.map(c=>({v:c.v,c:c.c})),{size:158,center:'4,812',sub:'CUSTOMERS'})}
+        <div style="width:100%">
+          ${comp.slice().reverse().map(c=>`<div class="stat-row"><span class="stat-k"><i style="width:9px;height:9px;border-radius:3px;background:${c.c};display:inline-block;margin-right:7px"></i>${c.n}</span>
+            <span class="stat-v" style="color:${c.c}">${nf(c.v)} <span style="color:var(--text-3);font-weight:600">· ${(c.v/total*100).toFixed(1)}%</span></span></div>`).join('')}
+        </div>
+        ${axisNote(`<b>Arc length:</b> number of customers in that risk category. <b>Centre:</b> total customers rated.`)}
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><div class="card-title">Score Distribution <small>continuous 10-point score bands</small></div>
+      <div class="legend"><span><i style="background:${COL.Low}"></i>Low</span><span><i style="background:${COL.Medium}"></i>Medium</span><span><i style="background:${COL.High}"></i>High</span><span><i style="background:${COL.Critical}"></i>Critical</span></div></div>
+    <div class="card-pad">
+      ${columns(bands.map(b=>({label:b[0], v:b[1], c:COL[b[2]]})),
+        {h:200, unit:'customers', yTitle:'Number of customers', xTitle:'Risk score band'})}
+      ${axisNote(`<b>X axis:</b> risk score band — bands are continuous, so a score of exactly 10.00 falls in
+        <b>0–10</b> and 10.01 opens the next band; every possible score lands in exactly one band, with no gaps.
+        <b>Y axis:</b> count of customers whose current score sits in that band. Bar colour is the risk category the band maps to.`)}
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Concentration by Branch <small>% High + Critical</small></div></div>
+      <div class="card-pad">
+        ${bars([
+          ['Kano Branch',21.4,25,COL.Critical,'21.4%'],
+          ['Port Harcourt',18.2,25,COL.High,'18.2%'],
+          ['Lagos Island',12.6,25,COL.High,'12.6%'],
+          ['Abuja Central',8.9,25,COL.Medium,'8.9%'],
+          ['Ikeja',6.1,25,COL.Low,'6.1%'],
+          ['Enugu',4.4,25,COL.Low,'4.4%'],
+        ], {cat:'Branch', val:'% of that branch\u2019s customers rated High or Critical', maxLabel:'25%'})}
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">Concentration by Segment <small>% High + Critical</small></div></div>
+      <div class="card-pad">
+        ${bars([
+          ['Corporate',24.8,30,COL.Critical,'24.8%'],
+          ['Private Banking',19.3,30,COL.High,'19.3%'],
+          ['HNI',15.7,30,COL.High,'15.7%'],
+          ['SME',9.2,30,COL.Medium,'9.2%'],
+          ['Retail',4.8,30,COL.Low,'4.8%'],
+        ], {cat:'Customer segment', val:'% of that segment\u2019s customers rated High or Critical', maxLabel:'30%'})}
+      </div>
+    </div>
+  </div>
+
+  ${filterCard('r1')}`;
+};
+
+/* ══════ R3 · RISK RATING MIGRATION MATRIX ══════ */
+/* the escalation root-cause table has been removed from this report — the matrix is the report */
+BODIES.r3 = () => {
+  const G = ['Low','Medium','High','Critical'];
+  // matrix[from][to]
+  const M = {
+    Low:      {Low:2988, Medium:118, High:22,  Critical:6},
+    Medium:   {Low:74,   Medium:1049,High:71,  Critical:9},
+    High:     {Low:5,    Medium:41,  High:279, Critical:23},
+    Critical: {Low:0,    Medium:3,   High:14,  Critical:110},
+  };
+  const rowTot = g => G.reduce((s,t)=>s+M[g][t],0);
+  const cell = (f,t)=>{
+    const v = M[f][t], fi=G.indexOf(f), ti=G.indexOf(t);
+    const c = fi===ti ? 'diag' : ti>fi ? 'esc' : 'des';
+    return `<td class="${v===0?'zero':c}">${v===0?'–':nf(v)}<div style="font-size:9px;font-weight:600;opacity:.7">${v?((v/rowTot(f))*100).toFixed(1)+'%':''}</div></td>`;
+  };
+  // all headline figures derived from the matrix so they can never drift apart
+  const PORTFOLIO = G.reduce((s,f)=>s+rowTot(f),0);
+  let escalations=0, deescalations=0, jumped=0;
+  G.forEach((f,fi)=>G.forEach((t,ti)=>{
+    const v = M[f][t];
+    if(ti>fi) escalations+=v; else if(ti<fi) deescalations+=v;
+    if(Math.abs(ti-fi)>1) jumped+=v;
+  }));
+  const migrations = escalations + deescalations;
+  const escRate  = (escalations/PORTFOLIO*100).toFixed(1);
+  const deRate   = (deescalations/PORTFOLIO*100).toFixed(1);
+  return `
+  ${kpis(4,[
+    ['Total Migrations',nf(migrations),'Escalations + de-escalations','navy'],
+    ['Escalations',nf(escalations),`↑ upward moves · ${escRate}%`,'high'],
+    ['De-Escalations',nf(deescalations),`↓ downward moves · ${deRate}%`,'low'],
+    ['Stability Rate',((PORTFOLIO-migrations)/PORTFOLIO*100).toFixed(1)+'%','Unchanged category','teal'],
+  ])}
+
+  <div class="grid-2-1">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Migration Matrix <small>rows = risk category as on ${PRIOR_LONG} (previous) · columns = risk category as on ${TODAY_LONG} (current)</small></div>
+        <div class="legend"><span><i style="background:${COL.High}"></i>Escalation</span><span><i style="background:${COL.Low}"></i>De-escalation</span><span><i style="background:#cbd5e1"></i>Unchanged</span></div></div>
+      <div class="card-pad">
+        <table class="mtx">
+          <thead><tr><th style="text-align:left">From ╲ To</th>${G.map(g=>`<th style="text-align:center">${g}</th>`).join('')}</tr></thead>
+          <tbody>${G.map(f=>`<tr><td class="rowlbl">${rbadge(f)}</td>${G.map(t=>cell(f,t)).join('')}</tr>`).join('')}
+          </tbody></table>
+        ${axisNote(`<b>Rows (Y axis):</b> the customer\u2019s risk category as on <b>${PRIOR_LONG}</b>, the previous review cycle.
+          <b>Columns (X axis):</b> the same customer\u2019s risk category as on <b>${TODAY_LONG}</b>, the current reporting date. <b>Cell value:</b> number of customers who made that move,
+          with the percentage of the row\u2019s starting population beneath it. Cells above the diagonal are
+          escalations, below it de-escalations, on it unchanged.`)}
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">Migration Flow</div></div>
+      <div class="card-pad">
+        <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--text-2);margin-bottom:11px;">Largest transitions</div>
+        ${bars([
+          ['Low → Medium',118,130,COL.Medium,'118'],
+          ['Medium → High',71,130,COL.High,'71'],
+          ['Medium → Low',74,130,COL.Low,'74'],
+          ['High → Medium',41,130,COL.Low,'41'],
+          ['High → Critical',23,130,COL.Critical,'23'],
+          ['Low → High',22,130,COL.High,'22'],
+          ['Critical → High',14,130,COL.Low,'14'],
+        ], {cat:'Category transition (from → to)', val:'Number of customers who made that move', maxLabel:'130'})}
+        <div style="margin-top:16px;">
+          <div class="stat-row"><span class="stat-k">Escalation rate</span><span class="stat-v" style="color:${COL.High}">${escRate}%</span></div>
+          <div class="stat-row"><span class="stat-k">De-escalation rate</span><span class="stat-v" style="color:${COL.Low}">${deRate}%</span></div>
+          <div class="stat-row"><span class="stat-k">Avg score change</span><span class="stat-v">+2.1</span></div>
+          <div class="stat-row"><span class="stat-k">Categories jumped &gt;1</span><span class="stat-v" style="color:${COL.Critical}">${jumped}</span></div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+};
+
+/* ══════ R4 · RISK CONCENTRATION ANALYSIS ══════ */
+// branch → region, drives the Region filter
+const BRANCH_REGION = {
+  'Lagos Island':'South West', 'Ikeja':'South West',
+  'Abuja Central':'North Central',
+  'Kano Branch':'North West', 'Kaduna':'North West',
+  'Port Harcourt':'South South', 'Warri':'South South',
+  'Enugu':'South East',
+};
+const REGIONS = [...new Set(BRANCHES.map(b=>BRANCH_REGION[b]))];
+// % High + Critical per branch × segment (row order = BRANCHES, col order = SEGMENTS)
+const CONC = [
+  [ 6.2, 9.4, 18.1, 14.2, 11.0],
+  [ 4.1, 7.2, 12.4,  9.8,  7.4],
+  [ 9.8,14.6, 21.4, 17.9, 15.2],
+  [ 8.4,12.1, 19.6, 16.4, 13.1],
+  [ 3.2, 5.8,  9.1,  7.2,  5.6],
+  [ 5.1, 8.4, 13.2, 10.1,  8.2],
+  [ 2.8, 4.9,  7.8,  6.1,  4.4],
+  [ 4.6, 7.1, 11.4,  8.9,  6.8],
+];
+// portfolio baseline = share of the whole book rated High or Critical (see the note under the table)
+const BOOK_HIGH = 348, BOOK_CRITICAL = 127, BOOK_TOTAL = 4812;
+const CONC_BASELINE = +(((BOOK_HIGH + BOOK_CRITICAL) / BOOK_TOTAL) * 100).toFixed(1);
+const concVal = (b,s) => CONC[BRANCHES.indexOf(b)][SEGMENTS.indexOf(s)];
+
+defineReport('r4', {
+  title:'Highest-Density Concentration Cells',
+  filterNote:'narrow the heatmap and the cell table by region, branch, segment or density',
+  filters:[
+    {key:'region',  label:'Region',       all:'All Regions',  options:REGIONS},
+    {key:'branch',  label:'Branch',       all:'All Branches', options:BRANCHES},
+    {key:'segment', label:'Segment',      all:'All Segments', options:SEGMENTS},
+    {key:'minPct',  label:'Min % H+C',    type:'num', ph:'Any'},
+    {key:'topN',    label:'Show',         type:'select', value:'10',
+     options:['5','10','15','20','25','40','All'], optLabel:o=>o==='All'?'All cells':`Top ${o}`},
+  ],
+  cols:[
+    {key:'rank',    label:'Rank',   render:(c,i)=>`<span class="rank ${i<3?'r'+(i+1):''}">${i+1}</span>`},
+    {key:'branch',  label:'Branch', render:c=>`<strong>${c.branch}</strong>`},
+    {key:'region',  label:'Region', render:c=>BRANCH_REGION[c.branch]},
+    {key:'segment', label:'Segment',render:c=>c.segment},
+    {key:'pct',     label:'% High + Critical', num:true,
+     render:c=>`<span style="font-weight:800;color:${heatColor(c.v,c.max)}">${c.v.toFixed(1)}%</span>`},
+    {key:'base',    label:'vs Baseline', num:true, render:c=>(c.v/CONC_BASELINE).toFixed(1)+'×'},
+    {key:'gap',     label:'Pts vs Baseline', num:true, def:false,
+     render:c=>`<span style="color:${c.v>CONC_BASELINE?COL.High:COL.Low};font-weight:700">${c.v>CONC_BASELINE?'+':''}${(c.v-CONC_BASELINE).toFixed(1)}</span>`},
+  ],
+});
+function r4VisibleBranches(){
+  return BRANCHES.filter(b => fpass('r4','branch',b) && fpass('r4','region',BRANCH_REGION[b]));
+}
+function r4VisibleSegments(){ return SEGMENTS.filter(s => fpass('r4','segment',s)); }
+
+BODIES.r4 = () => filterCard('r4');
+
+RENDER.r4 = function(){
+  const host = document.getElementById('r4-body');
+  if(!host) return;
+
+  const vb = r4VisibleBranches(), vs = r4VisibleSegments();
+
+  if(!vb.length || !vs.length){
+    paintChrome('r4', `${vb.length} of ${BRANCHES.length} branches × ${vs.length} of ${SEGMENTS.length} segments`);
+    host.innerHTML = `<div class="card"><div style="padding:44px;text-align:center;color:var(--text-3);font-size:12.5px;">
+      No branch × segment combination matches the current filters. Clear a filter to continue.</div></div>`;
+    return;
+  }
+
+  const val = concVal;
+  const shown = vb.flatMap(b=>vs.map(s=>val(b,s)));
+  const max = Math.max(...shown);
+
+  const cells = [];
+  vb.forEach(b=>vs.forEach(s=>cells.push({branch:b, segment:s, v:val(b,s), max})));
+  cells.sort((a,b)=>b.v-a.v);
+  const eligible = cells.filter(c=>fmin('r4','minPct',c.v));
+  const nSel = fval('r4','topN');
+  const top  = nSel==='All' ? eligible : eligible.slice(0, Number(nSel));
+  paintChrome('r4', `${vb.length} of ${BRANCHES.length} branches × ${vs.length} of ${SEGMENTS.length} segments`
+    + ` · listing ${top.length} of ${eligible.length} cells`);
+
+  host.innerHTML = `
+  <div class="card">
+    <div class="card-head"><div class="card-title">Concentration Heatmap <small>% High + Critical, branch × segment</small></div>
+      <div class="legend"><span><i style="background:#16a34a"></i>&lt;5%</span><span><i style="background:#65a30d"></i>5–10%</span>
+        <span><i style="background:#d97706"></i>10–14%</span><span><i style="background:#dc2626"></i>14–18%</span><span><i style="background:#7c3aed"></i>&gt;18%</span></div></div>
+    <div class="card-pad" style="overflow-x:auto;">
+      <table class="heat">
+        <thead><tr><th style="text-align:left">Branch ╲ Segment</th>${vs.map(c=>`<th>${c}</th>`).join('')}<th>Branch Avg</th></tr></thead>
+        <tbody>${vb.map(b=>{
+          const rowVals = vs.map(s=>val(b,s));
+          const avg = rowVals.reduce((s,v)=>s+v,0)/rowVals.length;
+          return `<tr><td class="rowlbl">${b}<div style="font-size:9.5px;color:var(--text-3);font-weight:600">${BRANCH_REGION[b]}</div></td>
+            ${rowVals.map(v=>`<td style="background:${heatColor(v,max)}">${v.toFixed(1)}%</td>`).join('')}
+            <td style="background:#f8fafc;color:var(--text)!important;font-weight:800">${avg.toFixed(1)}%</td></tr>`;
+        }).join('')}
+        <tr><td class="rowlbl" style="font-weight:800">Segment Avg</td>
+          ${vs.map(s=>{const a=vb.reduce((t,b)=>t+val(b,s),0)/vb.length;
+            return `<td style="background:#f8fafc;color:var(--text)!important;font-weight:800">${a.toFixed(1)}%</td>`;}).join('')}
+          <td style="background:#1a2d5a">${(shown.reduce((s,v)=>s+v,0)/shown.length).toFixed(1)}%</td></tr>
+        </tbody></table>
+      ${axisNote(`<b>Rows (Y axis):</b> branch, with its region beneath. <b>Columns (X axis):</b> customer segment.
+        <b>Cell value:</b> the percentage of customers in that branch × segment combination who are rated High or
+        Critical. Cell colour bands that same percentage against the legend above — it is a density, not a headcount.`)}
+    </div>
+  </div>
+
+  ${specTable('r4', top, {title:'Highest-Density Concentration Cells',
+    badge: nSel==='All' ? `All ${top.length}` : `Top ${top.length}`,
+    sub:`ranked by density · portfolio baseline ${CONC_BASELINE}%`})}
+
+  ${axisNote(`<b>How the portfolio baseline is calculated.</b> Baseline = every customer rated High or Critical,
+    divided by every customer in the book, across all branches and all segments:
+    <b>(${nf(BOOK_HIGH)} High + ${nf(BOOK_CRITICAL)} Critical) ÷ ${nf(BOOK_TOTAL)} customers = ${CONC_BASELINE}%</b>.
+    It is a fixed portfolio-wide figure and does <b>not</b> move when you filter this report — that is the point,
+    it is the reference every cell is measured against. <b>vs Baseline</b> divides a cell\u2019s own High + Critical
+    percentage by that ${CONC_BASELINE}%, so 2.2× means that branch × segment carries 2.2 times the concentration
+    of the book as a whole.`)}`;
+}
+</script>
+<script>
+/* ══════ R9 · HIGH-RISK CUSTOMER REGISTER ══════ */
+// id, name, score, grade, branch, segment, date became High/Critical,
+// top drivers [factor, points, observed value]
+const R9_C = [
+  ['3308412','Ngozi Eze',     92,'Critical','Port Harcourt','Corporate','14 Jan 2026', [['Sanctions & Watchlist',28,'UN + EU consolidated list match (96%)'],['Geographic / Jurisdiction',22,'Iran, Cayman Islands exposure'],['Transaction Behaviour',18,'184 txns / 30d · 3.2× peer norm']]],
+  ['8829103','Emeka Okonkwo', 86,'Critical','Lagos Island','HNI','18 Apr 2026', [['Sanctions & Watchlist',28,'OFAC SDN match (82%)'],['Transaction Behaviour',24,'47 txns / 30d · above 95th percentile'],['Cash Intensity',14,'₦620K cash / quarter']]],
+  ['6601293','Chioma Obi',    81,'Critical','Kano Branch','Corporate','02 Apr 2026', [['Geographic / Jurisdiction',26,'UAE, Russia corridor'],['Sanctions & Watchlist',21,'EU consolidated match (88%)'],['Product & Channel',16,'Crypto off-ramp via offshore SPV']]],
+  ['1145782','Ifeanyi Okafor',74,'High',    'Lagos Island','Corporate','21 Mar 2026', [['Transaction Behaviour',24,'97 txns / 30d · rising trend'],['Geographic / Jurisdiction',20,'UK HMT listed counterparty'],['Entity Structure',14,'4-layer ownership · nominee holding']]],
+  ['8823401','Femi Alabi',    71,'High',    'Lagos Island','Retail','28 Mar 2026', [['Transaction Behaviour',26,'64 txns / 30d · +180% MoM'],['Cash Intensity',19,'₦1.12M cash / quarter'],['Occupation / Industry',12,'Cash-intensive logistics']]],
+  ['5520031','Tunde Bakare',  67,'High',    'Abuja Central','SME','05 Apr 2026', [['Cash Intensity',22,'₦940K cash / quarter'],['Transaction Behaviour',18,'58 txns / 30d'],['Occupation / Industry',13,'Domestic PEP — Level 2']]],
+  ['2203847','Chidi Nwosu',   66,'High',    'Kano Branch','Retail','12 Apr 2026', [['Occupation / Industry',21,'Adverse media — 2 hits'],['Cash Intensity',20,'₦410K cash / quarter'],['Geographic / Jurisdiction',12,'Ghana corridor']]],
+  ['9934012','Kemi Adeola',   63,'High',    'Abuja Central','SME','25 Mar 2026', [['Transaction Behaviour',20,'41 txns / 30d'],['Product & Channel',18,'Online · non-face-to-face onboarding'],['Entity Structure',11,'SME · single verified UBO']]],
+  ['7712093','Seun Afolabi',  61,'High',    'Ikeja','Private Banking','02 Feb 2026', [['Geographic / Jurisdiction',22,'Lebanon, Cyprus corridor'],['Product & Channel',17,'Correspondent banking exposure'],['Cash Intensity',11,'₦280K cash / quarter']]],
+  ['4415623','Bola Adesanya', 60,'High',    'Warri','SME','19 Feb 2026', [['Cash Intensity',24,'₦760K cash / quarter'],['Occupation / Industry',15,'Petroleum trading'],['Transaction Behaviour',10,'33 txns / 30d']]],
+].map(c=>({id:c[0],name:c[1],score:c[2],grade:c[3],branch:c[4],segment:c[5],since:c[6],factors:c[7]}));
+
+// shorter labels so three factors fit on one line
+const R9_SHORT = {'Sanctions & Watchlist':'Sanctions','Geographic / Jurisdiction':'Geographic',
+  'Transaction Behaviour':'Txn Behaviour','Cash Intensity':'Cash Intensity',
+  'Product & Channel':'Product/Channel','Occupation / Industry':'Occupation',
+  'Entity Structure':'Entity Structure'};
+const R9_FACTORS = [...new Set(R9_C.flatMap(c=>c.factors.map(f=>f[0])))].sort();
+const daysAt = d => {
+  const [dd,mon,yy] = d.split(' ');
+  const m = _MON.indexOf(mon);
+  return Math.max(0, Math.round((_NOW - new Date(+yy, m, +dd)) / 86400000));
+};
+const r9Chips = c => `<div class="fchips">
+  ${c.factors.map(f=>`<span class="fchip" title="${esc(f[0])} — ${esc(f[2])}"
+    style="background:${COL[c.grade]}12;border-color:${COL[c.grade]}44;color:${COL[c.grade]}">
+    ${R9_SHORT[f[0]]||f[0]} <b>+${f[1]}</b></span>`).join('')}
+  </div>`;
+
+defineReport('r9', {
+  title:'High & Critical Risk Customer Register',
+  filterNote:'scope the register by risk category, branch, segment, contributing factor or score',
+  filters:[
+    {key:'grade',   label:'Risk Category', all:'All Categories', options:['Critical','High']},
+    {key:'branch',  label:'Branch',     all:'All Branches', options:BRANCHES},
+    {key:'segment', label:'Segment',    all:'All Segments', options:SEGMENTS},
+    {key:'factor',  label:'Contributing Factor', all:'All Factors', options:R9_FACTORS},
+    {key:'minScore',label:'Min Score',  type:'num', ph:'Any'},
+    {key:'topN',    label:'Show',       type:'select', value:'10',
+     options:['5','10','15','25','50','All'], optLabel:o=>o==='All'?'All rows':`Top ${o}`},
+  ],
+  cols:[
+    {key:'customer', label:'Customer',
+     render:c=>`<strong>${c.name}</strong><div style="font-size:10px;color:var(--text-3)">${c.id}</div>`},
+    {key:'cid',      label:'Customer ID', def:false,
+     render:c=>`<span style="font-family:ui-monospace,monospace;font-size:11px">${c.id}</span>`},
+    {key:'score',    label:'Risk Score', num:true, render:c=>scoreCell(c.score)},
+    {key:'grade',    label:'Risk Category', render:c=>rbadge(c.grade)},
+    {key:'branch',   label:'Branch',  def:false, render:c=>c.branch},
+    {key:'segment',  label:'Segment', def:false, render:c=>c.segment},
+    {key:'since',    label:'Became High / Critical', render:c=>c.since},
+    {key:'days',     label:'Days at Category', num:true,
+     render:c=>`<span style="font-weight:700;color:${daysAt(c.since)>120?COL.High:'var(--text)'}">${nf(daysAt(c.since))}</span>`},
+    {key:'topFactor',label:'Top Factor', def:false, render:c=>`${c.factors[0][0]} <b style="color:${COL[c.grade]}">+${c.factors[0][1]}</b>`},
+    {key:'chips',    label:'Score Explainability — Top Contributing Factors', render:r9Chips},
+  ],
+});
+RENDER.r9 = () => {
+  const host = document.getElementById('r9-body'); if(!host) return;
+  const rows = R9_C.filter(c =>
+    fpass('r9','grade',c.grade) && fpass('r9','branch',c.branch) && fpass('r9','segment',c.segment) &&
+    fpass('r9','factor',c.factors.map(f=>f[0])) && fmin('r9','minScore',c.score)
+  ).sort((a,b)=>b.score-a.score);
+  const shownRows = topN('r9', rows);
+  paintChrome('r9', `Listing ${shownRows.length} of ${rows.length} matching entries (${R9_C.length} total)`);
+  host.innerHTML = specTable('r9', shownRows, {
+    title:'High & Critical Risk Customer Register', badge:String(shownRows.length),
+    sub:'sample extract of the 475-customer register — score, date categorised, and score drivers',
+    right:'<span style="font-size:10.5px;color:var(--text-3);font-weight:600;">Hover a factor to see the observed value</span>'});
+};
+
+BODIES.r9 = () => `
+  ${kpis(4,[
+    ['Critical','127','Score ≥ 80','critical'],
+    ['High','348','Score 60–79','high'],
+    ['Total Register','475','9.9% of portfolio','navy'],
+    ['Newly Added (30d)','35','Escalated into register','medium'],
+  ])}
+
+  ${filterCard('r9')}`;
+</script>
+<script>
+/* ══════ R11 · PERIODIC REVIEW COMPLIANCE ══════ */
+// grade, cadence label, cadence days, population, due this cycle, completed, overdue, avg days overdue
+const R11_G = [
+  ['Critical','Quarterly',   91,  127, 127,  96, 31, 34],
+  ['High',    'Semi-annual',182,  348, 174, 131, 43, 28],
+  ['Medium',  'Annual',     365, 1203, 301, 289, 12, 11],
+  ['Low',     'Biennial',   730, 3134, 210, 208,  2,  6],
+];
+const R11_CADENCE = Object.fromEntries(R11_G.map(g=>[g[0], g[2]]));
+const _DAY = 86400000;
+const dOffset = n => { const d = new Date(_NOW.getTime() - n*_DAY);
+  return `${String(d.getDate()).padStart(2,'0')} ${_MON[d.getMonth()]} ${d.getFullYear()}`; };
+const r11Bucket = d => d<=15?'1–15 days' : d<=30?'16–30 days' : d<=60?'31–60 days' : d<=90?'61–90 days' : '> 90 days';
+const R11_BUCKETS = ['1–15 days','16–30 days','31–60 days','61–90 days','> 90 days'];
+
+// id, name, grade, branch, days overdue, owner — due/last dates are derived from
+// the as-on date and the policy cadence so the report reconciles on any run date
+const R11_OD = [
+  ['6601293','Chioma Obi',    'Critical','Kano Branch',    8,'Priya Nair'],
+  ['3308412','Ngozi Eze',     'Critical','Port Harcourt', 12,'Priya Nair'],
+  ['5520031','Tunde Bakare',  'High',    'Abuja Central', 17,'Ramesh Anand'],
+  ['8823401','Femi Alabi',    'High',    'Lagos Island',  25,'Ramesh Anand'],
+  ['9934012','Kemi Adeola',   'High',    'Abuja Central', 28,'Unassigned'],
+  ['1145782','Ifeanyi Okafor','High',    'Lagos Island',  32,'Anjali Desai'],
+  ['4415623','Bola Adesanya', 'Medium',  'Warri',         44,'Grace Udo'],
+  ['7712093','Seun Afolabi',  'High',    'Ikeja',         63,'Unassigned'],
+  ['2267190','Halima Yusuf',  'Medium',  'Kaduna',        71,'Grace Udo'],
+  ['2203847','Chidi Nwosu',   'Critical','Kano Branch',   97,'Chidi Nwosu'],
+].map(o=>({ id:o[0], name:o[1], grade:o[2], branch:o[3], od:o[4], owner:o[5],
+            cadence: R11_G.find(g=>g[0]===o[2])[1],
+            due:  dOffset(o[4]),
+            last: dOffset(o[4] + R11_CADENCE[o[2]]),
+            bucket: r11Bucket(o[4]) }));
+const R11_OWNERS = [...new Set(R11_OD.map(o=>o.owner))].sort();
+
+defineReport('r11', {
+  title:'Overdue Reviews',
+  filterNote:'scope the overdue queue by risk category, branch, owner, ageing band or days past due',
+  filters:[
+    {key:'grade',  label:'Risk Category', all:'All Categories', options:['Critical','High','Medium','Low']},
+    {key:'branch', label:'Branch',      all:'All Branches',options:BRANCHES},
+    {key:'owner',  label:'Review Owner',all:'All Owners',  options:R11_OWNERS},
+    {key:'bucket', label:'Ageing Band', all:'All Bands',   options:R11_BUCKETS},
+    {key:'minOd',  label:'Min Days Overdue', type:'num', ph:'Any'},
+    {key:'topN',    label:'Show',       type:'select', value:'10',
+     options:['5','10','15','25','50','All'], optLabel:o=>o==='All'?'All rows':`Top ${o}`},
+  ],
+  cols:[
+    {key:'customer',label:'Customer',
+     render:o=>`<strong>${o.name}</strong><div style="font-size:10px;color:var(--text-3)">${o.id}</div>`},
+    {key:'cid',     label:'Customer ID', def:false,
+     render:o=>`<span style="font-family:ui-monospace,monospace;font-size:11px">${o.id}</span>`},
+    {key:'grade',   label:'Category',  render:o=>rbadge(o.grade)},
+    {key:'cadence', label:'Policy Cadence', def:false, render:o=>o.cadence},
+    {key:'branch',  label:'Branch', render:o=>o.branch},
+    {key:'last',    label:'Last Review', render:o=>o.last},
+    {key:'due',     label:'Due Date',    render:o=>o.due},
+    {key:'od',      label:'Days Overdue', num:true,
+     render:o=>`<span style="font-weight:800;color:${o.od>60?COL.Critical:o.od>30?COL.High:COL.Medium}">${o.od}</span>`},
+    {key:'bucket',  label:'Ageing Band', def:false, render:o=>`<span class="pill ${o.od>60?'crit':o.od>30?'bad':'warn'}">${o.bucket}</span>`},
+    {key:'owner',   label:'Owner',
+     render:o=>o.owner==='Unassigned' ? '<span class="pill bad">Unassigned</span>' : o.owner},
+  ],
+});
+RENDER.r11 = () => {
+  const host = document.getElementById('r11-body'); if(!host) return;
+  const rows = R11_OD.filter(o =>
+    fpass('r11','grade',o.grade) && fpass('r11','branch',o.branch) &&
+    fpass('r11','owner',o.owner) && fpass('r11','bucket',o.bucket) && fmin('r11','minOd',o.od)
+  ).sort((a,b)=>b.od-a.od);
+  const shownRows = topN('r11', rows);
+  const avg = shownRows.length ? (shownRows.reduce((s,o)=>s+o.od,0)/shownRows.length).toFixed(0) : '–';
+  paintChrome('r11', `Listing ${shownRows.length} of ${rows.length} matching breaches · avg ${avg} days overdue`);
+  host.innerHTML = specTable('r11', shownRows, {
+    title:'Overdue Reviews', badge:String(shownRows.length), sub:'sample extract of the 88 open breaches — oldest first',
+    right:`<span style="font-size:10.5px;color:var(--text-3);font-weight:600;">Due dates derived from policy cadence as on ${TODAY_LONG}</span>`});
+};
+
+BODIES.r11 = () => `
+  ${kpis(5,[
+    ['Reviews Due (cycle)','812','Across all risk categories','navy'],
+    ['Completed','724','Reviews signed off','low'],
+    ['Overdue','88','Past the policy due date','high'],
+    ['Critical Overdue','31','Highest severity','critical'],
+    ['Avg Days Overdue','24','↑ 6 vs last cycle','medium'],
+  ])}
+
+  <div class="insight bad"><span class="insight-ico">🗓️</span><span class="insight-txt">
+    <strong>Overdue reviews are inverted against risk — the two risk categories that matter most carry the most breaches.</strong>
+    Critical and High together account for 74 of the 88 overdue reviews while representing only 21% of reviews due
+    this cycle. 31 Critical-category customers are past their quarterly review date by an average of 34 days, which is
+    a reportable control breach.</span></div>
+
+  ${table(
+    `<th>Risk Category</th><th>Policy Cadence</th><th class="num">Population</th><th class="num">Due This Cycle</th>
+     <th class="num">Completed</th><th class="num">Overdue</th><th class="num">Avg Days Overdue</th><th>Due vs Completed</th>`,
+    R11_G.map(g=>`<tr>
+      <td>${rbadge(g[0])}</td><td>${g[1]}</td>
+      <td class="num">${nf(g[3])}</td><td class="num">${nf(g[4])}</td>
+      <td class="num" style="color:${COL.Low};font-weight:700">${nf(g[5])}</td>
+      <td class="num" style="color:${COL.High};font-weight:800">${g[6]}</td>
+      <td class="num">${g[7]}</td>
+      <td><div style="display:flex;align-items:center;gap:9px;">
+        <div class="prog-track" style="width:96px"><div class="prog-fill"
+          style="width:${g[5]/g[4]*100}%;background:${COL.Low}"></div></div>
+        <span style="font-weight:800;font-variant-numeric:tabular-nums;">${(g[5]/g[4]*100).toFixed(1)}%</span>
+        <span style="color:var(--text-3);font-weight:600;font-size:11px;white-space:nowrap;">${nf(g[5])} of ${nf(g[4])}</span>
+      </div></td>
+    </tr>`).join('') +
+    `<tr class="tfoot"><td colspan="3">Portfolio</td><td class="num">812</td><td class="num">724</td>
+      <td class="num">88</td><td class="num">24</td>
+      <td><div style="display:flex;align-items:center;gap:9px;">
+        <div class="prog-track" style="width:96px"><div class="prog-fill"
+          style="width:${724/812*100}%;background:${COL.Low}"></div></div>
+        <span style="font-weight:800;font-variant-numeric:tabular-nums;">${(724/812*100).toFixed(1)}%</span>
+        <span style="color:var(--text-3);font-weight:600;font-size:11px;white-space:nowrap;">724 of 812</span>
+      </div></td></tr>`,
+    {title:'Review Status by Risk Category', sub:'volumes only — completed, overdue and breach ageing'})}
+
+  ${filterCard('r11')}
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-head"><div class="card-title">Overdue Ageing <small>all 88 breaches</small></div></div>
+      <div class="card-pad">
+        ${bars([
+          ['1–15 days',34,40,COL.Medium,'34'],
+          ['16–30 days',29,40,COL.High,'29'],
+          ['31–60 days',18,40,COL.High,'18'],
+          ['61–90 days',5,40,COL.Critical,'5'],
+          ['> 90 days',2,40,COL.Critical,'2'],
+        ], {cat:'Days past the policy due date', val:'Number of overdue reviews', maxLabel:'40'})}
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head"><div class="card-title">Overdue by Branch <small>all 88 breaches</small></div></div>
+      <div class="card-pad">
+        ${bars([
+          ['Kano Branch',24,28,COL.Critical,'24'],
+          ['Port Harcourt',19,28,COL.High,'19'],
+          ['Lagos Island',16,28,COL.High,'16'],
+          ['Warri',12,28,COL.Medium,'12'],
+          ['Kaduna',9,28,COL.Medium,'9'],
+          ['Others',8,28,COL.Low,'8'],
+        ], {cat:'Branch', val:'Number of overdue reviews', maxLabel:'28'})}
+      </div>
+    </div>
+  </div>`;
+
+/* ══════ R12 · RISK OVERRIDE GOVERNANCE AUDIT ══════ */
+/* Direction follows the customer's standing, not the risk category label:
+   risk FALLS (High → Medium)  = UPGRADE   — the customer is upgraded
+   risk RISES (Medium → High)  = DOWNGRADE — the customer is downgraded
+   It is derived from the risk category pair so the wording can never drift from the data. */
+const GRADE_RANK = {Low:1, Medium:2, High:3, Critical:4};
+const dirOf = (from,to) => GRADE_RANK[to] < GRADE_RANK[from] ? 'Upgrade' : 'Downgrade';
+const R12_O = [
+  ['OV-2026-034','1102931','Amara Adeyemi','High','Medium','Additional CDD evidence reviewed','chidi.nwosu','priya.nair','14 Apr 2026','Approved'],
+  ['OV-2026-033','6601293','Chioma Obi','Critical','High','Geographic risk factor re-assessed','femi.alabi','priya.nair','01 Apr 2026','Approved'],
+  ['OV-2026-032','2267190','Halima Yusuf','Medium','Low','False positive – model error','grace.udo','ramesh.anand','18 Mar 2026','Approved'],
+  ['OV-2026-031','4415623','Bola Adesanya','Medium','High','Analyst judgement – behaviour','anjali.desai','priya.nair','12 Mar 2026','Approved'],
+  ['OV-2026-030','8823401','Femi Alabi','High','Medium','Documentation received','ramesh.anand','—','—','Pending'],
+  ['OV-2026-029','9934012','Kemi Adeola','Medium','Low','Business rationale accepted','chidi.nwosu','—','—','Pending'],
+  ['OV-2026-028','5520031','Tunde Bakare','High','Critical','Adverse pattern identified','priya.nair','ramesh.anand','05 Mar 2026','Approved'],
+  ['OV-2026-027','7712093','Seun Afolabi','Medium','Low','Insufficient justification','grace.udo','priya.nair','28 Feb 2026','Rejected'],
+].map(o=>({id:o[0],cid:o[1],name:o[2],from:o[3],to:o[4],dir:dirOf(o[3],o[4]),why:o[5],
+           maker:o[6],checker:o[7],date:o[8],status:o[9]}));
+const R12_MAKERS   = [...new Set(R12_O.map(o=>o.maker))].sort();
+const R12_CHECKERS = [...new Set(R12_O.map(o=>o.checker).filter(c=>c!=='—'))].sort();
+const R12_REASONS  = [...new Set(R12_O.map(o=>o.why))].sort();
+
+defineReport('r12', {
+  title:'Override Audit Trail',
+  filterNote:'scope the audit trail by direction, approval status, maker, checker or justification',
+  filters:[
+    {key:'dir',     label:'Direction', all:'All Directions', options:['Upgrade','Downgrade']},
+    {key:'status',  label:'Status',    all:'All Statuses',   options:['Approved','Pending','Rejected']},
+    {key:'maker',   label:'Maker',     all:'All Makers',     options:R12_MAKERS},
+    {key:'checker', label:'Checker',   all:'All Checkers',   options:R12_CHECKERS},
+    {key:'grade',   label:'Category Moved From', all:'All Categories', options:['Critical','High','Medium','Low']},
+    {key:'topN',    label:'Show',       type:'select', value:'10',
+     options:['5','10','15','25','50','All'], optLabel:o=>o==='All'?'All rows':`Top ${o}`},
+  ],
+  cols:[
+    {key:'ovid',    label:'Override ID',
+     render:o=>`<strong style="font-family:ui-monospace,monospace;font-size:11px">${o.id}</strong>`},
+    {key:'customer',label:'Customer',
+     render:o=>`<strong>${o.name}</strong><div style="font-size:10px;color:var(--text-3)">${o.cid}</div>`},
+    {key:'cid',     label:'Customer ID', def:false,
+     render:o=>`<span style="font-family:ui-monospace,monospace;font-size:11px">${o.cid}</span>`},
+    {key:'move',    label:'Category Change',
+     render:o=>`${rbadge(o.from)} <span style="color:var(--text-3)">→</span> ${rbadge(o.to)}`},
+    {key:'from',    label:'From', def:false, render:o=>rbadge(o.from)},
+    {key:'to',      label:'To',   def:false, render:o=>rbadge(o.to)},
+    {key:'dir',     label:'Direction',
+     render:o=>`<span class="pill ${o.dir==='Upgrade'?'warn':'bad'}" title="${o.dir==='Upgrade'?'Risk fell — customer upgraded':'Risk rose — customer downgraded'}">${o.dir==='Upgrade'?'↓ risk':'↑ risk'} ${o.dir}</span>`},
+    {key:'why',     label:'Justification', render:o=>`<span style="font-size:11px">${o.why}</span>`},
+    {key:'maker',   label:'Maker',   render:o=>`<span style="font-size:11px">${o.maker}</span>`},
+    {key:'checker', label:'Checker',
+     render:o=>o.checker==='—' ? '<span style="color:var(--text-3);font-size:11px">pending</span>' : `<span style="font-size:11px">${o.checker}</span>`},
+    {key:'date',    label:'Decision Date<span class="th-sub">(checker action date)</span>', render:o=>o.date},
+    {key:'status',  label:'Status',
+     render:o=>`<span class="pill ${o.status==='Approved'?'ok':o.status==='Rejected'?'bad':'warn'}">${o.status}</span>`},
+  ],
+});
+RENDER.r12 = () => {
+  const host = document.getElementById('r12-body'); if(!host) return;
+  const rows = R12_O.filter(o =>
+    fpass('r12','dir',o.dir) && fpass('r12','status',o.status) &&
+    fpass('r12','maker',o.maker) && fpass('r12','checker',o.checker) && fpass('r12','grade',o.from));
+  const shownRows = topN('r12', rows);
+  paintChrome('r12', `Listing ${shownRows.length} of ${rows.length} matching overrides (${R12_O.length} total)`);
+  host.innerHTML = specTable('r12', shownRows, {
+    title:'Override Audit Trail', badge:String(shownRows.length), sub:'sample extract of the 34-override trail — full maker-checker record'});
+};
+
+BODIES.r12 = () => `
+  ${kpis(6,[
+    ['Total Overrides','34','0.7% of portfolio','navy'],
+    ['Upgrades','25','73.5% — risk lowered by hand','high'],
+    ['Downgrades','9','26.5% — risk raised by hand','low'],
+    ['Pending Approval','6','Awaiting checker','medium'],
+    ['Rejected','3','8.8% rejection rate','critical'],
+    ['Re-escalated After','4','16% of upgrades','high'],
+  ])}
+
+  <div class="insight warn"><span class="insight-ico">🛡️</span><span class="insight-txt">
+    <strong>Upgrades outnumber downgrades 2.8 to 1, and 4 upgraded customers were re-escalated by the model within 30 days.</strong>
+    Overrides that lower a customer\u2019s risk are the ones that reduce monitoring, so they carry the governance burden.
+    Two makers account for 47% of all upgrades. Six overrides have been pending checker approval beyond the
+    5-day SLA — segregation of duties is being observed, but throughput is not.</span></div>
+
+  ${filterCard('r12')}
+
+  ${axisNote(`<b>Reading the Direction column.</b> <b>Upgrade</b> means the customer\u2019s risk was lowered by hand
+    — the risk category moved down (for example High → Medium) and the customer\u2019s standing improved.
+    <b>Downgrade</b> means the risk was raised — the risk category moved up (for example Medium → High).
+    Direction is derived from the risk category pair on each record, not entered separately.`)}
+
+  <div class="grid-2">
+    <div class="card"><div class="card-head"><div class="card-title">Override Reasons</div></div>
+      <div class="card-pad">${bars([
+        ['Additional CDD evidence',11,12,COL.Medium,'11'],
+        ['False positive – model',8,12,COL.High,'8'],
+        ['Documentation received',6,12,COL.Medium,'6'],
+        ['Analyst judgement',5,12,COL.High,'5'],
+        ['Business rationale',3,12,COL.Low,'3'],
+        ['Regulatory directive',1,12,COL.Low,'1'],
+      ], {cat:'Justification given', val:'Number of overrides', maxLabel:'12'})}</div></div>
+    <div class="card"><div class="card-head"><div class="card-title">Maker Concentration</div></div>
+      <div class="card-pad">${bars([
+        ['chidi.nwosu',9,10,COL.High,'9'],['grace.udo',7,10,COL.High,'7'],
+        ['ramesh.anand',6,10,COL.Medium,'6'],['anjali.desai',5,10,COL.Medium,'5'],
+        ['femi.alabi',4,10,COL.Low,'4'],['priya.nair',3,10,COL.Low,'3'],
+      ], {cat:'Maker (user who raised the override)', val:'Number of overrides raised', maxLabel:'10'})}
+      <div style="margin-top:12px;font-size:11px;color:var(--text-2);line-height:1.6;">
+        Top 2 makers raise 47% of overrides — worth a sample-based quality review.</div></div></div>
+  </div>`;
+
+/* ═══════════════════════ INIT ═══════════════════════ */
+renderSidebar();
+renderHub();
+buildPages();
+paintAll();          // populate every report's filterable data area
+showPage('hub');
+</script>
+</body>
+</html>

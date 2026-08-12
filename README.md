@@ -165,7 +165,16 @@ The Allure report provides a full dashboard:
 | **Categories** | Failure types — test failures, broken tests, skipped |
 | **Environment** | Per-environment URLs, pass counts, fail counts, duration |
 
-**Trend tracking** is automatic — each run preserves its history in `results/allure-history/`, so subsequent runs display trend graphs showing how pass rates change over time.
+**Trend tracking** is automatic — each run preserves its history in `report/allure-history/`, so subsequent runs display trend graphs showing how pass rates change over time.
+
+Published reports land under:
+
+```
+report/
+├── allure-report/      # Open index.html
+├── allure-history/     # Trends across runs
+└── test-results.xlsx   # Excel summary (when generated)
+```
 
 ---
 

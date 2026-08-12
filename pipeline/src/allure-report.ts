@@ -7,7 +7,8 @@ dotenv.config({ path: path.resolve(__dirname, "..", "..", ".env") });
 
 const PROJECT_ROOT = path.resolve(__dirname, "..", "..");
 const RESULTS_DIR = path.join(PROJECT_ROOT, "results");
-const REPORT_DIR = path.join(PROJECT_ROOT, "report", "automation-execution-cycle");
+/** Published reports live directly under `report/` (no nested cycle folder). */
+const REPORT_DIR = path.join(PROJECT_ROOT, "report");
 const ALLURE_COMBINED_DIR = path.join(RESULTS_DIR, "allure-results");
 const ALLURE_REPORT_DIR = path.join(REPORT_DIR, "allure-report");
 const ALLURE_HISTORY_DIR = path.join(REPORT_DIR, "allure-history");
