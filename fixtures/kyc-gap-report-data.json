@@ -1,0 +1,127 @@
+{
+  "defaults": {
+    "subtitle": "Missing or expired KYC fields — CBS & DMS import vs. template requirements",
+    "module": "KYC Gap Report",
+    "branch": "Mumbai Main (MUM01)",
+    "branchCode": "MUM01",
+    "branchExcelAlias": "INST-DEMO-001",
+    "scoreWeights": {
+      "mandatory": 3,
+      "optional": 1
+    },
+    "priorityBands": {
+      "low": { "min": 0, "max": 25 },
+      "medium": { "min": 26, "max": 50 },
+      "high": { "min": 51, "max": 75 },
+      "critical": { "min": 76, "max": 100 }
+    },
+    "performanceSlaMs": 5000
+  },
+  "customers": {
+    "corporateLow": {
+      "cif": "CUST-1000004",
+      "name": "Kumar Global Traders Pvt. Ltd.",
+      "type": "Corporate",
+      "branch": "INST-DEMO-001",
+      "template": "Standard KYC — Corporate",
+      "expectedScore": 12,
+      "priority": "Low"
+    },
+    "individualHigh": {
+      "cif": "CUST-1000005",
+      "name": "Ravi Patel",
+      "type": "Individual",
+      "branch": "INST-DEMO-001",
+      "template": "Simplified KYC",
+      "expectedScore": 36,
+      "priority": "High"
+    },
+    "oneMandatoryGap": {
+      "cif": "CIF-1001",
+      "name": "Simplified KYC Customer",
+      "type": "Individual",
+      "branch": "INST-DEMO-001",
+      "template": "Simplified KYC",
+      "expectedScore": 3,
+      "priority": "Low"
+    },
+    "oneOptionalGap": {
+      "cif": "CIF-1002",
+      "name": "Optional Gap Customer",
+      "type": "Individual",
+      "branch": "INST-DEMO-001",
+      "template": "Simplified KYC",
+      "expectedScore": 1,
+      "priority": "Low"
+    },
+    "mixedGaps": {
+      "cif": "CIF-1003",
+      "name": "Kumar Global Traders",
+      "type": "Corporate",
+      "branch": "Bengaluru Tech",
+      "branchCode": "BLR06",
+      "template": "Standard KYC — Corporate",
+      "expectedScore": 7,
+      "priority": "Critical"
+    },
+    "noGaps": {
+      "cif": "CIF-1004",
+      "name": "Complete KYC Customer",
+      "type": "Individual",
+      "branch": "INST-DEMO-001",
+      "template": "Simplified KYC",
+      "expectedScore": 0,
+      "priority": "Low"
+    }
+  },
+  "search": {
+    "partialMatch": "KYC",
+    "exactMatch": "Simplified KYC Customer",
+    "customerId": "CIF-1001",
+    "noMatch": "zzzz-no-match-99999",
+    "sqlInjection": "' OR '1'='1",
+    "xssInjection": "<script>alert('xss')</script>",
+    "specialChars": "!@#$%"
+  },
+  "filters": {
+    "branch": "INST-DEMO-001",
+    "customerTypes": ["Individual", "Corporate"],
+    "templates": ["Simplified KYC", "Standard KYC — Corporate"],
+    "priorities": ["Low", "Medium", "High", "Critical"],
+    "scoreRanges": {
+      "low": { "min": 0, "max": 25 },
+      "medium": { "min": 26, "max": 50 },
+      "high": { "min": 51, "max": 75 },
+      "critical": { "min": 76, "max": 100 },
+      "sample": { "min": 10, "max": 50 }
+    },
+    "scoreBoundaries": [0, 25, 26, 50, 51, 75, 76, 100, 101],
+    "invalidRange": { "min": 50, "max": 25 }
+  },
+  "roles": {
+    "complianceOfficer": {
+      "label": "Compliance Officer",
+      "envEmail": "COMPLIANCE_OFFICER_EMAIL",
+      "envPassword": "COMPLIANCE_OFFICER_PASSWORD",
+      "canAccessGapReport": true
+    },
+    "administrator": {
+      "label": "Administrator",
+      "envEmail": "ADMIN_EMAIL",
+      "envPassword": "ADMIN_PASSWORD",
+      "canAccessGapReport": true
+    },
+    "unauthorized": {
+      "label": "Unauthorized User",
+      "envEmail": "UNAUTHORIZED_EMAIL",
+      "envPassword": "UNAUTHORIZED_PASSWORD",
+      "canAccessGapReport": false
+    }
+  },
+  "pagination": {
+    "pageSizes": [10, 20, 50],
+    "defaultPageSize": 10,
+    "samplePage": 2
+  },
+  "browsers": ["Chrome", "Edge"]
+}

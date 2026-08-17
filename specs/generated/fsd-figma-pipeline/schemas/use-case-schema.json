@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/use-case-schema.json",
+  "title": "FSD-Driven Use Case Schema",
+  "description": "Use cases derived from FSD; optional UI nav assist from Figma HTML.",
+  "type": "object",
+  "required": ["module", "generatedAt", "useCases"],
+  "properties": {
+    "module": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "useCases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "useCaseId",
+          "title",
+          "fsdSectionIds",
+          "designType",
+          "steps",
+          "expectedResults"
+        ],
+        "properties": {
+          "useCaseId": { "type": "string" },
+          "title": { "type": "string" },
+          "fsdSectionIds": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "requirementIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "maxItems": 1,
+            "description": "Exactly one FSD requirement per use case (atomic design)"
+          },
+          "designType": {
+            "type": "string",
+            "enum": ["positive", "negative", "boundary", "exception", "security"]
+          },
+          "priority": { "type": ["string", "null"] },
+          "preconditions": { "type": "array", "items": { "type": "string" } },
+          "dependsOnUseCaseIds": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Other use cases that must be satisfied before this flow"
+          },
+          "testDataNotes": { "type": "array", "items": { "type": "string" } },
+          "steps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["stepNumber", "action"],
+              "properties": {
+                "stepNumber": { "type": "integer" },
+                "action": { "type": "string" },
+                "uiSource": {
+                  "type": "string",
+                  "enum": ["fsd", "figmaHtml", "both"],
+                  "default": "fsd"
+                },
+                "htmlControlRef": { "type": ["string", "null"] }
+              }
+            }
+          },
+          "expectedResults": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "assumptions": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

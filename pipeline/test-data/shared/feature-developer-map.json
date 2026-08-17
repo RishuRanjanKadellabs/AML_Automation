@@ -1,0 +1,1264 @@
+{
+  "sources": [
+    "pipeline/test-data/Milestone1/Tracker/AML-Daily-Tracker.xlsx",
+    "pipeline/test-data/Milestone2/Tracker/m2-weekly-raw.json"
+  ],
+  "index": [
+    {
+      "feature": "AML Data Ingestion Framework",
+      "module": "Data Ingestion",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "AML Design and Framework",
+      "module": "Data Ingestion",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Batch Screening",
+      "module": "Screening",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Batch Screening BFF",
+      "module": "Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Batch/ManualScreening",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "CC",
+      "module": "CC",
+      "frontend": [],
+      "backend": [
+        "Santosh",
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "CC / CC/UAC integration",
+      "module": "CC",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "CC / Ensure all services are deployed in Dev CC",
+      "module": "CC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "CC Deployment",
+      "module": "Deployment",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "CC Integration",
+      "module": "CC Integration",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "CC Integration / CC/UAC integration",
+      "module": "CC Integration",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "CC local installation and integration with CC UAC",
+      "module": "UAC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "CC/Configuration integration",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "CC/UAC integration",
+      "module": "CC",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "CDC",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Arun",
+        "Santosh",
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "CDC / CDC",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "CDC / CDC Design updates",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "CDC / Design for CDC, compute and the population into database table columns",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "CDC / Propagte CDC to UI in near real time",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "CDC / UAC",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "CDC Design updates",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Config",
+      "module": "Config",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Config / Custom list UI bug fixes",
+      "module": "Config",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Config / Sanction screening config UI modified",
+      "module": "Config",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Configuration",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun",
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Configuration / CC/Configuration integration",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Configuration / Custom List Manager",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Configuration / Custom lists",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Configuration / Exception List",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Configuration / Exception List Manager",
+      "module": "Configuration",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Configuration / Exception lists",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Configuration / Generic configuration service",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Configuration / Ignore words",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Configuration / Keyword manager",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Configuration / Keyword Manager",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Configuration / Keyword Manager and Ignore Words Configuration",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Configuration / Sanction Screening Config",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Configuration / Screening Config",
+      "module": "Configuration",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Custom List Manager",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Custom list UI bug fixes",
+      "module": "Config",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Custom lists",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Customer 360",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Arun",
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Customer 360 View",
+      "module": "KYC",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Customer risk assessment",
+      "module": "Customer risk assessment",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun",
+        "Santosh",
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "Data Ingestion",
+      "module": "Data Ingestion",
+      "frontend": [],
+      "backend": [
+        "Arun",
+        "Santosh",
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "Data Ingestion / AML Data Ingestion Framework",
+      "module": "Data Ingestion",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Data Ingestion / AML Design and Framework",
+      "module": "Data Ingestion",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Data Ingestion / ETL",
+      "module": "Data Ingestion",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "Dedup Screening",
+      "module": "Sanction Screening",
+      "frontend": [
+        "Aditya",
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Deployment",
+      "module": "Deployment",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Deployment / CC Deployment",
+      "module": "Deployment",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Design for CDC, compute and the population into database table columns",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "DevOps",
+      "module": "DevOps",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "DevOps / Work with DevOps to deploy FE/BE code in Dev env.",
+      "module": "DevOps",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Ensure all services are deployed in Dev CC",
+      "module": "CC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "ETL",
+      "module": "Data Ingestion",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "Exception List",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Exception List Manager",
+      "module": "Configuration",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Exception lists",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Generic configuration service",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Ignore words",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Keyword manager",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Keyword Manager",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Keyword Manager and  Ignore Words Configuration",
+      "module": "Configuration",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "KYC",
+      "module": "KYC",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun",
+        "Dev 3",
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Customer 360",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Arun",
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Customer 360 View",
+      "module": "KYC",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "KYC / KYC Gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / KYC Gap Report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / KYC Gap report BFF Layer",
+      "module": "KYC",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC / KYC Gap Reports",
+      "module": "KYC",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC / KYC/Reference data register",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Missing document template, kyc gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Dev 3"
+      ]
+    },
+    {
+      "feature": "KYC / Missing mandatory",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Missing Mandatory",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Missing mandatory and KYC gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Missing Mandatory Reports",
+      "module": "KYC",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC / Missing Mandatory/KYC gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Reference Data Register",
+      "module": "KYC",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC / Reference Data Register / Cards & Instruments",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC / Reference Data Register / Customer & Account Data",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC / Reference Data Register / Employee Master",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC / Reference Data Register / Relationships & Related Parties & Reference Masters",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC Gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC Gap Report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "KYC Gap report BFF Layer",
+      "module": "KYC",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC Gap Reports",
+      "module": "KYC",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "KYC/CDC",
+      "module": "KYC/CDC",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "KYC/CDC / Customer 360",
+      "module": "KYC/CDC",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "KYC/Reference data register",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Manual Screening",
+      "module": "Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Manual Screening UI",
+      "module": "Screening",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Mismatch in FSD and figma",
+      "module": "Screening",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Missing document template, kyc gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Dev 3"
+      ]
+    },
+    {
+      "feature": "Missing mandatory",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Missing Mandatory",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Missing mandatory and KYC gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Missing Mandatory Reports",
+      "module": "KYC",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Missing Mandatory/KYC gap report",
+      "module": "KYC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "on leave",
+      "module": "Sanction Screening",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "On Leave",
+      "module": "On Leave",
+      "frontend": [
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "On Leave / On Leave",
+      "module": "On Leave",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Propagte CDC to UI in near real time",
+      "module": "CDC",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "QA support",
+      "module": "QA support",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "QA Support",
+      "module": "QA Support",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Reference Data Register",
+      "module": "KYC",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Reference Data Register / Cards & Instruments",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Reference Data Register / Customer & Account Data",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Reference Data Register / Employee Master",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Reference Data Register / Reference Data Register",
+      "module": "Reference Data Register",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Reference Data Register / Relationships & Related Parties & Reference Masters",
+      "module": "KYC",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Repo",
+      "module": "Repo",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Repo / Structure",
+      "module": "Repo",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Resolved screening config FE bugs",
+      "module": "Screening",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanction MIS Reports",
+      "module": "Screening",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanction Screening",
+      "module": "Sanction Screening",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Sanction Screening / Batch Screening",
+      "module": "Sanction Screening",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Sanction Screening / Dedup Screening",
+      "module": "Sanction Screening",
+      "frontend": [
+        "Aditya",
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanction Screening / on leave",
+      "module": "Sanction Screening",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanction Screening Config",
+      "module": "Configuration",
+      "frontend": [
+        "Aditya",
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanction screening config UI modified",
+      "module": "Config",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanction Screening/Screening MIS Reports",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanctions Screening",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Sanctions Screening / Batch Screening",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanctions Screening / Batch/ManualScreening",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanctions Screening / Manual Screening",
+      "module": "Sanctions Screening",
+      "frontend": [],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Sanctions Screening / Sanction Screening/Screening MIS Reports",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Sanctions Screening / Screening configuration",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening",
+      "module": "Screening",
+      "frontend": [
+        "Aditya",
+        "Khizar",
+        "Tabrez"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Screening / Batch Screening",
+      "module": "Screening",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening / Batch Screening BFF",
+      "module": "Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening / Manual Screening",
+      "module": "Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": [
+        "Arun"
+      ]
+    },
+    {
+      "feature": "Screening / Manual Screening UI",
+      "module": "Screening",
+      "frontend": [
+        "Aditya",
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening / Mismatch in FSD and figma",
+      "module": "Screening",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening / Resolved screening config FE bugs",
+      "module": "Screening",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening / Sanction MIS Reports",
+      "module": "Screening",
+      "frontend": [
+        "Aditya"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening / Screening config FE bugs",
+      "module": "Screening",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening Config",
+      "module": "Configuration",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening config FE bugs",
+      "module": "Screening",
+      "frontend": [
+        "Tabrez"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "Screening configuration",
+      "module": "Sanctions Screening",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "services structure change to align with CC",
+      "module": "services structure change to align with CC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "Structure",
+      "module": "Repo",
+      "frontend": [
+        "Khizar"
+      ],
+      "backend": []
+    },
+    {
+      "feature": "UAC",
+      "module": "UAC",
+      "frontend": [],
+      "backend": [
+        "Santosh",
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "UAC / CC local installation and integration with CC UAC",
+      "module": "UAC",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    },
+    {
+      "feature": "UAC / CC/UAC integration",
+      "module": "UAC",
+      "frontend": [],
+      "backend": [
+        "Sushma"
+      ]
+    },
+    {
+      "feature": "Work with DevOps to deploy FE/BE code in Dev env.",
+      "module": "DevOps",
+      "frontend": [],
+      "backend": [
+        "Santosh"
+      ]
+    }
+  ],
+  "generatedAt": "2026-08-05T12:30:32.286Z"
+}

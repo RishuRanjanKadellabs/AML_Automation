@@ -1,0 +1,41 @@
+---
+description: Require Playwright Chromium before test execution — auto-install when missing
+alwaysApply: true
+---
+
+# Playwright Browser Prerequisite
+
+## Rule
+
+Before **any** Playwright test execution (defect regression, execute-raise-defects,
+QA pipeline batch runs, milestone runs), agents and scripts **must**:
+
+1. Call `ensurePlaywrightChromium()` from `pipeline/scripts/ensure-playwright-chromium.cjs`
+2. If Chromium is missing, run **`npm run setup`** automatically (same as `playwright install chromium`)
+3. **Never** treat missing-browser launch errors as product test failures
+
+Manual equivalent: `npm run setup`
+
+## Defect regression (hard)
+
+`defect-regression-run.js` **must** ensure Chromium **before** `npx playwright test`.
+
+| Outcome | Status update allowed? |
+|---------|------------------------|
+| Anchor **passed** (real UI run) | Resolved → **Closed** |
+| Anchor **failed** (real UI/product) | Resolved → **Reopened** |
+| **browserType.launch** / missing executable | **No change** — stay **Resolved**; report `environment_blocked` |
+
+Do not write **Reopened** on Google when failures are tooling-only (`Executable doesn't exist`, `chrome-headless-shell`, `playwright install`).
+
+## Must not
+
+- Skip browser ensure and fail all tests with missing Chromium
+- Mark defect regression **Done** with Reopened/Closed based on browser install failures
+- Ask the user to manually install Chromium when `npm run setup` can run automatically
+
+## Mechanical enforcement
+
+- Helper: `pipeline/scripts/ensure-playwright-chromium.cjs`
+- Wired in: `pipeline/scripts/defect-regression-run.js` (before Playwright run)
+- Tooling classifier: `isBrowserLaunchToolingError()` in status derivation

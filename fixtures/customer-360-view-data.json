@@ -1,0 +1,52 @@
+{
+  "route": "/kyc/customer-360",
+  "defaultCustomerId": "3159176",
+  "customers": {
+    "3159176": {
+      "id": "3159176",
+      "name": "Arjun Mehta",
+      "type": "individual",
+      "riskScore": 75,
+      "pep": false,
+      "branch": "Mumbai Main (001)",
+      "screeningHistory": [
+        { "caseId": "CASE2026011", "status": "Cleared", "date": "2026-01-15" }
+      ]
+    },
+    "3159176PEP": {
+      "id": "3159176",
+      "name": "Priya Sharma",
+      "type": "individual",
+      "riskScore": 88,
+      "pep": true,
+      "branch": "Delhi Central (002)",
+      "screeningHistory": [
+        { "caseId": "CASE2026042", "status": "Review", "date": "2026-02-10" }
+      ]
+    },
+    "3159176CORP": {
+      "id": "3159176",
+      "name": "Kumar Global Traders Pvt. Ltd.",
+      "type": "corporate",
+      "riskScore": 55,
+      "pep": false,
+      "branch": "Chennai South (003)",
+      "screeningHistory": [
+        { "caseId": "CASE2026033", "status": "Cleared", "date": "2026-01-28" }
+      ]
+    }
+  },
+  "tabs": [
+    "Overview",
+    "Relationships",
+    "Screening",
+    "Risk",
+    "KYC / CDD",
+    "Accounts",
+    "Transactions",
+    "Alerts",
+    "Reg Reports",
+    "KYC Gap Report",
+    "Audit"
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/healing-result-schema.json",
+  "title": "QA AI-SDLC Healing Result Schema",
+  "description": "Evidence-based healing change log. Preserve test intent; do not weaken assertions to force passes.",
+  "type": "object",
+  "required": [
+    "testCaseId",
+    "scriptPaths",
+    "changeLog",
+    "finalStatus",
+    "remainingRisks"
+  ],
+  "properties": {
+    "batchIndex": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6
+    },
+    "healerAgentId": {
+      "type": "string"
+    },
+    "healerInvocationCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "testCaseId": {
+      "type": "string"
+    },
+    "scriptPaths": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "changeLog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "failureObserved",
+          "rootCauseClassification",
+          "filesModified",
+          "fixApplied",
+          "evidenceSupportingFix",
+          "reExecutionResult"
+        ],
+        "properties": {
+          "failureObserved": {
+            "type": "string"
+          },
+          "rootCauseClassification": {
+            "type": "string",
+            "enum": [
+              "automation-defect",
+              "product-defect",
+              "locator-issue",
+              "synchronization-issue",
+              "test-data-issue",
+              "environment-issue",
+              "requirement-ambiguity",
+              "mcp-tooling-issue",
+              "dependency-issue"
+            ]
+          },
+          "filesModified": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fixApplied": {
+            "type": "string"
+          },
+          "evidenceSupportingFix": {
+            "type": "string"
+          },
+          "reExecutionResult": {
+            "type": "string",
+            "enum": [
+              "passed",
+              "failed",
+              "blocked",
+              "not-rerun"
+            ]
+          },
+          "assertionsWeakened": {
+            "type": "boolean",
+            "const": false,
+            "description": "Must remain false; weakening assertions is forbidden"
+          }
+        }
+      }
+    },
+    "finalStatus": {
+      "type": "string",
+      "enum": [
+        "healed-verified",
+        "partial",
+        "unresolved",
+        "blocked",
+        "product-defect-logged"
+      ]
+    },
+    "remainingRisks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolvedDefectsOrAmbiguities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

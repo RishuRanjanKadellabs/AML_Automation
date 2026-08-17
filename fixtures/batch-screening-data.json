@@ -1,0 +1,85 @@
+{
+  "gridRecords": [
+    {
+      "gridRow": 1,
+      "customerName": "William James Harrington",
+      "customerId": "CUST-2025-08355",
+      "matchedLists": 2,
+      "score": 95,
+      "listName": "UN Security Council Consolidated List (UNSCR 1267)",
+      "category": "Sanctions",
+      "screeningType": "Single",
+      "matchDate": "31/12/2025",
+      "status": "Under Review"
+    },
+    {
+      "gridRow": 2,
+      "customerName": "KHALIFA MOHD T AL SUBAEY",
+      "customerId": "685868",
+      "matchedLists": 1,
+      "score": 100,
+      "listName": "UAE Local Lists (Terrorist & Sanction)",
+      "category": "Sanctions",
+      "screeningType": "Single",
+      "matchDate": "31/12/2025",
+      "status": "Under Review"
+    },
+    {
+      "gridRow": 3,
+      "customerName": "Dawood Ibrahim Kaskar",
+      "customerId": "CUST-2025-08341",
+      "matchedLists": 3,
+      "score": 96.5,
+      "listName": "OFAC SDN List",
+      "category": "Sanctions",
+      "screeningType": "Single",
+      "matchDate": "23/12/2025",
+      "status": "Under Review"
+    },
+    {
+      "gridRow": 4,
+      "customerName": "Ali Hassan Mwinyimvua",
+      "customerId": "CUST-2025-08340",
+      "matchedLists": 2,
+      "score": 92.8,
+      "listName": "UN Consolidated List",
+      "category": "PEP",
+      "screeningType": "Bulk",
+      "matchDate": "18/12/2025",
+      "status": "Under Review"
+    },
+    {
+      "gridRow": 5,
+      "customerName": "Global Trading Solutions LLC",
+      "customerId": "CUST-2025-08339",
+      "matchedLists": 1,
+      "score": 88.3,
+      "listName": "EU Sanctions List",
+      "category": "Sanctions",
+      "screeningType": "Single",
+      "matchDate": "15/12/2025",
+      "status": "Move to case"
+    }
+  ],
+  "searchKeywords": {
+    "validPartial": "HANIYA",
+    "validExact": "CUST-BATCH",
+    "invalid": "zzzz-no-match-99999",
+    "sqlInjection": "' OR '1'='1",
+    "xssInjection": "<script>alert('xss')</script>",
+    "specialChars": "Test@#$%^&*()"
+  },
+  "actionComments": {
+    "valid": "Automation action comment for batch screening validation.",
+    "specialChars": "Comment with special chars: @#$% & <test>"
+  },
+  "dispositionComments": {
+    "valid": "Automation action comment for batch screening validation.",
+    "specialChars": "Comment with special chars: @#$% & <test>"
+  },
+  "roles": {
+    "authorizedAnalyst": "Valid AML analyst account",
+    "exportRole": "Authorized export role",
+    "restrictedRole": "Restricted role without batch screening access"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/fsd-figma-pipeline/schemas/tc-delta-report-schema.json",
+  "title": "Stage 0 Test Case Delta Report",
+  "description": "Create vs reconcile delta for an Excel workbook against FSD-backed use cases. Required when excelMode=reconcile; also emitted for create with all IDs under add.",
+  "type": "object",
+  "required": [
+    "excelMode",
+    "excelPath",
+    "resultsKey",
+    "generatedAt",
+    "milestone",
+    "add",
+    "update",
+    "retire",
+    "keep",
+    "idStability",
+    "removalsApproved"
+  ],
+  "properties": {
+    "excelMode": {
+      "type": "string",
+      "enum": ["create", "reconcile"],
+      "description": "create = workbook did not exist (new write). reconcile = workbook existed (in-place update)."
+    },
+    "excelPath": { "type": "string", "pattern": ".*\\.xlsx$" },
+    "backupPath": {
+      "type": ["string", "null"],
+      "description": "Timestamped .bak path created before reconcile overwrite; null in create mode."
+    },
+    "resultsKey": { "type": "string", "minLength": 1 },
+    "generatedAt": { "type": "string" },
+    "milestone": {
+      "type": "integer",
+      "enum": [1, 2],
+      "description": "Which pipeline/test-data/MilestoneN root was used."
+    },
+    "add": {
+      "type": "array",
+      "description": "New Test Case IDs added to cover uncovered FSD requirements.",
+      "items": { "$ref": "#/$defs/deltaEntry" }
+    },
+    "update": {
+      "type": "array",
+      "description": "Existing IDs whose steps/expected/title were revised from FSD+Figma; ID unchanged.",
+      "items": { "$ref": "#/$defs/deltaEntry" }
+    },
+    "retire": {
+      "type": "array",
+      "description": "Existing IDs with no in-scope FSD requirement mapping (orphans / unnecessary). Removed only after human approval.",
+      "items": { "$ref": "#/$defs/deltaEntry" }
+    },
+    "keep": {
+      "type": "array",
+      "description": "Existing IDs unchanged (still FSD-mapped).",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "orphanCaseIds": {
+      "type": "array",
+      "description": "Same as retire[].testCaseId before approval; reverse-coverage failures.",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "idStability": {
+      "type": "object",
+      "required": ["preservedExistingIds", "noRenumber", "noReuseRetiredIds"],
+      "properties": {
+        "preservedExistingIds": { "type": "boolean" },
+        "noRenumber": { "type": "boolean" },
+        "noReuseRetiredIds": { "type": "boolean" }
+      }
+    },
+    "removalsApproved": {
+      "type": "boolean",
+      "description": "false until user Approves Excel including retire list; true after Approve or when retire is empty."
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "existingRowCount": { "type": "integer", "minimum": 0 },
+        "finalRowCount": { "type": "integer", "minimum": 0 },
+        "addCount": { "type": "integer", "minimum": 0 },
+        "updateCount": { "type": "integer", "minimum": 0 },
+        "retireCount": { "type": "integer", "minimum": 0 },
+        "keepCount": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "$defs": {
+    "deltaEntry": {
+      "type": "object",
+      "required": ["testCaseId", "reason"],
+      "properties": {
+        "testCaseId": { "type": "string", "minLength": 1 },
+        "reason": { "type": "string", "minLength": 3 },
+        "requirementIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "changedFields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Task Description",
+              "Acceptance Criteria",
+              "Preconditions",
+              "Test Steps",
+              "Test Data",
+              "Priority",
+              "Expected Result",
+              "Module",
+              "Sub Module"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

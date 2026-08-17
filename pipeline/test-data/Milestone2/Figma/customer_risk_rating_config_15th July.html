@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 – Customer Risk Rating Configuration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f4f5f7; color: #161616; height: 100vh; overflow: hidden; font-size: 14px; }
+
+/* ── App Shell ── */
+.app { display: flex; height: 100vh; overflow: hidden; flex-direction: column; }
+.app-body { display: flex; flex: 1; overflow: hidden; }
+
+/* ── Sidebar ── */
+.sidebar { width: 240px; flex-shrink: 0; background: #fff; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; overflow: hidden; }
+.sidebar-header { height: 54px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 16px; gap: 8px; flex-shrink: 0; }
+.logo-text { font-size: 18px; font-weight: 800; color: #2A53A0; }
+.logo-div { width: 1px; height: 24px; background: #e5e7eb; }
+.bank-text { font-size: 11px; font-weight: 700; color: #525252; letter-spacing: 0.5px; }
+.sidebar-search { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; }
+.search-wrap { position: relative; }
+.search-wrap input { width: 100%; height: 36px; border: 1px solid #e5e7eb; border-radius: 6px; padding: 0 12px 0 32px; font-size: 13px; outline: none; font-family: 'Inter', sans-serif; color: #161616; }
+.search-wrap input:focus { border-color: #2A53A0; }
+.search-wrap .si { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+.sidebar-nav { flex: 1; overflow-y: auto; padding: 8px 0; }
+.nav-item { display: flex; align-items: center; gap: 8px; padding: 0 16px; height: 44px; border-radius: 6px; cursor: pointer; font-size: 14px; color: #161616; transition: background 0.15s; width: 100%; border: none; background: none; text-align: left; }
+.nav-item:hover { background: #f3f4f6; }
+.nav-item.active { color: #2A53A0; font-weight: 600; }
+.nav-chevron { margin-left: auto; color: #9ca3af; flex-shrink: 0; transition: transform 0.2s; }
+.nav-item.active .nav-chevron { color: #2A53A0; transform: rotate(90deg); }
+.nav-sub-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px 8px 27px; cursor: pointer; font-size: 13px; color: #525252; transition: all 0.15s; width: 100%; border: none; background: none; text-align: left; border-radius: 6px; }
+.nav-sub-item:hover { color: #2A53A0; background: #f9fafb; }
+.nav-sub-item.active { background: #EAF2FF; color: #2A53A0; font-weight: 500; border-left: 4px solid #2A53A0; padding-left: 23px; border-radius: 0 6px 6px 0; }
+
+/* ── Top Bar ── */
+.topbar { height: 54px; background: #fff; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 20px; justify-content: space-between; flex-shrink: 0; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+.bc-link { color: #2A53A0; cursor: pointer; font-weight: 500; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: #2A53A0; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; cursor: pointer; }
+
+/* ── Main Area ── */
+.main-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.main-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; padding: 14px 16px; gap: 10px; }
+
+/* ── Info Banner ── */
+.info-banner { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-radius: 4px; border-left: 4px solid; flex-shrink: 0; font-size: 13px; }
+.banner-warn { background: #fff8e1; border-color: #f0ab00; color: #161616; }
+.banner-success { background: #defbe6; border-color: #24a148; color: #161616; }
+.banner-error { background: #fff1f1; border-color: #da1e28; color: #161616; }
+.banner-title { font-weight: 600; }
+.banner-sub { color: #525252; margin-left: 4px; }
+
+/* ── Subtab Bar ── */
+.subtab-bar { display: flex; gap: 0; border: 1px solid #e0e0e0; border-radius: 6px; overflow: hidden; flex-shrink: 0; background: #fff; }
+.subtab-btn { flex: 1; padding: 9px 14px; background: #fff; border: none; border-right: 1px solid #e0e0e0; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif; color: #525252; font-weight: 500; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 7px; }
+.subtab-btn:last-child { border-right: none; }
+.subtab-btn:hover { background: #f4f5f7; color: #2A53A0; }
+.subtab-btn.active { background: #2A53A0; color: #fff; }
+.subtab-panel { display: none; flex: 1; overflow: hidden; flex-direction: column; gap: 10px; }
+.subtab-panel.active { display: flex; }
+
+/* ── Split Panel ── */
+.split-panel { flex: 1; overflow: hidden; display: flex; border: 1px solid #e0e0e0; border-radius: 4px; background: #fff; }
+.cat-sidebar { width: 250px; flex-shrink: 0; background: #fff; border-right: 1px solid #e0e0e0; overflow-y: auto; }
+.cat-item { width: 100%; text-align: left; padding: 10px 14px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; cursor: pointer; background: none; border-left: 3px solid transparent; transition: background 0.15s; font-family: 'Inter', sans-serif; gap: 8px; }
+.cat-item:hover { background: #f4f5f7; }
+.cat-item.active { background: #eef2fa; border-left-color: #2A53A0; }
+.cat-num { font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; flex-shrink: 0; color: #8d8d8d; }
+.cat-item.active .cat-num { color: #2A53A0; }
+.cat-name { font-size: 12px; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: #161616; }
+.cat-item.active .cat-name { color: #2A53A0; font-weight: 600; }
+.cat-weight-badge { font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; flex-shrink: 0; padding: 2px 6px; border-radius: 3px; background: #f4f5f7; color: #525252; }
+.cat-item.active .cat-weight-badge { background: #2A53A0; color: #fff; }
+
+/* ── Factor Panel ── */
+.factor-panel { flex: 1; overflow-y: auto; background: #fff; }
+.factor-panel-inner { padding: 14px; }
+.cat-header-card { border: 1px solid #e0e0e0; border-radius: 4px; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; background: #fff; gap: 12px; }
+.cat-header-left { display: flex; align-items: center; gap: 10px; }
+.cat-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.cat-title { font-size: 15px; font-weight: 600; color: #161616; }
+.cat-stage-badge { font-size: 10px; font-family: 'IBM Plex Mono', monospace; padding: 2px 7px; border-radius: 3px; background: #eef2fa; color: #2A53A0; font-weight: 600; letter-spacing: 0.3px; }
+.weight-control { display: flex; align-items: center; gap: 8px; }
+.weight-label { font-size: 12px; color: #525252; }
+.weight-input { width: 68px; height: 34px; border: 1px solid #8d8d8d; border-radius: 4px; padding: 0 10px; font-size: 14px; font-family: 'IBM Plex Mono', monospace; text-align: center; outline: none; }
+.weight-input:focus { border-color: #2A53A0; box-shadow: 0 0 0 2px rgba(42,83,160,0.15); }
+.weight-pct { font-size: 13px; color: #525252; }
+
+/* ── Subsection ── */
+.subsection { border: 1px solid #e0e0e0; border-radius: 4px; margin-bottom: 12px; overflow: hidden; }
+.subsection-header { padding: 8px 18px; background: #f4f5f7; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 8px; }
+.sub-num { font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'IBM Plex Mono', monospace; }
+.sub-title { font-size: 11px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.05em; }
+.sub-new-badge { font-size: 10px; font-weight: 700; background: #0f62fe; color: #fff; padding: 1px 6px; border-radius: 3px; }
+
+/* ── Factor Column Headers ── */
+.factor-col-headers { display: flex; align-items: center; gap: 10px; padding: 6px 18px; background: #f9f9f9; border-bottom: 1px solid #e0e0e0; }
+.fch-cb { width: 18px; flex-shrink: 0; }
+.fch-name { flex: 1; font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.05em; }
+.fch-risk { width: 140px; flex-shrink: 0; font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.05em; }
+.fch-score { width: 44px; flex-shrink: 0; font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+.fch-override { width: 164px; flex-shrink: 0; font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.05em; }
+.fch-stages { width: 160px; flex-shrink: 0; font-size: 10px; font-weight: 600; color: #525252; text-transform: uppercase; letter-spacing: 0.05em; text-align: center; }
+
+/* ── Factor Row ── */
+.factor-row { display: flex; align-items: center; gap: 10px; padding: 8px 18px; border-bottom: 1px solid #f0f0f0; transition: background 0.1s; }
+.factor-row:last-child { border-bottom: none; }
+.factor-row:nth-child(even) { background: #fafafa; }
+.factor-row:nth-child(odd) { background: #fff; }
+.factor-row:hover { background: #f4f7ff !important; }
+.factor-cb { flex-shrink: 0; width: 18px; display: flex; align-items: center; }
+.factor-cb input[type="checkbox"] { width: 15px; height: 15px; accent-color: #2A53A0; cursor: pointer; }
+.factor-name-cell { flex: 1; min-width: 0; display: flex; align-items: center; gap: 6px; }
+.factor-name-cell span { font-size: 12px; color: #161616; line-height: 1.4; }
+.new-tag { font-size: 10px; font-weight: 700; background: #0f62fe; color: #fff; padding: 1px 5px; border-radius: 3px; flex-shrink: 0; white-space: nowrap; }
+.factor-risk-cell { flex-shrink: 0; width: 140px; }
+.factor-risk-cell select { width: 100%; height: 28px; border: 1px solid #c6c6c6; border-radius: 3px; padding: 0 24px 0 8px; font-size: 12px; font-family: 'Inter', sans-serif; color: #161616; outline: none; appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16' fill='%23525252'%3E%3Cpath d='M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z'/%3E%3C/svg%3E") no-repeat right 5px center; cursor: pointer; }
+.factor-risk-cell select:focus { border-color: #2A53A0; }
+.factor-score-cell { flex-shrink: 0; width: 44px; height: 26px; border-radius: 3px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; font-family: 'IBM Plex Mono', monospace; }
+.factor-override-cell { flex-shrink: 0; width: 164px; }
+.factor-override-cell select { width: 100%; height: 28px; border: 1px solid #c6c6c6; border-radius: 3px; padding: 0 24px 0 8px; font-size: 12px; font-family: 'Inter', sans-serif; color: #161616; outline: none; appearance: none; background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 16 16' fill='%23525252'%3E%3Cpath d='M8 11L3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z'/%3E%3C/svg%3E") no-repeat right 5px center; cursor: pointer; }
+.factor-override-cell select:focus { border-color: #2A53A0; }
+.factor-stages-cell { flex-shrink: 0; width: 160px; display: flex; align-items: center; justify-content: space-evenly; }
+.stage-cell { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.stage-lbl { font-size: 9px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; line-height: 1; }
+.stage-cb { width: 13px; height: 13px; cursor: pointer; }
+.lbl-onb { color: #2A53A0; }
+.lbl-ong { color: #b8960a; }
+.lbl-evt { color: #da1e28; }
+.lbl-prd { color: #24a148; }
+
+/* Score colors */
+.sc-extreme { background: #da1e28; color: #fff; }
+.sc-high { background: #ff832b; color: #fff; }
+.sc-medhigh { background: #f1c21b; color: #161616; }
+.sc-medium { background: #a2c23a; color: #fff; }
+.sc-lowmed { background: #42be65; color: #fff; }
+.sc-low { background: #8faadc; color: #fff; }
+.sc-new { background: #0f62fe; color: #fff; }
+
+/* ── Total Weight Bar ── */
+.weight-total-bar { display: flex; align-items: center; gap: 10px; padding: 8px 14px; background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; flex-shrink: 0; }
+.wtb-label { font-size: 12px; color: #525252; font-weight: 500; }
+.wtb-value { font-size: 14px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; }
+.wtb-status { font-size: 12px; font-weight: 600; margin-left: 4px; }
+
+/* ── Scoring Config ── */
+.scoring-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 12px; }
+.scoring-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; border-top: 3px solid; }
+.sc-tier-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 12px; }
+.range-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.range-field label { font-size: 10px; color: #6b7280; margin-bottom: 3px; display: block; }
+.range-input { width: 68px; height: 34px; border: 1px solid #c6c6c6; border-radius: 4px; padding: 0 8px; font-size: 13px; font-family: 'IBM Plex Mono', monospace; text-align: center; outline: none; color: #161616; }
+.range-input:focus { border-color: #2A53A0; }
+.range-sep { font-size: 16px; color: #9ca3af; margin-top: 14px; }
+
+.tier-def-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 10px; }
+.tier-def-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 12px 14px; border-left: 4px solid; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.tdc-label { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; }
+.tdc-sub { font-size: 10px; color: #6b7280; margin-top: 2px; }
+.tdc-input { width: 60px; height: 32px; border: 1px solid #c6c6c6; border-radius: 4px; padding: 0 6px; font-size: 13px; font-family: 'IBM Plex Mono', monospace; text-align: center; outline: none; color: #161616; }
+.tdc-input:focus { border-color: #2A53A0; }
+
+/* ── Periodic Review ── */
+.periodic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 12px; }
+.periodic-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 16px; border-left: 4px solid; }
+.ptc-name { font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; }
+.ptc-range { font-size: 22px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; margin: 4px 0 4px; }
+.ptc-desc { font-size: 11px; color: #525252; margin-bottom: 12px; line-height: 1.5; }
+.ptc-field-label { font-size: 11px; color: #6b7280; margin-bottom: 5px; font-weight: 500; }
+.ptc-input-row { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+.ptc-input { width: 70px; height: 34px; border: 1px solid #c6c6c6; border-radius: 4px; padding: 0 8px; font-size: 13px; font-family: 'IBM Plex Mono', monospace; text-align: center; outline: none; color: #161616; }
+.ptc-input:focus { border-color: #2A53A0; }
+.ptc-unit { font-size: 12px; color: #525252; }
+.ptc-equiv { font-size: 12px; font-weight: 600; margin-top: 2px; }
+.ptc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; font-size: 11px; }
+.ptc-meta-item label { color: #6b7280; display: block; font-size: 10px; margin-bottom: 1px; }
+.ptc-meta-item span { font-weight: 500; color: #161616; }
+
+.periodic-summary-wrap { background: #fff; border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+.periodic-summary-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.periodic-summary-wrap thead th { background: #f4f5f7; padding: 8px 14px; text-align: left; font-size: 10px; font-family: 'IBM Plex Mono', monospace; font-weight: 600; letter-spacing: 0.5px; color: #525252; border-bottom: 1px solid #e0e0e0; white-space: nowrap; text-transform: uppercase; }
+.periodic-summary-wrap tbody td { padding: 9px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: middle; }
+.periodic-summary-wrap tbody tr:last-child td { border-bottom: none; }
+.freq-pill { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 3px; font-size: 11px; font-family: 'IBM Plex Mono', monospace; font-weight: 500; border: 1px solid; }
+
+/* ── Action Bar ── */
+.action-bar { height: 56px; border-top: 1px solid #e0e0e0; background: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; flex-shrink: 0; }
+.action-bar-left { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #525252; }
+.action-bar-right { display: flex; align-items: center; gap: 10px; }
+.btn-ghost { height: 38px; padding: 0 14px; border: 1px solid #c6c6c6; border-radius: 6px; color: #525252; background: transparent; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s; }
+.btn-ghost:hover { background: #f4f5f7; border-color: #8d8d8d; }
+.btn-primary { height: 38px; padding: 0 16px; border: 1px solid #2A53A0; border-radius: 6px; color: #fff; background: #2A53A0; cursor: pointer; font-size: 13px; font-family: 'Inter', sans-serif; display: inline-flex; align-items: center; gap: 6px; transition: all 0.15s; }
+.btn-primary:hover { background: #1e3a70; }
+
+/* ── Status Bar ── */
+.status-bar { height: 38px; border-top: 1px solid #e5e7eb; background: #f9fafb; display: flex; align-items: center; padding: 0 16px; justify-content: space-between; flex-shrink: 0; }
+.status-bar span { font-size: 11px; color: #6b7280; }
+
+/* ── Scrollable content wrappers ── */
+.scroll-body { flex: 1; overflow-y: auto; }
+.padded { padding: 14px; display: flex; flex-direction: column; gap: 14px; }
+
+/* ── Section card ── */
+.section-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; overflow: hidden; }
+.section-card-header { padding: 12px 16px; background: #f4f5f7; border-bottom: 1px solid #e0e0e0; }
+.section-card-header h3 { font-size: 13px; font-weight: 600; color: #161616; margin-bottom: 2px; }
+.section-card-header p { font-size: 11px; color: #525252; }
+.section-card-body { padding: 14px 16px; }
+
+/* ── Intro banner ── */
+.intro-banner { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border-radius: 4px; background: #edf5ff; border-left: 4px solid #2A53A0; flex-shrink: 0; font-size: 12px; color: #161616; }
+.intro-banner .ib-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.intro-banner strong { font-weight: 600; display: block; margin-bottom: 2px; }
+
+/* ── Subsection bulk stage controls ── */
+.subsection-header { padding: 8px 18px; background: #f4f5f7; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; gap: 8px; }
+.sub-bulk-wrap { margin-left: auto; display: flex; align-items: center; gap: 5px; }
+.sub-bulk-btn {
+  padding: 2px 7px; font-size: 9px; font-family: 'IBM Plex Mono', monospace;
+  border-radius: 3px; cursor: pointer; border: 1px solid; transition: all 0.12s;
+  line-height: 1.6; white-space: nowrap;
+}
+.cbb-all  { color:#4a4540; border-color:#d4cfc4; background:#fff; }
+.cbb-all:hover  { background:#4a4540; color:#fff; }
+.cbb-none { color:#8a837a; border-color:#e0e0e0; background:#fff; }
+.cbb-none:hover { background:#8a837a; color:#fff; }
+.cbb-onb  { color:#2A53A0; border-color:#c0cfef; background:#eef2fd; }
+.cbb-onb:hover  { background:#2A53A0; color:#fff; }
+.cbb-ong  { color:#b8960a; border-color:#f0e4a0; background:#fdfaed; }
+.cbb-ong:hover  { background:#b8960a; color:#fff; }
+.cbb-evt  { color:#da1e28; border-color:#f5beb5; background:#fff1f1; }
+.cbb-evt:hover  { background:#da1e28; color:#fff; }
+.cbb-prd  { color:#24a148; border-color:#b8dece; background:#defbe6; }
+.cbb-prd:hover  { background:#24a148; color:#fff; }
+.cbb-sep  { width:1px; height:14px; background:#d4cfc4; margin:0 2px; display:inline-block; }
+
+/* ── Save bar (per-tab) ── */
+.save-bar-strip {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; background: #fff8e1; border: 1px solid #f0ab00;
+  border-radius: 6px; flex-shrink: 0;
+}
+.save-bar-msg { font-size: 12px; color: #92400e; font-weight: 500; }
+.save-bar-btns { display: flex; gap: 8px; }
+
+/* ── Stage legend pills ── */
+.stage-legend-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.stage-pill {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
+  border-radius: 20px; font-size: 10px; font-family: 'IBM Plex Mono', monospace;
+  font-weight: 600; border: 1px solid; white-space: nowrap;
+}
+.sp-onb { color:#2A53A0; border-color:#c0cfef; background:#eef2fd; }
+.sp-ong { color:#b8960a; border-color:#f0e4a0; background:#fdfaed; }
+.sp-evt { color:#da1e28; border-color:#f5beb5; background:#fff1f1; }
+.sp-prd { color:#24a148; border-color:#b8dece; background:#defbe6; }
+
+/* ── Periodic card enhancements ── */
+.ptc-toggle-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; padding-top: 8px; border-top: 1px dashed #e0e0e0; }
+.ptc-toggle { width: 36px; height: 20px; background: #c6c6c6; border-radius: 10px; position: relative; cursor: pointer; transition: background 0.2s; border: none; flex-shrink: 0; }
+.ptc-toggle.on { background: var(--tc-color, #24a148); }
+.ptc-toggle::after { content:''; position:absolute; width:16px; height:16px; background:#fff; border-radius:50%; top:2px; left:2px; transition:transform 0.2s; box-shadow:0 1px 3px rgba(0,0,0,0.2); }
+.ptc-toggle.on::after { transform: translateX(16px); }
+.ptc-toggle-lbl { font-size: 11px; color: #525252; }
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="app-body">
+
+    <!-- ── Left Sidebar ── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-text">clari5</span>
+        <div class="logo-div"></div>
+        <span class="bank-text">ClarityBank</span>
+      </div>
+      <div class="sidebar-search">
+        <div class="search-wrap">
+          <span class="si"><svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg></span>
+          <input type="text" placeholder="Search menus...">
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="nav-item active">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5,8.4c0-0.1,0-0.3,0-0.4c0-0.1,0-0.3,0-0.4l1-0.8c0.4-0.3,0.4-0.9,0.2-1.3l-1.2-2C13.3,3.2,13,3,12.6,3c-0.1,0-0.2,0-0.3,0.1l-1.2,0.4c-0.2-0.1-0.4-0.3-0.7-0.4l-0.3-1.3C10.1,1.3,9.7,1,9.2,1H6.8c-0.5,0-0.9,0.3-1,0.8L5.6,3.1C5.3,3.2,5.1,3.3,4.9,3.4L3.7,3C3.6,3,3.5,3,3.4,3C3,3,2.7,3.2,2.5,3.5l-1.2,2C1.1,5.9,1.2,6.4,1.6,6.8l0.9,0.9c0,0.1,0,0.3,0,0.4c0,0.1,0,0.3,0,0.4L1.6,9.2c-0.4,0.3-0.5,0.9-0.2,1.3l1.2,2C2.7,12.8,3,13,3.4,13c0.1,0,0.2,0,0.3-0.1l1.2-0.4c0.2,0.1,0.4,0.3,0.7,0.4l0.3,1.3c0.1,0.5,0.5,0.8,1,0.8h2.4c0.5,0,0.9-0.3,1-0.8l0.3-1.3c0.2-0.1,0.4-0.2,0.7-0.4l1.2,0.4c0.1,0,0.2,0.1,0.3,0.1c0.4,0,0.7-0.2,0.9-0.5l1.1-2c0.2-0.4,0.2-0.9-0.2-1.3L13.5,8.4z M8,11c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3C11,9.6,9.7,11,8,11z"/></svg>
+          Configuration
+          <svg class="nav-chevron" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11 3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+        </button>
+        <div>
+          <button class="nav-sub-item">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M12,4v8H4V4H12 M12,3H4C3.4,3,3,3.4,3,4v8c0,0.6,0.4,1,1,1h8c0.6,0,1-0.4,1-1V4C13,3.4,12.6,3,12,3z"/></svg>
+            Sanctions Screening
+          </button>
+          <button class="nav-sub-item">
+            <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+            Ignore Words Config
+          </button>
+          <button class="nav-sub-item active">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8,1C4.1,1,1,4.1,1,8s3.1,7,7,7s7-3.1,7-7S11.9,1,8,1z M8,14c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S11.3,14,8,14z"/><path d="M7.5 4H8.5V9H7.5z"/><path d="M8,10.2c-0.4,0-0.8,0.3-0.8,0.8s0.3,0.8,0.8,0.8c0.4,0,0.8-0.3,0.8-0.8S8.4,10.2,8,10.2z"/></svg>
+            Customer Risk Rating
+          </button>
+          <button class="nav-sub-item">
+            <svg width="12" height="12" viewBox="0 0 32 32" fill="currentColor"><path d="M30,8h-4.1c-0.5-2.3-2.5-4-4.9-4s-4.4,1.7-4.9,4H2v2h14.1c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H30V8z M21,12c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3S22.7,12,21,12z"/><path d="M2,24h4.1c0.5,2.3,2.5,4,4.9,4s4.4-1.7,4.9-4H30v-2H15.9c-0.5-2.3-2.5-4-4.9-4s-4.4,1.7-4.9,4H2V24z M11,20c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S9.3,20,11,20z"/></svg>
+            TM Rules Configuration
+          </button>
+          <button class="nav-sub-item">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8,1C4.1,1,1,4.1,1,8s3.1,7,7,7s7-3.1,7-7S11.9,1,8,1z M8,14c-3.3,0-6-2.7-6-6s2.7-6,6-6s6,2.7,6,6S11.3,14,8,14z"/><path d="M7.5 4H8.5V9H7.5z"/><path d="M8,10.2c-0.4,0-0.8,0.3-0.8,0.8s0.3,0.8,0.8,0.8c0.4,0,0.8-0.3,0.8-0.8S8.4,10.2,8,10.2z"/></svg>
+            Mule Alerts Configuration
+          </button>
+        </div>
+        <button class="nav-item" style="margin-top:4px;">
+          <svg width="15" height="15" viewBox="0 0 32 32" fill="currentColor"><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17A1,1,0,0,1,12,30Z"/></svg>
+          Real-time Monitoring
+          <svg class="nav-chevron" width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- ── Main Area ── -->
+    <div class="main-area">
+      <div class="topbar">
+        <div class="breadcrumb">
+          <span class="bc-link">Configuration</span>
+          <span style="color:#d1d5db;">/</span>
+          <span style="color:#161616;font-weight:500;">Customer Risk Rating Configuration</span>
+        </div>
+        <div class="topbar-right">
+          <span style="font-size:12px;color:#525252;">Charu Chauhan</span>
+          <div class="avatar">CC</div>
+        </div>
+      </div>
+
+      <div class="main-content">
+
+        <!-- Banner -->
+        <div class="info-banner banner-warn" id="weightBanner">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="#f0ab00"><path d="M16,2A14,14,0,1,0,30,16,14,14,0,0,0,16,2Zm0,6a1.5,1.5,0,1,1-1.5,1.5A1.5,1.5,0,0,1,16,8Zm4,16.125H12v-2.25h2.875v-5.75H13v-2.25h4.125v8H20Z"/></svg>
+          <p><span class="banner-title">Total Category Weight (must equal 100%):</span><span class="banner-sub" id="bannerText">Calculating…</span></p>
+        </div>
+
+        <!-- Sub-tabs -->
+        <div class="subtab-bar">
+          <button class="subtab-btn active" onclick="showTab('weights')" id="tab-weights">
+            ⚖️ Category Weights &amp; Parameters
+          </button>
+          <button class="subtab-btn" onclick="showTab('scoring')" id="tab-scoring">
+            🎯 Risk Scoring Configuration
+          </button>
+          <button class="subtab-btn" onclick="showTab('periodic')" id="tab-periodic">
+            📅 Periodic Review Frequency
+          </button>
+        </div>
+
+        <!-- ── TAB 1: WEIGHTS & PARAMETERS ── -->
+        <div class="subtab-panel active" id="panel-weights">
+          <div class="intro-banner" style="background:#edf5ff;border-color:#2A53A0;">
+            <span class="ib-icon">ℹ️</span>
+            <div>
+              <strong>Category Weights, Parameters &amp; Stage Applicability</strong>
+              Adjust category weightages, parameter risk levels, scores, and override settings. Use stage checkboxes — or the bulk controls in each sub-section header — to control which parameters apply at each lifecycle stage.
+              <div class="stage-legend-row" style="margin-top:7px;margin-bottom:0">
+                <span class="stage-pill sp-onb">● ONB — Onboarding</span>
+                <span class="stage-pill sp-ong">● ONG — Ongoing Monitoring</span>
+                <span class="stage-pill sp-evt">● EVT — Event-Driven</span>
+                <span class="stage-pill sp-prd">● PRD — Periodic Review</span>
+              </div>
+            </div>
+          </div>
+          <div class="split-panel">
+            <div class="cat-sidebar" id="catSidebar"></div>
+            <div class="factor-panel">
+              <div class="factor-panel-inner" id="factorPanel"></div>
+              <div class="action-bar">
+                <div class="action-bar-right">
+                  <button class="btn-primary" onclick="saveWeightsConfig(event)">
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.9,4.6l-2.5-2.5C11.3,2.1,11.1,2,11,2H3C2.4,2,2,2.4,2,3v10c0,0.6,0.4,1,1,1h10c0.6,0,1-0.4,1-1V5C14,4.9,13.9,4.7,13.9,4.6z M6,3h4v2H6V3z M10,13H6V9h4V13z M11,13V9c0-0.6-0.4-1-1-1H6C5.4,8,5,8.4,5,9v4H3V3h2v2c0,0.6,0.4,1,1,1h4c0.6,0,1-0.4,1-1V3.2l2,2V13H11z"/></svg>
+                    Save Configuration
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB 2: RISK SCORING CONFIG ── -->
+        <div class="subtab-panel" id="panel-scoring">
+          <div class="scroll-body">
+            <div class="padded">
+              <div class="intro-banner" style="background:linear-gradient(135deg,#fdf6ed,#fffaf5);border-color:#f0ab00;border-left:4px solid #f0ab00;">
+                <span class="ib-icon">🎯</span>
+                <div>
+                  <strong style="color:#92400e;">Risk Scoring Configuration</strong>
+                  Define composite score ranges for each risk classification tier and set the numeric values assigned to each parameter risk tier.
+                </div>
+              </div>
+
+              <div class="section-card">
+                <div class="section-card-header">
+                  <h3>Risk Classification by Composite Score</h3>
+                  <p>Set composite score thresholds for each risk tier. Ranges must be contiguous (0–100).</p>
+                </div>
+                <div class="section-card-body">
+                  <div class="scoring-grid" id="scoringClassGrid"></div>
+                </div>
+              </div>
+
+              <div class="section-card">
+                <div class="section-card-header">
+                  <h3>Parameter Risk Tier → Numeric Score Mapping</h3>
+                  <p>Set the numeric score assigned to each parameter risk label. Used when computing weighted category averages.</p>
+                </div>
+                <div class="section-card-body">
+                  <div class="tier-def-grid" id="tierDefGrid"></div>
+                </div>
+              </div>
+
+              <div class="save-bar-strip">
+                <div class="save-bar-btns">
+                  <button class="btn-primary" onclick="saveScoringConfig(event)">✓ Save Scoring Config</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── TAB 3: PERIODIC REVIEW ── -->
+        <div class="subtab-panel" id="panel-periodic">
+          <div class="scroll-body">
+            <div class="padded">
+              <div class="intro-banner" style="background:#defbe6;border-color:#24a148">
+                <span class="ib-icon">📅</span>
+                <div>
+                  <strong style="color:#0a3622">Periodic Review Frequency Configuration</strong>
+                  Configure the scheduled review cycle for each risk tier. Settings take effect at the next scheduled review cycle. Existing scheduled reviews are not retroactively affected.
+                </div>
+              </div>
+
+              <div class="periodic-grid" id="periodicGrid"></div>
+
+              <div class="save-bar-strip" style="background:#defbe6;border-color:#24a148;">
+                <div class="save-bar-btns">
+                  <button class="btn-primary" onclick="savePeriodicConfig(event)">✓ Save Review Schedule</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="status-bar">
+        <span>Your license will expire on June 12, 2026</span>
+        <span>© Clari5 — A Perfios Software Company</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// RISK TIER DATA
+// ============================================================
+const RISK_SCORES = {
+  'Critical':     { score: 100, bg: '#da1e28', color: '#fff', cls: 'sc-extreme' },
+  'High':        { score: 75,  bg: '#ff832b', color: '#fff', cls: 'sc-high' },
+  'Medium-High': { score: 60,  bg: '#f1c21b', color: '#161616', cls: 'sc-medhigh' },
+  'Medium':      { score: 40,  bg: '#a2c23a', color: '#fff', cls: 'sc-medium' },
+  'Low-Medium':  { score: 25,  bg: '#42be65', color: '#fff', cls: 'sc-lowmed' },
+  'Low':         { score: 10,  bg: '#8faadc', color: '#fff', cls: 'sc-low' },
+};
+
+const OVERRIDE_OPTIONS = ['No', 'Override to High', 'Override to Critical'];
+
+// Stage defaults per category ID
+const STAGE_DEFAULTS = {
+  '4.1':  { onb:true,  ong:true,  evt:true,  prd:true  },
+  '4.2':  { onb:true,  ong:true,  evt:true,  prd:true  },
+  '4.3':  { onb:false, ong:true,  evt:true,  prd:true  },
+  '4.4':  { onb:true,  ong:true,  evt:true,  prd:true  },
+  '4.5':  { onb:true,  ong:true,  evt:true,  prd:true  },
+  '4.6':  { onb:true,  ong:true,  evt:true,  prd:true  },
+  '4.7':  { onb:true,  ong:true,  evt:true,  prd:true  },
+  '4.8':  { onb:false, ong:true,  evt:true,  prd:true  },
+  '4.9':  { onb:true,  ong:true,  evt:true,  prd:true  },
+};
+
+// ============================================================
+// CATEGORIES DATA — From Dynamic Risk Assessment v2.0
+// ============================================================
+const CATEGORIES = [
+  {
+    id: '4.1', name: 'Sanctions & Watchlist Risk', weight: 27, color: '#c8472b', stage: 'Onboarding + Ongoing',
+    sections: [
+      { id: '4.1.1', name: 'Sanctions List Screening', isNew: false, factors: [
+        { id: 's001', name: 'UN Security Council / Taliban Sanctions (1267/1989)', risk: 'Critical', override: 'Override to Critical', checked: true },
+        { id: 's002', name: 'OFAC SDN / EU & UK HMT Sanctions', risk: 'Critical', override: 'Override to Critical', checked: true },
+        { id: 's004', name: 'Internal Bank Blacklist', risk: 'Critical', override: 'Override to Critical', checked: true },
+        { id: 's005', name: 'Export Control Lists (Dual-Use Goods)', risk: 'High', override: 'No', checked: true },
+        { id: 's006', name: 'INTERPOL Red Notices / FBI Most Wanted', risk: 'High', override: 'Override to High', checked: true },
+      ]},
+      { id: '4.1.2', name: 'Proliferation Financing (CPF)', isNew: true, factors: [
+        { id: 's007', name: 'Proliferation Financing Indicator — Dual-Use Technology Broker', risk: 'Critical', override: 'Override to Critical', checked: true, isNew: true },
+        { id: 's010', name: 'Transactions Linked to WMD-Related Jurisdictions / Entities', risk: 'Critical', override: 'Override to Critical', checked: true, isNew: true },
+      ]},
+      { id: '4.1.3', name: 'Politically Exposed Persons (PEP)', isNew: false, factors: [
+        { id: 's013', name: 'Foreign PEP — Level 1 (Head of State, Minister, Intl Org PEP)', risk: 'High', override: 'No', checked: true },
+        { id: 's014', name: 'Domestic PEP — Level 1 (Senior Government Official)', risk: 'High', override: 'No', checked: true },
+        { id: 's015', name: 'PEP — Level 2 (Senior Mgmt, Immediate Family, Former PEP)', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 's016', name: 'Diplomat with Immunity', risk: 'High', override: 'No', checked: true },
+        { id: 's017', name: 'Senior Judiciary / Military / Police Official', risk: 'Medium-High', override: 'No', checked: true },
+      ]},
+      { id: '4.1.4', name: 'Adverse Media & Reputational Risk', isNew: false, factors: [
+        { id: 's018', name: 'Serious Adverse Media (ML, TF, Corruption, Fraud, Criminal Charges)', risk: 'High', override: 'Override to High', checked: true },
+        { id: 's019', name: 'Moderate Adverse Media (Business Disputes, Negative Social Media)', risk: 'Medium', override: 'No', checked: true },
+        { id: 's020', name: 'Bankruptcy / Insolvency Proceedings', risk: 'Medium', override: 'No', checked: true },
+        { id: 's021', name: 'Debarment by Government / International Bodies', risk: 'High', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.2', name: 'Geographic & Jurisdictional Risk', weight: 22, color: '#d4780a', stage: 'Onboarding + Ongoing',
+    sections: [
+      { id: '4.2.1', name: 'Country / Jurisdiction Risk Lists', isNew: false, factors: [
+        { id: 'g001', name: 'FATF Black List / FATF Call of Action / UN Proliferation Risk Countries/ NCCT', risk: 'Critical', override: 'Override to High', checked: true },
+        { id: 'g003', name: 'FATF Grey List (Increased Monitoring)', risk: 'High', override: 'No', checked: true },
+        { id: 'g005', name: 'EU / Other Tax Haven Blacklist', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'g006', name: 'Conflict / War Zones / Politically Unstable / High Corruption Index', risk: 'High', override: 'No', checked: true },
+      ]},
+      { id: '4.2.2', name: 'Customer Geographic Exposure', isNew: false, factors: [
+        { id: 'g007', name: 'Nationality — High Risk Country', risk: 'High', override: 'No', checked: true },
+        { id: 'g008', name: 'Dual / Multiple Citizenships with any in High-Risk Country', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'g009', name: 'Resident Address — High Risk Country', risk: 'High', override: 'No', checked: true },
+        { id: 'g010', name: 'Business Operations / Registered Office in High Risk Country', risk: 'High', override: 'No', checked: true },
+        { id: 'g011', name: 'Tax Residency — High Risk / Tax Haven', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'g012', name: 'Tax Residency Different from Nationality', risk: 'Medium', override: 'No', checked: true },
+        { id: 'g013', name: 'Non-Resident Customer', risk: 'Medium', override: 'No', checked: true },
+        { id: 'g014', name: 'Expatriate', risk: 'Low-Medium', override: 'No', checked: true },
+        { id: 'g015', name: 'UBO / Directors / Shareholders — High Risk Country', risk: 'High', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.3', name: 'Transactional Behaviour Risk', weight: 16, color: '#b8960a', stage: 'Ongoing Only',
+    sections: [
+      { id: '4.3.1', name: 'Alert and Reporting Triggers', isNew: false, factors: [
+        { id: 't001', name: 'Suspicious Transaction Report (STR) Filed', risk: 'Critical', override: 'Override to High', checked: true },
+        { id: 't002', name: 'Currency Transaction Report (CTR) Triggered', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 't004', name: 'Multiple High-Risk Alerts (>5 per month)', risk: 'High', override: 'Override to High', checked: true },
+      ]},
+      { id: '4.3.2', name: 'Transaction Pattern Anomalies', isNew: false, factors: [
+        { id: 't006', name: 'Transactions Inconsistent with Profile', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 't007', name: 'Credits Significantly Exceed Stated Income', risk: 'High', override: 'No', checked: true },
+        { id: 't008', name: 'Deviation from Historical Pattern (>200%)', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 't009', name: 'Sudden Spike in Transaction Volume / Value', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 't010', name: 'Dormant Account Suddenly Active', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 't011', name: 'High Velocity', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 't012', name: 'Account Closure After High Activity', risk: 'High', override: 'No', checked: true },
+        { id: 't005', name: 'Structuring / Smurfing Pattern Detected', risk: 'High', override: 'Override to High', checked: true },
+        { id: 't027', name: 'Previously Generated Trade Finance Alerts', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 't028', name: 'Previously Generated Cash Transaction Alerts', risk: 'Medium-High', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.4', name: 'Business & Occupation Risk', weight: 16, color: '#2b8c5f', stage: 'Onboarding + Ongoing',
+    sections: [
+      { id: '4.4.1', name: 'High-Risk Business Sectors', isNew: false, factors: [
+        { id: 'b001', name: 'Casinos / Gaming / Gambling Operations', risk: 'Critical', override: 'No', checked: true },
+        { id: 'b002', name: 'Hawala / Informal Value Transfer', risk: 'Critical', override: 'Override to Critical', checked: true },
+        { id: 'b003', name: 'Cryptocurrency Exchange / VASP', risk: 'High', override: 'No', checked: true },
+        { id: 'b004', name: 'Money Service Business (MSB)', risk: 'High', override: 'No', checked: true },
+        { id: 'b005', name: 'Money Transfer Operators', risk: 'High', override: 'No', checked: true },
+        { id: 'b006', name: 'Precious Metals Dealers', risk: 'High', override: 'No', checked: true },
+        { id: 'b007', name: 'Precious Stones / Jewelry Dealers', risk: 'High', override: 'No', checked: true },
+        { id: 'b008', name: 'Real Estate Brokerage / Development', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'b009', name: 'Import-Export / International Trade', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'b010', name: 'NGOs / Charities (Foreign)', risk: 'High', override: 'No', checked: true },
+        { id: 'b011', name: 'Defence / Arms / Dual-Use Goods', risk: 'High', override: 'No', checked: true },
+        { id: 'b012', name: 'Cash-Intensive Businesses (Retail, F&B)', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'b013', name: 'Art Dealers / Auction Houses', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'b014', name: 'Corporate Service Providers', risk: 'Medium-High', override: 'No', checked: true },
+      ]},
+      { id: '4.4.2', name: 'Occupation and Employment Risk', isNew: false, factors: [
+        { id: 'b015', name: 'Self-Employed / Freelancer', risk: 'Medium', override: 'No', checked: true },
+        { id: 'b016', name: 'Government Contractor / Supplier', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'b017', name: 'Unemployed', risk: 'High', override: 'No', checked: true },
+        { id: 'b018', name: 'Student', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'b019', name: 'Employed (Private Sector)', risk: 'Low', override: 'No', checked: true },
+        { id: 'b020', name: 'Government Employee / Official', risk: 'Low-Medium', override: 'No', checked: true },
+        { id: 'b021', name: 'Occupation Not Clear / Verifiable', risk: 'Medium-High', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.5', name: 'Customer Profile & KYC Risk', weight: 9, color: '#2b5fc8', stage: 'Onboarding + Ongoing',
+    sections: [
+      { id: '4.5.1', name: 'KYC Documentation and Verification', isNew: false, factors: [
+        { id: 'k001', name: 'Incomplete / Missing KYC Docs / Unable to Verify Identity', risk: 'High', override: 'Override to High', checked: true },
+        { id: 'k002', name: 'Suspected Fraudulent Documentation', risk: 'Critical', override: 'Override to Critical', checked: true },
+        { id: 'k003', name: 'Customer Refusal to Provide Information / Evasive', risk: 'High', override: 'Override to High', checked: true },
+        { id: 'k004', name: 'Expired ID', risk: 'Medium-High', override: 'No', checked: true },
+      ]},
+      { id: '4.5.2', name: 'Beneficial Ownership and Control', isNew: false, factors: [
+        { id: 'k005', name: 'Bearer Share Company', risk: 'Critical', override: 'Override to Critical', checked: true },
+        { id: 'k006', name: 'UBO on Sanctions List', risk: 'Critical', override: 'Override to High', checked: true },
+        { id: 'k007', name: 'Lack of UBO Information / Unable to Identify UBO', risk: 'High', override: 'Override to High', checked: true },
+        { id: 'k008', name: 'Opaque Ownership via Nominees', risk: 'High', override: 'No', checked: true },
+        { id: 'k009', name: 'Complex Ownership Structure (>3 layers)', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'k010', name: 'UBO from High-Risk Jurisdiction', risk: 'High', override: 'No', checked: true },
+        { id: 'k011', name: 'Circular Ownership Structure', risk: 'High', override: 'No', checked: true },
+        { id: 'k012', name: 'UBO is PEP', risk: 'High', override: 'No', checked: true },
+      ]},
+      { id: '4.5.3', name: 'Source of Funds and Wealth', isNew: false, factors: [
+        { id: 'k013', name: 'Unable to Verify Source of Funds', risk: 'High', override: 'No', checked: true },
+        { id: 'k014', name: 'Unable to Verify Source of Wealth', risk: 'High', override: 'No', checked: true },
+        { id: 'k015', name: 'Source of Funds: Gambling / Gaming Winnings', risk: 'High', override: 'No', checked: true },
+        { id: 'k016', name: 'Source of Funds: Cryptocurrency', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'k017', name: 'Source of Funds: Employment Income', risk: 'Low', override: 'No', checked: true },
+        { id: 'k018', name: 'Source of Funds: Business / Trade Income', risk: 'Low-Medium', override: 'No', checked: true },
+        { id: 'k019', name: 'Wealth Not Commensurate with Profile', risk: 'Medium-High', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.6', name: 'Product & Service Risk', weight: 5, color: '#7c3aed', stage: 'Onboarding + Ongoing',
+    sections: [
+      { id: '4.6.1', name: 'Product Risk Parameters', isNew: false, factors: [
+        { id: 'pr001', name: 'Private Banking / Wealth Management', risk: 'High', override: 'No', checked: true },
+        { id: 'pr002', name: 'Trade Finance / Letters of Credit', risk: 'High', override: 'No', checked: true },
+        { id: 'pr003', name: 'Correspondent Banking Services', risk: 'High', override: 'No', checked: true },
+        { id: 'pr004', name: 'Precious Metals Trading Accounts', risk: 'High', override: 'No', checked: true },
+        { id: 'pr005', name: 'Cryptocurrency Custody Services', risk: 'High', override: 'No', checked: true },
+        { id: 'pr006', name: 'International Wire Transfers', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'pr007', name: 'Foreign Exchange / Currency Trading', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'pr008', name: 'Structured Products / Derivatives', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'pr009', name: 'Safe Deposit Box Services', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'pr011', name: 'Savings / Current Accounts (Standard)', risk: 'Low', override: 'No', checked: true },
+        { id: 'pr012', name: 'Credit Cards', risk: 'Low', override: 'No', checked: true },
+        { id: 'pr013', name: 'Personal Loans / Consumer Finance', risk: 'Low-Medium', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.7', name: 'Channel & Delivery Risk', weight: 3, color: '#0891b2', stage: 'Onboarding + Ongoing',
+    sections: [
+      { id: '4.7.1', name: 'Delivery Channel Parameters', isNew: false, factors: [
+        { id: 'ch001', name: 'Non-Face-to-Face Onboarding (Remote)', risk: 'High', override: 'No', checked: true },
+        { id: 'ch002', name: 'Third-Party / Agent Introduction', risk: 'High', override: 'No', checked: true },
+        { id: 'ch003', name: 'Correspondent Banking Relationship', risk: 'High', override: 'No', checked: true },
+        { id: 'ch004', name: 'Digital / Mobile Banking Only', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'ch005', name: 'Multiple Unusual IP Addresses', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'ch006', name: 'IP from High-Risk Country / Use of VPN / Proxy', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'ch007', name: 'E-KYC / Digital ID Verification / Video KYC', risk: 'Medium', override: 'No', checked: true },
+        { id: 'ch008', name: 'Face-to-Face (Branch)', risk: 'Low', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.8', name: 'Financial Profile Risk', weight: 1, color: '#7a8a9a', stage: 'Ongoing Only',
+    sections: [
+      { id: '4.8.1', name: 'Financial Profile Parameters', isNew: false, factors: [
+        { id: 'fp001', name: 'Income Not Commensurate with Activity', risk: 'High', override: 'No', checked: true },
+        { id: 'fp002', name: 'High Net Worth / Ultra High Net Worth', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'fp003', name: 'Sudden Unexplained Wealth Increase', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'fp004', name: 'Company with Default History', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'fp005', name: 'Poor Credit Rating / Score', risk: 'Medium', override: 'No', checked: true },
+        { id: 'fp006', name: 'High Business Turnover', risk: 'Medium', override: 'No', checked: true },
+        { id: 'fp007', name: 'Low Income', risk: 'Low', override: 'No', checked: true },
+        { id: 'fp009', name: 'High Income', risk: 'Low', override: 'No', checked: true },
+      ]},
+    ]
+  },
+  {
+    id: '4.9', name: 'Entity Type & Corporate Structure', weight: 1, color: '#6b7280', stage: 'Onboarding + Ongoing',
+    sections: [
+      { id: '4.9.1', name: 'Entity Type Classification', isNew: false, factors: [
+        { id: 'et001', name: 'Shell Company (No Operations)', risk: 'Critical', override: 'Override to Critical', checked: true },
+        { id: 'et002', name: 'Trust', risk: 'High', override: 'No', checked: true },
+        { id: 'et003', name: 'Foundation', risk: 'High', override: 'No', checked: true },
+        { id: 'et004', name: 'Offshore Company', risk: 'High', override: 'No', checked: true },
+        { id: 'et005', name: 'Shelf Company (Recently Activated)', risk: 'High', override: 'No', checked: true },
+        { id: 'et006', name: 'No Trade License / Operating Illegally', risk: 'High', override: 'Override to High', checked: true },
+        { id: 'et007', name: 'Charity / Non-Profit', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'et008', name: 'Private Limited Company (LLC)', risk: 'Low', override: 'No', checked: true },
+        { id: 'et009', name: 'Government / Government Entity', risk: 'Low', override: 'No', checked: true },
+      ]},
+      { id: '4.9.2', name: 'Corporate Structure Complexity', isNew: false, factors: [
+        { id: 'et010', name: 'Complex Group Structure (>3 layers)', risk: 'High', override: 'No', checked: true },
+        { id: 'et011', name: 'Circular Ownership', risk: 'High', override: 'No', checked: true },
+        { id: 'et012', name: 'Multi-Jurisdictional Structure', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'et013', name: 'Frequent Corporate Restructuring', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'et014', name: 'Startup Company (< 2 years)', risk: 'Medium-High', override: 'No', checked: true },
+        { id: 'et015', name: 'Established Company (2–5 years)', risk: 'Low-Medium', override: 'No', checked: true },
+        { id: 'et016', name: 'Mature Company (> 5 years)', risk: 'Low', override: 'No', checked: true },
+      ]},
+    ]
+  },
+];
+
+// ============================================================
+// SCORING CONFIG DATA
+// ============================================================
+const SCORE_RANGES_DEFAULT = [
+  { id: 'low',     label: 'Low',     color: '#2b5fc8', min: 0,  max: 25  },
+  { id: 'medium',  label: 'Medium',  color: '#b8960a', min: 25, max: 50  },
+  { id: 'high',    label: 'High',    color: '#d4780a', min: 50, max: 70  },
+  { id: 'extreme', label: 'Critical', color: '#c8472b', min: 70, max: 100 },
+];
+let scoreRanges = SCORE_RANGES_DEFAULT.map(r => ({...r}));
+
+const TIER_DEFS_DEFAULT = [
+  { key: 'Critical',     label: 'Critical',     color: '#c8472b', value: 100 },
+  { key: 'High',        label: 'High',        color: '#d4780a', value: 75  },
+  { key: 'Medium-High', label: 'Medium-High', color: '#b8960a', value: 60  },
+  { key: 'Medium',      label: 'Medium',      color: '#2b8c5f', value: 40  },
+  { key: 'Low-Medium',  label: 'Low-Medium',  color: '#2b5fc8', value: 25  },
+  { key: 'Low',         label: 'Low',         color: '#7a8a9a', value: 10  },
+];
+let tierDefs = TIER_DEFS_DEFAULT.map(t => ({...t}));
+
+// ============================================================
+// PERIODIC REVIEW DATA
+// ============================================================
+const PERIODIC_TIERS = [
+  { id: 'extreme', name: 'Critical Risk', range: '≥ 70', color: '#c8472b', desc: 'Relationship prohibited or board-level approval required. EDD mandatory. Real-time AI monitoring. CPF auto-block.', defaultMonths: 3, minMonths: 1, maxMonths: 6, cddLevel: 'EDD + Board Approval', regulatory: 'FATF R.10 + CBUAE EDD' },
+  { id: 'high',    name: 'High Risk',    range: '50–69', color: '#d4780a', desc: 'EDD required. MLRO approval. AI-assisted monitoring. Blockchain forensics if digital asset exposure.', defaultMonths: 6, minMonths: 3, maxMonths: 12, cddLevel: 'EDD (Enhanced Due Diligence)', regulatory: 'FATF R.10 + Wolfsberg EDD' },
+  { id: 'medium',  name: 'Medium Risk',  range: '25–49', color: '#b8960a', desc: 'Standard CDD. Branch Manager approval. Event-triggered pKYC re-scoring. Annual review.', defaultMonths: 24, minMonths: 12, maxMonths: 36, cddLevel: 'Standard CDD', regulatory: 'CBUAE AML Manual 2024' },
+  { id: 'low',     name: 'Low Risk',     range: '< 25',  color: '#2b5fc8', desc: 'Simplified CDD applicable. Periodic monitoring. Biennial / triennial review.', defaultMonths: 36, minMonths: 24, maxMonths: 60, cddLevel: 'Simplified CDD (SDD)', regulatory: 'FATF R.10 + EU 6AMLD Art.18' },
+];
+
+const periodicConfig = {};
+PERIODIC_TIERS.forEach(t => { periodicConfig[t.id] = { months: t.defaultMonths, riskExtension: false }; });
+
+// ============================================================
+// STATE
+// ============================================================
+let activeCatId = '4.1';
+let configState = JSON.parse(JSON.stringify(CATEGORIES));
+const stageState = {}; // key = factorId, value = { onb, ong, evt, prd }
+
+function getStageState(catId, factorId) {
+  if (!stageState[factorId]) {
+    stageState[factorId] = { ...(STAGE_DEFAULTS[catId] || { onb:true, ong:true, evt:true, prd:true }) };
+  }
+  return stageState[factorId];
+}
+
+// ============================================================
+// TABS
+// ============================================================
+function showTab(tab) {
+  ['weights','scoring','periodic'].forEach(t => {
+    document.getElementById('tab-' + t).classList.toggle('active', t === tab);
+    document.getElementById('panel-' + t).classList.toggle('active', t === tab);
+  });
+}
+
+// ============================================================
+// RENDER SIDEBAR
+// ============================================================
+function renderSidebar() {
+  const sidebar = document.getElementById('catSidebar');
+  const cat = configState.find(c => c.id === activeCatId);
+  sidebar.innerHTML = configState.map(c => `
+    <button class="cat-item ${c.id === activeCatId ? 'active' : ''}" onclick="selectCategory('${c.id}')">
+      <span class="cat-num">${c.id}</span>
+      <span class="cat-name">${c.name}</span>
+      <span class="cat-weight-badge">${c.weight}%</span>
+    </button>
+  `).join('');
+}
+
+// ============================================================
+// RENDER FACTOR PANEL
+// ============================================================
+function getScoreInfo(risk) { return RISK_SCORES[risk] || RISK_SCORES['Medium']; }
+function buildOverrideOptions(cur) { return OVERRIDE_OPTIONS.map(o => `<option value="${o}" ${o===cur?'selected':''}>${o}</option>`).join(''); }
+function buildRiskOptions(cur) {
+  return ['Low','Low-Medium','Medium','Medium-High','High','Critical'].map(o =>
+    `<option value="${o}" ${o===cur?'selected':''}>${o}</option>`
+  ).join('');
+}
+
+function renderFactorPanel() {
+  const cat = configState.find(c => c.id === activeCatId);
+  if (!cat) return;
+  const panel = document.getElementById('factorPanel');
+
+  let html = `
+    <div class="cat-header-card" style="border-left: 4px solid ${cat.color}">
+      <div class="cat-header-left">
+        <div class="cat-dot" style="background:${cat.color}"></div>
+        <h2 class="cat-title">${cat.name}</h2>
+        <span class="cat-stage-badge">${cat.stage}</span>
+      </div>
+      <div class="weight-control">
+        <span class="weight-label">Weight</span>
+        <input type="number" class="weight-input" min="0" max="100" value="${cat.weight}"
+          onchange="updateWeight('${cat.id}', this.value)" style="border-color:${cat.color}">
+        <span class="weight-pct">%</span>
+      </div>
+    </div>`;
+
+  cat.sections.forEach(sec => {
+    const catOnbLocked = (cat.id === '4.3' || cat.id === '4.8');
+    html += `
+      <div class="subsection">
+        <div class="subsection-header">
+          <span class="sub-num">${sec.id}</span>
+          <span class="sub-title">${sec.name}</span>
+          <div class="sub-bulk-wrap">
+            <span class="cbb-sep"></span>
+            ${!catOnbLocked ? `<button class="sub-bulk-btn cbb-onb" onclick="bulkStage('${cat.id}','${sec.id}','onb',true)" title="Enable ONB for all">ONB</button>` : ''}
+            <button class="sub-bulk-btn cbb-ong" onclick="bulkStage('${cat.id}','${sec.id}','ong',true)" title="Enable ONG for all">ONG</button>
+            <button class="sub-bulk-btn cbb-evt" onclick="bulkStage('${cat.id}','${sec.id}','evt',true)" title="Enable EVT for all">EVT</button>
+            <button class="sub-bulk-btn cbb-prd" onclick="bulkStage('${cat.id}','${sec.id}','prd',true)" title="Enable PRD for all">PRD</button>
+          </div>
+        </div>
+        <div class="factor-col-headers">
+          <div class="fch-cb"></div>
+          <div class="fch-name">Risk Factor</div>
+          <div class="fch-risk">Risk Rating</div>
+          <div class="fch-score">Score</div>
+          <div class="fch-override">Override Action</div>
+          <div class="fch-stages">
+            <span style="font-size:10px;font-family:'IBM Plex Mono',monospace;font-weight:600;color:#525252;text-transform:uppercase;letter-spacing:.05em">
+              &nbsp;&nbsp;ONB&nbsp;&nbsp;ONG&nbsp;&nbsp;EVT&nbsp;&nbsp;PRD
+            </span>
+          </div>
+        </div>`;
+
+    sec.factors.forEach(f => {
+      const info = getScoreInfo(f.risk);
+      const ss = getStageState(cat.id, f.id);
+      html += `
+        <div class="factor-row" id="row-${f.id}" style="${!f.checked ? 'opacity:0.45' : ''}">
+          <div class="factor-cb">
+            <input type="checkbox" id="chk-${f.id}" ${f.checked ? 'checked' : ''}
+              onchange="toggleFactor('${cat.id}','${sec.id}','${f.id}',this.checked)">
+          </div>
+          <div class="factor-name-cell">
+            <span>${f.name}</span>
+          </div>
+          <div class="factor-risk-cell">
+            <select id="risk-${f.id}" onchange="updateRisk('${f.id}',this.value)" ${!f.checked?'disabled':''}>
+              ${buildRiskOptions(f.risk)}
+            </select>
+          </div>
+          <div class="factor-score-cell ${info.cls}" id="score-${f.id}" style="background:${info.bg};color:${info.color}">
+            ${info.score}
+          </div>
+          <div class="factor-override-cell">
+            <select id="override-${f.id}" ${!f.checked?'disabled':''}>
+              ${buildOverrideOptions(f.override)}
+            </select>
+          </div>
+          <div class="factor-stages-cell">
+            <div class="stage-cell">
+              <span class="stage-lbl lbl-onb">ONB</span>
+              <input type="checkbox" class="stage-cb" ${ss.onb?'checked':''} ${catOnbLocked||!f.checked?'disabled':''}
+                onchange="updateStage('${f.id}','onb',this.checked)" style="accent-color:#2A53A0">
+            </div>
+            <div class="stage-cell">
+              <span class="stage-lbl lbl-ong">ONG</span>
+              <input type="checkbox" class="stage-cb" ${ss.ong?'checked':''} ${!f.checked?'disabled':''}
+                onchange="updateStage('${f.id}','ong',this.checked)" style="accent-color:#b8960a">
+            </div>
+            <div class="stage-cell">
+              <span class="stage-lbl lbl-evt">EVT</span>
+              <input type="checkbox" class="stage-cb" ${ss.evt?'checked':''} ${!f.checked?'disabled':''}
+                onchange="updateStage('${f.id}','evt',this.checked)" style="accent-color:#da1e28">
+            </div>
+            <div class="stage-cell">
+              <span class="stage-lbl lbl-prd">PRD</span>
+              <input type="checkbox" class="stage-cb" ${ss.prd?'checked':''} ${!f.checked?'disabled':''}
+                onchange="updateStage('${f.id}','prd',this.checked)" style="accent-color:#24a148">
+            </div>
+          </div>
+        </div>`;
+    });
+    html += `</div></div>`;
+  });
+
+  panel.innerHTML = html;
+}
+
+// ============================================================
+// INTERACTIONS
+// ============================================================
+function selectCategory(id) {
+  activeCatId = id;
+  renderSidebar();
+  renderFactorPanel();
+}
+
+function updateWeight(catId, val) {
+  const cat = configState.find(c => c.id === catId);
+  if (cat) { cat.weight = parseInt(val) || 0; renderSidebar(); updateBanner(); }
+}
+
+function updateBanner() {
+  const total = configState.reduce((s, c) => s + (c.weight || 0), 0);
+  const banner = document.getElementById('weightBanner');
+  const text = document.getElementById('bannerText');
+  banner.className = 'info-banner';
+  if (total === 100) { banner.classList.add('banner-success'); text.textContent = `Current: ${total}% — Balanced ✓`; }
+  else if (total > 100) { banner.classList.add('banner-error'); text.textContent = `Current: ${total}% — Over by ${total-100}%`; }
+  else { banner.classList.add('banner-warn'); text.textContent = `Current: ${total}% — Under by ${100-total}%`; }
+}
+
+function updateRisk(factorId, newRisk) {
+  const info = getScoreInfo(newRisk);
+  const scoreEl = document.getElementById(`score-${factorId}`);
+  if (scoreEl) { scoreEl.textContent = info.score; scoreEl.style.background = info.bg; scoreEl.style.color = info.color; }
+}
+
+function toggleFactor(catId, secId, factorId, checked) {
+  const cat = configState.find(c => c.id === catId);
+  if (!cat) return;
+  const sec = cat.sections.find(s => s.id === secId);
+  if (!sec) return;
+  const factor = sec.factors.find(f => f.id === factorId);
+  if (factor) factor.checked = checked;
+  const row = document.getElementById(`row-${factorId}`);
+  if (row) row.style.opacity = checked ? '1' : '0.45';
+  ['risk','override'].forEach(t => {
+    const el = document.getElementById(`${t}-${factorId}`);
+    if (el) el.disabled = !checked;
+  });
+  document.querySelectorAll(`#row-${factorId} .stage-cb`).forEach(cb => { cb.disabled = !checked; });
+}
+
+function updateStage(factorId, stageKey, val) {
+  if (!stageState[factorId]) stageState[factorId] = {};
+  stageState[factorId][stageKey] = val;
+}
+
+function bulkStage(catId, secId, stageKey, val) {
+  const cat = configState.find(c => c.id === catId);
+  if (!cat) return;
+  const sec = cat.sections.find(s => s.id === secId);
+  if (!sec) return;
+  const catOnbLocked = (catId === '4.3' || catId === '4.8');
+  sec.factors.forEach(f => {
+    if (!f.checked) return; // only affect enabled factors
+    if (!stageState[f.id]) stageState[f.id] = { ...(STAGE_DEFAULTS[catId] || {}) };
+    if (stageKey === 'all') {
+      if (val) {
+        if (!catOnbLocked) stageState[f.id].onb = true;
+        stageState[f.id].ong = true;
+        stageState[f.id].evt = true;
+        stageState[f.id].prd = true;
+      } else {
+        if (!catOnbLocked) stageState[f.id].onb = false;
+        stageState[f.id].ong = false;
+        stageState[f.id].evt = false;
+        stageState[f.id].prd = false;
+      }
+    } else {
+      if (stageKey === 'onb' && catOnbLocked) return;
+      stageState[f.id][stageKey] = val;
+    }
+  });
+  // Re-render just the factor panel to update checkboxes
+  renderFactorPanel();
+}
+
+function resetWeightsConfig() {
+  if (!confirm('Reset all weights and parameters to defaults?')) return;
+  configState = JSON.parse(JSON.stringify(CATEGORIES));
+  renderSidebar();
+  renderFactorPanel();
+  updateBanner();
+  showToast('Configuration reset to defaults.', 'info');
+}
+
+function saveWeightsConfig(evt) {
+  const total = configState.reduce((s, c) => s + (c.weight || 0), 0);
+  if (total !== 100) { showToast(`Cannot save: total weight is ${total}%. Must equal 100%.`, 'error'); return; }
+  const btn = evt.target;
+  const origText = btn.innerHTML;
+  btn.textContent = '✓ Saved!';
+  btn.style.background = '#198038';
+  btn.style.borderColor = '#198038';
+  setTimeout(() => { btn.innerHTML = origText; btn.style.background = ''; btn.style.borderColor = ''; }, 2000);
+  showToast('Configuration saved successfully.', 'success');
+}
+
+// ============================================================
+// SCORING CONFIG
+// ============================================================
+function buildScoringConfig() {
+  // Score ranges
+  const sg = document.getElementById('scoringClassGrid');
+  sg.innerHTML = '';
+  scoreRanges.forEach((r, i) => {
+    sg.innerHTML += `
+      <div class="scoring-card" style="border-top-color:${r.color}">
+        <div class="sc-tier-label" style="color:${r.color}">${r.label} Risk</div>
+        <div class="range-row">
+          <div class="range-field">
+            <label>From</label>
+            <input type="number" class="range-input" id="sr-min-${r.id}" value="${r.min}" min="0" max="99"
+              style="border-color:${r.color}" ${i===0?'readonly style="opacity:0.5;border-color:'+r.color+'"':''}
+              oninput="updateScoreRange(${i},'min',this.value)">
+          </div>
+          <span class="range-sep">–</span>
+          <div class="range-field">
+            <label>To</label>
+            <input type="number" class="range-input" id="sr-max-${r.id}" value="${r.max}" min="1" max="100"
+              style="border-color:${r.color}" ${i===scoreRanges.length-1?'readonly style="opacity:0.5;border-color:'+r.color+'"':''}
+              oninput="updateScoreRange(${i},'max',this.value)">
+          </div>
+        </div>
+      </div>`;
+  });
+
+  // Tier definitions
+  const td = document.getElementById('tierDefGrid');
+  td.innerHTML = '';
+  tierDefs.forEach((t, i) => {
+    td.innerHTML += `
+      <div class="tier-def-card" style="border-left-color:${t.color}">
+        <div>
+          <div class="tdc-label" style="color:${t.color}">${t.label}</div>
+          <div class="tdc-sub">Parameter score value</div>
+        </div>
+        <input type="number" class="tdc-input" value="${t.value}" min="0" max="100"
+          style="border-color:${t.color}22;color:${t.color};font-weight:600"
+          oninput="updateTierDef(${i},this.value)">
+      </div>`;
+  });
+}
+
+function updateScoreRange(idx, field, rawVal) {
+  let val = parseInt(rawVal, 10);
+  if (isNaN(val)) return;
+  scoreRanges[idx][field] = val;
+  if (field === 'max' && idx < scoreRanges.length - 1) {
+    scoreRanges[idx+1].min = val;
+    const el = document.getElementById('sr-min-' + scoreRanges[idx+1].id);
+    if (el) el.value = val;
+  }
+  if (field === 'min' && idx > 0) {
+    scoreRanges[idx-1].max = val;
+    const el = document.getElementById('sr-max-' + scoreRanges[idx-1].id);
+    if (el) el.value = val;
+  }
+}
+
+function updateTierDef(idx, val) {
+  const v = parseInt(val, 10);
+  if (!isNaN(v)) tierDefs[idx].value = v;
+}
+
+function resetScoringConfig() {
+  scoreRanges = SCORE_RANGES_DEFAULT.map(r => ({...r}));
+  tierDefs = TIER_DEFS_DEFAULT.map(t => ({...t}));
+  buildScoringConfig();
+  showToast('Scoring configuration reset to defaults.', 'info');
+}
+
+function saveScoringConfig(evt) {
+  const btn = evt.target;
+  btn.textContent = '✓ Saved!';
+  btn.style.background = '#198038';
+  btn.style.borderColor = '#198038';
+  setTimeout(() => { btn.textContent = '✓ Save Scoring Config'; btn.style.background=''; btn.style.borderColor=''; }, 2000);
+  showToast('Scoring configuration saved.', 'success');
+}
+
+// ============================================================
+// PERIODIC REVIEW
+// ============================================================
+function monthsToLabel(m) {
+  const map = {1:'Monthly',3:'Quarterly',6:'Semi-Annually',12:'Annually',24:'Every 2 Years',36:'Every 3 Years',48:'Every 4 Years',60:'Every 5 Years'};
+  return map[m] || `Every ${m} months`;
+}
+
+function buildPeriodicGrid() {
+  const grid = document.getElementById('periodicGrid');
+  grid.innerHTML = '';
+  PERIODIC_TIERS.forEach(tier => {
+    const cfg = periodicConfig[tier.id];
+    const card = document.createElement('div');
+    card.className = 'periodic-card';
+    card.style.borderLeftColor = tier.color;
+    card.innerHTML = `
+      <div class="ptc-name" style="color:${tier.color}">■ ${tier.name}</div>
+      <div class="ptc-range" style="color:${tier.color}">${tier.range}</div>
+      <div class="ptc-field-label">Review Frequency (months)</div>
+      <div class="ptc-input-row">
+        <input type="number" class="ptc-input" id="ptc-${tier.id}" value="${cfg.months}"
+          min="${tier.minMonths}" max="${tier.maxMonths}" style="border-color:${tier.color};color:${tier.color};font-weight:600"
+          oninput="updatePeriodic('${tier.id}',this.value)">
+        <span class="ptc-unit">months</span>
+      </div>
+      <div class="ptc-equiv" id="ptc-equiv-${tier.id}" style="color:${tier.color}">${monthsToLabel(cfg.months)}</div>
+      <div class="ptc-meta">
+        <div class="ptc-meta-item"><label>Min (months)</label><span style="font-family:'IBM Plex Mono',monospace;color:${tier.color}">${tier.minMonths}</span></div>
+        <div class="ptc-meta-item"><label>Max (months)</label><span style="font-family:'IBM Plex Mono',monospace;color:${tier.color}">${tier.maxMonths}</span></div>
+      </div>
+`;
+    grid.appendChild(card);
+  });
+}
+
+function toggleRiskExtension(tierId) {
+  periodicConfig[tierId].riskExtension = !periodicConfig[tierId].riskExtension;
+  const tog = document.getElementById('ptc-toggle-' + tierId);
+  if (tog) tog.classList.toggle('on', periodicConfig[tierId].riskExtension);
+}
+
+function updatePeriodic(tierId, val) {
+  const tier = PERIODIC_TIERS.find(t => t.id === tierId);
+  let m = parseInt(val, 10);
+  if (isNaN(m)) return;
+  m = Math.max(tier.minMonths, Math.min(tier.maxMonths, m));
+  periodicConfig[tierId].months = m;
+  const equiv = document.getElementById('ptc-equiv-' + tierId);
+  if (equiv) equiv.textContent = monthsToLabel(m);
+}
+
+function resetPeriodicConfig() {
+  PERIODIC_TIERS.forEach(t => { periodicConfig[t.id] = { months: t.defaultMonths, riskExtension: false }; });
+  buildPeriodicGrid();
+  showToast('Periodic review schedule reset to defaults.', 'info');
+}
+
+function savePeriodicConfig(evt) {
+  const btn = evt.target;
+  btn.textContent = '✓ Saved!';
+  btn.style.background = '#198038';
+  btn.style.borderColor = '#198038';
+  setTimeout(() => { btn.textContent = '✓ Save Review Schedule'; btn.style.background=''; btn.style.borderColor=''; }, 2000);
+  showToast('Review schedule saved.', 'success');
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg, type = 'info') {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.style.cssText = 'position:fixed;bottom:52px;right:20px;padding:10px 18px;border-radius:6px;font-size:13px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.25);transition:opacity 0.3s;max-width:340px;font-family:Inter,sans-serif;';
+    document.body.appendChild(t);
+  }
+  t.style.background = type === 'error' ? '#da1e28' : type === 'success' ? '#198038' : '#161616';
+  t.style.color = '#fff';
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.style.opacity = '0'; }, 3000);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+renderSidebar();
+renderFactorPanel();
+updateBanner();
+buildScoringConfig();
+buildPeriodicGrid();
+</script>
+</body>
+</html>

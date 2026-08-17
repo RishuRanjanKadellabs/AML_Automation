@@ -1,0 +1,172 @@
+---
+description: FSD + Figma HTML Stage 0 — Milestone1|2 folder layout (FSD/, Figma/, Test Cases/). Create if Excel missing; reconcile in place if present. *_New revisions trigger feature delta. FSD wins. Mandatory 100% requirement coverage + TC delta + detailed module/feature coverage report. Cursor-only process docs.
+alwaysApply: false
+globs: specs/generated/fsd-figma-pipeline/**,results/fsd-figma-pipeline/**,.cursor/agents/fsd-figma-pipeline.agent.md,.cursor/skills/qa-fsd*/**,.cursor/skills/qa-figma*/**,.cursor/skills/qa-usecase*/**,.cursor/skills/qa-excel-testcase-generation/**,pipeline/test-data/Milestone1/**,pipeline/test-data/Milestone2/**
+---
+
+# FSD + Figma HTML Pipeline — System Context (.cursor only)
+
+Authoritative process docs live **under `.cursor/`** (this file + agent + skills + rules).
+
+## Purpose
+
+Stage 0: **FSD (source of truth)** + **Figma HTML (UI/nav assist)** → use cases → Excel in Milestone`N` Test Cases (**create if missing, reconcile/update in place if present**) → **mandatory FSD coverage matrix + TC delta + feature delta (for `*_New` / revised sources) + overall % + module/feature breakdown** → gate → `qa-automation-pipeline` → Playwright under `tests/milestoneN/`.
+
+## Priority
+
+| Source | Role |
+|--------|------|
+| FSD `.docx` | Requirements, rules, expected results, use-case scope |
+| Figma HTML | **This run’s** UI flows, navigation, clicks, field labels, modals, action order for Test Steps |
+
+**Behaviour / expected-result conflicts → FSD wins.**  
+**Click paths / control labels → follow this run’s Figma** (discover flows; do not assume a fixed catalog or another module’s labels).
+
+## Folder layout (canonical)
+
+```
+pipeline/test-data/Milestone<N>/   # N = 1 or 2 (default 2)
+  FSD/           # place / select FSD .docx files (optional *_New revisions)
+  Figma/         # place / select Figma HTML files (optional *_New revisions)
+  Test Cases/    # created or reconciled Excel workbooks
+```
+
+User **names** which files to use each run, **or** Stage 0 auto-prefers `*_New` when both a baseline and `_New` sibling exist for the same stem. Do not auto-pick an unrelated file when multiple modules exist without confirmation.
+
+**Input contract:** exactly **one active** FSD `.docx` + **one active** Figma HTML per run. Optional **baseline** siblings (same name without `_New`) are used only for **feature delta**. Do not ask the user to split sources. Inventories under `results/fsd-figma-pipeline/` are machine outputs.
+
+## Revised sources (`*_New`)
+
+| Pattern | Meaning |
+|---------|---------|
+| `Module_FSD_New.docx` | Revised FSD — **active** source of truth for this run |
+| `Module_FSD.docx` | Baseline sibling — used to compute feature add/remove/update |
+| `figma_stem_New.html` | Revised Figma — **active** UI for Test Steps |
+| `figma_stem.html` | Baseline Figma — optional UI change notes |
+
+When `_New` is active (or a baseline inventory exists), emit `feature-delta-report.json` and display **Feature changes** in the Excel delivery reply. Excel still reconciles the **same** module workbook. On **Approve Excel**, QA pipeline **reconcile** updates Playwright specs for add+update and removes retire IDs.
+
+## Excel mode (create vs reconcile)
+
+| Excel at named path | Mode | Behavior |
+|---------------------|------|----------|
+| Missing | `create` | Write new workbook from FSD use cases |
+| Present | `reconcile` | Update **same** workbook in place: **revise all required columns** for retained TCs, add missing, flag retire orphans; preserve Test Case IDs; `.bak` before overwrite. `keep` only after proven zero-drift column audit. |
+
+Always emit `results/fsd-figma-pipeline/<resultsKey>/tc-delta-report.json`. Removals finalize only after **Approve Excel**.
+
+## Anti–resource-exhaustion (agent work shaping)
+
+Does **not** change the Excel quality bar (atomic TCs, Figma steps, 100% coverage, Shared Quality when §6 in scope).  
+Applies to **all** Milestone1/2 modules. **Do not** add per-module Stage 0 generators under `pipeline/scripts/`.
+
+| Do | Don't |
+|----|--------|
+| Extract once → use `fsd-inventory.json` / `html-inventory.json` | Whole-file `Read` of Figma HTML or FSD into the model |
+| Grep / small offsets for exact labels | Stuff entire HTML into context before writing Excel |
+| Update `use-cases.json` + Excel by FSD section, then refresh coverage + delta | One giant `Write` of the full TC catalog |
+| Keep requirements/TCs in agent Stage 0 artifacts only | Commit `generate-<module>-stage0*.cjs` (or similar) as lasting helpers |
+| On child `resource_exhausted`, continue section-chunked in parent | Stop and ask the user to restate or re-upload sources |
+
+## Cursor layout
+
+| What | Path |
+|------|------|
+| Agent | `.cursor/agents/fsd-figma-pipeline.agent.md` |
+| This guide | `.cursor/system-context/fsd-figma-pipeline.mdc` |
+| Guardrails | `.cursor/rules/fsd-figma-pipeline-guardrails.mdc` |
+| Skills | `qa-fsd-document-parsing`, `qa-figma-html-inventory`, `qa-fsd-figma-alignment`, `qa-fsd-feature-delta`, `qa-usecase-design-from-fsd`, `qa-excel-testcase-generation`, `qa-excel-testcase-parsing` |
+| Schemas / handoffs | `specs/generated/fsd-figma-pipeline/` |
+
+## Trigger
+
+```
+Process FSD + Figma HTML from Milestone2
+FSD: <FsdFileName.docx>
+Figma: <FigmaFileName.html>
+Test Cases: <OutputWorkbook.xlsx>
+```
+
+Or `from Milestone1` / `Milestone: 1` for Milestone1 roots. Filenames may include `_New`.
+
+Resolved paths:
+
+- FSD → `pipeline/test-data/Milestone<N>/FSD/<FsdFileName.docx>` (prefer `*_New` when both exist)
+- Figma → `pipeline/test-data/Milestone<N>/Figma/<FigmaFileName.html>`
+- Excel → `pipeline/test-data/Milestone<N>/Test Cases/<OutputWorkbook.xlsx>`
+
+Stage JSON under `results/fsd-figma-pipeline/<resultsKey>/`.
+
+## Day-to-day UX
+
+1. Add/update files under Milestone`N` `FSD/` and `Figma/` (drop `*_New` beside the original when revising)
+2. Tell the agent the **exact FSD + Figma (+ Excel out) filenames** and milestone if not 2 — or name the module and let it prefer `*_New`
+3. Agent **creates or reconciles** Excel **and** reports coverage + **feature delta** + TC delta (overall %, modules, features, add/update/retire/keep)
+4. Approve Excel when prompted (approves retire list when reconcile)
+5. Handoff to `qa-automation-pipeline` → `tests/milestoneN/` (full generate on create; delta sync on reconcile → **specs updated**)
+
+## Workflow
+
+```
+Resolve active (+ baseline) FSD/Figma (*_New preference)
+  → detect excelMode (create | reconcile)
+  → inventories → feature-delta-report → alignment (FSD wins) → use cases
+  → [reconcile: parse existing Excel → tc-delta-report]
+  → create or in-place patch Excel
+  → coverage-matrix.json + stage0-atomicity-report.json + feature-delta-report.json + tc-delta-report.json
+  → `npm run fsd:coverage-report` (Feature changes + **Atomicity gate** + Modules + Features + TC delta)
+  → [100% coverage + atomicity gates] → [Approve Excel]
+  → qa-automation-pipeline (create | reconcile → update specs)
+```
+
+## Mandatory coverage + atomicity gates
+
+| Rule | Detail |
+|------|--------|
+| Coverage artifact | `results/fsd-figma-pipeline/<resultsKey>/coverage-matrix.json` |
+| Atomicity artifact | `results/fsd-figma-pipeline/<resultsKey>/stage0-atomicity-report.json` |
+| Validate | `npm run fsd:validate-atomicity -- --results-key "<resultsKey>"` |
+| Coverage pass | `coveragePct === 100` and no uncovered requirement IDs |
+| Atomicity pass | `atomicityReady === true` — one REQ per use case; `testCaseCount >= inScopeRequirements`; negative/boundary TCs when FSD requires; no compound AC |
+| Combined gate | `gateReady = coverage pass AND atomicityReady AND fineGrainReady` |
+| Fine-grain pass | `fineGrainReady === true` — `testCaseCount > inScopeRequirements` when Figma slots exist; every composite flow, save, tab, category UI slot has a dedicated TC |
+| Roll-ups | `byModule` and `byFeature` **required** |
+| Feature delta | `feature-delta-report.json` **required** when `_New` or baseline exists |
+| Delta | `tc-delta-report.json` **required** for create and reconcile |
+| User message | After every Excel write: run `npm run fsd:coverage-report` (includes atomicity section) and paste full markdown |
+| Fail coverage | Gate `BlockedCoverage` |
+| Fail atomicity | Gate `BlockedAtomicity` — split bundled TCs; no Approve/handoff |
+| Exception | User explicitly accepts gaps → record `userAcceptedGaps` / `userAcceptedAtomicityGaps` |
+
+Traceability: **FSD requirement → use case → Excel TC ID → (after handoff) script**.
+
+## Excel column rules (agents)
+
+- **Task Description** = plain-English, verb-led, single-intent title a non-technical reviewer understands without the FSD (maps from use-case `title`).
+- Do **not** put `REQ-*`, `FSD S*`, `BR-*` / `FR-*` / `NFR-*` / `UC-*` IDs, jargon-only wording, or vague “Verify the requirement” into Task Description.
+- **Acceptance Criteria** = plain-English measurable pass conditions only.
+- Do **not** fill Acceptance Criteria with `REQ-*`, `FSD S*`, or section IDs.
+- Keep FSD/requirement traceability in Stage 0 JSON (`use-cases.json`, `coverage-matrix.json`, `tc-delta-report.json`, `feature-delta-report.json`) only — **do not** add a Requirement ID column to Excel.
+
+## Test case design (no bundling)
+
+- **Atomic REQs and TCs** — one primary intent per case; **exactly one `requirementId` per use case**; split FSD multi-behavior bullets.
+- **Mechanical gate:** `npm run fsd:validate-atomicity` after every Excel write; `gateReady` requires `atomicityReady`.
+- **Create mode:** never read other workbooks in `Test Cases/` — FSD + Figma + use-cases only.
+- **Discover** interactive flows from this run’s Figma (modules differ — no fixed flow list).
+- **Model flow dependencies** — `navGraph` + `compositeFlows` in html-inventory; `dependsOnUseCaseIds` + `preconditions` in use-cases.json.
+- **One happy-path TC** per discovered flow when FSD defines success; **field validations** always separate; validation/save TCs must **Preconditions or steps** evidence prerequisite navigation.
+- Do not achieve 100% coverage with a small set of fat multi-intent rows.
+
+## Test Steps (concrete UI only — this run’s Figma)
+
+- Interactive steps come from **this run’s** Figma inventory only (active / `*_New` HTML when used).
+- FSD drives Acceptance Criteria / Expected Result.
+- When Figma shows a multi-step path, mirror it (open → fill/select → primary action → observe).
+- **Dependent flows:** validation/negative rows need Preconditions naming screen/tab state or full chain in Test Steps (audit chain coverage).
+- **Forbidden:** placeholders; inventing labels; copying another module’s flows.
+- Do not set `AwaitingReview` while placeholder or foreign-module steps remain.
+
+## Protected agents — never modify casually
+
+`test-generator`, `test-healer`; invoke `qa-automation-pipeline` only after Excel approval **and** coverage gate pass (or accepted gaps). Explicit user authorization is required to edit protected agent files.

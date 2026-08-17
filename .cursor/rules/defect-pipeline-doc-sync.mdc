@@ -1,0 +1,51 @@
+---
+description: When defect/pipeline behavior changes, update implementation and all related docs in the same pass
+alwaysApply: true
+---
+
+# Defect / Pipeline Documentation Sync (mandatory)
+
+When the user requests a **defect** or **QA pipeline** behavior change, update **all**
+of the following in the **same change** — never scripts-only:
+
+| Layer | Paths |
+|-------|--------|
+| Implementation | `pipeline/scripts/*.js`, `pipeline/scripts/*.cjs`, `reporters/pipeline-reporter.ts`, `package.json` scripts |
+| Schema | `specs/generated/qa-pipeline/schemas/defect-workbook-schema.json` |
+| Agents | `.cursor/agents/execute-raise-defects.agent.md`, `defect-regression.agent.md`, `qa-automation-pipeline.agent.md` |
+| Rules | `.cursor/rules/defect-plain-language-mandatory.mdc`, `.cursor/rules/defect-google-sheet-sync.mdc`, `.cursor/rules/defect-status-guardrails.mdc`, `module-run-defects-docx-mandatory.mdc`, `qa-automation-pipeline-guardrails.mdc`, `named-agent-invocation-mandatory.mdc`, `playwright-browser-prerequisite.mdc`, `agent-run-docx-reports.mdc` |
+| Central docs | `AGENTS.md`, `.cursor/system-context/project-context.mdc`, `docs/agent-runs/README.md` |
+
+Also update `.cursor/rules/agent-guidelines.mdc` § Change discipline when the sync checklist itself changes.
+
+## Script → behavior map (source of truth)
+
+| Script | npm command | Documented behavior |
+|--------|-------------|---------------------|
+| `resolve-defect-milestone.cjs` | (internal) | Maps Test Case ID → M1/M2 from Stage 0 Test Cases + FSD + Figma folders |
+| `generate-module-defects.js` | `qa:generate-defects` | Local defect Excel + sync payload; **removes passed TC IDs** from prior rows (global, not module-scoped); workbook contains **current failures only**; asserts no passed TC in output; plain-language via `inferProductFeature` / `shortFailure`; strips FSD requirement IDs; **must pass** `validate-defect-plain-language.cjs` |
+| `defect-row-prune.cjs` | (internal) | Shared prune: passed TC removal (local) + stale module row removal (Google) |
+| `assert-defect-sync-integrity.cjs` | `qa:assert-defect-integrity` | Mechanical gate: local workbook / sync payload must not contain passed TC IDs from execution report |
+| `validate-defect-plain-language.cjs` | `qa:validate-defect-plain-language` | Mechanical gate: no technical terms; no FSD requirement IDs in narratives (`FSD_TRACEABILITY_PATTERNS`); valid Feature labels; readable Summary/Steps/Expected/Actual |
+| `classify-defect-severity-priority.cjs` | (internal) | Classifies Severity (impact) and Priority (urgency) from failure evidence + Excel Priority |
+| `run-persistent-playwright.cjs` | (internal via `qa:run-module`) | Headed + 1 worker + persistent CDP Chromium for module runs |
+| `execute-raise-defects.js` | `qa:execute-raise-defects`, `qa:run-module` | Runs spec → local Excel + execute-raise DOCX; Google sync deferred |
+| `finalize-module-run.cjs` | `qa:finalize-module-run` (also auto via pipeline reporter) | Post-run defects summary + DOCX for milestone module runs |
+| `approve-defects-sync.cjs` | `qa:approve-defects-sync` | Google sync after user approves local defect workbook; **defaults to `--upsert`** (stale module prune + contiguous rewrite) |
+| `append-defects-google-sheet.js` | `qa:sync-defects-sheet` | Google sync after `--approved` (**auto `--upsert`** unless `--no-upsert`); removes stale rows for synced Milestone+Module when TC not in payload; batch append + contiguous rewrite; strips blank spacer rows; preserves Status/Severity/Priority rules |
+| `defect-regression-run.js` | `qa:defect-regression` | Google-only Resolved retest; **Status only** (Closed/Reopened); auto Google sync unless `--defer-google-sync` |
+| `read-defect-sheet.cjs` | (internal) | Reads Google Defects tab via CDP |
+| `update-defect-google-statuses.cjs` | (internal) | Plans/applies Google Status updates for regression |
+| `update-defect-workbook-statuses.cjs` | (internal) | Status merge helpers (`mergeDefectUpsertStatus`, `mergeRegressionStatus`); not used for regression local Excel |
+| `resolve-defect-regression-scope.cjs` | (internal) | Anchor + related case scope for regression |
+| `parse-spec-regression-index.cjs` | (internal) | Spec index for regression scope |
+| `ensure-playwright-chromium.cjs` | `setup` (auto) | Installs Chromium before regression if missing |
+| `write-agent-run-docx.cjs` | `docs:agent-run` | High-level agent run `.docx` under `docs/agent-runs/`; auto from regression, execute-raise-defects, milestone reporter finalize, QA gate, FSD coverage |
+
+**Removed / forbidden:** `qa:backfill-defect-metadata`, post-generation Severity/Priority backfill, Dev Status + QA Status columns.
+
+## Verification before finishing
+
+1. Grep docs for stale terms: `backfill-defect`, `Dev Status`, `QA Status` (except “forbidden”), `mirror Priority`.
+2. Confirm agent “Related” sections list the scripts above.
+3. Confirm `package.json` scripts match `project-context.mdc` and `AGENTS.md` commands table.

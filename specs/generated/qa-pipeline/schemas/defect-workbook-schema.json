@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/defect-workbook-schema.json",
+  "title": "Module Defect Workbook Row",
+  "description": "One detailed row per remaining failed test case after heal. Feature is the actual product feature under test (not a tracker alias). Assigned To comes from trackers. Severity and Priority are set once at defect generation from the test execution report (classify-defect-severity-priority.cjs). Sub Module / Frontend Developers / Backend Developers / Dev Status / QA Status are forbidden. Use a single Status column (New, In Progress, Resolved, Reopened, Closed). Only defect-regression may change Resolved to Closed/Reopened on Google; it never changes Severity or Priority. Local Excel is generated first; Google Sheet sync requires explicit human approval and preserves existing Status and Severity/Priority on upsert when already set.",
+  "type": "object",
+  "required": [
+    "Milestone",
+    "Defect ID",
+    "Test Case ID",
+    "Module",
+    "Feature",
+    "Assigned To",
+    "Summary",
+    "Steps to Reproduce",
+    "Expected Result",
+    "Actual Result",
+    "Severity",
+    "Priority",
+    "Status",
+    "Environment"
+  ],
+  "properties": {
+    "Milestone": { "type": "string", "enum": ["M1", "M2"] },
+    "Defect ID": {
+      "type": "string",
+      "pattern": "^DEF-M[0-9]+-[A-Z0-9]+(?:-[A-Z0-9]+)*$",
+      "description": "DEF-M<milestone>-<Test Case ID>; do not duplicate the module prefix already present in the TC ID."
+    },
+    "Test Case ID": { "type": "string", "minLength": 1 },
+    "Module": { "type": "string", "minLength": 1 },
+    "Feature": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Functional feature/scenario area within the module (e.g. Page Layout, Search, Sorting, Field Mapping). Do not repeat the module name for every row and never use tracker aliases."
+    },
+    "Assigned To": { "type": "string", "minLength": 1 },
+    "Summary": {
+      "type": "string",
+      "minLength": 1,
+      "description": "One plain-English sentence naming the module page, the feature, what was being checked, and what went wrong. Simple everyday words only — no Test Case ID, URL, selector, Playwright API name, millisecond timing, or FSD requirement IDs (BR-xxx, NFR-xxx, etc.)."
+    },
+    "Steps to Reproduce": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Numbered reproduction steps from Excel when available; otherwise simple navigation + scenario steps using the module page name. Written so a non-technical reader can follow them. Must not contain environment URLs, selectors, FSD requirement IDs, or be only the test title."
+    },
+    "Expected Result": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What should happen, in plain English from the user's point of view. Must not be a generic placeholder or repeat automation terminology."
+    },
+    "Actual Result": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What actually happened, in plain English (e.g. 'The page did not open within 30 seconds'). No ANSI codes, URLs, selectors, raw Playwright call logs, or millisecond values — convert waits to seconds."
+    },
+    "Severity": {
+      "type": "string",
+      "description": "Set once when the defect row is generated from the test execution report. Not updated on later Google upserts or regression."
+    },
+    "Priority": {
+      "type": "string",
+      "description": "Set once when the defect row is generated from the test execution report (Excel Priority plus execution impact). Not updated on later Google upserts or regression."
+    },
+    "Status": {
+      "type": "string",
+      "enum": ["New", "In Progress", "Resolved", "Reopened", "Closed"],
+      "description": "Single workflow status for the defect. Defaults to New when first raised."
+    },
+    "Environment": { "type": "string" }
+  },
+  "additionalProperties": false
+}

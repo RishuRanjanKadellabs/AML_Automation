@@ -1,0 +1,54 @@
+---
+description: "Defines Playwright framework architecture and file creation order for AML Automation"
+alwaysApply: true
+---
+
+# Playwright Framework Architecture Rules
+
+## Project Stack
+- Playwright with TypeScript
+- Page Object Model (POM)
+- Separate Locator files
+- Fixtures-based test data
+- AI-DLC Pipeline for .docx → Playwright test generation
+- Target: AML application at `https://kadelamldev.customerxps.com:2506` — login required
+
+## File Creation Order for Any New Feature
+
+New work goes under `tests/milestone2/` only (same layout as milestone1). Do not use `tests/e2e/`.
+
+When creating a new feature (e.g., Exception List Manager under ConfigurationModule):
+
+1. Create Spec File first
+   - Location: `tests/milestone2/test-cases/<Module>/<feature>Tests/`
+   - Naming: `feature-name.spec.ts` (e.g. `exception-list-manager.spec.ts`)
+
+2. Create Locator File
+   - Location: `tests/milestone2/objectrepositories/` (per-milestone; never `tests/objectrepositories/`)
+   - Naming: `FeatureLocators.ts` (e.g. `ExceptionListManagerLocators.ts`)
+
+3. Create Page Object File
+   - Location: `tests/milestone2/pages/<Module>/<Feature>Pages/`
+   - Naming: `FeaturePage.ts` (e.g. `ExceptionListManagerPage.ts`)
+   - Import locators as `../../../objectrepositories/<Feature>Locators` from `pages/<Module>/<Feature>Pages/`
+
+## Responsibilities
+
+Spec File:
+- Contains only test cases
+- Calls page object methods
+- Does NOT contain raw selectors
+- Does NOT contain business logic
+
+Locator File:
+- Contains only element locators
+- No Playwright commands
+- Export as object
+
+Page Object File:
+- Imports locator file
+- Create getters for locators
+- Contains reusable action methods
+- No assertions unless validation-specific method
+
+Never mix responsibilities.

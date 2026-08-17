@@ -1,0 +1,32 @@
+---
+description: Agent model policy — all named agents inherit the chat-selected model
+alwaysApply: true
+---
+
+# Agent Model Policy
+
+## Default — inherit chat model
+
+All named agents under `.cursor/agents/` use **`model: inherit`**. Subagents run with
+**whatever model the user selected in the parent chat** (Composer, Sonnet, Opus, GPT, etc.).
+
+| Agent | Model |
+|-------|--------|
+| `qa-automation-pipeline` | `inherit` |
+| `playwright-test-generator` / `test-generator` | `inherit` |
+| `playwright-test-healer` / `test-healer` | `inherit` |
+| `execute-raise-defects` | `inherit` |
+| `defect-regression` | `inherit` |
+| `fsd-figma-pipeline` | `inherit` |
+| `fsd-excel-coverage-audit` | `inherit` |
+| Legacy: `test-planner`, `headed-executor`, `headless-executor` | `inherit` |
+
+## Task invocation rules
+
+- Do **not** pass an explicit `model:` on Task unless the user requests a specific model
+  for that invocation.
+- If subagent launch fails with usage limit, fall back to repo scripts in the parent
+  only when the user explicitly approves (see named-agent-invocation rule).
+- Check Cursor **Usage / Spending** when limits hit mid-pipeline.
+- For live UI generation/healing, prefer a capable thinking model in the chat picker;
+  script-heavy agents work on any model but inherit the same selection.

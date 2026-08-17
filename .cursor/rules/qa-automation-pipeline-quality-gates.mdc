@@ -1,0 +1,53 @@
+---
+description: QA automation pipeline quality gates, validation row statuses, and case state model.
+alwaysApply: false
+globs: specs/generated/qa-pipeline/**,results/qa-pipeline/**,.cursor/agents/qa-automation-pipeline.agent.md
+---
+
+# QA Automation Pipeline — Quality Gates
+
+## Row validation statuses
+
+`Valid` | `Valid with warnings` | `Invalid` | `Requires clarification`
+
+Invalid → no generation.
+
+## Gate A — Generation
+
+- Excel row valid (or valid with warnings)
+- Traceable test-case ID
+- Steps and expected results sufficiently clear
+- Automation feasibility confirmed
+- Assumptions documented
+- Framework identified (Playwright + TS POM)
+- Every eligible UI case has evidence from the live module route, controls/actions, and expected-result target
+- `liveUiValidatedCaseIds` exactly covers eligible UI case IDs and `liveUiCoveragePercent=100`
+- Every generated/reused locator is validated against the current live DOM
+- Figma, Excel, mocks, and heal shells do not count as live-UI evidence
+
+## Gate B — Execution
+
+- Syntax OK; project conventions followed
+- Meaningful assertions; no hard-coded credentials
+- Traceability to source TC ID
+- Exactly six deterministic near-equal batches cover every eligible ID once
+- Each non-empty batch has one evidence-backed pre-heal Playwright run
+- Only classified automation failures enter healing
+- At most one healer invocation and one changed-case verification run per batch
+- Pre-heal and post-heal Passed / Failed / Blocked counts are evidence-backed
+
+## Gate C — Final
+
+- Executed successfully **or** blocked with documented external reason
+- Every eligible UI case passed the 100% live-generation evidence gate
+- All six batches completed and aggregate counts equal the batch totals
+- Remaining failures after the permitted batch heal cycle are classified and preserved
+- Risks documented; final report complete
+- Run checkpoint `results/qa-pipeline/final/state.json` ends at `currentStage=done` / `status=done` (or `blocked` with reason)
+- If an agent died mid-run: auto-resume from checkpoint — do not leave Gate C pending for user “continue”
+
+## Case states
+
+Received → Input validated → Invalid | Normalized → Batch assigned → Live UI validated | Generation blocked → Generated → Batch executed → Healing eligible | Healed and verified | Final | Requires clarification
+
+Record timestamp, result, evidence, reason on each transition.

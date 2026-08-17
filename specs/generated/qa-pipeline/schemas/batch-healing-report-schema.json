@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "specs/generated/qa-pipeline/schemas/batch-healing-report-schema.json",
+  "title": "QA Pipeline Batch Healing Report",
+  "type": "object",
+  "required": [
+    "batchIndex",
+    "healerAgentId",
+    "healerInvocationCount",
+    "casesSelectedForHealing",
+    "changedCaseIds",
+    "caseResults"
+  ],
+  "properties": {
+    "batchIndex": { "type": "integer", "minimum": 1, "maximum": 6 },
+    "healerAgentId": { "type": "string", "minLength": 8 },
+    "healerInvocationCount": { "const": 1 },
+    "casesSelectedForHealing": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "changedCaseIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "liveUiValidatedHealedCaseIds": {
+      "type": "array",
+      "items": { "type": "string" },
+      "uniqueItems": true
+    },
+    "liveUiHealingCoveragePercent": { "const": 100 },
+    "assertionsWeakened": { "const": false },
+    "caseResults": {
+      "type": "array",
+      "items": { "$ref": "healing-result-schema.json" }
+    }
+  }
+}

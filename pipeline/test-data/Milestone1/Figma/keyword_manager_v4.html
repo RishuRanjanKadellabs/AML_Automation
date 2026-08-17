@@ -1,0 +1,1340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 – Keyword Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #f9fafb; color: #161616; height: 100vh; overflow: hidden; font-size: 14px; }
+
+/* ── Layout ── */
+.app { display: flex; height: 100vh; overflow: hidden; flex-direction: column; }
+.app-inner { display: flex; flex: 1; overflow: hidden; }
+.sidebar { width: 240px; flex-shrink: 0; background: #fff; border-right: 1px solid #e5e7eb; display: flex; flex-direction: column; overflow: hidden; }
+.main-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+/* ── Sidebar ── */
+.sidebar-header { height: 54px; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 16px; gap: 8px; flex-shrink: 0; }
+.logo-text { font-size: 18px; font-weight: 800; color: #2A53A0; }
+.logo-div { width: 1px; height: 24px; background: #e5e7eb; }
+.bank-text { font-size: 11px; font-weight: 700; color: #525252; letter-spacing: 0.5px; }
+.sidebar-search { padding: 12px 16px; border-bottom: 1px solid #e5e7eb; }
+.search-wrap { position: relative; }
+.search-wrap input { width: 100%; height: 38px; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0 12px 0 34px; font-size: 13px; outline: none; font-family: 'Inter', sans-serif; }
+.search-wrap .si { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+.sidebar-nav { flex: 1; overflow-y: auto; padding: 8px 0; }
+.nav-item { display: flex; align-items: center; gap: 8px; padding: 0 16px; height: 46px; border-radius: 8px; cursor: pointer; font-size: 15px; color: #161616; transition: background 0.15s; width: 100%; border: none; background: none; text-align: left; }
+.nav-item:hover { background: #f3f4f6; }
+.nav-item.active { color: #2A53A0; font-weight: 600; }
+.nav-chevron { margin-left: auto; color: #9ca3af; flex-shrink: 0; }
+.nav-item.active .nav-chevron { color: #2A53A0; transform: rotate(90deg); }
+.nav-sub { }
+.nav-sub-item { display: flex; align-items: center; gap: 8px; padding: 8px 16px 8px 27px; cursor: pointer; font-size: 15px; color: #525252; transition: all 0.15s; width: 100%; border: none; background: none; text-align: left; border-radius: 6px; }
+.nav-sub-item:hover { color: #2A53A0; background: #f9fafb; }
+.nav-sub-item.active { background: #EAF2FF; color: #2A53A0; font-weight: 500; border-left: 4px solid #2A53A0; padding-left: 23px; border-radius: 0 6px 6px 0; }
+
+/* ── Top Bar ── */
+.topbar { height: 54px; background: #fff; border-bottom: 1px solid #e5e7eb; display: flex; align-items: center; padding: 0 24px; justify-content: space-between; flex-shrink: 0; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 14px; }
+.bc-link { color: #2A53A0; cursor: pointer; }
+.bc-link:hover { color: #1e3a70; }
+.bc-sep { color: #d1d5db; }
+.topbar-right { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 32px; height: 32px; border-radius: 50%; background: #2A53A0; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; cursor: pointer; }
+
+/* ── Tabs ── */
+.tabs-bar { border-bottom: 1px solid #e5e7eb; background: #fff; flex-shrink: 0; display: flex; padding: 0; }
+.tab-btn { height: 48px; padding: 0 18px; border: none; background: none; cursor: pointer; font-size: 14px; font-weight: 500; color: #6b7280; border-bottom: 2px solid transparent; transition: all 0.15s; white-space: nowrap; font-family: 'Inter', sans-serif; }
+.tab-btn.active { color: #2A53A0; border-bottom-color: #2A53A0; }
+.tab-btn:hover:not(.active) { color: #374151; }
+
+/* ── Toolbar ── */
+.toolbar { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; background: #fff; flex-shrink: 0; gap: 12px; }
+.toolbar-left { position: relative; }
+.toolbar-left input { height: 46px; width: 300px; border: 1px solid #e5e7eb; border-radius: 8px; padding: 0 12px 0 36px; font-size: 14px; outline: none; font-family: 'Inter', sans-serif; background: #fff; }
+.toolbar-left input:focus { border-color: #2A53A0; box-shadow: 0 0 0 3px rgba(42,83,160,0.1); }
+.toolbar-left .si { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; pointer-events: none; }
+.toolbar-right { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 6px; padding: 0 14px; height: 46px; border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.15s; border: 1px solid #e5e7eb; background: #fff; color: #161616; font-family: 'Inter', sans-serif; white-space: nowrap; }
+.btn:hover { background: #f9fafb; }
+.btn-primary { background: #2A53A0; color: #fff; border-color: #2A53A0; }
+.btn-primary:hover { background: #1e3a70; border-color: #1e3a70; }
+.btn svg { flex-shrink: 0; }
+
+/* ── Table ── */
+.table-wrap { flex: 1; overflow: auto; background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; margin: 0 16px 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead tr { background: #f0f0f0; height: 48px; position: sticky; top: 0; z-index: 5; }
+th { padding: 0 16px; text-align: left; font-size: 13px; font-weight: 600; color: #2A53A0; white-space: nowrap; }
+.sort-btn { display: inline-flex; align-items: center; gap: 4px; background: none; border: none; cursor: pointer; font-size: 13px; font-weight: 600; color: #2A53A0; padding: 4px 0; font-family: 'Inter', sans-serif; }
+tbody tr { height: 46px; border-bottom: 1px solid #f3f4f6; transition: background 0.1s; }
+tbody tr:hover { background: #f9fafb; }
+td { padding: 0 16px; vertical-align: middle; white-space: nowrap; }
+.empty-state { text-align: center; padding: 60px 20px; color: #9ca3af; font-size: 14px; }
+
+/* ── Badges ── */
+.badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 6px; font-size: 12px; font-weight: 500; border: 1px solid transparent; white-space: nowrap; }
+.cat-sanctions { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+.cat-terrorism { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+.cat-pep { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+.cat-financial { background: #eff6ff; color: #1d4ed8; border-color: #bfdbfe; }
+.match-exact { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+.match-partial { background: #f3f4f6; color: #4b5563; border-color: #e5e7eb; }
+.risk-low { background: #f0fdf4; color: #166534; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+.risk-medium { background: #fef3c7; color: #92400e; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+.risk-high { background: #fef2f2; color: #991b1b; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+.status-active { background: #dcfce7; color: #166534; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+.status-inactive { background: #f3f4f6; color: #6b7280; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+.status-drafted { background: #fef3c7; color: #92400e; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+.status-pending { background: #eff6ff; color: #1d4ed8; font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 9999px; }
+
+/* ── Action buttons ── */
+.actions-cell { display: flex; align-items: center; gap: 6px; }
+.action-btn { width: 32px; height: 32px; border-radius: 6px; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; transition: all 0.15s; font-size: 11px; font-weight: 600; font-family: 'Inter', sans-serif; }
+.action-off { background: rgba(239,68,68,0.1); color: #dc2626; }
+.action-off:hover { background: rgba(239,68,68,0.2); }
+.action-on { background: rgba(34,197,94,0.1); color: #16a34a; }
+.action-on:hover { background: rgba(34,197,94,0.2); }
+.action-del { background: rgba(239,68,68,0.1); color: #dc2626; }
+.action-del:hover { background: rgba(239,68,68,0.2); }
+
+/* ── Page content area ── */
+.page-content { flex: 1; overflow: hidden; display: flex; flex-direction: column; }
+.table-area { flex: 1; overflow: hidden; display: flex; flex-direction: column; padding-top: 0; }
+
+/* ── Status bar ── */
+.status-bar { height: 42px; border-top: 1px solid #e5e7eb; background: #f9fafb; display: flex; align-items: center; padding: 0 16px; justify-content: space-between; flex-shrink: 0; }
+.status-bar span { font-size: 12px; color: #6b7280; }
+
+/* ══════════════════════════════════
+   MODAL OVERLAY (shared)
+══════════════════════════════════ */
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 200; animation: fadeIn 0.15s; }
+.overlay.hidden { display: none; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(16px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes slideRight { from { transform: translateX(32px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* ══════════════════════════════════
+   ADD CATEGORY MODAL
+══════════════════════════════════ */
+.modal-box { background: #fff; border-radius: 12px; width: 440px; max-width: 95vw; box-shadow: 0 20px 60px rgba(0,0,0,0.25); animation: slideUp 0.2s; overflow: hidden; }
+.modal-header { background: #2A53A0; color: #fff; padding: 18px 20px 16px; display: flex; align-items: flex-start; justify-content: space-between; }
+.modal-header-txt h3 { font-size: 17px; font-weight: 600; margin-bottom: 3px; }
+.modal-header-txt p { font-size: 13px; color: rgba(255,255,255,0.8); }
+.modal-close { background: none; border: none; color: rgba(255,255,255,0.8); cursor: pointer; font-size: 20px; line-height: 1; padding: 2px 6px; border-radius: 4px; margin-top: -2px; }
+.modal-close:hover { color: #fff; background: rgba(255,255,255,0.15); }
+.modal-body { padding: 22px 22px 18px; }
+.form-group { margin-bottom: 18px; }
+.form-group:last-child { margin-bottom: 0; }
+.form-label { display: block; font-size: 13px; font-weight: 600; color: #161616; margin-bottom: 7px; }
+.req { color: #da1e28; }
+.form-input { width: 100%; height: 46px; border: 1px solid #d1d5dc; border-radius: 8px; padding: 0 12px; font-size: 14px; color: #161616; outline: none; font-family: 'Inter', sans-serif; background: #fff; transition: border-color 0.15s, box-shadow 0.15s; }
+.form-input:focus { border-color: #2A53A0; box-shadow: 0 0 0 2px rgba(42,83,160,0.15); }
+.form-input::placeholder { color: #9ca3af; }
+.form-textarea { width: 100%; height: 100px; border: 1px solid #d1d5dc; border-radius: 8px; padding: 10px 12px; font-size: 14px; color: #161616; outline: none; font-family: 'Inter', sans-serif; background: #fff; resize: none; transition: border-color 0.15s, box-shadow 0.15s; }
+.form-textarea:focus { border-color: #2A53A0; box-shadow: 0 0 0 2px rgba(42,83,160,0.15); }
+.form-textarea::placeholder { color: #9ca3af; }
+.modal-footer { padding: 14px 22px; border-top: 1px solid #f3f4f6; background: #fafafa; display: flex; justify-content: flex-end; gap: 10px; }
+.btn-cancel-modal { background: #fff; border: none; color: #2A53A0; font-size: 14px; font-weight: 500; padding: 0 20px; height: 40px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; }
+.btn-cancel-modal:hover { background: #f3f4f6; }
+.btn-submit-modal { background: #c7c7c7; border: none; color: #fff; font-size: 14px; font-weight: 500; padding: 0 20px; height: 40px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; transition: background 0.15s; }
+.btn-submit-modal.ready { background: #2A53A0; }
+.btn-submit-modal.ready:hover { background: #1e3a70; }
+
+/* ══════════════════════════════════
+   CATEGORY CONTROLS MODAL
+══════════════════════════════════ */
+.cat-ctrl-box { background: #fff; border-radius: 12px; width: 440px; max-width: 95vw; box-shadow: 0 20px 60px rgba(0,0,0,0.25); animation: slideUp 0.2s; overflow: hidden; }
+.cat-ctrl-header { background: #1e3a70; color: #fff; padding: 18px 20px 14px; display: flex; align-items: flex-start; justify-content: space-between; }
+.cat-ctrl-header h3 { font-size: 17px; font-weight: 600; margin-bottom: 3px; }
+.cat-ctrl-header p { font-size: 13px; color: rgba(255,255,255,0.75); }
+.cat-ctrl-body { padding: 8px 0; }
+.cat-ctrl-row { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid #f3f4f6; }
+.cat-ctrl-row:last-child { border-bottom: none; }
+.cat-ctrl-info .cat-name { font-size: 15px; font-weight: 600; color: #161616; margin-bottom: 2px; }
+.cat-ctrl-info .cat-count { font-size: 13px; color: #6b7280; }
+/* Toggle */
+.toggle-wrap { position: relative; display: inline-block; width: 52px; height: 28px; flex-shrink: 0; }
+.toggle-wrap input { opacity: 0; width: 0; height: 0; position: absolute; }
+.toggle-slider { position: absolute; inset: 0; border-radius: 28px; background: #d1d5dc; cursor: pointer; transition: background 0.2s; }
+.toggle-slider::after { content: ''; position: absolute; width: 22px; height: 22px; background: #fff; border-radius: 50%; top: 3px; left: 3px; transition: left 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+.toggle-wrap input:checked + .toggle-slider { background: #2A53A0; }
+.toggle-wrap input:checked + .toggle-slider::after { left: 27px; }
+.cat-ctrl-footer { padding: 14px 22px; border-top: 1px solid #f3f4f6; background: #1e3a70; display: flex; justify-content: space-between; align-items: center; }
+.btn-cat-cancel { background: transparent; border: none; color: rgba(255,255,255,0.9); font-size: 15px; font-weight: 500; padding: 0 10px; height: 40px; cursor: pointer; font-family: 'Inter', sans-serif; }
+.btn-cat-cancel:hover { color: #fff; }
+.btn-cat-save { background: #fff; border: none; color: #1e3a70; font-size: 15px; font-weight: 600; padding: 0 32px; height: 40px; border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.15s; }
+.btn-cat-save:hover { background: #e5e7eb; }
+
+/* ══════════════════════════════════
+   ADD IGNORE WORD PANEL (right-side)
+══════════════════════════════════ */
+.panel-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 200; display: flex; justify-content: flex-end; animation: fadeIn 0.15s; }
+.panel-overlay.hidden { display: none; }
+.panel-box { width: min(680px, 100vw); background: #fff; display: flex; flex-direction: column; height: 100vh; box-shadow: -8px 0 40px rgba(0,0,0,0.15); animation: slideRight 0.25s; }
+.panel-topbar { height: 54px; background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; position: relative; }
+.panel-title { position: absolute; left: 50%; transform: translateX(-50%); font-size: 15px; font-weight: 600; color: #161616; white-space: nowrap; }
+.panel-body { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 20px; }
+.panel-footer { height: 64px; border-top: 1px solid #e5e7eb; background: #fff; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; flex-shrink: 0; }
+
+/* Form inside panel */
+.field-label { font-size: 13px; font-weight: 600; color: #161616; display: block; margin-bottom: 7px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.select-wrap { position: relative; }
+.select-wrap select { width: 100%; height: 46px; border: 1px solid #d1d5dc; border-radius: 8px; padding: 0 36px 0 12px; font-size: 14px; color: #161616; outline: none; appearance: none; background: #fff; cursor: pointer; font-family: 'Inter', sans-serif; }
+.select-wrap select:focus { border-color: #2A53A0; box-shadow: 0 0 0 2px rgba(42,83,160,0.15); }
+.select-wrap::after { content: ''; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 5px solid #6b7280; pointer-events: none; }
+
+/* Live tester card */
+.tester-card { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+.tester-card-header { padding: 12px 20px; border-bottom: 1px solid #f3f4f6; background: #f8fafc; }
+.tester-card-header h2 { font-size: 14px; font-weight: 600; color: #161616; }
+.tester-card-header p { font-size: 12px; color: #6b7280; margin-top: 2px; }
+.tester-card-body { padding: 20px; background: #fff; }
+.tester-textarea { width: 100%; padding: 12px; background: #fff; border: 1px solid #d1d5dc; border-radius: 8px; font-size: 14px; color: #161616; outline: none; resize: none; font-family: 'Inter', sans-serif; line-height: 1.6; }
+.tester-textarea:focus { border-color: #2A53A0; }
+.preview-box { min-height: 80px; padding: 12px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; font-size: 14px; line-height: 1.7; }
+.preview-empty { color: #9ca3af; }
+.highlight-match { background: #fef3c7; color: #92400e; padding: 1px 3px; border-radius: 3px; font-weight: 500; }
+
+/* btn small */
+.btn-back { width: 32px; height: 32px; border-radius: 8px; background: none; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s; color: #6b7280; }
+.btn-back:hover { background: #f3f4f6; }
+
+/* ══════════════════════════════════
+   BULK UPLOAD MODAL
+══════════════════════════════════ */
+.upload-box { background: #fff; border-radius: 12px; width: 500px; max-width: 95vw; box-shadow: 0 20px 60px rgba(0,0,0,0.25); animation: slideUp 0.2s; overflow: hidden; }
+.upload-dropzone { border: 2px dashed #d1d5dc; border-radius: 10px; padding: 36px 24px; text-align: center; cursor: pointer; transition: all 0.15s; background: #fafafa; }
+.upload-dropzone:hover, .upload-dropzone.dragging { border-color: #2A53A0; background: #eff6ff; }
+.upload-dropzone p { font-size: 14px; color: #6b7280; margin-top: 8px; }
+.upload-dropzone .browse { color: #2A53A0; font-weight: 600; cursor: pointer; }
+.upload-hint { font-size: 12px; color: #9ca3af; margin-top: 4px; }
+.file-selected { display: none; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 8px; margin-top: 12px; background: #f9fafb; }
+.file-selected.show { display: flex; }
+.file-selected .fname { font-size: 14px; font-weight: 500; flex: 1; }
+.file-selected .fsize { font-size: 12px; color: #9ca3af; }
+.file-selected .fremove { background: none; border: none; cursor: pointer; color: #9ca3af; font-size: 16px; }
+.file-selected .fremove:hover { color: #dc2626; }
+
+/* ── Checker approval modal ── */
+.checker-box { background:#fff; border-radius:12px; width:420px; max-width:95vw; box-shadow:0 20px 60px rgba(0,0,0,0.25); animation:slideUp 0.2s; overflow:hidden; }
+.checker-icon-wrap { width:64px; height:64px; border-radius:50%; background:#defbe6; display:flex; align-items:center; justify-content:center; margin:28px auto 16px; }
+
+/* ── Screening fields multiselect ── */
+.sf-chip { display:inline-flex;align-items:center;gap:4px;background:#EAF2FF;color:#1e3a70;border:1px solid #c7d4f0;border-radius:5px;padding:2px 7px 2px 8px;font-size:12px;font-weight:500;line-height:1.4; }
+.sf-chip-x { background:none;border:none;cursor:pointer;color:#2A53A0;font-size:14px;line-height:1;padding:0 0 0 2px;font-family:'Inter',sans-serif; }
+.sf-chip-x:hover { color:#991b1b; }
+.sf-group-label { font-size:10px;font-weight:700;color:#9ca3af;text-transform:uppercase;letter-spacing:.07em;padding:8px 12px 3px;pointer-events:none; }
+.sf-option { display:flex;align-items:center;gap:9px;padding:7px 12px;cursor:pointer;font-size:13px;color:#161616;transition:background .1s; }
+.sf-option:hover { background:#f3f4f6; }
+.sf-option input[type=checkbox] { accent-color:#2A53A0;width:14px;height:14px;flex-shrink:0;cursor:pointer; }
+.sf-option.checked { background:#f0f5ff; }
+/* Threshold hint colours */
+.th-low  { background:#fef2f2;color:#991b1b; }
+.th-mid  { background:#fef3c7;color:#92400e; }
+.th-high { background:#f0fdf4;color:#166534; }
+
+/* ── Screening fields multiselect ── */
+.history-panel { position:fixed; inset:0; background:rgba(0,0,0,0.45); z-index:200; display:flex; justify-content:flex-end; animation:fadeIn 0.15s; }
+.history-panel.hidden { display:none; }
+.history-box { width:min(560px,100vw); background:#fff; display:flex; flex-direction:column; height:100vh; box-shadow:-8px 0 40px rgba(0,0,0,0.15); animation:slideRight 0.25s; }
+.history-topbar { height:54px; background:#fff; border-bottom:1px solid #e5e7eb; padding:0 20px; display:flex; align-items:center; justify-content:space-between; flex-shrink:0; position:relative; }
+.history-body { flex:1; overflow-y:auto; padding:24px; display:flex; flex-direction:column; gap:0; }
+.history-meta-card { background:#f9fafb; border:1px solid #e5e7eb; border-radius:10px; padding:16px 18px; display:grid; grid-template-columns:1fr 1fr; gap:10px 20px; margin-bottom:20px; }
+.history-meta-item label { font-size:11px; font-weight:600; color:#9ca3af; text-transform:uppercase; letter-spacing:.05em; display:block; margin-bottom:3px; }
+.history-meta-item span { font-size:13px; font-weight:600; color:#161616; }
+.history-section-title { font-size:12px; font-weight:700; color:#525252; text-transform:uppercase; letter-spacing:.07em; margin-bottom:12px; }
+.timeline { display:flex; flex-direction:column; gap:0; }
+.tl-item { display:flex; gap:14px; position:relative; padding-bottom:24px; }
+.tl-item:last-child { padding-bottom:0; }
+.tl-left { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+.tl-dot { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.tl-dot-add    { background:#dcfce7; color:#166534; }
+.tl-dot-submit { background:#dbeafe; color:#1d4ed8; }
+.tl-dot-review { background:#fef3c7; color:#92400e; }
+.tl-dot-approve{ background:#dcfce7; color:#166534; }
+.tl-dot-disable{ background:#fee2e2; color:#991b1b; }
+.tl-dot-enable { background:#dcfce7; color:#166534; }
+.tl-line { flex:1; width:2px; background:#e5e7eb; margin:4px 0; min-height:20px; }
+.tl-content { flex:1; padding-bottom:2px; }
+.tl-action { font-size:13px; font-weight:600; color:#161616; }
+.tl-meta { font-size:12px; color:#6b7280; margin-top:3px; }
+.tl-user-row { display:flex; align-items:center; gap:7px; margin-top:6px; }
+.tl-avatar { width:26px; height:26px; border-radius:50%; background:#2A53A0; color:#fff; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; flex-shrink:0; }
+.tl-user-info { display:flex; flex-direction:column; }
+.tl-uname { font-size:12px; font-weight:600; color:#161616; }
+.tl-urole { font-size:11px; color:#9ca3af; }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="app-inner">
+
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span class="logo-text">clari5</span>
+        <div class="logo-div"></div>
+        <span class="bank-text">ClarityBank</span>
+      </div>
+      <div class="sidebar-search">
+        <div class="search-wrap">
+          <span class="si"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg></span>
+          <input type="text" placeholder="Search menus...">
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <!-- Config menu item (parent) -->
+        <button class="nav-item active">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5,8.4c0-0.1,0-0.3,0-0.4c0-0.1,0-0.3,0-0.4l1-0.8c0.4-0.3,0.4-0.9,0.2-1.3l-1.2-2C13.3,3.2,13,3,12.6,3c-0.1,0-0.2,0-0.3,0.1l-1.2,0.4c-0.2-0.1-0.4-0.3-0.7-0.4l-0.3-1.3C10.1,1.3,9.7,1,9.2,1H6.8c-0.5,0-0.9,0.3-1,0.8L5.6,3.1C5.3,3.2,5.1,3.3,4.9,3.4L3.7,3C3.6,3,3.5,3,3.4,3C3,3,2.7,3.2,2.5,3.5l-1.2,2C1.1,5.9,1.2,6.4,1.6,6.8l0.9,0.9c0,0.1,0,0.3,0,0.4c0,0.1,0,0.3,0,0.4L1.6,9.2c-0.4,0.3-0.5,0.9-0.2,1.3l1.2,2C2.7,12.8,3,13,3.4,13c0.1,0,0.2,0,0.3-0.1l1.2-0.4c0.2,0.1,0.4,0.3,0.7,0.4l0.3,1.3c0.1,0.5,0.5,0.8,1,0.8h2.4c0.5,0,0.9-0.3,1-0.8l0.3-1.3c0.2-0.1,0.4-0.2,0.7-0.4l1.2,0.4c0.1,0,0.2,0.1,0.3,0.1c0.4,0,0.7-0.2,0.9-0.5l1.1-2c0.2-0.4,0.2-0.9-0.2-1.3L13.5,8.4z M8,11c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3C11,9.6,9.7,11,8,11z"/></svg>
+          Configuration
+          <svg class="nav-chevron" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11 3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+        </button>
+        <div class="nav-sub">
+          <button class="nav-sub-item">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M12,4v8H4V4H12 M12,3H4C3.4,3,3,3.4,3,4v8c0,0.6,0.4,1,1,1h8c0.6,0,1-0.4,1-1V4C13,3.4,12.6,3,12,3z"/></svg>
+            Sanctions Screening Configuration
+          </button>
+          <button class="nav-sub-item">
+            <svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M10 6H28V8H10z"/><path d="M10 24H28V26H10z"/><path d="M10 15H28V17H10z"/><path d="M4 15H6V17H4z"/><path d="M4 6H6V8H4z"/><path d="M4 24H6V26H4z"/></svg>
+            Exception List Configuration
+          </button>
+          <button class="nav-sub-item">
+            <svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M2 26H30V28H2z"/><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M20.4,4L24,7.6l-3,3L17.4,7L20.4,4z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+            Ignore Words Configuration
+          </button>
+          <button class="nav-sub-item active">
+            <svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M2 26H30V28H2z"/><path d="M25.4,9c0.8-0.8,0.8-2,0-2.8l-3.6-3.6c-0.8-0.8-2-0.8-2.8,0l-15,15V24h6.4L25.4,9z M6,22v-3.6l10-10l3.6,3.6l-10,10H6z"/></svg>
+            Keyword Manager
+          </button>
+          <button class="nav-sub-item">
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M14 16.59 11.41 14 10 15.41 14 19.41 22 11.41 20.59 10 14 16.59z"/><path d="M16,30,9.8242,26.7071A10.9818,10.9818,0,0,1,4,17V4A2.0021,2.0021,0,0,1,6,2H26a2.0021,2.0021,0,0,1,2,2V17a10.9818,10.9818,0,0,1-5.8242,9.7071ZM6,4V17a8.9852,8.9852,0,0,0,4.7656,7.9423L16,27.7333l5.2344-2.791A8.9852,8.9852,0,0,0,26,17V4Z"/></svg>
+            CDD / EDD Configuration
+          </button>
+        </div>
+        <button class="nav-item" style="margin-top:4px;">
+          <svg width="16" height="16" viewBox="0 0 32 32" fill="currentColor"><path d="M11.61,29.92a1,1,0,0,1-.6-1.07L12.83,17H8a1,1,0,0,1-1-1.23l3-13A1,1,0,0,1,11,2H21a1,1,0,0,1,.78.37,1,1,0,0,1,.2.85L20.25,11H25a1,1,0,0,1,.9.56,1,1,0,0,1-.11,1l-13,17A1,1,0,0,1,12,30Z"/></svg>
+          Real-time Monitoring
+          <svg class="nav-chevron" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M11 8 6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"/></svg>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- ── Main ── -->
+    <div class="main-area">
+
+      <!-- Topbar -->
+      <div class="topbar">
+        <div class="breadcrumb">
+          <span class="bc-link">Sanctions Screening Configuration</span>
+          <span class="bc-sep">/</span>
+          <span style="color:#161616;">Keyword Manager</span>
+        </div>
+        <div class="topbar-right">
+          <span style="font-size:13px;color:#525252;">Charu Chauhan</span>
+          <div class="avatar">CC</div>
+        </div>
+      </div>
+
+      <div class="page-content">
+        <!-- Tabs -->
+        <div class="tabs-bar">
+          <button class="tab-btn active" onclick="switchTab(this,'active')">Active (10)</button>
+          <button class="tab-btn" onclick="switchTab(this,'inactive')">Inactive (2)</button>
+          <button class="tab-btn" onclick="switchTab(this,'drafted')">Drafted Keyword (2)</button>
+
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <span class="si"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M15,14.3L10.7,10c1.9-2.3,1.6-5.8-0.7-7.7S4.2,0.7,2.3,3S0.7,8.8,3,10.7c2,1.7,5,1.7,7,0l4.3,4.3L15,14.3z M2,6.5C2,4,4,2,6.5,2S11,4,11,6.5S9,11,6.5,11S2,9,2,6.5z"/></svg></span>
+            <input type="text" id="searchInput" placeholder="Search keywords by phrase, category..." oninput="filterTable()">
+          </div>
+          <div class="toolbar-right">
+            <button class="btn" onclick="exportCSV()">
+              <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M13 21 26.17 21 23.59 23.59 25 25 30 20 25 15 23.59 16.41 26.17 19 13 19 13 21z"/><path d="M22,14V10a1,1,0,0,0-.29-.71l-7-7A1,1,0,0,0,14,2H4A2,2,0,0,0,2,4V28a2,2,0,0,0,2,2H20a2,2,0,0,0,2-2V26H20v2H4V4h8v6a2,2,0,0,0,2,2h6v2Zm-8-4V4.41L19.59,10Z"/></svg>
+              Export
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M8 11 3 6 3.7 5.3 8 9.6 12.3 5.3 13 6z"/></svg>
+            </button>
+
+            <button class="btn" onclick="openCategoryControls()">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M13.5,8.4c0-0.1,0-0.3,0-0.4c0-0.1,0-0.3,0-0.4l1-0.8c0.4-0.3,0.4-0.9,0.2-1.3l-1.2-2C13.3,3.2,13,3,12.6,3c-0.1,0-0.2,0-0.3,0.1l-1.2,0.4c-0.2-0.1-0.4-0.3-0.7-0.4l-0.3-1.3C10.1,1.3,9.7,1,9.2,1H6.8c-0.5,0-0.9,0.3-1,0.8L5.6,3.1C5.3,3.2,5.1,3.3,4.9,3.4L3.7,3C3.6,3,3.5,3,3.4,3C3,3,2.7,3.2,2.5,3.5l-1.2,2C1.1,5.9,1.2,6.4,1.6,6.8l0.9,0.9c0,0.1,0,0.3,0,0.4c0,0.1,0,0.3,0,0.4L1.6,9.2c-0.4,0.3-0.5,0.9-0.2,1.3l1.2,2C2.7,12.8,3,13,3.4,13c0.1,0,0.2,0,0.3-0.1l1.2-0.4c0.2,0.1,0.4,0.3,0.7,0.4l0.3,1.3c0.1,0.5,0.5,0.8,1,0.8h2.4c0.5,0,0.9-0.3,1-0.8l0.3-1.3c0.2-0.1,0.4-0.2,0.7-0.4l1.2,0.4c0.1,0,0.2,0.1,0.3,0.1c0.4,0,0.7-0.2,0.9-0.5l1.1-2c0.2-0.4,0.2-0.9-0.2-1.3L13.5,8.4z M8,11c-1.7,0-3-1.3-3-3s1.3-3,3-3s3,1.3,3,3C11,9.6,9.7,11,8,11z"/></svg>
+              Category Controls
+            </button>
+            <button class="btn" onclick="openAddCategory()">
+              <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M17 15 17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"/></svg>
+              Add Category
+            </button>
+            <button class="btn" onclick="openBulkUpload()">
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M3 9 3.7 9.7 7.5 5.9 7.5 15 8.5 15 8.5 5.9 12.3 9.7 13 9 8 4z"/><path d="M3,4V2h10v2h1V2c0-0.6-0.4-1-1-1H3C2.4,1,2,1.4,2,2v2H3z"/></svg>
+              Bulk Upload
+            </button>
+            <button class="btn btn-primary" onclick="openAddWord()">
+              <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M17 15 17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"/></svg>
+              Add Keyword
+            </button>
+          </div>
+        </div>
+
+        <!-- Table -->
+        <div class="table-area">
+          <div class="table-wrap">
+            <table id="mainTable">
+              <thead>
+                <tr>
+                  <th><button class="sort-btn">Keyword / Phrase <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+                  <th><button class="sort-btn">Category <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+                  <th><button class="sort-btn">Risk Level <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+                  <th><button class="sort-btn">Match Type <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+                  <th><button class="sort-btn">Created Date <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg></button></th>
+                  <th style="text-align:center"><button class="sort-btn">Status</button></th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Bar -->
+      <div class="status-bar">
+        <span>Your license will expire on June 12, 2026</span>
+        <span>© Clari5 — A Perfios Software Company</span>
+        <span>Important Links</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ADD CATEGORY MODAL
+══════════════════════════════════ -->
+<div class="overlay hidden" id="addCategoryModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="modal-header-txt">
+        <h3>Add Category</h3>
+        <p>Create a new keyword screening category</p>
+      </div>
+      <button class="modal-close" onclick="closeAddCategory()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Category Name <span class="req">*</span></label>
+        <input type="text" class="form-input" id="catName" placeholder="e.g. Cybercrime, Narcotics..." oninput="checkCatSubmit()">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category Description</label>
+        <textarea class="form-textarea" id="catDesc" placeholder="Brief description of this category..."></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel-modal" onclick="closeAddCategory()">Cancel</button>
+      <button class="btn-submit-modal" id="catSubmitBtn" onclick="submitCategory()">Add Category</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     CATEGORY CONTROLS MODAL
+══════════════════════════════════ -->
+<div class="overlay hidden" id="categoryControlsModal">
+  <div class="cat-ctrl-box">
+    <div class="cat-ctrl-header">
+      <div>
+        <h3>Category controls</h3>
+        <p>Enable / disable screening per category</p>
+      </div>
+      <button class="modal-close" onclick="closeCategoryControls()">×</button>
+    </div>
+    <div class="cat-ctrl-body" id="catCtrlBody">
+      <!-- Injected by JS -->
+    </div>
+    <div class="cat-ctrl-footer">
+      <button class="btn-cat-cancel" onclick="closeCategoryControls()">Cancel</button>
+      <button class="btn-cat-save" onclick="saveCategoryControls()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     ADD IGNORE WORD PANEL
+══════════════════════════════════ -->
+<div class="panel-overlay hidden" id="addWordPanel">
+  <div class="panel-box">
+    <div class="panel-topbar">
+      <button class="btn-back" onclick="closeAddWord()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M6.7 12.3 2.9 8.5 15 8.5 15 7.5 2.9 7.5 6.7 3.7 6 3 1 8 6 13z"/></svg>
+      </button>
+      <span class="panel-title" id="panelTitle">Add New Keyword</span>
+      <div style="font-size:13px;text-align:right;">
+        <span style="color:#2A53A0;cursor:pointer;" onclick="closeAddWord()">Keyword Manager</span>
+        <span style="color:#d1d5db;margin:0 4px;">/</span>
+        <span id="panelBreadcrumb" style="color:#161616;">Add New Keyword</span>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <!-- Word / Phrase -->
+      <div>
+        <label class="field-label">Keyword / Phrase <span class="req">*</span></label>
+        <input type="text" class="form-input" id="wordInput" placeholder="e.g. money laundering, shell company, suspicious transfer..." oninput="updatePreview()">
+      </div>
+
+      <!-- 3-col grid -->
+      <div class="grid-3">
+        <div>
+          <label class="field-label">Category <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="wordCategory">
+              <option>Sanctions</option>
+              <option>Terrorism</option>
+              <option>PEP (Politically Exposed Persons)</option>
+              <option>Financial Crime</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Risk Level <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="wordRisk">
+              <option>Low</option>
+              <option>Medium</option>
+              <option>High</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="field-label">Match Type <span class="req">*</span></label>
+          <div class="select-wrap">
+            <select id="wordMatchType" onchange="toggleThreshold(this.value)">
+              <option value="exact">Exact Match</option>
+              <option value="fuzzy">Fuzzy Match</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Threshold Score (Fuzzy only) -->
+      <div id="thresholdRow" style="display:none;">
+        <label class="field-label">
+          Threshold Score <span class="req">*</span>
+          <span style="font-size:11px;font-weight:400;color:#6b7280;margin-left:6px;">Matches scoring below this value will be excluded from results</span>
+        </label>
+        <div style="display:flex;align-items:center;gap:12px;">
+          <input type="number" class="form-input" id="wordThreshold" min="1" max="100" placeholder="e.g. 70" style="width:140px;"
+            oninput="clampThreshold(this)">
+          <div style="font-size:13px;color:#6b7280;display:flex;align-items:center;gap:6px;flex:1;">
+            <span style="font-size:12px;color:#9ca3af;">Range: 1 – 100</span>
+            <div id="thresholdHint" style="display:none;margin-left:8px;padding:3px 10px;border-radius:6px;font-size:12px;font-weight:600;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screening Fields -->
+      <div>
+        <label class="field-label">
+          Screening Fields <span class="req">*</span>
+          <span style="font-size:11px;font-weight:400;color:#6b7280;margin-left:6px;">Select the fields this keyword will screen against</span>
+        </label>
+        <div id="screeningFieldsDropdown" style="position:relative;">
+          <!-- Trigger -->
+          <div id="sfTrigger" onclick="toggleSfDropdown()"
+            style="min-height:46px;border:1px solid #d1d5dc;border-radius:8px;padding:6px 36px 6px 10px;cursor:pointer;background:#fff;display:flex;flex-wrap:wrap;gap:5px;align-items:center;position:relative;transition:border-color .15s,box-shadow .15s;">
+            <span id="sfPlaceholder" style="color:#9ca3af;font-size:14px;">Select screening fields…</span>
+            <div style="position:absolute;right:10px;top:50%;transform:translateY(-50%);pointer-events:none;">
+              <svg id="sfChevron" width="12" height="12" viewBox="0 0 12 12" fill="#6b7280" style="transition:transform .15s"><path d="M6 8L1 3h10z"/></svg>
+            </div>
+          </div>
+          <!-- Dropdown panel -->
+          <div id="sfPanel" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:300;background:#fff;border:1px solid #d1d5dc;border-radius:10px;box-shadow:0 8px 32px rgba(0,0,0,0.13);overflow:hidden;">
+            <!-- Search inside dropdown -->
+            <div style="padding:8px 10px;border-bottom:1px solid #f3f4f6;position:sticky;top:0;background:#fff;z-index:1;">
+              <input type="text" id="sfSearch" placeholder="Search fields…" oninput="filterSfOptions(this.value)"
+                style="width:100%;height:34px;border:1px solid #e5e7eb;border-radius:6px;padding:0 10px;font-size:13px;outline:none;font-family:'Inter',sans-serif;">
+            </div>
+            <!-- Group headers + options injected by JS -->
+            <div id="sfOptions" style="max-height:260px;overflow-y:auto;padding:4px 0;"></div>
+            <!-- Footer -->
+            <div style="padding:8px 12px;border-top:1px solid #f3f4f6;display:flex;justify-content:space-between;align-items:center;background:#fafafa;">
+              <span id="sfCount" style="font-size:12px;color:#6b7280;">0 selected</span>
+              <button onclick="clearSfSelections()" style="font-size:12px;color:#2A53A0;background:none;border:none;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;">Clear all</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Narrative Tester -->
+      <div class="tester-card">
+        <div class="tester-card-header">
+          <h2>Live Narrative Tester</h2>
+          <p>Paste a transaction remark to test keyword matching in real time.</p>
+        </div>
+        <div class="tester-card-body">
+          <textarea class="tester-textarea" id="narrativeInput" rows="4" placeholder="Paste a transaction remark or narrative here..." oninput="updatePreview()"></textarea>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div class="tester-card">
+        <div class="tester-card-header">
+          <h2>Preview — Matched Keywords Highlighted</h2>
+          <p>Active keywords found in the narrative above are highlighted in real time.</p>
+        </div>
+        <div class="tester-card-body">
+          <div class="preview-box" id="previewBox">
+            <span class="preview-empty">No narrative entered. Paste text above to see live keyword matches highlighted.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-footer">
+      <button class="btn" onclick="closeAddWord()" style="padding:0 24px;">Cancel</button>
+      <button class="btn" id="wordDraftBtn" onclick="saveDraftWord()" style="padding:0 24px;border-color:#f59e0b;color:#92400e;background:#fffbeb;">
+        <svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M27.7 9.3l-5-5A1 1 0 0 0 22 4H6a2 2 0 0 0-2 2v20a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V10a1 1 0 0 0-.3-.7zM12 6h8v4h-8zm8 20h-8v-8h8zm2 0v-9a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v9H6V6h4v5a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6.4l4 4V26z"/></svg>
+        Save Draft
+      </button>
+      <button class="btn btn-primary" id="wordSubmitBtn" onclick="submitWord()" style="padding:0 24px;">Submit</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     BULK UPLOAD MODAL
+══════════════════════════════════ -->
+<div class="overlay hidden" id="bulkUploadModal">
+  <div class="upload-box">
+    <div class="modal-header">
+      <div class="modal-header-txt">
+        <h3>Bulk Upload Keywords</h3>
+        <p>Upload a CSV or Excel file to add multiple keywords at once</p>
+      </div>
+      <button class="modal-close" onclick="closeBulkUpload()">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label">Category <span class="req">*</span></label>
+        <div class="select-wrap">
+          <select>
+            <option>All Categories</option>
+            <option>Sanctions</option>
+            <option>Terrorism</option>
+            <option>PEP (Politically Exposed Persons)</option>
+            <option>Financial Crime</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Upload File <span class="req">*</span></label>
+        <div class="upload-dropzone" id="bulkDropzone"
+          ondragover="event.preventDefault();this.classList.add('dragging')"
+          ondragleave="this.classList.remove('dragging')"
+          ondrop="handleBulkDrop(event)"
+          onclick="document.getElementById('bulkFileInput').click()">
+          <svg width="36" height="36" viewBox="0 0 32 32" fill="#9ca3af"><path d="M3 9 3.7 9.7 7.5 5.9 7.5 15 8.5 15 8.5 5.9 12.3 9.7 13 9 8 4z"/><path d="M3,4V2h10v2h1V2c0-0.6-0.4-1-1-1H3C2.4,1,2,1.4,2,2v2H3z"/><path d="M29,16H3c-1.1,0-2,0.9-2,2v10c0,1.1,0.9,2,2,2h26c1.1,0,2-0.9,2-2V18C31,16.9,30.1,16,29,16z M29,28H3V18h26V28z"/></svg>
+          <p>Drag & drop your file here, or <span class="browse">browse</span></p>
+          <p class="upload-hint">Supported: CSV, XLSX &nbsp;|&nbsp; Max: 10 MB</p>
+          <input type="file" id="bulkFileInput" style="display:none" accept=".csv,.xlsx" onchange="handleBulkFile(event)">
+        </div>
+        <div class="file-selected" id="bulkSelectedFile">
+          <svg width="18" height="18" viewBox="0 0 32 32" fill="#2A53A0"><path d="M25.7,9.3l-7-7C18.5,2.1,18.3,2,18,2H8C6.9,2,6,2.9,6,4v24c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V10C26,9.7,25.9,9.5,25.7,9.3z M18,4.4L23.6,10H18V4.4z M24,28H8V4h8v8h8V28z"/></svg>
+          <span class="fname" id="bulkFileName"></span>
+          <span class="fsize" id="bulkFileSize"></span>
+          <button class="fremove" onclick="removeBulkFile()">×</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <a href="#" style="font-size:13px;color:#2A53A0;" onclick="event.preventDefault()">Download template file</a>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel-modal" onclick="closeBulkUpload()">Cancel</button>
+      <button class="btn-submit-modal ready" onclick="closeBulkUpload()">Upload</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     CHECKER APPROVAL MODAL
+══════════════════════════════════ -->
+<div class="overlay hidden" id="checkerModal">
+  <div class="checker-box">
+    <div style="background:#1a3a6b;padding:18px 20px 16px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <svg width="20" height="20" viewBox="0 0 32 32" fill="#fff"><path d="M14 16.59 11.41 14 10 15.41 14 19.41 22 11.41 20.59 10 14 16.59z"/><path d="M16,30,9.8242,26.7071A10.9818,10.9818,0,0,1,4,17V4A2,2,0,0,1,6,2H26a2,2,0,0,1,2,2V17a10.9818,10.9818,0,0,1-5.8242,9.7071ZM6,4V17a8.9852,8.9852,0,0,0,4.7656,7.9423L16,27.7333l5.2344-2.791A8.9852,8.9852,0,0,0,26,17V4Z"/></svg>
+        <span style="font-size:16px;font-weight:600;color:#fff;">Request Submitted</span>
+      </div>
+      <button style="background:none;border:none;color:rgba(255,255,255,0.8);cursor:pointer;font-size:20px;line-height:1;padding:2px 6px;border-radius:4px;" onclick="closeChecker()">×</button>
+    </div>
+    <div style="padding:28px 24px 20px;text-align:center;">
+      <div class="checker-icon-wrap">
+        <svg width="30" height="30" viewBox="0 0 32 32" fill="#166534"><path d="M14 16.59 11.41 14 10 15.41 14 19.41 22 11.41 20.59 10 14 16.59z"/><path d="M16,30,9.8242,26.7071A10.9818,10.9818,0,0,1,4,17V4A2,2,0,0,1,6,2H26a2,2,0,0,1,2,2V17a10.9818,10.9818,0,0,1-5.8242,9.7071ZM6,4V17a8.9852,8.9852,0,0,0,4.7656,7.9423L16,27.7333l5.2344-2.791A8.9852,8.9852,0,0,0,26,17V4Z"/></svg>
+      </div>
+      <h3 style="font-size:17px;font-weight:700;color:#161616;margin-bottom:8px;">Request sent for Checker Approval</h3>
+      <p style="font-size:13px;color:#525252;line-height:1.6;margin-bottom:18px;" id="checkerMsg">Your request has been submitted and is awaiting Checker review.</p>
+      <div style="background:#f0f4ff;border:1px solid #c7d4f0;border-radius:8px;padding:12px 16px;text-align:left;margin-bottom:20px;">
+        <div style="font-size:11px;font-weight:700;color:#525252;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Request Details</div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;"><span style="color:#6b7280;">Submitted by</span><span style="font-weight:600;color:#161616;">Charu Chauhan</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px;"><span style="color:#6b7280;">Timestamp</span><span style="font-weight:600;font-family:monospace;color:#161616;" id="checkerTs"></span></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:#6b7280;">Status</span><span style="font-weight:600;background:#fef3c7;color:#92400e;padding:1px 10px;border-radius:100px;">Pending Checker</span></div>
+      </div>
+      <button onclick="closeChecker()" style="width:100%;height:40px;background:#2A53A0;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;" onmouseover="this.style.background='#1e3a70'" onmouseout="this.style.background='#2A53A0'">OK</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════
+     KEYWORD HISTORY PANEL
+══════════════════════════════════ -->
+<div class="history-panel hidden" id="historyPanel">
+  <div class="history-box">
+    <div class="history-topbar">
+      <button class="btn-back" onclick="closeHistory()">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M6.7 12.3 2.9 8.5 15 8.5 15 7.5 2.9 7.5 6.7 3.7 6 3 1 8 6 13z"/></svg>
+      </button>
+      <span style="font-size:15px;font-weight:600;color:#161616;position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;" id="historyTitle">Keyword History</span>
+      <button onclick="closeHistory()" style="background:none;border:none;cursor:pointer;color:#9ca3af;font-size:20px;line-height:1;padding:2px 6px;">×</button>
+    </div>
+    <div class="history-body" id="historyBody"></div>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════
+//  SCREENING FIELDS DATA
+// ═══════════════════════════════════════════
+const SCREENING_GROUPS = [
+  {
+    group: 'Name Screening',
+    fields: [
+      'Business / Entity Name Suffix',
+      'Business Type / Industry Code',
+      'Occupation / Designation',
+      'Registered Address',
+      'Entity Description / Purpose of Business',
+      'Relationship Manager Notes',
+      'Beneficial Owner Description',
+    ]
+  },
+  {
+    group: 'Adverse Media Screening',
+    fields: [
+      'News Article Full Text',
+      'Article Headline',
+      'Source / Publication Category',
+      'Associated Entity Names in Article',
+      'Country / Jurisdiction Tags',
+      'Regulatory Body Name in Article',
+      'Crime Type Tags',
+    ]
+  },
+  {
+    group: 'KYC / Onboarding Screening',
+    fields: [
+      'Purpose of Account / Relationship',
+      'Source of Funds Description',
+      'Source of Wealth Description',
+      'Business Activity Description',
+      'Expected Transaction Description',
+      'Supporting Document Text (OCR)',
+    ]
+  },
+];
+
+// Selected screening fields set
+let sfSelected = new Set();
+
+// ── Build options HTML ──────────────────────
+function buildSfOptions(filter = '') {
+  const lower = filter.toLowerCase();
+  let html = '';
+  SCREENING_GROUPS.forEach(g => {
+    const matched = g.fields.filter(f => !lower || f.toLowerCase().includes(lower));
+    if (!matched.length) return;
+    html += `<div class="sf-group-label">${g.group}</div>`;
+    matched.forEach(f => {
+      const chk = sfSelected.has(f) ? 'checked' : '';
+      const cls = sfSelected.has(f) ? 'sf-option checked' : 'sf-option';
+      html += `<label class="${cls}" id="sfopt-${CSS.escape(f)}">
+        <input type="checkbox" ${chk} onchange="toggleSfField('${f.replace(/'/g,"\\'")}',this.checked)">
+        ${f}
+      </label>`;
+    });
+  });
+  if (!html) html = '<div style="padding:18px 12px;text-align:center;color:#9ca3af;font-size:13px;">No fields match your search.</div>';
+  document.getElementById('sfOptions').innerHTML = html;
+  document.getElementById('sfCount').textContent = sfSelected.size + ' selected';
+}
+
+function toggleSfField(field, checked) {
+  if (checked) sfSelected.add(field); else sfSelected.delete(field);
+  renderSfChips();
+  buildSfOptions(document.getElementById('sfSearch').value);
+}
+
+function renderSfChips() {
+  const trigger = document.getElementById('sfTrigger');
+  const placeholder = document.getElementById('sfPlaceholder');
+  // Remove existing chips
+  trigger.querySelectorAll('.sf-chip').forEach(c => c.remove());
+  if (sfSelected.size === 0) {
+    placeholder.style.display = '';
+  } else {
+    placeholder.style.display = 'none';
+    sfSelected.forEach(f => {
+      const chip = document.createElement('span');
+      chip.className = 'sf-chip';
+      chip.innerHTML = `${f} <button class="sf-chip-x" onclick="event.stopPropagation();toggleSfField('${f.replace(/'/g,"\\'")}',false)">×</button>`;
+      // Insert before the chevron div (last child)
+      trigger.insertBefore(chip, trigger.lastElementChild);
+    });
+  }
+  document.getElementById('sfCount').textContent = sfSelected.size + ' selected';
+}
+
+function toggleSfDropdown() {
+  const panel = document.getElementById('sfPanel');
+  const chevron = document.getElementById('sfChevron');
+  const trigger = document.getElementById('sfTrigger');
+  const open = panel.style.display === 'block';
+  if (open) {
+    panel.style.display = 'none';
+    chevron.style.transform = '';
+    trigger.style.borderColor = '#d1d5dc';
+    trigger.style.boxShadow = '';
+  } else {
+    panel.style.display = 'block';
+    chevron.style.transform = 'rotate(180deg)';
+    trigger.style.borderColor = '#2A53A0';
+    trigger.style.boxShadow = '0 0 0 2px rgba(42,83,160,0.15)';
+    buildSfOptions();
+    setTimeout(() => document.getElementById('sfSearch').focus(), 50);
+  }
+}
+
+function filterSfOptions(val) { buildSfOptions(val); }
+
+function clearSfSelections() {
+  sfSelected.clear();
+  renderSfChips();
+  buildSfOptions(document.getElementById('sfSearch').value);
+}
+
+// Close dropdown on outside click
+document.addEventListener('click', function(e) {
+  const wrap = document.getElementById('screeningFieldsDropdown');
+  if (wrap && !wrap.contains(e.target)) {
+    const panel = document.getElementById('sfPanel');
+    if (panel) { panel.style.display = 'none'; document.getElementById('sfChevron').style.transform = ''; }
+    const trigger = document.getElementById('sfTrigger');
+    if (trigger) { trigger.style.borderColor = '#d1d5dc'; trigger.style.boxShadow = ''; }
+  }
+});
+
+// ── Threshold toggle ────────────────────────
+function toggleThreshold(val) {
+  const row = document.getElementById('thresholdRow');
+  if (val === 'fuzzy') {
+    row.style.display = 'block';
+    // subtle slide-in
+    row.style.opacity = '0'; row.style.transform = 'translateY(-6px)';
+    requestAnimationFrame(() => {
+      row.style.transition = 'opacity .2s,transform .2s';
+      row.style.opacity = '1'; row.style.transform = 'translateY(0)';
+    });
+  } else {
+    row.style.display = 'none';
+    document.getElementById('wordThreshold').value = '';
+    document.getElementById('thresholdHint').style.display = 'none';
+  }
+}
+
+function clampThreshold(input) {
+  let v = parseInt(input.value, 10);
+  if (isNaN(v)) { document.getElementById('thresholdHint').style.display = 'none'; return; }
+  if (v < 1) { input.value = 1; v = 1; }
+  if (v > 100) { input.value = 100; v = 100; }
+  const hint = document.getElementById('thresholdHint');
+  hint.style.display = 'inline-block';
+  if (v < 50) { hint.className = 'th-low'; hint.textContent = 'Low precision'; }
+  else if (v < 80) { hint.className = 'th-mid'; hint.textContent = 'Balanced'; }
+  else { hint.className = 'th-high'; hint.textContent = 'High precision'; }
+}
+
+// ═══════════════════════════════════════════
+//  DATA
+// ═══════════════════════════════════════════
+const allWords = [
+  { id:1,  word:'trading company',         category:'Sanctions',  cat:'sanctions',  risk:'Low',    match:'Exact phrase',  date:'01 Jan 2026', status:'active' },
+  { id:2,  word:'international trade',     category:'Sanctions',  cat:'sanctions',  risk:'Low',    match:'Partial match', date:'01 Jan 2026', status:'active' },
+  { id:3,  word:'export limited',          category:'Sanctions',  cat:'sanctions',  risk:'Low',    match:'Exact phrase',  date:'05 Jan 2026', status:'active' },
+  { id:4,  word:'national security dept',  category:'Terrorism',  cat:'terrorism',  risk:'Low',    match:'Partial match', date:'10 Jan 2026', status:'active' },
+  { id:5,  word:'defense services',        category:'Terrorism',  cat:'terrorism',  risk:'Medium', match:'Exact phrase',  date:'10 Jan 2026', status:'active' },
+  { id:6,  word:'security advisory',       category:'Terrorism',  cat:'terrorism',  risk:'Low',    match:'Partial match', date:'12 Jan 2026', status:'active' },
+  { id:7,  word:'politically exposed',     category:'PEP (Politically Exposed Persons)', cat:'pep', risk:'High', match:'Exact phrase', date:'15 Jan 2026', status:'active' },
+  { id:8,  word:'senior official',         category:'PEP (Politically Exposed Persons)', cat:'pep', risk:'Medium', match:'Partial match', date:'15 Jan 2026', status:'active' },
+  { id:9,  word:'beneficial owner',        category:'PEP (Politically Exposed Persons)', cat:'pep', risk:'Medium', match:'Exact phrase', date:'18 Jan 2026', status:'active' },
+  { id:10, word:'shell corporation',       category:'Financial Crime', cat:'financial', risk:'High', match:'Exact phrase', date:'20 Jan 2026', status:'active' },
+  { id:11, word:'offshore account',        category:'Financial Crime', cat:'financial', risk:'Low',  match:'Partial match', date:'22 Jan 2026', status:'inactive' },
+  { id:12, word:'correspondent banking',   category:'Sanctions',  cat:'sanctions',  risk:'Low',    match:'Partial match', date:'23 Jan 2026', status:'inactive' },
+  { id:13, word:'wire transfer agency',    category:'Financial Crime', cat:'financial', risk:'Medium', match:'Partial match', date:'25 Jan 2026', status:'drafted' },
+  { id:14, word:'crypto exchange',         category:'Financial Crime', cat:'financial', risk:'High', match:'Exact phrase', date:'26 Jan 2026', status:'drafted' },
+  { id:15, word:'layering transaction',    category:'Financial Crime', cat:'financial', risk:'High', match:'Partial match', date:'27 Jan 2026', status:'drafted' },
+  { id:16, word:'structuring payment',     category:'Financial Crime', cat:'financial', risk:'High', match:'Exact phrase', date:'28 Jan 2026', status:'drafted' },
+];
+
+const categories = [
+  { name:'Sanctions',                         count:4,  enabled:true  },
+  { name:'Terrorism',                         count:3,  enabled:true  },
+  { name:'PEP (Politically Exposed Persons)', count:3,  enabled:true  },
+  { name:'Financial Crime',                   count:6,  enabled:true  },
+];
+
+let currentTab = 'active';
+let currentData = [];
+
+// ═══════════════════════════════════════════
+//  TABLE RENDERING
+// ═══════════════════════════════════════════
+const catClass = { sanctions:'cat-sanctions', terrorism:'cat-terrorism', pep:'cat-pep', financial:'cat-financial' };
+const matchClass = { 'Exact Match':'match-exact', 'Fuzzy Match':'match-partial', 'Exact phrase':'match-exact', 'Partial match':'match-partial' };
+const riskClass = { Low:'risk-low', Medium:'risk-medium', High:'risk-high' };
+const statusClass = { active:'status-active', inactive:'status-inactive', drafted:'status-drafted', pending:'status-pending' };
+const statusLabel = { active:'Active', inactive:'Inactive', drafted:'Drafted', pending:'Pending Approval' };
+
+function getTabData() {
+  return allWords.filter(w => w.status === currentTab);
+}
+
+function renderTable(data) {
+  const tbody = document.getElementById('tableBody');
+  currentData = data || getTabData();
+  if (currentData.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="empty-state">No keywords found for this filter.</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = currentData.map(w => `
+    <tr>
+      <td>
+        <span style="font-size:13px;color:#2A53A0;font-weight:600;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(42,83,160,0.35);"
+          onclick="openHistory(${w.id})">${w.word}</span>
+      </td>
+      <td><span class="badge ${catClass[w.cat]}">${w.category}</span></td>
+      <td><span class="${riskClass[w.risk]}">${w.risk}</span></td>
+      <td><span class="badge ${matchClass[w.match]}">${w.match}</span></td>
+      <td><span style="font-size:13px;color:#374151;">${w.date}</span></td>
+      <td style="text-align:center"><span class="${statusClass[w.status]}">${statusLabel[w.status]}</span></td>
+      <td>
+        <div class="actions-cell">
+          ${w.status === 'drafted'
+            ? `<button class="btn" style="height:30px;font-size:12px;padding:0 12px;" onclick="showChecker('Action for &quot;${w.word}&quot; sent for Checker Approval.')">Submit</button>`
+            : w.status === 'active'
+              ? `<button class="action-btn action-off" onclick="disableWord(${w.id})" title="Disable"><svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M10 15H22V17H10z"/></svg></button>`
+              : w.status === 'inactive'
+                ? `<button class="action-btn action-on" onclick="enableWord(${w.id})" title="Enable"><svg width="13" height="13" viewBox="0 0 32 32" fill="currentColor"><path d="M16 2a14 14 0 1 0 14 14A14 14 0 0 0 16 2zm0 26a12 12 0 1 1 12-12 12 12 0 0 1-12 12z"/><path d="M14 16.59 11.41 14 10 15.41 14 19.41 22 11.41 20.59 10 14 16.59z"/></svg></button>`
+                : ''
+          }
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function switchTab(btn, tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentTab = tab;
+  document.getElementById('searchInput').value = '';
+  renderTable();
+}
+
+function filterTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const base = getTabData();
+  if (!q) { renderTable(base); return; }
+  renderTable(base.filter(w => w.word.toLowerCase().includes(q) || w.category.toLowerCase().includes(q)));
+}
+
+function disableWord(id) {
+  const w = allWords.find(x => x.id === id);
+  if (!w) return;
+  w.status = 'inactive';
+  updateTabCounts();
+  renderTable();
+  showChecker(`"${w.word}" has been sent for Checker Approval to disable.`);
+}
+
+function enableWord(id) {
+  const w = allWords.find(x => x.id === id);
+  if (!w) return;
+  w.status = 'active';
+  updateTabCounts();
+  renderTable();
+  showChecker(`"${w.word}" has been sent for Checker Approval to enable.`);
+}
+
+function updateTabCounts() {
+  const tabs = document.querySelectorAll('.tab-btn');
+  const counts = { active:0, inactive:0, drafted:0 };
+  allWords.forEach(w => { if (counts[w.status] !== undefined) counts[w.status]++; });
+  tabs[0].textContent = `Active (${counts.active})`;
+  tabs[1].textContent = `Inactive (${counts.inactive})`;
+  tabs[2].textContent = `Drafted Keyword (${counts.drafted})`;
+}
+
+// ─── Checker Approval ───
+function showChecker(msg) {
+  document.getElementById('checkerMsg').textContent = msg || 'Your request has been submitted and is awaiting Checker review.';
+  const ts = new Date().toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit', second:'2-digit' });
+  document.getElementById('checkerTs').textContent = ts;
+  document.getElementById('checkerModal').classList.remove('hidden');
+}
+function closeChecker() { document.getElementById('checkerModal').classList.add('hidden'); }
+
+// ─── Keyword History Panel ───
+const wordHistoryData = {
+  1:  [ { type:'add',     action:'Keyword Added',               date:'01 Jan 2026, 09:14', user:'Rahul Sharma',  role:'Maker',   dept:'Compliance Ops',   note:'Added as part of initial Sanctions list setup.' },
+         { type:'review', action:'Sent for Checker Review',     date:'01 Jan 2026, 09:15', user:'Rahul Sharma',  role:'Maker',   dept:'Compliance Ops',   note:'' },
+         { type:'approve',action:'Approved & Activated',        date:'01 Jan 2026, 10:02', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'Verified against OFAC list.' } ],
+  2:  [ { type:'add',     action:'Keyword Added',               date:'01 Jan 2026, 09:18', user:'Rahul Sharma',  role:'Maker',   dept:'Compliance Ops',   note:'Partial match rule for trade-related transactions.' },
+         { type:'approve',action:'Approved & Activated',        date:'01 Jan 2026, 10:05', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'' } ],
+  5:  [ { type:'add',     action:'Keyword Added',               date:'10 Jan 2026, 11:00', user:'Priya Mehta',   role:'Maker',   dept:'AML Operations',   note:'' },
+         { type:'approve',action:'Approved & Activated',        date:'10 Jan 2026, 13:30', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'Reviewed against terrorism watchlists.' },
+         { type:'disable',action:'Disable Requested',           date:'15 Mar 2026, 14:22', user:'Rahul Sharma',  role:'Maker',   dept:'Compliance Ops',   note:'Periodic review — flagged for update.' },
+         { type:'approve',action:'Re-enabled after Review',     date:'16 Mar 2026, 09:10', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'Confirmed still valid.' } ],
+  7:  [ { type:'add',     action:'Keyword Added',               date:'15 Jan 2026, 08:45', user:'Vikram Singh',  role:'Maker',   dept:'Risk & Compliance', note:'Required for PEP screening module.' },
+         { type:'review', action:'Sent for Checker Review',     date:'15 Jan 2026, 08:46', user:'Vikram Singh',  role:'Maker',   dept:'Risk & Compliance', note:'' },
+         { type:'approve',action:'Approved & Activated',        date:'15 Jan 2026, 11:00', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'Matches FATF PEP definition guidelines.' } ],
+  10: [ { type:'add',     action:'Keyword Added',               date:'20 Jan 2026, 10:10', user:'Priya Mehta',   role:'Maker',   dept:'AML Operations',   note:'High-risk financial crime indicator.' },
+         { type:'approve',action:'Approved & Activated',        date:'20 Jan 2026, 12:45', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'' } ],
+  11: [ { type:'add',     action:'Keyword Added',               date:'22 Jan 2026, 09:00', user:'Rahul Sharma',  role:'Maker',   dept:'Compliance Ops',   note:'' },
+         { type:'approve',action:'Approved & Activated',        date:'22 Jan 2026, 11:30', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'' },
+         { type:'disable',action:'Disable Requested',           date:'10 Apr 2026, 15:00', user:'Rahul Sharma',  role:'Maker',   dept:'Compliance Ops',   note:'Under legal review — temporarily disabled.' },
+         { type:'approve',action:'Disable Approved',            date:'11 Apr 2026, 09:00', user:'Charu Chauhan', role:'Checker', dept:'Compliance Review', note:'Approved pending legal outcome.' } ],
+  13: [ { type:'add',     action:'Keyword Added (Drafted)',     date:'25 Jan 2026, 14:30', user:'Vikram Singh',  role:'Maker',   dept:'Risk & Compliance', note:'Drafted — pending internal review before submission.' } ],
+  14: [ { type:'add',     action:'Keyword Added (Drafted)',     date:'26 Jan 2026, 10:05', user:'Priya Mehta',   role:'Maker',   dept:'AML Operations',   note:'Drafted — requires approval from senior compliance officer.' } ],
+};
+
+const tlDotClass = { add:'tl-dot-add', submit:'tl-dot-submit', review:'tl-dot-review', approve:'tl-dot-approve', disable:'tl-dot-disable', enable:'tl-dot-enable' };
+const tlIcons = {
+  add:     `<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M17 15 17 8 15 8 15 15 8 15 8 17 15 17 15 24 17 24 17 17 24 17 24 15z"/></svg>`,
+  submit:  `<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M3 9 3.7 9.7 7.5 5.9 7.5 15 8.5 15 8.5 5.9 12.3 9.7 13 9 8 4z"/></svg>`,
+  review:  `<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M15.5,7.8C14.3,4.7,11.3,2.6,8,2.5C4.7,2.6,1.7,4.7,0.5,7.8c0,0.1,0,0.2,0,0.3c1.2,3.1,4.1,5.2,7.5,5.3c3.3-0.1,6.3-2.2,7.5-5.3C15.5,8.1,15.5,7.9,15.5,7.8z M8,12.5c-2.7,0-5.4-2-6.5-4.5c1-2.5,3.8-4.5,6.5-4.5s5.4,2,6.5,4.5C13.4,10.5,10.6,12.5,8,12.5z"/></svg>`,
+  approve: `<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M14 16.59 11.41 14 10 15.41 14 19.41 22 11.41 20.59 10 14 16.59z"/></svg>`,
+  disable: `<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M10 15H22V17H10z"/></svg>`,
+  enable:  `<svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M14 16.59 11.41 14 10 15.41 14 19.41 22 11.41 20.59 10 14 16.59z"/></svg>`,
+};
+
+function openHistory(id) {
+  const w = allWords.find(x => x.id === id);
+  if (!w) return;
+  document.getElementById('historyTitle').textContent = `History — "${w.word}"`;
+  const events = wordHistoryData[id] || [
+    { type:'add', action:'Keyword Added', date: w.date + ', 09:00', user:'System Admin', role:'Maker', dept:'Administration', note:'Keyword added to the system.' }
+  ];
+
+  const initials = name => name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0,2);
+
+  const timelineHtml = events.map((e, i) => `
+    <div class="tl-item">
+      <div class="tl-left">
+        <div class="tl-dot ${tlDotClass[e.type] || 'tl-dot-add'}">${tlIcons[e.type] || tlIcons.add}</div>
+        ${i < events.length - 1 ? '<div class="tl-line"></div>' : ''}
+      </div>
+      <div class="tl-content">
+        <div class="tl-action">${e.action}</div>
+        <div class="tl-meta">${e.date}</div>
+        <div class="tl-user-row">
+          <div class="tl-avatar">${initials(e.user)}</div>
+          <div class="tl-user-info">
+            <div class="tl-uname">${e.user} <span style="font-weight:400;color:#9ca3af;">·</span> <span style="font-weight:400;font-size:11px;color:#6b7280;">${e.role}</span></div>
+            <div class="tl-urole">${e.dept}</div>
+          </div>
+        </div>
+        ${e.note ? `<div style="margin-top:6px;font-size:12px;color:#525252;background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:7px 10px;">${e.note}</div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  document.getElementById('historyBody').innerHTML = `
+    <div class="history-meta-card">
+      <div class="history-meta-item"><label>Keyword / Phrase</label><span style="color:#2A53A0;">${w.word}</span></div>
+      <div class="history-meta-item"><label>Category</label><span><span class="badge ${catClass[w.cat]}">${w.category}</span></span></div>
+      <div class="history-meta-item"><label>Risk Level</label><span class="${riskClass[w.risk]}">${w.risk}</span></div>
+      <div class="history-meta-item"><label>Match Type</label><span>${w.match}</span></div>
+      <div class="history-meta-item"><label>Status</label><span class="${statusClass[w.status]}">${statusLabel[w.status]}</span></div>
+      <div class="history-meta-item"><label>Created Date</label><span>${w.date}</span></div>
+    </div>
+    <div class="history-section-title">Activity Timeline</div>
+    <div class="timeline">${timelineHtml}</div>
+  `;
+  document.getElementById('historyPanel').classList.remove('hidden');
+}
+
+function closeHistory() { document.getElementById('historyPanel').classList.add('hidden'); }
+
+// ═══════════════════════════════════════════
+//  ADD CATEGORY MODAL
+// ═══════════════════════════════════════════
+function openAddCategory() { document.getElementById('addCategoryModal').classList.remove('hidden'); }
+function closeAddCategory() {
+  document.getElementById('addCategoryModal').classList.add('hidden');
+  document.getElementById('catName').value = '';
+  document.getElementById('catDesc').value = '';
+  document.getElementById('catSubmitBtn').classList.remove('ready');
+}
+function checkCatSubmit() {
+  const v = document.getElementById('catName').value.trim();
+  document.getElementById('catSubmitBtn').classList.toggle('ready', v.length >= 2);
+}
+function submitCategory() {
+  const name = document.getElementById('catName').value.trim();
+  if (!name) return;
+  categories.push({ name, count:0, enabled:true });
+  // Add to dropdowns
+  const opts = document.querySelectorAll('#wordCategory, #wordCategory');
+  opts.forEach(sel => {
+    const opt = document.createElement('option');
+    opt.text = name;
+    sel.appendChild(opt);
+  });
+  closeAddCategory();
+  showToast(`Category "${name}" added successfully.`);
+}
+
+// ═══════════════════════════════════════════
+//  CATEGORY CONTROLS MODAL
+// ═══════════════════════════════════════════
+function openCategoryControls() {
+  const body = document.getElementById('catCtrlBody');
+  body.innerHTML = categories.map((c, i) => `
+    <div class="cat-ctrl-row">
+      <div class="cat-ctrl-info">
+        <div class="cat-name">${c.name}</div>
+        <div class="cat-count">${c.count} keywords</div>
+      </div>
+      <label class="toggle-wrap">
+        <input type="checkbox" ${c.enabled ? 'checked' : ''} onchange="categories[${i}].enabled=this.checked">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  `).join('');
+  document.getElementById('categoryControlsModal').classList.remove('hidden');
+}
+function closeCategoryControls() { document.getElementById('categoryControlsModal').classList.add('hidden'); }
+function saveCategoryControls() {
+  closeCategoryControls();
+  showToast('Category controls saved.');
+}
+
+// ═══════════════════════════════════════════
+//  ADD IGNORE WORD PANEL
+// ═══════════════════════════════════════════
+function openAddWord() {
+  document.getElementById('addWordPanel').classList.remove('hidden');
+  document.getElementById('panelTitle').textContent = 'Add New Keyword';
+  document.getElementById('panelBreadcrumb').textContent = 'Add New Keyword';
+  document.getElementById('wordInput').value = '';
+  document.getElementById('narrativeInput').value = '';
+  document.getElementById('previewBox').innerHTML = '<span class="preview-empty">No narrative entered. Paste text above to see live keyword matches highlighted.</span>';
+  // Reset match type to Exact and hide threshold
+  document.getElementById('wordMatchType').value = 'exact';
+  document.getElementById('thresholdRow').style.display = 'none';
+  document.getElementById('wordThreshold').value = '';
+  document.getElementById('thresholdHint').style.display = 'none';
+  // Reset screening fields
+  sfSelected.clear();
+  renderSfChips();
+  document.getElementById('sfSearch').value = '';
+  const sfPanel = document.getElementById('sfPanel');
+  if (sfPanel) sfPanel.style.display = 'none';
+}
+function closeAddWord() { document.getElementById('addWordPanel').classList.add('hidden'); }
+
+function updatePreview() {
+  const word = document.getElementById('wordInput').value.trim().toLowerCase();
+  const narrative = document.getElementById('narrativeInput').value;
+  const previewBox = document.getElementById('previewBox');
+  if (!narrative) {
+    previewBox.innerHTML = '<span class="preview-empty">No narrative entered. Paste text above to see live keyword matches highlighted.</span>';
+    return;
+  }
+  if (!word) {
+    previewBox.textContent = narrative;
+    return;
+  }
+  // Highlight all active keywords plus the current one being added
+  const allActiveWords = allWords.filter(w => w.status === 'active').map(w => w.word).concat([word]);
+  let html = narrative;
+  allActiveWords.sort((a, b) => b.length - a.length); // longer first
+  allActiveWords.forEach(w => {
+    if (!w) return;
+    const regex = new RegExp(`(${w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+    html = html.replace(regex, '<span class="highlight-match">$1</span>');
+  });
+  previewBox.innerHTML = html;
+}
+
+function saveDraftWord() {
+  const word = document.getElementById('wordInput').value.trim();
+  if (!word) { alert('Please enter a keyword or phrase to save as draft.'); return; }
+  const cat = document.getElementById('wordCategory').value;
+  const risk = document.getElementById('wordRisk').value;
+  const match = document.getElementById('wordMatchType').value;
+  const catKey = { 'Sanctions':'sanctions','Terrorism':'terrorism','PEP (Politically Exposed Persons)':'pep','Financial Crime':'financial' }[cat] || 'financial';
+  allWords.push({
+    id: allWords.length + 1,
+    word, category: cat, cat: catKey, risk, match,
+    date: new Date().toLocaleDateString('en-GB', {day:'2-digit',month:'short',year:'numeric'}).replace(/ /g,' '),
+    status: 'drafted'
+  });
+  updateTabCounts();
+  closeAddWord();
+  showToast(`"${word}" saved as Draft. You can submit it for Checker Approval later.`);
+}
+
+function submitWord() {
+  const word = document.getElementById('wordInput').value.trim();
+  if (!word) { alert('Please enter a keyword or phrase.'); return; }
+  const cat = document.getElementById('wordCategory').value;
+  const risk = document.getElementById('wordRisk').value;
+  const match = document.getElementById('wordMatchType').value;
+  const catKey = { 'Sanctions':'sanctions','Terrorism':'terrorism','PEP (Politically Exposed Persons)':'pep','Financial Crime':'financial' }[cat] || 'financial';
+  allWords.push({
+    id: allWords.length + 1,
+    word,
+    category: cat,
+    cat: catKey,
+    risk,
+    match,
+    date: new Date().toLocaleDateString('en-GB', {day:'2-digit',month:'short',year:'numeric'}).replace(/ /g,' '),
+    status: 'pending'
+  });
+  updateTabCounts();
+  closeAddWord();
+  showChecker(`"${word}" has been submitted and sent for Checker Approval.`);
+}
+
+// ═══════════════════════════════════════════
+//  BULK UPLOAD
+// ═══════════════════════════════════════════
+function openBulkUpload() { document.getElementById('bulkUploadModal').classList.remove('hidden'); }
+function closeBulkUpload() { document.getElementById('bulkUploadModal').classList.add('hidden'); removeBulkFile(); }
+function handleBulkDrop(e) {
+  e.preventDefault();
+  document.getElementById('bulkDropzone').classList.remove('dragging');
+  const file = e.dataTransfer.files[0];
+  if (file) showBulkFile(file);
+}
+function handleBulkFile(e) {
+  const file = e.target.files[0];
+  if (file) showBulkFile(file);
+}
+function showBulkFile(file) {
+  document.getElementById('bulkFileName').textContent = file.name;
+  document.getElementById('bulkFileSize').textContent = (file.size / 1024).toFixed(1) + ' KB';
+  document.getElementById('bulkSelectedFile').classList.add('show');
+  document.getElementById('bulkDropzone').style.display = 'none';
+}
+function removeBulkFile() {
+  document.getElementById('bulkSelectedFile').classList.remove('show');
+  document.getElementById('bulkDropzone').style.display = '';
+  document.getElementById('bulkFileInput').value = '';
+}
+
+// ═══════════════════════════════════════════
+//  EXPORT
+// ═══════════════════════════════════════════
+function exportCSV() {
+  const now = new Date().toLocaleString('en-GB', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  const makerCheckerMeta = [
+    '# Keyword Manager Export',
+    `# Exported by: Charu Chauhan (Maker)`,
+    `# Export date: ${now}`,
+    '# Checker approval required before operational use',
+    '# Pending Checker: Awaiting review by designated Checker',
+    '',
+  ].join('\n');
+
+  const data = getTabData();
+  const header = 'Keyword/Phrase,Category,Risk Level,Match Type,Created Date,Status,Maker,Maker Department,Maker Timestamp,Checker,Checker Department,Checker Action,Checker Timestamp\n';
+
+  const rows = data.map(w => {
+    const events  = wordHistoryData[w.id] || [];
+    const makerEv = events.find(e => e.role === 'Maker') || {};
+    const checkEv = [...events].reverse().find(e => e.role === 'Checker') || {};
+    return [
+      `"${w.word}"`,
+      `"${w.category}"`,
+      `"${w.risk}"`,
+      `"${w.match}"`,
+      `"${w.date}"`,
+      `"${statusLabel[w.status]}"`,
+      `"${makerEv.user  || 'Charu Chauhan'}"`,
+      `"${makerEv.dept  || 'Compliance Ops'}"`,
+      `"${makerEv.date  || w.date}"`,
+      `"${checkEv.user  || (w.status === 'drafted' || w.status === 'pending' ? 'Pending' : '-')}"`,
+      `"${checkEv.dept  || (w.status === 'drafted' || w.status === 'pending' ? '-' : '-')}"`,
+      `"${checkEv.action|| (w.status === 'drafted' || w.status === 'pending' ? 'Awaiting Approval' : (checkEv.user ? 'Approved' : '-'))}"`,
+      `"${checkEv.date  || (w.status === 'drafted' || w.status === 'pending' ? 'Pending' : '-')}"`
+    ].join(',');
+  }).join('\n');
+
+  const blob = new Blob([makerCheckerMeta + header + rows], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'keywords_export.csv';
+  a.click();
+}
+
+// ═══════════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════════
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.style.cssText = 'position:fixed;bottom:24px;right:24px;background:#161616;color:#fff;padding:12px 20px;border-radius:8px;font-size:14px;z-index:9999;box-shadow:0 4px 20px rgba(0,0,0,0.3);transition:opacity 0.3s;';
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => { t.style.opacity = '0'; }, 2800);
+}
+
+// ═══════════════════════════════════════════
+//  CLOSE MODALS ON OVERLAY CLICK
+// ═══════════════════════════════════════════
+['addCategoryModal','categoryControlsModal','bulkUploadModal','checkerModal'].forEach(id => {
+  document.getElementById(id).addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.add('hidden');
+    }
+  });
+});
+document.getElementById('historyPanel').addEventListener('click', function(e) {
+  if (e.target === this) this.classList.add('hidden');
+});
+
+// ═══════════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════════
+renderTable();
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{
+  "routes": {
+    "customerMaster": "/kyc/reference-data-registry/customer",
+    "addressMaster": "/kyc/reference-data-registry/address",
+    "documentMaster": "/kyc/reference-data-registry/documents",
+    "riskAssessment": "/kyc/reference-data-registry/risk-assessment",
+    "accountMaster": "/kyc/reference-data-registry/account",
+    "loanAccount": "/kyc/reference-data-registry/loan-account",
+    "eodBalance": "/kyc/reference-data-registry/eod-balance",
+    "cardMaster": "/kyc/reference-data-registry/card",
+    "mobileBanking": "/kyc/reference-data-registry/mobile-banking",
+    "atmMaster": "/kyc/reference-data-registry/atm",
+    "instruments": "/kyc/reference-data-registry/instruments",
+    "txnDevice": "/kyc/reference-data-registry/txn-device",
+    "beneficialOwner": "/kyc/reference-data-registry/beneficial-owner",
+    "relatedParties": "/kyc/reference-data-registry/related-parties",
+    "nonCustomer": "/kyc/reference-data-registry/non-customer",
+    "customerType": "/kyc/reference-data-registry/customer-type",
+    "product": "/kyc/reference-data-registry/product",
+    "branch": "/kyc/reference-data-registry/branch",
+    "channel": "/kyc/reference-data-registry/channel",
+    "txnType": "/kyc/reference-data-registry/txn-type",
+    "currency": "/kyc/reference-data-registry/currency",
+    "fxRates": "/kyc/reference-data-registry/fx-rates",
+    "industryCode": "/kyc/reference-data-registry/industry-code",
+    "referenceMaster": "/kyc/reference-data-registry/reference",
+    "countryMaster": "/kyc/reference-data-registry/country",
+    "employeeMaster": "/kyc/reference-data-registry/employee"
+  },
+  "customerMaster": {
+    "activeTab": "Customer",
+    "expectedPageTitle": "Customer & Account Data",
+    "expectedRowCount": 3,
+    "columnName": "Customer ID",
+    "ids": [
+      "CIF001001",
+      "CIF002045",
+      "CIF003178"
+    ],
+    "inactiveCustomerId": "CIF003178",
+    "inactiveStatusValue": "Inactive",
+    "inactiveSummaryPattern": "1 Inactive"
+  },
+  "defaults": {
+    "maxRowCount": 1000,
+    "maskPattern": "[*Xx•]",
+    "searchNoMatchTerm": "zzzz-no-match-99999"
+  },
+  "generatedFromExcel": {
+    "at": "2026-06-28T09:30:58.077Z",
+    "source": "pipeline/test-data/Reference Data Registry.xlsx",
+    "customerIds": [
+      "CIF001001",
+      "CIF002045",
+      "CIF003178"
+    ]
+  }
+}

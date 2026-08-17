@@ -1,0 +1,61 @@
+---
+description: "Defines fixture and environment handling standards for AML Automation"
+alwaysApply: true
+---
+
+# Fixtures & Environment Handling
+
+## Test Data Rules
+
+- All environments are defined in a single file: `tests/fixtures/environments.json`.
+- The AML application runs at `https://kadelamldev.customerxps.com:2506` by default (override via `BASE_URL` in `.env`).
+- **Login is currently bypassed** — do not require `EMAIL` / `PASSWORD` for agent runs until the user asks to enable auth. When re-enabled, credentials come from `EMAIL` / `PASSWORD` in `.env`.
+- The `defaults` block provides shared values; per-env blocks override them.
+
+Example structure:
+
+tests/
+  fixtures/
+    environments.json   # All environments in one file
+    env.ts              # Loader: merges defaults + env overrides
+    test-fixture.ts     # Playwright custom fixture
+    selector-map.json   # Shared selector mappings
+
+Example `environments.json`:
+
+{
+  "defaults": {
+    "validUsername": "",
+    "validPassword": ""
+  },
+  "environments": {
+    "dev": {
+      "baseUrl": "https://kadelamldev.customerxps.com:2506"
+    },
+    "uat": {
+      "baseUrl": "https://kadelamldev.customerxps.com:2506"
+    },
+    "production": {
+      "baseUrl": "https://kadelamldev.customerxps.com:2506"
+    }
+  }
+}
+
+## Environment Selection
+
+Environment is loaded from `.env` at runtime and merged into the test data:
+- `ENV` → selects which environment block to use (default: dev)
+- `BASE_URL` → overrides the environment's `baseUrl` if set
+
+## Parallel Multi-Environment Execution
+
+The executor supports `--envs dev,uat` to run the same test cases
+against multiple environments in parallel. Each env gets:
+- Its own browser instance
+- Its own results directory: `results/<env>/`
+- Its own Allure results and screenshots
+
+## Never:
+- Hardcode URLs in spec files or page objects (use environments.json).
+- Create separate JSON files per environment (use the unified config).
+- Commit `.env` to source control.
