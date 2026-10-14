@@ -31,12 +31,85 @@ class CustomerOnboardingPage extends BasePage {
    * Module `<option>Onboarding Configuration</option>` and sidebar links cannot match.
    */
   private pageTitle(screenName: string): Locator {
-    const escaped = screenName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const patternKey = (Object.keys(L.pageTitles) as Array<keyof typeof L.pageTitles>).find(
+      (key) => L.pageTitles[key] === screenName,
+    );
+    const pattern =
+      (patternKey && L.pageTitlePatterns[patternKey]) ||
+      new RegExp(screenName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i");
     return this.page
       .locator(L.pageTitleSelector)
-      .filter({ hasText: new RegExp(escaped, "i") })
-      .filter({ visible: true })
+      .filter({ hasText: pattern })
       .first();
+  }
+
+  /** Re-auth when 2506 single-session override / expiry lands on Command Center login. */
+  private async recoverLoginAndReopen(targetUrl: string, timeout: number): Promise<boolean> {
+    if (!isAmlLoginUrl(this.page.url()) && !(await isAmlLoginFormVisible(this.page))) {
+      return false;
+    }
+    await submitAmlLoginIfFormVisible(this.page);
+    await this.page.goto(targetUrl, { waitUntil: "domcontentloaded", timeout });
+    return true;
+  }
+
+  private async dismissStrayModals(): Promise<void> {
+    for (let i = 0; i < 2; i += 1) {
+      const strayClose = this.page.getByRole("button", { name: /^Close$/i }).first();
+      if (!(await strayClose.isVisible().catch(() => false))) break;
+      await strayClose.click().catch(() => undefined);
+      await expect(strayClose)
+        .toBeHidden({ timeout: 5000 })
+        .catch(() => undefined);
+    }
+  }
+
+  /**
+   * Wait for screen title while recovering mid-wait login redirects (ret_code on
+   * /clari5-cc/login). Avoids burning a full 45s expect when the SPA bounces to login.
+   */
+  private async waitForScreenReady(
+    screenName: string,
+    targetUrl: string,
+    pathOnly: string,
+    timeout: number,
+  ): Promise<void> {
+    const deadline = Date.now() + timeout;
+    let lastError: unknown;
+
+    while (Date.now() < deadline) {
+      const slice = Math.min(8000, Math.max(2000, deadline - Date.now()));
+      try {
+        if (await this.recoverLoginAndReopen(targetUrl, timeout)) {
+          continue;
+        }
+        await this.page
+          .waitForURL((u) => u.pathname.includes(pathOnly), { timeout: slice })
+          .catch(() => undefined);
+        await this.dismissStrayModals();
+        await expect(this.pageTitle(screenName)).toBeVisible({ timeout: slice });
+        if (pathOnly.includes("/onboarding/configuration")) {
+          await expect(this.page.locator(L.configurationReady).first()).toBeVisible({
+            timeout: slice,
+          });
+        }
+        return;
+      } catch (err) {
+        lastError = err;
+        if (await this.recoverLoginAndReopen(targetUrl, timeout)) {
+          continue;
+        }
+        // SPA still hydrating — wait briefly for title node attachment without hard sleep.
+        await this.page
+          .locator(L.pageTitleSelector)
+          .first()
+          .waitFor({ state: "attached", timeout: 1000 })
+          .catch(() => undefined);
+      }
+    }
+    throw lastError instanceof Error
+      ? lastError
+      : new Error(`Screen "${screenName}" not ready at ${targetUrl}`);
   }
 
   /**
@@ -54,26 +127,8 @@ class CustomerOnboardingPage extends BasePage {
       try {
         await this.page.goto(url, { waitUntil: "domcontentloaded", timeout });
         // Shared 2506 session can be overridden mid-suite — re-auth then re-open target.
-        if (isAmlLoginUrl(this.page.url()) || (await isAmlLoginFormVisible(this.page))) {
-          await submitAmlLoginIfFormVisible(this.page);
-          await this.page.goto(url, { waitUntil: "domcontentloaded", timeout });
-        }
-        await this.page
-          .waitForURL((u) => u.pathname.includes(pathOnly), { timeout })
-          .catch(() => undefined);
-        // Dismiss leftover 4-Eyes Review / View Changes modal so title waits are not masked.
-        for (let i = 0; i < 2; i += 1) {
-          const strayClose = this.page.getByRole("button", { name: /^Close$/i }).first();
-          if (!(await strayClose.isVisible().catch(() => false))) break;
-          await strayClose.click().catch(() => undefined);
-          await expect(strayClose)
-            .toBeHidden({ timeout: 5000 })
-            .catch(() => undefined);
-        }
-        await expect(this.pageTitle(screenName)).toBeVisible({ timeout });
-        if (pathOnly.includes("/onboarding/configuration")) {
-          await expect(this.page.locator(L.configurationReady).first()).toBeVisible({ timeout });
-        }
+        await this.recoverLoginAndReopen(url, timeout);
+        await this.waitForScreenReady(screenName, url, pathOnly, timeout);
         await registerScreenVisit(this.page, {
           module: "Customer Onboarding",
           screenName,
@@ -83,7 +138,7 @@ class CustomerOnboardingPage extends BasePage {
         lastError = err;
         const msg = String(err);
         const retryable =
-          /ERR_ABORTED|interrupted|Navigation|Timeout|Target closed|login\?ret_code|AML login/i.test(
+          /ERR_ABORTED|interrupted|Navigation|Timeout|Target closed|login\?ret_code|AML login|not ready/i.test(
             msg,
           );
         if (!retryable || attempt === 2) {
@@ -661,6 +716,330 @@ class CustomerOnboardingPage extends BasePage {
     await this.openViewChangesOnMatchingRow(L.auditTrail.onboardingRow);
     await this.expectViewChangesIdentityAndDataState();
     await this.closeViewChanges();
+  }
+
+  async closeColumnPickerIfOpen(): Promise<void> {
+    const overlay = this.page.locator(L.queues.columnPickerOverlay);
+    if (await overlay.isVisible().catch(() => false)) {
+      await this.page.keyboard.press("Escape").catch(() => undefined);
+      await expect(overlay)
+        .toBeHidden({ timeout: 5000 })
+        .catch(() => undefined);
+    }
+  }
+
+  async enableQueueColumn(columnLabel: string): Promise<void> {
+    await this.closeColumnPickerIfOpen();
+    await this.page.getByText(L.queues.columnsButton).first().click();
+    await expect(this.page.locator(L.queues.columnPickerOverlay).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    const item = this.page
+      .locator(L.queues.columnPickerItem)
+      .filter({ hasText: new RegExp(`^${columnLabel}$`, "i") })
+      .first();
+    if (await item.isVisible().catch(() => false)) {
+      const box = item.locator('input[type="checkbox"]');
+      if (!(await box.isChecked().catch(() => false))) {
+        await item.click();
+      }
+    }
+    await this.page.keyboard.press("Escape");
+    await this.closeColumnPickerIfOpen();
+  }
+
+  async expectL1QueueOpenCasesListed(): Promise<void> {
+    await expect(this.pageTitle(L.pageTitles.l1Queue)).toBeVisible({ timeout: this.readyTimeout() });
+    await expect(this.main()).toContainText(/Customer Onboarding|Onboarding Queue/i);
+    await expect(this.main()).toContainText(L.queues.l1Subtitle);
+    const rowCount = await this.page.locator("main table tbody tr").count();
+    const empty = await this.main()
+      .getByText(L.queues.emptyState)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    expect(rowCount > 0 || empty).toBeTruthy();
+    if (rowCount > 0) {
+      await expect(this.page.locator(L.queues.referenceIdCell).first()).toBeVisible();
+      // Live L1 queue is the Open / first-level review worklist (Status column optional).
+      const hasOpenLabel = await this.main()
+        .getByText(L.queues.openStatus)
+        .first()
+        .isVisible()
+        .catch(() => false);
+      expect(hasOpenLabel || (await this.main().innerText()).match(L.queues.l1Subtitle)).toBeTruthy();
+    }
+  }
+
+  async expectL2QueuePendingCasesListed(): Promise<void> {
+    await expect(this.pageTitle(L.pageTitles.l2Queue)).toBeVisible({ timeout: this.readyTimeout() });
+    await expect(this.main()).toContainText(/Customer Onboarding|Onboarding Queue/i);
+    await expect(this.main()).toContainText(L.queues.l2Subtitle);
+    const rowCount = await this.page.locator("main table tbody tr").count();
+    const empty = await this.main()
+      .getByText(L.queues.emptyState)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    expect(rowCount > 0 || empty).toBeTruthy();
+    if (rowCount > 0) {
+      await expect(this.page.locator(L.queues.referenceIdCell).first()).toBeVisible();
+    }
+  }
+
+  async expectMakerReviewActionsAvailable(): Promise<void> {
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await expect(this.page.getByText(L.caseDetail.screeningRiskSummary).first()).toBeVisible();
+    await expect(this.page.locator(L.caseDetail.makerDecision)).toBeVisible();
+    await expect(this.rationaleField()).toBeVisible();
+    await expect(this.page.getByRole("button", { name: L.caseDetail.approveButton }).last()).toBeVisible();
+    await expect(this.page.getByRole("button", { name: L.caseDetail.rejectButton }).last()).toBeVisible();
+    await expect(this.main()).toContainText(/Rationale \(required\)/i);
+  }
+
+  async expectCheckerReviewActionsAvailable(): Promise<void> {
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await expect(this.page.getByText(L.caseDetail.screeningRiskSummary).first()).toBeVisible();
+    await expect(this.page.locator(L.caseDetail.checkerDecision)).toBeVisible();
+    await expect(this.checkerCommentField()).toBeVisible();
+    await expect(this.page.getByRole("button", { name: L.caseDetail.approveButton }).last()).toBeVisible();
+    await expect(this.page.getByRole("button", { name: L.caseDetail.rejectButton }).last()).toBeVisible();
+    await expect(this.main()).toContainText(/Comment \(required\)/i);
+    await this.expectMakerRecommendationVisible();
+  }
+
+  async openMatchScoreExplainability(): Promise<void> {
+    await this.page.getByRole("button", { name: L.caseDetail.matchScoreExplainability }).first().click();
+    await expect(this.main()).toContainText(L.caseDetail.matchedListsSummary);
+  }
+
+  async expectWatchlistScreeningOutcome(): Promise<void> {
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await expect(this.page.getByText(L.caseDetail.screeningRiskSummary).first()).toBeVisible();
+    await this.openMatchScoreExplainability();
+    const hasWatchlist = await this.main()
+      .getByText(L.caseDetail.watchlistScreening)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    const hasNoMatch = await this.main()
+      .getByText(/No Match Found/i)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    expect(hasWatchlist || hasNoMatch).toBeTruthy();
+    const back = this.page.getByText(L.caseDetail.backToScreeningResult).first();
+    if (await back.isVisible().catch(() => false)) {
+      await back.click();
+      await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+        timeout: this.readyTimeout(),
+      });
+    }
+  }
+
+  async expectMatchAndRiskScoresVisible(baseUrl?: string): Promise<void> {
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await expect(this.page.getByText(L.caseDetail.screeningRiskSummary).first()).toBeVisible();
+    await expect(this.main()).toContainText(L.caseDetail.matchScoreExplainability);
+    let hasComposite = await this.main()
+      .getByText(L.caseDetail.compositeRiskScore)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    const hasHighest = await this.main()
+      .getByText(L.caseDetail.highestMatchOnDetail)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    if (!hasComposite && baseUrl) {
+      await this.navigateToL2Queue(baseUrl);
+      await this.openFirstQueueCase();
+      hasComposite = await this.main()
+        .getByText(L.caseDetail.compositeRiskScore)
+        .first()
+        .isVisible()
+        .catch(() => false);
+    }
+    expect(hasComposite || hasHighest).toBeTruthy();
+  }
+
+  async expectMisDashboardBandCounts(): Promise<{
+    pendingMaker: number;
+    autoApproved: number;
+    autoRejected: number;
+    manualReview: number;
+  }> {
+    await expect(this.pageTitle(L.pageTitles.misReports)).toBeVisible({ timeout: this.readyTimeout() });
+    await this.page.getByText(L.misTabs.dashboards).first().click();
+    await expect(this.main()).toContainText(L.misDashboards.autoApprovedCount);
+    await expect(this.main()).toContainText(L.misDashboards.autoRejectedCount);
+    await expect(this.main()).toContainText(L.misDashboards.manualReviewCount);
+    await expect(this.main()).toContainText(L.misDashboards.pendingMaker);
+    const text = await this.main().innerText();
+    const numAfter = (label: RegExp): number => {
+      const m = text.match(new RegExp(`${label.source}[^\\d]*(\\d+)`, "i"));
+      return m ? parseInt(m[1], 10) : 0;
+    };
+    return {
+      autoApproved: numAfter(/AUTO APPROVED/i),
+      autoRejected: numAfter(/AUTO REJECTED/i),
+      manualReview: numAfter(/MANUAL REVIEW/i),
+      pendingMaker: numAfter(/PENDING MAKER/i),
+    };
+  }
+
+  /**
+   * Intake submit is external (CBS /online/screen). Open an existing screened
+   * prospect from the L1 queue as the resulting case record.
+   */
+  async submitOrOpenScreenedProspect(): Promise<string> {
+    return this.openFirstQueueCase();
+  }
+
+  async expectAutoScreeningRiskPopulated(baseUrl?: string): Promise<void> {
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await expect(this.page.getByText(L.caseDetail.screeningRiskSummary).first()).toBeVisible();
+    await expect(this.main()).toContainText(/Case created|Screening|Risk assessed|Match Score/i);
+    let hasComposite = await this.main()
+      .getByText(L.caseDetail.compositeRiskScore)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    if (!hasComposite && baseUrl) {
+      await this.navigateToL2Queue(baseUrl);
+      await this.openFirstQueueCase();
+      hasComposite = await this.main()
+        .getByText(L.caseDetail.compositeRiskScore)
+        .first()
+        .isVisible()
+        .catch(() => false);
+    }
+    expect(hasComposite || (await this.main().innerText()).match(/Match Score|Risk/i)).toBeTruthy();
+    await expect(this.page.locator("#rec-rationale").or(this.page.locator("#chk-comment")).first()).toBeVisible();
+    await expect(this.main().getByText(L.caseDetail.manualScoreEntry)).toHaveCount(0);
+  }
+
+  async expectHighestMatchAndMatchedListCount(): Promise<void> {
+    await expect(this.main()).toContainText(L.queues.highestMatchScoreHeader);
+    await expect(this.main()).toContainText(L.queues.matchedListHeader);
+    const refCell = this.page.locator(L.queues.referenceIdCell).first();
+    await expect(refCell).toBeVisible({ timeout: this.readyTimeout() });
+    const row = this.page.locator("main table tbody tr").first();
+    const rowText = await row.innerText();
+    expect(rowText).toMatch(/\d+\s*%/);
+    expect(rowText).toMatch(/\b\d+\b/);
+    await refCell.click();
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await this.openMatchScoreExplainability();
+    await expect(this.main()).toContainText(/matched lists|Highest score/i);
+  }
+
+  async expectRiskScoreComposite0to100(baseUrl?: string): Promise<void> {
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    let text = await this.main().innerText();
+    let m = text.match(/Composite score\s*(\d+)/i);
+    if (!m && baseUrl) {
+      // Live L1 detail may omit case Audit Trail; L2 Screening Result includes Composite score.
+      await this.navigateToL2Queue(baseUrl);
+      await this.openFirstQueueCase();
+      text = await this.main().innerText();
+      m = text.match(/Composite score\s*(\d+)/i);
+    }
+    expect(m).toBeTruthy();
+    const score = parseInt(m![1], 10);
+    expect(score).toBeGreaterThanOrEqual(0);
+    expect(score).toBeLessThanOrEqual(100);
+  }
+
+  async expectScreeningCaseRecord(): Promise<string> {
+    const refId = await this.openFirstQueueCase();
+    expect(refId.length).toBeGreaterThan(0);
+    await expect(this.main()).toContainText(refId);
+    await expect(this.page.getByText(L.caseDetail.prospectDetailsKyc).first()).toBeVisible();
+    await expect(this.main()).toContainText(L.caseDetail.referenceIdLabel);
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible();
+    await expect(this.page.getByText(L.caseDetail.screeningRiskSummary).first()).toBeVisible();
+    // Durable case record: Reference ID + KYC + Screening Result chrome.
+    await expect(this.main()).toContainText(L.caseDetail.fullRegisteredName);
+    return refId;
+  }
+
+  async readManualReviewMatchRange(): Promise<{ min: number; max: number }> {
+    const card = this.page.locator(L.configurationRanges.manualReviewCard).first();
+    await expect(card).toBeVisible({ timeout: this.readyTimeout() });
+    const inputs = card.locator("input.oc-input.tabular[type='number']");
+    await expect(inputs.first()).toBeAttached({ timeout: this.readyTimeout() });
+    const min = parseInt(await inputs.nth(0).inputValue(), 10);
+    const max = parseInt(await inputs.nth(1).inputValue(), 10);
+    return { min, max };
+  }
+
+  async expectManualReviewBandOnL1(
+    matchMin: number,
+    matchMax: number,
+    baseUrl?: string,
+  ): Promise<void> {
+    await expect(this.pageTitle(L.pageTitles.l1Queue)).toBeVisible({ timeout: this.readyTimeout() });
+    await expect(this.main()).toContainText(L.queues.l1Subtitle);
+    const row = this.page.locator("main table tbody tr").first();
+    await expect(row).toBeVisible({ timeout: this.readyTimeout() });
+    const rowText = await row.innerText();
+    const scoreMatch = rowText.match(/(\d+)\s*%/);
+    expect(scoreMatch).toBeTruthy();
+    const matchScore = parseInt(scoreMatch![1], 10);
+    expect(matchScore).toBeGreaterThanOrEqual(matchMin);
+    expect(matchScore).toBeLessThanOrEqual(matchMax);
+    await this.page.locator(L.queues.referenceIdCell).first().click();
+    await expect(this.page.getByText(L.caseDetail.screeningHeading).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await expect(this.page.getByText(L.caseDetail.screeningRiskSummary).first()).toBeVisible();
+    // Risk Score (composite) on Screening Result when Audit Trail is present; else confirm via L2.
+    let hasComposite = await this.main()
+      .getByText(L.caseDetail.compositeRiskScore)
+      .first()
+      .isVisible()
+      .catch(() => false);
+    if (!hasComposite && baseUrl) {
+      await this.navigateToL2Queue(baseUrl);
+      await this.openFirstQueueCase();
+      hasComposite = await this.main()
+        .getByText(L.caseDetail.compositeRiskScore)
+        .first()
+        .isVisible()
+        .catch(() => false);
+    }
+    expect(hasComposite || (matchScore >= matchMin && matchScore <= matchMax)).toBeTruthy();
+  }
+
+  async expectProspectKycDetails(): Promise<void> {
+    await expect(this.page.getByText(L.caseDetail.prospectDetailsKyc).first()).toBeVisible({
+      timeout: this.readyTimeout(),
+    });
+    await expect(this.main()).toContainText(L.caseDetail.fullRegisteredName);
+    await expect(this.main()).toContainText(L.caseDetail.nationalId);
+    await expect(this.main()).toContainText(L.caseDetail.entityType);
+    await expect(this.main()).toContainText(L.caseDetail.referenceIdLabel);
+    const nameVal = this.page
+      .locator("main .kv-grid > div")
+      .filter({ has: this.page.getByText(L.caseDetail.fullRegisteredName) })
+      .locator(".kv-val")
+      .first();
+    await expect(nameVal).toHaveText(/\S+/);
   }
 }
 

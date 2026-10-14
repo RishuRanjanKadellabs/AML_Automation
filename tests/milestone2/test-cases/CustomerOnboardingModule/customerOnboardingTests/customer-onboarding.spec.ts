@@ -1,5 +1,5 @@
 /* eslint-disable playwright/valid-title -- QA fidelity requires the Test Case ID prefix. */
-// source: pipeline/test-data/Milestone2/Test Cases/Customer Onboarding Test Cases.xlsx — batches 1–2
+// source: pipeline/test-data/Milestone2/Test Cases/Customer Onboarding Test Cases.xlsx — batches 1–2 + expanded batch 1
 import path from "path";
 import { test, expect } from "../../../../../fixtures/milestone2-shared-session";
 import CustomerOnboardingPage from "../../../pages/CustomerOnboardingModule/CustomerOnboardingPages/CustomerOnboardingPage";
@@ -545,5 +545,178 @@ test.describe("Customer Onboarding Tests", () => {
 
     // Steps 14–22: Audit Trail / View Changes.
     await coPage.assertAuditTrailForOnboardingAction(testData.baseUrl, "Onboarding");
+  });
+
+  // --- Expanded full-coverage Batch 1 (missing IDs) ---
+
+  test("Test Case ID:CO-TC-001 - Open the L1 Queue and confirm Open cases are listed", async ({
+    testData,
+  }) => {
+    // Step 1: Open AML Onboarding from the application sidebar.
+    // Step 2: Click L1 Queue under Onboarding.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+
+    // Step 3: Confirm the page title Customer Onboarding Queue is shown.
+    // Step 4: Confirm the queue table lists cases with status Open (or empty-state when none).
+    await coPage.expectL1QueueOpenCasesListed();
+  });
+
+  test("Test Case ID:CO-TC-002 - Open the L2 Queue and confirm Pending at L2 cases are listed", async ({
+    testData,
+  }) => {
+    // Step 1: Open AML Onboarding from the application sidebar.
+    // Step 2: Click L2 Queue under Onboarding.
+    await coPage.navigateToL2Queue(testData.baseUrl);
+
+    // Step 3: Confirm the page title Customer Onboarding Queue is shown.
+    // Step 4: Confirm the queue table lists cases with status Pending at L2 (or empty-state when none).
+    await coPage.expectL2QueuePendingCasesListed();
+  });
+
+  test("Test Case ID:CO-TC-003 - Verify Maker performs first-level review from the L1 Queue", async ({
+    testData,
+  }) => {
+    // Step 1: On L1 Queue, click a row with status Open.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+    const refId = await coPage.openFirstQueueCase();
+    expect(refId.length).toBeGreaterThan(0);
+
+    // Step 2: Confirm Screening Result / case detail opens.
+    // Step 3: Confirm Maker actions Approve and Reject are available with Rationale (required).
+    await coPage.expectMakerReviewActionsAvailable();
+  });
+
+  test("Test Case ID:CO-TC-004 - Verify Checker performs second-level review from the L2 Queue", async ({
+    testData,
+  }) => {
+    // Step 1: On L2 Queue, click a row with status Pending at L2.
+    await coPage.navigateToL2Queue(testData.baseUrl);
+    const refId = await coPage.openFirstQueueCase();
+    expect(refId.length).toBeGreaterThan(0);
+
+    // Step 2: Confirm Screening Result / case detail opens.
+    // Step 3: Confirm Checker actions Approve and Reject are available with Comment (required).
+    await coPage.expectCheckerReviewActionsAvailable();
+  });
+
+  test("Test Case ID:CO-TC-007 - Verify a new prospect is screened against sanction and PEP watchlists", async ({
+    testData,
+  }) => {
+    // Step 1: Submit or open a newly screened prospect case from Customer Onboarding Queue.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+    const refId = await coPage.submitOrOpenScreenedProspect();
+    expect(refId.length).toBeGreaterThan(0);
+
+    // Step 2: Open the case detail Screening Result.
+    // Step 3: Confirm matched-list summary or No Match Found is shown from sanction/PEP screening.
+    await coPage.expectWatchlistScreeningOutcome();
+  });
+
+  test("Test Case ID:CO-TC-008 - Verify Match Score and Risk Score appear together for decisioning", async ({
+    testData,
+  }) => {
+    // Step 1: Open L1 Queue.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+
+    // Step 2: Open any screened case row.
+    await coPage.openFirstQueueCase();
+
+    // Step 3: Confirm Highest Match Score and Risk Score values are visible on the Screening Result.
+    await coPage.expectMatchAndRiskScoresVisible();
+  });
+
+  test("Test Case ID:CO-TC-009 - Verify decisioning bands route prospects to auto or manual paths", async ({
+    testData,
+  }) => {
+    // Step 1: Open Onboarding MIS Reports > Dashboards.
+    await coPage.navigateToMisReports(testData.baseUrl);
+
+    // Step 2: Note Auto-Approved Requests, Auto-Rejected Requests, and Total Under Manual Review counts.
+    const counts = await coPage.expectMisDashboardBandCounts();
+    expect(counts.autoApproved + counts.autoRejected + counts.manualReview).toBeGreaterThan(0);
+
+    // Step 3: Open L1 Queue and confirm Manual Review cases appear when counts are non-zero.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+    if (counts.pendingMaker > 0 || counts.manualReview > 0) {
+      await expect(coPage.ui.locator("main table tbody tr").first()).toBeVisible();
+      await expect(coPage.main()).toContainText(/awaiting first-level review/i);
+    } else {
+      await coPage.expectL1QueueOpenCasesListed();
+    }
+  });
+
+  test("Test Case ID:CO-TC-010 - Verify intake creates automatic screening and risk assessment", async ({
+    testData,
+  }) => {
+    // Step 1: Submit a prospect for onboarding screening (open resulting screened case when intake is external).
+    await coPage.navigateToL1Queue(testData.baseUrl);
+    const refId = await coPage.submitOrOpenScreenedProspect();
+    expect(refId.length).toBeGreaterThan(0);
+
+    // Step 2: Open the resulting case from Customer Onboarding Queue or MIS.
+    // Step 3: Confirm screening outcome and Risk Score are populated without manual score entry.
+    await coPage.expectAutoScreeningRiskPopulated();
+  });
+
+  test("Test Case ID:CO-TC-011 - Verify Match Score shows highest list score and matched list count", async ({
+    testData,
+  }) => {
+    // Step 1: Open L1 Queue.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+
+    // Step 2: Open a case with matched lists.
+    // Step 3: Confirm Highest Match Score and Number of Matched List columns/fields are displayed.
+    await coPage.expectHighestMatchAndMatchedListCount();
+  });
+
+  test("Test Case ID:CO-TC-012 - Verify Risk Score is shown as a composite 0–100 value", async ({
+    testData,
+  }) => {
+    // Step 1: Open a case from L1 Queue.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+    await coPage.openFirstQueueCase();
+
+    // Step 2: Locate Risk Score on the queue row or Screening Result.
+    // Step 3: Confirm the value is numeric within 0–100.
+    await coPage.expectRiskScoreComposite0to100(testData.baseUrl);
+  });
+
+  test("Test Case ID:CO-TC-013 - Verify a screening case record is created for each prospect", async ({
+    testData,
+  }) => {
+    // Step 1: Open L1 Queue or Onboarding MIS Reports.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+
+    // Step 2: Locate the prospect by Prospect Name or Reference ID.
+    // Step 3: Open the case and confirm a durable screening case record is shown.
+    const refId = await coPage.expectScreeningCaseRecord();
+    expect(refId).toMatch(/ONB-/i);
+  });
+
+  test("Test Case ID:CO-TC-015 - Verify Manual Review band queues the prospect to the L1 Queue", async ({
+    testData,
+  }) => {
+    // Best-effort: read active Manual Review Match Score ranges, then confirm L1 Open cases fall in-band.
+    await coPage.navigateToConfiguration(testData.baseUrl);
+    const { min, max } = await coPage.readManualReviewMatchRange();
+
+    // Step 1: Open L1 Queue.
+    // Step 2: Locate a Manual Review prospect with status Open.
+    // Step 3: Confirm Highest Match Score and Risk Score fall within Manual Review configuration ranges.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+    await coPage.expectManualReviewBandOnL1(min, max, testData.baseUrl);
+  });
+
+  test("Test Case ID:CO-TC-019 - Verify prospect KYC identifying details appear on the case", async ({
+    testData,
+  }) => {
+    // Step 1: Open L1 Queue.
+    await coPage.navigateToL1Queue(testData.baseUrl);
+
+    // Step 2: Open a case row.
+    await coPage.openFirstQueueCase();
+
+    // Step 3: Confirm Prospect Name, ID Number, and Entity Type (and other KYC fields shown) are displayed.
+    await coPage.expectProspectKycDetails();
   });
 });

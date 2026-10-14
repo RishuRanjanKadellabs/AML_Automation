@@ -20,3 +20,4 @@ yarn-debug.log*
 yarn-error.log*
 coverage/
 .DS_Store
+/pipeline/test-data/list/OFAC SDN List Consolidated.XML

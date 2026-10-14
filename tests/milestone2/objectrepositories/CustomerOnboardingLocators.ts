@@ -15,8 +15,20 @@ const CustomerOnboardingLocators = {
     fourEyes: "4-Eyes (Maker-Checker) Approval",
     auditTrail: "Audit Trail / Audit Log",
   },
+  /**
+   * Flexible title patterns for SPA ready-checks (live labels confirmed 2026-10-14).
+   * Allows optional brackets / spacing so brief layout shifts do not false-miss.
+   */
+  pageTitlePatterns: {
+    l1Queue: /Onboarding\s+Queue\s*\[?\s*Maker\s*\]?/i,
+    l2Queue: /Onboarding\s+Queue\s*\[?\s*Checker\s*\]?/i,
+    misReports: /Onboarding\s+MIS\s+Reports/i,
+    configuration: /Onboarding\s+Configuration/i,
+    fourEyes: /4-Eyes\s*\(Maker-Checker\)\s*Approval/i,
+    auditTrail: /Audit\s+Trail\s*\/\s*Audit\s+Log/i,
+  },
   /** Live Clari5 onboarding screens use .cob-page-title; 4-Eyes / Audit use h1. */
-  pageTitleSelector: "main .cob-page-title, main h1",
+  pageTitleSelector: "main .cob-page-title, .cob-page-title, main h1",
   /** Ready marker for Configuration rule cards (avoid matching sidebar / filter options). */
   configurationReady: "main .oc-rule-card.oc-approve",
   misTabs: {
@@ -64,11 +76,26 @@ const CustomerOnboardingLocators = {
     /** Live L2 Queue: placeholder "Comment (required for bulk decision)..." */
     bulkComment: 'input[placeholder*="Comment (required for bulk decision)"]',
     clearSelection: /^Clear$/i,
+    /** Live column picker overlay. */
+    columnsButton: /^Columns/i,
+    columnPickerOverlay: ".cob-col-picker-overlay",
+    columnPickerItem: ".cob-col-avail-item",
+    emptyState: /no (cases|records|prospects)|empty|Showing 0/i,
+    openStatus: /\bOpen\b/i,
+    pendingAtL2Status: /Pending at L2|awaiting second-level/i,
+    l1Subtitle: /awaiting first-level review/i,
+    l2Subtitle: /awaiting second-level review/i,
+    highestMatchScoreHeader: /Highest Match Score/i,
+    matchedListHeader: /Number of Matched List|Matched Lists/i,
+    prospectNameHeader: /Prospect Name/i,
+    showingCount: /Showing\s+\d+/i,
   },
   caseDetail: {
     screeningHeading: /Screening Results/i,
     screeningRiskSummary: /Screening & Risk Summary/i,
+    matchScoreExplainability: /Match Score Explainability/i,
     backToQueue: /Back to Queue/i,
+    backToScreeningResult: /Back to Screening Result/i,
     backToReport: /Back to Report/i,
     rationale: "#rec-rationale",
     checkerComment: "#chk-comment",
@@ -89,6 +116,30 @@ const CustomerOnboardingLocators = {
     evidenceName: ".evidence-list .evidence-item .ev-name",
     evidenceEmpty: ".evidence-list .evidence-empty",
     cbsConfirmation: /CBS|approval confirmation|rejection confirmation|confirmation to CBS/i,
+    /** KYC identifying details on live Screening Result. */
+    prospectDetailsKyc: /Prospect Details \(KYC\)/i,
+    kvLabel: "main .kv-label",
+    kvVal: "main .kv-val",
+    referenceIdLabel: /Reference ID/i,
+    fullRegisteredName: /Full \/ Registered Name/i,
+    nationalId: /National ID|ID Number|NIN/i,
+    entityType: /Entity Type/i,
+    matchedListsSummary: /matched lists|Highest score|No Match Found/i,
+    watchlistScreening: /Sanctions|PEP|watchlist|list hits|UN Consolidated|OFAC|No Match Found/i,
+    compositeRiskScore: /Composite score\s*\d+|Risk assessed/i,
+    highestMatchOnDetail: /highest score\s*\d+%?|Highest Match Score|Match Score/i,
+    caseAuditTrail: /AUDIT TRAIL|Case created|Risk assessed|Queued for Maker/i,
+    manualScoreEntry: /manual score entry|enter risk score|enter match score/i,
+  },
+  misDashboards: {
+    autoApprovedCount: /AUTO APPROVED|Auto-Approved Onboarding Requests/i,
+    autoRejectedCount: /AUTO REJECTED|Auto-Rejected Onboarding Requests/i,
+    manualReviewCount: /MANUAL REVIEW|Manually Reviewed|Under Manual Review/i,
+    pendingMaker: /PENDING MAKER/i,
+    pendingChecker: /PENDING CHECKER/i,
+  },
+  configurationRanges: {
+    manualReviewCard: "main .oc-rule-card.oc-manual",
   },
   fourEyes: {
     pendingTab: /Pending Approvals/i,
