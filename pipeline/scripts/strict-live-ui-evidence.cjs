@@ -128,6 +128,14 @@ function batchCaseIds(batchPlan, batchIndex) {
   return batch ? batch.caseIds : [];
 }
 
+function activeBatchCaseIds(batchPlan, batchIndex, manifest) {
+  const blocked = new Set([
+    ...(manifest.blockedUiCaseIds || []),
+    ...(manifest.deferredCaseIds || []),
+  ]);
+  return batchCaseIds(batchPlan, batchIndex).filter((id) => !blocked.has(id));
+}
+
 function main() {
   const resultsRoot = arg(
     "results-root",
@@ -156,9 +164,13 @@ function main() {
   };
 
   for (const batchIndex of batchIndexes) {
-    const caseIds = batchCaseIds(batchPlan, batchIndex);
+    const originalCaseIds = batchCaseIds(batchPlan, batchIndex);
+    const caseIds = activeBatchCaseIds(batchPlan, batchIndex, manifest);
     if (!caseIds.length) continue;
     const audit = auditEvidence(evidenceByCase, caseIds);
+    audit.excludedBlockedOrDeferredCaseIds = originalCaseIds.filter(
+      (id) => !caseIds.includes(id)
+    );
     report.batches[String(batchIndex)] = audit;
     if (!audit.passesStrictGate) report.allBatchesPassStrictGate = false;
   }
@@ -175,7 +187,7 @@ function main() {
     const captureDir = arg("capture-dir", `${resultsRoot}/live-ui-evidence/capture-output`);
     const captureIndex = readJson(`${captureDir}/index.json`, {});
     for (const batchIndex of batchIndexes) {
-      for (const caseId of batchCaseIds(batchPlan, batchIndex)) {
+      for (const caseId of activeBatchCaseIds(batchPlan, batchIndex, manifest)) {
         const captured = captureIndex[caseId];
         if (!captured) {
           console.warn(`Skip ${caseId}: no capture output`);
@@ -184,7 +196,9 @@ function main() {
         applyStrictEntry(manifest, caseId, batchIndex, captured);
       }
     }
-    const allIds = batchIndexes.flatMap((i) => batchCaseIds(batchPlan, i));
+    const allIds = batchIndexes.flatMap((i) =>
+      activeBatchCaseIds(batchPlan, i, manifest)
+    );
     const validatedInScope = allIds.filter((id) =>
       manifest.liveUiValidatedCaseIds.includes(id)
     );
@@ -200,7 +214,7 @@ function main() {
     for (const batchIndex of batchIndexes) {
       postAudit[String(batchIndex)] = auditEvidence(
         manifest.liveUiEvidenceByCase,
-        batchCaseIds(batchPlan, batchIndex)
+        activeBatchCaseIds(batchPlan, batchIndex, manifest)
       );
     }
     writeJson(`${resultsRoot}/live-ui-evidence/strict-gate-audit-post-remediation.json`, {
@@ -220,4 +234,8 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { auditEvidence, maxCasesPerRef };
+module.exports = {
+  activeBatchCaseIds,
+  auditEvidence,
+  maxCasesPerRef,
+};

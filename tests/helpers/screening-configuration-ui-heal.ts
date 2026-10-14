@@ -1,6 +1,7 @@
 import type { BrowserContext, Page, Route } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 export type ScShellMode = "default" | "empty";
 
@@ -569,10 +570,12 @@ async function fulfillScreeningConfigurationRoute(route: Route): Promise<void> {
 }
 
 export async function installScreeningConfigurationPageHeal(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "installScreeningConfigurationPageHeal")) { return; }
   await page.route(/\/configuration\/sanction-screening-config(\/?(\?.*)?)?$/i, fulfillScreeningConfigurationRoute);
 }
 
 export async function installScreeningConfigurationHealOnContext(context: BrowserContext): Promise<void> {
+  if (skipHealInjectionForContext(context, "installScreeningConfigurationHealOnContext")) { return; }
   if (contextRouteInstalled) {
     return;
   }
@@ -585,6 +588,7 @@ export async function healEnsureFullScShell(
   testId: string,
   mode: ScShellMode = "default",
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureFullScShell")) { return; }
   const shellMode = mode === "empty" ? "empty" : "default";
   const html = buildScreeningConfigurationShellHtml(shellMode, "Enabled", testId);
   const currentUrl = page.url();
@@ -611,6 +615,7 @@ export async function healEnsureFullScShell(
 }
 
 export async function healApplyScExcelTestContext(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healApplyScExcelTestContext")) { return; }
   await page.evaluate((id) => {
     document.body.dataset.testId = id;
     const search = document.getElementById("ssc-search");
@@ -625,5 +630,6 @@ export async function healInjectScreeningConfigurationShell(
   testId: string,
   mode: ScShellMode = "default",
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectScreeningConfigurationShell")) { return; }
   await healEnsureFullScShell(page, testId, mode);
 }

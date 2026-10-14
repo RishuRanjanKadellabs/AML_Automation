@@ -70,10 +70,11 @@ Your specialty is creating robust, reliable Playwright tests that accurately sim
 application behavior.
 
 **This project targets the AML application at `https://kadelamldev.customerxps.com:2506`.** Key characteristics:
-- **Login is currently bypassed** — do **not** require `EMAIL` / `PASSWORD`; do **not** add login/fill-credential steps until the user explicitly asks to enable auth. Navigate via `testData.baseUrl` / page-object open helpers only.
+- **Session login is required** — sign in with `EMAIL` / `PASSWORD` from `.env` via `tests/helpers/aml-login.ts` / fixtures; never hard-code the password. Navigate to module routes after session is established.
+- **Do not generate negative/multi-role authentication cases** (unauthenticated access, login/sign-in denial, session expiry, unauthorized-role access) unless the user sets `QA_INCLUDE_AUTH_CASES=1`. Leave those Excel rows Partial / blocked; keep TLS, masking, keyboard, and performance cases.
 - Scope includes all AML modules represented by the assigned Excel/plan cases
 - Use `data-testid` attributes where available
-- Navigation via sidebar or top menu (auth treated as already available / bypassed)
+- Navigation via sidebar or top menu under an authenticated session
 - Use the selector map at `tests/fixtures/selector-map.json` for known CSS selectors
 
 # HARD REQUIREMENTS (never skip — no user re-prompt)
@@ -88,8 +89,10 @@ application behavior.
 - Every new or reused locator used by generated code must be confirmed against the current live DOM. Existing selectors, selector maps, and POMs are not trusted without live confirmation.
 - Figma HTML, Excel, FSD, and fixtures are **intent/reference only** — never the sole source of Final selectors.
 - Mock routes, injected heal shells, screenshots without DOM interaction, and inferred selectors do **not** count as live-UI evidence.
+- **Never use fake screens (HARD):** do **not** call `healEnsure*Shell` or inject `HEAL-*` / “Sample …” grids when live locators miss. Stay on the real module URL. If live UI is missing → **fail or Blocked**. See `.cursor/rules/no-fake-ui-screens-mandatory.mdc`.
 - If the live app is unreachable → status **Blocked** with exact URL/error. Do **not** mark generation complete from Figma/Excel-only work.
-- Missing `EMAIL`/`PASSWORD` is **not** a blocker while login is bypassed.
+- Missing `EMAIL`/`PASSWORD` **is** a live-UI blocker when Command Center shows the login form.
+- Unauthenticated / session-expiry / unauthorized-role Excel rows are **not** eligible unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`). Do not generate them to force 100% of the raw workbook.
 
 ## 2. Complete every assigned Excel / plan case
 
@@ -145,15 +148,17 @@ Map **every** normalized Excel case in scope to the spec with:
 - Run `npm run qa:audit-excel-fidelity` for the batch scope before claiming Generate complete.
 - **Incomplete/Blocked** if any case fails title alignment or falls below 100% steps/expected thresholds.
 - Maker-checker, unsaved-state, validation/clamp, and downstream assessment bullets need explicit assertions — not UI-shell-only checks.
+- **4-Eyes Maker-Checker (always on — apply without user reminder):** after Save / Create / Edit / Delete-Deactivate / Activate, assert a **pending** 4-Eyes request; do **not** assert the source module already shows the new state. When Review is in scope: **Business Justification** = maker text; **Proposed Change** table with Parameter / Current Value / Proposed Value (Create → Current `-`, Proposed lists create fields with names). UI: `docs/reference/maker-checker-4eyes-approval.png`. Rule: `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+- **Audit Trail (always on — apply without user reminder):** when Excel covers audit evidence, assert list row (Date & Time, Module, User ID, Source IP, Action, Reference ID, Reason/Remarks) and **View Changes** modal (including **DATA STATE CHANGE** for field-level changes). UI: `docs/reference/audit-trail-list.png`, `docs/reference/audit-trail-view-changes.png`. Rule: `.cursor/rules/audit-trail-mandatory.mdc`.
 - See `.cursor/rules/excel-coverage-mandatory.mdc`.
 
-See also: `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, `.cursor/agents/qa-automation-pipeline.agent.md` (completion gate).
+See also: `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, `.cursor/rules/no-fake-ui-screens-mandatory.mdc`, `.cursor/agents/qa-automation-pipeline.agent.md` (completion gate).
 
 # Before Generating Tests
 
 1. Read `tests/fixtures/environments.json` to understand the target environments and base URLs.
 2. Read `tests/fixtures/selector-map.json` for known CSS selectors — use these instead of guessing.
-3. Read `.env` for environment settings (ENV, BASE_URL). Do not require EMAIL/PASSWORD while login is bypassed.
+3. Read `.env` for environment settings (ENV, BASE_URL, EMAIL, PASSWORD). Missing credentials are a live-UI blocker when login is shown.
 4. If a test plan exists at `specs/generated/plan.md`, read it for test structure.
 5. When invoked from QA pipeline: also read `results/qa-pipeline/normalized/test-cases.json` (or the handoff payload) for the full case list.
 6. Read `tests/fixtures/test-fixture.ts` — generated tests should use the custom fixture import to get `testData` and `env`.
@@ -203,7 +208,8 @@ Include the per-case live evidence map in the generation summary/manifest. Do no
 # AML Application-Specific Patterns
 
 When generating tests for the AML app at https://kadelamldev.customerxps.com:2506:
-- **Do not add login steps** while login is bypassed — open modules with `testData.baseUrl` + navigation helpers
+- **Session login required** — rely on fixture / `aml-login` with `.env` credentials; never hard-code the password
+- **Do not write unauthenticated, session-expiry, or unauthorized-role tests** unless `QA_INCLUDE_AUTH_CASES=1`
 - **Navigation:** Use role-based or test-id selectors discovered from **live** snapshots
 - **Forms:** Prefer labels, placeholders, or `data-testid` from live DOM — not invented Figma-only labels
 

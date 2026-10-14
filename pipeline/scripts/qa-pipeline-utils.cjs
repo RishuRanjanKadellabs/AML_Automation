@@ -97,7 +97,7 @@ function moduleDirectory(testCase, module) {
   return normalized.endsWith("Module") ? normalized : `${normalized}Module`;
 }
 
-function defaultSpecPath(module, testCases) {
+function defaultSpecPath(module, testCases, milestone = 2) {
   const first = testCases[0] || {};
   const explicit =
     first.targetSpecPath ||
@@ -106,7 +106,7 @@ function defaultSpecPath(module, testCases) {
   if (explicit) return String(explicit);
   const feature = kebabCase(module) || "unknown-module";
   const directory = moduleDirectory(first, module);
-  return `tests/milestone2/test-cases/${directory}/${camelCase(module)}Tests/${feature}.spec.ts`;
+  return `tests/milestone${milestone}/test-cases/${directory}/${camelCase(module)}Tests/${feature}.spec.ts`;
 }
 
 function manifestSpecPaths(manifest) {

@@ -1948,6 +1948,21 @@ class IgnoreWordsConfigurationPage extends BasePage {
       .filter({ hasText: new RegExp(word, "i") })
       .first();
   }
+
+  async verifyNavigationPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    await this.openIgnoreWordsConfigurationDirect(baseUrl);
+    const startedAt = Date.now();
+    await this.openIgnoreWordsConfigurationFromSidebar();
+    await this.expectIgnoreWordsConfigurationViewLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingPageReady(maxMs = 2500): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectIgnoreWordsConfigurationViewLoaded();
+    await this.expectIgnoreWordTableVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
 }
 
 export default IgnoreWordsConfigurationPage;

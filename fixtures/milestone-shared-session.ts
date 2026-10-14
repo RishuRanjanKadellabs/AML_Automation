@@ -6,6 +6,7 @@ import {
   HEADED_STABLE_LAUNCH_ARGS,
   isMilestone1Headless,
 } from "./milestone1-worker-teardown";
+import { installAmlLoginOnGoto } from "../tests/helpers/aml-login";
 
 /** Mutable holder so a closed tab can be replaced without opening a new window. */
 type SharedSession = {
@@ -28,10 +29,7 @@ function cdpEndpoint(): string | undefined {
 }
 
 function patchGoto(page: Page): void {
-  const originalGoto = page.goto.bind(page);
-  page.goto = async (url, options) => {
-    return originalGoto(url, { waitUntil: "commit", ...options });
-  };
+  installAmlLoginOnGoto(page);
 }
 
 async function dismissOpenModals(page: Page): Promise<void> {

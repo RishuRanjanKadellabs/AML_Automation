@@ -91,7 +91,7 @@ Do not edit, rename, move, delete, replace prompts/tools/permissions of, or merg
 
 Hand off generation only to the existing generator definition (read/follow; never edit unless the user explicitly authorizes agent-file changes):
 
-- Generator: `@.cursor/agents/test-generator.agent.md` — **HARD REQUIREMENTS:** live UI, 100% assigned Excel/plan cases, one spec/module (M2), login bypassed, no fabricated Done
+- Generator: `@.cursor/agents/test-generator.agent.md` — **HARD REQUIREMENTS:** live UI, **no fake/heal sample screens**, 100% assigned Excel/plan cases, one spec/module (M2), session login required, no fabricated Done
 
 For each of six batches, hand off eligible automation failures to
 `@.cursor/agents/test-healer.agent.md` for exactly one evidence-based heal cycle.
@@ -174,6 +174,10 @@ When invoking child agents (`playwright-test-generator`, `playwright-test-healer
 
 - Confirm file exists, ends with `.xlsx`, opens, has a usable worksheet, and test-case rows are identifiable
 - Never silently ignore invalid worksheets or rows
+- For multi-sheet workbooks, `qa:parse-excel` auto-selects the first worksheet
+  containing every required test-case column. Use `--worksheet "<name>"` for an
+  explicit sheet. The validation report records `worksheetName` and
+  `worksheetSelection`; `qa:assert-normalize` must re-read that same worksheet.
 - **MUST** run the repo Node parser (uses installed `xlsx` — do **not** depend on Python `pandas`/`openpyxl`):
 
 ```bash
@@ -204,6 +208,12 @@ Schema: `specs/generated/qa-pipeline/schemas/human-readable-testcase-schema.json
 Every row already has exactly one status from Stage 1: `Valid` | `Valid with warnings` | `Invalid` | `Requires clarification`
 
 **Invalid rows must not proceed to generation.**
+
+Respect the workbook's explicit `Automable` classification. Load/stress/infra,
+k6/JMeter, and manual-only cases are normalized but excluded from Playwright
+generation. `Partial` cases remain outside the default UI batch scope until an
+objective Playwright subset is explicitly approved; do not infer full UI
+eligibility from action words in their steps.
 
 Schema: `specs/generated/qa-pipeline/schemas/excel-input-schema.json`
 
@@ -237,6 +247,8 @@ Enforce quality gate (valid row, traceable ID, clear steps/expected, feasibility
 - Generated code must **execute** Excel Test Steps (click/fill/select/submit/observe), not paste them as comments above a smoke navigate + `pageTitle` visible check.
 - **Reject / Incomplete** if interactive Excel cases (create/add/save/submit/validate form) only assert module shell/title/list visibility.
 - Flow cases must open the Figma/live form path, use Test Data, click the primary action, and assert Expected Result — including **honest fail** when live UI has empty mandatory options or disabled submit.
+- **4-Eyes Maker-Checker (global):** for Save / Create / Edit / Delete-Deactivate / Activate cases, generated scripts must assert pending 4-Eyes request behaviour (not immediate source-module apply). When Excel opens Review, assert **Business Justification** and **Current Value / Proposed Value** (Create → Current `-`). See `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+- **Audit Trail (global):** when Excel expects audit evidence, scripts must assert Audit Trail list columns and **View Changes** (DATA STATE CHANGE when applicable) — not only audit page visibility. See `.cursor/rules/audit-trail-mandatory.mdc`.
 - Counting 131 titles with stub bodies is **not** Done. Orchestrator must run `npm run qa:detect-smoke-stubs` (and `qa:verify-completion`) before Stage 5b / gate Passed.
 - Do **not** use bulk “expand” scripts that stamp the same navigate+title body onto every TC.
 - Gate check `noSmokeStubSpecs` must be true — mechanical script exit 1 blocks Done even if Playwright reports 100% passed.
@@ -276,13 +288,12 @@ Also record: `pipelineMode` (`create`|`reconcile`), optional `tcDeltaReportPath`
 - When handing off to the generator, set the target file path to that single module spec and **append** new `test()` blocks (`add`) or **replace** matching `test()` bodies (`update`).
 - **reconcile:** remove `test()` blocks whose titles contain retired `Test Case ID:<id>` values.
 
-### Authentication (temporary — login bypassed)
+### Authentication (session login required)
 
-- **Do not** require `EMAIL` / `PASSWORD` in `.env`.
-- **Do not** add login/fill-credential steps in generated or executed flows.
-- Navigate with `testData.baseUrl` / page-object open helpers only (session/auth treated as already available or bypassed).
-- Do **not** block Stage 4/5 solely because credentials are missing.
-- When the user later says login is implemented, re-enable credential-based login in agents/docs at that time.
+- **Require** `EMAIL` / `PASSWORD` in `.env` (default user `QAUSER2`). Sign in via `tests/helpers/aml-login.ts`; never hard-code the password.
+- Session login applies to **every** module — never treat login as bypassed and never ask the user to re-enable it.
+- Missing credentials **is** a Stage 4/5 live-UI blocker when Command Center shows the login form.
+- **Do not generate or execute negative/multi-role authentication cases** unless `QA_INCLUDE_AUTH_CASES=1`: unauthenticated URL access, login/sign-in denial, session expiry, and unauthorized-role checks. Excel marks them `Partial - Authentication (automate only when QA_INCLUDE_AUTH_CASES=1)`; normalize excludes them by default.
 
 ### Live UI mandatory (generation)
 
@@ -290,6 +301,11 @@ Also record: `pipelineMode` (`create`|`reconcile`), optional `tcDeltaReportPath`
 - **100% live-UI gate:** every eligible UI case must have live evidence for its real module route, controls/actions, and expected-result target before its script is counted as generated.
 - The generation manifest must record `eligibleUiCaseIds`, `liveUiValidatedCaseIds`, `liveUiEvidenceByCase`, and `liveUiCoveragePercent`. `liveUiCoveragePercent` must equal **100** and the validated IDs must exactly cover all eligible UI case IDs.
 - Every Excel-eligible ID must be in `eligibleUiCaseIds` **or** `blockedUiCaseIds` with a real `blockedUiReasons` entry. Narrowing the UI set without blocked reasons fails `honestUiEligibility`.
+- When the user explicitly defers an environment-blocked module, move those IDs
+  out of the current eligible UI scope into `blockedUiCaseIds` and
+  `deferredCaseIds`, record the reason per ID, and exclude them from current
+  generation/execution. Strict live-UI auditing covers the remaining active
+  batch IDs only; deferred IDs remain visible for a later resume.
 - Evidence must be per-case (or tiny groups). Reusing one snapshot across many cases fails `noBulkLiveUiEvidence` (default max 3 cases per evidence reference; conflicting `moduleUrl`s on the same ref also fail).
 - **Strict manifest fields per case:** `moduleUrl`, `evidenceReferences[]`, `controlsOrActionsValidated[]` (legacy `snapshotPaths`/`controlsVerified` alone do **not** satisfy the gate). Persist files under `<resultsRoot>/live-ui-evidence/batch-<N>/<TC-ID>.json`.
 - After each batch Generate, run audit before Execute:
@@ -308,9 +324,10 @@ npm run qa:audit-excel-fidelity -- \
 
 Require `passesExcelGate=true` (every case: title aligned, `stepsPct=100`, `expectedPct=100`). Record `excelCoveragePercent=100` in manifest/state when passed. See `.cursor/rules/excel-coverage-mandatory.mdc`.
 - If even one eligible UI case lacks live evidence, generation is **Incomplete/Blocked**. Do not substitute Excel, Figma, mock/heal shells, or inferred locators.
+- **Never use fake screens (HARD):** generator and healer must not inject `healEnsure*Shell` / `HEAL-*` sample grids. Live Clari5 only; missing live UI → Blocked. See `.cursor/rules/no-fake-ui-screens-mandatory.mdc`.
 - Every locator written or reused for the generated cases must be confirmed against the current live DOM using snapshot/evaluate/generate-locator evidence.
 - Figma HTML and Excel are intent/reference only — **never** the sole source of locators marked Final.
-- If live UI is unreachable → status **Blocked** with reason; do **not** claim generation complete from Figma-only work. Credential absence is **not** a blocker while login is bypassed.
+- If live UI is unreachable → status **Blocked** with reason; do **not** claim generation complete from Figma-only work. Credential absence **is** a blocker when the login form is shown.
 - **SPA note:** `BASE_URL` root may show Apache/`It works!` while module paths serve the Clari5 app. Derive and verify each real **module route** from the current case/handoff; never use the host root or a route copied from another module as evidence.
 
 ### Stage 5b — Six-batch generate/execute/heal loop (mandatory)
@@ -328,7 +345,7 @@ npm run qa:split-batches -- --normalized "<resultsRoot>/normalized/test-cases.js
 # reconcile mode (add+update only)
 npm run qa:split-batches -- --normalized "<resultsRoot>/normalized/test-cases.json" --delta "<tc-delta-report.json>" --results-root "<resultsRoot>" --out "<resultsRoot>/batches/batch-plan.json"
 
-npm run qa:prepare-batch -- --batch-plan "<resultsRoot>/batches/batch-plan.json" --batch-index <N>
+npm run qa:prepare-batch -- --normalized "<resultsRoot>/normalized/test-cases.json" --batch-plan "<resultsRoot>/batches/batch-plan.json" --batch-index <N> --milestone <1|2> --out "<resultsRoot>/generation/generation-manifest.json"
 npm run qa:execute-batch -- --batch-plan "<resultsRoot>/batches/batch-plan.json" --batch-index <N>
 npm run qa:prepare-batch-healing -- --execution "<resultsRoot>/execution/batch-<N>/execution-report.json" --batch-index <N>
 npm run qa:merge-batches
@@ -342,6 +359,9 @@ For batch `1..6`, complete these substages before asking to start the next batch
 3. Verify every assigned ID was generated and report: `Batch N generated: <actual>/<assigned>`.
 4. Execute only the batch IDs, headless, exactly once. Write
    `results/qa-pipeline/execution/batch-N/execution-report.json` and report Passed/Failed/Blocked/Total.
+   `qa:execute-batch` must ensure Chromium and select
+   `milestone1-chromium`/`milestone2-chromium` from the generation manifest
+   (or an explicit `--project`); never hard-code the wrong milestone project.
 5. Classify failures. Only `automation-defect`, `locator-issue`, and
    `synchronization-issue` are healer-eligible. Product, data, environment,
    requirement, and tooling failures remain visible and are not edited.
@@ -614,12 +634,13 @@ The **parent orchestrator** (this agent or the parent chat) must:
 - Failed/Blocked cases remain visible after the one permitted batch heal cycle
 - **One spec file per module** under `tests/milestone2/` (or `tests/milestone1/` when Stage 0 `milestone=1`) — never one file per TC
 - Derive module names, case IDs, target specs, routes, and report sections from the current Excel/normalized/manifest artifacts; never reuse module-specific executable defaults from an earlier run
-- **Login bypassed** until user explicitly asks to enable `EMAIL`/`PASSWORD` auth in agents
+- **Session login required** via `.env` `EMAIL`/`PASSWORD` and `aml-login` for every module — never treat login as bypassed
 - Generate **100% of the generate scope** — create: all eligible Excel cases; reconcile: all add+update IDs — no POC/subset cutoffs
 - Generate UI automation with **100% live-application evidence coverage** for every eligible UI case **in the generate scope**
 - After each batch generation, auto-run only that batch and report counts before healing and after changed-case verification
 - After each batch is **fully** complete (batches 1–5), show Passed/Failed counts and **ask** before starting the next batch; after batch 6 continue to gate
 - Script generation locators must come from **live UI** exploration (Figma/Excel assist only)
+- **Never inject fake/heal sample screens** (`healEnsure*Shell`, `HEAL-*` rows) — fail or Blocked if live Clari5 is not on screen (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
 - **Always** maintain `<resultsRoot>/final/state.json` and **auto-resume** from it after death/stall/abort **within the current batch** — between batches, wait for explicit user approval (`awaiting_batch_approval`)
 - **Single MCP owner** for Generate — never parent+child concurrent Playwright MCP; default Generate in-parent; checkpoint every ≤10 cases / module
 - **reconcile:** remove retired TC `test()` blocks; do not regenerate `keep` IDs; require `deltaFullyApplied` + `noRetiredCaseTests` at the gate
@@ -635,9 +656,10 @@ These rules apply automatically on every `Approve Excel` / QA pipeline run. **Do
 3. Writing `plannedForGeneration` less than the generate-scope count, or shipping a POC subset.
 4. Creating one `.spec.ts` per TC (`<test-case-id>.spec.ts`).
 5. Fabricating `playwrightExitCode` / pass/fail totals that do not match a real run.
-6. Blocking solely because `EMAIL`/`PASSWORD` are unset (login is bypassed until user enables auth).
+6. Ignoring missing `EMAIL`/`PASSWORD` when Command Center shows login (credentials are required; that is a real Blocked, not a bypass).
 7. Marking generation Final when any generate-scope eligible UI case lacks live route/control/action evidence.
 8. Counting mock/heal-shell, Figma, or Excel-only evidence toward live-UI coverage.
+8b. Injecting fake/heal sample screens (`healEnsure*Shell`, `HEAL-*` rows) so tests run against sample HTML instead of live Clari5.
 9. **Smoke-stub specs:** Excel interactive steps left as comments while the test only navigates and asserts page title / list shell — especially Create/Add/Save/submit flows. That is false green even if Playwright reports 100% passed.
 10. Running Generate via a background child while the parent (or another child) still owns Playwright MCP — causes mid-run continuity loss / zombie agents.
 11. **reconcile:** leaving retired TC IDs in specs, or regenerating unchanged `keep` IDs as if they were new without need.
@@ -669,8 +691,14 @@ On Excel approval / pipeline trigger:
 ```bash
 npm run qa:detect-smoke-stubs -- \
   --excel "<excelPath>" \
-  --specs "<moduleSpec1>,<moduleSpec2>,..."
+  --specs "<moduleSpec1>,<moduleSpec2>,..." \
+  --case-ids "<active batch case IDs>"
 ```
+
+Use the same active `--case-ids` scope as the Excel-fidelity audit when modules
+are explicitly deferred. NFR fidelity scoring recognizes performance, security,
+accessibility, responsive-layout, audit, masking, browser, and read-only
+assertions implemented through existing Milestone page objects.
 
 2. Run completion verifier (includes smoke-stub check):
 

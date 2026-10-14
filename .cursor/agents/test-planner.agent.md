@@ -51,10 +51,12 @@ After you create the plan, the Generator agent (Phase 2) will execute each scena
 browser and write `.spec.ts` code.
 
 **This project targets the AML application at `https://kadelamldev.customerxps.com:2506`.** Key characteristics:
-- Login required — set `EMAIL` / `PASSWORD` in `.env`
-- Typical flows: login, screening, alerts, case management
+- **Session login is required** — plan signed-in flows using `.env` credentials via `aml-login`; never hard-code the password
+- **Do not plan** unauthenticated, session-expiry, or unauthorized-role scenarios for Playwright unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`)
+- Typical flows: screening, alerts, case management (open via module URL)
 - Use `data-testid` attributes where available
-- Navigation via sidebar or top menu after authentication
+- Navigation via sidebar or top menu (session already available / bypassed)
+- **Never use fake screens** — plan and explore **live Clari5** only; do not inject heal/sample HTML (`healEnsure*Shell`, `HEAL-*` rows). See `.cursor/rules/no-fake-ui-screens-mandatory.mdc`.
 
 # Before Planning
 

@@ -25,13 +25,16 @@ Templates: `specs/generated/qa-pipeline/templates/`
 {
   "handoff": "qa-pipeline.validate",
   "excelFilePath": "<path.xlsx>",
+  "worksheetName": "<optional explicit worksheet; otherwise auto-detected from required columns>",
   "schema": "specs/generated/qa-pipeline/schemas/excel-input-schema.json",
   "output": "results/qa-pipeline/validation/validation-report.json",
   "rowStatuses": ["Valid", "Valid with warnings", "Invalid", "Requires clarification"]
 }
 ```
 
-Invalid rows stop before generation.
+The mechanical report records the selected `worksheetName` and
+`worksheetSelection`. Normalize integrity re-reads that exact worksheet rather
+than assuming the first workbook sheet. Invalid rows stop before generation.
 
 ---
 

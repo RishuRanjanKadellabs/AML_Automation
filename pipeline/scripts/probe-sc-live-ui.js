@@ -6,18 +6,18 @@ require("dotenv").config();
   const context = await browser.newContext({ ignoreHTTPSErrors: true });
   const page = await context.newPage();
   const base = (process.env.BASE_URL || "https://kadelamldev.customerxps.com:2506").replace(/\/$/, "");
-  const email = process.env.EMAIL || "";
-  const password = process.env.PASSWORD || "";
+  const email = process.env.AML_USERNAME || process.env.EMAIL || "";
+  const password = process.env.AML_PASSWORD || process.env.PASSWORD || "";
 
-  await page.goto(`${base}/`, { waitUntil: "domcontentloaded", timeout: 60000 });
-  console.log("root", page.url(), (await page.locator("body").innerText()).slice(0, 80).replace(/\n/g, " "));
+  await page.goto(`${base}/clari5-cc/`, { waitUntil: "domcontentloaded", timeout: 60000 });
+  console.log("cc", page.url(), (await page.locator("body").innerText()).slice(0, 80).replace(/\n/g, " "));
 
-  const passInput = page.locator("input[type=password]").first();
+  const passInput = page.locator('input[name="password"]').first();
   if (await passInput.isVisible().catch(() => false)) {
-    const loginInput = page.locator("input[type=email], input[name=username], input[name=email], input[type=text]").first();
+    const loginInput = page.locator('input[name="username"]').first();
     await loginInput.fill(email);
     await passInput.fill(password);
-    await page.getByRole("button", { name: /sign in|log in|login|submit/i }).first().click().catch(async () => {
+    await page.getByRole("button", { name: /^login$/i }).first().click().catch(async () => {
       await page.keyboard.press("Enter");
     });
     await page.waitForTimeout(3000);

@@ -64,6 +64,7 @@ scripts. You do **not** replace or edit the protected Playwright agents.
 3. On **behaviour / expected-result** conflict: **FSD wins**. Log Figma-only items as assumptions / clarifications — never invent FSD requirements from HTML alone.
 4. On **how to click through the UI**: **follow this run’s Figma HTML** (`html-inventory.json`). Do not invent control names, and do **not** assume another module’s flows (e.g. do not carry “create template” / “add field” patterns into a different FSD/Figma pair).
 5. Do not invent APIs, credentials, or business outcomes not supported by FSD.
+6. **Session login is always required** (all modules). Keep unauthenticated / unauthorized-role / session-expiry / multi-role RBAC cases in Excel if the FSD requires them, but set **Automable** to `Partial - Authentication (automate only when QA_INCLUDE_AUTH_CASES=1)`. Never write “login bypassed”. Signed-in module flows are fully Automable. See `.cursor/rules/authentication-bypass-mandatory.mdc`.
 
 # Canonical input / output roots
 
@@ -563,6 +564,8 @@ During **S0.2** (`qa-figma-html-inventory`) and **S0.4** (`qa-usecase-design-fro
 - Every **Save / primary action** use case on a sub-tab must depend on the use case that opens that tab (from Figma).
 - `preconditions` must be **testable** (e.g. “User is on Category Weights tab with default weights loaded”) — not vague “system is configured”.
 - When a flow is inherently multi-step, prefer **one happy-path use case** whose steps cover the full Figma chain; split validations into separate use cases that **reuse the same preconditions** or reference the happy-path dependency.
+- **4-Eyes Maker-Checker (global — do not wait for user reminder):** every Save / Create / Edit / Delete-Deactivate / Activate use case must model pending approval. Expected outcomes: request in **4-Eyes / Pending Approvals**; source module unchanged until Approve; on Review, **Business Justification** = maker text; **Current Value / Proposed Value** per `.cursor/rules/maker-checker-4eyes-mandatory.mdc` (Create → Current `-`, Proposed = all create fields with names). UI reference: `docs/reference/maker-checker-4eyes-approval.png`.
+- **Audit Trail (global — do not wait for user reminder):** every auditable action must be expected in **Audit Trail / Audit Log** with list columns and **View Changes** (DATA STATE CHANGE when field-level changes exist) per `.cursor/rules/audit-trail-mandatory.mdc`. UI: `docs/reference/audit-trail-list.png`, `docs/reference/audit-trail-view-changes.png`.
 
 ## Excel writing requirements (Preconditions + Test Steps)
 
@@ -574,6 +577,8 @@ When mapping use cases → Excel rows (`qa-excel-testcase-generation`):
 2. **Validation / negative TCs** on a screen: Preconditions **must** name the screen/tab state (from Figma labels) and reference that the happy-path setup exists or was performed.
 3. **Forbidden:** validation TCs with empty Preconditions when they assume the user is already on a specific tab/screen without prior steps in the same TC.
 4. On **reconcile**, audit existing rows for missing chain evidence; classify as **`update`** and add/revise Preconditions or prepend navigation steps.
+5. **Mutating TCs (Save/Create/Edit/Delete-Deactivate/Activate):** Test Steps and Expected Result **must** include maker-checker pending behaviour (queue + Review fields) unless FSD exempts the action. Do **not** claim the source module immediately shows the new state. See `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+6. **Audit Trail:** for auditable actions (and dedicated audit TCs), Steps/Expected must cover Audit Trail list evidence and **View Changes** detail fields — not only that the audit page opens. See `.cursor/rules/audit-trail-mandatory.mdc`.
 
 ## Reconcile after independent audit (optional input)
 
@@ -690,6 +695,7 @@ Scan **all** Excel rows for forbidden placeholder phrases, for interactive flows
 - Never modify protected Playwright agent files (planner/generator/healer/executors); `qa-automation-pipeline` may be updated only when the user explicitly authorizes agent edits for this reconcile feature
 - Mask secrets/PII in logs
 - **Never hardcode another module’s flow or button names** — discover flows from this run’s Figma + FSD only
+- **Never tell QA/generator to inject fake/heal sample screens** (`healEnsure*Shell`, `HEAL-*` rows) — live Clari5 only after Approve Excel (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
 - **Never deliver bundled / multi-intent test cases** (see Test case design above)
 - **Never set `AwaitingReview` when `fsd:validate-atomicity` fails** — gate must be `BlockedAtomicity`
 - **Never read other Excel workbooks on create mode** — FSD + Figma + use-cases only

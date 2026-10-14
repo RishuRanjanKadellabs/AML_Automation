@@ -1,0 +1,24 @@
+---
+description: Never inject fake/heal sample screens — tests must stay on live Clari5 only.
+alwaysApply: true
+---
+
+# Never use fake screens
+
+Playwright tests and agents must use the **live Clari5 application** only.
+
+Heal helpers that inject sample HTML (`healEnsure*Shell`, `HEAL-*` rows, “Sample Mobile Number”, Figma mock grids) are **forbidden as a fallback**. If live UI is missing or locators do not match, **fail or Blocked** — do not draw a fake page.
+
+## Must
+
+- Navigate to the real module URL under `BASE_URL` (for example `/kyc/reference-data-registry/instruments`).
+- Wait for live chrome (sidebar, tabs, real grid columns such as ENROLLMENT ID).
+- If the live grid is not there, throw; leave the product defect or environment blocker visible.
+
+## Must not
+
+- Call `healEnsureRdrMasterShell` or any helper that replaces the DOM with sample rows.
+- Overlay a fake screen on top of live Clari5 because `.rdr-layout` / `#tab-mb-mobile` / `MB ID` were missing.
+- Assert masking, SLA, or WCAG against heal/sample text.
+
+Figma HTML and heal helpers may be read as reference only. They must never become the page under test.

@@ -24,6 +24,22 @@ type Customer360ViewMode = "individual" | "corporate" | "pep";
 const fixturePath = path.resolve(__dirname, "../../fixtures/customer-360-view-data.json");
 const fixture: FixtureData = JSON.parse(fs.readFileSync(fixturePath, "utf-8"));
 const viewModeByContext = new WeakMap<BrowserContext, Customer360ViewMode>();
+const liveApiByContext = new WeakMap<BrowserContext, boolean>();
+
+export function setCustomer360LiveApi(context: BrowserContext, enabled: boolean): void {
+  if (enabled) {
+    liveApiByContext.set(context, true);
+    return;
+  }
+  liveApiByContext.delete(context);
+}
+
+export function isCustomer360LiveApi(context: BrowserContext): boolean {
+  if (liveApiByContext.get(context)) {
+    return true;
+  }
+  return process.env.QA_CUSTOMER360_LIVE === "1";
+}
 
 export function setCustomer360ViewMode(context: BrowserContext, mode: Customer360ViewMode): void {
   viewModeByContext.set(context, mode);
@@ -371,7 +387,19 @@ async function unrouteCustomer360Api(context: BrowserContext): Promise<void> {
   await context.unroute("**/api/v1/customer-360/**").catch(() => undefined);
 }
 
+export async function uninstallCustomer360ApiMock(page: Page): Promise<void> {
+  await unrouteCustomer360Api(page.context());
+}
+
+export async function uninstallCustomer360ApiMockOnContext(context: BrowserContext): Promise<void> {
+  await unrouteCustomer360Api(context);
+}
+
 export async function installCustomer360ApiMockOnContext(context: BrowserContext): Promise<void> {
+  if (isCustomer360LiveApi(context)) {
+    await unrouteCustomer360Api(context);
+    return;
+  }
   await unrouteCustomer360Api(context);
   for (const pattern of CUSTOMER360_API_ROUTE_PATTERNS) {
     await context.route(pattern, (route) => fulfillRoute(route, context));
@@ -384,5 +412,8 @@ export async function installCustomer360ApiMock(page: Page): Promise<void> {
 
 export async function resetCustomer360ApiMock(page: Page): Promise<void> {
   await unrouteCustomer360Api(page.context());
+  if (isCustomer360LiveApi(page.context())) {
+    return;
+  }
   await installCustomer360ApiMock(page);
 }

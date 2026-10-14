@@ -24,7 +24,8 @@ Read this section first. It shows **which agent runs when**, **what each agent p
 ### Standard pipeline entry points
 
 1. **FSD + Figma → Excel → scripts** (primary): `fsd-figma-pipeline` with **FSD + Figma required**; existing Excel is **optional** (reconcile if present, create if missing) → **Approve Excel** → `qa-automation-pipeline` (invokes `playwright-test-generator` + `playwright-test-healer` per batch) → specs under `tests/milestoneN/`
-2. **Existing specs → defects**: `execute-raise-defects` → local defect Excel → **Approve defects** → Google Sheet → `defect-regression` when dev marks **Resolved**
+2. **Swagger / API docs (+ NFR) → API Excel**: `api-testcase-pipeline` → OpenAPI-complete Excel plus safe live-UI network enrichment when reachable (`Body Data Source` on every row; sanitized capture manifest) → **Approve Excel** (scripting via `qa-automation-pipeline` only if the user wants that workbook automated)
+3. **Existing specs → defects**: `execute-raise-defects` → local defect Excel → **Approve defects** → Google Sheet → `defect-regression` when dev marks **Resolved**
 
 **Orchestration:** the parent chat invokes named subagents only. If a subagent fails to load, the parent continues orchestration per pipeline checkpoint rules — it must not substitute ad-hoc URL/.docx generation for the Excel pipeline.
 
@@ -51,7 +52,8 @@ Mandatory subagent invocation at each gate. Parent orchestrates only — must in
 | You say | Must invoke |
 |---------|-------------|
 | FSD + Figma work (Excel optional for reconcile) | `fsd-figma-pipeline` |
-| **Approve Excel** | `qa-automation-pipeline` |
+| **Approve Excel** (Stage 0 UI workbook) | `qa-automation-pipeline` |
+| Swagger / API docs (+ NFR) → API Excel | `api-testcase-pipeline` |
 | Run existing spec + defects | `execute-raise-defects` |
 | **Approve defects** | `qa:approve-defects-sync` or `qa:sync-defects-sheet --approved` (upsert + stale prune by default) |
 | Retest Resolved defects | `defect-regression` |
@@ -69,6 +71,7 @@ Execute specs to raise local defects; sync to Google after approval. Regression 
 |-------|------------|--------------|
 | Stage 0 Excel | `.cursor/agents/fsd-figma-pipeline.agent.md` | FSD + Figma → test cases (Excel optional on input) |
 | Coverage audit | `.cursor/agents/fsd-excel-coverage-audit.agent.md` | Independent Excel vs FSD check |
+| API test cases | `.cursor/agents/api-testcase-pipeline.agent.md` | Swagger/OpenAPI (+ optional NFR/FSD) → API Excel |
 | QA pipeline | `.cursor/agents/qa-automation-pipeline.agent.md` | **Approve Excel** → scripts |
 | Execute + defects | `.cursor/agents/execute-raise-defects.agent.md` | Run spec, raise defects |
 | Defect regression | `.cursor/agents/defect-regression.agent.md` | Google Status = Resolved |
@@ -124,9 +127,10 @@ See `pipeline/test-cases/SAMPLE-FORMAT.md` for Excel column layout (when using r
 | **Execute & Raise Defects** | Existing `.spec.ts` / module folder | Local `MilestoneN/Defects/*.xlsx` (Defects + **UI Defects** sheets) for review → Google **Defects** + **UI Defects** tabs only after approval |
 | **FSD + Figma Stage 0** | FSD `.docx` + Figma HTML (optional `*_New` revisions) | Excel in `Milestone1|2/Test Cases/` (create if missing, reconcile if present) + **coverage-matrix.json** + **feature-delta-report.json** + **tc-delta-report.json** (100% gate; Approve → spec sync) |
 | **FSD Excel coverage audit** | Existing Excel + FSD + Figma | Independent audit report + verdict (Pass/Fail/ReviewNeeded) vs writer-claimed 100% |
+| **API test case pipeline** | OpenAPI/Swagger (or Postman) + optional NFR/FSD | API Excel (FR + NFR + Request/Response/Body Data Source) + 100% `api-coverage-matrix.json` + sanitized `live-network-evidence/manifest.json` when UI is reachable |
 | **Generator / Healer** (via QA pipeline batches) | Approved Excel test cases | `.spec.ts` + POM via live UI; healer once per batch for automation failures |
 
-Set `BASE_URL` in `.env` before running tests. **`EMAIL` / `PASSWORD` login is currently bypassed** — do not require credentials or add login steps until the user asks to enable auth.
+Set `BASE_URL`, `EMAIL`, and `PASSWORD` in `.env` before running tests. **Session login is required** on 2506 (`tests/helpers/aml-login.ts`); never hard-code the password. Unauthenticated / session-expiry / unauthorized-role cases stay Partial unless `QA_INCLUDE_AUTH_CASES=1`.
 
 ### AI agents
 
@@ -138,6 +142,7 @@ Set `BASE_URL` in `.env` before running tests. **`EMAIL` / `PASSWORD` login is c
 | **Healer** | Fixes automation/locator failures once per batch | Inside each QA pipeline batch after execute |
 | **Execute & Raise Defects** | Run spec/module → local defect Excel | Ad-hoc on existing specs |
 | **FSD Excel Coverage Audit** | Independent Excel vs FSD/Figma verification | Optional before Approve Excel |
+| **API test case pipeline** | Swagger/API docs + optional NFR → API Excel | User provides swagger URL/file (+ NFR) |
 | **Defect Regression** | Retest **Resolved** defects → Closed/Reopened | After dev marks Resolved |
 
 Every agent run also produces a **Word summary** under `docs/agent-runs/<agent>/`. See `docs/agent-runs/README.md`.
@@ -161,6 +166,7 @@ tests/milestoneN/**/*.spec.ts + POM  →  completion gate  →  defects (if fail
 
 **Handoff rules:**
 - Stage 0 hands off only after **Approve Excel** — invoke `qa-automation-pipeline` (never parent-only script generation).
+- **API Excel** (`api-testcase-pipeline`) keeps OpenAPI as the contract source and, when the AML UI is reachable, enriches only exact method+path matches from safe sanitized browser traffic. Uncaptured rows stay honestly classified as `OpenAPI schema sample` or `Inferred error envelope`; captured rows use `Live UI network capture`. It hands off to `qa-automation-pipeline` only after **Approve Excel** **and** the user wants that workbook scripted (REST API cases may not be UI Playwright).
 - **Generator** reads assigned Excel cases — live UI mandatory; one spec per module.
 - **Healer** runs at most once per batch inside `qa-automation-pipeline` for classified automation failures only.
 - Healer fixes locators, timing, and navigation — **never changes test intent or business logic.**
@@ -174,7 +180,9 @@ tests/milestoneN/**/*.spec.ts + POM  →  completion gate  →  defects (if fail
 |----------|-------|
 | Application | AML system at `https://kadelamldev.customerxps.com:2506` |
 | Default env | `dev` (see `tests/fixtures/environments.json`) |
-| Authentication | **Bypassed for now** — do not require `EMAIL` / `PASSWORD`; navigate via `BASE_URL` only until user enables login |
+| Authentication | **Enabled on 2506** — Command Center `/clari5-cc/login` via `EMAIL`/`PASSWORD` in `.env` (default user `QAUSER2`); do **not** script unauthenticated / session-expiry / unauthorized-role cases unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`) |
+| Maker-Checker | **4-Eyes enabled** — Save / Create / Edit / Delete-Deactivate / Activate go to Pending Approvals; source module updates only after Checker Approve. Current vs Proposed Value + Business Justification rules in `.cursor/rules/maker-checker-4eyes-mandatory.mdc` (UI: `docs/reference/maker-checker-4eyes-approval.png`) |
+| Audit Trail | **Every action logged** in Administration → Audit Trail / Audit Log (Date & Time, Module, User ID, Source IP, Action, Reference ID, Reason/Remarks, **View Changes** with DATA STATE CHANGE). See `.cursor/rules/audit-trail-mandatory.mdc` (UI: `docs/reference/audit-trail-list.png`, `docs/reference/audit-trail-view-changes.png`) |
 | Seed file | `tests/seed.spec.ts` |
 | Test case input | Excel `.xlsx` in `pipeline/test-cases/` |
 
@@ -183,7 +191,8 @@ tests/milestoneN/**/*.spec.ts + POM  →  completion gate  →  defects (if fail
 ```env
 ENV=dev
 BASE_URL=https://kadelamldev.customerxps.com:2506
-# EMAIL / PASSWORD — not required while login is bypassed
+EMAIL=QAUSER2
+PASSWORD=
 ```
 
 ---
@@ -272,8 +281,14 @@ Seed file defaults to `tests/seed.spec.ts`.
 - Follow file creation order: **spec → locator → page object**
 - Follow **locator priority** (see above)
 - **Search existing code before creating anything new** (see Framework Reuse Rule)
-- **Always explore the live application via MCP before generating or healing locators/POM** — open the real module URL, snapshot, then write selectors. Figma/Excel/heal shells are secondary. If live UI is unreachable, mark **Blocked** with reason; do not silently skip (see `.cursor/rules/live-ui-mandatory-for-scripting.mdc`)
+- **Always explore the live application via MCP before generating or healing locators/POM** — open the real module URL, snapshot, then write selectors. Figma/Excel/heal shells are secondary. **Never inject fake/heal sample screens** (`healEnsure*Shell`, `HEAL-*` rows). If live UI is unreachable, mark **Blocked** with reason; do not silently skip (see `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, `.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
+- **Unauthenticated / session-expiry / unauthorized-role cases stay out of Playwright** unless the user asks or sets `QA_INCLUDE_AUTH_CASES=1`. Session login on 2506 is required (`tests/helpers/aml-login.ts`). See `.cursor/rules/authentication-bypass-mandatory.mdc`.
+- **4-Eyes Maker-Checker on all mutating actions:** Save / Create / Edit / Delete-Deactivate / Activate submit a pending request; do not expect the source module to reflect the change until Checker Approve. When reviewing a request, assert **Business Justification** (maker text) and **Current Value / Proposed Value** (Create → Current `-`, Proposed = all create fields with names). See `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+- **Audit Trail on every action:** mutating and other auditable actions must appear in **Audit Trail / Audit Log** with list columns (Date & Time, Module, User ID, Source IP, Action, Reference ID, Reason/Remarks) and **View Changes** detail (including **DATA STATE CHANGE** when field-level changes exist). See `.cursor/rules/audit-trail-mandatory.mdc`.
 - **100% live evidence whenever Generator or Healer is invoked:** Generator must live-validate every eligible UI case; Healer must capture pre/post live evidence for every case it changes, always on the correct module route. Representative subsets and stale/unrelated browser pages do not count.
+- Explicitly user-deferred environment-blocked IDs remain reported in
+  `blockedUiCaseIds`/`deferredCaseIds` with reasons and are excluded from the
+  current generation, execution, and strict live-UI denominator until resumed.
 - **Single MCP owner for live Generate/Heal:** only one session may drive Playwright MCP for a run. QA pipeline Generate defaults to the parent/orchestrator; do not parent+child concurrent `browser_*` (see `qa-automation-pipeline` Single MCP owner rules).
 
 ### Must not do
@@ -281,21 +296,29 @@ Seed file defaults to `tests/seed.spec.ts`.
 - Use `page.waitForTimeout()` or other hard waits
 - Use `test.skip()`, `test.fixme()`, `test.only()`, `describe.skip()`, `describe.only()`
 - Wrap actions in manual retry loops — use Playwright config retries instead
-- Add login/authentication steps — **login is bypassed**; do not fill credentials until the user asks to enable auth
+- Hard-code login passwords in specs — use `.env` + `tests/helpers/aml-login.ts` for 2506 Command Center
+- Generate or restore **unauthenticated / session-expiry / unauthorized-role** tests unless the user asked or set `QA_INCLUDE_AUTH_CASES=1` (see `.cursor/rules/authentication-bypass-mandatory.mdc`)
 - Create **one `.spec.ts` per test case** — use **one `.spec.ts` per Excel module** under `tests/milestone2/` (Milestone1 pattern)
 - Commit secrets or `.env` contents
 - Duplicate page objects, locators, or helpers that already exist
 - **Skip live UI exploration** for scripting or healing when the app is reachable
+- Inject fake/heal sample screens (`healEnsure*Shell`, `HEAL-*` / “Sample …” grids) over live Clari5 — fail or Blocked instead
 - Finalize locators from Figma/docs/heal shells alone without a live snapshot of that screen
 - Drive Playwright MCP from parent and a background Generate/Heal child at the same time
+- Treat Save / Create / Edit / Delete-Deactivate / Activate as immediately applied in the source module — changes pend in **4-Eyes** until Checker Approve (`.cursor/rules/maker-checker-4eyes-mandatory.mdc`)
+- Omit **Audit Trail** evidence for auditable actions when Excel/FSD expects logging — every action must be assertable in Audit Trail / View Changes (`.cursor/rules/audit-trail-mandatory.mdc`)
 
 ### Environment variables (`.env`)
 | Variable | Purpose |
 |----------|---------|
 | `ENV` | Selects environment block in `environments.json` (default: `production`) |
 | `BASE_URL` | Overrides environment `baseUrl` |
+| `EMAIL` / `AML_USERNAME` | 2506 Command Center user id (default `QAUSER2`) |
+| `PASSWORD` / `AML_PASSWORD` | 2506 Command Center password (gitignored `.env` only) |
+| `PW_SKIP_AML_LOGIN` | Set `1` to disable auto-login |
 | `PW_WORKERS` | Parallel worker count |
 | `PW_SKIP_ALLURE_REPORT` | Set `1` to skip auto Allure after test run |
+| `QA_INCLUDE_AUTH_CASES` | Set `1` only when the user wants unauthenticated / expiry / RBAC cases in Playwright |
 
 ---
 
@@ -581,6 +604,7 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 - Create duplicate page objects or locators — extend existing ones
 - Keep healing until the suite is green (hides product defects)
 - Apply a **forced healer**: weaken/replace Excel expected results, drop asserts, soft `or` fallbacks that pass without the required outcome, or unrelated POM helpers — leave Failed/Blocked instead (see `.cursor/skills/qa-self-healing-automation` and `qa-assertion-quality-review`)
+- Inject fake/heal sample screens (`healEnsure*Shell`, `HEAL-*` rows) over live Clari5 — fail or Blocked instead (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
 
 ---
 
@@ -598,10 +622,14 @@ Run `npm run lint` and `npm run pw:run` to validate. Hand off failures to Healer
 | `npm run fsd:capture-ui-baseline -- --results-key "<key>" --spec <path>` | Capture Stage 0 UI screenshot baselines for execute visual diff |
 | `npm run fsd:audit-coverage -- --excel <path> [--milestone N] [--fsd <path>] [--figma <path>]` | Independent mechanical audit of Excel vs FSD/Figma |
 | `npm run fsd:audit-report -- --results-key "<module>"` | Render audit markdown + agent run DOCX |
-| `npm run qa:parse-excel` | Mechanical Excel validate → `<resultsRoot>/validation/validation-report.json` |
+| `npm run qa:parse-excel -- --excel <path> [--worksheet <name>] --results-root <root>` | Mechanical Excel validate; auto-selects the first sheet with all required test-case columns and records the selection |
+| `npm run qa:test-worksheet-selection` | Verify multi-sheet parser selection and normalize-integrity sheet consistency |
+| `npm run qa:test-automation-scope` | Verify Load/Infra and Partial cases stay outside default Playwright batches |
 | `npm run qa:normalize` | Mechanical normalize of eligible rows → `normalized/test-cases.json` |
-| `npm run qa:assert-normalize` | Fail if normalize is partial/fabricated vs Excel/validation/delta |
-| `npm run qa:detect-smoke-stubs` | Fail if flow Excel cases are comment-only smoke shells |
+| `npm run qa:assert-normalize` | Fail if normalize is partial/fabricated or does not align with the validation-selected worksheet |
+| `npm run qa:prepare-batch -- --normalized <path> --batch-plan <path> --batch-index <N> --milestone <1\|2> --out <manifest>` | Build milestone-aware generator handoffs and reuse existing module specs |
+| `npm run qa:execute-batch -- --manifest <path> --case-ids <ids> --specs <paths> --out <report>` | Ensure Chromium and execute one scoped batch with the manifest milestone's Playwright project |
+| `npm run qa:detect-smoke-stubs -- --excel <path> --specs <paths> [--case-ids <ids>]` | Fail if scoped flow Excel cases are comment-only smoke shells; use `--case-ids` for batch/deferred-module scope |
 | `npm run qa:generate-defects -- --execution <report> --milestone <N>` | Generate failed-module defect workbooks (plain-language gate enforced) |
 | `npm run qa:validate-defect-plain-language -- <defect-rows.json>` | Verify defect rows: no technical terms, no FSD requirement IDs (`BR-xxx`, `NFR-xxx`), valid Feature labels |
 | `npm run qa:execute-raise-defects -- --spec <path>` | Execute a spec/folder; raise **functional** + **UI/cosmetic** local defects (`@.cursor/agents/execute-raise-defects.agent.md`) |

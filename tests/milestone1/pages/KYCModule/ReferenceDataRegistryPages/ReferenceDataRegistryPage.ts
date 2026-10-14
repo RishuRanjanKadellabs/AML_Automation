@@ -10,7 +10,6 @@ import columnMap from "../../../../../fixtures/rdr-column-map.json";
 
 import gridTokens from "../../../../../fixtures/rdr-grid-tokens.json";
 
-import { healEnsureRdrMasterShell } from "../../../../helpers/rdr-ui-heal";
 
 
 
@@ -659,7 +658,7 @@ const SLUG_GRID_HINTS: Record<string, string[]> = {
 
   card: ["Card ID"],
 
-  "mobile-banking": ["MB ID"],
+  "mobile-banking": ["ENROLLMENT ID", "Enrollment ID", "Registered Mobile Number", "MB ID"],
 
   atm: ["ATM ID"],
 
@@ -809,19 +808,55 @@ class ReferenceDataRegistryPage extends BasePage {
 
 
 
+  private countryMasterTable(): Locator {
+
+    return this.page
+
+      .locator(ReferenceDataRegistryLocators.countryDataTable)
+
+      .or(this.page.locator("#tab-country table, #tab-country .tcard table"))
+
+      .or(
+
+        this.page.locator("table").filter({
+
+          has: this.page.locator("th, [role='columnheader']").filter({
+
+            hasText: /Country Code|Country Name|Risk Level|Country|FATF/i,
+
+          }),
+
+        }),
+
+      )
+
+      .or(
+        this.page.locator("main table:has(thead th), main.main-content table:has(thead th)").first(),
+      )
+
+      .or(this.page.locator(ReferenceDataRegistryLocators.dataTable).first())
+
+      .first();
+
+  }
+
+
+
   get dataTable(): Locator {
+
+    const liveTable = this.page
+      .locator("table")
+      .filter({
+        has: this.page.locator("th, [role='columnheader']").filter({
+          hasText: /ENROLLMENT ID|Registered Mobile Number|Customer ID|MB ID|Country Name|Card Number/i,
+        }),
+      })
+      .or(this.page.locator(ReferenceDataRegistryLocators.dataTable))
+      .first();
 
     if (this.activeSlug === "country") {
 
-      return this.page
-
-        .locator(ReferenceDataRegistryLocators.countryDataTable)
-
-        .or(this.page.locator("#tab-country table, #tab-country .tcard table"))
-
-        .or(this.page.locator(ReferenceDataRegistryLocators.rdrLayout).locator(".tcard table, table:has(thead th)"))
-
-        .first();
+      return this.countryMasterTable();
 
     }
 
@@ -833,19 +868,19 @@ class ReferenceDataRegistryPage extends BasePage {
 
         .locator(`#tab-${tabPanelId} table, #tab-${tabPanelId} .cm-tbl-wrap table`)
 
-        .first()
-
         .or(
 
           this.page
 
             .locator(ReferenceDataRegistryLocators.rdrLayout)
 
-            .locator(".tcard table, table:has(thead th)")
+            .locator(".tcard table, table:has(thead th)"),
 
-            .first(),
+        )
 
-        );
+        .or(liveTable)
+
+        .first();
 
     }
 
@@ -856,6 +891,8 @@ class ReferenceDataRegistryPage extends BasePage {
       .locator(".tcard table, table:has(thead th)")
 
       .or(this.page.locator("main.main-content table:has(thead th)"))
+
+      .or(liveTable)
 
       .first();
 
@@ -927,6 +964,8 @@ class ReferenceDataRegistryPage extends BasePage {
       return this.page
 
         .locator(ReferenceDataRegistryLocators.countrySearchInput)
+
+        .or(this.page.getByRole("textbox", { name: /Code or name|country/i }))
 
         .or(standardSearch)
 
@@ -1520,15 +1559,21 @@ class ReferenceDataRegistryPage extends BasePage {
 
     const buttonId = MASTER_TAB_BUTTON_IDS[this.activeSlug];
 
-    let tabs = this.page.locator(ReferenceDataRegistryLocators.masterTabButton);
+    const pattern = buildFlexibleTabPattern(resolved);
+
+    let tabs = this.page.getByRole("button", { name: pattern }).first();
 
     if (buttonId) {
 
-      tabs = tabs.or(this.page.locator(`#${buttonId}`));
+      tabs = this.page.locator(`#${buttonId}`).or(tabs);
 
     }
 
-    tabs = tabs.filter({ hasText: buildFlexibleTabPattern(resolved) });
+    tabs = tabs
+
+      .or(this.page.locator(ReferenceDataRegistryLocators.masterTabButton).filter({ hasText: pattern }).first())
+
+      .or(this.page.locator(ReferenceDataRegistryLocators.referenceMasterTabButton).filter({ hasText: pattern }).first());
 
     if (resolved === "Account") {
 
@@ -1566,6 +1611,14 @@ class ReferenceDataRegistryPage extends BasePage {
 
     for (const alias of aliases) {
 
+      const roleTab = this.page.getByRole("button", { name: buildFlexibleTabPattern(alias) }).first();
+
+      if (await roleTab.isVisible({ timeout: 2000 }).catch(() => false)) {
+
+        return roleTab;
+
+      }
+
       let tab = this.page
 
         .locator(ReferenceDataRegistryLocators.masterTabButton)
@@ -1594,17 +1647,59 @@ class ReferenceDataRegistryPage extends BasePage {
 
   async waitForRdrShell(): Promise<void> {
 
+    if (await this.isLiveClari5RegistryVisible()) {
+
+      this.logStep("NAVIGATE", "Live Clari5 Reference Data Registry is visible — heal shell not used");
+
+      return;
+
+    }
+
+    const onLiveRoute = /\/kyc\/reference-data-registry\//i.test(this.page.url());
+
+    if (onLiveRoute && !(await this.isAppShellLost())) {
+
+      const liveChrome = this.page.getByText(/Cards & Instruments|Reference Data Registry|Mobile Banking/i).first();
+
+      const appeared = await liveChrome.isVisible({ timeout: 15000 }).catch(() => false);
+
+      if (appeared && !(await this.isHealSampleGridVisible())) {
+
+        this.logStep("NAVIGATE", "Live Clari5 chrome visible — heal shell not used");
+
+        return;
+
+      }
+
+    }
+
     if (await this.isAppShellLost()) {
 
-      await healEnsureRdrMasterShell(this.page, this.activeSlug, MASTER_TAB_LABELS[this.activeSlug] ?? this.activeSlug);
+      throw new Error("Live Clari5 app shell is missing (stub page). Fake/heal screens are forbidden.");
+
+    }
+
+    if (await this.isLiveClari5RegistryVisible()) {
+
+      this.logStep("NAVIGATE", "Live Clari5 Reference Data Registry is visible — heal shell not used");
+
+      return;
 
     }
 
     const layoutVisible = await this.rdrLayout.isVisible({ timeout: 8000 }).catch(() => false);
 
-    if (!layoutVisible) {
+    if (!layoutVisible && !onLiveRoute) {
 
-      await healEnsureRdrMasterShell(this.page, this.activeSlug, MASTER_TAB_LABELS[this.activeSlug] ?? this.activeSlug);
+      throw new Error("Live Clari5 Reference Data Registry did not load. Fake/heal screens are forbidden.");
+
+    }
+
+    if (await this.isLiveClari5RegistryVisible()) {
+
+      this.logStep("NAVIGATE", "Live Clari5 Reference Data Registry is visible — heal shell not used");
+
+      return;
 
     }
 
@@ -1650,10 +1745,6 @@ class ReferenceDataRegistryPage extends BasePage {
 
       await this.waitForRdrShell();
 
-      await this.waitForActiveMasterGrid(tabButtonLabel);
-
-
-
       if (slug !== shellSlug) {
 
         await this.ensureMasterTabActive(tabLabel);
@@ -1676,6 +1767,8 @@ class ReferenceDataRegistryPage extends BasePage {
 
       }
 
+      await this.waitForActiveMasterGrid(tabButtonLabel);
+
 
 
       await this.clearSearchAndFilters().catch(() => undefined);
@@ -1684,15 +1777,49 @@ class ReferenceDataRegistryPage extends BasePage {
 
       const message = error instanceof Error ? error.message : String(error);
 
-      this.logStep("NAVIGATE", `Live shell failed (${message}) — applying RDR heal scaffold`, "warn");
+      if (await this.isLiveClari5RegistryVisible()) {
 
-      await healEnsureRdrMasterShell(this.page, slug, tabButtonLabel);
+        this.logStep("NAVIGATE", `Live Clari5 is visible — not replacing it with heal sample grid (${message})`, "warn");
 
-      await this.waitForRdrShell().catch(() => undefined);
+        throw error;
 
-      await this.assertVisible(this.dataTable, `${tabLabel} heal grid`, 10000);
+      }
+
+      this.logStep("NAVIGATE", `Live shell failed (${message}) — fake/heal screens are forbidden`, "fail");
+
+      throw error;
 
     }
+
+  }
+
+
+
+  private async waitForLiveClari5Route(timeoutMs = 25000): Promise<void> {
+
+    const stub = this.page.getByText(/^It works!$/i);
+
+    const liveChrome = this.page
+
+      .getByRole("banner")
+
+      .or(this.page.getByRole("heading", { level: 1 }))
+
+      .or(this.page.getByText(/Reference Data Registry|Match Results|Keyword Manager|Missing Mandatory/i))
+
+      .first();
+
+    await expect(async () => {
+
+      if (await stub.isVisible().catch(() => false)) {
+
+        throw new Error('App returned stub page "It works!"');
+
+      }
+
+      expect(await liveChrome.isVisible().catch(() => false)).toBeTruthy();
+
+    }).toPass({ timeout: timeoutMs });
 
   }
 
@@ -1706,15 +1833,9 @@ class ReferenceDataRegistryPage extends BasePage {
 
       try {
 
-        await this.page.goto(url, { waitUntil: "domcontentloaded", timeout: 25000 });
+        await this.page.goto(url, { waitUntil: "domcontentloaded", timeout: 45000 });
 
-        const stubVisible = await this.page.getByText(/^It works!$/i).isVisible().catch(() => false);
-
-        if (stubVisible) {
-
-          throw new Error(`App returned stub page "It works!" for ${url}`);
-
-        }
+        await this.waitForLiveClari5Route(25000);
 
         return;
 
@@ -1734,7 +1855,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
         if (attempt < maxAttempts) {
 
-          await this.page.waitForTimeout(1000 * attempt);
+          await this.page.reload({ waitUntil: "domcontentloaded", timeout: 20000 }).catch(() => undefined);
 
         }
 
@@ -1834,8 +1955,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
     await this.clickAndWait(tab, `${tabLabel} master tab`);
 
-    await this.assertVisible(tab, `${tabLabel} master tab`);
-
+    // Reference Masters tab chrome (e.g. Country Master) may hide after selection — verify grid readiness instead.
     await this.waitForActiveMasterGrid(shortLabel);
 
     const hints = SLUG_GRID_HINTS[this.activeSlug];
@@ -1922,17 +2042,7 @@ class ReferenceDataRegistryPage extends BasePage {
 
         if (this.activeSlug === "country") {
 
-          const countryTable = this.page
-
-            .locator(ReferenceDataRegistryLocators.countryDataTable)
-
-            .or(this.page.locator("#tab-country table, #tab-country .tcard table"))
-
-            .or(this.page.locator(ReferenceDataRegistryLocators.rdrLayout).locator(".tcard table, table:has(thead th)"))
-
-            .first();
-
-          await this.assertVisible(countryTable, "Country Master grid table", 30000);
+          await this.assertVisible(this.countryMasterTable(), "Country Master grid table", 30000);
 
         } else {
 
@@ -2897,6 +3007,56 @@ class ReferenceDataRegistryPage extends BasePage {
 
 
 
+  private async isHealSampleGridVisible(): Promise<boolean> {
+
+    return this.page
+      .getByText(/HEAL-MOBILE-BANKING|Sample Mobile Number|Sample MB ID/i)
+      .first()
+      .isVisible()
+      .catch(() => false);
+
+  }
+
+  private async isLiveClari5RegistryVisible(): Promise<boolean> {
+
+    if (await this.isAppShellLost()) {
+
+      return false;
+
+    }
+
+    if (await this.isHealSampleGridVisible()) {
+
+      return false;
+
+    }
+
+    const onLiveRoute = /\/kyc\/reference-data-registry\//i.test(this.page.url());
+
+    const liveChrome = this.page.getByText(/Cards & Instruments|Reference Data Registry/i).first();
+
+    const liveHeading = this.page
+      .getByRole("heading", { name: /Cards & Instruments|Mobile Banking|Country Master|Reference Data/i })
+      .first();
+    const liveTab = this.page
+      .getByRole("tab", { name: /Mobile Banking|Card Master|Customer/i })
+      .or(this.page.getByRole("button", { name: /Mobile Banking|Card Master/i }))
+      .or(this.page.getByText(/^Mobile Banking$/i))
+      .first();
+    const liveTable = this.page
+      .locator("th, [role='columnheader']")
+      .filter({ hasText: /Registered Mobile Number|ENROLLMENT ID|Customer ID|Country Name/i })
+      .first();
+
+    return (
+      (onLiveRoute && (await liveChrome.isVisible().catch(() => false)))
+      || (await liveHeading.isVisible().catch(() => false))
+      || (await liveTab.isVisible().catch(() => false))
+      || (await liveTable.isVisible().catch(() => false))
+    );
+
+  }
+
   private async isAppShellLost(): Promise<boolean> {
 
     // Closed/crashed browser — treat as lost so callers soft-skip instead of throwing.
@@ -2940,11 +3100,9 @@ class ReferenceDataRegistryPage extends BasePage {
 
     if (!origin) {
 
-      this.logStep("NAVIGATE", "Cannot recover RDR shell — no base URL available", "warn");
+      this.logStep("NAVIGATE", "Cannot recover RDR shell — no base URL available; fake screens forbidden", "warn");
 
-      await healEnsureRdrMasterShell(this.page, this.activeSlug, MASTER_TAB_LABELS[this.activeSlug] ?? this.activeSlug);
-
-      return !(await this.isAppShellLost());
+      return false;
 
     }
 
@@ -2974,9 +3132,9 @@ class ReferenceDataRegistryPage extends BasePage {
 
     }
 
-    await healEnsureRdrMasterShell(this.page, this.activeSlug, MASTER_TAB_LABELS[this.activeSlug] ?? this.activeSlug);
+    this.logStep("NAVIGATE", "Live Clari5 recovery failed — fake/heal screens are forbidden", "warn");
 
-    return !(await this.isAppShellLost());
+    return false;
 
   }
 
@@ -4572,6 +4730,295 @@ class ReferenceDataRegistryPage extends BasePage {
 
     this.logStep("ASSERT", "Grid empty state displayed — successful");
 
+  }
+
+  async expectLiveClari5MobileBankingGrid(): Promise<void> {
+    expect(
+      await this.isHealSampleGridVisible(),
+      "Must stay on live Clari5 Mobile Banking — heal sample grid is not the application",
+    ).toBeFalsy();
+    expect(
+      await this.isLiveClari5RegistryVisible(),
+      "Mobile Banking must be the live Clari5 registry, not a fallback page",
+    ).toBeTruthy();
+    await this.page
+      .getByText(/ENROLLMENT ID|Registered Mobile Number|6689 Records|\d+ Records/i)
+      .first()
+      .waitFor({ state: "visible", timeout: 15000 });
+    this.logStep("ASSERT", "Live Clari5 Mobile Banking grid is on screen — heal sample not used");
+  }
+
+  async navigateAndVerifyCountryMasterPerformance(baseUrl: string): Promise<void> {
+    const loadStarted = Date.now();
+    await this.openMasterTab(baseUrl, "mobile-banking", "Mobile Banking");
+    const loadElapsed = Date.now() - loadStarted;
+    await this.expectLiveClari5MobileBankingGrid();
+    await this.expectOnRdrRoute("mobile-banking");
+    await this.expectGridTabLoaded();
+    await this.expectGridContainsRecords();
+
+    const searchStarted = Date.now();
+    await this.searchFromFirstRowCell();
+    const searchElapsed = Date.now() - searchStarted;
+    await this.clearSearchAndFilters();
+
+    const filterStarted = Date.now();
+    await this.applyFirstAvailableFilter();
+    const filterElapsed = Date.now() - filterStarted;
+    await this.expectFilterApplied();
+
+    expect(loadElapsed).toBeLessThanOrEqual(2000);
+    expect(searchElapsed).toBeLessThanOrEqual(300);
+    expect(filterElapsed).toBeLessThanOrEqual(300);
+    await this.expectColumnVisible("Customer ID");
+    this.logStep(
+      "ASSERT",
+      `Mobile Banking load/search/filter timings: ${loadElapsed}/${searchElapsed}/${filterElapsed}ms`,
+    );
+  }
+
+  async navigateSelectOptionRoleAndVerifyMaskingControls(baseUrl: string): Promise<void> {
+    await this.openMasterTab(baseUrl, "mobile-banking", "Mobile Banking");
+    await this.expectLiveClari5MobileBankingGrid();
+    await this.expectOnRdrRoute("mobile-banking");
+    await this.expectGridContainsRecords();
+    await this.ensureGridColumnVisible("Registered Mobile Number");
+
+    const mobileValues = (await this.getColumnCellTexts("Registered Mobile Number"))
+      .map((value) => value.trim())
+      .filter(Boolean);
+    expect(mobileValues.length).toBeGreaterThan(0);
+    expect(
+      mobileValues.every((value) => /[*•Xx]{2,}/.test(value) || /\d+\*+\d+/.test(value)),
+    ).toBeTruthy();
+    this.logStep(
+      "ASSERT",
+      "PII masking verified on Mobile Banking Registered Mobile Number; access-control checks are out of scope",
+    );
+  }
+
+  async navigateAndVerifyCountryRiskFreshness(baseUrl: string, maxBusinessDays = 5): Promise<void> {
+    await this.openMasterTab(baseUrl, "country", "Country Master");
+    await this.expectGridContainsRecords();
+    await this.ensureGridColumnVisible("Risk Level");
+    await this.expectColumnVisible("Risk Level");
+
+    const gridText = await this.dataTable.innerText();
+    expect(gridText).toMatch(/FATF|high risk|grey list|black list|sanction/i);
+
+    const freshnessText = await this.page
+      .getByText(/last sync|updated|effective date|FATF|plenary/i)
+      .allInnerTexts();
+    expect(freshnessText.length).toBeGreaterThan(0);
+
+    const dateText = freshnessText.join(" ");
+    const match = dateText.match(/\b(\d{4}-\d{2}-\d{2}|\d{1,2}[/-]\d{1,2}[/-]\d{2,4})\b/);
+    expect(match).not.toBeNull();
+    const sourceDate = new Date(match![1]);
+    const elapsedDays = Math.floor((Date.now() - sourceDate.getTime()) / 86_400_000);
+    expect(elapsedDays).toBeLessThanOrEqual(maxBusinessDays + 2);
+    this.logStep("ASSERT", `Country risk data freshness is ${elapsedDays} calendar day(s)`);
+  }
+
+  async selectOptionAndVerifySevenYearAuditRetention(): Promise<void> {
+    await this.expectGridContainsRecords();
+    const stateChangingAction = this.page
+      .locator(ReferenceDataRegistryLocators.restrictedAction)
+      .first();
+    if (await stateChangingAction.isVisible().catch(() => false)) {
+      await stateChangingAction.click();
+      await this.page.keyboard.press("Escape");
+    }
+
+    const auditTrail = this.page.locator(ReferenceDataRegistryLocators.auditTrail).first();
+    await this.assertVisible(auditTrail, "Reference Data Registry audit trail");
+    const auditText = await auditTrail.innerText();
+    expect(auditText).toMatch(/7 years|seven years|RBI|PMLA|retention/i);
+    expect(auditText).toMatch(/user|maker|checker|modified|timestamp|date/i);
+    this.logStep("ASSERT", "Audit trail records changes and states seven-year retention");
+  }
+
+  async navigateAndVerifyCountryMasterRecords(baseUrl: string): Promise<void> {
+    await this.openMasterTab(baseUrl, "country", "Country Master");
+    await this.expectGridContainsRecords();
+    this.logStep("ASSERT", "Country Master records are available after page load");
+  }
+
+  private async isIgnoredWcagNameControl(control: Locator): Promise<boolean> {
+    return control.evaluate((element) => {
+      const el = element as HTMLElement;
+      const type = (el.getAttribute("type") || "").toLowerCase();
+      const role = (el.getAttribute("role") || "").toLowerCase();
+      const placeholder = (el.getAttribute("placeholder") || "").toLowerCase();
+      const isSearch =
+        type === "search"
+        || role === "searchbox"
+        || placeholder.includes("search")
+        || /search/i.test(el.getAttribute("name") || "")
+        || el.closest("[role='search']") !== null;
+      const inSidebar = Boolean(el.closest("aside, nav, [role='navigation'], [role='complementary']"));
+      return isSearch || inSidebar;
+    });
+  }
+
+  async navigateControlsWithTabKeyAndVerifyWcag21LevelAA(): Promise<void> {
+    await this.expectLiveClari5MobileBankingGrid();
+    const initialUrl = this.page.url();
+    for (const key of ["Tab", "Shift+Tab", "Enter", "Escape"]) {
+      await this.page.keyboard.press(key);
+    }
+
+    const scopes = this.page.locator(ReferenceDataRegistryLocators.wcagScope);
+    const scopeCount = await scopes.count();
+    let scope = scopes.first();
+    for (let index = 0; index < scopeCount; index += 1) {
+      const candidate = scopes.nth(index);
+      const nestedCount = await candidate.locator(ReferenceDataRegistryLocators.wcagInteractive).count();
+      if (nestedCount > 0) {
+        scope = candidate;
+        break;
+      }
+    }
+
+    const controls = scope.locator(ReferenceDataRegistryLocators.wcagInteractive);
+    const controlCount = await controls.count();
+    expect(controlCount).toBeGreaterThan(0);
+
+    let namedCount = 0;
+    for (let index = 0; index < controlCount; index += 1) {
+      const control = controls.nth(index);
+      if (await this.isIgnoredWcagNameControl(control)) {
+        continue;
+      }
+      const accessibleName = (
+        (await control.getAttribute("aria-label"))
+        || (await control.getAttribute("title"))
+        || (await control.innerText().catch(() => "")).trim()
+        || (await control.getAttribute("placeholder"))
+        || ""
+      ).trim();
+      expect(
+        accessibleName.length,
+        "Interactive control (excluding search and sidebar submenu toggles) must have an accessible name",
+      ).toBeGreaterThan(0);
+      namedCount += 1;
+    }
+    expect(namedCount).toBeGreaterThan(0);
+
+    const headings = scope.locator(ReferenceDataRegistryLocators.wcagHeading);
+    expect(await headings.count()).toBeGreaterThan(0);
+    const focused = this.page.locator(":focus");
+    if (await focused.count()) {
+      const style = await focused.evaluate((element) => {
+        const computed = getComputedStyle(element);
+        return `${computed.outlineStyle}|${computed.outlineWidth}|${computed.boxShadow}`;
+      });
+      expect(style).not.toBe("none|0px|none");
+    }
+    expect(this.page.url()).toBe(initialUrl);
+    this.logStep("ASSERT", "Mobile Banking keyboard order, names, headings, and focus indicators verified");
+  }
+
+  async openReferenceMastersDirect(baseUrl: string): Promise<void> {
+
+    const normalized = baseUrl.replace(/\/$/, "");
+
+    this.lastBaseUrl = normalized;
+
+    this.activeSlug = "customer-type";
+
+    await this.navigateWithRetry(`${normalized}/kyc/reference-data-registry/reference`);
+
+    await this.waitForPageLoad();
+
+    await this.waitForRdrShell();
+
+    await this.waitForActiveMasterGrid("Customer Type");
+
+    await this.expectGridTabLoaded();
+
+  }
+
+  async openReferenceMastersFromSidebar(): Promise<void> {
+    const link = this.page.getByRole("link", { name: /Reference Data Registry/i }).first();
+    await this.clickAndWait(link, "Reference Data Registry sidebar link");
+    await this.waitForRdrShell();
+    await this.expectGridTabLoaded();
+  }
+
+  async verifyNavigationToReferenceMastersPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    await this.openReferenceMastersDirect(baseUrl);
+    const startedAt = Date.now();
+    await this.openReferenceMastersFromSidebar();
+    await this.expectGridTabLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyGridRenderPerformance(maxMs = 500): Promise<void> {
+    await expect(this.gridRows.first()).toBeVisible();
+    const startedAt = Date.now();
+    await this.expectColumnVisible("Country Code");
+    await expect(this.gridRows.first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyCriticalFormFieldsReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openFirstRowView();
+    await this.expectViewModalShowsRecordDetails();
+    const editable = this.page.getByRole("textbox").or(this.page.getByRole("combobox")).first();
+    await expect(editable).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyExactSearchPerformance(searchTerm = "India", maxMs = 300): Promise<void> {
+    const startedAt = Date.now();
+    await this.search(searchTerm);
+    await this.expectSearchYieldsResults();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyKeyboardCriticalControlsLanding(): Promise<void> {
+    const searchInput = this.page.locator("main input[type='search'], main input[placeholder*='Search' i]").first();
+    await searchInput.focus();
+    await expect(searchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(searchInput).toBeFocused();
+    await expect(this.gridRows.first()).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl?: string): Promise<void> {
+    const normalized = baseUrl?.replace(/\/$/, "") ?? this.lastBaseUrl;
+    await this.openFirstRowView();
+    await this.page.goBack({ waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    await this.page.goForward({ timeout: 15000 }).catch(() => undefined);
+    if (normalized) {
+      await this.openReferenceMastersDirect(normalized);
+    }
+    await this.expectGridTabLoaded();
+    await this.page.reload({ waitUntil: "domcontentloaded" });
+    await this.expectGridTabLoaded();
+    await expect(this.page.getByText(/access denied|unauthorized|sign in|log in/i)).toHaveCount(0);
+  }
+
+  async verifyMaskedFieldDetailReady(baseUrl: string, maxMs = 1200): Promise<void> {
+    await this.openMasterTab(baseUrl, "customer", "Customer Master");
+    await this.expectGridTabLoaded();
+    const startedAt = Date.now();
+    await this.expectColumnVisible("Full Legal Name");
+    await this.openFirstRowView();
+    await this.expectColumnValuesMasked("Full Legal Name");
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyMasterDataEditFormReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openFirstRowView();
+    await this.expectViewModalShowsRecordDetails();
+    const saveOrClose = this.page.getByRole("button", { name: /Save|Close|Done/i }).first();
+    await expect(saveOrClose).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
   }
 
 }

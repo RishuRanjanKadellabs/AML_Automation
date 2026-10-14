@@ -1,6 +1,7 @@
 import type { BrowserContext, Page, Route } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 export type KmShellMode = "default" | "empty";
 
@@ -393,10 +394,12 @@ async function fulfillKeywordManagerRoute(route: Route): Promise<void> {
 }
 
 export async function installKeywordManagerPageHeal(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "installKeywordManagerPageHeal")) { return; }
   await page.route(/\/configuration\/keyword-manager(\/?(\?.*)?)?$/i, fulfillKeywordManagerRoute);
 }
 
 export async function installKeywordManagerHealOnContext(context: BrowserContext): Promise<void> {
+  if (skipHealInjectionForContext(context, "installKeywordManagerHealOnContext")) { return; }
   if (contextRouteInstalled) {
     return;
   }
@@ -405,6 +408,7 @@ export async function installKeywordManagerHealOnContext(context: BrowserContext
 }
 
 export async function healDismissKmOverlays(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healDismissKmOverlays")) { return; }
   await page.evaluate(() => {
     document
       .querySelectorAll("[role='dialog'], .add-keyword, .maker-checker, .approval-queue, .export-menu, .unsaved-confirm")
@@ -414,6 +418,7 @@ export async function healDismissKmOverlays(page: Page): Promise<void> {
 }
 
 export async function healApplyRbacShell(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healApplyRbacShell")) { return; }
   if (!VIEWER_RESTRICTED_TESTS.has(testId) && !CHECKER_ROLE_TESTS.has(testId) && !MAKER_SELF_APPROVAL_BLOCK_TESTS.has(testId)) {
     return;
   }
@@ -477,6 +482,7 @@ export async function healApplyRbacShell(page: Page, testId: string): Promise<vo
 }
 
 export async function healEnsureFullKmShell(page: Page, testId: string, mode: KmShellMode = "default"): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureFullKmShell")) { return; }
   const shellMode = mode === "empty" || testId === "KM-TC-007" ? "empty" : "default";
   const currentUrl = page.url();
   if (/\/configuration\/keyword-manager/i.test(currentUrl)) {
@@ -504,6 +510,7 @@ export async function healEnsureFullKmShell(page: Page, testId: string, mode: Km
 }
 
 export async function healShowKmModal(page: Page, modalId: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowKmModal")) { return; }
   const idMap: Record<string, string> = {
     "add-category": "modal-add-category",
     "category-controls": "modal-category-controls",
@@ -535,6 +542,7 @@ export async function healShowKmModal(page: Page, modalId: string, testId: strin
 }
 
 export async function healApplyExcelTestContext(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healApplyExcelTestContext")) { return; }
   await healDismissKmOverlays(page);
   await healApplyRbacShell(page, testId);
 }
@@ -545,11 +553,13 @@ export async function healInjectKeywordManagerShell(
   mode: KmShellMode = "default",
   activeTab = "Active",
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectKeywordManagerShell")) { return; }
   await healEnsureFullKmShell(page, testId, mode);
   await healSetActiveKmTab(page, activeTab, testId);
 }
 
 export async function healSetActiveKmTab(page: Page, tabName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healSetActiveKmTab")) { return; }
   await page.evaluate((name) => {
     const tabs = Array.from(document.querySelectorAll("[role='tab'], .tab-item, nav[role='tablist'] button"));
     for (const tab of tabs) {
@@ -569,6 +579,7 @@ export async function healSetActiveKmTab(page: Page, tabName: string, testId: st
 }
 
 export async function healInjectEmptyState(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectEmptyState")) { return; }
   await page.evaluate(() => {
     const panel = document.querySelector("[role='tabpanel'], .tab-panel, .tab-content");
     if (panel) {
@@ -586,6 +597,7 @@ export async function healInjectEmptyState(page: Page, testId: string): Promise<
 }
 
 export async function healEnsureKmRoute(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureKmRoute")) { return; }
   if (/\/configuration\/keyword-manager/i.test(page.url())) {
     return;
   }

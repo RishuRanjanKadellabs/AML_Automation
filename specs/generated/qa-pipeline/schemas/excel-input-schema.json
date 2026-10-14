@@ -18,7 +18,25 @@
     "worksheetName": {
       "type": "string",
       "minLength": 1,
-      "description": "Primary worksheet containing test cases"
+      "description": "Selected worksheet containing all required test-case columns. The parser auto-detects it unless an explicit worksheet is requested."
+    },
+    "worksheetSelection": {
+      "type": "object",
+      "description": "Mechanical evidence explaining how the test-case worksheet was selected.",
+      "properties": {
+        "strategy": {
+          "type": "string",
+          "enum": ["explicit", "auto-required-columns"]
+        },
+        "requestedWorksheet": {
+          "type": ["string", "null"]
+        },
+        "requiredColumns": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["strategy", "requestedWorksheet", "requiredColumns"]
     },
     "columnAliases": {
       "type": "object",
@@ -70,6 +88,15 @@
           "Test Data",
           "Data",
           "Input Data"
+        ],
+        "requestBody": [
+          "Request Body"
+        ],
+        "responseBody": [
+          "Response Body"
+        ],
+        "bodyDataSource": [
+          "Body Data Source"
         ],
         "testSteps": [
           "Test Steps",
@@ -124,6 +151,9 @@
         "scenario",
         "preconditions",
         "testData",
+        "requestBody",
+        "responseBody",
+        "bodyDataSource",
         "priority",
         "testType",
         "tags"
@@ -180,6 +210,30 @@
             "type": [
               "string",
               "null"
+            ]
+          },
+          "requestBody": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "responseBody": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "bodyDataSource": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "enum": [
+              "Live UI network capture",
+              "OpenAPI schema sample",
+              "Inferred error envelope",
+              null
             ]
           },
           "testSteps": {

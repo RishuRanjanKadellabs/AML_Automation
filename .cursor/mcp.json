@@ -10,6 +10,11 @@
         "-c",
         "."
       ]
+    },
+    "codegraphcontext": {
+      "type": "stdio",
+      "command": "/home/rishu/AML_Automation/scripts/cgc-mcp-docker.sh",
+      "args": []
     }
   }
 }

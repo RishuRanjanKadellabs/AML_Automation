@@ -16,14 +16,17 @@ const {
   writeJson,
 } = require("./qa-pipeline-utils.cjs");
 const { moduleFromSpecPath } = require("./generate-module-defects.js");
+const {
+  ensurePlaywrightChromium,
+} = require("./ensure-playwright-chromium.cjs");
 
-function runPlaywright(specPaths, caseIds = []) {
+function runPlaywright(specPaths, caseIds = [], project = "milestone2-chromium") {
   return new Promise((resolve, reject) => {
     const args = [
       "playwright",
       "test",
       ...specPaths,
-      "--project=milestone2-chromium",
+      `--project=${project}`,
       "--reporter=json",
     ];
     if (caseIds.length) {
@@ -174,6 +177,12 @@ async function main() {
   );
   try {
     const manifest = readJson(manifestPath);
+    const project = arg(
+      "project",
+      Number(manifest.milestone) === 1
+        ? "milestone1-chromium"
+        : "milestone2-chromium"
+    );
     let caseIds = unique(
       arg("case-ids")
         .split(",")
@@ -213,7 +222,8 @@ async function main() {
         `${batchIndex ? ` for batch ${batchIndex} (${caseIds.length} cases)` : ""}:`
     );
     specs.forEach((specPath) => console.log(`  ${specPath}`));
-    const run = await runPlaywright(specs, caseIds);
+    ensurePlaywrightChromium();
+    const run = await runPlaywright(specs, caseIds, project);
     fs.mkdirSync(path.dirname(absolute(rawLogPath)), { recursive: true });
     fs.writeFileSync(absolute(rawLogPath), run.stdout || "");
 
@@ -221,21 +231,37 @@ async function main() {
     let parseError = null;
     try {
       parsed = parsePlaywrightResults(run.stdout);
+      if (run.exitCode !== 0 && parsed.summary.total === 0 && caseIds.length) {
+        parseError =
+          `Playwright exited before executing ${caseIds.length} expected case(s).`;
+        parsed = null;
+      }
     } catch (error) {
       parseError = error.message;
     }
+    const expectedBlockedCaseIds = parsed ? [] : caseIds;
+    const preExecutionError = [run.stdout, run.stderr]
+      .filter(Boolean)
+      .join("\n")
+      .match(/(?:Cannot find module|Error: No tests found)[^\n]*/)?.[0] ||
+      parseError ||
+      "Playwright exited before the expected cases executed.";
+    const preExecutionClassification = /Cannot find module/i.test(preExecutionError)
+      ? "automation-defect"
+      : "tooling";
     const summary = parsed?.summary || {
       passed: 0,
       failed: 0,
       skipped: 0,
-      blocked: manifest.eligibleCaseIds?.length || 0,
+      blocked: expectedBlockedCaseIds.length,
       timedOut: 0,
       interrupted: 0,
-      total: manifest.eligibleCaseIds?.length || 0,
+      total: expectedBlockedCaseIds.length,
     };
     const report = {
       stage: batchIndex ? "batchExecution" : "postGenRun",
       phase,
+      project,
       status: parsed ? "Executed" : "Blocked",
       executedAt: new Date().toISOString(),
       batchIndex,
@@ -245,13 +271,21 @@ async function main() {
       generationManifest: relative(manifestPath),
       specsExecuted: specs,
       executionSummary: summary,
-      failedIds: parsed?.failedIds || [],
-      caseResults: parsed?.caseResults || [],
+      failedIds: parsed?.failedIds || expectedBlockedCaseIds,
+      caseResults: parsed?.caseResults || expectedBlockedCaseIds.map((testCaseId) => ({
+        testCaseId,
+        status: "interrupted",
+        error: preExecutionError,
+      })),
       classifications: parsed?.failedIds?.map((testCaseId) => ({
         testCaseId,
         classification: "unclassified",
         reason: "Classify before the batch healer; only automation defects are eligible",
-      })) || [],
+      })) || expectedBlockedCaseIds.map((testCaseId) => ({
+        testCaseId,
+        classification: preExecutionClassification,
+        reason: preExecutionError,
+      })),
       evidence: {
         playwrightExitCode: run.exitCode,
         logFile: relative(rawLogPath),

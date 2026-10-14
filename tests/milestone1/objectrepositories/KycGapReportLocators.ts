@@ -29,7 +29,7 @@ const KycGapReportLocators = {
   gapReportPaginationNext: "button[aria-label='Next page'], button.gap-page-nav-btn:has-text('Next')",
   gapReportPaginationPrev: "button[aria-label='Previous page'], button.gap-page-nav-btn:has-text('Previous')",
   gapReportPageSizeSelect: "select.gap-page-size-select, select[name*='pageSize'], select.page-size",
-  gapReportPageIndicator: ".pagination-info, [class*='page-indicator'], [class*='item-range'], text=/Page \\d+ of \\d+/",
+  gapReportPageIndicator: ".gap-page-label, .pagination-info, [class*='page-indicator'], [class*='item-range']",
   gapReportDetailModal: ".gap-detail-modal, .gap-detail-overlay.open .modal, [role='dialog'] .gap-detail-modal",
   gapReportMissingFieldsSection: ".missing-fields, [class*='missing-fields']",
   gapReportScoreBreakdown: ".score-breakdown, [class*='score-breakdown']",

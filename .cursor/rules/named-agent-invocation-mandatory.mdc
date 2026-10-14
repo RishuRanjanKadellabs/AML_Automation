@@ -10,8 +10,10 @@ alwaysApply: true
 - When the user references `@.cursor/agents/<name>.agent.md`, invoke the matching
   subagent type. Reading the file and performing its work in the parent is not
   equivalent.
-- When the user replies **Approve** / **Approve Excel** to a Stage 0 workbook,
-  invoke `qa-automation-pipeline` with that exact workbook path.
+- When the user replies **Approve** / **Approve Excel** to a Stage 0 **UI** workbook
+  (`fsd-figma-pipeline`), invoke `qa-automation-pipeline` with that exact workbook
+  path. When they approve an **`api-testcase-pipeline`** workbook, do **not**
+  auto-start the UI QA pipeline unless they explicitly ask to script that Excel.
 - When the user references `@.cursor/agents/defect-regression.agent.md`, or asks to
   **retest resolved defects** / **defect regression**, invoke `defect-regression`
   (foreground unless background requested).
@@ -21,6 +23,11 @@ alwaysApply: true
   with the exact spec/folder path. If the Task enum does not yet expose that type,
   run `npm run qa:run-module -- --spec <path>` in the parent (still produces local
   defects + DOCX) — do not use bare `npx playwright test` without finalize.
+- When the user references `@.cursor/agents/api-testcase-pipeline.agent.md`, or
+  asks to write **API test cases from swagger / OpenAPI / API docs** (with or
+  without NFR), invoke `api-testcase-pipeline`. If the Task enum does not expose
+  that type, use Task `generalPurpose` with the agent contract — do not skip
+  swagger coverage or invent request fields.
 - Run the named pipeline agent foreground unless the user explicitly requests
   background execution.
 - The parent must not generate specs, manufacture manifests, or drive Playwright
@@ -35,6 +42,7 @@ alwaysApply: true
 | Resolved defect regression | `defect-regression` (`.cursor/agents/defect-regression.agent.md`) |
 | Generate / heal UI scripts (via QA pipeline batches) | `playwright-test-generator` / `playwright-test-healer` |
 | FSD + Figma → Excel | `fsd-figma-pipeline` |
+| Swagger / API docs + NFR → API Excel | `api-testcase-pipeline` (`.cursor/agents/api-testcase-pipeline.agent.md`) |
 | Audit Excel vs FSD/Figma coverage | `fsd-excel-coverage-audit` (`.cursor/agents/fsd-excel-coverage-audit.agent.md`) |
 
 ## QA pipeline ownership
@@ -42,6 +50,12 @@ alwaysApply: true
 1. Parent invokes `qa-automation-pipeline` and passes the approved Excel path.
 2. The QA pipeline splits eligible cases into six near-equal batches and invokes
    the existing `playwright-test-generator` for each assigned batch.
+   Authentication / unauthenticated / unauthorized-role / session-expiry cases
+   stay Partial / blocked unless the user asked or set `QA_INCLUDE_AUTH_CASES=1`
+   (`.cursor/rules/authentication-bypass-mandatory.mdc`). 2506 runs sign in via
+   `tests/helpers/aml-login.ts`.
+   Generator and healer **must not inject fake/heal sample screens**
+   (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`).
 3. Exactly one session owns Playwright MCP. The QA orchestrator must release MCP
    while the generator owns it.
 4. After each batch generation, the QA pipeline executes that batch, invokes the
@@ -67,6 +81,28 @@ npm run qa:approve-defects-sync
 
    Or explicitly: `npm run qa:sync-defects-sheet -- --rows <payload> --approved --upsert`
 4. No heal / no Excel generation in this agent unless the user separately asks.
+
+## API test case pipeline ownership
+
+1. Parent invokes `api-testcase-pipeline` when the user references
+   `@.cursor/agents/api-testcase-pipeline.agent.md`, or asks to write **API**
+   test cases from **Swagger / OpenAPI / Postman** (optionally plus NFR/FSD).
+2. That agent enumerates every swagger operation, writes Excel with functional
+   **and** NFR expected results on every row, and emits
+   `results/api-testcase-pipeline/<resultsKey>/api-coverage-matrix.json` at 100%.
+3. When the live AML UI is reachable, that agent opens the relevant real module
+   routes and captures safe representative browser traffic. It enriches only exact
+   method+OpenAPI-path matches, sanitizes PII/secrets, classifies every row in
+   `Body Data Source`, and writes
+   `results/api-testcase-pipeline/<resultsKey>/live-network-evidence/manifest.json`
+   with honest captured/uncaptured counts. Destructive/admin/batch-job actions are
+   never triggered merely to increase capture coverage.
+4. It does **not** generate Playwright or start the QA pipeline. After Excel,
+   it asks **Approve Excel**; only then may the parent invoke
+   `qa-automation-pipeline` if the user approves that workbook for scripting.
+5. If the Task enum does not include `api-testcase-pipeline`, use Task
+   `generalPurpose` with the agent instructions. Do not skip coverage or invent
+   request fields.
 
 ## FSD Excel coverage audit ownership
 

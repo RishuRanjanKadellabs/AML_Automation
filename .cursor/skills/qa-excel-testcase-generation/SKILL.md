@@ -105,9 +105,12 @@ Write **plain-English, measurable pass conditions** that a reviewer can understa
 3. Write **concrete, numbered Test Steps** with real UI labels (FSD + Figma). See **Concrete Test Steps** below — **never** placeholder steps.
 4. Bullet Expected Result / Acceptance Criteria with measurable outcomes for that single intent.
 5. Fill Test Data with the values referenced in the steps (or N/A for observation-only UI checks).
-6. Write new `.xlsx` (Sheet1).
-7. Emit `tc-delta-report.json` with `excelMode=create`, all IDs in `add`, empty `update`/`retire`/`keep`.
-8. Validate, build coverage matrix, display report (see below).
+6. **Authentication cases:** session login is always required for signed-in module flows. Keep FSD coverage in Excel for unauthenticated, session-expiry, unauthorized-role, and other multi-role RBAC rows, but set **Automable** to `Partial - Authentication (automate only when QA_INCLUDE_AUTH_CASES=1)`. Never write “login bypassed”. See `.cursor/rules/authentication-bypass-mandatory.mdc`.
+6b. **4-Eyes Maker-Checker (global):** for Save / Create / Edit / Delete-Deactivate / Activate rows, Test Steps must cover maker submit → Pending Approvals → Review (when verifying the request), and Expected Result must state: pending until Approve; source module unchanged; **Business Justification** = maker text; **Current Value / Proposed Value** per `.cursor/rules/maker-checker-4eyes-mandatory.mdc` (Create → Current `-`, Proposed lists create fields with names). Do not write “record appears immediately in the source module” as success. UI: `docs/reference/maker-checker-4eyes-approval.png`.
+6c. **Audit Trail (global):** for auditable actions and dedicated audit rows, Test Steps must open Audit Trail, locate the event, and open **View Changes**; Expected Result must cover list columns (Date & Time, Module, User ID, Source IP, Action, Reference ID, Reason/Remarks) and modal fields including **DATA STATE CHANGE** when field-level changes exist. See `.cursor/rules/audit-trail-mandatory.mdc`. UI: `docs/reference/audit-trail-list.png`, `docs/reference/audit-trail-view-changes.png`.
+7. Write new `.xlsx` (Sheet1).
+8. Emit `tc-delta-report.json` with `excelMode=create`, all IDs in `add`, empty `update`/`retire`/`keep`.
+9. Validate, build coverage matrix, display report (see below).
 
 ## Steps — reconcile mode
 1. Parse existing workbook with `qa-excel-testcase-parsing` (preserve row TC IDs).
@@ -218,6 +221,8 @@ Map `use-cases.json` **`dependsOnUseCaseIds`** and **`preconditions`** into Exce
 - Hand off while coverage &lt; 100% without explicit user gap acceptance
 - Create a second Excel workbook solely because FSD/Figma filenames contain `_New`
 - Ship dependent-flow TCs without chain evidence in Preconditions or Test Steps
+- Write mutating Save/Create/Edit/Delete-Deactivate/Activate Expected Results as if the source module updates immediately — pending 4-Eyes approval is mandatory (`.cursor/rules/maker-checker-4eyes-mandatory.mdc`)
+- Ship auditable-action TCs that only say “audit page loads” without list + View Changes / DATA STATE CHANGE evidence (`.cursor/rules/audit-trail-mandatory.mdc`)
 
 ## Related
 - Agent: `.cursor/agents/fsd-figma-pipeline.agent.md`

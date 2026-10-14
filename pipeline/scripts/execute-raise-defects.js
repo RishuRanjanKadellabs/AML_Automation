@@ -16,6 +16,8 @@
  *   --no-persistent        Optional. Disable CDP single-window mode
  *   --approve-google       Optional. Sync to Google only after local review approval
  *   --upsert               Optional. Refresh existing Google Defect IDs (requires --approve-google)
+ *   --grep <pattern>       Optional. Run only tests matching the pattern
+ *   --grep-invert <pat>    Optional. Skip tests matching the pattern
  *   --skip-ui-audit        Optional. Skip post-execute UI/UX/cosmetic audit
  *   --no-fullscreen        Optional. Disable maximized/fullscreen browser (default on with UI audit)
  */
@@ -42,13 +44,43 @@ function resolveProject(milestone) {
   return `milestone${milestone}-chromium`;
 }
 
+function splitSpecArg(specArg) {
+  return String(specArg || "")
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+}
+
+function collectPlaywrightExtraArgs(additionalSpecs) {
+  const extra = [];
+  for (const spec of additionalSpecs || []) {
+    extra.push(relative(spec));
+  }
+  const dash = process.argv.indexOf("--");
+  if (dash >= 0) {
+    extra.push(...process.argv.slice(dash + 1));
+  }
+  for (const flag of ["grep", "grep-invert"]) {
+    const value = arg(flag);
+    const alreadyPassed = extra.some(
+      (entry) => entry === `--${flag}` || String(entry).startsWith(`--${flag}=`),
+    );
+    if (value && !alreadyPassed) {
+      extra.push(`--${flag}=${value}`);
+    }
+  }
+  return extra;
+}
+
 async function main() {
-  const specPath = arg("spec") || process.argv[2];
-  if (!specPath || specPath.startsWith("--")) {
+  const specArg = arg("spec") || process.argv[2];
+  if (!specArg || specArg.startsWith("--")) {
     throw new Error(
       "Usage: npm run qa:run-module -- --spec <path/to/spec-or-folder>",
     );
   }
+  const specPaths = splitSpecArg(specArg);
+  const specPath = specPaths[0];
   const preMilestone = detectMilestone(specPath, arg("milestone"));
   if (!preMilestone) {
     throw new Error(
@@ -56,10 +88,13 @@ async function main() {
     );
   }
 
-  const absSpec = absolute(specPath);
-  if (!fs.existsSync(absSpec)) {
-    throw new Error(`Spec path not found: ${specPath}`);
+  for (const candidate of specPaths) {
+    const absCandidate = absolute(candidate);
+    if (!fs.existsSync(absCandidate)) {
+      throw new Error(`Spec path not found: ${candidate}`);
+    }
   }
+  const absSpec = absolute(specPath);
 
   const headed = !process.argv.includes("--headless");
   const persistent = !process.argv.includes("--no-persistent");
@@ -80,12 +115,18 @@ async function main() {
   const noFullscreen =
     process.argv.includes("--no-fullscreen") || process.env.PW_FULLSCREEN === "0";
 
+  const extraArgs = collectPlaywrightExtraArgs(specPaths.slice(1));
+  if (extraArgs.length) {
+    console.log(`Execute+Defects extra Playwright args: ${extraArgs.join(" ")}`);
+  }
+
   const run = await runPersistentPlaywright({
     specPath,
     project: resolveProject(preMilestone),
     headed,
     workers,
     persistent,
+    extraArgs,
     env: {
       PW_DEFER_DEFECT_GENERATION: "0",
       PW_SKIP_MODULE_RUN_DOCX: "1",

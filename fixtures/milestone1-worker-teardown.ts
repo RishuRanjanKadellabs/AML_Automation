@@ -111,10 +111,6 @@ export async function resetPageAfterFailure(page: Page): Promise<void> {
     origin = "";
   }
 
-  if (origin && origin !== "null" && !origin.startsWith("about:")) {
-    await page.goto(`${origin}/`, { waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
-    return;
-  }
-
+  // Avoid BASE_URL root — Apache "It works!" stub pollutes the next test's navigation.
   await page.goto("about:blank", { waitUntil: "commit", timeout: 5000 }).catch(() => undefined);
 }

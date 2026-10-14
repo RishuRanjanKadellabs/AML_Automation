@@ -8,6 +8,9 @@ const Customer360Locators = {
   customerSearchButton: "button:has-text('Search'), button[aria-label*='Search']",
   customerSearchResults:
     "[class*='lookup-result'], [class*='result-card'], [role='listbox'], [role='option'], .customer-search-results",
+  /** Lookup dropdown only — excludes page-level `<select>` options (e.g. language). */
+  customerLookupResults:
+    "[class*='lookup-result'], [class*='result-card'], .customer-search-results, [data-testid*='lookup-result']",
   recentSearchItem: "[class*='recent-search'], [class*='recent'] button, [class*='recent'] [role='button']",
   customer360Main: "main:has([role='tablist']), main:has(nav[aria-label*='Customer 360 top'])",
   headerStrip:

@@ -1,6 +1,7 @@
 import type { BrowserContext, Page, Route } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 export type ClmShellMode = "default" | "empty";
 
@@ -411,10 +412,12 @@ async function fulfillCustomListManagerRoute(route: Route): Promise<void> {
 }
 
 export async function installCustomListManagerPageHeal(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "installCustomListManagerPageHeal")) { return; }
   await page.route(/\/configuration\/custom-list-manager(\/?(\?.*)?)?$/i, fulfillCustomListManagerRoute);
 }
 
 export async function installCustomListManagerHealOnContext(context: BrowserContext): Promise<void> {
+  if (skipHealInjectionForContext(context, "installCustomListManagerHealOnContext")) { return; }
   if (contextRouteInstalled) {
     return;
   }
@@ -427,6 +430,7 @@ export async function healEnsureFullClmShell(
   testId: string,
   mode: ClmShellMode = "default",
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureFullClmShell")) { return; }
   const shellMode = mode === "empty" ? "empty" : "default";
   const currentUrl = page.url();
   if (/\/configuration\/custom-list-manager/i.test(currentUrl)) {
@@ -454,6 +458,7 @@ export async function healEnsureFullClmShell(
 }
 
 export async function healShowClmModal(page: Page, modalId: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowClmModal")) { return; }
   const idMap: Record<string, string> = {
     "create-list": "modal-create-list",
     "add-entity": "modal-add-entity",
@@ -482,6 +487,7 @@ export async function healShowClmModal(page: Page, modalId: string, testId: stri
 }
 
 export async function healApplyExcelTestContext(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healApplyExcelTestContext")) { return; }
   // Note: modal auto-opening is intentionally NOT done here — the page-object
   // action methods (openCreateListForm, openBulkUpload, openAllRequests, etc.)
   // open the required modal. Auto-opening left the #clm-overlay backdrop up and
@@ -507,11 +513,13 @@ export async function healInjectCustomListManagerShell(
   mode: ClmShellMode = "default",
   activeTab = "Active",
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectCustomListManagerShell")) { return; }
   await healEnsureFullClmShell(page, testId, mode);
   await healSetActiveClmTab(page, activeTab, testId);
 }
 
 export async function healSetActiveClmTab(page: Page, tabName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healSetActiveClmTab")) { return; }
   await page.evaluate((name) => {
     const tabs = Array.from(document.querySelectorAll("[role='tab'], .tab-item, nav[role='tablist'] button"));
     for (const tab of tabs) {
@@ -531,6 +539,7 @@ export async function healSetActiveClmTab(page: Page, tabName: string, testId: s
 }
 
 export async function healSetActiveMakerCheckerTab(page: Page, tabName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healSetActiveMakerCheckerTab")) { return; }
   await page.evaluate((name) => {
     const tabs = Array.from(document.querySelectorAll(".mc-tab-item, [data-testid='maker-checker-tabs'] button"));
     for (const tab of tabs) {
@@ -549,6 +558,7 @@ export async function healSetActiveMakerCheckerTab(page: Page, tabName: string, 
 }
 
 export async function healInjectEmptyState(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectEmptyState")) { return; }
   await page.evaluate(() => {
     const panel = document.querySelector("[role='tabpanel'], .tab-panel, .tab-content");
     if (panel) {
@@ -566,6 +576,7 @@ export async function healInjectEmptyState(page: Page, testId: string): Promise<
 }
 
 export async function healEnsureClmRoute(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureClmRoute")) { return; }
   if (/\/configuration\/custom-list-manager/i.test(page.url())) {
     return;
   }
@@ -587,6 +598,7 @@ export async function healEnsureClmRoute(page: Page, testId: string): Promise<vo
 }
 
 export async function healInjectAssertionScaffolding(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectAssertionScaffolding")) { return; }
   await page.evaluate(({ id }) => {
     const main = document.querySelector("#clm-app main");
     if (!main) {
@@ -687,6 +699,7 @@ export async function healInjectAssertionScaffolding(page: Page, testId: string)
 }
 
 export async function healInjectListRow(page: Page, listName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectListRow")) { return; }
   await page.evaluate((name) => {
     const tbody = document.querySelector("table tbody");
     if (!tbody) {
@@ -715,6 +728,7 @@ export async function healInjectListRow(page: Page, listName: string, testId: st
 }
 
 export async function healShowListDetail(page: Page, listName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowListDetail")) { return; }
   await page.evaluate((name) => {
     const panel = document.querySelector("[role='tabpanel'], .tab-panel, .tab-content");
     if (!panel) {
@@ -750,6 +764,7 @@ export async function healShowListDetail(page: Page, listName: string, testId: s
 }
 
 export async function healInjectEntityRow(page: Page, entityName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectEntityRow")) { return; }
   await page.evaluate((name) => {
     let tbody = document.querySelector("table tbody");
     if (!tbody) {
@@ -786,6 +801,7 @@ export async function healInjectEntityRow(page: Page, entityName: string, testId
 }
 
 export async function healShowEntityDetail(page: Page, entityName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowEntityDetail")) { return; }
   await page.evaluate((name) => {
     const detail = document.getElementById("clm-entity-detail");
     if (detail) {
@@ -820,6 +836,7 @@ export async function healShowEntityDetail(page: Page, entityName: string, testI
 }
 
 export async function healShowMainTabView(page: Page, tabName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowMainTabView")) { return; }
   await page.evaluate((name) => {
     const tablist = document.querySelector("[role='tablist'].custom-list-manager-tabs, nav.custom-list-manager-tabs");
     if (tablist && !Array.from(tablist.querySelectorAll("[role='tab'], .tab-item")).some((tab) => (tab.textContent ?? "").startsWith(name))) {
@@ -873,6 +890,7 @@ export async function healShowMainTabView(page: Page, tabName: string, testId: s
 }
 
 export async function healShowNotificationPanel(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowNotificationPanel")) { return; }
   await healInjectAssertionScaffolding(page, testId);
   await page.evaluate(() => {
     document.getElementById("clm-notification-panel")?.classList.remove("clm-hidden");

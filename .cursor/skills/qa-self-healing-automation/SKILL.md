@@ -43,6 +43,8 @@ A heal is **forced** (reject / reverse) if it makes the test green by reducing E
 - Swap to an unrelated POM helper that doesn’t assert the case’s Acceptance Criteria / Expected Result
 - Soft-pass on product/test-data/env defects (must stay Failed/Blocked + reason)
 - `test.skip`, `test.fixme`, empty body, or broader regex that hides regression
+- Restore unauthenticated, session-expiry, or unauthorized-role tests unless `QA_INCLUDE_AUTH_CASES=1`
+- Inject fake/heal sample screens (`healEnsure*Shell`, `HEAL-*` rows) so locators match — live Clari5 only (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
 - Loop heal→run→heal until the suite is green (hides product defects)
 - Claim Done only when Failed = 0
 

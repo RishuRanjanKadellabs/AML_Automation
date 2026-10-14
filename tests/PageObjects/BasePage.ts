@@ -5,6 +5,7 @@ import {
   type ActionStatus,
 } from "../helpers/action-logger";
 import { registerScreenVisit } from "../helpers/ui-screen-registry";
+import { submitAmlLoginIfFormVisible } from "../helpers/aml-login";
 
 function defaultAssertTimeout(): number {
   if (process.env.PW_EXPECT_TIMEOUT) {
@@ -28,6 +29,7 @@ class BasePage {
   async navigateTo(url: string, screenMeta?: { screenName?: string; module?: string; tab?: string }): Promise<void> {
     try {
       await this.page.goto(url, { waitUntil: "commit" });
+      await submitAmlLoginIfFormVisible(this.page);
       this.logStep("NAVIGATE", `${url} — successful`);
       await this.waitForPageLoad();
       await registerScreenVisit(this.page, screenMeta || {});
@@ -111,6 +113,7 @@ class BasePage {
   async reloadPage(reason: string): Promise<void> {
     try {
       await this.page.reload({ waitUntil: "commit" });
+      await submitAmlLoginIfFormVisible(this.page);
       this.logStep("RELOAD", `${reason} — successful`);
       await this.waitForPageLoad();
     } catch (error) {
@@ -151,6 +154,11 @@ class BasePage {
       this.logStep("ASSERT", `${label} URL — failed (${message})`, "fail");
       throw error;
     }
+  }
+
+  async setViewport(width: number, height: number): Promise<void> {
+    await this.page.setViewportSize({ width, height });
+    this.logStep("VIEWPORT", `${width}x${height} — successful`);
   }
 
   async scrollIntoView(locator: Locator): Promise<void> {

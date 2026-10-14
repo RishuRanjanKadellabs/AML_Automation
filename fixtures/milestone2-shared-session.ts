@@ -40,6 +40,11 @@ import {
   logTestStart,
   logTestEnd,
 } from "../tests/helpers/action-logger";
+import {
+  installAmlLoginOnGoto,
+  loginToAmlIfRequired,
+  loadAmlLoginCredentials,
+} from "../tests/helpers/aml-login";
 
 type Milestone2WorkerFixtures = {
   browser: Browser;
@@ -104,7 +109,16 @@ export const test = baseTest.extend<Milestone2TestFixtures, Milestone2WorkerFixt
       const page =
         workerContext.pages().find((p) => !p.isClosed()) ??
         (await workerContext.newPage());
+      installAmlLoginOnGoto(page);
       await maximizeBrowserWindow(page);
+      const baseUrl = (process.env.BASE_URL || "https://kadelamldev.customerxps.com:2506").replace(
+        /\/$/,
+        "",
+      );
+      const { username, password } = loadAmlLoginCredentials();
+      if (username && password) {
+        await loginToAmlIfRequired(page, baseUrl, username, password).catch(() => undefined);
+      }
       await use(page);
     },
     { scope: "worker" },

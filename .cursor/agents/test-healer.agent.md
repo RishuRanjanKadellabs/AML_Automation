@@ -77,7 +77,7 @@ for the **AML application** at `https://kadelamldev.customerxps.com:2506`.
 # CONTEXT
 
 - **Application:** all AML modules represented by the selected failing tests
-- **Login is currently bypassed** — do **not** require `EMAIL` / `PASSWORD`; do **not** add login steps until the user enables auth
+- **Session login is required** — use `EMAIL` / `PASSWORD` from `.env` via `tests/helpers/aml-login.ts`; never hard-code the password. Do **not** restore unauthenticated / session-expiry / unauthorized-role tests unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`).
 - **Test Framework:** Playwright + TypeScript + POM
 - **Key Files:**
   - `tests/fixtures/test-fixture.ts` — custom fixture (testData, env)
@@ -96,8 +96,9 @@ for the **AML application** at `https://kadelamldev.customerxps.com:2506`.
 - `liveUiValidatedHealedCaseIds` must exactly match all cases for which code was changed, and `liveUiHealingCoveragePercent` must equal **100**. Otherwise status is **Incomplete/Blocked**, never Done.
 - Every changed or reused locator in the healed path must be confirmed against the current live DOM; existing POM, selector-map, Figma, Excel, memory, mock routes, and heal shells cannot substitute.
 - Figma, Excel, heal shells, and memory are **not** sufficient alone for Final locator updates.
+- **Never use fake screens (HARD):** do **not** inject `healEnsure*Shell` / `HEAL-*` sample pages to make a locator match. Fix locators against **live Clari5**. If the live module is missing → **fail or Blocked**. See `.cursor/rules/no-fake-ui-screens-mandatory.mdc`.
 - If live UI is unreachable → **Blocked** with URL/error. Do not mark healing complete.
-- Missing credentials are **not** a blocker while login is bypassed.
+- Missing `EMAIL`/`PASSWORD` **is** a live-UI blocker when Command Center shows the login form.
 
 ## 2. Complete Excel / suite scope
 
@@ -115,6 +116,8 @@ for the **AML application** at `https://kadelamldev.customerxps.com:2506`.
 - **Never** force scripts to pass.
 - Never weaken Excel/FSD assertions, remove expects, use soft `or` fallbacks that hide failures, or `test.skip` / `test.fixme` / empty bodies.
 - Preserve test intent; only fix **automation** (selectors, waits, navigation wiring).
+- **Do not** remove or bypass **4-Eyes Maker-Checker** asserts (pending queue, Business Justification, Current/Proposed Value) to make mutate cases pass as “saved in module”. See `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+- **Do not** remove or bypass **Audit Trail** asserts (list columns, View Changes, DATA STATE CHANGE) to force pass. See `.cursor/rules/audit-trail-mandatory.mdc`.
 - If the app does not match Excel expected results → leave **Failed**, classify as **product defect** (or data/env), and **stop** trying to green that case.
 - Your job is **not** 100% green — it is honest automation repair so remaining failures can surface real defects.
 
@@ -133,7 +136,7 @@ for the **AML application** at `https://kadelamldev.customerxps.com:2506`.
   `healerInvocationCount=1`, selected/changed/live-validated IDs, and
   `assertionsWeakened=false`.
 
-See also: `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, `.cursor/skills/qa-self-healing-automation/SKILL.md`, `.cursor/agents/qa-automation-pipeline.agent.md`.
+See also: `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, `.cursor/rules/no-fake-ui-screens-mandatory.mdc`, `.cursor/skills/qa-self-healing-automation/SKILL.md`, `.cursor/agents/qa-automation-pipeline.agent.md`.
 
 # HEALING WORKFLOW
 
@@ -156,9 +159,11 @@ See also: `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, `.cursor/skills/q
 - Prefer updating locator files / POM over scattering selectors in specs
 - If a selector changes, check all tests that use it
 - Prefer `data-testid`, roles, labels, text, structural CSS — avoid brittle hash classes
-- Do not add login/credential fills while login is bypassed
+- Rely on fixture / `aml-login` for session; never hard-code passwords in specs
+- Do not restore unauthenticated, session-expiry, or unauthorized-role tests unless `QA_INCLUDE_AUTH_CASES=1`
 - **Never force pass** to clear the failure list
 - Never claim healing complete when any changed case lacks pre-fix and post-fix live evidence from its correct module route
+- **Never inject fake/heal sample screens** over live Clari5 (`healEnsure*Shell`, `HEAL-*` rows)
 - Do **not** generate Milestone defect workbooks during healing. The orchestrator / executor writes
   `pipeline/test-data/Milestone<N>/Defects/` only after this heal cycle and the changed-case
   verification run are finished (remaining failures only).

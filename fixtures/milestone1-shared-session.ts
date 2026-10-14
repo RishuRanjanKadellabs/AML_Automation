@@ -17,6 +17,7 @@ import {
 } from "../tests/helpers/action-logger";
 import { flushHealSummaryForTest } from "../tests/helpers/heal-log";
 import { reinstallMilestone1ContextMocks } from "./milestone1-context-mocks";
+import { installAmlLoginOnGoto } from "../tests/helpers/aml-login";
 
 type Milestone1WorkerFixtures = {
   browser: Browser;
@@ -107,6 +108,7 @@ export const test = baseTest.extend<Milestone1TestFixtures, Milestone1WorkerFixt
       const page =
         workerContext.pages().find((p) => !p.isClosed()) ??
         (await workerContext.newPage());
+      installAmlLoginOnGoto(page);
       console.log(`[milestone1][worker ${workerInfo.workerIndex}] page ready`);
       await use(page);
     },

@@ -11,8 +11,12 @@ import {
   healEnsureBatchMatchReviewShell,
   healEnsureBatchScreeningResultsWorkspace,
 } from "../../../../helpers/batch-screening-ui-heal";
+import { skipHealInjectionForPage } from "../../../../helpers/heal-injection-guard";
 
 class BatchScreeningPage extends BasePage {
+  /** Live dev watchlist rule used by Milestone 1 Batch Screening NFR timing tests. */
+  static readonly defaultNfrWatchlistRule = "Onboarding Screening 112";
+
   private pendingUnauthorizedNavigation = false;
   private exportRestricted = false;
   private bulkSelectedRowIndices: number[] = [];
@@ -121,8 +125,16 @@ class BatchScreeningPage extends BasePage {
     return this.page.locator(BatchScreeningLocators.commentInput).first();
   }
 
+  get startStopBatchButton(): Locator {
+    return this.page.getByRole("button", { name: /Start\/Stop Batch/i }).first()
+      .or(this.page.locator(BatchScreeningLocators.startStopBatchButton).first());
+  }
+
   get startBatchTab(): Locator {
-    return this.page.getByRole("tab", { name: /Start Batch/i }).first();
+    return this.page.getByRole("tab", { name: /^Start Batch$/i }).first()
+      .or(this.page.getByRole("option", { name: /^Start Batch$/i }).first())
+      .or(this.page.locator(BatchScreeningLocators.startBatchTab).first())
+      .or(this.page.getByText(/^Start Batch$/i).first());
   }
 
   get scheduleBatchTab(): Locator {
@@ -139,7 +151,7 @@ class BatchScreeningPage extends BasePage {
 
   get watchlistRuleSelect(): Locator {
     return this.page.getByRole("combobox", { name: /Watchlist rule/i })
-      .or(this.page.locator(BatchScreeningLocators.watchlistRuleSelect))
+      .or(this.page.locator(`${BatchScreeningLocators.watchlistRuleSelect}:not(#clari5-language)`))
       .first();
   }
 
@@ -164,7 +176,7 @@ class BatchScreeningPage extends BasePage {
   }
 
   get dateRangePresetButton(): Locator {
-    return this.page.locator(BatchScreeningLocators.dateDropdownBtn).first();
+    return this.page.getByRole("button", { name: /Last Year|Date Range|Period/i }).first();
   }
 
   async openBatchScreeningDirect(baseUrl: string): Promise<void> {
@@ -197,7 +209,7 @@ class BatchScreeningPage extends BasePage {
         .catch(() => undefined);
       if (!expectAuthFailure) {
         const shellVisible = await this.matchResultsHeading.isVisible().catch(() => false);
-        if (!shellVisible) {
+        if (!shellVisible && !skipHealInjectionForPage(this.page)) {
           await healEnsureBatchMatchResultsGrid(this.page, 5);
           await this.matchResultsHeading.waitFor({ state: "visible", timeout: 10000 }).catch(async () => {
             await this.page.evaluate(() => {
@@ -214,7 +226,9 @@ class BatchScreeningPage extends BasePage {
           });
         }
         await this.matchResultsHeading.waitFor({ state: "visible", timeout: 15000 }).catch(() => undefined);
-        await healEnsureBatchDispositionTriggers(this.page);
+        if (!skipHealInjectionForPage(this.page)) {
+          await healEnsureBatchDispositionTriggers(this.page);
+        }
         await this.resetMatchResultsFilters();
         if (this.exportRestricted) {
           await this.applyExportRestriction();
@@ -256,8 +270,10 @@ class BatchScreeningPage extends BasePage {
         return rowCount;
       }, { timeout: 45000 }).toBeGreaterThanOrEqual(minRows);
     } catch {
-      await healEnsureBatchMatchResultsGrid(this.page, Math.max(minRows, 5));
-      await healEnsureBatchDispositionTriggers(this.page);
+      if (!skipHealInjectionForPage(this.page)) {
+        await healEnsureBatchMatchResultsGrid(this.page, Math.max(minRows, 5));
+        await healEnsureBatchDispositionTriggers(this.page);
+      }
       await expect.poll(async () => this.resultsTableRows.count().catch(() => 0), { timeout: 15000 })
         .toBeGreaterThanOrEqual(minRows);
     }
@@ -365,11 +381,29 @@ class BatchScreeningPage extends BasePage {
   }
 
   async clickTopTab(tabName: "Match Results" | "Watchlists" | "Screening"): Promise<void> {
+    const onBatchRoute = /\/screening\/batch-screening\/?(\?.*)?$/.test(this.page.url());
+    const headingVisible = await this.matchResultsHeading.isVisible().catch(() => false);
+
+    if (tabName === "Match Results" && onBatchRoute && headingVisible) {
+      await this.resultsTable.waitFor({ state: "visible", timeout: 30000 }).catch(() => undefined);
+      this.logStep("NAVIGATE", "Match Results is already the active Batch Screening view — no tab click required");
+      return;
+    }
+
     const pattern = new RegExp(tabName, "i");
     const tab = this.page.locator(BatchScreeningLocators.topNavTab).filter({ hasText: pattern }).first()
       .or(this.page.getByRole("tab", { name: pattern }).first())
       .or(this.page.getByRole("button", { name: pattern }).first())
       .or(this.page.getByRole("link", { name: pattern }).first());
+
+    if (!(await tab.isVisible({ timeout: 3000 }).catch(() => false))) {
+      if (tabName === "Match Results" && onBatchRoute && headingVisible) {
+        this.logStep("NAVIGATE", "Match Results view active — top tab chrome absent on live route");
+        return;
+      }
+      throw new Error(`Batch Screening top tab "${tabName}" is not visible on ${this.page.url()}`);
+    }
+
     await this.clickAndWait(tab, `${tabName} top tab`);
   }
 
@@ -827,17 +861,124 @@ class BatchScreeningPage extends BasePage {
   }
 
   async openStartBatchPanel(): Promise<void> {
-    await this.clickAndWait(this.startBatchTab, "Start Batch tab");
-    await this.assertVisible(this.runBatchNowButton, "Run Batch Now button");
+    await this.page.getByText(/Loading configurations/i)
+      .waitFor({ state: "hidden", timeout: 120000 })
+      .catch(() => undefined);
+
+    if (await this.startStopBatchButton.isVisible().catch(() => false)) {
+      await this.clickAndWait(this.startStopBatchButton, "Start/Stop Batch button");
+      await this.startBatchTab.waitFor({ state: "visible", timeout: 5000 }).catch(() => undefined);
+    }
+
+    const startBatchControl = this.startBatchTab;
+    await this.scrollIntoView(startBatchControl);
+    await this.clickAndWait(startBatchControl, "Start Batch control");
+
+    const batchPanelReady = this.runBatchNowButton
+      .or(this.watchlistRuleSelect)
+      .or(this.page.getByText(/Onboarding Screening 112/i).first());
+    await this.assertVisible(batchPanelReady, "Start Batch panel (Run Batch Now or watchlist rule)");
+  }
+
+  async selectWatchlistRule(
+    ruleName: string = BatchScreeningPage.defaultNfrWatchlistRule,
+    options: { openPanel?: boolean } = {},
+  ): Promise<void> {
+    if (options.openPanel !== false) {
+      await this.openStartBatchPanel();
+    }
+
+    const escaped = ruleName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const rulePattern = new RegExp(escaped, "i");
+    const select = this.watchlistRuleSelect;
+
+    if (await select.isVisible().catch(() => false)) {
+      const selectId = await select.getAttribute("id").catch(() => "");
+      const tag = await select.evaluate((el) => el.tagName.toLowerCase()).catch(() => "");
+      if (selectId !== "clari5-language" && tag === "select") {
+        await select.selectOption({ label: rulePattern }).catch(async () => {
+          await select.selectOption({ label: ruleName });
+        });
+        this.logStep("SELECT", `Watchlist rule "${ruleName}" — successful`);
+        return;
+      }
+      if (selectId !== "clari5-language" && tag !== "select") {
+        await this.clickAndWait(select, "Watchlist rule combobox");
+        const listOption = this.page.getByRole("option", { name: rulePattern }).first()
+          .or(this.page.getByRole("menuitem", { name: rulePattern }).first());
+        if (await listOption.isVisible().catch(() => false)) {
+          await this.clickAndWait(listOption, `Watchlist rule option ${ruleName}`);
+          this.logStep("SELECT", `Watchlist rule "${ruleName}" — successful`);
+          return;
+        }
+      }
+    }
+
+    const ruleTarget = this.page.getByRole("button", { name: rulePattern }).first()
+      .or(this.page.getByRole("radio", { name: rulePattern }).first())
+      .or(this.page.locator("[class*='card'], [class*='rule'], tr, li").filter({ hasText: rulePattern }).first())
+      .or(this.page.getByText(rulePattern).first());
+    await this.scrollIntoView(ruleTarget);
+    await this.clickAndWait(ruleTarget, `Watchlist rule ${ruleName}`);
+    this.logStep("SELECT", `Watchlist rule "${ruleName}" — successful`);
+  }
+
+  async startBatchWithWatchlistRule(
+    ruleName: string = BatchScreeningPage.defaultNfrWatchlistRule,
+  ): Promise<number> {
+    await this.selectWatchlistRule(ruleName);
+    const startedAt = Date.now();
+    await this.clickAndWait(this.runBatchNowButton, "Run Batch Now button");
+    this.logStep("CLICK", `Batch screening started with "${ruleName}" — successful`);
+    return startedAt;
+  }
+
+  async waitForBatchScreeningResultsReady(startedAt?: number, timeoutMs = 180000): Promise<number> {
+    const start = startedAt ?? Date.now();
+    const jobSignal = this.page
+      .getByText(/batch (completed|started|running|submitted)|screening complete|job submitted|successfully|in progress/i)
+      .first();
+    await jobSignal.waitFor({ state: "visible", timeout: Math.min(timeoutMs, 90000) }).catch(() => undefined);
+
+    await this.clickTopTab("Match Results").catch(() => undefined);
+    await expect(this.matchResultsHeading).toBeVisible({ timeout: timeoutMs });
+    await expect(this.resultsTable).toBeVisible({ timeout: timeoutMs });
+    await expect.poll(async () => this.resultsTableRows.count().catch(() => 0), { timeout: timeoutMs })
+      .toBeGreaterThan(0);
+
+    const elapsed = Date.now() - start;
+    this.logStep("ASSERT", `Batch screening results ready in ${elapsed}ms`);
+    return elapsed;
+  }
+
+  async runOnboardingScreening112AndMeasureResults(): Promise<{
+    panelReadyMs: number;
+    resultsReadyMs: number;
+  }> {
+    const panelStartedAt = Date.now();
+    await this.openStartBatchPanel();
+    await this.selectWatchlistRule(BatchScreeningPage.defaultNfrWatchlistRule, { openPanel: false });
+    const panelReadyMs = Date.now() - panelStartedAt;
+
+    const batchStartedAt = Date.now();
+    await this.clickAndWait(this.runBatchNowButton, "Run Batch Now button");
+    const resultsReadyMs = await this.waitForBatchScreeningResultsReady(batchStartedAt);
+    return { panelReadyMs, resultsReadyMs };
+  }
+
+  async ensureBatchResultsAvailable(baseUrl: string): Promise<void> {
+    await this.openBatchScreeningDirect(baseUrl);
+    await this.clickTopTab("Match Results").catch(() => undefined);
+    if ((await this.resultsTableRows.count().catch(() => 0)) > 0) {
+      this.logStep("ASSERT", "Match Results grid already populated — batch start skipped");
+      return;
+    }
+    await this.startBatchWithWatchlistRule(BatchScreeningPage.defaultNfrWatchlistRule);
+    await this.waitForBatchScreeningResultsReady(undefined, 180000);
   }
 
   async runBatchWithFirstWatchlistRule(): Promise<void> {
-    await this.openStartBatchPanel();
-    if (await this.watchlistRuleSelect.isVisible().catch(() => false)) {
-      await this.selectOptionByIndex(this.watchlistRuleSelect, 1, "Watchlist rule");
-    }
-    await this.clickAndWait(this.runBatchNowButton, "Run Batch Now button");
-    this.logStep("CLICK", "Batch screening execution initiated — successful");
+    await this.startBatchWithWatchlistRule(BatchScreeningPage.defaultNfrWatchlistRule);
   }
 
   async openScheduleBatchPanel(): Promise<void> {
@@ -1613,6 +1754,108 @@ class BatchScreeningPage extends BasePage {
 
   async triggerBulkConfirmMatch(): Promise<void> {
     await this.triggerBulkDispositionAction("Confirm Match");
+  }
+
+  async selectOptionAndNavigateVerifyBatchScreeningPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    const started = Date.now();
+    await this.openBatchScreeningDirect(baseUrl);
+    await this.expectMatchResultsPageShellLoaded();
+    const elapsed = Date.now() - started;
+    expect(elapsed).toBeLessThanOrEqual(maxMs);
+    await this.expectOnBatchScreeningRoute();
+    await this.waitForMatchResultsData();
+    this.logStep("ASSERT", `Batch Screening navigation ready in ${elapsed}ms`);
+  }
+
+  async verifyExactSearchPerformance(
+    searchTerm = "Rajesh Malhotra",
+    maxMs = 300,
+  ): Promise<void> {
+    await this.expectMatchResultsPageShellLoaded();
+    const started = Date.now();
+    await this.searchMatchResults(searchTerm);
+    await expect(this.resultsTableRows.filter({ hasText: searchTerm }).first()).toBeVisible();
+    const elapsed = Date.now() - started;
+    expect(elapsed).toBeLessThanOrEqual(maxMs);
+    this.logStep("ASSERT", `Exact Match Results search updated in ${elapsed}ms`);
+  }
+
+  async applyCustomerIdFilter(customerId: string): Promise<void> {
+    const chip = this.filterButton("Customer ID");
+    await this.scrollIntoView(chip);
+    await this.clickAndWait(chip, "Customer ID filter chip");
+    const panelInput = this.page.locator(".filter-panel input, [role='dialog'] input, input[placeholder*='Customer' i]").first();
+    if (await panelInput.isVisible().catch(() => false)) {
+      await panelInput.fill(customerId);
+      await this.page.keyboard.press("Enter");
+    } else {
+      await this.searchMatchResults(customerId);
+    }
+    const applyBtn = this.page.locator(BatchScreeningLocators.filterPanelApply).first();
+    if (await applyBtn.isVisible().catch(() => false)) {
+      await this.clickAndWait(applyBtn, "Customer ID filter Apply button");
+    }
+    await this.page.keyboard.press("Escape").catch(() => undefined);
+    this.logStep("CLICK", `Customer ID filter applied for ${customerId} — successful`);
+  }
+
+  async verifyCustomerIdFilterPerformance(
+    customerId = "CUST-1000083",
+    maxMs = 1500,
+  ): Promise<void> {
+    await this.expectMatchResultsPageShellLoaded();
+    const started = Date.now();
+    await this.applyCustomerIdFilter(customerId);
+    await expect(this.resultsTableRows.filter({ hasText: customerId }).first()).toBeVisible();
+    const elapsed = Date.now() - started;
+    expect(elapsed).toBeLessThanOrEqual(maxMs);
+    this.logStep("ASSERT", `Customer ID filter updated results in ${elapsed}ms`);
+  }
+
+  async verifyRestrictedActionsUnavailableForCurrentRole(): Promise<void> {
+    await this.expectMatchResultsPageLoaded();
+    const forbiddenActions = this.page
+      .getByRole("button", { name: /create|edit|delete/i })
+      .or(this.page.getByRole("menuitem", { name: /create|edit|delete/i }));
+    const count = await forbiddenActions.count();
+    for (let index = 0; index < count; index += 1) {
+      const action = forbiddenActions.nth(index);
+      const unavailable = !(await action.isVisible().catch(() => false))
+        || !(await action.isEnabled().catch(() => false));
+      expect(unavailable).toBeTruthy();
+    }
+    expect(count).toBe(0);
+    this.logStep("ASSERT", "Restricted create, edit, and delete actions are unavailable");
+  }
+
+  async verifyBatchUploadFlowPerformance(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openStartBatchPanel();
+    await this.selectWatchlistRule(BatchScreeningPage.defaultNfrWatchlistRule, { openPanel: false });
+    await this.assertVisible(this.runBatchNowButton, "Run Batch Now button");
+    const elapsed = Date.now() - startedAt;
+    expect(elapsed).toBeLessThanOrEqual(maxMs);
+    const errors = this.page.getByRole("alert").filter({ hasText: /error|failed|unable/i });
+    await expect(errors).toHaveCount(0);
+    this.logStep("ASSERT", `Start Batch flow ready for "${BatchScreeningPage.defaultNfrWatchlistRule}" in ${elapsed}ms`);
+  }
+
+  async verifyExportPerformance(maxMs = 1200): Promise<void> {
+    await this.expectMatchResultsPageShellLoaded();
+    const started = Date.now();
+    const downloadPromise = this.page.waitForEvent("download", { timeout: maxMs }).catch(() => null);
+    await this.clickExportReport();
+    const download = await downloadPromise;
+    const exportConfirmation = this.page
+      .getByText(/export|download|report generated|preparing/i)
+      .first();
+    const confirmationVisible = await exportConfirmation.isVisible().catch(() => false);
+    expect(download !== null || confirmationVisible).toBeTruthy();
+    const elapsed = Date.now() - started;
+    expect(elapsed).toBeLessThanOrEqual(maxMs);
+    const errors = this.page.getByRole("alert").filter({ hasText: /error|failed|unable/i });
+    await expect(errors).toHaveCount(0);
+    this.logStep("ASSERT", `Export flow ready in ${elapsed}ms`);
   }
 }
 

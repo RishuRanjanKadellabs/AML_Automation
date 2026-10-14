@@ -50,6 +50,32 @@ Model **prerequisite flows** so Excel and audit chain coverage can verify depend
 4. Negative use cases must **never** stand alone without a linked setup/navigation dependency when Figma/FSD require reaching a specific screen first.
 5. Record implicit flow IDs in use case notes when helpful (`flowRef: NAV-Configuration-Module`) for Excel handoff.
 
+## 4-Eyes Maker-Checker (global — always apply)
+
+Product behaviour (`.cursor/rules/maker-checker-4eyes-mandatory.mdc`): Save / Create / Edit / Delete-Deactivate / Activate create a **pending** 4-Eyes request; source module updates **only after Checker Approve**.
+
+For mutating use cases, expected results must include (unless FSD exempts):
+
+- Request appears under **Pending Approvals** with correct Change Type / Module
+- **Business Justification** shows the maker-entered text
+- **Proposed Change** table: Parameter | Current Value | Proposed Value  
+  - **Create:** Current = `-`; Proposed = all create fields with names + values  
+  - **Edit / Activate / Deactivate:** Current = prior live values; Proposed = new values / intent
+- Source module still shows pre-change data until Approve
+
+Approve/Reject use cases depend on a pending-request setup use case when split.
+
+## Audit Trail (global — always apply)
+
+Product behaviour (`.cursor/rules/audit-trail-mandatory.mdc`): **every action** is logged in **Audit Trail / Audit Log**.
+
+For auditable use cases (and dedicated audit TCs), expected results must include:
+
+- Matching list row: Date & Time, Module, User ID, Source IP, Action, Reference ID, Reason/Remarks
+- **View Changes** modal: DATE & TIME, MODULE, REFERENCE ID, AML USER ID, USER NAME, SOURCE IP ADDRESS, **DATA STATE CHANGE** (field-level before/after when changes exist), REASON CODE / REMARKS
+
+Maker-checker submit/approve/reject actions are also audit events — keep justification and data-state change consistent with 4-Eyes Current/Proposed when both apply.
+
 ## Steps
 1. List every in-scope `requirementId` from `fsd-inventory.json` (exclude only explicit out-of-scope sections; record exclusions).
 2. For each in-scope requirement, ensure **exactly one dedicated use case** references it via a **single** entry in `requirementIds` (length 1). Add separate use cases for negative/boundary variants — do not map multiple REQs to one use case.
@@ -87,6 +113,8 @@ Preserve FSD **section titles** in inventory so Stage 0 Excel delivery can show 
 - Emit use-case titles with `REQ-*` / `FSD S*` / BR/FR/NFR/UC IDs, jargon-only wording, or vague “Verify the requirement” phrasing
 - Emit use-case steps that are generic placeholders for interactive flows
 - Emit validation/save use cases without `dependsOnUseCaseIds` or `preconditions` when a screen/tab prerequisite exists in Figma/FSD
+- Emit mutating Save/Create/Edit/Delete-Deactivate/Activate success as immediate source-module apply — must model 4-Eyes pending approval (`.cursor/rules/maker-checker-4eyes-mandatory.mdc`)
+- Emit auditable actions without Audit Trail / View Changes expected evidence (`.cursor/rules/audit-trail-mandatory.mdc`)
 
 ## Related
 - Agent: `.cursor/agents/fsd-figma-pipeline.agent.md`

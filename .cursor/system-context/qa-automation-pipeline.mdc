@@ -61,8 +61,19 @@ Follow the existing Milestone 1 structure; place all **new** pipeline-generated 
 - Validate/Normalize MUST be mechanical (`qa:parse-excel` → `qa:normalize` →
   `qa:assert-normalize`). Never hand-write sample normalized JSON; never use
   Python pandas/openpyxl as the primary parser.
+- Multi-sheet Validate auto-selects the first worksheet containing all required
+  test-case columns or honors `--worksheet`; the validation report records the
+  choice and `qa:assert-normalize` re-reads that exact worksheet.
+- Excel-declared Load/Infra/manual-only and Partial cases remain outside the
+  default Playwright batch scope; normalization preserves those feasibility
+  decisions instead of overriding them with step-keyword heuristics.
+- Explicitly user-deferred environment-blocked IDs remain reported with reasons
+  but are excluded from current generation, execution, and strict live-UI
+  coverage until resumed.
 - For each batch: generate all assigned cases, append to the same module spec,
   report generated count, execute only the batch, and report pre-heal counts.
+- Batch execution ensures Chromium and derives the Playwright project from the
+  manifest milestone; deferred-scope runs pass only active IDs/specs.
 - Invoke the existing healer once for classified automation failures only, then
   re-run changed cases once and report post-heal counts.
 - After batches **1–5**: show pass/fail, set `awaiting_batch_approval`, **stop and

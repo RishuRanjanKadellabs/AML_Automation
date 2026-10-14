@@ -33,6 +33,10 @@ These rules apply to all AI-assisted work in this repository. Prefer existing co
 - Do not break the public test API of helpers under `tests/helpers/` that specs/pages already import.
 - Never commit secrets.
 - **Live UI mandatory for scripting and healing:** never finalize locators/POM/specs from Figma, Excel, or heal shells alone when the AML app is reachable. Use Playwright MCP `browser_*` on the live module URL; if blocked, report Blocked — do not silently skip (see `.cursor/rules/live-ui-mandatory-for-scripting.mdc`).
+- **Never use fake screens:** do not inject `healEnsure*Shell` / `HEAL-*` sample grids. Live Clari5 only; missing live UI → fail or Blocked (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`).
+- **Session login is always required** on 2506 via `.env` + `aml-login` — never treat login as bypassed. Unauthenticated / session-expiry / unauthorized-role cases stay excluded unless `QA_INCLUDE_AUTH_CASES=1` (see `.cursor/rules/authentication-bypass-mandatory.mdc`).
+- **4-Eyes Maker-Checker:** Save / Create / Edit / Delete-Deactivate / Activate always pend for checker approval; do not treat mutate as immediately applied in the source module. Current vs Proposed Value + Business Justification rules are permanent — see `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+- **Audit Trail:** every action must be reflected in Audit Trail / Audit Log (list columns + View Changes / DATA STATE CHANGE). Permanent — see `.cursor/rules/audit-trail-mandatory.mdc`.
 
 ---
 

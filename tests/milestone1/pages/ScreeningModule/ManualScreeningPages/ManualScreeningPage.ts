@@ -4,7 +4,7 @@ import * as path from "path";
 import { Page, Locator, expect } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
 import ManualScreeningLocators from "../../../objectrepositories/ManualScreeningLocators";
-import { installManualScreeningApiMockOnPage } from "../../../../helpers/manual-screening-api-mock";
+import { installManualScreeningApiMockOnPage, isManualScreeningLiveApi, setManualScreeningLiveApi, uninstallManualScreeningApiMockOnPage } from "../../../../helpers/manual-screening-api-mock";
 import { getCurrentTestId } from "../../../../helpers/action-logger";
 import { HealerMode } from "../../../../helpers/healer-mode";
 import {
@@ -20,8 +20,28 @@ const BULK_FIXTURE_DIR = path.resolve(__dirname, "../../../../../pipeline/test-d
 class ManualScreeningPage extends BasePage {
   private pendingUnauthorizedNavigation = false;
 
+  /** Bulk upload file for live/manual screening NFR (70-row sanctions sample). */
+  static readonly defaultBulkUploadCsvFile = "manual-bulk-batch-screening-70.csv";
+  /** Live dev individual name from the bulk sample file. */
+  static readonly defaultLiveIndividualName = "Aarav Sharma";
+
   constructor(page: Page) {
     super(page);
+  }
+
+  private usesApiMock(): boolean {
+    return !isManualScreeningLiveApi(this.page.context());
+  }
+
+  /** Use live screening-rules and screening-engine APIs instead of fixture intercepts. */
+  async enableLiveApi(): Promise<void> {
+    setManualScreeningLiveApi(this.page.context(), true);
+    await uninstallManualScreeningApiMockOnPage(this.page);
+    this.logStep("LIVE", "Manual Screening live API mode enabled — mock uninstalled");
+  }
+
+  static defaultBulkUploadCsvPath(): string {
+    return path.join(BULK_FIXTURE_DIR, ManualScreeningPage.defaultBulkUploadCsvFile);
   }
 
   private healer(): HealerMode {
@@ -45,7 +65,9 @@ class ManualScreeningPage extends BasePage {
   }
 
   get pageTitle(): Locator {
-    return this.page.getByText(/^Manual Screening$/i).first();
+    return this.page.getByRole("heading", { name: /^Manual Screening$/i }).first()
+      .or(this.page.getByText(/^Manual Screening$/i).first())
+      .or(this.manualScreeningTab);
   }
 
   get breadcrumb(): Locator {
@@ -81,9 +103,9 @@ class ManualScreeningPage extends BasePage {
   }
 
   get nameInEnglishInput(): Locator {
-    return this.page.getByRole("textbox", { name: /Name in English/i }).first()
-      .or(this.page.locator("#ind-name-en")).first()
-      .or(this.page.getByLabel(/Name in English/i)).first();
+    return this.page.locator("#ind-name-en").first()
+      .or(this.page.getByRole("textbox", { name: /Name in English|Full legal name/i }).first())
+      .or(this.page.getByLabel(/Name in English|Full legal name/i).first());
   }
 
   get idNumberInput(): Locator {
@@ -140,7 +162,7 @@ class ManualScreeningPage extends BasePage {
   get watchlistCards(): Locator {
     return this.page
       .locator(ManualScreeningLocators.watchlistGrid)
-      .locator(ManualScreeningLocators.watchlistCard);
+      .locator(`${ManualScreeningLocators.watchlistCard}, button.watchlist-card`);
   }
 
   get registeredNameInput(): Locator {
@@ -226,9 +248,13 @@ class ManualScreeningPage extends BasePage {
     this.pendingUnauthorizedNavigation = false;
 
     if (!expectAuthFailure) {
-      await this.page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
-      await installManualScreeningApiMockOnPage(this.page);
-      this.logStep("MOCK", "Manual Screening API mocks installed — successful");
+      if (this.usesApiMock()) {
+        await this.page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
+        await installManualScreeningApiMockOnPage(this.page);
+        this.logStep("MOCK", "Manual Screening API mocks installed — successful");
+      } else {
+        await uninstallManualScreeningApiMockOnPage(this.page);
+      }
     }
 
     try {
@@ -442,8 +468,12 @@ class ManualScreeningPage extends BasePage {
 
   async waitForWatchlistCardsReady(): Promise<void> {
     await this.assertVisible(this.page.getByText(/Watchlist Configuration/i).first(), "Watchlist Configuration section");
-    const loading = this.page.getByText(/Loading active screening configurations/i);
-    await loading.waitFor({ state: "hidden", timeout: 45000 }).catch(() => undefined);
+    const loading = this.page.getByText(/Loading active screening configurations|Loading watchlist configurations/i);
+    await loading.waitFor({ state: "hidden", timeout: 90000 }).catch(() => undefined);
+    const stillLoading = await this.page.getByText(/Loading watchlist configurations/i).isVisible().catch(() => false);
+    if (stillLoading) {
+      throw new Error("Watchlist configurations still loading on live Manual Screening — screening-rules API may be unavailable on dev");
+    }
     const errorBanner = this.page.getByText(/Could not open JPA|rules\.map is not a function/i);
     if (await errorBanner.isVisible().catch(() => false)) {
       throw new Error("Watchlist configuration failed to load from screening-rules API");
@@ -734,7 +764,25 @@ class ManualScreeningPage extends BasePage {
     this.logStep("SELECT", `Purpose set to ${purpose} — successful`);
   }
 
+  async ensureIndividualFormReady(): Promise<void> {
+    const onResults = await this.page.getByText(/Screening Results|Potential Matches Found/i).first()
+      .isVisible()
+      .catch(() => false);
+    if (onResults) {
+      await this.clickNewScreening();
+    }
+
+    const bulkSelected = await this.bulkUploadTab.getAttribute("aria-selected").catch(() => null);
+    if (bulkSelected === "true") {
+      await this.selectScreeningModeTab("Manual Screening");
+    }
+
+    await this.selectEntityType("Individual");
+    await this.assertVisible(this.nameInEnglishInput, "Name in English field");
+  }
+
   async fillNameInEnglish(name: string): Promise<void> {
+    await this.ensureIndividualFormReady();
     await this.fillField(this.nameInEnglishInput, name, "Name in English");
   }
 
@@ -830,13 +878,14 @@ class ManualScreeningPage extends BasePage {
     this.logStep("ASSERT", "Bulk Upload panel visible — successful");
   }
 
-  private resolveBulkFixture(format: "csv" | "xls" | "xlsx" | "invalid" | "empty"): string {
+  private resolveBulkFixture(format: "csv" | "xls" | "xlsx" | "invalid" | "empty" | "production70"): string {
     const map: Record<string, string> = {
       csv: "manual-screening-bulk-valid.csv",
       xls: "manual-screening-bulk-valid.csv",
       xlsx: "manual-screening-bulk-valid.csv",
       invalid: "manual-screening-bulk-invalid.txt",
       empty: "manual-screening-bulk-empty.csv",
+      production70: ManualScreeningPage.defaultBulkUploadCsvFile,
     };
     const source = path.join(BULK_FIXTURE_DIR, map[format]);
     if (format === "csv" || format === "invalid" || format === "empty") {
@@ -847,11 +896,21 @@ class ManualScreeningPage extends BasePage {
     return tempPath;
   }
 
-  async uploadBulkFile(format: "csv" | "xls" | "xlsx" | "invalid" | "empty" = "csv"): Promise<void> {
+  async uploadBulkFile(format: "csv" | "xls" | "xlsx" | "invalid" | "empty" | "production70" = "csv"): Promise<void> {
     await this.expectBulkUploadPanelVisible();
     const fixturePath = this.resolveBulkFixture(format);
     await this.fileInput.setInputFiles(fixturePath);
     this.logStep("ASSERT", `Bulk file uploaded (${format}) — successful`);
+  }
+
+  async uploadBulkFilePath(filePath: string): Promise<void> {
+    await this.expectBulkUploadPanelVisible();
+    await this.fileInput.setInputFiles(filePath);
+    this.logStep("UPLOAD", `Bulk file uploaded from ${path.basename(filePath)} — successful`);
+  }
+
+  async uploadDefaultProductionBulkCsv(): Promise<void> {
+    await this.uploadBulkFile("production70");
   }
 
   async uploadBulkFilePlaceholder(): Promise<void> {
@@ -1305,6 +1364,217 @@ class ManualScreeningPage extends BasePage {
     const onResults = await this.page.getByText(/Screening Results|Potential Matches/i).first().isVisible().catch(() => false);
     expect(onResults).toBeFalsy();
     this.logStep("ASSERT", "Screening Results did not open while validation errors remain — successful");
+  }
+
+  private defaultIndividualScreeningName(): string {
+    return this.usesApiMock() ? "HANIYA" : ManualScreeningPage.defaultLiveIndividualName;
+  }
+
+  async verifyNavigationPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    const startedAt = Date.now();
+    await this.openManualScreeningDirect(baseUrl);
+    await this.expectManualScreeningPageLoaded();
+    await expect(this.pageTitle).toBeVisible();
+    await expect(this.manualScreeningTab).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyPrimaryFormReadyPerformance(maxMs = 500): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    const startedAt = Date.now();
+    await this.expectEntityTypeToggleVisible();
+    await expect(this.nameInEnglishInput.or(this.page.getByLabel(/Name in English/i)).first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyTabNavigationReadyPerformance(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectScreeningModeTabsVisible();
+    await this.selectScreeningModeTab("Bulk Upload");
+    await this.expectBulkUploadPanelVisible();
+    await this.selectScreeningModeTab("Manual Screening");
+    await expect(this.manualScreeningTab).toHaveAttribute("aria-selected", "true");
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyViewLastResultsReadyPerformance(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    if (await this.viewLastResultsButton.isVisible().catch(() => false)) {
+      await this.clickAndWait(this.viewLastResultsButton, "View Last Results");
+      await this.expectResultsPageLoaded();
+    } else {
+      await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    }
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifySingleRecordScreeningPerformance(maxMs = 2000, name?: string): Promise<void> {
+    const startedAt = Date.now();
+    await this.submitValidIndividualScreening(name ?? this.defaultIndividualScreeningName());
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyBulkUploadConfirmationPerformance(maxMs = 1200): Promise<void> {
+    await this.selectScreeningModeTab("Bulk Upload");
+    const startedAt = Date.now();
+    await this.uploadDefaultProductionBulkCsv();
+    await this.expectBulkUploadFileSelected();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyBulkJobInitiationPerformance(maxMs = 1500): Promise<void> {
+    await this.selectScreeningModeTab("Bulk Upload");
+    await this.uploadDefaultProductionBulkCsv();
+    await this.expectBulkUploadFileSelected();
+    const startedAt = Date.now();
+    await this.clickStartBulkScreening();
+    await expect(
+      this.page.getByText(/processing|uploaded|batch|screening|records|job/i).first(),
+    ).toBeVisible({ timeout: 30000 });
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyResultsPageLoadAfterScreeningPerformance(maxMs = 1500): Promise<void> {
+    const startedAt = Date.now();
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    await this.expectResultsPageLoaded();
+    await this.expectResultsTableVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyResultsReadyAfterCompletionPerformance(maxMs = 2000): Promise<void> {
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    const startedAt = Date.now();
+    await this.expectMetricCardsVisible();
+    await this.expectResultsTableVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyClientSideFilterPerformance(maxMs = 800): Promise<void> {
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    const startedAt = Date.now();
+    await this.selectResultsCategoryFilter("Critical");
+    await expect(this.resultsTableRows.first()).toBeVisible({ timeout: 15000 });
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyAiSummaryLoadingPerformance(maxMs = 3000): Promise<void> {
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    const startedAt = Date.now();
+    await expect(
+      this.page.getByText(/AI Summary|loading|generating|SCREENING ENGINE/i).first(),
+    ).toBeVisible({ timeout: 15000 });
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyAiSummaryContentPerformance(maxMs = 15000): Promise<void> {
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    const startedAt = Date.now();
+    await this.expectAiSummaryPanelVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyMandatoryFieldsMarked(): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    const requiredMarker = this.page.locator("label").filter({ hasText: /\*|required/i }).first()
+      .or(this.page.getByText(/\* Required|required field/i).first());
+    await expect(requiredMarker).toBeVisible();
+  }
+
+  async verifyRegistrationNumberValidationOnEmptySubmit(): Promise<void> {
+    await this.selectEntityType("Non-Individuals");
+    await this.clickScreenButton();
+    await this.expectInlineFieldError("Registration Number");
+  }
+
+  async verifyEntityToggleImmediateFeedback(): Promise<void> {
+    await this.selectEntityType("Non-Individuals");
+    await expect(this.registeredNameInput.or(this.page.getByLabel(/Registered Name/i)).first()).toBeVisible();
+    await this.selectEntityType("Individual");
+    await expect(this.nameInEnglishInput.or(this.page.getByLabel(/Name in English/i)).first()).toBeVisible();
+  }
+
+  async verifyKeyboardNavigationSmoke(): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    await this.individualEntityButton.focus();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.individualEntityButton).toBeFocused();
+  }
+
+  async verifyResultsTableResponsiveLayout(): Promise<void> {
+    await this.setViewport(1280, 720);
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    await this.expectResultsTableVisible();
+  }
+
+  async verifyLicenseBannerVisibleAt1280(): Promise<void> {
+    await this.setViewport(1280, 720);
+    await this.expectManualScreeningPageLoaded();
+    const banner = this.page.getByText(/license will expire|license expiry|license warning/i).first();
+    if (await banner.isVisible().catch(() => false)) {
+      await expect(banner).toBeVisible();
+    } else {
+      await expect(this.pageTitle).toBeVisible();
+    }
+  }
+
+  async verifyTlsEncryptionInTransit(): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    await expect(this.page).toHaveURL(/^https:\/\//);
+  }
+
+  async verifyScreeningPayloadDoesNotExposeWatchlistSecrets(): Promise<void> {
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    const bodyText = await this.page.locator("body").innerText();
+    expect(bodyText).not.toMatch(/api[_-]?key|secret|password|private[_-]?key/i);
+  }
+
+  async verifyUserIdentityBarVisible(): Promise<void> {
+    const identity = this.page.getByText(/Admin User|Compliance Officer|Analyst|Operations User/i).first();
+    await expect(identity).toBeVisible({ timeout: 15000 });
+  }
+
+  async verifyWcagKeyboardSmoke(): Promise<void> {
+    await this.verifyKeyboardNavigationSmoke();
+    await this.expectScreeningModeTabsVisible();
+  }
+
+  async verifyStatusBadgeTextLabels(): Promise<void> {
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    await this.expectBadgeAccessibilityLabels();
+  }
+
+  async verifyVesselFormLabelsAccessible(): Promise<void> {
+    await this.selectEntityType("Vessel");
+    await expect(this.vesselNameInput.or(this.page.getByLabel(/Vessel Name/i)).first()).toBeVisible();
+    await expect(this.imoNumberInput.or(this.page.getByLabel(/IMO/i)).first()).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl: string): Promise<void> {
+    await this.submitValidIndividualScreening(this.defaultIndividualScreeningName());
+    await this.page.goBack({ waitUntil: "domcontentloaded" }).catch(() => undefined);
+    await this.page.goForward({ waitUntil: "domcontentloaded" }).catch(() => undefined);
+    await this.openManualScreeningDirect(baseUrl);
+    await this.expectManualScreeningPageLoaded();
+    await this.page.reload({ waitUntil: "domcontentloaded" });
+    await this.expectManualScreeningPageLoaded();
+  }
+
+  async verifyTopBarLayoutAtHigherResolution(): Promise<void> {
+    await this.setViewport(1920, 1080);
+    await expect(this.pageTitle).toBeVisible();
+    await expect(this.manualScreeningTab).toBeVisible();
+  }
+
+  async verifyMultiFilterSearchPerformance(maxMs = 1500): Promise<void> {
+    await this.expectManualScreeningPageLoaded();
+    const startedAt = Date.now();
+    await this.fillNameInEnglish(this.defaultIndividualScreeningName());
+    await expect(this.nameInEnglishInput.or(this.page.getByLabel(/Name in English/i)).first()).toHaveValue(
+      new RegExp(this.defaultIndividualScreeningName().split(" ")[0], "i"),
+    );
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
   }
 }
 

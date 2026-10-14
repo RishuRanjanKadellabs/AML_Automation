@@ -1,12 +1,14 @@
 const CustomListManagerLocators = {
+  /** Live dev route: /configuration/screening-custom-list */
+  liveRoutePath: "/configuration/screening-custom-list",
   pageTitle:
-    "h1:has-text('Custom List Manager'), h1:has-text('Custom Lists'), h1:has-text('Screening – Custom List Manager'), h1:has-text('Screening - Custom List Manager'), [class*='custom-list-manager'] h1, #clm-app h1",
+    "h1:has-text('Custom List Manager'), h1:has-text('Custom Lists'), h1:has-text('Custom lists'), h1:has-text('Screening – Custom List Manager'), h1:has-text('Screening - Custom List Manager'), h1:has-text('Screening — Custom List'), [class*='custom-list-manager'] h1, #clm-app h1",
   pageSubtitle: ".custom-list-manager-subtitle, [class*='subtitle']",
   configurationMenu:
     "button:has-text('Configuration'), button:has-text('Configurations'), [aria-label*='Configuration']",
   configurationSubmenu: "[class*='configuration-submenu'], nav:has-text('Configuration')",
   customListManagerLink:
-    "nav a[href*='configuration/custom-list-manager'], aside a[href*='configuration/custom-list-manager'], [class*='sidebar'] a[href*='configuration/custom-list-manager'], a[href='/configuration/custom-list-manager']",
+    "nav a[href*='configuration/screening-custom-list'], aside a[href*='configuration/screening-custom-list'], [class*='sidebar'] a[href*='configuration/screening-custom-list'], a[href='/configuration/screening-custom-list'], nav a[href*='configuration/custom-list-manager'], aside a[href*='configuration/custom-list-manager']",
   customListManagerSidebarLabel:
     "Screening – Custom List Manager, Screening - Custom List Manager, Custom List Manager, Custom Lists",
   breadcrumb: "[class*='breadcrumb'], nav[aria-label*='breadcrumb'], .breadcrumb",
@@ -29,7 +31,7 @@ const CustomListManagerLocators = {
     "button[aria-label*='action'], button:has-text('Edit'), button:has-text('View'), button:has-text('Delete'), [class*='row-action']",
   rowActionsMenu: "button[aria-label*='More'], button[aria-label*='Actions'], [class*='kebab']",
   exportButton: "button:has-text('Export')",
-  createListButton: "button:has-text('Create List'), button:has-text('New List')",
+  createListButton: "button:has-text('Create List'), button:has-text('New List'), button:has-text('Create')",
   addEntityButton: "button:has-text('Add Entity'), button:has-text('Add Entry')",
   bulkUploadButton: "button:has-text('Bulk Upload'), button:has-text('Bulk Import'), button:has-text('Upload')",
   allRequestsTab: "[role='tab']:has-text('All Requests'), button:has-text('All Requests')",

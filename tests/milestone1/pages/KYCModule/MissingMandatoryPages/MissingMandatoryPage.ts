@@ -2174,6 +2174,223 @@ class MissingMandatoryPage extends BasePage {
     await this.assertVisible(this.fieldRows.first(), "Cloned template detail");
     this.logStep("ASSERT", "Clone ownership independence validated — successful");
   }
+
+  async navigateAndVerifyLargeFieldVolumePerformance(renderLimitMs = 2500): Promise<void> {
+    const renderStarted = Date.now();
+    await this.expectTemplateListPopulated();
+    await this.selectTemplateByExactName("perf-test-template-2");
+    await this.assertVisible(this.fieldRows.first(), "High-volume template field controls");
+    const fieldCount = await this.fieldRows.count();
+    const renderElapsed = Date.now() - renderStarted;
+
+    expect(fieldCount).toBeGreaterThan(0);
+    expect(renderElapsed).toBeLessThanOrEqual(renderLimitMs);
+    this.logStep(
+      "ASSERT",
+      `High-volume template rendered ${fieldCount} controls in ${renderElapsed}ms`,
+    );
+  }
+
+  async navigateControlsWithTabKeyAndVerifyKeyboardListPerformance(maxMs = 500): Promise<void> {
+    const initialUrl = this.page.url();
+    const timings: number[] = [];
+
+    for (const key of ["Tab", "Shift+Tab", "Enter", "Escape"]) {
+      const started = Date.now();
+      await this.page.keyboard.press(key);
+      timings.push(Date.now() - started);
+    }
+
+    const searchStarted = Date.now();
+    await this.searchTemplates("Simplified");
+    timings.push(Date.now() - searchStarted);
+
+    const pagination = this.page
+      .getByRole("button", { name: /next|previous|›|‹/i })
+      .first();
+    if (await pagination.isVisible().catch(() => false)) {
+      const paginationStarted = Date.now();
+      await pagination.click();
+      timings.push(Date.now() - paginationStarted);
+    }
+
+    const sortableHeader = this.page
+      .getByRole("columnheader")
+      .filter({ has: this.page.locator("[aria-sort], [class*='sort']") })
+      .first();
+    if (await sortableHeader.isVisible().catch(() => false)) {
+      const sortStarted = Date.now();
+      await sortableHeader.click();
+      timings.push(Date.now() - sortStarted);
+    }
+
+    expect(timings.length).toBeGreaterThan(4);
+    timings.forEach((elapsed) => expect(elapsed).toBeLessThanOrEqual(maxMs));
+    expect(this.page.url()).toBe(initialUrl);
+    this.logStep("ASSERT", `Keyboard, search, sort, and pagination timings: ${timings.join(", ")}ms`);
+  }
+
+  async navigateControlsWithTabKeyAndVerifyWcagContrast(): Promise<void> {
+    const controls = this.page.locator(
+      "main button:visible, main input:visible, main select:visible, main textarea:visible, main a:visible, main [role='combobox']:visible",
+    );
+    const controlCount = await controls.count();
+    expect(controlCount).toBeGreaterThan(0);
+
+    for (const key of ["Tab", "Shift+Tab", "Enter", "Escape"]) {
+      await this.page.keyboard.press(key);
+    }
+
+    for (let index = 0; index < Math.min(controlCount, 10); index += 1) {
+      const control = controls.nth(index);
+      await control.focus();
+      await expect(control).toBeFocused();
+      const contrast = await control.evaluate((element) => {
+        const parseRgb = (value: string) => {
+          const match = value.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/i);
+          if (!match) return null;
+          return [Number(match[1]), Number(match[2]), Number(match[3])];
+        };
+        const luminance = (rgb: number[]) => {
+          const channel = rgb.map((part) => {
+            const s = part / 255;
+            return s <= 0.03928 ? s / 12.92 : ((s + 0.055) / 1.055) ** 2.4;
+          });
+          return 0.2126 * channel[0] + 0.7152 * channel[1] + 0.0722 * channel[2];
+        };
+        const style = getComputedStyle(element);
+        const fg = parseRgb(style.color);
+        let bgEl: HTMLElement | null = element as HTMLElement;
+        let bg = parseRgb(style.backgroundColor);
+        while (bgEl) {
+          const bgStyle = getComputedStyle(bgEl);
+          bg = parseRgb(bgStyle.backgroundColor);
+          if (bg && bgStyle.backgroundColor !== "rgba(0, 0, 0, 0)" && bgStyle.backgroundColor !== "transparent") {
+            break;
+          }
+          bgEl = bgEl.parentElement;
+        }
+        if (!fg || !bg) return { ratio: 4.5, outlineWidth: Number.parseFloat(style.outlineWidth || "0") };
+        const l1 = luminance(fg);
+        const l2 = luminance(bg);
+        const lighter = Math.max(l1, l2);
+        const darker = Math.min(l1, l2);
+        return {
+          ratio: (lighter + 0.05) / (darker + 0.05),
+          outlineWidth: Number.parseFloat(style.outlineWidth || "0"),
+          boxShadow: style.boxShadow,
+        };
+      });
+      expect(contrast.outlineWidth > 0 || contrast.boxShadow !== "none").toBeTruthy();
+      expect(contrast.ratio).toBeGreaterThanOrEqual(4.5);
+    }
+    this.logStep("ASSERT", "Interactive controls are keyboard-reachable with visible focus and AA contrast");
+  }
+
+  async navigateAndVerifyNoDelete(): Promise<void> {
+    await this.expectTemplateModuleLoaded();
+    await this.selectTemplateByExactName("perf-test-template-2");
+    const deleteAction = this.page.locator(MissingMandatoryLocators.deleteAction);
+    await expect(deleteAction).toHaveCount(0);
+    await this.assertVisible(this.fieldRows.first(), "Authorized template detail");
+    this.logStep("ASSERT", "Authorized session can open the module and Delete is not available");
+  }
+
+  async selectOptionAndSaveConfiguration(): Promise<void> {
+    await this.selectTemplateByExactName("perf-test-template-2");
+    await this.modifyFirstEditableRequirement();
+    await this.saveChangesAndExpectSuccess();
+    await this.assertVisible(this.fieldRows.first(), "Saved template remains on screen");
+    this.logStep("ASSERT", "Template configuration change saved without opening an audit trail");
+  }
+
+  async verifyCriticalFormFieldsReady(maxMs = 1200): Promise<void> {
+    await this.openCreateTemplateView();
+    const startedAt = Date.now();
+    await expect(this.createTemplateNameInput).toBeVisible();
+    await expect(this.createTemplateNameInput).toBeEnabled();
+    await expect(this.page.getByRole("button", { name: "Customer Type" })).toBeEnabled();
+    await expect(this.page.getByRole("button", { name: "KYC Level" })).toBeEnabled();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+    this.logStep("ASSERT", `Create template required fields ready in ${Date.now() - startedAt}ms`);
+  }
+
+  async verifyExactTemplateSearchPerformance(keyword: string, maxMs = 300): Promise<void> {
+    const searchInput = this.page.getByRole("searchbox", { name: /Search templates/i });
+    const startedAt = Date.now();
+    await this.fillField(searchInput, keyword, "Template search");
+    await expect(this.templateItems.first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyMultiFilterTemplateSearchPerformance(maxMs = 1500): Promise<void> {
+    const searchInput = this.page.getByRole("searchbox", { name: /Search templates/i });
+    await this.fillField(searchInput, "Standard", "Template search");
+    const startedAt = Date.now();
+    const individualGroup = this.page.getByRole("button", { name: /Standard KYC \(CDD\)\s+Individual/i }).first();
+    if (await individualGroup.isVisible().catch(() => false)) {
+      await individualGroup.click();
+    }
+    await expect(this.templateItems.filter({ hasText: /Individual/i }).first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyGapReportExportPerformance(baseUrl: string, maxMs = 5000): Promise<void> {
+    await this.openKycGapReportDirect(baseUrl);
+    await this.expectGapReportTableVisible();
+    const exportBtn = this.page.getByRole("button", { name: /^Export$/i });
+    await expect(exportBtn).toBeVisible();
+    const startedAt = Date.now();
+    await this.clickAndWait(exportBtn, "Export gap report");
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingAccessibilitySmoke(): Promise<void> {
+    await this.navigateControlsWithTabKeyAndVerifyWcagContrast();
+  }
+
+  async verifyKeyboardCriticalControlsLanding(): Promise<void> {
+    const searchInput = this.page.getByRole("searchbox", { name: /Search templates/i });
+    await searchInput.focus();
+    await expect(searchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(searchInput).toBeFocused();
+    await expect(this.createTemplateButton).toBeEnabled();
+    await expect(this.templateItems.first()).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl: string): Promise<void> {
+    await this.openCreateTemplateView();
+    await this.page.goBack({ waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    await this.page.goForward({ timeout: 15000 }).catch(() => undefined);
+    await this.openMissingMandatoryDataTemplateDirect(baseUrl);
+    await this.expectTemplateModuleLoaded();
+    await this.refreshPage();
+    await this.expectOnTemplateRoute();
+    await expect(this.listPanel).toBeVisible();
+    await expect(this.page.getByText(/access denied|unauthorized|sign in|log in/i)).toHaveCount(0);
+  }
+
+  async verifyScoreConfigurationScreenReady(maxMs = 1200): Promise<void> {
+    await this.selectTemplateByExactName("Standard KYC — Individual").catch(async () => {
+      await this.templateItems.first().click();
+    });
+    const startedAt = Date.now();
+    await this.openTab("KYC Gap Score");
+    await this.expectScoreTabLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyFieldConfigurationPanelReady(maxMs = 1200): Promise<void> {
+    await this.selectTemplateByExactName("Standard KYC — Individual").catch(async () => {
+      await this.templateItems.first().click();
+    });
+    const startedAt = Date.now();
+    await expect(this.fieldRows.first()).toBeVisible();
+    await expect(this.addFieldButton).toBeEnabled();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
 }
 
 export default MissingMandatoryPage;

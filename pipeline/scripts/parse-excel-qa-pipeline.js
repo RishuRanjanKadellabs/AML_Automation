@@ -4,7 +4,7 @@
  * Mechanical only — agents must call this script; never hand-write validation-report.json.
  *
  * Usage:
- *   node pipeline/scripts/parse-excel-qa-pipeline.js --excel <path> [--results-root <dir>] [--out <file>]
+ *   node pipeline/scripts/parse-excel-qa-pipeline.js --excel <path> [--worksheet <name>] [--results-root <dir>] [--out <file>]
  *   node pipeline/scripts/parse-excel-qa-pipeline.js <excel-file>   # legacy positional
  */
 const XLSX = require("xlsx");
@@ -19,33 +19,9 @@ const {
   underResultsRoot,
   writeJson,
 } = require("./qa-pipeline-utils.cjs");
-
-function normalizeHeader(header) {
-  if (!header) return "";
-  return header.toString().trim().toLowerCase().replace(/[\s\-_]/g, "");
-}
-
-function findColumnMapping(columns, columnAliases) {
-  const mapping = {};
-  const normalizedColumns = {};
-
-  columns.forEach((col) => {
-    normalizedColumns[normalizeHeader(col)] = col;
-  });
-
-  Object.keys(columnAliases).forEach((canonical) => {
-    const aliases = columnAliases[canonical];
-    for (const alias of aliases) {
-      const normalizedAlias = normalizeHeader(alias);
-      if (normalizedColumns[normalizedAlias]) {
-        mapping[canonical] = normalizedColumns[normalizedAlias];
-        break;
-      }
-    }
-  });
-
-  return mapping;
-}
+const {
+  selectTestCaseWorksheet,
+} = require("./excel-testcase-worksheet.cjs");
 
 function validateRow(row, rowNum, columnMapping, requiredColumns) {
   const issues = [];
@@ -125,7 +101,7 @@ function main() {
   const excelPath = resolveExcelPath();
   if (!excelPath) {
     console.error(
-      "Usage: node parse-excel-qa-pipeline.js --excel <excel-file> [--results-root <dir>] [--out <file>]"
+      "Usage: node parse-excel-qa-pipeline.js --excel <excel-file> [--worksheet <name>] [--results-root <dir>] [--out <file>]"
     );
     process.exit(1);
   }
@@ -156,20 +132,27 @@ function main() {
 
   try {
     const workbook = XLSX.readFile(absExcel);
-    const sheetName = workbook.SheetNames[0];
-    const worksheet = workbook.Sheets[sheetName];
-    console.log(`Processing sheet: ${sheetName}`);
+    const {
+      sheetName,
+      rawData,
+      headers,
+      columnMapping,
+      selectionStrategy,
+    } = selectTestCaseWorksheet(workbook, {
+      columnAliases,
+      requiredColumns,
+      worksheetName: arg("worksheet", ""),
+    });
+    console.log(
+      `Processing sheet: ${sheetName} (selection: ${selectionStrategy})`
+    );
 
-    const rawData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
     if (rawData.length === 0) {
       throw new Error("Excel file appears to be empty");
     }
 
-    const headers = rawData[0];
     console.log(`Found ${rawData.length - 1} data rows`);
     console.log(`Columns: ${headers.join(", ")}`);
-
-    const columnMapping = findColumnMapping(headers, columnAliases);
     console.log(`Column mapping:`, columnMapping);
 
     const seenTcIds = {};
@@ -271,6 +254,11 @@ function main() {
       filePath: relative(absExcel),
       excelPath: relative(absExcel),
       worksheetName: sheetName,
+      worksheetSelection: {
+        strategy: selectionStrategy,
+        requestedWorksheet: arg("worksheet", "") || null,
+        requiredColumns,
+      },
       columnMapping,
       totalRows: processedRows.length,
       validationSummary,

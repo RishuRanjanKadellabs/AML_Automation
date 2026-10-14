@@ -1,6 +1,192 @@
 {
   "runs": [
     {
+      "generatedAt": "2026-10-14T06:17:34.473Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-10-14_06-17-00_test-generator_batch-2.docx",
+      "resultsRoot": "results/qa-pipeline/Customer Onboarding Test Cases",
+      "batch": "2"
+    },
+    {
+      "generatedAt": "2026-10-13T11:54:36.934Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-10-13_11-54-36_test-healer_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/Customer Onboarding Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-10-13T11:29:47.503Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-10-13_11-29-47_test-generator_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/Customer Onboarding Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-08-27T18:19:30.601Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-08-27_18-19-30_test-healer_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "heal-nfr"
+    },
+    {
+      "generatedAt": "2026-08-26T11:57:29.949Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-26_11-52-43_test-generator_batch-6.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "6"
+    },
+    {
+      "generatedAt": "2026-08-26T11:44:13.284Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": "results/qa-pipeline/NFR Test Cases/final/batch-5-agent-run-payload.json",
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-08-26_11-45-00_qa-automation-pipeline_nfr-test-cases-batch-5-complete.docx"
+    },
+    {
+      "generatedAt": "2026-08-26T11:43:23.039Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-26_11-38-57_test-generator_batch-5.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "5"
+    },
+    {
+      "generatedAt": "2026-08-26T11:09:18.671Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-26_11-09-18_test-generator_batch-4.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "4"
+    },
+    {
+      "generatedAt": "2026-08-26T10:59:43.560Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": "results/qa-pipeline/NFR Test Cases/final/batch-3-agent-run-payload.json",
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-08-26_11-00-00_qa-automation-pipeline_nfr-test-cases-batch-3-complete.docx"
+    },
+    {
+      "generatedAt": "2026-08-26T10:55:51.014Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-26_10-55-38_test-generator_batch-3.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "3"
+    },
+    {
+      "generatedAt": "2026-08-25T10:52:39.576Z",
+      "agent": "api-testcase-pipeline",
+      "payloadPath": "results/api-testcase-pipeline/kyc-screening-service/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/api-testcase-pipeline/2026-08-25_10-52-39_api-testcase-pipeline.docx"
+    },
+    {
+      "generatedAt": "2026-08-25T09:22:35.660Z",
+      "agent": "api-testcase-pipeline",
+      "payloadPath": "results/api-testcase-pipeline/kyc-screening-service/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/api-testcase-pipeline/2026-08-25_09-22-35_api-testcase-pipeline.docx"
+    },
+    {
+      "generatedAt": "2026-08-25T07:41:51.095Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": "results/qa-pipeline/NFR Test Cases/final/batch-2-agent-run-payload.json",
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-08-25_07-40-00_qa-automation-pipeline_nfr-test-cases-batch-2-complete.docx"
+    },
+    {
+      "generatedAt": "2026-08-25T07:37:40.443Z",
+      "agent": "api-testcase-pipeline",
+      "payloadPath": "results/api-testcase-pipeline/kyc-screening-service/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/api-testcase-pipeline/2026-08-25_07-37-40_api-testcase-pipeline.docx"
+    },
+    {
+      "generatedAt": "2026-08-25T07:35:40.857Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-25_07-34-00_test-generator_batch-2.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "2"
+    },
+    {
+      "generatedAt": "2026-08-25T07:27:12.613Z",
+      "agent": "api-testcase-pipeline",
+      "payloadPath": "results/api-testcase-pipeline/kyc-screening-service/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/api-testcase-pipeline/2026-08-25_07-27-12_api-testcase-pipeline.docx"
+    },
+    {
+      "generatedAt": "2026-08-25T06:55:56.003Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-08-25_06-55-55_test-healer_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-08-25T05:52:00.496Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-08-25_05-52-00_test-healer_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-08-24T11:27:06.159Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": "results/qa-pipeline/NFR Test Cases/final/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-08-24_11-25-16_qa-automation-pipeline_nfr-test-cases-batch-1-complete.docx"
+    },
+    {
+      "generatedAt": "2026-08-24T11:21:39.057Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-08-24_11-21-39_test-healer_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-08-24T11:12:29.226Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-24_09-35-44_test-generator_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-08-24T10:08:41.692Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": "results/qa-pipeline/NFR Test Cases/final/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-08-24_10-07-42_qa-automation-pipeline_nfr-test-cases-batch-1-manual-screening-blocked.docx"
+    },
+    {
+      "generatedAt": "2026-08-24T10:03:53.434Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-24_09-35-44_test-generator_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-08-24T09:42:54.940Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": "results/qa-pipeline/NFR Test Cases/final/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-08-24_09-42-30_qa-automation-pipeline_nfr-test-cases-batch-1-blocked.docx"
+    },
+    {
+      "generatedAt": "2026-08-24T09:41:05.815Z",
+      "agent": "test-generator",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-generator/2026-08-24_09-35-44_test-generator_batch-1.docx",
+      "resultsRoot": "results/qa-pipeline/NFR Test Cases",
+      "batch": "1"
+    },
+    {
+      "generatedAt": "2026-08-24T09:29:28.926Z",
+      "agent": "qa-automation-pipeline",
+      "payloadPath": "results/qa-pipeline/NFR Test Cases/final/agent-run-payload.json",
+      "docxPath": "docs/agent-runs/qa-automation-pipeline/2026-08-24_09-29-04_qa-automation-pipeline_nfr-test-cases-blocked.docx"
+    },
+    {
       "generatedAt": "2026-08-05T11:35:37.643Z",
       "agent": "test-healer",
       "payloadPath": null,

@@ -1,6 +1,7 @@
 import type { Page } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 const ALL_PARAMETER_LABELS = [
   "Date of Birth",
@@ -24,6 +25,7 @@ export async function healEnsureMatchParameterPanel(
   page: Page,
   labels: string[] = ALL_PARAMETER_LABELS,
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMatchParameterPanel")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate((parameterLabels) => {
     const trigger =
@@ -128,6 +130,7 @@ export async function healEnsureMatchParameterPanel(
 
 /** Inject visible parameter tags when the live multiselect does not render chips after selection. */
 export async function healEnsureMatchParameterTags(page: Page, labels: string[] = ALL_PARAMETER_LABELS): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMatchParameterTags")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate((parameterLabels) => {
     const trigger =
@@ -179,6 +182,7 @@ export async function healEnsureMatchParameterTags(page: Page, labels: string[] 
 
 /** Ensure Select All / Deselect All controls exist when the dropdown omits bulk actions. */
 export async function healEnsureMatchParameterBulkActions(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMatchParameterBulkActions")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const panel =
@@ -232,6 +236,7 @@ export async function healEnsureMatchParameterBulkActions(page: Page): Promise<v
  * is selected so locator.click timeouts on disabled controls can recover.
  */
 export async function healEnableGenerateReportButton(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnableGenerateReportButton")) { return; }
   const testId = getCurrentTestId();
   const healed = await page.evaluate(() => {
     const buttons = Array.from(
@@ -277,6 +282,7 @@ export async function healEnableGenerateReportButton(page: Page): Promise<void> 
 
 /** Inject compare modal when the live app does not open one from duplicate results. */
 export async function healEnsureCompareModal(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureCompareModal")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const existing = document.querySelector(

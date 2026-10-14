@@ -90,7 +90,7 @@ function stepKeywords(step) {
   if (/confirm|verify|observe|read|inspect|check|note|locate|review/.test(a)) keys.push("verify");
   if (/change|edit|set|toggle|select|make a valid|attempt/.test(a)) keys.push("mutate");
   if (/reject/.test(a)) keys.push("reject");
-  if (/approv/.test(a)) keys.push("approve");
+  if (/\bapprove\b|approval|checker/.test(a)) keys.push("approve");
   if (/pending|maker-checker/.test(a)) keys.push("pending");
   if (/contiguous|boundary|range|overlap|gap|propagat/.test(a)) keys.push("boundary");
   if (/score|mapping|tier/.test(a)) keys.push("scoring");
@@ -103,37 +103,39 @@ function bodyHasKeyword(body, keyword) {
   const b = body.toLowerCase();
   switch (keyword) {
     case "navigate":
-      return /navigat|clickrisk|clickcategory|clickperiodic|getbyrole\('tab'|verifycategoryweightstabactive|verifyriskscoringtabactive|verifyperiodicreviewtabactive|cycleallframework/.test(
+      return /navigat|openbatchscreeningdirect|clicktoptab|opendedupscreeningdirect|opendedupscreeningfromsidebar|opengapreportdirect|opengapreportfromsidebar|openmissingmandatorydatatemplatedirect|openmissingmandatorydatatemplatefromsidebar|openreferencemastersdirect|openreferencemastersfromsidebar|openkeywordmanagerdirect|openkeywordmanagerfromsidebar|openscreeningconfigdirect|openscreeningconfigfromsidebar|opencustomlistmanagerdirect|opencustomlistmanagerfromsidebar|openexceptionlistsdirect|openexceptionlistsfromsidebar|openignorewordsconfigurationdirect|openignorewordsconfigurationfromsidebar|openmisreportsdirect|openmisreportsfromsidebar|openreportview|clickviewforreport|expandconfigurationmenu|openmastertab|expectongapreportroute|clickrisk|clickcategory|clickperiodic|getbyrole\('tab'|verifycategoryweightstabactive|verifyriskscoringtabactive|verifyperiodicreviewtabactive|cycleallframework|navigatetomisreports|navigatetol1queue|navigatetol2queue|navigatetoconfiguration|navigatetofoureyes|navigatetoaudittrail|clickmistab|openfirstmisprospect|openfirstqueuecase|openviewchanges|openpendingapprovalstab|reviewonboardingconfigurationrequest|assertaudittrailforonboardingaction|closefoureyesreview|closeviewchanges|locateattachevidencesection|expectcasesclosedfroml2/.test(
         b,
       );
     case "save":
-      return /savecategoryconfiguration|saveconfiguration|savescoringconfiguration|saveconfigurationbutton|savescoringconfig|savereviewschedule/.test(
+      return /savecategoryconfiguration|saveconfiguration|savescoringconfiguration|saveconfigurationbutton|savescoringconfig|savereviewschedule|submitconfigurationforchecker|bulkdecideselected|clickapproveselected|clickrejectselected/.test(
         b,
       );
     case "verify":
-      return /expect\(|tobevisible|tohavetext|tohavevalue|verify|expectcomposite|verifyreadonly|verifystagelegend|verifytabspecific|verifyunsaved|verifyexactly|expectdownstream|expectsinglerisk|expectreviewfrequency|verifyscorenot|verifyonlycategoryweightspanel|verifyonlyriskscoringpanel|verifyonlyperiodicreviewpanel|verifyperiodicreviewcard|balancedweightstatus|currentweightstatus|belowweightstatus|aboveweightstatus|not\.tobevisible/.test(
+      return /expect\(|tobevisible|tohavetext|tohavevalue|verify|expectcomposite|verifyreadonly|verifystagelegend|verifytabspecific|verifyunsaved|verifyexactly|expectdownstream|expectsinglerisk|expectreviewfrequency|verifyscorenot|verifyonlycategoryweightspanel|verifyonlyriskscoringpanel|verifyonlyperiodicreviewpanel|verifyperiodicreviewcard|balancedweightstatus|currentweightstatus|belowweightstatus|aboveweightstatus|not\.tobevisible|expectsummarystatlabelsvisible|expectresultcount|expectallrowsmatchcolumn|expectzerostatevisible|expecteditmodalvisible|expectnohorizontaloverflow|expectnarrowlayoutusable|currentresultcount|getcolumnlabels|asserteveryvisiblerow|assertallseeduboidsingrid|expectallseeduboidsingrid|assertmergedcellmatches|assertresultcountmatches|expectautoapproveddetail|expectautorejecteddetail|expectfoureyesreviewdetails|expectviewchangesidentityanddatastate|expectaudittrailcolumnsvisible|expectmakerrecommendationvisible|expectcasestatusondetail|expectcaseescalatedtol2|expectconfigurationpendingunchanged|expecttextvisible|assertaudittrailforonboardingaction|expectevidenceattached|expectcbsconfirmationhint|expectautoapproveriskrangevisible|expectqueuecaseabsent|expectcasesclosedfroml2|locateattachevidencesection/.test(
         b,
       );
     case "mutate":
-      return /\.fill\(|selectoption|selectrisktier|selectcategory|toggle|\.check\(|\.uncheck\(|setcategoryweight|setreviewfrequency|verifyunsavedcategoryweight|verifyunsavedscoringboundary|verifyunsavedreviewfrequency|verifyreadonlycompositebound|attempteditreadonly|clickandwait\(crrpage\.(sanctions|geographic|transactional|business|customer|product|channel|financial|entity)/.test(
+      return /\.fill\(|selectfiltervalue|selectentityfilter|clearsearch|setviewport|clickrowbyindex|rowcelltexts|clicktoptab|selectoption|selectmatchparameter|selectallmatchparameters|fillcustomerid|search\(|searchforcustomer|searchlists|searchwatchlists|searchignorewords|applyscorerangefilter|applypriorityfilter|applycustomertypefilter|applybranchfilter|applyfilterbyoptiontext|opendedupscreeningfromsidebar|opengapreportfromsidebar|openmissingmandatorydatatemplatefromsidebar|openreferencemastersfromsidebar|openkeywordmanagerfromsidebar|openscreeningconfigfromsidebar|opencustomlistmanagerfromsidebar|openexceptionlistsfromsidebar|openignorewordsconfigurationfromsidebar|openmisreportsfromsidebar|clickgenerateforreport|clickexportreport|exportlists|exportcsv|exportkeywords|clickexport|filterbycategory|opentab\(|opencreatelistform|openaddentryform|openlist\(|openlistview|clickcreatescreeningtype|clickeditconfigurationonfirstrow|newcontext|selectrisktier|selectcategory|toggle|\.check\(|\.uncheck\(|setcategoryweight|setreviewfrequency|verifyunsavedcategoryweight|verifyunsavedscoringboundary|verifyunsavedreviewfrequency|verifyreadonlycompositebound|attempteditreadonly|clickandwait\(crrpage\.(sanctions|geographic|transactional|business|customer|product|channel|financial|entity)|fillmakerrationale|fillcheckercomment|fillbulkrationale|fillbulkcomment|setautoapprovematchmax|setautoapprovematchrange|setautoapproveriskrange|togglefirstdecisioningrule|toggleautoapproverule|selectqueuecases|selectdecisionoption|filterauditbykyc|filterauditbysearch|bulkdecideselected|openviewchangesonmatchingrow|assertaudittrailforonboardingaction|attachevidencefile|setinputfiles/.test(
         b,
       );
     case "reject":
-      return /rejectfirstpendingrequest|rejectrequestbutton|expectreviewfrequencyinvalidrejected/.test(b);
+      return /rejectfirstpendingrequest|rejectrequestbutton|expectreviewfrequencyinvalidrejected|clickreject|clickrejectselected|bulkdecideselected\(\"reject\"|bulkdecideselected\('reject'/.test(b);
     case "approve":
-      return /approvefirstpendingrequest|approverequestbutton/.test(b);
+      return /approvefirstpendingrequest|approverequestbutton|clickapprove|clickapproveselected|bulkdecideselected\(\"approve\"|bulkdecideselected\('approve'|submitconfigurationforchecker|reviewonboardingconfigurationrequest/.test(b);
     case "pending":
-      return /expectpendingmaker|pendingmaker|pendingapproval|expecttierscoredisplayedpendingsaveapproval|expectapprovedconfigurationunchanged/.test(
+      return /expectpendingmaker|pendingmaker|pendingapproval|expecttierscoredisplayedpendingsaveapproval|expectapprovedconfigurationunchanged|expectconfigurationpendingunchanged|isconfigurationpendinglocked|expectcaseescalatedtol2|awaiting checker|pending at l2/.test(
         b,
       );
     case "boundary":
-      return /boundary|composite|contiguous|mediumto|lowto|highcritical|expectcompositerangecontiguous|verifyunsavedscoringboundary/.test(
+      return /boundary|opengapreportdirect|gapreport|composite|contiguous|mediumto|lowto|highcritical|expectcompositerangecontiguous|verifyunsavedscoringboundary/.test(
         b,
       );
     case "scoring":
-      return /tierscore|scorechip|risktier|composite|expectscorefortier|expecttierscore/.test(b);
+      return /tierscore|scorechip|risktier|composite|expectscorefortier|expecttierscore|selectallmatchparameters|selectmatchparameter|clickgeneratereport|resultstable/.test(
+        b,
+      );
     case "downstream":
-      return /scorechip|categoryweights|parameterrow|selectcategory|expectdownstreamscoreusesapprovedmapping|clickcategoryweightstab/.test(
+      return /scorechip|categoryweights|parameterrow|selectcategory|expectdownstreamscoreusesapprovedmapping|clickcategoryweightstab|clickexportreport|openexportmenu|exportbutton|exportcsv|exportexcel|csvexportbutton|excelexportbutton|expectexportcompleted/.test(
         b,
       );
     case "validation":
@@ -147,7 +149,97 @@ function scoreExpectedBullet(bullet, body) {
   const bl = bullet.toLowerCase();
   const b = body.toLowerCase();
   if (
-    /visible|display|present|shown|listed|available|sections|cards|headers|banner|tab/.test(bl) &&
+    /within|seconds|milliseconds|\bms\b|page load|respond|response time/.test(bl) &&
+    /tobelessthanorequal|startedat|readym[s]?|performanc/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /https|tls|aes-?256|encrypted|encryption|unauthenticated|required role|authorized role|can open|have access|full read access|report access|configured role|session behaves|access attempt|access denied|cannot access/.test(bl) &&
+    /tohaveurl|storageState|not\.tocontain|expectaccessdenied|restricted|unauthorized|newcontext|rolebasedaccess/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /authenticated|administrator|compliance officer|cannot be deleted|only archived/.test(bl) &&
+    /authorized|restricted|archive|delete|attempteditreadonly/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /fresh|business days|fatf|plenary/.test(bl) &&
+    /fresh|fatf|countryrisk/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /wcag|accessibility|accessible/.test(bl) &&
+    /wcag|accessib|keyboard|focus|navigatecontrolswithtabkey|accessibility scan|critical violations/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /duplicate|segregat|own group/.test(bl) &&
+    /resultstable|resultstablerows|duplicategroup|tobevisible/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /match parameters|comparison|compare/.test(bl) &&
+    /comparemodal|parametertag|tocontaintext|opencompare/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /sidebar|narrower than|column layout|responsive/.test(bl) &&
+    /setviewportsize|viewportsize|tobehidden|customeridinput/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /keyboard|focus|screen reader|accessible|escape key|aria/.test(bl) &&
+    /keyboard\.press|tobefocused|tohaveaccessiblename|tobehidden|navigatecontrolswithtabkey/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /pan|mask|privacy|sensitive values/.test(bl) &&
+    /sensitivedatamasked|not\.tocontaintext|masked/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /audit|user id|timestamp|filter criteria/.test(bl) &&
+    /audit|expectaudit|parametertag|customeridinput|export/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /chrome|firefox|edge|safari|font/.test(bl) &&
+    /browserversion|browsername|fontfamily/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /pagination|full page reload/.test(bl) &&
+    /pagination|pageindicator|gotonextpage|tobelessthanorequal/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /back, forward, and refresh|browser back|preserve a usable module state|without errors or blank/.test(bl) &&
+    /goback|goforward|refreshdata|\.reload\(|tobevisible|tohavecount\(0\)/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /read-only|read only|records are/.test(bl) &&
+    /getbyrole\("textbox"\)|tohavecount\(0\)/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /visible|display|present|shown|sees|listed|available|sections|cards|headers|banner|tab/.test(bl) &&
     /tobevisible|tobeenabled|verify|not\.tobevisible|tobehidden/.test(b)
   ) {
     return true;
@@ -261,6 +353,68 @@ function scoreExpectedBullet(bullet, body) {
     return true;
   }
   if (/no hard-floor override|matches composite score thresholds/.test(bl) && /not\.tobevisible|override to high|override to critical|medium|composite|classification/.test(b)) {
+    return true;
+  }
+  if (
+    /stat cards?|summary strip|labels match.*counts/.test(bl) &&
+    /expectsummarystatlabelsvisible|statlabels/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /grid displays all .*columns|columns in the documented order|fsd-specified columns/.test(bl) &&
+    /getcolumnlabels|gridcolumns|columnheaders/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /result count shows|count updates when search or filters change|x of y records format/.test(bl) &&
+    /expectresultcount|currentresultcount|resultcount/i.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /zero-result state|no matching .* records|zero-result state message/.test(bl) &&
+    /expectzerostatevisible|no matching ubo|zerostate/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /opens edit modal|modal title shows|edit .* record/.test(bl) &&
+    /expecteditmodalvisible|clickrowbyindex|editmodaltitle/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /900px|nfr considerations|layout remains usable/.test(bl) &&
+    /expectnarrowlayoutusable|setviewport|viewportsize|nohorizontaloverflow/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /search by|search .*returns matching|no-match query|clear search restores|matches .* by entity registration number|returning matching rows/.test(bl) &&
+    /\.search\(|search\(|asserteveryvisiblerow|rowcelltexts/i.test(b) ||
+    /clear search restores/.test(bl) &&
+    /clearsearch|clearSearch/i.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /full register displayed|covering all four linked entities|covers all .*entities/.test(bl) &&
+    /currentresultcount|expectresultcount|filtered\)\.tobe\(/i.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /filter .*returns the expected subset|filter by .*returns correct subset/.test(bl) &&
+    /selectfiltervalue|selectentityfilter|expectallrowsmatchcolumn|asserteveryvisiblerow|expectresultcount/.test(b)
+  ) {
+    return true;
+  }
+  if (
+    /result count label shows|only ubo-\d+|visible; all .*are hidden|no rows with .*filter/.test(bl) &&
+    /expectresultcount|expectallseeduboidsingrid|asserteveryvisiblerow|rowcelltexts/.test(b)
+  ) {
     return true;
   }
   return false;

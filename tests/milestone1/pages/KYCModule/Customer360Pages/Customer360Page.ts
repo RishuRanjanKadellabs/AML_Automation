@@ -1,4 +1,4 @@
-import { Page, Locator, expect } from "@playwright/test";
+import { Page, Locator, expect, Response } from "@playwright/test";
 import BasePage from "../../../../PageObjects/BasePage";
 import Customer360Locators from "../../../objectrepositories/Customer360Locators";
 import {
@@ -7,10 +7,13 @@ import {
   getCustomerFixture,
   getCustomer360ViewMode,
   installCustomer360ApiMock,
+  isCustomer360LiveApi,
   normalizeCustomerKey,
   parseCustomerId,
   resetCustomer360ApiMock,
+  setCustomer360LiveApi,
   setCustomer360ViewMode,
+  uninstallCustomer360ApiMock,
 } from "../../../../helpers/customer360-api-mock";
 import { tabNamePattern } from "../../../../helpers/customer360-tab-names";
 import { getCurrentTestId } from "../../../../helpers/action-logger";
@@ -155,6 +158,212 @@ class Customer360Page extends BasePage {
     return this.page.locator(Customer360Locators.tabTable).first();
   }
 
+  get pepBadge(): Locator {
+    return this.page.locator(Customer360Locators.pepBadge).first();
+  }
+
+  get adverseMediaBadge(): Locator {
+    return this.page.locator(Customer360Locators.adverseMediaBadge).first();
+  }
+
+  get riskScoreBadge(): Locator {
+    return this.page.locator(Customer360Locators.riskScoreBadge).first();
+  }
+
+  get strSarBadge(): Locator {
+    return this.page.locator(Customer360Locators.strSarBadge).first();
+  }
+
+  private usesApiMock(): boolean {
+    return !isCustomer360LiveApi(this.page.context());
+  }
+
+  /** Use live CBS/KYC API responses instead of fixture intercepts. */
+  async enableLiveApi(): Promise<void> {
+    setCustomer360LiveApi(this.page.context(), true);
+    await uninstallCustomer360ApiMock(this.page);
+    this.logStep("LIVE", "Customer 360 live API mode enabled — mock uninstalled");
+  }
+
+  /** Mock/fixture CBS id — used when API mock is active. */
+  static readonly defaultTestCustomerId = "3159176";
+  /** Live dev lookup query — search by customer name only (no CBS id). */
+  static readonly defaultLiveSearchQuery = "Rohan Deshpande";
+
+  private expectedLiveCustomerLabel(customerId: string): string {
+    const parsedId = parseCustomerId(customerId);
+    if (
+      parsedId === Customer360Page.defaultTestCustomerId ||
+      customerId === Customer360Page.defaultTestCustomerId
+    ) {
+      return Customer360Page.defaultLiveSearchQuery;
+    }
+    return getCustomerFixture(parsedId)?.name ?? this.resolveSearchQuery(customerId);
+  }
+
+  private resolveSearchQuery(customerId: string): string {
+    const parsedId = parseCustomerId(customerId);
+    if (!this.usesApiMock()) {
+      if (
+        parsedId === Customer360Page.defaultTestCustomerId ||
+        customerId === Customer360Page.defaultTestCustomerId
+      ) {
+        return Customer360Page.defaultLiveSearchQuery;
+      }
+      const fixture = getCustomerFixture(parsedId);
+      if (fixture?.name) {
+        return fixture.name;
+      }
+      if (/^\d+$/.test(parsedId)) {
+        return Customer360Page.defaultLiveSearchQuery;
+      }
+      return parsedId;
+    }
+    return formatCustomerIdForApp(parsedId);
+  }
+
+  private escapeRegExp(value: string): string {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  private liveCustomerLookupResult(searchQuery: string): Locator {
+    const tokens = searchQuery.split(/\s+/).filter(Boolean);
+    const fullPattern = new RegExp(this.escapeRegExp(searchQuery), "i");
+    const partialPattern =
+      tokens.length > 1
+        ? new RegExp(
+            `${this.escapeRegExp(tokens[0])}.*${this.escapeRegExp(tokens[tokens.length - 1])}`,
+            "i",
+          )
+        : fullPattern;
+    return this.page
+      .locator(Customer360Locators.customerLookupResults)
+      .filter({ hasText: partialPattern })
+      .or(this.page.getByRole("button", { name: partialPattern }))
+      .or(this.page.getByRole("listitem", { name: partialPattern }))
+      .or(this.page.getByText(fullPattern))
+      .first();
+  }
+
+  private customerLookupResult(searchTerm: string): Locator {
+    if (!this.usesApiMock()) {
+      return this.liveCustomerLookupResult(this.resolveSearchQuery(searchTerm));
+    }
+
+    const parsedId = parseCustomerId(searchTerm);
+    const appId = formatCustomerIdForApp(parsedId);
+    const idPattern = new RegExp(appId.replace("-", "[- ]?"), "i");
+    return this.page
+      .locator(Customer360Locators.customerLookupResults)
+      .filter({ hasText: idPattern })
+      .or(this.page.getByRole("button", { name: idPattern }))
+      .or(this.page.getByRole("link", { name: idPattern }))
+      .first();
+  }
+
+  private customerProfileUrlFromPartyReference(partyReference: string): string {
+    const origin = new URL(this.page.url()).origin;
+    return `${origin}/kyc/customer-360/${encodeURIComponent(partyReference)}`;
+  }
+
+  private liveSearchQueries(customerId: string): string[] {
+    const primary = this.resolveSearchQuery(customerId);
+    const parts = primary.split(/\s+/).filter(Boolean);
+    const queries = [primary];
+    if (parts.length >= 2) {
+      queries.push(`${parts[0]} ${parts[parts.length - 1]}`);
+      queries.push(parts[0]);
+    }
+    return [...new Set(queries)];
+  }
+
+  private async waitForCustomerSearchApiResponse(timeout = 20000) {
+    return this.page
+      .waitForResponse(
+        (res) => /\/customers\/search/i.test(res.url()) && res.request().method() !== "OPTIONS",
+        { timeout },
+      )
+      .catch(() => null);
+  }
+
+  private async parseCustomerSearchMatches(response: Response | null): Promise<Array<Record<string, unknown>>> {
+    if (!response?.ok()) return [];
+    const payload = (await response.json().catch(() => null)) as
+      | { data?: unknown[]; results?: unknown[] }
+      | null;
+    const raw = payload?.data ?? payload?.results ?? [];
+    return Array.isArray(raw) ? (raw as Array<Record<string, unknown>>) : [];
+  }
+
+  private pickLiveSearchMatch(
+    matches: Array<Record<string, unknown>>,
+    searchQuery: string,
+  ): Record<string, unknown> | null {
+    if (!matches.length) return null;
+    const tokens = searchQuery.toLowerCase().split(/\s+/).filter(Boolean);
+    const byName =
+      matches.find((entry) => {
+        const name = String(entry.displayName ?? entry.customerName ?? entry.name ?? "").toLowerCase();
+        return tokens.every((token) => name.includes(token));
+      }) ?? null;
+    return byName ?? matches[0] ?? null;
+  }
+
+  private async openLiveCustomerFromSearch(customerId: string): Promise<void> {
+    const attempted: string[] = [];
+
+    for (const searchQuery of this.liveSearchQueries(customerId)) {
+      attempted.push(searchQuery);
+      await this.assertVisible(this.customerSearchInput, "Customer search input on landing page");
+      await this.customerSearchInput.clear();
+      const responseWait = this.waitForCustomerSearchApiResponse(20000);
+      await this.fillField(this.customerSearchInput, searchQuery, "Customer search");
+      let response = await responseWait;
+      if (!response) {
+        await this.pressKey("Enter", "trigger customer search");
+        response = await this.waitForCustomerSearchApiResponse(8000);
+      }
+
+      await this.page
+        .locator(Customer360Locators.loadingIndicator)
+        .first()
+        .waitFor({ state: "hidden", timeout: 10000 })
+        .catch(() => undefined);
+
+      const result = this.liveCustomerLookupResult(searchQuery);
+      if (await result.isVisible({ timeout: 10000 }).catch(() => false)) {
+        await this.clickAndWait(result, `Customer search result ${searchQuery}`);
+        await this.expectCustomer360ProfileLoaded();
+        return;
+      }
+
+      const matches = await this.parseCustomerSearchMatches(response);
+      const picked = this.pickLiveSearchMatch(matches, searchQuery);
+      const partyReference = String(
+        picked?.partyReference ?? picked?.customerId ?? picked?.id ?? "",
+      ).trim();
+      if (partyReference) {
+        await this.withNormalNetwork(async () => {
+          await this.page.goto(this.customerProfileUrlFromPartyReference(partyReference), {
+            waitUntil: "domcontentloaded",
+            timeout: 60000,
+          });
+          await this.waitForCustomer360ContentReady(60000).catch(() => undefined);
+        });
+        this.logStep(
+          "NAVIGATE",
+          `Opened live customer profile via search API (${searchQuery}) — successful`,
+        );
+        await this.expectCustomer360ProfileLoaded();
+        return;
+      }
+    }
+
+    throw new Error(
+      `Live Customer 360 search returned no result for ${attempted.map((q) => `"${q}"`).join(", ")}. Confirm the customer exists in dev CBS.`,
+    );
+  }
+
   private profileRoutePattern(): RegExp {
     return /\/kyc\/customer-360\/[^/?#]+/i;
   }
@@ -175,7 +384,7 @@ class Customer360Page extends BasePage {
     const expectAuthFailure = this.pendingUnauthorizedNavigation;
     this.pendingUnauthorizedNavigation = false;
 
-    if (!expectAuthFailure) {
+    if (!expectAuthFailure && this.usesApiMock()) {
       await installCustomer360ApiMock(this.page);
       this.logStep("MOCK", "Customer 360 API mock installed — successful");
     }
@@ -297,64 +506,105 @@ class Customer360Page extends BasePage {
     const appId = formatCustomerIdForApp(parsedId);
     this.logStep("NAVIGATE", `Open Customer 360 profile ${appId} — initiated`);
 
-    if (!this.pendingUnauthorizedNavigation) {
-      await installCustomer360ApiMock(this.page);
+    if (await this.isOnProfilePage()) {
+      if (this.usesApiMock()) {
+        const currentKey = this.page.url().match(/\/customer-360\/([^/?#]+)/i)?.[1];
+        if (currentKey && normalizeCustomerKey(currentKey) === normalizeCustomerKey(parsedId)) {
+          await this.expectCustomer360ProfileLoaded();
+          return;
+        }
+      } else {
+        const liveLabel = this.expectedLiveCustomerLabel(customerId);
+        const onExpectedProfile = await this.page
+          .getByText(new RegExp(liveLabel, "i"))
+          .first()
+          .isVisible()
+          .catch(() => false);
+        if (onExpectedProfile) {
+          await this.expectCustomer360ProfileLoaded();
+          return;
+        }
+      }
     }
 
-    if (await this.isOnProfilePage()) {
-      const currentKey = this.page.url().match(/\/customer-360\/([^/?#]+)/i)?.[1];
-      if (currentKey && normalizeCustomerKey(currentKey) === normalizeCustomerKey(parsedId)) {
-        await this.expectCustomer360ProfileLoaded();
+    if (this.usesApiMock()) {
+      if (!this.pendingUnauthorizedNavigation) {
+        await installCustomer360ApiMock(this.page);
+      }
+
+      if (!this.page.url().includes("/kyc/customer-360")) {
+        await this.openCustomer360Direct(new URL(this.page.url()).origin);
+      }
+
+      await this.withNormalNetwork(async () => {
+        const shell = this.tabList.or(this.headerStrip).or(this.kpiCards.first()).first();
+        const errorState = this.page
+          .locator(Customer360Locators.errorStateMessage)
+          .or(this.retryButton)
+          .first();
+        const healer = new HealerMode(getCurrentTestId(), (action, detail, status) =>
+          this.logStep(action, detail, status),
+        );
+        await healer.gotoWithNetworkHeal(this.page, this.customerProfileUrl(parsedId), {
+          timeout: 60000,
+          retries: 4,
+          shellLocator: shell.or(errorState).first(),
+        });
+        if (!(await this.isErrorStateVisible())) {
+          await this.waitForCustomer360ContentReady(60000).catch(() => undefined);
+        }
+      });
+
+      if (await this.isErrorStateVisible()) {
+        this.logStep("NAVIGATE", `Customer 360 profile ${appId} opened in error state`);
         return;
       }
-    }
 
-    if (!this.page.url().includes("/kyc/customer-360")) {
-      await this.openCustomer360Direct(new URL(this.page.url()).origin);
-    }
-
-    // Navigate and wait for shell under normal network even when a slow-network
-    // profile is active for the scenario — otherwise SPA hydration exceeds the
-    // shell timeout (C360-TC-369 and other slow-network regressions).
-    await this.withNormalNetwork(async () => {
-      const shell = this.tabList.or(this.headerStrip).or(this.kpiCards.first()).first();
-      const errorState = this.page
-        .locator(Customer360Locators.errorStateMessage)
-        .or(this.retryButton)
-        .first();
-      const healer = new HealerMode(getCurrentTestId(), (action, detail, status) =>
-        this.logStep(action, detail, status),
-      );
-      await healer.gotoWithNetworkHeal(this.page, this.customerProfileUrl(parsedId), {
-        timeout: 60000,
-        retries: 4,
-        shellLocator: shell.or(errorState).first(),
-      });
-      if (!(await this.isErrorStateVisible())) {
-        await this.waitForCustomer360ContentReady(60000).catch(() => undefined);
-      }
-    });
-
-    if (await this.isErrorStateVisible()) {
-      this.logStep("NAVIGATE", `Customer 360 profile ${appId} opened in error state`);
+      await this.expectCustomer360ProfileLoaded();
+      this.logStep("NAVIGATE", `Customer 360 profile ${appId} opened — successful`);
       return;
     }
 
-    await this.expectCustomer360ProfileLoaded();
-    this.logStep("NAVIGATE", `Customer 360 profile ${appId} opened — successful`);
+    if (await this.page.getByText(/Customer not found/i).isVisible().catch(() => false)) {
+      await this.page
+        .getByRole("link", { name: /Back to Customer 360 Lookup/i })
+        .click()
+        .catch(() => undefined);
+      await this.expectCustomer360LandingLoaded().catch(() => undefined);
+    }
+
+    if (!(await this.isOnLandingPage())) {
+      await this.openCustomer360Direct(new URL(this.page.url()).origin);
+    }
+
+    await this.searchAndOpenCustomer(customerId);
+    this.logStep("NAVIGATE", `Customer 360 live profile opened via lookup — successful`);
   }
 
   async searchAndOpenCustomer(customerId: string): Promise<void> {
     const parsedId = parseCustomerId(customerId);
     const fixture = getCustomerFixture(parsedId);
-    const appId = formatCustomerIdForApp(parsedId);
-    this.logStep("SEARCH", `Customer 360 search for ${appId} — initiated`);
+    const searchQuery = this.resolveSearchQuery(customerId);
+    this.logStep("SEARCH", `Customer 360 search for ${searchQuery} — initiated`);
 
     if (await this.isOnProfilePage()) {
-      const currentKey = this.page.url().match(/\/customer-360\/([^/?#]+)/i)?.[1];
-      if (currentKey && normalizeCustomerKey(currentKey) === normalizeCustomerKey(parsedId)) {
-        await this.expectCustomer360ProfileLoaded();
-        return;
+      if (this.usesApiMock()) {
+        const currentKey = this.page.url().match(/\/customer-360\/([^/?#]+)/i)?.[1];
+        if (currentKey && normalizeCustomerKey(currentKey) === normalizeCustomerKey(parsedId)) {
+          await this.expectCustomer360ProfileLoaded();
+          return;
+        }
+      } else if (fixture) {
+        const liveLabel = this.expectedLiveCustomerLabel(customerId);
+        const onExpectedProfile = await this.page
+          .getByText(new RegExp(liveLabel, "i"))
+          .first()
+          .isVisible()
+          .catch(() => false);
+        if (onExpectedProfile) {
+          await this.expectCustomer360ProfileLoaded();
+          return;
+        }
       }
     }
 
@@ -362,24 +612,28 @@ class Customer360Page extends BasePage {
       await this.openCustomer360Direct(new URL(this.page.url()).origin);
     }
 
+    if (!this.usesApiMock()) {
+      await this.openLiveCustomerFromSearch(customerId);
+      return;
+    }
+
     await this.assertVisible(this.customerSearchInput, "Customer search input on landing page");
-    await this.fillField(this.customerSearchInput, appId, "Customer search");
+    await this.fillField(this.customerSearchInput, searchQuery, "Customer search");
     await this.page
-      .waitForResponse((res) => /\/customers\/search/i.test(res.url()), { timeout: 10000 })
+      .waitForResponse((res) => /\/customers\/search/i.test(res.url()), { timeout: 15000 })
       .catch(() => undefined);
 
-    const result = this.page
-      .locator(Customer360Locators.customerSearchResults)
-      .filter({ hasText: new RegExp(appId.replace("-", "[- ]?"), "i") })
-      .or(this.page.getByRole("button", { name: new RegExp(fixture?.name ?? appId, "i") }))
-      .or(this.page.getByText(new RegExp(`${appId.replace("-", "[- ]?")}`, "i")))
-      .first();
+    const result = this.customerLookupResult(customerId);
 
-    if (await result.isVisible({ timeout: 8000 }).catch(() => false)) {
-      await this.clickAndWait(result, `Customer search result ${appId}`);
+    if (await result.isVisible({ timeout: 15000 }).catch(() => false)) {
+      await this.clickAndWait(result, `Customer search result ${searchQuery}`);
     } else if (fixture) {
       await this.page.goto(this.customerProfileUrl(parsedId), { waitUntil: "domcontentloaded" });
-      this.logStep("NAVIGATE", `Opened customer profile ${appId} via profile route — successful`);
+      this.logStep("NAVIGATE", `Opened customer profile via profile route — successful`);
+    } else {
+      throw new Error(
+        `Customer 360 search returned no visible result for "${searchQuery}".`,
+      );
     }
 
     await this.expectCustomer360ProfileLoaded();
@@ -404,7 +658,7 @@ class Customer360Page extends BasePage {
   async expectCustomer360ProfileLoaded(): Promise<void> {
     await this.assertUrl(/\/kyc\/customer-360/, "Customer 360 route");
     if (await this.isOnLandingPage()) {
-      await this.searchAndOpenCustomer(parseCustomerId("3159176"));
+      await this.searchAndOpenCustomer(Customer360Page.defaultTestCustomerId);
       return;
     }
     if (await this.isErrorStateVisible()) {
@@ -563,7 +817,7 @@ class Customer360Page extends BasePage {
     await this.page.goBack({ waitUntil: "commit" });
     this.logStep("CLICK", "Browser back — successful");
     if (!(await this.isOnProfilePage())) {
-      await this.searchAndOpenCustomer(parseCustomerId("3159176"));
+      await this.searchAndOpenCustomer(Customer360Page.defaultTestCustomerId);
       this.logStep("HEAL", "Restored Customer 360 profile after browser back");
     }
   }
@@ -648,7 +902,7 @@ class Customer360Page extends BasePage {
       .or(this.headerStrip.locator(Customer360Locators.corporateToggle))
       .first();
     const indicator = this.headerStrip
-      .getByText(/Individual|Corporate|Non-Individual|Kumar Global|Arjun Mehta/i)
+      .getByText(/Individual|Corporate|Non-Individual|Kumar Global|Arjun Mehta|Rohan Deshpande/i)
       .first();
 
     await this.scrollIntoView(toggle.or(indicator).first());
@@ -659,7 +913,7 @@ class Customer360Page extends BasePage {
   async expectHeaderStripVisible(): Promise<void> {
     await expect(this.headerStrip).toBeVisible();
     await expect(
-      this.page.getByText(/Arjun Mehta|Priya Sharma|Kumar Global|3159176|CUST-/i).first(),
+      this.page.getByText(/Arjun Mehta|Rohan Deshpande|Priya Sharma|Kumar Global|3159176|CUST-/i).first(),
     ).toBeVisible({
       timeout: 15000,
     });
@@ -761,7 +1015,9 @@ class Customer360Page extends BasePage {
     const profileKey = this.page.url().match(/\/customer-360\/([^/?#]+)/i)?.[1];
     const viewMode = getCustomer360ViewMode(this.page.context());
     await this.reloadPage("Customer 360 data");
-    await installCustomer360ApiMock(this.page);
+    if (this.usesApiMock()) {
+      await installCustomer360ApiMock(this.page);
+    }
     if (profileKey) {
       await this.openCustomerProfile(parseCustomerId(profileKey));
       if (viewMode === "corporate") {
@@ -842,6 +1098,9 @@ class Customer360Page extends BasePage {
   }
 
   private async isErrorStateVisible(): Promise<boolean> {
+    if (await this.page.getByText(/Customer not found/i).isVisible().catch(() => false)) {
+      return true;
+    }
     return this.page
       .locator(Customer360Locators.errorStateMessage)
       .or(this.retryButton)
@@ -918,8 +1177,13 @@ class Customer360Page extends BasePage {
   }
 
   async restoreCustomer360Api(): Promise<void> {
-    await resetCustomer360ApiMock(this.page);
-    this.logStep("MOCK", "Customer 360 API mock restored — successful");
+    if (this.usesApiMock()) {
+      await resetCustomer360ApiMock(this.page);
+      this.logStep("MOCK", "Customer 360 API mock restored — successful");
+      return;
+    }
+    await uninstallCustomer360ApiMock(this.page);
+    this.logStep("LIVE", "Customer 360 live API mode preserved — mock not restored");
   }
 
   private async clickFirstAvailable(
@@ -946,6 +1210,193 @@ class Customer360Page extends BasePage {
       }
     }
     return false;
+  }
+
+  async verifyNavigationFromSidebarPerformance(maxMs = 800): Promise<void> {
+    const startedAt = Date.now();
+    await this.openCustomer360FromSidebar();
+    await this.expectCustomer360LandingLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingPageReady(maxMs = 2500): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectCustomer360LandingLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingGridRenderPerformance(maxMs = 500): Promise<void> {
+    await this.expectCustomer360LandingLoaded();
+    const startedAt = Date.now();
+    const landingContent = this.page
+      .locator(Customer360Locators.customerSearchResults)
+      .or(this.page.locator(Customer360Locators.recentSearchItem))
+      .or(this.page.getByRole("table"))
+      .first();
+    await expect(this.customerSearchInput.or(landingContent).first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyExactCustomerSearchPerformance(
+    searchTerm = Customer360Page.defaultTestCustomerId,
+    maxMs = 300,
+  ): Promise<void> {
+    await this.expectCustomer360LandingLoaded();
+    const query = this.resolveSearchQuery(searchTerm);
+    const startedAt = Date.now();
+    await this.fillField(this.customerSearchInput, query, "Customer 360 lookup search");
+    await this.page
+      .waitForResponse((res) => /\/customers\/search/i.test(res.url()), { timeout: 15000 })
+      .catch(() => undefined);
+    await expect(this.customerLookupResult(searchTerm)).toBeVisible({ timeout: 15000 });
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingAccessibilitySmoke(): Promise<void> {
+    await this.expectCustomer360LandingLoaded();
+    await this.customerSearchInput.click();
+    await expect(this.customerSearchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.customerSearchInput).toBeFocused();
+  }
+
+  async verifyKeyboardCriticalControlsLanding(): Promise<void> {
+    await this.expectCustomer360LandingLoaded();
+    await this.customerSearchInput.click();
+    await expect(this.customerSearchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.customerSearchInput).toBeFocused();
+    await expect(this.landingPageHeader.or(this.customer360Title).first()).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl: string): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    await this.clickTab("Audit").catch(() => undefined);
+    await this.page.goBack({ waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    await this.page.goForward({ timeout: 15000 }).catch(() => undefined);
+    await this.openCustomer360Direct(baseUrl);
+    await this.expectCustomer360LandingLoaded();
+    await this.page.reload({ waitUntil: "domcontentloaded" });
+    await this.expectCustomer360LandingLoaded();
+    await expect(this.page.getByText(/access denied|unauthorized|sign in|log in/i)).toHaveCount(0);
+  }
+
+  async verifyOverviewTabLoadAndTabSwitchPerformance(
+    maxOverviewMs = 2000,
+    maxTabSwitchMs = 500,
+  ): Promise<void> {
+    const profileStartedAt = Date.now();
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    await this.expectOverviewTabActive();
+    await this.expectKpiCardsVisible();
+    expect(Date.now() - profileStartedAt).toBeLessThanOrEqual(maxOverviewMs);
+
+    const tabStartedAt = Date.now();
+    await this.clickTab("Screening");
+    await this.expectTabContentVisible("Screening");
+    expect(Date.now() - tabStartedAt).toBeLessThanOrEqual(maxTabSwitchMs);
+
+    const backStartedAt = Date.now();
+    await this.clickTab("Overview");
+    await this.expectOverviewTabActive();
+    expect(Date.now() - backStartedAt).toBeLessThanOrEqual(maxTabSwitchMs);
+  }
+
+  async verifyAuditTableHorizontalScroll(): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    await this.setViewport(1024, 768);
+    await this.clickTab("Audit");
+    await this.expectTabTableVisible();
+    const scrollHost = this.tabPanel
+      .locator("[class*='overflow'], [style*='overflow']")
+      .or(this.tabTable)
+      .first();
+    await this.scrollIntoView(scrollHost);
+    const before = await scrollHost.evaluate((el) => el.scrollLeft);
+    await scrollHost.evaluate((el) => {
+      el.scrollLeft += Math.max(120, Math.floor(el.scrollWidth / 4));
+    });
+    const after = await scrollHost.evaluate((el) => el.scrollLeft);
+    expect(after).toBeGreaterThanOrEqual(before);
+    await expect(this.tabTable).toBeVisible();
+  }
+
+  async verifyKeyboardNavAndBadgeTextLabels(): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    const firstTab = this.tabList.getByRole("tab").first();
+    await firstTab.focus();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+
+    const badges = [this.pepBadge, this.adverseMediaBadge, this.riskScoreBadge, this.strSarBadge];
+    for (const badge of badges) {
+      if (await badge.isVisible().catch(() => false)) {
+        const label = (await badge.innerText()).trim();
+        expect(label.length).toBeGreaterThan(0);
+      }
+    }
+    await expect(firstTab).toBeVisible();
+  }
+
+  async verifyKycGapScoreFreshnessOnLoad(): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    await this.expectOverviewTabActive();
+    await expect(this.page.getByText(/KYC Gap Score/i).first()).toBeVisible({ timeout: 15000 });
+    const scoreText = await this.page
+      .getByText(/KYC Gap Score|\d+\s*\/\s*\d+|Missing Fields/i)
+      .first()
+      .innerText();
+    expect(scoreText.trim().length).toBeGreaterThan(0);
+  }
+
+  async verifyPdfExportOptionVisible(): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    await this.exportCustomer360();
+    await expect(
+      this.page
+        .getByRole("menuitem", { name: /PDF/i })
+        .or(this.page.getByRole("button", { name: /PDF/i }))
+        .or(this.page.getByText(/^PDF$/i))
+        .first(),
+    ).toBeVisible({ timeout: 10000 });
+  }
+
+  async verifyAuditTabReady(maxMs = 1200): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    const startedAt = Date.now();
+    await this.clickTab("Audit");
+    await this.expectTabContentVisible("Audit");
+    await this.expectTabTableVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyScreeningTabReady(maxMs = 1200): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    const startedAt = Date.now();
+    await this.clickTab("Screening");
+    await this.expectTabContentVisible("Screening");
+    await this.expectScreeningStatusVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyAuditMultiFilterPerformance(maxMs = 1500): Promise<void> {
+    await this.openCustomerProfile(Customer360Page.defaultTestCustomerId);
+    await this.clickTab("Audit");
+    await this.expectTabTableVisible();
+    const startedAt = Date.now();
+    await this.filterTabTable("Risk");
+    const auditFilter = this.page
+      .locator(Customer360Locators.filterInput)
+      .or(this.tabPanel.getByRole("combobox"))
+      .or(this.tabPanel.getByRole("textbox"))
+      .first();
+    if (await auditFilter.isVisible().catch(() => false)) {
+      await auditFilter.fill("KYC");
+    }
+    await expect(this.tabTable.locator("tbody tr").first()).toBeVisible({ timeout: 10000 });
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
   }
 }
 

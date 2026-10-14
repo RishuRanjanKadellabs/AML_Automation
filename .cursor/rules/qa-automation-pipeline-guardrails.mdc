@@ -17,7 +17,7 @@ Orchestrate exactly six near-equal generation/execution batches. Invoke the
 existing healer at most once per batch for classified automation failures; do
 not duplicate healer logic.
 
-**Generator must enforce:** live AML UI for every eligible UI case and every locator; 100% of assigned Excel/plan cases; one spec per module under Milestone2; login bypassed until user enables auth; no fabricated results; **Excel Test Steps executed as Playwright actions (no comment-only smoke stubs)**; mechanical gate `npm run qa:detect-smoke-stubs` / `noSmokeStubSpecs` must pass. The pipeline manifest must prove `liveUiCoveragePercent=100`.
+**Generator must enforce:** live AML UI for every eligible UI case and every locator; 100% of assigned Excel/plan cases; one spec per module under Milestone2; session login required via `.env` + `aml-login`; no fabricated results; **Excel Test Steps executed as Playwright actions (no comment-only smoke stubs)**; mechanical gate `npm run qa:detect-smoke-stubs` / `noSmokeStubSpecs` must pass. For a batch with explicitly deferred modules, pass the same active IDs through `--case-ids` so missing deferred cases are not misreported as stubs. The pipeline manifest must prove `liveUiCoveragePercent=100`.
 
 ## Security
 
@@ -34,20 +34,35 @@ not duplicate healer logic.
   `pandas`/`openpyxl`. Never hand-write `validation-report.json` or a
   “representative sample” `test-cases.json`. If parse/normalize/assert fails →
   **Blocked** (do not invent row counts).
+- **Multi-sheet workbook integrity (HARD):** `qa:parse-excel` must select a
+  worksheet containing all required test-case columns (`Test Case ID`, `Test
+  Steps`, `Expected Result`) or honor an explicit `--worksheet`. It must record
+  the selected sheet in validation evidence. `qa:assert-normalize` must re-read
+  that exact worksheet, never assume `SheetNames[0]`.
 - **Per-workbook results root (HARD):** write stage artifacts under
   `results/qa-pipeline/<excel-basename>/…` (e.g. `Keyword Manager Test/`). Do not
   share one global `results/qa-pipeline/final/state.json` across concurrent module runs.
 - Invalid Excel rows never reach generation
+- Excel-declared `No - Load/Infra`, k6/JMeter, and manual-only cases remain
+  outside Playwright generation. Excel-declared `Partial` cases are normalized
+  as partial and excluded from the default UI batch scope until an objective
+  Playwright subset is explicitly approved.
 - Claim execution only with evidence; otherwise `Blocked` + reason
 - Reuse Playwright POM/fixtures/helpers; no second framework
 - Auto-heal only classified automation/locator/synchronization failures, once per batch; verify only changed cases once
 - Do not modify application source to make tests pass unless explicitly authorized
 - **One `.spec.ts` per Excel module** under `tests/milestone2/` (or `tests/milestone1/` when Stage 0 milestone=1) — never one file per test case
-- **Login bypassed** — do not require `EMAIL`/`PASSWORD` or add login steps until the user asks to enable auth
+- Batch handoff preparation must receive the workbook-specific normalized path,
+  manifest output path, and `--milestone`; it reuses an existing matching
+  module spec before deriving a new path.
+- **2506 session login** — use `EMAIL`/`PASSWORD` from `.env` via `tests/helpers/aml-login.ts`; do not hard-code the password. Do **not** generate unauthenticated, session-expiry, or unauthorized-role cases unless the user asks (`QA_INCLUDE_AUTH_CASES=1`).
 - Generate **all** cases in the generate scope (create: all eligible; reconcile: add+update only) — no POC subset
 - Generate every generate-scope UI case from live application evidence; `liveUiValidatedCaseIds` must cover 100% of that scope
 - Split generate-scope cases into exactly six deterministic near-equal batches; sizes differ by at most one (empty batches allowed for small reconcile deltas)
 - After each batch is written, execute only that batch and report pass/fail counts
+- Batch execution must call `ensurePlaywrightChromium()` and derive the
+  Playwright project from the manifest milestone (M1 → `milestone1-chromium`,
+  M2 → `milestone2-chromium`) unless explicitly overridden.
 - If a batch has healer-eligible failures, finish the one heal + changed-case
   verification before treating that batch as ready for defect reporting or next-batch ask
 - After each batch **1–5** is fully complete, show Passed/Failed/Blocked counts and
@@ -92,7 +107,8 @@ not duplicate healer logic.
 - Invoke the healer once for that batch's healable failures, then re-run only changed cases once
 - Remaining failures stay Failed/Blocked with evidence and classification
 - Generation must use **live UI** locators (Figma/Excel are not sufficient alone)
-- **100% Excel fidelity gate (HARD):** every generated/updated case in batch scope must pass `npm run qa:audit-excel-fidelity` with title alignment, `stepsPct=100`, and `expectedPct=100`. No swapped TC ID bodies. See `.cursor/rules/excel-coverage-mandatory.mdc`.
+- **Never inject fake/heal sample screens** (`healEnsure*Shell`, `HEAL-*` rows) — live Clari5 only; missing live UI → fail or Blocked (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
+- **100% Excel fidelity gate (HARD):** every generated/updated case in batch scope must pass `npm run qa:audit-excel-fidelity` with title alignment, `stepsPct=100`, and `expectedPct=100`. The scorer recognizes the active module's POM vocabulary, including NFR performance, security, accessibility, responsive layout, masking, audit, browser, and read-only assertions. No swapped TC ID bodies. See `.cursor/rules/excel-coverage-mandatory.mdc`.
 - **Strict live-UI evidence (HARD — every batch including 3–6):** after each batch
   Generate, every eligible UI case in that batch must have manifest entries with
   `moduleUrl`, unique `evidenceReferences[]` (≤3 cases per ref via
@@ -105,6 +121,10 @@ not duplicate healer logic.
   Do **not** use legacy-only `snapshotPaths`/`controlsVerified` bulk-attached
   to whole batches. `liveUiCoveragePercent=100` requires strict fields, not
   headline IDs alone.
+- User-deferred environment-blocked cases may be removed from the current live
+  UI audit scope only when listed in `blockedUiCaseIds`/`deferredCaseIds` with a
+  concrete `blockedUiReasons` entry. Keep them visible in reporting; do not
+  generate or execute them until the user resumes that scope.
 - **Reconcile mode:** remove retired TC `test()` blocks; update changed IDs; leave keep IDs untouched; pass `--delta` to `qa:verify-completion` and to `qa:split-batches`; require `deltaFullyApplied` + `noRetiredCaseTests`
 
 ## Completion gate (strict)

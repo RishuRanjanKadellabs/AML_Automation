@@ -88,7 +88,8 @@ Parse/Plan → AI Executes Live + Generator Writes .spec.ts → Run From Code �
 - All generated code uses real selectors from the live session — not guesses
 - Use `tests/fixtures/selector-map.json` for CSS selectors
 - Use fixture data for URLs — never hardcode
-- AML login is bypassed — do not add credentials unless the user enables authentication
+- Session login is required via `aml-login` and `.env` credentials. Do not add unauthenticated / session-expiry / unauthorized-role scripts unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`).
+- **Never use fake screens** — do not inject `healEnsure*Shell` / `HEAL-*` sample grids; live Clari5 only (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`).
 - Generic URL workflows follow the actual target framework; do not assume WordPress/Elementor
 - Zero user interaction — handle cookie banners and popups automatically
 - Never skip tests — no `test.skip()`, `test.only()`

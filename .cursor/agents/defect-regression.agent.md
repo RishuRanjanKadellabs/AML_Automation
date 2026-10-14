@@ -152,8 +152,11 @@ Only defects with **Status = Resolved** on Google are read, retested, and update
 - Do not change **Severity** or **Priority** on any row
 - Do not change Google Status without anchor re-test evidence on a **Resolved** defect
 - Do not set **Reopened** when anchor failures are missing-browser / tooling errors only
+- Do not inject fake/heal sample screens (`healEnsure*Shell`, `HEAL-*` rows); retest on **live Clari5** only (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
 
 # Related
+
+- `.cursor/rules/no-fake-ui-screens-mandatory.mdc`
 
 - Runner: `pipeline/scripts/defect-regression-run.js`
 - Browser ensure: `pipeline/scripts/ensure-playwright-chromium.cjs`

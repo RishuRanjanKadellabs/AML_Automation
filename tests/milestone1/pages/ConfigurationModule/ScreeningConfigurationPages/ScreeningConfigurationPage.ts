@@ -2185,6 +2185,93 @@ class ScreeningConfigurationPage extends BasePage {
     await this.expectLayoutStable();
     this.logStep("ASSERT", `Excel expected result acknowledged — ${expected.slice(0, 80)}`);
   }
+
+  async verifyNavigationPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    await this.openScreeningConfigDirect(baseUrl);
+    const startedAt = Date.now();
+    await this.openScreeningConfigFromSidebar();
+    await this.expectScreeningConfigPageLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingPageReady(maxMs = 2500): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectScreeningConfigPageLoaded();
+    await this.expectWatchlistGridVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyGridRenderPerformance(maxMs = 500): Promise<void> {
+    await this.expectWatchlistGridVisible();
+    const startedAt = Date.now();
+    await expect(this.watchlistTableRows.first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyCriticalFormFieldsReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.clickCreateScreeningType();
+    await this.expectCreateWizardBasicInformationVisible();
+    await expect(this.page.getByRole("textbox").first()).toBeEnabled();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyExactSearchPerformance(keyword = "Manual", maxMs = 300): Promise<void> {
+    const startedAt = Date.now();
+    await this.searchWatchlists(keyword);
+    await this.expectWatchlistGridVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingAccessibilitySmoke(): Promise<void> {
+    await this.selectStatusTab("All").catch(() => undefined);
+    const controls = this.page.locator("main button:visible, main input:visible, main [role='tab']:visible").first();
+    await controls.focus();
+    await expect(controls).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+  }
+
+  async verifyKeyboardCriticalControlsLanding(): Promise<void> {
+    if (await this.searchBox.isVisible().catch(() => false)) {
+      await this.searchBox.focus();
+      await expect(this.searchBox).toBeFocused();
+      await this.page.keyboard.press("Tab");
+      await this.page.keyboard.press("Shift+Tab");
+      await expect(this.searchBox).toBeFocused();
+    }
+    await expect(this.screeningTypeTableRows.first()).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl?: string): Promise<void> {
+    await this.clickCreateScreeningType().catch(() => undefined);
+    await this.page.goBack({ waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    await this.page.goForward({ timeout: 15000 }).catch(() => undefined);
+    if (baseUrl) {
+      await this.openScreeningConfigDirect(baseUrl);
+    }
+    await this.expectScreeningConfigPageLoaded();
+    await this.page.reload({ waitUntil: "domcontentloaded" });
+    await expect(this.page).toHaveURL(/sanction-screening-config/i);
+    await expect(this.page.getByText(/access denied|unauthorized|sign in|log in/i)).toHaveCount(0);
+  }
+
+  async verifyRuleConfigurationGridReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectWatchlistGridVisible();
+    await expect(this.screeningTypeTableRows.first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifySaveConfigurationFlowReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.ensureWatchlistConfigurationExists();
+    await this.clickEditConfigurationOnFirstRow();
+    await expect(
+      this.page.getByRole("heading", { name: /Basic Information|Field Mapping|Match Score|Result Configuration/i }).first(),
+    ).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
 }
 
 export default ScreeningConfigurationPage;

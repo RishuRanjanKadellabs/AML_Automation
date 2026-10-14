@@ -42,6 +42,7 @@ See `docs/agent-runs/README.md` for layout and payload examples.
 | qa-automation-pipeline | Excel path, batch pass/fail per batch, live UI coverage %, gate result, remaining failures |
 | fsd-figma-pipeline | FSD/Figma sources, coverage %, feature delta, TC delta, Excel path |
 | fsd-excel-coverage-audit | Audit verdict, audit vs writer coverage %, **feature-wise Actual/Req/Flow/UC %**, per-feature gaps, orphan TCs |
+| api-testcase-pipeline | Swagger/API source, operation/case counts, Excel path, NFR scope, coverage %, live UI routes, captured/uncaptured operation counts, capture manifest, blockers |
 | test-generator / healer | Cases in scope, live routes validated, files changed, pass/fail or heal outcomes |
 
 Use agent-specific formatters when registered; otherwise use the generic payload (`highlights`, `overview`, `sections`).

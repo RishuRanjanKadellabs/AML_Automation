@@ -19,7 +19,7 @@ Figma HTML, FSD, Excel, heal shells, and fixtures are **supporting references on
 3. Use `browser_snapshot` / `browser_evaluate` / `browser_generate_locator` before writing or changing selectors.
 4. Exercise critical flows live before finalizing POM methods (open create, library, enable/disable, etc. as required by the task).
 5. Record evidence (snapshot paths, control labels, aria names) in the change summary.
-6. Update `objectrepositories/` and POM from **live** labels; keep heal-shell fallbacks secondary and aligned to live when possible.
+6. Update `objectrepositories/` and POM from **live** labels. **Never inject heal/sample/fake screens** (`healEnsure*Shell`, `HEAL-*` rows) as a fallback — fail or Blocked instead.
 7. **Single MCP owner:** only one agent session may drive Playwright MCP for a given generation/healing run. Parent must not keep calling `browser_*` while a background child also generates/heals on MCP. QA pipeline Generate defaults to in-parent ownership (see `qa-automation-pipeline` Single MCP owner rules).
 
 ## 100% invocation coverage
@@ -44,6 +44,7 @@ This AML host may return a generic Apache/`It works!` page at **`BASE_URL/`** wh
 
 - Skip live exploration because Figma/Excel “already define” labels.
 - Rely only on heal/mock injected UI when the live app responds.
+- Inject a fake/heal sample page over live Clari5 (missing Figma IDs is not a reason to replace the DOM).
 - Mark generation or healing **complete** if live UI was not opened and inspected (unless blocked — see below).
 - Invent locators from memory or docs without a live snapshot for that screen.
 - Treat `BASE_URL` root Apache alone as proof the AML app is down.
@@ -57,7 +58,7 @@ If the app is down or MCP browser fails:
 3. Do **not** silently substitute Figma-only / heal-only locator updates as final.
 4. Optionally draft offline notes, but do not claim scripts are live-validated.
 
-**Note:** While login is bypassed, missing `EMAIL`/`PASSWORD` is **not** a live-UI blocker — navigate with `BASE_URL` only.
+**Note:** On 2506, session login is required (`EMAIL`/`PASSWORD` in `.env`, helper `tests/helpers/aml-login.ts`). Missing credentials **is** a live-UI blocker when Command Center shows a login form. Host root `/` may still be Apache — open a module path or `/clari5-cc/`. Unauthenticated, session-expiry, and unauthorized-role cases stay out of Playwright unless `QA_INCLUDE_AUTH_CASES=1` (see `.cursor/rules/authentication-bypass-mandatory.mdc`).
 
 ## Applies to
 

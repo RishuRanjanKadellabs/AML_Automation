@@ -224,6 +224,7 @@ Always show:
 - Mark Pass with non-empty `uncoveredRequirementIds`
 - Skip DOCX when audit completes
 - Replace `fsd-figma-pipeline` for writing test cases
+- Recommend injecting fake/heal sample screens for Playwright (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
 
 # Artifacts
 
@@ -246,3 +247,4 @@ Schema: `specs/generated/fsd-figma-pipeline/schemas/coverage-audit-report-schema
 
 - **Writes test cases:** `fsd-figma-pipeline`
 - **After Approve Excel:** `qa-automation-pipeline`
+- **No fake screens:** `.cursor/rules/no-fake-ui-screens-mandatory.mdc`

@@ -1,5 +1,6 @@
 import { test as base } from "@playwright/test";
 import { loadTestData, getEnv, TestData } from "./env";
+import { installAmlLoginOnGoto } from "../tests/helpers/aml-login";
 
 export type TestFixture = {
   testData: TestData;
@@ -8,10 +9,7 @@ export type TestFixture = {
 
 export const test = base.extend<TestFixture>({
   page: async ({ page }, use) => {
-    const originalGoto = page.goto.bind(page);
-    page.goto = async (url, options) => {
-      return originalGoto(url, { waitUntil: "commit", ...options });
-    };
+    installAmlLoginOnGoto(page);
     await use(page);
   },
   testData: async ({}, use, testInfo) => {

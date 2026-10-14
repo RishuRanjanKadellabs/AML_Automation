@@ -7,12 +7,35 @@ const path = require("path");
 require("dotenv").config({ quiet: true });
 const { absolute, relative } = require("./qa-pipeline-utils.cjs");
 
+function firstSpecFileInDir(dirPath) {
+  const entries = fs.readdirSync(dirPath).sort();
+  for (const entry of entries) {
+    if (entry.endsWith(".spec.ts")) {
+      return path.join(dirPath, entry);
+    }
+  }
+  for (const entry of entries) {
+    const nested = path.join(dirPath, entry);
+    if (fs.statSync(nested).isDirectory()) {
+      const found = firstSpecFileInDir(nested);
+      if (found) return found;
+    }
+  }
+  return null;
+}
+
 function resolveModuleWarmupPath(specPath) {
   const absSpec = absolute(specPath);
   if (!fs.existsSync(absSpec)) {
     return null;
   }
-  const content = fs.readFileSync(absSpec, "utf8");
+  const specFile = fs.statSync(absSpec).isDirectory()
+    ? firstSpecFileInDir(absSpec)
+    : absSpec;
+  if (!specFile) {
+    return null;
+  }
+  const content = fs.readFileSync(specFile, "utf8");
   const importMatch = content.match(
     /from\s+["']([^"']*\/([A-Za-z0-9]+Locators))["']/,
   );
@@ -21,8 +44,8 @@ function resolveModuleWarmupPath(specPath) {
   }
   const importRef = importMatch[1];
   const candidates = [
-    path.resolve(path.dirname(absSpec), importRef),
-    path.resolve(path.dirname(absSpec), `${importRef}.ts`),
+    path.resolve(path.dirname(specFile), importRef),
+    path.resolve(path.dirname(specFile), `${importRef}.ts`),
     absolute(importRef),
     absolute(`${importRef}.ts`),
   ];

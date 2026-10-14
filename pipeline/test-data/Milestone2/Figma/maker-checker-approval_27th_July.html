@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4-Eyes (Maker-Checker) Approval — Clari5 AML</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f6fb;--white:#fff;--navy:#1a2d5a;--navy-mid:#2a53a0;
+  --blue:#0f62fe;--blue-light:#edf5ff;--border:#e0e0e0;
+  --text:#161616;--text-2:#525252;--text-3:#8d8d8d;
+  --green:#148a36;--green-dark:#0f6b2a;--green-bg:#defbe6;
+  --red:#da1e28;--red-dark:#b81922;--red-bg:#fff1f1;
+  --amber-bg:#fdf6dd;--amber-text:#8a6d1a;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 8px 28px rgba(0,0,0,.14);--radius:8px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:13px;}
+
+.shell{max-width:1400px;margin:0 auto;padding:22px 26px 60px;}
+.page-head{margin-bottom:4px;}
+.page-head h1{font-size:18px;font-weight:800;color:var(--navy);}
+.page-head p{font-size:12.5px;color:var(--text-2);margin-top:6px;max-width:900px;}
+
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+
+/* Tabs */
+.tabs{display:flex;gap:24px;border-bottom:1px solid var(--border);margin:18px 0 16px;padding:0 2px;}
+.tab-btn{background:none;border:none;font-family:inherit;padding:12px 0;font-size:13px;font-weight:600;color:var(--text-2);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:.15s;}
+.tab-btn .cnt{font-size:11px;font-weight:400;color:var(--text-3);}
+.tab-btn.active{color:var(--navy-mid);border-bottom-color:var(--navy-mid);}
+.tab-btn:hover:not(.active){color:var(--text);}
+
+/* Info bar + filter */
+.info-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px;}
+.info-banner{flex:1;display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--blue-light);border-left:2px solid var(--blue);border-radius:4px;font-size:13px;}
+.info-banner b{font-weight:700;}
+.select-control{height:36px;padding:0 12px;font-size:12.5px;color:var(--text);border:1px solid #8d8d8d;border-radius:6px;background:#fff;outline:none;font-family:inherit;flex-shrink:0;max-width:320px;}
+.select-control:focus{border-color:var(--blue);}
+
+/* History filter bar */
+.hist-filters{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:16px;}
+.hist-filters .fg{display:flex;flex-direction:column;gap:5px;}
+.hist-filters label{font-size:11px;font-weight:600;color:var(--text-2);}
+.hist-filters input, .hist-filters select{height:36px;padding:0 10px;font-size:12.5px;color:var(--text);border:1px solid #8d8d8d;border-radius:6px;background:#fff;outline:none;font-family:inherit;}
+.hist-filters .grow{flex:1;min-width:220px;}
+.hist-filters .grow select{width:100%;}
+.btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 16px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;border:none;transition:.15s;}
+.btn-primary{background:var(--navy-mid);color:#fff;}
+.btn-primary:hover{background:#1e3a70;}
+.btn-outline{background:#fff;border:1px solid var(--navy-mid);color:var(--navy-mid);}
+.btn-outline:hover{background:#eef2fa;}
+
+/* Bulk bar */
+.bulk-bar{position:sticky;top:8px;z-index:10;display:flex;align-items:center;gap:12px;margin-bottom:12px;padding:12px 16px;background:#eaf1fb;border:1px solid rgba(42,83,160,.3);border-radius:8px;box-shadow:var(--shadow-md);}
+.bulk-count{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--navy-mid);color:#fff;font-size:12px;font-weight:700;flex-shrink:0;}
+.bulk-label{font-size:13px;font-weight:600;}
+.bulk-sub{font-size:11.5px;color:var(--text-2);}
+.bulk-spacer{flex:1;}
+.bulk-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:6px;font-size:11.5px;font-weight:700;cursor:pointer;font-family:inherit;border:1px solid transparent;transition:.15s;}
+.bulk-reject{color:var(--red);border-color:#f8b4b4;background:#fff;}
+.bulk-reject:hover{background:#fff1f1;}
+.bulk-approve{color:#fff;background:var(--green);}
+.bulk-approve:hover{background:var(--green-dark);}
+.bulk-clear{background:none;border:none;color:var(--text-2);padding:7px 8px;border-radius:6px;cursor:pointer;font-family:inherit;font-weight:700;}
+.bulk-clear:hover{color:var(--text);background:rgba(255,255,255,.6);}
+
+/* Table */
+table{width:100%;border-collapse:collapse;}
+.table-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+thead tr{background:#f4f4f4;border-bottom:1px solid var(--border);}
+th{text-align:left;padding:10px 16px;font-size:11.5px;font-weight:600;color:var(--text-2);white-space:nowrap;}
+td{padding:10px 16px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:middle;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:#fafafa;}
+tbody tr.selected td{background:#eef2fa;}
+.checkbox{width:14px;height:14px;accent-color:var(--navy-mid);cursor:pointer;}
+.mono-nowrap{white-space:nowrap;}
+.text-2{color:var(--text-2);}
+.text-3{color:var(--text-3);}
+.row-actions{display:flex;gap:6px;justify-content:flex-end;white-space:nowrap;}
+.row-btn{display:inline-flex;align-items:center;gap:4px;padding:5px 10px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:inherit;border:1px solid transparent;background:#fff;transition:.15s;}
+.rb-review{color:var(--navy-mid);border-color:var(--navy-mid);}
+.rb-review:hover{background:#eef2fa;}
+.rb-reject{color:var(--red);border-color:#f4c9c9;}
+.rb-reject:hover{background:#fff1f1;}
+.rb-approve{color:#fff;background:var(--green);}
+.rb-approve:hover{background:var(--green-dark);}
+.empty-row td{text-align:center;color:#6f6f6f;padding:34px;}
+.decision-approved{color:var(--green);font-weight:600;display:inline-flex;align-items:center;gap:5px;}
+.decision-rejected{color:var(--red);font-weight:600;display:inline-flex;align-items:center;gap:5px;}
+
+/* Modal overlays */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;padding:16px;z-index:500;}
+.overlay.open{display:flex;}
+.modal{background:#fff;border-radius:12px;box-shadow:var(--shadow-md);width:100%;max-width:460px;}
+.modal-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
+.modal-head h3{font-size:15px;font-weight:700;}
+.modal-body{padding:16px 20px;display:flex;flex-direction:column;gap:12px;}
+.modal-list{list-style:none;max-height:130px;overflow-y:auto;display:flex;flex-direction:column;gap:4px;}
+.modal-list li{font-size:12.5px;color:var(--text-2);}
+.field-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--text-2);margin-bottom:6px;display:block;}
+.req-star{color:#e00;}
+.multi-note{display:flex;gap:6px;align-items:flex-start;margin-bottom:8px;padding:8px 10px;border-radius:6px;background:var(--blue-light);border:1px solid rgba(15,98,254,.2);font-size:11.5px;}
+textarea{width:100%;border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:12.5px;font-family:inherit;color:var(--text);outline:none;resize:none;}
+textarea:focus{border-color:var(--navy-mid);}
+.modal-foot{display:flex;justify-content:flex-end;gap:8px;padding:14px 20px;border-top:1px solid var(--border);background:#f8fafc;border-radius:0 0 12px 12px;}
+.btn-cancel{background:#fff;border:1px solid var(--border);color:var(--text-2);height:34px;padding:0 16px;border-radius:6px;font-size:12px;font-family:inherit;cursor:pointer;}
+.btn-cancel:hover{background:#f2f2f2;}
+.btn-confirm{height:34px;padding:0 16px;border-radius:6px;font-size:12px;font-weight:700;color:#fff;border:none;cursor:pointer;font-family:inherit;}
+.btn-confirm.approve{background:var(--green);}
+.btn-confirm.approve:hover{background:var(--green-dark);}
+.btn-confirm.reject{background:var(--red);}
+.btn-confirm.reject:hover{background:var(--red-dark);}
+.btn-confirm:disabled{opacity:.4;cursor:not-allowed;}
+
+/* Review detail panel */
+.review-modal{max-width:960px;max-height:92vh;display:flex;flex-direction:column;}
+.review-head{padding:18px 24px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex:none;}
+.review-head .crumb{font-size:11.5px;color:var(--text-3);margin-bottom:3px;}
+.review-head h3{font-size:17px;font-weight:700;line-height:1.3;}
+.status-badge{padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;}
+.status-pending{background:var(--amber-bg);color:var(--amber-text);}
+.status-approved{background:var(--green-bg);color:var(--green);}
+.status-rejected{background:var(--red-bg);color:var(--red);}
+.review-body{flex:1;overflow-y:auto;padding:18px 24px;}
+.review-grid{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+@media (max-width:800px){.review-grid{grid-template-columns:1fr;}}
+.review-col{display:flex;flex-direction:column;gap:14px;}
+.detail-card{border:1px solid var(--border);border-radius:8px;padding:16px;}
+.detail-card h4{font-size:12.5px;font-weight:700;margin-bottom:10px;}
+.dc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;font-size:12.5px;}
+.dc-grid p:first-child{color:var(--text-3);margin-bottom:2px;}
+.dc-grid p:last-child{color:var(--text);font-weight:500;}
+.detail-card p.body-text{font-size:12.5px;color:var(--text-2);line-height:1.6;}
+.pc-table{width:100%;font-size:12px;border-collapse:collapse;}
+.pc-table th{background:#f4f4f4;text-align:left;padding:7px 10px;font-weight:600;color:var(--text-2);}
+.pc-table td{padding:7px 10px;border-top:1px solid var(--border);}
+.pc-current{color:var(--red);}
+.pc-proposed{color:var(--green);}
+.rec-card{border:1px solid rgba(42,83,160,.3);background:#f7f9fd;border-radius:8px;padding:16px;}
+.rec-card textarea{background:#fff;margin-bottom:10px;}
+.rec-actions{display:flex;gap:8px;}
+.rec-actions button{flex:1;justify-content:center;}
+.review-link{margin-top:8px;background:none;border:none;color:var(--navy-mid);font-size:11.5px;font-weight:600;cursor:pointer;font-family:inherit;text-decoration:none;}
+.review-link:hover{text-decoration:underline;}
+.timeline{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.timeline li{display:flex;gap:10px;}
+.tl-dot-col{display:flex;flex-direction:column;align-items:center;flex-shrink:0;}
+.tl-dot{width:10px;height:10px;border-radius:50%;margin-top:4px;background:var(--navy-mid);}
+.tl-dot.approve{background:var(--green);}
+.tl-dot.reject{background:var(--red);}
+.tl-line{width:1px;flex:1;background:var(--border);margin-top:2px;}
+.tl-label{font-size:12px;font-weight:600;}
+.tl-meta{font-size:11.5px;color:var(--text-3);}
+.review-foot{flex:none;display:flex;justify-content:flex-end;padding:12px 24px;border-top:1px solid var(--border);background:#f8fafc;}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;right:24px;background:#212121;color:#fff;padding:12px 20px;border-radius:8px;font-size:12.5px;font-weight:500;box-shadow:var(--shadow-md);z-index:1000;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none;}
+.toast.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="shell">
+  <div class="page-head">
+    <h1>4-Eyes (Maker-Checker) Approval</h1>
+    <p>A single inbox of every change across the system that requires checker approval before it takes effect. Select one or more records to approve, reject, or review in detail.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab-btn active" id="tabPendingBtn" onclick="setTab('pending')">Pending Approvals <span class="cnt" id="pendingCountLabel">(0)</span></button>
+    <button class="tab-btn" id="tabHistoryBtn" onclick="setTab('history')">Approved / Rejected <span class="cnt" id="historyCountLabel">(0)</span></button>
+  </div>
+
+  <div class="info-row">
+    <div class="info-banner" id="infoBanner"></div>
+    <select class="select-control" id="moduleFilter" onchange="onModuleFilterChange(this.value)"></select>
+  </div>
+
+  <div class="hist-filters" id="histFilters" style="display:none;">
+    <div class="fg">
+      <label>Decided From</label>
+      <input type="date" id="histDateFrom" onchange="onHistDraftChange()">
+    </div>
+    <div class="fg">
+      <label>Decided To</label>
+      <input type="date" id="histDateTo" onchange="onHistDraftChange()">
+    </div>
+    <div class="fg">
+      <label>Checker</label>
+      <select id="histChecker" onchange="onHistDraftChange()"></select>
+    </div>
+    <div class="fg grow">
+      <label>Checker Comment</label>
+      <select id="histComment" onchange="onHistDraftChange()"></select>
+    </div>
+    <button class="btn btn-primary" onclick="applyHistoryFilters()">Apply Filters</button>
+    <button class="btn btn-outline" id="histClearBtn" style="display:none;" onclick="clearHistoryFilters()">Clear Filters</button>
+  </div>
+
+  <div id="bulkBarWrap"></div>
+
+  <div id="pendingTableWrap" class="table-wrap"></div>
+  <div id="historyTableWrap" class="table-wrap" style="display:none;"></div>
+</div>
+
+<!-- Decision modal -->
+<div class="overlay" id="decisionOverlay" onclick="if(event.target===this) closeDecisionModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="decisionTitle">Approve Request</h3>
+    </div>
+    <div class="modal-body">
+      <ul class="modal-list" id="decisionList"></ul>
+      <div>
+        <label class="field-label">Checker Comment <span class="req-star">*</span></label>
+        <div class="multi-note" id="decisionMultiNote" style="display:none;"></div>
+        <textarea id="decisionComment" rows="3" placeholder="e.g. Justification verified — approved." oninput="onDecisionCommentInput()"></textarea>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeDecisionModal()">Cancel</button>
+      <button class="btn-confirm" id="decisionConfirmBtn" onclick="confirmDecision()" disabled>Confirm</button>
+    </div>
+  </div>
+</div>
+
+<!-- Review detail overlay -->
+<div class="overlay" id="reviewOverlay" onclick="if(event.target===this) closeReview()">
+  <div class="modal review-modal" id="reviewModalBody"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============================================================
+   Seed data
+   ============================================================ */
+let PENDING = [
+  { id:"REF-SCC-001", module:"Screening Configuration", item:'New screening type "Adverse Media Screening" pending creation', requestedBy:"Rajesh Kumar", requestedAt:"2026-01-12 10:15" },
+  { id:"REF-SCC-002", module:"Screening Configuration", item:'Enable request — watchlist "Dow Jones Watchlist"', requestedBy:"Priya Sharma", requestedAt:"2026-02-04 11:40" },
+  { id:"REF-IWM-004", module:"Ignore Word Manager", item:'Add ignore word "state enterprise"', requestedBy:"Compliance Analyst", requestedAt:"2026-01-22 14:30" },
+  { id:"REF-IWM-005", module:"Ignore Word Manager", item:'Disable request — ignore word "trading co"', requestedBy:"Rajesh Kumar", requestedAt:"2026-02-11 16:05" },
+  { id:"REF-KWM-008", module:"Keyword Manager", item:'Add keyword "cash intensive business"', requestedBy:"Compliance Analyst", requestedAt:"2026-01-29 15:10" },
+  { id:"REF-KWM-010", module:"Keyword Manager", item:'New keyword category "High-Risk Trade Terms" pending creation', requestedBy:"Priya Sharma", requestedAt:"2026-03-27 13:20" },
+  { id:"REF-CLM-012", module:"Custom List Manager", item:'New custom list "Internal Watch — Vendor Risk" pending creation', requestedBy:"Compliance Analyst", requestedAt:"2026-01-06 11:00" },
+  { id:"REF-CLM-015", module:"Custom List Manager", item:'Add entity "Meridian Trading LLC" to custom list', requestedBy:"Ritika Gupta", requestedAt:"2026-04-21 10:30" },
+  { id:"REF-ELM-018", module:"Exception List Manager", item:'New exception list "Verified PEP False Positives" pending creation', requestedBy:"Priya Sharma", requestedAt:"2026-01-15 13:50" },
+  { id:"REF-ELM-021", module:"Exception List Manager", item:'Add entity "Rajesh Kumar Patel" to exception list', requestedBy:"Rajesh Kumar", requestedAt:"2026-04-02 11:15" },
+  { id:"REF-BS-024", module:"Batch Screening", item:'Move batch screening hit "Case BS-CASE-77213" to Exception List', requestedBy:"Compliance Analyst", requestedAt:"2026-01-19 14:45" },
+  { id:"REF-MMT-025", module:"Missing Mandatory Data Template", item:'New template "Corporate Onboarding — Missing Fields" pending creation', requestedBy:"Rajesh Kumar", requestedAt:"2026-02-13 09:30" },
+  { id:"REF-RDR-026", module:"Reference Data Registry", item:'Country Master — edit country risk data for "Cyprus"', requestedBy:"Priya Sharma", requestedAt:"2026-03-06 15:55" },
+  { id:"REF-CRR-027", module:"Customer Risk Rating Configuration", item:'Change risk rating band for "High Net Worth Individuals"', requestedBy:"Ritika Gupta", requestedAt:"2026-01-25 10:20" },
+  { id:"REF-CRR-028", module:"Customer Risk Rating Configuration", item:'Change risk score weighting for "Geography" factor', requestedBy:"Compliance Analyst", requestedAt:"2026-04-11 13:40" },
+  { id:"REF-CRP-030", module:"Customer Risk Profile", item:'Manual override of risk rating for customer "CU-10712"', requestedBy:"Priya Sharma", requestedAt:"2026-02-28 12:00" },
+  { id:"REF-ALA-031", module:"Advanced Link Analysis", item:'Add manual link between "Meridian Trading LLC" and "Orion Freight Holdings"', requestedBy:"Ritika Gupta", requestedAt:"2026-03-17 11:25" },
+  { id:"REF-SCN-032", module:"Scenarios", item:'New scenario "Card Not Present Fraud Pattern" pending activation', requestedBy:"Rajesh Kumar", requestedAt:"2026-01-08 16:20" },
+  { id:"REF-SCN-033", module:"Scenarios", item:'Modify scenario "Structuring Detection — Cash Deposits" thresholds', requestedBy:"Compliance Analyst", requestedAt:"2026-04-24 14:05" },
+  { id:"REF-ONB-035", module:"Onboarding Configuration", item:'Change onboarding config — Auto-Approve / Auto-Reject / Manual Review thresholds', requestedBy:"Ritika Gupta", requestedAt:"2026-05-09 09:50" },
+];
+
+let HISTORY = []; // { id, module, item, requestedBy, requestedAt, decision, decidedBy, decidedAt, comment }
+
+/* ============================================================
+   Change-type classification templates (mirrors real component)
+   ============================================================ */
+function classifyChangeType(description){
+  if (/pending creation|^new /i.test(description)) return "Add New Rule";
+  if (/enable/i.test(description)) return "Enable";
+  if (/disable/i.test(description)) return "Disable";
+  return "Edit";
+}
+function extractConfigItem(description){
+  const m = description.match(/"([^"]+)"/);
+  return m ? m[1] : description;
+}
+const JUSTIFICATION_TEMPLATES = {
+  "Add New Rule": "This addition strengthens coverage for a compliance requirement identified during periodic review of the {module} configuration, and was validated by the requesting analyst before submission.",
+  "Enable": "Enabling this item aligns the {module} configuration with the latest risk assessment and regulatory guidance, and was requested after confirming no adverse operational impact.",
+  "Disable": "This item is being disabled following a review that found it no longer reflects the current risk posture, or that it has been superseded by an updated control within {module}.",
+  "Edit": "The proposed edit corrects or updates configuration details within {module} to ensure ongoing accuracy and continued compliance with internal policy.",
+};
+const IMPACT_TEMPLATES = {
+  "Add New Rule": "Once active, this item will begin generating results in downstream screening/matching processes for {module}; a false-positive uptick should be monitored for the first review cycle.",
+  "Enable": "Enabling this item immediately expands the scope of {module} checks; any records previously unaffected by it may now generate new alerts or holds.",
+  "Disable": "Disabling this item narrows the scope of {module} checks; previously generated alerts tied to it will no longer recur until it is re-enabled.",
+  "Edit": "This change affects how {module} evaluates existing and future records; in-flight cases may need to be re-evaluated against the updated configuration.",
+};
+function getProposedChange(changeType, configItem){
+  switch(changeType){
+    case "Add New Rule": return [{parameter:"Item Status", current:"Not Configured", proposed:`Active — ${configItem}`}];
+    case "Enable": return [{parameter:"Status", current:"Disabled", proposed:"Enabled"}];
+    case "Disable": return [{parameter:"Status", current:"Enabled", proposed:"Disabled"}];
+    default: return [{parameter:"Configuration Details", current:"Previous value on file", proposed:`Updated — ${configItem}`}];
+  }
+}
+
+/* ============================================================
+   State
+   ============================================================ */
+let tab = "pending";
+let filterModule = "all";
+let selectedIds = new Set();
+let decisionCtx = null; // { items: [...pendingItem], decision: "approve"|"reject" }
+let reviewItemId = null;
+
+let histDateFrom = "", histDateTo = "", histChecker = "all", histComment = "all";
+let appliedHist = { dateFrom:"", dateTo:"", checker:"all", comment:"all" };
+
+/* ============================================================
+   Helpers
+   ============================================================ */
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function moduleOptions(){
+  const mods = Array.from(new Set(PENDING.concat(HISTORY).map(x => x.module)));
+  return ["all", ...mods];
+}
+function visiblePending(){
+  return PENDING.filter(it => filterModule === "all" || filterModule === it.module);
+}
+function visibleHistory(){
+  return HISTORY.filter(h => {
+    if (filterModule !== "all" && filterModule !== h.module) return false;
+    const d = h.decidedAt.slice(0,10);
+    if (appliedHist.dateFrom && d < appliedHist.dateFrom) return false;
+    if (appliedHist.dateTo && d > appliedHist.dateTo) return false;
+    if (appliedHist.checker !== "all" && h.decidedBy !== appliedHist.checker) return false;
+    if (appliedHist.comment !== "all" && h.comment !== appliedHist.comment) return false;
+    return true;
+  });
+}
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer = setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+/* ============================================================
+   Tab switching
+   ============================================================ */
+function setTab(t){
+  tab = t;
+  document.getElementById('tabPendingBtn').classList.toggle('active', t === 'pending');
+  document.getElementById('tabHistoryBtn').classList.toggle('active', t === 'history');
+  document.getElementById('pendingTableWrap').style.display = t === 'pending' ? '' : 'none';
+  document.getElementById('historyTableWrap').style.display = t === 'history' ? '' : 'none';
+  document.getElementById('histFilters').style.display = t === 'history' ? 'flex' : 'none';
+  document.getElementById('bulkBarWrap').style.display = t === 'pending' ? '' : 'none';
+  renderAll();
+}
+
+function onModuleFilterChange(v){
+  filterModule = v;
+  renderAll();
+}
+
+/* ============================================================
+   Selection
+   ============================================================ */
+function toggleSelect(id){
+  if (selectedIds.has(id)) selectedIds.delete(id); else selectedIds.add(id);
+  renderAll();
+}
+function toggleSelectAll(){
+  const vp = visiblePending();
+  const allSelected = vp.length > 0 && vp.every(it => selectedIds.has(it.id));
+  if (allSelected){
+    vp.forEach(it => selectedIds.delete(it.id));
+  } else {
+    vp.forEach(it => selectedIds.add(it.id));
+  }
+  renderAll();
+}
+function clearSelection(){
+  selectedIds.clear();
+  renderAll();
+}
+
+/* ============================================================
+   Decision modal
+   ============================================================ */
+function openDecisionModal(items, decision){
+  if (!items.length) return;
+  decisionCtx = { items, decision };
+  document.getElementById('decisionComment').value = "";
+  document.getElementById('decisionTitle').textContent =
+    (decision === 'approve' ? 'Approve ' : 'Reject ') + (items.length > 1 ? `${items.length} Requests` : 'Request');
+  document.getElementById('decisionList').innerHTML = items.map(it => `<li>• ${escapeHtml(it.item)}</li>`).join('');
+  const note = document.getElementById('decisionMultiNote');
+  if (items.length > 1){
+    note.style.display = 'flex';
+    note.innerHTML = `<span>ℹ</span><span>This comment will be applied to all <b>${items.length}</b> selected requests.</span>`;
+  } else {
+    note.style.display = 'none';
+  }
+  const confirmBtn = document.getElementById('decisionConfirmBtn');
+  confirmBtn.textContent = 'Confirm ' + (decision === 'approve' ? 'Approval' : 'Rejection');
+  confirmBtn.className = 'btn-confirm ' + decision;
+  confirmBtn.disabled = true;
+  document.getElementById('decisionOverlay').classList.add('open');
+}
+function closeDecisionModal(){
+  decisionCtx = null;
+  document.getElementById('decisionOverlay').classList.remove('open');
+}
+function onDecisionCommentInput(){
+  const v = document.getElementById('decisionComment').value.trim();
+  document.getElementById('decisionConfirmBtn').disabled = !v;
+}
+function confirmDecision(){
+  if (!decisionCtx) return;
+  const comment = document.getElementById('decisionComment').value.trim();
+  if (!comment) return;
+  applyDecision(decisionCtx.items, decisionCtx.decision, comment);
+  closeDecisionModal();
+}
+
+/* ============================================================
+   Core decision application
+   ============================================================ */
+function applyDecision(items, decision, commentText){
+  if (!items.length || !commentText.trim()) return;
+  const now = new Date();
+  const decidedAt = now.toISOString().slice(0,16).replace('T',' ');
+  const decidedBy = "Ritika Gupta (Checker)";
+  const ids = new Set(items.map(it => it.id));
+
+  items.forEach(it => {
+    HISTORY.unshift({
+      id: `HIST-${Date.now()}-${it.id}`,
+      module: it.module,
+      item: it.item,
+      requestedBy: it.requestedBy,
+      requestedAt: it.requestedAt,
+      decision: decision === 'approve' ? 'approved' : 'rejected',
+      decidedBy, decidedAt,
+      comment: commentText.trim(),
+    });
+  });
+
+  PENDING = PENDING.filter(p => !ids.has(p.id));
+  ids.forEach(id => selectedIds.delete(id));
+
+  showToast(`${items.length} item${items.length > 1 ? 's' : ''} ${decision === 'approve' ? 'approved' : 'rejected'}.`);
+  renderAll();
+}
+
+/* ============================================================
+   Review detail panel
+   ============================================================ */
+function openReview(id){
+  reviewItemId = id;
+  renderReviewPanel();
+  document.getElementById('reviewOverlay').classList.add('open');
+}
+function closeReview(){
+  reviewItemId = null;
+  document.getElementById('reviewOverlay').classList.remove('open');
+}
+function findPendingOrHistoryById(id){
+  const p = PENDING.find(x => x.id === id);
+  if (p) return p;
+  // fallback: reconstruct minimal shape from a history entry whose id ends with -<id>
+  const h = HISTORY.find(x => x.id.endsWith('-' + id));
+  if (h) return { id, module: h.module, item: h.item, requestedBy: h.requestedBy, requestedAt: h.requestedAt };
+  return null;
+}
+function renderReviewPanel(){
+  const it = findPendingOrHistoryById(reviewItemId);
+  if (!it) { closeReview(); return; }
+  const description = it.item;
+  const changeType = classifyChangeType(description);
+  const configItem = extractConfigItem(description);
+  const justification = JUSTIFICATION_TEMPLATES[changeType].replace(/{module}/g, it.module);
+  const impact = IMPACT_TEMPLATES[changeType].replace(/{module}/g, it.module);
+  const proposedRows = getProposedChange(changeType, configItem);
+  const relatedHistory = HISTORY.filter(h => h.id.endsWith('-' + it.id));
+  const latestDecision = relatedHistory[0];
+  const statusLabel = latestDecision ? (latestDecision.decision === 'approved' ? 'Approved' : 'Rejected') : 'Pending Checker Review';
+  const statusClass = statusLabel === 'Approved' ? 'status-approved' : statusLabel === 'Rejected' ? 'status-rejected' : 'status-pending';
+
+  const timelineEvents = [
+    { label: 'Change request submitted', by: it.requestedBy, at: it.requestedAt, tone: 'neutral' },
+    ...relatedHistory.slice().reverse().map(h => ({
+      label: h.decision === 'approved' ? 'Request approved' : 'Request rejected',
+      by: h.decidedBy, at: h.decidedAt,
+      tone: h.decision === 'approved' ? 'approve' : 'reject',
+    })),
+  ];
+
+  const recommendationHtml = statusLabel === 'Pending Checker Review' ? `
+    <label class="field-label">Checker Comment <span class="req-star">*</span></label>
+    <textarea id="reviewComment" rows="4" placeholder="e.g. Justification verified — approved." oninput="onReviewCommentInput()"></textarea>
+    <div class="rec-actions">
+      <button class="row-btn rb-reject" id="reviewRejectBtn" disabled onclick="decideReviewItem('reject')" style="padding:9px 12px;">✕ Reject</button>
+      <button class="row-btn rb-approve" id="reviewApproveBtn" disabled onclick="decideReviewItem('approve')" style="padding:9px 12px;">✓ Approve</button>
+    </div>
+  ` : `<p style="font-size:12.5px;color:var(--text-2);">This request has already been ${statusLabel.toLowerCase()} by ${escapeHtml(latestDecision.decidedBy)} on ${escapeHtml(latestDecision.decidedAt)}.</p>`;
+
+  document.getElementById('reviewModalBody').innerHTML = `
+    <div class="review-head">
+      <div>
+        <p class="crumb">${escapeHtml(it.module)} / ${escapeHtml(it.id)}</p>
+        <h3>${escapeHtml(configItem)}</h3>
+      </div>
+      <span class="status-badge ${statusClass}">${statusLabel}</span>
+    </div>
+    <div class="review-body">
+      <div class="review-grid">
+        <div class="review-col">
+          <div class="detail-card">
+            <h4>Change Summary</h4>
+            <div class="dc-grid">
+              <div><p>Module</p><p>${escapeHtml(it.module)}</p></div>
+              <div><p>Change Type</p><p>${escapeHtml(changeType)}</p></div>
+              <div><p>Requested By</p><p>${escapeHtml(it.requestedBy)}</p></div>
+              <div><p>Requested Date</p><p>${escapeHtml(it.requestedAt)}</p></div>
+            </div>
+          </div>
+          <div class="detail-card">
+            <h4>Business Justification</h4>
+            <p class="body-text">${escapeHtml(justification)}</p>
+          </div>
+          <div class="detail-card">
+            <h4>Proposed Change</h4>
+            <table class="pc-table">
+              <thead><tr><th>Parameter</th><th>Current Value</th><th>Proposed Value</th></tr></thead>
+              <tbody>
+                ${proposedRows.map(r => `<tr><td>${escapeHtml(r.parameter)}</td><td class="pc-current">${escapeHtml(r.current)}</td><td class="pc-proposed">${escapeHtml(r.proposed)}</td></tr>`).join('')}
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="review-col">
+          <div class="rec-card">
+            <h4 style="margin-bottom:12px;">Recommendation / Decision</h4>
+            ${recommendationHtml}
+          </div>
+          <div class="detail-card">
+            <h4>Audit Timeline</h4>
+            <ul class="timeline">
+              ${timelineEvents.map((ev, idx) => `
+                <li>
+                  <div class="tl-dot-col">
+                    <span class="tl-dot ${ev.tone === 'approve' ? 'approve' : ev.tone === 'reject' ? 'reject' : ''}"></span>
+                    ${idx < timelineEvents.length - 1 ? '<span class="tl-line"></span>' : ''}
+                  </div>
+                  <div>
+                    <p class="tl-label">${escapeHtml(ev.label)}</p>
+                    <p class="tl-meta">${escapeHtml(ev.by)} · ${escapeHtml(ev.at)}</p>
+                  </div>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="review-foot">
+      <button class="btn-cancel" onclick="closeReview()">Close</button>
+    </div>
+  `;
+}
+function onReviewCommentInput(){
+  const v = document.getElementById('reviewComment').value.trim();
+  document.getElementById('reviewRejectBtn').disabled = !v;
+  document.getElementById('reviewApproveBtn').disabled = !v;
+}
+function decideReviewItem(decision){
+  const commentEl = document.getElementById('reviewComment');
+  const comment = commentEl ? commentEl.value.trim() : '';
+  if (!comment) return;
+  const it = PENDING.find(p => p.id === reviewItemId);
+  if (!it) return;
+  applyDecision([it], decision, comment);
+  closeReview();
+}
+
+/* ============================================================
+   Rendering
+   ============================================================ */
+function renderModuleFilter(){
+  const sel = document.getElementById('moduleFilter');
+  const cur = filterModule;
+  const opts = moduleOptions();
+  sel.innerHTML = opts.map(m => `<option value="${escapeHtml(m)}" ${m === cur ? 'selected' : ''}>${m === 'all' ? 'All modules' : escapeHtml(m)}</option>`).join('');
+}
+
+function renderInfoBanner(){
+  const banner = document.getElementById('infoBanner');
+  if (tab === 'pending'){
+    const vp = visiblePending();
+    const modCount = moduleOptions().length - 1;
+    banner.innerHTML = `ℹ&nbsp;&nbsp;<span><b>${vp.length} items</b> pending checker approval across ${modCount} modules.</span>`;
+  } else {
+    banner.innerHTML = `ℹ&nbsp;&nbsp;<span><b>${visibleHistory().length} decisions</b> recorded with checker comments.</span>`;
+  }
+}
+
+function renderHistFilterOptions(){
+  const checkerSel = document.getElementById('histChecker');
+  const commentSel = document.getElementById('histComment');
+  const checkers = ["all", ...Array.from(new Set(HISTORY.map(h => h.decidedBy)))];
+  const comments = ["all", ...Array.from(new Set(HISTORY.map(h => h.comment)))];
+  checkerSel.innerHTML = checkers.map(c => `<option value="${escapeHtml(c)}">${c === 'all' ? 'All checkers' : escapeHtml(c)}</option>`).join('');
+  commentSel.innerHTML = comments.map(c => `<option value="${escapeHtml(c)}">${c === 'all' ? 'All comments' : escapeHtml(c)}</option>`).join('');
+  document.getElementById('histDateFrom').value = histDateFrom;
+  document.getElementById('histDateTo').value = histDateTo;
+  checkerSel.value = histChecker;
+  commentSel.value = histComment;
+  const anyActive = histDateFrom || histDateTo || histChecker !== 'all' || histComment !== 'all' ||
+    appliedHist.dateFrom || appliedHist.dateTo || appliedHist.checker !== 'all' || appliedHist.comment !== 'all';
+  document.getElementById('histClearBtn').style.display = anyActive ? '' : 'none';
+}
+function onHistDraftChange(){
+  histDateFrom = document.getElementById('histDateFrom').value;
+  histDateTo = document.getElementById('histDateTo').value;
+  histChecker = document.getElementById('histChecker').value;
+  histComment = document.getElementById('histComment').value;
+  renderHistFilterOptions();
+}
+function applyHistoryFilters(){
+  appliedHist = { dateFrom: histDateFrom, dateTo: histDateTo, checker: histChecker, comment: histComment };
+  renderAll();
+}
+function clearHistoryFilters(){
+  histDateFrom = ""; histDateTo = ""; histChecker = "all"; histComment = "all";
+  appliedHist = { dateFrom:"", dateTo:"", checker:"all", comment:"all" };
+  renderAll();
+}
+
+function renderBulkBar(){
+  const wrap = document.getElementById('bulkBarWrap');
+  if (tab !== 'pending'){ wrap.innerHTML = ''; return; }
+  const vp = visiblePending();
+  const selectedItems = vp.filter(it => selectedIds.has(it.id));
+  if (selectedItems.length === 0){ wrap.innerHTML = ''; return; }
+  wrap.innerHTML = `
+    <div class="bulk-bar">
+      <span class="bulk-count">${selectedItems.length}</span>
+      <span class="bulk-label">${selectedItems.length} request${selectedItems.length > 1 ? 's' : ''} selected</span>
+      <span class="bulk-sub">— choose a bulk action below</span>
+      <div class="bulk-spacer"></div>
+      <button class="bulk-btn bulk-reject" onclick="openDecisionModal(getSelectedItems(),'reject')">✕ Reject Selected</button>
+      <button class="bulk-btn bulk-approve" onclick="openDecisionModal(getSelectedItems(),'approve')">✓ Approve Selected</button>
+      <button class="bulk-clear" title="Clear selection" onclick="clearSelection()">✕</button>
+    </div>
+  `;
+}
+function getSelectedItems(){
+  return visiblePending().filter(it => selectedIds.has(it.id));
+}
+
+function renderPendingTable(){
+  const wrap = document.getElementById('pendingTableWrap');
+  const vp = visiblePending();
+  const allSelected = vp.length > 0 && vp.every(it => selectedIds.has(it.id));
+  const rowsHtml = vp.length === 0
+    ? `<tr class="empty-row"><td colspan="6">No items pending checker approval.</td></tr>`
+    : vp.map(it => `
+      <tr class="${selectedIds.has(it.id) ? 'selected' : ''}">
+        <td><input type="checkbox" class="checkbox" ${selectedIds.has(it.id) ? 'checked' : ''} onchange="toggleSelect('${it.id}')"></td>
+        <td class="mono-nowrap" style="font-weight:500;">${escapeHtml(it.module)}</td>
+        <td>${escapeHtml(it.item)}</td>
+        <td class="text-2 mono-nowrap">${escapeHtml(it.requestedBy)}</td>
+        <td class="text-2 mono-nowrap">🕒 ${escapeHtml(it.requestedAt)}</td>
+        <td>
+          <div class="row-actions">
+            <button class="row-btn rb-review" onclick="openReview('${it.id}')">Review →</button>
+            <button class="row-btn rb-reject" onclick="openDecisionModal([findById('${it.id}')],'reject')">✕ Reject</button>
+            <button class="row-btn rb-approve" onclick="openDecisionModal([findById('${it.id}')],'approve')">✓ Approve</button>
+          </div>
+        </td>
+      </tr>
+    `).join('');
+  wrap.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th style="width:36px;"><input type="checkbox" class="checkbox" ${allSelected ? 'checked' : ''} onchange="toggleSelectAll()"></th>
+          <th>Module</th>
+          <th>Request</th>
+          <th>Requested By</th>
+          <th>Requested At</th>
+          <th style="text-align:right;">Action</th>
+        </tr>
+      </thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>
+  `;
+}
+function findById(id){ return PENDING.find(p => p.id === id); }
+
+function renderHistoryTable(){
+  const wrap = document.getElementById('historyTableWrap');
+  const vh = visibleHistory();
+  const rowsHtml = vh.length === 0
+    ? `<tr class="empty-row"><td colspan="6">No decisions recorded yet.</td></tr>`
+    : vh.map(h => `
+      <tr>
+        <td class="mono-nowrap" style="font-weight:500;">${escapeHtml(h.module)}</td>
+        <td>${escapeHtml(h.item)}</td>
+        <td class="mono-nowrap">${h.decision === 'approved' ? `<span class="decision-approved">✓ Approved</span>` : `<span class="decision-rejected">✕ Rejected</span>`}</td>
+        <td class="text-2">${escapeHtml(h.comment)}</td>
+        <td class="text-2 mono-nowrap">${escapeHtml(h.decidedBy)}</td>
+        <td class="text-2 mono-nowrap">🕒 ${escapeHtml(h.decidedAt)}</td>
+      </tr>
+    `).join('');
+  wrap.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Module</th>
+          <th>Request</th>
+          <th>Decision</th>
+          <th>Checker Comment</th>
+          <th>Decided By</th>
+          <th>Approved / Rejected Date</th>
+        </tr>
+      </thead>
+      <tbody>${rowsHtml}</tbody>
+    </table>
+  `;
+}
+
+function renderTabCounts(){
+  document.getElementById('pendingCountLabel').textContent = `(${PENDING.length})`;
+  document.getElementById('historyCountLabel').textContent = `(${HISTORY.length})`;
+}
+
+function renderAll(){
+  renderModuleFilter();
+  renderInfoBanner();
+  renderTabCounts();
+  if (tab === 'history') renderHistFilterOptions();
+  renderBulkBar();
+  renderPendingTable();
+  renderHistoryTable();
+  if (reviewItemId && document.getElementById('reviewOverlay').classList.contains('open')){
+    renderReviewPanel();
+  }
+}
+
+renderAll();
+</script>
+</body>
+</html>

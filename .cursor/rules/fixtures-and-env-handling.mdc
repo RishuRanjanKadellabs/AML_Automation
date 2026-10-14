@@ -9,7 +9,8 @@ alwaysApply: true
 
 - All environments are defined in a single file: `tests/fixtures/environments.json`.
 - The AML application runs at `https://kadelamldev.customerxps.com:2506` by default (override via `BASE_URL` in `.env`).
-- **Login is currently bypassed** — do not require `EMAIL` / `PASSWORD` for agent runs until the user asks to enable auth. When re-enabled, credentials come from `EMAIL` / `PASSWORD` in `.env`.
+- **2506 session login is enabled** — Playwright and MCP seed sign in through Clari5 Command Center (`/clari5-cc/login`) using `EMAIL` / `PASSWORD` (or `AML_USERNAME` / `AML_PASSWORD`) from `.env`. Default user: `QAUSER2`. Never commit the password. Skip auto-login with `PW_SKIP_AML_LOGIN=1`.
+- **Do not generate or run unauthenticated / session-expiry / unauthorized-role cases** unless the user explicitly asks or sets `QA_INCLUDE_AUTH_CASES=1`. See `.cursor/rules/authentication-bypass-mandatory.mdc`.
 - The `defaults` block provides shared values; per-env blocks override them.
 
 Example structure:
@@ -46,6 +47,7 @@ Example `environments.json`:
 Environment is loaded from `.env` at runtime and merged into the test data:
 - `ENV` → selects which environment block to use (default: dev)
 - `BASE_URL` → overrides the environment's `baseUrl` if set
+- `EMAIL` / `PASSWORD` (or `AML_USERNAME` / `AML_PASSWORD`) → 2506 Command Center session
 
 ## Parallel Multi-Environment Execution
 

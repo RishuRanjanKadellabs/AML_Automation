@@ -1,0 +1,101 @@
+id_number,name_english,name_non_english,alias,address,date_of_birth,country_of_birth,country_of_residence,nationality
+IND1883799,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1960-12-30,India,India,India
+EGY4080505,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1982-08-31,Egypt,Egypt,Egypt
+CHI4704215,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1992-04-06,China,China,China
+JAP6422151,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",1962-09-17,Japan,Japan,Japan
+RUS6714325,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1977-02-18,Russia,Russia,Russia
+SPA7601082,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1957-12-08,Spain,Spain,Spain
+FRA5348075,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",1983-12-29,France,France,France
+SAU3510192,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1968-08-18,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL9929544,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1956-06-21,Poland,Poland,Poland
+VIE6668409,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",1981-05-07,Vietnam,Vietnam,Vietnam
+IND9041899,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1975-01-30,India,India,India
+EGY1007091,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1965-09-19,Egypt,Egypt,Egypt
+CHI5503959,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",2005-03-27,China,China,China
+JAP6080929,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",1964-02-29,Japan,Japan,Japan
+RUS7323021,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1975-01-22,Russia,Russia,Russia
+SPA8158324,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1969-12-15,Spain,Spain,Spain
+FRA6046766,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",1955-10-12,France,France,France
+SAU2164823,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1978-03-27,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL7565965,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1976-11-01,Poland,Poland,Poland
+VIE5328216,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",2004-08-26,Vietnam,Vietnam,Vietnam
+IND9610532,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1997-11-29,India,India,India
+EGY6226473,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1977-09-08,Egypt,Egypt,Egypt
+CHI6753389,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1964-04-18,China,China,China
+JAP1630574,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",2001-08-16,Japan,Japan,Japan
+RUS5078396,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1978-08-09,Russia,Russia,Russia
+SPA2996192,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1996-07-29,Spain,Spain,Spain
+FRA7093475,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",2002-11-02,France,France,France
+SAU2020189,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1975-05-02,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL4479721,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1997-11-19,Poland,Poland,Poland
+VIE1546738,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",1960-09-02,Vietnam,Vietnam,Vietnam
+IND2792236,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1985-02-25,India,India,India
+EGY4064166,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1966-03-11,Egypt,Egypt,Egypt
+CHI3661212,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1961-12-07,China,China,China
+JAP7102655,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",1975-05-13,Japan,Japan,Japan
+RUS4238494,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1960-04-10,Russia,Russia,Russia
+SPA3829570,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1957-12-18,Spain,Spain,Spain
+FRA6061077,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",2000-12-01,France,France,France
+SAU1568838,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1976-03-27,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL7022423,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1969-06-14,Poland,Poland,Poland
+VIE8933141,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",2002-06-09,Vietnam,Vietnam,Vietnam
+IND3911041,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1979-06-26,India,India,India
+EGY9436226,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1998-03-17,Egypt,Egypt,Egypt
+CHI6550562,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1993-03-15,China,China,China
+JAP8142086,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",1995-03-06,Japan,Japan,Japan
+RUS1068765,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1964-12-09,Russia,Russia,Russia
+SPA9320028,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1976-12-19,Spain,Spain,Spain
+FRA5777614,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",1998-02-11,France,France,France
+SAU3157692,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",2002-04-18,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL4566896,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1969-07-11,Poland,Poland,Poland
+VIE9261389,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",1961-06-24,Vietnam,Vietnam,Vietnam
+IND2452200,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1961-04-18,India,India,India
+EGY3541356,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1976-10-17,Egypt,Egypt,Egypt
+CHI1132365,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1993-07-25,China,China,China
+JAP4761946,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",1998-11-18,Japan,Japan,Japan
+RUS5918002,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1993-05-20,Russia,Russia,Russia
+SPA1126498,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1972-08-26,Spain,Spain,Spain
+FRA2524779,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",2004-04-11,France,France,France
+SAU5957988,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1963-01-19,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL2772044,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1966-03-04,Poland,Poland,Poland
+VIE7642628,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",1975-08-11,Vietnam,Vietnam,Vietnam
+IND8885588,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1978-03-07,India,India,India
+EGY1428102,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1967-09-25,Egypt,Egypt,Egypt
+CHI2257916,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1971-07-05,China,China,China
+JAP3978437,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",1985-05-09,Japan,Japan,Japan
+RUS9107350,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1987-10-05,Russia,Russia,Russia
+SPA7507660,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1987-06-28,Spain,Spain,Spain
+FRA6990946,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",1962-01-09,France,France,France
+SAU9766717,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1961-07-01,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL4641560,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1974-05-23,Poland,Poland,Poland
+VIE8373799,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",1964-06-03,Vietnam,Vietnam,Vietnam
+IND6926542,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1956-02-25,India,India,India
+EGY2625413,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1986-12-24,Egypt,Egypt,Egypt
+CHI9792012,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",2005-06-25,China,China,China
+JAP9702261,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",2000-02-26,Japan,Japan,Japan
+RUS2068494,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1980-08-16,Russia,Russia,Russia
+SPA4700489,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1964-03-27,Spain,Spain,Spain
+FRA8772328,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",1958-12-31,France,France,France
+SAU6628557,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1991-12-13,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL1680269,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",2005-12-16,Poland,Poland,Poland
+VIE2975207,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",2000-11-09,Vietnam,Vietnam,Vietnam
+IND3290736,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1957-03-11,India,India,India
+EGY4411637,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1986-03-24,Egypt,Egypt,Egypt
+CHI5566909,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1976-07-28,China,China,China
+JAP3937983,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",1985-04-04,Japan,Japan,Japan
+RUS3481492,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",1979-07-19,Russia,Russia,Russia
+SPA1682245,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1976-12-15,Spain,Spain,Spain
+FRA7618996,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",1984-04-13,France,France,France
+SAU1510162,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",2005-09-07,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL7571395,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1962-05-08,Poland,Poland,Poland
+VIE2653450,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",1983-01-11,Vietnam,Vietnam,Vietnam
+IND9226614,Aarav Sharma,??? ?????,Arav Sharma,"221B MG Road, Bengaluru, Karnataka 560001",1994-07-25,India,India,India
+EGY9310910,Mohammed Ali,???? ???,Mohamad Ali,"25 Talaat Harb St, Cairo 11511",1957-02-24,Egypt,Egypt,Egypt
+CHI3449661,Li Wei,??,Wei Li,"100 Nanjing East Rd, Huangpu District, Shanghai 200001",1998-06-12,China,China,China
+JAP6337331,Yuki Tanaka,????,Tanaka Yuki,"1-1 Chiyoda, Tokyo 100-8111",2001-07-06,Japan,Japan,Japan
+RUS3847685,Ivan Petrov,???? ??????,Ivan Petrov,"12 Tverskaya St, Moscow 125009",2003-09-15,Russia,Russia,Russia
+SPA4874778,Carlos Garcia,Carlos García,Carlos Garcia,"Calle de Alcalá 45, Madrid 28014",1982-09-16,Spain,Spain,Spain
+FRA1161420,Jean Dupont,Jean Dupont,J. Dupont,"10 Rue de Rivoli, Paris 75001",1977-07-21,France,France,France
+SAU8505381,Fatima Al Zahra,????? ???????,Fatima Zahra,"King Fahd Rd, Riyadh 12271",1985-08-09,Saudi Arabia,Saudi Arabia,Saudi Arabia
+POL4007869,Anna Kowalska,Anna Kowalska,A. Kowalska,"ul. Marsza?kowska 10, Warsaw 00-001",1995-08-31,Poland,Poland,Poland
+VIE9641402,Nguyen Van An,Nguy?n V?n An,Van An Nguyen,"12 Le Loi, Ho Chi Minh City 700000",1978-02-22,Vietnam,Vietnam,Vietnam

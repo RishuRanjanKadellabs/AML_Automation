@@ -22,6 +22,10 @@ Stage 0: **FSD (source of truth)** + **Figma HTML (UI/nav assist)** → use case
 **Behaviour / expected-result conflicts → FSD wins.**  
 **Click paths / control labels → follow this run’s Figma** (discover flows; do not assume a fixed catalog or another module’s labels).
 
+**4-Eyes Maker-Checker (global product rule):** Save / Create / Edit / Delete-Deactivate / Activate always pend in the 4-Eyes module until Checker Approve; bake Current vs Proposed Value + Business Justification into use cases and Excel without user re-prompt. See `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+
+**Audit Trail (global product rule):** every action is logged in Audit Trail / Audit Log (list + View Changes / DATA STATE CHANGE); bake into use cases and Excel without user re-prompt. See `.cursor/rules/audit-trail-mandatory.mdc`.
+
 ## Folder layout (canonical)
 
 ```

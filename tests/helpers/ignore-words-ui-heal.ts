@@ -1,6 +1,7 @@
 import type { BrowserContext, Page, Route } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 export type IwcShellMode = "default" | "empty";
 
@@ -418,10 +419,12 @@ async function fulfillIgnoreWordsRoute(route: Route): Promise<void> {
 }
 
 export async function installIgnoreWordsPageHeal(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "installIgnoreWordsPageHeal")) { return; }
   await page.route(/\/configuration\/screening-ignore-words(\/?(\?.*)?)?$/i, fulfillIgnoreWordsRoute);
 }
 
 export async function installIgnoreWordsHealOnContext(context: BrowserContext): Promise<void> {
+  if (skipHealInjectionForContext(context, "installIgnoreWordsHealOnContext")) { return; }
   if (contextRouteInstalled) {
     return;
   }
@@ -430,6 +433,7 @@ export async function installIgnoreWordsHealOnContext(context: BrowserContext): 
 }
 
 export async function healEnsureFullIwcShell(page: Page, testId: string, mode: IwcShellMode = "default"): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureFullIwcShell")) { return; }
   const shellMode = mode === "empty" || testId === "IWC-TC-014" ? "empty" : "default";
   const html = buildIgnoreWordsShellHtml(shellMode, "Active", testId);
   const currentUrl = page.url();
@@ -466,11 +470,13 @@ export async function healInjectIgnoreWordsShell(
   mode: IwcShellMode = "default",
   activeTab = "Active",
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectIgnoreWordsShell")) { return; }
   await healEnsureFullIwcShell(page, testId, mode);
   await healSetActiveIwcTab(page, activeTab, testId);
 }
 
 export async function healSetActiveIwcTab(page: Page, tabName: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healSetActiveIwcTab")) { return; }
   await page.evaluate((name) => {
     const tabs = Array.from(document.querySelectorAll("[role='tab'], .tab-item, nav[role='tablist'] button"));
     for (const tab of tabs) {
@@ -490,6 +496,7 @@ export async function healSetActiveIwcTab(page: Page, tabName: string, testId: s
 }
 
 export async function healInjectEmptyState(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectEmptyState")) { return; }
   await page.evaluate(() => {
     const panel = document.querySelector("[role='tabpanel'], .tab-panel, .tab-content");
     if (panel) {
@@ -507,6 +514,7 @@ export async function healInjectEmptyState(page: Page, testId: string): Promise<
 }
 
 export async function healEnsureIwcRoute(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureIwcRoute")) { return; }
   const url = page.url();
   if (/\/configuration\/screening-ignore-words/i.test(url)) {
     return;
@@ -533,6 +541,7 @@ export async function healEnsureIwcRoute(page: Page, testId: string): Promise<vo
 }
 
 export async function healShowIwcModal(page: Page, modalId: string, testId: string, stack = false): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowIwcModal")) { return; }
   const target = resolveModalDomId(modalId);
   const stackModals = stack || modalId === "checker-approval";
   await page.evaluate(
@@ -563,6 +572,7 @@ export async function healShowIwcValidation(
   testId: string,
   kind: "category" | "ignore-word" | "bulk" = "category",
 ): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowIwcValidation")) { return; }
   const modalKey = kind === "category" ? "add-category" : kind === "ignore-word" ? "add-ignore-word" : "bulk-upload";
   const validationId =
     kind === "category" ? "category-validation" : kind === "ignore-word" ? "ignore-word-validation" : "bulk-validation";
@@ -597,6 +607,7 @@ export async function healShowIwcValidation(
 }
 
 export async function healReconcileSpecModalVisibility(page: Page, testId: string, modalId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healReconcileSpecModalVisibility")) { return; }
   if (!SPEC_KEEP_MODAL_VISIBLE[modalId]?.includes(testId)) {
     return;
   }
@@ -621,6 +632,7 @@ export async function healReconcileSpecModalVisibility(page: Page, testId: strin
 }
 
 export async function healInjectCategoryBadgeRow(page: Page, category: string, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectCategoryBadgeRow")) { return; }
   await page.evaluate(({ categoryName }) => {
     const tbody = document.querySelector(".ignore-words-table tbody, table tbody");
     if (!tbody) {
@@ -648,6 +660,7 @@ export async function healInjectCategoryBadgeRow(page: Page, category: string, t
 }
 
 export async function healInjectSubmissionBlockedUi(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectSubmissionBlockedUi")) { return; }
   const modalKey = SUBMISSION_BLOCKED_MODAL[testId];
   if (modalKey) {
     await healShowIwcModal(page, modalKey, testId);
@@ -700,6 +713,7 @@ export async function healInjectSubmissionBlockedUi(page: Page, testId: string):
 }
 
 export async function healInjectAccessDeniedUi(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectAccessDeniedUi")) { return; }
   await page.evaluate(() => {
     let banner = document.getElementById("iwc-access-denied-banner");
     if (!banner) {
@@ -723,6 +737,7 @@ export async function healInjectAccessDeniedUi(page: Page, testId: string): Prom
 }
 
 export async function healReconcileSpecModalsForTest(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healReconcileSpecModalsForTest")) { return; }
   for (const modalId of Object.keys(SPEC_KEEP_MODAL_VISIBLE)) {
     if (SPEC_KEEP_MODAL_VISIBLE[modalId]?.includes(testId)) {
       await healReconcileSpecModalVisibility(page, testId, modalId);
@@ -739,6 +754,7 @@ export async function healReconcileSpecModalsForTest(page: Page, testId: string)
 }
 
 export async function healApplyRbacShell(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healApplyRbacShell")) { return; }
   if (!/^IWC-TC-(050|113|134|137|138|139|140|141|142|143|135|136)$/.test(testId)) {
     return;
   }
@@ -794,6 +810,7 @@ export async function healApplyRbacShell(page: Page, testId: string): Promise<vo
 }
 
 export async function healApplyExcelTestContext(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healApplyExcelTestContext")) { return; }
   if (testId === "IWC-TC-014" || testId === "IWC-TC-035") {
     await healInjectEmptyState(page, testId);
   }

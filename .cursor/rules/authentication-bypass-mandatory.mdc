@@ -1,0 +1,44 @@
+---
+description: Session login is always required on 2506; exclude unauthenticated/RBAC Playwright cases unless QA_INCLUDE_AUTH_CASES=1.
+alwaysApply: true
+---
+
+# Authentication — session login required (all modules)
+
+AML **session login is required** on `https://kadelamldev.customerxps.com:2506` for **every** module. Agents must never treat login as bypassed and must never ask the user to re-enable it.
+
+When Command Center or a module requires a session, sign in via `tests/helpers/aml-login.ts` using `.env` credentials (`EMAIL` / `PASSWORD`, aliases `AML_USERNAME` / `AML_PASSWORD`). Do **not** hard-code the password in specs, locators, agents, rules, or committed JSON.
+
+| Item | Value |
+|------|--------|
+| Default 2506 user | **QAUSER2** |
+| Password | gitignored `.env` only (`PASSWORD` / `AML_PASSWORD`) |
+| Login UI | Clari5 Command Center `/clari5-cc/login` (host root `/` may still show Apache) |
+| Opt out of auto-login | `PW_SKIP_AML_LOGIN=1` (exception only — not the default) |
+
+Missing `EMAIL` / `PASSWORD` when the login form is shown is a **live-UI blocker**. Other hosts (e.g. 2502) use that environment’s `.env` separately.
+
+## Signed-in flows — always automate
+
+Keep automating with an authenticated session: module navigation, TLS/HTTPS, masking/privacy, keyboard/WCAG, performance/SLA, layout, maker-checker, audit trail, and all other signed-in product flows. Session login is established by the fixture / `aml-login` helper — specs do not hard-code credentials.
+
+## Negative / multi-role auth cases — Partial unless opted in
+
+Do **not** generate, heal-back, or add scripts for these Excel cases unless the user asks **or** sets `QA_INCLUDE_AUTH_CASES=1`:
+
+| Kind | Examples |
+|------|----------|
+| Unauthenticated access | Open a module URL with no session; expect sign-in / access denied |
+| Login / session expiry | Redirect to login, session expiry, expired token |
+| Unauthorized role | “Log in as a user without permission”, “unauthorized role cannot…” |
+| Role-based access | “all authorized AML roles”, “role-based access”, RBAC / read-only auditor |
+
+Put those Excel rows in **Partial** (`Partial - Authentication (automate only when QA_INCLUDE_AUTH_CASES=1)`). Normalize excludes them (`pipeline/scripts/nfr-auth-automation-scope.cjs`). List them in `blockedUiCaseIds` / `deferredCaseIds` with that reason. **Do not** use `test.skip()`.
+
+**Never** label Automable as “login bypassed” — session login is always enabled.
+
+## Include negative auth cases only when specified
+
+Bring unauthenticated / expiry / unauthorized-role cases into Playwright **only** if the user asks **or** sets `QA_INCLUDE_AUTH_CASES=1`.
+
+Applies to: `fsd-figma-pipeline` (Excel Automable), `qa-automation-pipeline`, generator, healer, execute-raise-defects, headed/headless executors.

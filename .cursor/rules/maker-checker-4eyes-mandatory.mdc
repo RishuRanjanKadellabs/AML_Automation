@@ -1,0 +1,60 @@
+---
+description: Global 4-Eyes Maker-Checker — mutating actions pend until checker approval; Current vs Proposed Value rules.
+alwaysApply: true
+---
+
+# 4-Eyes (Maker-Checker) — mandatory product behaviour
+
+Clari5 AML has a **4-Eyes Maker-Checker** module. Agents authoring Excel, use cases, or Playwright **must** assume this workflow without the user re-stating it.
+
+UI reference: `docs/reference/maker-checker-4eyes-approval.png`
+
+## Mutating actions always go to Maker-Checker
+
+Any **Save, Create, Edit, Delete/Deactivate, or Activate** (and equivalent submit/apply) creates a **pending change request**. The original module **must not** show the new state until a **Checker Approves**.
+
+| After maker submits | Until checker approves | After Approve | After Reject |
+|---------------------|------------------------|---------------|--------------|
+| Request in **4-Eyes / Pending Approvals** | Source module keeps **prior** live data | Change applied in source module | Source module unchanged |
+
+Do **not** write Expected Results that claim create/edit/delete/activate is immediately visible in the source list/detail (unless FSD explicitly exempts that action).
+
+## Review modal fields (assert when steps open Review)
+
+| UI area | Behaviour |
+|---------|-----------|
+| **Change Summary** | Module, Change Type, Requested By, Requested Date |
+| **Business Justification** | Text the **maker** entered when submitting the action |
+| **Proposed Change** table | Columns: **Parameter**, **Current Value**, **Proposed Value** |
+| **Checker Comment** | Required before Approve / Reject |
+| **Audit Timeline** | Submission (and later checker actions) |
+
+## Current Value vs Proposed Value
+
+| Change type | Current Value | Proposed Value |
+|-------------|---------------|----------------|
+| **Create** (new record) | `-` (dash) for parameters | All fields entered on create, with **field names** + values |
+| **Edit** | Pre-change live values | New values |
+| **Delete / Deactivate / Disable** | Current status/values | Intent (e.g. `DEACTIVATE`) / proposed status |
+| **Activate / Enable** | Current status/values | Proposed active/enabled status |
+
+Only changed (or create-submitted) parameters appear in the comparison as shown in the live UI.
+
+## Excel / Stage 0
+
+For mutating happy-paths and maker-checker TCs:
+
+1. Steps: maker action → justification → submit → open **4-Eyes Maker-Checker** → **Review**.
+2. Expected: pending in queue; **Business Justification** matches maker text; **Current / Proposed** per table above; source module **unchanged** until Approve.
+3. Approval/reject chains: checker comment → Approve/Reject → then assert source module / history.
+
+## Playwright / generator / healer
+
+- After mutate: assert **pending** request (queue/modal), not immediate source-module success alone.
+- Assert justification + Current/Proposed when Excel expects them.
+- Do not heal by removing maker-checker asserts or treating pending as “saved in module”.
+- Prefer shared POM/helpers for 4-Eyes Review; discover locators on the live module.
+
+Maker submit and checker Approve/Reject are also **Audit Trail** events — list row + **View Changes** (DATA STATE CHANGE / Reason) must reflect them when Excel verifies audit. See `.cursor/rules/audit-trail-mandatory.mdc`.
+
+See also: `.cursor/rules/excel-coverage-mandatory.mdc` (pending / maker-checker fidelity).

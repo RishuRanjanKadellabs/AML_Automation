@@ -1,3 +1,4 @@
+/* eslint-disable playwright/valid-title -- QA fidelity requires the Test Case ID prefix. */
 // source: pipeline/test-data/Milestone2/Test Cases/Risk Rating Configuration Test Cases2.xlsx — batch 1
 import { test, expect } from "../../../../../fixtures/milestone2-shared-session";
 import CustomerRiskRatingConfigurationPage from "../../../pages/ConfigurationModule/CustomerRiskRatingConfigurationPages/CustomerRiskRatingConfigurationPage";

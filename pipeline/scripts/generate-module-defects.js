@@ -268,9 +268,19 @@ function sanitizeFsdTraceabilityInNarrative(text) {
   return value;
 }
 
+function convertMillisecondsInText(text) {
+  return String(text || "").replace(/\b(\d+)\s*ms\b/gi, (_, ms) => {
+    const seconds = Math.round(Number(ms) / 1000);
+    if (seconds < 1) return "less than 1 second";
+    return `${seconds} second${seconds === 1 ? "" : "s"}`;
+  });
+}
+
 /** Plain-language defect text: no FSD requirement IDs (BR-xxx, NFR-xxx, …). */
 function plainLanguageNarrative(text) {
-  return sanitizeFsdTraceabilityInNarrative(stripFsdRequirementPrefix(text));
+  return convertMillisecondsInText(
+    sanitizeFsdTraceabilityInNarrative(stripFsdRequirementPrefix(text)),
+  );
 }
 
 function splitWords(value) {
@@ -292,8 +302,10 @@ function titleCaseWords(value) {
 
 function moduleFromSpecPath(specPath) {
   const normalized = String(specPath || "").replaceAll("\\", "/");
-  const segments = normalized.split("/");
-  const testDirectory = [...segments].reverse().find((segment) => /tests?$/i.test(segment));
+  const segments = normalized.split("/").filter(Boolean);
+  const testDirectory = [...segments].reverse().find(
+    (segment) => /tests?$/i.test(segment) && !/^tests?$/i.test(segment),
+  );
   const fileName = path.basename(normalized, ".spec.ts");
   const module = titleCaseWords(testDirectory || fileName);
   return module || "Unknown Module";
@@ -422,7 +434,7 @@ function parseTitleParts(title, testCaseId) {
 }
 
 function waitTime(cleaned) {
-  const match = cleaned.match(/Timeout\s+(\d+)ms/i);
+  const match = cleaned.match(/(?:Timeout|timeout(?:\s+of)?)\s+(\d+)\s*ms/i);
   if (!match) return "";
   const seconds = Math.round(Number(match[1]) / 1000);
   return seconds >= 1 ? ` within ${seconds} second${seconds === 1 ? "" : "s"}` : "";
@@ -483,6 +495,9 @@ function shortFailure(errorText, pageName = "application") {
   }
   if (/toBe\b|toEqual/i.test(cleaned)) {
     return "The result shown on the screen did not match what was expected.";
+  }
+  if (/test timeout.*exceeded/i.test(cleaned)) {
+    return `The check did not finish in time${waitTime(cleaned)}.`;
   }
 
   const firstLine = cleaned

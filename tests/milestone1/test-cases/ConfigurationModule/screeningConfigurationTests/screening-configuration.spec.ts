@@ -2,7 +2,7 @@
 // source: pipeline/test-data/Milestone1/Test Cases/Screening Configuration Test Cases.xlsx — 281 cases
 // generator: pipeline/scripts/regenerate-screening-configuration-spec.js
 // alignment: Acceptance Criteria + Test Steps + Expected Result mapped to POM (live UI preferred)
-import { test } from "../../../../../fixtures/milestone1-shared-session";
+import { test, expect } from "../../../../../fixtures/milestone1-shared-session";
 import ScreeningConfigurationPage from "../../../pages/ConfigurationModule/ScreeningConfigurationPages/ScreeningConfigurationPage";
 
 test.describe("Screening Configuration Module", () => {
@@ -8129,5 +8129,7 @@ test.describe("Screening Configuration Module", () => {
   });
 
   });
+
+  
 
 });

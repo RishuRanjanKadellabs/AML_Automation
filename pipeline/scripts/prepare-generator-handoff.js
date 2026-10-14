@@ -3,10 +3,13 @@
  * Build one generator handoff per discovered Excel module.
  */
 const fs = require("fs");
+const path = require("path");
 const {
+  ROOT,
   absolute,
   arg,
   defaultSpecPath,
+  kebabCase,
   moduleName,
   normalizedCases,
   readJson,
@@ -21,22 +24,70 @@ function loadModuleMap(filePath) {
   return map.modules || map;
 }
 
-function targetSpecPath(module, cases, moduleMap) {
+function findExistingSpec(module, milestone) {
+  const root = path.join(
+    ROOT,
+    "tests",
+    `milestone${milestone}`,
+    "test-cases"
+  );
+  const expectedFile = `${kebabCase(module)}.spec.ts`;
+  if (!fs.existsSync(root)) return null;
+  const directories = [root];
+  while (directories.length) {
+    const current = directories.pop();
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const entryPath = path.join(current, entry.name);
+      if (entry.isDirectory()) directories.push(entryPath);
+      if (entry.isFile() && entry.name === expectedFile) {
+        return relative(entryPath);
+      }
+    }
+  }
+  return null;
+}
+
+const M1_UI_NFR_SPEC = "tests/milestone1/nfr/ui-nfr-tests.spec.ts";
+
+function isM1NfrWorkbook(normalized, milestone) {
+  if (milestone !== 1) return false;
+  const excel = String(
+    normalized?.sourceExcel || normalized?.resultsKey || ""
+  );
+  return /nfr test cases/i.test(excel);
+}
+
+function targetSpecPath(module, cases, moduleMap, milestone, normalized = null) {
+  if (isM1NfrWorkbook(normalized, milestone)) {
+    return M1_UI_NFR_SPEC;
+  }
   const configured = moduleMap[module];
   if (typeof configured === "string") return configured;
   if (configured?.targetSpecPath) return configured.targetSpecPath;
-  return defaultSpecPath(module, cases);
+  return (
+    findExistingSpec(module, milestone) ||
+    defaultSpecPath(module, cases, milestone)
+  );
 }
 
 function isEligibleUiCase(testCase) {
   const rating = String(testCase.automationFeasibility?.rating || "automatable").toLowerCase();
   const tags = (testCase.tags || []).map((tag) => String(tag).toLowerCase());
   const type = String(testCase.automationType || testCase.type || "ui").toLowerCase();
-  return !["manual-only", "blocked"].includes(rating) && !tags.includes("api") && !tags.includes("db") &&
+  return !["manual-only", "partial", "blocked"].includes(rating) && !tags.includes("api") && !tags.includes("db") &&
     !["api", "database", "db"].includes(type);
 }
 
-function createGeneratorHandoff(module, cases, specPath, batchIndex = null) {
+function createGeneratorHandoff(
+  module,
+  cases,
+  specPath,
+  batchIndex = null,
+  milestone = 2
+) {
+  const milestoneRoot = `tests/milestone${milestone}`;
+  const consolidatedNfrSpec =
+    milestone === 1 && specPath === M1_UI_NFR_SPEC;
   const eligibleUiCaseIds = cases.filter(isEligibleUiCase).map((testCase) => testCase.testCaseId);
   return {
     handoff: "qa-pipeline.generate",
@@ -46,15 +97,19 @@ function createGeneratorHandoff(module, cases, specPath, batchIndex = null) {
     payload: {
       batchIndex,
       batchCount: batchIndex ? 6 : null,
-      appendToExistingModuleSpec: Boolean(batchIndex && batchIndex > 1),
+      milestone,
+      appendToExistingModuleSpec: consolidatedNfrSpec
+        ? fs.existsSync(absolute(specPath))
+        : Boolean(batchIndex && batchIndex > 1),
       module,
       targetSpecPath: specPath,
+      consolidatedUiNfrSpec: consolidatedNfrSpec || undefined,
       testCases: cases,
       eligibleCaseIds: cases.map((testCase) => testCase.testCaseId),
       eligibleUiCaseIds,
       framework: "Playwright + TypeScript POM",
       reuse: [
-        "tests/milestone2/",
+        `${milestoneRoot}/`,
         "tests/PageObjects/",
         "tests/objectrepositories/",
         "tests/fixtures/",
@@ -63,12 +118,15 @@ function createGeneratorHandoff(module, cases, specPath, batchIndex = null) {
       ],
       environmentRequirements: {
         baseUrlFrom: ["BASE_URL", "fixtures/environments.json"],
-        loginBypassed: true,
-        navigateViaBaseUrlOnly: true,
+        sessionLoginRequired: true,
+        credentialsFromEnv: ["EMAIL", "PASSWORD", "AML_USERNAME", "AML_PASSWORD"],
+        navigateViaBaseUrlOnly: false,
       },
       knownConstraints: [
-        "Login bypassed - do not require EMAIL/PASSWORD",
-        "One spec per Excel module",
+        "Session login required — use tests/helpers/aml-login.ts with EMAIL/PASSWORD from .env (never hard-code password)",
+        consolidatedNfrSpec
+          ? "Append UI NFR cases to tests/milestone1/nfr/ui-nfr-tests.spec.ts grouped by module describe"
+          : "One spec per Excel module",
         "Generate every case assigned to this batch",
         "Append without deleting or duplicating cases from earlier batches",
         "Every eligible UI case requires live application evidence",
@@ -85,10 +143,12 @@ function createGeneratorHandoff(module, cases, specPath, batchIndex = null) {
         "No weakened assertions or forced-pass patterns",
       ],
       codeStandards: {
-        specFilePattern: "One .spec.ts per Excel module",
-        targetDirectory: "tests/milestone2/",
-        locatorDirectory: "tests/milestone2/objectrepositories/",
-        pageObjectDirectory: "tests/milestone2/pages/",
+        specFilePattern: consolidatedNfrSpec
+          ? "tests/milestone1/nfr/ui-nfr-tests.spec.ts"
+          : "One .spec.ts per Excel module",
+        targetDirectory: `${milestoneRoot}/`,
+        locatorDirectory: `${milestoneRoot}/objectrepositories/`,
+        pageObjectDirectory: `${milestoneRoot}/pages/`,
         noSkipFixmeOnly: true,
         extendsBasePage: true,
         followLocatorPriority: true,
@@ -103,7 +163,11 @@ function main() {
   const moduleMapPath = arg("module-map");
   const batchPlanPath = arg("batch-plan");
   const batchIndex = Number.parseInt(arg("batch-index", "0"), 10) || null;
+  const milestone = Number.parseInt(arg("milestone", "2"), 10);
   try {
+    if (![1, 2].includes(milestone)) {
+      throw new Error("--milestone must be 1 or 2");
+    }
     if (!fs.existsSync(absolute(normalizedPath))) {
       throw new Error(`Normalized cases not found: ${normalizedPath}`);
     }
@@ -135,8 +199,9 @@ function main() {
       createGeneratorHandoff(
         module,
         moduleCases,
-        targetSpecPath(module, moduleCases, moduleMap),
-        batchIndex
+        targetSpecPath(module, moduleCases, moduleMap, milestone, normalized),
+        batchIndex,
+        milestone
       )
     );
     const eligibleCaseIds = allCases.map((testCase) => testCase.testCaseId);
@@ -160,6 +225,7 @@ function main() {
       createdAt: existingManifest.createdAt || new Date().toISOString(),
       updatedAt: new Date().toISOString(),
       sourceExcel: normalized.sourceExcel || cases[0]?.source?.excelFile || "",
+      milestone,
       batchPlan: batchPlanPath ? relative(batchPlanPath) : null,
       currentBatchIndex: batchIndex,
       batchCount: batchPlan?.batchCount || (batchIndex ? 6 : null),
@@ -214,4 +280,9 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { createGeneratorHandoff, main };
+module.exports = {
+  createGeneratorHandoff,
+  findExistingSpec,
+  main,
+  targetSpecPath,
+};

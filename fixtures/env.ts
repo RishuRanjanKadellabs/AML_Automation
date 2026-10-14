@@ -53,8 +53,8 @@ export function loadTestData(env: EnvName = envName): TestData {
   const merged: Record<string, unknown> = {
     ...config.defaults,
     ...envConfig,
-    validUsername: process.env.EMAIL || envConfig.validUsername || "",
-    validPassword: process.env.PASSWORD || envConfig.validPassword || "",
+    validUsername: process.env.AML_USERNAME || process.env.EMAIL || envConfig.validUsername || "",
+    validPassword: process.env.AML_PASSWORD || process.env.PASSWORD || envConfig.validPassword || "",
     LoggedUsername: process.env.LOGGED_USERNAME || envConfig.LoggedUsername || "",
     CurrentUserGroup: process.env.CURRENT_USER_GROUP || envConfig.CurrentUserGroup || "",
   };

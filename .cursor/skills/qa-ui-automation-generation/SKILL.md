@@ -28,10 +28,12 @@ Create UI `.spec.ts` + POM/locator updates following project standards.
 4. Locator priority: testid → role → label → placeholder → text → CSS → XPath last.
 5. Invoke existing generator MCP tools when browser evidence needed.
 6. **Pack all cases for one Excel Module into a single `.spec.ts`** (append `test()` blocks). Never one file per TC.
-7. **Login bypassed:** do not fill credentials or require `EMAIL`/`PASSWORD`; open modules via `baseUrl` / page-object helpers only.
+7. **Session login required:** use `EMAIL`/`PASSWORD` from `.env` via `aml-login`; never hard-code the password. **Do not generate** unauthenticated, session-expiry, or unauthorized-role cases unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`).
 8. Generate **every** eligible case for the module(s) in scope — no subset/POC cutoff.
-9. Discover locators from the **live application** (MCP snapshot); Figma/Excel assist only.
+9. Discover locators from the **live application** (MCP snapshot); Figma/Excel assist only. **Never inject fake/heal sample screens** (`healEnsure*Shell`, `HEAL-*` rows) — `.cursor/rules/no-fake-ui-screens-mandatory.mdc`.
 10. **Implement Excel Test Steps as Playwright actions** — not comments-only. Flow/form cases must open → fill/select → primary action → assert Expected Result.
+10b. **4-Eyes Maker-Checker:** after Save/Create/Edit/Delete-Deactivate/Activate, assert pending 4-Eyes request (not immediate source-module apply). When Review is in scope, assert Business Justification and Current/Proposed Value (Create → Current `-`). See `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+10c. **Audit Trail:** when Excel expects audit evidence, assert list columns and View Changes (DATA STATE CHANGE when applicable) — not audit page visibility alone. See `.cursor/rules/audit-trail-mandatory.mdc`.
 11. **Forbid smoke stubs:** navigate + `pageTitle`/`list` visible alone is Incomplete for cases whose Excel steps include create/add/save/submit/validate.
 12. After writing specs, run `npm run qa:detect-smoke-stubs` — must exit 0 before Stage 5b / Done.
 13. After writing the current batch, the pipeline runs only that batch and reports pre-heal pass/fail.

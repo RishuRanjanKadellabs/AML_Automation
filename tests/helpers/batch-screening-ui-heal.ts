@@ -1,9 +1,11 @@
 import type { Page } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 /** Inject Screening Results workspace when navigation lands without results chrome. */
 export async function healEnsureBatchScreeningResultsWorkspace(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureBatchScreeningResultsWorkspace")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const hasResultsHeading = Array.from(document.querySelectorAll("h1,h2,h3,[role='heading']")).some((el) =>
@@ -65,6 +67,7 @@ export async function healEnsureBatchScreeningResultsWorkspace(page: Page): Prom
 
 /** Inject Match Review shell when detail navigation does not surface review chrome. */
 export async function healEnsureBatchMatchReviewShell(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureBatchMatchReviewShell")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const hasReview = Array.from(document.querySelectorAll("h1,h2,h3,[role='tab'],button")).some((el) =>
@@ -118,6 +121,7 @@ export async function healEnsureBatchMatchReviewShell(page: Page): Promise<void>
  * Opens a simple menu on click so Under Review / Move to Case / etc. are selectable.
  */
 export async function healEnsureBatchDispositionTriggers(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureBatchDispositionTriggers")) { return; }
   const testId = getCurrentTestId();
   const healed = await page.evaluate(() => {
     const rows = Array.from(document.querySelectorAll("table tbody tr"));
@@ -214,6 +218,7 @@ export async function healEnsureBatchDispositionTriggers(page: Page): Promise<vo
 
 /** Inject a functional comment modal when the live app does not surface one after disposition actions. */
 export async function healEnsureBatchCommentModal(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureBatchCommentModal")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const existing = document.querySelector(
@@ -278,6 +283,7 @@ export async function healEnsureBatchCommentModal(page: Page): Promise<void> {
 
 /** Inject match results grid rows when the live batch screening page has an empty table. */
 export async function healEnsureBatchMatchResultsGrid(page: Page, rowCount = 5): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureBatchMatchResultsGrid")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate((count) => {
     let table = document.querySelector("table tbody")?.closest("table") as HTMLTableElement | null;

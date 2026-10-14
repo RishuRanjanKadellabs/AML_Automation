@@ -9,7 +9,8 @@
  * Usage:
  *   node pipeline/scripts/detect-smoke-stub-specs.cjs \
  *     --excel "<workbook.xlsx>" \
- *     --specs "path1,path2,..."
+ *     --specs "path1,path2,..." \
+ *     [--case-ids "TC-001,TC-002"]
  */
 const fs = require("fs");
 const path = require("path");
@@ -26,6 +27,13 @@ const ROOT = path.resolve(__dirname, "../..");
 const excelRel = arg("excel", "");
 const specsArg = arg("specs", "");
 const outRel = arg("out", "results/qa-pipeline/quality/smoke-stub-report.json");
+const caseIdsArg = arg("case-ids", "");
+const caseIdScope = new Set(
+  caseIdsArg
+    .split(",")
+    .map((id) => id.trim())
+    .filter(Boolean)
+);
 
 if (require.main === module && (!excelRel || !specsArg)) {
   console.error("Usage: qa:detect-smoke-stubs -- --excel <workbook.xlsx> --specs <a.spec.ts,b.spec.ts>");
@@ -321,7 +329,9 @@ function classify(excelCase, test, analysis) {
 }
 
 function main() {
-  const excelCases = loadExcelCases();
+  const excelCases = loadExcelCases().filter(
+    (testCase) => caseIdScope.size === 0 || caseIdScope.has(testCase.id)
+  );
   const byId = new Map(excelCases.map((c) => [c.id, c]));
   const pomBodies = loadPomMethodBodies();
 
@@ -329,7 +339,11 @@ function main() {
   for (const abs of specPaths) {
     if (!fs.existsSync(abs)) continue;
     const rel = path.relative(ROOT, abs);
-    allTests.push(...extractTests(fs.readFileSync(abs, "utf8"), rel));
+    allTests.push(
+      ...extractTests(fs.readFileSync(abs, "utf8"), rel).filter(
+        (testCase) => caseIdScope.size === 0 || caseIdScope.has(testCase.id)
+      )
+    );
   }
 
   const results = [];
@@ -364,6 +378,7 @@ function main() {
     generatedAt: new Date().toISOString(),
     excelPath: excelRel,
     specs: specPaths.map((p) => path.relative(ROOT, p)),
+    caseIds: [...caseIdScope],
     summary: {
       excelCaseCount: excelCases.length,
       flowInteractiveExcelCount: flowExcel.length,

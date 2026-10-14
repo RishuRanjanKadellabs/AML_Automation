@@ -93,7 +93,9 @@ class KeywordManagerPage extends BasePage {
   }
 
   get categoryControlsModal(): Locator {
-    return this.page.locator(KeywordManagerLocators.categoryControlsModal).first();
+    return this.page.getByRole("dialog", { name: /Category controls/i })
+      .or(this.page.locator(KeywordManagerLocators.categoryControlsModal))
+      .first();
   }
 
   get addKeywordPanel(): Locator {
@@ -161,16 +163,12 @@ class KeywordManagerPage extends BasePage {
       this.logStep("NAVIGATE", `${url} — successful`);
       
       if (!expectAuthFailure) {
-        // Wait for Keyword Manager landmarks to be stable
-        // First, ensure any remaining microfrontend loading is complete
-        await this.page.waitForFunction(() => {
-          const tab = document.querySelector('[role="tab"][aria-selected="true"]');
-          const breadcrumb = document.querySelector('navigation[aria-label*="breadcrumb"], nav:has([href*="configuration"])');
-          return tab && breadcrumb;
-        }, { timeout: 15000 }).catch(() => {
-          // Fallback: just wait for Active tab if landmarks check fails
-          return this.page.getByRole("tab", { name: /^Active/ }).waitFor({ state: "visible", timeout: 10000 });
-        });
+        // Wait for Keyword Manager landmarks — live UI may not expose an "Active" status tab.
+        const shell = this.pageTitle
+          .or(this.tabList)
+          .or(this.dataTable)
+          .or(this.page.getByText(/Keyword Configuration|Keyword Manager/i).first());
+        await shell.waitFor({ state: "visible", timeout: 30000 });
         this.logStep("VERIFY", "Keyword Manager content loaded — successful");
       }
     } catch (error) {
@@ -556,7 +554,7 @@ class KeywordManagerPage extends BasePage {
     await this.healer().assertVisibleWithHeal(
       [
         { name: "category-controls-modal", locator: this.categoryControlsModal },
-        { name: "category-controls-dialog", locator: this.page.getByRole("dialog", { name: /Category Controls/i }) },
+        { name: "category-controls-dialog", locator: this.page.getByRole("dialog", { name: /Category controls/i }) },
       ],
       "Category Controls modal",
     );
@@ -593,7 +591,8 @@ class KeywordManagerPage extends BasePage {
     await this.healer().assertVisibleWithHeal(
       [
         { name: "add-keyword-panel", locator: this.addKeywordPanel },
-        { name: "add-keyword-dialog", locator: this.page.getByRole("dialog", { name: /Add Keyword/i }) },
+        { name: "add-keyword-dialog", locator: this.page.getByRole("dialog", { name: /Add (New )?Keyword/i }) },
+        { name: "add-keyword-textbox", locator: this.page.getByRole("textbox", { name: /Keyword\s*\/?\s*Phrase/i }).first() },
       ],
       "Add Keyword panel",
     );
@@ -1172,9 +1171,11 @@ class KeywordManagerPage extends BasePage {
   }
 
   async expectAddKeywordPanelVisible(): Promise<void> {
-    await this.ensureFullKmHealShell();
     await this.healer().assertVisibleWithHeal(
-      [{ name: "add-keyword-panel", locator: this.addKeywordPanel }],
+      [
+        { name: "add-keyword-panel", locator: this.addKeywordPanel },
+        { name: "add-keyword-dialog", locator: this.page.getByRole("dialog", { name: /Add (New )?Keyword/i }) },
+      ],
       "Add Keyword panel",
     );
   }
@@ -1509,6 +1510,92 @@ class KeywordManagerPage extends BasePage {
 
   async expectApiBulkResponse(): Promise<void> {
     this.logStep("ASSERT", "API bulk import response valid — successful");
+  }
+
+  async verifyNavigationPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    await this.openKeywordManagerDirect(baseUrl);
+    const startedAt = Date.now();
+    await this.openKeywordManagerFromSidebar();
+    await this.expectKeywordManagerViewLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingPageReady(maxMs = 2500): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectKeywordManagerViewLoaded();
+    await this.expectKeywordTableVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyGridRenderPerformance(maxMs = 500): Promise<void> {
+    await this.expectKeywordTableVisible();
+    const startedAt = Date.now();
+    await this.expectTableRowsVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyCriticalFormFieldsReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openAddKeywordPanel();
+    await this.expectAddKeywordPanelVisible();
+    await expect(
+      this.page.getByRole("textbox", { name: /Keyword\s*\/?\s*Phrase/i }).first()
+        .or(this.page.getByRole("textbox").first()),
+    ).toBeEnabled();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyExactSearchPerformance(keyword = "PEP", maxMs = 300): Promise<void> {
+    const startedAt = Date.now();
+    await this.searchKeywords(keyword);
+    await this.expectSearchResults();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingAccessibilitySmoke(): Promise<void> {
+    await this.navigateTabsWithKeyboard();
+    const controls = this.page.locator("main button:visible, main input:visible, main [role='tab']:visible").first();
+    await controls.focus();
+    await expect(controls).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+  }
+
+  async verifyKeyboardCriticalControlsLanding(): Promise<void> {
+    await this.searchInput.focus();
+    await expect(this.searchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.searchInput).toBeFocused();
+    await expect(this.addKeywordButton).toBeEnabled();
+    await expect(this.dataTable).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl?: string): Promise<void> {
+    await this.openAddKeywordPanel();
+    await this.page.goBack({ waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    await this.page.goForward({ timeout: 15000 }).catch(() => undefined);
+    if (baseUrl) {
+      await this.openKeywordManagerDirect(baseUrl);
+    }
+    await this.expectKeywordManagerViewLoaded();
+    await this.page.reload({ waitUntil: "domcontentloaded" });
+    await this.expectOnKeywordManagerRoute();
+    await expect(this.page.getByText(/access denied|unauthorized|sign in|log in/i)).toHaveCount(0);
+  }
+
+  async verifyAddKeywordModalReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openAddKeywordPanel();
+    await this.expectAddKeywordPanelVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyCategoryManagementPanelReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openCategoryControlsModal();
+    await expect(this.categoryControlsModal).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
   }
 }
 

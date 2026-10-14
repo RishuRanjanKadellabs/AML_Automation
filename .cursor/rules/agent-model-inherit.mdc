@@ -19,6 +19,7 @@ All named agents under `.cursor/agents/` use **`model: inherit`**. Subagents run
 | `defect-regression` | `inherit` |
 | `fsd-figma-pipeline` | `inherit` |
 | `fsd-excel-coverage-audit` | `inherit` |
+| `api-testcase-pipeline` | `inherit` |
 | Legacy: `test-planner`, `headed-executor`, `headless-executor` | `inherit` |
 
 ## Task invocation rules

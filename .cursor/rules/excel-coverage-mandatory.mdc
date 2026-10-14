@@ -28,11 +28,22 @@ npm run qa:audit-excel-fidelity -- \
   --min-steps-pct 100 --min-expected-pct 100 --min-overall-pct 95
 ```
 
+The fidelity scorer must recognize the page-object vocabulary used by the
+active module. This includes NFR performance/timing, TLS and role access,
+keyboard/accessibility, responsive layout, masking/privacy, audit, browser/font,
+pagination, and read-only report assertions. Smoke-stub detection must receive
+the same active `--case-ids` when unavailable modules are explicitly deferred.
+Unauthenticated / session-expiry / unauthorized-role cases are **not** in the
+Playwright fidelity denominator unless `QA_INCLUDE_AUTH_CASES=1`
+(`.cursor/rules/authentication-bypass-mandatory.mdc`). Session login is required
+for all signed-in module flows.
+
 2. Record `excelFidelityByBatch` + `excelCoveragePercent=100` in `<resultsRoot>/generation/generation-manifest.json` and `<resultsRoot>/final/state.json` when the batch passes.
-3. Map maker-checker / pending / downstream assessment bullets to explicit assertions (`expectPendingMakerCheckerRequest`, approved-config unchanged, weights-tab score still uses prior mapping, etc.).
-4. Unsaved-state cases must switch tabs away and back, then assert Excel persistence bullets.
-5. Validation cases must assert reject/clamp behavior — not HTML5 `validity.valid` alone when Excel requires clamp/reject outcome.
-6. Completion gate (`npm run qa:verify-completion`) must pass `excelCoveragePercent=100` and `passesExcelFidelityGate=true` when an excel-fidelity report exists for the run scope.
+3. Map maker-checker / pending / downstream assessment bullets to explicit assertions (`expectPendingMakerCheckerRequest`, approved-config unchanged, weights-tab score still uses prior mapping, etc.). Global product rule: mutating actions pend in **4-Eyes** until Approve; assert **Business Justification** and **Current Value / Proposed Value** (Create → Current `-`) per `.cursor/rules/maker-checker-4eyes-mandatory.mdc` — do not expect immediate source-module reflection.
+4. Map **Audit Trail** bullets to list-row + **View Changes** asserts (Date & Time, Module, User ID, Source IP, Action, Reference ID, Reason/Remarks, DATA STATE CHANGE) per `.cursor/rules/audit-trail-mandatory.mdc` — not “audit page visible” alone.
+5. Unsaved-state cases must switch tabs away and back, then assert Excel persistence bullets.
+6. Validation cases must assert reject/clamp behavior — not HTML5 `validity.valid` alone when Excel requires clamp/reject outcome.
+7. Completion gate (`npm run qa:verify-completion`) must pass `excelCoveragePercent=100` and `passesExcelFidelityGate=true` when an excel-fidelity report exists for the run scope.
 
 ## Must not do
 

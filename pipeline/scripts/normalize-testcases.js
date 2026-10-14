@@ -16,6 +16,10 @@ const {
   underResultsRoot,
   writeJson,
 } = require("./qa-pipeline-utils.cjs");
+const {
+  isAuthenticationNfrCase,
+  authenticationFeasibility,
+} = require("./nfr-auth-automation-scope.cjs");
 
 function parseSteps(stepsText) {
   if (!stepsText || typeof stepsText !== "string") {
@@ -93,6 +97,47 @@ function parseTestData(testDataText) {
 function assessAutomationFeasibility(row) {
   const steps = row.testSteps || "";
   const expectedResult = row.expectedResult || "";
+  const declaredAutomation = String(
+    row.rawCells?.Automable || row.rawCells?.Automatable || ""
+  ).trim();
+  const declaredLower = declaredAutomation.toLowerCase();
+
+  if (isAuthenticationNfrCase(row)) {
+    return authenticationFeasibility();
+  }
+
+  if (declaredLower) {
+    if (
+      declaredLower.startsWith("no") ||
+      /load|stress|infra|k6|jmeter|manual-only|outside playwright/.test(
+        declaredLower
+      )
+    ) {
+      return {
+        rating: "manual-only",
+        rationale: `Excel Automable classification excludes this case from Playwright: ${declaredAutomation}`,
+        blockers: [declaredAutomation],
+      };
+    }
+    if (declaredLower.includes("partial")) {
+      return {
+        rating: "partial",
+        rationale: `Excel marks this case as partial automation: ${declaredAutomation}`,
+        blockers: [
+          "Partial cases require an explicitly approved objective Playwright scope before generation",
+        ],
+      };
+    }
+    if (
+      declaredLower.startsWith("yes") ||
+      /ui|playwright|sla smoke/.test(declaredLower)
+    ) {
+      return {
+        rating: "automatable",
+        rationale: `Excel marks this case suitable for Playwright: ${declaredAutomation}`,
+      };
+    }
+  }
 
   const automationFriendly = [
     "navigate",
@@ -183,9 +228,9 @@ function normalizeTestCase(row, excelFile, worksheetName) {
         impact: "Cannot execute test without application access",
       },
       {
-        statement: "Login is bypassed for this test run",
+        statement: "Session login uses EMAIL/PASSWORD from .env via aml-login (2506)",
         required: true,
-        impact: "Authentication not required per current pipeline configuration",
+        impact: "Missing credentials block live UI when Command Center shows login",
       },
     ],
     missingInformationWarnings: [],
@@ -342,4 +387,9 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { normalizeTestCase, parseSteps, main };
+module.exports = {
+  assessAutomationFeasibility,
+  normalizeTestCase,
+  parseSteps,
+  main,
+};

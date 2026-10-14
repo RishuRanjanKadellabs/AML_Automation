@@ -2,6 +2,7 @@
 import type { BrowserContext, Page, Route } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 export type ElmShellMode = "default" | "empty";
 
@@ -766,10 +767,12 @@ async function fulfillExceptionListRoute(route: Route): Promise<void> {
 }
 
 export async function installExceptionListPageHeal(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "installExceptionListPageHeal")) { return; }
   await page.route(/\/configuration\/exception-lists(\/?(\?.*)?)?$/i, fulfillExceptionListRoute);
 }
 
 export async function installExceptionListHealOnContext(context: BrowserContext): Promise<void> {
+  if (skipHealInjectionForContext(context, "installExceptionListHealOnContext")) { return; }
   if (contextRouteInstalled) {
     return;
   }
@@ -778,6 +781,7 @@ export async function installExceptionListHealOnContext(context: BrowserContext)
 }
 
 export async function healEnsureFullElmShell(page: Page, testId: string, mode: ElmShellMode = "default"): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureFullElmShell")) { return; }
   const shellMode = mode === "empty" || testId === "ELM-014" ? "empty" : "default";
   const html = buildExceptionListShellHtml(shellMode, "Active", testId);
   const currentUrl = page.url();
@@ -809,6 +813,7 @@ export async function healEnsureFullElmShell(page: Page, testId: string, mode: E
 }
 
 export async function healShowElmModal(page: Page, modalId: string, testId: string, stack = false): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowElmModal")) { return; }
   const target = resolveModalDomId(modalId);
   const stackModals = stack || modalId === "maker-checker";
   await page.evaluate(
@@ -835,6 +840,7 @@ export async function healShowElmModal(page: Page, modalId: string, testId: stri
 }
 
 export async function healShowElmValidation(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowElmValidation")) { return; }
   const kind = inferValidationKind(testId);
   const modalKey = kind;
   const validationId =
@@ -875,6 +881,7 @@ export async function healShowElmValidation(page: Page, testId: string): Promise
 }
 
 export async function healInjectSubmissionBlockedUi(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectSubmissionBlockedUi")) { return; }
   const modalKey = SUBMISSION_BLOCKED_MODAL[testId];
   if (modalKey) {
     await healShowElmModal(page, modalKey, testId);
@@ -931,6 +938,7 @@ export async function healInjectSubmissionBlockedUi(page: Page, testId: string):
 }
 
 export async function healInjectAccessDeniedUi(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectAccessDeniedUi")) { return; }
   await page.evaluate(() => {
     let banner = document.getElementById("elm-access-denied-banner");
     if (!banner) {
@@ -969,6 +977,7 @@ async function healReconcileSpecModalVisibility(page: Page, testId: string, moda
 }
 
 export async function healReconcileSpecModalsForTest(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healReconcileSpecModalsForTest")) { return; }
   for (const modalId of Object.keys(SPEC_KEEP_MODAL_VISIBLE)) {
     if (SPEC_KEEP_MODAL_VISIBLE[modalId]?.includes(testId)) {
       await healReconcileSpecModalVisibility(page, testId, modalId);
@@ -977,12 +986,14 @@ export async function healReconcileSpecModalsForTest(page: Page, testId: string)
 }
 
 export async function healDismissElmOverlay(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healDismissElmOverlay")) { return; }
   await page.evaluate(() => {
     document.getElementById("elm-overlay")?.classList.add("elm-hidden");
   });
 }
 
 export async function healDismissAllModals(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healDismissAllModals")) { return; }
   await page.evaluate(() => {
     document.getElementById("elm-overlay")?.classList.add("elm-hidden");
     document
@@ -992,6 +1003,7 @@ export async function healDismissAllModals(page: Page): Promise<void> {
 }
 
 export async function healShowListDetail(page: Page, testId: string, listName = "QA Exception List"): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowListDetail")) { return; }
   await page.evaluate(({ name }) => {
     document.getElementById("elm-overlay")?.classList.add("elm-hidden");
     document
@@ -1017,6 +1029,7 @@ export async function healShowListDetail(page: Page, testId: string, listName = 
 }
 
 export async function healInjectAssertionScaffolding(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healInjectAssertionScaffolding")) { return; }
   await page.evaluate(({ id }) => {
     const main = document.querySelector("main");
     if (!main) {
@@ -1112,6 +1125,7 @@ export async function healInjectAssertionScaffolding(page: Page, testId: string)
 }
 
 export async function healShowRegisterReport(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowRegisterReport")) { return; }
   await page.evaluate(() => {
     document.getElementById("elm-overlay")?.classList.add("elm-hidden");
     document
@@ -1132,6 +1146,7 @@ export async function healShowRegisterReport(page: Page, testId: string): Promis
 }
 
 export async function healShowReasonCodeContext(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healShowReasonCodeContext")) { return; }
   await healShowListDetail(page, testId);
   await healShowElmModal(page, "add-entry", testId);
   await page.evaluate(() => {
@@ -1151,6 +1166,7 @@ export async function healShowReasonCodeContext(page: Page, testId: string): Pro
 }
 
 export async function healApplyExcelTestContext(page: Page, testId: string): Promise<void> {
+  if (skipHealInjectionForPage(page, "healApplyExcelTestContext")) { return; }
   if (testId === "ELM-014") {
     await page.evaluate(() => {
       const panel = document.querySelector("[role='tabpanel'], .tab-panel, .tab-content");

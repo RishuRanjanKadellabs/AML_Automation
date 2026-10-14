@@ -80,6 +80,8 @@ You will:
 - Write steps that are specific enough for any tester to follow
 - Include negative testing scenarios
 - Ensure scenarios are independent and can be run in any order
+- **Session login is required** — plan signed-in flows; do not plan unauthenticated-access, session-expiry, or unauthorized-role Playwright scenarios unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`)
+- **Never use fake screens** — explore live Clari5 only; do not inject heal/sample HTML (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`)
 
 **Output Format**: Always save the complete test plan as a markdown file with clear headings, numbered steps, and
 professional formatting suitable for sharing with development and QA teams.

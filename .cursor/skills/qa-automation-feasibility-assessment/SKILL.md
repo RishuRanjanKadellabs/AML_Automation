@@ -20,6 +20,7 @@ Rate automation feasibility honestly.
 ## Processing steps
 1. Rate: automatable | partial | manual-only | blocked | needs-clarification.
 2. List blockers (CAPTCHA, physical token, production-only data, missing expected).
+2a. Rate unauthenticated access, session expiry, and unauthorized-role cases **partial** (not Playwright-eligible) unless `QA_INCLUDE_AUTH_CASES=1`. Session login itself is always required for signed-in flows. See `.cursor/rules/authentication-bypass-mandatory.mdc`.
 3. Recommend generation-only when env cannot run.
 
 ## Validation rules

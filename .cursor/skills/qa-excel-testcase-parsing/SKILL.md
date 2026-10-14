@@ -21,9 +21,11 @@ Extract test-case rows from an `.xlsx` file for the QA AI-SDLC pipeline.
 
 ## Processing steps
 1. **Prefer the mechanical script** (mandatory for `qa-automation-pipeline`):
-   `npm run qa:parse-excel -- --excel <path> --results-root results/qa-pipeline/<excel-basename>`
+   `npm run qa:parse-excel -- --excel <path> [--worksheet <name>] --results-root results/qa-pipeline/<excel-basename>`
    Uses Node `xlsx` — do **not** require Python `pandas`/`openpyxl`.
-2. Open workbook; select primary data sheet (first with header row matching aliases, or named sheet).
+2. Open workbook; select the first worksheet containing every required
+   test-case column, or validate and use the explicitly named worksheet.
+   Record `worksheetName` and `worksheetSelection` in the mechanical report.
 3. Normalize headers (trim, case-insensitive) via aliases.
 4. Parse each data row; keep original Test Case ID string verbatim.
 5. Attach `excelRowNumber` (1-based sheet row).
@@ -34,6 +36,8 @@ Extract test-case rows from an `.xlsx` file for the QA AI-SDLC pipeline.
 - Preserve original IDs; never invent IDs silently (internal ID only if documented).
 - Emit structured objects compatible with excel-input schema.
 - Full workbook row coverage is required — representative subsets are forbidden.
+- Normalize integrity must re-read the selected `worksheetName`; never assume
+  the workbook's first sheet is the test-case sheet.
 
 ## Failure conditions
 - Unreadable/corrupt workbook

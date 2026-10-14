@@ -50,6 +50,14 @@ User invokes this agent with a **spec file** (or module test folder). You:
 
 You do **not** generate new specs, heal locators, or run the six-batch Excel QA pipeline.
 
+**Session login is required** via `tests/helpers/aml-login.ts` and `.env` (`EMAIL`/`PASSWORD`). Do not hard-code credentials. Do not treat missing unauthenticated / unauthorized-role / session-expiry scripts as a gap unless the user set `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`).
+
+**Never use fake screens (HARD):** execute against **live Clari5** only. Do not inject or accept `healEnsure*Shell` / `HEAL-*` / “Sample …” pages as the app under test. If POM still overlays a fake grid, treat that as an automation defect to stop — not as a product failure on sample data. See `.cursor/rules/no-fake-ui-screens-mandatory.mdc`.
+
+**4-Eyes Maker-Checker:** mutating failures that expect immediate source-module apply (instead of pending approval / Current vs Proposed Value) are product or stale-script issues — leave Failed and raise defects honestly. Do not reclassify away maker-checker expected behaviour. See `.cursor/rules/maker-checker-4eyes-mandatory.mdc`.
+
+**Audit Trail:** failures where an action is missing from Audit Trail or View Changes lacks expected DATA STATE CHANGE / identity fields are product or stale-script issues — leave Failed and raise defects honestly. See `.cursor/rules/audit-trail-mandatory.mdc`.
+
 # Invocation
 
 Preferred user forms:
@@ -355,10 +363,13 @@ Always mention the `agentRunDocx` path in Phase A and Phase C completion message
 - Do not restore removed columns (Sub Module, Frontend Developers, Backend Developers, Dev Status, QA Status)
 - Do not remove or split the single **Status** column (required)
 - Do not substitute Figma-only analysis for **functional** execution
+- Do not inject fake/heal sample screens (`healEnsure*Shell`, `HEAL-*` rows) over live Clari5
 - Do not skip UI audit unless user passes `--skip-ui-audit`
 - Do not sync UI defects before local workbook review
 
 # Related
+
+- `.cursor/rules/no-fake-ui-screens-mandatory.mdc`
 
 - Defect generator: `pipeline/scripts/generate-module-defects.js`
 - UI audit: `pipeline/scripts/audit-ui-cosmetic-defects.cjs`

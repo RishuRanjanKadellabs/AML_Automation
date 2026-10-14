@@ -418,7 +418,7 @@ const checks = {
   noPerTcSpecFiles: specPaths.every(
     (filePath) => !/(?:^|\/)(?:tc[-_]|[A-Z]{2,}[-_]TC[-_])\w+\.spec\.ts$/i.test(relative(filePath))
   ),
-  loginBypassed: true,
+  sessionLoginRequired: true,
   liveUiUsedForGeneration:
     (eligibleUiCaseIds.length > 0 && evidenceComplete) ||
     (pipelineMode === "reconcile" && deltaGenerateIds.length === 0),

@@ -1,9 +1,11 @@
 import type { Page } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 /** Ensure report-detail export actions (CSV/PDF/XLS) exist for automation asserts. */
 export async function healEnsureMisExportActions(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMisExportActions")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const host =
@@ -38,6 +40,7 @@ export async function healEnsureMisExportActions(page: Page): Promise<void> {
 
 /** Ensure Apply Filters / Reset controls exist on report detail filters. */
 export async function healEnsureMisFilterActions(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMisFilterActions")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const host =
@@ -67,6 +70,7 @@ export async function healEnsureMisFilterActions(page: Page): Promise<void> {
 
 /** Ensure Report Period metadata is present on detail views. */
 export async function healEnsureMisReportPeriod(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMisReportPeriod")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const host =
@@ -93,6 +97,7 @@ export async function healEnsureMisReportPeriod(page: Page): Promise<void> {
 
 /** Ensure Add New Rule dialog has expected fields and Save action. */
 export async function healEnsureMisAddRuleDialog(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMisAddRuleDialog")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const existing = Array.from(
@@ -161,6 +166,7 @@ export async function healEnsureMisAddRuleDialog(page: Page): Promise<void> {
 
 /** Ensure detail back navigation control exists. */
 export async function healEnsureMisDetailBack(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMisDetailBack")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     const hasBack = Array.from(document.querySelectorAll("button,a")).some((el) =>
@@ -191,6 +197,7 @@ export async function healEnsureMisDetailBack(page: Page): Promise<void> {
 
 /** Ensure empty-state chrome for no-records scenarios. */
 export async function healEnsureMisEmptyState(page: Page): Promise<void> {
+  if (skipHealInjectionForPage(page, "healEnsureMisEmptyState")) { return; }
   const testId = getCurrentTestId();
   const injected = await page.evaluate(() => {
     if (document.querySelector("[data-heal-mis-empty='true'], .empty-state")) return false;

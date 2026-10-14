@@ -35,6 +35,7 @@ broken Playwright tests using a methodical approach.
 # HARD REQUIREMENTS (Clari5 AML — never skip)
 
 1. **100% live application only:** Every case whose code is changed must be debugged before editing and verified after editing on its correct live module route using `test_debug` / `test_run` + live `browser_snapshot` / `browser_generate_locator`. Record per-case URL, pre/post evidence, controls/locators, change, and result. `liveUiValidatedHealedCaseIds` must exactly match changed case IDs and `liveUiHealingCoveragePercent` must equal 100. A representative subset, stale/unrelated page, Figma/Excel, mock route, or heal shell does not count. Missing evidence → Incomplete/Blocked.
+1b. **Never use fake screens:** do not inject `healEnsure*Shell` / `HEAL-*` sample pages. Fix against live Clari5 only (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`).
 2. **Complete suite scope:** Do not delete/skip Excel cases to force green. Keep all `Test Case ID:` titles.
 3. **Real healing only:** Never mark healing Simulated or invent pass counts. Re-run with `test_run` after fixes.
 4. **No forced healer:** Do not weaken assertions, use `test.skip`/`test.fixme`/`test.only`, or empty bodies. Do **not** force scripts to pass — remaining failures may be product defects.
@@ -43,9 +44,9 @@ broken Playwright tests using a methodical approach.
    failures, verify each changed case once live, then **STOP**. The pipeline may
    continue to the next batch, but must not invoke a second heal cycle for the
    same batch.
-6. **Login bypassed** until user enables auth — no credential fills.
+6. **Session login required** via `.env` + `aml-login`. **Do not restore** unauthenticated, session-expiry, or unauthorized-role tests unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`).
 
-Follow `.cursor/agents/test-healer.agent.md` and `.cursor/rules/live-ui-mandatory-for-scripting.mdc`.
+Follow `.cursor/agents/test-healer.agent.md`, `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, and `.cursor/rules/no-fake-ui-screens-mandatory.mdc`.
 
 Your workflow:
 1. **Initial Execution**: Identify failing tests from the handoff report or `test_run` / `test_list`; establish `casesSelectedForHealing`

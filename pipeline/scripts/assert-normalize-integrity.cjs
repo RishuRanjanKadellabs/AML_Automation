@@ -19,19 +19,26 @@ const {
   readJson,
   relative,
 } = require("./qa-pipeline-utils.cjs");
+const {
+  selectTestCaseWorksheet,
+} = require("./excel-testcase-worksheet.cjs");
 
 function fail(message, failures) {
   failures.push(message);
   console.error(`FAIL: ${message}`);
 }
 
-function excelRowCount(excelPath) {
+function excelRowCount(excelPath, worksheetName) {
   const workbook = XLSX.readFile(absolute(excelPath));
-  const sheetName = workbook.SheetNames[0];
-  const rows = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], {
-    header: 1,
-    defval: "",
+  const schema = readJson(
+    "specs/generated/qa-pipeline/schemas/excel-input-schema.json"
+  );
+  const selected = selectTestCaseWorksheet(workbook, {
+    columnAliases: schema.properties.columnAliases.default,
+    requiredColumns: schema.properties.requiredColumns.default,
+    worksheetName,
   });
+  const rows = selected.rawData;
   if (!rows.length) return 0;
   // Count non-empty data rows (any cell has content)
   return rows.slice(1).filter((row) =>
@@ -136,7 +143,13 @@ function main() {
 
   if (excelPath) {
     try {
-      const liveCount = excelRowCount(excelPath);
+      if (!validation.worksheetName) {
+        throw new Error(
+          "validation report does not record the selected worksheetName"
+        );
+      }
+      const liveCount = excelRowCount(excelPath, validation.worksheetName);
+      checks.selectedWorksheetMatchesValidation = true;
       checks.excelRowCountAligned =
         liveCount === rows.length || Math.abs(liveCount - rows.length) <= 0;
       if (liveCount !== rows.length) {
@@ -148,6 +161,7 @@ function main() {
         );
       }
     } catch (error) {
+      checks.selectedWorksheetMatchesValidation = false;
       fail(`Cannot re-read Excel for integrity check: ${error.message}`, failures);
     }
   }
@@ -221,4 +235,4 @@ if (require.main === module) {
   main();
 }
 
-module.exports = { main };
+module.exports = { excelRowCount, main };

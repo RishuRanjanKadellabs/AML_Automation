@@ -44,16 +44,17 @@ application behavior.
 # HARD REQUIREMENTS (Clari5 AML — never skip)
 
 1. **100% live application only:** For every eligible UI case, use `generator_setup_page` + live `browser_*` on its real module route. Record the Test Case ID, actual URL, snapshot/log evidence, controls/actions exercised, expected-result target, and locators. `liveUiValidatedCaseIds` must exactly match `eligibleUiCaseIds` and `liveUiCoveragePercent` must equal 100. A representative subset, stale/unrelated page, Figma/Excel/FSD, mock route, or heal shell does not count. If any case is not live-validated → Incomplete/Blocked (not Done).
+1b. **Never use fake screens:** do not inject `healEnsure*Shell` / `HEAL-*` / “Sample …” grids. Live Clari5 only; missing live UI → fail or Blocked (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`).
 2. **Complete every assigned case:** When given Excel/normalized/module handoff or plan suite, generate **100%** of in-scope cases. No POC subset. Titles must include `Test Case ID:<id>` when IDs exist. Missing IDs → Incomplete.
    A six-batch QA pipeline handoff is the complete assigned scope for that
    invocation; append it without deleting or duplicating earlier-batch tests.
 3. **One spec per Excel module** under `tests/milestone2/` — append tests into a single module `.spec.ts`. Never one file per TC for QA-pipeline work.
-4. **Login bypassed** until user enables auth — no EMAIL/PASSWORD fills; navigate via `baseUrl` / page objects.
+4. **Session login required** — use EMAIL/PASSWORD from `.env` via `aml-login`; never hard-code the password. **Do not generate** unauthenticated, session-expiry, or unauthorized-role tests unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`). Leave those Excel rows Partial / blocked.
 5. **No fabricated Done** without specs on disk containing all assigned IDs.
 6. **Strong assertions:** Map Excel expected results to real `expect(...)`. Do not pre-soften asserts so healer can force green later.
 7. **Excel steps executed:** Every interactive Excel Test Step must be a Playwright action — not comments above navigate+title smoke checks. Create/Add/Save stubs = Incomplete.
 
-Follow `.cursor/agents/test-generator.agent.md` and `.cursor/rules/live-ui-mandatory-for-scripting.mdc` for full Clari5 standards.
+Follow `.cursor/agents/test-generator.agent.md`, `.cursor/rules/live-ui-mandatory-for-scripting.mdc`, and `.cursor/rules/no-fake-ui-screens-mandatory.mdc` for full Clari5 standards.
 
 # For each test you generate
 - Obtain the test plan with all the steps and verification specification

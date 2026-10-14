@@ -73,6 +73,14 @@ function discoverExecutionReports() {
 function testIdsInSpec(specPath) {
   const abs = absolute(specPath);
   if (!fs.existsSync(abs)) return new Set();
+  if (fs.statSync(abs).isDirectory()) {
+    const ids = new Set();
+    for (const name of fs.readdirSync(abs).sort()) {
+      if (!name.endsWith(".spec.ts")) continue;
+      for (const id of testIdsInSpec(path.join(abs, name))) ids.add(id);
+    }
+    return ids;
+  }
   const source = fs.readFileSync(abs, "utf8");
   const ids = [...source.matchAll(/Test Case ID:([A-Za-z0-9_-]+)/g)].map((m) => m[1]);
   return new Set(ids);

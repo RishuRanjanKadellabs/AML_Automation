@@ -546,7 +546,8 @@ Phase 4 heals on the default environment.
 - **The Generator uses REAL selectors** from the live browser session — not guesses.
 - **Always use selector-map.json** — never invent selectors.
 - **Always use fixture data** for URLs — never hardcode.
-- **AML login is bypassed** — do not add credential steps unless the user enables authentication.
+- **Session login is required** via `aml-login` and `.env` credentials. Do not generate unauthenticated / session-expiry / unauthorized-role tests unless `QA_INCLUDE_AUTH_CASES=1` (`.cursor/rules/authentication-bypass-mandatory.mdc`).
+- **Never use fake screens** — do not inject `healEnsure*Shell` / `HEAL-*` sample grids; live Clari5 only (`.cursor/rules/no-fake-ui-screens-mandatory.mdc`).
 - **Generic URL workflows** — follow the target application's actual framework; do not assume WordPress/Elementor.
 - **Zero user interaction** — handle cookie banners, popups, and edge cases automatically.
 - **Never skip tests** — no `test.skip()`, no `test.only()`.

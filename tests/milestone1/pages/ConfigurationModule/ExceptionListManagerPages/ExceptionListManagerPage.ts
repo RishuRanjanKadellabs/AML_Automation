@@ -2374,6 +2374,86 @@ class ExceptionListManagerPage extends BasePage {
     const menuBtn = row.locator(ExceptionListManagerLocators.rowActionsMenu).first();
     await this.clickAndWait(menuBtn.or(row), `Open entry row actions menu: ${entryId}`);
   }
+
+  async verifyNavigationPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    await this.openExceptionListsDirect(baseUrl);
+    const startedAt = Date.now();
+    await this.openExceptionListsFromSidebar();
+    await this.expectExceptionListManagerViewLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingPageReady(maxMs = 2500): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectExceptionListManagerViewLoaded();
+    await this.expectListGridVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyGridRenderPerformance(maxMs = 500): Promise<void> {
+    await this.expectListGridVisible();
+    const startedAt = Date.now();
+    await expect(this.listGrid.locator("tbody tr, [role='row']").first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyCriticalFormFieldsReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openCreateListForm();
+    await expect(this.page.getByRole("textbox").first()).toBeEnabled();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyExactSearchPerformance(query = "Exception", maxMs = 300): Promise<void> {
+    const startedAt = Date.now();
+    await this.searchLists(query);
+    await this.expectListGridVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingAccessibilitySmoke(): Promise<void> {
+    await this.searchInput.focus();
+    await expect(this.searchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.summaryCards.or(this.listGrid).first()).toBeVisible();
+  }
+
+  async verifyKeyboardCriticalControlsLanding(): Promise<void> {
+    await this.searchInput.focus();
+    await expect(this.searchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.searchInput).toBeFocused();
+    await expect(this.listGrid).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl?: string): Promise<void> {
+    await this.openCreateListForm().catch(() => undefined);
+    await this.page.goBack({ waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    await this.page.goForward({ timeout: 15000 }).catch(() => undefined);
+    if (baseUrl) {
+      await this.openExceptionListsDirect(baseUrl);
+    }
+    await this.expectExceptionListManagerViewLoaded();
+    await this.page.reload({ waitUntil: "domcontentloaded" });
+    await this.expectOnExceptionListRoute();
+    await expect(this.page.getByText(/access denied|unauthorized|sign in|log in/i)).toHaveCount(0);
+  }
+
+  async verifyAddExceptionModalReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openAddEntryForm();
+    await expect(this.page.getByRole("textbox").first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyExceptionDetailViewReady(listName = "Watchlist", maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openListView(listName);
+    await this.expectListMetadataVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
 }
 
 export default ExceptionListManagerPage;

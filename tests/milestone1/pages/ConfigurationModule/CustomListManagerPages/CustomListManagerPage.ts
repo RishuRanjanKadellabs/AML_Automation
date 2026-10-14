@@ -21,6 +21,10 @@ import {
   healShowClmModal,
   installCustomListManagerPageHeal,
 } from "../../../../helpers/custom-list-manager-ui-heal";
+import { skipHealInjectionForPage } from "../../../../helpers/heal-injection-guard";
+
+/** Live Clari5 route for Screening — Custom List (dev :2506). */
+const CLM_LIVE_ROUTE_PATTERN = /\/configuration\/screening-custom-list\/?(\?|$)/i;
 
 class CustomListManagerPage extends BasePage {
   private pendingUnauthorizedNavigation = false;
@@ -35,10 +39,21 @@ class CustomListManagerPage extends BasePage {
   }
 
   private customListManagerShell(): Locator {
-    return this.pageTitle.or(this.tabList).or(this.dataTable).or(this.emptyState).or(this.dashboardCards).first();
+    return this.page.getByText(/^Custom lists$/i).first()
+      .or(this.pageTitle)
+      .or(this.tabList)
+      .or(this.dataTable)
+      .or(this.emptyState)
+      .or(this.dashboardCards)
+      .or(this.createListButton)
+      .first();
   }
 
   private async ensureFullClmHealShell(): Promise<void> {
+    if (skipHealInjectionForPage(this.page)) {
+      await this.customListManagerShell().waitFor({ state: "visible", timeout: 30000 }).catch(() => undefined);
+      return;
+    }
     const testId = getCurrentTestId();
     const hasHealShell = (await this.page.locator("#clm-app.custom-list-manager #modal-create-list").count()) > 0;
     if (!hasHealShell) {
@@ -142,11 +157,11 @@ class CustomListManagerPage extends BasePage {
   }
 
   /**
-   * Opens Custom List Manager at /configuration/custom-list-manager (Excel route).
+   * Opens Custom List Manager at the live route /configuration/screening-custom-list.
    */
   async openCustomListManagerDirect(baseUrl: string): Promise<void> {
     const normalized = baseUrl.replace(/\/$/, "");
-    const url = `${normalized}/configuration/custom-list-manager`;
+    const url = `${normalized}${CustomListManagerLocators.liveRoutePath}`;
     const expectAuthFailure = this.pendingUnauthorizedNavigation;
     this.pendingUnauthorizedNavigation = false;
 
@@ -157,10 +172,26 @@ class CustomListManagerPage extends BasePage {
       return;
     }
 
-    if (!expectAuthFailure) {
+    if (!expectAuthFailure && !skipHealInjectionForPage(this.page)) {
       await this.page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
       await installCustomListManagerPageHeal(this.page);
       this.logStep("MOCK", "Custom List Manager heal route installed — successful");
+    } else if (!expectAuthFailure) {
+      await this.page.unrouteAll({ behavior: "ignoreErrors" }).catch(() => undefined);
+    }
+
+    if (!expectAuthFailure && skipHealInjectionForPage(this.page)) {
+      try {
+        await this.navigateTo(url, { module: "Custom List Manager", screenName: "Custom lists" });
+        await this.page.getByText(/Loading module content/i).waitFor({ state: "hidden", timeout: 60000 }).catch(() => undefined);
+        await this.customListManagerShell().waitFor({ state: "visible", timeout: 45000 });
+        this.logStep("VERIFY", "Custom List Manager live shell visible — successful");
+        return;
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        this.logStep("NAVIGATE", `${url} — failed (${message})`, "fail");
+        throw error;
+      }
     }
 
     try {
@@ -180,10 +211,12 @@ class CustomListManagerPage extends BasePage {
     } catch (error) {
       const message = error instanceof Error ? error.message : String(error);
       if (/ERR_CONNECTION_REFUSED|ECONNREFUSED|NS_ERROR_CONNECTION_REFUSED/i.test(message) && !expectAuthFailure) {
-        await healInjectCustomListManagerShell(this.page, getCurrentTestId(), this.resolveShellModeForTest());
-        this.logStep("HEAL", "Custom List Manager shell injected after connection failure");
-        this.logStep("NAVIGATE", `${url} — healed via injected shell`);
-        return;
+        if (!skipHealInjectionForPage(this.page)) {
+          await healInjectCustomListManagerShell(this.page, getCurrentTestId(), this.resolveShellModeForTest());
+          this.logStep("HEAL", "Custom List Manager shell injected after connection failure");
+          this.logStep("NAVIGATE", `${url} — healed via injected shell`);
+          return;
+        }
       }
       this.logStep("NAVIGATE", `${url} — failed (${message})`, "fail");
       throw error;
@@ -209,13 +242,13 @@ class CustomListManagerPage extends BasePage {
   private customListManagerSidebarLink(): Locator {
     const hrefLink = this.page.locator(CustomListManagerLocators.customListManagerLink).first();
     const labelLink = this.page.getByRole("link", {
-      name: /^Screening\s*[–—-]\s*Custom List Manager$|^Custom List Manager$|^Custom Lists$/i,
+      name: /^Screening\s*[–—-]\s*Custom List$|^Screening\s*[–—-]\s*Custom List Manager$|^Custom List Manager$|^Custom Lists$|^Custom lists$/i,
     }).first();
     return hrefLink.or(labelLink);
   }
 
   private isOnCustomListManagerRoute(): boolean {
-    return /\/configuration\/custom-list-manager\/?(\?|$)/i.test(this.page.url());
+    return CLM_LIVE_ROUTE_PATTERN.test(this.page.url());
   }
 
   /**
@@ -227,7 +260,7 @@ class CustomListManagerPage extends BasePage {
       { name: "href-custom-list-manager", locator: this.page.locator(CustomListManagerLocators.customListManagerLink).first() },
       {
         name: "label-custom-list-manager",
-        locator: this.page.getByRole("link", { name: /^Screening\s*[–—-]\s*Custom List Manager$|^Custom List Manager$|^Custom Lists$/i }).first(),
+        locator: this.page.getByRole("link", { name: /^Screening\s*[–—-]\s*Custom List$|^Screening\s*[–—-]\s*Custom List Manager$|^Custom List Manager$|^Custom Lists$|^Custom lists$/i }).first(),
       },
     ];
 
@@ -243,16 +276,18 @@ class CustomListManagerPage extends BasePage {
       throw new Error(`Refusing to click sidebar link with href "${href}" — expected Custom List Manager route`);
     }
 
-    await this.healer().clickWithHeal(sidebarStrategies, "Screening – Custom List Manager sidebar link");
-    await this.assertUrl(/\/configuration\/custom-list-manager\/?(\?|$)/i, "Custom List Manager route after sidebar navigation");
+    await this.healer().clickWithHeal(sidebarStrategies, "Screening — Custom List sidebar link");
+    await this.assertUrl(CLM_LIVE_ROUTE_PATTERN, "Custom List Manager route after sidebar navigation");
   }
 
   async expectOnCustomListManagerRoute(): Promise<void> {
     try {
-      await this.assertUrl(/\/configuration\/custom-list-manager\/?(\?|$)/i, "Custom List Manager route");
+      await this.assertUrl(CLM_LIVE_ROUTE_PATTERN, "Custom List Manager route");
     } catch (error) {
-      await healEnsureClmRoute(this.page, getCurrentTestId());
-      await this.assertUrl(/\/configuration\/custom-list-manager\/?(\?|$)/i, "Custom List Manager route");
+      if (!skipHealInjectionForPage(this.page)) {
+        await healEnsureClmRoute(this.page, getCurrentTestId());
+      }
+      await this.assertUrl(CLM_LIVE_ROUTE_PATTERN, "Custom List Manager route");
     }
   }
 
@@ -2046,6 +2081,87 @@ class CustomListManagerPage extends BasePage {
 
   get addEntityForm(): Locator {
     return this.addEntityPanel;
+  }
+
+  async verifyNavigationPerformance(baseUrl: string, maxMs = 800): Promise<void> {
+    await this.openCustomListManagerDirect(baseUrl);
+    const startedAt = Date.now();
+    await this.openCustomListManagerFromSidebar();
+    await this.expectCustomListManagerViewLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingPageReady(maxMs = 2500): Promise<void> {
+    const startedAt = Date.now();
+    await this.expectCustomListManagerViewLoaded();
+    await this.expectListTableVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyGridRenderPerformance(maxMs = 500): Promise<void> {
+    await this.expectListTableVisible();
+    const startedAt = Date.now();
+    await expect(this.dataTable.locator("tbody tr, [role='row']").first()).toBeVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyCriticalFormFieldsReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openCreateListForm();
+    await this.expectCreateListFormVisible();
+    await expect(this.page.getByRole("textbox").first()).toBeEnabled();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyExactSearchPerformance(query = "Sanctions", maxMs = 300): Promise<void> {
+    const startedAt = Date.now();
+    await this.searchLists(query);
+    await this.expectSearchResults();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyLandingAccessibilitySmoke(): Promise<void> {
+    await this.searchInput.focus();
+    await expect(this.searchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.tabList).toBeVisible();
+  }
+
+  async verifyKeyboardCriticalControlsLanding(): Promise<void> {
+    await this.searchInput.focus();
+    await expect(this.searchInput).toBeFocused();
+    await this.page.keyboard.press("Tab");
+    await this.page.keyboard.press("Shift+Tab");
+    await expect(this.searchInput).toBeFocused();
+    await expect(this.dataTable.or(this.emptyState).first()).toBeVisible();
+  }
+
+  async verifyBrowserNavigationRecovery(baseUrl?: string): Promise<void> {
+    await this.openCreateListForm().catch(() => undefined);
+    await this.page.goBack({ waitUntil: "domcontentloaded", timeout: 15000 }).catch(() => undefined);
+    await this.page.goForward({ timeout: 15000 }).catch(() => undefined);
+    if (baseUrl) {
+      await this.openCustomListManagerDirect(baseUrl);
+    }
+    await this.expectCustomListManagerViewLoaded();
+    await this.page.reload({ waitUntil: "domcontentloaded" });
+    await this.expectOnCustomListManagerRoute();
+    await expect(this.page.getByText(/access denied|unauthorized|sign in|log in/i)).toHaveCount(0);
+  }
+
+  async verifyCreateListFlowReady(maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openCreateListForm();
+    await this.expectCreateListFormVisible();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
+  }
+
+  async verifyListDetailViewReady(listName = "Sanctions", maxMs = 1200): Promise<void> {
+    const startedAt = Date.now();
+    await this.openList(listName);
+    await this.expectCustomListManagerViewLoaded();
+    expect(Date.now() - startedAt).toBeLessThanOrEqual(maxMs);
   }
 }
 

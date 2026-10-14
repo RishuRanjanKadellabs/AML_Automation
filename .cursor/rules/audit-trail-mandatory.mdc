@@ -1,0 +1,72 @@
+---
+description: Global Audit Trail — every action logged with list + View Changes details (before/after).
+alwaysApply: true
+---
+
+# Audit Trail / Audit Log — mandatory product behaviour
+
+Clari5 AML has an **Audit Trail / Audit Log** module (Administration). Agents authoring Excel, use cases, or Playwright **must** assume **every user/system action** is logged here — without the user re-stating it.
+
+UI references:
+- List + filters: `docs/reference/audit-trail-list.png`
+- **View Changes** detail modal: `docs/reference/audit-trail-view-changes.png`
+
+## Every action is audited
+
+Any meaningful action across modules — including **login/logout**, **Save / Create / Edit / Delete-Deactivate / Activate**, **maker submit**, **checker Approve/Reject**, navigation-critical admin actions, and other module operations — must produce an Audit Trail row (or rows) with correct module/user/action context.
+
+When a module change has field-level data impact, **View Changes** must show those changes (before/after or current/proposed style content under **DATA STATE CHANGE**). For actions with no field payload (e.g. some login events), the modal may show “No field-level data change recorded…” — still assert the header identity fields.
+
+Do **not** write Expected Results that omit audit logging for mutating or security-relevant actions unless FSD explicitly exempts them.
+
+## List / grid columns (assert when verifying the log)
+
+| Column | Captures |
+|--------|----------|
+| **Date & Time** | When the action occurred |
+| **Module** | Module / sub-module path (filterable; includes **4-Eyes Maker Checker**, KYC, Screening, Administration, etc.) |
+| **User ID** | Actor who performed the action |
+| **Source IP** | Client / source IP |
+| **Action** | Action performed (link/label, e.g. LOGIN, create/edit/approve) |
+| **Reference ID** | Technical / business reference for the event |
+| **Reason / Remarks** | Justification or system remark (aligns with maker **Business Justification** when that was the reason) |
+| **Details** | **View Changes** control → opens detail modal |
+
+Filters available: Search, Module dropdown, Date From/To, Advanced Filters; also Columns / Export as shown in live UI.
+
+## View Changes modal fields
+
+| Field / section | Captures |
+|-----------------|----------|
+| Title / breadcrumb | Action path context |
+| **DATE & TIME** | Event timestamp |
+| **MODULE** | Module label |
+| **REFERENCE ID** | Reference for the audited object/action |
+| **AML USER ID** | System user id |
+| **USER NAME** | Display name |
+| **SOURCE IP ADDRESS** | Source IP |
+| **DATA STATE CHANGE** | Field-level before/after (or current/proposed) change detail when applicable |
+| **REASON CODE / REMARKS** | Reason / remarks / justification |
+
+## Relationship to 4-Eyes Maker-Checker
+
+Mutating actions still **pend** in 4-Eyes until Approve (`.cursor/rules/maker-checker-4eyes-mandatory.mdc`). Audit Trail separately records the maker submission, checker decision, and resulting data-state change with the detail fields above. Audit **Reason / Remarks** and **DATA STATE CHANGE** should be consistent with maker justification and Current/Proposed values when those apply.
+
+## Excel / Stage 0
+
+For mutating (and other auditable) happy-paths when coverage includes audit:
+
+1. After the action (and after Approve when the case verifies post-approval state), open **Audit Trail**.
+2. Filter/search to the module/user/time/reference as needed.
+3. Expected: a matching row with Date & Time, Module, User ID, Source IP, Action, Reference ID, Reason/Remarks.
+4. Open **View Changes** and assert modal identity fields + **DATA STATE CHANGE** content for the change (or honest “no field-level change” when that is the live behaviour).
+
+Dedicated Audit Trail module TCs must cover list columns, filters, and View Changes detail — not only “page loads”.
+
+## Playwright / generator / healer
+
+- Prefer shared POM/helpers for Audit Trail list + View Changes; discover locators on the live module.
+- When Excel expects audit evidence, assert list row fields and modal sections — do not stub with “audit page visible” alone.
+- Do not heal by removing audit asserts or treating missing audit rows as pass.
+
+See also: `.cursor/rules/maker-checker-4eyes-mandatory.mdc`, `.cursor/rules/excel-coverage-mandatory.mdc`.

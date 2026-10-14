@@ -155,7 +155,7 @@ function copyFailureScreenshot(
 }
 
 function extractTestCaseId(fileName: string, testTitle = ""): string {
-  const titleMatch = testTitle.match(/Case ID:([A-Za-z0-9-]+)/i);
+  const titleMatch = testTitle.match(/Case ID:([A-Za-z0-9._-]+)/i);
   if (titleMatch) return titleMatch[1];
 
   const base = path.basename(fileName, ".spec.ts");

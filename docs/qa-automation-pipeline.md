@@ -71,13 +71,32 @@ Pipeline helpers derive modules and spec paths from the current validation/norma
 
 ## Batch execution
 
+For multi-sheet workbooks, validation auto-selects the first worksheet that
+contains all required test-case columns. Pass `--worksheet "<name>"` to select
+one explicitly. The validation report records the choice, and
+`qa:assert-normalize` re-reads that same worksheet. Run
+`npm run qa:test-worksheet-selection` to verify this contract.
+
+Normalization also honors the workbook's explicit `Automable` classification.
+Load/stress/infra and manual-only cases are excluded from Playwright. `Partial`
+cases are not placed in default UI batches until their objective Playwright
+subset is explicitly approved. Verify with `npm run qa:test-automation-scope`.
+If the user explicitly defers an unavailable module, its IDs remain recorded
+with environment-blocked reasons but are excluded from current generation,
+execution, and strict live-UI coverage until the user resumes them.
+
 ```bash
 RESULTS_ROOT="results/qa-pipeline/Keyword Manager Test"
 npm run qa:parse-excel -- --excel "pipeline/test-data/Milestone1/Test Cases/Keyword Manager Test.xlsx" --results-root "$RESULTS_ROOT"
 npm run qa:normalize -- --validation "$RESULTS_ROOT/validation/validation-report.json" --results-root "$RESULTS_ROOT"
 npm run qa:assert-normalize -- --validation "$RESULTS_ROOT/validation/validation-report.json" --normalized "$RESULTS_ROOT/normalized/test-cases.json" --excel "pipeline/test-data/Milestone1/Test Cases/Keyword Manager Test.xlsx" --delta "results/fsd-figma-pipeline/Keyword Manager Test/tc-delta-report.json"
 npm run qa:split-batches -- --normalized "$RESULTS_ROOT/normalized/test-cases.json" --delta "results/fsd-figma-pipeline/Keyword Manager Test/tc-delta-report.json" --results-root "$RESULTS_ROOT" --out "$RESULTS_ROOT/batches/batch-plan.json"
+npm run qa:prepare-batch -- --normalized "$RESULTS_ROOT/normalized/test-cases.json" --batch-plan "$RESULTS_ROOT/batches/batch-plan.json" --batch-index 1 --milestone 1 --out "$RESULTS_ROOT/generation/generation-manifest.json"
 npm run qa:execute-batch -- --batch-plan "$RESULTS_ROOT/batches/batch-plan.json" --batch-index 1
 ```
+
+Batch execution ensures Playwright Chromium is installed and selects the
+Milestone 1 or Milestone 2 project from the generation manifest. Use
+`--project` only for an explicit override.
 
 Never hand-write validation/normalized JSON. Never auto-start batch N+1 without user Yes/Proceed after batches 1–5.

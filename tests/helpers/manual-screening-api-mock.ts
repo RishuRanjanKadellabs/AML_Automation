@@ -137,6 +137,32 @@ const fixture = JSON.parse(fs.readFileSync(fixturePath, "utf-8")) as { activeRul
 export const MANUAL_SCREENING_RULES_ROUTE = "**/api/v1/screening-rules/active**";
 export const MANUAL_SCREENING_ENGINE_ROUTE = "**/api/v1/screening-engine/**";
 
+const liveApiByContext = new WeakMap<BrowserContext, boolean>();
+
+export function setManualScreeningLiveApi(context: BrowserContext, enabled: boolean): void {
+  if (enabled) {
+    liveApiByContext.set(context, true);
+    return;
+  }
+  liveApiByContext.delete(context);
+}
+
+export function isManualScreeningLiveApi(context: BrowserContext): boolean {
+  if (liveApiByContext.get(context)) {
+    return true;
+  }
+  return process.env.QA_MANUAL_SCREENING_LIVE === "1";
+}
+
+export async function uninstallManualScreeningApiMockOnContext(context: BrowserContext): Promise<void> {
+  await context.unroute(MANUAL_SCREENING_RULES_ROUTE).catch(() => undefined);
+  await context.unroute(MANUAL_SCREENING_ENGINE_ROUTE).catch(() => undefined);
+}
+
+export async function uninstallManualScreeningApiMockOnPage(page: Page): Promise<void> {
+  await uninstallManualScreeningApiMockOnContext(page.context());
+}
+
 const lastResultByContext = new WeakMap<BrowserContext, ManualScreeningResult | null>();
 const lastBatchByContext = new WeakMap<BrowserContext, BatchJobResult | null>();
 const batchMatchResultsByContext = new WeakMap<BrowserContext, BatchMatchResultApiRow[]>();
@@ -484,8 +510,10 @@ async function handleScreeningEngineRoute(context: BrowserContext, route: Route)
 }
 
 export async function installManualScreeningApiMockOnContext(context: BrowserContext): Promise<void> {
-  await context.unroute(MANUAL_SCREENING_RULES_ROUTE).catch(() => undefined);
-  await context.unroute(MANUAL_SCREENING_ENGINE_ROUTE).catch(() => undefined);
+  await uninstallManualScreeningApiMockOnContext(context);
+  if (isManualScreeningLiveApi(context)) {
+    return;
+  }
 
   if (!lastResultByContext.has(context)) {
     lastResultByContext.set(context, null);

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clari5 AML — Audit Trail / Audit Log</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f4f6fb;--white:#fff;--navy:#1a2d5a;--navy-mid:#2a53a0;
+  --blue:#0f62fe;--blue-light:#edf5ff;--border:#e0e0e0;
+  --text:#161616;--text-2:#525252;--text-3:#8d8d8d;
+  --red:#da1e28;--green:#148a36;
+  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.06);
+  --shadow-md:0 8px 28px rgba(0,0,0,.14);--radius:8px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:13px;}
+body.is-embedded .topbar{display:none;}
+
+/* ── shared top bar (hidden when embedded in the app shell) ── */
+.topbar{background:var(--navy);color:#fff;display:flex;align-items:center;gap:14px;padding:0 26px;height:52px;}
+.topbar .brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:15px;letter-spacing:-.01em;}
+.topbar .brand-mark{width:26px;height:26px;border-radius:6px;background:linear-gradient(155deg,#2a53a0,#0f62fe);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;}
+.topbar .crumb{font-size:12px;color:rgba(255,255,255,.75);}
+.topbar .crumb b{color:#fff;font-weight:600;}
+
+.shell{max-width:1440px;margin:0 auto;}
+
+/* ── page header ── */
+.page-head{border-bottom:1px solid var(--border);background:#fff;padding:14px 26px;}
+.page-head .title-row{display:flex;align-items:center;gap:8px;}
+.page-head h1{font-size:16px;font-weight:700;color:var(--text);}
+.page-head p{font-size:12.5px;color:var(--text-2);margin-top:5px;max-width:1000px;line-height:1.5;}
+.clock-ico{width:18px;height:18px;color:var(--navy-mid);flex-shrink:0;}
+
+.main{padding:16px 26px 60px;}
+
+/* ── info banner ── */
+.info-banner{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--blue-light);border-left:2px solid var(--blue);border-radius:4px;font-size:13px;margin-bottom:16px;}
+.info-banner b{font-weight:700;}
+.info-ico{width:16px;height:16px;color:var(--blue);flex-shrink:0;}
+
+/* ── filter row ── */
+.filters{display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg label{font-size:11px;font-weight:600;color:var(--text-2);}
+.fg.grow{flex:1;min-width:220px;}
+.search-wrap{position:relative;}
+.search-wrap svg{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:var(--text-3);pointer-events:none;}
+.search-wrap input{width:100%;height:36px;padding:0 10px 0 30px;font-size:12.5px;border:1px solid #8d8d8d;border-radius:6px;background:#fff;outline:none;font-family:inherit;}
+.filters input[type=date], .filters select{height:36px;padding:0 10px;font-size:12.5px;color:var(--text);border:1px solid #8d8d8d;border-radius:6px;background:#fff;outline:none;font-family:inherit;}
+.filters input:focus, .filters select:focus{border-color:var(--blue);}
+.btn{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:6px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;border:1px solid transparent;transition:.15s;white-space:nowrap;}
+.btn-primary{background:var(--navy-mid);color:#fff;}
+.btn-primary:hover{background:#1e3a70;}
+.btn-outline{background:#fff;border-color:var(--navy-mid);color:var(--navy-mid);}
+.btn-outline:hover{background:#eef2fa;}
+.btn-ghost{background:#fff;border-color:var(--border);color:var(--text-2);}
+.btn-ghost:hover{background:#f9fafb;}
+.btn[disabled]{display:none;}
+
+/* ── advanced filters ── */
+.adv-filters{display:none;align-items:flex-end;gap:12px;flex-wrap:wrap;margin-bottom:14px;padding:12px;background:#f8fafc;border:1px solid var(--border);border-radius:6px;}
+.adv-filters.open{display:flex;}
+
+/* ── columns picker ── */
+.col-wrap{position:relative;}
+.col-pop{display:none;position:absolute;right:0;top:calc(100% + 4px);background:#fff;border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-md);z-index:30;width:230px;flex-direction:column;max-height:340px;}
+.col-pop.open{display:flex;}
+.col-pop-head{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.col-pop-head span{font-size:11.5px;font-weight:800;}
+.col-pop-head .links{display:flex;gap:8px;}
+.col-pop-head button{background:none;border:none;font-family:inherit;font-size:11px;font-weight:700;color:var(--navy-mid);cursor:pointer;padding:2px 4px;border-radius:4px;}
+.col-pop-head button:hover{background:#eef2fa;}
+.col-pop-list{overflow-y:auto;flex:1;}
+.col-pop-list label{display:flex;align-items:center;gap:8px;padding:7px 12px;font-size:12px;color:#475569;cursor:pointer;}
+.col-pop-list label:hover{background:#f9fafb;}
+.col-pop-list input{width:14px;height:14px;accent-color:var(--navy-mid);cursor:pointer;}
+.col-pop-foot{display:flex;justify-content:flex-end;gap:8px;padding:9px 12px;border-top:1px solid var(--border);flex-shrink:0;}
+.col-pop-foot button{padding:5px 10px;font-size:11.5px;border-radius:5px;font-family:inherit;cursor:pointer;}
+.cpf-cancel{border:1px solid var(--border);background:#fff;color:var(--text-2);}
+.cpf-cancel:hover{background:#f9fafb;}
+.cpf-save{border:none;background:var(--navy-mid);color:#fff;font-weight:600;}
+.cpf-save:hover{background:#1e3a70;}
+.cpf-save:disabled{opacity:.4;cursor:not-allowed;}
+
+/* ── table ── */
+.table-wrap{border:1px solid var(--border);border-radius:6px;overflow:hidden;background:#fff;}
+.table-scroll{overflow-x:auto;}
+table{border-collapse:collapse;font-size:13px;}
+thead tr{background:#f4f4f4;border-bottom:1px solid var(--border);}
+th{text-align:left;padding:10px 16px;font-size:11.5px;font-weight:600;color:var(--text-2);white-space:nowrap;}
+td{padding:10px 16px;border-bottom:1px solid var(--border);color:var(--text-2);vertical-align:top;}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover td{background:#fafafa;}
+td.nowrap{white-space:nowrap;}
+.mod-cell{color:var(--text);font-weight:500;}
+.action-pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:4px;font-size:10.5px;font-weight:700;background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;white-space:nowrap;}
+.view-btn{padding:4px 12px;border-radius:5px;font-size:11px;font-weight:700;background:#eff6ff;color:var(--navy-mid);border:1px solid #bfdbfe;cursor:pointer;font-family:inherit;white-space:nowrap;}
+.view-btn:hover{background:#dbeafe;}
+.empty-row td{text-align:center;color:#6f6f6f;padding:34px;}
+
+/* ── modal ── */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);display:none;align-items:center;justify-content:center;padding:16px;z-index:500;}
+.overlay.open{display:flex;}
+.modal{background:#fff;border-radius:12px;box-shadow:var(--shadow-md);width:100%;max-width:640px;max-height:90vh;display:flex;flex-direction:column;}
+.modal-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-shrink:0;}
+.modal-head h3{font-size:15px;font-weight:800;}
+.modal-head p{font-size:12px;color:var(--text-2);margin-top:2px;}
+.modal-close{border:none;background:none;color:#9ca3af;cursor:pointer;padding:4px;border-radius:6px;line-height:1;font-size:18px;}
+.modal-close:hover{background:#f3f4f6;color:var(--text);}
+.modal-body{padding:16px 20px;overflow-y:auto;}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:20px;}
+.meta-grid div>div:first-child{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text-3);margin-bottom:4px;}
+.meta-grid div>div:last-child{font-size:13px;font-weight:500;color:var(--text);}
+.section-label{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;color:var(--text-3);margin-bottom:8px;}
+.change-table{border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-bottom:20px;}
+.change-table table{width:100%;}
+.change-table th{background:#f4f4f4;font-size:11px;}
+.change-table td{font-size:13px;}
+.change-table .before{color:var(--red);}
+.change-table .after{color:var(--green);font-weight:600;}
+.no-changes{font-size:12.5px;color:var(--text-3);border:1px solid var(--border);border-radius:6px;padding:12px;margin-bottom:20px;}
+.remarks-box{border:1px solid var(--border);background:#fafafa;border-radius:6px;padding:12px;font-size:12.5px;color:var(--text);line-height:1.6;}
+.modal-foot{display:flex;justify-content:flex-end;padding:12px 20px;border-top:1px solid var(--border);background:#f8fafc;border-radius:0 0 12px 12px;flex-shrink:0;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="brand-mark">C5</span>Clari5<sup style="font-size:8px;">™</sup></div>
+  <div class="crumb">Administration &rsaquo; <b>Audit Trail / Audit Log</b></div>
+</div>
+
+<div class="shell">
+  <div class="page-head">
+    <div class="title-row">
+      <svg class="clock-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+      <h1>Audit Trail / Audit Log</h1>
+    </div>
+    <p>A chronological record of every action taken across the system — module, user, source IP, action performed, reference ID, and reason/remarks for each, with a before/after view of the underlying data change.</p>
+  </div>
+
+  <div class="main">
+    <div class="info-banner">
+      <svg class="info-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><line x1="12" y1="11" x2="12" y2="16"/><circle cx="12" cy="7.5" r="0.6" fill="currentColor"/></svg>
+      <span><b id="resultCount">0 of 0 entries</b><span id="moduleCountText"></span></span>
+    </div>
+
+    <div class="filters">
+      <div class="fg grow">
+        <label>Search</label>
+        <div class="search-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Search action, user, module, reference, remarks…">
+        </div>
+      </div>
+      <div class="fg">
+        <label>Module</label>
+        <select id="moduleFilter" style="max-width:260px;"></select>
+      </div>
+      <div class="fg">
+        <label>Date From</label>
+        <input type="date" id="dateFrom">
+      </div>
+      <div class="fg">
+        <label>Date To</label>
+        <input type="date" id="dateTo">
+      </div>
+      <button class="btn btn-outline" id="advToggleBtn" onclick="toggleAdvanced()">Advanced Filters ▾</button>
+      <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+      <button class="btn btn-outline" id="clearBtn" onclick="clearFilters()" disabled>Clear Filters</button>
+      <div class="col-wrap" id="colWrap">
+        <button class="btn btn-ghost" onclick="openColSel()">⊞ Columns <span id="colCountLabel" style="opacity:.6;font-size:10.5px;"></span></button>
+        <div class="col-pop" id="colPop">
+          <div class="col-pop-head">
+            <span>Select Columns</span>
+            <div class="links">
+              <button onclick="colSelAll()">All</button>
+              <button onclick="colSelNone()">None</button>
+            </div>
+          </div>
+          <div class="col-pop-list" id="colPopList"></div>
+          <div class="col-pop-foot">
+            <button class="cpf-cancel" onclick="closeColSel()">Cancel</button>
+            <button class="cpf-save" id="colSaveBtn" onclick="applyColSel()">Save &amp; Apply</button>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-ghost" title="Export capped at 50,000 rows" onclick="exportCsv()">⬇ Export</button>
+    </div>
+
+    <div class="adv-filters" id="advFilters">
+      <div class="fg"><label>Action Performed</label><select id="actionFilter" style="max-width:220px;"></select></div>
+      <div class="fg"><label>User ID</label><select id="userIdFilter" style="max-width:180px;"></select></div>
+      <div class="fg"><label>Reference ID</label><select id="referenceIdFilter" style="max-width:200px;"></select></div>
+      <div class="fg"><label>Source IP</label><select id="ipFilter" style="max-width:180px;"></select></div>
+    </div>
+
+    <div class="table-wrap">
+      <div class="table-scroll">
+        <table id="auditTable">
+          <thead><tr id="tableHeadRow"></tr></thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- View Changes modal -->
+<div class="overlay" id="modalOverlay" onclick="if(event.target===this) closeModal()">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h3 id="modalTitle"></h3>
+        <p id="modalSub"></p>
+      </div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="meta-grid" id="metaGrid"></div>
+      <div class="section-label">Data State Change</div>
+      <div id="changeSection"></div>
+      <div class="section-label">Reason Code / Remarks</div>
+      <div class="remarks-box" id="remarksBox"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-ghost" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ══════════════════════════════════════════════════════════
+   Data — mirrors the live Audit Trail / Audit Log module
+   ══════════════════════════════════════════════════════════ */
+const ENTRIES = [
+  { id:"AUD-10001", timestamp:"2026-07-16 09:12", module:"Transaction Monitoring — Scenario Authoring", userId:"AML-USR-07", userName:"Rajesh Kumar", sourceIp:"10.4.12.101", actionPerformed:"RULE ADDED", referenceId:"RULE-2201", reasonRemarks:"New scenario added per FIC Guidance Note 7 update — monitors high-value payouts moved out within 48 hours of receipt.", changes:[{field:"Scenario Status",before:"—",after:"Active — Pending Approval"}] },
+  { id:"AUD-10002", timestamp:"2026-07-15 16:47", module:"Transaction Monitoring — Scenario Authoring", userId:"AML-USR-07", userName:"Rajesh Kumar", sourceIp:"10.4.12.101", actionPerformed:"RULE PARAMETERS MODIFIED", referenceId:"RULE-1042", reasonRemarks:"Threshold tuning — Q3 2026 review to reduce false-positive rate on structuring scenario.", changes:[{field:"Threshold Amount",before:"₦ 50,000,000",after:"₦ 65,000,000"},{field:"Lookback Window",before:"7 Days",after:"10 Days"}] },
+  { id:"AUD-10003", timestamp:"2026-07-15 11:03", module:"Sanction Screening — Screening Configuration", userId:"AML-USR-02", userName:"Priya Sharma", sourceIp:"10.4.1.204", actionPerformed:"MATCH THRESHOLD CHANGED", referenceId:"SCR-CFG-UN01", reasonRemarks:"Threshold adjustment approved by Head of Compliance — reduce false-positive UN Sanctions hits on common surname matches.", changes:[{field:"Fuzzy Match Threshold",before:"85%",after:"90%"}] },
+  { id:"AUD-10004", timestamp:"2026-07-14 14:28", module:"Sanction Screening — Screening Configuration", userId:"AML-USR-02", userName:"Priya Sharma", sourceIp:"10.4.1.204", actionPerformed:"SCREENING PARAMETER MODIFIED", referenceId:"SCR-CFG-CUST04", reasonRemarks:"Parameter recalibration — increases weight on date-of-birth matching to improve identity discrimination.", changes:[{field:"DOB Match Weight",before:"20%",after:"35%"}] },
+  { id:"AUD-10005", timestamp:"2026-07-14 10:15", module:"Sanction Screening — Custom List Management", userId:"AML-USR-05", userName:"Dewi Lestari", sourceIp:"10.4.5.88", actionPerformed:"ENTRY ADDED", referenceId:"CLM-8891", reasonRemarks:"Entry added — adverse media hit (fraud investigation) confirmed by compliance team on 12 Jul 2026.", changes:[{field:"List Record Count",before:"412",after:"413"}] },
+  { id:"AUD-10006", timestamp:"2026-07-13 15:52", module:"Sanction Screening — Custom List Management", userId:"AML-USR-05", userName:"Dewi Lestari", sourceIp:"10.4.5.88", actionPerformed:"ENTRY EDITED", referenceId:"CLM-4432", reasonRemarks:"Entry corrected — spelling / middle initial correction following data quality review.", changes:[{field:"Full Name",before:"Ahmad Wijya",after:"Ahmad Wijaya"}] },
+  { id:"AUD-10007", timestamp:"2026-07-13 09:04", module:"Sanction Screening — Batch Screening", userId:"AML-USR-03", userName:"Budi Santoso", sourceIp:"10.4.3.117", actionPerformed:"ADDED TO EXCEPTION LIST", referenceId:"BS-CASE-77213", reasonRemarks:"False Positive — cleared due to shared name; date-of-birth mismatch confirmed against source document.", changes:[{field:"Case Status",before:"Under Review",after:"Cleared — Exception List"}] },
+  { id:"AUD-10008", timestamp:"2026-07-12 17:39", module:"Sanction Screening — Batch Screening", userId:"AML-USR-03", userName:"Budi Santoso", sourceIp:"10.4.3.117", actionPerformed:"CASE ESCALATED", referenceId:"BS-CASE-77890", reasonRemarks:"Escalated — adverse media plus PEP linkage identified; requires senior compliance review.", changes:[{field:"Case Status",before:"Under Review",after:"Escalated — Senior Review"}] },
+  { id:"AUD-10009", timestamp:"2026-07-12 11:20", module:"Customer Risk View — Risk Rating Configuration", userId:"AML-USR-01", userName:"Naledi Mokoena", sourceIp:"10.4.12.101", actionPerformed:"WEIGHTAGE UPDATED", referenceId:"CRR-CFG-CH01", reasonRemarks:"Weightage reduced — digital onboarding channel risk recalibrated per annual model review.", changes:[{field:"Parameter Category",before:"Channel Risk",after:"Channel Risk"},{field:"Weightage",before:"25%",after:"20%"}] },
+  { id:"AUD-10010", timestamp:"2026-07-11 08:58", module:"Customer Risk View — Risk Rating Configuration", userId:"AML-USR-01", userName:"Naledi Mokoena", sourceIp:"10.4.12.101", actionPerformed:"WEIGHTAGE UPDATED", referenceId:"CRR-CFG-GEO02", reasonRemarks:"Weightage increased — reflects updated FATF grey/black-list jurisdiction exposure.", changes:[{field:"Parameter Category",before:"Geographic Risk",after:"Geographic Risk"},{field:"Weightage",before:"15%",after:"20%"}] },
+  { id:"AUD-10011", timestamp:"2026-07-10 13:47", module:"KYC — Online Customer Onboarding", userId:"AML-USR-06", userName:"Siti Rahayu", sourceIp:"10.4.6.42", actionPerformed:"APPROVED", referenceId:"ONB-2026-00456", reasonRemarks:"Approved — KYC documents verified against source, no adverse screening findings.", changes:[{field:"Onboarding Status",before:"Pending Review",after:"Approved"}] },
+  { id:"AUD-10012", timestamp:"2026-07-10 09:31", module:"KYC — Online Customer Onboarding", userId:"AML-USR-06", userName:"Siti Rahayu", sourceIp:"10.4.6.42", actionPerformed:"REJECTED", referenceId:"ONB-2026-00478", reasonRemarks:"Rejected — confirmed sanctions match; unable to obtain satisfactory identity verification.", changes:[{field:"Onboarding Status",before:"Pending Review",after:"Rejected"}] },
+  { id:"AUD-10013", timestamp:"2026-07-09 16:02", module:"KYC — Online Customer Onboarding", userId:"AML-USR-04", userName:"Ahmad Wijaya", sourceIp:"10.4.3.204", actionPerformed:"ESCALATED", referenceId:"ONB-2026-00502", reasonRemarks:"Escalated — PEP status confirmed; requires senior sign-off per Enhanced Due Diligence policy.", changes:[{field:"Onboarding Status",before:"Pending Review",after:"Escalated — EDD"}] },
+  { id:"AUD-10014", timestamp:"2026-07-08 10:44", module:"KYC — Ongoing / Periodic CDD & EDD Workflow", userId:"AML-USR-08", userName:"Rizky Pratama", sourceIp:"10.4.5.61", actionPerformed:"ANNUAL RISK UPDATED", referenceId:"CDD-REV-33211", reasonRemarks:"Risk upgraded — adverse media identified during periodic review; Enhanced Due Diligence triggered.", changes:[{field:"Risk Rating",before:"Medium",after:"High"}] },
+  { id:"AUD-10015", timestamp:"2026-07-07 14:19", module:"KYC — Ongoing / Periodic CDD & EDD Workflow", userId:"AML-USR-08", userName:"Rizky Pratama", sourceIp:"10.4.5.61", actionPerformed:"ANNUAL RISK UPDATED", referenceId:"CDD-REV-33098", reasonRemarks:"Risk downgraded — PEP status lapsed (out of office) per adverse findings on refresh.", changes:[{field:"Risk Rating",before:"High",after:"Medium"}] },
+  { id:"AUD-10016", timestamp:"2026-07-06 07:55", module:"Administration — Login", userId:"AML-USR-01", userName:"Naledi Mokoena", sourceIp:"10.4.12.101", actionPerformed:"LOGIN SUCCESS", referenceId:"AUTH-882001", reasonRemarks:"User authenticated via password + 2FA.", changes:[] },
+  { id:"AUD-10017", timestamp:"2026-07-06 07:41", module:"Administration — Login", userId:"—", userName:"Unknown (user: siti.rahayu)", sourceIp:"10.4.9.184", actionPerformed:"LOGIN FAILED", referenceId:"AUTH-882000", reasonRemarks:"Invalid password entered (attempt 2 of 5).", changes:[] },
+  { id:"AUD-10018", timestamp:"2026-07-05 12:10", module:"Administration — IP Address Control", userId:"AML-USR-01", userName:"Naledi Mokoena", sourceIp:"10.4.12.101", actionPerformed:"IP WHITELISTED", referenceId:"IPC-0091", reasonRemarks:"Added new branch subnet to the whitelisted IP range for branch access.", changes:[{field:"Whitelisted Range",before:"10.4.9.0/24",after:"10.4.9.0/24, 10.4.10.0/24"}] },
+];
+
+const COLUMN_DEFS = [
+  { key:"timestamp", label:"Date & Time", width:130 },
+  { key:"module", label:"Module", width:260 },
+  { key:"userId", label:"User ID", width:110 },
+  { key:"sourceIp", label:"Source IP", width:110 },
+  { key:"actionPerformed", label:"Action Performed", width:190 },
+  { key:"referenceId", label:"Reference ID", width:130 },
+  { key:"reasonRemarks", label:"Reason Code / Remarks", width:400 },
+];
+const DEFAULT_VISIBLE = COLUMN_DEFS.map(c=>c.key);
+
+/* ══════════════════════════════════════════════════════════
+   State
+   ══════════════════════════════════════════════════════════ */
+let draft = { search:"", moduleFilter:"all", dateFrom:"", dateTo:"", actionFilter:"all", userIdFilter:"all", referenceIdFilter:"all", ipFilter:"all" };
+let applied = { ...draft };
+let visibleCols = [...DEFAULT_VISIBLE];
+let colSelPending = [...DEFAULT_VISIBLE];
+let showAdvanced = false;
+
+const uniq = arr => ["all", ...Array.from(new Set(arr))];
+const moduleOptions = uniq(ENTRIES.map(e=>e.module));
+const actionOptions = uniq(ENTRIES.map(e=>e.actionPerformed));
+const userIdOptions = uniq(ENTRIES.map(e=>e.userId));
+const referenceIdOptions = uniq(ENTRIES.map(e=>e.referenceId));
+const ipOptions = uniq(ENTRIES.map(e=>e.sourceIp));
+
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function populateSelect(id, opts, labelForAll){
+  const sel = document.getElementById(id);
+  sel.innerHTML = opts.map(o => `<option value="${esc(o)}">${o==='all' ? labelForAll : esc(o)}</option>`).join('');
+}
+populateSelect('moduleFilter', moduleOptions, 'All modules');
+populateSelect('actionFilter', actionOptions, 'All actions');
+populateSelect('userIdFilter', userIdOptions, 'All user IDs');
+populateSelect('referenceIdFilter', referenceIdOptions, 'All reference IDs');
+populateSelect('ipFilter', ipOptions, 'All source IPs');
+
+function getFiltered(){
+  return ENTRIES.filter(e => {
+    if (applied.moduleFilter !== "all" && e.module !== applied.moduleFilter) return false;
+    if (applied.actionFilter !== "all" && e.actionPerformed !== applied.actionFilter) return false;
+    if (applied.userIdFilter !== "all" && e.userId !== applied.userIdFilter) return false;
+    if (applied.referenceIdFilter !== "all" && e.referenceId !== applied.referenceIdFilter) return false;
+    if (applied.ipFilter !== "all" && e.sourceIp !== applied.ipFilter) return false;
+    const entryDate = e.timestamp.slice(0,10);
+    if (applied.dateFrom && entryDate < applied.dateFrom) return false;
+    if (applied.dateTo && entryDate > applied.dateTo) return false;
+    if (applied.search.trim()){
+      const q = applied.search.trim().toLowerCase();
+      const haystack = `${e.module} ${e.actionPerformed} ${e.reasonRemarks} ${e.userId} ${e.userName} ${e.sourceIp} ${e.referenceId}`.toLowerCase();
+      if (!haystack.includes(q)) return false;
+    }
+    return true;
+  });
+}
+function hasDraftChanges(){
+  return draft.search || draft.moduleFilter!=='all' || draft.dateFrom || draft.dateTo ||
+    draft.actionFilter!=='all' || draft.userIdFilter!=='all' || draft.referenceIdFilter!=='all' || draft.ipFilter!=='all';
+}
+function hasAppliedFilters(){
+  return Object.entries(applied).some(([k,v]) => k==='search' ? v : v!=='all');
+}
+
+function readDraftFromInputs(){
+  draft.search = document.getElementById('searchInput').value;
+  draft.moduleFilter = document.getElementById('moduleFilter').value;
+  draft.dateFrom = document.getElementById('dateFrom').value;
+  draft.dateTo = document.getElementById('dateTo').value;
+  draft.actionFilter = document.getElementById('actionFilter').value;
+  draft.userIdFilter = document.getElementById('userIdFilter').value;
+  draft.referenceIdFilter = document.getElementById('referenceIdFilter').value;
+  draft.ipFilter = document.getElementById('ipFilter').value;
+}
+function writeInputsFromDraft(){
+  document.getElementById('searchInput').value = draft.search;
+  document.getElementById('moduleFilter').value = draft.moduleFilter;
+  document.getElementById('dateFrom').value = draft.dateFrom;
+  document.getElementById('dateTo').value = draft.dateTo;
+  document.getElementById('actionFilter').value = draft.actionFilter;
+  document.getElementById('userIdFilter').value = draft.userIdFilter;
+  document.getElementById('referenceIdFilter').value = draft.referenceIdFilter;
+  document.getElementById('ipFilter').value = draft.ipFilter;
+}
+
+function applyFilters(){ readDraftFromInputs(); applied = { ...draft }; render(); }
+function clearFilters(){
+  draft = { search:"", moduleFilter:"all", dateFrom:"", dateTo:"", actionFilter:"all", userIdFilter:"all", referenceIdFilter:"all", ipFilter:"all" };
+  applied = { ...draft };
+  writeInputsFromDraft();
+  render();
+}
+function toggleAdvanced(){
+  showAdvanced = !showAdvanced;
+  document.getElementById('advFilters').classList.toggle('open', showAdvanced);
+  document.getElementById('advToggleBtn').textContent = 'Advanced Filters ' + (showAdvanced ? '▴' : '▾');
+}
+
+/* ── columns picker ── */
+function openColSel(){
+  colSelPending = [...visibleCols];
+  renderColPop();
+  document.getElementById('colPop').classList.add('open');
+}
+function closeColSel(){ document.getElementById('colPop').classList.remove('open'); }
+function renderColPop(){
+  document.getElementById('colPopList').innerHTML = COLUMN_DEFS.map(c => `
+    <label><input type="checkbox" ${colSelPending.includes(c.key)?'checked':''} onchange="toggleColPending('${c.key}',this.checked)"> ${esc(c.label)}</label>
+  `).join('');
+  document.getElementById('colSaveBtn').disabled = colSelPending.length === 0;
+}
+function toggleColPending(key, checked){
+  if (checked){ if(!colSelPending.includes(key)) colSelPending.push(key); }
+  else colSelPending = colSelPending.filter(k=>k!==key);
+  renderColPop();
+}
+function colSelAll(){ colSelPending = COLUMN_DEFS.map(c=>c.key); renderColPop(); }
+function colSelNone(){ colSelPending = []; renderColPop(); }
+function applyColSel(){
+  if (colSelPending.length === 0) return;
+  visibleCols = [...colSelPending];
+  closeColSel();
+  render();
+}
+document.addEventListener('mousedown', e => {
+  const wrap = document.getElementById('colWrap');
+  if (wrap && !wrap.contains(e.target)) closeColSel();
+});
+
+/* ── table + info banner ── */
+function render(){
+  const filtered = getFiltered();
+  document.getElementById('resultCount').textContent = `${filtered.length} of ${ENTRIES.length} entries`;
+  document.getElementById('moduleCountText').textContent = ` shown across ${moduleOptions.length - 1} modules.`;
+  document.getElementById('clearBtn').disabled = !(hasDraftChanges() || hasAppliedFilters());
+  document.getElementById('colCountLabel').textContent = `(${visibleCols.length}/${COLUMN_DEFS.length})`;
+
+  const columns = COLUMN_DEFS.filter(c => visibleCols.includes(c.key));
+  document.getElementById('tableHeadRow').innerHTML =
+    columns.map(c => `<th>${esc(c.label)}</th>`).join('') + `<th>Details</th>`;
+
+  const body = document.getElementById('tableBody');
+  if (!filtered.length){
+    body.innerHTML = `<tr class="empty-row"><td colspan="${columns.length+1}">No audit entries match your filters.</td></tr>`;
+    return;
+  }
+  body.innerHTML = filtered.map(e => `
+    <tr>
+      ${columns.map(c => {
+        const nowrap = c.key === 'reasonRemarks' ? '' : ' nowrap';
+        if (c.key === 'actionPerformed') return `<td class="${nowrap.trim()}"><span class="action-pill">${esc(e.actionPerformed)}</span></td>`;
+        if (c.key === 'module') return `<td class="mod-cell${nowrap}">${esc(e.module)}</td>`;
+        if (c.key === 'userId') return `<td class="${nowrap.trim()}" title="${esc(e.userName)}">${esc(e.userId)}</td>`;
+        return `<td class="${nowrap.trim()}">${esc(e[c.key])}</td>`;
+      }).join('')}
+      <td class="nowrap"><button class="view-btn" onclick="openModal('${e.id}')">View Changes</button></td>
+    </tr>
+  `).join('');
+}
+
+/* ── view changes modal ── */
+function openModal(id){
+  const e = ENTRIES.find(x=>x.id===id);
+  if (!e) return;
+  const title = e.actionPerformed.charAt(0) + e.actionPerformed.slice(1).toLowerCase();
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalSub').textContent = `${e.module} · ${e.referenceId}`;
+  document.getElementById('metaGrid').innerHTML = `
+    <div><div>Date &amp; Time</div><div>${esc(e.timestamp)}</div></div>
+    <div><div>Module</div><div>${esc(e.module)}</div></div>
+    <div><div>Reference ID</div><div>${esc(e.referenceId)}</div></div>
+    <div><div>AML User ID</div><div>${esc(e.userId)}</div></div>
+    <div><div>User Name</div><div>${esc(e.userName)}</div></div>
+    <div><div>Source IP Address</div><div>${esc(e.sourceIp)}</div></div>
+  `;
+  document.getElementById('changeSection').innerHTML = !e.changes.length
+    ? `<div class="no-changes">No field-level data change recorded for this action.</div>`
+    : `<div class="change-table"><table>
+        <thead><tr><th>Field</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>${e.changes.map(c => `<tr><td style="font-weight:600;color:var(--text);">${esc(c.field)}</td><td class="before">${esc(c.before)}</td><td class="after">${esc(c.after)}</td></tr>`).join('')}</tbody>
+      </table></div>`;
+  document.getElementById('remarksBox').textContent = e.reasonRemarks;
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal(){ document.getElementById('modalOverlay').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeColSel(); } });
+
+/* ── export ── */
+function exportCsv(){
+  const filtered = getFiltered();
+  const columns = COLUMN_DEFS.filter(c => visibleCols.includes(c.key));
+  const rows = [columns.map(c=>c.label).join(',')]
+    .concat(filtered.map(e => columns.map(c => `"${String(e[c.key]).replace(/"/g,'""')}"`).join(',')));
+  const blob = new Blob([rows.join('\n')], { type: 'text/csv;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `audit-trail-export.csv`; a.click();
+  URL.revokeObjectURL(url);
+}
+
+render();
+
+// Running inside the Clari5 app shell's iframe? Hide this module's own top bar.
+if (window.self !== window.top) document.body.classList.add('is-embedded');
+</script>
+</body>
+</html>

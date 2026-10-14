@@ -1,8 +1,15 @@
 import type { BrowserContext, Page } from "@playwright/test";
-import { installCustomer360ApiMockOnContext } from "../tests/helpers/customer360-api-mock";
+import {
+  installCustomer360ApiMockOnContext,
+  isCustomer360LiveApi,
+} from "../tests/helpers/customer360-api-mock";
 import { installIgnoreWordsHealOnContext } from "../tests/helpers/ignore-words-ui-heal";
 import { installExceptionListHealOnContext } from "../tests/helpers/exception-list-ui-heal";
-import { installManualScreeningApiMockOnContext } from "../tests/helpers/manual-screening-api-mock";
+import {
+  installManualScreeningApiMockOnContext,
+  isManualScreeningLiveApi,
+} from "../tests/helpers/manual-screening-api-mock";
+import { isNfrLiveOnly } from "../tests/helpers/nfr-live-only";
 
 /** Restore CDP network throttling after slow-network tests (shared page keeps CDP state). */
 export async function resetNetworkConditions(page: Page): Promise<void> {
@@ -30,8 +37,15 @@ export async function resetNetworkConditions(page: Page): Promise<void> {
  * /configuration/keyword-manager, so specs never reached the live module.
  */
 export async function reinstallMilestone1ContextMocks(context: BrowserContext): Promise<void> {
-  await installCustomer360ApiMockOnContext(context);
+  if (isNfrLiveOnly(context)) {
+    return;
+  }
+  if (!isCustomer360LiveApi(context)) {
+    await installCustomer360ApiMockOnContext(context);
+  }
   await installIgnoreWordsHealOnContext(context);
   await installExceptionListHealOnContext(context);
-  await installManualScreeningApiMockOnContext(context);
+  if (!isManualScreeningLiveApi(context)) {
+    await installManualScreeningApiMockOnContext(context);
+  }
 }

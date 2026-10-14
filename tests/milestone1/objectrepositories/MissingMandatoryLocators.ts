@@ -40,6 +40,12 @@ const MissingMandatoryLocators = {
   scoreRangeInput: "[role='spinbutton'], input[type='number'], input[name*='range'], .score-range input",
   tipBar: "[class*='tip-bar'], [class*='guidance'], :text-matches('score|range|tip|guidance', 'i')",
   cloneButton: "button:has-text('Clone'), button:has-text('Clone Template'), [aria-label*='Clone' i]",
+  archiveAction:
+    "button:has-text('Archive'), [role='menuitem']:has-text('Archive'), button[aria-label*='Archive' i]",
+  deleteAction:
+    "button:has-text('Delete'), [role='menuitem']:has-text('Delete'), button[aria-label*='Delete' i]",
+  auditTrail:
+    "[data-testid*='audit' i], [class*='audit' i], :text-matches('audit trail|activity log|change history|modified by|updated by', 'i')",
 };
 
 export default MissingMandatoryLocators;

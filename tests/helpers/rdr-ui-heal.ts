@@ -1,6 +1,7 @@
 import type { Page } from "@playwright/test";
 import { recordHealEvent } from "./heal-log";
 import { getCurrentTestId } from "./action-logger";
+import { skipHealInjectionForContext, skipHealInjectionForPage } from "./heal-injection-guard";
 
 const TAB_LABELS: Record<string, string> = {
   customer: "Customer",
@@ -120,6 +121,7 @@ export async function healEnsureRdrMasterShell(
   slug: string,
   tabLabel: string,
 ): Promise<boolean> {
+  if (skipHealInjectionForPage(page, "healEnsureRdrMasterShell")) { return false; }
   const testId = getCurrentTestId();
   const canonicalSlug = resolveCanonicalSlug(slug);
   const columns = DEFAULT_COLUMNS[canonicalSlug] ?? DEFAULT_COLUMNS.default;

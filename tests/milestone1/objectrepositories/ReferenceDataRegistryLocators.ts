@@ -1,10 +1,20 @@
 const ReferenceDataRegistryLocators = {
-  rdrLayout: ".rdr-layout, section.rdr-view",
-  rdrPageTitle: "h1.rdr-page-title, main.main-content h1, main.mm-dt h1",
+  rdrLayout:
+    ".rdr-layout, section.rdr-view, main.main-content, main, [class*='reference-data'], [class*='rdr-']",
+  rdrPageTitle:
+    "h1.rdr-page-title, main.main-content h1, main.mm-dt h1, main h1, [class*='page-title'], [class*='breadcrumb']",
+  wcagScope: "main.main-content, main, .rdr-layout, section.rdr-view",
+  wcagInteractive:
+    "button:visible, a:visible, input:visible, select:visible, [role='tab']:visible",
+  wcagHeading: "h1, h2, h3",
+  liveRegistryHeading:
+    "h1, h2, [role='heading']",
   masterNav: ".master-nav",
-  masterTabButton: ".master-nav .mnav-btn",
+  masterTabButton: ".master-nav .mnav-btn, main .rdr-layout button, main button",
+  referenceMasterTabButton: "main button",
   tableCard: ".tcard",
-  dataTable: ".tcard table, .rdr-layout table:has(thead th), main.main-content table:has(thead th)",
+  dataTable:
+    ".tcard table, .rdr-layout table:has(thead th), main.main-content table:has(thead th), main table:has(th), table:has(thead th), table:has(th), [role='table']",
   tableHeader: "thead th",
   tableBodyRow: "tbody tr",
   recordCountBadge: ".tcnt, .tcard .tcap",
@@ -15,7 +25,7 @@ const ReferenceDataRegistryLocators = {
   searchInput:
     '#tab-search-input, .tab-search-input, input.tab-search-input, .tb-search-box input, input[placeholder*="Search" i], input[type="search"]',
   countrySearchInput: '#cm-search, input.cm-fi[placeholder*="Search" i], input.cm-fi[placeholder*="country" i]',
-  countryDataTable: ".cm-tbl-wrap table, .cm-wrap table:has(thead th)",
+  countryDataTable: ".cm-tbl-wrap table, .cm-wrap table:has(thead th), main.main-content table:has(thead th), main table:has(thead th)",
   countryFilterSelect: ".cm-filters select.cm-fi, .cm-wrap select.cm-fi",
   countryClearButton: '.cm-toolbar button:has-text("Clear"), button:has-text("Clear")',
   clearButton: 'button:has-text("Clear"), button[title*="Clear" i]',
@@ -37,6 +47,10 @@ const ReferenceDataRegistryLocators = {
   filterSelect: ".tcard select, .rdr-filters select, .filter-bar select, .rdr-layout select, main.main-content select",
   paginationNext: 'button:has-text("Next"), .pagination button.next',
   paginationIndicator: ".pagination, .page-indicator",
+  auditTrail:
+    "[data-testid*='audit' i], [class*='audit' i], :text-matches('audit trail|activity log|change history|modified by|maker-checker', 'i')",
+  restrictedAction:
+    "button:has-text('Add'), button:has-text('Edit'), button:has-text('Delete'), button:has-text('Save')",
 };
 
 export default ReferenceDataRegistryLocators;

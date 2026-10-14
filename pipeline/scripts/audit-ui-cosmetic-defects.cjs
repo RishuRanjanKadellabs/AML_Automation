@@ -26,7 +26,7 @@ const {
   extractLiveTexts,
 } = require("./ui-cosmetic-analyzer.cjs");
 const { UI_DEFECT_HEADERS, uiDefectId } = require("./ui-defect-constants.cjs");
-const { resolveModuleWarmupUrl } = require("./resolve-module-warmup-path.cjs");
+const { resolveModuleWarmupUrl, resolveModuleWarmupPath } = require("./resolve-module-warmup-path.cjs");
 const { mergeUiDefectsIntoWorkbooks } = require("./merge-ui-defects-workbook.cjs");
 const { filterDomFindings, filterAllFindings } = require("./ui-finding-filters.cjs");
 const { enrichFinding } = require("./ui-defect-plain-language.cjs");
@@ -49,7 +49,63 @@ function cleanText(value) {
     .trim();
 }
 
-function mergeVisitedScreens() {
+function normalizeExecutionOrigin(baseUrl) {
+  const trimmed = String(baseUrl || "")
+    .trim()
+    .replace(/\/$/, "");
+  if (!trimmed) return "";
+  try {
+    return new URL(`${trimmed}/`).origin;
+  } catch {
+    return "";
+  }
+}
+
+/**
+ * Rewrite cached visited-screen URLs to the execution run's base URL origin
+ * (e.g. dev :2506) so post-run UI audit never opens stale QA :2502 hosts.
+ */
+function rewriteScreenToExecutionBase(screen, baseUrl) {
+  if (!screen?.url || !baseUrl) return null;
+  const origin = normalizeExecutionOrigin(baseUrl);
+  if (!origin) return screen;
+  try {
+    const parsed = new URL(screen.url);
+    const pathWithQuery = `${parsed.pathname}${parsed.search}`;
+    const hashFromKey = String(screen.screenKey || "").includes("#")
+      ? `#${String(screen.screenKey).split("#").slice(1).join("#")}`
+      : parsed.hash;
+    const url = `${origin}${pathWithQuery}`;
+    const screenKey =
+      hashFromKey && hashFromKey !== "#" ? `${url.split("#")[0]}${hashFromKey}` : url;
+    return {
+      ...screen,
+      url,
+      screenKey,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function normalizeScreensForExecution(screens, baseUrl) {
+  const origin = normalizeExecutionOrigin(baseUrl);
+  if (!origin) return screens || [];
+  const byKey = new Map();
+  for (const screen of screens || []) {
+    const normalized = rewriteScreenToExecutionBase(screen, baseUrl);
+    if (!normalized?.url) continue;
+    try {
+      if (new URL(normalized.url).origin !== origin) continue;
+    } catch {
+      continue;
+    }
+    if (!byKey.has(normalized.screenKey)) byKey.set(normalized.screenKey, normalized);
+  }
+  return [...byKey.values()];
+}
+
+function mergeVisitedScreens(baseUrl = "") {
   const dir = path.join(ROOT, "results", "ui-audit");
   const byKey = new Map();
   if (!fs.existsSync(dir)) return [];
@@ -62,7 +118,8 @@ function mergeVisitedScreens() {
       if (!byKey.has(screen.screenKey)) byKey.set(screen.screenKey, screen);
     }
   }
-  return [...byKey.values()];
+  const merged = [...byKey.values()];
+  return baseUrl ? normalizeScreensForExecution(merged, baseUrl) : merged;
 }
 
 function moduleFromExecution(execution) {
@@ -348,19 +405,26 @@ async function auditUiCosmeticDefects(options = {}) {
   const specPath = options.specPath || execution.specsExecuted?.[0] || "";
   const module = options.module || moduleFromExecution(execution);
   const environment = execution.environment || process.env.ENV || "qa";
-  const baseUrl = execution.baseUrl || resolveModuleWarmupUrl(specPath)?.replace(/\/[^/]+$/, "") || "";
+  const baseUrl = String(
+    execution.baseUrl || process.env.BASE_URL || resolveModuleWarmupUrl(specPath)?.replace(/\/[^/]+$/, "") || "",
+  ).replace(/\/$/, "");
 
-  let screens = mergeVisitedScreens();
-  const moduleUrl = resolveModuleWarmupUrl(specPath);
+  let screens = mergeVisitedScreens(baseUrl);
+  const modulePath = resolveModuleWarmupPath(specPath);
+  const moduleUrl =
+    modulePath && baseUrl
+      ? `${baseUrl}${modulePath.startsWith("/") ? modulePath : `/${modulePath}`}`
+      : resolveModuleWarmupUrl(specPath);
   if (moduleUrl) {
-    const defaults = defaultScreensForModule(moduleUrl, module);
+    const defaults = normalizeScreensForExecution(defaultScreensForModule(moduleUrl, module), baseUrl);
     for (const screen of defaults) {
       if (!screens.some((s) => s.screenKey === screen.screenKey)) screens.push(screen);
     }
   }
   if (!screens.length && moduleUrl) {
-    screens = defaultScreensForModule(moduleUrl, module);
+    screens = normalizeScreensForExecution(defaultScreensForModule(moduleUrl, module), baseUrl);
   }
+  screens = normalizeScreensForExecution(screens, baseUrl);
 
   const figmaBaseline = resolveFigmaBaselineForModule(milestone, module);
   const screenshotBaselineDir = resolveScreenshotBaselineDir(milestone, module);
@@ -404,6 +468,7 @@ async function auditUiCosmeticDefects(options = {}) {
     milestone: `M${milestone}`,
     module,
     specPath,
+    executionBaseUrl: baseUrl || null,
     screensAudited: screens.length,
     findingCount: deduped.length,
     fullscreen: isFullscreenEnabled(),
@@ -480,4 +545,10 @@ if (require.main === module) {
   });
 }
 
-module.exports = { auditUiCosmeticDefects, mergeVisitedScreens, buildDefectRows };
+module.exports = {
+  auditUiCosmeticDefects,
+  mergeVisitedScreens,
+  normalizeScreensForExecution,
+  rewriteScreenToExecutionBase,
+  buildDefectRows,
+};

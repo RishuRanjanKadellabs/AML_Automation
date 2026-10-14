@@ -23,7 +23,7 @@ function isEligible(testCase) {
   ).toLowerCase();
   return (
     ["valid", "valid with warnings", "normalized", "ready"].includes(status) &&
-    !["manual-only", "blocked", "not-automatable"].includes(rating)
+    !["manual-only", "partial", "blocked", "not-automatable"].includes(rating)
   );
 }
 

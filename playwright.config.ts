@@ -73,8 +73,9 @@ const fullscreenUi =
 
 type Project = NonNullable<PlaywrightTestConfig["projects"]>[number];
 
+const desktopChrome = devices["Desktop Chrome"];
 const milestoneUse = {
-  ...devices["Desktop Chrome"],
+  ...desktopChrome,
   ...(fullscreenUi ? { viewport: null as null } : {}),
   headless: milestoneHeadless,
   trace:
@@ -90,6 +91,10 @@ const milestoneUse = {
       ? ("off" as const)
       : (process.env.PW_VIDEO as "retain-on-failure" | "on-first-retry" | "on") || "retain-on-failure",
 };
+
+if (fullscreenUi) {
+  delete (milestoneUse as Record<string, unknown>).deviceScaleFactor;
+}
 
 const milestoneProjects: Project[] = milestones.map((milestone) => ({
   name: `${milestone}-chromium`,

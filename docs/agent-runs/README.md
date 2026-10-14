@@ -15,6 +15,7 @@ docs/agent-runs/
 ├── qa-automation-pipeline/     ← auto on qa:verify-completion
 ├── fsd-figma-pipeline/         ← auto on fsd:coverage-report
 ├── fsd-excel-coverage-audit/   ← auto on fsd:audit-report
+├── api-testcase-pipeline/      ← npm run docs:agent-run -- --agent api-testcase-pipeline
 ├── test-generator/             ← npm run docs:agent-run:generator (after each batch)
 └── test-healer/                ← npm run docs:agent-run:healer (after heal + verify)
 ```
@@ -29,6 +30,7 @@ docs/agent-runs/
 | **qa-automation-pipeline** | Auto after gate | `npm run qa:verify-completion` |
 | **fsd-figma-pipeline** | Auto after coverage report | `npm run fsd:coverage-report -- --results-key "<module>"` |
 | **fsd-excel-coverage-audit** | Auto after audit report | `npm run fsd:audit-report -- --results-key "<module>"` |
+| **api-testcase-pipeline** | End of API Excel write | `npm run docs:agent-run -- --agent api-testcase-pipeline --payload <json>` |
 | **test-generator** | End of batch generation | `npm run docs:agent-run:generator -- --results-root "<resultsRoot>" --batch <N>` |
 | **test-healer** | After heal + verify | `npm run docs:agent-run:healer -- --results-root "<resultsRoot>" --batch <N>` |
 
@@ -44,6 +46,7 @@ Build from artifacts without hand-written JSON:
 npm run docs:agent-run -- --agent qa-automation-pipeline --gate results/qa-pipeline/final/pipeline-completion-gate.json
 npm run docs:agent-run -- --agent fsd-figma-pipeline --results-key "Keyword Manager Test"
 npm run docs:agent-run -- --agent fsd-excel-coverage-audit --results-key "Keyword Manager Test"
+npm run docs:agent-run -- --agent api-testcase-pipeline --payload results/api-testcase-pipeline/<resultsKey>/agent-run-payload.json
 npm run docs:agent-run -- --agent test-generator --results-root "results/qa-pipeline/My Module" --batch 1
 ```
 
@@ -56,6 +59,7 @@ npm run docs:agent-run -- --agent test-generator --results-root "results/qa-pipe
 | qa-automation-pipeline | Excel path, live UI %, batch pass/fail table, remaining failures, gate status |
 | fsd-figma-pipeline | FSD coverage %, feature/TC delta, module & feature coverage tables |
 | fsd-excel-coverage-audit | Independent audit verdict, overall + **feature-wise** coverage % (Actual/Req/Flow/UC), design-type rollups, uncovered flows/requirements |
+| api-testcase-pipeline | Swagger source, API operation/case counts, NFR scope, coverage %, Excel path, live UI routes, captured/uncaptured operation counts, sanitized capture manifest, blockers |
 | test-generator | Batch scope, case IDs, live routes validated, target specs |
 | test-healer | Cases healed, classification, files changed, post-heal pass/fail |
 
