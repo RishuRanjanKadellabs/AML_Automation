@@ -27,21 +27,15 @@ class CustomerOnboardingPage extends BasePage {
 
   /**
    * Visible page title for SPA ready-checks.
-   * - Scoped to `main` so the sidebar link "Onboarding Configuration" cannot match.
-   * - `visible: true` so 4-Eyes Module `<option>Onboarding Configuration</option>` is ignored.
-   * - Exact text so Version History labels do not collide with the screen title.
+   * Uses `.cob-page-title` / `h1` (not bare getByText) so shared-session 4-Eyes
+   * Module `<option>Onboarding Configuration</option>` and sidebar links cannot match.
    */
   private pageTitle(screenName: string): Locator {
+    const escaped = screenName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     return this.page
-      .locator("main")
-      .getByText(screenName, { exact: true })
+      .locator(L.pageTitleSelector)
+      .filter({ hasText: new RegExp(escaped, "i") })
       .filter({ visible: true })
-      .or(
-        this.page
-          .locator(L.pageTitleSelector)
-          .filter({ hasText: new RegExp(`^\\s*${screenName.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*$`, "i") })
-          .filter({ visible: true }),
-      )
       .first();
   }
 

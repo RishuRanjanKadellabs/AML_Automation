@@ -1,6 +1,14 @@
 {
   "runs": [
     {
+      "generatedAt": "2026-10-14T06:59:19.605Z",
+      "agent": "test-healer",
+      "payloadPath": null,
+      "docxPath": "docs/agent-runs/test-healer/2026-10-14_06-59-19_test-healer_batch-2.docx",
+      "resultsRoot": "results/qa-pipeline/Customer Onboarding Test Cases",
+      "batch": "2"
+    },
+    {
       "generatedAt": "2026-10-14T06:17:34.473Z",
       "agent": "test-generator",
       "payloadPath": null,
